@@ -1,0 +1,191 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+@theme inline {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Color System - Professional Government/Business Theme */
+  --color-primary: #1e40af; /* Blue 700 - Trust & Authority */
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #059669; /* Green 600 - Growth & Success */
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #0ea5e9; /* Sky 500 - Professional Accent */
+  --color-accent-foreground: #ffffff;
+
+  /* Neutral System */
+  --color-background: #ffffff;
+  --color-foreground: #1f2937; /* Gray 800 */
+  --color-muted: #f9fafb; /* Gray 50 */
+  --color-muted-foreground: #6b7280; /* Gray 500 */
+  --color-card: #ffffff;
+  --color-card-foreground: #1f2937;
+  --color-border: #e5e7eb; /* Gray 200 */
+  --color-input: #ffffff;
+
+  /* Semantic Colors */
+  --color-destructive: #dc2626; /* Red 600 */
+  --color-destructive-foreground: #ffffff;
+  --color-warning: #d97706; /* Amber 600 */
+  --color-warning-foreground: #ffffff;
+  --color-success: #059669; /* Green 600 */
+  --color-success-foreground: #ffffff;
+
+  /* Component Specific */
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1f2937;
+  --color-ring: #1e40af;
+
+  --radius: 0.5rem;
+}
+
+/* Global Styles */
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Custom Utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* AdSense Ready Styles */
+.ad-container {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.ad-banner {
+  display: inline-block;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  min-height: 90px;
+  width: 100%;
+  max-width: 728px;
+}
+
+.ad-sidebar {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  min-height: 250px;
+  width: 300px;
+}
+
+/* Core Web Vitals Optimizations */
+img {
+  loading: lazy;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #1e40af 0%, #059669 100%);
+}
+
+/* Professional Data Tables */
+.grant-table {
+  border-collapse: collapse;
+  width: 100%;
+  background: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.grant-table th {
+  background: #f9fafb;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.grant-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.grant-table tr:hover {
+  background: #f9fafb;
+}
+
+/* Newsletter Signup Styles */
+.newsletter-form {
+  background: linear-gradient(135deg, #1e40af 0%, #059669 100%);
+  border-radius: 1rem;
+  padding: 2rem;
+  color: white;
+}
+
+/* Cookie Consent */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(31, 41, 55, 0.95);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 1rem;
+  z-index: 50;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
