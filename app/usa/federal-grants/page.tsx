@@ -1,33 +1,33 @@
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { GrantComparisonTable } from "@/components/grant-comparison-table"
-import { getGrantsByCountry } from "@/lib/grants-data"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, Building, Users, Zap, BookOpen } from "lucide-react"
-import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Federal Grants for Small Business | USA Government Funding Programs",
-  description:
-    "Find federal grants for small businesses in the USA. Browse SBIR, SBA, and other federal funding programs with up to $1.7M available.",
-  keywords: "federal grants small business, SBIR grants, SBA funding, USA federal grants, government business funding",
-  openGraph: {
-    title: "Federal Grants for Small Business | USA Government Funding Programs",
-    description: "Find federal grants for small businesses in the USA.",
-    url: "https://grantfinder.pro/usa/federal-grants",
-  },
-}
-
-export default function USAFederalGrantsPage() {
-  const usaGrants = getGrantsByCountry("USA")
-  const federalGrants = usaGrants.filter((grant) => grant.region === "Federal")
-
-  return (
-    <div className="min-h-screen bg-white">
-      <Header />
+<!-- // import { GrantComparisonTable } from "@/components/grant-comparison-table"
+<!-- import { getGrantsByCountry } from "@/lib/grants-data"
+<!-- import { Badge } from "@/components/ui/badge"
+<!-- import { Button } from "@/components/ui/button"
+<!-- import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+<!-- import { ArrowRight, Building, Users, Zap, BookOpen } from "lucide-react"
+<!-- import Link from "next/link"
+<!-- import type { Metadata } from "next"
+<!-- 
+<!-- export const metadata: Metadata = {
+<!--   title: "Federal Grants for Small Business | USA Government Funding Programs",
+<!--   description:
+<!--     "Find federal grants for small businesses in the USA. Browse SBIR, SBA, and other federal funding programs with up to $1.7M available.",
+<!--   keywords: "federal grants small business, SBIR grants, SBA funding, USA federal grants, government business funding",
+<!--   openGraph: {
+<!--     title: "Federal Grants for Small Business | USA Government Funding Programs",
+<!--     description: "Find federal grants for small businesses in the USA.",
+<!--     url: "https://grantfinder.pro/usa/federal-grants",
+<!--   },
+<!-- }
+<!-- 
+<!-- export default function USAFederalGrantsPage() {
+<!--   const usaGrants = getGrantsByCountry("USA")
+<!--   const federalGrants = usaGrants.filter((grant) => grant.region === "Federal")
+<!-- 
+<!--   return (
+<!--     <div className="min-h-screen bg-white">
+<!--       <Header />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-700 to-blue-900 text-white py-20">
@@ -283,11 +283,11 @@ export default function USAFederalGrantsPage() {
               Browse all available federal grants. Click "Application Guide" to get detailed instructions before applying.
             </p>
           </div>
-          <GrantComparisonTable grants={federalGrants} title="Federal Grant Programs" showFilters={true} />
-        </div>
-      </section>
-
-      <Footer />
+<!--           <GrantComparisonTable grants={federalGrants} title="Federal Grant Programs" showFilters={true} />
+<!--         </div>
+<!--       </section>
+<!-- 
+<!--       <Footer />
     </div>
   )
 }

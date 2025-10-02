@@ -1,66 +1,66 @@
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { GrantComparisonTable } from "@/components/grant-comparison-table"
-import { getGrantsByCountry } from "@/lib/grants-data"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, Heart, Users, Crown, BookOpen, TrendingUp, DollarSign, Target, CheckCircle, Sparkles, BarChart3, Award, Building2 } from "lucide-react"
-import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Women Entrepreneurs Grants USA 2025 | Female Business Owner Funding",
-  description:
-    "Find grants for women entrepreneurs in the USA. Browse women-owned business grants, SBA programs for women, and federal funding up to $1M available.",
-  keywords: "women entrepreneurs grants usa, women owned business grants, female entrepreneur funding, SBA women grants, grants for women business owners",
-  openGraph: {
-    title: "Women Entrepreneurs Grants USA 2025 | Female Business Owner Funding",
-    description: "Find grants and funding programs specifically for women entrepreneurs and female business owners in the USA.",
-    url: "https://grantfinder.pro/usa/women-entrepreneurs-grants",
-  },
-}
-
-export default function USAWomenEntrepreneursGrantsPage() {
-  const usaGrants = getGrantsByCountry("USA")
-  
-  // ✅ EXPANDED: Show 8+ relevant grants for women entrepreneurs
-  const womenGrants = usaGrants.filter((grant) => 
-    // Direct women-focused grants
-    grant.category.includes("Women") || 
-    grant.name.includes("Women") ||
-    grant.name.includes("Female") ||
-    grant.eligibility.some(e => e.includes("women") || e.includes("female") || e.includes("Women")) ||
-    
-    // Small Business grants (highly relevant for women entrepreneurs)
-    grant.category.includes("Small Business") ||
-    grant.name.includes("Small Business") ||
-    grant.name.includes("SBA") ||
-    grant.eligibility.some(e => e.includes("small business")) ||
-    
-    // Minority grants (many include women)
-    grant.category.includes("Minority") ||
-    grant.name.includes("Minority") ||
-    grant.eligibility.some(e => e.includes("minority")) ||
-    
-    // Innovation/Research grants (growing area for women)
-    grant.name.includes("SBIR") ||
-    grant.name.includes("STTR") ||
-    grant.name.includes("Innovation") ||
-    grant.category.includes("Innovation") ||
-    
-    // Technology grants (women in tech focus)
-    grant.category.includes("Technology") ||
-    grant.name.includes("Technology") ||
-    
-    // Economic Development grants
-    grant.category.includes("Economic Development") ||
-    grant.name.includes("Economic Development")
-  )
-
-  return (
-    <div className="min-h-screen bg-white">
-      <Header />
+<!-- // import { GrantComparisonTable } from "@/components/grant-comparison-table"
+<!-- import { getGrantsByCountry } from "@/lib/grants-data"
+<!-- import { Badge } from "@/components/ui/badge"
+<!-- import { Button } from "@/components/ui/button"
+<!-- import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+<!-- import { ArrowRight, Heart, Users, Crown, BookOpen, TrendingUp, DollarSign, Target, CheckCircle, Sparkles, BarChart3, Award, Building2 } from "lucide-react"
+<!-- import Link from "next/link"
+<!-- import type { Metadata } from "next"
+<!-- 
+<!-- export const metadata: Metadata = {
+<!--   title: "Women Entrepreneurs Grants USA 2025 | Female Business Owner Funding",
+<!--   description:
+<!--     "Find grants for women entrepreneurs in the USA. Browse women-owned business grants, SBA programs for women, and federal funding up to $1M available.",
+<!--   keywords: "women entrepreneurs grants usa, women owned business grants, female entrepreneur funding, SBA women grants, grants for women business owners",
+<!--   openGraph: {
+<!--     title: "Women Entrepreneurs Grants USA 2025 | Female Business Owner Funding",
+<!--     description: "Find grants and funding programs specifically for women entrepreneurs and female business owners in the USA.",
+<!--     url: "https://grantfinder.pro/usa/women-entrepreneurs-grants",
+<!--   },
+<!-- }
+<!-- 
+<!-- export default function USAWomenEntrepreneursGrantsPage() {
+<!--   const usaGrants = getGrantsByCountry("USA")
+<!--   
+<!--   // ✅ EXPANDED: Show 8+ relevant grants for women entrepreneurs
+<!--   const womenGrants = usaGrants.filter((grant) => 
+<!--     // Direct women-focused grants
+<!--     grant.category.includes("Women") || 
+<!--     grant.name.includes("Women") ||
+<!--     grant.name.includes("Female") ||
+<!--     grant.eligibility.some(e => e.includes("women") || e.includes("female") || e.includes("Women")) ||
+<!--     
+<!--     // Small Business grants (highly relevant for women entrepreneurs)
+<!--     grant.category.includes("Small Business") ||
+<!--     grant.name.includes("Small Business") ||
+<!--     grant.name.includes("SBA") ||
+<!--     grant.eligibility.some(e => e.includes("small business")) ||
+<!--     
+<!--     // Minority grants (many include women)
+<!--     grant.category.includes("Minority") ||
+<!--     grant.name.includes("Minority") ||
+<!--     grant.eligibility.some(e => e.includes("minority")) ||
+<!--     
+<!--     // Innovation/Research grants (growing area for women)
+<!--     grant.name.includes("SBIR") ||
+<!--     grant.name.includes("STTR") ||
+<!--     grant.name.includes("Innovation") ||
+<!--     grant.category.includes("Innovation") ||
+<!--     
+<!--     // Technology grants (women in tech focus)
+<!--     grant.category.includes("Technology") ||
+<!--     grant.name.includes("Technology") ||
+<!--     
+<!--     // Economic Development grants
+<!--     grant.category.includes("Economic Development") ||
+<!--     grant.name.includes("Economic Development")
+<!--   )
+<!-- 
+<!--   return (
+<!--     <div className="min-h-screen bg-white">
+<!--       <Header />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-pink-600 to-purple-700 text-white py-20">
@@ -580,11 +580,11 @@ export default function USAWomenEntrepreneursGrantsPage() {
               Browse all available grants and funding programs for women entrepreneurs. Click "Application Guide" for detailed instructions.
             </p>
           </div>
-          <GrantComparisonTable grants={womenGrants} title="Women's Business Grant Programs" showFilters={true} />
-        </div>
-      </section>
-
-      <Footer />
+<!--           <GrantComparisonTable grants={womenGrants} title="Women's Business Grant Programs" showFilters={true} />
+<!--         </div>
+<!--       </section>
+<!-- 
+<!--       <Footer />
     </div>
   )
 }

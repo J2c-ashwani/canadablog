@@ -1,33 +1,33 @@
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { GrantComparisonTable } from "@/components/grant-comparison-table"
-import { getGrantsByCountry } from "@/lib/grants-data"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Building, Users, Zap } from "lucide-react"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Canadian Government Grants for Business | Federal & Provincial Funding",
-  description:
-    "Find Canadian government grants for businesses. Browse federal programs like Strategic Innovation Fund and provincial funding with $800M+ available.",
-  keywords:
-    "Canadian government grants, Canada business funding, federal grants Canada, provincial grants, startup funding Canada",
-  openGraph: {
-    title: "Canadian Government Grants for Business | Federal & Provincial Funding",
-    description: "Find Canadian government grants for businesses.",
-    url: "https://grantfinder.pro/canada/government-grants",
-  },
-}
-
-export default function CanadaGovernmentGrantsPage() {
-  const canadaGrants = getGrantsByCountry("Canada")
-  const federalGrants = canadaGrants.filter((grant) => grant.region === "Federal")
-
-  return (
-    <div className="min-h-screen bg-white">
-      <Header />
+<!-- // import { GrantComparisonTable } from "@/components/grant-comparison-table"
+<!-- import { getGrantsByCountry } from "@/lib/grants-data"
+<!-- import { Badge } from "@/components/ui/badge"
+<!-- import { Button } from "@/components/ui/button"
+<!-- import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+<!-- import { Building, Users, Zap } from "lucide-react"
+<!-- import type { Metadata } from "next"
+<!-- 
+<!-- export const metadata: Metadata = {
+<!--   title: "Canadian Government Grants for Business | Federal & Provincial Funding",
+<!--   description:
+<!--     "Find Canadian government grants for businesses. Browse federal programs like Strategic Innovation Fund and provincial funding with $800M+ available.",
+<!--   keywords:
+<!--     "Canadian government grants, Canada business funding, federal grants Canada, provincial grants, startup funding Canada",
+<!--   openGraph: {
+<!--     title: "Canadian Government Grants for Business | Federal & Provincial Funding",
+<!--     description: "Find Canadian government grants for businesses.",
+<!--     url: "https://grantfinder.pro/canada/government-grants",
+<!--   },
+<!-- }
+<!-- 
+<!-- export default function CanadaGovernmentGrantsPage() {
+<!--   const canadaGrants = getGrantsByCountry("Canada")
+<!--   const federalGrants = canadaGrants.filter((grant) => grant.region === "Federal")
+<!-- 
+<!--   return (
+<!--     <div className="min-h-screen bg-white">
+<!--       <Header />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-red-700 to-red-900 text-white py-20">
@@ -181,11 +181,11 @@ export default function CanadaGovernmentGrantsPage() {
       {/* Federal Grants Table */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <GrantComparisonTable grants={federalGrants} title="Federal Grant Programs" showFilters={true} />
-        </div>
-      </section>
-
-      <Footer />
+<!--           <GrantComparisonTable grants={federalGrants} title="Federal Grant Programs" showFilters={true} />
+<!--         </div>
+<!--       </section>
+<!-- 
+<!--       <Footer />
     </div>
   )
 }

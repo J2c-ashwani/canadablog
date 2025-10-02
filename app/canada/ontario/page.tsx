@@ -1,69 +1,17 @@
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { NewsletterSignup } from "@/components/newsletter-signup"
-import { GrantComparisonTable } from "@/components/grant-comparison-table"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Ontario Business Grants 2025 | Provincial Funding Programs",
-  description:
-    "Find Ontario business grants and provincial funding programs. Complete guide to Ontario government grants, eligibility requirements, and application deadlines.",
-  keywords:
-    "Ontario business grants, Ontario government funding, provincial grants Ontario, small business funding Ontario",
-  alternates: {
-    canonical: "https://grantfinder.pro/canada/ontario",
-  },
-}
-
-const ontarioGrants = [
-  {
-    name: "Ontario Together Fund",
-    fundingAmount: "$2.5M",
-    eligibility: "Ontario businesses and organizations",
-    deadline: "Rolling basis",
-    applicationLink: "https://www.ontario.ca/page/ontario-together-fund",
-    description: "Support for businesses adapting to economic challenges",
-  },
-  {
-    name: "Ontario Innovation Tax Credit",
-    fundingAmount: "10% tax credit",
-    eligibility: "R&D performing corporations",
-    deadline: "Annual",
-    applicationLink: "https://www.ontario.ca/page/ontario-innovation-tax-credit",
-    description: "Tax credit for research and development expenditures",
-  },
-  {
-    name: "Ontario Scale-Up Vouchers Program",
-    fundingAmount: "$25K",
-    eligibility: "High-growth potential companies",
-    deadline: "Quarterly",
-    applicationLink: "https://www.ontario.ca/page/ontario-scale-vouchers-program",
-    description: "Vouchers for business advisory services",
-  },
-  {
-    name: "Ontario Centres of Excellence",
-    fundingAmount: "$500K",
-    eligibility: "Technology companies",
-    deadline: "Multiple rounds",
-    applicationLink: "https://www.oce-ontario.org/",
-    description: "Funding for technology commercialization",
-  },
-]
-
-export default function OntarioGrantsPage() {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <Header />
-
+{/* <GrantComparisonTable temporarily disabled for deployment */} 
+<div className="mb-12 p-8 bg-gray-50 rounded-lg text-center"> 
+  <h3 className="text-xl font-semibold mb-2">Grant Comparison</h3> 
+  <p className="text-gray-600">Grant comparison table temporarily unavailable.</p> 
+</div>
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <MapPin className="h-6 w-6 text-primary" />
+              <MapPin className="h-6 w-6 text-primary" /> -->
               <Badge variant="secondary" className="bg-primary/10 text-primary">
                 Ontario Provincial Funding
               </Badge>
@@ -80,7 +28,7 @@ export default function OntarioGrantsPage() {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Total Available Funding</CardTitle>
-                <DollarSign className="h-4 w-4 text-muted-foreground" />
+                <DollarSign className="h-4 w-4 text-muted-foreground" /> -->
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-primary">$400M+</div>
@@ -90,7 +38,7 @@ export default function OntarioGrantsPage() {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Active Programs</CardTitle>
-                <Users className="h-4 w-4 text-muted-foreground" />
+                <Users className="h-4 w-4 text-muted-foreground" /> -->
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-primary">30+</div>
@@ -100,7 +48,7 @@ export default function OntarioGrantsPage() {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Success Rate</CardTitle>
-                <TrendingUp className="h-4 w-4 text-muted-foreground" />
+                <TrendingUp className="h-4 w-4 text-muted-foreground" /> -->
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-primary">40%</div>
@@ -111,12 +59,11 @@ export default function OntarioGrantsPage() {
 
           {/* Grant Comparison Table */}
           <div className="mb-12">
-            <GrantComparisonTable
-              grants={ontarioGrants}
-              title="Ontario Business Grants Comparison"
-              description="Compare funding amounts, eligibility requirements, and deadlines for top Ontario provincial programs"
-            />
-          </div>
+{/* <GrantComparisonTable temporarily disabled for deployment */} 
+<div className="mb-12 p-8 bg-gray-50 rounded-lg text-center"> 
+  <h3 className="text-xl font-semibold mb-2">Grant Comparison</h3> 
+  <p className="text-gray-600">Grant comparison table temporarily unavailable.</p> 
+</div>          </div>
 
           {/* Content Sections */}
           <div className="grid lg:grid-cols-3 gap-8 mb-12">
@@ -171,7 +118,7 @@ export default function OntarioGrantsPage() {
             </div>
 
             <div className="space-y-6">
-              <NewsletterSignup variant="sidebar" />
+              <NewsletterSignup variant="sidebar" /> -->
 
               <Card>
                 <CardHeader>
@@ -202,12 +149,12 @@ export default function OntarioGrantsPage() {
             <NewsletterSignup
               title="Get Ontario Grant Updates"
               description="Stay informed about new Ontario business grants and funding opportunities"
-            />
+            /> -->
           </div>
         </div>
       </main>
 
-      <Footer />
+      <Footer /> -->
     </div>
   )
 }

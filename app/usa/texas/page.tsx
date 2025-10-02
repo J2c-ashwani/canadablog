@@ -1,63 +1,11 @@
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { NewsletterSignup } from "@/components/newsletter-signup"
-import { GrantComparisonTable } from "@/components/grant-comparison-table"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Texas Business Funding Programs 2025 | State Grants & Incentives",
-  description:
-    "Discover Texas business funding programs, state grants, and economic incentives. Complete guide to Texas government funding for startups and small businesses.",
-  keywords:
-    "Texas business funding programs, Texas state grants, Texas government funding, small business grants Texas",
-  alternates: {
-    canonical: "https://grantfinder.pro/usa/texas",
-  },
-}
-
-const texasGrants = [
-  {
-    name: "Texas Enterprise Fund",
-    fundingAmount: "$10M+",
-    eligibility: "Large job-creating projects",
-    deadline: "Rolling basis",
-    applicationLink: "https://gov.texas.gov/business/page/texas-enterprise-fund",
-    description: "Incentive fund for major business relocations and expansions",
-  },
-  {
-    name: "Texas Capital Fund",
-    fundingAmount: "$5M",
-    eligibility: "Infrastructure and community development",
-    deadline: "Quarterly",
-    applicationLink: "https://www.texaswideopenforbusiness.com/",
-    description: "Infrastructure grants supporting business development",
-  },
-  {
-    name: "Skills Development Fund",
-    fundingAmount: "$500K",
-    eligibility: "Job training programs",
-    deadline: "Annual",
-    applicationLink: "https://www.twc.texas.gov/programs/skills-development-fund",
-    description: "Customized job training for businesses",
-  },
-  {
-    name: "Texas Research Incentive Program",
-    fundingAmount: "$2M",
-    eligibility: "Research institutions and companies",
-    deadline: "Annual",
-    applicationLink: "https://www.thecb.state.tx.us/",
-    description: "Funding for research and development projects",
-  },
-]
-
-export default function TexasGrantsPage() {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <Header />
-
+{/* <GrantComparisonTable temporarily disabled for deployment */} 
+<div className="mb-12 p-8 bg-gray-50 rounded-lg text-center"> 
+  <h3 className="text-xl font-semibold mb-2">Grant Comparison</h3> 
+  <p className="text-gray-600">Grant comparison table temporarily unavailable.</p> 
+</div>
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
@@ -111,12 +59,11 @@ export default function TexasGrantsPage() {
 
           {/* Grant Comparison Table */}
           <div className="mb-12">
-            <GrantComparisonTable
-              grants={texasGrants}
-              title="Texas Business Funding Programs Comparison"
-              description="Compare funding amounts, eligibility requirements, and deadlines for top Texas state programs"
-            />
-          </div>
+{/* <GrantComparisonTable temporarily disabled for deployment */} 
+<div className="mb-12 p-8 bg-gray-50 rounded-lg text-center"> 
+  <h3 className="text-xl font-semibold mb-2">Grant Comparison</h3> 
+  <p className="text-gray-600">Grant comparison table temporarily unavailable.</p> 
+</div>          </div>
 
           {/* Content Sections */}
           <div className="grid lg:grid-cols-3 gap-8 mb-12">

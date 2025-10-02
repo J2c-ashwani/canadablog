@@ -1,38 +1,38 @@
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { GrantComparisonTable } from "@/components/grant-comparison-table"
-import { getGrantsByCountry } from "@/lib/grants-data"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, Building, Users, Zap, BookOpen, TrendingUp, DollarSign, Target, CheckCircle } from "lucide-react"
-import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Small Business Grants USA 2025 | SBA & Federal Small Business Funding",
-  description:
-    "Find small business grants in the USA. Browse SBA grants, federal small business funding, microloans, and government programs with up to $2M available.",
-  keywords: "small business grants usa, SBA grants, small business funding, federal grants small business, government business grants",
-  openGraph: {
-    title: "Small Business Grants USA 2025 | SBA & Federal Small Business Funding",
-    description: "Find small business grants and funding programs in the USA.",
-    url: "https://grantfinder.pro/usa/small-business-grants",
-  },
-}
-
-export default function USASmallBusinessGrantsPage() {
-  const usaGrants = getGrantsByCountry("USA")
-  const smallBusinessGrants = usaGrants.filter((grant) => 
-    grant.category.includes("Small Business") || 
-    grant.name.includes("Small Business") ||
-    grant.name.includes("SBA") ||
-    grant.eligibility.some(e => e.includes("small business"))
-  )
-
-  return (
-    <div className="min-h-screen bg-white">
-      <Header />
+<!-- // import { GrantComparisonTable } from "@/components/grant-comparison-table"
+<!-- import { getGrantsByCountry } from "@/lib/grants-data"
+<!-- import { Badge } from "@/components/ui/badge"
+<!-- import { Button } from "@/components/ui/button"
+<!-- import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+<!-- import { ArrowRight, Building, Users, Zap, BookOpen, TrendingUp, DollarSign, Target, CheckCircle } from "lucide-react"
+<!-- import Link from "next/link"
+<!-- import type { Metadata } from "next"
+<!-- 
+<!-- export const metadata: Metadata = {
+<!--   title: "Small Business Grants USA 2025 | SBA & Federal Small Business Funding",
+<!--   description:
+<!--     "Find small business grants in the USA. Browse SBA grants, federal small business funding, microloans, and government programs with up to $2M available.",
+<!--   keywords: "small business grants usa, SBA grants, small business funding, federal grants small business, government business grants",
+<!--   openGraph: {
+<!--     title: "Small Business Grants USA 2025 | SBA & Federal Small Business Funding",
+<!--     description: "Find small business grants and funding programs in the USA.",
+<!--     url: "https://grantfinder.pro/usa/small-business-grants",
+<!--   },
+<!-- }
+<!-- 
+<!-- export default function USASmallBusinessGrantsPage() {
+<!--   const usaGrants = getGrantsByCountry("USA")
+<!--   const smallBusinessGrants = usaGrants.filter((grant) => 
+<!--     grant.category.includes("Small Business") || 
+<!--     grant.name.includes("Small Business") ||
+<!--     grant.name.includes("SBA") ||
+<!--     grant.eligibility.some(e => e.includes("small business"))
+<!--   )
+<!-- 
+<!--   return (
+<!--     <div className="min-h-screen bg-white">
+<!--       <Header />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-600 to-blue-700 text-white py-20">
@@ -460,11 +460,11 @@ export default function USASmallBusinessGrantsPage() {
               Browse all available small business grants and funding programs. Click "Application Guide" for detailed instructions.
             </p>
           </div>
-          <GrantComparisonTable grants={smallBusinessGrants} title="Small Business Grant Programs" showFilters={true} />
-        </div>
-      </section>
-
-      <Footer />
+<!--           <GrantComparisonTable grants={smallBusinessGrants} title="Small Business Grant Programs" showFilters={true} />
+<!--         </div>
+<!--       </section>
+<!-- 
+<!--       <Footer />
     </div>
   )
 }

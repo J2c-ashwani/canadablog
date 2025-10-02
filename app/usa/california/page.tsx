@@ -1,63 +1,11 @@
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { NewsletterSignup } from "@/components/newsletter-signup"
-import { GrantComparisonTable } from "@/components/grant-comparison-table"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "California Small Business Grants 2025 | State Funding Programs",
-  description:
-    "Find California small business grants and state funding programs. Comprehensive guide to CA government grants, eligibility requirements, and application deadlines.",
-  keywords:
-    "California small business grants, CA state funding, California government grants, small business funding California",
-  alternates: {
-    canonical: "https://grantfinder.pro/usa/california",
-  },
-}
-
-const californiaGrants = [
-  {
-    name: "California Small Business Loan Guarantee Program",
-    fundingAmount: "$2.5M",
-    eligibility: "Small businesses with <$14M revenue",
-    deadline: "Rolling basis",
-    applicationLink: "https://www.ibank.ca.gov/small-business/loan-guarantee-program/",
-    description: "Loan guarantees to help small businesses access capital",
-  },
-  {
-    name: "California Competes Tax Credit",
-    fundingAmount: "$180M annually",
-    eligibility: "Businesses creating jobs in CA",
-    deadline: "Multiple rounds yearly",
-    applicationLink: "https://www.business.ca.gov/advantages/california-competes/",
-    description: "Tax credits for businesses that want to come to or stay and grow in California",
-  },
-  {
-    name: "CalSEED Program",
-    fundingAmount: "$150K",
-    eligibility: "Clean energy startups",
-    deadline: "Quarterly",
-    applicationLink: "https://www.calseed.fund/",
-    description: "Early-stage funding for clean energy innovations",
-  },
-  {
-    name: "California Capital Access Program",
-    fundingAmount: "$2.5M",
-    eligibility: "Small businesses unable to get conventional loans",
-    deadline: "Rolling",
-    applicationLink: "https://www.treasurer.ca.gov/cpcfa/calcap/",
-    description: "Loan loss reserve program for small business lending",
-  },
-]
-
-export default function CaliforniaGrantsPage() {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <Header />
-
+{/* <GrantComparisonTable temporarily disabled for deployment */} 
+<div className="mb-12 p-8 bg-gray-50 rounded-lg text-center"> 
+  <h3 className="text-xl font-semibold mb-2">Grant Comparison</h3> 
+  <p className="text-gray-600">Grant comparison table temporarily unavailable.</p> 
+</div>
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
@@ -111,12 +59,11 @@ export default function CaliforniaGrantsPage() {
 
           {/* Grant Comparison Table */}
           <div className="mb-12">
-            <GrantComparisonTable
-              grants={californiaGrants}
-              title="California Small Business Grants Comparison"
-              description="Compare funding amounts, eligibility requirements, and deadlines for top California state grant programs"
-            />
-          </div>
+{/* <GrantComparisonTable temporarily disabled for deployment */} 
+<div className="mb-12 p-8 bg-gray-50 rounded-lg text-center"> 
+  <h3 className="text-xl font-semibold mb-2">Grant Comparison</h3> 
+  <p className="text-gray-600">Grant comparison table temporarily unavailable.</p> 
+</div>          </div>
 
           {/* Content Sections */}
           <div className="grid lg:grid-cols-3 gap-8 mb-12">

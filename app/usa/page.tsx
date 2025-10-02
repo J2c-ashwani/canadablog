@@ -1,46 +1,46 @@
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { GrantComparisonTable } from "@/components/grant-comparison-table"
-import { getGrantsByCountry } from "@/lib/grants-data"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, Heart, Users, Crown, BookOpen, TrendingUp, DollarSign, Target, CheckCircle, Sparkles } from "lucide-react"
-import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Women Entrepreneurs Grants USA 2025 | Female Business Owner Funding",
-  description:
-    "Find grants for women entrepreneurs in the USA. Browse women-owned business grants, SBA programs for women, and federal funding up to $1M available.",
-  keywords: "women entrepreneurs grants usa, women owned business grants, female entrepreneur funding, SBA women grants, grants for women business owners",
-  openGraph: {
-    title: "Women Entrepreneurs Grants USA 2025 | Female Business Owner Funding",
-    description: "Find grants and funding programs specifically for women entrepreneurs and female business owners in the USA.",
-    url: "https://grantfinder.pro/usa/women-entrepreneurs-grants",
-  },
-}
-
-export default function USAWomenEntrepreneursGrantsPage() {
-  const usaGrants = getGrantsByCountry("USA")
-  const womenGrantsAll = usaGrants.filter((grant) => 
-    grant.category.includes("Women") || 
-    grant.name.includes("Women") ||
-    grant.name.includes("Female") ||
-    grant.eligibility.some(e => e.includes("women") || e.includes("female") || e.includes("Women"))
-  )
-  
-  // If no specific women grants, include minority and general small business grants
-  const womenGrants = womenGrantsAll.length > 0 ? womenGrantsAll : usaGrants.filter((grant) => 
-    grant.category.includes("Small Business") || 
-    grant.category.includes("Minority") ||
-    grant.name.includes("Small Business") ||
-    grant.eligibility.some(e => e.includes("small business") || e.includes("minority"))
-  )
-
-  return (
-    <div className="min-h-screen bg-white">
-      <Header />
+<!-- import { GrantComparisonTable } from "@/components/grant-comparison-table"
+<!-- import { getGrantsByCountry } from "@/lib/grants-data"
+<!-- import { Badge } from "@/components/ui/badge"
+<!-- import { Button } from "@/components/ui/button"
+<!-- import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+<!-- import { ArrowRight, Heart, Users, Crown, BookOpen, TrendingUp, DollarSign, Target, CheckCircle, Sparkles } from "lucide-react"
+<!-- import Link from "next/link"
+<!-- import type { Metadata } from "next"
+<!-- 
+<!-- export const metadata: Metadata = {
+<!--   title: "Women Entrepreneurs Grants USA 2025 | Female Business Owner Funding",
+<!--   description:
+<!--     "Find grants for women entrepreneurs in the USA. Browse women-owned business grants, SBA programs for women, and federal funding up to $1M available.",
+<!--   keywords: "women entrepreneurs grants usa, women owned business grants, female entrepreneur funding, SBA women grants, grants for women business owners",
+<!--   openGraph: {
+<!--     title: "Women Entrepreneurs Grants USA 2025 | Female Business Owner Funding",
+<!--     description: "Find grants and funding programs specifically for women entrepreneurs and female business owners in the USA.",
+<!--     url: "https://grantfinder.pro/usa/women-entrepreneurs-grants",
+<!--   },
+<!-- }
+<!-- 
+<!-- export default function USAWomenEntrepreneursGrantsPage() {
+<!--   const usaGrants = getGrantsByCountry("USA")
+<!--   const womenGrantsAll = usaGrants.filter((grant) => 
+<!--     grant.category.includes("Women") || 
+<!--     grant.name.includes("Women") ||
+<!--     grant.name.includes("Female") ||
+<!--     grant.eligibility.some(e => e.includes("women") || e.includes("female") || e.includes("Women"))
+<!--   )
+<!--   
+<!--   // If no specific women grants, include minority and general small business grants
+<!--   const womenGrants = womenGrantsAll.length > 0 ? womenGrantsAll : usaGrants.filter((grant) => 
+<!--     grant.category.includes("Small Business") || 
+<!--     grant.category.includes("Minority") ||
+<!--     grant.name.includes("Small Business") ||
+<!--     grant.eligibility.some(e => e.includes("small business") || e.includes("minority"))
+<!--   )
+<!-- 
+<!--   return (
+<!--     <div className="min-h-screen bg-white">
+<!--       <Header />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-pink-600 to-purple-700 text-white py-20">
@@ -544,11 +544,11 @@ export default function USAWomenEntrepreneursGrantsPage() {
               Browse all available grants and funding programs for women entrepreneurs. Click "Application Guide" for detailed instructions.
             </p>
           </div>
-          <GrantComparisonTable grants={womenGrants} title="Women's Business Grant Programs" showFilters={true} />
-        </div>
-      </section>
-
-      <Footer />
+<!--           <GrantComparisonTable grants={womenGrants} title="Women's Business Grant Programs" showFilters={true} />
+<!--         </div>
+<!--       </section>
+<!-- 
+<!--       <Footer />
     </div>
   )
 }

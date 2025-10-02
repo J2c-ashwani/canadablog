@@ -1,34 +1,34 @@
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { GrantComparisonTable } from "@/components/grant-comparison-table"
-import { grantsDatabase } from "@/lib/grants-data"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
-import { DollarSign, Building, MapPin } from "lucide-react"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "All Government Grants Database | USA & Canada Business Funding",
-  description:
-    "Browse our comprehensive database of 800+ government grants for businesses in USA and Canada. Compare funding amounts, deadlines, and eligibility requirements.",
-  keywords:
-    "government grants database, business grants comparison, USA Canada grants, grant search, funding opportunities",
-  openGraph: {
-    title: "All Government Grants Database | USA & Canada Business Funding",
-    description: "Browse our comprehensive database of 800+ government grants for businesses.",
-    url: "https://grantfinder.pro/grants",
-  },
-}
-
-export default function AllGrantsPage() {
-  const totalFunding = grantsDatabase.reduce((sum, grant) => sum + grant.fundingMax, 0)
-  const activeGrants = grantsDatabase.filter((grant) => grant.status === "Active").length
-  const usaGrants = grantsDatabase.filter((grant) => grant.country === "USA").length
-  const canadaGrants = grantsDatabase.filter((grant) => grant.country === "Canada").length
-
-  return (
-    <div className="min-h-screen bg-white">
-      <Header />
+<!-- import { GrantComparisonTable } from "@/components/grant-comparison-table"
+<!-- import { grantsDatabase } from "@/lib/grants-data"
+<!-- import { Badge } from "@/components/ui/badge"
+<!-- import { Card, CardContent } from "@/components/ui/card"
+<!-- import { DollarSign, Building, MapPin } from "lucide-react"
+<!-- import type { Metadata } from "next"
+<!-- 
+<!-- export const metadata: Metadata = {
+<!--   title: "All Government Grants Database | USA & Canada Business Funding",
+<!--   description:
+<!--     "Browse our comprehensive database of 800+ government grants for businesses in USA and Canada. Compare funding amounts, deadlines, and eligibility requirements.",
+<!--   keywords:
+<!--     "government grants database, business grants comparison, USA Canada grants, grant search, funding opportunities",
+<!--   openGraph: {
+<!--     title: "All Government Grants Database | USA & Canada Business Funding",
+<!--     description: "Browse our comprehensive database of 800+ government grants for businesses.",
+<!--     url: "https://grantfinder.pro/grants",
+<!--   },
+<!-- }
+<!-- 
+<!-- export default function AllGrantsPage() {
+<!--   const totalFunding = grantsDatabase.reduce((sum, grant) => sum + grant.fundingMax, 0)
+<!--   const activeGrants = grantsDatabase.filter((grant) => grant.status === "Active").length
+<!--   const usaGrants = grantsDatabase.filter((grant) => grant.country === "USA").length
+<!--   const canadaGrants = grantsDatabase.filter((grant) => grant.country === "Canada").length
+<!-- 
+<!--   return (
+<!--     <div className="min-h-screen bg-white">
+<!--       <Header />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-600 to-green-600 text-white py-20">
@@ -95,11 +95,11 @@ export default function AllGrantsPage() {
       {/* Grants Table */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <GrantComparisonTable grants={grantsDatabase} title="All Government Grants" showFilters={true} />
-        </div>
-      </section>
-
-      <Footer />
+<!--           <GrantComparisonTable grants={grantsDatabase} title="All Government Grants" showFilters={true} />
+<!--         </div>
+<!--       </section>
+<!-- 
+<!--       <Footer />
     </div>
   )
 }
