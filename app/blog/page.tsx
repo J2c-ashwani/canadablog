@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import { Header } from '@/components/header';
-import { Footer } from '@/components/footer';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 import FeaturedStories from '@/components/blog/FeaturedStories';
 import BlogCard from '@/components/blog/BlogCard';
 import CategorySidebar from '@/components/blog/CategorySidebar';

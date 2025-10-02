@@ -1,5 +1,5 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { Header } from "@/components/Header"
+import { Footer } from "@/components/Footer"
 import { NewsletterSignup } from "@/components/newsletter-signup"
 import { GrantDeadlineCalendar } from "@/components/grant-deadline-calendar"
 import { PushNotificationSetup } from "@/components/push-notification-setup"

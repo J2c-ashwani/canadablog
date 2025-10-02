@@ -1,5 +1,5 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { Header } from "@/components/Header"
+import { Footer } from "@/components/Footer"
 import { NewsletterSignup } from "@/components/newsletter-signup"
 import { GrantComparisonTable } from "@/components/grant-comparison-table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
