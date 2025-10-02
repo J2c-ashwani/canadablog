@@ -1,5 +1,22 @@
 // lib/data/blogPosts.ts
-const blogPosts = [
+
+// BlogPost type definition
+export type BlogPost = {
+  id: number;
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  categoryColor: string;
+  author: string;
+  date: string;
+  readTime: string;
+  image: string;
+  featured: boolean;
+  content: string;
+};
+
+const blogPosts: BlogPost[] = [
   // USA News (8 posts) - IDs 1-8
   {
     id: 1,
@@ -548,7 +565,8 @@ const blogPosts = [
     content: `Your existing blog post content here...`
   }
 ];
-// ADD THIS CATEGORIES ARRAY to your blogPosts.ts
+
+// Categories array
 export const blogCategories = [
   {
     id: "USA News",
@@ -646,6 +664,17 @@ export function getCategoryWithCounts() {
     ...category,
     count: categoryCounts[category.id] || 0
   }));
+}
+
+// Missing functions that were causing deployment errors
+export function getBlogPostContent(contentFile?: string): Promise<string> {
+  // For now, return empty content since posts have content inline
+  return Promise.resolve("");
+}
+
+export function getPostsByCategory(category: string) {
+  // This is just an alias for getBlogPostsByCategory
+  return getBlogPostsByCategory(category);
 }
 
 export default blogPosts;

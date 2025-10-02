@@ -260,7 +260,7 @@ export default function IndigenousRuralBusinessFundingApplicationGuide() {
                       <div>
                         <h5 className="font-semibold mb-3">Community Futures Rural Application:</h5>
                         <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                          <div class="grid md:grid-cols-2 gap-4 text-sm">
+                          <div className="grid md:grid-cols-2 gap-4 text-sm">
                             <div>
                               <strong>Rural Community Integration:</strong>
                               <ul className="mt-1 space-y-1">

@@ -261,7 +261,7 @@ export default function WESApplicationGuide() {
                       <div>
                         <h5 className="font-semibold mb-3">Women Entrepreneurship Loan Fund Application:</h5>
                         <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                          <div class="grid md:grid-cols-2 gap-4 text-sm">
+                          <div className="grid md:grid-cols-2 gap-4 text-sm">
                             <div>
                               <strong>Community Organization Route:</strong>
                               <ul className="mt-1 space-y-1">
