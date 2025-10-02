@@ -30,4 +30,3 @@ export const guides: Guide[] = [
     categories: ["Small Business"]
   }
 ];
-EOF
