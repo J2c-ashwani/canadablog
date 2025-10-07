@@ -744,8 +744,8 @@ export default function CanadianSmallBusinessGrants() {
 
               <div className="text-center">
                 <Button size="lg" className="bg-green-600 hover:bg-green-700" asChild>
-                  <Link href="/blog/all-provincial-grants-canada-guide">
-                    View All Provincial Programs
+                  <Link href="/contact?service=provincial-grants-expert-help">
+                    Get Expert Help with Provincial Programs
                   </Link>
                 </Button>
               </div>
