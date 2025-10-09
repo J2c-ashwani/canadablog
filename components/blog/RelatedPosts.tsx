@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import { BlogPost, getPostsByCategory, getAllBlogPosts, blogCategories } from '@/lib/data/blogPosts';
+import { BlogPost, getBlogPostsByCategory, getAllBlogPosts, blogCategories } from '@/lib/data/blogPosts';
 
 interface RelatedPostsProps {
   currentPost: BlogPost;
@@ -10,7 +10,7 @@ interface RelatedPostsProps {
 
 export default function RelatedPosts({ currentPost, maxPosts = 3 }: RelatedPostsProps) {
   // Get posts from the same category, excluding current post
-  let relatedPosts = getPostsByCategory(currentPost.category)
+  let relatedPosts = getBlogPostsByCategory(currentPost.category)
     .filter(post => post.id !== currentPost.id);
   
   // If not enough posts in same category, fill with other recent posts

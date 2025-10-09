@@ -6,7 +6,8 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export async function generateStaticParams() {
-  return guides.map((g) => ({ slug: g.slug }));
+  const guideList = guides ?? [];
+  return guideList.map((g) => ({ slug: g.slug }));
 }
 
 export default function GuidePage({ params }: { params: { slug: string } }) {
@@ -99,17 +100,13 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
                             "Amount: Varies"
                           )}
                         </div>
-
                         <div className="text-sm text-gray-600">
                           Deadline: {grant.deadline ? new Date(grant.deadline).toLocaleDateString() : "Open"}
                         </div>
 
                         <div className="mt-3 flex flex-row gap-2 justify-end">
                           {/* View details on your site (internal) */}
-                          <Link
-                            href={`/grants/${grant.id}`}
-                            className="px-3 py-1 border rounded text-sm hover:bg-gray-50"
-                          >
+                          <Link href={`/grants/${grant.id}`} className="px-3 py-1 border rounded text-sm hover:bg-gray-50">
                             View Details
                           </Link>
 
@@ -141,7 +138,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
           <div>
             <h4 className="text-sm font-semibold">Related Guides</h4>
             <ul className="text-sm text-gray-700">
-              {guides.filter(g => g.slug !== guide.slug).slice(0,3).map(g => (
+              {guides.filter((g) => g.slug !== guide.slug).slice(0, 3).map((g) => (
                 <li key={g.slug}>
                   <Link href={`/guides/${g.slug}`} className="hover:underline">{g.title}</Link>
                 </li>
