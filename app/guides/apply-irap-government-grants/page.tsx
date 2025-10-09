@@ -85,7 +85,6 @@ export default function IRAPGovernmentGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Government Application Timeline</h2>
-              
               <div className="space-y-8">
                 {/* Phase 1: Federal Eligibility Assessment */}
                 <Card className="border-green-200">
@@ -102,7 +101,7 @@ export default function IRAPGovernmentGrantsGuide() {
                         <ul className="text-sm space-y-2">
                           <li className="flex items-center">
                             <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                            <span><strong>Canadian SME Status:</strong> <500 employees, Canadian incorporation</span>
+                            <span><strong>Canadian SME Status:</strong> &lt;500 employees, Canadian incorporation</span>
                           </li>
                           <li className="flex items-center">
                             <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
@@ -140,22 +139,19 @@ export default function IRAPGovernmentGrantsGuide() {
                         </ul>
                       </div>
                     </div>
-                    
                     <div className="mt-6 bg-green-50 border border-green-200 rounded-lg p-4">
                       <div className="flex items-start">
                         <Shield className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
                         <div>
                           <p className="text-green-800 font-medium">Federal Compliance Check:</p>
                           <p className="text-green-700 text-sm">
-                            Ensure your organization meets Federal Contractors Program requirements and has systems 
-                            in place for Treasury Board Secretariat reporting standards.
+                            Ensure your organization meets Federal Contractors Program requirements and has systems in place for Treasury Board Secretariat reporting standards.
                           </p>
                         </div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-
                 {/* Phase 2: ITA Engagement & Project Development */}
                 <Card className="border-blue-200">
                   <CardHeader>
@@ -258,7 +254,7 @@ export default function IRAPGovernmentGrantsGuide() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h5 className="font-semibold mb-3">IRAP Government Application Submission:</h5>
                         <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
@@ -321,7 +317,7 @@ export default function IRAPGovernmentGrantsGuide() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                         <h5 className="font-semibold text-green-800 mb-2">Upon IRAP Government Approval:</h5>
                         <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
@@ -350,7 +346,7 @@ export default function IRAPGovernmentGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Federal Compliance Application Requirements</h2>
-              
+
               <div className="space-y-6">
                 {/* Treasury Board Compliance */}
                 <Card>
@@ -436,7 +432,7 @@ export default function IRAPGovernmentGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Common IRAP Government Application Mistakes</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-red-700">❌ Federal Application Killers:</h4>
@@ -464,7 +460,7 @@ export default function IRAPGovernmentGrantsGuide() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-orange-700">⚠️ Government Process Errors:</h4>
                   <ul className="space-y-4">
@@ -501,7 +497,7 @@ export default function IRAPGovernmentGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">IRAP Government Application Success Strategies</h2>
-              
+
               <div className="space-y-6">
                 <Card className="border-green-200">
                   <CardHeader>

@@ -85,7 +85,7 @@ export default function IndigenousRuralBusinessFundingApplicationGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Indigenous & Rural Business Funding Application Timeline</h2>
-              
+
               <div className="space-y-8">
                 {/* Phase 1: Cultural & Geographic Verification */}
                 <Card className="border-orange-200">
@@ -140,7 +140,7 @@ export default function IndigenousRuralBusinessFundingApplicationGuide() {
                         </ul>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 bg-orange-50 border border-orange-200 rounded-lg p-4">
                       <div className="flex items-start">
                         <Mountain className="w-5 h-5 text-orange-600 mr-3 mt-0.5" />
@@ -189,7 +189,7 @@ export default function IndigenousRuralBusinessFundingApplicationGuide() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h5 className="font-semibold mb-3">Culturally Appropriate Business Plan Development:</h5>
                         <div className="grid md:grid-cols-3 gap-4 text-sm">
@@ -256,11 +256,11 @@ export default function IndigenousRuralBusinessFundingApplicationGuide() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h5 className="font-semibold mb-3">Community Futures Rural Application:</h5>
                         <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                          <div class="grid md:grid-cols-2 gap-4 text-sm">
+                          <div className="grid md:grid-cols-2 gap-4 text-sm">
                             <div>
                               <strong>Rural Community Integration:</strong>
                               <ul className="mt-1 space-y-1">
@@ -332,7 +332,7 @@ export default function IndigenousRuralBusinessFundingApplicationGuide() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                         <h5 className="font-semibold text-green-800 mb-2">Upon Indigenous/Rural Funding Approval:</h5>
                         <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
@@ -361,7 +361,7 @@ export default function IndigenousRuralBusinessFundingApplicationGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Regional Indigenous & Rural Application Processes</h2>
-              
+
               <div className="space-y-6">
                 {/* NACCA Network */}
                 <Card>
@@ -447,7 +447,7 @@ export default function IndigenousRuralBusinessFundingApplicationGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Cultural Business Planning Framework</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-amber-700">🏛️ Indigenous Business Planning Elements:</h4>
@@ -475,7 +475,7 @@ export default function IndigenousRuralBusinessFundingApplicationGuide() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">🌾 Rural Business Planning Considerations:</h4>
                   <ul className="space-y-4">
@@ -512,7 +512,7 @@ export default function IndigenousRuralBusinessFundingApplicationGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Indigenous & Rural Business Success Strategies</h2>
-              
+
               <div className="space-y-6">
                 <Card className="border-orange-200">
                   <CardHeader>
