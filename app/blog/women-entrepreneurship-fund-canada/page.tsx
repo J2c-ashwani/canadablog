@@ -46,7 +46,7 @@ export default function WomenEntrepreneurshipFundGuidePage() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild>
-                  <Link href="/download/women-entrepreneurship-fund-guide">
+                  <Link href="/guides/women-entrepreneurship-fund-guide">
                     Get Free WEF Application Guide
                   </Link>
                 </Button>
@@ -606,7 +606,7 @@ export default function WomenEntrepreneurshipFundGuidePage() {
                     eligibility checklist, and application templates.
                   </p>
                   <Button size="lg" className="w-full bg-white text-purple-700 hover:bg-gray-100" asChild>
-                    <Link href="/download/women-entrepreneurship-fund-guide">
+                    <Link href="/guides/women-entrepreneurship-fund-guide">
                       <Download className="w-4 h-4 mr-2" />
                       Get WEF Application Guide
                     </Link>

@@ -573,9 +573,9 @@ export default function EDCWomenInTradeApplicationGuide() {
                   financing comparison, and international expansion strategies.
                 </p>
                 <Button size="lg" className="bg-white text-teal-700 hover:bg-gray-100" asChild>
-                  <Link href="#lead-form">
+                  <Link href="/contact?service=edc-women-trade-export-financing-help">
                     <Download className="w-5 h-5 mr-2" />
-                    Download Free Guide
+                    Request Export Guide
                   </Link>
                 </Button>
               </div>
@@ -589,13 +589,13 @@ export default function EDCWomenInTradeApplicationGuide() {
                   export readiness, develop international strategies, and optimize financing applications.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>
+                  <Button size="lg" className="bg-white text-green-700 hover:bg-green-50 font-semibold shadow-lg" asChild>
                     <Link href="/contact?service=edc-women-trade-export-financing-help">
                       <MessageCircle className="w-5 h-5 mr-2" />
                       Get Expert Help
                     </Link>
                   </Button>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+                  <Button size="lg" className="bg-green-700 text-white hover:bg-green-800 font-semibold shadow-lg border-2 border-white" asChild>
                     <Link href="/contact?service=edc-assessment">
                       Free Export Assessment
                     </Link>
@@ -603,88 +603,6 @@ export default function EDCWomenInTradeApplicationGuide() {
                 </div>
               </div>
 
-              {/* Lead Magnet Form Section */}
-              <div id="lead-form" className="bg-white rounded-lg shadow-sm p-8 mt-8">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Download Your Free EDC Export Financing Kit</h3>
-                  <p className="text-gray-600">Get instant access to our professional EDC export financing resources</p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4">What's Included:</h4>
-                    <div className="space-y-3">
-                      {[
-                        "Complete EDC financing program comparison",
-                        "Export market entry strategy templates",
-                        "Export readiness assessment tool",
-                        "International market research framework",
-                        "Equity investment application guide",
-                        "Successful export financing examples"
-                      ].map((item, index) => (
-                        <div key={index} className="flex items-center">
-                          <CheckCircle className="w-5 h-5 text-green-600 mr-3" />
-                          <span className="text-gray-700">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gray-50 p-6 rounded-lg">
-                    <form className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-semibold mb-1">Full Name *</label>
-                        <input 
-                          type="text" 
-                          required
-                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500"
-                          placeholder="Jane Smith"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold mb-1">Business Email *</label>
-                        <input 
-                          type="email" 
-                          required
-                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500"
-                          placeholder="jane@yourbusiness.com"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold mb-1">Company Name</label>
-                        <input 
-                          type="text"
-                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500"
-                          placeholder="Your Business Name"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold mb-1">Export Status</label>
-                        <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500">
-                          <option>Select status</option>
-                          <option>Planning to export</option>
-                          <option>Export-ready</option>
-                          <option>Currently exporting</option>
-                          <option>Scaling exports</option>
-                        </select>
-                      </div>
-                      <div className="flex items-start">
-                        <input type="checkbox" required className="mt-1 mr-3" />
-                        <span className="text-xs text-gray-600">
-                          I agree to receive EDC updates and export financing opportunities. Unsubscribe anytime.
-                        </span>
-                      </div>
-                      <Button 
-                        type="submit" 
-                        className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3"
-                      >
-                        <Download className="w-5 h-5 mr-2" />
-                        Download EDC Export Guide Now
-                      </Button>
-                    </form>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>

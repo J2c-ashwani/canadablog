@@ -46,7 +46,7 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild>
-                  <Link href="/downloads/women-entrepreneurship-loan-fund-guide">
+                  <Link href="/guides/women-entrepreneurship-loan-fund-guide">
                     Get Free WELF Application Guide
                   </Link>
                 </Button>
@@ -698,7 +698,7 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
                     and step-by-step application instructions.
                   </p>
                   <Button size="lg" className="w-full bg-white text-pink-700 hover:bg-gray-100" asChild>
-                    <Link href="/downloads/women-entrepreneurship-loan-fund-guide">
+                    <Link href="/guides/women-entrepreneurship-loan-fund-guide">
                       <Download className="w-4 h-4 mr-2" />
                       Get WELF Application Guide
                     </Link>

@@ -46,7 +46,7 @@ export default function EDCWomenInTradeGuidePage() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild>
-                  <Link href="/download/edc-women-trade-export-financing-guide">
+                  <Link href="/guides/edc-women-trade-export-financing-guide">
                     Get Free EDC Export Guide
                   </Link>
                 </Button>
@@ -570,7 +570,7 @@ export default function EDCWomenInTradeGuidePage() {
                     market entry templates, and equity investment insights.
                   </p>
                   <Button size="lg" className="w-full bg-white text-teal-700 hover:bg-gray-100" asChild>
-                    <Link href="/download/edc-women-trade-export-financing-guide">
+                    <Link href="/guides/edc-women-trade-export-financing-guide">
                       <Download className="w-4 h-4 mr-2" />
                       Get EDC Export Guide
                     </Link>

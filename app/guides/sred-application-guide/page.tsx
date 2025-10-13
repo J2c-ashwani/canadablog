@@ -580,9 +580,9 @@ export default function SREDApplicationGuide() {
                   eligibility checklist, documentation templates, and CRA audit defense strategies.
                 </p>
                 <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>
-                  <Link href="#lead-form">
+                  <Link href="/contact?service=sred-expert-help">
                     <Download className="w-5 h-5 mr-2" />
-                    Download Free Guide
+                    Request Application Guide
                   </Link>
                 </Button>
               </div>
@@ -596,13 +596,13 @@ export default function SREDApplicationGuide() {
                   Get professional guidance to maximize your credits and ensure CRA compliance.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>
+                  <Button size="lg" className="bg-white text-blue-700 hover:bg-blue-50 font-semibold shadow-lg" asChild>
                     <Link href="/contact?service=sred-expert-help">
                       <MessageCircle className="w-5 h-5 mr-2" />
                       Get Expert Help
                     </Link>
                   </Button>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+                  <Button size="lg" className="bg-blue-700 text-white hover:bg-blue-800 font-semibold shadow-lg border-2 border-white" asChild>
                     <Link href="/contact?service=sred-assessment">
                       Free SR&ED Assessment
                     </Link>
@@ -610,89 +610,6 @@ export default function SREDApplicationGuide() {
                 </div>
               </div>
 
-              {/* Lead Magnet Form Section */}
-              <div id="lead-form" className="bg-white rounded-lg shadow-sm p-8 mt-8">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Download Your Free SR&ED Application Guide</h3>
-                  <p className="text-gray-600">Get instant access to our professional SR&ED application kit</p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4">What's Included:</h4>
-                    <div className="space-y-3">
-                      {[
-                        "Complete Form T661 filing instructions",
-                        "2025 enhanced rates & eligibility guide",
-                        "Documentation templates & checklists",
-                        "Provincial tax credit optimization",
-                        "CRA audit preparation strategies",
-                        "Expense tracking spreadsheet templates"
-                      ].map((item, index) => (
-                        <div key={index} className="flex items-center">
-                          <CheckCircle className="w-5 h-5 text-green-600 mr-3" />
-                          <span className="text-gray-700">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gray-50 p-6 rounded-lg">
-                    <form className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-semibold mb-1">Full Name *</label>
-                        <input 
-                          type="text" 
-                          required
-                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
-                          placeholder="John Smith"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold mb-1">Business Email *</label>
-                        <input 
-                          type="email" 
-                          required
-                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
-                          placeholder="john@company.com"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold mb-1">Company Name</label>
-                        <input 
-                          type="text"
-                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
-                          placeholder="Your Company Inc."
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold mb-1">Annual R&D Budget</label>
-                        <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
-                          <option>Select range</option>
-                          <option>Under $100K</option>
-                          <option>$100K - $500K</option>
-                          <option>$500K - $1M</option>
-                          <option>$1M - $5M</option>
-                          <option>Over $5M</option>
-                        </select>
-                      </div>
-                      <div className="flex items-start">
-                        <input type="checkbox" required className="mt-1 mr-3" />
-                        <span className="text-xs text-gray-600">
-                          I agree to receive SR&ED updates and tax credit opportunities. Unsubscribe anytime.
-                        </span>
-                      </div>
-                      <Button 
-                        type="submit" 
-                        className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3"
-                      >
-                        <Download className="w-5 h-5 mr-2" />
-                        Download SR&ED Guide Now
-                      </Button>
-                    </form>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>

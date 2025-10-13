@@ -564,7 +564,7 @@ export default function BDCWomenEntrepreneursApplicationGuide() {
                 </div>
               </div>
 
-              {/* Lead Magnet CTA */}
+              {/* Lead Magnet CTA - UPDATED TO CONTACT */}
               <div className="bg-gradient-to-r from-blue-600 to-teal-800 rounded-lg p-8 text-white text-center mb-8">
                 <Download className="w-16 h-16 mx-auto mb-4 text-blue-100" />
                 <h3 className="text-2xl font-bold mb-4">Get Your Free BDC Application Kit</h3>
@@ -573,9 +573,9 @@ export default function BDCWomenEntrepreneursApplicationGuide() {
                   business plan templates, and advisor engagement strategies.
                 </p>
                 <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>
-                  <Link href="#lead-form">
+                  <Link href="/contact?service=bdc-expert-help">
                     <Download className="w-5 h-5 mr-2" />
-                    Download Free Guide
+                    Request Application Guide
                   </Link>
                 </Button>
               </div>
@@ -603,88 +603,6 @@ export default function BDCWomenEntrepreneursApplicationGuide() {
                 </div>
               </div>
 
-              {/* Lead Magnet Form Section */}
-              <div id="lead-form" className="bg-white rounded-lg shadow-sm p-8 mt-8">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Download Your Free BDC Application Kit</h3>
-                  <p className="text-gray-600">Get instant access to our professional BDC financing application resources</p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4">What's Included:</h4>
-                    <div className="space-y-3">
-                      {[
-                        "Complete BDC financing program comparison",
-                        "Business plan templates and examples",
-                        "Financial projection worksheets",
-                        "Advisor engagement strategy guide",
-                        "Application checklists by program",
-                        "Successful application examples"
-                      ].map((item, index) => (
-                        <div key={index} className="flex items-center">
-                          <CheckCircle className="w-5 h-5 text-green-600 mr-3" />
-                          <span className="text-gray-700">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gray-50 p-6 rounded-lg">
-                    <form className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-semibold mb-1">Full Name *</label>
-                        <input 
-                          type="text" 
-                          required
-                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                          placeholder="Jane Smith"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold mb-1">Business Email *</label>
-                        <input 
-                          type="email" 
-                          required
-                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                          placeholder="jane@yourbusiness.com"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold mb-1">Company Name</label>
-                        <input 
-                          type="text"
-                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                          placeholder="Your Business Name"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold mb-1">Business Stage</label>
-                        <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                          <option>Select stage</option>
-                          <option>Startup</option>
-                          <option>Early-stage (0-2 years)</option>
-                          <option>Growth stage (2-5 years)</option>
-                          <option>Established (5+ years)</option>
-                        </select>
-                      </div>
-                      <div className="flex items-start">
-                        <input type="checkbox" required className="mt-1 mr-3" />
-                        <span className="text-xs text-gray-600">
-                          I agree to receive BDC updates and women entrepreneur financing opportunities. Unsubscribe anytime.
-                        </span>
-                      </div>
-                      <Button 
-                        type="submit" 
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3"
-                      >
-                        <Download className="w-5 h-5 mr-2" />
-                        Download BDC Application Guide Now
-                      </Button>
-                    </form>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
