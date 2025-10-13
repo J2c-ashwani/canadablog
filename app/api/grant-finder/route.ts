@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { processGrantFinderRequest, type GrantFinderRequest } from "@/lib/ai-grant-matcher"
+import { appendLeadToSheet } from "@/lib/google-sheets"
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,13 +11,26 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
+    // Save lead to Google Sheets with source tracking
+    const timestamp = new Date().toISOString()
+    appendLeadToSheet({
+      source: "AI Grant Finder", // 🎯 SOURCE TRACKING
+      timestamp,
+      email: body.email,
+      companyName: body.companyName || "",
+      country: body.country,
+      state: body.state || "",
+      industry: body.industry,
+      businessStage: body.businessStage,
+      fundingAmount: body.fundingAmount || "",
+      fundingPurpose: body.fundingPurpose || "",
+      businessDescription: body.businessDescription || "",
+    }).catch((error) => {
+      console.error("❌ Failed to save lead to Google Sheets:", error)
+    })
+
     // Process the grant finder request
     const results = await processGrantFinderRequest(body)
-
-    // In a real implementation, you might also:
-    // 1. Save the request to a database
-    // 2. Send an email with the results
-    // 3. Track analytics
 
     return NextResponse.json(results)
   } catch (error) {

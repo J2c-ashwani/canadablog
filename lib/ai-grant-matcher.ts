@@ -1,3 +1,4 @@
+import { GoogleGenerativeAI } from "@google/generative-ai"
 import { type Grant, grantsDatabase } from "./grants-data"
 
 export interface GrantFinderRequest {
@@ -25,6 +26,11 @@ export interface GrantFinderResponse {
   nextSteps: string[]
 }
 
+// Initialize Gemini AI
+const genAI = process.env.GOOGLE_GEMINI_API_KEY
+  ? new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_API_KEY)
+  : null
+
 // AI-powered grant matching algorithm
 export function findMatchingGrants(request: GrantFinderRequest): GrantFinderResponse {
   const { country, state, industry, businessStage, fundingAmount, fundingPurpose, businessDescription } = request
@@ -46,11 +52,11 @@ export function findMatchingGrants(request: GrantFinderRequest): GrantFinderResp
       const matchReasons = getMatchReasons(grant, request)
       return { grant, matchScore, matchReasons }
     })
-    .filter((match) => match.matchScore > 0.3) // Only include reasonable matches
+    .filter((match) => match.matchScore > 0.3)
     .sort((a, b) => b.matchScore - a.matchScore)
-    .slice(0, 10) // Top 10 matches
+    .slice(0, 10)
 
-  // Generate AI-powered recommendations
+  // Generate recommendations
   const recommendations = generateRecommendations(request, matches)
   const nextSteps = generateNextSteps(request, matches)
 
@@ -62,39 +68,125 @@ export function findMatchingGrants(request: GrantFinderRequest): GrantFinderResp
   }
 }
 
+// Enhanced AI-powered matching with Gemini
+export async function findMatchingGrantsWithAI(request: GrantFinderRequest): Promise<GrantFinderResponse> {
+  // Get baseline matches using your existing algorithm
+  const baselineMatches = findMatchingGrants(request)
+
+  // If Gemini API is not configured, return baseline matches
+  if (!genAI) {
+    console.log("Gemini API not configured, using baseline matching")
+    return baselineMatches
+  }
+
+  try {
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" })
+
+    const prompt = `You are an expert grant advisor. Analyze this business and the matching grants, then provide:
+1. Refined match scores (0-1) for each grant
+2. Additional specific match reasons
+3. Personalized recommendations
+4. Actionable next steps
+
+Business Profile:
+- Country: ${request.country}
+- State: ${request.state}
+- Industry: ${request.industry}
+- Business Stage: ${request.businessStage}
+- Funding Amount: ${request.fundingAmount}
+- Funding Purpose: ${request.fundingPurpose}
+- Description: ${request.businessDescription}
+
+Matched Grants:
+${JSON.stringify(
+  baselineMatches.matches.slice(0, 5).map((m) => ({
+    id: m.grant.id,
+    name: m.grant.name,
+    description: m.grant.description,
+    category: m.grant.category,
+    fundingRange: `$${m.grant.fundingMin}-$${m.grant.fundingMax}`,
+    currentScore: m.matchScore,
+  })),
+  null,
+  2,
+)}
+
+Respond with ONLY valid JSON (no markdown):
+{
+  "enhancedGrants": [
+    {
+      "grantId": "grant-id",
+      "refinedScore": 0.95,
+      "additionalReasons": ["reason1", "reason2"],
+      "applicationTips": "Specific tip for this grant"
+    }
+  ],
+  "recommendations": ["personalized rec 1", "rec 2", "rec 3"],
+  "nextSteps": ["actionable step 1", "step 2", "step 3"]
+}`
+
+    const result = await model.generateContent(prompt)
+    const response = await result.response
+    const text = response.text()
+
+    // Clean and parse AI response
+    const cleanedText = text.replace(/``````\n?/g, "").trim()
+    const aiResponse = JSON.parse(cleanedText)
+
+    // Merge AI insights with baseline matches
+    const enhancedMatches = baselineMatches.matches.map((match) => {
+      const aiEnhancement = aiResponse.enhancedGrants?.find((e: any) => e.grantId === match.grant.id)
+
+      if (aiEnhancement) {
+        return {
+          ...match,
+          matchScore: aiEnhancement.refinedScore || match.matchScore,
+          matchReasons: [...match.matchReasons, ...(aiEnhancement.additionalReasons || [])],
+        }
+      }
+      return match
+    })
+
+    return {
+      matches: enhancedMatches.sort((a, b) => b.matchScore - a.matchScore),
+      totalMatches: enhancedMatches.length,
+      recommendations: aiResponse.recommendations || baselineMatches.recommendations,
+      nextSteps: aiResponse.nextSteps || baselineMatches.nextSteps,
+    }
+  } catch (error) {
+    console.error("Gemini AI Error:", error)
+    // Fallback to baseline matches if AI fails
+    return baselineMatches
+  }
+}
+
+// [Keep all your existing helper functions below]
 function calculateMatchScore(grant: Grant, request: GrantFinderRequest): number {
   let score = 0
   const factors: { weight: number; match: boolean }[] = []
 
-  // Country match (required)
   if (grant.country !== request.country) return 0
 
-  // Industry/Category matching
   const industryMatch = matchIndustry(grant.category, request.industry)
   factors.push({ weight: 0.3, match: industryMatch })
 
-  // Funding amount matching
   const fundingMatch = matchFundingAmount(grant, request.fundingAmount)
   factors.push({ weight: 0.25, match: fundingMatch })
 
-  // Business stage matching
   const stageMatch = matchBusinessStage(grant, request.businessStage)
   factors.push({ weight: 0.2, match: stageMatch })
 
-  // Purpose matching
   const purposeMatch = matchFundingPurpose(grant, request.fundingPurpose)
   factors.push({ weight: 0.15, match: purposeMatch })
 
-  // Regional preference
   const regionalMatch = grant.region === "Federal" || grant.region.toLowerCase().includes(request.state.toLowerCase())
   factors.push({ weight: 0.1, match: regionalMatch })
 
-  // Calculate weighted score
   factors.forEach(({ weight, match }) => {
     if (match) score += weight
   })
 
-  return Math.min(score, 1) // Cap at 1.0
+  return Math.min(score, 1)
 }
 
 function matchIndustry(grantCategory: string, userIndustry: string): boolean {
@@ -122,9 +214,8 @@ function matchFundingAmount(grant: Grant, requestedAmount: string): boolean {
   }
 
   const requestRange = amountRanges[requestedAmount]
-  if (!requestRange) return true // If no specific amount, match all
+  if (!requestRange) return true
 
-  // Check if grant funding range overlaps with requested range
   return grant.fundingMax >= requestRange.min && grant.fundingMin <= requestRange.max
 }
 
@@ -213,7 +304,7 @@ function generateNextSteps(request: GrantFinderRequest, matches: GrantMatch[]): 
   const steps: string[] = []
 
   if (request.country === "USA") {
-    steps.push("Register your business in SAM.gov and obtain a DUNS number")
+    steps.push("Register your business in SAM.gov and obtain a UEI number")
     steps.push("Create an account on grants.gov for federal applications")
   } else {
     steps.push("Ensure your business is registered with the Canada Revenue Agency")
@@ -228,13 +319,8 @@ function generateNextSteps(request: GrantFinderRequest, matches: GrantMatch[]): 
   return steps
 }
 
-// Simulate AI processing with OpenAI-style response
+// Main export function
 export async function processGrantFinderRequest(request: GrantFinderRequest): Promise<GrantFinderResponse> {
-  // In a real implementation, this would call OpenAI API
-  // For now, we'll use our matching algorithm
-
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 2000))
-
-  return findMatchingGrants(request)
+  // Use AI-enhanced matching if available, otherwise use baseline
+  return await findMatchingGrantsWithAI(request)
 }

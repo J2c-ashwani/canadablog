@@ -1,3 +1,7 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
@@ -7,17 +11,60 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { CheckCircle, Download, FileText, Calculator, Factory, Cog, Cpu, TrendingUp } from "lucide-react"
+import { CheckCircle, Download, FileText, Calculator, Factory, Cog, Cpu, TrendingUp, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Free Canada Manufacturing Funding Guide | NGen, IRAP & CDAP Templates Download",
-  description: "Get your free Canada manufacturing funding guide with NGen templates, IRAP application tools, ROI calculators, and expert strategies. Download comprehensive toolkit for $3.1B+ manufacturing funding.",
-  keywords: "manufacturing funding guide download, free NGen templates, IRAP application guide download, CDAP manufacturing toolkit, automation ROI calculator Canada",
-}
 
 export default function CanadaManufacturingFundingDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    role: "",
+    manufacturingType: "",
+    technologyInterest: "",
+    employees: "",
+    fundingNeeds: "",
+    challenges: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: `${formData.firstName} ${formData.lastName}`,
+          company: formData.company,
+          guideName: "Canada Manufacturing Funding Guide",
+          industry: formData.manufacturingType || "Manufacturing",
+          country: "Canada",
+          additionalNotes: `Role: ${formData.role}, Technology: ${formData.technologyInterest}, Employees: ${formData.employees}, Funding: ${formData.fundingNeeds}, Challenges: ${formData.challenges || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/canada-manufacturing-funding-guide/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -187,14 +234,15 @@ export default function CanadaManufacturingFundingDownloadPage() {
                       <p className="text-gray-600">Join 2,800+ manufacturers who've accessed our funding resources</p>
                     </div>
 
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <Label htmlFor="firstName">First Name *</Label>
                           <Input 
                             id="firstName" 
-                            name="firstName" 
                             required 
+                            value={formData.firstName}
+                            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                             placeholder="Your first name"
                             className="mt-1"
                           />
@@ -203,8 +251,9 @@ export default function CanadaManufacturingFundingDownloadPage() {
                           <Label htmlFor="lastName">Last Name *</Label>
                           <Input 
                             id="lastName" 
-                            name="lastName" 
                             required 
+                            value={formData.lastName}
+                            onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                             placeholder="Your last name"
                             className="mt-1"
                           />
@@ -215,9 +264,10 @@ export default function CanadaManufacturingFundingDownloadPage() {
                         <Label htmlFor="email">Business Email *</Label>
                         <Input 
                           id="email" 
-                          name="email" 
                           type="email" 
                           required 
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="your.email@company.com"
                           className="mt-1"
                         />
@@ -227,8 +277,9 @@ export default function CanadaManufacturingFundingDownloadPage() {
                         <Label htmlFor="company">Company/Organization *</Label>
                         <Input 
                           id="company" 
-                          name="company" 
                           required 
+                          value={formData.company}
+                          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                           placeholder="Your company name"
                           className="mt-1"
                         />
@@ -236,7 +287,11 @@ export default function CanadaManufacturingFundingDownloadPage() {
 
                       <div>
                         <Label htmlFor="role">Your Role *</Label>
-                        <Select name="role" required>
+                        <Select 
+                          required
+                          value={formData.role}
+                          onValueChange={(value) => setFormData({ ...formData, role: value })}
+                        >
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select your role" />
                           </SelectTrigger>
@@ -254,7 +309,10 @@ export default function CanadaManufacturingFundingDownloadPage() {
 
                       <div>
                         <Label htmlFor="manufacturingType">Manufacturing Sector</Label>
-                        <Select name="manufacturingType">
+                        <Select 
+                          value={formData.manufacturingType}
+                          onValueChange={(value) => setFormData({ ...formData, manufacturingType: value })}
+                        >
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select manufacturing sector" />
                           </SelectTrigger>
@@ -274,7 +332,10 @@ export default function CanadaManufacturingFundingDownloadPage() {
 
                       <div>
                         <Label htmlFor="technologyInterest">Primary Technology Interest</Label>
-                        <Select name="technologyInterest">
+                        <Select 
+                          value={formData.technologyInterest}
+                          onValueChange={(value) => setFormData({ ...formData, technologyInterest: value })}
+                        >
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select technology area" />
                           </SelectTrigger>
@@ -293,7 +354,10 @@ export default function CanadaManufacturingFundingDownloadPage() {
 
                       <div>
                         <Label htmlFor="employees">Number of Employees</Label>
-                        <Select name="employees">
+                        <Select 
+                          value={formData.employees}
+                          onValueChange={(value) => setFormData({ ...formData, employees: value })}
+                        >
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select company size" />
                           </SelectTrigger>
@@ -310,7 +374,10 @@ export default function CanadaManufacturingFundingDownloadPage() {
 
                       <div>
                         <Label htmlFor="fundingNeeds">Estimated Funding Needs</Label>
-                        <Select name="fundingNeeds">
+                        <Select 
+                          value={formData.fundingNeeds}
+                          onValueChange={(value) => setFormData({ ...formData, fundingNeeds: value })}
+                        >
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select funding range" />
                           </SelectTrigger>
@@ -329,12 +396,19 @@ export default function CanadaManufacturingFundingDownloadPage() {
                         <Label htmlFor="challenges">Biggest Manufacturing Funding Challenge (Optional)</Label>
                         <Textarea 
                           id="challenges" 
-                          name="challenges" 
+                          value={formData.challenges}
+                          onChange={(e) => setFormData({ ...formData, challenges: e.target.value })}
                           placeholder="What's your biggest challenge with manufacturing funding applications?"
                           className="mt-1"
                           rows={3}
                         />
                       </div>
+
+                      {error && (
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                          <p className="text-red-800 text-sm">{error}</p>
+                        </div>
+                      )}
 
                       <div className="text-xs text-gray-500">
                         <label className="flex items-start space-x-2">
@@ -347,11 +421,21 @@ export default function CanadaManufacturingFundingDownloadPage() {
                       </div>
 
                       <Button 
-                        type="submit" 
-                        className="w-full bg-gray-800 hover:bg-gray-900 text-lg py-3"
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-gray-800 hover:bg-gray-900 text-lg py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        <Download className="w-5 h-5 mr-2" />
-                        Download Free Manufacturing Funding Toolkit Now
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                            Processing...
+                          </>
+                        ) : (
+                          <>
+                            <Download className="w-5 h-5 mr-2" />
+                            Download Free Manufacturing Funding Toolkit Now
+                          </>
+                        )}
                       </Button>
                     </form>
 

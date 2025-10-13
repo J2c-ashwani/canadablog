@@ -1,18 +1,23 @@
 import { type NextRequest, NextResponse } from "next/server"
+import { captureEmailLead } from "@/lib/google-sheets"
 
 export async function POST(request: NextRequest) {
   try {
-    const { email } = await request.json()
+    const { email, name } = await request.json()
 
     if (!email || !email.includes("@")) {
       return NextResponse.json({ error: "Valid email is required" }, { status: 400 })
     }
 
+    // Save lead to Google Sheets with source tracking
+    captureEmailLead(email, "Newsletter Subscription", name).catch((error) => {
+      console.error("❌ Failed to save newsletter lead to Google Sheets:", error)
+    })
+
     // Here you would integrate with your email service provider
     // Examples: Mailchimp, ConvertKit, SendGrid, etc.
 
-    // For now, we'll simulate the API call
-    console.log(`Newsletter signup: ${email}`)
+    console.log(`📧 Newsletter signup: ${email}`)
 
     // You can add the email to your database here
     // await addToNewsletter(email)

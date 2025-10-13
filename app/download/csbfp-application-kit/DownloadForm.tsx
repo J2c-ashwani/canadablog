@@ -1,202 +1,218 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { CheckCircle, Download, Shield } from "lucide-react"
-import Link from "next/link"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Download, Loader2 } from "lucide-react"
 
 export function DownloadForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
-    email: '',
-    companyName: '',
-    contactNumber: '',
-    consent: false
+    name: "",
+    email: "",
+    company: "",
+    province: "",
+    businessType: "",
+    loanAmount: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }))
-  }
+  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError("")
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    setIsSubmitted(true)
-    setIsSubmitting(false)
-  }
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          company: formData.company,
+          guideName: "CSBFP Application Kit",
+          industry: formData.businessType || "Small Business",
+          country: "Canada",
+          additionalNotes: `Province: ${formData.province || "N/A"}, Loan Amount: ${formData.loanAmount || "N/A"}`,
+        }),
+      })
 
-  if (isSubmitted) {
-    return (
-      <Card className="shadow-lg">
-        <CardContent className="p-8 text-center">
-          <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="w-8 h-8 text-green-600" />
-          </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Success! Your CSBFP Kit is Ready
-          </h3>
-          <p className="text-gray-600 mb-6">
-            Check your email for the download link. We've sent your complete CSBFP application kit to <strong>{formData.email}</strong>
-          </p>
-          
-          <div className="bg-gray-50 rounded-lg p-4 mb-6">
-            <h4 className="font-semibold mb-3">What's Next?</h4>
-            <div className="space-y-2 text-sm text-gray-600">
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                <span>Download will start automatically in your email</span>
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                <span>Our experts will contact you within 24 hours</span>
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                <span>Free consultation to review your application strategy</span>
-              </div>
-            </div>
-          </div>
+      const data = await response.json()
 
-          <div className="flex flex-col gap-3">
-            <Button className="bg-green-600 hover:bg-green-700" asChild>
-              <Link href="/guides/apply-csbfp-loans">
-                View Application Guide
-              </Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/contact?service=csbfp-expert-help">
-                Book Expert Consultation
-              </Link>
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    )
+      if (response.ok) {
+        router.push("/download/csbfp-application-kit/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
-    <Card className="shadow-lg">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl text-gray-900">
+    <Card className="border-blue-200 bg-white shadow-xl">
+      <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-t-lg">
+        <CardTitle className="text-2xl">
           Download Your Free Kit
         </CardTitle>
-        <p className="text-gray-600">
+        <p className="text-sm text-blue-100 mt-2">
           Get instant access to all templates and guides
         </p>
       </CardHeader>
-      <CardContent>
+      <CardContent className="pt-6">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label htmlFor="email" className="text-sm font-medium">
-              Business Email Address *
-            </Label>
+            <Label htmlFor="name">Full Name *</Label>
+            <Input
+              id="name"
+              required
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              placeholder="John Smith"
+              className="mt-1"
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="email">Email Address *</Label>
             <Input
               id="email"
-              name="email"
               type="email"
               required
               value={formData.email}
-              onChange={handleInputChange}
-              placeholder="john@yourcompany.com"
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              placeholder="john@business.com"
               className="mt-1"
             />
           </div>
 
           <div>
-            <Label htmlFor="companyName" className="text-sm font-medium">
-              Company Name *
-            </Label>
+            <Label htmlFor="company">Business Name</Label>
             <Input
-              id="companyName"
-              name="companyName"
-              type="text"
-              required
-              value={formData.companyName}
-              onChange={handleInputChange}
-              placeholder="Your Company Inc."
+              id="company"
+              value={formData.company}
+              onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+              placeholder="Your Business Name"
               className="mt-1"
             />
           </div>
 
           <div>
-            <Label htmlFor="contactNumber" className="text-sm font-medium">
-              Contact Number *
-            </Label>
-            <Input
-              id="contactNumber"
-              name="contactNumber"
-              type="tel"
-              required
-              value={formData.contactNumber}
-              onChange={handleInputChange}
-              placeholder="+1 (555) 123-4567"
-              className="mt-1"
-            />
+            <Label htmlFor="province">Province/Territory</Label>
+            <Select 
+              value={formData.province}
+              onValueChange={(value) => setFormData({ ...formData, province: value })}
+            >
+              <SelectTrigger className="mt-1">
+                <SelectValue placeholder="Select province" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="AB">Alberta</SelectItem>
+                <SelectItem value="BC">British Columbia</SelectItem>
+                <SelectItem value="MB">Manitoba</SelectItem>
+                <SelectItem value="NB">New Brunswick</SelectItem>
+                <SelectItem value="NL">Newfoundland and Labrador</SelectItem>
+                <SelectItem value="NS">Nova Scotia</SelectItem>
+                <SelectItem value="ON">Ontario</SelectItem>
+                <SelectItem value="PE">Prince Edward Island</SelectItem>
+                <SelectItem value="QC">Quebec</SelectItem>
+                <SelectItem value="SK">Saskatchewan</SelectItem>
+                <SelectItem value="NT">Northwest Territories</SelectItem>
+                <SelectItem value="NU">Nunavut</SelectItem>
+                <SelectItem value="YT">Yukon</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
-          <div className="flex items-start">
+          <div>
+            <Label htmlFor="businessType">Business Type</Label>
+            <Select 
+              value={formData.businessType}
+              onValueChange={(value) => setFormData({ ...formData, businessType: value })}
+            >
+              <SelectTrigger className="mt-1">
+                <SelectValue placeholder="Select type" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="retail">Retail</SelectItem>
+                <SelectItem value="restaurant">Restaurant/Food Service</SelectItem>
+                <SelectItem value="manufacturing">Manufacturing</SelectItem>
+                <SelectItem value="professional">Professional Services</SelectItem>
+                <SelectItem value="construction">Construction</SelectItem>
+                <SelectItem value="technology">Technology</SelectItem>
+                <SelectItem value="other">Other</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div>
+            <Label htmlFor="loanAmount">Estimated Loan Amount Needed</Label>
+            <Select 
+              value={formData.loanAmount}
+              onValueChange={(value) => setFormData({ ...formData, loanAmount: value })}
+            >
+              <SelectTrigger className="mt-1">
+                <SelectValue placeholder="Select range" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="under-50k">Under $50,000</SelectItem>
+                <SelectItem value="50k-150k">$50,000 - $150,000</SelectItem>
+                <SelectItem value="150k-350k">$150,000 - $350,000</SelectItem>
+                <SelectItem value="350k-500k">$350,000 - $500,000</SelectItem>
+                <SelectItem value="500k-1m">$500,000 - $1,000,000</SelectItem>
+                <SelectItem value="not-sure">Not sure yet</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          {error && (
+            <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+              <p className="text-red-800 text-sm">{error}</p>
+            </div>
+          )}
+
+          <div className="flex items-start pt-2">
             <input
-              id="consent"
-              name="consent"
               type="checkbox"
+              id="consent"
               required
-              checked={formData.consent}
-              onChange={handleInputChange}
               className="mt-1 mr-3"
             />
-            <Label htmlFor="consent" className="text-xs text-gray-600 leading-tight">
-              I agree to receive the CSBFP application kit and occasional emails about 
-              Canadian business funding opportunities. I can unsubscribe at any time.
-            </Label>
+            <label htmlFor="consent" className="text-xs text-gray-600">
+              I agree to receive the CSBFP application kit and occasional funding updates. 
+              Unsubscribe anytime.
+            </label>
           </div>
 
-          <Button 
-            type="submit" 
-            className="w-full bg-blue-600 hover:bg-blue-700" 
-            size="lg"
+          <Button
+            type="submit"
             disabled={isSubmitting}
+            className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-semibold py-3 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
               <>
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                Preparing Your Kit...
+                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                Processing...
               </>
             ) : (
               <>
-                <Download className="w-4 h-4 mr-2" />
-                Get Free Application Kit
+                <Download className="w-5 h-5 mr-2" />
+                Download Free Kit
               </>
             )}
           </Button>
 
-          <div className="text-center">
-            <p className="text-xs text-gray-500">
-              🔒 Your information is secure and never shared
-            </p>
-          </div>
-        </form>
-
-        <div className="mt-6 pt-6 border-t">
-          <p className="text-center text-sm text-gray-600 mb-4">
-            <strong>Instant Download + Expert Review</strong>
+          <p className="text-xs text-center text-gray-500 mt-3">
+            🔒 Your information is 100% secure. We never share your data.
           </p>
-          <div className="flex items-center justify-center text-xs text-gray-500">
-            <Shield className="w-3 h-3 mr-1" />
-            <span>SSL Encrypted • PIPEDA Compliant</span>
-          </div>
-        </div>
+        </form>
       </CardContent>
     </Card>
   )
