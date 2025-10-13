@@ -1,8 +1,50 @@
+'use client';
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { useState, FormEvent } from 'react';
 
 export function Footer() {
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleFooterSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      alert('Please enter your email address');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          email, 
+          name: '',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('Success! Check your email for the free grant guide.');
+        setEmail('');
+      } else {
+        alert(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      alert('Failed to subscribe. Please try again.');
+      console.error('Subscription error:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -20,7 +62,7 @@ export function Footer() {
               USA and Canada.
             </p>
             
-            {/* Resources Links - ABOUT US REMOVED */}
+            {/* Resources Links */}
             <div className="space-y-2">
               <h4 className="font-semibold text-sm text-gray-300">Resources</h4>
               <div className="flex flex-col space-y-1">
@@ -52,7 +94,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/usa/women-entrepreneur-grants" className="text-gray-400 hover:text-white text-sm">
+                <Link href="/usa/women-entrepreneurs-grants" className="text-gray-400 hover:text-white text-sm">
                   Women Entrepreneurs
                 </Link>
               </li>
@@ -138,20 +180,27 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter - SOFT LEAD GENERATION */}
+          {/* Newsletter - Working Form */}
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Grant Alerts</h3>
             <p className="text-gray-400 text-sm">Stay informed about new funding opportunities and application deadlines.</p>
-            <div className="space-y-2">
+            <form onSubmit={handleFooterSubmit} className="space-y-2">
               <Input
                 type="email"
                 placeholder="Enter your email"
                 className="bg-gray-800 border-gray-700 text-white placeholder-gray-400"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
-              <Button className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
-                Get Free Grant Guide
+              <Button 
+                type="submit"
+                className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90"
+                disabled={isLoading}
+              >
+                {isLoading ? 'Sending...' : 'Get Free Grant Guide'}
               </Button>
-            </div>
+            </form>
             <p className="text-gray-500 text-xs">No spam. Unsubscribe anytime.</p>
           </div>
         </div>

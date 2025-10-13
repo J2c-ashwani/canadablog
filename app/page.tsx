@@ -1,3 +1,5 @@
+'use client';
+
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Button } from "@/components/ui/button"
@@ -6,8 +8,92 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Search, Download, TrendingUp, Users, DollarSign, Calendar, ArrowRight, CheckCircle } from "lucide-react"
 import Link from "next/link"
+import { useState, FormEvent } from 'react';
 
 export default function HomePage() {
+  const [email, setEmail] = useState('');
+  const [emailNewsletter, setEmailNewsletter] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingNewsletter, setIsLoadingNewsletter] = useState(false);
+
+  // Hero section form handler
+  const handleHeroSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      alert('Please enter your email address');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          email, 
+          name: '',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('Success! Check your email for the PDF guide.');
+        setEmail('');
+        // Optional: Redirect to download page
+        // window.location.href = '/download/top-50-grants-guide';
+      } else {
+        alert(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      alert('Failed to subscribe. Please try again.');
+      console.error('Subscription error:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Newsletter section form handler
+  const handleNewsletterSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    
+    if (!emailNewsletter) {
+      alert('Please enter your email address');
+      return;
+    }
+
+    setIsLoadingNewsletter(true);
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          email: emailNewsletter, 
+          name: '',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('Success! Check your email for the PDF guide.');
+        setEmailNewsletter('');
+        // Optional: Redirect to download page
+        // window.location.href = '/download/top-50-grants-guide';
+      } else {
+        alert(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      alert('Failed to subscribe. Please try again.');
+      console.error('Subscription error:', error);
+    } finally {
+      setIsLoadingNewsletter(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -31,45 +117,59 @@ export default function HomePage() {
               and free PDF guide with top 50 startup grants.
             </p>
 
-            <div className="flex flex-col gap-4 justify-center items-center mb-8 sm:mb-12 px-4 sm:px-0">
+            <form onSubmit={handleHeroSubmit} className="flex flex-col gap-4 justify-center items-center mb-8 sm:mb-12 px-4 sm:px-0">
               <div className="flex flex-col gap-3 w-full max-w-md sm:max-w-lg">
                 <Input
                   type="email"
                   placeholder="Enter your email for free PDF guide"
                   className="bg-white text-gray-900 border-0 h-12 sm:h-14 text-base w-full rounded-lg"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <Button
+                  type="submit"
                   size="lg"
                   className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold h-12 sm:h-14 px-6 sm:px-8 w-full"
+                  disabled={isLoading}
                 >
                   <Download className="w-5 h-5 mr-2" />
-                  Get Free PDF Guide
+                  {isLoading ? 'Sending...' : 'Get Free PDF Guide'}
                 </Button>
               </div>
-            </div>
+            </form>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto px-4 sm:px-0">
               <Button
                 size="lg"
                 variant="outline"
                 className="bg-white/10 border-white/30 text-white hover:bg-white/20 h-12"
+                asChild
               >
-                <Search className="w-4 h-4 mr-2" />
-                AI Grant Finder
+                <Link href="/ai-grant-finder">
+                  <Search className="w-4 h-4 mr-2" />
+                  AI Grant Finder
+                </Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="bg-white/10 border-white/30 text-white hover:bg-white/20 h-12"
+                asChild
               >
-                Browse USA Grants
+                <Link href="/usa">
+                  Browse USA Grants
+                </Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="bg-white/10 border-white/30 text-white hover:bg-white/20 h-12"
+                asChild
               >
-                Browse Canada Grants
+                <Link href="/canada">
+                  Browse Canada Grants
+                </Link>
               </Button>
             </div>
           </div>
@@ -192,7 +292,7 @@ export default function HomePage() {
                     <span className="text-sm">Women entrepreneurs</span>
                   </div>
                   <Button className="w-full mt-4" asChild>
-                    <Link href="/usa/women-entrepreneur-grants">
+                    <Link href="/usa/women-entrepreneurs-grants">
                       View Details <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
                   </Button>
@@ -307,20 +407,25 @@ export default function HomePage() {
               businesses in USA and Canada.
             </p>
 
-            <div className="flex flex-col gap-3 sm:gap-4 justify-center items-center max-w-sm sm:max-w-md mx-auto px-4 sm:px-0">
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col gap-3 sm:gap-4 justify-center items-center max-w-sm sm:max-w-md mx-auto px-4 sm:px-0">
               <Input
                 type="email"
                 placeholder="Enter your email address"
                 className="bg-white text-gray-900 border-0 h-12 sm:h-14 text-base w-full"
+                value={emailNewsletter}
+                onChange={(e) => setEmailNewsletter(e.target.value)}
+                required
               />
               <Button
+                type="submit"
                 size="lg"
                 className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold h-12 sm:h-14 px-6 sm:px-8 w-full"
+                disabled={isLoadingNewsletter}
               >
                 <Download className="w-5 h-5 mr-2" />
-                Download Free
+                {isLoadingNewsletter ? 'Sending...' : 'Download Free'}
               </Button>
-            </div>
+            </form>
 
             <div className="flex flex-col sm:flex-row items-center justify-center mt-4 sm:mt-6 space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-blue-100">
               <div className="flex items-center">
