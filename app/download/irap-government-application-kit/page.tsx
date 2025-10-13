@@ -1,3 +1,7 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
@@ -7,17 +11,59 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { CheckCircle, Download, FileText, Calculator, Users, Shield } from "lucide-react"
+import { CheckCircle, Download, FileText, Calculator, Users, Shield, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Free IRAP Government Application Kit | Federal R&D Templates & Compliance Checklists Download",
-  description: "Get your free IRAP government application kit with federal compliance templates, R&D funding checklists, and expert guides. Download comprehensive IRAP toolkit for government grants.",
-  keywords: "IRAP government application kit download, free IRAP templates, federal R&D funding checklist, IRAP compliance guide download, government R&D grant templates Canada",
-}
 
 export default function IRAPGovernmentDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    role: "",
+    fundingAmount: "",
+    industry: "",
+    rdStage: "",
+    challenges: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: `${formData.firstName} ${formData.lastName}`,
+          company: formData.company,
+          guideName: "IRAP Government Application Toolkit",
+          industry: formData.industry || "Technology/R&D",
+          country: "Canada",
+          additionalNotes: `Role: ${formData.role}, Funding: ${formData.fundingAmount}, Stage: ${formData.rdStage}, Challenges: ${formData.challenges || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/irap-government-application-toolkit/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -186,14 +232,15 @@ export default function IRAPGovernmentDownloadPage() {
                       <p className="text-gray-600">Join 1,800+ R&D leaders who've accessed our federal funding resources</p>
                     </div>
 
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <Label htmlFor="firstName">First Name *</Label>
                           <Input 
                             id="firstName" 
-                            name="firstName" 
-                            required 
+                            required
+                            value={formData.firstName}
+                            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                             placeholder="Your first name"
                             className="mt-1"
                           />
@@ -202,8 +249,9 @@ export default function IRAPGovernmentDownloadPage() {
                           <Label htmlFor="lastName">Last Name *</Label>
                           <Input 
                             id="lastName" 
-                            name="lastName" 
-                            required 
+                            required
+                            value={formData.lastName}
+                            onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                             placeholder="Your last name"
                             className="mt-1"
                           />
@@ -214,9 +262,10 @@ export default function IRAPGovernmentDownloadPage() {
                         <Label htmlFor="email">Business Email *</Label>
                         <Input 
                           id="email" 
-                          name="email" 
                           type="email" 
-                          required 
+                          required
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="your.email@company.com"
                           className="mt-1"
                         />
@@ -226,8 +275,9 @@ export default function IRAPGovernmentDownloadPage() {
                         <Label htmlFor="company">Company/Organization *</Label>
                         <Input 
                           id="company" 
-                          name="company" 
-                          required 
+                          required
+                          value={formData.company}
+                          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                           placeholder="Your company name"
                           className="mt-1"
                         />
@@ -235,7 +285,7 @@ export default function IRAPGovernmentDownloadPage() {
 
                       <div>
                         <Label htmlFor="role">Your Role *</Label>
-                        <Select name="role" required>
+                        <Select value={formData.role} onValueChange={(value) => setFormData({ ...formData, role: value })} required>
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select your role" />
                           </SelectTrigger>
@@ -253,7 +303,7 @@ export default function IRAPGovernmentDownloadPage() {
 
                       <div>
                         <Label htmlFor="fundingAmount">Expected IRAP Funding Request</Label>
-                        <Select name="fundingAmount">
+                        <Select value={formData.fundingAmount} onValueChange={(value) => setFormData({ ...formData, fundingAmount: value })}>
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select funding range" />
                           </SelectTrigger>
@@ -269,7 +319,7 @@ export default function IRAPGovernmentDownloadPage() {
 
                       <div>
                         <Label htmlFor="industry">Industry Sector</Label>
-                        <Select name="industry">
+                        <Select value={formData.industry} onValueChange={(value) => setFormData({ ...formData, industry: value })}>
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select your industry" />
                           </SelectTrigger>
@@ -287,7 +337,7 @@ export default function IRAPGovernmentDownloadPage() {
 
                       <div>
                         <Label htmlFor="rdStage">R&D Project Stage</Label>
-                        <Select name="rdStage">
+                        <Select value={formData.rdStage} onValueChange={(value) => setFormData({ ...formData, rdStage: value })}>
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select project stage" />
                           </SelectTrigger>
@@ -305,12 +355,19 @@ export default function IRAPGovernmentDownloadPage() {
                         <Label htmlFor="challenges">Biggest IRAP Government Challenge (Optional)</Label>
                         <Textarea 
                           id="challenges" 
-                          name="challenges" 
+                          value={formData.challenges}
+                          onChange={(e) => setFormData({ ...formData, challenges: e.target.value })}
                           placeholder="What's your biggest concern about IRAP federal compliance or applications?"
                           className="mt-1"
                           rows={3}
                         />
                       </div>
+
+                      {error && (
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                          <p className="text-red-800 text-sm">{error}</p>
+                        </div>
+                      )}
 
                       <div className="text-xs text-gray-500">
                         <label className="flex items-start space-x-2">
@@ -323,11 +380,21 @@ export default function IRAPGovernmentDownloadPage() {
                       </div>
 
                       <Button 
-                        type="submit" 
-                        className="w-full bg-green-600 hover:bg-green-700 text-lg py-3"
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-green-600 hover:bg-green-700 text-lg py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        <Download className="w-5 h-5 mr-2" />
-                        Download Free IRAP Government Toolkit
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                            Processing...
+                          </>
+                        ) : (
+                          <>
+                            <Download className="w-5 h-5 mr-2" />
+                            Download Free IRAP Government Toolkit
+                          </>
+                        )}
                       </Button>
                     </form>
 

@@ -1,19 +1,61 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Download, Shield, FileText, Target, Users, Heart } from "lucide-react"
+import { CheckCircle, Download, Shield, FileText, Target, Users, Heart, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Download Free WELF Application Guide | Women Entrepreneurship Loan Fund Toolkit 2025",
-  description: "Get instant access to our comprehensive Women Entrepreneurship Loan Fund application guide with delivery partner comparison, business plan templates, and application strategies.",
-  keywords: "WELF application guide download, Women Entrepreneurship Loan Fund toolkit, women business loan guide, WEOC application template",
-}
 
 export default function WELFDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    stage: "",
+    funding: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          company: formData.company,
+          guideName: "Women Entrepreneurship Loan Fund (WELF) Guide",
+          industry: "Women-Owned Business",
+          country: "Canada",
+          additionalNotes: `Business Stage: ${formData.stage || "N/A"}, Funding Needed: ${formData.funding || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/women-entrepreneurship-loan-fund-guide/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -137,7 +179,7 @@ export default function WELFDownloadPage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-6">
-                      <form action="/download/women-entrepreneurship-loan-fund-guide/thank-you" method="GET" className="space-y-4">
+                      <form onSubmit={handleSubmit} className="space-y-4">
                         
                         <div>
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
@@ -145,8 +187,9 @@ export default function WELFDownloadPage() {
                           </label>
                           <input 
                             type="text" 
-                            name="name"
                             required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
                             placeholder="Jane Smith"
                           />
@@ -158,8 +201,9 @@ export default function WELFDownloadPage() {
                           </label>
                           <input 
                             type="email" 
-                            name="email"
                             required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
                             placeholder="jane@yourbusiness.com"
                           />
@@ -171,7 +215,8 @@ export default function WELFDownloadPage() {
                           </label>
                           <input 
                             type="text"
-                            name="company"
+                            value={formData.company}
+                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
                             placeholder="Your Business Name"
                           />
@@ -182,7 +227,8 @@ export default function WELFDownloadPage() {
                             Business Stage
                           </label>
                           <select 
-                            name="stage"
+                            value={formData.stage}
+                            onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
                           >
                             <option value="">Select your stage</option>
@@ -198,7 +244,8 @@ export default function WELFDownloadPage() {
                             Funding Needed
                           </label>
                           <select 
-                            name="funding"
+                            value={formData.funding}
+                            onChange={(e) => setFormData({ ...formData, funding: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
                           >
                             <option value="">Select amount</option>
@@ -209,11 +256,16 @@ export default function WELFDownloadPage() {
                           </select>
                         </div>
 
+                        {error && (
+                          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                            <p className="text-red-800 text-sm">{error}</p>
+                          </div>
+                        )}
+
                         <div className="flex items-start pt-2">
                           <input 
                             type="checkbox" 
                             id="consent"
-                            name="consent"
                             required 
                             className="mt-1 mr-3"
                           />
@@ -224,11 +276,21 @@ export default function WELFDownloadPage() {
                         </div>
 
                         <Button 
-                          type="submit" 
-                          className="w-full bg-gradient-to-r from-pink-600 to-purple-700 hover:from-pink-700 hover:to-purple-800 text-white font-semibold py-4 text-lg"
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full bg-gradient-to-r from-pink-600 to-purple-700 hover:from-pink-700 hover:to-purple-800 text-white font-semibold py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          <Download className="w-5 h-5 mr-2" />
-                          Get Instant Access to WELF Guide
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                              Processing...
+                            </>
+                          ) : (
+                            <>
+                              <Download className="w-5 h-5 mr-2" />
+                              Get Instant Access to WELF Guide
+                            </>
+                          )}
                         </Button>
 
                         <p className="text-xs text-center text-gray-500 mt-4">

@@ -1,14 +1,16 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { CheckCircle, Download, Shield, Zap, Users, TrendingUp } from "lucide-react"
+import { CheckCircle, Download, Shield, Zap, Users, TrendingUp, Loader2 } from "lucide-react"
 import Link from "next/link"
 
 export function DownloadForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     email: '',
     companyName: '',
@@ -17,7 +19,7 @@ export function DownloadForm() {
     consent: false
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState("")
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
@@ -31,65 +33,35 @@ export function DownloadForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError("")
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    setIsSubmitted(true)
-    setIsSubmitting(false)
-  }
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.companyName, // Using company name as name field
+          company: formData.companyName,
+          guideName: "Youth Entrepreneurship Funding Kit (CYBF)",
+          industry: "Youth Entrepreneurship",
+          country: "Canada",
+          additionalNotes: `Age Range: ${formData.age || "N/A"}, Contact: ${formData.contactNumber}`,
+        }),
+      })
 
-  if (isSubmitted) {
-    return (
-      <Card className="shadow-lg">
-        <CardContent className="p-8 text-center">
-          <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="w-8 h-8 text-blue-600" />
-          </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Success! Your Youth Funding Kit is Ready
-          </h3>
-          <p className="text-gray-600 mb-6">
-            Check your email for the download link. We've sent your complete youth entrepreneurship kit to <strong>{formData.email}</strong>
-          </p>
-          
-          <div className="bg-gray-50 rounded-lg p-4 mb-6">
-            <h4 className="font-semibold mb-3">What's Next for Your Young Business?</h4>
-            <div className="space-y-2 text-sm text-gray-600">
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                <span>Instant download link in your email</span>
-              </div>
-              <div className="flex items-center">
-                <Zap className="w-4 h-4 text-blue-500 mr-2" />
-                <span>Our youth funding experts will contact you within 24 hours</span>
-              </div>
-              <div className="flex items-center">
-                <Users className="w-4 h-4 text-purple-500 mr-2" />
-                <span>Free consultation to review your young entrepreneur strategy</span>
-              </div>
-              <div className="flex items-center">
-                <TrendingUp className="w-4 h-4 text-indigo-500 mr-2" />
-                <span>Introduction to young entrepreneur networks and mentors</span>
-              </div>
-            </div>
-          </div>
+      const data = await response.json()
 
-          <div className="flex flex-col gap-3">
-            <Button className="bg-blue-600 hover:bg-blue-700" asChild>
-              <Link href="/guides/apply-youth-entrepreneurship-funding">
-                View Full Youth Application Guide
-              </Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/contact?service=youth-entrepreneurship-expert-help">
-                Book Youth Funding Expert Consultation
-              </Link>
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    )
+      if (response.ok) {
+        router.push("/download/youth-entrepreneurship-funding-kit/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -172,6 +144,12 @@ export function DownloadForm() {
             />
           </div>
 
+          {error && (
+            <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+              <p className="text-red-800 text-sm">{error}</p>
+            </div>
+          )}
+
           <div className="flex items-start">
             <input
               id="consent"
@@ -196,7 +174,7 @@ export function DownloadForm() {
           >
             {isSubmitting ? (
               <>
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                 Preparing Your Youth Kit...
               </>
             ) : (

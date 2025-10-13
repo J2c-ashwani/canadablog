@@ -1,19 +1,61 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Download, Shield, Sparkles, Users, MapPin, DollarSign, Target, Clock, Award, FileText, TrendingUp, Lock, Eye, Server } from "lucide-react"
+import { CheckCircle, Download, Shield, Sparkles, Users, MapPin, DollarSign, Target, Clock, Award, FileText, TrendingUp, Lock, Eye, Server, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Download Free Cybersecurity Grants Guide | $400K DOD SBIR Phase I, $1.8M Phase II Application Templates",
-  description: "Get instant access to our cybersecurity grants guide with DOD SBIR Phase I $400K templates, Phase II $1.8M strategies, DHS homeland security programs, NSA partnerships. Complete toolkit for security software, encryption, and threat detection.",
-  keywords: "cybersecurity grants guide, DOD SBIR security funding templates, DHS cyber application templates, threat detection grants",
-}
 
 export default function CybersecurityGrantsGuideDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    category: "",
+    stage: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          company: formData.company,
+          guideName: "Cybersecurity Grants Guide",
+          industry: formData.category || "Cybersecurity",
+          country: "USA",
+          additionalNotes: `Stage: ${formData.stage || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/cybersecurity-grants-guide/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -222,7 +264,7 @@ export default function CybersecurityGrantsGuideDownloadPage() {
                       </div>
                     </CardHeader>
                     <CardContent className="pt-6">
-                      <form action="/download/cybersecurity-grants-guide/thank-you" method="GET" className="space-y-4">
+                      <form onSubmit={handleSubmit} className="space-y-4">
                         
                         <div>
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
@@ -230,8 +272,9 @@ export default function CybersecurityGrantsGuideDownloadPage() {
                           </label>
                           <input 
                             type="text" 
-                            name="name"
                             required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                             placeholder="John Smith"
                           />
@@ -243,8 +286,9 @@ export default function CybersecurityGrantsGuideDownloadPage() {
                           </label>
                           <input 
                             type="email" 
-                            name="email"
                             required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                             placeholder="john@cybersecurity.com"
                           />
@@ -256,7 +300,8 @@ export default function CybersecurityGrantsGuideDownloadPage() {
                           </label>
                           <input 
                             type="text"
-                            name="company"
+                            value={formData.company}
+                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                             placeholder="Your Cybersecurity Company"
                           />
@@ -267,7 +312,8 @@ export default function CybersecurityGrantsGuideDownloadPage() {
                             Security Focus
                           </label>
                           <select 
-                            name="category"
+                            value={formData.category}
+                            onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                             className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                           >
                             <option value="">Select your focus area</option>
@@ -287,7 +333,8 @@ export default function CybersecurityGrantsGuideDownloadPage() {
                             Current Stage
                           </label>
                           <select 
-                            name="stage"
+                            value={formData.stage}
+                            onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
                             className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                           >
                             <option value="">Where are you now?</option>
@@ -299,11 +346,16 @@ export default function CybersecurityGrantsGuideDownloadPage() {
                           </select>
                         </div>
 
+                        {error && (
+                          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                            <p className="text-red-800 text-sm">{error}</p>
+                          </div>
+                        )}
+
                         <div className="flex items-start pt-2">
                           <input 
                             type="checkbox" 
                             id="consent"
-                            name="consent"
                             required 
                             className="mt-1 mr-3 w-4 h-4"
                           />
@@ -313,11 +365,21 @@ export default function CybersecurityGrantsGuideDownloadPage() {
                         </div>
 
                         <Button 
-                          type="submit" 
-                          className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all"
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          <Download className="w-5 h-5 mr-2" />
-                          Download Free Guide Now
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                              Processing...
+                            </>
+                          ) : (
+                            <>
+                              <Download className="w-5 h-5 mr-2" />
+                              Download Free Guide Now
+                            </>
+                          )}
                         </Button>
 
                         <div className="flex items-center justify-center text-xs text-gray-500 mt-3">

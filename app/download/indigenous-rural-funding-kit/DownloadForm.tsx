@@ -1,152 +1,116 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { CheckCircle, Download, Shield, Mountain, Leaf, MapPin, Users } from "lucide-react"
-import Link from "next/link"
+import { Download, Loader2 } from "lucide-react"
 
 export function DownloadForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
-    email: '',
-    businessName: '',
-    businessType: '',
-    location: '',
-    contactNumber: '',
-    consent: false
+    name: "",
+    email: "",
+    businessName: "",
+    businessType: "",
+    location: "",
+    contactNumber: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target
-    const checked = type === 'checkbox' ? (e.target as HTMLInputElement).checked : undefined
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }))
-  }
+  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError("")
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    setIsSubmitted(true)
-    setIsSubmitting(false)
-  }
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          company: formData.businessName,
+          guideName: "Indigenous Rural Funding Kit",
+          industry: formData.businessType || "Indigenous/Rural Business",
+          country: "Canada",
+          additionalNotes: `Location: ${formData.location || "N/A"}, Phone: ${formData.contactNumber || "N/A"}`,
+        }),
+      })
 
-  if (isSubmitted) {
-    return (
-      <Card className="shadow-lg">
-        <CardContent className="p-8 text-center">
-          <div className="bg-amber-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="w-8 h-8 text-amber-600" />
-          </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Chi-Miigwech! Your Indigenous & Rural Funding Kit is Ready
-          </h3>
-          <p className="text-gray-600 mb-6">
-            Check your email for the download link. We've sent your complete culturally appropriate funding kit to <strong>{formData.email}</strong>
-          </p>
-          
-          <div className="bg-gray-50 rounded-lg p-4 mb-6">
-            <h4 className="font-semibold mb-3">What's Next for Your Indigenous/Rural Business?</h4>
-            <div className="space-y-2 text-sm text-gray-600">
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                <span>Instant download link in your email</span>
-              </div>
-              <div className="flex items-center">
-                <Mountain className="w-4 h-4 text-amber-500 mr-2" />
-                <span>Our Indigenous & rural funding experts will contact you within 24 hours</span>
-              </div>
-              <div className="flex items-center">
-                <Users className="w-4 h-4 text-red-500 mr-2" />
-                <span>Free consultation respecting cultural protocols and geographic challenges</span>
-              </div>
-              <div className="flex items-center">
-                <Leaf className="w-4 h-4 text-green-500 mr-2" />
-                <span>Introduction to Aboriginal Financial Institutions and rural business networks</span>
-              </div>
-            </div>
-          </div>
+      const data = await response.json()
 
-          <div className="flex flex-col gap-3">
-            <Button className="bg-amber-600 hover:bg-amber-700" asChild>
-              <Link href="/guides/apply-indigenous-rural-business-funding">
-                View Full Indigenous/Rural Application Guide
-              </Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/contact?service=indigenous-rural-business-expert-help">
-                Book Cultural Business Funding Consultation
-              </Link>
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    )
+      if (response.ok) {
+        router.push("/download/indigenous-rural-funding-kit/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
-    <Card className="shadow-lg">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl text-gray-900">
-          Download Your Free Indigenous & Rural Funding Kit
+    <Card className="shadow-lg border-amber-200">
+      <CardHeader className="bg-gradient-to-r from-amber-600 to-orange-700 text-white rounded-t-lg">
+        <CardTitle className="text-2xl">
+          Download Your Free Indigenous & Rural Kit
         </CardTitle>
-        <p className="text-gray-600">
+        <p className="text-sm text-amber-100 mt-2">
           Get culturally appropriate templates and rural business strategies
         </p>
       </CardHeader>
-      <CardContent>
+      <CardContent className="pt-6">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label htmlFor="email" className="text-sm font-medium">
-              Email Address *
-            </Label>
+            <Label htmlFor="name">Full Name *</Label>
+            <Input
+              id="name"
+              required
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              placeholder="Your Name"
+              className="mt-1"
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="email">Email Address *</Label>
             <Input
               id="email"
-              name="email"
               type="email"
               required
               value={formData.email}
-              onChange={handleInputChange}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               placeholder="joseph@indigenousbusiness.ca"
               className="mt-1"
             />
           </div>
 
           <div>
-            <Label htmlFor="businessName" className="text-sm font-medium">
-              Business Name/Concept *
-            </Label>
+            <Label htmlFor="businessName">Business Name/Concept *</Label>
             <Input
               id="businessName"
-              name="businessName"
-              type="text"
               required
               value={formData.businessName}
-              onChange={handleInputChange}
+              onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
               placeholder="Your Indigenous or Rural Business"
               className="mt-1"
             />
           </div>
 
           <div>
-            <Label htmlFor="businessType" className="text-sm font-medium">
-              Business Type *
-            </Label>
+            <Label htmlFor="businessType">Business Type *</Label>
             <select
               id="businessType"
-              name="businessType"
               required
               value={formData.businessType}
-              onChange={handleInputChange}
+              onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
               className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900 focus:border-amber-500 focus:ring-amber-500"
             >
               <option value="">Select business type</option>
@@ -163,88 +127,77 @@ export function DownloadForm() {
           </div>
 
           <div>
-            <Label htmlFor="location" className="text-sm font-medium">
-              Community/Location *
-            </Label>
+            <Label htmlFor="location">Community/Location *</Label>
             <Input
               id="location"
-              name="location"
-              type="text"
               required
               value={formData.location}
-              onChange={handleInputChange}
+              onChange={(e) => setFormData({ ...formData, location: e.target.value })}
               placeholder="Community, Province/Territory"
               className="mt-1"
             />
           </div>
 
           <div>
-            <Label htmlFor="contactNumber" className="text-sm font-medium">
-              Phone Number *
-            </Label>
+            <Label htmlFor="contactNumber">Phone Number *</Label>
             <Input
               id="contactNumber"
-              name="contactNumber"
               type="tel"
               required
               value={formData.contactNumber}
-              onChange={handleInputChange}
+              onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
               placeholder="+1 (555) 123-4567"
               className="mt-1"
             />
           </div>
 
-          <div className="flex items-start">
+          {error && (
+            <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+              <p className="text-red-800 text-sm">{error}</p>
+            </div>
+          )}
+
+          <div className="flex items-start pt-2">
             <input
-              id="consent"
-              name="consent"
               type="checkbox"
+              id="consent"
               required
-              checked={formData.consent}
-              onChange={handleInputChange}
               className="mt-1 mr-3"
             />
-            <Label htmlFor="consent" className="text-xs text-gray-600 leading-tight">
+            <label htmlFor="consent" className="text-xs text-gray-600">
               I agree to receive the Indigenous & rural business funding kit and occasional emails about 
               culturally appropriate funding opportunities. I understand my cultural information will be 
               respected and protected. I can unsubscribe at any time.
-            </Label>
+            </label>
           </div>
 
-          <Button 
-            type="submit" 
-            className="w-full bg-amber-600 hover:bg-amber-700" 
-            size="lg"
+          <Button
+            type="submit"
             disabled={isSubmitting}
+            className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
               <>
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                Preparing Your Cultural Kit...
+                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                Processing...
               </>
             ) : (
               <>
-                <Download className="w-4 h-4 mr-2" />
+                <Download className="w-5 h-5 mr-2" />
                 Get Free Indigenous/Rural Kit
               </>
             )}
           </Button>
 
-          <div className="text-center">
-            <p className="text-xs text-gray-500">
-              🔒 Your cultural information is secure and protected
-            </p>
-          </div>
+          <p className="text-xs text-center text-gray-500 mt-3">
+            🔒 Your cultural information is secure and protected
+          </p>
         </form>
 
         <div className="mt-6 pt-6 border-t">
-          <p className="text-center text-sm text-gray-600 mb-4">
+          <p className="text-center text-sm text-gray-600 mb-2">
             <strong>Culturally Respectful + Business Expert Review</strong>
           </p>
-          <div className="flex items-center justify-center text-xs text-gray-500">
-            <Shield className="w-3 h-3 mr-1" />
-            <span>Cultural Protocol Compliant • PIPEDA Compliant</span>
-          </div>
         </div>
 
         <div className="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-3">

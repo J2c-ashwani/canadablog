@@ -1,199 +1,164 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { CheckCircle, Download, Shield, Lightbulb } from "lucide-react"
-import Link from "next/link"
+import { Download, Loader2, Shield } from "lucide-react"
 
 export function DownloadForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
-    email: '',
-    companyName: '',
-    contactNumber: '',
-    consent: false
+    name: "",
+    email: "",
+    companyName: "",
+    contactNumber: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }))
-  }
+  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError("")
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    setIsSubmitted(true)
-    setIsSubmitting(false)
-  }
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          company: formData.companyName,
+          guideName: "IRAP Application Kit",
+          industry: "Technology/R&D",
+          country: "Canada",
+          additionalNotes: `Phone: ${formData.contactNumber || "N/A"}`,
+        }),
+      })
 
-  if (isSubmitted) {
-    return (
-      <Card className="shadow-lg">
-        <CardContent className="p-8 text-center">
-          <div className="bg-emerald-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="w-8 h-8 text-emerald-600" />
-          </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Success! Your IRAP Kit is Ready
-          </h3>
-          <p className="text-gray-600 mb-6">
-            Check your email for the download link. We've sent your complete IRAP R&D application kit to <strong>{formData.email}</strong>
-          </p>
-          
-          <div className="bg-gray-50 rounded-lg p-4 mb-6">
-            <h4 className="font-semibold mb-3">What's Next?</h4>
-            <div className="space-y-2 text-sm text-gray-600">
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                <span>Instant download link in your email</span>
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                <span>Our R&D experts will contact you within 24 hours</span>
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                <span>Free consultation to review your project strategy</span>
-              </div>
-              <div className="flex items-center">
-                <Lightbulb className="w-4 h-4 text-yellow-500 mr-2" />
-                <span>Access to our ITA introduction service</span>
-              </div>
-            </div>
-          </div>
+      const data = await response.json()
 
-          <div className="flex flex-col gap-3">
-            <Button className="bg-emerald-600 hover:bg-emerald-700" asChild>
-              <Link href="/guides/apply-irap-grants">
-                View Full Application Guide
-              </Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/contact?service=irap-expert-help">
-                Book R&D Expert Consultation
-              </Link>
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    )
+      if (response.ok) {
+        router.push("/download/irap-application-kit/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
-    <Card className="shadow-lg">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl text-gray-900">
+    <Card className="shadow-lg border-emerald-200">
+      <CardHeader className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white rounded-t-lg">
+        <CardTitle className="text-2xl">
           Download Your Free R&D Kit
         </CardTitle>
-        <p className="text-gray-600">
+        <p className="text-sm text-emerald-100 mt-2">
           Get instant access to all templates and frameworks
         </p>
       </CardHeader>
-      <CardContent>
+      <CardContent className="pt-6">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label htmlFor="email" className="text-sm font-medium">
-              Business Email Address *
-            </Label>
+            <Label htmlFor="name">Full Name *</Label>
+            <Input
+              id="name"
+              required
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              placeholder="Your Name"
+              className="mt-1"
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="email">Business Email Address *</Label>
             <Input
               id="email"
-              name="email"
               type="email"
               required
               value={formData.email}
-              onChange={handleInputChange}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               placeholder="john@techcompany.com"
               className="mt-1"
             />
           </div>
 
           <div>
-            <Label htmlFor="companyName" className="text-sm font-medium">
-              Company Name *
-            </Label>
+            <Label htmlFor="companyName">Company Name *</Label>
             <Input
               id="companyName"
-              name="companyName"
-              type="text"
               required
               value={formData.companyName}
-              onChange={handleInputChange}
+              onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
               placeholder="Your Tech Company Inc."
               className="mt-1"
             />
           </div>
 
           <div>
-            <Label htmlFor="contactNumber" className="text-sm font-medium">
-              Contact Number *
-            </Label>
+            <Label htmlFor="contactNumber">Contact Number *</Label>
             <Input
               id="contactNumber"
-              name="contactNumber"
               type="tel"
               required
               value={formData.contactNumber}
-              onChange={handleInputChange}
+              onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
               placeholder="+1 (555) 123-4567"
               className="mt-1"
             />
           </div>
 
-          <div className="flex items-start">
+          {error && (
+            <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+              <p className="text-red-800 text-sm">{error}</p>
+            </div>
+          )}
+
+          <div className="flex items-start pt-2">
             <input
-              id="consent"
-              name="consent"
               type="checkbox"
+              id="consent"
               required
-              checked={formData.consent}
-              onChange={handleInputChange}
               className="mt-1 mr-3"
             />
-            <Label htmlFor="consent" className="text-xs text-gray-600 leading-tight">
+            <label htmlFor="consent" className="text-xs text-gray-600">
               I agree to receive the IRAP application kit and occasional emails about 
               Canadian R&D funding opportunities. I can unsubscribe at any time.
-            </Label>
+            </label>
           </div>
 
-          <Button 
-            type="submit" 
-            className="w-full bg-emerald-600 hover:bg-emerald-700" 
-            size="lg"
+          <Button
+            type="submit"
             disabled={isSubmitting}
+            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
               <>
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                Preparing Your R&D Kit...
+                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                Processing...
               </>
             ) : (
               <>
-                <Download className="w-4 h-4 mr-2" />
+                <Download className="w-5 h-5 mr-2" />
                 Get Free R&D Application Kit
               </>
             )}
           </Button>
 
-          <div className="text-center">
-            <p className="text-xs text-gray-500">
-              🔒 Your information is secure and never shared
-            </p>
-          </div>
+          <p className="text-xs text-center text-gray-500 mt-3">
+            🔒 Your information is secure and never shared
+          </p>
         </form>
 
         <div className="mt-6 pt-6 border-t">
-          <p className="text-center text-sm text-gray-600 mb-4">
+          <p className="text-center text-sm text-gray-600 mb-2">
             <strong>Instant Download + R&D Expert Review</strong>
           </p>
           <div className="flex items-center justify-center text-xs text-gray-500">

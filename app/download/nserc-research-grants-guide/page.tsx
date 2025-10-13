@@ -1,3 +1,7 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
@@ -7,17 +11,59 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { CheckCircle, Download, FileText, Calculator, Users, Building, GraduationCap, Lightbulb } from "lucide-react"
+import { CheckCircle, Download, FileText, Calculator, Users, Building, GraduationCap, Lightbulb, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Free NSERC Research Grants Application Kit | I2I Templates & University Partnership Guide Download",
-  description: "Get your free NSERC research application kit with I2I grant templates, university-industry partnership strategies, and expert guides for up to $350K research funding.",
-  keywords: "NSERC application kit download, free I2I templates, university research grant checklist, NSERC research guide download, technology transfer templates Canada",
-}
 
 export default function NSERCResearchGrantsDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    institution: "",
+    position: "",
+    researchArea: "",
+    annualResearchBudget: "",
+    nsercExperience: "",
+    challenges: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: `${formData.firstName} ${formData.lastName}`,
+          company: formData.institution,
+          guideName: "NSERC Research Grants Application Kit",
+          industry: formData.researchArea || "Research/Academic",
+          country: "Canada",
+          additionalNotes: `Position: ${formData.position}, Budget: ${formData.annualResearchBudget}, Experience: ${formData.nsercExperience}, Challenges: ${formData.challenges || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/nserc-research-grants-application-kit/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -186,14 +232,15 @@ export default function NSERCResearchGrantsDownloadPage() {
                       <p className="text-gray-600">Join 950+ university researchers who've accessed our NSERC resources</p>
                     </div>
 
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <Label htmlFor="firstName">First Name *</Label>
                           <Input 
-                            id="firstName" 
-                            name="firstName" 
-                            required 
+                            id="firstName"
+                            required
+                            value={formData.firstName}
+                            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                             placeholder="Dr. John"
                             className="mt-1"
                           />
@@ -201,9 +248,10 @@ export default function NSERCResearchGrantsDownloadPage() {
                         <div>
                           <Label htmlFor="lastName">Last Name *</Label>
                           <Input 
-                            id="lastName" 
-                            name="lastName" 
-                            required 
+                            id="lastName"
+                            required
+                            value={formData.lastName}
+                            onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                             placeholder="Smith"
                             className="mt-1"
                           />
@@ -214,9 +262,10 @@ export default function NSERCResearchGrantsDownloadPage() {
                         <Label htmlFor="email">Academic Email *</Label>
                         <Input 
                           id="email" 
-                          name="email" 
                           type="email" 
-                          required 
+                          required
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="john.smith@university.ca"
                           className="mt-1"
                         />
@@ -225,9 +274,10 @@ export default function NSERCResearchGrantsDownloadPage() {
                       <div>
                         <Label htmlFor="institution">Institution/University *</Label>
                         <Input 
-                          id="institution" 
-                          name="institution" 
-                          required 
+                          id="institution"
+                          required
+                          value={formData.institution}
+                          onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
                           placeholder="University of Toronto"
                           className="mt-1"
                         />
@@ -235,7 +285,7 @@ export default function NSERCResearchGrantsDownloadPage() {
 
                       <div>
                         <Label htmlFor="position">Academic Position *</Label>
-                        <Select name="position" required>
+                        <Select value={formData.position} onValueChange={(value) => setFormData({ ...formData, position: value })} required>
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select your position" />
                           </SelectTrigger>
@@ -254,7 +304,7 @@ export default function NSERCResearchGrantsDownloadPage() {
 
                       <div>
                         <Label htmlFor="researchArea">Primary Research Area</Label>
-                        <Select name="researchArea">
+                        <Select value={formData.researchArea} onValueChange={(value) => setFormData({ ...formData, researchArea: value })}>
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select research area" />
                           </SelectTrigger>
@@ -272,7 +322,7 @@ export default function NSERCResearchGrantsDownloadPage() {
 
                       <div>
                         <Label htmlFor="annualResearchBudget">Annual Research Budget</Label>
-                        <Select name="annualResearchBudget">
+                        <Select value={formData.annualResearchBudget} onValueChange={(value) => setFormData({ ...formData, annualResearchBudget: value })}>
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select budget range" />
                           </SelectTrigger>
@@ -290,7 +340,7 @@ export default function NSERCResearchGrantsDownloadPage() {
 
                       <div>
                         <Label htmlFor="nsercExperience">NSERC Grant Experience</Label>
-                        <Select name="nsercExperience">
+                        <Select value={formData.nsercExperience} onValueChange={(value) => setFormData({ ...formData, nsercExperience: value })}>
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select your NSERC experience" />
                           </SelectTrigger>
@@ -308,13 +358,20 @@ export default function NSERCResearchGrantsDownloadPage() {
                       <div>
                         <Label htmlFor="challenges">Biggest NSERC Challenge (Optional)</Label>
                         <Textarea 
-                          id="challenges" 
-                          name="challenges" 
+                          id="challenges"
+                          value={formData.challenges}
+                          onChange={(e) => setFormData({ ...formData, challenges: e.target.value })}
                           placeholder="What's your biggest challenge with NSERC applications or university-industry partnerships?"
                           className="mt-1"
                           rows={3}
                         />
                       </div>
+
+                      {error && (
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                          <p className="text-red-800 text-sm">{error}</p>
+                        </div>
+                      )}
 
                       <div className="text-xs text-gray-500">
                         <label className="flex items-start space-x-2">
@@ -327,11 +384,21 @@ export default function NSERCResearchGrantsDownloadPage() {
                       </div>
 
                       <Button 
-                        type="submit" 
-                        className="w-full bg-indigo-600 hover:bg-indigo-700 text-lg py-3"
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-indigo-600 hover:bg-indigo-700 text-lg py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        <Download className="w-5 h-5 mr-2" />
-                        Download Free NSERC Research Toolkit Now
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                            Processing...
+                          </>
+                        ) : (
+                          <>
+                            <Download className="w-5 h-5 mr-2" />
+                            Download Free NSERC Research Toolkit Now
+                          </>
+                        )}
                       </Button>
                     </form>
 

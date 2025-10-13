@@ -1,19 +1,63 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Download, Shield, Sparkles, Users, MapPin, DollarSign, Target } from "lucide-react"
+import { CheckCircle, Download, Shield, Sparkles, Users, MapPin, DollarSign, Target, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Download Free Women Clean Technology Grants Guide | SDTC Funding, Environmental Innovation Toolkit",
-  description: "Get instant access to our women cleantech grants guide with SDTC application strategies, NRCan program navigator, environmental impact frameworks, and clean energy funding resources.",
-  keywords: "women cleantech grants guide, SDTC application toolkit, clean energy funding resources, environmental innovation guide",
-}
 
 export default function WomenCleanTechnologyGrantsDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    province: "",
+    sector: "",
+    stage: "",
+    funding: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          company: formData.company,
+          guideName: "Women Clean Technology Grants Guide",
+          industry: formData.sector || "Clean Technology",
+          country: "Canada",
+          additionalNotes: `Province: ${formData.province || "N/A"}, Stage: ${formData.stage || "N/A"}, Funding Interest: ${formData.funding || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/women-clean-technology-grants-guide/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -35,8 +79,7 @@ export default function WomenCleanTechnologyGrantsDownloadPage() {
                   Technology Canada (SDTC) funding up to $10M, Natural Resources Canada (NRCan) clean energy innovation 
                   programs, provincial sustainability grants, environmental impact assessment frameworks, technology 
                   commercialization strategies for renewable energy, circular economy, water technology, sustainable 
-                  transportation, and climate solutions across Ontario, Quebec, BC, Alberta, and all Canadian provinces 
-                  supporting women cleantech entrepreneurs creating environmental impact.
+                  transportation, and climate solutions across Canada supporting women cleantech entrepreneurs.
                 </p>
               </div>
 
@@ -141,7 +184,7 @@ export default function WomenCleanTechnologyGrantsDownloadPage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-6">
-                      <form action="/download/women-clean-technology-grants-guide/thank-you" method="GET" className="space-y-4">
+                      <form onSubmit={handleSubmit} className="space-y-4">
                         
                         <div>
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
@@ -149,8 +192,9 @@ export default function WomenCleanTechnologyGrantsDownloadPage() {
                           </label>
                           <input 
                             type="text" 
-                            name="name"
                             required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                             placeholder="Your Name"
                           />
@@ -162,8 +206,9 @@ export default function WomenCleanTechnologyGrantsDownloadPage() {
                           </label>
                           <input 
                             type="email" 
-                            name="email"
                             required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                             placeholder="your.email@cleantech.com"
                           />
@@ -175,7 +220,8 @@ export default function WomenCleanTechnologyGrantsDownloadPage() {
                           </label>
                           <input 
                             type="text"
-                            name="company"
+                            value={formData.company}
+                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                             placeholder="Your Clean Tech Company"
                           />
@@ -186,7 +232,8 @@ export default function WomenCleanTechnologyGrantsDownloadPage() {
                             Province/Region
                           </label>
                           <select 
-                            name="province"
+                            value={formData.province}
+                            onChange={(e) => setFormData({ ...formData, province: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                           >
                             <option value="">Select your province</option>
@@ -206,7 +253,8 @@ export default function WomenCleanTechnologyGrantsDownloadPage() {
                             Clean Technology Sector
                           </label>
                           <select 
-                            name="sector"
+                            value={formData.sector}
+                            onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                           >
                             <option value="">Select primary sector</option>
@@ -227,7 +275,8 @@ export default function WomenCleanTechnologyGrantsDownloadPage() {
                             Technology Development Stage
                           </label>
                           <select 
-                            name="stage"
+                            value={formData.stage}
+                            onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                           >
                             <option value="">Select development stage</option>
@@ -244,7 +293,8 @@ export default function WomenCleanTechnologyGrantsDownloadPage() {
                             Funding Interest
                           </label>
                           <select 
-                            name="funding"
+                            value={formData.funding}
+                            onChange={(e) => setFormData({ ...formData, funding: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                           >
                             <option value="">Select primary interest</option>
@@ -257,11 +307,16 @@ export default function WomenCleanTechnologyGrantsDownloadPage() {
                           </select>
                         </div>
 
+                        {error && (
+                          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                            <p className="text-red-800 text-sm">{error}</p>
+                          </div>
+                        )}
+
                         <div className="flex items-start pt-2">
                           <input 
                             type="checkbox" 
                             id="consent"
-                            name="consent"
                             required 
                             className="mt-1 mr-3"
                           />
@@ -272,11 +327,21 @@ export default function WomenCleanTechnologyGrantsDownloadPage() {
                         </div>
 
                         <Button 
-                          type="submit" 
-                          className="w-full bg-gradient-to-r from-green-700 to-teal-900 hover:from-green-800 hover:to-teal-950 text-white font-semibold py-4 text-lg"
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full bg-gradient-to-r from-green-700 to-teal-900 hover:from-green-800 hover:to-teal-950 text-white font-semibold py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          <Download className="w-5 h-5 mr-2" />
-                          Get Instant Access to Cleantech Funding Guide
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                              Processing...
+                            </>
+                          ) : (
+                            <>
+                              <Download className="w-5 h-5 mr-2" />
+                              Get Instant Access to Cleantech Funding Guide
+                            </>
+                          )}
                         </Button>
 
                         <p className="text-xs text-center text-gray-500 mt-4">

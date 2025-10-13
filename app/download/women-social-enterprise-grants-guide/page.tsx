@@ -1,19 +1,62 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Download, Shield, Heart, Users, MapPin, DollarSign, Target } from "lucide-react"
+import { CheckCircle, Download, Shield, Heart, Users, MapPin, DollarSign, Target, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Download Free Women Social Enterprise Grants Guide | Social Impact Funding, Community Development Toolkit",
-  description: "Get instant access to our women social enterprise grants guide with Investment Readiness Program strategies, provincial social economy financing, impact measurement frameworks, and regional program navigator.",
-  keywords: "women social enterprise grants guide, social impact funding toolkit, community development guide, investment readiness women",
-}
 
 export default function WomenSocialEnterpriseGrantsDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    organization: "",
+    province: "",
+    sector: "",
+    priority: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          company: formData.organization,
+          guideName: "Women Social Enterprise Grants Guide",
+          industry: formData.sector || "Social Enterprise",
+          country: "Canada",
+          additionalNotes: `Province: ${formData.province || "N/A"}, Funding Priority: ${formData.priority || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/women-social-enterprise-grants-guide/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -33,9 +76,8 @@ export default function WomenSocialEnterpriseGrantsDownloadPage() {
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                   Download our comprehensive women social enterprise grants toolkit covering social impact funding, 
                   community development programs, Investment Readiness Program application strategies up to $300K, 
-                  provincial social economy support (Ontario, Quebec, BC, Alberta), Social Finance Fund opportunities, 
-                  impact measurement frameworks, and regional funding navigator for Toronto, Vancouver, Montreal, 
-                  Calgary, and all Canadian communities creating positive social change.
+                  provincial social economy support, Social Finance Fund opportunities, impact measurement frameworks, 
+                  and regional funding navigator for all Canadian communities creating positive social change.
                 </p>
               </div>
 
@@ -140,7 +182,7 @@ export default function WomenSocialEnterpriseGrantsDownloadPage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-6">
-                      <form action="/download/women-social-enterprise-grants-guide/thank-you" method="GET" className="space-y-4">
+                      <form onSubmit={handleSubmit} className="space-y-4">
                         
                         <div>
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
@@ -148,8 +190,9 @@ export default function WomenSocialEnterpriseGrantsDownloadPage() {
                           </label>
                           <input 
                             type="text" 
-                            name="name"
                             required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                             placeholder="Jane Smith"
                           />
@@ -161,8 +204,9 @@ export default function WomenSocialEnterpriseGrantsDownloadPage() {
                           </label>
                           <input 
                             type="email" 
-                            name="email"
                             required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                             placeholder="jane@socialenterprise.com"
                           />
@@ -174,7 +218,8 @@ export default function WomenSocialEnterpriseGrantsDownloadPage() {
                           </label>
                           <input 
                             type="text"
-                            name="organization"
+                            value={formData.organization}
+                            onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                             placeholder="Your Social Enterprise or Non-Profit"
                           />
@@ -185,7 +230,8 @@ export default function WomenSocialEnterpriseGrantsDownloadPage() {
                             Province/Region
                           </label>
                           <select 
-                            name="province"
+                            value={formData.province}
+                            onChange={(e) => setFormData({ ...formData, province: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                           >
                             <option value="">Select your province</option>
@@ -205,7 +251,8 @@ export default function WomenSocialEnterpriseGrantsDownloadPage() {
                             Social Impact Focus Area
                           </label>
                           <select 
-                            name="sector"
+                            value={formData.sector}
+                            onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                           >
                             <option value="">Select primary impact area</option>
@@ -227,7 +274,8 @@ export default function WomenSocialEnterpriseGrantsDownloadPage() {
                             Social Enterprise Funding Priority
                           </label>
                           <select 
-                            name="priority"
+                            value={formData.priority}
+                            onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                           >
                             <option value="">Select primary interest</option>
@@ -240,11 +288,16 @@ export default function WomenSocialEnterpriseGrantsDownloadPage() {
                           </select>
                         </div>
 
+                        {error && (
+                          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                            <p className="text-red-800 text-sm">{error}</p>
+                          </div>
+                        )}
+
                         <div className="flex items-start pt-2">
                           <input 
                             type="checkbox" 
                             id="consent"
-                            name="consent"
                             required 
                             className="mt-1 mr-3"
                           />
@@ -255,11 +308,21 @@ export default function WomenSocialEnterpriseGrantsDownloadPage() {
                         </div>
 
                         <Button 
-                          type="submit" 
-                          className="w-full bg-gradient-to-r from-purple-700 to-indigo-900 hover:from-purple-800 hover:to-indigo-950 text-white font-semibold py-4 text-lg"
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full bg-gradient-to-r from-purple-700 to-indigo-900 hover:from-purple-800 hover:to-indigo-950 text-white font-semibold py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          <Download className="w-5 h-5 mr-2" />
-                          Get Instant Access to Social Impact Guide
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                              Processing...
+                            </>
+                          ) : (
+                            <>
+                              <Download className="w-5 h-5 mr-2" />
+                              Get Instant Access to Social Impact Guide
+                            </>
+                          )}
                         </Button>
 
                         <p className="text-xs text-center text-gray-500 mt-4">

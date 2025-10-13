@@ -1,3 +1,7 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
@@ -7,17 +11,60 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { CheckCircle, Download, FileText, Calculator, Users, Shield, Building, Percent } from "lucide-react"
+import { CheckCircle, Download, FileText, Calculator, Users, Shield, Building, Percent, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Free CSBFP Government Financing Kit | Federal Loan Guarantee Templates & Lender Guide Download",
-  description: "Get your free CSBFP government financing kit with federal loan templates, lender selection guide, and compliance checklists. Download comprehensive CSBFP toolkit for government-guaranteed loans.",
-  keywords: "CSBFP government financing kit download, free CSBFP templates, federal loan guarantee guide, CSBFP compliance checklist download, government backed business loan templates Canada",
-}
 
 export default function CSBFPGovernmentDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    role: "",
+    annualRevenue: "",
+    financingAmount: "",
+    assetType: "",
+    industry: "",
+    challenges: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: `${formData.firstName} ${formData.lastName}`,
+          company: formData.company,
+          guideName: "CSBFP Government Financing Guide",
+          industry: formData.industry || "General Business",
+          country: "Canada",
+          additionalNotes: `Role: ${formData.role}, Revenue: ${formData.annualRevenue}, Financing: ${formData.financingAmount}, Asset: ${formData.assetType}, Challenges: ${formData.challenges || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/csbfp-government-financing-guide/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -186,14 +233,15 @@ export default function CSBFPGovernmentDownloadPage() {
                       <p className="text-gray-600">Join 3,200+ business owners who've accessed our federal financing resources</p>
                     </div>
 
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <Label htmlFor="firstName">First Name *</Label>
                           <Input 
                             id="firstName" 
-                            name="firstName" 
                             required 
+                            value={formData.firstName}
+                            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                             placeholder="Your first name"
                             className="mt-1"
                           />
@@ -202,8 +250,9 @@ export default function CSBFPGovernmentDownloadPage() {
                           <Label htmlFor="lastName">Last Name *</Label>
                           <Input 
                             id="lastName" 
-                            name="lastName" 
                             required 
+                            value={formData.lastName}
+                            onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                             placeholder="Your last name"
                             className="mt-1"
                           />
@@ -214,9 +263,10 @@ export default function CSBFPGovernmentDownloadPage() {
                         <Label htmlFor="email">Business Email *</Label>
                         <Input 
                           id="email" 
-                          name="email" 
                           type="email" 
                           required 
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="your.email@company.com"
                           className="mt-1"
                         />
@@ -226,8 +276,9 @@ export default function CSBFPGovernmentDownloadPage() {
                         <Label htmlFor="company">Company/Business Name *</Label>
                         <Input 
                           id="company" 
-                          name="company" 
                           required 
+                          value={formData.company}
+                          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                           placeholder="Your business name"
                           className="mt-1"
                         />
@@ -235,7 +286,11 @@ export default function CSBFPGovernmentDownloadPage() {
 
                       <div>
                         <Label htmlFor="role">Your Role *</Label>
-                        <Select name="role" required>
+                        <Select 
+                          required
+                          value={formData.role}
+                          onValueChange={(value) => setFormData({ ...formData, role: value })}
+                        >
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select your role" />
                           </SelectTrigger>
@@ -252,7 +307,10 @@ export default function CSBFPGovernmentDownloadPage() {
 
                       <div>
                         <Label htmlFor="annualRevenue">Annual Business Revenue</Label>
-                        <Select name="annualRevenue">
+                        <Select 
+                          value={formData.annualRevenue}
+                          onValueChange={(value) => setFormData({ ...formData, annualRevenue: value })}
+                        >
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select revenue range" />
                           </SelectTrigger>
@@ -268,7 +326,10 @@ export default function CSBFPGovernmentDownloadPage() {
 
                       <div>
                         <Label htmlFor="financingAmount">CSBFP Financing Need</Label>
-                        <Select name="financingAmount">
+                        <Select 
+                          value={formData.financingAmount}
+                          onValueChange={(value) => setFormData({ ...formData, financingAmount: value })}
+                        >
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select financing amount" />
                           </SelectTrigger>
@@ -285,7 +346,10 @@ export default function CSBFPGovernmentDownloadPage() {
 
                       <div>
                         <Label htmlFor="assetType">Asset Type to Finance</Label>
-                        <Select name="assetType">
+                        <Select 
+                          value={formData.assetType}
+                          onValueChange={(value) => setFormData({ ...formData, assetType: value })}
+                        >
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select asset category" />
                           </SelectTrigger>
@@ -302,7 +366,10 @@ export default function CSBFPGovernmentDownloadPage() {
 
                       <div>
                         <Label htmlFor="industry">Industry Sector</Label>
-                        <Select name="industry">
+                        <Select 
+                          value={formData.industry}
+                          onValueChange={(value) => setFormData({ ...formData, industry: value })}
+                        >
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select your industry" />
                           </SelectTrigger>
@@ -324,12 +391,19 @@ export default function CSBFPGovernmentDownloadPage() {
                         <Label htmlFor="challenges">Biggest CSBFP Challenge (Optional)</Label>
                         <Textarea 
                           id="challenges" 
-                          name="challenges" 
+                          value={formData.challenges}
+                          onChange={(e) => setFormData({ ...formData, challenges: e.target.value })}
                           placeholder="What's your biggest concern about CSBFP government financing or lender selection?"
                           className="mt-1"
                           rows={3}
                         />
                       </div>
+
+                      {error && (
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                          <p className="text-red-800 text-sm">{error}</p>
+                        </div>
+                      )}
 
                       <div className="text-xs text-gray-500">
                         <label className="flex items-start space-x-2">
@@ -342,11 +416,21 @@ export default function CSBFPGovernmentDownloadPage() {
                       </div>
 
                       <Button 
-                        type="submit" 
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-3"
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        <Download className="w-5 h-5 mr-2" />
-                        Download Free CSBFP Government Toolkit
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                            Processing...
+                          </>
+                        ) : (
+                          <>
+                            <Download className="w-5 h-5 mr-2" />
+                            Download Free CSBFP Government Toolkit
+                          </>
+                        )}
                       </Button>
                     </form>
 

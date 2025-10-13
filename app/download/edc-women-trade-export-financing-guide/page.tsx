@@ -1,19 +1,61 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Download, Shield, FileText, Target, Users, Globe, Rocket } from "lucide-react"
+import { CheckCircle, Download, Shield, FileText, Target, Users, Globe, Rocket, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Download Free EDC Export Guide | EDC Women in Trade Financing Toolkit 2025",
-  description: "Get instant access to our comprehensive EDC Women in Trade export financing guide with equity capital insights, market entry templates, and international expansion strategies.",
-  keywords: "EDC export guide download, Women in Trade toolkit, export financing guide, international trade financing",
-}
 
 export default function EDCDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    export_status: "",
+    markets: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          company: formData.company,
+          guideName: "EDC Women Trade Export Financing Guide",
+          industry: "Export/International Trade",
+          country: "Canada",
+          additionalNotes: `Export Status: ${formData.export_status || "N/A"}, Target Markets: ${formData.markets || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/edc-women-trade-export-financing-guide/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -138,7 +180,7 @@ export default function EDCDownloadPage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-6">
-                      <form action="/download/edc-women-trade-export-financing-guide/thank-you" method="GET" className="space-y-4">
+                      <form onSubmit={handleSubmit} className="space-y-4">
                         
                         <div>
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
@@ -146,8 +188,9 @@ export default function EDCDownloadPage() {
                           </label>
                           <input 
                             type="text" 
-                            name="name"
                             required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                             placeholder="Jane Smith"
                           />
@@ -159,8 +202,9 @@ export default function EDCDownloadPage() {
                           </label>
                           <input 
                             type="email" 
-                            name="email"
                             required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                             placeholder="jane@yourbusiness.com"
                           />
@@ -172,7 +216,8 @@ export default function EDCDownloadPage() {
                           </label>
                           <input 
                             type="text"
-                            name="company"
+                            value={formData.company}
+                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                             placeholder="Your Business Name"
                           />
@@ -183,7 +228,8 @@ export default function EDCDownloadPage() {
                             Export Status
                           </label>
                           <select 
-                            name="export_status"
+                            value={formData.export_status}
+                            onChange={(e) => setFormData({ ...formData, export_status: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                           >
                             <option value="">Select your status</option>
@@ -199,7 +245,8 @@ export default function EDCDownloadPage() {
                             Target Export Markets
                           </label>
                           <select 
-                            name="markets"
+                            value={formData.markets}
+                            onChange={(e) => setFormData({ ...formData, markets: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                           >
                             <option value="">Select region</option>
@@ -211,11 +258,16 @@ export default function EDCDownloadPage() {
                           </select>
                         </div>
 
+                        {error && (
+                          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                            <p className="text-red-800 text-sm">{error}</p>
+                          </div>
+                        )}
+
                         <div className="flex items-start pt-2">
                           <input 
                             type="checkbox" 
                             id="consent"
-                            name="consent"
                             required 
                             className="mt-1 mr-3"
                           />
@@ -226,11 +278,21 @@ export default function EDCDownloadPage() {
                         </div>
 
                         <Button 
-                          type="submit" 
-                          className="w-full bg-gradient-to-r from-teal-600 to-green-700 hover:from-teal-700 hover:to-green-800 text-white font-semibold py-4 text-lg"
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full bg-gradient-to-r from-teal-600 to-green-700 hover:from-teal-700 hover:to-green-800 text-white font-semibold py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          <Download className="w-5 h-5 mr-2" />
-                          Get Instant Access to EDC Guide
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                              Processing...
+                            </>
+                          ) : (
+                            <>
+                              <Download className="w-5 h-5 mr-2" />
+                              Get Instant Access to EDC Guide
+                            </>
+                          )}
                         </Button>
 
                         <p className="text-xs text-center text-gray-500 mt-4">

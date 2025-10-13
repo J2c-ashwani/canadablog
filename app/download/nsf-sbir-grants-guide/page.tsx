@@ -1,19 +1,63 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Download, Shield, Rocket, Users, MapPin, DollarSign, Target } from "lucide-react"
+import { CheckCircle, Download, Shield, Rocket, Users, MapPin, DollarSign, Target, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Download Free NSF SBIR Grants Guide | Phase I $275K, Phase II $2M Application Toolkit",
-  description: "Get instant access to our NSF SBIR/STTR grants guide with Phase I/II proposal templates, technical merit frameworks, commercialization strategies, and application resources.",
-  keywords: "NSF SBIR guide, SBIR application templates, Phase I Phase II proposal guide, America's Seed Fund resources",
-}
 
 export default function NSFSBIRGrantsDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    state: "",
+    sector: "",
+    stage: "",
+    funding: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          company: formData.company,
+          guideName: "NSF SBIR Grants Guide",
+          industry: formData.sector || "Technology",
+          country: "USA",
+          additionalNotes: `State: ${formData.state || "N/A"}, Stage: ${formData.stage || "N/A"}, Funding Interest: ${formData.funding || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/nsf-sbir-grants-guide/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -140,7 +184,7 @@ export default function NSFSBIRGrantsDownloadPage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-6">
-                      <form action="/download/nsf-sbir-grants-guide/thank-you" method="GET" className="space-y-4">
+                      <form onSubmit={handleSubmit} className="space-y-4">
                         
                         <div>
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
@@ -148,8 +192,9 @@ export default function NSFSBIRGrantsDownloadPage() {
                           </label>
                           <input 
                             type="text" 
-                            name="name"
                             required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Your Name"
                           />
@@ -161,8 +206,9 @@ export default function NSFSBIRGrantsDownloadPage() {
                           </label>
                           <input 
                             type="email" 
-                            name="email"
                             required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="your.email@startup.com"
                           />
@@ -174,7 +220,8 @@ export default function NSFSBIRGrantsDownloadPage() {
                           </label>
                           <input 
                             type="text"
-                            name="company"
+                            value={formData.company}
+                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Your Technology Startup"
                           />
@@ -185,7 +232,8 @@ export default function NSFSBIRGrantsDownloadPage() {
                             State/Location
                           </label>
                           <select 
-                            name="state"
+                            value={formData.state}
+                            onChange={(e) => setFormData({ ...formData, state: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           >
                             <option value="">Select your state</option>
@@ -206,7 +254,8 @@ export default function NSFSBIRGrantsDownloadPage() {
                             Technology Sector
                           </label>
                           <select 
-                            name="sector"
+                            value={formData.sector}
+                            onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           >
                             <option value="">Select primary sector</option>
@@ -227,7 +276,8 @@ export default function NSFSBIRGrantsDownloadPage() {
                             SBIR Application Stage
                           </label>
                           <select 
-                            name="stage"
+                            value={formData.stage}
+                            onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           >
                             <option value="">Select your stage</option>
@@ -244,7 +294,8 @@ export default function NSFSBIRGrantsDownloadPage() {
                             Funding Interest
                           </label>
                           <select 
-                            name="funding"
+                            value={formData.funding}
+                            onChange={(e) => setFormData({ ...formData, funding: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           >
                             <option value="">Select primary interest</option>
@@ -256,11 +307,16 @@ export default function NSFSBIRGrantsDownloadPage() {
                           </select>
                         </div>
 
+                        {error && (
+                          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                            <p className="text-red-800 text-sm">{error}</p>
+                          </div>
+                        )}
+
                         <div className="flex items-start pt-2">
                           <input 
                             type="checkbox" 
                             id="consent"
-                            name="consent"
                             required 
                             className="mt-1 mr-3"
                           />
@@ -271,11 +327,21 @@ export default function NSFSBIRGrantsDownloadPage() {
                         </div>
 
                         <Button 
-                          type="submit" 
-                          className="w-full bg-gradient-to-r from-blue-700 to-indigo-900 hover:from-blue-800 hover:to-indigo-950 text-white font-semibold py-4 text-lg"
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full bg-gradient-to-r from-blue-700 to-indigo-900 hover:from-blue-800 hover:to-indigo-950 text-white font-semibold py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          <Download className="w-5 h-5 mr-2" />
-                          Get Instant Access to NSF SBIR Guide
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                              Processing...
+                            </>
+                          ) : (
+                            <>
+                              <Download className="w-5 h-5 mr-2" />
+                              Get Instant Access to NSF SBIR Guide
+                            </>
+                          )}
                         </Button>
 
                         <p className="text-xs text-center text-gray-500 mt-4">

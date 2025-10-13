@@ -1,19 +1,63 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Download, Shield, Globe, Users, MapPin, DollarSign, Target } from "lucide-react"
+import { CheckCircle, Download, Shield, Globe, Users, MapPin, DollarSign, Target, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Download Free Women Export Trade Grants Guide | CanExport Funding, International Expansion Toolkit",
-  description: "Get instant access to our women export grants guide with CanExport application strategies, Trade Commissioner Service directory, EDC financing options, and international market entry framework.",
-  keywords: "women export grants guide, CanExport application toolkit, international trade funding resources, export market development guide",
-}
 
 export default function WomenExportTradeGrantsDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    province: "",
+    market: "",
+    sector: "",
+    stage: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          company: formData.company,
+          guideName: "Women Export & Trade Grants Guide",
+          industry: formData.sector || "Export/International Trade",
+          country: "Canada",
+          additionalNotes: `Province: ${formData.province || "N/A"}, Target Market: ${formData.market || "N/A"}, Export Stage: ${formData.stage || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/women-export-trade-grants-guide/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -34,9 +78,7 @@ export default function WomenExportTradeGrantsDownloadPage() {
                   Download our comprehensive women export grants toolkit covering CanExport SME program (up to $75K per 
                   market), Export Development Canada (EDC) trade financing solutions, Trade Commissioner Service global 
                   network (160+ offices in 100+ countries), provincial export programs, international market entry strategies, 
-                  target market selection framework for USA, European Union, Asia-Pacific, and global expansion resources 
-                  for women entrepreneurs across Ontario, Quebec, BC, Alberta, and all Canadian provinces pursuing 
-                  international business growth.
+                  and global expansion resources for women entrepreneurs pursuing international business growth.
                 </p>
               </div>
 
@@ -141,7 +183,7 @@ export default function WomenExportTradeGrantsDownloadPage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-6">
-                      <form action="/download/women-export-trade-grants-guide/thank-you" method="GET" className="space-y-4">
+                      <form onSubmit={handleSubmit} className="space-y-4">
                         
                         <div>
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
@@ -149,8 +191,9 @@ export default function WomenExportTradeGrantsDownloadPage() {
                           </label>
                           <input 
                             type="text" 
-                            name="name"
                             required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Your Name"
                           />
@@ -162,8 +205,9 @@ export default function WomenExportTradeGrantsDownloadPage() {
                           </label>
                           <input 
                             type="email" 
-                            name="email"
                             required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="your.email@company.com"
                           />
@@ -175,7 +219,8 @@ export default function WomenExportTradeGrantsDownloadPage() {
                           </label>
                           <input 
                             type="text"
-                            name="company"
+                            value={formData.company}
+                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Your Company"
                           />
@@ -186,7 +231,8 @@ export default function WomenExportTradeGrantsDownloadPage() {
                             Province/Region
                           </label>
                           <select 
-                            name="province"
+                            value={formData.province}
+                            onChange={(e) => setFormData({ ...formData, province: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           >
                             <option value="">Select your province</option>
@@ -206,7 +252,8 @@ export default function WomenExportTradeGrantsDownloadPage() {
                             Target Export Market
                           </label>
                           <select 
-                            name="market"
+                            value={formData.market}
+                            onChange={(e) => setFormData({ ...formData, market: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           >
                             <option value="">Select primary export target</option>
@@ -228,7 +275,8 @@ export default function WomenExportTradeGrantsDownloadPage() {
                             Export Industry/Sector
                           </label>
                           <select 
-                            name="sector"
+                            value={formData.sector}
+                            onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           >
                             <option value="">Select your industry</option>
@@ -249,7 +297,8 @@ export default function WomenExportTradeGrantsDownloadPage() {
                             Export Stage
                           </label>
                           <select 
-                            name="stage"
+                            value={formData.stage}
+                            onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           >
                             <option value="">Select export readiness stage</option>
@@ -260,11 +309,16 @@ export default function WomenExportTradeGrantsDownloadPage() {
                           </select>
                         </div>
 
+                        {error && (
+                          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                            <p className="text-red-800 text-sm">{error}</p>
+                          </div>
+                        )}
+
                         <div className="flex items-start pt-2">
                           <input 
                             type="checkbox" 
                             id="consent"
-                            name="consent"
                             required 
                             className="mt-1 mr-3"
                           />
@@ -275,11 +329,21 @@ export default function WomenExportTradeGrantsDownloadPage() {
                         </div>
 
                         <Button 
-                          type="submit" 
-                          className="w-full bg-gradient-to-r from-blue-700 to-indigo-900 hover:from-blue-800 hover:to-indigo-950 text-white font-semibold py-4 text-lg"
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full bg-gradient-to-r from-blue-700 to-indigo-900 hover:from-blue-800 hover:to-indigo-950 text-white font-semibold py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          <Download className="w-5 h-5 mr-2" />
-                          Get Instant Access to Export Funding Guide
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                              Processing...
+                            </>
+                          ) : (
+                            <>
+                              <Download className="w-5 h-5 mr-2" />
+                              Get Instant Access to Export Funding Guide
+                            </>
+                          )}
                         </Button>
 
                         <p className="text-xs text-center text-gray-500 mt-4">

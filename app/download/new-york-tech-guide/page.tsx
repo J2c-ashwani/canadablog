@@ -1,19 +1,63 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Download, Shield, Sparkles, Users, MapPin, DollarSign, Target } from "lucide-react"
+import { CheckCircle, Download, Shield, Sparkles, Users, MapPin, DollarSign, Target, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Download Free New York Tech Grants Guide | START-UP NY Tax-Free, $250K Matching Fund Application Toolkit",
-  description: "Get instant access to our New York technology startup grants guide with START-UP NY 10-year tax-free application templates, Pre-Seed Seed Matching Fund strategies, NYSERDA innovation frameworks, Empire State Development resources.",
-  keywords: "New York tech grants guide, START-UP NY application templates, Pre-Seed Matching Fund guide, NYSERDA grants",
-}
 
 export default function NewYorkTechGuideDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    location: "",
+    sector: "",
+    stage: "",
+    funding: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          company: formData.company,
+          guideName: "New York Tech Guide",
+          industry: formData.sector || "Technology",
+          country: "USA",
+          additionalNotes: `Location: ${formData.location || "N/A"}, Stage: ${formData.stage || "N/A"}, Funding Interest: ${formData.funding || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/new-york-tech-guide/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -36,12 +80,7 @@ export default function NewYorkTechGuideDownloadPage() {
                   Cornell SUNY CUNY partnerships, Pre-Seed and Seed Matching Fund Program ($50,000 to $250,000) matched with 
                   private sector co-investor funds, NYSERDA innovation grants clean energy renewable energy technology development, 
                   Empire State Development ESD comprehensive programs, NYC Economic Development Corporation NYCEDC grants supporting 
-                  Manhattan Silicon Alley Brooklyn Tech Triangle Queens innovation hubs, FuzeHub manufacturing grants up to $65,000. 
-                  Complete application strategies, proposal templates for NYC boroughs Manhattan Brooklyn Queens Bronx Staten Island, 
-                  upstate innovation hubs Cornell Ithaca Buffalo Rochester Syracuse Albany, regional New York Hudson Valley Finger 
-                  Lakes, eligibility requirements, submission timelines, success strategies for technology, fintech, clean energy, 
-                  biotechnology, advanced manufacturing startups pursuing non-dilutive New York State funding complementing federal 
-                  SBIR/STTR grants, venture capital investment supporting New York innovation ecosystem leadership.
+                  Manhattan Silicon Alley Brooklyn Tech Triangle Queens innovation hubs, FuzeHub manufacturing grants up to $65,000.
                 </p>
               </div>
 
@@ -146,7 +185,7 @@ export default function NewYorkTechGuideDownloadPage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-6">
-                      <form action="/download/new-york-tech-guide/thank-you" method="GET" className="space-y-4">
+                      <form onSubmit={handleSubmit} className="space-y-4">
                         
                         <div>
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
@@ -154,8 +193,9 @@ export default function NewYorkTechGuideDownloadPage() {
                           </label>
                           <input 
                             type="text" 
-                            name="name"
                             required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Your Name"
                           />
@@ -167,8 +207,9 @@ export default function NewYorkTechGuideDownloadPage() {
                           </label>
                           <input 
                             type="email" 
-                            name="email"
                             required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="your.email@startup.com"
                           />
@@ -180,7 +221,8 @@ export default function NewYorkTechGuideDownloadPage() {
                           </label>
                           <input 
                             type="text"
-                            name="company"
+                            value={formData.company}
+                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Your New York Tech Startup"
                           />
@@ -191,7 +233,8 @@ export default function NewYorkTechGuideDownloadPage() {
                             New York Location
                           </label>
                           <select 
-                            name="location"
+                            value={formData.location}
+                            onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           >
                             <option value="">Select your New York region</option>
@@ -215,7 +258,8 @@ export default function NewYorkTechGuideDownloadPage() {
                             Technology Sector
                           </label>
                           <select 
-                            name="sector"
+                            value={formData.sector}
+                            onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           >
                             <option value="">Select primary sector</option>
@@ -236,7 +280,8 @@ export default function NewYorkTechGuideDownloadPage() {
                             Grant Application Stage
                           </label>
                           <select 
-                            name="stage"
+                            value={formData.stage}
+                            onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           >
                             <option value="">Select your stage</option>
@@ -253,7 +298,8 @@ export default function NewYorkTechGuideDownloadPage() {
                             Funding Interest
                           </label>
                           <select 
-                            name="funding"
+                            value={formData.funding}
+                            onChange={(e) => setFormData({ ...formData, funding: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           >
                             <option value="">Select primary interest</option>
@@ -265,11 +311,16 @@ export default function NewYorkTechGuideDownloadPage() {
                           </select>
                         </div>
 
+                        {error && (
+                          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                            <p className="text-red-800 text-sm">{error}</p>
+                          </div>
+                        )}
+
                         <div className="flex items-start pt-2">
                           <input 
                             type="checkbox" 
                             id="consent"
-                            name="consent"
                             required 
                             className="mt-1 mr-3"
                           />
@@ -280,11 +331,21 @@ export default function NewYorkTechGuideDownloadPage() {
                         </div>
 
                         <Button 
-                          type="submit" 
-                          className="w-full bg-gradient-to-r from-blue-700 to-indigo-900 hover:from-blue-800 hover:to-indigo-950 text-white font-semibold py-4 text-lg"
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full bg-gradient-to-r from-blue-700 to-indigo-900 hover:from-blue-800 hover:to-indigo-950 text-white font-semibold py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          <Download className="w-5 h-5 mr-2" />
-                          Get Instant Access to New York Tech Guide
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                              Processing...
+                            </>
+                          ) : (
+                            <>
+                              <Download className="w-5 h-5 mr-2" />
+                              Get Instant Access to New York Tech Guide
+                            </>
+                          )}
                         </Button>
 
                         <p className="text-xs text-center text-gray-500 mt-4">

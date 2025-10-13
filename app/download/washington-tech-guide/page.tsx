@@ -1,19 +1,63 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Download, Shield, Sparkles, Users, MapPin, DollarSign, Target } from "lucide-react"
+import { CheckCircle, Download, Shield, Sparkles, Users, MapPin, DollarSign, Target, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Download Free Washington Tech Grants Guide | $1M WRF, $540K Innovation, Clean Energy Application Toolkit",
-  description: "Get instant access to our Washington technology startup grants guide with WRF Technology Commercialization phased templates, Innovation Modernization Program strategies, Clean Energy Fund frameworks, Innovation Partnership Zones resources.",
-  keywords: "Washington tech grants guide, WRF commercialization templates, Innovation Modernization application, Clean Energy Fund",
-}
 
 export default function WashingtonTechGuideDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    location: "",
+    sector: "",
+    stage: "",
+    funding: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          company: formData.company,
+          guideName: "Washington Tech Grants Guide",
+          industry: formData.sector || "Technology",
+          country: "USA",
+          additionalNotes: `Location: ${formData.location || "N/A"}, Stage: ${formData.stage || "N/A"}, Funding Interest: ${formData.funding || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/washington-tech-guide/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -36,14 +80,7 @@ export default function WashingtonTechGuideDownloadPage() {
                   prototype development, Phase 3 up to $1 million direct costs commercial launch supporting University of Washington 
                   Washington State University technology transfer, Innovation and Modernization Program grants $38,500 to $540,000 
                   maximum fostering innovation culture state agencies digital transformation, Washington Clean Energy Fund supporting 
-                  renewable technology innovations solar wind energy storage zero-emission vehicles, Innovation Partnership Zones 
-                  tax incentives economic development opportunities, SBIR Phase 0 support helping prepare competitive federal 
-                  proposals. Complete application strategies, proposal templates for Seattle South Lake Union tech corridor, Bellevue 
-                  Redmond Microsoft ecosystem, University of Washington UW Fred Hutchinson proximity, Boeing aerospace Everett Renton, 
-                  Washington State University WSU Pullman Spokane, regional Washington innovation hubs, eligibility requirements, 
-                  submission timelines, success strategies for technology, biotechnology, clean energy, aerospace, advanced 
-                  manufacturing, software, cloud computing startups pursuing non-dilutive Washington State funding complementing 
-                  federal SBIR/STTR grants, venture capital investment supporting Washington innovation ecosystem leadership.
+                  renewable technology innovations, and Innovation Partnership Zones tax incentives.
                 </p>
               </div>
 
@@ -148,7 +185,7 @@ export default function WashingtonTechGuideDownloadPage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-6">
-                      <form action="/download/washington-tech-guide/thank-you" method="GET" className="space-y-4">
+                      <form onSubmit={handleSubmit} className="space-y-4">
                         
                         <div>
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
@@ -156,8 +193,9 @@ export default function WashingtonTechGuideDownloadPage() {
                           </label>
                           <input 
                             type="text" 
-                            name="name"
                             required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                             placeholder="Your Name"
                           />
@@ -169,8 +207,9 @@ export default function WashingtonTechGuideDownloadPage() {
                           </label>
                           <input 
                             type="email" 
-                            name="email"
                             required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                             placeholder="your.email@startup.com"
                           />
@@ -182,7 +221,8 @@ export default function WashingtonTechGuideDownloadPage() {
                           </label>
                           <input 
                             type="text"
-                            name="company"
+                            value={formData.company}
+                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                             placeholder="Your Washington Tech Startup"
                           />
@@ -193,7 +233,8 @@ export default function WashingtonTechGuideDownloadPage() {
                             Washington Location
                           </label>
                           <select 
-                            name="location"
+                            value={formData.location}
+                            onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                           >
                             <option value="">Select your Washington region</option>
@@ -217,7 +258,8 @@ export default function WashingtonTechGuideDownloadPage() {
                             Technology Sector
                           </label>
                           <select 
-                            name="sector"
+                            value={formData.sector}
+                            onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                           >
                             <option value="">Select primary sector</option>
@@ -238,7 +280,8 @@ export default function WashingtonTechGuideDownloadPage() {
                             Grant Application Stage
                           </label>
                           <select 
-                            name="stage"
+                            value={formData.stage}
+                            onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                           >
                             <option value="">Select your stage</option>
@@ -255,7 +298,8 @@ export default function WashingtonTechGuideDownloadPage() {
                             Funding Interest
                           </label>
                           <select 
-                            name="funding"
+                            value={formData.funding}
+                            onChange={(e) => setFormData({ ...formData, funding: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                           >
                             <option value="">Select primary interest</option>
@@ -267,11 +311,16 @@ export default function WashingtonTechGuideDownloadPage() {
                           </select>
                         </div>
 
+                        {error && (
+                          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                            <p className="text-red-800 text-sm">{error}</p>
+                          </div>
+                        )}
+
                         <div className="flex items-start pt-2">
                           <input 
                             type="checkbox" 
                             id="consent"
-                            name="consent"
                             required 
                             className="mt-1 mr-3"
                           />
@@ -282,11 +331,21 @@ export default function WashingtonTechGuideDownloadPage() {
                         </div>
 
                         <Button 
-                          type="submit" 
-                          className="w-full bg-gradient-to-r from-green-700 to-teal-900 hover:from-green-800 hover:to-teal-950 text-white font-semibold py-4 text-lg"
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full bg-gradient-to-r from-green-700 to-teal-900 hover:from-green-800 hover:to-teal-950 text-white font-semibold py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          <Download className="w-5 h-5 mr-2" />
-                          Get Instant Access to Washington Tech Guide
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                              Processing...
+                            </>
+                          ) : (
+                            <>
+                              <Download className="w-5 h-5 mr-2" />
+                              Get Instant Access to Washington Tech Guide
+                            </>
+                          )}
                         </Button>
 
                         <p className="text-xs text-center text-gray-500 mt-4">

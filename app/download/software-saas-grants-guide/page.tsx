@@ -1,19 +1,62 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Download, Shield, Sparkles, Users, MapPin, DollarSign, Target } from "lucide-react"
+import { CheckCircle, Download, Shield, Sparkles, Users, MapPin, DollarSign, Target, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Download Free Software & SaaS Grants Guide | $305K NSF SBIR Phase I, $1.25M Phase II, $1.555M Fast-Track Application Toolkit",
-  description: "Get instant access to our software and SaaS startup grants guide with NSF SBIR Phase I $305K templates, Phase II $1.25M strategies, Fast-Track Pilot $1.555M frameworks, DOD software modernization resources, zero equity non-dilutive funding.",
-  keywords: "software grants guide, SaaS startup grants NSF SBIR, Phase I Phase II templates, Fast-Track application",
-}
 
 export default function SoftwareSaaSGrantsGuideDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    category: "",
+    stage: "",
+    funding: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: formData.name,
+          company: formData.company,
+          guideName: "Software & SaaS Grants Guide",
+          industry: formData.category || "Software/SaaS",
+          country: "USA",
+          additionalNotes: `Stage: ${formData.stage || "N/A"}, Funding Interest: ${formData.funding || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/software-saas-grants-guide/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -38,14 +81,7 @@ export default function SoftwareSaaSGrantsGuideDownloadPage() {
                   single combined Phase I + Phase II proposal potentially securing up to $1.555 million total non-dilutive 
                   funding zero equity retention streamlining transition concept commercialization, DOD SBIR software 
                   modernization defense applications military systems cybersecurity grants, state technology accelerator 
-                  programs California Massachusetts New York Washington Colorado SBIR matching grants tax incentives. Complete 
-                  application strategies, proposal templates for enterprise software B2B SaaS platforms, cloud computing 
-                  infrastructure PaaS IaaS, developer tools APIs SDKs low-code platforms, AI/ML software NLP computer vision, 
-                  cybersecurity threat detection security software, software testing automation QA, workflow automation business 
-                  process management, data analytics business intelligence platforms, Project Pitch three-page fast feedback 
-                  process, NSF Program Director relationship building strategies, eligibility requirements, submission timelines, 
-                  success strategies for software SaaS startups pursuing 100% non-dilutive federal state funding requiring zero 
-                  equity supporting full ownership intellectual property control commercialization revenue generation business growth.
+                  programs California Massachusetts New York Washington Colorado SBIR matching grants tax incentives.
                 </p>
               </div>
 
@@ -150,7 +186,7 @@ export default function SoftwareSaaSGrantsGuideDownloadPage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-6">
-                      <form action="/download/software-saas-grants-guide/thank-you" method="GET" className="space-y-4">
+                      <form onSubmit={handleSubmit} className="space-y-4">
                         
                         <div>
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
@@ -158,8 +194,9 @@ export default function SoftwareSaaSGrantsGuideDownloadPage() {
                           </label>
                           <input 
                             type="text" 
-                            name="name"
                             required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                             placeholder="Your Name"
                           />
@@ -171,8 +208,9 @@ export default function SoftwareSaaSGrantsGuideDownloadPage() {
                           </label>
                           <input 
                             type="email" 
-                            name="email"
                             required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                             placeholder="your.email@startup.com"
                           />
@@ -184,7 +222,8 @@ export default function SoftwareSaaSGrantsGuideDownloadPage() {
                           </label>
                           <input 
                             type="text"
-                            name="company"
+                            value={formData.company}
+                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                             placeholder="Your Software Startup"
                           />
@@ -195,7 +234,8 @@ export default function SoftwareSaaSGrantsGuideDownloadPage() {
                             Software Technology Category
                           </label>
                           <select 
-                            name="category"
+                            value={formData.category}
+                            onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                           >
                             <option value="">Select primary category</option>
@@ -215,7 +255,8 @@ export default function SoftwareSaaSGrantsGuideDownloadPage() {
                             Grant Application Stage
                           </label>
                           <select 
-                            name="stage"
+                            value={formData.stage}
+                            onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                           >
                             <option value="">Select your stage</option>
@@ -232,7 +273,8 @@ export default function SoftwareSaaSGrantsGuideDownloadPage() {
                             Funding Interest
                           </label>
                           <select 
-                            name="funding"
+                            value={formData.funding}
+                            onChange={(e) => setFormData({ ...formData, funding: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                           >
                             <option value="">Select primary interest</option>
@@ -244,11 +286,16 @@ export default function SoftwareSaaSGrantsGuideDownloadPage() {
                           </select>
                         </div>
 
+                        {error && (
+                          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                            <p className="text-red-800 text-sm">{error}</p>
+                          </div>
+                        )}
+
                         <div className="flex items-start pt-2">
                           <input 
                             type="checkbox" 
                             id="consent"
-                            name="consent"
                             required 
                             className="mt-1 mr-3"
                           />
@@ -259,11 +306,21 @@ export default function SoftwareSaaSGrantsGuideDownloadPage() {
                         </div>
 
                         <Button 
-                          type="submit" 
-                          className="w-full bg-gradient-to-r from-indigo-700 to-purple-900 hover:from-indigo-800 hover:to-purple-950 text-white font-semibold py-4 text-lg"
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full bg-gradient-to-r from-indigo-700 to-purple-900 hover:from-indigo-800 hover:to-purple-950 text-white font-semibold py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          <Download className="w-5 h-5 mr-2" />
-                          Get Instant Access to Software Grants Guide
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                              Processing...
+                            </>
+                          ) : (
+                            <>
+                              <Download className="w-5 h-5 mr-2" />
+                              Get Instant Access to Software Grants Guide
+                            </>
+                          )}
                         </Button>
 
                         <p className="text-xs text-center text-gray-500 mt-4">

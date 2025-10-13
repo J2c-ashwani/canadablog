@@ -1,3 +1,7 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
@@ -7,17 +11,58 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { CheckCircle, Download, FileText, Calculator, Users, Building, Shield } from "lucide-react"
+import { CheckCircle, Download, FileText, Calculator, Users, Building, Shield, Loader2 } from "lucide-react"
 import Link from "next/link"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Free SR&ED Application Kit | Tax Credit Templates & Guide Download",
-  description: "Get your free SR&ED application kit with Form T661 templates, eligibility checklists, and expert guides. Download comprehensive SR&ED toolkit for R&D tax credits.",
-  keywords: "SR&ED application kit download, free SRED templates, tax credit checklist, SR&ED application guide download, Form T661 template Canada",
-}
 
 export default function SREDDownloadPage() {
+  const router = useRouter()
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    role: "",
+    rdBudget: "",
+    sredExperience: "",
+    challenges: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          name: `${formData.firstName} ${formData.lastName}`,
+          company: formData.company,
+          guideName: "SR&ED Application Kit",
+          industry: "R&D/Technology",
+          country: "Canada",
+          additionalNotes: `Role: ${formData.role}, R&D Budget: ${formData.rdBudget}, SR&ED Experience: ${formData.sredExperience}, Challenges: ${formData.challenges || "N/A"}`,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        router.push("/download/sred-application-kit/thank-you")
+      } else {
+        setError(data.error || "Failed to process download")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -186,14 +231,15 @@ export default function SREDDownloadPage() {
                       <p className="text-gray-600">Join 3,200+ R&D leaders who've accessed our SR&ED resources</p>
                     </div>
 
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <Label htmlFor="firstName">First Name *</Label>
                           <Input 
-                            id="firstName" 
-                            name="firstName" 
-                            required 
+                            id="firstName"
+                            required
+                            value={formData.firstName}
+                            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                             placeholder="Your first name"
                             className="mt-1"
                           />
@@ -201,9 +247,10 @@ export default function SREDDownloadPage() {
                         <div>
                           <Label htmlFor="lastName">Last Name *</Label>
                           <Input 
-                            id="lastName" 
-                            name="lastName" 
-                            required 
+                            id="lastName"
+                            required
+                            value={formData.lastName}
+                            onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                             placeholder="Your last name"
                             className="mt-1"
                           />
@@ -214,9 +261,10 @@ export default function SREDDownloadPage() {
                         <Label htmlFor="email">Business Email *</Label>
                         <Input 
                           id="email" 
-                          name="email" 
                           type="email" 
-                          required 
+                          required
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="your.email@company.com"
                           className="mt-1"
                         />
@@ -225,9 +273,10 @@ export default function SREDDownloadPage() {
                       <div>
                         <Label htmlFor="company">Company/Organization *</Label>
                         <Input 
-                          id="company" 
-                          name="company" 
-                          required 
+                          id="company"
+                          required
+                          value={formData.company}
+                          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                           placeholder="Your company name"
                           className="mt-1"
                         />
@@ -235,7 +284,7 @@ export default function SREDDownloadPage() {
 
                       <div>
                         <Label htmlFor="role">Your Role *</Label>
-                        <Select name="role" required>
+                        <Select value={formData.role} onValueChange={(value) => setFormData({ ...formData, role: value })} required>
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select your role" />
                           </SelectTrigger>
@@ -253,7 +302,7 @@ export default function SREDDownloadPage() {
 
                       <div>
                         <Label htmlFor="rdBudget">Annual R&D Budget</Label>
-                        <Select name="rdBudget">
+                        <Select value={formData.rdBudget} onValueChange={(value) => setFormData({ ...formData, rdBudget: value })}>
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select R&D budget range" />
                           </SelectTrigger>
@@ -270,7 +319,7 @@ export default function SREDDownloadPage() {
 
                       <div>
                         <Label htmlFor="sredExperience">SR&ED Experience</Label>
-                        <Select name="sredExperience">
+                        <Select value={formData.sredExperience} onValueChange={(value) => setFormData({ ...formData, sredExperience: value })}>
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select your SR&ED experience" />
                           </SelectTrigger>
@@ -287,13 +336,20 @@ export default function SREDDownloadPage() {
                       <div>
                         <Label htmlFor="challenges">Biggest SR&ED Challenge (Optional)</Label>
                         <Textarea 
-                          id="challenges" 
-                          name="challenges" 
+                          id="challenges"
+                          value={formData.challenges}
+                          onChange={(e) => setFormData({ ...formData, challenges: e.target.value })}
                           placeholder="What's your biggest concern about the SR&ED application process?"
                           className="mt-1"
                           rows={3}
                         />
                       </div>
+
+                      {error && (
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                          <p className="text-red-800 text-sm">{error}</p>
+                        </div>
+                      )}
 
                       <div className="text-xs text-gray-500">
                         <label className="flex items-start space-x-2">
@@ -306,11 +362,21 @@ export default function SREDDownloadPage() {
                       </div>
 
                       <Button 
-                        type="submit" 
-                        className="w-full bg-green-600 hover:bg-green-700 text-lg py-3"
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-green-600 hover:bg-green-700 text-lg py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        <Download className="w-5 h-5 mr-2" />
-                        Download Free SR&ED Toolkit Now
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                            Processing...
+                          </>
+                        ) : (
+                          <>
+                            <Download className="w-5 h-5 mr-2" />
+                            Download Free SR&ED Toolkit Now
+                          </>
+                        )}
                       </Button>
                     </form>
 
