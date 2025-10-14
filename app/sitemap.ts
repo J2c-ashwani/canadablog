@@ -5,151 +5,107 @@ import path from 'path'
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://grantfinder.pro'
   
-  // Helper function to get directories
-  function getDirectories(dirPath: string): string[] {
+  // ============================================
+  // RECURSIVE FUNCTION - Gets ALL pages
+  // ============================================
+  function getAllPagePaths(dirPath: string = '', basePath: string = ''): string[] {
+    const results: string[] = []
+    const fullPath = path.join(process.cwd(), 'app', dirPath)
+    
     try {
-      const fullPath = path.join(process.cwd(), 'app', dirPath)
-      return fs.readdirSync(fullPath).filter((item) => {
+      const items = fs.readdirSync(fullPath)
+      
+      for (const item of items) {
         const itemPath = path.join(fullPath, item)
-        return fs.statSync(itemPath).isDirectory() && !item.startsWith('[') && item !== 'page.tsx'
-      })
+        const stat = fs.statSync(itemPath)
+        
+        if (stat.isDirectory()) {
+          // Skip dynamic route folders like [slug]
+          if (!item.startsWith('[')) {
+            // Recursively search subdirectories
+            const newDirPath = dirPath ? `${dirPath}/${item}` : item
+            const newBasePath = basePath ? `${basePath}/${item}` : `/${item}`
+            const subResults = getAllPagePaths(newDirPath, newBasePath)
+            results.push(...subResults)
+          }
+        } else if (item === 'page.tsx' || item === 'page.ts') {
+          // Found a page file - add the path
+          results.push(basePath || '/')
+        }
+      }
     } catch (error) {
-      console.error(`Error reading ${dirPath}:`, error)
-      return []
+      console.error(`Error reading directory ${dirPath}:`, error)
     }
+    
+    return results
   }
 
-  // Get all blog posts dynamically
-  const blogSlugs = getDirectories('blog')
-
-  // Get all guide pages dynamically  
-  const guideSlugs = getDirectories('guides')
-
-  // Get USA subdirectories
-  const usaSubdirs = getDirectories('usa')
-
-  // Get Canada subdirectories
-  const canadaSubdirs = getDirectories('canada')
-
+  // Get ALL pages recursively
+  const allPaths = getAllPagePaths()
+  
+  // Remove duplicates and sort
+  const uniquePaths = [...new Set(allPaths)].sort()
+  
   // ============================================
-  // 1. CORE STATIC PAGES
+  // CREATE SITEMAP ENTRIES WITH PRIORITIES
   // ============================================
-  const staticPages = [
-    { url: '', priority: 1.0, changefreq: 'daily' as const },
-    { url: '/about', priority: 0.8, changefreq: 'monthly' as const },
-    { url: '/contact', priority: 0.8, changefreq: 'monthly' as const },
-    { url: '/privacy', priority: 0.5, changefreq: 'yearly' as const },
-    { url: '/terms', priority: 0.5, changefreq: 'yearly' as const },
-    { url: '/disclaimer', priority: 0.5, changefreq: 'yearly' as const },
-    { url: '/newsletter', priority: 0.7, changefreq: 'weekly' as const },
-    { url: '/grant-finder', priority: 0.9, changefreq: 'daily' as const },
-    { url: '/grants', priority: 0.9, changefreq: 'daily' as const },
-    { url: '/guides', priority: 0.9, changefreq: 'weekly' as const },
-    { url: '/blog', priority: 0.9, changefreq: 'daily' as const },
-    { url: '/search', priority: 0.7, changefreq: 'weekly' as const },
-  ].map((page) => ({
-    url: `${baseUrl}${page.url}`,
-    lastModified: new Date(),
-    changeFrequency: page.changefreq,
-    priority: page.priority,
-  }))
-
+  const sitemapEntries = uniquePaths.map((urlPath) => {
+    let priority = 0.7
+    let changeFrequency: 'daily' | 'weekly' | 'monthly' | 'yearly' = 'monthly'
+    
+    // Set priority and frequency based on path type
+    if (urlPath === '/') {
+      priority = 1.0
+      changeFrequency = 'daily'
+    } else if (urlPath === '/grants' || urlPath === '/grant-finder') {
+      priority = 0.9
+      changeFrequency = 'daily'
+    } else if (urlPath === '/blog' || urlPath === '/guides') {
+      priority = 0.9
+      changeFrequency = 'weekly'
+    } else if (urlPath.startsWith('/blog/')) {
+      priority = 0.7
+      changeFrequency = 'weekly'
+    } else if (urlPath.startsWith('/guides/')) {
+      priority = 0.8
+      changeFrequency = 'monthly'
+    } else if (urlPath.startsWith('/usa/') || urlPath.startsWith('/canada/')) {
+      priority = 0.9
+      changeFrequency = 'weekly'
+    } else if (urlPath.startsWith('/download/')) {
+      priority = 0.6
+      changeFrequency = 'monthly'
+    } else if (urlPath === '/privacy' || urlPath === '/terms' || urlPath === '/disclaimer') {
+      priority = 0.5
+      changeFrequency = 'yearly'
+    } else if (urlPath === '/about' || urlPath === '/contact') {
+      priority = 0.8
+      changeFrequency = 'monthly'
+    } else if (urlPath === '/newsletter' || urlPath === '/search') {
+      priority = 0.7
+      changeFrequency = 'weekly'
+    }
+    
+    return {
+      url: `${baseUrl}${urlPath}`,
+      lastModified: new Date(),
+      changeFrequency,
+      priority,
+    }
+  })
+  
   // ============================================
-  // 2. USA PAGES
+  // LOG DETAILED BREAKDOWN
   // ============================================
-  const usaMainPages = [
-    { url: '/usa', priority: 0.9 },
-    { url: '/usa/federal-grants', priority: 0.9 },
-    { url: '/usa/small-business-grants', priority: 0.9 },
-    { url: '/usa/technology-startup-grants', priority: 0.9 },
-    { url: '/usa/women-entrepreneurs-grants', priority: 0.9 },
-  ].map((page) => ({
-    url: `${baseUrl}${page.url}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: page.priority,
-  }))
-
-  // USA subdirectories (california, texas, etc.)
-  const usaSubPages = usaSubdirs.map((slug) => ({
-    url: `${baseUrl}/usa/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.85,
-  }))
-
-  // ============================================
-  // 3. CANADA PAGES
-  // ============================================
-  const canadaMainPages = [
-    { url: '/canada', priority: 0.9 },
-    { url: '/canada/government-grants', priority: 0.9 },
-    { url: '/canada/small-business-grants', priority: 0.9 },
-    { url: '/canada/innovation-grants', priority: 0.9 },
-    { url: '/canada/women-business-grants', priority: 0.9 },
-  ].map((page) => ({
-    url: `${baseUrl}${page.url}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: page.priority,
-  }))
-
-  // Canada subdirectories (ontario, etc.)
-  const canadaSubPages = canadaSubdirs.map((slug) => ({
-    url: `${baseUrl}/canada/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.85,
-  }))
-
-  // ============================================
-  // 4. BLOG POSTS (Dynamic - ALL 112 posts)
-  // ============================================
-  const blogPages = blogSlugs.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }))
-
-  // ============================================
-  // 5. GUIDE PAGES (Dynamic - ALL guides)
-  // ============================================
-  const guidePages = guideSlugs.map((slug) => ({
-    url: `${baseUrl}/guides/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }))
-
-  // ============================================
-  // 6. DOWNLOAD PAGES
-  // ============================================
-  const downloadPages = [
-    { url: '/download/sba-application-checklist', priority: 0.7 },
-    { url: '/download/sba-application-checklist/thank-you', priority: 0.5 },
-  ].map((page) => ({
-    url: `${baseUrl}${page.url}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: page.priority,
-  }))
-
-  // ============================================
-  // COMBINE ALL PAGES
-  // ============================================
-  const allPages = [
-    ...staticPages,
-    ...usaMainPages,
-    ...usaSubPages,
-    ...canadaMainPages,
-    ...canadaSubPages,
-    ...blogPages,
-    ...guidePages,
-    ...downloadPages,
-  ]
-
-  console.log(`✅ Sitemap generated with ${allPages.length} URLs`)
-
-  return allPages
+  console.log(`\n✅ Sitemap generated with ${sitemapEntries.length} URLs\n`)
+  console.log(`📊 Breakdown:`)
+  console.log(`   - Total pages: ${sitemapEntries.length}`)
+  console.log(`   - Blog posts: ${sitemapEntries.filter(e => e.url.includes('/blog/') && e.url.split('/').length === 5).length}`)
+  console.log(`   - Guides: ${sitemapEntries.filter(e => e.url.includes('/guides/') && e.url.split('/').length === 5).length}`)
+  console.log(`   - Downloads: ${sitemapEntries.filter(e => e.url.includes('/download/')).length}`)
+  console.log(`   - USA pages: ${sitemapEntries.filter(e => e.url.includes('/usa/')).length}`)
+  console.log(`   - Canada pages: ${sitemapEntries.filter(e => e.url.includes('/canada/')).length}`)
+  console.log(`   - Core pages: ${sitemapEntries.filter(e => !e.url.includes('/blog/') && !e.url.includes('/guides/') && !e.url.includes('/download/') && !e.url.includes('/usa/') && !e.url.includes('/canada/')).length}\n`)
+  
+  return sitemapEntries
 }
