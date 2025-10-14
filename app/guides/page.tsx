@@ -43,9 +43,11 @@ export default function GuidesPage() {
               Learn from experts how to write winning grant proposals, navigate application processes, and maximize your
               funding success rate.
             </p>
-            <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold">
-              <Download className="w-5 h-5 mr-2" />
-              Download Free Guide
+            <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
+              <Link href="/newsletter">
+                <Download className="w-5 h-5 mr-2" />
+                Download Free Guide
+              </Link>
             </Button>
           </div>
         </div>
@@ -62,6 +64,7 @@ export default function GuidesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Card 1 - USA Federal Grants */}
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center mb-4">
@@ -91,13 +94,54 @@ export default function GuidesPage() {
                   </li>
                 </ul>
                 <Button className="w-full" asChild>
-                  <Link href="/guides/how-to-apply-usa">
+                  <Link href="/guides/apply-federal-grants">
                     Read Guide <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
               </CardContent>
             </Card>
 
+            {/* Card 2 - NEW SBA Application Process */}
+            <Card className="hover:shadow-lg transition-shadow border-2 border-primary/20">
+              <CardHeader>
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-500 rounded-lg flex items-center justify-center mr-4">
+                    <FileText className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex gap-2">
+                    <Badge className="bg-green-100 text-green-800">USA</Badge>
+                    <Badge className="bg-yellow-100 text-yellow-800">New</Badge>
+                  </div>
+                </div>
+                <CardTitle>SBA Grant Application Process Guide</CardTitle>
+                <CardDescription>
+                  Master the Small Business Administration application process with step-by-step instructions and insider tips.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-center text-sm">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Complete document checklist
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Step-by-step application walkthrough
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Common mistakes and how to avoid them
+                  </li>
+                </ul>
+                <Button className="w-full" asChild>
+                  <Link href="/guides/sba-application-process">
+                    Read Guide <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Card 3 - Canada Business Grants */}
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center mb-4">
@@ -106,34 +150,35 @@ export default function GuidesPage() {
                   </div>
                   <Badge className="bg-red-100 text-red-800">Canada</Badge>
                 </div>
-                <CardTitle>How to Apply for Canadian Business Grants</CardTitle>
+                <CardTitle>How to Apply for Canadian IRAP Grants</CardTitle>
                 <CardDescription>
-                  Navigate the Canadian federal and provincial grant application systems with confidence.
+                  Navigate the Canadian Innovation Research Assistance Program application system with confidence.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-center text-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Federal vs provincial applications
+                    IRAP eligibility requirements
                   </li>
                   <li className="flex items-center text-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    CRA business number requirements
+                    Advisory services access
                   </li>
                   <li className="flex items-center text-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Timeline and deadline management
+                    Application process timeline
                   </li>
                 </ul>
                 <Button className="w-full" asChild>
-                  <Link href="/guides/how-to-apply-canada">
+                  <Link href="/guides/apply-irap-grants">
                     Read Guide <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
               </CardContent>
             </Card>
 
+            {/* Card 4 - Grant Writing */}
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center mb-4">
@@ -142,9 +187,9 @@ export default function GuidesPage() {
                   </div>
                   <Badge className="bg-purple-100 text-purple-800">Writing</Badge>
                 </div>
-                <CardTitle>Grant Proposal Writing Secrets</CardTitle>
+                <CardTitle>Federal Grant Application Tips</CardTitle>
                 <CardDescription>
-                  Learn the insider secrets to writing compelling grant proposals that win funding.
+                  Learn expert tips and strategies for writing compelling federal grant applications that win funding.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -163,120 +208,96 @@ export default function GuidesPage() {
                   </li>
                 </ul>
                 <Button className="w-full" asChild>
-                  <Link href="/guides/grant-proposal-writing">
+                  <Link href="/guides/federal-grants-application-tips">
                     Read Guide <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
               </CardContent>
             </Card>
 
+            {/* Card 5 - SBIR Research */}
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center mr-4">
                     <CheckCircle className="w-6 h-6 text-white" />
                   </div>
-                  <Badge className="bg-orange-100 text-orange-800">Requirements</Badge>
+                  <Badge className="bg-orange-100 text-orange-800">Research</Badge>
                 </div>
-                <CardTitle>Documents Required for Grant Applications</CardTitle>
+                <CardTitle>SBIR Research Grants Application Guide</CardTitle>
                 <CardDescription>
-                  Complete checklist of all documents you'll need for successful grant applications.
+                  Complete guide to applying for Small Business Innovation Research grants for tech companies.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-center text-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Financial statements and tax returns
+                    SBIR Phase I & II process
                   </li>
                   <li className="flex items-center text-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Business registration documents
+                    Technical proposal writing
                   </li>
                   <li className="flex items-center text-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Project plans and budgets
+                    Commercialization planning
                   </li>
                 </ul>
                 <Button className="w-full" asChild>
-                  <Link href="/guides/documents-required">
+                  <Link href="/guides/sbir-research-grants-guide">
                     Read Guide <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
               </CardContent>
             </Card>
 
+            {/* Card 6 - Strategic Innovation Fund */}
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-500 rounded-lg flex items-center justify-center mr-4">
                     <FileText className="w-6 h-6 text-white" />
                   </div>
-                  <Badge className="bg-green-100 text-green-800">Strategy</Badge>
+                  <Badge className="bg-green-100 text-green-800">Canada</Badge>
                 </div>
-                <CardTitle>Federal vs Provincial Grants Explained</CardTitle>
+                <CardTitle>Strategic Innovation Fund Application</CardTitle>
                 <CardDescription>
-                  Understand the differences between federal and provincial/state grants and when to apply for each.
+                  How to apply for large-scale innovation funding through Canada's Strategic Innovation Fund.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-center text-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Funding amount differences
+                    Multi-million dollar funding
                   </li>
                   <li className="flex items-center text-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Eligibility requirements comparison
+                    Project eligibility criteria
                   </li>
                   <li className="flex items-center text-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Application timeline differences
+                    Partnership requirements
                   </li>
                 </ul>
                 <Button className="w-full" asChild>
-                  <Link href="/guides/federal-vs-provincial">
+                  <Link href="/guides/apply-strategic-innovation-fund">
                     Read Guide <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
               </CardContent>
             </Card>
+          </div>
 
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center mr-4">
-                    <BookOpen className="w-6 h-6 text-white" />
-                  </div>
-                  <Badge className="bg-yellow-100 text-yellow-800">Tips</Badge>
-                </div>
-                <CardTitle>Common Grant Application Mistakes</CardTitle>
-                <CardDescription>
-                  Learn from others' mistakes and avoid the most common pitfalls that lead to rejection.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Incomplete application submissions
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Unrealistic budget projections
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Missing eligibility requirements
-                  </li>
-                </ul>
-                <Button className="w-full" asChild>
-                  <Link href="/guides/common-mistakes">
-                    Read Guide <ArrowRight className="w-4 h-4 ml-2" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
+          {/* View All Guides Button */}
+          <div className="text-center mt-12">
+            <p className="text-gray-600 mb-6">Explore more specialized guides for your specific needs</p>
+            <Button size="lg" variant="outline" asChild>
+              <Link href="/grants">
+                View All Available Grants <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -319,12 +340,16 @@ export default function GuidesPage() {
               Download our comprehensive grant application toolkit and start your funding journey today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold">
-                <Download className="w-5 h-5 mr-2" />
-                Download Free Toolkit
+              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
+                <Link href="/newsletter">
+                  <Download className="w-5 h-5 mr-2" />
+                  Download Free Toolkit
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
-                Browse All Guides
+              <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20" asChild>
+                <Link href="/grants">
+                  Browse All Grants
+                </Link>
               </Button>
             </div>
           </div>

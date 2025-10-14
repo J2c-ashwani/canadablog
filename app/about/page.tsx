@@ -1,8 +1,49 @@
-import React from 'react'
+'use client';
+
+import React, { useState, FormEvent } from 'react'
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 
 export default function About() {
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      alert('Please enter your email address');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          email, 
+          name: '',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('Success! You will receive regular updates about funding opportunities.');
+        setEmail('');
+      } else {
+        alert(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      alert('Failed to subscribe. Please try again.');
+      console.error('Subscription error:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <>
       <Header />
@@ -143,16 +184,23 @@ export default function About() {
             <div className="bg-gradient-to-r from-blue-50 to-green-50 p-8 rounded-lg">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Stay Informed</h3>
               <p className="text-gray-700 mb-6">Join thousands of entrepreneurs and business owners who rely on our insights to stay ahead of funding opportunities.</p>
-              <div className="max-w-md mx-auto flex gap-3">
+              <form onSubmit={handleSubmit} className="max-w-md mx-auto flex gap-3">
                 <input 
                   type="email" 
                   placeholder="Enter your email" 
                   className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
-                <button className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-green-700">
-                  Get Updates
+                <button 
+                  type="submit"
+                  className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-green-700 disabled:opacity-50"
+                  disabled={isLoading}
+                >
+                  {isLoading ? 'Sending...' : 'Get Updates'}
                 </button>
-              </div>
+              </form>
               <p className="text-gray-500 text-xs mt-2">Free insights, no spam, unsubscribe anytime.</p>
             </div>
           </div>

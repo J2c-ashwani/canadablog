@@ -16,6 +16,7 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [newsletterEmail, setNewsletterEmail] = useState("")
   const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "success" | "error">("idle")
+  const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -43,15 +44,20 @@ export default function Contact() {
     }
   }
 
+  // ✅ FIXED: Now calls /api/subscribe instead of /api/newsletter
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setNewsletterStatus("idle")
+    setIsNewsletterSubmitting(true)
 
     try {
-      const response = await fetch("/api/newsletter", {
+      const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: newsletterEmail }),
+        body: JSON.stringify({ 
+          email: newsletterEmail,
+          name: '' 
+        }),
       })
 
       if (response.ok) {
@@ -63,6 +69,8 @@ export default function Contact() {
     } catch (error) {
       console.error("Newsletter error:", error)
       setNewsletterStatus("error")
+    } finally {
+      setIsNewsletterSubmitting(false)
     }
   }
 
@@ -208,7 +216,7 @@ export default function Contact() {
                 </ul>
               </div>
 
-              {/* Newsletter Signup */}
+              {/* Newsletter Signup - FIXED */}
               <div className="bg-blue-50 rounded-lg p-8">
                 <h3 className="text-xl font-bold text-blue-900 mb-4">💡 Stay Informed</h3>
                 <p className="text-blue-800 mb-4">
@@ -238,9 +246,17 @@ export default function Contact() {
                   />
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                    disabled={isNewsletterSubmitting}
+                    className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50"
                   >
-                    Subscribe to Grant Alerts
+                    {isNewsletterSubmitting ? (
+                      <span className="flex items-center justify-center">
+                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                        Subscribing...
+                      </span>
+                    ) : (
+                      'Subscribe to Grant Alerts'
+                    )}
                   </button>
                   <p className="text-blue-600 text-xs">Free updates • No spam • Unsubscribe anytime</p>
                 </form>

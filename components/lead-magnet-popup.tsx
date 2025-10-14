@@ -38,6 +38,7 @@ export function LeadMagnetPopup() {
     }
   }, [])
 
+  // ✅ FIXED: Now calls /api/subscribe instead of /api/newsletter
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email) return
@@ -45,12 +46,15 @@ export function LeadMagnetPopup() {
     setIsLoading(true)
 
     try {
-      const response = await fetch("/api/newsletter", {
+      const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ 
+          email,
+          name: ''
+        }),
       })
 
       if (response.ok) {
