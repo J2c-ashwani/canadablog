@@ -47,12 +47,26 @@ export function NewsletterSignup({
 
       if (response.ok) {
         setIsSubmitted(true)
-        setEmail("")
+        // Keep email in state for PDF generation
       }
     } catch (error) {
       console.error("Newsletter signup error:", error)
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  const handleDownloadPDF = async () => {
+    try {
+      // Dynamic import to avoid SSR issues
+      const jsPDF = (await import('jspdf')).default;
+      const { generateGrantGuidePDF } = await import('@/lib/generate-pdf');
+      
+      const doc = generateGrantGuidePDF(email);
+      doc.save('Ultimate-Grant-Application-Guide.pdf');
+    } catch (error) {
+      console.error('PDF generation error:', error);
+      alert('Sorry, there was an error generating the PDF. Please try again.');
     }
   }
 
@@ -66,7 +80,7 @@ export function NewsletterSignup({
             <p className="text-green-700 mb-4">Check your email for your free PDF guide and weekly grant updates.</p>
             {showPdfOffer && (
               <Button
-                onClick={() => window.open("/pdf/ultimate-grant-guide.pdf", "_blank")}
+                onClick={handleDownloadPDF}
                 className="bg-green-600 hover:bg-green-700"
               >
                 <Download className="mr-2 h-4 w-4" />
