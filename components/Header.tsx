@@ -58,109 +58,110 @@ export function Header() {
                 Home
               </Link>
 
-             {/* USA Grants Dropdown - NO GAP version */}
-<div 
-  className="relative"
-  onMouseLeave={() => setUsaDropdownOpen(false)}
->
-  <button
-    className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap flex items-center gap-1 py-2"
-    onClick={() => {
-      setUsaDropdownOpen(!usaDropdownOpen)
-      setCanadaDropdownOpen(false)
-    }}
-    onMouseEnter={() => setUsaDropdownOpen(true)}
-  >
-    USA Grants
-    <ChevronDown className={`w-4 h-4 transition-transform ${usaDropdownOpen ? 'rotate-180' : ''}`} />
-  </button>
-  {usaDropdownOpen && (
-    <div className="absolute top-full left-0 pt-1 w-48 z-50">
-      <div className="bg-white rounded-lg shadow-lg border">
-        <Link
-          href="/usa/federal-grants"
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg"
-          onClick={closeDropdowns}
-        >
-          Federal Grants
-        </Link>
-        <Link
-          href="/usa/small-business-grants"
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-          onClick={closeDropdowns}
-        >
-          Small Business
-        </Link>
-        <Link
-          href="/usa/women-entrepreneurs-grants"
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-          onClick={closeDropdowns}
-        >
-          Women Entrepreneurs
-        </Link>
-        <Link
-          href="/usa/technology-startup-grants"
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg"
-          onClick={closeDropdowns}
-        >
-          Tech Startups
-        </Link>
-      </div>
-    </div>
-  )}
-</div>
+              {/* USA Grants Dropdown - Desktop */}
+              <div 
+                className="relative"
+                onMouseLeave={() => setUsaDropdownOpen(false)}
+              >
+                <button
+                  className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap flex items-center gap-1 py-2"
+                  onClick={() => {
+                    setUsaDropdownOpen(!usaDropdownOpen)
+                    setCanadaDropdownOpen(false)
+                  }}
+                  onMouseEnter={() => setUsaDropdownOpen(true)}
+                >
+                  USA Grants
+                  <ChevronDown className={`w-4 h-4 transition-transform ${usaDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {usaDropdownOpen && (
+                  <div className="absolute top-full left-0 pt-1 w-48 z-50">
+                    <div className="bg-white rounded-lg shadow-lg border">
+                      <Link
+                        href="/usa/federal-grants"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg"
+                        onClick={closeDropdowns}
+                      >
+                        Federal Grants
+                      </Link>
+                      <Link
+                        href="/usa/small-business-grants"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                        onClick={closeDropdowns}
+                      >
+                        Small Business
+                      </Link>
+                      <Link
+                        href="/usa/women-entrepreneurs-grants"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                        onClick={closeDropdowns}
+                      >
+                        Women Entrepreneurs
+                      </Link>
+                      <Link
+                        href="/usa/technology-startup-grants"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg"
+                        onClick={closeDropdowns}
+                      >
+                        Tech Startups
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
 
-{/* Canada Grants Dropdown - NO GAP version */}
-<div 
-  className="relative"
-  onMouseLeave={() => setCanadaDropdownOpen(false)}
->
-  <button
-    className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap flex items-center gap-1 py-2"
-    onClick={() => {
-      setCanadaDropdownOpen(!canadaDropdownOpen)
-      setUsaDropdownOpen(false)
-    }}
-    onMouseEnter={() => setCanadaDropdownOpen(true)}
-  >
-    Canada Grants
-    <ChevronDown className={`w-4 h-4 transition-transform ${canadaDropdownOpen ? 'rotate-180' : ''}`} />
-  </button>
-  {canadaDropdownOpen && (
-    <div className="absolute top-full left-0 pt-1 w-48 z-50">
-      <div className="bg-white rounded-lg shadow-lg border">
-        <Link
-          href="/canada/government-grants"
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg"
-          onClick={closeDropdowns}
-        >
-          Government Grants
-        </Link>
-        <Link
-          href="/canada/small-business-grants"
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-          onClick={closeDropdowns}
-        >
-          Small Business
-        </Link>
-        <Link
-          href="/canada/innovation-grants"
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-          onClick={closeDropdowns}
-        >
-          Innovation Grants
-        </Link>
-        <Link
-          href="/canada/women-business-grants"
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg"
-          onClick={closeDropdowns}
-        >
-          Women-Owned Business
-        </Link>
-      </div>
-    </div>
-  )}
-</div>
+              {/* Canada Grants Dropdown - Desktop */}
+              <div 
+                className="relative"
+                onMouseLeave={() => setCanadaDropdownOpen(false)}
+              >
+                <button
+                  className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap flex items-center gap-1 py-2"
+                  onClick={() => {
+                    setCanadaDropdownOpen(!canadaDropdownOpen)
+                    setUsaDropdownOpen(false)
+                  }}
+                  onMouseEnter={() => setCanadaDropdownOpen(true)}
+                >
+                  Canada Grants
+                  <ChevronDown className={`w-4 h-4 transition-transform ${canadaDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {canadaDropdownOpen && (
+                  <div className="absolute top-full left-0 pt-1 w-48 z-50">
+                    <div className="bg-white rounded-lg shadow-lg border">
+                      <Link
+                        href="/canada/government-grants"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg"
+                        onClick={closeDropdowns}
+                      >
+                        Government Grants
+                      </Link>
+                      <Link
+                        href="/canada/small-business-grants"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                        onClick={closeDropdowns}
+                      >
+                        Small Business
+                      </Link>
+                      <Link
+                        href="/canada/innovation-grants"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                        onClick={closeDropdowns}
+                      >
+                        Innovation Grants
+                      </Link>
+                      <Link
+                        href="/canada/women-business-grants"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg"
+                        onClick={closeDropdowns}
+                      >
+                        Women-Owned Business
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+
               <Link href="/grant-finder" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
                 AI Grant Finder
               </Link>
@@ -201,7 +202,7 @@ export function Header() {
             </button>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile Menu - FIXED WITH SUBMENUS */}
           {isMenuOpen && (
             <div className="md:hidden py-4 border-t border-gray-200 bg-white">
               <nav className="flex flex-col space-y-1">
@@ -212,20 +213,117 @@ export function Header() {
                 >
                   Home
                 </Link>
-                <Link
-                  href="/usa"
-                  className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  USA Grants
-                </Link>
-                <Link
-                  href="/canada"
-                  className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Canada Grants
-                </Link>
+
+                {/* USA Grants Mobile Submenu */}
+                <div className="px-4">
+                  <button
+                    className="w-full text-left text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 rounded-lg transition-colors flex items-center justify-between"
+                    onClick={() => setUsaDropdownOpen(!usaDropdownOpen)}
+                  >
+                    USA Grants
+                    <ChevronDown className={`w-4 h-4 transition-transform ${usaDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {usaDropdownOpen && (
+                    <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
+                      <Link
+                        href="/usa/federal-grants"
+                        className="block text-sm text-gray-600 hover:text-primary py-2"
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setUsaDropdownOpen(false)
+                        }}
+                      >
+                        Federal Grants
+                      </Link>
+                      <Link
+                        href="/usa/small-business-grants"
+                        className="block text-sm text-gray-600 hover:text-primary py-2"
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setUsaDropdownOpen(false)
+                        }}
+                      >
+                        Small Business
+                      </Link>
+                      <Link
+                        href="/usa/women-entrepreneurs-grants"
+                        className="block text-sm text-gray-600 hover:text-primary py-2"
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setUsaDropdownOpen(false)
+                        }}
+                      >
+                        Women Entrepreneurs
+                      </Link>
+                      <Link
+                        href="/usa/technology-startup-grants"
+                        className="block text-sm text-gray-600 hover:text-primary py-2"
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setUsaDropdownOpen(false)
+                        }}
+                      >
+                        Tech Startups
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
+                {/* Canada Grants Mobile Submenu */}
+                <div className="px-4">
+                  <button
+                    className="w-full text-left text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 rounded-lg transition-colors flex items-center justify-between"
+                    onClick={() => setCanadaDropdownOpen(!canadaDropdownOpen)}
+                  >
+                    Canada Grants
+                    <ChevronDown className={`w-4 h-4 transition-transform ${canadaDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {canadaDropdownOpen && (
+                    <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
+                      <Link
+                        href="/canada/government-grants"
+                        className="block text-sm text-gray-600 hover:text-primary py-2"
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setCanadaDropdownOpen(false)
+                        }}
+                      >
+                        Government Grants
+                      </Link>
+                      <Link
+                        href="/canada/small-business-grants"
+                        className="block text-sm text-gray-600 hover:text-primary py-2"
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setCanadaDropdownOpen(false)
+                        }}
+                      >
+                        Small Business
+                      </Link>
+                      <Link
+                        href="/canada/innovation-grants"
+                        className="block text-sm text-gray-600 hover:text-primary py-2"
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setCanadaDropdownOpen(false)
+                        }}
+                      >
+                        Innovation Grants
+                      </Link>
+                      <Link
+                        href="/canada/women-business-grants"
+                        className="block text-sm text-gray-600 hover:text-primary py-2"
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setCanadaDropdownOpen(false)
+                        }}
+                      >
+                        Women-Owned Business
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
                 <Link
                   href="/grant-finder"
                   className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
@@ -233,6 +331,7 @@ export function Header() {
                 >
                   AI Grant Finder
                 </Link>
+
                 <Link
                   href="/guides"
                   className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
@@ -240,6 +339,7 @@ export function Header() {
                 >
                   Guides
                 </Link>
+
                 <Link
                   href="/blog"
                   className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
@@ -247,6 +347,7 @@ export function Header() {
                 >
                   Expert Insights
                 </Link>
+
                 <Link
                   href="/about"
                   className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
@@ -254,6 +355,7 @@ export function Header() {
                 >
                   About
                 </Link>
+
                 <Link
                   href="/contact"
                   className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
@@ -261,6 +363,7 @@ export function Header() {
                 >
                   Contact
                 </Link>
+
                 <div className="pt-4 px-4 space-y-3">
                   <Button 
                     variant="outline" 
