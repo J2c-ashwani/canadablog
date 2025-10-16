@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Search } from "lucide-react"
+import { Menu, X, Search, ChevronDown } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -18,16 +18,23 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
+  const [usaDropdownOpen, setUsaDropdownOpen] = useState(false)
+  const [canadaDropdownOpen, setCanadaDropdownOpen] = useState(false)
   const router = useRouter()
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (searchQuery.trim()) {
-      // Redirect to a search results page or filter grants
       router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
       setIsSearchOpen(false)
       setSearchQuery("")
     }
+  }
+
+  // Close dropdowns when clicking outside
+  const closeDropdowns = () => {
+    setUsaDropdownOpen(false)
+    setCanadaDropdownOpen(false)
   }
 
   return (
@@ -51,67 +58,109 @@ export function Header() {
                 Home
               </Link>
 
-              <div className="relative group">
-                <button className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
-                  USA Grants
-                </button>
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <Link href="/usa/federal-grants" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                    Federal Grants
-                  </Link>
-                  <Link
-                    href="/usa/small-business-grants"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  >
-                    Small Business
-                  </Link>
-                  <Link
-                    href="/usa/women-entrepreneurs-grants"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  >
-                    Women Entrepreneurs
-                  </Link>
-                  <Link
-                    href="/usa/technology-startup-grants"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  >
-                    Tech Startups
-                  </Link>
-                </div>
-              </div>
+             {/* USA Grants Dropdown - NO GAP version */}
+<div 
+  className="relative"
+  onMouseLeave={() => setUsaDropdownOpen(false)}
+>
+  <button
+    className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap flex items-center gap-1 py-2"
+    onClick={() => {
+      setUsaDropdownOpen(!usaDropdownOpen)
+      setCanadaDropdownOpen(false)
+    }}
+    onMouseEnter={() => setUsaDropdownOpen(true)}
+  >
+    USA Grants
+    <ChevronDown className={`w-4 h-4 transition-transform ${usaDropdownOpen ? 'rotate-180' : ''}`} />
+  </button>
+  {usaDropdownOpen && (
+    <div className="absolute top-full left-0 pt-1 w-48 z-50">
+      <div className="bg-white rounded-lg shadow-lg border">
+        <Link
+          href="/usa/federal-grants"
+          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg"
+          onClick={closeDropdowns}
+        >
+          Federal Grants
+        </Link>
+        <Link
+          href="/usa/small-business-grants"
+          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+          onClick={closeDropdowns}
+        >
+          Small Business
+        </Link>
+        <Link
+          href="/usa/women-entrepreneurs-grants"
+          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+          onClick={closeDropdowns}
+        >
+          Women Entrepreneurs
+        </Link>
+        <Link
+          href="/usa/technology-startup-grants"
+          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg"
+          onClick={closeDropdowns}
+        >
+          Tech Startups
+        </Link>
+      </div>
+    </div>
+  )}
+</div>
 
-              <div className="relative group">
-                <button className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
-                  Canada Grants
-                </button>
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <Link
-                    href="/canada/government-grants"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  >
-                    Government Grants
-                  </Link>
-                  <Link
-                    href="/canada/small-business-grants"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  >
-                    Small Business
-                  </Link>
-                  <Link
-                    href="/canada/innovation-grants"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  >
-                    Innovation Grants
-                  </Link>
-                  <Link
-                    href="/canada/women-business-grants"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  >
-                    Women-Owned Business
-                  </Link>
-                </div>
-              </div>
-
+{/* Canada Grants Dropdown - NO GAP version */}
+<div 
+  className="relative"
+  onMouseLeave={() => setCanadaDropdownOpen(false)}
+>
+  <button
+    className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap flex items-center gap-1 py-2"
+    onClick={() => {
+      setCanadaDropdownOpen(!canadaDropdownOpen)
+      setUsaDropdownOpen(false)
+    }}
+    onMouseEnter={() => setCanadaDropdownOpen(true)}
+  >
+    Canada Grants
+    <ChevronDown className={`w-4 h-4 transition-transform ${canadaDropdownOpen ? 'rotate-180' : ''}`} />
+  </button>
+  {canadaDropdownOpen && (
+    <div className="absolute top-full left-0 pt-1 w-48 z-50">
+      <div className="bg-white rounded-lg shadow-lg border">
+        <Link
+          href="/canada/government-grants"
+          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg"
+          onClick={closeDropdowns}
+        >
+          Government Grants
+        </Link>
+        <Link
+          href="/canada/small-business-grants"
+          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+          onClick={closeDropdowns}
+        >
+          Small Business
+        </Link>
+        <Link
+          href="/canada/innovation-grants"
+          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+          onClick={closeDropdowns}
+        >
+          Innovation Grants
+        </Link>
+        <Link
+          href="/canada/women-business-grants"
+          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg"
+          onClick={closeDropdowns}
+        >
+          Women-Owned Business
+        </Link>
+      </div>
+    </div>
+  )}
+</div>
               <Link href="/grant-finder" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
                 AI Grant Finder
               </Link>
@@ -133,7 +182,7 @@ export function Header() {
               </Link>
             </nav>
 
-            {/* Search Button - Opens Dialog */}
+            {/* Search Button */}
             <div className="hidden md:flex items-center flex-shrink-0">
               <Button 
                 variant="outline" 
@@ -152,6 +201,7 @@ export function Header() {
             </button>
           </div>
 
+          {/* Mobile Menu */}
           {isMenuOpen && (
             <div className="md:hidden py-4 border-t border-gray-200 bg-white">
               <nav className="flex flex-col space-y-1">
