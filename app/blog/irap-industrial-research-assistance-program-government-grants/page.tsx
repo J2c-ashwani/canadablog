@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "IRAP Industrial Research Assistance Program Canada 2025 | Government R&D Funding Guide",
+  title: "IRAP Industrial Research Assistance Program Canada 2026 | Government R&D Funding Guide",
   description: "Complete guide to IRAP government funding for Canadian R&D projects. Federal compliance, reporting requirements, and strategic integration with other government innovation programs.",
   keywords: "IRAP government grants, Industrial Research Assistance Program Canada, federal R&D funding, government innovation grants, NRC IRAP compliance, Canadian government R&D support",
   openGraph: {
-    title: "IRAP Industrial Research Assistance Program Canada 2025 | Government R&D Funding",
+    title: "IRAP Industrial Research Assistance Program Canada 2026 | Government R&D Funding",
     description: "Comprehensive guide to IRAP federal R&D funding with compliance requirements and government program integration strategies.",
-    url: "https://grantfinder.pro/blog/irap-industrial-research-assistance-program-government-grants",
+    url: "https://fsidigital.ca/blog/irap-industrial-research-assistance-program-government-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

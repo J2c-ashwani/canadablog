@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "EDC Women in Trade Export Financing 2025 | Equity Capital & Export Support for Women Exporters",
+  title: "EDC Women in Trade Export Financing 2026 | Equity Capital & Export Support for Women Exporters",
   description: "Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support from Export Development Canada for women-owned businesses.",
   keywords: "EDC Women in Trade, export financing women, equity capital women exporters, international trade financing, EDC Inclusive Trade Investments",
   openGraph: {
-    title: "EDC Women in Trade Export Financing 2025 | Equity Capital for Women Exporters",
+    title: "EDC Women in Trade Export Financing 2026 | Equity Capital for Women Exporters",
     description: "Comprehensive export financing and equity capital for women-owned businesses targeting international markets through Export Development Canada.",
-    url: "https://grantfinder.pro/blog/edc-women-trade-export-financing",
+    url: "https://fsidigital.ca/blog/edc-women-trade-export-financing",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,7 +29,7 @@ export default function EDCWomenInTradeGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🌍 EDC Women in Trade 2025
+                🌍 EDC Women in Trade 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 EDC Women in Trade Export Financing
@@ -55,7 +55,7 @@ export default function EDCWomenInTradeGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -64,7 +64,7 @@ export default function EDCWomenInTradeGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 EDC Women in Trade 2025 Program Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 EDC Women in Trade 2026 Program Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>$50M Equity Fund:</strong> Direct investments in women-owned export businesses

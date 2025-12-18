@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women Export Trade Grants Canada 2025-2026 | CanExport Funding $75K, International Expansion Support Toronto Vancouver Montreal",
-  description: "Complete 2025-2026 guide to export grants for women entrepreneurs. CanExport SME funding up to $75K, EDC financing, Trade Commissioner Service support, international market development Toronto Vancouver Montreal Calgary Ottawa. Export market research, trade missions, global expansion women-owned businesses Canada.",
-  keywords: "women export grants Canada 2025, CanExport funding women, international trade support, export market development grants, Trade Commissioner Service women entrepreneurs, EDC export financing, global expansion funding women businesses Toronto Vancouver Montreal Calgary",
+  title: "Women Export Trade Grants Canada 2026-2027 | CanExport Funding $75K, International Expansion Support Toronto Vancouver Montreal",
+  description: "Complete 2026-2027 guide to export grants for women entrepreneurs. CanExport SME funding up to $75K, EDC financing, Trade Commissioner Service support, international market development Toronto Vancouver Montreal Calgary Ottawa. Export market research, trade missions, global expansion women-owned businesses Canada.",
+  keywords: "women export grants Canada 2026, CanExport funding women, international trade support, export market development grants, Trade Commissioner Service women entrepreneurs, EDC export financing, global expansion funding women businesses Toronto Vancouver Montreal Calgary",
   openGraph: {
-    title: "Women Export Trade Grants Canada 2025 | CanExport Funding International Expansion",
+    title: "Women Export Trade Grants Canada 2026 | CanExport Funding International Expansion",
     description: "$75K CanExport grants for women exporters expanding globally across all Canadian provinces.",
-    url: "https://grantfinder.pro/blog/women-export-trade-grants-canada",
+    url: "https://fsidigital.ca/blog/women-export-trade-grants-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,13 +29,13 @@ export default function WomenExportTradeGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🌍 Export & International Trade Funding 2025-2026
+                🌍 Export & International Trade Funding 2026-2027
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Women Export Trade Grants Canada: CanExport Funding, International Expansion & Global Market Development
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Comprehensive 2025-2026 guide to export grants and international trade funding for women-owned businesses 
+                Comprehensive 2026-2027 guide to export grants and international trade funding for women-owned businesses 
                 expanding globally from Canada. Access up to $75,000 through CanExport SME program, Export Development 
                 Canada (EDC) financing, Trade Commissioner Service support, and provincial export assistance programs in 
                 Ontario (Toronto, Ottawa, Mississauga), Quebec (Montreal, Quebec City, Laval), British Columbia (Vancouver, 
@@ -63,7 +63,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Export Grants by Province (2025-2026 CanExport Funding Available)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Export Grants by Province (2026-2027 CanExport Funding Available)</h2>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-blue-200 hover:shadow-lg transition-shadow">
@@ -156,7 +156,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
               </div>
 
               <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-6">
-                <h3 className="font-bold text-blue-900 mb-3 text-lg">🔥 High-Demand Export Funding Keywords 2025-2026:</h3>
+                <h3 className="font-bold text-blue-900 mb-3 text-lg">🔥 High-Demand Export Funding Keywords 2026-2027:</h3>
                 <div className="grid md:grid-cols-3 gap-4 text-sm text-blue-800">
                   <div>
                     <strong>CanExport:</strong> CanExport SME funding $75K women, export market development grants, international trade missions women Toronto Vancouver Montreal
@@ -173,7 +173,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-blue-50 border-b-2 border-blue-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -182,7 +182,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-blue-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-blue-800 mb-2">🚀 2025-2026 Women Export Funding Highlights</h3>
+                      <h3 className="text-lg font-bold text-blue-800 mb-2">🚀 2026-2027 Women Export Funding Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700">
                         <div>
                           <strong>CanExport SME:</strong> Up to $75,000 per market (maximum $150,000 total) for export market development activities women-owned Canadian businesses
@@ -257,7 +257,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
         <section id="export-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Export Grants and Trade Financing for Women Entrepreneurs 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Export Grants and Trade Financing for Women Entrepreneurs 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete guide to federal export programs available to women-owned businesses expanding internationally 
                 from all Canadian provinces through CanExport, EDC, and Trade Commissioner Service.
@@ -750,7 +750,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Export Grant Application Success Strategies 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Export Grant Application Success Strategies 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Proven strategies for women entrepreneurs to maximize CanExport approval rates and international 
                 expansion funding success across all Canadian provinces.
@@ -913,7 +913,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
                 Ready to Access Export Funding and Expand Your Business Globally?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get our complete 2025-2026 women export grants guide with CanExport application strategies, Trade 
+                Get our complete 2026-2027 women export grants guide with CanExport application strategies, Trade 
                 Commissioner Service navigator, EDC financing overview, target market selection framework covering 
                 USA, Europe, Asia-Pacific international expansion - or work with our export funding specialists for 
                 expert application support maximizing your grant approval success.

@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Digital & AI Innovation Grants 2025 | $850M+ Funding | Scale AI & CDAP",
+  title: "Canada Digital & AI Innovation Grants 2026 | $850M+ Funding | Scale AI & CDAP",
   description: "Complete guide to Canadian digital and AI innovation grants. Access $850M+ funding through Scale AI, CDAP, AI research initiatives, and 25+ digital transformation programs.",
   keywords: "Canada AI grants, digital transformation funding Canada, Scale AI supercluster, CDAP digital adoption, AI research funding, software innovation grants Canada",
   openGraph: {
-    title: "Canada Digital & AI Innovation Grants 2025 | $850M+ AI Funding",
+    title: "Canada Digital & AI Innovation Grants 2026 | $850M+ AI Funding",
     description: "Access $850M+ in digital and AI funding. Complete guide to Scale AI, CDAP, and 25+ AI innovation grants.",
-    url: "https://grantfinder.pro/blog/canada-digital-ai-innovation-grants",
+    url: "https://fsidigital.ca/blog/canada-digital-ai-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,7 +32,7 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
                 🤖 Digital & AI Innovation Grants
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Canada Digital & AI Innovation Grants 2025
+                Canada Digital & AI Innovation Grants 2026
               </h1>
               <p className="text-xl text-blue-100 mb-8">
                 Access $850M+ in digital and AI innovation funding through 25+ federal and provincial programs. 

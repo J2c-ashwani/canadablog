@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "State Women Business Programs Guide 2025 | Local Government Grants for Female Entrepreneurs",
+  title: "State Women Business Programs Guide 2026 | Local Government Grants for Female Entrepreneurs",
   description: "Complete guide to state and local women business programs. Discover grants, tax incentives, and support programs in all 50 states for women entrepreneurs.",
   keywords: "state women business programs, local women entrepreneur grants, state business grants women, women business development programs, female entrepreneur support",
   openGraph: {
-    title: "State Women Business Programs Guide 2025 | Local Government Grants",
+    title: "State Women Business Programs Guide 2026 | Local Government Grants",
     description: "Complete guide to state and local government programs supporting women entrepreneurs across all 50 states.",
-    url: "https://grantfinder.pro/blog/state-women-business-programs-guide",
+    url: "https://fsidigital.ca/blog/state-women-business-programs-guide",
   },
 }
 

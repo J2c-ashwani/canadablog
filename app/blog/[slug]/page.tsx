@@ -91,7 +91,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
               <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-12">
                 <img
-                  src={`/images/blog/${post.image}`}
+                  src={post.image}
                   alt={post.title}
                   className="w-full h-full object-cover"
                   loading="eager"

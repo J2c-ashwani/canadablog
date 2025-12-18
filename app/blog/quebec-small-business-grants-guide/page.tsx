@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Quebec Small Business Grants 2025 | $1.8B+ Quebec SME Funding",
+  title: "Quebec Small Business Grants 2026 | $1.8B+ Quebec SME Funding",
   description: "Complete guide to Quebec small business grants. Access Investissement Québec SME Fund, Quebec Startup Fund, R&D Tax Credits up to 37.5%, and francophone business support.",
   keywords: "Quebec small business grants, Investissement Quebec SME fund, Quebec startup funding, Quebec R&D tax credits, francophone business grants Quebec",
 }
@@ -26,10 +26,10 @@ export default function QuebecSmallBusinessGrantsGuide() {
                 🏢 Quebec Business Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Quebec Small Business Grants 2025
+                Quebec Small Business Grants 2026
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Access $1.8B+ in Quebec government funding. From Investissement Québec to R&D tax credits 
+                Access $1.8B+ in Quebec government funding. From Investissement Québec to R&D tax credits
                 up to 37.5% - complete guide to Quebec's generous business support ecosystem.
               </p>
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
@@ -71,7 +71,7 @@ export default function QuebecSmallBusinessGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">Major Quebec Small Business Programs</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Investissement Quebec SME Fund */}
                 <Card className="border-2 border-blue-200">
@@ -229,7 +229,7 @@ export default function QuebecSmallBusinessGrantsGuide() {
                 Maximize Your Quebec Business Funding Success
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Quebec offers some of Canada's most generous business incentives, but navigating the application process 
+                Quebec offers some of Canada's most generous business incentives, but navigating the application process
                 requires local expertise. Our bilingual Quebec specialists have secured over $12M for local businesses.
               </p>
               <div className="bg-white/10 rounded-lg p-6 mb-8">

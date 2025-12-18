@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Agriculture & Agri-Food Grants 2025 | $2.3B+ Agricultural Innovation Funding Programs Guide",
+  title: "Canada Agriculture & Agri-Food Grants 2026 | $2.3B+ Agricultural Innovation Funding Programs Guide",
   description: "Complete guide to Canada's agriculture and agri-food grants. Access AgriInnovate, SCAP, Clean Technology programs, and 32+ programs offering $2.3B+ for agricultural excellence.",
-  keywords: "Canada agriculture grants, agri-food funding, AgriInnovate program, agricultural clean technology, farm grants Canada 2025",
+  keywords: "Canada agriculture grants, agri-food funding, AgriInnovate program, agricultural clean technology, farm grants Canada 2026",
   openGraph: {
-    title: "Canada Agriculture & Agri-Food Grants 2025 | $2.3B+ Agricultural Innovation Funding Guide",
+    title: "Canada Agriculture & Agri-Food Grants 2026 | $2.3B+ Agricultural Innovation Funding Guide",
     description: "Comprehensive guide to Canada's agriculture and agri-food funding ecosystem with 32+ programs offering $2.3B+ for innovation, sustainability, and growth.",
-    url: "https://grantfinder.pro/blog/canada-agriculture-agrifood-grants-guide",
+    url: "https://fsidigital.ca/blog/canada-agriculture-agrifood-grants-guide",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -156,7 +156,7 @@ export default function CanadaAgricultureAgrifoodGrantsGuidePage() {
                         </ul>
                       </div>
                       <div>
-                        <h5 className="font-semibold mb-2">2025 Applications Open:</h5>
+                        <h5 className="font-semibold mb-2">2026 Applications Open:</h5>
                         <ul className="text-sm text-gray-600 space-y-1">
                           <li>• Federal programming through AAFC</li>
                           <li>• Provincial cost-shared programs</li>
@@ -488,11 +488,11 @@ export default function CanadaAgricultureAgrifoodGrantsGuidePage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Canadian Agri-Food Automation and Intelligence Network offering four 2025 funding competitions across specialized agricultural sectors with total funding up to $9M.
+                      Canadian Agri-Food Automation and Intelligence Network offering four 2026 funding competitions across specialized agricultural sectors with total funding up to $9M.
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h5 className="font-semibold mb-2 text-indigo-700">2025 Funding Competitions:</h5>
+                        <h5 className="font-semibold mb-2 text-indigo-700">2026 Funding Competitions:</h5>
                         <ul className="text-sm text-gray-600 space-y-1">
                           <li>• <strong>Broadacre Farming:</strong> $3M total, max $600K per project</li>
                           <li>• <strong>Small Acre Farming:</strong> $2M total, max $500K per project</li>

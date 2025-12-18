@@ -39,7 +39,7 @@ export function NewsletterSignup({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           email,
           name: ''
         }),
@@ -61,7 +61,7 @@ export function NewsletterSignup({
       // Dynamic import to avoid SSR issues
       const jsPDF = (await import('jspdf')).default;
       const { generateGrantGuidePDF } = await import('@/lib/generate-pdf');
-      
+
       const doc = generateGrantGuidePDF(email);
       doc.save('Ultimate-Grant-Application-Guide.pdf');
     } catch (error) {
@@ -76,7 +76,7 @@ export function NewsletterSignup({
         <CardContent className="pt-6">
           <div className="text-center">
             <CheckCircle className="mx-auto h-12 w-12 text-green-600 mb-4" />
-            <h3 className="text-lg font-semibold text-green-800 mb-2">Welcome to Grant Finder Pro!</h3>
+            <h3 className="text-lg font-semibold text-green-800 mb-2">Welcome to FSI Digital!</h3>
             <p className="text-green-700 mb-4">Check your email for your free PDF guide and weekly grant updates.</p>
             {showPdfOffer && (
               <Button

@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "AI & Machine Learning Grants 2025-2026 | $305K NSF SBIR, $100M AI Research Institutes, DOD AI Applications Non-Dilutive Funding",
-  description: "Complete 2025-2026 guide to AI and machine learning grants. NSF SBIR Phase I $305K, Phase II $1.25M, National AI Research Institutes $100M investment, NAIRR $35M operations center, DOD AI applications supporting computer vision, NLP, ML platforms, generative AI, and predictive analytics with zero equity funding.",
-  keywords: "AI grants 2025, machine learning startup grants, NSF AI research institutes, computer vision grants, NLP funding, generative AI grants, AI research funding $100M, NAIRR operations center, DOD AI applications, NSF SBIR AI grants $305K, neural networks grants, deep learning funding",
+  title: "AI & Machine Learning Grants 2026-2027 | $305K NSF SBIR, $100M AI Research Institutes, DOD AI Applications Non-Dilutive Funding",
+  description: "Complete 2026-2027 guide to AI and machine learning grants. NSF SBIR Phase I $305K, Phase II $1.25M, National AI Research Institutes $100M investment, NAIRR $35M operations center, DOD AI applications supporting computer vision, NLP, ML platforms, generative AI, and predictive analytics with zero equity funding.",
+  keywords: "AI grants 2026, machine learning startup grants, NSF AI research institutes, computer vision grants, NLP funding, generative AI grants, AI research funding $100M, NAIRR operations center, DOD AI applications, NSF SBIR AI grants $305K, neural networks grants, deep learning funding",
   openGraph: {
-    title: "AI & ML Grants 2025 | $305K NSF SBIR + $100M Research Institutes",
+    title: "AI & ML Grants 2026 | $305K NSF SBIR + $100M Research Institutes",
     description: "Complete guide to AI and machine learning grants from NSF, NAIRR, DOD, and state programs.",
-    url: "https://grantfinder.pro/blog/ai-machine-learning-grants",
-    images: ["/api/placeholder/1200/630"],
+    url: "https://fsidigital.ca/blog/ai-machine-learning-grants",
+    images: ["/images/blog/usa-grants-theme.png"],
   },
 }
 
@@ -31,7 +31,7 @@ export default function AIMachineLearningGrantsPage() {
               {/* Badge */}
               <div className="flex justify-center mb-6">
                 <Badge className="bg-white/20 text-white border-white/30 px-4 py-2 text-sm font-medium backdrop-blur-sm">
-                  🤖 AI & Machine Learning Grants 2025-2026
+                  🤖 AI & Machine Learning Grants 2026-2027
                 </Badge>
               </div>
 
@@ -93,7 +93,7 @@ export default function AIMachineLearningGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
                 Federal funding opportunities for artificial intelligence, machine learning platforms, computer vision, NLP, and generative AI innovations.
               </p>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 {/* NSF SBIR for AI */}
                 <Card className="border-2 border-blue-200 hover:shadow-xl transition-all hover:-translate-y-1">
@@ -176,7 +176,7 @@ export default function AIMachineLearningGrantsPage() {
                 {/* NAIRR */}
                 <Card className="border-2 border-cyan-200 hover:shadow-xl transition-all hover:-translate-y-1 relative">
                   <div className="absolute -top-3 -right-3 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                    NEW 2025
+                    NEW 2026
                   </div>
                   <CardHeader className="bg-gradient-to-br from-cyan-50 to-blue-50">
                     <div className="flex items-center mb-2">
@@ -227,7 +227,7 @@ export default function AIMachineLearningGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 NSF and DOD grants support a wide range of artificial intelligence and machine learning innovations.
               </p>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <Card className="border-l-4 border-l-blue-500 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
@@ -308,7 +308,7 @@ export default function AIMachineLearningGrantsPage() {
           </div>
         </section>
 
-        {/* 2025 Updates */}
+        {/* 2026 Updates */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
@@ -318,18 +318,18 @@ export default function AIMachineLearningGrantsPage() {
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-blue-900 mb-2">What's New in AI Funding 2025-2026</h3>
+                    <h3 className="text-2xl font-bold text-blue-900 mb-2">What's New in AI Funding 2026-2027</h3>
                     <p className="text-gray-700">Major NSF investments and new programs launched for AI researchers and startups</p>
                   </div>
                 </div>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white rounded-lg p-5 border border-blue-100">
                     <div className="flex items-center mb-2">
                       <DollarSign className="w-5 h-5 text-green-600 mr-2" />
                       <h4 className="font-bold text-gray-900">$100M AI Institutes Investment</h4>
                     </div>
-                    <p className="text-sm text-gray-700">NSF announced $100M investment in 5 National AI Research Institutes (July 2025) covering mental health, materials discovery, STEM education, human-AI collaboration, and drug development.</p>
+                    <p className="text-sm text-gray-700">NSF announced $100M investment in 5 National AI Research Institutes (July 2026) covering mental health, materials discovery, STEM education, human-AI collaboration, and drug development.</p>
                   </div>
 
                   <div className="bg-white rounded-lg p-5 border border-blue-100">
@@ -337,7 +337,7 @@ export default function AIMachineLearningGrantsPage() {
                       <Cpu className="w-5 h-5 text-blue-600 mr-2" />
                       <h4 className="font-bold text-gray-900">NAIRR Operations Center Launch</h4>
                     </div>
-                    <p className="text-sm text-gray-700">$35M over 5 years to establish National AI Research Resource Operations Center (announced September 2025). Transitions pilot to permanent program with centralized access portal.</p>
+                    <p className="text-sm text-gray-700">$35M over 5 years to establish National AI Research Resource Operations Center (announced September 2026). Transitions pilot to permanent program with centralized access portal.</p>
                   </div>
 
                   <div className="bg-white rounded-lg p-5 border border-blue-100">
@@ -369,7 +369,7 @@ export default function AIMachineLearningGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Everything you need to know about NSF SBIR for AI, AI Research Institutes, NAIRR, DOD programs, and state initiatives.
               </p>
-              
+
               <div className="space-y-8">
                 {/* NSF SBIR for AI */}
                 <Card id="sbir-ai-details" className="border-2 border-blue-200">
@@ -403,7 +403,7 @@ export default function AIMachineLearningGrantsPage() {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="bg-white p-4 rounded-lg border border-gray-200">
                           <h5 className="font-semibold text-gray-800 mb-3">AI Technology Focus Areas:</h5>
                           <ul className="space-y-2 text-sm text-gray-700">
@@ -426,7 +426,7 @@ export default function AIMachineLearningGrantsPage() {
                           </ul>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-bold text-xl mb-4 text-gray-800">AI Success Stories</h4>
                         <div className="space-y-4">
@@ -544,7 +544,7 @@ export default function AIMachineLearningGrantsPage() {
                           </div>
                         </div>
                         <p className="text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
-                          Announced July 2025, these institutes translate cutting-edge AI research into practical applications across mental health, materials discovery, STEM education, human-AI collaboration, and drug development. Aligns with White House AI Action Plan.
+                          Announced July 2026, these institutes translate cutting-edge AI research into practical applications across mental health, materials discovery, STEM education, human-AI collaboration, and drug development. Aligns with White House AI Action Plan.
                         </p>
                       </div>
                       <div>
@@ -603,7 +603,7 @@ export default function AIMachineLearningGrantsPage() {
                           </div>
                         </div>
                         <p className="text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
-                          Announced September 2025, NAIRR Operations Center transitions successful pilot to permanent national program. Provides democratized access to computational resources, datasets, AI models, and training for researchers nationwide.
+                          Announced September 2026, NAIRR Operations Center transitions successful pilot to permanent national program. Provides democratized access to computational resources, datasets, AI models, and training for researchers nationwide.
                         </p>
                       </div>
                       <div>
@@ -695,7 +695,7 @@ export default function AIMachineLearningGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 Proven tactics to increase your chances of winning NSF and DOD AI funding.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-2 border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -815,7 +815,7 @@ export default function AIMachineLearningGrantsPage() {
               <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
                 Download our free AI grants guide or get personalized help from specialists who understand AI research funding.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 <Card className="bg-white/10 backdrop-blur border-2 border-white/20 hover:bg-white/15 transition-all">
                   <CardContent className="pt-6 text-center">

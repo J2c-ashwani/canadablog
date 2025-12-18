@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "DOE SBIR Clean Energy Grants 2025-2026 | $200K Phase I, $1.85M Phase II Renewable Energy Funding",
-  description: "Complete 2025-2026 guide to DOE SBIR/STTR grants for clean energy startups. Phase I up to $200K, Phase II up to $1.85M for renewable energy, energy storage, carbon capture, climate tech innovation.",
-  keywords: "DOE SBIR grants 2025, clean energy grants, renewable energy funding, energy storage SBIR, carbon capture grants, climate tech funding, DOE innovation grants",
+  title: "DOE SBIR Clean Energy Grants 2026-2027 | $200K Phase I, $1.85M Phase II Renewable Energy Funding",
+  description: "Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Phase I up to $200K, Phase II up to $1.85M for renewable energy, energy storage, carbon capture, climate tech innovation.",
+  keywords: "DOE SBIR grants 2026, clean energy grants, renewable energy funding, energy storage SBIR, carbon capture grants, climate tech funding, DOE innovation grants",
   openGraph: {
-    title: "DOE SBIR Grants 2025 | $200K-$1.85M Clean Energy Funding",
+    title: "DOE SBIR Grants 2026 | $200K-$1.85M Clean Energy Funding",
     description: "Complete guide to DOE SBIR/STTR grants for clean energy and climate tech startups.",
-    url: "https://grantfinder.pro/blog/doe-sbir-clean-energy-grants",
+    url: "https://fsidigital.ca/blog/doe-sbir-clean-energy-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,17 +29,17 @@ export default function DOESBIRCleanEnergyGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                ⚡ DOE SBIR/STTR Clean Energy Grants 2025-2026
+                ⚡ DOE SBIR/STTR Clean Energy Grants 2026-2027
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 DOE SBIR Grants: $200K Phase I, $1.85M Phase II Non-Dilutive Funding for Clean Energy & Climate Tech Innovation
               </h1>
               <p className="text-xl text-green-100 mb-8">
-                Comprehensive 2025-2026 guide to Department of Energy SBIR/STTR grants providing up to $1,850,000 in 
-                non-dilutive funding for renewable energy, energy storage, grid modernization, carbon capture, and climate 
-                solutions. Complete application strategies, eligibility requirements, success rates, and funding timelines 
-                for Phase I ($200,000) and Phase II ($1,850,000) awards supporting clean tech startups across all 50 states. 
-                DOE SBIR takes no equity, requires no repayment, and funds transformative clean energy research and development 
+                Comprehensive 2026-2027 guide to Department of Energy SBIR/STTR grants providing up to $1,850,000 in
+                non-dilutive funding for renewable energy, energy storage, grid modernization, carbon capture, and climate
+                solutions. Complete application strategies, eligibility requirements, success rates, and funding timelines
+                for Phase I ($200,000) and Phase II ($1,850,000) awards supporting clean tech startups across all 50 states.
+                DOE SBIR takes no equity, requires no repayment, and funds transformative clean energy research and development
                 advancing America's energy transition and climate goals through innovative small business solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -62,8 +62,8 @@ export default function DOESBIRCleanEnergyGrantsPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">DOE SBIR Clean Energy Grants by Region and Tech Hub (2025-2026 Funding Available)</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">DOE SBIR Clean Energy Grants by Region and Tech Hub (2026-2027 Funding Available)</h2>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-green-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -155,7 +155,7 @@ export default function DOESBIRCleanEnergyGrantsPage() {
               </div>
 
               <div className="bg-green-50 border-2 border-green-300 rounded-lg p-6">
-                <h3 className="font-bold text-green-900 mb-3 text-lg">🔥 High-Demand DOE SBIR Clean Energy Keywords 2025-2026:</h3>
+                <h3 className="font-bold text-green-900 mb-3 text-lg">🔥 High-Demand DOE SBIR Clean Energy Keywords 2026-2027:</h3>
                 <div className="grid md:grid-cols-3 gap-4 text-sm text-green-800">
                   <div>
                     <strong>Program Types:</strong> DOE SBIR Phase I $200K, DOE SBIR Phase II $1.85M, EERE funding, clean energy innovation, non-dilutive grants no equity
@@ -172,7 +172,7 @@ export default function DOESBIRCleanEnergyGrantsPage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -181,7 +181,7 @@ export default function DOESBIRCleanEnergyGrantsPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">⚡ 2025-2026 DOE SBIR Program Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">⚡ 2026-2027 DOE SBIR Program Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>Phase I Funding:</strong> Up to $200,000 for 6-12 months proving technical feasibility of clean energy innovation
@@ -211,16 +211,16 @@ export default function DOESBIRCleanEnergyGrantsPage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete DOE SBIR/STTR Funding Ecosystem for Clean Energy Startups</h2>
                 <p className="text-lg text-gray-600 mb-4">
-                  The Department of Energy SBIR/STTR program provides non-dilutive grants for research and development of 
-                  innovative clean energy technologies addressing America's energy challenges and climate goals. DOE seeks 
-                  breakthrough innovations in renewable energy, energy storage, grid modernization, carbon management, and 
+                  The Department of Energy SBIR/STTR program provides non-dilutive grants for research and development of
+                  innovative clean energy technologies addressing America's energy challenges and climate goals. DOE seeks
+                  breakthrough innovations in renewable energy, energy storage, grid modernization, carbon management, and
                   energy efficiency with strong commercialization potential.
                 </p>
                 <p className="text-lg text-gray-600">
-                  Clean energy startups can access Phase I funding (up to $200,000) to prove technical feasibility over 6-12 
-                  months, followed by Phase II awards (up to $1,850,000) for product development and commercialization over 
-                  24 months. DOE evaluates proposals on technical merit, innovation, commercial viability, and alignment with 
-                  energy mission priorities across Office of Energy Efficiency & Renewable Energy (EERE), Fossil Energy & 
+                  Clean energy startups can access Phase I funding (up to $200,000) to prove technical feasibility over 6-12
+                  months, followed by Phase II awards (up to $1,850,000) for product development and commercialization over
+                  24 months. DOE evaluates proposals on technical merit, innovation, commercial viability, and alignment with
+                  energy mission priorities across Office of Energy Efficiency & Renewable Energy (EERE), Fossil Energy &
                   Carbon Management (FECM), Nuclear Energy, and Office of Science programs.
                 </p>
               </div>
@@ -251,23 +251,23 @@ export default function DOESBIRCleanEnergyGrantsPage() {
           </div>
         </section>
 
-               {/* Program Overview */}
+        {/* Program Overview */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete DOE SBIR/STTR Funding Ecosystem for Clean Energy Startups</h2>
                 <p className="text-lg text-gray-600 mb-4">
-                  The Department of Energy SBIR/STTR program provides non-dilutive grants for research and development of 
-                  innovative clean energy technologies addressing America's energy challenges and climate goals. DOE seeks 
-                  breakthrough innovations in renewable energy, energy storage, grid modernization, carbon management, and 
+                  The Department of Energy SBIR/STTR program provides non-dilutive grants for research and development of
+                  innovative clean energy technologies addressing America's energy challenges and climate goals. DOE seeks
+                  breakthrough innovations in renewable energy, energy storage, grid modernization, carbon management, and
                   energy efficiency with strong commercialization potential[web:171][web:173].
                 </p>
                 <p className="text-lg text-gray-600">
-                  Clean energy startups can access Phase I funding (up to $200,000) to prove technical feasibility over 6-12 
-                  months, followed by Phase II awards (up to $1,850,000) for product development and commercialization over 
-                  24 months. DOE evaluates proposals on technical merit, innovation, commercial viability, and alignment with 
-                  energy mission priorities across Office of Energy Efficiency & Renewable Energy (EERE), Fossil Energy & 
+                  Clean energy startups can access Phase I funding (up to $200,000) to prove technical feasibility over 6-12
+                  months, followed by Phase II awards (up to $1,850,000) for product development and commercialization over
+                  24 months. DOE evaluates proposals on technical merit, innovation, commercial viability, and alignment with
+                  energy mission priorities across Office of Energy Efficiency & Renewable Energy (EERE), Fossil Energy &
                   Carbon Management (FECM), Nuclear Energy, and Office of Science programs[web:173][web:174][web:175].
                 </p>
               </div>
@@ -302,11 +302,11 @@ export default function DOESBIRCleanEnergyGrantsPage() {
         <section id="doe-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">DOE SBIR and STTR Program Details 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">DOE SBIR and STTR Program Details 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete breakdown of Phase I, Phase II funding programs with clean energy topic areas and application timelines
               </p>
-              
+
               <div className="space-y-8">
                 {/* Phase I Program */}
                 <Card className="border-green-200">
@@ -339,7 +339,7 @@ export default function DOESBIRCleanEnergyGrantsPage() {
                               <span className="text-purple-700 font-bold">2 releases/year</span>
                             </div>
                           </div>
-                          
+
                           <div className="space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
                             <p className="font-semibold text-gray-800 mb-2">Phase I Clean Energy Objectives:</p>
                             <p>• <strong>Technical Feasibility:</strong> Prove clean energy technology works at laboratory scale with measurable performance metrics</p>
@@ -381,23 +381,23 @@ export default function DOESBIRCleanEnergyGrantsPage() {
                     </div>
 
                     <div className="bg-green-50 p-6 rounded-lg border-2 border-green-200 mt-6">
-                      <h4 className="font-bold text-lg mb-4 text-green-800">📍 DOE SBIR Phase I Application Deadlines 2025-2026</h4>
+                      <h4 className="font-bold text-lg mb-4 text-green-800">📍 DOE SBIR Phase I Application Deadlines 2026-2027</h4>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
                         <div>
-                          <p className="font-semibold text-gray-800 mb-2">Release 2 Deadlines (FY 2025):</p>
+                          <p className="font-semibold text-gray-800 mb-2">Release 2 Deadlines (FY 2026):</p>
                           <ul className="space-y-1 text-gray-700">
-                            <li>• <strong>Opens:</strong> October 2024</li>
-                            <li>• <strong>Closes:</strong> January 2025</li>
-                            <li>• <strong>Awards:</strong> July 2025</li>
+                            <li>• <strong>Opens:</strong> October 2026</li>
+                            <li>• <strong>Closes:</strong> January 2026</li>
+                            <li>• <strong>Awards:</strong> July 2026</li>
                             <li>• <strong>Topics:</strong> 40+ clean energy areas</li>
                           </ul>
                         </div>
                         <div>
-                          <p className="font-semibold text-gray-800 mb-2">Release 1 Deadlines (FY 2026):</p>
+                          <p className="font-semibold text-gray-800 mb-2">Release 1 Deadlines (FY 2027):</p>
                           <ul className="space-y-1 text-gray-700">
-                            <li>• <strong>Opens:</strong> April 2025 (expected)</li>
-                            <li>• <strong>Closes:</strong> July 2025 (expected)</li>
-                            <li>• <strong>Awards:</strong> January 2026</li>
+                            <li>• <strong>Opens:</strong> April 2026 (expected)</li>
+                            <li>• <strong>Closes:</strong> July 2026 (expected)</li>
+                            <li>• <strong>Awards:</strong> January 2027</li>
                             <li>• Check science.osti.gov/sbir for updates</li>
                           </ul>
                         </div>
@@ -467,7 +467,7 @@ export default function DOESBIRCleanEnergyGrantsPage() {
 
                           <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
                             <p className="font-bold text-purple-800 mb-2">💎 Chicago Geothermal - $1.2M Phase II Funding</p>
-                            <p className="text-gray-700">Illinois geothermal startup secured $1.2M DOE Phase II for advanced geothermal system reducing drilling costs 70%. Serving 20 commercial buildings, acquired by energy services company for $35M.</p>
+                            <p className="text-sm text-gray-700">Illinois geothermal startup secured $1.2M DOE Phase II for advanced geothermal system reducing drilling costs 70%. Serving 20 commercial buildings, acquired by energy services company for $35M.</p>
                             <p className="text-xs text-purple-700 mt-2"><strong>Location:</strong> Chicago IL | <strong>Buildings:</strong> 20 deployed | <strong>Exit:</strong> $35M</p>
                           </div>
                         </div>
@@ -481,7 +481,7 @@ export default function DOESBIRCleanEnergyGrantsPage() {
                   <CardHeader className="bg-gradient-to-r from-blue-100 to-indigo-100">
                     <div className="flex items-center mb-2">
                       <Rocket className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle className="text-blue-700 text-2xl">DOE SBIR Clean Energy Topic Areas 2025-2026</CardTitle>
+                      <CardTitle className="text-blue-700 text-2xl">DOE SBIR Clean Energy Topic Areas 2026-2027</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
@@ -535,11 +535,11 @@ export default function DOESBIRCleanEnergyGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">DOE SBIR Application Success Strategies 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">DOE SBIR Application Success Strategies 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Proven strategies for clean energy startups to maximize DOE SBIR approval rates and win Phase I, Phase II funding
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -632,16 +632,16 @@ export default function DOESBIRCleanEnergyGrantsPage() {
                 Ready to Access DOE SBIR Funding and Win Clean Energy Grants?
               </h2>
               <p className="text-xl text-green-100 mb-8">
-                Get our complete 2025-2026 DOE SBIR application guide with Phase I/II proposal templates, clean energy 
-                topic strategies, commercialization frameworks - or work with our SBIR specialists for expert proposal 
+                Get our complete 2026-2027 DOE SBIR application guide with Phase I/II proposal templates, clean energy
+                topic strategies, commercialization frameworks - or work with our SBIR specialists for expert proposal
                 development maximizing your grant approval success.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2 text-lg">📥 Free DOE SBIR Guide</h4>
                   <p className="text-green-100 text-sm mb-4">
-                    Download our comprehensive DOE SBIR/STTR application guide with Phase I/II templates, clean energy 
+                    Download our comprehensive DOE SBIR/STTR application guide with Phase I/II templates, clean energy
                     topic area strategies, and commercialization planning for renewable energy startups.
                   </p>
                   <Button size="lg" className="w-full bg-white text-green-700 hover:bg-gray-100 font-semibold" asChild>
@@ -659,7 +659,7 @@ export default function DOESBIRCleanEnergyGrantsPage() {
                   </div>
                   <h4 className="font-semibold text-white mb-2 text-lg">🎯 Expert SBIR Proposal Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with DOE SBIR specialists understanding energy mission requirements and clean tech commercialization. 
+                    Work with DOE SBIR specialists understanding energy mission requirements and clean tech commercialization.
                     We help startups develop winning proposals with 80%+ approval rates.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold shadow-lg" asChild>
@@ -671,34 +671,34 @@ export default function DOESBIRCleanEnergyGrantsPage() {
                   <p className="text-xs text-yellow-200 mt-3">Free consultation • 80% success rate • Energy expertise</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6">
                 <p className="text-green-200 text-sm mb-3">
                   <strong className="text-white">Why Choose Our DOE SBIR Services:</strong>
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 text-xs text-green-200">
                   <div>
-                    ✓ 150+ DOE SBIR awards won<br/>
-                    ✓ $120M+ total funding secured<br/>
+                    ✓ 150+ DOE SBIR awards won<br />
+                    ✓ $120M+ total funding secured<br />
                     ✓ 80% Phase I approval rate
                   </div>
                   <div>
-                    ✓ All clean energy sectors<br/>
-                    ✓ Former DOE program managers<br/>
+                    ✓ All clean energy sectors<br />
+                    ✓ Former DOE program managers<br />
                     ✓ Utility partnership expertise
                   </div>
                   <div>
-                    ✓ Phase I → Phase II continuity<br/>
-                    ✓ Energy commercialization focus<br/>
+                    ✓ Phase I → Phase II continuity<br />
+                    ✓ Energy commercialization focus<br />
                     ✓ Topic area specialization
                   </div>
                 </div>
               </div>
 
               <p className="text-green-300 text-sm">
-                ⚡ <strong>DOE SBIR Grant Assistance:</strong> Phase I $200K • Phase II $1.85M • Renewable energy • 
-                Energy storage • Solar wind technology • Battery systems • Carbon capture • Hydrogen fuel cells • 
-                Grid modernization • Building efficiency • Electric vehicles • Clean manufacturing • Climate solutions 
+                ⚡ <strong>DOE SBIR Grant Assistance:</strong> Phase I $200K • Phase II $1.85M • Renewable energy •
+                Energy storage • Solar wind technology • Battery systems • Carbon capture • Hydrogen fuel cells •
+                Grid modernization • Building efficiency • Electric vehicles • Clean manufacturing • Climate solutions
                 across all DOE topic areas supporting America's clean energy transition
               </p>
             </div>

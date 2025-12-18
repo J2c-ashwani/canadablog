@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "BC Small Business Grants 2025 | $1.3B+ British Columbia SME Funding",
+  title: "BC Small Business Grants 2026 | $1.3B+ British Columbia SME Funding",
   description: "Complete guide to BC small business grants. Access Small Business Recovery Grant, BC Small Business Venture Capital, CleanBC Industry Fund, and Indigenous business investment programs.",
   keywords: "BC small business grants, British Columbia business funding, Small Business Recovery Grant BC, CleanBC Industry Fund, BC Small Business Venture Capital",
 }
@@ -26,7 +26,7 @@ export default function BCSmallBusinessGrantsGuide() {
                 🏔️ BC Business Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                BC Small Business Grants 2025
+                BC Small Business Grants 2026
               </h1>
               <p className="text-xl text-green-100 mb-8">
                 Access $1.3B+ in BC government funding for small businesses. From recovery grants to 

@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Prairie Provinces Innovation Grants 2025 | $580M+ AgriFood, Mining & Renewable Energy Funding",
+  title: "Prairie Provinces Innovation Grants 2026 | $580M+ AgriFood, Mining & Renewable Energy Funding",
   description: "Complete guide to Prairie innovation grants. Access $580M+ through Saskatchewan Innovation, Manitoba Research, PrairiesCan funding, and agri-food, mining technology, renewable energy programs.",
   keywords: "Prairie provinces innovation grants, Saskatchewan innovation funding, Manitoba research grants, PrairiesCan funding, agri-food innovation Prairie, mining technology Saskatchewan, renewable energy Manitoba",
   openGraph: {
-    title: "Prairie Provinces Innovation Grants 2025 | $580M+ AgriFood & Mining Tech",
+    title: "Prairie Provinces Innovation Grants 2026 | $580M+ AgriFood & Mining Tech",
     description: "Access $580M+ in Prairie innovation funding. Complete guide to Saskatchewan, Manitoba, PrairiesCan programs.",
-    url: "https://grantfinder.pro/blog/prairie-provinces-innovation-grants",
+    url: "https://fsidigital.ca/blog/prairie-provinces-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,7 +32,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                 🌾 Prairie Provinces Innovation Support
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Prairie Provinces Innovation Grants & Funding 2025
+                Prairie Provinces Innovation Grants & Funding 2026
               </h1>
               <p className="text-xl text-amber-100 mb-8">
                 Access $580M+ in Prairie provinces innovation funding through Saskatchewan Innovation Place, Manitoba Research Council, 

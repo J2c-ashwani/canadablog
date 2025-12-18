@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Quebec Government Business Grants 2025 | Aide aux Entreprises & Provincial Funding Programs Guide",
+  title: "Quebec Government Business Grants 2026 | Aide aux Entreprises & Provincial Funding Programs Guide",
   description: "Complete guide to Quebec government business grants and aide aux entreprises provincial funding. Access Investissement Quebec, ESSOR, PSCE programs, and R&D tax credits for Quebec businesses.",
-  keywords: "Quebec government business grants, aide aux entreprises Quebec, Investissement Quebec ESSOR, PSCE Quebec funding, Quebec R&D tax credits, Quebec provincial funding programs 2025",
+  keywords: "Quebec government business grants, aide aux entreprises Quebec, Investissement Quebec ESSOR, PSCE Quebec funding, Quebec R&D tax credits, Quebec provincial funding programs 2026",
   openGraph: {
-    title: "Quebec Government Business Grants 2025 | Aide aux Entreprises Provincial Funding Guide",
+    title: "Quebec Government Business Grants 2026 | Aide aux Entreprises Provincial Funding Guide",
     description: "Comprehensive guide to Quebec provincial business grants offering aide aux entreprises funding for innovation, commercialization, and international expansion.",
-    url: "https://grantfinder.pro/blog/quebec-government-business-grants",
+    url: "https://fsidigital.ca/blog/quebec-government-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -35,8 +35,8 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
                 Quebec Government Business Grants & Aide aux Entreprises
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Quebec's comprehensive provincial business support ecosystem offering grants, loans, and tax credits 
-                from $5,000 to $15M+ through Investissement Québec, ESSOR, PSCE programs, and R&D initiatives 
+                Quebec's comprehensive provincial business support ecosystem offering grants, loans, and tax credits
+                from $5,000 to $15M+ through Investissement Québec, ESSOR, PSCE programs, and R&D initiatives
                 supporting innovation, commercialization, and international expansion in Canada's largest francophone economy.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -81,13 +81,13 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Quebec as Innovation & Commercialization Leader</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Quebec represents Canada's second-largest provincial economy and North America's largest francophone 
-                  business environment, with sophisticated support through Investissement Québec, comprehensive R&D tax 
-                  credits, and international commercialization programs. The province delivers comprehensive aide aux 
-                  entreprises through ESSOR productivity programs, PSCE commercialization support, and strategic partnerships 
+                  Quebec represents Canada's second-largest provincial economy and North America's largest francophone
+                  business environment, with sophisticated support through Investissement Québec, comprehensive R&D tax
+                  credits, and international commercialization programs. The province delivers comprehensive aide aux
+                  entreprises through ESSOR productivity programs, PSCE commercialization support, and strategic partnerships
                   with CED-Quebec, creating Canada's most innovation-focused provincial business ecosystem.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">Provincial Policy Priorities</h4>
@@ -98,7 +98,7 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
                       <li>• Francophone business leadership and cultural industries</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-green-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-green-800">Strategic Provincial Integration</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -119,7 +119,7 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Quebec Provincial Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* ESSOR Program */}
                 <Card className="border-blue-200">
@@ -149,8 +149,8 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Quebec's flagship productivity and investment acceleration program supporting manufacturing, 
-                      wholesale/retail trade businesses in productivity improvements, environmental impact reduction, 
+                      Quebec's flagship productivity and investment acceleration program supporting manufacturing,
+                      wholesale/retail trade businesses in productivity improvements, environmental impact reduction,
                       and internationalization strategies.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
@@ -213,7 +213,7 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Comprehensive commercialization and export support program helping Quebec businesses 
+                      Comprehensive commercialization and export support program helping Quebec businesses
                       expand market presence domestically and internationally through strategic market development initiatives.
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
@@ -268,8 +268,8 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Quebec's comprehensive R&D tax credit system providing up to 30% refundable tax credits 
-                      for research and development activities, positioning Quebec as Canada's most generous 
+                      Quebec's comprehensive R&D tax credit system providing up to 30% refundable tax credits
+                      for research and development activities, positioning Quebec as Canada's most generous
                       R&D support jurisdiction.
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
@@ -324,8 +324,8 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Provincial innovation management program supporting the hiring of innovation and 
-                      commercialization managers to accelerate technology transfer and business development 
+                      Provincial innovation management program supporting the hiring of innovation and
+                      commercialization managers to accelerate technology transfer and business development
                       in Quebec's professional, scientific, and technical services sectors.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
@@ -388,8 +388,8 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Federal regional development programs delivered through Canada Economic Development for 
-                      Quebec Regions (CED) supporting business growth, innovation, and economic diversification 
+                      Federal regional development programs delivered through Canada Economic Development for
+                      Quebec Regions (CED) supporting business growth, innovation, and economic diversification
                       across Quebec's diverse regional economies.
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
@@ -458,7 +458,7 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Quebec Provincial Policy Integration</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-blue-700">🇫🇷 Francophone Business Leadership Integration:</h4>
@@ -481,7 +481,7 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">🚀 Innovation & R&D Excellence:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -516,10 +516,10 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
                 Ready to Access Quebec Provincial Business Funding?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get the complete Quebec provincial application guide or work with our Quebec business funding specialists 
+                Get the complete Quebec provincial application guide or work with our Quebec business funding specialists
                 who have secured $14M+ in provincial grants with expertise across all Quebec aide aux entreprises programs.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">DIY Quebec Approach</h4>
@@ -546,7 +546,7 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-blue-200 text-sm mt-6">
                 88% success rate for Quebec applications • Average funding secured: $385K • All Quebec programs expertise
               </p>

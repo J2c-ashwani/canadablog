@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Department of Energy Clean Energy Grants 2025",
     description: "Complete guide to securing DOE clean energy grants and renewable energy funding.",
-    url: "https://grantfinder.pro/guides/apply-doe-clean-energy-grants",
+    url: "https://fsidigital.ca/guides/apply-doe-clean-energy-grants",
   },
 }
 

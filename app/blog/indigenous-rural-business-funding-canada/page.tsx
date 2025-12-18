@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Indigenous & Rural Business Funding Canada 2025 | $500K+ Aboriginal Business Grants & Rural Development",
+  title: "Indigenous & Rural Business Funding Canada 2026 | $500K+ Aboriginal Business Grants & Rural Development",
   description: "Complete guide to Indigenous business grants and rural business funding in Canada. Access Aboriginal Entrepreneurship Program funding, NACCA loans, rural development grants, and regional business support across all Canadian provinces.",
   keywords: "Indigenous business grants Canada, Aboriginal business funding, NACCA business loans, rural business grants Canada, First Nations business funding, Métis entrepreneur grants, Inuit business support, rural development funding Canada, regional business grants, Indigenous entrepreneur program Canada",
   openGraph: {
-    title: "Indigenous & Rural Business Funding Canada 2025 | $500K+ Aboriginal & Rural Business Grants",
+    title: "Indigenous & Rural Business Funding Canada 2026 | $500K+ Aboriginal & Rural Business Grants",
     description: "Access $500K+ in Canadian funding for Indigenous and rural businesses. Complete guide to Aboriginal business grants, NACCA loans, and rural development programs.",
-    url: "https://grantfinder.pro/blog/indigenous-rural-business-funding-canada",
+    url: "https://fsidigital.ca/blog/indigenous-rural-business-funding-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,11 +32,11 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                 🏛️ Indigenous & Rural Business Funding Guide
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Indigenous & Rural Business Funding Canada 2025
+                Indigenous & Rural Business Funding Canada 2026
               </h1>
               <p className="text-xl text-amber-100 mb-8">
-                Complete guide to Indigenous business grants and rural business funding in Canada. Access Aboriginal 
-                Entrepreneurship Program funding up to $500K, NACCA business loans, rural development grants, and 
+                Complete guide to Indigenous business grants and rural business funding in Canada. Access Aboriginal
+                Entrepreneurship Program funding up to $500K, NACCA business loans, rural development grants, and
                 specialized support for First Nations, Métis, and Inuit entrepreneurs across all provinces.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -81,13 +81,13 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">What is Indigenous & Rural Business Funding in Canada?</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Canada provides comprehensive funding support for Indigenous-owned businesses and rural enterprises through 
-                  specialized government programs. From the Aboriginal Entrepreneurship Program offering up to $500,000 in funding 
-                  to NACCA (National Aboriginal Capital Corporations Association) providing culturally appropriate business loans, 
-                  Indigenous entrepreneurs have access to dedicated financial resources designed to support First Nations, Métis, 
+                  Canada provides comprehensive funding support for Indigenous-owned businesses and rural enterprises through
+                  specialized government programs. From the Aboriginal Entrepreneurship Program offering up to $500,000 in funding
+                  to NACCA (National Aboriginal Capital Corporations Association) providing culturally appropriate business loans,
+                  Indigenous entrepreneurs have access to dedicated financial resources designed to support First Nations, Métis,
                   and Inuit business development across all provinces and territories.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-amber-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-amber-800">Indigenous Business Support</h4>
@@ -98,7 +98,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                       <li>• First Nations economic development grants</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-orange-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-orange-800">Rural Business Programs</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -119,7 +119,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Indigenous Business Funding Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Aboriginal Entrepreneurship Program */}
                 <Card className="border-amber-200">
@@ -145,7 +145,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      The Aboriginal Entrepreneurship Program provides funding and business development support to Indigenous 
+                      The Aboriginal Entrepreneurship Program provides funding and business development support to Indigenous
                       entrepreneurs, communities, and organizations to start, acquire, or expand businesses across Canada.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -195,7 +195,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      National Aboriginal Capital Corporations Association (NACCA) provides culturally appropriate 
+                      National Aboriginal Capital Corporations Association (NACCA) provides culturally appropriate
                       business financing and developmental support to Indigenous entrepreneurs across Canada.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -245,7 +245,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Specialized funding for Indigenous tourism businesses and cultural experience providers, 
+                      Specialized funding for Indigenous tourism businesses and cultural experience providers,
                       supporting authentic Indigenous tourism development across Canada.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -280,7 +280,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Rural Business Development Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Community Futures */}
                 <Card className="border-green-200">
@@ -306,7 +306,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Community Futures network provides loans, mentorship, and business development services 
+                      Community Futures network provides loans, mentorship, and business development services
                       to rural Canadian communities, supporting local economic development and job creation.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -356,7 +356,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Specialized funding for businesses in Canada's northern and remote regions, addressing 
+                      Specialized funding for businesses in Canada's northern and remote regions, addressing
                       unique challenges and opportunities in isolated communities.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -391,7 +391,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Provincial Indigenous & Rural Business Support</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-amber-700">🏛️ Indigenous Business Programs by Province:</h4>
@@ -414,7 +414,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">🌾 Rural Business Support by Region:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -446,7 +446,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How to Apply for Indigenous & Rural Business Funding</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <span className="bg-amber-500 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold mr-4 mt-0.5">1</span>
@@ -493,7 +493,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Success Tips for Indigenous & Rural Entrepreneurs</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">✅ Maximize Your Funding Success:</h4>
@@ -516,7 +516,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Funding Mistakes to Avoid:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -551,10 +551,10 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                 Ready to Access Indigenous & Rural Business Funding?
               </h2>
               <p className="text-xl text-amber-100 mb-8">
-                Get the complete Indigenous and rural business funding guide or work with our specialized experts 
+                Get the complete Indigenous and rural business funding guide or work with our specialized experts
                 who understand the unique needs of Aboriginal entrepreneurs and rural business owners.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 {/* Get Application Guide CTA */}
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
@@ -583,7 +583,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-amber-200 text-sm mt-6">
                 82% success rate for Indigenous & rural businesses • Average funding secured: $87K • Cultural expertise
               </p>

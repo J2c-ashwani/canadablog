@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "IRAP Industrial Research Assistance Program 2025 | Up to $500K Innovation Funding for SMEs",
+  title: "IRAP Industrial Research Assistance Program 2026 | Up to $500K Innovation Funding for SMEs",
   description: "Complete guide to IRAP innovation funding from National Research Council Canada. Get 60-80% R&D funding up to $500K with dedicated Industrial Technology Advisors for SMEs.",
   keywords: "IRAP funding, Industrial Research Assistance Program, NRC IRAP innovation, R&D grants Canada, SME innovation funding, Industrial Technology Advisors",
   openGraph: {
-    title: "IRAP Industrial Research Assistance Program 2025 | Up to $500K Innovation Funding",
+    title: "IRAP Industrial Research Assistance Program 2026 | Up to $500K Innovation Funding",
     description: "Complete guide to IRAP innovation funding with 60-80% R&D support, dedicated advisors, and up to $500K for Canadian SMEs under 500 employees.",
-    url: "https://grantfinder.pro/blog/irap-industrial-research-assistance-program-innovation",
+    url: "https://fsidigital.ca/blog/irap-industrial-research-assistance-program-innovation",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,7 +29,7 @@ export default function IRAPInnovationFundingGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🔬 IRAP Innovation Funding 2025
+                🔬 IRAP Innovation Funding 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Industrial Research Assistance Program (IRAP)
@@ -54,7 +54,7 @@ export default function IRAPInnovationFundingGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -63,7 +63,7 @@ export default function IRAPInnovationFundingGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 IRAP 2025 Innovation Program Enhancements</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 IRAP 2026 Innovation Program Enhancements</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>Increased Innovation Budget:</strong> $400M annual budget (2024-25) with $100M/year commitment through 2026

@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women Entrepreneurship Fund Canada 2025 | Non-Repayable Grants for Women-Owned Business Growth",
+  title: "Women Entrepreneurship Fund Canada 2026 | Non-Repayable Grants for Women-Owned Business Growth",
   description: "Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Get funding for expansion, innovation, equipment, marketing, and R&D from ISED Canada.",
   keywords: "Women Entrepreneurship Fund, WEF Canada, non-repayable grants women, women business expansion funding, women entrepreneur innovation grants, ISED women funding",
   openGraph: {
-    title: "Women Entrepreneurship Fund Canada 2025 | Non-Repayable Business Grants",
+    title: "Women Entrepreneurship Fund Canada 2026 | Non-Repayable Business Grants",
     description: "Complete guide to WEF non-repayable grants for women-owned business expansion, innovation, equipment, and market access from Innovation, Science & Economic Development Canada.",
-    url: "https://grantfinder.pro/blog/women-entrepreneurship-fund-canada",
+    url: "https://fsidigital.ca/blog/women-entrepreneurship-fund-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,7 +29,7 @@ export default function WomenEntrepreneurshipFundGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🚀 Women Entrepreneurship Fund 2025
+                🚀 Women Entrepreneurship Fund 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Women Entrepreneurship Fund (WEF)
@@ -55,7 +55,7 @@ export default function WomenEntrepreneurshipFundGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -64,7 +64,7 @@ export default function WomenEntrepreneurshipFundGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 WEF 2025 Program Enhancements</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 WEF 2026 Program Enhancements</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>Non-Repayable Grants:</strong> No repayment required - true grant funding for women businesses

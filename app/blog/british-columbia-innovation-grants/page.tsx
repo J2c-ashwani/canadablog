@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "British Columbia Innovation Grants & Tax Credits 2025 | 10% BCITC | $1.8B+ CleanTech Funding",
+  title: "British Columbia Innovation Grants & Tax Credits 2026 | 10% BCITC | $1.8B+ CleanTech Funding",
   description: "Complete guide to BC innovation grants and tax credits. Access $1.8B+ through 10% BC Innovation Tax Credit (BCITC), Innovate BC, New Ventures BC, and cleantech, film, ocean technology programs.",
   keywords: "British Columbia innovation grants, BCITC tax credit, BC Innovation Tax Credit, Innovate BC funding, New Ventures BC, cleantech BC grants, film tax credit BC, ocean technology BC",
   openGraph: {
-    title: "British Columbia Innovation Grants & Tax Credits 2025 | $1.8B+ BCITC & CleanTech",
+    title: "British Columbia Innovation Grants & Tax Credits 2026 | $1.8B+ BCITC & CleanTech",
     description: "Access $1.8B+ in BC innovation funding. Complete guide to BCITC, Innovate BC, and Pacific gateway programs.",
-    url: "https://grantfinder.pro/blog/british-columbia-innovation-grants",
+    url: "https://fsidigital.ca/blog/british-columbia-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,11 +32,11 @@ export default function BritishColumbiaInnovationGrantsPage() {
                 🌊 British Columbia Provincial Innovation Support
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                British Columbia Innovation Grants & Tax Credits 2025
+                British Columbia Innovation Grants & Tax Credits 2026
               </h1>
               <p className="text-xl text-teal-100 mb-8">
-                Access $1.8B+ in British Columbia innovation funding through the 10% BC Innovation Tax Credit (BCITC), 
-                Innovate BC programs, New Ventures BC accelerator, and sector-specific support for clean technology 
+                Access $1.8B+ in British Columbia innovation funding through the 10% BC Innovation Tax Credit (BCITC),
+                Innovate BC programs, New Ventures BC accelerator, and sector-specific support for clean technology
                 leadership, film & creative industries, and ocean technology excellence across Canada's Pacific gateway innovation ecosystem.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -86,7 +86,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major British Columbia Innovation Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* BC Innovation Tax Credit */}
                 <Card className="border-teal-200">
@@ -112,7 +112,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      British Columbia's R&D tax incentive providing a 10% refundable tax credit on eligible BC research and 
+                      British Columbia's R&D tax incentive providing a 10% refundable tax credit on eligible BC research and
                       development expenditures, stackable with federal SR&ED tax credits for combined support up to 75%.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -162,7 +162,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      BC's provincial innovation agency providing grants, vouchers, and partnership facilitation for technology 
+                      BC's provincial innovation agency providing grants, vouchers, and partnership facilitation for technology
                       companies at all stages from research to commercialization.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -212,7 +212,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      BC's premier startup competition and accelerator program providing cash prizes, mentorship, and connections 
+                      BC's premier startup competition and accelerator program providing cash prizes, mentorship, and connections
                       to venture capital for early-stage technology companies.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -262,7 +262,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Comprehensive suite of tax credits supporting film, television, digital animation, and visual effects 
+                      Comprehensive suite of tax credits supporting film, television, digital animation, and visual effects
                       production - making BC a premier destination for creative content production.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -297,7 +297,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BC Innovation Sector Excellence</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Clean Technology Leadership */}
                 <Card className="hover:shadow-lg transition-all border-green-200">
@@ -310,7 +310,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Canada's #1 cleantech cluster with world-leading companies in renewable energy, hydrogen, 
+                      Canada's #1 cleantech cluster with world-leading companies in renewable energy, hydrogen,
                       carbon capture, and sustainable technology.
                     </p>
                     <div className="space-y-2">
@@ -345,7 +345,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Hollywood North with extensive film, television, digital animation, and VFX production 
+                      Hollywood North with extensive film, television, digital animation, and VFX production
                       supported by generous tax credits.
                     </p>
                     <div className="space-y-2">
@@ -380,7 +380,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Pacific access driving ocean tech innovation in aquaculture, marine robotics, 
+                      Pacific access driving ocean tech innovation in aquaculture, marine robotics,
                       ocean observation, and sustainable fisheries.
                     </p>
                     <div className="space-y-2">
@@ -415,7 +415,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Growing tech sector with strengths in SaaS, gaming, cybersecurity, and emerging 
+                      Growing tech sector with strengths in SaaS, gaming, cybersecurity, and emerging
                       technologies with Asia-Pacific connections.
                     </p>
                     <div className="space-y-2">
@@ -450,7 +450,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Growing life sciences sector with focus on precision health, medical devices, 
+                      Growing life sciences sector with focus on precision health, medical devices,
                       and health technology innovation.
                     </p>
                     <div className="space-y-2">
@@ -485,7 +485,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Technology innovation for forestry, mining, and natural resource sectors 
+                      Technology innovation for forestry, mining, and natural resource sectors
                       with focus on sustainability and efficiency.
                     </p>
                     <div className="space-y-2">
@@ -518,7 +518,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BC Regional Innovation Hubs</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-teal-200">
                   <CardHeader>
@@ -527,7 +527,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Vancouver Tech Hub:</strong> BC's largest innovation ecosystem with strengths in cleantech, 
+                        <strong>Vancouver Tech Hub:</strong> BC's largest innovation ecosystem with strengths in cleantech,
                         film production, gaming, and emerging technologies with Asia-Pacific gateway advantages.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -547,7 +547,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Capital Region Innovation:</strong> Government technology hub with ocean tech, 
+                        <strong>Capital Region Innovation:</strong> Government technology hub with ocean tech,
                         clean energy, and software development focus.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -567,7 +567,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Interior Tech Corridor:</strong> Growing tech sector with quality of life advantages 
+                        <strong>Interior Tech Corridor:</strong> Growing tech sector with quality of life advantages
                         and strong software, digital media, and manufacturing base.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -587,7 +587,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Natural Resources Innovation:</strong> Technology development for forestry, mining, 
+                        <strong>Natural Resources Innovation:</strong> Technology development for forestry, mining,
                         and natural resource sectors with sustainability focus.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -609,7 +609,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">BC Innovation Funding Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -691,10 +691,10 @@ export default function BritishColumbiaInnovationGrantsPage() {
                 Ready to Access BC Innovation Funding?
               </h2>
               <p className="text-xl text-teal-100 mb-8">
-                Get expert help navigating BC's innovation ecosystem and maximizing your BCITC, Innovate BC, and sector-specific funding. 
+                Get expert help navigating BC's innovation ecosystem and maximizing your BCITC, Innovate BC, and sector-specific funding.
                 Our BC specialists have secured $180M+ in provincial innovation funding.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Button size="lg" className="bg-white text-teal-700 hover:bg-gray-100" asChild>
                   <Link href="/contact?service=bc-innovation-expert-help">
@@ -707,7 +707,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
                   </Link>
                 </Button>
               </div>
-              
+
               <p className="text-teal-200 text-sm mt-6">
                 79% success rate • $180M+ secured • BCITC, Innovate BC & CleanTech expertise
               </p>

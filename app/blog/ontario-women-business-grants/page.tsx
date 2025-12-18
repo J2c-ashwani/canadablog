@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Ontario Women Business Grants 2025 | $850M Support Programs & Non-Repayable Funding",
+  title: "Ontario Women Business Grants 2026 | $850M Support Programs & Non-Repayable Funding",
   description: "Complete guide to Ontario women entrepreneurship support with FedDev Ontario RE3 grants up to $5,000, PARO microfinancing, Women's Enterprise Organizations, and technology funding.",
   keywords: "Ontario women business grants, FedDev Ontario RE3, PARO Centre women, Ontario women entrepreneurship, women in technology Ontario",
   openGraph: {
-    title: "Ontario Women Business Grants 2025 | $850M Provincial Support",
+    title: "Ontario Women Business Grants 2026 | $850M Provincial Support",
     description: "Comprehensive guide to Ontario women business support with non-repayable grants, microfinancing, and technology funding programs.",
-    url: "https://grantfinder.pro/blog/ontario-women-business-grants",
+    url: "https://fsidigital.ca/blog/ontario-women-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,7 +29,7 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🏛️ Ontario Women Business Support 2025
+                🏛️ Ontario Women Business Support 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Ontario Women Business Grants & Support Programs
@@ -55,7 +55,7 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -64,7 +64,7 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Ontario Women Entrepreneurship 2025 Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Ontario Women Entrepreneurship 2026 Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>$850M Provincial Support:</strong> Comprehensive women business ecosystem funding

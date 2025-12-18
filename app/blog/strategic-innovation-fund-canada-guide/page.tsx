@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Strategic Innovation Fund Canada 2025 | $100M+ SIF Funding Guide | Innovation Projects",
+  title: "Strategic Innovation Fund Canada 2026 | $100M+ SIF Funding Guide | Innovation Projects",
   description: "Complete guide to Strategic Innovation Fund (SIF) funding in Canada. Access up to $100M for transformative innovation projects, R&D commercialization, and industrial expansion from ISED Canada.",
   keywords: "Strategic Innovation Fund Canada, SIF funding, ISED grants, innovation funding Canada, R&D commercialization grants, industrial expansion funding, technology innovation grants Canada, large scale business funding, transformative project funding",
   openGraph: {
-    title: "Strategic Innovation Fund Canada 2025 | $100M+ SIF Funding Guide",
+    title: "Strategic Innovation Fund Canada 2026 | $100M+ SIF Funding Guide",
     description: "Access up to $100M through Canada's Strategic Innovation Fund. Complete guide to SIF eligibility, application process, and transformative innovation funding.",
-    url: "https://grantfinder.pro/blog/strategic-innovation-fund-canada-guide",
+    url: "https://fsidigital.ca/blog/strategic-innovation-fund-canada-guide",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,11 +32,11 @@ export default function StrategicInnovationFundBlogPage() {
                 🏛️ Strategic Innovation Fund (SIF) Funding Guide
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Strategic Innovation Fund Canada 2025
+                Strategic Innovation Fund Canada 2026
               </h1>
               <p className="text-xl text-red-100 mb-8">
-                Complete guide to Canada's Strategic Innovation Fund (SIF) offering up to $100M for transformative 
-                business projects. Access large-scale funding for innovation, R&D commercialization, industrial expansion, 
+                Complete guide to Canada's Strategic Innovation Fund (SIF) offering up to $100M for transformative
+                business projects. Access large-scale funding for innovation, R&D commercialization, industrial expansion,
                 and technology development from Innovation, Science & Economic Development Canada (ISED).
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -81,12 +81,12 @@ export default function StrategicInnovationFundBlogPage() {
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the Strategic Innovation Fund (SIF)?</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Canada's Strategic Innovation Fund (SIF) is the flagship federal program providing large-scale funding 
-                  for transformative business projects that drive innovation, economic growth, and job creation. Managed by 
-                  Innovation, Science & Economic Development Canada (ISED), SIF supports projects across all sectors with 
+                  Canada's Strategic Innovation Fund (SIF) is the flagship federal program providing large-scale funding
+                  for transformative business projects that drive innovation, economic growth, and job creation. Managed by
+                  Innovation, Science & Economic Development Canada (ISED), SIF supports projects across all sectors with
                   contributions up to $100M+ for initiatives demonstrating significant economic impact and innovation potential.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-red-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-red-800">SIF Funding Priorities</h4>
@@ -97,7 +97,7 @@ export default function StrategicInnovationFundBlogPage() {
                       <li>• Critical minerals and clean technology</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-orange-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-orange-800">SIF Investment Terms</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -118,7 +118,7 @@ export default function StrategicInnovationFundBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Strategic Innovation Fund Program Streams</h2>
-              
+
               <div className="space-y-8">
                 {/* Stream 1: R&D and Commercialization */}
                 <Card className="border-red-200">
@@ -144,7 +144,7 @@ export default function StrategicInnovationFundBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Supports R&D activities from early-stage technology development through to commercial deployment, 
+                      Supports R&D activities from early-stage technology development through to commercial deployment,
                       including development of new products, processes, or services with significant innovation potential.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -194,7 +194,7 @@ export default function StrategicInnovationFundBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Supports expansion or material improvement of existing industrial or technological facilities, 
+                      Supports expansion or material improvement of existing industrial or technological facilities,
                       focusing on increased capacity, productivity improvements, and competitive positioning.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -244,7 +244,7 @@ export default function StrategicInnovationFundBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Attracts new investment in industrial or technological facilities in Canada, supporting establishment 
+                      Attracts new investment in industrial or technological facilities in Canada, supporting establishment
                       of new operations or bringing new mandates to Canadian facilities.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -294,7 +294,7 @@ export default function StrategicInnovationFundBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Supports collaborative projects between Canadian businesses and academic institutions for 
+                      Supports collaborative projects between Canadian businesses and academic institutions for
                       industrial research and large-scale technology demonstration activities.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -344,7 +344,7 @@ export default function StrategicInnovationFundBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Develops national innovation networks and ecosystems that connect businesses, academia, 
+                      Develops national innovation networks and ecosystems that connect businesses, academia,
                       and other organizations to accelerate innovation and commercialization activities.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -379,7 +379,7 @@ export default function StrategicInnovationFundBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">SIF Regional Impact Across Canada</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-red-700">🏭 Major SIF Manufacturing Investments:</h4>
@@ -402,7 +402,7 @@ export default function StrategicInnovationFundBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-orange-700">🌟 Priority Innovation Sectors:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -434,7 +434,7 @@ export default function StrategicInnovationFundBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How to Apply for Strategic Innovation Fund</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <span className="bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold mr-4 mt-0.5">1</span>
@@ -481,7 +481,7 @@ export default function StrategicInnovationFundBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">SIF Application Success Tips</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">✅ Maximize Your SIF Success:</h4>
@@ -504,7 +504,7 @@ export default function StrategicInnovationFundBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common SIF Application Mistakes:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -539,10 +539,10 @@ export default function StrategicInnovationFundBlogPage() {
                 Ready to Access Strategic Innovation Fund?
               </h2>
               <p className="text-xl text-red-100 mb-8">
-                Get the complete SIF application guide or work with our specialized experts 
+                Get the complete SIF application guide or work with our specialized experts
                 who have secured $180M+ in Strategic Innovation Fund approvals for transformative Canadian projects.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 {/* Get Application Guide CTA */}
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
@@ -571,7 +571,7 @@ export default function StrategicInnovationFundBlogPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-red-200 text-sm mt-6">
                 78% success rate for SIF applications • Average funding secured: $35M • Large-scale project expertise
               </p>

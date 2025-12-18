@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Complete CSBFP Application Guide 2025 | Step-by-Step Process", 
     description: "Step-by-step guide with templates and strategies for successful CSBFP loan applications.",
-    url: "https://grantfinder.pro/guides/apply-csbfp-loans",
+    url: "https://fsidigital.ca/guides/apply-csbfp-loans",
   },
 }
 

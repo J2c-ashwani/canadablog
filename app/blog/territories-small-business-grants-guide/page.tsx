@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Territories Small Business Grants 2025 | $125M+ NT, YT, Nunavut Combined Funding",
+  title: "Territories Small Business Grants 2026 | $125M+ NT, YT, Nunavut Combined Funding",
   description: "Complete guide to Territories business grants. Access NWT Business Development, Yukon Small Business Support, Nunavut Economic Development, and Indigenous Business Programs.",
   keywords: "Territories small business grants, NWT business development, Yukon small business support, Nunavut economic development, Northwest Territories business funding, Yukon business grants",
 }
@@ -26,7 +26,7 @@ export default function TerritoriesSmallBusinessGrantsGuide() {
                 ❄️ Northern Territories Business Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Territories Small Business Grants 2025
+                Territories Small Business Grants 2026
               </h1>
               <p className="text-xl text-purple-100 mb-8">
                 Access $125M+ in combined funding across Northwest Territories, Yukon, and Nunavut. 

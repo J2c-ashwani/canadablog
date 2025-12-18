@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Amber Grant for Women Canada 2025 | Monthly $10K Grants + $25K Annual Award",
+  title: "Amber Grant for Women Canada 2026 | Monthly $10K Grants + $25K Annual Award",
   description: "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Simple application, rolling deadlines, and support for Canadian women entrepreneurs.",
   keywords: "Amber Grant Canada, women business grants monthly, WomensNet grants, $10000 women grants, Canadian women entrepreneurs",
   openGraph: {
-    title: "Amber Grant for Women Canada 2025 | Monthly $10K + $25K Annual",
+    title: "Amber Grant for Women Canada 2026 | Monthly $10K + $25K Annual",
     description: "Monthly $10,000 grants and $25,000 annual award for Canadian women entrepreneurs. Simple application with rolling monthly deadlines.",
-    url: "https://grantfinder.pro/blog/amber-grant-women-canada",
+    url: "https://fsidigital.ca/blog/amber-grant-women-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,7 +29,7 @@ export default function AmberGrantWomenCanadaGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🏆 Monthly Grant Awards 2025
+                🏆 Monthly Grant Awards 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Amber Grant for Women Canada
@@ -55,7 +55,7 @@ export default function AmberGrantWomenCanadaGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -64,7 +64,7 @@ export default function AmberGrantWomenCanadaGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 2025 Amber Grant Program Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 2026 Amber Grant Program Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>Monthly Awards:</strong> Three $10,000 grants awarded every month

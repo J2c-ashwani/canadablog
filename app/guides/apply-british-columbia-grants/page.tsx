@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "British Columbia Business Grants Application Guide 2025 | BC Provincial Funding Process",
     description: "Step-by-step guide with templates and strategies for successful BC provincial funding applications.",
-    url: "https://grantfinder.pro/guides/apply-british-columbia-grants",
+    url: "https://fsidigital.ca/guides/apply-british-columbia-grants",
   },
 }
 

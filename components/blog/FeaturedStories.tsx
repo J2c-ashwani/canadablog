@@ -6,7 +6,7 @@ import { getFeaturedPosts, blogCategories } from '@/lib/data/blogPosts';
 
 export default function FeaturedStories() {
   const featuredPosts = getFeaturedPosts();
-  
+
   if (featuredPosts.length === 0) return null;
 
   return (
@@ -15,11 +15,11 @@ export default function FeaturedStories() {
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Featured Stories</h2>
         <div className="h-px bg-gradient-to-r from-blue-500 to-green-500 flex-1 ml-6"></div>
       </div>
-      
+
       <div className="grid md:grid-cols-2 gap-8">
         {featuredPosts.map((post, index) => {
           const category = blogCategories.find(cat => cat.id === post.category);
-          
+
           return (
             <article key={post.id} className={`
               ${index === 0 ? 'md:col-span-2' : ''}
@@ -31,7 +31,7 @@ export default function FeaturedStories() {
                   bg-gray-100 overflow-hidden relative
                 `}>
                   <img
-                    src={`/images/blog/${post.image}`}
+                    src={post.image}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
@@ -47,7 +47,7 @@ export default function FeaturedStories() {
                     </div>
                   )}
                 </div>
-                
+
                 <div className="p-6">
                   <h2 className={`
                     font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors mb-3
@@ -55,14 +55,14 @@ export default function FeaturedStories() {
                   `}>
                     {post.title}
                   </h2>
-                  
+
                   <p className={`
                     text-gray-600 dark:text-gray-400 mb-4 line-clamp-3
                     ${index === 0 ? 'text-base' : 'text-sm'}
                   `}>
                     {post.excerpt}
                   </p>
-                  
+
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
                       <div className="flex items-center">
@@ -78,7 +78,7 @@ export default function FeaturedStories() {
                         {post.readTime}
                       </div>
                     </div>
-                    
+
                     <Button variant="ghost" size="sm" className="group-hover:text-blue-600">
                       Read More
                       <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />

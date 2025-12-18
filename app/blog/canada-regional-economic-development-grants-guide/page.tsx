@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Regional Economic Development Grants 2025 | $2.8B+ Community Growth Funding Programs Guide",
+  title: "Canada Regional Economic Development Grants 2026 | $2.8B+ Community Growth Funding Programs Guide",
   description: "Complete guide to Canada's regional economic development grants. Access RDA funding, community development programs, and 35+ programs offering $2.8B+ for regional growth.",
-  keywords: "Canada regional development grants, RDA funding, community economic development, regional growth programs, ACOA PrairiesCan grants Canada 2025",
+  keywords: "Canada regional development grants, RDA funding, community economic development, regional growth programs, ACOA PrairiesCan grants Canada 2026",
   openGraph: {
-    title: "Canada Regional Economic Development Grants 2025 | $2.8B+ Community Growth Funding Guide",
+    title: "Canada Regional Economic Development Grants 2026 | $2.8B+ Community Growth Funding Guide",
     description: "Comprehensive guide to Canada's regional economic development funding ecosystem with 35+ programs offering $2.8B+ for community and regional growth.",
-    url: "https://grantfinder.pro/blog/canada-regional-economic-development-grants-guide",
+    url: "https://fsidigital.ca/blog/canada-regional-economic-development-grants-guide",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -209,7 +209,7 @@ export default function CanadaRegionalEconomicDevelopmentGrantsGuidePage() {
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h5 className="font-semibold mb-2 text-yellow-700">Major 2025 Programs:</h5>
+                        <h5 className="font-semibold mb-2 text-yellow-700">Major 2026 Programs:</h5>
                         <ul className="text-sm text-gray-600 space-y-1">
                           <li>• <strong>Regional Economic Growth through Innovation:</strong> Business scale-up</li>
                           <li>• <strong>Regional Homebuilding Innovation Initiative:</strong> Housing solutions</li>
@@ -258,7 +258,7 @@ export default function CanadaRegionalEconomicDevelopmentGrantsGuidePage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Federal agency promoting economic development across Canada's three territories (Northwest Territories, Nunavut, and Yukon) with $32.5M in 2025-26 funding for northern communities and businesses.
+                      Federal agency promoting economic development across Canada's three territories (Northwest Territories, Nunavut, and Yukon) with $32.5M in 2026-26 funding for northern communities and businesses.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
                       <div>

@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
           <h1 className="text-4xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
           <div className="bg-white rounded-lg shadow-sm p-8 prose max-w-none">
             <p className="text-gray-600 mb-6">Last updated: {new Date().toLocaleDateString()}</p>
-            
+
             <h2>Information We Collect</h2>
             <p>We collect information you provide directly to us, such as when you subscribe to our newsletter, request consultations, or contact us. This may include your name, email address, phone number, and business information.</p>
 
@@ -36,7 +36,7 @@ export default function PrivacyPolicy() {
             <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
 
             <h2>Contact Us</h2>
-            <p>If you have questions about this Privacy Policy, please contact us at privacy@grantfinderpro.com</p>
+            <p>If you have questions about this Privacy Policy, please contact us at hello@fsidigital.ca</p>
           </div>
         </div>
       </div>

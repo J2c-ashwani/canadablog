@@ -4,7 +4,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
-  
+
   // Color palette
   const colors = {
     primary: [34, 197, 94],      // Green
@@ -19,40 +19,40 @@ export function generateGrantGuidePDF(userEmail?: string) {
   // Gradient background effect
   doc.setFillColor(...colors.primary);
   doc.rect(0, 0, pageWidth, pageHeight, 'F');
-  
+
   doc.setFillColor(...colors.secondary);
   doc.circle(pageWidth + 30, -30, 100, 'F');
   doc.circle(-30, pageHeight + 30, 100, 'F');
-  
+
   // Title section with shadow effect
   doc.setTextColor(...colors.white);
   doc.setFontSize(48);
   doc.setFont('helvetica', 'bold');
   doc.text('ULTIMATE', pageWidth / 2, 80, { align: 'center' });
   doc.text('GRANT GUIDE', pageWidth / 2, 105, { align: 'center' });
-  
+
   // Subtitle with decorative line
   doc.setFontSize(14);
   doc.setFont('helvetica', 'normal');
   doc.setDrawColor(...colors.white);
   doc.setLineWidth(0.5);
   doc.line(40, 125, pageWidth - 40, 125);
-  
+
   doc.text('Your Complete Roadmap to Government Funding', pageWidth / 2, 140, { align: 'center' });
-  
+
   // Feature boxes
   const features = [
     'Step-by-Step Process',
     'Expert Strategies',
     'Document Templates'
   ];
-  
+
   const boxWidth = 50;
   const boxHeight = 15;
   const spacing = 10;
   const totalWidth = (boxWidth * 3) + (spacing * 2);
   const startX = (pageWidth - totalWidth) / 2;
-  
+
   features.forEach((feature, i) => {
     const x = startX + (i * (boxWidth + spacing));
     doc.setFillColor(255, 255, 255, 0.2);
@@ -60,15 +60,15 @@ export function generateGrantGuidePDF(userEmail?: string) {
     doc.setFontSize(9);
     doc.text(feature, x + boxWidth / 2, 170, { align: 'center' });
   });
-  
+
   // Footer
   doc.setFontSize(16);
   doc.setFont('helvetica', 'bold');
-  doc.text('Grant Finder Pro', pageWidth / 2, 240, { align: 'center' });
+  doc.text('FSI Digital', pageWidth / 2, 240, { align: 'center' });
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
-  doc.text('www.grantfinder.pro', pageWidth / 2, 250, { align: 'center' });
-  
+  doc.text('www.fsidigital.ca', pageWidth / 2, 250, { align: 'center' });
+
   if (userEmail) {
     doc.setFontSize(8);
     doc.text(`Licensed to: ${userEmail}`, pageWidth / 2, 280, { align: 'center' });
@@ -76,7 +76,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
 
   // ==== PAGE 2: TABLE OF CONTENTS ====
   doc.addPage();
-  
+
   // Header bar
   doc.setFillColor(...colors.primary);
   doc.rect(0, 0, pageWidth, 40, 'F');
@@ -84,11 +84,11 @@ export function generateGrantGuidePDF(userEmail?: string) {
   doc.setFontSize(24);
   doc.setFont('helvetica', 'bold');
   doc.text('TABLE OF CONTENTS', pageWidth / 2, 25, { align: 'center' });
-  
+
   // Content
   doc.setTextColor(...colors.dark);
   doc.setFontSize(11);
-  
+
   const tocItems = [
     { num: '01', title: 'Introduction to Government Grants', page: '3' },
     { num: '02', title: 'Types of Grant Programs', page: '5' },
@@ -101,7 +101,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
     { num: '09', title: 'Review Process & Timeline', page: '24' },
     { num: '10', title: 'After Approval: Next Steps', page: '27' }
   ];
-  
+
   let yPos = 60;
   tocItems.forEach((item, index) => {
     // Alternating background
@@ -109,7 +109,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
       doc.setFillColor(...colors.light);
       doc.rect(15, yPos - 6, pageWidth - 30, 12, 'F');
     }
-    
+
     // Number badge
     doc.setFillColor(...colors.primary);
     doc.circle(25, yPos, 5, 'F');
@@ -117,23 +117,23 @@ export function generateGrantGuidePDF(userEmail?: string) {
     doc.setFontSize(8);
     doc.setFont('helvetica', 'bold');
     doc.text(item.num, 25, yPos + 1, { align: 'center' });
-    
+
     // Title
     doc.setTextColor(...colors.dark);
     doc.setFontSize(11);
     doc.setFont('helvetica', 'normal');
     doc.text(item.title, 35, yPos + 1);
-    
+
     // Page number
     doc.setFont('helvetica', 'bold');
     doc.text(item.page, pageWidth - 25, yPos + 1);
-    
+
     yPos += 15;
   });
 
   // ==== PAGE 3: INTRODUCTION ====
   doc.addPage();
-  
+
   // Header
   doc.setFillColor(...colors.primary);
   doc.rect(0, 0, pageWidth, 40, 'F');
@@ -142,16 +142,16 @@ export function generateGrantGuidePDF(userEmail?: string) {
   doc.setFont('helvetica', 'bold');
   doc.text('01', 20, 25);
   doc.text('INTRODUCTION TO GRANTS', 40, 25);
-  
+
   // Content box with border
   doc.setDrawColor(...colors.primary);
   doc.setLineWidth(0.5);
   doc.roundedRect(15, 50, pageWidth - 30, 80, 3, 3);
-  
+
   doc.setTextColor(...colors.dark);
   doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
-  
+
   const introText = [
     'Government grants represent one of the most valuable sources of non-dilutive',
     'funding for businesses and organizations. Unlike loans, grants do not require',
@@ -159,13 +159,13 @@ export function generateGrantGuidePDF(userEmail?: string) {
     '',
     'This guide will help you:',
   ];
-  
+
   yPos = 60;
   introText.forEach(line => {
     doc.text(line, 20, yPos);
     yPos += 6;
   });
-  
+
   // Bullet points with icons
   const benefits = [
     '✓ Understand different grant programs',
@@ -174,7 +174,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
     '✓ Write compelling proposals',
     '✓ Avoid common mistakes'
   ];
-  
+
   yPos += 5;
   doc.setFontSize(10);
   benefits.forEach(benefit => {
@@ -184,13 +184,13 @@ export function generateGrantGuidePDF(userEmail?: string) {
     doc.text(benefit, 30, yPos);
     yPos += 7;
   });
-  
+
   // Info box
   doc.setFillColor(59, 130, 246, 0.1);
   doc.roundedRect(15, 145, pageWidth - 30, 40, 3, 3, 'F');
   doc.setDrawColor(...colors.secondary);
   doc.roundedRect(15, 145, pageWidth - 30, 40, 3, 3);
-  
+
   doc.setFontSize(12);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.secondary);
@@ -204,7 +204,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
 
   // ==== PAGE 4: GRANT TYPES ====
   doc.addPage();
-  
+
   // Header
   doc.setFillColor(...colors.primary);
   doc.rect(0, 0, pageWidth, 40, 'F');
@@ -213,7 +213,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
   doc.setFont('helvetica', 'bold');
   doc.text('02', 20, 25);
   doc.text('TYPES OF GRANT PROGRAMS', 40, 25);
-  
+
   // Grant type cards
   const grantTypes = [
     {
@@ -247,18 +247,18 @@ export function generateGrantGuidePDF(userEmail?: string) {
       ]
     }
   ];
-  
+
   yPos = 55;
   grantTypes.forEach(type => {
     // Card background
     doc.setFillColor(...type.color, 0.1);
     doc.roundedRect(15, yPos, pageWidth - 30, 50, 3, 3, 'F');
-    
+
     // Card border
     doc.setDrawColor(...type.color);
     doc.setLineWidth(1);
     doc.roundedRect(15, yPos, pageWidth - 30, 50, 3, 3);
-    
+
     // Title bar
     doc.setFillColor(...type.color);
     doc.roundedRect(15, yPos, pageWidth - 30, 10, 3, 3, 'F');
@@ -266,7 +266,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
     doc.setFontSize(12);
     doc.setFont('helvetica', 'bold');
     doc.text(type.title, 20, yPos + 7);
-    
+
     // Items
     doc.setTextColor(...colors.dark);
     doc.setFontSize(9);
@@ -277,13 +277,13 @@ export function generateGrantGuidePDF(userEmail?: string) {
       doc.text(item, 25, itemY);
       itemY += 7;
     });
-    
+
     yPos += 60;
   });
 
   // ==== PAGE 5: CHECKLIST ====
   doc.addPage();
-  
+
   // Header
   doc.setFillColor(...colors.accent);
   doc.rect(0, 0, pageWidth, 40, 'F');
@@ -292,7 +292,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
   doc.setFont('helvetica', 'bold');
   doc.text('05', 20, 25);
   doc.text('REQUIRED DOCUMENTS', 40, 25);
-  
+
   // Checklist items with checkboxes
   const checklist = [
     'Business Registration Documents',
@@ -308,20 +308,20 @@ export function generateGrantGuidePDF(userEmail?: string) {
     'Required Certifications',
     'Insurance Policy Documents'
   ];
-  
+
   yPos = 55;
   checklist.forEach((item, index) => {
     // Checkbox
     doc.setDrawColor(...colors.dark);
     doc.setLineWidth(0.5);
     doc.rect(20, yPos - 3, 5, 5);
-    
+
     // Item text
     doc.setTextColor(...colors.dark);
     doc.setFontSize(11);
     doc.setFont('helvetica', 'normal');
     doc.text(item, 30, yPos + 1);
-    
+
     // Alternating background
     if (index % 2 === 0) {
       doc.setFillColor(...colors.light);
@@ -330,16 +330,16 @@ export function generateGrantGuidePDF(userEmail?: string) {
       doc.rect(20, yPos - 3, 5, 5);
       doc.text(item, 30, yPos + 1);
     }
-    
+
     yPos += 12;
   });
-  
+
   // Tip box
   doc.setFillColor(249, 115, 22, 0.1);
   doc.roundedRect(15, yPos + 10, pageWidth - 30, 30, 3, 3, 'F');
   doc.setDrawColor(...colors.accent);
   doc.roundedRect(15, yPos + 10, pageWidth - 30, 30, 3, 3);
-  
+
   doc.setFontSize(11);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.accent);
@@ -352,7 +352,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
 
   // ==== PAGE 6: MISTAKES TO AVOID ====
   doc.addPage();
-  
+
   // Header
   doc.setFillColor(220, 38, 38);
   doc.rect(0, 0, pageWidth, 40, 'F');
@@ -361,7 +361,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
   doc.setFont('helvetica', 'bold');
   doc.text('08', 20, 25);
   doc.text('COMMON MISTAKES', 40, 25);
-  
+
   const mistakes = [
     {
       title: 'Missing Deadlines',
@@ -388,7 +388,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
       desc: 'Clearly articulate the problem and its significance.'
     }
   ];
-  
+
   yPos = 55;
   mistakes.forEach((mistake, index) => {
     // Number badge
@@ -398,67 +398,67 @@ export function generateGrantGuidePDF(userEmail?: string) {
     doc.setFontSize(10);
     doc.setFont('helvetica', 'bold');
     doc.text((index + 1).toString(), 25, yPos + 1, { align: 'center' });
-    
+
     // Title
     doc.setTextColor(...colors.dark);
     doc.setFontSize(12);
     doc.text(mistake.title, 35, yPos + 1);
-    
+
     // Description
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(75, 85, 99);
     doc.text(mistake.desc, 35, yPos + 8);
-    
+
     yPos += 20;
   });
 
   // ==== FINAL PAGE: CALL TO ACTION ====
   doc.addPage();
-  
+
   // Full page gradient
   doc.setFillColor(...colors.primary);
   doc.rect(0, 0, pageWidth, pageHeight, 'F');
-  
+
   doc.setFillColor(...colors.secondary);
   doc.circle(pageWidth + 40, pageHeight / 2, 120, 'F');
   doc.circle(-40, pageHeight / 2, 120, 'F');
-  
+
   // Content
   doc.setTextColor(...colors.white);
   doc.setFontSize(32);
   doc.setFont('helvetica', 'bold');
   doc.text('READY TO', pageWidth / 2, 80, { align: 'center' });
   doc.text('GET STARTED?', pageWidth / 2, 100, { align: 'center' });
-  
+
   doc.setFontSize(14);
   doc.setFont('helvetica', 'normal');
   doc.text('Visit our website to:', pageWidth / 2, 130, { align: 'center' });
-  
+
   const features2 = [
     '→  Browse 500+ Grant Opportunities',
     '→  Access Application Templates',
     '→  Get Expert Consultation',
     '→  Join Our Success Community'
   ];
-  
+
   yPos = 150;
   features2.forEach(feature => {
     doc.setFontSize(12);
     doc.text(feature, pageWidth / 2, yPos, { align: 'center' });
     yPos += 12;
   });
-  
+
   // Website box
   doc.setFillColor(255, 255, 255, 0.2);
   doc.roundedRect(40, 200, pageWidth - 80, 30, 5, 5, 'F');
   doc.setFontSize(18);
   doc.setFont('helvetica', 'bold');
-  doc.text('www.grantfinder.pro', pageWidth / 2, 220, { align: 'center' });
-  
+  doc.text('www.fsidigital.ca', pageWidth / 2, 220, { align: 'center' });
+
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
-  doc.text('support@grantfinder.pro', pageWidth / 2, 260, { align: 'center' });
-  
+  doc.text('support@fsidigital.ca', pageWidth / 2, 260, { align: 'center' });
+
   return doc;
 }

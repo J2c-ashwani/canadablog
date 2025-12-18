@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Clean Technology Innovation Grants 2025 | $1.2B+ CleanTech Funding | SDTC & Net Zero",
+  title: "Canada Clean Technology Innovation Grants 2026 | $1.2B+ CleanTech Funding | SDTC & Net Zero",
   description: "Complete guide to Canadian clean technology innovation grants. Access $1.2B+ funding through SDTC (up to $15M), Clean Technology ITCs, Net Zero Accelerator, and 22+ cleantech programs.",
   keywords: "Canada clean technology grants, cleantech funding Canada, SDTC grants, sustainable technology funding, renewable energy grants Canada, environmental innovation funding, Net Zero Accelerator, clean tech tax credits Canada",
   openGraph: {
-    title: "Canada Clean Technology Innovation Grants 2025 | $1.2B+ CleanTech Funding",
+    title: "Canada Clean Technology Innovation Grants 2026 | $1.2B+ CleanTech Funding",
     description: "Access $1.2B+ in clean technology innovation funding. Complete guide to SDTC grants, Clean Technology ITCs, and 22+ programs supporting environmental innovation.",
-    url: "https://grantfinder.pro/blog/canada-clean-technology-innovation-grants",
+    url: "https://fsidigital.ca/blog/canada-clean-technology-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,7 +32,7 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
                 🌱 Clean Technology Innovation Grants
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Canada Clean Technology Innovation Grants 2025
+                Canada Clean Technology Innovation Grants 2026
               </h1>
               <p className="text-xl text-teal-100 mb-8">
                 Access $1.2B+ in clean technology innovation funding through 22+ federal and provincial programs. 

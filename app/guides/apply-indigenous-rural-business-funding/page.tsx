@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Indigenous & Rural Business Funding Application Guide 2025 | Aboriginal & Remote Business Grants",
     description: "Step-by-step guide with culturally appropriate templates and strategies for successful Indigenous and rural business funding applications.",
-    url: "https://grantfinder.pro/guides/apply-indigenous-rural-business-funding",
+    url: "https://fsidigital.ca/guides/apply-indigenous-rural-business-funding",
   },
 }
 

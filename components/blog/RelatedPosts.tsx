@@ -12,7 +12,7 @@ export default function RelatedPosts({ currentPost, maxPosts = 3 }: RelatedPosts
   // Get posts from the same category, excluding current post
   let relatedPosts = getBlogPostsByCategory(currentPost.category)
     .filter(post => post.id !== currentPost.id);
-  
+
   // If not enough posts in same category, fill with other recent posts
   if (relatedPosts.length < maxPosts) {
     const allPosts = getAllBlogPosts()
@@ -31,11 +31,11 @@ export default function RelatedPosts({ currentPost, maxPosts = 3 }: RelatedPosts
           </h2>
           <div className="h-px bg-gradient-to-r from-blue-500 to-green-500 flex-1"></div>
         </div>
-        
+
         <div className={`grid gap-6 ${relatedPosts.length === 1 ? 'md:grid-cols-1' : relatedPosts.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>
           {relatedPosts.slice(0, maxPosts).map((post) => {
             const category = blogCategories.find(cat => cat.id === post.category);
-            
+
             return (
               <article
                 key={post.id}
@@ -44,13 +44,13 @@ export default function RelatedPosts({ currentPost, maxPosts = 3 }: RelatedPosts
                 <Link href={`/blog/${post.slug}`}>
                   <div className="aspect-video bg-gray-100 overflow-hidden">
                     <img
-                      src={`/images/blog/${post.image}`}
+                      src={post.image}
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />
                   </div>
-                  
+
                   <div className="p-4">
                     <div className="flex items-center justify-between mb-3">
                       <Badge className={category?.color || 'bg-gray-100 text-gray-800'}>
@@ -62,15 +62,15 @@ export default function RelatedPosts({ currentPost, maxPosts = 3 }: RelatedPosts
                         </span>
                       )}
                     </div>
-                    
+
                     <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors line-clamp-2 mb-2">
                       {post.title}
                     </h3>
-                    
+
                     <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-3">
                       {post.excerpt}
                     </p>
-                    
+
                     <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
                       <div className="flex items-center gap-3">
                         <div className="flex items-center">
@@ -82,7 +82,7 @@ export default function RelatedPosts({ currentPost, maxPosts = 3 }: RelatedPosts
                           {post.readTime}
                         </div>
                       </div>
-                      
+
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
@@ -91,7 +91,7 @@ export default function RelatedPosts({ currentPost, maxPosts = 3 }: RelatedPosts
             );
           })}
         </div>
-        
+
         <div className="text-center mt-8">
           <Link href="/blog">
             <button className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors">

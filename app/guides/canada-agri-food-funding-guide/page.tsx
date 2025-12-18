@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Apply for AgriInnovate Grants Canada 2025",
     description: "Complete application guide for Canadian agriculture grants with AgriInnovate, CAP, and precision farming funding strategies.",
-    url: "https://grantfinder.pro/guides/canada-agri-food-funding-guide",
+    url: "https://fsidigital.ca/guides/canada-agri-food-funding-guide",
   },
 }
 

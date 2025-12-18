@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "BC Women Business Grants 2025 | $650M Innovation & Tech Support Programs",
+  title: "BC Women Business Grants 2026 | $650M Innovation & Tech Support Programs",
   description: "Complete guide to BC women entrepreneurship support with Women's Enterprise Centre loans up to $150K, Innovate BC programs, Indigenous women funding, and tech leadership initiatives.",
   keywords: "BC women business grants, WeBC loans, Innovate BC women, British Columbia women entrepreneurs, women tech BC",
   openGraph: {
-    title: "BC Women Business Grants 2025 | $650M Innovation Support",
+    title: "BC Women Business Grants 2026 | $650M Innovation Support",
     description: "Comprehensive guide to BC women business support with WeBC financing, innovation programs, and technology leadership funding.",
-    url: "https://grantfinder.pro/blog/bc-women-business-grants",
+    url: "https://fsidigital.ca/blog/bc-women-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,7 +29,7 @@ export default function BCWomenBusinessGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🏔️ BC Women Business Support 2025
+                🏔️ BC Women Business Support 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 BC Women Business Grants & Innovation Funding
@@ -55,7 +55,7 @@ export default function BCWomenBusinessGrantsGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -64,7 +64,7 @@ export default function BCWomenBusinessGrantsGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 BC Women Entrepreneurship 2025 Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 BC Women Entrepreneurship 2026 Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>$650M Provincial Support:</strong> Innovation-focused women business ecosystem

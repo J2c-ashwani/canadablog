@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Small Business Grants Complete Guide 2025 | SBA & Federal Funding",
+  title: "Small Business Grants Complete Guide 2026 | SBA & Federal Funding",
   description: "Complete guide to small business grants. Learn about SBA loans, federal grants, microloans, state programs, and how to secure funding up to $5M for your business.",
   keywords: "small business grants, SBA loans, federal grants small business, business funding guide, small business loans",
   openGraph: {
-    title: "Small Business Grants Complete Guide 2025",
+    title: "Small Business Grants Complete Guide 2026",
     description: "Complete guide to small business grants with SBA programs, federal funding, and application strategies.",
-    url: "https://grantfinder.pro/blog/small-business-grants-complete-guide",
+    url: "https://fsidigital.ca/blog/small-business-grants-complete-guide",
   },
 }
 

@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women Entrepreneurship Strategy Canada 2025 | WES Federal Funding Guide | $6B Investment",
+  title: "Women Entrepreneurship Strategy Canada 2026 | WES Federal Funding Guide | $6B Investment",
   description: "Complete guide to Canada's Women Entrepreneurship Strategy (WES) federal funding programs. Access up to $6B through WES Ecosystem Fund, Women Entrepreneurship Loan Fund, and comprehensive business support programs.",
   keywords: "Women Entrepreneurship Strategy Canada, WES federal funding, women business grants Canada, WES Ecosystem Fund, Women Entrepreneurship Loan Fund, ISED women entrepreneurs funding",
   openGraph: {
-    title: "Women Entrepreneurship Strategy Canada 2025 | WES Federal Funding Guide",
+    title: "Women Entrepreneurship Strategy Canada 2026 | WES Federal Funding Guide",
     description: "Comprehensive guide to WES federal funding programs offering up to $6B for women entrepreneurs through ecosystem support, loans, and business development.",
-    url: "https://grantfinder.pro/blog/women-entrepreneurship-strategy-canada-government-grants",
+    url: "https://fsidigital.ca/blog/women-entrepreneurship-strategy-canada-government-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -74,7 +74,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-purple-600 mb-2">2x</div>
-                  <div className="text-gray-600">Target Growth by 2025</div>
+                  <div className="text-gray-600">Target Growth by 2026</div>
                 </div>
               </div>
 
@@ -85,7 +85,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                   advancing women's entrepreneurship. Launched by Innovation, Science & Economic Development Canada (ISED) 
                   as a $6 billion investment, WES addresses systemic barriers that prevent women from starting, growing, 
                   and scaling businesses. The strategy integrates financing, ecosystem support, and policy initiatives 
-                  to double the number of women-owned businesses by 2025.
+                  to double the number of women-owned businesses by 2026.
                 </p>
                 
                 <div className="grid md:grid-cols-2 gap-6">
@@ -94,7 +94,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                     <ul className="text-gray-700 space-y-2">
                       <li>• Gender equality and women's economic empowerment</li>
                       <li>• Elimination of systemic barriers to women's entrepreneurship</li>
-                      <li>• Doubling women-owned businesses by 2025</li>
+                      <li>• Doubling women-owned businesses by 2026</li>
                       <li>• Comprehensive ecosystem development and support</li>
                     </ul>
                   </div>

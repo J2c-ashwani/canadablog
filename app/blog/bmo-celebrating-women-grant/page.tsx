@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "BMO Celebrating Women Grant 2025 | $10K Grants + Business Advisory for Women Entrepreneurs",
-  description: "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources. Applications open August 5-19, 2025 for Canadian and U.S. women business owners.",
+  title: "BMO Celebrating Women Grant 2026 | $10K Grants + Business Advisory for Women Entrepreneurs",
+  description: "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources. Applications open August 5-19, 2026 for Canadian and U.S. women business owners.",
   keywords: "BMO Celebrating Women Grant, women business grants Canada, BMO women entrepreneurs, $10000 business grants, women-owned business funding",
   openGraph: {
-    title: "BMO Celebrating Women Grant 2025 | $10K Grants + Advisory",
+    title: "BMO Celebrating Women Grant 2026 | $10K Grants + Advisory",
     description: "Annual grant program from BMO supporting women-owned businesses with $10,000 grants, business advisory, and comprehensive resources.",
-    url: "https://grantfinder.pro/blog/bmo-celebrating-women-grant",
+    url: "https://fsidigital.ca/blog/bmo-celebrating-women-grant",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,7 +29,7 @@ export default function BMOCelebratingWomenGrantGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                💼 Annual Grant Program 2025
+                💼 Annual Grant Program 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 BMO Celebrating Women Grant Program
@@ -38,7 +38,7 @@ export default function BMOCelebratingWomenGrantGuidePage() {
                 Annual grant program from BMO Bank of Montreal and Deloitte providing $10,000 grants to 
                 women-owned small businesses in Canada and the United States. Includes BMO business advisor 
                 support, workshops, seminars, and comprehensive resources to help businesses make real financial 
-                progress. Applications open August 5-19, 2025 for the 2025 program.
+                progress. Applications open August 5-19, 2026 for the 2026 program.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>
@@ -56,7 +56,7 @@ export default function BMOCelebratingWomenGrantGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -65,10 +65,10 @@ export default function BMOCelebratingWomenGrantGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 BMO Celebrating Women 2025 Program Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 BMO Celebrating Women 2026 Program Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
-                          <strong>Application Window:</strong> August 5-19, 2025 (8:00 AM - 8:00 PM ET)
+                          <strong>Application Window:</strong> August 5-19, 2026 (8:00 AM - 8:00 PM ET)
                         </div>
                         <div>
                           <strong>Grant Amount:</strong> $10,000 per recipient (15 grants total)
@@ -288,7 +288,7 @@ export default function BMOCelebratingWomenGrantGuidePage() {
                       <div className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
                         <div>
-                          <strong>Operating History:</strong> At least 2 years selling product/service by August 5, 2025
+                          <strong>Operating History:</strong> At least 2 years selling product/service by August 5, 2026
                         </div>
                       </div>
                     </div>
@@ -328,7 +328,7 @@ export default function BMOCelebratingWomenGrantGuidePage() {
                       <div className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-blue-600 mr-3 mt-0.5" />
                         <div>
-                          <strong>Operating History:</strong> At least 2 years in operation by August 5, 2025
+                          <strong>Operating History:</strong> At least 2 years in operation by August 5, 2026
                         </div>
                       </div>
                     </div>
@@ -385,7 +385,7 @@ export default function BMOCelebratingWomenGrantGuidePage() {
                     {
                       step: "2", 
                       title: "Semi-Finalist Video",
-                      description: "If selected, create short video about business (notified September 2025)",
+                      description: "If selected, create short video about business (notified September 2026)",
                       icon: <Sparkles className="w-6 h-6" />,
                       color: "green"
                     },
@@ -424,18 +424,18 @@ export default function BMOCelebratingWomenGrantGuidePage() {
                     <div className="flex items-start">
                       <Calendar className="w-6 h-6 text-blue-600 mr-3 mt-1" />
                       <div>
-                        <h4 className="font-bold text-blue-800 mb-2">📅 2025 Program Timeline</h4>
+                        <h4 className="font-bold text-blue-800 mb-2">📅 2026 Program Timeline</h4>
                         <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700">
                           <div>
                             <ul className="space-y-1">
-                              <li>• <strong>Applications Open:</strong> August 5, 2025 at 8:00 AM ET</li>
-                              <li>• <strong>Applications Close:</strong> August 19, 2025 at 8:00 PM ET</li>
+                              <li>• <strong>Applications Open:</strong> August 5, 2026 at 8:00 AM ET</li>
+                              <li>• <strong>Applications Close:</strong> August 19, 2026 at 8:00 PM ET</li>
                               <li>• <strong>Application Window:</strong> 2 weeks only</li>
                             </ul>
                           </div>
                           <div>
                             <ul className="space-y-1">
-                              <li>• <strong>Semi-Finalists:</strong> Notified September 2025</li>
+                              <li>• <strong>Semi-Finalists:</strong> Notified September 2026</li>
                               <li>• <strong>No Edits:</strong> Once submitted, cannot be changed</li>
                               <li>• <strong>No Save Draft:</strong> Complete in one session</li>
                             </ul>

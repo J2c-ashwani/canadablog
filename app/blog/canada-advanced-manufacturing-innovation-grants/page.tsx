@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Advanced Manufacturing Innovation Grants 2025 | $3.1B+ Industry 4.0 Funding | NGen",
+  title: "Canada Advanced Manufacturing Innovation Grants 2026 | $3.1B+ Industry 4.0 Funding | NGen",
   description: "Complete guide to Canadian advanced manufacturing innovation grants. Access $3.1B+ funding through NGen, automation programs, Industry 4.0 initiatives, and 38+ smart manufacturing programs.",
   keywords: "Canada advanced manufacturing grants, Industry 4.0 funding Canada, NGen grants, smart manufacturing funding, automation grants Canada, manufacturing innovation funding, productivity enhancement grants",
   openGraph: {
-    title: "Canada Advanced Manufacturing Innovation Grants 2025 | $3.1B+ Industry 4.0 Funding",
+    title: "Canada Advanced Manufacturing Innovation Grants 2026 | $3.1B+ Industry 4.0 Funding",
     description: "Access $3.1B+ in advanced manufacturing funding. Complete guide to NGen, automation programs, and 38+ Industry 4.0 innovation grants.",
-    url: "https://grantfinder.pro/blog/canada-advanced-manufacturing-innovation-grants",
+    url: "https://fsidigital.ca/blog/canada-advanced-manufacturing-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,11 +32,11 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
                 🏭 Advanced Manufacturing Innovation Grants
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Canada Advanced Manufacturing Innovation Grants 2025
+                Canada Advanced Manufacturing Innovation Grants 2026
               </h1>
               <p className="text-xl text-gray-300 mb-8">
-                Access $3.1B+ in advanced manufacturing funding through 38+ federal and provincial programs. 
-                From NGen collaborative projects to automation funding - accelerate your Industry 4.0, smart manufacturing, 
+                Access $3.1B+ in advanced manufacturing funding through 38+ federal and provincial programs.
+                From NGen collaborative projects to automation funding - accelerate your Industry 4.0, smart manufacturing,
                 and productivity enhancement initiatives.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -86,7 +86,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Advanced Manufacturing Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* NGen - Next Generation Manufacturing Canada */}
                 <Card className="border-gray-300">
@@ -112,7 +112,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Canada's Advanced Manufacturing Supercluster providing funding for collaborative projects that 
+                      Canada's Advanced Manufacturing Supercluster providing funding for collaborative projects that
                       advance Industry 4.0, smart manufacturing, and manufacturing innovation.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -162,7 +162,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      IRAP funding specifically for manufacturing SMEs developing innovative production technologies, 
+                      IRAP funding specifically for manufacturing SMEs developing innovative production technologies,
                       automation solutions, and advanced manufacturing capabilities.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -212,7 +212,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Support for manufacturers adopting digital technologies including automation systems, 
+                      Support for manufacturers adopting digital technologies including automation systems,
                       ERP/MES platforms, IoT sensors, and Industry 4.0 solutions.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -262,7 +262,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Regional Development Agencies (RDAs) provide manufacturing-specific funding for facility 
+                      Regional Development Agencies (RDAs) provide manufacturing-specific funding for facility
                       expansion, equipment modernization, and productivity improvements.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -297,7 +297,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Manufacturing Funding by Technology</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   {
@@ -377,7 +377,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Provincial Manufacturing Programs</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-gray-700">🍁 Leading Provincial Programs:</h4>
@@ -400,7 +400,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-blue-700">🎯 Priority Manufacturing Areas:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -432,7 +432,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Manufacturing Funding Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -514,10 +514,10 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
                 Ready to Access Advanced Manufacturing Funding?
               </h2>
               <p className="text-xl text-gray-300 mb-8">
-                Get our complete advanced manufacturing funding guide or work with specialists who have secured 
+                Get our complete advanced manufacturing funding guide or work with specialists who have secured
                 $120M+ in manufacturing grants across NGen, automation programs, and provincial initiatives.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Complete Application Guide</h4>
@@ -544,7 +544,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-gray-400 text-sm mt-6">
                 82% success rate • $120M+ secured • NGen, IRAP & CDAP expertise
               </p>

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Agriculture & Agri-Food Canada Application Guide 2025 | AAFC Federal Funding Process",
     description: "Step-by-step guide with templates and strategies for successful AAFC federal funding applications across all agricultural programs.",
-    url: "https://grantfinder.pro/guides/apply-agriculture-agri-food-canada",
+    url: "https://fsidigital.ca/guides/apply-agriculture-agri-food-canada",
   },
 }
 

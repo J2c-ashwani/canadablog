@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "SBIR & STTR Grants Complete Guide 2025 | Small Business Innovation Research",
+  title: "SBIR & STTR Grants Complete Guide 2026 | Small Business Innovation Research",
   description: "Complete guide to SBIR and STTR grants. Learn eligibility requirements, application process, funding phases, and tips to win up to $1.7M in federal R&D funding.",
   keywords: "SBIR grants, STTR grants, small business innovation research, federal R&D funding, Phase I Phase II grants",
   openGraph: {
-    title: "SBIR & STTR Grants Complete Guide 2025",
+    title: "SBIR & STTR Grants Complete Guide 2026",
     description: "Complete guide to SBIR and STTR grants with eligibility, application process, and winning strategies.",
-    url: "https://grantfinder.pro/blog/sbir-sttr-complete-guide",
+    url: "https://fsidigital.ca/blog/sbir-sttr-complete-guide",
   },
 }
 

@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "WBDC Equity Match Grant 2025 | $2,500-$10,000 for Women Business Growth Projects",
+  title: "WBDC Equity Match Grant 2027 | $2,500-$10,000 for Women Business Growth Projects",
   description: "Complete guide to WBDC Equity Match Grant with quarterly deadlines, $2,500-$10,000 funding for Connecticut women-owned businesses with matching investment requirement.",
   keywords: "WBDC Equity Match Grant, Connecticut women business grants, equity match funding, women business growth",
   openGraph: {
-    title: "WBDC Equity Match Grant 2025 | Quarterly $2.5K-$10K Awards",
+    title: "WBDC Equity Match Grant 2027 | Quarterly $2.5K-$10K Awards",
     description: "Quarterly grant program requiring 1:1 match for Connecticut women-owned business growth projects.",
-    url: "https://grantfinder.pro/blog/wbdc-equity-match-grant-women",
+    url: "https://fsidigital.ca/blog/wbdc-equity-match-grant-women",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,15 +29,15 @@ export default function WBDCEquityMatchGrantGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                💰 Quarterly Grant Program 2025
+                💰 Quarterly Grant Program 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 WBDC Equity Match Grant for Women
               </h1>
               <p className="text-xl text-purple-100 mb-8">
-                Quarterly grant program from Women's Business Development Council (WBDC) providing $2,500 to 
-                $10,000 in matching grants for Connecticut women-owned businesses investing in growth projects. 
-                Requires 1:1 equity match - business must invest equal or greater amount. Four funding rounds 
+                Quarterly grant program from Women's Business Development Council (WBDC) providing $2,500 to
+                $10,000 in matching grants for Connecticut women-owned businesses investing in growth projects.
+                Requires 1:1 equity match - business must invest equal or greater amount. Four funding rounds
                 annually with rolling quarterly deadlines.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -56,7 +56,7 @@ export default function WBDCEquityMatchGrantGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -65,7 +65,7 @@ export default function WBDCEquityMatchGrantGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 WBDC Equity Match Grant 2025 Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 WBDC Equity Match Grant 2027 Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>Quarterly Deadlines:</strong> Four funding rounds annually throughout the year
@@ -95,9 +95,9 @@ export default function WBDCEquityMatchGrantGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Connecticut's Premier Women Business Growth Grant</h2>
                 <p className="text-lg text-gray-600">
-                  The WBDC Equity Match Grant Program recognizes that when women entrepreneurs invest their own 
-                  capital in growth projects, strategic matching funds can accelerate success. By requiring businesses 
-                  to match grant funding dollar-for-dollar, WBDC ensures commitment while providing crucial financial 
+                  The WBDC Equity Match Grant Program recognizes that when women entrepreneurs invest their own
+                  capital in growth projects, strategic matching funds can accelerate success. By requiring businesses
+                  to match grant funding dollar-for-dollar, WBDC ensures commitment while providing crucial financial
                   boost for expansion, equipment, marketing, and other growth initiatives.
                 </p>
               </div>
@@ -129,7 +129,7 @@ export default function WBDCEquityMatchGrantGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">WBDC Equity Match Grant Program Details</h2>
-              
+
               <div className="space-y-8">
                 {/* Grant Structure */}
                 <Card className="border-purple-200">
@@ -167,7 +167,7 @@ export default function WBDCEquityMatchGrantGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-purple-50 rounded-lg">
                       <h5 className="font-semibold mb-2">📋 Eligible Grant Uses:</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -312,7 +312,7 @@ export default function WBDCEquityMatchGrantGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Application Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -394,15 +394,15 @@ export default function WBDCEquityMatchGrantGuidePage() {
                 Ready to Apply for WBDC Equity Match Grant?
               </h2>
               <p className="text-xl text-purple-100 mb-8">
-                Get our complete application guide with match requirement calculator and project planning templates, 
+                Get our complete application guide with match requirement calculator and project planning templates,
                 or work with our Connecticut grant specialists for expert application support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free Application Guide</h4>
                   <p className="text-purple-100 text-sm mb-4">
-                    Get our comprehensive WBDC Equity Match Grant guide with 1:1 match calculator, 
+                    Get our comprehensive WBDC Equity Match Grant guide with 1:1 match calculator,
                     quarterly deadline tracker, and growth project planning templates.
                   </p>
                   <Button size="lg" className="w-full bg-white text-purple-700 hover:bg-gray-100" asChild>
@@ -416,7 +416,7 @@ export default function WBDCEquityMatchGrantGuidePage() {
                 <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Expert Application Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with Connecticut grant specialists who understand WBDC requirements and can help 
+                    Work with Connecticut grant specialists who understand WBDC requirements and can help
                     optimize your match strategy and growth project proposal.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
@@ -426,7 +426,7 @@ export default function WBDCEquityMatchGrantGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-purple-200 text-sm mt-6">
                 Expert guidance • Match strategy • Quarterly deadlines • Connecticut women business growth success
               </p>

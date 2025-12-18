@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "USDA SBIR AgTech Grants 2025-2026 | $125K Phase I, $575K Phase II Agriculture & Food Tech Funding",
-  description: "Complete 2025-2026 guide to USDA SBIR/STTR grants for AgTech startups. Phase I up to $125K, Phase II up to $575K for precision farming, food safety, sustainable agriculture innovation.",
-  keywords: "USDA SBIR grants 2025, AgTech grants, precision farming funding, food tech SBIR, sustainable agriculture grants, USDA innovation grants",
+  title: "USDA SBIR AgTech Grants 2026-2027 | $125K Phase I, $575K Phase II Agriculture & Food Tech Funding",
+  description: "Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups. Phase I up to $125K, Phase II up to $575K for precision farming, food safety, sustainable agriculture innovation.",
+  keywords: "USDA SBIR grants 2026, AgTech grants, precision farming funding, food tech SBIR, sustainable agriculture grants, USDA innovation grants",
   openGraph: {
-    title: "USDA SBIR Grants 2025 | $125K-$575K AgTech Funding",
+    title: "USDA SBIR Grants 2026 | $125K-$575K AgTech Funding",
     description: "Complete guide to USDA SBIR/STTR grants for agriculture and food tech startups.",
-    url: "https://grantfinder.pro/blog/usda-sbir-agtech-grants",
+    url: "https://fsidigital.ca/blog/usda-sbir-agtech-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,18 +29,18 @@ export default function USDASBIRAgTechGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🌾 USDA SBIR/STTR AgTech Grants 2025-2026
+                🌾 USDA SBIR/STTR AgTech Grants 2026-2027
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 USDA SBIR Grants: $125K Phase I, $575K Phase II Non-Dilutive Funding for AgTech, Precision Farming & Food Technology Innovation
               </h1>
               <p className="text-xl text-green-100 mb-8">
-                Comprehensive 2025-2026 guide to USDA SBIR/STTR grants providing up to $575,000 in non-dilutive funding 
-                for precision farming, food safety technology, sustainable agriculture, rural innovation, and agribusiness 
-                solutions. Complete application strategies, eligibility requirements, success rates, and funding timelines 
-                for Phase I ($125,000) and Phase II ($575,000) awards supporting AgTech startups across all 50 states serving 
-                American farmers, ranchers, and rural communities. USDA SBIR takes no equity, requires no repayment, funding 
-                transformative agricultural R&D advancing food security, farm productivity, and rural prosperity through 
+                Comprehensive 2026-2027 guide to USDA SBIR/STTR grants providing up to $575,000 in non-dilutive funding
+                for precision farming, food safety technology, sustainable agriculture, rural innovation, and agribusiness
+                solutions. Complete application strategies, eligibility requirements, success rates, and funding timelines
+                for Phase I ($125,000) and Phase II ($575,000) awards supporting AgTech startups across all 50 states serving
+                American farmers, ranchers, and rural communities. USDA SBIR takes no equity, requires no repayment, funding
+                transformative agricultural R&D advancing food security, farm productivity, and rural prosperity through
                 innovative small business solutions[web:211][web:214][web:216].
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,8 +63,8 @@ export default function USDASBIRAgTechGrantsPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">USDA SBIR AgTech Grants by Region and Agricultural Hub (2025-2026 Funding Available)</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">USDA SBIR AgTech Grants by Region and Agricultural Hub (2026-2027 Funding Available)</h2>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-green-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -156,7 +156,7 @@ export default function USDASBIRAgTechGrantsPage() {
               </div>
 
               <div className="bg-green-50 border-2 border-green-300 rounded-lg p-6">
-                <h3 className="font-bold text-green-900 mb-3 text-lg">🔥 High-Demand USDA SBIR AgTech Keywords 2025-2026:</h3>
+                <h3 className="font-bold text-green-900 mb-3 text-lg">🔥 High-Demand USDA SBIR AgTech Keywords 2026-2027:</h3>
                 <div className="grid md:grid-cols-3 gap-4 text-sm text-green-800">
                   <div>
                     <strong>Program Types:</strong> USDA SBIR Phase I $125K, USDA SBIR Phase II $575K, NIFA grants, AgTech funding, non-dilutive agriculture innovation no equity
@@ -165,7 +165,7 @@ export default function USDASBIRAgTechGrantsPage() {
                     <strong>Tech Focus:</strong> Precision farming grants, food safety technology SBIR, sustainable agriculture funding, farm automation, crop sensors, livestock monitoring innovation
                   </div>
                   <div>
-                    <strong>Application:</strong> USDA SBIR deadlines September 2025, NIFA submission portal, eligibility requirements, commercialization strategy, farmer benefit demonstration
+                    <strong>Application:</strong> USDA SBIR deadlines September 2026, NIFA submission portal, eligibility requirements, commercialization strategy, farmer benefit demonstration
                   </div>
                 </div>
               </div>
@@ -173,7 +173,7 @@ export default function USDASBIRAgTechGrantsPage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -182,7 +182,7 @@ export default function USDASBIRAgTechGrantsPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🌾 2025-2026 USDA SBIR Program Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🌾 2026-2027 USDA SBIR Program Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>Phase I Funding:</strong> Up to $125,000 for 8-12 months proving technical feasibility of agricultural innovation[web:211][web:214]
@@ -212,17 +212,17 @@ export default function USDASBIRAgTechGrantsPage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete USDA SBIR/STTR Funding Ecosystem for AgTech Startups</h2>
                 <p className="text-lg text-gray-600 mb-4">
-                  The USDA SBIR/STTR program through National Institute of Food and Agriculture (NIFA) provides non-dilutive 
-                  grants for research and development of innovative agricultural technologies addressing challenges facing 
-                  American farmers, ranchers, and rural communities. USDA seeks breakthrough innovations in precision farming, 
-                  food safety, sustainable agriculture, rural broadband, and agribusiness solutions with strong commercialization 
+                  The USDA SBIR/STTR program through National Institute of Food and Agriculture (NIFA) provides non-dilutive
+                  grants for research and development of innovative agricultural technologies addressing challenges facing
+                  American farmers, ranchers, and rural communities. USDA seeks breakthrough innovations in precision farming,
+                  food safety, sustainable agriculture, rural broadband, and agribusiness solutions with strong commercialization
                   potential benefiting agricultural producers[web:211][web:214][web:216].
                 </p>
                 <p className="text-lg text-gray-600">
-                  AgTech startups can access Phase I funding (up to $125,000) to prove technical feasibility and farmer benefit 
-                  over 8-12 months, followed by Phase II awards ($575,000-$650,000) for product development, field testing, and 
-                  commercial launch over 24 months. USDA evaluates proposals on technical merit, agricultural impact, farmer 
-                  adoption potential, and commercialization viability focusing on solving pressing challenges for American 
+                  AgTech startups can access Phase I funding (up to $125,000) to prove technical feasibility and farmer benefit
+                  over 8-12 months, followed by Phase II awards ($575,000-$650,000) for product development, field testing, and
+                  commercial launch over 24 months. USDA evaluates proposals on technical merit, agricultural impact, farmer
+                  adoption potential, and commercialization viability focusing on solving pressing challenges for American
                   agriculture enhancing productivity, sustainability, profitability[web:211][web:214][web:216].
                 </p>
               </div>
@@ -257,11 +257,11 @@ export default function USDASBIRAgTechGrantsPage() {
         <section id="usda-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">USDA SBIR and STTR Program Details 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">USDA SBIR and STTR Program Details 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete breakdown of Phase I, Phase II funding programs with AgTech topic areas and application timelines
               </p>
-              
+
               <div className="space-y-8">
                 {/* Phase I Program */}
                 <Card className="border-green-200">
@@ -294,7 +294,7 @@ export default function USDASBIRAgTechGrantsPage() {
                               <span className="text-teal-700 font-bold">~100 Phase I</span>
                             </div>
                           </div>
-                          
+
                           <div className="space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
                             <p className="font-semibold text-gray-800 mb-2">Phase I AgTech Objectives:</p>
                             <p>• <strong>Technical Feasibility:</strong> Prove agricultural technology works on farms with measurable productivity improvements for farmers</p>
@@ -336,14 +336,14 @@ export default function USDASBIRAgTechGrantsPage() {
                     </div>
 
                     <div className="bg-green-50 p-6 rounded-lg border-2 border-green-200 mt-6">
-                      <h4 className="font-bold text-lg mb-4 text-green-800">📍 USDA SBIR Phase I Application Deadlines 2025-2026</h4>
+                      <h4 className="font-bold text-lg mb-4 text-green-800">📍 USDA SBIR Phase I Application Deadlines 2026-2027</h4>
                       <div className="grid md:grid-cols-3 gap-4 text-sm">
                         <div>
                           <p className="font-semibold text-gray-800 mb-2">Annual Solicitation:</p>
                           <ul className="space-y-1 text-gray-700">
-                            <li>• <strong>Opens:</strong> May 2025</li>
-                            <li>• <strong>Closes:</strong> September 23, 2025</li>
-                            <li>• <strong>Awards:</strong> Spring 2026</li>
+                            <li>• <strong>Opens:</strong> May 2026</li>
+                            <li>• <strong>Closes:</strong> September 23, 2026</li>
+                            <li>• <strong>Awards:</strong> Spring 2027</li>
                             <li>• <strong>Topics:</strong> 12 priority areas</li>
                           </ul>
                         </div>
@@ -446,7 +446,7 @@ export default function USDASBIRAgTechGrantsPage() {
                   <CardHeader className="bg-gradient-to-r from-lime-100 to-green-100">
                     <div className="flex items-center mb-2">
                       <Building className="w-6 h-6 text-lime-600 mr-3" />
-                      <CardTitle className="text-lime-700 text-2xl">USDA SBIR Priority Topic Areas 2025-2026</CardTitle>
+                      <CardTitle className="text-lime-700 text-2xl">USDA SBIR Priority Topic Areas 2026-2027</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
@@ -493,8 +493,8 @@ export default function USDASBIRAgTechGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">USDA SBIR Application Success Strategies 2025-2026</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">USDA SBIR Application Success Strategies 2026-2027</h2>
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -590,7 +590,7 @@ export default function USDASBIRAgTechGrantsPage() {
               <p className="text-xl text-green-100 mb-8">
                 Get our complete USDA SBIR application guide with Phase I/II templates or work with AgTech specialists for expert proposal support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2 text-lg">📥 Free USDA SBIR Guide</h4>
@@ -623,34 +623,34 @@ export default function USDASBIRAgTechGrantsPage() {
                   <p className="text-xs text-yellow-200 mt-3">Free consultation • 75% success rate • AgTech expertise</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6">
                 <p className="text-green-200 text-sm mb-3">
                   <strong className="text-white">Why Choose Our USDA SBIR Services:</strong>
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 text-xs text-green-200">
                   <div>
-                    ✓ 75+ USDA SBIR awards won<br/>
-                    ✓ $40M+ total funding secured<br/>
+                    ✓ 75+ USDA SBIR awards won<br />
+                    ✓ $40M+ total funding secured<br />
                     ✓ 75% Phase I approval rate
                   </div>
                   <div>
-                    ✓ All AgTech sectors<br/>
-                    ✓ Former USDA program officers<br/>
+                    ✓ All AgTech sectors<br />
+                    ✓ Former USDA program officers<br />
                     ✓ Farmer network expertise
                   </div>
                   <div>
-                    ✓ Phase I → Phase II continuity<br/>
-                    ✓ On-farm testing support<br/>
+                    ✓ Phase I → Phase II continuity<br />
+                    ✓ On-farm testing support<br />
                     ✓ Distribution partnerships
                   </div>
                 </div>
               </div>
 
               <p className="text-green-300 text-sm">
-                🌾 <strong>USDA SBIR Grant Assistance:</strong> Phase I $125K • Phase II $575K • Precision farming • 
-                Food safety technology • Sustainable agriculture • Farm automation • Crop sensors • Livestock monitoring • 
-                Rural broadband • Farmer benefit • Distribution strategy • NIFA grants supporting American farmers 
+                🌾 <strong>USDA SBIR Grant Assistance:</strong> Phase I $125K • Phase II $575K • Precision farming •
+                Food safety technology • Sustainable agriculture • Farm automation • Crop sensors • Livestock monitoring •
+                Rural broadband • Farmer benefit • Distribution strategy • NIFA grants supporting American farmers
                 ranchers rural communities enhancing productivity profitability sustainability competitiveness
               </p>
             </div>

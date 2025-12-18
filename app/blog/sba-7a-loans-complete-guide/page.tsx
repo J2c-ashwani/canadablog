@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "SBA 7(a) Loans Complete Guide 2025 | Small Business Administration Funding",
+  title: "SBA 7(a) Loans Complete Guide 2026 | Small Business Administration Funding",
   description: "Complete guide to SBA 7(a) loans. Learn eligibility requirements, application process, terms, and how to secure up to $5M in SBA funding for your business.",
   keywords: "SBA 7a loans, SBA loan application, small business loans, SBA 7a loan requirements, SBA funding guide",
   openGraph: {
-    title: "SBA 7(a) Loans Complete Guide 2025",
+    title: "SBA 7(a) Loans Complete Guide 2026",
     description: "Complete guide to SBA 7(a) loans with application process and eligibility requirements.",
-    url: "https://grantfinder.pro/blog/sba-7a-loans-complete-guide",
+    url: "https://fsidigital.ca/blog/sba-7a-loans-complete-guide",
   },
 }
 
@@ -162,7 +162,7 @@ export default function SBA7aLoansGuide() {
                           </ul>
                         </div>
                         <div>
-                          <h5 className="font-semibold mb-3 text-green-700">Interest Rates (2025):</h5>
+                          <h5 className="font-semibold mb-3 text-green-700">Interest Rates (2026):</h5>
                           <ul className="text-sm text-gray-700 space-y-1">
                             <li>• Prime + 2.75% to 4.75%</li>
                             <li>• Fixed or variable rates available</li>

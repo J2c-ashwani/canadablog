@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Stage 2: Development & Proof-of-Concept Funding Canada 2025 | IRAP & SR&ED | Up to $5M Technology Development",
+  title: "Stage 2: Development & Proof-of-Concept Funding Canada 2026 | IRAP & SR&ED | Up to $5M Technology Development",
   description: "Complete guide to Canadian development and proof-of-concept funding. Access up to $5M through IRAP Technology Development, SR&ED Tax Credits, NSERC CRD, and applied research programs for TRL 4-6 projects.",
   keywords: "proof of concept funding Canada, technology development grants, IRAP funding Canada, SR&ED tax credits, applied research funding, prototype development grants, NSERC CRD funding, TRL 4-6 funding Canada",
   openGraph: {
-    title: "Stage 2: Development & Proof-of-Concept Funding Canada 2025 | IRAP & SR&ED",
+    title: "Stage 2: Development & Proof-of-Concept Funding Canada 2026 | IRAP & SR&ED",
     description: "Access up to $5M in technology development funding. Complete guide to IRAP, SR&ED, and proof-of-concept programs.",
-    url: "https://grantfinder.pro/blog/development-proof-concept-funding-canada",
+    url: "https://fsidigital.ca/blog/development-proof-concept-funding-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,11 +32,11 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
                 🔬 Stage 2: Development & Proof-of-Concept Funding
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Stage 2: Development & Proof-of-Concept Funding Canada 2025
+                Stage 2: Development & Proof-of-Concept Funding Canada 2026
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Access up to $5M in technology development and proof-of-concept funding through IRAP Technology Development, 
-                SR&ED Tax Credits, NSERC CRD, and applied research programs. Validate your innovation from prototype 
+                Access up to $5M in technology development and proof-of-concept funding through IRAP Technology Development,
+                SR&ED Tax Credits, NSERC CRD, and applied research programs. Validate your innovation from prototype
                 development through technical feasibility demonstration (TRL 4-6).
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -86,7 +86,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Stage 2: Development & Proof-of-Concept Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* IRAP Technology Development */}
                 <Card className="border-blue-200">
@@ -112,7 +112,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      NRC's flagship program supporting Canadian SMEs developing innovative technology projects with strong 
+                      NRC's flagship program supporting Canadian SMEs developing innovative technology projects with strong
                       commercialization potential. Provides funding and advisory services for technology validation and prototype development.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -162,7 +162,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Canada's largest federal innovation support program providing tax incentives for companies conducting 
+                      Canada's largest federal innovation support program providing tax incentives for companies conducting
                       eligible R&D activities, including prototype development and technical uncertainty resolution.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -212,7 +212,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      NSERC program supporting university-industry collaborative research projects that combine academic 
+                      NSERC program supporting university-industry collaborative research projects that combine academic
                       research excellence with practical industry applications and technology development.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -262,7 +262,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Provincial innovation agencies providing funding for applied research projects, technology validation, 
+                      Provincial innovation agencies providing funding for applied research projects, technology validation,
                       and proof-of-concept development through industry-academic collaborations.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -297,7 +297,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Stage 2: Development & Proof-of-Concept Covers</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-blue-200">
                   <CardHeader>
@@ -388,7 +388,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Stage 2 Development Funding Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -470,10 +470,10 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
                 Ready to Fund Your Technology Development?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get expert help navigating Stage 2 development and proof-of-concept funding programs. Our specialists have secured 
+                Get expert help navigating Stage 2 development and proof-of-concept funding programs. Our specialists have secured
                 $156M+ in IRAP, SR&ED, and technology development funding.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>
                   <Link href="/contact?service=development-proof-concept-funding-canada-expert-help">
@@ -486,7 +486,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
                   </Link>
                 </Button>
               </div>
-              
+
               <p className="text-blue-200 text-sm mt-6">
                 82% success rate • $156M+ secured in IRAP and SR&ED • Expert guidance for all stages
               </p>

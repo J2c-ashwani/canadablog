@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Business Grant Finder | Find Perfect Grants for Your Business",
     description: "Use our AI-powered grant finder to discover personalized government funding opportunities.",
-    url: "https://grantfinder.pro/grant-finder",
+    url: "https://fsidigital.ca/grant-finder",
   },
 }
 

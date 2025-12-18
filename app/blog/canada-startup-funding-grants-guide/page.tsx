@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Startup Funding Grants 2025 | $1.2B+ Available Across 35+ Programs",
+  title: "Canada Startup Funding Grants 2026 | $1.2B+ Available Across 35+ Programs",
   description: "Complete guide to Canadian startup grants and funding. Access all 35+ startup programs including CYBF, seed funding, business incubators, tax credits, and provincial startup support.",
   keywords: "Canada startup grants, Canadian startup funding, small business startup grants, seed funding Canada, business incubator funding, youth entrepreneur grants, startup tax credits",
 }
@@ -26,10 +26,10 @@ export default function CanadaStartupFundingGrantsGuide() {
                 🚀 Canadian Startup Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Canada Startup Funding Grants 2025
+                Canada Startup Funding Grants 2026
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Access $1.2B+ in Canadian startup funding across 35+ specialized programs. From seed grants to 
+                Access $1.2B+ in Canadian startup funding across 35+ specialized programs. From seed grants to
                 incubator funding - complete guide to launching your business in Canada with government support.
               </p>
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
@@ -78,7 +78,7 @@ export default function CanadaStartupFundingGrantsGuide() {
               <p className="text-center text-gray-600 mb-12">
                 Government of Canada programs specifically designed to support new business formation and early-stage growth.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-16">
                 {/* Youth Entrepreneurship Programs */}
                 <Card className="border-2 border-blue-200">
@@ -249,7 +249,7 @@ export default function CanadaStartupFundingGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">Provincial Startup & Seed Funding Programs</h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {/* Ontario Startup Programs */}
                 <Card className="border-2 border-red-200">
@@ -420,7 +420,7 @@ export default function CanadaStartupFundingGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">Business Incubator & Accelerator Programs</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-2 border-purple-200">
                   <CardHeader>
@@ -499,7 +499,7 @@ export default function CanadaStartupFundingGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8">Startup Tax Credits & Investment Incentives</h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="text-center">
                   <CardHeader>
@@ -517,7 +517,7 @@ export default function CanadaStartupFundingGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Award className="w-12 h-12 text-blue-600 mx-auto mb-4" />
@@ -534,7 +534,7 @@ export default function CanadaStartupFundingGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Award className="w-12 h-12 text-purple-600 mx-auto mb-4" />
@@ -564,8 +564,8 @@ export default function CanadaStartupFundingGrantsGuide() {
                 Navigate All 35+ Canadian Startup Programs with Expert Guidance
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                From federal programs to provincial incentives, business incubators to tax credits - the Canadian startup 
-                funding landscape is complex. Our specialists have helped 500+ entrepreneurs secure over $22M across 
+                From federal programs to provincial incentives, business incubators to tax credits - the Canadian startup
+                funding landscape is complex. Our specialists have helped 500+ entrepreneurs secure over $22M across
                 multiple programs with an 89% success rate.
               </p>
               <div className="bg-white/10 rounded-lg p-6 mb-8">

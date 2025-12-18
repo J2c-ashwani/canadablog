@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Aerospace & Defence Grants 2025 | $450M+ Space Technology & Aviation Funding | CSA Programs",
+  title: "Canada Aerospace & Defence Grants 2026 | $450M+ Space Technology & Aviation Funding | CSA Programs",
   description: "Complete guide to Canadian aerospace and defence innovation grants. Access $450M+ funding through Canadian Space Agency programs, defence innovation initiatives, and 12+ aviation technology grants.",
   keywords: "Canada aerospace grants, space technology funding Canada, defence innovation grants, Canadian Space Agency funding, aviation grants Canada, satellite development funding, aerospace manufacturing grants",
   openGraph: {
-    title: "Canada Aerospace & Defence Grants 2025 | $450M+ Space & Aviation Funding",
+    title: "Canada Aerospace & Defence Grants 2026 | $450M+ Space & Aviation Funding",
     description: "Access $450M+ in aerospace and defence funding. Complete guide to CSA, defence innovation, and aviation technology grants.",
-    url: "https://grantfinder.pro/blog/canada-aerospace-defence-innovation-grants",
+    url: "https://fsidigital.ca/blog/canada-aerospace-defence-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,7 +32,7 @@ export default function CanadaAerospaceDefenceInnovationGrantsPage() {
                 ✈️ Aerospace & Defence Innovation Grants
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Canada Aerospace & Defence Innovation Grants 2025
+                Canada Aerospace & Defence Innovation Grants 2026
               </h1>
               <p className="text-xl text-blue-100 mb-8">
                 Access $450M+ in aerospace and defence technology funding through 12+ federal and provincial programs. 

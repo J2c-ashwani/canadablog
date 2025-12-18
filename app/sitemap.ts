@@ -3,22 +3,22 @@ import fs from 'fs'
 import path from 'path'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://grantfinder.pro'
-  
+  const baseUrl = 'https://fsidigital.ca'
+
   // ============================================
   // RECURSIVE FUNCTION - Gets ALL pages
   // ============================================
   function getAllPagePaths(dirPath: string = '', basePath: string = ''): string[] {
     const results: string[] = []
     const fullPath = path.join(process.cwd(), 'app', dirPath)
-    
+
     try {
       const items = fs.readdirSync(fullPath)
-      
+
       for (const item of items) {
         const itemPath = path.join(fullPath, item)
         const stat = fs.statSync(itemPath)
-        
+
         if (stat.isDirectory()) {
           // Skip dynamic route folders like [slug]
           if (!item.startsWith('[')) {
@@ -36,23 +36,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     } catch (error) {
       console.error(`Error reading directory ${dirPath}:`, error)
     }
-    
+
     return results
   }
 
   // Get ALL pages recursively
   const allPaths = getAllPagePaths()
-  
+
   // Remove duplicates and sort
   const uniquePaths = [...new Set(allPaths)].sort()
-  
+
   // ============================================
   // CREATE SITEMAP ENTRIES WITH PRIORITIES
   // ============================================
   const sitemapEntries = uniquePaths.map((urlPath) => {
     let priority = 0.7
     let changeFrequency: 'daily' | 'weekly' | 'monthly' | 'yearly' = 'monthly'
-    
+
     // Set priority and frequency based on path type
     if (urlPath === '/') {
       priority = 1.0
@@ -85,7 +85,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority = 0.7
       changeFrequency = 'weekly'
     }
-    
+
     return {
       url: `${baseUrl}${urlPath}`,
       lastModified: new Date(),
@@ -93,7 +93,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority,
     }
   })
-  
+
   // ============================================
   // LOG DETAILED BREAKDOWN
   // ============================================
@@ -106,6 +106,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   console.log(`   - USA pages: ${sitemapEntries.filter(e => e.url.includes('/usa/')).length}`)
   console.log(`   - Canada pages: ${sitemapEntries.filter(e => e.url.includes('/canada/')).length}`)
   console.log(`   - Core pages: ${sitemapEntries.filter(e => !e.url.includes('/blog/') && !e.url.includes('/guides/') && !e.url.includes('/download/') && !e.url.includes('/usa/') && !e.url.includes('/canada/')).length}\n`)
-  
+
   return sitemapEntries
 }

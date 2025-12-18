@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Stage 1: Ideation & Research Funding Canada 2025 | NSERC Discovery Grants | Up to $1M Early-Stage R&D",
+  title: "Stage 1: Ideation & Research Funding Canada 2026 | NSERC Discovery Grants | Up to $1M Early-Stage R&D",
   description: "Complete guide to Canadian ideation and research funding for early-stage innovation. Access up to $1M through NSERC Discovery Grants, university research programs, and basic R&D support for concept development.",
   keywords: "ideation funding Canada, research grants Canada, NSERC Discovery Grants, early stage research funding, concept development grants, university research funding, basic R&D grants Canada, proof of concept funding",
   openGraph: {
-    title: "Stage 1: Ideation & Research Funding Canada 2025 | NSERC Discovery Grants",
+    title: "Stage 1: Ideation & Research Funding Canada 2026 | NSERC Discovery Grants",
     description: "Access up to $1M in early-stage research funding. Complete guide to NSERC Discovery Grants and concept development programs.",
-    url: "https://grantfinder.pro/blog/ideation-research-funding-canada",
+    url: "https://fsidigital.ca/blog/ideation-research-funding-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,7 +32,7 @@ export default function IdeationResearchFundingCanadaPage() {
                 💡 Stage 1: Ideation & Research Funding
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Stage 1: Ideation & Research Funding Canada 2025
+                Stage 1: Ideation & Research Funding Canada 2026
               </h1>
               <p className="text-xl text-purple-100 mb-8">
                 Access up to $1M in early-stage research and concept development funding through NSERC Discovery Grants, 

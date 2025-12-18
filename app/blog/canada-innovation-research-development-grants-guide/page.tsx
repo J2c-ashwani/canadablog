@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Innovation & R&D Grants 2025 | $4.2B+ Research Development Funding Programs Guide",
+  title: "Canada Innovation & R&D Grants 2026 | $4.2B+ Research Development Funding Programs Guide",
   description: "Complete guide to Canada's innovation and R&D grants. Access SR&ED tax credits, IRAP funding, Strategic Innovation Fund, and 45+ programs offering $4.2B+ for research and development.",
-  keywords: "Canada innovation grants, R&D funding Canada, SR&ED tax credits, IRAP funding, Strategic Innovation Fund, research development grants Canada 2025",
+  keywords: "Canada innovation grants, R&D funding Canada, SR&ED tax credits, IRAP funding, Strategic Innovation Fund, research development grants Canada 2026",
   openGraph: {
-    title: "Canada Innovation & R&D Grants 2025 | $4.2B+ Research Development Funding Guide",
+    title: "Canada Innovation & R&D Grants 2026 | $4.2B+ Research Development Funding Guide",
     description: "Comprehensive guide to Canada's innovation and R&D funding ecosystem with 45+ programs offering $4.2B+ for research, development, and commercialization.",
-    url: "https://grantfinder.pro/blog/canada-innovation-research-development-grants-guide",
+    url: "https://fsidigital.ca/blog/canada-innovation-research-development-grants-guide",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -143,11 +143,11 @@ export default function CanadaInnovationRDGrantsGuidePage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Canada's largest R&D tax incentive program providing refundable tax credits for research and experimental development activities. Enhanced in 2025 with increased refundable limit to $4.5M for CCPCs.
+                      Canada's largest R&D tax incentive program providing refundable tax credits for research and experimental development activities. Enhanced in 2026 with increased refundable limit to $4.5M for CCPCs.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
                       <div>
-                        <h5 className="font-semibold mb-2">Enhanced 2025 Benefits:</h5>
+                        <h5 className="font-semibold mb-2">Enhanced 2026 Benefits:</h5>
                         <ul className="text-sm text-gray-600 space-y-1">
                           <li>• 35% refundable ITC on first $4.5M (up from $3M)</li>
                           <li>• 15% non-refundable above limit</li>
@@ -209,7 +209,7 @@ export default function CanadaInnovationRDGrantsGuidePage() {
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h5 className="font-semibold mb-2 text-green-700">2025 Program Updates:</h5>
+                        <h5 className="font-semibold mb-2 text-green-700">2026 Program Updates:</h5>
                         <ul className="text-sm text-gray-600 space-y-1">
                           <li>• <strong>Funding:</strong> 60-80% of eligible costs up to $500K per project</li>
                           <li>• <strong>Duration:</strong> 12-24 months with possible extension</li>
@@ -465,7 +465,7 @@ export default function CanadaInnovationRDGrantsGuidePage() {
                         <h5 className="font-semibold mb-2">Timeline Coordination:</h5>
                         <ul className="text-sm space-y-1">
                           <li>• SR&ED: File with annual corporate tax returns</li>
-                          <li>• IRAP: Rolling intake with 2025 cohort opening</li>
+                          <li>• IRAP: Rolling intake with 2026 cohort opening</li>
                           <li>• SIF: Competitive process with rolling submissions</li>
                           <li>• Provincial: Various deadlines and intake periods</li>
                         </ul>

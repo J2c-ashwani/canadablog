@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   keywords:
     "Texas business funding programs, Texas state grants, Texas government funding, small business grants Texas",
   alternates: {
-    canonical: "https://grantfinder.pro/usa/texas",
+    canonical: "https://fsidigital.ca/usa/texas",
   },
 }
 

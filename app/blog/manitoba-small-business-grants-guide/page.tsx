@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Manitoba Small Business Grants 2025 | $380M+ Business Development Programs",
+  title: "Manitoba Small Business Grants 2026 | $380M+ Business Development Programs",
   description: "Complete guide to Manitoba small business grants. Access Manitoba Business Development, Innovation Growth Program, Small Business Venture Capital, and Rural Development Corporation funding.",
   keywords: "Manitoba small business grants, Manitoba business funding, Manitoba Business Development, Innovation Growth Program Manitoba, Manitoba Small Business Venture Capital",
 }
@@ -26,7 +26,7 @@ export default function ManitobaSmallBusinessGrantsGuide() {
                 🏔️ Manitoba Business Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Manitoba Small Business Grants 2025
+                Manitoba Small Business Grants 2026
               </h1>
               <p className="text-xl text-teal-100 mb-8">
                 Access $380M+ in Manitoba business development programs. From innovation growth funding to 

@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Saskatchewan Small Business Grants 2025 | $425M+ SME Growth Programs",
+  title: "Saskatchewan Small Business Grants 2026 | $425M+ SME Growth Programs",
   description: "Complete guide to Saskatchewan small business grants. Access Saskatchewan Small Business Loans, Innovation Saskatchewan Programs, Agriculture Value-Added Fund, and Export Development programs.",
   keywords: "Saskatchewan small business grants, Saskatchewan business funding, Innovation Saskatchewan Programs, Agriculture Value-Added Fund, Saskatchewan Export Development Program",
 }
@@ -26,7 +26,7 @@ export default function SaskatchewanSmallBusinessGrantsGuide() {
                 🌾 Saskatchewan Business Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Saskatchewan Small Business Grants 2025
+                Saskatchewan Small Business Grants 2026
               </h1>
               <p className="text-xl text-yellow-100 mb-8">
                 Access $425M+ in Saskatchewan SME growth programs. From agriculture value-added funding to 

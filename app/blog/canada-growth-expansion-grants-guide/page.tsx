@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Growth & Expansion Grants 2025 | $2.8B+ Scale-Up Funding Across 42+ Programs",
+  title: "Canada Growth & Expansion Grants 2026 | $2.8B+ Scale-Up Funding Across 42+ Programs",
   description: "Complete guide to Canadian business expansion grants. Access all 42+ growth programs including Strategic Innovation Fund, provincial expansion funds, export development grants, and scale-up incentives.",
   keywords: "Canada business expansion grants, scale-up funding Canada, business growth grants, Strategic Innovation Fund, market expansion funding, facility expansion grants, growth capital programs",
 }
@@ -26,7 +26,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
                 📈 Canadian Growth & Expansion Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Canada Growth & Expansion Grants 2025
+                Canada Growth & Expansion Grants 2026
               </h1>
               <p className="text-xl text-green-100 mb-8">
                 Access $2.8B+ in Canadian scale-up funding across 42+ specialized programs. From Strategic Innovation Fund 

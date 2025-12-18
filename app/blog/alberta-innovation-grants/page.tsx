@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Alberta Innovation Grants & Funding 2025 | $950M+ Energy Transition, AI & CleanTech Support",
+  title: "Alberta Innovation Grants & Funding 2026 | $950M+ Energy Transition, AI & CleanTech Support",
   description: "Complete guide to Alberta innovation grants and funding programs. Access $950M+ through Alberta Innovates, Emissions Reduction Alberta, AI4Society, and energy transition, AI, health innovation programs.",
   keywords: "Alberta innovation grants, Alberta Innovates funding, Emissions Reduction Alberta, AI4Society grants, energy transition Alberta, cleantech Alberta grants, health innovation Alberta, AI funding Alberta",
   openGraph: {
-    title: "Alberta Innovation Grants & Funding 2025 | $950M+ Energy & AI Support",
+    title: "Alberta Innovation Grants & Funding 2026 | $950M+ Energy & AI Support",
     description: "Access $950M+ in Alberta innovation funding. Complete guide to Alberta Innovates, ERA, and diversification programs.",
-    url: "https://grantfinder.pro/blog/alberta-innovation-grants",
+    url: "https://fsidigital.ca/blog/alberta-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,7 +32,7 @@ export default function AlbertaInnovationGrantsPage() {
                 🏔️ Alberta Provincial Innovation Support
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Alberta Innovation Grants & Funding Programs 2025
+                Alberta Innovation Grants & Funding Programs 2026
               </h1>
               <p className="text-xl text-orange-100 mb-8">
                 Access $950M+ in Alberta innovation funding through Alberta Innovates, Emissions Reduction Alberta (ERA), 

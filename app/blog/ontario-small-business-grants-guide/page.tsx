@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Ontario Small Business Grants 2025 | $2.1B+ Available for Ontario SMEs",
+  title: "Ontario Small Business Grants 2026 | $2.1B+ Available for Ontario SMEs",
   description: "Complete guide to Ontario small business grants and funding. Access Ontario Small Business Support Grant, Digital Main Street, Jobs & Prosperity Fund, and provincial tax credits.",
   keywords: "Ontario small business grants, Ontario business funding, Ontario Small Business Support Grant, Digital Main Street program, Jobs and Prosperity Fund, Ontario Innovation Tax Credit",
 }
@@ -26,7 +26,7 @@ export default function OntarioSmallBusinessGrantsGuide() {
                 🏢 Ontario Business Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Ontario Small Business Grants 2025
+                Ontario Small Business Grants 2026
               </h1>
               <p className="text-xl text-red-100 mb-8">
                 Access $2.1B+ in Ontario government funding for small businesses. From startup grants 

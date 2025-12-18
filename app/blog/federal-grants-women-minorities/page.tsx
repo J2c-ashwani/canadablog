@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Federal Grants for Women, Minorities & Veterans 2025 | Specialized Business Funding",
+  title: "Federal Grants for Women, Minorities & Veterans 2026 | Specialized Business Funding",
   description: "Complete guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. Find WOSB, 8(a), HUBZone, VOSB, and specialized funding programs.",
   keywords: "women business grants, minority business grants, veteran business grants, WOSB, 8a program, HUBZone, VOSB, disadvantaged business",
   openGraph: {
-    title: "Federal Grants for Women, Minorities & Veterans 2025",
+    title: "Federal Grants for Women, Minorities & Veterans 2026",
     description: "Complete guide to specialized federal grants for women, minority, and veteran entrepreneurs.",
-    url: "https://grantfinder.pro/blog/federal-grants-women-minorities",
+    url: "https://fsidigital.ca/blog/federal-grants-women-minorities",
   },
 }
 

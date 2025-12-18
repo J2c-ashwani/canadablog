@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Regional Development Agencies Application Guide 2025 | RDA Federal Funding Process",
     description: "Step-by-step guide with templates and strategies for successful RDA federal funding applications across all 7 Canadian regional agencies.",
-    url: "https://grantfinder.pro/guides/apply-regional-development-agencies",
+    url: "https://fsidigital.ca/guides/apply-regional-development-agencies",
   },
 }
 

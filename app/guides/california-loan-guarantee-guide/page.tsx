@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Apply for California Small Business Loan Guarantee 2025",
     description: "Complete guide to California Small Business Loan Guarantee applications with step-by-step process.",
-    url: "https://grantfinder.pro/guides/california-loan-guarantee-guide",
+    url: "https://fsidigital.ca/guides/california-loan-guarantee-guide",
   },
 }
 

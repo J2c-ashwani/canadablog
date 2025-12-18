@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women Clean Technology Grants Canada 2025-2026 | Clean Energy Funding $10M, Sustainability Innovation Support Toronto Vancouver Montreal",
-  description: "Complete 2025-2026 guide to clean tech grants for women entrepreneurs. SDTC funding up to $10M, NRCan clean energy programs, provincial sustainability grants Toronto Vancouver Montreal Calgary. Renewable energy, circular economy, environmental technology women-owned businesses Canada.",
-  keywords: "women clean technology grants Canada 2025, SDTC funding clean tech, sustainable development technology, clean energy grants women, environmental innovation funding, renewable energy women entrepreneurs Toronto Vancouver Montreal Calgary Ottawa",
+  title: "Women Clean Technology Grants Canada 2026-2027 | Clean Energy Funding $10M, Sustainability Innovation Support Toronto Vancouver Montreal",
+  description: "Complete 2026-2027 guide to clean tech grants for women entrepreneurs. SDTC funding up to $10M, NRCan clean energy programs, provincial sustainability grants Toronto Vancouver Montreal Calgary. Renewable energy, circular economy, environmental technology women-owned businesses Canada.",
+  keywords: "women clean technology grants Canada 2026, SDTC funding clean tech, sustainable development technology, clean energy grants women, environmental innovation funding, renewable energy women entrepreneurs Toronto Vancouver Montreal Calgary Ottawa",
   openGraph: {
-    title: "Women Clean Technology Grants Canada 2025 | Clean Energy Sustainability Funding",
+    title: "Women Clean Technology Grants Canada 2026 | Clean Energy Sustainability Funding",
     description: "$10M+ clean tech grants for women innovators in renewable energy, circular economy, environmental sustainability.",
-    url: "https://grantfinder.pro/blog/women-clean-technology-grants-canada",
+    url: "https://fsidigital.ca/blog/women-clean-technology-grants-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,13 +29,13 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🌱 Clean Technology & Sustainability Funding 2025-2026
+                🌱 Clean Technology & Sustainability Funding 2026-2027
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Women Clean Technology Grants Canada: Clean Energy Funding, Sustainability Innovation & Environmental Technology Support
               </h1>
               <p className="text-xl text-green-100 mb-8">
-                Comprehensive 2025-2026 guide to clean technology grants and sustainability funding for women-owned 
+                Comprehensive 2026-2027 guide to clean technology grants and sustainability funding for women-owned 
                 environmental businesses across Canada. Access up to $10,000,000 through Sustainable Development Technology 
                 Canada (SDTC), Natural Resources Canada (NRCan) clean energy programs, provincial green technology support in 
                 Ontario (Toronto, Ottawa, Waterloo, Mississauga), Quebec (Montreal, Quebec City, Laval), British Columbia 
@@ -64,7 +64,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Clean Technology Grants by Province (2025-2026 SDTC & NRCan Funding Available)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Clean Technology Grants by Province (2026-2027 SDTC & NRCan Funding Available)</h2>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-green-200 hover:shadow-lg transition-shadow">
@@ -157,7 +157,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
               </div>
 
               <div className="bg-green-50 border-2 border-green-300 rounded-lg p-6">
-                <h3 className="font-bold text-green-900 mb-3 text-lg">🔥 High-Demand Clean Technology Funding Keywords 2025-2026:</h3>
+                <h3 className="font-bold text-green-900 mb-3 text-lg">🔥 High-Demand Clean Technology Funding Keywords 2026-2027:</h3>
                 <div className="grid md:grid-cols-3 gap-4 text-sm text-green-800">
                   <div>
                     <strong>Clean Energy:</strong> renewable energy grants women, solar wind energy funding, clean electricity innovation, energy storage technology women entrepreneurs
@@ -174,7 +174,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -183,7 +183,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 2025-2026 Women Clean Technology Funding Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 2026-2027 Women Clean Technology Funding Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>SDTC Funding:</strong> Sustainable Development Technology Canada provides up to $10M for large-scale clean tech commercialization projects women entrepreneurs
@@ -258,7 +258,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
         <section id="cleantech-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Clean Technology Grants for Women Entrepreneurs 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Clean Technology Grants for Women Entrepreneurs 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete guide to federal clean tech funding programs available to women-owned environmental businesses 
                 across all Canadian provinces through SDTC, NRCan, and innovation programs.
@@ -740,7 +740,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Clean Technology Grant Application Success Strategies 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Clean Technology Grant Application Success Strategies 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Proven strategies for women clean tech entrepreneurs to maximize SDTC and NRCan funding approval rates 
                 and environmental innovation grant success across all Canadian provinces.
@@ -903,7 +903,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
                 Ready to Access Clean Technology Funding and Scale Your Environmental Innovation?
               </h2>
               <p className="text-xl text-green-100 mb-8">
-                Get our complete 2025-2026 women clean technology grants guide with SDTC application strategies, NRCan 
+                Get our complete 2026-2027 women clean technology grants guide with SDTC application strategies, NRCan 
                 program navigator, provincial cleantech funding directory, environmental impact assessment frameworks 
                 covering renewable energy, circular economy, sustainable transportation, and climate solutions - or work 
                 with our cleantech funding specialists for expert application support maximizing your grant approval success.

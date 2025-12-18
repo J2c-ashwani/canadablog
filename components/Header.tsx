@@ -45,10 +45,10 @@ export function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
               <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xs sm:text-sm">GF</span>
+                <span className="text-white font-bold text-xs sm:text-sm">FD</span>
               </div>
               <span className="font-bold text-base lg:text-lg xl:text-xl text-gray-900 whitespace-nowrap">
-                Grant Finder Pro
+                FSI Digital
               </span>
             </Link>
 
@@ -59,7 +59,7 @@ export function Header() {
               </Link>
 
               {/* USA Grants Dropdown - Desktop */}
-              <div 
+              <div
                 className="relative"
                 onMouseLeave={() => setUsaDropdownOpen(false)}
               >
@@ -111,7 +111,7 @@ export function Header() {
               </div>
 
               {/* Canada Grants Dropdown - Desktop */}
-              <div 
+              <div
                 className="relative"
                 onMouseLeave={() => setCanadaDropdownOpen(false)}
               >
@@ -185,9 +185,9 @@ export function Header() {
 
             {/* Search Button */}
             <div className="hidden md:flex items-center flex-shrink-0">
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <Button
+                variant="outline"
+                size="sm"
                 className="whitespace-nowrap"
                 onClick={() => setIsSearchOpen(true)}
               >
@@ -365,8 +365,8 @@ export function Header() {
                 </Link>
 
                 <div className="pt-4 px-4 space-y-3">
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="w-full bg-transparent h-12"
                     onClick={() => {
                       setIsSearchOpen(true)
@@ -412,9 +412,9 @@ export function Header() {
                 <Search className="w-4 h-4 mr-2" />
                 Search Grants
               </Button>
-              <Button 
-                type="button" 
-                variant="outline" 
+              <Button
+                type="button"
+                variant="outline"
                 className="h-12"
                 onClick={() => setIsSearchOpen(false)}
               >
@@ -425,8 +425,8 @@ export function Header() {
           <div className="mt-4 pt-4 border-t">
             <p className="text-sm text-gray-600 mb-2">Popular Searches:</p>
             <div className="flex flex-wrap gap-2">
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 size="sm"
                 onClick={() => {
                   setSearchQuery("Small Business Grants")
@@ -435,8 +435,8 @@ export function Header() {
               >
                 Small Business Grants
               </Button>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 size="sm"
                 onClick={() => {
                   setSearchQuery("Women Entrepreneurs")
@@ -445,8 +445,8 @@ export function Header() {
               >
                 Women Entrepreneurs
               </Button>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 size="sm"
                 onClick={() => {
                   setSearchQuery("Technology Startups")

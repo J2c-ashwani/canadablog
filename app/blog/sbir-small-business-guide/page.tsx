@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "SBIR Small Business Innovation Research 2025 | Federal R&D Grant Guide",
+  title: "SBIR Small Business Innovation Research 2026 | Federal R&D Grant Guide",
   description: "Complete guide to SBIR grants for small businesses. Learn Phase I & II funding, eligibility requirements, and how to win up to $1.7M in federal R&D grants.",
   keywords: "SBIR grants, small business innovation research, federal R&D grants, SBIR Phase I Phase II, innovation funding",
   openGraph: {
-    title: "SBIR Small Business Innovation Research 2025",
+    title: "SBIR Small Business Innovation Research 2026",
     description: "Complete guide to SBIR grants with Phase I & II funding for innovative small businesses.",
-    url: "https://grantfinder.pro/blog/sbir-small-business-guide",
+    url: "https://fsidigital.ca/blog/sbir-small-business-guide",
   },
 }
 
@@ -34,7 +34,7 @@ export default function SBIRSmallBusinessGuide() {
                 SBIR Small Business Innovation Research
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Complete guide to SBIR grants for innovative small businesses. Learn how to secure federal 
+                Complete guide to SBIR grants for innovative small businesses. Learn how to secure federal
                 R&D funding up to $1.7M with no repayment required for breakthrough technologies.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -79,14 +79,14 @@ export default function SBIRSmallBusinessGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* What is SBIR for Small Business */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">What is SBIR for Small Businesses?</h2>
-                
+
                 <p className="text-lg text-gray-700 mb-6">
-                  The Small Business Innovation Research (SBIR) program is the largest source of early-stage technology 
-                  funding in the United States. It provides non-dilutive grants (no repayment required) to small businesses 
+                  The Small Business Innovation Research (SBIR) program is the largest source of early-stage technology
+                  funding in the United States. It provides non-dilutive grants (no repayment required) to small businesses
                   engaged in research and development with high commercialization potential.
                 </p>
 
@@ -128,7 +128,7 @@ export default function SBIRSmallBusinessGuide() {
               {/* SBIR Phase Structure */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">SBIR Three-Phase Program Structure</h2>
-                
+
                 <div className="space-y-8">
                   {/* Phase I */}
                   <Card className="border-green-200">
@@ -153,14 +153,14 @@ export default function SBIRSmallBusinessGuide() {
                           <span><strong>Focus:</strong> Technical Feasibility</span>
                         </div>
                       </div>
-                      
+
                       <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
                         <h4 className="font-bold mb-2 text-green-800">Phase I Objectives:</h4>
                         <p className="text-sm text-green-700 mb-3">
                           Establish technical merit, feasibility, and commercial potential of your innovation.
                         </p>
                       </div>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-green-700">Typical Activities:</h5>
@@ -209,14 +209,14 @@ export default function SBIRSmallBusinessGuide() {
                           <span><strong>Focus:</strong> Product Development</span>
                         </div>
                       </div>
-                      
+
                       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
                         <h4 className="font-bold mb-2 text-blue-800">Phase II Requirements:</h4>
                         <p className="text-sm text-blue-700 mb-3">
                           Only Phase I recipients can apply. Must demonstrate significant progress and commercial readiness.
                         </p>
                       </div>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-blue-700">Development Activities:</h5>
@@ -265,12 +265,12 @@ export default function SBIRSmallBusinessGuide() {
                           <span><strong>Focus:</strong> Market Success</span>
                         </div>
                       </div>
-                      
+
                       <p className="text-gray-700 mb-4">
-                        No SBIR funding provided. Companies pursue commercialization through private investment, 
+                        No SBIR funding provided. Companies pursue commercialization through private investment,
                         partnerships, or federal procurement contracts.
                       </p>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-purple-700">Funding Sources:</h5>
@@ -301,7 +301,7 @@ export default function SBIRSmallBusinessGuide() {
               {/* Major SBIR Agencies */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Major SBIR Participating Agencies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <Card className="border-green-200">
                     <CardHeader>
@@ -316,7 +316,7 @@ export default function SBIRSmallBusinessGuide() {
                           </div>
                           <span className="font-bold text-green-600">$1.8B</span>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                           <div>
                             <strong>National Institutes of Health (NIH)</strong>
@@ -324,7 +324,7 @@ export default function SBIRSmallBusinessGuide() {
                           </div>
                           <span className="font-bold text-blue-600">$900M</span>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
                           <div>
                             <strong>National Science Foundation (NSF)</strong>
@@ -379,7 +379,7 @@ export default function SBIRSmallBusinessGuide() {
               {/* Eligibility & Requirements */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">SBIR Eligibility for Small Businesses</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Must Meet:</h4>
@@ -402,7 +402,7 @@ export default function SBIRSmallBusinessGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Restrictions:</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -430,7 +430,7 @@ export default function SBIRSmallBusinessGuide() {
               {/* Success Tips */}
               <div className="bg-blue-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">SBIR Success Strategies for Small Businesses</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Winning Approach</h4>
@@ -453,7 +453,7 @@ export default function SBIRSmallBusinessGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-blue-700">🎯 Key Tips</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -482,7 +482,7 @@ export default function SBIRSmallBusinessGuide() {
               <div className="bg-gradient-to-r from-blue-600 to-purple-700 rounded-lg p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">Ready to Apply for SBIR Grants?</h3>
                 <p className="text-blue-100 mb-6 text-lg">
-                  Get our comprehensive SBIR application guide with agency-specific tips, proposal templates, 
+                  Get our comprehensive SBIR application guide with agency-specific tips, proposal templates,
                   and winning strategies for innovative small businesses.
                 </p>
                 <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>

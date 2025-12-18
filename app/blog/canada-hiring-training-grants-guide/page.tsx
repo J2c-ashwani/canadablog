@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Hiring & Training Grants 2025 | $1.9B+ Workforce Development Across 28+ Programs",
+  title: "Canada Hiring & Training Grants 2026 | $1.9B+ Workforce Development Across 28+ Programs",
   description: "Complete guide to Canadian hiring and training grants. Access all 28+ workforce development programs including job creation incentives, skills training, wage subsidies, and employee development funding.",
   keywords: "Canada hiring grants, training grants Canada, workforce development funding, job creation incentives, wage subsidies, employee training programs, skills development grants",
 }
@@ -26,7 +26,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
                 👥 Canadian Hiring & Training Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Canada Hiring & Training Grants 2025
+                Canada Hiring & Training Grants 2026
               </h1>
               <p className="text-xl text-purple-100 mb-8">
                 Access $1.9B+ in Canadian workforce development funding across 28+ specialized programs. From wage subsidies 

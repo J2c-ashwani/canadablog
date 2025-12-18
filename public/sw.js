@@ -50,7 +50,7 @@ self.addEventListener("push", (event) => {
     ],
   }
 
-  event.waitUntil(self.registration.showNotification("Grant Finder Pro", options))
+  event.waitUntil(self.registration.showNotification("FSI Digital", options))
 })
 
 // Notification click event

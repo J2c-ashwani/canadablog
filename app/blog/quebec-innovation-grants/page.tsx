@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Quebec Innovation Grants & Tax Credits 2025 | 30% CRIC R&D Tax Credit | $2.5B+ Funding",
+  title: "Quebec Innovation Grants & Tax Credits 2026 | 30% CRIC R&D Tax Credit | $2.5B+ Funding",
   description: "Complete guide to Quebec innovation grants and tax credits. Access $2.5B+ through 30% Quebec R&D Tax Credit (CRIC), Investissement Québec, PRIMA Quebec, and aerospace, gaming, biotech programs.",
   keywords: "Quebec innovation grants, CRIC tax credit Quebec, Quebec R&D tax credit 30%, Investissement Quebec funding, PRIMA Quebec, aerospace grants Quebec, gaming VFX Quebec, biotech Quebec grants",
   openGraph: {
-    title: "Quebec Innovation Grants & Tax Credits 2025 | $2.5B+ CRIC & R&D Support",
+    title: "Quebec Innovation Grants & Tax Credits 2026 | $2.5B+ CRIC & R&D Support",
     description: "Access $2.5B+ in Quebec innovation funding. Complete guide to 30% CRIC, Investissement Québec, and francophone innovation programs.",
-    url: "https://grantfinder.pro/blog/quebec-innovation-grants",
+    url: "https://fsidigital.ca/blog/quebec-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,7 +32,7 @@ export default function QuebecInnovationGrantsPage() {
                 ⚜️ Quebec Provincial Innovation Support
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Quebec Innovation Grants & Tax Credits 2025
+                Quebec Innovation Grants & Tax Credits 2026
               </h1>
               <p className="text-xl text-cyan-100 mb-8">
                 Access $2.5B+ in Quebec innovation funding through the 30% Quebec R&D Tax Credit (CRIC), 

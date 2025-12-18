@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Alberta Women Business Grants 2025 | $580M Energy & Tech Support Programs",
+  title: "Alberta Women Business Grants 2026 | $580M Energy & Tech Support Programs",
   description: "Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovation funding.",
   keywords: "Alberta women business grants, AWE loans, Women Building Futures, Alberta women entrepreneurs, energy sector women",
   openGraph: {
-    title: "Alberta Women Business Grants 2025 | $580M Provincial Support",
+    title: "Alberta Women Business Grants 2026 | $580M Provincial Support",
     description: "Comprehensive guide to Alberta women business support with AWE financing, energy sector programs, and technology funding.",
-    url: "https://grantfinder.pro/blog/alberta-women-business-grants",
+    url: "https://fsidigital.ca/blog/alberta-women-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,7 +29,7 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                ⚡ Alberta Women Business Support 2025
+                ⚡ Alberta Women Business Support 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Alberta Women Business Grants & Growth Programs
@@ -55,7 +55,7 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -64,7 +64,7 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Alberta Women Entrepreneurship 2025 Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Alberta Women Entrepreneurship 2026 Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>$580M Provincial Support:</strong> Energy and innovation-focused ecosystem

@@ -11,7 +11,7 @@ export default function Disclaimer() {
           <h1 className="text-4xl font-bold text-gray-900 mb-8">Disclaimer</h1>
           <div className="bg-white rounded-lg shadow-sm p-8 prose max-w-none">
             <p className="text-gray-600 mb-6">Last updated: {new Date().toLocaleDateString()}</p>
-            
+
             <h2>Information Accuracy</h2>
             <p>While we strive to provide accurate and up-to-date information about government grants and funding opportunities, program details, eligibility requirements, and funding amounts may change without notice. Government agencies frequently update their programs, deadlines, and criteria.</p>
             <p><strong>Always verify information with official government sources before making any decisions or submitting applications.</strong></p>
@@ -39,7 +39,7 @@ export default function Disclaimer() {
             <p>Consult with qualified professionals for advice specific to your situation and business needs.</p>
 
             <h2>Government Affiliation</h2>
-            <p>Grant Finder Pro is <strong>not affiliated with, endorsed by, or sponsored by any government agency</strong>, including but not limited to:</p>
+            <p>FSI Digital is <strong>not affiliated with, endorsed by, or sponsored by any government agency</strong>, including but not limited to:</p>
             <ul>
               <li>Small Business Administration (SBA)</li>
               <li>U.S. Department of Agriculture (USDA)</li>
@@ -83,7 +83,7 @@ export default function Disclaimer() {
             </ul>
 
             <h2>Limitation of Liability</h2>
-            <p>Under no circumstances shall Grant Finder Pro be liable for any direct, indirect, incidental, consequential, or punitive damages arising from:</p>
+            <p>Under no circumstances shall FSI Digital be liable for any direct, indirect, incidental, consequential, or punitive damages arising from:</p>
             <ul>
               <li>Use of or inability to use this website</li>
               <li>Reliance on information provided</li>
@@ -96,7 +96,7 @@ export default function Disclaimer() {
             <p>Our content primarily focuses on government funding programs available in the United States and Canada. Information about programs in other countries may be limited or outdated.</p>
 
             <h2>Questions and Concerns</h2>
-            <p>If you have questions about this disclaimer or concerns about information accuracy, please contact us at <strong>info@grantfinderpro.com</strong>. We welcome feedback and work continuously to improve our content quality.</p>
+            <p>If you have questions about this disclaimer or concerns about information accuracy, please contact us at <strong>hello@fsidigital.ca</strong>. We welcome feedback and work continuously to improve our content quality.</p>
 
             <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 mt-8">
               <div className="flex">

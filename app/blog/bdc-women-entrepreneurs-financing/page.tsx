@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "BDC Women Entrepreneurs Financing 2025 | Flexible Loans & Advisory for Women-Led Business Growth",
+  title: "BDC Women Entrepreneurs Financing 2026 | Flexible Loans & Advisory for Women-Led Business Growth",
   description: "Complete guide to BDC Women Entrepreneurs financing with flexible loan terms, strategic advisory services, and growth support from Business Development Bank of Canada.",
   keywords: "BDC Women Entrepreneurs, BDC women business loans, women entrepreneur financing BDC, flexible business loans women, BDC advisory services",
   openGraph: {
-    title: "BDC Women Entrepreneurs Financing 2025 | Flexible Loans & Advisory Services",
+    title: "BDC Women Entrepreneurs Financing 2026 | Flexible Loans & Advisory Services",
     description: "Comprehensive financing and advisory services for women-led businesses with flexible terms and strategic growth support from BDC.",
-    url: "https://grantfinder.pro/blog/bdc-women-entrepreneurs-financing",
+    url: "https://fsidigital.ca/blog/bdc-women-entrepreneurs-financing",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,14 +29,14 @@ export default function BDCWomenEntrepreneursGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🏦 BDC Women Entrepreneurs 2025
+                🏦 BDC Women Entrepreneurs 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 BDC Women Entrepreneurs Financing
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Comprehensive financing and advisory services designed for women-led businesses 
-                with flexible loan terms, strategic growth support, and expert business guidance from 
+                Comprehensive financing and advisory services designed for women-led businesses
+                with flexible loan terms, strategic growth support, and expert business guidance from
                 Business Development Bank of Canada. Available for all business stages from startup to scale-up.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -55,7 +55,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -64,7 +64,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 BDC 2025 Women Entrepreneur Program Enhancements</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 BDC 2026 Women Entrepreneur Program Enhancements</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>$50M Thrive ETA Fund:</strong> New fund supporting 60+ women acquiring and operating businesses
@@ -94,8 +94,8 @@ export default function BDCWomenEntrepreneursGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada's Premier Women Entrepreneur Banking Partner</h2>
                 <p className="text-lg text-gray-600">
-                  BDC combines flexible financing with expert advisory services specifically designed for 
-                  women-led businesses. Unlike traditional banks, BDC offers patient capital with terms 
+                  BDC combines flexible financing with expert advisory services specifically designed for
+                  women-led businesses. Unlike traditional banks, BDC offers patient capital with terms
                   that adapt to your business needs, plus strategic guidance to accelerate growth.
                 </p>
               </div>
@@ -127,7 +127,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BDC Women Entrepreneur Financing Solutions</h2>
-              
+
               <div className="space-y-8">
                 {/* Business Growth Financing */}
                 <Card className="border-blue-200">
@@ -164,7 +164,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-blue-50 rounded-lg">
                       <h5 className="font-semibold mb-2">📋 Growth Financing Use Cases:</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -244,8 +244,8 @@ export default function BDCWomenEntrepreneursGuidePage() {
                             <span className="text-green-700 font-bold">Strategic Growth Support</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Dedicated business advisors with women entrepreneur expertise providing 
-                            strategic guidance on growth, operations, and scaling challenges.</p>
+                            <p>Dedicated business advisors with women entrepreneur expertise providing
+                              strategic guidance on growth, operations, and scaling challenges.</p>
                           </div>
                         </div>
                       </div>
@@ -280,8 +280,8 @@ export default function BDCWomenEntrepreneursGuidePage() {
                             <span className="text-orange-700 font-bold">Holistic Ecosystem</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>BDC's Thrive Lab provides comprehensive support ecosystem specifically 
-                            designed for women entrepreneurs at all business stages.</p>
+                            <p>BDC's Thrive Lab provides comprehensive support ecosystem specifically
+                              designed for women entrepreneurs at all business stages.</p>
                           </div>
                         </div>
                       </div>
@@ -307,7 +307,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BDC Women Entrepreneur Financing Eligibility</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Business Eligibility */}
                 <Card className="border-green-200">
@@ -327,7 +327,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
                           <li>• Clear use of financing proceeds</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-blue-700 mb-2">🎯 All Business Stages Supported</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -360,7 +360,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
                           <li>• Business acquisition financing</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-purple-700 mb-2">💡 Strategic Priorities</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -384,7 +384,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BDC Financing Application Process</h2>
-              
+
               <div className="space-y-6">
                 <div className="grid md:grid-cols-4 gap-6">
                   {[
@@ -396,7 +396,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
                       color: "blue"
                     },
                     {
-                      step: "2", 
+                      step: "2",
                       title: "Application Preparation",
                       description: "Gather financial documents, business plan, and expansion strategy",
                       icon: <FileText className="w-6 h-6" />,
@@ -419,11 +419,11 @@ export default function BDCWomenEntrepreneursGuidePage() {
                   ].map((item, index) => {
                     const colors = {
                       blue: "bg-blue-500 text-white",
-                      green: "bg-green-500 text-white", 
+                      green: "bg-green-500 text-white",
                       purple: "bg-purple-500 text-white",
                       orange: "bg-orange-500 text-white"
                     }
-                    
+
                     return (
                       <Card key={index} className="text-center">
                         <CardHeader>
@@ -476,7 +476,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BDC Application Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -558,15 +558,15 @@ export default function BDCWomenEntrepreneursGuidePage() {
                 Ready to Access BDC Women Entrepreneur Financing?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get our complete BDC application guide with financing comparison and business plan templates, 
+                Get our complete BDC application guide with financing comparison and business plan templates,
                 or work with our women entrepreneur financing specialists for expert application support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free BDC Application Guide</h4>
                   <p className="text-blue-100 text-sm mb-4">
-                    Get our comprehensive BDC financing guide with loan program breakdown, 
+                    Get our comprehensive BDC financing guide with loan program breakdown,
                     eligibility checklist, and application templates.
                   </p>
                   <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100" asChild>
@@ -580,7 +580,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
                 <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Expert BDC Financing Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with women entrepreneur financing specialists who can help optimize your BDC 
+                    Work with women entrepreneur financing specialists who can help optimize your BDC
                     application and connect you with BDC advisors.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
@@ -590,7 +590,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-blue-200 text-sm mt-6">
                 Expert guidance • BDC advisor connections • Application optimization • Flexible financing success
               </p>

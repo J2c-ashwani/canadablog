@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "NASA SBIR Space Tech Grants 2025-2026 | $150K Phase I, $850K Phase II Satellite & Aeronautics Funding",
-  description: "Complete 2025-2026 guide to NASA SBIR/STTR grants for space tech startups. Phase I up to $150K, Phase II up to $850K for satellites, remote sensing, propulsion, aeronautics innovation.",
-  keywords: "NASA SBIR grants 2025, space technology grants, satellite funding, aeronautics SBIR, propulsion grants, remote sensing funding, NASA innovation grants",
+  title: "NASA SBIR Space Tech Grants 2026-2027 | $150K Phase I, $850K Phase II Satellite & Aeronautics Funding",
+  description: "Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups. Phase I up to $150K, Phase II up to $850K for satellites, remote sensing, propulsion, aeronautics innovation.",
+  keywords: "NASA SBIR grants 2026, space technology grants, satellite funding, aeronautics SBIR, propulsion grants, remote sensing funding, NASA innovation grants",
   openGraph: {
-    title: "NASA SBIR Grants 2025 | $150K-$850K Space Tech Funding",
+    title: "NASA SBIR Grants 2026 | $150K-$850K Space Tech Funding",
     description: "Complete guide to NASA SBIR/STTR grants for space and aeronautics tech startups.",
-    url: "https://grantfinder.pro/blog/nasa-sbir-space-tech-grants",
+    url: "https://fsidigital.ca/blog/nasa-sbir-space-tech-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,18 +29,18 @@ export default function NASASBIRSpaceTechGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🚀 NASA SBIR/STTR Space Tech Grants 2025-2026
+                🚀 NASA SBIR/STTR Space Tech Grants 2026-2027
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 NASA SBIR Grants: $150K Phase I, $850K Phase II Non-Dilutive Funding for Space Technology, Satellites & Aeronautics Innovation
               </h1>
               <p className="text-xl text-indigo-100 mb-8">
-                Comprehensive 2025-2026 guide to NASA SBIR/STTR grants providing up to $850,000 in non-dilutive funding 
-                for satellite systems, remote sensing, advanced propulsion, aeronautics, lunar surface technology, and space 
-                exploration innovations. Complete application strategies, eligibility requirements, success rates, and funding 
-                timelines for Phase I ($150,000) and Phase II ($850,000) awards supporting space tech startups across all 50 
-                states. NASA SBIR takes no equity, requires no repayment, funding transformative aerospace R&D advancing space 
-                exploration and aeronautics through innovative small business solutions supporting NASA missions to Moon, Mars, 
+                Comprehensive 2026-2027 guide to NASA SBIR/STTR grants providing up to $850,000 in non-dilutive funding
+                for satellite systems, remote sensing, advanced propulsion, aeronautics, lunar surface technology, and space
+                exploration innovations. Complete application strategies, eligibility requirements, success rates, and funding
+                timelines for Phase I ($150,000) and Phase II ($850,000) awards supporting space tech startups across all 50
+                states. NASA SBIR takes no equity, requires no repayment, funding transformative aerospace R&D advancing space
+                exploration and aeronautics through innovative small business solutions supporting NASA missions to Moon, Mars,
                 and beyond[web:202][web:204][web:207].
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,8 +63,8 @@ export default function NASASBIRSpaceTechGrantsPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">NASA SBIR Space Tech Grants by Region and Aerospace Hub (2025-2026 Funding Available)</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">NASA SBIR Space Tech Grants by Region and Aerospace Hub (2026-2027 Funding Available)</h2>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-indigo-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -156,7 +156,7 @@ export default function NASASBIRSpaceTechGrantsPage() {
               </div>
 
               <div className="bg-indigo-50 border-2 border-indigo-300 rounded-lg p-6">
-                <h3 className="font-bold text-indigo-900 mb-3 text-lg">🔥 High-Demand NASA SBIR Space Tech Keywords 2025-2026:</h3>
+                <h3 className="font-bold text-indigo-900 mb-3 text-lg">🔥 High-Demand NASA SBIR Space Tech Keywords 2026-2027:</h3>
                 <div className="grid md:grid-cols-3 gap-4 text-sm text-indigo-800">
                   <div>
                     <strong>Program Types:</strong> NASA SBIR Phase I $150K, NASA SBIR Phase II $850K, SBIR Ignite, STTR partnership grants, non-dilutive space funding no equity
@@ -165,7 +165,7 @@ export default function NASASBIRSpaceTechGrantsPage() {
                     <strong>Tech Focus:</strong> Satellite systems grants, remote sensing SBIR, propulsion technology, lunar surface systems, Mars exploration tech, aeronautics innovation funding
                   </div>
                   <div>
-                    <strong>Application:</strong> NASA SBIR deadlines 2025, ProSAMS submission portal, eligibility requirements, commercialization strategy, NASA mission alignment
+                    <strong>Application:</strong> NASA SBIR deadlines 2026, ProSAMS submission portal, eligibility requirements, commercialization strategy, NASA mission alignment
                   </div>
                 </div>
               </div>
@@ -173,7 +173,7 @@ export default function NASASBIRSpaceTechGrantsPage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-indigo-50 border-b-2 border-indigo-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -182,7 +182,7 @@ export default function NASASBIRSpaceTechGrantsPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-indigo-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-indigo-800 mb-2">🚀 2025-2026 NASA SBIR Program Highlights</h3>
+                      <h3 className="text-lg font-bold text-indigo-800 mb-2">🚀 2026-2027 NASA SBIR Program Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-indigo-700">
                         <div>
                           <strong>Phase I Funding:</strong> Up to $150,000 for 6 months proving technical feasibility of space technology innovation[web:204][web:206]
@@ -212,16 +212,16 @@ export default function NASASBIRSpaceTechGrantsPage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete NASA SBIR/STTR Funding Ecosystem for Space Tech Startups</h2>
                 <p className="text-lg text-gray-600 mb-4">
-                  The NASA SBIR/STTR program provides non-dilutive grants for research and development of innovative space 
-                  technologies addressing NASA mission needs and commercial space market opportunities. NASA seeks breakthrough 
-                  innovations in satellite systems, remote sensing, propulsion, lunar surface technology, Mars exploration, 
+                  The NASA SBIR/STTR program provides non-dilutive grants for research and development of innovative space
+                  technologies addressing NASA mission needs and commercial space market opportunities. NASA seeks breakthrough
+                  innovations in satellite systems, remote sensing, propulsion, lunar surface technology, Mars exploration,
                   aeronautics, and dual-use space applications with strong commercialization potential[web:202][web:204][web:207].
                 </p>
                 <p className="text-lg text-gray-600">
-                  Space tech startups can access Phase I funding (up to $150,000) to prove technical feasibility and space 
-                  application over 6 months, followed by Phase II awards (up to $850,000) for prototype development, space testing, 
-                  and commercial transition over 24 months. NASA evaluates proposals on technical innovation, NASA mission relevance, 
-                  commercial viability, and dual-use potential supporting Artemis lunar program, Mars exploration, Earth science 
+                  Space tech startups can access Phase I funding (up to $150,000) to prove technical feasibility and space
+                  application over 6 months, followed by Phase II awards (up to $850,000) for prototype development, space testing,
+                  and commercial transition over 24 months. NASA evaluates proposals on technical innovation, NASA mission relevance,
+                  commercial viability, and dual-use potential supporting Artemis lunar program, Mars exploration, Earth science
                   satellites, space stations, and aeronautics advancing American leadership in space[web:202][web:203][web:207].
                 </p>
               </div>
@@ -256,11 +256,11 @@ export default function NASASBIRSpaceTechGrantsPage() {
         <section id="nasa-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NASA SBIR and STTR Program Details 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NASA SBIR and STTR Program Details 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete breakdown of Phase I, Phase II funding programs with space tech topic areas and application timelines
               </p>
-              
+
               <div className="space-y-8">
                 {/* Phase I Program */}
                 <Card className="border-indigo-200">
@@ -293,7 +293,7 @@ export default function NASASBIRSpaceTechGrantsPage() {
                               <span className="text-cyan-700 font-bold">~300 Phase I</span>
                             </div>
                           </div>
-                          
+
                           <div className="space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
                             <p className="font-semibold text-gray-800 mb-2">Phase I Space Tech Objectives:</p>
                             <p>• <strong>Technical Feasibility:</strong> Prove space technology works in relevant environment with space-grade performance metrics</p>
@@ -335,15 +335,15 @@ export default function NASASBIRSpaceTechGrantsPage() {
                     </div>
 
                     <div className="bg-indigo-50 p-6 rounded-lg border-2 border-indigo-200 mt-6">
-                      <h4 className="font-bold text-lg mb-4 text-indigo-800">📍 NASA SBIR Phase I Application Deadlines 2025-2026</h4>
+                      <h4 className="font-bold text-lg mb-4 text-indigo-800">📍 NASA SBIR Phase I Application Deadlines 2026-2027</h4>
                       <div className="grid md:grid-cols-3 gap-4 text-sm">
                         <div>
                           <p className="font-semibold text-gray-800 mb-2">Annual Solicitations:</p>
                           <ul className="space-y-1 text-gray-700">
-                            <li>• <strong>Opens:</strong> January 2025</li>
-                            <li>• <strong>Closes:</strong> May 21, 2025</li>
-                            <li>• <strong>Awards:</strong> Summer 2025</li>
-                            <li>• <strong>SBIR Ignite:</strong> June-July 2025</li>
+                            <li>• <strong>Opens:</strong> January 2026</li>
+                            <li>• <strong>Closes:</strong> May 21, 2026</li>
+                            <li>• <strong>Awards:</strong> Summer 2026</li>
+                            <li>• <strong>SBIR Ignite:</strong> June-July 2026</li>
                           </ul>
                         </div>
                         <div>
@@ -445,7 +445,7 @@ export default function NASASBIRSpaceTechGrantsPage() {
                   <CardHeader className="bg-gradient-to-r from-blue-100 to-cyan-100">
                     <div className="flex items-center mb-2">
                       <Building className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle className="text-blue-700 text-2xl">NASA SBIR Technology Topic Areas 2025-2026</CardTitle>
+                      <CardTitle className="text-blue-700 text-2xl">NASA SBIR Technology Topic Areas 2026-2027</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
@@ -492,8 +492,8 @@ export default function NASASBIRSpaceTechGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NASA SBIR Application Success Strategies 2025-2026</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NASA SBIR Application Success Strategies 2026-2027</h2>
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-indigo-200">
                   <CardHeader className="bg-gradient-to-br from-indigo-50 to-purple-50">
@@ -589,7 +589,7 @@ export default function NASASBIRSpaceTechGrantsPage() {
               <p className="text-xl text-indigo-100 mb-8">
                 Get our complete NASA SBIR application guide with Phase I/II templates or work with space tech specialists for expert proposal support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2 text-lg">📥 Free NASA SBIR Guide</h4>
@@ -622,34 +622,34 @@ export default function NASASBIRSpaceTechGrantsPage() {
                   <p className="text-xs text-yellow-200 mt-3">Free consultation • 75% success rate • Space expertise</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6">
                 <p className="text-indigo-200 text-sm mb-3">
                   <strong className="text-white">Why Choose Our NASA SBIR Services:</strong>
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 text-xs text-indigo-200">
                   <div>
-                    ✓ 100+ NASA SBIR awards won<br/>
-                    ✓ $50M+ total funding secured<br/>
+                    ✓ 100+ NASA SBIR awards won<br />
+                    ✓ $50M+ total funding secured<br />
                     ✓ 75% Phase I approval rate
                   </div>
                   <div>
-                    ✓ All space tech sectors<br/>
-                    ✓ Former NASA engineers<br/>
+                    ✓ All space tech sectors<br />
+                    ✓ Former NASA engineers<br />
                     ✓ Mission integration expertise
                   </div>
                   <div>
-                    ✓ Phase I → Phase II continuity<br/>
-                    ✓ Space qualification support<br/>
+                    ✓ Phase I → Phase II continuity<br />
+                    ✓ Space qualification support<br />
                     ✓ Dual-use commercialization
                   </div>
                 </div>
               </div>
 
               <p className="text-indigo-300 text-sm">
-                🚀 <strong>NASA SBIR Grant Assistance:</strong> Phase I $150K • Phase II $850K • Satellite systems • 
-                Remote sensing • Propulsion technology • Lunar surface • Mars exploration • Aeronautics innovation • 
-                Space qualification • NASA mission integration • Artemis program • Commercial space • Dual-use technology 
+                🚀 <strong>NASA SBIR Grant Assistance:</strong> Phase I $150K • Phase II $850K • Satellite systems •
+                Remote sensing • Propulsion technology • Lunar surface • Mars exploration • Aeronautics innovation •
+                Space qualification • NASA mission integration • Artemis program • Commercial space • Dual-use technology
                 supporting American space leadership advancing exploration Moon Mars beyond
               </p>
             </div>

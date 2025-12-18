@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Clean Tech & Energy Grants 2025-2026 | $200K DOE SBIR, $1.6M Phase II, EPA Environmental Tech Non-Dilutive Funding",
-  description: "Complete 2025-2026 guide to clean tech and energy grants. DOE SBIR Phase I $200K, Phase II $1.6M, EPA environmental technology, state energy programs supporting renewable energy, battery tech, climate solutions, solar, wind, hydrogen with zero equity.",
-  keywords: "clean tech grants 2025, renewable energy startup funding, DOE SBIR $200K, battery technology grants, climate tech funding Phase II, solar energy grants, wind power funding, hydrogen grants, EPA environmental tech, state energy programs",
+  title: "Clean Tech & Energy Grants 2026-2027 | $200K DOE SBIR, $1.6M Phase II, EPA Environmental Tech Non-Dilutive Funding",
+  description: "Complete 2026-2027 guide to clean tech and energy grants. DOE SBIR Phase I $200K, Phase II $1.6M, EPA environmental technology, state energy programs supporting renewable energy, battery tech, climate solutions, solar, wind, hydrogen with zero equity.",
+  keywords: "clean tech grants 2026, renewable energy startup funding, DOE SBIR $200K, battery technology grants, climate tech funding Phase II, solar energy grants, wind power funding, hydrogen grants, EPA environmental tech, state energy programs",
   openGraph: {
-    title: "Clean Tech & Energy Grants 2025 | $200K DOE SBIR + $1.6M Phase II",
+    title: "Clean Tech & Energy Grants 2026 | $200K DOE SBIR + $1.6M Phase II",
     description: "Complete guide to clean tech and energy grants from DOE, EPA, and state programs.",
-    url: "https://grantfinder.pro/blog/clean-tech-energy-grants",
+    url: "https://fsidigital.ca/blog/clean-tech-energy-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -31,7 +31,7 @@ export default function CleanTechEnergyGrantsPage() {
               {/* Badge */}
               <div className="flex justify-center mb-6">
                 <Badge className="bg-green-500 text-white border-green-600 px-4 py-2 text-sm font-medium">
-                  🌱 Clean Tech & Energy Grants 2025-2026
+                  🌱 Clean Tech & Energy Grants 2026-2027
                 </Badge>
               </div>
 
@@ -308,7 +308,7 @@ export default function CleanTechEnergyGrantsPage() {
           </div>
         </section>
 
-        {/* 2025 Updates */}
+        {/* 2026 Updates */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
@@ -318,7 +318,7 @@ export default function CleanTechEnergyGrantsPage() {
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-green-900 mb-2">What&apos;s New in Clean Energy Funding 2025-2026</h3>
+                    <h3 className="text-2xl font-bold text-green-900 mb-2">What&apos;s New in Clean Energy Funding 2026-2027</h3>
                     <p className="text-gray-700">Recent DOE and EPA investments for clean tech entrepreneurs</p>
                   </div>
                 </div>
@@ -329,7 +329,7 @@ export default function CleanTechEnergyGrantsPage() {
                       <DollarSign className="w-5 h-5 text-green-600 mr-2" />
                       <h4 className="font-bold text-gray-900">$65M Annual DOE SBIR</h4>
                     </div>
-                    <p className="text-sm text-gray-700">DOE SBIR/STTR FY 2025 Phase I Release 2 offers $65 million for clean energy innovation. Phase I up to $200K, Phase II up to $1.6M with national lab partnerships.</p>
+                    <p className="text-sm text-gray-700">DOE SBIR/STTR FY 2026 Phase I Release 2 offers $65 million for clean energy innovation. Phase I up to $200K, Phase II up to $1.6M with national lab partnerships.</p>
                   </div>
 
                   <div className="bg-white rounded-lg p-5 border border-green-100">
@@ -337,7 +337,7 @@ export default function CleanTechEnergyGrantsPage() {
                       <Sun className="w-5 h-5 text-orange-600 mr-2" />
                       <h4 className="font-bold text-gray-900">Solar Technology Focus</h4>
                     </div>
-                    <p className="text-sm text-gray-700">SETO funding covers dual-use PV, agrivoltaics, BIPV, floating PV, CSP Gen3, solar microgrids, cybersecurity, and manufacturing innovations for 2025 cycle.</p>
+                    <p className="text-sm text-gray-700">SETO funding covers dual-use PV, agrivoltaics, BIPV, floating PV, CSP Gen3, solar microgrids, cybersecurity, and manufacturing innovations for 2026 cycle.</p>
                   </div>
 
                   <div className="bg-white rounded-lg p-5 border border-green-100">
@@ -345,7 +345,7 @@ export default function CleanTechEnergyGrantsPage() {
                       <Battery className="w-5 h-5 text-blue-600 mr-2" />
                       <h4 className="font-bold text-gray-900">EV Battery Innovation</h4>
                     </div>
-                    <p className="text-sm text-gray-700">VTO $65M focuses on EV battery cells, recycling efficiency, thermal runaway mitigation, modular HD batteries, firefighting tech, electrified hydraulics for 2025.</p>
+                    <p className="text-sm text-gray-700">VTO $65M focuses on EV battery cells, recycling efficiency, thermal runaway mitigation, modular HD batteries, firefighting tech, electrified hydraulics for 2026.</p>
                   </div>
 
                   <div className="bg-white rounded-lg p-5 border border-green-100">
@@ -361,7 +361,7 @@ export default function CleanTechEnergyGrantsPage() {
           </div>
         </section>
 
-        // ... (keep all the existing code up to the 2025 Updates section, then add:)
+        // ... (keep all the existing code up to the 2026 Updates section, then add:)
 
         {/* Detailed Programs Section - THIS WAS MISSING */}
         <section id="cleantech-grants" className="py-16 bg-gray-50">
@@ -407,7 +407,7 @@ export default function CleanTechEnergyGrantsPage() {
                         </div>
                         
                         <div className="bg-white p-4 rounded-lg border border-gray-200">
-                          <h5 className="font-semibold text-gray-800 mb-3">DOE Technology Focus Areas (FY2025):</h5>
+                          <h5 className="font-semibold text-gray-800 mb-3">DOE Technology Focus Areas (FY2026):</h5>
                           <ul className="space-y-2 text-sm text-gray-700">
                             <li className="flex items-start">
                               <Sun className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />

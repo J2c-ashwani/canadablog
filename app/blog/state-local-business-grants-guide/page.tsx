@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "State & Local Business Grants Guide 2025 | Regional Economic Development Funding",
+  title: "State & Local Business Grants Guide 2026 | Regional Economic Development Funding",
   description: "Complete guide to state and local business grants. Find economic development incentives, job creation programs, and regional funding up to $500K.",
   keywords: "state business grants, local business grants, economic development grants, state funding programs, regional business incentives",
   openGraph: {
-    title: "State & Local Business Grants Guide 2025",
+    title: "State & Local Business Grants Guide 2026",
     description: "Complete guide to state and local business grants with regional funding opportunities.",
-    url: "https://grantfinder.pro/blog/state-local-business-grants-guide",
+    url: "https://fsidigital.ca/blog/state-local-business-grants-guide",
   },
 }
 

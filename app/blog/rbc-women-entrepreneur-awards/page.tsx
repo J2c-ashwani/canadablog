@@ -8,11 +8,11 @@ import Link from "next/link"
 import NewsletterBox from "@/components/blog/NewsletterBox"
 
 export const metadata = {
-  title: "RBC Canadian Women Entrepreneur Awards 2025: Complete Guide to $100K+ in Grants & Recognition",
-  description: "Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2025. Learn eligibility, application process, 8 award categories, past winners, and similar grants for women in USA & Canada. Deadline: March 21, 2025.",
-  keywords: "RBC Women Entrepreneur Awards, women business grants Canada, women entrepreneur funding, Canadian women business awards, women startup grants, female entrepreneur support, women entrepreneurship Canada USA, business grants for women 2025",
+  title: "RBC Canadian Women Entrepreneur Awards 2026: Complete Guide to $100K+ in Grants & Recognition",
+  description: "Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2026. Learn eligibility, application process, 8 award categories, past winners, and similar grants for women in USA & Canada. Deadline: March 21, 2026.",
+  keywords: "RBC Women Entrepreneur Awards, women business grants Canada, women entrepreneur funding, Canadian women business awards, women startup grants, female entrepreneur support, women entrepreneurship Canada USA, business grants for women 2026",
   openGraph: {
-    title: "RBC Canadian Women Entrepreneur Awards 2025 - Win Up to $100,000",
+    title: "RBC Canadian Women Entrepreneur Awards 2026 - Win Up to $100,000",
     description: "33rd Annual RBC Canadian Women Entrepreneur Awards. 8 categories, national recognition, mentorship, and up to $100K in funding for women-led businesses.",
   }
 }
@@ -23,14 +23,14 @@ export default function RBCWomenEntrepreneurAwards() {
       <Header />
       <article className="min-h-screen bg-gray-50 py-8 md:py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-6">
             <Link href="/" className="hover:text-primary">Home</Link>
             {" > "}
             <Link href="/blog" className="hover:text-primary">Blog</Link>
             {" > "}
-            <span className="text-gray-900">RBC Women Entrepreneur Awards 2025</span>
+            <span className="text-gray-900">RBC Women Entrepreneur Awards 2026</span>
           </nav>
 
           {/* Header */}
@@ -39,26 +39,26 @@ export default function RBCWomenEntrepreneurAwards() {
               <Badge className="bg-red-100 text-red-800 hover:bg-red-200">🇨🇦 Canada Awards</Badge>
               <Badge variant="outline">Women Entrepreneurs</Badge>
               <Badge variant="outline">$100K+ Funding</Badge>
-              <Badge variant="secondary">November 14, 2025</Badge>
+              <Badge variant="secondary">November 14, 2026</Badge>
             </div>
             <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              RBC Canadian Women Entrepreneur Awards 2025: Your Complete Guide to Winning $100,000+ in Grants & National Recognition
+              RBC Canadian Women Entrepreneur Awards 2026: Your Complete Guide to Winning $100,000+ in Grants & National Recognition
             </h1>
             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6">
               <span className="flex items-center">
                 <Calendar className="w-4 h-4 mr-2" />
-                Updated: October 14, 2025
+                Updated: October 14, 2026
               </span>
               <span>•</span>
               <span>12 min read</span>
               <span>•</span>
               <span className="flex items-center">
                 <Users className="w-4 h-4 mr-2" />
-                33rd Annual Event
+                34th Annual Event
               </span>
             </div>
             <p className="text-xl text-gray-700 leading-relaxed">
-              For over three decades, the RBC Canadian Women Entrepreneur Awards have recognized Canada's most accomplished women business leaders. This comprehensive guide covers everything you need to know about the 2025 awards, including eligibility requirements, application tips, award categories, and alternative funding options for women entrepreneurs across North America.
+              For over three decades, the RBC Canadian Women Entrepreneur Awards have recognized Canada's most accomplished women business leaders. This comprehensive guide covers everything you need to know about the 2026 awards, including eligibility requirements, application tips, award categories, and alternative funding options for women entrepreneurs across North America.
             </p>
           </header>
 
@@ -66,7 +66,7 @@ export default function RBCWomenEntrepreneurAwards() {
           <Card className="p-6 bg-gradient-to-br from-red-50 via-purple-50 to-blue-50 mb-10 border-2 border-red-100">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
               <Award className="w-6 h-6 mr-3 text-red-600" />
-              2025 Awards at a Glance
+              2026 Awards at a Glance
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="text-center p-4 bg-white rounded-lg shadow-sm">
@@ -82,11 +82,11 @@ export default function RBCWomenEntrepreneurAwards() {
               <div className="text-center p-4 bg-white rounded-lg shadow-sm">
                 <Calendar className="w-8 h-8 text-purple-600 mx-auto mb-2" />
                 <p className="text-3xl font-bold text-gray-900">Mar 21</p>
-                <p className="text-sm text-gray-600">2025 Deadline</p>
+                <p className="text-sm text-gray-600">2026 Deadline</p>
               </div>
               <div className="text-center p-4 bg-white rounded-lg shadow-sm">
                 <TrendingUp className="w-8 h-8 text-orange-600 mx-auto mb-2" />
-                <p className="text-3xl font-bold text-gray-900">33rd</p>
+                <p className="text-3xl font-bold text-gray-900">34th</p>
                 <p className="text-sm text-gray-600">Annual Program</p>
               </div>
             </div>
@@ -94,21 +94,21 @@ export default function RBCWomenEntrepreneurAwards() {
 
           {/* Main Content */}
           <div className="prose prose-lg max-w-none">
-            
+
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">What Are the RBC Canadian Women Entrepreneur Awards?</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
               The RBC Canadian Women Entrepreneur Awards (CWEA), presented in partnership with Women of Influence, represent Canada's premier national awards program celebrating women-led businesses. Since its inception over 30 years ago, this prestigious program has recognized thousands of women entrepreneurs who drive economic growth, create jobs, and lead transformative change across every sector of the Canadian economy.
             </p>
             <p className="text-gray-700 leading-relaxed mb-6">
-              The 33rd Annual RBC Canadian Women Entrepreneur Awards Gala will take place on <strong>Friday, November 14, 2025</strong>, at The Ritz-Carlton, Toronto. This black-tie event brings together Canada's top women entrepreneurs, business executives, government officials, and industry leaders for an evening of celebration, networking, and recognition.
+              The 34th Annual RBC Canadian Women Entrepreneur Awards Gala will take place on <strong>Friday, November 14, 2026</strong>, at The Ritz-Carlton, Toronto. This black-tie event brings together Canada's top women entrepreneurs, business executives, government officials, and industry leaders for an evening of celebration, networking, and recognition.
             </p>
             <p className="text-gray-700 leading-relaxed mb-8">
               Beyond monetary prizes, winners gain invaluable national recognition, extensive media coverage, exclusive networking opportunities with Canada's business elite, and access to mentorship programs that can accelerate their business growth for years to come.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">8 Award Categories for 2025: Find Your Perfect Match</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">8 Award Categories for 2026: Find Your Perfect Match</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              The 2025 program features eight distinct award categories designed to recognize excellence across different business stages, industries, and impact areas. Understanding which category best aligns with your business is crucial for application success.
+              The 2026 program features eight distinct award categories designed to recognize excellence across different business stages, industries, and impact areas. Understanding which category best aligns with your business is crucial for application success.
             </p>
 
             <div className="space-y-6 my-8">
@@ -179,7 +179,7 @@ export default function RBCWomenEntrepreneurAwards() {
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <CheckCircle className="w-5 h-5 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
-                  <span><strong>Business Registration:</strong> Must be registered as a sole proprietorship or corporation for three full years as of April 30, 2025</span>
+                  <span><strong>Business Registration:</strong> Must be registered as a sole proprietorship or corporation for three full years as of April 30, 2026</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="w-5 h-5 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
@@ -211,8 +211,8 @@ export default function RBCWomenEntrepreneurAwards() {
 
             <div className="space-y-6 mb-8">
               <div className="border-l-4 border-blue-500 pl-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 1: Nomination Period (February - March 21, 2025)</h3>
-                <p className="text-gray-700 mb-3">Nominations open in early February and close on <strong>March 21, 2025</strong>. During this period:</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 1: Nomination Period (February - March 21, 2026)</h3>
+                <p className="text-gray-700 mb-3">Nominations open in early February and close on <strong>March 21, 2026</strong>. During this period:</p>
                 <ul className="space-y-2 text-gray-700">
                   <li>• Complete the online nomination form at womenofinfluence.ca</li>
                   <li>• Choose the most appropriate award category for your business</li>
@@ -223,7 +223,7 @@ export default function RBCWomenEntrepreneurAwards() {
               </div>
 
               <div className="border-l-4 border-green-500 pl-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 2: Initial Review (April - May 2025)</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 2: Initial Review (April - May 2026)</h3>
                 <p className="text-gray-700 mb-3">Program committee evaluates all nominations based on:</p>
                 <ul className="space-y-2 text-gray-700">
                   <li>• Business performance metrics (revenue, profitability, growth rate)</li>
@@ -235,7 +235,7 @@ export default function RBCWomenEntrepreneurAwards() {
               </div>
 
               <div className="border-l-4 border-purple-500 pl-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 3: Finalist Selection (June 2025)</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 3: Finalist Selection (June 2026)</h3>
                 <p className="text-gray-700 mb-3">Top candidates in each category advance to finalist status and undergo:</p>
                 <ul className="space-y-2 text-gray-700">
                   <li>• In-depth interviews with selection committee</li>
@@ -246,12 +246,12 @@ export default function RBCWomenEntrepreneurAwards() {
               </div>
 
               <div className="border-l-4 border-red-500 pl-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 4: Final Judging (Summer/Fall 2025)</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 4: Final Judging (Summer/Fall 2026)</h3>
                 <p className="text-gray-700 mb-3">Distinguished judging panel evaluates finalists and selects winners based on comprehensive criteria. Judges include successful entrepreneurs, corporate executives, and industry experts.</p>
               </div>
 
               <div className="border-l-4 border-orange-500 pl-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 5: Awards Gala (November 14, 2025)</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 5: Awards Gala (November 14, 2026)</h3>
                 <p className="text-gray-700 mb-3">Winners announced live at The Ritz-Carlton, Toronto during black-tie gala event featuring:</p>
                 <ul className="space-y-2 text-gray-700">
                   <li>• Cocktail reception and networking with 500+ business leaders</li>
@@ -265,7 +265,7 @@ export default function RBCWomenEntrepreneurAwards() {
 
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Winning Application Strategies: Insider Tips from Past Winners</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              After analyzing hundreds of winning applications over 33 years, certain patterns emerge. Here are the strategies that consistently lead to success:
+              After analyzing hundreds of winning applications over 34 years, certain patterns emerge. Here are the strategies that consistently lead to success:
             </p>
 
             <div className="space-y-6 mb-8">
@@ -418,7 +418,7 @@ export default function RBCWomenEntrepreneurAwards() {
             </div>
 
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Frequently Asked Questions</h2>
-            
+
             <div className="space-y-6 mb-8">
               <div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Q: Can I apply if I'm not the sole owner?</h3>
@@ -452,28 +452,28 @@ export default function RBCWomenEntrepreneurAwards() {
                 <div className="flex items-start border-b pb-3">
                   <Calendar className="w-5 h-5 text-blue-600 mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-bold text-gray-900">Early February 2025</p>
+                    <p className="font-bold text-gray-900">Early February 2026</p>
                     <p className="text-gray-700 text-sm">Nominations open - Start preparing your application</p>
                   </div>
                 </div>
                 <div className="flex items-start border-b pb-3">
                   <Calendar className="w-5 h-5 text-red-600 mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-bold text-gray-900">March 21, 2025</p>
+                    <p className="font-bold text-gray-900">March 21, 2026</p>
                     <p className="text-gray-700 text-sm">Application deadline (11:59 PM EST) - No extensions granted</p>
                   </div>
                 </div>
                 <div className="flex items-start border-b pb-3">
                   <Calendar className="w-5 h-5 text-green-600 mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-bold text-gray-900">June 2025</p>
+                    <p className="font-bold text-gray-900">June 2026</p>
                     <p className="text-gray-700 text-sm">Finalists announced publicly</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Calendar className="w-5 h-5 text-purple-600 mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-bold text-gray-900">November 14, 2025</p>
+                    <p className="font-bold text-gray-900">November 14, 2026</p>
                     <p className="text-gray-700 text-sm">Awards Gala at The Ritz-Carlton, Toronto - Winners revealed</p>
                   </div>
                 </div>
@@ -497,7 +497,7 @@ export default function RBCWomenEntrepreneurAwards() {
           <Card className="p-8 bg-gradient-to-br from-red-50 via-purple-50 to-blue-50 border-2 border-red-200 mt-12">
             <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Ready to Nominate Yourself?</h3>
             <p className="text-gray-700 mb-6 text-center">
-              The March 21, 2025 deadline is approaching. Start your application today and join Canada's most accomplished women entrepreneurs.
+              The March 21, 2026 deadline is approaching. Start your application today and join Canada's most accomplished women entrepreneurs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-gradient-to-r from-red-600 to-purple-600 hover:from-red-700 hover:to-purple-700" asChild>
@@ -532,7 +532,7 @@ export default function RBCWomenEntrepreneurAwards() {
               <Card className="p-6 hover:shadow-lg transition-shadow">
                 <h4 className="font-semibold text-lg mb-2">Grant Writing Guide</h4>
                 <p className="text-gray-600 text-sm mb-4">Expert tips for writing winning grant applications that get funded</p>
-                <Link href="/blog/grant-writing-secrets-2025" className="text-primary hover:underline text-sm font-medium">
+                <Link href="/blog/grant-writing-secrets-2026" className="text-primary hover:underline text-sm font-medium">
                   Read Guide →
                 </Link>
               </Card>

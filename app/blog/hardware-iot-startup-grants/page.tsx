@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Hardware & IoT Startup Grants 2025-2026 | $305K NSF SBIR, $1.25M Phase II, DOD Electronics Non-Dilutive Funding",
-  description: "Complete 2025-2026 guide to hardware and IoT startup grants. NSF SBIR Phase I $305K, Phase II $1.25M, DOD electronics programs, advanced manufacturing funding supporting connected devices, sensors, robotics, semiconductors, edge computing with zero equity.",
-  keywords: "hardware startup grants 2025, IoT grants NSF SBIR, electronics funding $305K, connected devices grants, sensor technology funding, robotics grants Phase II, semiconductor startup funding, edge computing grants, advanced manufacturing, DOD electronics programs",
+  title: "Hardware & IoT Startup Grants 2026-2027 | $305K NSF SBIR, $1.25M Phase II, DOD Electronics Non-Dilutive Funding",
+  description: "Complete 2026-2027 guide to hardware and IoT startup grants. NSF SBIR Phase I $305K, Phase II $1.25M, DOD electronics programs, advanced manufacturing funding supporting connected devices, sensors, robotics, semiconductors, edge computing with zero equity.",
+  keywords: "hardware startup grants 2026, IoT grants NSF SBIR, electronics funding $305K, connected devices grants, sensor technology funding, robotics grants Phase II, semiconductor startup funding, edge computing grants, advanced manufacturing, DOD electronics programs",
   openGraph: {
-    title: "Hardware & IoT Grants 2025 | $305K NSF SBIR + DOD Electronics",
+    title: "Hardware & IoT Grants 2026 | $305K NSF SBIR + DOD Electronics",
     description: "Complete guide to hardware and IoT startup grants from NSF, DOD, and advanced manufacturing programs.",
-    url: "https://grantfinder.pro/blog/hardware-iot-startup-grants",
+    url: "https://fsidigital.ca/blog/hardware-iot-startup-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -31,7 +31,7 @@ export default function HardwareIoTStartupGrantsPage() {
       {/* Badge */}
       <div className="flex justify-center mb-6">
         <Badge className="bg-orange-500 text-white border-orange-600 px-4 py-2 text-sm font-medium">
-          ⚡ Hardware & IoT Grants 2025-2026
+          ⚡ Hardware & IoT Grants 2026-2027
         </Badge>
       </div>
 
@@ -309,7 +309,7 @@ export default function HardwareIoTStartupGrantsPage() {
           </div>
         </section>
 
-        {/* 2025 Updates */}
+        {/* 2026 Updates */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
@@ -319,7 +319,7 @@ export default function HardwareIoTStartupGrantsPage() {
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-orange-900 mb-2">What&apos;s New in Hardware Funding 2025-2026</h3>
+                    <h3 className="text-2xl font-bold text-orange-900 mb-2">What&apos;s New in Hardware Funding 2026-2027</h3>
                     <p className="text-gray-700">Recent NSF and DOD investments for hardware and IoT startups</p>
                   </div>
                 </div>

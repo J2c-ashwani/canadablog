@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "SR&ED Tax Credits Canada 2025 | Scientific Research & Experimental Development Guide - 65% Refundable",
-  description: "Complete guide to SR&ED tax credits in Canada. Enhanced 2025 rates with 35% federal refundable + provincial credits up to 65% total. $4.5M expenditure limit.",
-  keywords: "SR&ED tax credits Canada, scientific research experimental development, R&D tax credits 2025, 35% refundable tax credit, CCPC tax incentives",
+  title: "SR&ED Tax Credits Canada 2026 | Scientific Research & Experimental Development Guide - 65% Refundable",
+  description: "Complete guide to SR&ED tax credits in Canada. Enhanced 2026 rates with 35% federal refundable + provincial credits up to 65% total. $4.5M expenditure limit.",
+  keywords: "SR&ED tax credits Canada, scientific research experimental development, R&D tax credits 2026, 35% refundable tax credit, CCPC tax incentives",
   openGraph: {
-    title: "SR&ED Tax Credits Canada 2025 | 65% Refundable R&D Tax Incentives Guide",
-    description: "Complete guide to Canada's SR&ED program with enhanced 2025 rates. 35% federal + provincial credits up to 65% total on $4.5M expenditure limit.",
-    url: "https://grantfinder.pro/blog/sred-scientific-research-experimental-development",
+    title: "SR&ED Tax Credits Canada 2026 | 65% Refundable R&D Tax Incentives Guide",
+    description: "Complete guide to Canada's SR&ED program with enhanced 2026 rates. 35% federal + provincial credits up to 65% total on $4.5M expenditure limit.",
+    url: "https://fsidigital.ca/blog/sred-scientific-research-experimental-development",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,13 +29,13 @@ export default function SREDTaxCreditsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                💰 SR&ED Tax Credits 2025
+                💰 SR&ED Tax Credits 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Scientific Research & Experimental Development (SR&ED) Tax Credits
               </h1>
               <p className="text-xl text-green-100 mb-8">
-                Canada's largest R&D tax incentive program providing up to 65% refundable tax credits for eligible research and experimental development activities. Enhanced 2025 rates with $4.5M expenditure limit and expanded eligibility.
+                Canada's largest R&D tax incentive program providing up to 65% refundable tax credits for eligible research and experimental development activities. Enhanced 2026 rates with $4.5M expenditure limit and expanded eligibility.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>
@@ -53,7 +53,7 @@ export default function SREDTaxCreditsGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Changes Alert */}
+        {/* Enhanced 2026 Changes Alert */}
         <section className="py-8 bg-blue-50 border-b-2 border-blue-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -62,7 +62,7 @@ export default function SREDTaxCreditsGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-blue-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-blue-800 mb-2">🚀 Enhanced SR&ED 2025 Changes (Effective December 16, 2024)</h3>
+                      <h3 className="text-lg font-bold text-blue-800 mb-2">🚀 Enhanced SR&ED 2026 Changes (Effective December 16, 2024)</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700">
                         <div>
                           <strong>Increased Expenditure Limit:</strong> $4.5M (from $3M) = Up to $1.575M refundable credits
@@ -108,7 +108,7 @@ export default function SREDTaxCreditsGuidePage() {
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-purple-600 mb-2">$4.5M</div>
-                  <div className="text-gray-600">Enhanced Rate Limit (2025)</div>
+                  <div className="text-gray-600">Enhanced Rate Limit (2026)</div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-orange-600 mb-2">65%</div>
@@ -123,7 +123,7 @@ export default function SREDTaxCreditsGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">2025 SR&ED Tax Credit Rates & Eligibility</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">2026 SR&ED Tax Credit Rates & Eligibility</h2>
               
               <div className="space-y-8">
                 {/* Canadian-Controlled Private Corporations */}
@@ -199,12 +199,12 @@ export default function SREDTaxCreditsGuidePage() {
                   </CardContent>
                 </Card>
 
-                {/* Eligible Canadian Public Corporations (NEW 2025) */}
+                {/* Eligible Canadian Public Corporations (NEW 2026) */}
                 <Card className="border-purple-200">
                   <CardHeader>
                     <div className="flex items-center mb-2">
                       <Building className="w-6 h-6 text-purple-600 mr-3" />
-                      <CardTitle className="text-purple-700">Eligible Canadian Public Corporations (ECPCs) - NEW 2025</CardTitle>
+                      <CardTitle className="text-purple-700">Eligible Canadian Public Corporations (ECPCs) - NEW 2026</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent>
@@ -217,7 +217,7 @@ export default function SREDTaxCreditsGuidePage() {
                             <span className="text-purple-700 font-bold">35% Refundable</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Major enhancement for 2025 - public corporations now eligible for enhanced refundable rate (previously only CCPCs).</p>
+                            <p>Major enhancement for 2026 - public corporations now eligible for enhanced refundable rate (previously only CCPCs).</p>
                           </div>
                         </div>
                       </div>
@@ -231,7 +231,7 @@ export default function SREDTaxCreditsGuidePage() {
                     </div>
                     
                     <div className="mt-6 p-4 bg-purple-50 rounded-lg">
-                      <h5 className="font-semibold mb-2">📋 ECPC Eligibility Requirements (2025):</h5>
+                      <h5 className="font-semibold mb-2">📋 ECPC Eligibility Requirements (2026):</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
                         <div>
                           <ul className="space-y-1">
@@ -376,7 +376,7 @@ export default function SREDTaxCreditsGuidePage() {
                       </div>
                       
                       <div className="bg-yellow-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-orange-700 mb-2">🔧 Capital Expenditures (Restored 2025)</h4>
+                        <h4 className="font-semibold text-orange-700 mb-2">🔧 Capital Expenditures (Restored 2026)</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
                           <li>• Equipment and machinery used primarily for SR&ED</li>
                           <li>• Property acquired on/after December 16, 2024</li>
@@ -386,7 +386,7 @@ export default function SREDTaxCreditsGuidePage() {
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-purple-700 mb-2">🏢 Lease Expenses (Restored 2025)</h4>
+                        <h4 className="font-semibold text-purple-700 mb-2">🏢 Lease Expenses (Restored 2026)</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
                           <li>• Lease payments for SR&ED equipment</li>
                           <li>• First payable on/after December 16, 2024</li>
@@ -418,7 +418,7 @@ export default function SREDTaxCreditsGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">SR&ED Tax Credit Calculator</h2>
                 <p className="text-lg text-gray-600">
-                  Estimate your potential SR&ED tax credits based on 2025 enhanced rates and expenditure limits.
+                  Estimate your potential SR&ED tax credits based on 2026 enhanced rates and expenditure limits.
                 </p>
               </div>
 

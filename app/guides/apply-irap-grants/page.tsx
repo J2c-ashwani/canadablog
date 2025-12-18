@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Complete IRAP Application Guide 2025 | Step-by-Step R&D Grant Process",
     description: "Step-by-step guide with templates and strategies for successful IRAP grant applications.",
-    url: "https://grantfinder.pro/guides/apply-irap-grants",
+    url: "https://fsidigital.ca/guides/apply-irap-grants",
   },
 }
 

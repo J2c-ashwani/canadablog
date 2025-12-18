@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Youth Entrepreneurship Canada 2025 | $60K+ Young Entrepreneur Grants & Business Funding",
+  title: "Youth Entrepreneurship Canada 2026 | $60K+ Young Entrepreneur Grants & Business Funding",
   description: "Complete guide to Canadian youth entrepreneur funding programs. Access CYBF grants up to $60K, Youth Employment Strategy funding, and young business startup loans for entrepreneurs aged 18-35 across Canada.",
   keywords: "youth entrepreneurship Canada, young entrepreneur grants Canada, Canadian youth business foundation, CYBF funding, youth business loans Canada, young entrepreneur startup funding, youth employment strategy, Canadian youth business grants, young business owner funding",
   openGraph: {
-    title: "Youth Entrepreneurship Canada 2025 | $60K+ Young Entrepreneur Grants & Funding",
+    title: "Youth Entrepreneurship Canada 2026 | $60K+ Young Entrepreneur Grants & Funding",
     description: "Access $60K+ in Canadian government funding for young entrepreneurs. Complete guide to CYBF grants, Youth Employment Strategy, and startup funding for youth aged 18-35.",
-    url: "https://grantfinder.pro/blog/youth-entrepreneurship-canada-funding",
+    url: "https://fsidigital.ca/blog/youth-entrepreneurship-canada-funding",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,11 +32,11 @@ export default function YouthEntrepreneurshipBlogPage() {
                 🧑‍💼 Youth Entrepreneurship Guide Canada
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Youth Entrepreneurship Canada Funding 2025
+                Youth Entrepreneurship Canada Funding 2026
               </h1>
               <p className="text-xl text-indigo-100 mb-8">
-                Complete guide to Canadian youth entrepreneur funding programs. Access CYBF grants up to $60K, 
-                Youth Employment Strategy funding, and young business startup loans for entrepreneurs aged 18-35 
+                Complete guide to Canadian youth entrepreneur funding programs. Access CYBF grants up to $60K,
+                Youth Employment Strategy funding, and young business startup loans for entrepreneurs aged 18-35
                 across all Canadian provinces.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -81,13 +81,13 @@ export default function YouthEntrepreneurshipBlogPage() {
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">What is Youth Entrepreneurship Funding in Canada?</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Canada offers comprehensive youth entrepreneurship support through multiple government programs designed 
-                  to help young Canadians aged 18-35 start and scale their businesses. From the Canadian Youth Business 
-                  Foundation (CYBF) providing up to $60,000 in startup funding to the Youth Employment Strategy offering 
-                  wage subsidies and skills training, young entrepreneurs have access to significant financial support 
+                  Canada offers comprehensive youth entrepreneurship support through multiple government programs designed
+                  to help young Canadians aged 18-35 start and scale their businesses. From the Canadian Youth Business
+                  Foundation (CYBF) providing up to $60,000 in startup funding to the Youth Employment Strategy offering
+                  wage subsidies and skills training, young entrepreneurs have access to significant financial support
                   across all provinces and territories.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-indigo-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-indigo-800">Youth Funding Benefits</h4>
@@ -98,7 +98,7 @@ export default function YouthEntrepreneurshipBlogPage() {
                       <li>• Provincial young entrepreneur grants</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">Target Youth Demographics</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -119,7 +119,7 @@ export default function YouthEntrepreneurshipBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Youth Entrepreneurship Funding Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Canadian Youth Business Foundation (CYBF) */}
                 <Card className="border-indigo-200">
@@ -145,7 +145,7 @@ export default function YouthEntrepreneurshipBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      CYBF provides startup financing, mentorship, and business resources to young Canadian entrepreneurs. 
+                      CYBF provides startup financing, mentorship, and business resources to young Canadian entrepreneurs.
                       Combined with BDC partnerships, youth can access up to $60,000 in startup capital.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -195,7 +195,7 @@ export default function YouthEntrepreneurshipBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Futurpreneur Canada offers startup loans combined with 2-year mentorship programs specifically 
+                      Futurpreneur Canada offers startup loans combined with 2-year mentorship programs specifically
                       designed for young entrepreneurs across Canada.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -245,7 +245,7 @@ export default function YouthEntrepreneurshipBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      The Youth Employment Strategy provides wage subsidies to employers hiring young people, 
+                      The Youth Employment Strategy provides wage subsidies to employers hiring young people,
                       plus skills training and work experience programs for young entrepreneurs.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -295,7 +295,7 @@ export default function YouthEntrepreneurshipBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Business Development Bank of Canada provides specialized financing solutions for young entrepreneurs 
+                      Business Development Bank of Canada provides specialized financing solutions for young entrepreneurs
                       looking to start or expand their businesses.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -330,7 +330,7 @@ export default function YouthEntrepreneurshipBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Provincial Young Entrepreneur Support Programs</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-indigo-700">🚀 Major Provincial Youth Programs:</h4>
@@ -353,7 +353,7 @@ export default function YouthEntrepreneurshipBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-blue-700">⭐ Specialized Youth Support:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -385,7 +385,7 @@ export default function YouthEntrepreneurshipBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How to Apply for Youth Entrepreneurship Funding</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <span className="bg-indigo-500 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold mr-4 mt-0.5">1</span>
@@ -432,7 +432,7 @@ export default function YouthEntrepreneurshipBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Success Tips for Young Entrepreneurs in Canada</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">✅ Maximize Your Youth Funding Success:</h4>
@@ -455,7 +455,7 @@ export default function YouthEntrepreneurshipBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Young Entrepreneur Funding Mistakes:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -490,10 +490,10 @@ export default function YouthEntrepreneurshipBlogPage() {
                 Ready to Access Youth Entrepreneurship Funding?
               </h2>
               <p className="text-xl text-indigo-100 mb-8">
-                Get the complete young entrepreneur application guide or work with our youth funding experts 
+                Get the complete young entrepreneur application guide or work with our youth funding experts
                 to maximize your CYBF and Canadian youth business grant approvals.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 {/* Get Application Guide CTA */}
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
@@ -522,7 +522,7 @@ export default function YouthEntrepreneurshipBlogPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-indigo-200 text-sm mt-6">
                 78% success rate for young entrepreneurs • Average funding secured: $28K • Youth-focused expertise
               </p>

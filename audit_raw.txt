@@ -1,0 +1,752 @@
+app/blog/women-entrepreneurship-strategy-canada/page.tsx:  title: "Women Entrepreneurship Strategy Canada 2025 | $6B+ Female Business Grants & Loans",
+app/blog/women-entrepreneurship-strategy-canada/page.tsx:    title: "Women Entrepreneurship Strategy Canada 2025 | $6B+ Female Business Grants",
+app/blog/women-entrepreneurship-strategy-canada/page.tsx:                Women Entrepreneurship Strategy Canada 2025
+app/blog/alberta-innovation-grants/page.tsx:  title: "Alberta Innovation Grants & Funding 2025 | $950M+ Energy Transition, AI & CleanTech Support",
+app/blog/alberta-innovation-grants/page.tsx:    title: "Alberta Innovation Grants & Funding 2025 | $950M+ Energy & AI Support",
+app/blog/alberta-innovation-grants/page.tsx:                Alberta Innovation Grants & Funding Programs 2025
+app/blog/california-tech-programs/page.tsx:  title: "California Tech Startup Grants 2025-2026 | $50K CalSEED, $50K SBIR Match, Tax Credits & Silicon Valley Funding Programs",
+app/blog/california-tech-programs/page.tsx:  description: "Complete 2025-2026 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SBIR State Match $50,000, California Competes Tax Credit up to 25%, GO-Biz innovation programs, Accelerate CA Hubs for Silicon Valley, Bay Area, Los Angeles, San Diego tech startups.",
+app/blog/california-tech-programs/page.tsx:  keywords: "California tech startup grants 2025, CalSEED grants $50000, SBIR state match California, California Competes Tax Credit, GO-Biz incentives, Silicon Valley startup funding, Bay Area tech grants, Los Angeles innovation programs, San Diego biotech funding, California cleantech grants, agtech funding California, biotech grants Bay Area, software startup incentives, hardware startup California, non-dilutive California grants, California small business grants technology",
+app/blog/california-tech-programs/page.tsx:    title: "California Tech Grants 2025 | $50K CalSEED, SBIR Match, Tax Credits",
+app/blog/california-tech-programs/page.tsx:                🌟 California Technology Startup Grants & Innovation Programs 2025-2026
+app/blog/california-tech-programs/page.tsx:                California Tech Startup Grants 2025-2026: $50K CalSEED Clean Energy Grants, $50K SBIR State Match, California Competes Tax Credit & GO-Biz Innovation Programs for Silicon Valley, Bay Area & Statewide Technology Companies
+app/blog/california-tech-programs/page.tsx:                Comprehensive 2025-2026 guide to California technology startup grants, tax incentives, innovation programs, and non-dilutive funding opportunities providing up to $50,000 CalSEED clean energy grants, $50,000 SBIR State Match Program enhancing federal SBIR/STTR awards, California Competes Tax Credit offering up to 25% income tax reduction, GO-Biz technology incentives, Accelerate CA Innovation Hubs supporting Silicon Valley, San Francisco Bay Area, Los Angeles, San Diego, Sacramento, and regional California tech startups. State programs serve cleantech, agtech, biotech, software, hardware, artificial intelligence, machine learning, and innovation companies throughout California requiring no equity, complementing federal funding, advancing California's position as global technology and innovation leader driving economic growth, job creation, and competitive advantage for startups choosing California over other states[web:220][web:224].
+app/blog/california-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">California Technology Startup Grants by Region and Innovation Hub (2025-2026 Funding Programs Available Statewide)</h2>
+app/blog/california-tech-programs/page.tsx:                <h3 className="font-bold text-blue-900 mb-3 text-lg">🔥 High-Value California Tech Grant Keywords 2025-2026 (High CPC, High CTR, High CPM):</h3>
+app/blog/california-tech-programs/page.tsx:                    <strong>Application Process (User Intent):</strong> How to apply CalSEED grants California 2025, SBIR state match application requirements California, California Competes Tax Credit eligibility technology startups, GO-Biz incentives application process Silicon Valley, Accelerate CA Hub locations California statewide, California business registration startup grants, grants.ca.gov portal technology funding, CalOSBA small business programs tech companies
+app/blog/california-tech-programs/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/california-tech-programs/page.tsx:                      <h3 className="text-lg font-bold text-blue-800 mb-2">🌟 2025-2026 California Technology Startup Funding Program Highlights</h3>
+app/blog/california-tech-programs/page.tsx:                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete California Technology Startup Funding Ecosystem 2025-2026</h2>
+app/blog/california-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">California Technology Startup Grant Programs and Tax Incentives 2025-2026 Complete Details</h2>
+app/blog/california-tech-programs/page.tsx:                      <h4 className="font-bold text-lg mb-4 text-blue-800">📍 CalSEED Application Deadlines and Accelerate CA Hub Locations 2025-2026</h4>
+app/blog/california-tech-programs/page.tsx:                            <li>• <strong>Spring 2025:</strong> Opens February</li>
+app/blog/california-tech-programs/page.tsx:                            <li>• <strong>Fall 2025:</strong> Opens August</li>
+app/blog/california-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">California Technology Startup Grant Application Success Strategies 2025-2026</h2>
+app/blog/ontario-women-business-grants/page.tsx:  title: "Ontario Women Business Grants 2025 | $850M Support Programs & Non-Repayable Funding",
+app/blog/ontario-women-business-grants/page.tsx:    title: "Ontario Women Business Grants 2025 | $850M Provincial Support",
+app/blog/ontario-women-business-grants/page.tsx:                🏛️ Ontario Women Business Support 2025
+app/blog/ontario-women-business-grants/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/ontario-women-business-grants/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Ontario Women Entrepreneurship 2025 Highlights</h3>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:  title: "RBC Canadian Women Entrepreneur Awards 2025: Complete Guide to $100K+ in Grants & Recognition",
+app/blog/rbc-women-entrepreneur-awards/page.tsx:  description: "Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2025. Learn eligibility, application process, 8 award categories, past winners, and similar grants for women in USA & Canada. Deadline: March 21, 2025.",
+app/blog/rbc-women-entrepreneur-awards/page.tsx:  keywords: "RBC Women Entrepreneur Awards, women business grants Canada, women entrepreneur funding, Canadian women business awards, women startup grants, female entrepreneur support, women entrepreneurship Canada USA, business grants for women 2025",
+app/blog/rbc-women-entrepreneur-awards/page.tsx:    title: "RBC Canadian Women Entrepreneur Awards 2025 - Win Up to $100,000",
+app/blog/rbc-women-entrepreneur-awards/page.tsx:            <span className="text-gray-900">RBC Women Entrepreneur Awards 2025</span>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:              <Badge variant="secondary">November 14, 2025</Badge>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:              RBC Canadian Women Entrepreneur Awards 2025: Your Complete Guide to Winning $100,000+ in Grants & National Recognition
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                Updated: October 14, 2025
+app/blog/rbc-women-entrepreneur-awards/page.tsx:              For over three decades, the RBC Canadian Women Entrepreneur Awards have recognized Canada's most accomplished women business leaders. This comprehensive guide covers everything you need to know about the 2025 awards, including eligibility requirements, application tips, award categories, and alternative funding options for women entrepreneurs across North America.
+app/blog/rbc-women-entrepreneur-awards/page.tsx:              2025 Awards at a Glance
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                <p className="text-sm text-gray-600">2025 Deadline</p>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:              The 33rd Annual RBC Canadian Women Entrepreneur Awards Gala will take place on <strong>Friday, November 14, 2025</strong>, at The Ritz-Carlton, Toronto. This black-tie event brings together Canada's top women entrepreneurs, business executives, government officials, and industry leaders for an evening of celebration, networking, and recognition.
+app/blog/rbc-women-entrepreneur-awards/page.tsx:            <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">8 Award Categories for 2025: Find Your Perfect Match</h2>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:              The 2025 program features eight distinct award categories designed to recognize excellence across different business stages, industries, and impact areas. Understanding which category best aligns with your business is crucial for application success.
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                  <span><strong>Business Registration:</strong> Must be registered as a sole proprietorship or corporation for three full years as of April 30, 2025</span>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 1: Nomination Period (February - March 21, 2025)</h3>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                <p className="text-gray-700 mb-3">Nominations open in early February and close on <strong>March 21, 2025</strong>. During this period:</p>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 2: Initial Review (April - May 2025)</h3>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 3: Finalist Selection (June 2025)</h3>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 4: Final Judging (Summer/Fall 2025)</h3>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 5: Awards Gala (November 14, 2025)</h3>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                    <p className="font-bold text-gray-900">Early February 2025</p>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                    <p className="font-bold text-gray-900">March 21, 2025</p>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                    <p className="font-bold text-gray-900">June 2025</p>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                    <p className="font-bold text-gray-900">November 14, 2025</p>
+app/blog/rbc-women-entrepreneur-awards/page.tsx:              The March 21, 2025 deadline is approaching. Start your application today and join Canada's most accomplished women entrepreneurs.
+app/blog/rbc-women-entrepreneur-awards/page.tsx:                <Link href="/blog/grant-writing-secrets-2025" className="text-primary hover:underline text-sm font-medium">
+app/blog/edc-women-trade-export-financing/page.tsx:  title: "EDC Women in Trade Export Financing 2025 | Equity Capital & Export Support for Women Exporters",
+app/blog/edc-women-trade-export-financing/page.tsx:    title: "EDC Women in Trade Export Financing 2025 | Equity Capital for Women Exporters",
+app/blog/edc-women-trade-export-financing/page.tsx:                🌍 EDC Women in Trade 2025
+app/blog/edc-women-trade-export-financing/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/edc-women-trade-export-financing/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 EDC Women in Trade 2025 Program Highlights</h3>
+app/blog/canada-aerospace-defence-innovation-grants/page.tsx:  title: "Canada Aerospace & Defence Grants 2025 | $450M+ Space Technology & Aviation Funding | CSA Programs",
+app/blog/canada-aerospace-defence-innovation-grants/page.tsx:    title: "Canada Aerospace & Defence Grants 2025 | $450M+ Space & Aviation Funding",
+app/blog/canada-aerospace-defence-innovation-grants/page.tsx:                Canada Aerospace & Defence Innovation Grants 2025
+app/blog/new-york-tech-programs/page.tsx:  title: "New York Tech Startup Grants 2025-2026 | START-UP NY Tax-Free 10 Years, $250K Seed Matching Fund, NYSERDA Clean Energy Innovation Programs",
+app/blog/new-york-tech-programs/page.tsx:  description: "Complete 2025-2026 guide to New York technology startup grants and incentives. START-UP NY program 10-year tax-free operation university campuses, Pre-Seed Seed Matching Fund $50K-$250K, NYSERDA innovation grants clean energy, Empire State Development ESD programs, NYC Economic Development Corporation grants supporting Manhattan Brooklyn Queens innovation ecosystem.",
+app/blog/new-york-tech-programs/page.tsx:  keywords: "New York tech startup grants 2025, START-UP NY program tax free, NYSERDA innovation grants, Empire State Development ESD funding, NYC tech grants Manhattan Brooklyn, Pre-Seed Seed Matching Fund New York, FuzeHub manufacturing grants, New York technology incentives, NYC Economic Development Corporation NYCEDC, clean energy grants NYSERDA",
+app/blog/new-york-tech-programs/page.tsx:    title: "New York Tech Grants 2025 | START-UP NY Tax-Free, $250K Seed Fund, NYSERDA",
+app/blog/new-york-tech-programs/page.tsx:                🗽 New York Technology Startup Grants & Innovation Programs 2025-2026
+app/blog/new-york-tech-programs/page.tsx:                New York Tech Startup Grants 2025-2026: START-UP NY 10-Year Tax-Free Program University Campuses, Pre-Seed Seed Matching Fund $50K-$250K, NYSERDA Clean Energy Innovation Grants, Empire State Development ESD Programs, NYC Economic Development Corporation Supporting Manhattan Brooklyn Queens Bronx Innovation Ecosystem
+app/blog/new-york-tech-programs/page.tsx:                Comprehensive 2025-2026 guide to New York State technology startup grants, NYC tech incentives, clean energy innovation programs, and tax-free opportunities providing START-UP NY program 10-year tax-free operation on or near eligible university college campuses throughout New York State including Columbia NYU Cornell SUNY CUNY system campuses creating academic partnerships advanced research laboratory access, Pre-Seed and Seed Matching Fund Program offering $50,000 to $250,000 growth assistance matching private sector co-investor funds supporting high-growth industry early-stage startups, NYSERDA (New York State Energy Research and Development Authority) innovation grants supporting clean energy renewable energy energy efficiency technology development commercialization, Empire State Development ESD comprehensive technology startup support programs, NYC Economic Development Corporation NYCEDC grants supporting Manhattan Silicon Alley Brooklyn Tech Triangle DUMBO Queens innovation hubs Bronx emerging tech ecosystem, and FuzeHub manufacturing grants up to $65,000 supporting New York State manufacturing technology companies. State programs serve technology, biotechnology, clean energy, advanced manufacturing, fintech, media tech, fashion tech companies throughout New York requiring no equity in many programs, complementing federal SBIR/STTR funding, venture capital investment advancing New York position as global innovation leader technology economic competitiveness job creation[web:238][web:239][web:242].
+app/blog/new-york-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">New York Technology Startup Grants by Region and Innovation Hub (2025-2026 Funding Programs Available Statewide)</h2>
+app/blog/new-york-tech-programs/page.tsx:                <h3 className="font-bold text-blue-900 mb-3 text-lg">🔥 High-Value New York Tech Grant Keywords 2025-2026 (High CPC, High CTR, High CPM):</h3>
+app/blog/new-york-tech-programs/page.tsx:                    <strong>Application Process (User Intent):</strong> How to apply START-UP NY program tax-free 2026, Pre-Seed Seed Matching Fund eligibility requirements New York, NYSERDA innovation grants application process clean energy, Empire State Development ESD programs NYC startups, NYC Economic Development Corporation grants Manhattan, START-UP NY university campus partnership requirements, New York technology startup grant programs 2025 2026
+app/blog/new-york-tech-programs/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/new-york-tech-programs/page.tsx:                      <h3 className="text-lg font-bold text-blue-800 mb-2">🗽 2025-2026 New York Technology Startup Funding Program Highlights</h3>
+app/blog/new-york-tech-programs/page.tsx:                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete New York Technology Startup Funding Ecosystem 2025-2026</h2>
+app/blog/new-york-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">New York Technology Startup Grant Programs 2025-2026 Complete Details</h2>
+app/blog/new-york-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">New York Technology Startup Grant Application Success Strategies 2025-2026</h2>
+app/blog/bc-small-business-grants-guide/page.tsx:  title: "BC Small Business Grants 2025 | $1.3B+ British Columbia SME Funding",
+app/blog/bc-small-business-grants-guide/page.tsx:                BC Small Business Grants 2025
+app/blog/industry-specific-business-grants-guide/page.tsx:  title: "Industry-Specific Business Grants Guide 2025 | Sector-Focused Funding Programs",
+app/blog/industry-specific-business-grants-guide/page.tsx:    title: "Industry-Specific Business Grants Guide 2025",
+app/blog/manitoba-small-business-grants-guide/page.tsx:  title: "Manitoba Small Business Grants 2025 | $380M+ Business Development Programs",
+app/blog/manitoba-small-business-grants-guide/page.tsx:                Manitoba Small Business Grants 2025
+app/blog/regional-development-agencies-government-grants/page.tsx:  title: "Regional Development Agencies Canada 2025 | RDA Federal Funding Guide | 7 Regional Programs",
+app/blog/regional-development-agencies-government-grants/page.tsx:    title: "Regional Development Agencies Canada 2025 | RDA Federal Funding Guide",
+app/blog/sba-loans-grants-guide/page.tsx:  title: "SBA Loans & Grants Complete Guide 2025 | Small Business Administration Funding",
+app/blog/sba-loans-grants-guide/page.tsx:    title: "SBA Loans & Grants Complete Guide 2025",
+app/blog/women-entrepreneurship-strategy-canada-government-grants/page.tsx:  title: "Women Entrepreneurship Strategy Canada 2025 | WES Federal Funding Guide | $6B Investment",
+app/blog/women-entrepreneurship-strategy-canada-government-grants/page.tsx:    title: "Women Entrepreneurship Strategy Canada 2025 | WES Federal Funding Guide",
+app/blog/women-entrepreneurship-strategy-canada-government-grants/page.tsx:                  <div className="text-gray-600">Target Growth by 2025</div>
+app/blog/women-entrepreneurship-strategy-canada-government-grants/page.tsx:                  to double the number of women-owned businesses by 2025.
+app/blog/women-entrepreneurship-strategy-canada-government-grants/page.tsx:                      <li>• Doubling women-owned businesses by 2025</li>
+app/blog/canada-agri-food-technology-innovation-grants/page.tsx:  title: "Canada Agri-Food Technology Grants 2025 | $2.3B+ AgriInnovate & Precision Agriculture Funding",
+app/blog/canada-agri-food-technology-innovation-grants/page.tsx:    title: "Canada Agri-Food Technology Grants 2025 | $2.3B+ AgriTech Funding",
+app/blog/canada-agri-food-technology-innovation-grants/page.tsx:                Canada Agri-Food Technology Innovation Grants 2025
+app/blog/alberta-women-business-grants/page.tsx:  title: "Alberta Women Business Grants 2025 | $580M Energy & Tech Support Programs",
+app/blog/alberta-women-business-grants/page.tsx:    title: "Alberta Women Business Grants 2025 | $580M Provincial Support",
+app/blog/alberta-women-business-grants/page.tsx:                ⚡ Alberta Women Business Support 2025
+app/blog/alberta-women-business-grants/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/alberta-women-business-grants/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Alberta Women Entrepreneurship 2025 Highlights</h3>
+app/blog/women-entrepreneurship-loan-fund-canada/page.tsx:  title: "Women Entrepreneurship Loan Fund (WELF) 2025 | Up to $50K Microloans for Women Entrepreneurs",
+app/blog/women-entrepreneurship-loan-fund-canada/page.tsx:    title: "Women Entrepreneurship Loan Fund (WELF) 2025 | Up to $50K for Women Entrepreneurs",
+app/blog/women-entrepreneurship-loan-fund-canada/page.tsx:                💼 Women Entrepreneurship Loan Fund 2025
+app/blog/women-entrepreneurship-loan-fund-canada/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/women-entrepreneurship-loan-fund-canada/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 WELF 2025 Program Enhancements</h3>
+app/blog/hardware-iot-startup-grants/page.tsx:  title: "Hardware & IoT Startup Grants 2025-2026 | $305K NSF SBIR, $1.25M Phase II, DOD Electronics Non-Dilutive Funding",
+app/blog/hardware-iot-startup-grants/page.tsx:  description: "Complete 2025-2026 guide to hardware and IoT startup grants. NSF SBIR Phase I $305K, Phase II $1.25M, DOD electronics programs, advanced manufacturing funding supporting connected devices, sensors, robotics, semiconductors, edge computing with zero equity.",
+app/blog/hardware-iot-startup-grants/page.tsx:  keywords: "hardware startup grants 2025, IoT grants NSF SBIR, electronics funding $305K, connected devices grants, sensor technology funding, robotics grants Phase II, semiconductor startup funding, edge computing grants, advanced manufacturing, DOD electronics programs",
+app/blog/hardware-iot-startup-grants/page.tsx:    title: "Hardware & IoT Grants 2025 | $305K NSF SBIR + DOD Electronics",
+app/blog/hardware-iot-startup-grants/page.tsx:          ⚡ Hardware & IoT Grants 2025-2026
+app/blog/hardware-iot-startup-grants/page.tsx:        {/* 2025 Updates */}
+app/blog/hardware-iot-startup-grants/page.tsx:                    <h3 className="text-2xl font-bold text-orange-900 mb-2">What&apos;s New in Hardware Funding 2025-2026</h3>
+app/blog/agriculture-agri-food-canada-government-grants/page.tsx:  title: "Agriculture & Agri-Food Canada Grants 2025 | Federal Funding Programs Guide | AAFC Support",
+app/blog/agriculture-agri-food-canada-government-grants/page.tsx:    title: "Agriculture & Agri-Food Canada Grants 2025 | Federal Funding Programs Guide",
+app/blog/canada-regional-economic-development-grants-guide/page.tsx:  title: "Canada Regional Economic Development Grants 2025 | $2.8B+ Community Growth Funding Programs Guide",
+app/blog/canada-regional-economic-development-grants-guide/page.tsx:  keywords: "Canada regional development grants, RDA funding, community economic development, regional growth programs, ACOA PrairiesCan grants Canada 2025",
+app/blog/canada-regional-economic-development-grants-guide/page.tsx:    title: "Canada Regional Economic Development Grants 2025 | $2.8B+ Community Growth Funding Guide",
+app/blog/canada-regional-economic-development-grants-guide/page.tsx:                        <h5 className="font-semibold mb-2 text-yellow-700">Major 2025 Programs:</h5>
+app/blog/canada-regional-economic-development-grants-guide/page.tsx:                      Federal agency promoting economic development across Canada's three territories (Northwest Territories, Nunavut, and Yukon) with $32.5M in 2025-26 funding for northern communities and businesses.
+app/blog/doe-sbir-clean-energy-grants/page.tsx:  title: "DOE SBIR Clean Energy Grants 2025-2026 | $200K Phase I, $1.85M Phase II Renewable Energy Funding",
+app/blog/doe-sbir-clean-energy-grants/page.tsx:  description: "Complete 2025-2026 guide to DOE SBIR/STTR grants for clean energy startups. Phase I up to $200K, Phase II up to $1.85M for renewable energy, energy storage, carbon capture, climate tech innovation.",
+app/blog/doe-sbir-clean-energy-grants/page.tsx:  keywords: "DOE SBIR grants 2025, clean energy grants, renewable energy funding, energy storage SBIR, carbon capture grants, climate tech funding, DOE innovation grants",
+app/blog/doe-sbir-clean-energy-grants/page.tsx:    title: "DOE SBIR Grants 2025 | $200K-$1.85M Clean Energy Funding",
+app/blog/doe-sbir-clean-energy-grants/page.tsx:                ⚡ DOE SBIR/STTR Clean Energy Grants 2025-2026
+app/blog/doe-sbir-clean-energy-grants/page.tsx:                Comprehensive 2025-2026 guide to Department of Energy SBIR/STTR grants providing up to $1,850,000 in 
+app/blog/doe-sbir-clean-energy-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">DOE SBIR Clean Energy Grants by Region and Tech Hub (2025-2026 Funding Available)</h2>
+app/blog/doe-sbir-clean-energy-grants/page.tsx:                <h3 className="font-bold text-green-900 mb-3 text-lg">🔥 High-Demand DOE SBIR Clean Energy Keywords 2025-2026:</h3>
+app/blog/doe-sbir-clean-energy-grants/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/doe-sbir-clean-energy-grants/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">⚡ 2025-2026 DOE SBIR Program Highlights</h3>
+app/blog/doe-sbir-clean-energy-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">DOE SBIR and STTR Program Details 2025-2026</h2>
+app/blog/doe-sbir-clean-energy-grants/page.tsx:                      <h4 className="font-bold text-lg mb-4 text-green-800">📍 DOE SBIR Phase I Application Deadlines 2025-2026</h4>
+app/blog/doe-sbir-clean-energy-grants/page.tsx:                          <p className="font-semibold text-gray-800 mb-2">Release 2 Deadlines (FY 2025):</p>
+app/blog/doe-sbir-clean-energy-grants/page.tsx:                            <li>• <strong>Closes:</strong> January 2025</li>
+app/blog/doe-sbir-clean-energy-grants/page.tsx:                            <li>• <strong>Awards:</strong> July 2025</li>
+app/blog/doe-sbir-clean-energy-grants/page.tsx:                            <li>• <strong>Opens:</strong> April 2025 (expected)</li>
+app/blog/doe-sbir-clean-energy-grants/page.tsx:                            <li>• <strong>Closes:</strong> July 2025 (expected)</li>
+app/blog/doe-sbir-clean-energy-grants/page.tsx:                      <CardTitle className="text-blue-700 text-2xl">DOE SBIR Clean Energy Topic Areas 2025-2026</CardTitle>
+app/blog/doe-sbir-clean-energy-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">DOE SBIR Application Success Strategies 2025-2026</h2>
+app/blog/doe-sbir-clean-energy-grants/page.tsx:                Get our complete 2025-2026 DOE SBIR application guide with Phase I/II proposal templates, clean energy 
+app/blog/irap-industrial-research-assistance-program-government-grants/page.tsx:  title: "IRAP Industrial Research Assistance Program Canada 2025 | Government R&D Funding Guide",
+app/blog/irap-industrial-research-assistance-program-government-grants/page.tsx:    title: "IRAP Industrial Research Assistance Program Canada 2025 | Government R&D Funding",
+app/blog/women-clean-technology-grants-canada/page.tsx:  title: "Women Clean Technology Grants Canada 2025-2026 | Clean Energy Funding $10M, Sustainability Innovation Support Toronto Vancouver Montreal",
+app/blog/women-clean-technology-grants-canada/page.tsx:  description: "Complete 2025-2026 guide to clean tech grants for women entrepreneurs. SDTC funding up to $10M, NRCan clean energy programs, provincial sustainability grants Toronto Vancouver Montreal Calgary. Renewable energy, circular economy, environmental technology women-owned businesses Canada.",
+app/blog/women-clean-technology-grants-canada/page.tsx:  keywords: "women clean technology grants Canada 2025, SDTC funding clean tech, sustainable development technology, clean energy grants women, environmental innovation funding, renewable energy women entrepreneurs Toronto Vancouver Montreal Calgary Ottawa",
+app/blog/women-clean-technology-grants-canada/page.tsx:    title: "Women Clean Technology Grants Canada 2025 | Clean Energy Sustainability Funding",
+app/blog/women-clean-technology-grants-canada/page.tsx:                🌱 Clean Technology & Sustainability Funding 2025-2026
+app/blog/women-clean-technology-grants-canada/page.tsx:                Comprehensive 2025-2026 guide to clean technology grants and sustainability funding for women-owned 
+app/blog/women-clean-technology-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Clean Technology Grants by Province (2025-2026 SDTC & NRCan Funding Available)</h2>
+app/blog/women-clean-technology-grants-canada/page.tsx:                <h3 className="font-bold text-green-900 mb-3 text-lg">🔥 High-Demand Clean Technology Funding Keywords 2025-2026:</h3>
+app/blog/women-clean-technology-grants-canada/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/women-clean-technology-grants-canada/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 2025-2026 Women Clean Technology Funding Highlights</h3>
+app/blog/women-clean-technology-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Clean Technology Grants for Women Entrepreneurs 2025-2026</h2>
+app/blog/women-clean-technology-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Clean Technology Grant Application Success Strategies 2025-2026</h2>
+app/blog/women-clean-technology-grants-canada/page.tsx:                Get our complete 2025-2026 women clean technology grants guide with SDTC application strategies, NRCan 
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:  title: "NSF SBIR Grants 2025-2026 | $275K Phase I, $2M Phase II Technology Startup Funding - Complete Application Guide",
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:  description: "Complete 2025-2026 guide to NSF SBIR/STTR grants for technology startups. Phase I funding up to $275K, Phase II up to $2M for AI, deep tech, biotech, software, hardware innovation. Application strategies, eligibility, deadlines.",
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:  keywords: "NSF SBIR grants 2025, NSF STTR funding, America's Seed Fund, Phase I Phase II grants, deep tech startup funding, AI innovation grants, NSF technology grants, non-dilutive startup funding",
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:    title: "NSF SBIR Grants 2025 | $275K-$2M Technology Startup Funding",
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                🚀 NSF SBIR/STTR Grants 2025-2026
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                Comprehensive 2025-2026 guide to National Science Foundation SBIR/STTR grants providing up to $2,000,000 
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">NSF SBIR Grants by Tech Hub and State (2025-2026 Funding Available)</h2>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                <h3 className="font-bold text-blue-900 mb-3 text-lg">🔥 High-Demand NSF SBIR Keywords 2025-2026:</h3>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                      <h3 className="text-lg font-bold text-blue-800 mb-2">🚀 2025-2026 NSF SBIR Program Highlights</h3>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NSF SBIR and STTR Program Details 2025-2026</h2>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                      <h4 className="font-bold text-lg mb-4 text-blue-800">📍 NSF SBIR Phase I Application Deadlines 2025-2026 (Rolling Windows)</h4>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                            <li>• January 15, 2025</li>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                            <li>• April 15, 2025</li>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                            <li>• July 15, 2025</li>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                            <li>• October 15, 2025</li>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                            <li>• February 28, 2025</li>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                            <li>• May 31, 2025</li>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                            <li>• August 31, 2025</li>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                            <li>• November 30, 2025</li>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NSF SBIR Application Success Strategies 2025-2026</h2>
+app/blog/nsf-sbir-grants-technology-startups/page.tsx:                Get our complete 2025-2026 NSF SBIR application guide with Phase I/II proposal templates, technical 
+app/blog/territories-small-business-grants-guide/page.tsx:  title: "Territories Small Business Grants 2025 | $125M+ NT, YT, Nunavut Combined Funding",
+app/blog/territories-small-business-grants-guide/page.tsx:                Territories Small Business Grants 2025
+app/blog/alberta-government-business-grants/page.tsx:  title: "Alberta Government Business Grants 2025 | Provincial Energy & Innovation Funding Programs Guide",
+app/blog/alberta-government-business-grants/page.tsx:  keywords: "Alberta government business grants, Alberta provincial funding, Alberta Innovates grants, ERA funding, Alberta energy diversification programs, Alberta business support programs 2025",
+app/blog/alberta-government-business-grants/page.tsx:    title: "Alberta Government Business Grants 2025 | Energy & Innovation Provincial Funding Guide",
+app/blog/federal-grants-women-minorities/page.tsx:  title: "Federal Grants for Women, Minorities & Veterans 2025 | Specialized Business Funding",
+app/blog/federal-grants-women-minorities/page.tsx:    title: "Federal Grants for Women, Minorities & Veterans 2025",
+app/blog/ontario-small-business-grants-guide/page.tsx:  title: "Ontario Small Business Grants 2025 | $2.1B+ Available for Ontario SMEs",
+app/blog/ontario-small-business-grants-guide/page.tsx:                Ontario Small Business Grants 2025
+app/blog/small-business-grants-complete-guide/page.tsx:  title: "Small Business Grants Complete Guide 2025 | SBA & Federal Funding",
+app/blog/small-business-grants-complete-guide/page.tsx:    title: "Small Business Grants Complete Guide 2025",
+app/blog/state-local-business-grants-guide/page.tsx:  title: "State & Local Business Grants Guide 2025 | Regional Economic Development Funding",
+app/blog/state-local-business-grants-guide/page.tsx:    title: "State & Local Business Grants Guide 2025",
+app/blog/private-women-grants-guide/page.tsx:  title: "Private Women Grants Guide 2025 | Foundation Grants for Female Entrepreneurs",
+app/blog/private-women-grants-guide/page.tsx:    title: "Private Women Grants Guide 2025 | Foundation Grants for Female Entrepreneurs",
+app/blog/sred-scientific-research-experimental-development/page.tsx:  title: "SR&ED Tax Credits Canada 2025 | Scientific Research & Experimental Development Guide - 65% Refundable",
+app/blog/sred-scientific-research-experimental-development/page.tsx:  description: "Complete guide to SR&ED tax credits in Canada. Enhanced 2025 rates with 35% federal refundable + provincial credits up to 65% total. $4.5M expenditure limit.",
+app/blog/sred-scientific-research-experimental-development/page.tsx:  keywords: "SR&ED tax credits Canada, scientific research experimental development, R&D tax credits 2025, 35% refundable tax credit, CCPC tax incentives",
+app/blog/sred-scientific-research-experimental-development/page.tsx:    title: "SR&ED Tax Credits Canada 2025 | 65% Refundable R&D Tax Incentives Guide",
+app/blog/sred-scientific-research-experimental-development/page.tsx:    description: "Complete guide to Canada's SR&ED program with enhanced 2025 rates. 35% federal + provincial credits up to 65% total on $4.5M expenditure limit.",
+app/blog/sred-scientific-research-experimental-development/page.tsx:                💰 SR&ED Tax Credits 2025
+app/blog/sred-scientific-research-experimental-development/page.tsx:                Canada's largest R&D tax incentive program providing up to 65% refundable tax credits for eligible research and experimental development activities. Enhanced 2025 rates with $4.5M expenditure limit and expanded eligibility.
+app/blog/sred-scientific-research-experimental-development/page.tsx:        {/* Enhanced 2025 Changes Alert */}
+app/blog/sred-scientific-research-experimental-development/page.tsx:                      <h3 className="text-lg font-bold text-blue-800 mb-2">🚀 Enhanced SR&ED 2025 Changes (Effective December 16, 2024)</h3>
+app/blog/sred-scientific-research-experimental-development/page.tsx:                  <div className="text-gray-600">Enhanced Rate Limit (2025)</div>
+app/blog/sred-scientific-research-experimental-development/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">2025 SR&ED Tax Credit Rates & Eligibility</h2>
+app/blog/sred-scientific-research-experimental-development/page.tsx:                {/* Eligible Canadian Public Corporations (NEW 2025) */}
+app/blog/sred-scientific-research-experimental-development/page.tsx:                      <CardTitle className="text-purple-700">Eligible Canadian Public Corporations (ECPCs) - NEW 2025</CardTitle>
+app/blog/sred-scientific-research-experimental-development/page.tsx:                            <p>Major enhancement for 2025 - public corporations now eligible for enhanced refundable rate (previously only CCPCs).</p>
+app/blog/sred-scientific-research-experimental-development/page.tsx:                      <h5 className="font-semibold mb-2">📋 ECPC Eligibility Requirements (2025):</h5>
+app/blog/sred-scientific-research-experimental-development/page.tsx:                        <h4 className="font-semibold text-orange-700 mb-2">🔧 Capital Expenditures (Restored 2025)</h4>
+app/blog/sred-scientific-research-experimental-development/page.tsx:                        <h4 className="font-semibold text-purple-700 mb-2">🏢 Lease Expenses (Restored 2025)</h4>
+app/blog/sred-scientific-research-experimental-development/page.tsx:                  Estimate your potential SR&ED tax credits based on 2025 enhanced rates and expenditure limits.
+app/blog/cybersecurity-startup-grants/page.tsx:  title: "Cybersecurity Grants 2025-2026 | $1.8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive",
+app/blog/cybersecurity-startup-grants/page.tsx:  description: "Complete 2025-2026 guide to cybersecurity grants. DOD SBIR Phase I $200K-$400K, Phase II $1.8M, DHS cybersecurity funding, NSA research programs supporting security software, encryption, threat detection, zero-trust, cloud security with zero equity.",
+app/blog/cybersecurity-startup-grants/page.tsx:  keywords: "cybersecurity grants 2025, security software funding DOD SBIR, encryption grants DHS, threat detection funding Phase II, zero-trust architecture grants, cloud security funding NSA, penetration testing grants, incident response funding",
+app/blog/cybersecurity-startup-grants/page.tsx:    title: "Cybersecurity Grants 2025 | $1.8M DOD SBIR + DHS Cyber Funding",
+app/blog/cybersecurity-startup-grants/page.tsx:                  🔒 Cybersecurity Grants 2025-2026
+app/blog/cybersecurity-startup-grants/page.tsx:                  <div className="text-sm md:text-base text-gray-300">DOD Topics 2025</div>
+app/blog/cybersecurity-startup-grants/page.tsx:        {/* 2025 Updates */}
+app/blog/cybersecurity-startup-grants/page.tsx:                    <h3 className="text-2xl font-bold text-blue-900 mb-2">What&apos;s New in Cybersecurity Funding 2025-2026</h3>
+app/blog/cybersecurity-startup-grants/page.tsx:                    <p className="text-sm text-gray-700">Department of Defense pre-released 106 new SBIR topics (May 21, 2025 deadline) with up to $2M combined Phase I+II funding for cybersecurity across Air Force, Army, Navy, DARPA.</p>
+app/blog/cybersecurity-startup-grants/page.tsx:                              <span className="font-semibold text-gray-700">2025 Topics:</span>
+app/blog/dod-sbir-defense-tech-grants/page.tsx:  title: "DOD SBIR Defense Tech Grants 2025-2026 | $256K Phase I, $1.7M Phase II Cybersecurity & Aerospace Funding",
+app/blog/dod-sbir-defense-tech-grants/page.tsx:  description: "Complete 2025-2026 guide to Department of Defense SBIR/STTR grants for defense tech startups. Phase I up to $256K, Phase II up to $1.7M for cybersecurity, aerospace, UAV, advanced materials innovation.",
+app/blog/dod-sbir-defense-tech-grants/page.tsx:  keywords: "DOD SBIR grants 2025, defense tech grants, cybersecurity SBIR, aerospace funding, UAV grants, military technology funding, DOD innovation grants",
+app/blog/dod-sbir-defense-tech-grants/page.tsx:    title: "DOD SBIR Grants 2025 | $256K-$1.7M Defense Tech Funding",
+app/blog/dod-sbir-defense-tech-grants/page.tsx:                🛡️ DOD SBIR/STTR Defense Tech Grants 2025-2026
+app/blog/dod-sbir-defense-tech-grants/page.tsx:                Comprehensive 2025-2026 guide to Department of Defense SBIR/STTR grants providing up to $1,700,000 in 
+app/blog/dod-sbir-defense-tech-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">DOD SBIR Defense Tech Grants by Region and Military Hub (2025-2026 Funding Available)</h2>
+app/blog/dod-sbir-defense-tech-grants/page.tsx:                <h3 className="font-bold text-slate-900 mb-3 text-lg">🔥 High-Demand DOD SBIR Defense Tech Keywords 2025-2026:</h3>
+app/blog/dod-sbir-defense-tech-grants/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/dod-sbir-defense-tech-grants/page.tsx:                      <h3 className="text-lg font-bold text-slate-800 mb-2">🛡️ 2025-2026 DOD SBIR Program Highlights</h3>
+app/blog/dod-sbir-defense-tech-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">DOD SBIR and STTR Program Details 2025-2026</h2>
+app/blog/dod-sbir-defense-tech-grants/page.tsx:                      <h4 className="font-bold text-lg mb-4 text-slate-800">📍 DOD SBIR Phase I Application Deadlines 2025-2026</h4>
+app/blog/dod-sbir-defense-tech-grants/page.tsx:                            <li>• <strong>Release 2:</strong> January 2025</li>
+app/blog/dod-sbir-defense-tech-grants/page.tsx:                            <li>• <strong>Release 3:</strong> April 2025</li>
+app/blog/dod-sbir-defense-tech-grants/page.tsx:                            <li>• <strong>Release 4:</strong> July 2025</li>
+app/blog/dod-sbir-defense-tech-grants/page.tsx:                      <CardTitle className="text-indigo-700 text-2xl">DOD SBIR Topic Areas Across Military Components 2025-2026</CardTitle>
+app/blog/dod-sbir-defense-tech-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">DOD SBIR Application Success Strategies 2025-2026</h2>
+app/blog/ideation-research-funding-canada/page.tsx:  title: "Stage 1: Ideation & Research Funding Canada 2025 | NSERC Discovery Grants | Up to $1M Early-Stage R&D",
+app/blog/ideation-research-funding-canada/page.tsx:    title: "Stage 1: Ideation & Research Funding Canada 2025 | NSERC Discovery Grants",
+app/blog/ideation-research-funding-canada/page.tsx:                Stage 1: Ideation & Research Funding Canada 2025
+app/blog/women-manufacturing-grants-canada/page.tsx:  title: "Women Manufacturing Grants Canada 2025-2026 | $10M Equipment Funding Ontario Toronto Vancouver Calgary Montreal | Advanced Manufacturing Business Loans Women Entrepreneurs",
+app/blog/women-manufacturing-grants-canada/page.tsx:  description: "Complete 2025-2026 guide to manufacturing grants for women-owned businesses in Ontario, Quebec, BC, Alberta. Equipment funding $10K-$10M, productivity improvement grants, automation financing, advanced manufacturing support Toronto, Vancouver, Calgary, Montreal, Ottawa. NRC IRAP, CDEM, provincial equipment loans, Industry 4.0 smart factory funding for Canadian women manufacturers.",
+app/blog/women-manufacturing-grants-canada/page.tsx:  keywords: "women manufacturing grants Canada 2025, equipment funding women Ontario, manufacturing business loans Toronto, productivity grants Vancouver, automation financing Calgary, women industrial business grants Montreal, advanced manufacturing funding women Quebec, equipment purchase grants BC, women manufacturing loans Alberta, smart factory funding women Canada, Industry 4.0 grants women entrepreneurs, production equipment financing women business owners, machinery grants women manufacturers Ontario, digital manufacturing transformation funding women, robotics automation grants women-owned factories, lean manufacturing improvement grants women Canada, manufacturing modernization loans women Toronto, equipment upgrade funding women Vancouver, production capacity expansion grants women Calgary, manufacturing technology adoption funding women Montreal",
+app/blog/women-manufacturing-grants-canada/page.tsx:    title: "Women Manufacturing Grants Canada 2025 | Equipment Funding Toronto Vancouver Calgary Montreal",
+app/blog/women-manufacturing-grants-canada/page.tsx:                🏭 Manufacturing Equipment Grants 2025-2026 | All Canadian Provinces
+app/blog/women-manufacturing-grants-canada/page.tsx:                Comprehensive 2025-2026 guide to manufacturing grants, equipment financing, and productivity improvement 
+app/blog/women-manufacturing-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Manufacturing Equipment Grants by Province and Major City (2025-2026 Funding Available)</h2>
+app/blog/women-manufacturing-grants-canada/page.tsx:                <h3 className="font-bold text-yellow-900 mb-3 text-lg">🔥 High-Demand Manufacturing Equipment Funding Keywords 2025-2026:</h3>
+app/blog/women-manufacturing-grants-canada/page.tsx:        {/* Enhanced 2025 Program Updates with High CPC Keywords */}
+app/blog/women-manufacturing-grants-canada/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 2025-2026 Women Manufacturing Funding Highlights (High-Value Equipment Grants & Business Loans)</h3>
+app/blog/women-manufacturing-grants-canada/page.tsx:                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Manufacturing Innovation Ecosystem for Women Entrepreneurs Across Canada: Toronto to Vancouver Manufacturing Equipment Financing 2025-2026</h2>
+app/blog/women-manufacturing-grants-canada/page.tsx:                  <CardTitle className="text-gray-800 text-2xl">📊 Women Manufacturing Business Statistics by Canadian Region (2025 Data)</CardTitle>
+app/blog/women-manufacturing-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Manufacturing Grants and Equipment Financing for Women Entrepreneurs Canada 2025-2026</h2>
+app/blog/women-manufacturing-grants-canada/page.tsx:                            <li>• Toronto Business Centre (416-954-2025)</li>
+app/blog/women-manufacturing-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Ontario Manufacturing Grants for Women Entrepreneurs - Equipment Funding, Productivity Loans, Automation Financing Toronto Ottawa Hamilton 2025-2026</h2>
+app/blog/women-manufacturing-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Quebec Manufacturing Grants for Women Entrepreneurs - Financement Équipement Fabrication Femmes Montréal Québec Laval 2025-2026</h2>
+app/blog/women-manufacturing-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">British Columbia Manufacturing Grants for Women Entrepreneurs - Equipment Funding Vancouver Surrey Burnaby Richmond Victoria 2025-2026</h2>
+app/blog/women-manufacturing-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Alberta Manufacturing Grants for Women Entrepreneurs - Equipment Funding Calgary Edmonton Red Deer Lethbridge 2025-2026</h2>
+app/blog/women-manufacturing-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Manufacturing Sector-Specific Equipment Grants for Women Entrepreneurs Canada - Industry-Focused Funding Programs 2025-2026</h2>
+app/blog/women-manufacturing-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Manufacturing Grant Application Success Strategies 2025-2026 - Expert Tips for Equipment Funding Approval Canada</h2>
+app/blog/women-manufacturing-grants-canada/page.tsx:                Get our complete 2025-2026 women manufacturing grants guide with program navigator, regional funding 
+app/blog/sbir-sttr-complete-guide/page.tsx:  title: "SBIR & STTR Grants Complete Guide 2025 | Small Business Innovation Research",
+app/blog/sbir-sttr-complete-guide/page.tsx:    title: "SBIR & STTR Grants Complete Guide 2025",
+app/blog/women-export-trade-grants-canada/page.tsx:  title: "Women Export Trade Grants Canada 2025-2026 | CanExport Funding $75K, International Expansion Support Toronto Vancouver Montreal",
+app/blog/women-export-trade-grants-canada/page.tsx:  description: "Complete 2025-2026 guide to export grants for women entrepreneurs. CanExport SME funding up to $75K, EDC financing, Trade Commissioner Service support, international market development Toronto Vancouver Montreal Calgary Ottawa. Export market research, trade missions, global expansion women-owned businesses Canada.",
+app/blog/women-export-trade-grants-canada/page.tsx:  keywords: "women export grants Canada 2025, CanExport funding women, international trade support, export market development grants, Trade Commissioner Service women entrepreneurs, EDC export financing, global expansion funding women businesses Toronto Vancouver Montreal Calgary",
+app/blog/women-export-trade-grants-canada/page.tsx:    title: "Women Export Trade Grants Canada 2025 | CanExport Funding International Expansion",
+app/blog/women-export-trade-grants-canada/page.tsx:                🌍 Export & International Trade Funding 2025-2026
+app/blog/women-export-trade-grants-canada/page.tsx:                Comprehensive 2025-2026 guide to export grants and international trade funding for women-owned businesses 
+app/blog/women-export-trade-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Export Grants by Province (2025-2026 CanExport Funding Available)</h2>
+app/blog/women-export-trade-grants-canada/page.tsx:                <h3 className="font-bold text-blue-900 mb-3 text-lg">🔥 High-Demand Export Funding Keywords 2025-2026:</h3>
+app/blog/women-export-trade-grants-canada/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/women-export-trade-grants-canada/page.tsx:                      <h3 className="text-lg font-bold text-blue-800 mb-2">🚀 2025-2026 Women Export Funding Highlights</h3>
+app/blog/women-export-trade-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Export Grants and Trade Financing for Women Entrepreneurs 2025-2026</h2>
+app/blog/women-export-trade-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Export Grant Application Success Strategies 2025-2026</h2>
+app/blog/women-export-trade-grants-canada/page.tsx:                Get our complete 2025-2026 women export grants guide with CanExport application strategies, Trade 
+app/blog/cartier-womens-initiative-canada/page.tsx:  description: "Complete guide to Cartier Women's Initiative with $100,000 grants, INSEAD coaching, mentorship, and global networking for Canadian women impact entrepreneurs. Apply by June 24, 2025.",
+app/blog/cartier-womens-initiative-canada/page.tsx:                Development Goals. Application deadline: June 24, 2025.
+app/blog/cartier-womens-initiative-canada/page.tsx:                          <strong>Application Deadline:</strong> June 24, 2025 at 2:00 PM CEST
+app/blog/cartier-womens-initiative-canada/page.tsx:                          <strong>Legal Age:</strong> Must be 18+ years old by June 24, 2025 application deadline
+app/blog/cartier-womens-initiative-canada/page.tsx:                      description: "June 24, 2025 at 2:00 PM CEST (400MB/file, 800MB total)",
+app/blog/cartier-womens-initiative-canada/page.tsx:                      description: "Notification by December 2025, fellowship starts January 2026",
+app/blog/commercialization-scale-up-funding-canada/page.tsx:  title: "Stage 4: Commercialization & Scale-Up Funding Canada 2025 | Strategic Innovation Fund | Up to $100M",
+app/blog/commercialization-scale-up-funding-canada/page.tsx:    title: "Stage 4: Commercialization & Scale-Up Funding Canada 2025 | Up to $100M",
+app/blog/commercialization-scale-up-funding-canada/page.tsx:                Stage 4: Commercialization & Scale-Up Funding Canada 2025
+app/blog/women-social-enterprise-grants-canada/page.tsx:  title: "Women Social Enterprise Grants Canada 2025-2026 | Social Impact Funding Toronto Vancouver Montreal Calgary | Community Development Purpose-Driven Business Support Women Entrepreneurs",
+app/blog/women-social-enterprise-grants-canada/page.tsx:  description: "Complete 2025-2026 guide to social enterprise grants for women-led impact businesses in Ontario, Quebec, BC, Alberta. Social impact funding $10K-$1M, community development programs, purpose-driven business support Toronto, Vancouver, Montreal, Calgary, Ottawa. Investment Readiness Program, social finance, non-profit grants, impact investment for Canadian women social entrepreneurs.",
+app/blog/women-social-enterprise-grants-canada/page.tsx:  keywords: "women social enterprise grants Canada 2025, social impact funding women Ontario, community development grants Toronto, purpose-driven business support Vancouver, non-profit funding women Montreal, impact investment Calgary, social innovation grants women Quebec, women social entrepreneurs BC, community business grants Alberta, social finance funding women Canada",
+app/blog/women-social-enterprise-grants-canada/page.tsx:    title: "Women Social Enterprise Grants Canada 2025 | Social Impact Funding",
+app/blog/women-social-enterprise-grants-canada/page.tsx:                ❤️ Social Impact Funding 2025-2026 | All Canadian Provinces
+app/blog/women-social-enterprise-grants-canada/page.tsx:                Comprehensive 2025-2026 guide to social enterprise grants, impact investment, and community development 
+app/blog/women-social-enterprise-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Social Enterprise Grants by Province and Major City (2025-2026 Impact Funding Available)</h2>
+app/blog/women-social-enterprise-grants-canada/page.tsx:                <h3 className="font-bold text-yellow-900 mb-3 text-lg">🔥 High-Demand Social Enterprise Funding Keywords 2025-2026:</h3>
+app/blog/women-social-enterprise-grants-canada/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/women-social-enterprise-grants-canada/page.tsx:                      <h3 className="text-lg font-bold text-purple-800 mb-2">🚀 2025-2026 Women Social Enterprise Funding Highlights</h3>
+app/blog/women-social-enterprise-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Social Enterprise Grants and Impact Investment for Women Entrepreneurs Canada 2025-2026</h2>
+app/blog/women-social-enterprise-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Social Enterprise Grant Application Success Strategies 2025-2026</h2>
+app/blog/women-social-enterprise-grants-canada/page.tsx:                Get our complete 2025-2026 women social enterprise grants guide with program navigator, impact 
+app/blog/sba-7a-loans-complete-guide/page.tsx:  title: "SBA 7(a) Loans Complete Guide 2025 | Small Business Administration Funding",
+app/blog/sba-7a-loans-complete-guide/page.tsx:    title: "SBA 7(a) Loans Complete Guide 2025",
+app/blog/sba-7a-loans-complete-guide/page.tsx:                          <h5 className="font-semibold mb-3 text-green-700">Interest Rates (2025):</h5>
+app/blog/bmo-celebrating-women-grant/page.tsx:  title: "BMO Celebrating Women Grant 2025 | $10K Grants + Business Advisory for Women Entrepreneurs",
+app/blog/bmo-celebrating-women-grant/page.tsx:  description: "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources. Applications open August 5-19, 2025 for Canadian and U.S. women business owners.",
+app/blog/bmo-celebrating-women-grant/page.tsx:    title: "BMO Celebrating Women Grant 2025 | $10K Grants + Advisory",
+app/blog/bmo-celebrating-women-grant/page.tsx:                💼 Annual Grant Program 2025
+app/blog/bmo-celebrating-women-grant/page.tsx:                progress. Applications open August 5-19, 2025 for the 2025 program.
+app/blog/bmo-celebrating-women-grant/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/bmo-celebrating-women-grant/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 BMO Celebrating Women 2025 Program Highlights</h3>
+app/blog/bmo-celebrating-women-grant/page.tsx:                          <strong>Application Window:</strong> August 5-19, 2025 (8:00 AM - 8:00 PM ET)
+app/blog/bmo-celebrating-women-grant/page.tsx:                          <strong>Operating History:</strong> At least 2 years selling product/service by August 5, 2025
+app/blog/bmo-celebrating-women-grant/page.tsx:                          <strong>Operating History:</strong> At least 2 years in operation by August 5, 2025
+app/blog/bmo-celebrating-women-grant/page.tsx:                      description: "If selected, create short video about business (notified September 2025)",
+app/blog/bmo-celebrating-women-grant/page.tsx:                        <h4 className="font-bold text-blue-800 mb-2">📅 2025 Program Timeline</h4>
+app/blog/bmo-celebrating-women-grant/page.tsx:                              <li>• <strong>Applications Open:</strong> August 5, 2025 at 8:00 AM ET</li>
+app/blog/bmo-celebrating-women-grant/page.tsx:                              <li>• <strong>Applications Close:</strong> August 19, 2025 at 8:00 PM ET</li>
+app/blog/bmo-celebrating-women-grant/page.tsx:                              <li>• <strong>Semi-Finalists:</strong> Notified September 2025</li>
+app/blog/software-saas-startup-grants/page.tsx:  title: "Software & SaaS Startup Grants 2025-2026 | $305K NSF SBIR, $1.25M Phase II, DOD Software Modernization Non-Dilutive Funding",
+app/blog/software-saas-startup-grants/page.tsx:  description: "Complete 2025-2026 guide to software and SaaS startup grants. NSF SBIR Phase I $305,000, Phase II $1.25M, Fast-Track $1.555M non-dilutive funding for enterprise software, cloud platforms, developer tools, AI/ML, cybersecurity, software automation supporting zero equity retention commercialization.",
+app/blog/software-saas-startup-grants/page.tsx:  keywords: "software startup grants 2025, SaaS startup grants NSF SBIR, enterprise software grants $305K, cloud platform funding non-dilutive, developer tools grants Phase II, NSF SBIR software innovation $1.25M, DOD software modernization grants, AI ML software grants, cybersecurity software funding, software automation grants zero equity",
+app/blog/software-saas-startup-grants/page.tsx:    title: "Software & SaaS Grants 2025 | $305K NSF SBIR, $1.25M Phase II Non-Dilutive",
+app/blog/software-saas-startup-grants/page.tsx:                  💻 Software & SaaS Grants 2025-2026
+app/blog/software-saas-startup-grants/page.tsx:        {/* 2025 Updates - Highlight What's New */}
+app/blog/software-saas-startup-grants/page.tsx:                    <h3 className="text-2xl font-bold text-indigo-900 mb-2">What's New in 2025-2026</h3>
+app/blog/canada-technology-adoption-grants-guide/page.tsx:  title: "Canada Technology Adoption Grants 2025 | $950M+ Digital Transformation Across 22+ Programs",
+app/blog/canada-technology-adoption-grants-guide/page.tsx:                Canada Technology Adoption Grants 2025
+app/blog/bc-women-business-grants/page.tsx:  title: "BC Women Business Grants 2025 | $650M Innovation & Tech Support Programs",
+app/blog/bc-women-business-grants/page.tsx:    title: "BC Women Business Grants 2025 | $650M Innovation Support",
+app/blog/bc-women-business-grants/page.tsx:                🏔️ BC Women Business Support 2025
+app/blog/bc-women-business-grants/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/bc-women-business-grants/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 BC Women Entrepreneurship 2025 Highlights</h3>
+app/blog/demonstration-pilot-funding-canada/page.tsx:  title: "Stage 3: Demonstration & Pilot Funding Canada 2025 | SDTC & Clean Growth | Up to $15M Project Funding",
+app/blog/demonstration-pilot-funding-canada/page.tsx:    title: "Stage 3: Demonstration & Pilot Funding Canada 2025 | SDTC & Clean Growth",
+app/blog/demonstration-pilot-funding-canada/page.tsx:                Stage 3: Demonstration & Pilot Funding Canada 2025
+app/blog/ontario-government-business-grants/page.tsx:  title: "Ontario Government Business Grants 2025 | Provincial Funding Programs Guide | OCED Support",
+app/blog/ontario-government-business-grants/page.tsx:  keywords: "Ontario government business grants, Ontario provincial funding, OCED grants, Starter Company Plus Ontario, Ontario Creates funding, Ontario business support programs 2025",
+app/blog/ontario-government-business-grants/page.tsx:    title: "Ontario Government Business Grants 2025 | Provincial Funding Programs Guide",
+app/blog/women-tech-stem-grants-guide/page.tsx:  title: "Women in Technology & STEM Grants Guide 2025 | Female Tech Entrepreneur Funding",
+app/blog/women-tech-stem-grants-guide/page.tsx:    title: "Women in Technology & STEM Grants Guide 2025 | Female Tech Entrepreneur Funding",
+app/blog/amber-grant-women-canada/page.tsx:  title: "Amber Grant for Women Canada 2025 | Monthly $10K Grants + $25K Annual Award",
+app/blog/amber-grant-women-canada/page.tsx:    title: "Amber Grant for Women Canada 2025 | Monthly $10K + $25K Annual",
+app/blog/amber-grant-women-canada/page.tsx:                🏆 Monthly Grant Awards 2025
+app/blog/amber-grant-women-canada/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/amber-grant-women-canada/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 2025 Amber Grant Program Highlights</h3>
+app/blog/clean-tech-energy-grants/page.tsx:  title: "Clean Tech & Energy Grants 2025-2026 | $200K DOE SBIR, $1.6M Phase II, EPA Environmental Tech Non-Dilutive Funding",
+app/blog/clean-tech-energy-grants/page.tsx:  description: "Complete 2025-2026 guide to clean tech and energy grants. DOE SBIR Phase I $200K, Phase II $1.6M, EPA environmental technology, state energy programs supporting renewable energy, battery tech, climate solutions, solar, wind, hydrogen with zero equity.",
+app/blog/clean-tech-energy-grants/page.tsx:  keywords: "clean tech grants 2025, renewable energy startup funding, DOE SBIR $200K, battery technology grants, climate tech funding Phase II, solar energy grants, wind power funding, hydrogen grants, EPA environmental tech, state energy programs",
+app/blog/clean-tech-energy-grants/page.tsx:    title: "Clean Tech & Energy Grants 2025 | $200K DOE SBIR + $1.6M Phase II",
+app/blog/clean-tech-energy-grants/page.tsx:                  🌱 Clean Tech & Energy Grants 2025-2026
+app/blog/clean-tech-energy-grants/page.tsx:        {/* 2025 Updates */}
+app/blog/clean-tech-energy-grants/page.tsx:                    <h3 className="text-2xl font-bold text-green-900 mb-2">What&apos;s New in Clean Energy Funding 2025-2026</h3>
+app/blog/clean-tech-energy-grants/page.tsx:                    <p className="text-sm text-gray-700">DOE SBIR/STTR FY 2025 Phase I Release 2 offers $65 million for clean energy innovation. Phase I up to $200K, Phase II up to $1.6M with national lab partnerships.</p>
+app/blog/clean-tech-energy-grants/page.tsx:                    <p className="text-sm text-gray-700">SETO funding covers dual-use PV, agrivoltaics, BIPV, floating PV, CSP Gen3, solar microgrids, cybersecurity, and manufacturing innovations for 2025 cycle.</p>
+app/blog/clean-tech-energy-grants/page.tsx:                    <p className="text-sm text-gray-700">VTO $65M focuses on EV battery cells, recycling efficiency, thermal runaway mitigation, modular HD batteries, firefighting tech, electrified hydraulics for 2025.</p>
+app/blog/clean-tech-energy-grants/page.tsx:        // ... (keep all the existing code up to the 2025 Updates section, then add:)
+app/blog/clean-tech-energy-grants/page.tsx:                          <h5 className="font-semibold text-gray-800 mb-3">DOE Technology Focus Areas (FY2025):</h5>
+app/blog/state-women-business-programs-guide/page.tsx:  title: "State Women Business Programs Guide 2025 | Local Government Grants for Female Entrepreneurs",
+app/blog/state-women-business-programs-guide/page.tsx:    title: "State Women Business Programs Guide 2025 | Local Government Grants",
+app/blog/massachusetts-tech-programs/page.tsx:  title: "Massachusetts Tech Startup Grants 2025-2026 | $500K SBIR START, $350K MassCEC InnovateMass, Life Sciences Center Biotech Funding Programs",
+app/blog/massachusetts-tech-programs/page.tsx:  description: "Complete 2025-2026 guide to Massachusetts technology startup grants and incentives. SBIR START tiered grants up to $500K from MassVentures, MassCEC InnovateMass clean energy grants $350K, Massachusetts Life Sciences Center MLSC comprehensive biotech funding for Boston Cambridge Worcester innovation ecosystem.",
+app/blog/massachusetts-tech-programs/page.tsx:  keywords: "Massachusetts tech startup grants 2025, SBIR START grants Massachusetts MassVentures, MassCEC InnovateMass clean energy funding, Life Sciences Center MLSC biotech grants, Boston biotech funding Cambridge Kendall Square, Worcester biomedical manufacturing, Massachusetts innovation grants, MIT Harvard spinout funding, Route 128 technology corridor grants",
+app/blog/massachusetts-tech-programs/page.tsx:    title: "Massachusetts Tech Grants 2025 | $500K START, $350K MassCEC, MLSC Biotech",
+app/blog/massachusetts-tech-programs/page.tsx:                🏛️ Massachusetts Technology Startup Grants & Innovation Programs 2025-2026
+app/blog/massachusetts-tech-programs/page.tsx:                Massachusetts Tech Startup Grants 2025-2026: $500K SBIR START Tiered Grants MassVentures, $350K MassCEC InnovateMass Clean Energy Funding, Life Sciences Center Comprehensive Biotech Programs for Boston Cambridge Kendall Square Worcester Innovation Ecosystem
+app/blog/massachusetts-tech-programs/page.tsx:                Comprehensive 2025-2026 guide to Massachusetts technology startup grants, biotech life sciences funding, clean energy innovation programs, and non-dilutive capital providing up to $500,000 SBIR START tiered grants from MassVentures enhancing federal Phase II SBIR/STTR awards creating Massachusetts jobs economic growth, $350,000 MassCEC InnovateMass clean energy technology deployment grants supporting renewable energy storage grid modernization zero-emission vehicles, Massachusetts Life Sciences Center MLSC comprehensive biotech life sciences funding programs capital infrastructure research commercialization workforce development supporting Boston biotech hub Longwood Medical Area, Cambridge innovation corridor Kendall Square MIT Harvard ecosystem, Worcester biomedical manufacturing Route 128 technology corridor, and statewide Massachusetts tech startups. State programs serve biotechnology, pharmaceuticals, medical devices, diagnostics, digital health, clean energy, software, hardware, artificial intelligence companies throughout Massachusetts requiring no equity complementing federal SBIR/STTR funding venture capital investment advancing Massachusetts position as global innovation leader biotechnology life sciences clean energy technology economic competitiveness[web:229][web:230][web:233][web:235].
+app/blog/massachusetts-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Massachusetts Technology Startup Grants by Region and Innovation Hub (2025-2026 Funding Programs Available Statewide)</h2>
+app/blog/massachusetts-tech-programs/page.tsx:                <h3 className="font-bold text-red-900 mb-3 text-lg">🔥 High-Value Massachusetts Tech Grant Keywords 2025-2026 (High CPC, High CTR, High CPM):</h3>
+app/blog/massachusetts-tech-programs/page.tsx:                    <strong>Application Process (User Intent):</strong> How to apply SBIR START grants Massachusetts MassVentures 2026, MassCEC InnovateMass application requirements clean energy deployment, MLSC Life Sciences Center funding eligibility biotechnology programs, Massachusetts technology startup grant programs Boston Cambridge, SBIR Phase II enhancement START tiered funding, MassVentures application process commercialization support, Massachusetts innovation grants 2025 2026 statewide programs
+app/blog/massachusetts-tech-programs/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/massachusetts-tech-programs/page.tsx:                      <h3 className="text-lg font-bold text-red-800 mb-2">🏛️ 2025-2026 Massachusetts Technology Startup Funding Program Highlights</h3>
+app/blog/massachusetts-tech-programs/page.tsx:                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Massachusetts Technology Startup Funding Ecosystem 2025-2026</h2>
+app/blog/massachusetts-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Massachusetts Technology Startup Grant Programs and Innovation Incentives 2025-2026 Complete Details</h2>
+app/blog/massachusetts-tech-programs/page.tsx:                      <h4 className="font-bold text-lg mb-4 text-red-800">📍 SBIR START Application Process and Timeline 2025-2026</h4>
+app/blog/massachusetts-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Massachusetts Technology Startup Grant Application Success Strategies 2025-2026</h2>
+app/blog/quebec-women-business-grants/page.tsx:  title: "Quebec Women Business Grants 2025 | $720M Francophone Entrepreneur Support Programs",
+app/blog/quebec-women-business-grants/page.tsx:    title: "Quebec Women Business Grants 2025 | $720M Francophone Support",
+app/blog/quebec-women-business-grants/page.tsx:                🇨🇦 Quebec Women Business Support 2025
+app/blog/quebec-women-business-grants/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/quebec-women-business-grants/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Quebec Women Entrepreneurship 2025 Highlights</h3>
+app/blog/canada-innovation-research-development-grants-guide/page.tsx:  title: "Canada Innovation & R&D Grants 2025 | $4.2B+ Research Development Funding Programs Guide",
+app/blog/canada-innovation-research-development-grants-guide/page.tsx:  keywords: "Canada innovation grants, R&D funding Canada, SR&ED tax credits, IRAP funding, Strategic Innovation Fund, research development grants Canada 2025",
+app/blog/canada-innovation-research-development-grants-guide/page.tsx:    title: "Canada Innovation & R&D Grants 2025 | $4.2B+ Research Development Funding Guide",
+app/blog/canada-innovation-research-development-grants-guide/page.tsx:                      Canada's largest R&D tax incentive program providing refundable tax credits for research and experimental development activities. Enhanced in 2025 with increased refundable limit to $4.5M for CCPCs.
+app/blog/canada-innovation-research-development-grants-guide/page.tsx:                        <h5 className="font-semibold mb-2">Enhanced 2025 Benefits:</h5>
+app/blog/canada-innovation-research-development-grants-guide/page.tsx:                        <h5 className="font-semibold mb-2 text-green-700">2025 Program Updates:</h5>
+app/blog/canada-innovation-research-development-grants-guide/page.tsx:                          <li>• IRAP: Rolling intake with 2025 cohort opening</li>
+app/blog/irap-industrial-research-assistance-program-innovation/page.tsx:  title: "IRAP Industrial Research Assistance Program 2025 | Up to $500K Innovation Funding for SMEs",
+app/blog/irap-industrial-research-assistance-program-innovation/page.tsx:    title: "IRAP Industrial Research Assistance Program 2025 | Up to $500K Innovation Funding",
+app/blog/irap-industrial-research-assistance-program-innovation/page.tsx:                🔬 IRAP Innovation Funding 2025
+app/blog/irap-industrial-research-assistance-program-innovation/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/irap-industrial-research-assistance-program-innovation/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 IRAP 2025 Innovation Program Enhancements</h3>
+app/blog/canada-growth-expansion-grants-guide/page.tsx:  title: "Canada Growth & Expansion Grants 2025 | $2.8B+ Scale-Up Funding Across 42+ Programs",
+app/blog/canada-growth-expansion-grants-guide/page.tsx:                Canada Growth & Expansion Grants 2025
+app/blog/scotiabank-women-initiative/page.tsx:  title: "Scotiabank Women Initiative 2025 | Capital Funding + Mentorship + Education for Women Entrepreneurs",
+app/blog/scotiabank-women-initiative/page.tsx:    title: "Scotiabank Women Initiative 2025 | Capital + Mentorship + Education",
+app/blog/scotiabank-women-initiative/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/scotiabank-women-initiative/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Scotiabank Women Initiative 2025 Highlights</h3>
+app/blog/ontario-innovation-grants/page.tsx:  title: "Ontario Innovation Grants & Tax Credits 2025 | OITC 10% Tax Credit | $3.2B+ R&D Funding",
+app/blog/ontario-innovation-grants/page.tsx:    title: "Ontario Innovation Grants & Tax Credits 2025 | $3.2B+ OITC & R&D Support",
+app/blog/ontario-innovation-grants/page.tsx:                Ontario Innovation Grants & Tax Credits 2025
+app/blog/sba-microloans-complete-guide/page.tsx:  title: "SBA Microloans Complete Guide 2025 | Small Business Microloan Program",
+app/blog/sba-microloans-complete-guide/page.tsx:    title: "SBA Microloans Complete Guide 2025",
+app/blog/sba-microloans-complete-guide/page.tsx:                          <h5 className="font-semibold mb-3 text-purple-700">Interest Rates (2025):</h5>
+app/blog/canada-export-development-grants-guide/page.tsx:  title: "Canada Export Development Grants 2025 | $680M+ International Market Expansion Across 18+ Programs",
+app/blog/canada-export-development-grants-guide/page.tsx:                Canada Export Development Grants 2025
+app/blog/canada-employment-workforce-training-grants-guide/page.tsx:  title: "Canada Employment & Workforce Training Grants 2025 | $1.9B+ Skills Development Funding Programs Guide",
+app/blog/canada-employment-workforce-training-grants-guide/page.tsx:  keywords: "Canada employment grants, workforce training funding, Canada Job Grant, skills development programs, employee training grants Canada 2025",
+app/blog/canada-employment-workforce-training-grants-guide/page.tsx:    title: "Canada Employment & Workforce Training Grants 2025 | $1.9B+ Skills Development Funding Guide",
+app/blog/canada-employment-workforce-training-grants-guide/page.tsx:                        <h5 className="font-semibold mb-2 text-green-700">2025/26 Priority Sectors:</h5>
+app/blog/canada-employment-workforce-training-grants-guide/page.tsx:                          <li>• Fall 2025 semester programs opening</li>
+app/blog/canada-agriculture-agrifood-grants-guide/page.tsx:  title: "Canada Agriculture & Agri-Food Grants 2025 | $2.3B+ Agricultural Innovation Funding Programs Guide",
+app/blog/canada-agriculture-agrifood-grants-guide/page.tsx:  keywords: "Canada agriculture grants, agri-food funding, AgriInnovate program, agricultural clean technology, farm grants Canada 2025",
+app/blog/canada-agriculture-agrifood-grants-guide/page.tsx:    title: "Canada Agriculture & Agri-Food Grants 2025 | $2.3B+ Agricultural Innovation Funding Guide",
+app/blog/canada-agriculture-agrifood-grants-guide/page.tsx:                        <h5 className="font-semibold mb-2">2025 Applications Open:</h5>
+app/blog/canada-agriculture-agrifood-grants-guide/page.tsx:                      Canadian Agri-Food Automation and Intelligence Network offering four 2025 funding competitions across specialized agricultural sectors with total funding up to $9M.
+app/blog/canada-agriculture-agrifood-grants-guide/page.tsx:                        <h5 className="font-semibold mb-2 text-indigo-700">2025 Funding Competitions:</h5>
+app/blog/indigenous-women-business-grants-canada/page.tsx:  title: "Indigenous Women Business Grants Canada 2025-2026 | NACCA Funding $50K, First Nations Support, Cultural Enterprise Grants Toronto Vancouver Winnipeg",
+app/blog/indigenous-women-business-grants-canada/page.tsx:  description: "Complete 2025-2026 guide to Indigenous women business grants in Canada. NACCA Aboriginal Entrepreneurship Program, IWEF funding $50K loans, First Nations Métis Inuit women entrepreneurs support. Indigenous Financial Institutions financing Toronto Vancouver Winnipeg Calgary Ottawa Saskatoon Regina Thunder Bay",
+app/blog/indigenous-women-business-grants-canada/page.tsx:  keywords: "Indigenous women business grants Canada 2025, NACCA funding First Nations, Aboriginal Entrepreneurship Program women, IWEF Indigenous Women Entrepreneurship Fund, First Nations business loans Métis Inuit women entrepreneurs, cultural enterprise grants Canada, Indigenous Financial Institutions IFI, women entrepreneurship loan fund $50K, Indigenous business development support Ontario BC Alberta Manitoba Saskatchewan",
+app/blog/indigenous-women-business-grants-canada/page.tsx:    title: "Indigenous Women Business Grants Canada 2025 | NACCA Funding First Nations Support",
+app/blog/indigenous-women-business-grants-canada/page.tsx:                🪶 Indigenous Women Business Funding 2025-2026
+app/blog/indigenous-women-business-grants-canada/page.tsx:                Comprehensive 2025-2026 guide to Indigenous women business grants and loans across Canada. Access up to 
+app/blog/indigenous-women-business-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Indigenous Women Business Grants by Province and Territory (2025-2026 NACCA Funding Available)</h2>
+app/blog/indigenous-women-business-grants-canada/page.tsx:                <h3 className="font-bold text-orange-900 mb-3 text-lg">🔥 High-Demand Indigenous Women Business Funding Keywords 2025-2026:</h3>
+app/blog/indigenous-women-business-grants-canada/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/indigenous-women-business-grants-canada/page.tsx:                      <h3 className="text-lg font-bold text-orange-800 mb-2">🚀 2025-2026 Indigenous Women Business Funding Highlights</h3>
+app/blog/indigenous-women-business-grants-canada/page.tsx:                          <strong>IWEF 2025 Recipients:</strong> Indigenous Women Entrepreneurship Fund awarded $2,500 grants to 8 Indigenous women businesses with CCIB membership support
+app/blog/indigenous-women-business-grants-canada/page.tsx:                  The historic 10-year, $830 million funding agreement with Indigenous Services Canada signed in May 2025 represents 
+app/blog/indigenous-women-business-grants-canada/page.tsx:                  <div className="text-sm text-gray-500 mt-2">Historic NACCA federal agreement 2025</div>
+app/blog/indigenous-women-business-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Indigenous Women Business Grants and Loans Canada 2025-2026</h2>
+app/blog/indigenous-women-business-grants-canada/page.tsx:                        <h4 className="font-bold text-xl mb-4 text-pink-800">IWEF 2025 Program Details</h4>
+app/blog/indigenous-women-business-grants-canada/page.tsx:                              <li>• <strong>2025 Recipients:</strong> 8 Indigenous women business owners received IWEF funding</li>
+app/blog/indigenous-women-business-grants-canada/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Indigenous Women Business Grant Application Success Strategies 2025-2026</h2>
+app/blog/indigenous-women-business-grants-canada/page.tsx:                Get our complete 2025-2026 Indigenous women business grants guide with NACCA program navigator, IFI directory, 
+app/blog/ai-machine-learning-grants/page.tsx:  title: "AI & Machine Learning Grants 2025-2026 | $305K NSF SBIR, $100M AI Research Institutes, DOD AI Applications Non-Dilutive Funding",
+app/blog/ai-machine-learning-grants/page.tsx:  description: "Complete 2025-2026 guide to AI and machine learning grants. NSF SBIR Phase I $305K, Phase II $1.25M, National AI Research Institutes $100M investment, NAIRR $35M operations center, DOD AI applications supporting computer vision, NLP, ML platforms, generative AI, and predictive analytics with zero equity funding.",
+app/blog/ai-machine-learning-grants/page.tsx:  keywords: "AI grants 2025, machine learning startup grants, NSF AI research institutes, computer vision grants, NLP funding, generative AI grants, AI research funding $100M, NAIRR operations center, DOD AI applications, NSF SBIR AI grants $305K, neural networks grants, deep learning funding",
+app/blog/ai-machine-learning-grants/page.tsx:    title: "AI & ML Grants 2025 | $305K NSF SBIR + $100M Research Institutes",
+app/blog/ai-machine-learning-grants/page.tsx:                  🤖 AI & Machine Learning Grants 2025-2026
+app/blog/ai-machine-learning-grants/page.tsx:                    NEW 2025
+app/blog/ai-machine-learning-grants/page.tsx:        {/* 2025 Updates */}
+app/blog/ai-machine-learning-grants/page.tsx:                    <h3 className="text-2xl font-bold text-blue-900 mb-2">What's New in AI Funding 2025-2026</h3>
+app/blog/ai-machine-learning-grants/page.tsx:                    <p className="text-sm text-gray-700">NSF announced $100M investment in 5 National AI Research Institutes (July 2025) covering mental health, materials discovery, STEM education, human-AI collaboration, and drug development.</p>
+app/blog/ai-machine-learning-grants/page.tsx:                    <p className="text-sm text-gray-700">$35M over 5 years to establish National AI Research Resource Operations Center (announced September 2025). Transitions pilot to permanent program with centralized access portal.</p>
+app/blog/ai-machine-learning-grants/page.tsx:                          Announced July 2025, these institutes translate cutting-edge AI research into practical applications across mental health, materials discovery, STEM education, human-AI collaboration, and drug development. Aligns with White House AI Action Plan.
+app/blog/ai-machine-learning-grants/page.tsx:                          Announced September 2025, NAIRR Operations Center transitions successful pilot to permanent national program. Provides democratized access to computational resources, datasets, AI models, and training for researchers nationwide.
+app/blog/wosb-federal-contracting-guide/page.tsx:  title: "WOSB Federal Contracting Guide 2025 | Women-Owned Small Business Certification",
+app/blog/wosb-federal-contracting-guide/page.tsx:    title: "WOSB Federal Contracting Guide 2025 | Women-Owned Small Business Certification",
+app/blog/csbfp-canada-small-business-financing-program/page.tsx:  title: "Canada Small Business Financing Program (CSBFP) 2025 | Up to $1M Business Loans",
+app/blog/csbfp-canada-small-business-financing-program/page.tsx:    title: "Canada Small Business Financing Program (CSBFP) 2025 | Up to $1M Business Loans",
+app/blog/prairie-provinces-innovation-grants/page.tsx:  title: "Prairie Provinces Innovation Grants 2025 | $580M+ AgriFood, Mining & Renewable Energy Funding",
+app/blog/prairie-provinces-innovation-grants/page.tsx:    title: "Prairie Provinces Innovation Grants 2025 | $580M+ AgriFood & Mining Tech",
+app/blog/prairie-provinces-innovation-grants/page.tsx:                Prairie Provinces Innovation Grants & Funding 2025
+app/blog/quebec-innovation-grants/page.tsx:  title: "Quebec Innovation Grants & Tax Credits 2025 | 30% CRIC R&D Tax Credit | $2.5B+ Funding",
+app/blog/quebec-innovation-grants/page.tsx:    title: "Quebec Innovation Grants & Tax Credits 2025 | $2.5B+ CRIC & R&D Support",
+app/blog/quebec-innovation-grants/page.tsx:                Quebec Innovation Grants & Tax Credits 2025
+app/blog/women-business-centers-guide/page.tsx:  title: "Women's Business Centers Guide 2025 | SBA-Funded Support for Female Entrepreneurs",
+app/blog/women-business-centers-guide/page.tsx:    title: "Women's Business Centers Guide 2025 | SBA-Funded Support",
+app/blog/canada-digital-ai-innovation-grants/page.tsx:  title: "Canada Digital & AI Innovation Grants 2025 | $850M+ Funding | Scale AI & CDAP",
+app/blog/canada-digital-ai-innovation-grants/page.tsx:    title: "Canada Digital & AI Innovation Grants 2025 | $850M+ AI Funding",
+app/blog/canada-digital-ai-innovation-grants/page.tsx:                Canada Digital & AI Innovation Grants 2025
+app/blog/nserc-research-grants-canada/page.tsx:  title: "NSERC Research Grants Canada 2025 | Natural Sciences & Engineering Funding Guide",
+app/blog/nserc-research-grants-canada/page.tsx:  keywords: "NSERC grants, Idea to Innovation grants, NSERC I2I, university research funding Canada, technology transfer grants, NSERC 2025",
+app/blog/nserc-research-grants-canada/page.tsx:    title: "NSERC Research Grants Canada 2025 | Natural Sciences & Engineering Funding",
+app/blog/nserc-research-grants-canada/page.tsx:                🔬 NSERC Research Grants 2025
+app/blog/nserc-research-grants-canada/page.tsx:        {/* Enhanced 2025 Updates */}
+app/blog/nserc-research-grants-canada/page.tsx:                      <h3 className="text-lg font-bold text-yellow-800 mb-2">⚠️ Important NSERC Program Updates (2025)</h3>
+app/blog/nserc-research-grants-canada/page.tsx:                          <strong>I2I Pause Notice:</strong> Market Assessment and Phase Ib applications paused as of Feb 14, 2025 for program review
+app/blog/nserc-research-grants-canada/page.tsx:                      <h5 className="font-semibold mb-2">⚠️ Current Status (2025):</h5>
+app/blog/canada-hiring-training-grants-guide/page.tsx:  title: "Canada Hiring & Training Grants 2025 | $1.9B+ Workforce Development Across 28+ Programs",
+app/blog/canada-hiring-training-grants-guide/page.tsx:                Canada Hiring & Training Grants 2025
+app/blog/csbfp-canada-small-business-financing-program-government-grants/page.tsx:  title: "CSBFP Canada Small Business Financing Program 2025 | Government Guaranteed Loans Guide",
+app/blog/csbfp-canada-small-business-financing-program-government-grants/page.tsx:    title: "CSBFP Canada Small Business Financing Program 2025 | Government Guaranteed Loans",
+app/blog/alberta-small-business-grants-guide/page.tsx:  title: "Alberta Small Business Grants 2025 | $980M+ Alberta SME Funding",
+app/blog/alberta-small-business-grants-guide/page.tsx:                Alberta Small Business Grants 2025
+app/blog/canada-industry-specific-grants-guide/page.tsx:  title: "Canada Industry Specific Grants 2025 | $1.5B+ Sector-Focused Programs Across 25+ Industries",
+app/blog/canada-industry-specific-grants-guide/page.tsx:                Canada Industry Specific Grants 2025
+app/blog/canada-clean-technology-innovation-grants/page.tsx:  title: "Canada Clean Technology Innovation Grants 2025 | $1.2B+ CleanTech Funding | SDTC & Net Zero",
+app/blog/canada-clean-technology-innovation-grants/page.tsx:    title: "Canada Clean Technology Innovation Grants 2025 | $1.2B+ CleanTech Funding",
+app/blog/canada-clean-technology-innovation-grants/page.tsx:                Canada Clean Technology Innovation Grants 2025
+app/blog/saskatchewan-small-business-grants-guide/page.tsx:  title: "Saskatchewan Small Business Grants 2025 | $425M+ SME Growth Programs",
+app/blog/saskatchewan-small-business-grants-guide/page.tsx:                Saskatchewan Small Business Grants 2025
+app/blog/british-columbia-government-business-grants/page.tsx:  title: "British Columbia Government Business Grants 2025 | BC Provincial Funding Programs Guide",
+app/blog/british-columbia-government-business-grants/page.tsx:  keywords: "British Columbia government business grants, BC provincial funding, Innovate BC grants, CleanBC funding, Creative BC support, PacifiCan regional funding, BC business support programs 2025",
+app/blog/british-columbia-government-business-grants/page.tsx:    title: "British Columbia Government Business Grants 2025 | BC Provincial Funding Guide",
+app/blog/nasa-sbir-space-tech-grants/page.tsx:  title: "NASA SBIR Space Tech Grants 2025-2026 | $150K Phase I, $850K Phase II Satellite & Aeronautics Funding",
+app/blog/nasa-sbir-space-tech-grants/page.tsx:  description: "Complete 2025-2026 guide to NASA SBIR/STTR grants for space tech startups. Phase I up to $150K, Phase II up to $850K for satellites, remote sensing, propulsion, aeronautics innovation.",
+app/blog/nasa-sbir-space-tech-grants/page.tsx:  keywords: "NASA SBIR grants 2025, space technology grants, satellite funding, aeronautics SBIR, propulsion grants, remote sensing funding, NASA innovation grants",
+app/blog/nasa-sbir-space-tech-grants/page.tsx:    title: "NASA SBIR Grants 2025 | $150K-$850K Space Tech Funding",
+app/blog/nasa-sbir-space-tech-grants/page.tsx:                🚀 NASA SBIR/STTR Space Tech Grants 2025-2026
+app/blog/nasa-sbir-space-tech-grants/page.tsx:                Comprehensive 2025-2026 guide to NASA SBIR/STTR grants providing up to $850,000 in non-dilutive funding 
+app/blog/nasa-sbir-space-tech-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">NASA SBIR Space Tech Grants by Region and Aerospace Hub (2025-2026 Funding Available)</h2>
+app/blog/nasa-sbir-space-tech-grants/page.tsx:                <h3 className="font-bold text-indigo-900 mb-3 text-lg">🔥 High-Demand NASA SBIR Space Tech Keywords 2025-2026:</h3>
+app/blog/nasa-sbir-space-tech-grants/page.tsx:                    <strong>Application:</strong> NASA SBIR deadlines 2025, ProSAMS submission portal, eligibility requirements, commercialization strategy, NASA mission alignment
+app/blog/nasa-sbir-space-tech-grants/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/nasa-sbir-space-tech-grants/page.tsx:                      <h3 className="text-lg font-bold text-indigo-800 mb-2">🚀 2025-2026 NASA SBIR Program Highlights</h3>
+app/blog/nasa-sbir-space-tech-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NASA SBIR and STTR Program Details 2025-2026</h2>
+app/blog/nasa-sbir-space-tech-grants/page.tsx:                      <h4 className="font-bold text-lg mb-4 text-indigo-800">📍 NASA SBIR Phase I Application Deadlines 2025-2026</h4>
+app/blog/nasa-sbir-space-tech-grants/page.tsx:                            <li>• <strong>Opens:</strong> January 2025</li>
+app/blog/nasa-sbir-space-tech-grants/page.tsx:                            <li>• <strong>Closes:</strong> May 21, 2025</li>
+app/blog/nasa-sbir-space-tech-grants/page.tsx:                            <li>• <strong>Awards:</strong> Summer 2025</li>
+app/blog/nasa-sbir-space-tech-grants/page.tsx:                            <li>• <strong>SBIR Ignite:</strong> June-July 2025</li>
+app/blog/nasa-sbir-space-tech-grants/page.tsx:                      <CardTitle className="text-blue-700 text-2xl">NASA SBIR Technology Topic Areas 2025-2026</CardTitle>
+app/blog/nasa-sbir-space-tech-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NASA SBIR Application Success Strategies 2025-2026</h2>
+app/blog/sbir-small-business-guide/page.tsx:  title: "SBIR Small Business Innovation Research 2025 | Federal R&D Grant Guide",
+app/blog/sbir-small-business-guide/page.tsx:    title: "SBIR Small Business Innovation Research 2025",
+app/blog/canada-clean-technology-environment-grants-guide/page.tsx:  title: "Canada Clean Technology & Environment Grants 2025 | $1.2B+ Sustainability Funding Programs Guide",
+app/blog/canada-clean-technology-environment-grants-guide/page.tsx:  keywords: "Canada clean technology grants, environmental funding, SDTC grants, renewable energy funding, carbon capture grants, sustainability programs Canada 2025",
+app/blog/canada-clean-technology-environment-grants-guide/page.tsx:    title: "Canada Clean Technology & Environment Grants 2025 | $1.2B+ Sustainability Funding Guide",
+app/blog/british-columbia-innovation-grants/page.tsx:  title: "British Columbia Innovation Grants & Tax Credits 2025 | 10% BCITC | $1.8B+ CleanTech Funding",
+app/blog/british-columbia-innovation-grants/page.tsx:    title: "British Columbia Innovation Grants & Tax Credits 2025 | $1.8B+ BCITC & CleanTech",
+app/blog/british-columbia-innovation-grants/page.tsx:                British Columbia Innovation Grants & Tax Credits 2025
+app/blog/strategic-innovation-fund-canada-guide/page.tsx:  title: "Strategic Innovation Fund Canada 2025 | $100M+ SIF Funding Guide | Innovation Projects",
+app/blog/strategic-innovation-fund-canada-guide/page.tsx:    title: "Strategic Innovation Fund Canada 2025 | $100M+ SIF Funding Guide",
+app/blog/strategic-innovation-fund-canada-guide/page.tsx:                Strategic Innovation Fund Canada 2025
+app/blog/usda-sbir-agtech-grants/page.tsx:  title: "USDA SBIR AgTech Grants 2025-2026 | $125K Phase I, $575K Phase II Agriculture & Food Tech Funding",
+app/blog/usda-sbir-agtech-grants/page.tsx:  description: "Complete 2025-2026 guide to USDA SBIR/STTR grants for AgTech startups. Phase I up to $125K, Phase II up to $575K for precision farming, food safety, sustainable agriculture innovation.",
+app/blog/usda-sbir-agtech-grants/page.tsx:  keywords: "USDA SBIR grants 2025, AgTech grants, precision farming funding, food tech SBIR, sustainable agriculture grants, USDA innovation grants",
+app/blog/usda-sbir-agtech-grants/page.tsx:    title: "USDA SBIR Grants 2025 | $125K-$575K AgTech Funding",
+app/blog/usda-sbir-agtech-grants/page.tsx:                🌾 USDA SBIR/STTR AgTech Grants 2025-2026
+app/blog/usda-sbir-agtech-grants/page.tsx:                Comprehensive 2025-2026 guide to USDA SBIR/STTR grants providing up to $575,000 in non-dilutive funding 
+app/blog/usda-sbir-agtech-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">USDA SBIR AgTech Grants by Region and Agricultural Hub (2025-2026 Funding Available)</h2>
+app/blog/usda-sbir-agtech-grants/page.tsx:                <h3 className="font-bold text-green-900 mb-3 text-lg">🔥 High-Demand USDA SBIR AgTech Keywords 2025-2026:</h3>
+app/blog/usda-sbir-agtech-grants/page.tsx:                    <strong>Application:</strong> USDA SBIR deadlines September 2025, NIFA submission portal, eligibility requirements, commercialization strategy, farmer benefit demonstration
+app/blog/usda-sbir-agtech-grants/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/usda-sbir-agtech-grants/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🌾 2025-2026 USDA SBIR Program Highlights</h3>
+app/blog/usda-sbir-agtech-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">USDA SBIR and STTR Program Details 2025-2026</h2>
+app/blog/usda-sbir-agtech-grants/page.tsx:                      <h4 className="font-bold text-lg mb-4 text-green-800">📍 USDA SBIR Phase I Application Deadlines 2025-2026</h4>
+app/blog/usda-sbir-agtech-grants/page.tsx:                            <li>• <strong>Opens:</strong> May 2025</li>
+app/blog/usda-sbir-agtech-grants/page.tsx:                            <li>• <strong>Closes:</strong> September 23, 2025</li>
+app/blog/usda-sbir-agtech-grants/page.tsx:                      <CardTitle className="text-lime-700 text-2xl">USDA SBIR Priority Topic Areas 2025-2026</CardTitle>
+app/blog/usda-sbir-agtech-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">USDA SBIR Application Success Strategies 2025-2026</h2>
+app/blog/quebec-small-business-grants-guide/page.tsx:  title: "Quebec Small Business Grants 2025 | $1.8B+ Quebec SME Funding",
+app/blog/quebec-small-business-grants-guide/page.tsx:                Quebec Small Business Grants 2025
+app/blog/canada-life-sciences-innovation-grants/page.tsx:  title: "Canada Life Sciences Grants 2025 | $720M+ Biotech & Medical Device Funding | Clinical Trials Support",
+app/blog/canada-life-sciences-innovation-grants/page.tsx:    title: "Canada Life Sciences Grants 2025 | $720M+ Biotech & Medical Device Funding",
+app/blog/canada-life-sciences-innovation-grants/page.tsx:                Canada Life Sciences Innovation Grants 2025
+app/blog/atlantic-small-business-grants-guide/page.tsx:  title: "Atlantic Canada Small Business Grants 2025 | $850M+ ACOA & Provincial SME Funding",
+app/blog/atlantic-small-business-grants-guide/page.tsx:                Atlantic Canada Business Grants 2025
+app/blog/washington-tech-programs/page.tsx:  title: "Washington Tech Startup Grants 2025-2026 | $1M WRF Technology Commercialization, $540K Innovation Modernization Program, Clean Energy Fund",
+app/blog/washington-tech-programs/page.tsx:  description: "Complete 2025-2026 guide to Washington state technology startup grants. WRF Technology Commercialization phased funding up to $1M direct costs, Innovation and Modernization Program grants $38.5K-$540K, Washington Clean Energy Fund renewable technology, Innovation Partnership Zones tax incentives, SBIR Phase 0 support for Seattle Bellevue Redmond tech corridor University of Washington WSU ecosystem.",
+app/blog/washington-tech-programs/page.tsx:  keywords: "Washington tech startup grants 2025, WRF Technology Commercialization grants University of Washington, Innovation Modernization Program Washington $540K, Seattle tech corridor funding Bellevue Redmond, Washington Clean Energy Fund renewable grants, Innovation Partnership Zones Washington tax incentives, SBIR Phase 0 support Washington State, UW WSU technology transfer grants WRF",
+app/blog/washington-tech-programs/page.tsx:    title: "Washington Tech Grants 2025 | $1M WRF, $540K Innovation, Clean Energy",
+app/blog/washington-tech-programs/page.tsx:                🌲 Washington Technology Startup Grants & Innovation Programs 2025-2026
+app/blog/washington-tech-programs/page.tsx:                Washington Tech Startup Grants 2025-2026: WRF Technology Commercialization Phased Funding Up to $1 Million Direct Costs, Innovation Modernization Program $38.5K-$540K Maximum Grants, Clean Energy Fund Renewable Technology Innovation, Innovation Partnership Zones Tax Incentives, SBIR Phase 0 Support for Seattle Bellevue Redmond Tech Corridor University of Washington WSU Ecosystem
+app/blog/washington-tech-programs/page.tsx:                Comprehensive 2025-2026 guide to Washington State technology startup grants, Seattle tech corridor funding, clean energy innovation programs, university commercialization support providing Washington Research Foundation (WRF) Technology Commercialization Grants comprehensive phased funding program Phase 1 up to $100,000 proof concept feasibility, Phase 2 up to $250,000 prototype development validation, Phase 3 up to $1 million direct costs supporting translational research leading to commercial development technology-based products at Washington state research institutions University of Washington Washington State University fostering innovation economic development, Innovation and Modernization Program providing $4.5 million biennial 2023-2025 funding grants ranging $38,500 to $540,000 maximum fostering innovation culture modernizing legacy systems state agencies supporting technology adoption digital transformation throughout Washington government, Washington Clean Energy Fund supporting renewable energy clean technology innovations solar wind energy storage grid modernization zero-emission vehicles advancing state climate goals carbon neutrality 2050 commitments, Innovation Partnership Zones creating tax incentives economic development opportunities technology companies throughout Washington State supporting job creation business growth innovation ecosystem development, SBIR Phase 0 support programs helping Washington startups prepare competitive federal SBIR/STTR proposals enhancing success rates federal funding access complementing state grants. State programs serve technology, biotechnology, clean energy, aerospace, advanced manufacturing, software, cloud computing companies throughout Washington requiring minimal equity in many programs, complementing federal SBIR/STTR funding $100M+ annually Washington companies, venture capital investment from Seattle Bellevue Redmond tech ecosystem $5B+ annual investment advancing Washington position as global innovation leader technology economic competitiveness job creation supporting Microsoft Amazon Boeing aerospace heritage[web:247][web:248][web:245].
+app/blog/washington-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Washington Technology Startup Grants by Region and Innovation Hub (2025-2026 Funding Programs Available Statewide)</h2>
+app/blog/washington-tech-programs/page.tsx:                <h3 className="font-bold text-green-900 mb-3 text-lg">🔥 High-Value Washington Tech Grant Keywords 2025-2026 (High CPC, High CTR, High CPM):</h3>
+app/blog/washington-tech-programs/page.tsx:                    <strong>Application Process (User Intent):</strong> How to apply WRF Technology Commercialization grants 2026 Phase 1 2 3, Innovation Modernization Program Washington application requirements $540K, Clean Energy Fund eligibility renewable technology Washington State, Innovation Partnership Zones Washington tax incentives application process, SBIR Phase 0 support grants Washington federal proposal help, University Washington technology transfer WRF commercialization funding, Washington state technology startup grant programs 2025 2026 statewide
+app/blog/washington-tech-programs/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/washington-tech-programs/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🌲 2025-2026 Washington Technology Startup Funding Program Highlights</h3>
+app/blog/washington-tech-programs/page.tsx:                          <strong>Innovation Modernization Program:</strong> $4.5 million biennial 2023-2025 funding supporting Washington state agencies foster innovation culture modernize legacy systems. Individual grants range $38,500 to $540,000 maximum supporting technology adoption digital transformation artificial intelligence cloud computing throughout Washington government operations[web:245]
+app/blog/washington-tech-programs/page.tsx:                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Washington Technology Startup Funding Ecosystem 2025-2026</h2>
+app/blog/washington-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Washington Technology Startup Grant Programs and Innovation Incentives 2025-2026 Complete Details</h2>
+app/blog/washington-tech-programs/page.tsx:                      <h4 className="font-bold text-lg mb-4 text-green-800">📍 WRF Technology Commercialization Application Process and Timeline 2025-2026</h4>
+app/blog/washington-tech-programs/page.tsx:                          Washington State Innovation and Modernization Program provides $4.5 million biennial 2023-2025 funding grants ranging $38,500 to $540,000 maximum supporting state agencies foster innovation culture modernize legacy systems. Program supports technology adoption artificial intelligence cloud computing data analytics cybersecurity digital transformation throughout Washington government operations improving citizen services operational efficiency[web:245].
+app/blog/washington-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Washington Technology Startup Grant Application Success Strategies 2025-2026</h2>
+app/blog/wbdc-equity-match-grant-women/page.tsx:  title: "WBDC Equity Match Grant 2025 | $2,500-$10,000 for Women Business Growth Projects",
+app/blog/wbdc-equity-match-grant-women/page.tsx:    title: "WBDC Equity Match Grant 2025 | Quarterly $2.5K-$10K Awards",
+app/blog/wbdc-equity-match-grant-women/page.tsx:                💰 Quarterly Grant Program 2025
+app/blog/wbdc-equity-match-grant-women/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/wbdc-equity-match-grant-women/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 WBDC Equity Match Grant 2025 Highlights</h3>
+app/blog/development-proof-concept-funding-canada/page.tsx:  title: "Stage 2: Development & Proof-of-Concept Funding Canada 2025 | IRAP & SR&ED | Up to $5M Technology Development",
+app/blog/development-proof-concept-funding-canada/page.tsx:    title: "Stage 2: Development & Proof-of-Concept Funding Canada 2025 | IRAP & SR&ED",
+app/blog/development-proof-concept-funding-canada/page.tsx:                Stage 2: Development & Proof-of-Concept Funding Canada 2025
+app/blog/women-technology-grants-canada/page.tsx:  title: "Women in Technology Grants Canada 2025 | AI, Software & Digital Innovation Funding",
+app/blog/women-technology-grants-canada/page.tsx:    title: "Women in Technology Grants Canada 2025 | Tech Innovation Funding",
+app/blog/women-technology-grants-canada/page.tsx:                💻 Tech Innovation Funding 2025
+app/blog/women-technology-grants-canada/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/women-technology-grants-canada/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Women Tech Funding 2025 Highlights</h3>
+app/blog/women-entrepreneurship-fund-canada/page.tsx:  title: "Women Entrepreneurship Fund Canada 2025 | Non-Repayable Grants for Women-Owned Business Growth",
+app/blog/women-entrepreneurship-fund-canada/page.tsx:    title: "Women Entrepreneurship Fund Canada 2025 | Non-Repayable Business Grants",
+app/blog/women-entrepreneurship-fund-canada/page.tsx:                🚀 Women Entrepreneurship Fund 2025
+app/blog/women-entrepreneurship-fund-canada/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/women-entrepreneurship-fund-canada/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 WEF 2025 Program Enhancements</h3>
+app/blog/canada-advanced-manufacturing-innovation-grants/page.tsx:  title: "Canada Advanced Manufacturing Innovation Grants 2025 | $3.1B+ Industry 4.0 Funding | NGen",
+app/blog/canada-advanced-manufacturing-innovation-grants/page.tsx:    title: "Canada Advanced Manufacturing Innovation Grants 2025 | $3.1B+ Industry 4.0 Funding",
+app/blog/canada-advanced-manufacturing-innovation-grants/page.tsx:                Canada Advanced Manufacturing Innovation Grants 2025
+app/blog/nih-sbir-biotech-grants/page.tsx:  title: "NIH SBIR Biotech Grants 2025-2026 | $285K Phase I, $2M Phase II Medical Device & Digital Health Funding",
+app/blog/nih-sbir-biotech-grants/page.tsx:  description: "Complete 2025-2026 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $285K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation.",
+app/blog/nih-sbir-biotech-grants/page.tsx:  keywords: "NIH SBIR grants 2025, biotech grants, medical device funding, digital health SBIR, therapeutics grants, diagnostics funding, NIH innovation grants",
+app/blog/nih-sbir-biotech-grants/page.tsx:    title: "NIH SBIR Grants 2025 | $285K-$2M Biotech Funding",
+app/blog/nih-sbir-biotech-grants/page.tsx:                💊 NIH SBIR/STTR Biotech Grants 2025-2026
+app/blog/nih-sbir-biotech-grants/page.tsx:                Comprehensive 2025-2026 guide to National Institutes of Health SBIR/STTR grants providing up to $2,000,000 
+app/blog/nih-sbir-biotech-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">NIH SBIR Biotech Grants by Region and Life Sciences Hub (2025-2026 Funding Available)</h2>
+app/blog/nih-sbir-biotech-grants/page.tsx:                <h3 className="font-bold text-purple-900 mb-3 text-lg">🔥 High-Demand NIH SBIR Biotech Keywords 2025-2026:</h3>
+app/blog/nih-sbir-biotech-grants/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/nih-sbir-biotech-grants/page.tsx:                      <h3 className="text-lg font-bold text-purple-800 mb-2">💊 2025-2026 NIH SBIR Program Highlights</h3>
+app/blog/nih-sbir-biotech-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NIH SBIR and STTR Program Details 2025-2026</h2>
+app/blog/nih-sbir-biotech-grants/page.tsx:                      <h4 className="font-bold text-lg mb-4 text-purple-800">📍 NIH SBIR Phase I Application Deadlines 2025-2026</h4>
+app/blog/nih-sbir-biotech-grants/page.tsx:                            <li>• <strong>January 5, 2025</strong></li>
+app/blog/nih-sbir-biotech-grants/page.tsx:                            <li>• <strong>April 5, 2025</strong></li>
+app/blog/nih-sbir-biotech-grants/page.tsx:                            <li>• <strong>September 5, 2025</strong></li>
+app/blog/nih-sbir-biotech-grants/page.tsx:                      <CardTitle className="text-indigo-700 text-2xl">NIH SBIR Topic Areas Across 27 Institutes 2025-2026</CardTitle>
+app/blog/nih-sbir-biotech-grants/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NIH SBIR Application Success Strategies 2025-2026</h2>
+app/blog/canada-startup-funding-grants-guide/page.tsx:  title: "Canada Startup Funding Grants 2025 | $1.2B+ Available Across 35+ Programs",
+app/blog/canada-startup-funding-grants-guide/page.tsx:                Canada Startup Funding Grants 2025
+app/blog/indigenous-rural-business-funding-canada/page.tsx:  title: "Indigenous & Rural Business Funding Canada 2025 | $500K+ Aboriginal Business Grants & Rural Development",
+app/blog/indigenous-rural-business-funding-canada/page.tsx:    title: "Indigenous & Rural Business Funding Canada 2025 | $500K+ Aboriginal & Rural Business Grants",
+app/blog/indigenous-rural-business-funding-canada/page.tsx:                Indigenous & Rural Business Funding Canada 2025
+app/blog/colorado-tech-programs/page.tsx:  title: "Colorado Tech Startup Grants 2025-2026 | $500K Advanced Industries Accelerator, $250K Early-Stage Capital, SBIR Matching, Clean Energy Fund",
+app/blog/colorado-tech-programs/page.tsx:  description: "Complete 2025-2026 guide to Colorado technology startup grants. Advanced Industries Accelerator Early-Stage Capital grants up to $250K, Proof of Concept $150K, 35% Investment Tax Credit, SBIR State Matching, Clean Energy Fund supporting Denver Boulder Colorado Springs tech corridor ecosystem.",
+app/blog/colorado-tech-programs/page.tsx:  keywords: "Colorado tech startup grants 2025, Advanced Industries Accelerator grants Colorado, Early-Stage Capital grants $250K, Colorado SBIR matching, Denver tech corridor funding, Boulder startup grants, Colorado Springs innovation programs, Clean Energy Fund Colorado, Investment Tax Credit 35%, Colorado advanced industries seven sectors",
+app/blog/colorado-tech-programs/page.tsx:    title: "Colorado Tech Grants 2025 | $250K Early-Stage, 35% Tax Credit, SBIR Match",
+app/blog/colorado-tech-programs/page.tsx:                🏔️ Colorado Technology Startup Grants & Innovation Programs 2025-2026
+app/blog/colorado-tech-programs/page.tsx:                Colorado Tech Startup Grants 2025-2026: Advanced Industries Accelerator Program Early-Stage Capital Grants Up to $250,000, Proof of Concept Grants $150,000, Advanced Industry Investment Tax Credit 35% Rural Enterprise Zones, SBIR State Matching Program, Clean Energy Fund Supporting Denver Boulder Colorado Springs Fort Collins Tech Corridor Seven Advanced Industries Ecosystem
+app/blog/colorado-tech-programs/page.tsx:                Comprehensive 2025-2026 guide to Colorado State technology startup grants, Denver tech scene funding, advanced industries innovation programs, clean energy support providing Advanced Industries Accelerator Program comprehensive grant portfolio Early-Stage Capital and Retention Grants up to $250,000 supporting Colorado-based advanced industries technology businesses develop commercialize advanced technologies created manufactured in Colorado driving innovation job creation, Proof of Concept Grants up to $150,000 helping Colorado research institutions speed applied research advanced industries commercialize products services partnership private sector universities University of Colorado Colorado State University Colorado School of Mines, Advanced Industry Investment Tax Credit offering investors 25% state income tax credit investments advanced industries businesses up to $100,000 credits or 35% tax credit investments businesses located rural counties Enterprise Zones encouraging early-stage capital formation, SBIR State Matching Program enhancing federal Phase I Phase II SBIR/STTR awards providing additional Colorado funding extending runway supporting commercialization, Colorado Clean Energy Fund supporting renewable energy clean technology innovations solar wind energy storage grid modernization zero-emission vehicles advancing state climate goals carbon neutrality commitments. State programs serve seven designated Advanced Industries including aerospace, advanced manufacturing, bioscience, electronics, energy natural resources, infrastructure engineering, technology information throughout Colorado requiring minimal equity many programs complementing federal SBIR/STTR funding $50M+ annually Colorado companies, venture capital investment from Denver Boulder tech ecosystem $2B+ annual investment advancing Colorado position as global innovation leader technology economic competitiveness Rocky Mountain innovation supporting outdoor lifestyle quality of life[web:253][web:256][web:257].
+app/blog/colorado-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Colorado Technology Startup Grants by Region and Innovation Hub (2025-2026 Funding Programs Available Statewide Seven Advanced Industries)</h2>
+app/blog/colorado-tech-programs/page.tsx:                <h3 className="font-bold text-blue-900 mb-3 text-lg">🔥 High-Value Colorado Tech Grant Keywords 2025-2026 (High CPC, High CTR, High CPM):</h3>
+app/blog/colorado-tech-programs/page.tsx:                    <strong>Application Process (User Intent):</strong> How to apply Advanced Industries Accelerator grants Colorado 2026, Early-Stage Capital grant application requirements $250K Colorado, Proof of Concept grants eligibility research institutions Colorado, Investment Tax Credit 35% rural Enterprise Zones application, SBIR State Matching Program Colorado federal enhancement, Colorado seven advanced industries definition eligibility, OEDIT Colorado grants application process deadlines 2025 2026
+app/blog/colorado-tech-programs/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/colorado-tech-programs/page.tsx:                      <h3 className="text-lg font-bold text-blue-800 mb-2">🏔️ 2025-2026 Colorado Technology Startup Funding Program Highlights</h3>
+app/blog/colorado-tech-programs/page.tsx:                          <strong>2025 Budget Challenges:</strong> Legislative session 2025 resulted budget reductions SB25-264 diverted $18.7M two years General Fund, SB25-225 reduced FY25-26 transfer Limited Gaming Fund from $5.5M to $1.84M. Despite challenges program continues supporting Colorado innovation ecosystem with ongoing advocacy for funding restoration[web:257]
+app/blog/colorado-tech-programs/page.tsx:                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Colorado Technology Startup Funding Ecosystem 2025-2026</h2>
+app/blog/colorado-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Colorado Technology Startup Grant Programs 2025-2026 Complete Details Seven Advanced Industries</h2>
+app/blog/colorado-tech-programs/page.tsx:                      <h4 className="font-bold text-lg mb-4 text-blue-800">📍 Early-Stage Capital Grant Application Process Timeline 2025-2026</h4>
+app/blog/colorado-tech-programs/page.tsx:                          <p className="font-semibold text-gray-800 mb-2">Application Cycles 2025-2026:</p>
+app/blog/colorado-tech-programs/page.tsx:                            <li>• January 1, 2025 opens - February 28, 2025 deadline first cycle awards May 2025[web:256]</li>
+app/blog/colorado-tech-programs/page.tsx:                            <li>• July 1, 2025 opens - August 28, 2025 deadline second cycle awards November 2025[web:258]</li>
+app/blog/colorado-tech-programs/page.tsx:              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Colorado Technology Startup Grant Application Success Strategies 2025-2026</h2>
+app/blog/atlantic-canada-innovation-grants/page.tsx:  title: "Atlantic Canada Innovation Grants & Funding 2025 | 15% ACITC | $650M+ Ocean Tech Support",
+app/blog/atlantic-canada-innovation-grants/page.tsx:    title: "Atlantic Canada Innovation Grants 2025 | $650M+ Ocean Tech & Maritime",
+app/blog/atlantic-canada-innovation-grants/page.tsx:                Atlantic Canada Innovation Grants & Funding 2025
+app/blog/youth-entrepreneurship-canada-funding/page.tsx:  title: "Youth Entrepreneurship Canada 2025 | $60K+ Young Entrepreneur Grants & Business Funding",
+app/blog/youth-entrepreneurship-canada-funding/page.tsx:    title: "Youth Entrepreneurship Canada 2025 | $60K+ Young Entrepreneur Grants & Funding",
+app/blog/youth-entrepreneurship-canada-funding/page.tsx:                Youth Entrepreneurship Canada Funding 2025
+app/blog/irap-industrial-research-assistance-program/page.tsx:  title: "Industrial Research Assistance Program (IRAP) 2025 | Up to $1M Tech Grants",
+app/blog/irap-industrial-research-assistance-program/page.tsx:    title: "Industrial Research Assistance Program (IRAP) 2025 | Up to $1M Tech Grants",
+app/blog/biotech-life-sciences-grants/page.tsx:  title: "Biotech & Life Sciences Grants 2025-2026 | $306K NIH SBIR, $2M Phase II, $1.2B Seed Fund, FDA Orphan Drug Grants Non-Dilutive",
+app/blog/biotech-life-sciences-grants/page.tsx:  description: "Complete 2025-2026 guide to biotech and life sciences grants. NIH SBIR Phase I $306K, Phase II $2M, $1.2B Seed Fund, FDA Orphan Drug designation grants, state life sciences centers supporting therapeutics, medical devices, diagnostics, drug discovery with zero equity funding.",
+app/blog/biotech-life-sciences-grants/page.tsx:  keywords: "biotech grants 2025, life sciences SBIR funding, NIH grants $306K, therapeutics development grants, medical device funding Phase II, diagnostics grants NIH, drug discovery SBIR $2M, FDA orphan drug grants, preclinical research funding, clinical trials grants, state life sciences centers",
+app/blog/biotech-life-sciences-grants/page.tsx:    title: "Biotech & Life Sciences Grants 2025 | $306K NIH SBIR + $1.2B Seed Fund",
+app/blog/biotech-life-sciences-grants/page.tsx:                  🧬 Biotech & Life Sciences Grants 2025-2026
+app/blog/biotech-life-sciences-grants/page.tsx:        {/* 2025 Updates */}
+app/blog/biotech-life-sciences-grants/page.tsx:                    <h3 className="text-2xl font-bold text-teal-900 mb-2">What's New in Biotech Funding 2025-2026</h3>
+app/blog/sba-disaster-relief-loans-guide/page.tsx:  title: "SBA Disaster Relief Loans Guide 2025 | Emergency Business Funding",
+app/blog/sba-disaster-relief-loans-guide/page.tsx:    title: "SBA Disaster Relief Loans Guide 2025",
+app/blog/nwbc-programs-guide/page.tsx:  title: "National Women's Business Council (NWBC) Programs Guide 2025 | Federal Women's Business Advisory",
+app/blog/nwbc-programs-guide/page.tsx:    title: "National Women's Business Council (NWBC) Programs Guide 2025",
+app/blog/bdc-women-entrepreneurs-financing/page.tsx:  title: "BDC Women Entrepreneurs Financing 2025 | Flexible Loans & Advisory for Women-Led Business Growth",
+app/blog/bdc-women-entrepreneurs-financing/page.tsx:    title: "BDC Women Entrepreneurs Financing 2025 | Flexible Loans & Advisory Services",
+app/blog/bdc-women-entrepreneurs-financing/page.tsx:                🏦 BDC Women Entrepreneurs 2025
+app/blog/bdc-women-entrepreneurs-financing/page.tsx:        {/* Enhanced 2025 Program Updates */}
+app/blog/bdc-women-entrepreneurs-financing/page.tsx:                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 BDC 2025 Women Entrepreneur Program Enhancements</h3>
+app/blog/quebec-government-business-grants/page.tsx:  title: "Quebec Government Business Grants 2025 | Aide aux Entreprises & Provincial Funding Programs Guide",
+app/blog/quebec-government-business-grants/page.tsx:  keywords: "Quebec government business grants, aide aux entreprises Quebec, Investissement Quebec ESSOR, PSCE Quebec funding, Quebec R&D tax credits, Quebec provincial funding programs 2025",
+app/blog/quebec-government-business-grants/page.tsx:    title: "Quebec Government Business Grants 2025 | Aide aux Entreprises Provincial Funding Guide",
+app/blog/canada-manufacturing-industry-grants-guide/page.tsx:  title: "Canada Manufacturing & Industry Grants 2025 | $3.1B+ Advanced Manufacturing Funding Programs Guide",
+app/blog/canada-manufacturing-industry-grants-guide/page.tsx:  keywords: "Canada manufacturing grants, advanced manufacturing funding, NGen grants, manufacturing productivity programs, industry 4.0 funding Canada 2025",
+app/blog/canada-manufacturing-industry-grants-guide/page.tsx:    title: "Canada Manufacturing & Industry Grants 2025 | $3.1B+ Advanced Manufacturing Funding Guide",
+app/blog/canada-manufacturing-industry-grants-guide/page.tsx:                  <div className="text-gray-600">NGen Investment 2025</div>
+app/blog/canada-manufacturing-industry-grants-guide/page.tsx:                      Canada's advanced manufacturing innovation supercluster co-investing $87.5M in 2025 for collaborative projects that accelerate advanced manufacturing capabilities, digitalization, and global competitiveness.
+app/blog/canada-manufacturing-industry-grants-guide/page.tsx:                        <h5 className="font-semibold mb-2">2025 Program Focus:</h5>
+app/guides/apply-british-columbia-grants/page.tsx:  title: "British Columbia Business Grants Application Guide 2025 | Step-by-Step BC Provincial Funding Process",
+app/guides/apply-british-columbia-grants/page.tsx:    title: "British Columbia Business Grants Application Guide 2025 | BC Provincial Funding Process",
+app/guides/apply-doe-clean-energy-grants/page.tsx:  title: "Department of Energy Clean Energy Grants 2025 | DOE Funding Guide",
+app/guides/apply-doe-clean-energy-grants/page.tsx:    title: "Department of Energy Clean Energy Grants 2025",
+app/guides/apply-alberta-business-grants/page.tsx:  title: "Alberta Business Grants Application Guide 2025 | Step-by-Step Provincial Energy & Innovation Funding Process",
+app/guides/apply-alberta-business-grants/page.tsx:    title: "Alberta Business Grants Application Guide 2025 | Energy & Innovation Provincial Funding Process",
+app/guides/apply-indigenous-rural-business-funding/page.tsx:  title: "Indigenous & Rural Business Funding Application Guide 2025 | Step-by-Step Aboriginal & Remote Business Grants",
+app/guides/apply-indigenous-rural-business-funding/page.tsx:    title: "Indigenous & Rural Business Funding Application Guide 2025 | Aboriginal & Remote Business Grants",
+app/guides/apply-small-business-grants/page.tsx:  title: "How to Apply for Small Business Grants 2025 | Complete Application Guide",
+app/guides/apply-small-business-grants/page.tsx:    title: "How to Apply for Small Business Grants 2025",
+app/guides/apply-quebec-business-grants/page.tsx:  title: "Quebec Business Grants Application Guide 2025 | Step-by-Step Provincial Aide aux Entreprises Process",
+app/guides/apply-quebec-business-grants/page.tsx:    title: "Quebec Business Grants Application Guide 2025 | Aide aux Entreprises Provincial Funding Process",
+app/guides/apply-csbfp-government-financing/page.tsx:  title: "CSBFP Government Financing Application Guide 2025 | Step-by-Step Federal Loan Guarantee Process",
+app/guides/apply-csbfp-government-financing/page.tsx:    title: "CSBFP Government Financing Application Guide 2025 | Federal Loan Guarantee Process",
+app/guides/bdc-women-entrepreneurs-financing-guide/page.tsx:  title: "How to Apply for BDC Women Entrepreneurs Financing 2025 | Complete Application Guide",
+app/guides/bdc-women-entrepreneurs-financing-guide/page.tsx:    title: "How to Apply for BDC Women Entrepreneurs Financing 2025",
+app/guides/canada-aerospace-defence-funding-guide/page.tsx:  title: "How to Apply for Aerospace Grants Canada 2025 | CSA & Defence Innovation Funding Guide",
+app/guides/canada-aerospace-defence-funding-guide/page.tsx:    title: "How to Apply for Aerospace Grants Canada 2025",
+app/guides/canada-aerospace-defence-funding-guide/page.tsx:                How to Apply for Aerospace Grants in Canada 2025
+app/guides/sbir-research-grants-guide/page.tsx:  title: "How to Apply for SBIR Research Grants 2025 | Small Business Innovation Research",
+app/guides/sbir-research-grants-guide/page.tsx:    title: "How to Apply for SBIR Research Grants 2025",
+app/guides/sba-application-process/page.tsx:  title: "SBA Grant Application Process 2025: Complete Step-by-Step Guide | How to Apply for Small Business Administration Grants",
+app/guides/sba-application-process/page.tsx:  description: "Master the SBA grant application process with our comprehensive 2025 guide. Learn eligibility requirements, document preparation, timeline, common mistakes, and insider tips for winning SBA funding.",
+app/guides/sba-application-process/page.tsx:    title: "SBA Grant Application Process: Complete Guide 2025",
+app/guides/sba-application-process/page.tsx:              <Badge variant="secondary">Updated Oct 2025</Badge>
+app/guides/sba-application-process/page.tsx:                Updated: October 14, 2025
+app/guides/sba-application-process/page.tsx:                  <Link href="/blog/sba-sbir-grants-2025">
+app/guides/sba-application-process/page.tsx:                  <Link href="/blog/veterans-business-grants-2025">
+app/guides/sba-application-process/page.tsx:                <h4 className="font-semibold text-lg mb-2">SBA SBIR Grants 2025</h4>
+app/guides/sba-application-process/page.tsx:                <Link href="/blog/sba-sbir-grants-2025" className="text-primary hover:underline text-sm font-medium">
+app/guides/sba-application-process/page.tsx:                <Link href="/blog/grant-writing-secrets-2025" className="text-primary hover:underline text-sm font-medium">
+app/guides/apply-irap-grants/page.tsx:  title: "Complete IRAP Application Guide 2025 | Step-by-Step R&D Grant Process",
+app/guides/apply-irap-grants/page.tsx:    title: "Complete IRAP Application Guide 2025 | Step-by-Step R&D Grant Process",
+app/guides/apply-csbfp-loans/page.tsx:  title: "Complete CSBFP Application Guide 2025 | Step-by-Step Process",
+app/guides/apply-csbfp-loans/page.tsx:    title: "Complete CSBFP Application Guide 2025 | Step-by-Step Process", 
+app/guides/apply-sbir-grants/page.tsx:  title: "How to Apply for SBIR Grants 2025 | Step-by-Step Application Guide",
+app/guides/apply-sbir-grants/page.tsx:    title: "How to Apply for SBIR Grants 2025",
+app/guides/apply-federal-grants/page.tsx:  title: "How to Apply for Federal Grants 2025 | Complete Application Guide",
+app/guides/apply-federal-grants/page.tsx:    title: "How to Apply for Federal Grants 2025",
+app/guides/apply-sba-loans/page.tsx:  title: "How to Apply for SBA Loans 2025 | Complete Application Guide",
+app/guides/apply-sba-loans/page.tsx:    title: "How to Apply for SBA Loans 2025",
+app/guides/canada-agri-food-funding-guide/page.tsx:  title: "How to Apply for AgriInnovate Grants Canada 2025 | Agriculture & Food Technology Funding Guide",
+app/guides/canada-agri-food-funding-guide/page.tsx:    title: "How to Apply for AgriInnovate Grants Canada 2025",
+app/guides/canada-agri-food-funding-guide/page.tsx:                How to Apply for Agriculture Grants in Canada 2025
+app/guides/canada-digital-ai-funding-guide/page.tsx:  title: "How to Apply for AI Grants Canada 2025 | Scale AI Application Guide | $850M+ Funding",
+app/guides/canada-digital-ai-funding-guide/page.tsx:    title: "How to Apply for AI Grants Canada 2025 | Scale AI & Machine Learning Funding",
+app/guides/canada-digital-ai-funding-guide/page.tsx:                How to Apply for AI Grants in Canada 2025
+app/guides/federal-grants-application-tips/page.tsx:  title: "Federal Grants Application Tips & Guide 2025 | Step-by-Step Process",
+app/guides/federal-grants-application-tips/page.tsx:    title: "Federal Grants Application Tips & Guide 2025",
+app/guides/apply-strategic-innovation-fund/page.tsx:  title: "Strategic Innovation Fund Application Guide 2025 | Step-by-Step SIF Funding Process",
+app/guides/apply-strategic-innovation-fund/page.tsx:    title: "Strategic Innovation Fund Application Guide 2025 | SIF Funding Process",
+app/guides/sred-application-guide/page.tsx:  title: "How to Apply for SR&ED Tax Credits 2025 | Scientific Research & Experimental Development Guide",
+app/guides/sred-application-guide/page.tsx:    title: "How to Apply for SR&ED Tax Credits 2025",
+app/guides/sred-application-guide/page.tsx:                  <div className="text-gray-600">Enhanced Rate Limit (2025)</div>
+app/guides/sred-application-guide/page.tsx:                      <h4 className="font-bold text-green-800 mb-2">Enhanced 2025 Changes</h4>
+app/guides/sred-application-guide/page.tsx:                        <h5 className="font-semibold mb-3 text-green-700">Eligible Expenses (2025):</h5>
+app/guides/sred-application-guide/page.tsx:                          <li>• Capital equipment (restored 2025)</li>
+app/guides/sred-application-guide/page.tsx:                <h2 className="text-3xl font-bold text-gray-900 mb-6">2025 SR&ED Tax Credit Rates</h2>
+app/guides/sred-application-guide/page.tsx:                        <h5 className="font-semibold mb-3 text-blue-700">ECPC Changes (2025):</h5>
+app/guides/sba-growth-accelerator-fund-guide/page.tsx:  title: "How to Apply for SBA Growth Accelerator Fund 2025 | Small Business Accelerator Grants",
+app/guides/sba-growth-accelerator-fund-guide/page.tsx:    title: "How to Apply for SBA Growth Accelerator Fund 2025",
+app/guides/canada-manufacturing-funding-guide/page.tsx:  title: "How to Apply for Canada Manufacturing Funding 2025 | NGen, IRAP & CDAP Guide",
+app/guides/canada-manufacturing-funding-guide/page.tsx:    title: "How to Apply for Canada Manufacturing Funding 2025",
+app/guides/nserc-research-grants-guide/page.tsx:  title: "How to Apply for NSERC Research Grants 2025 | Natural Sciences & Engineering Guide",
+app/guides/nserc-research-grants-guide/page.tsx:  keywords: "NSERC application guide, Idea to Innovation application, NSERC I2I guide, university research funding application, NSERC 2025",
+app/guides/nserc-research-grants-guide/page.tsx:    title: "How to Apply for NSERC Research Grants 2025",
+app/guides/nserc-research-grants-guide/page.tsx:                      <h4 className="font-bold mb-2 text-yellow-800">⚠️ 2025 Program Status:</h4>
+app/guides/apply-irap-government-grants/page.tsx:  title: "IRAP Government Grants Application Guide 2025 | Step-by-Step Federal R&D Funding Process",
+app/guides/apply-irap-government-grants/page.tsx:    title: "IRAP Government Grants Application Guide 2025 | Federal R&D Funding Process",
+app/guides/apply-agriculture-agri-food-canada/page.tsx:  title: "Agriculture & Agri-Food Canada Application Guide 2025 | Step-by-Step AAFC Federal Funding Process",
+app/guides/apply-agriculture-agri-food-canada/page.tsx:    title: "Agriculture & Agri-Food Canada Application Guide 2025 | AAFC Federal Funding Process",
+app/guides/apply-women-entrepreneurship-strategy/page.tsx:  title: "Women Entrepreneurship Strategy Guide 2025 | Step-by-Step Female Business Funding",
+app/guides/apply-women-entrepreneurship-strategy/page.tsx:    title: "Women Entrepreneurship Strategy Guide 2025 | Female Business Funding",
+app/guides/apply-ontario-business-grants/page.tsx:  title: "Ontario Business Grants Application Guide 2025 | Step-by-Step Provincial Funding Process",
+app/guides/apply-ontario-business-grants/page.tsx:    title: "Ontario Business Grants Application Guide 2025 | Provincial Funding Process",
+app/guides/women-entrepreneurship-loan-fund-guide/page.tsx:  title: "How to Apply for Women Entrepreneurship Loan Fund (WELF) 2025 | Complete Application Guide",
+app/guides/women-entrepreneurship-loan-fund-guide/page.tsx:    title: "How to Apply for Women Entrepreneurship Loan Fund (WELF) 2025",
+app/guides/apply-women-entrepreneurship-strateg/page.tsx:  title: "Women Entrepreneurship Strategy Application Guide 2025 | Step-by-Step WES Federal Funding Process",
+app/guides/apply-women-entrepreneurship-strateg/page.tsx:    title: "Women Entrepreneurship Strategy Application Guide 2025 | WES Federal Funding Process",
+app/guides/apply-regional-development-agencies/page.tsx:  title: "Regional Development Agencies Application Guide 2025 | Step-by-Step RDA Federal Funding Process",
+app/guides/apply-regional-development-agencies/page.tsx:    title: "Regional Development Agencies Application Guide 2025 | RDA Federal Funding Process",
+app/guides/apply-minority-grants/page.tsx:  title: "How to Apply for Minority & Women Business Grants 2025 | Certification Guide",
+app/guides/apply-minority-grants/page.tsx:    title: "How to Apply for Minority & Women Business Grants 2025",
+app/guides/irap-innovation-application-guide/page.tsx:  title: "How to Apply for IRAP Innovation Funding 2025 | Industrial Research Assistance Program Guide",
+app/guides/irap-innovation-application-guide/page.tsx:    title: "How to Apply for IRAP Innovation Funding 2025",
+app/guides/california-loan-guarantee-guide/page.tsx:  title: "How to Apply for California Small Business Loan Guarantee 2025 | State-Backed Loan Program",
+app/guides/california-loan-guarantee-guide/page.tsx:    title: "How to Apply for California Small Business Loan Guarantee 2025",
+app/guides/apply-youth-entrepreneurship-funding/page.tsx:  title: "Youth Entrepreneurship Funding Application Guide 2025 | Step-by-Step CYBF & Young Entrepreneur Grants",
+app/guides/apply-youth-entrepreneurship-funding/page.tsx:    title: "Youth Entrepreneurship Funding Application Guide 2025 | CYBF & Young Entrepreneur Grants",
+app/guides/canada-cleantech-funding-guide/page.tsx:  title: "How to Apply for Canada CleanTech Funding 2025 | SDTC, ITCs & Net Zero Guide",
+app/guides/canada-cleantech-funding-guide/page.tsx:    title: "How to Apply for Canada CleanTech Funding 2025",
+app/guides/[slug]/page.tsx:                Professional grant application support with Top 50 USA & Canada Startup Grants 2025 guide
+app/guides/[slug]/page.tsx:            and Top 50 USA & Canada Startup Grants 2025.
+app/guides/canada-life-sciences-funding-guide/page.tsx:  title: "How to Apply for Biotech Grants Canada 2025 | Medical Device & Clinical Trials Funding Guide",
+app/guides/canada-life-sciences-funding-guide/page.tsx:    title: "How to Apply for Biotech Grants Canada 2025 | Life Sciences Funding Guide",
+app/guides/canada-life-sciences-funding-guide/page.tsx:                How to Apply for Biotech Grants in Canada 2025
+app/guides/edc-women-trade-export-financing-guide/page.tsx:  title: "How to Apply for EDC Women in Trade Export Financing 2025 | Complete Application Guide",
+app/guides/edc-women-trade-export-financing-guide/page.tsx:    title: "How to Apply for EDC Women in Trade Export Financing 2025",
+app/guides/women-entrepreneurship-fund-guide/page.tsx:  title: "How to Apply for Women Entrepreneurship Fund 2025 | WEF Grant Application Guide",

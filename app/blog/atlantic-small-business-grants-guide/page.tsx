@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Atlantic Canada Small Business Grants 2025 | $850M+ ACOA & Provincial SME Funding",
+  title: "Atlantic Canada Small Business Grants 2026 | $850M+ ACOA & Provincial SME Funding",
   description: "Complete guide to Atlantic Canada business grants. Access ACOA funding, Nova Scotia Small Business Fund, New Brunswick Innovation, PEI Development Fund, and Newfoundland Business Growth programs.",
   keywords: "Atlantic Canada small business grants, ACOA business funding, Nova Scotia Small Business Fund, New Brunswick Innovation Fund, PEI Development Fund, Newfoundland business grants",
 }
@@ -26,10 +26,10 @@ export default function AtlanticSmallBusinessGrantsGuide() {
                 ⚓ Atlantic Canada Business Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Atlantic Canada Business Grants 2025
+                Atlantic Canada Business Grants 2026
               </h1>
               <p className="text-xl text-indigo-100 mb-8">
-                Access $850M+ in Atlantic Canada funding through ACOA and provincial programs. Complete guide to 
+                Access $850M+ in Atlantic Canada funding through ACOA and provincial programs. Complete guide to
                 Nova Scotia, New Brunswick, PEI, and Newfoundland business support opportunities.
               </p>
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
@@ -76,10 +76,10 @@ export default function AtlanticSmallBusinessGrantsGuide() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-4">Atlantic Canada Opportunities Agency (ACOA)</h2>
               <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
-                ACOA is the federal regional development agency serving Atlantic Canada with comprehensive 
+                ACOA is the federal regional development agency serving Atlantic Canada with comprehensive
                 business development programs and funding opportunities.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-16">
                 {/* ACOA Business Development Program */}
                 <Card className="border-2 border-indigo-200">
@@ -162,7 +162,7 @@ export default function AtlanticSmallBusinessGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">Provincial Small Business Programs</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Nova Scotia Small Business Fund */}
                 <Card className="border-2 border-red-200">
@@ -317,7 +317,7 @@ export default function AtlanticSmallBusinessGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8">Atlantic Canada Sector Priorities</h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="text-center">
                   <CardHeader>
@@ -330,7 +330,7 @@ export default function AtlanticSmallBusinessGrantsGuide() {
                     </p>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Zap className="w-12 h-12 text-green-600 mx-auto mb-4" />
@@ -342,7 +342,7 @@ export default function AtlanticSmallBusinessGrantsGuide() {
                     </p>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Building className="w-12 h-12 text-purple-600 mx-auto mb-4" />
@@ -367,7 +367,7 @@ export default function AtlanticSmallBusinessGrantsGuide() {
                 Master Atlantic Canada's Unique Funding Ecosystem
               </h2>
               <p className="text-xl text-indigo-100 mb-8">
-                Atlantic Canada's $850M+ combines ACOA federal funding with strong provincial programs. 
+                Atlantic Canada's $850M+ combines ACOA federal funding with strong provincial programs.
                 Our Atlantic specialists understand the regional priorities and have secured over $11M for Maritime businesses.
               </p>
               <div className="bg-white/10 rounded-lg p-6 mb-8">

@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Alberta Small Business Grants 2025 | $980M+ Alberta SME Funding",
+  title: "Alberta Small Business Grants 2026 | $980M+ Alberta SME Funding",
   description: "Complete guide to Alberta small business grants. Access Alberta Small Business Grant, Technology Innovation Fund, Rural Economic Development, and Energy Diversification programs.",
   keywords: "Alberta small business grants, Alberta business funding, Technology Innovation Fund Alberta, Rural Economic Development Alberta, Energy Diversification Program",
 }
@@ -26,7 +26,7 @@ export default function AlbertaSmallBusinessGrantsGuide() {
                 🏔️ Alberta Business Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Alberta Small Business Grants 2025
+                Alberta Small Business Grants 2026
               </h1>
               <p className="text-xl text-orange-100 mb-8">
                 Access $980M+ in Alberta government funding. From technology innovation to energy 

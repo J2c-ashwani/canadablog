@@ -10,7 +10,7 @@ export default function About() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
+
     if (!email) {
       alert('Please enter your email address');
       return;
@@ -22,8 +22,8 @@ export default function About() {
       const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          email, 
+        body: JSON.stringify({
+          email,
           name: '',
         }),
       });
@@ -51,7 +51,7 @@ export default function About() {
         {/* Hero Section */}
         <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white py-16">
           <div className="max-w-6xl mx-auto px-6">
-            <h1 className="text-5xl font-bold mb-6">About Grant Finder Pro</h1>
+            <h1 className="text-5xl font-bold mb-6">About FSI Digital</h1>
             <p className="text-xl text-blue-100 max-w-3xl">
               North America's most comprehensive resource for government funding information, helping entrepreneurs and businesses navigate the complex world of grants and funding opportunities.
             </p>
@@ -180,20 +180,20 @@ export default function About() {
             <p className="text-xl text-gray-700 max-w-4xl mx-auto mb-8">
               We're committed to providing the most accurate, up-to-date, and comprehensive government funding information available. Our goal is to level the playing field so that businesses of all sizes can compete for and secure the funding they need to grow and innovate.
             </p>
-            
+
             <div className="bg-gradient-to-r from-blue-50 to-green-50 p-8 rounded-lg">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Stay Informed</h3>
               <p className="text-gray-700 mb-6">Join thousands of entrepreneurs and business owners who rely on our insights to stay ahead of funding opportunities.</p>
               <form onSubmit={handleSubmit} className="max-w-md mx-auto flex gap-3">
-                <input 
-                  type="email" 
-                  placeholder="Enter your email" 
+                <input
+                  type="email"
+                  placeholder="Enter your email"
                   className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
-                <button 
+                <button
                   type="submit"
                   className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-green-700 disabled:opacity-50"
                   disabled={isLoading}

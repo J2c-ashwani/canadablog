@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "NIH SBIR Biotech Grants 2025-2026 | $285K Phase I, $2M Phase II Medical Device & Digital Health Funding",
-  description: "Complete 2025-2026 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $285K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation.",
-  keywords: "NIH SBIR grants 2025, biotech grants, medical device funding, digital health SBIR, therapeutics grants, diagnostics funding, NIH innovation grants",
+  title: "NIH SBIR Biotech Grants 2026-2027 | $285K Phase I, $2M Phase II Medical Device & Digital Health Funding",
+  description: "Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $285K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation.",
+  keywords: "NIH SBIR grants 2026, biotech grants, medical device funding, digital health SBIR, therapeutics grants, diagnostics funding, NIH innovation grants",
   openGraph: {
-    title: "NIH SBIR Grants 2025 | $285K-$2M Biotech Funding",
+    title: "NIH SBIR Grants 2026 | $285K-$2M Biotech Funding",
     description: "Complete guide to NIH SBIR/STTR grants for biotech and health tech startups.",
-    url: "https://grantfinder.pro/blog/nih-sbir-biotech-grants",
+    url: "https://fsidigital.ca/blog/nih-sbir-biotech-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,17 +29,17 @@ export default function NIHSBIRBiotechGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                💊 NIH SBIR/STTR Biotech Grants 2025-2026
+                💊 NIH SBIR/STTR Biotech Grants 2026-2027
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 NIH SBIR Grants: $285K Phase I, $2M Phase II Non-Dilutive Funding for Biotech, Medical Devices & Digital Health Innovation
               </h1>
               <p className="text-xl text-purple-100 mb-8">
-                Comprehensive 2025-2026 guide to National Institutes of Health SBIR/STTR grants providing up to $2,000,000 
-                in non-dilutive funding for therapeutics, biologics, medical devices, diagnostics, and digital health 
-                platforms. Complete application strategies, eligibility requirements, success rates, and funding timelines 
-                for Phase I ($285,000) and Phase II ($2,000,000) awards supporting biotech startups across all 50 states. 
-                NIH SBIR takes no equity, requires no repayment, and funds transformative biomedical research and development 
+                Comprehensive 2026-2027 guide to National Institutes of Health SBIR/STTR grants providing up to $2,000,000
+                in non-dilutive funding for therapeutics, biologics, medical devices, diagnostics, and digital health
+                platforms. Complete application strategies, eligibility requirements, success rates, and funding timelines
+                for Phase I ($285,000) and Phase II ($2,000,000) awards supporting biotech startups across all 50 states.
+                NIH SBIR takes no equity, requires no repayment, and funds transformative biomedical research and development
                 advancing human health through innovative small business solutions bringing discoveries from bench to bedside[web:161][web:179][web:182].
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -62,8 +62,8 @@ export default function NIHSBIRBiotechGrantsPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">NIH SBIR Biotech Grants by Region and Life Sciences Hub (2025-2026 Funding Available)</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">NIH SBIR Biotech Grants by Region and Life Sciences Hub (2026-2027 Funding Available)</h2>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-purple-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -155,7 +155,7 @@ export default function NIHSBIRBiotechGrantsPage() {
               </div>
 
               <div className="bg-purple-50 border-2 border-purple-300 rounded-lg p-6">
-                <h3 className="font-bold text-purple-900 mb-3 text-lg">🔥 High-Demand NIH SBIR Biotech Keywords 2025-2026:</h3>
+                <h3 className="font-bold text-purple-900 mb-3 text-lg">🔥 High-Demand NIH SBIR Biotech Keywords 2026-2027:</h3>
                 <div className="grid md:grid-cols-3 gap-4 text-sm text-purple-800">
                   <div>
                     <strong>Program Types:</strong> NIH SBIR Phase I $285K, NIH SBIR Phase II $2M, Fast-Track pilot, STTR research partnerships, non-dilutive biotech funding no equity
@@ -172,7 +172,7 @@ export default function NIHSBIRBiotechGrantsPage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-purple-50 border-b-2 border-purple-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -181,7 +181,7 @@ export default function NIHSBIRBiotechGrantsPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-purple-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-purple-800 mb-2">💊 2025-2026 NIH SBIR Program Highlights</h3>
+                      <h3 className="text-lg font-bold text-purple-800 mb-2">💊 2026-2027 NIH SBIR Program Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-purple-700">
                         <div>
                           <strong>Phase I Increase:</strong> Maximum Phase I awards $285,000 (highest across federal agencies) for 6-12 months proving biomedical feasibility[web:161][web:179]
@@ -211,16 +211,16 @@ export default function NIHSBIRBiotechGrantsPage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete NIH SBIR/STTR Funding Ecosystem for Biotech Startups</h2>
                 <p className="text-lg text-gray-600 mb-4">
-                  The National Institutes of Health SBIR/STTR program, also known as NIH Seed Fund, provides non-dilutive 
-                  grants for research and development of innovative biomedical technologies addressing unmet medical needs. 
-                  NIH seeks breakthrough innovations in therapeutics, diagnostics, medical devices, and digital health with 
+                  The National Institutes of Health SBIR/STTR program, also known as NIH Seed Fund, provides non-dilutive
+                  grants for research and development of innovative biomedical technologies addressing unmet medical needs.
+                  NIH seeks breakthrough innovations in therapeutics, diagnostics, medical devices, and digital health with
                   strong commercialization potential bringing discoveries from laboratories to patients[web:161][web:179][web:182].
                 </p>
                 <p className="text-lg text-gray-600">
-                  Biotech startups can access Phase I funding (up to $285,000) to prove technical feasibility and clinical 
-                  relevance over 6-12 months, followed by Phase II awards (up to $2,000,000) for product development, clinical 
-                  validation, and regulatory pathway execution over 24 months. NIH evaluates proposals on scientific merit, 
-                  innovation, commercial viability, and potential for improving human health across 27 institutes including 
+                  Biotech startups can access Phase I funding (up to $285,000) to prove technical feasibility and clinical
+                  relevance over 6-12 months, followed by Phase II awards (up to $2,000,000) for product development, clinical
+                  validation, and regulatory pathway execution over 24 months. NIH evaluates proposals on scientific merit,
+                  innovation, commercial viability, and potential for improving human health across 27 institutes including
                   NCI (cancer), NHLBI (heart/lung), NIAID (infectious disease), NINDS (neurological), NIDDK (diabetes)[web:161][web:185][web:186].
                 </p>
               </div>
@@ -254,11 +254,11 @@ export default function NIHSBIRBiotechGrantsPage() {
         <section id="nih-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NIH SBIR and STTR Program Details 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NIH SBIR and STTR Program Details 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete breakdown of Phase I, Phase II funding programs with biotech topic areas and application timelines
               </p>
-              
+
               <div className="space-y-8">
                 {/* Phase I Program */}
                 <Card className="border-purple-200">
@@ -291,7 +291,7 @@ export default function NIHSBIRBiotechGrantsPage() {
                               <span className="text-indigo-700 font-bold">Jan/Apr/Sep</span>
                             </div>
                           </div>
-                          
+
                           <div className="space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
                             <p className="font-semibold text-gray-800 mb-2">Phase I Biotech Objectives:</p>
                             <p>• <strong>Scientific Feasibility:</strong> Prove biological mechanism, efficacy, safety at preclinical or early clinical stage</p>
@@ -333,15 +333,15 @@ export default function NIHSBIRBiotechGrantsPage() {
                     </div>
 
                     <div className="bg-purple-50 p-6 rounded-lg border-2 border-purple-200 mt-6">
-                      <h4 className="font-bold text-lg mb-4 text-purple-800">📍 NIH SBIR Phase I Application Deadlines 2025-2026</h4>
+                      <h4 className="font-bold text-lg mb-4 text-purple-800">📍 NIH SBIR Phase I Application Deadlines 2026-2027</h4>
                       <div className="grid md:grid-cols-3 gap-4 text-sm">
                         <div>
                           <p className="font-semibold text-gray-800 mb-2">Standard Deadlines:</p>
                           <ul className="space-y-1 text-gray-700">
-                            <li>• <strong>January 5, 2025</strong></li>
-                            <li>• <strong>April 5, 2025</strong></li>
-                            <li>• <strong>September 5, 2025</strong></li>
                             <li>• <strong>January 5, 2026</strong></li>
+                            <li>• <strong>April 5, 2026</strong></li>
+                            <li>• <strong>September 5, 2026</strong></li>
+                            <li>• <strong>January 5, 2027</strong></li>
                           </ul>
                         </div>
                         <div>
@@ -443,7 +443,7 @@ export default function NIHSBIRBiotechGrantsPage() {
                   <CardHeader className="bg-gradient-to-r from-indigo-100 to-blue-100">
                     <div className="flex items-center mb-2">
                       <Building className="w-6 h-6 text-indigo-600 mr-3" />
-                      <CardTitle className="text-indigo-700 text-2xl">NIH SBIR Topic Areas Across 27 Institutes 2025-2026</CardTitle>
+                      <CardTitle className="text-indigo-700 text-2xl">NIH SBIR Topic Areas Across 27 Institutes 2026-2027</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
@@ -490,8 +490,8 @@ export default function NIHSBIRBiotechGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NIH SBIR Application Success Strategies 2025-2026</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NIH SBIR Application Success Strategies 2026-2027</h2>
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-purple-200">
                   <CardHeader className="bg-gradient-to-br from-purple-50 to-pink-50">
@@ -587,7 +587,7 @@ export default function NIHSBIRBiotechGrantsPage() {
               <p className="text-xl text-purple-100 mb-8">
                 Get our complete NIH SBIR application guide or work with biotech specialists for expert proposal support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2 text-lg">📥 Free NIH SBIR Guide</h4>

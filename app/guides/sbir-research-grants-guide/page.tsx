@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Apply for SBIR Research Grants 2025",
     description: "Complete guide to SBIR research grant applications with step-by-step process and winning strategies.",
-    url: "https://grantfinder.pro/guides/sbir-research-grants-guide",
+    url: "https://fsidigital.ca/guides/sbir-research-grants-guide",
   },
 }
 

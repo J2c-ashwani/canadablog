@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Regional Development Agencies Canada 2025 | RDA Federal Funding Guide | 7 Regional Programs",
+  title: "Regional Development Agencies Canada 2026 | RDA Federal Funding Guide | 7 Regional Programs",
   description: "Complete guide to Canada's Regional Development Agencies (RDA) federal funding programs. Access $125K-$10M through ACOA, FedDev Ontario, PacifiCan, PrairiesCan, CED, FedNor, and CanNor regional programs.",
   keywords: "Regional Development Agencies Canada, RDA federal funding, ACOA grants, FedDev Ontario funding, PacifiCan programs, PrairiesCan funding, CED Quebec funding, regional development funding Canada",
   openGraph: {
-    title: "Regional Development Agencies Canada 2025 | RDA Federal Funding Guide",
+    title: "Regional Development Agencies Canada 2026 | RDA Federal Funding Guide",
     description: "Comprehensive guide to Canada's 7 Regional Development Agencies offering targeted federal funding from $125K to $10M for regional economic development.",
-    url: "https://grantfinder.pro/blog/regional-development-agencies-government-grants",
+    url: "https://fsidigital.ca/blog/regional-development-agencies-government-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

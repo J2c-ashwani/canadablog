@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   keywords:
     "USA grant deadlines 2025, grant calendar, funding deadlines, grant deadline alerts, government grant calendar",
   alternates: {
-    canonical: "https://grantfinder.pro/deadline-calendar",
+    canonical: "https://fsidigital.ca/deadline-calendar",
   },
 }
 

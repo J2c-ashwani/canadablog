@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Life Sciences Grants 2025 | $720M+ Biotech & Medical Device Funding | Clinical Trials Support",
+  title: "Canada Life Sciences Grants 2026 | $720M+ Biotech & Medical Device Funding | Clinical Trials Support",
   description: "Complete guide to Canadian life sciences innovation grants. Access $720M+ funding through biomanufacturing programs, medical device pathways, clinical trials support, and 18+ biotechnology funding programs.",
   keywords: "Canada life sciences grants, biotechnology funding Canada, medical device grants, clinical trials funding Canada, biomanufacturing support, drug development grants, health technology funding, pharmaceutical grants Canada",
   openGraph: {
-    title: "Canada Life Sciences Grants 2025 | $720M+ Biotech & Medical Device Funding",
+    title: "Canada Life Sciences Grants 2026 | $720M+ Biotech & Medical Device Funding",
     description: "Access $720M+ in life sciences funding. Complete guide to biotechnology grants, medical device funding, and clinical trials support.",
-    url: "https://grantfinder.pro/blog/canada-life-sciences-innovation-grants",
+    url: "https://fsidigital.ca/blog/canada-life-sciences-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,7 +32,7 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
                 🧬 Life Sciences Innovation Grants
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Canada Life Sciences Innovation Grants 2025
+                Canada Life Sciences Innovation Grants 2026
               </h1>
               <p className="text-xl text-teal-100 mb-8">
                 Access $720M+ in life sciences and biotechnology funding through 18+ federal and provincial programs. 

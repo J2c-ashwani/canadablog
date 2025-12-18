@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   keywords:
     "Ontario business grants, Ontario government funding, provincial grants Ontario, small business funding Ontario",
   alternates: {
-    canonical: "https://grantfinder.pro/canada/ontario",
+    canonical: "https://fsidigital.ca/canada/ontario",
   },
 }
 

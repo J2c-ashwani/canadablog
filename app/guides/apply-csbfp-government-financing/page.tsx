@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CSBFP Government Financing Application Guide 2025 | Federal Loan Guarantee Process",
     description: "Step-by-step guide with templates and strategies for successful CSBFP government-guaranteed loan applications for Canadian small businesses.",
-    url: "https://grantfinder.pro/guides/apply-csbfp-government-financing",
+    url: "https://fsidigital.ca/guides/apply-csbfp-government-financing",
   },
 }
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Apply for Small Business Grants 2025",
     description: "Complete guide to applying for small business grants with step-by-step instructions and winning strategies.",
-    url: "https://grantfinder.pro/guides/apply-small-business-grants",
+    url: "https://fsidigital.ca/guides/apply-small-business-grants",
   },
 }
 

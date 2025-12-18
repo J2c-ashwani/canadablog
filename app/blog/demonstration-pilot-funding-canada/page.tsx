@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Stage 3: Demonstration & Pilot Funding Canada 2025 | SDTC & Clean Growth | Up to $15M Project Funding",
+  title: "Stage 3: Demonstration & Pilot Funding Canada 2026 | SDTC & Clean Growth | Up to $15M Project Funding",
   description: "Complete guide to Canadian demonstration and pilot project funding. Access up to $15M through SDTC Demonstration, Clean Growth Program, sector pilots, and TRL 7-8 validation projects for pre-commercial scale-up.",
   keywords: "demonstration project funding Canada, pilot program grants, SDTC demonstration funding, Clean Growth Program Canada, TRL 7-8 funding, pre-commercial funding, scale-up grants Canada, pilot plant funding",
   openGraph: {
-    title: "Stage 3: Demonstration & Pilot Funding Canada 2025 | SDTC & Clean Growth",
+    title: "Stage 3: Demonstration & Pilot Funding Canada 2026 | SDTC & Clean Growth",
     description: "Access up to $15M in demonstration and pilot funding. Complete guide to SDTC, Clean Growth, and sector pilot programs.",
-    url: "https://grantfinder.pro/blog/demonstration-pilot-funding-canada",
+    url: "https://fsidigital.ca/blog/demonstration-pilot-funding-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,7 +32,7 @@ export default function DemonstrationPilotFundingCanadaPage() {
                 🚀 Stage 3: Demonstration & Pilot Funding
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Stage 3: Demonstration & Pilot Funding Canada 2025
+                Stage 3: Demonstration & Pilot Funding Canada 2026
               </h1>
               <p className="text-xl text-orange-100 mb-8">
                 Access up to $15M in demonstration project and pilot program funding through SDTC Demonstration, 

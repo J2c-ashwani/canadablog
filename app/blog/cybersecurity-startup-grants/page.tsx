@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Cybersecurity Grants 2025-2026 | $1.8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive",
-  description: "Complete 2025-2026 guide to cybersecurity grants. DOD SBIR Phase I $200K-$400K, Phase II $1.8M, DHS cybersecurity funding, NSA research programs supporting security software, encryption, threat detection, zero-trust, cloud security with zero equity.",
-  keywords: "cybersecurity grants 2025, security software funding DOD SBIR, encryption grants DHS, threat detection funding Phase II, zero-trust architecture grants, cloud security funding NSA, penetration testing grants, incident response funding",
+  title: "Cybersecurity Grants 2026-2027 | $1.8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive",
+  description: "Complete 2026-2027 guide to cybersecurity grants. DOD SBIR Phase I $200K-$400K, Phase II $1.8M, DHS cybersecurity funding, NSA research programs supporting security software, encryption, threat detection, zero-trust, cloud security with zero equity.",
+  keywords: "cybersecurity grants 2026, security software funding DOD SBIR, encryption grants DHS, threat detection funding Phase II, zero-trust architecture grants, cloud security funding NSA, penetration testing grants, incident response funding",
   openGraph: {
-    title: "Cybersecurity Grants 2025 | $1.8M DOD SBIR + DHS Cyber Funding",
+    title: "Cybersecurity Grants 2026 | $1.8M DOD SBIR + DHS Cyber Funding",
     description: "Complete guide to cybersecurity grants from DOD, DHS, NSA, and defense programs.",
-    url: "https://grantfinder.pro/blog/cybersecurity-grants",
+    url: "https://fsidigital.ca/blog/cybersecurity-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -31,7 +31,7 @@ export default function CybersecurityGrantsPage() {
               {/* Badge */}
               <div className="flex justify-center mb-6">
                 <Badge className="bg-blue-500 text-white border-blue-600 px-4 py-2 text-sm font-medium">
-                  🔒 Cybersecurity Grants 2025-2026
+                  🔒 Cybersecurity Grants 2026-2027
                 </Badge>
               </div>
 
@@ -57,7 +57,7 @@ export default function CybersecurityGrantsPage() {
                 </div>
                 <div className="text-center">
                   <div className="text-3xl md:text-4xl font-bold mb-1 text-blue-400">106</div>
-                  <div className="text-sm md:text-base text-gray-300">DOD Topics 2025</div>
+                  <div className="text-sm md:text-base text-gray-300">DOD Topics 2026</div>
                 </div>
               </div>
 
@@ -308,7 +308,7 @@ export default function CybersecurityGrantsPage() {
           </div>
         </section>
 
-        {/* 2025 Updates */}
+        {/* 2026 Updates */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
@@ -318,7 +318,7 @@ export default function CybersecurityGrantsPage() {
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-blue-900 mb-2">What&apos;s New in Cybersecurity Funding 2025-2026</h3>
+                    <h3 className="text-2xl font-bold text-blue-900 mb-2">What&apos;s New in Cybersecurity Funding 2026-2027</h3>
                     <p className="text-gray-700">Recent DOD and DHS investments for cybersecurity entrepreneurs</p>
                   </div>
                 </div>
@@ -329,7 +329,7 @@ export default function CybersecurityGrantsPage() {
                       <DollarSign className="w-5 h-5 text-green-600 mr-2" />
                       <h4 className="font-bold text-gray-900">DOD 25.2: 106 Topics Released</h4>
                     </div>
-                    <p className="text-sm text-gray-700">Department of Defense pre-released 106 new SBIR topics (May 21, 2025 deadline) with up to $2M combined Phase I+II funding for cybersecurity across Air Force, Army, Navy, DARPA.</p>
+                    <p className="text-sm text-gray-700">Department of Defense pre-released 106 new SBIR topics (May 21, 2026 deadline) with up to $2M combined Phase I+II funding for cybersecurity across Air Force, Army, Navy, DARPA.</p>
                   </div>
 
                   <div className="bg-white rounded-lg p-5 border border-blue-100">
@@ -398,7 +398,7 @@ export default function CybersecurityGrantsPage() {
                               <span className="text-purple-700 font-bold">Up to $30M</span>
                             </div>
                             <div className="flex justify-between items-center">
-                              <span className="font-semibold text-gray-700">2025 Topics:</span>
+                              <span className="font-semibold text-gray-700">2026 Topics:</span>
                               <span className="text-green-700 font-bold">106 available</span>
                             </div>
                           </div>

@@ -23,13 +23,13 @@ export const metadata: Metadata = {
   description:
     "Find government grants for startups and small businesses in USA and Canada. Free grant finder tool, application guides, and funding opportunities.",
   keywords: "government grants, startup funding, small business grants, USA grants, Canada grants, business funding",
-  authors: [{ name: "Grant Finder Pro" }],
-  creator: "Grant Finder Pro",
-  publisher: "Grant Finder Pro",
+  authors: [{ name: "FSI Digital" }],
+  creator: "FSI Digital",
+  publisher: "FSI Digital",
   robots: "index, follow",
-  metadataBase: new URL("https://grantfinder.pro"),
+  metadataBase: new URL("https://fsidigital.ca"),
   alternates: {
-    canonical: "https://grantfinder.pro",
+    canonical: "https://fsidigital.ca",
   },
   viewport: "width=device-width, initial-scale=1",
   verification: {
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://grantfinder.pro",
-    siteName: "Grant Finder Pro",
+    url: "https://fsidigital.ca",
+    siteName: "FSI Digital",
     title: "Government Grants for Startups & Businesses | USA & Canada",
     description:
       "Find government grants for startups and small businesses in USA and Canada. Free grant finder tool, application guides, and funding opportunities.",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     description: "Find government grants for startups and small businesses in USA and Canada.",
     images: ["/og-image.jpg"],
   },
-  generator: 'Grant Finder Pro'
+  generator: 'FSI Digital'
 }
 
 export default function RootLayout({
@@ -82,20 +82,20 @@ export default function RootLayout({
         {children}
         <CookieConsent />
         <LeadMagnetPopup />
-        
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "Grant Finder Pro",
-              url: "https://grantfinder.pro",
-              logo: "https://grantfinder.pro/logo.png",
+              name: "FSI Digital",
+              url: "https://fsidigital.ca",
+              logo: "https://fsidigital.ca/logo.png",
               description: "Find government grants for startups and small businesses in USA and Canada",
               sameAs: [
-                "https://twitter.com/grantfinderpro", 
-                "https://linkedin.com/company/grantfinderpro"
+                "https://twitter.com/fsidigital",
+                "https://linkedin.com/company/fsidigital"
               ],
             }),
           }}

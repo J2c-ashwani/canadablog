@@ -54,9 +54,9 @@ export default function Contact() {
       const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           email: newsletterEmail,
-          name: '' 
+          name: ''
         }),
       })
 
@@ -90,7 +90,7 @@ export default function Contact() {
             {/* Contact Form */}
             <div className="bg-white rounded-lg shadow-sm p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
-              
+
               {submitStatus === "success" && (
                 <div className="mb-6 bg-green-50 border border-green-200 rounded-lg p-4 flex items-start">
                   <CheckCircle className="w-5 h-5 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
@@ -178,7 +178,7 @@ export default function Contact() {
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-medium text-gray-900">Email</h4>
-                    <p className="text-gray-600">info@grantfinderpro.com</p>
+                    <p className="text-gray-600">hello@fsidigital.ca</p>
                     <p className="text-gray-500 text-sm">We respond to all inquiries within 24 hours</p>
                   </div>
                   <div>

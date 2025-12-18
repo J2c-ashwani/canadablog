@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women Social Enterprise Grants Canada 2025-2026 | Social Impact Funding Toronto Vancouver Montreal Calgary | Community Development Purpose-Driven Business Support Women Entrepreneurs",
-  description: "Complete 2025-2026 guide to social enterprise grants for women-led impact businesses in Ontario, Quebec, BC, Alberta. Social impact funding $10K-$1M, community development programs, purpose-driven business support Toronto, Vancouver, Montreal, Calgary, Ottawa. Investment Readiness Program, social finance, non-profit grants, impact investment for Canadian women social entrepreneurs.",
-  keywords: "women social enterprise grants Canada 2025, social impact funding women Ontario, community development grants Toronto, purpose-driven business support Vancouver, non-profit funding women Montreal, impact investment Calgary, social innovation grants women Quebec, women social entrepreneurs BC, community business grants Alberta, social finance funding women Canada",
+  title: "Women Social Enterprise Grants Canada 2026-2027 | Social Impact Funding Toronto Vancouver Montreal Calgary | Community Development Purpose-Driven Business Support Women Entrepreneurs",
+  description: "Complete 2026-2027 guide to social enterprise grants for women-led impact businesses in Ontario, Quebec, BC, Alberta. Social impact funding $10K-$1M, community development programs, purpose-driven business support Toronto, Vancouver, Montreal, Calgary, Ottawa. Investment Readiness Program, social finance, non-profit grants, impact investment for Canadian women social entrepreneurs.",
+  keywords: "women social enterprise grants Canada 2026, social impact funding women Ontario, community development grants Toronto, purpose-driven business support Vancouver, non-profit funding women Montreal, impact investment Calgary, social innovation grants women Quebec, women social entrepreneurs BC, community business grants Alberta, social finance funding women Canada",
   openGraph: {
-    title: "Women Social Enterprise Grants Canada 2025 | Social Impact Funding",
+    title: "Women Social Enterprise Grants Canada 2026 | Social Impact Funding",
     description: "$10K-$1M social enterprise funding for women-led purpose-driven businesses across Canada.",
-    url: "https://grantfinder.pro/blog/women-social-enterprise-grants-canada",
+    url: "https://fsidigital.ca/blog/women-social-enterprise-grants-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,13 +29,13 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                ❤️ Social Impact Funding 2025-2026 | All Canadian Provinces
+                ❤️ Social Impact Funding 2026-2027 | All Canadian Provinces
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Women Social Enterprise Grants Canada: Social Impact Funding, Community Development & Purpose-Driven Business Support for Ontario, Quebec, BC, Alberta Women Entrepreneurs
               </h1>
               <p className="text-xl text-purple-100 mb-8">
-                Comprehensive 2025-2026 guide to social enterprise grants, impact investment, and community development 
+                Comprehensive 2026-2027 guide to social enterprise grants, impact investment, and community development 
                 funding for women-led purpose-driven businesses across Canada. Access $10,000 to $1,000,000+ in federal 
                 social innovation funding through Investment Readiness Program, Social Finance Fund, community development 
                 corporations, provincial social enterprise support in Ontario (Toronto, Ottawa, Hamilton, Mississauga), 
@@ -64,7 +64,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Social Enterprise Grants by Province and Major City (2025-2026 Impact Funding Available)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Social Enterprise Grants by Province and Major City (2026-2027 Impact Funding Available)</h2>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-purple-200 hover:shadow-lg transition-shadow">
@@ -157,7 +157,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
               </div>
 
               <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-6">
-                <h3 className="font-bold text-yellow-900 mb-3 text-lg">🔥 High-Demand Social Enterprise Funding Keywords 2025-2026:</h3>
+                <h3 className="font-bold text-yellow-900 mb-3 text-lg">🔥 High-Demand Social Enterprise Funding Keywords 2026-2027:</h3>
                 <div className="grid md:grid-cols-3 gap-4 text-sm text-yellow-800">
                   <div>
                     <strong>Social Impact:</strong> community development grants women Ontario, social innovation funding Toronto Vancouver, impact investment women Quebec, purpose-driven business support Calgary Montreal
@@ -174,7 +174,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-purple-50 border-b-2 border-purple-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -183,7 +183,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-purple-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-purple-800 mb-2">🚀 2025-2026 Women Social Enterprise Funding Highlights</h3>
+                      <h3 className="text-lg font-bold text-purple-800 mb-2">🚀 2026-2027 Women Social Enterprise Funding Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-purple-700">
                         <div>
                           <strong>Investment Readiness Program:</strong> Up to $300,000 grants for women-led social enterprises preparing for impact investment across all provinces
@@ -256,7 +256,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
         <section id="social-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Social Enterprise Grants and Impact Investment for Women Entrepreneurs Canada 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Social Enterprise Grants and Impact Investment for Women Entrepreneurs Canada 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete guide to federal social innovation funding programs available to women-led social enterprises 
                 across all Canadian provinces including Ontario, Quebec, BC, Alberta women social entrepreneurs.
@@ -728,7 +728,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
         <section className="py-16 bg-gradient-to-br from-purple-50 to-indigo-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Social Enterprise Grant Application Success Strategies 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Social Enterprise Grant Application Success Strategies 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Proven strategies and insights for women social entrepreneurs to maximize grant approval rates and 
                 impact investment readiness across all Canadian provinces.
@@ -891,7 +891,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                 Ready to Access Social Enterprise Funding and Create Measurable Social Impact Across Canada?
               </h2>
               <p className="text-xl text-purple-100 mb-8">
-                Get our complete 2025-2026 women social enterprise grants guide with program navigator, impact 
+                Get our complete 2026-2027 women social enterprise grants guide with program navigator, impact 
                 measurement frameworks, application templates covering Toronto, Vancouver, Montreal, Calgary, Ottawa, 
                 and all Canadian regions - or work with our social enterprise funding specialists for expert 
                 application support maximizing your grant approval success.

@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "CSBFP Canada Small Business Financing Program 2025 | Government Guaranteed Loans Guide",
+  title: "CSBFP Canada Small Business Financing Program 2026 | Government Guaranteed Loans Guide",
   description: "Complete guide to CSBFP government-guaranteed loans for Canadian small businesses. Federal loan guarantee program offering up to $1M with 85% government backing for equipment and real property.",
   keywords: "CSBFP government guaranteed loans, Canada Small Business Financing Program, government backed business loans Canada, federal SME loan guarantee, ISED small business financing",
   openGraph: {
-    title: "CSBFP Canada Small Business Financing Program 2025 | Government Guaranteed Loans",
+    title: "CSBFP Canada Small Business Financing Program 2026 | Government Guaranteed Loans",
     description: "Comprehensive guide to CSBFP federal loan guarantee program with up to $1M in government-backed financing for Canadian small businesses.",
-    url: "https://grantfinder.pro/blog/csbfp-canada-small-business-financing-program-government-grants",
+    url: "https://fsidigital.ca/blog/csbfp-canada-small-business-financing-program-government-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "NSERC Research Grants Canada 2025 | Natural Sciences & Engineering Funding Guide",
+  title: "NSERC Research Grants Canada 2026 | Natural Sciences & Engineering Funding Guide",
   description: "Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. University-industry partnerships and technology transfer funding.",
-  keywords: "NSERC grants, Idea to Innovation grants, NSERC I2I, university research funding Canada, technology transfer grants, NSERC 2025",
+  keywords: "NSERC grants, Idea to Innovation grants, NSERC I2I, university research funding Canada, technology transfer grants, NSERC 2026",
   openGraph: {
-    title: "NSERC Research Grants Canada 2025 | Natural Sciences & Engineering Funding",
+    title: "NSERC Research Grants Canada 2026 | Natural Sciences & Engineering Funding",
     description: "Complete guide to NSERC research funding with Idea to Innovation grants, university-industry partnerships, and technology commercialization support.",
-    url: "https://grantfinder.pro/blog/nserc-research-grants-canada",
+    url: "https://fsidigital.ca/blog/nserc-research-grants-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,7 +29,7 @@ export default function NSERCResearchGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🔬 NSERC Research Grants 2025
+                🔬 NSERC Research Grants 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Natural Sciences & Engineering Research Council (NSERC)
@@ -54,7 +54,7 @@ export default function NSERCResearchGrantsGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Updates */}
+        {/* Enhanced 2026 Updates */}
         <section className="py-8 bg-yellow-50 border-b-2 border-yellow-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -63,10 +63,10 @@ export default function NSERCResearchGrantsGuidePage() {
                   <div className="flex items-start">
                     <AlertCircle className="w-6 h-6 text-yellow-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-yellow-800 mb-2">⚠️ Important NSERC Program Updates (2025)</h3>
+                      <h3 className="text-lg font-bold text-yellow-800 mb-2">⚠️ Important NSERC Program Updates (2026)</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-yellow-700">
                         <div>
-                          <strong>I2I Pause Notice:</strong> Market Assessment and Phase Ib applications paused as of Feb 14, 2025 for program review
+                          <strong>I2I Pause Notice:</strong> Market Assessment and Phase Ib applications paused as of Feb 14, 2026 for program review
                         </div>
                         <div>
                           <strong>Active Programs:</strong> Phase I, IIa, and IIb applications continue with quarterly deadlines
@@ -185,7 +185,7 @@ export default function NSERCResearchGrantsGuidePage() {
                     </div>
                     
                     <div className="mt-6 p-4 bg-yellow-50 rounded-lg">
-                      <h5 className="font-semibold mb-2">⚠️ Current Status (2025):</h5>
+                      <h5 className="font-semibold mb-2">⚠️ Current Status (2026):</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
                         <div>
                           <p><strong>Active Programs:</strong> Phase I, IIa, and IIb applications accepted</p>

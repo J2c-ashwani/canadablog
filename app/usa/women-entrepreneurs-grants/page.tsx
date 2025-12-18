@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Women Entrepreneurs Grants USA 2025 | Female Business Owner Funding",
     description: "Find grants and funding programs specifically for women entrepreneurs and female business owners in the USA.",
-    url: "https://grantfinder.pro/usa/women-entrepreneurs-grants",
+    url: "https://fsidigital.ca/usa/women-entrepreneurs-grants",
   },
 }
 

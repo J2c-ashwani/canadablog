@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Cartier Women's Initiative Canada 2026 | $100K Awards + Coaching for Impact Entrepreneurs",
-  description: "Complete guide to Cartier Women's Initiative with $100,000 grants, INSEAD coaching, mentorship, and global networking for Canadian women impact entrepreneurs. Apply by June 24, 2025.",
+  title: "Cartier Women's Initiative Canada 2026-2027 | $100K Awards + Coaching for Impact Entrepreneurs",
+  description: "Complete guide to Cartier Women's Initiative with $100,000 grants, INSEAD coaching, mentorship, and global networking for Canadian women impact entrepreneurs. Apply by June 24, 2026.",
   keywords: "Cartier Women's Initiative Canada, women impact entrepreneurs, social enterprise grants, UN SDG funding, women environmental business",
   openGraph: {
-    title: "Cartier Women's Initiative 2026 | $100K for Impact Entrepreneurs",
+    title: "Cartier Women's Initiative 2026-2027 | $100K for Impact Entrepreneurs",
     description: "International program supporting Canadian women founders with $100K grants, executive coaching, and year-long fellowship for impact-driven businesses.",
-    url: "https://grantfinder.pro/blog/cartier-womens-initiative-canada",
+    url: "https://fsidigital.ca/blog/cartier-womens-initiative-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,16 +29,16 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🌍 Global Impact Awards 2026
+                🌍 Global Impact Awards 2026-2027
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Cartier Women's Initiative Canada
               </h1>
               <p className="text-xl text-purple-100 mb-8">
-                International entrepreneurship program supporting Canadian women founders of impact-driven 
-                businesses with up to $100,000 in grant funding, executive coaching from INSEAD, year-long 
-                fellowship, and global networking. Open to for-profit businesses addressing UN Sustainable 
-                Development Goals. Application deadline: June 24, 2025.
+                International entrepreneurship program supporting Canadian women founders of impact-driven
+                businesses with up to $100,000 in grant funding, executive coaching from INSEAD, year-long
+                fellowship, and global networking. Open to for-profit businesses addressing UN Sustainable
+                Development Goals. Application deadline: June 24, 2026.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-purple-700 hover:bg-gray-100" asChild>
@@ -65,10 +65,10 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Cartier Women's Initiative 2026 Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Cartier Women's Initiative 2026-2027 Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
-                          <strong>Application Deadline:</strong> June 24, 2025 at 2:00 PM CEST
+                          <strong>Application Deadline:</strong> June 24, 2026 at 2:00 PM CEST
                         </div>
                         <div>
                           <strong>Awards:</strong> $100K (1st), $60K (2nd), $30K (3rd) + coaching
@@ -95,10 +95,10 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Empowering Women Impact Entrepreneurs Since 2006</h2>
                 <p className="text-lg text-gray-600">
-                  The Cartier Women's Initiative is an annual international entrepreneurship program founded by 
-                  Cartier in 2006 to drive change by empowering women impact entrepreneurs. Open to women-run and 
-                  women-owned businesses from any country addressing social and environmental challenges aligned 
-                  with the United Nations Sustainable Development Goals. Canadian entrepreneurs compete in the 
+                  The Cartier Women's Initiative is an annual international entrepreneurship program founded by
+                  Cartier in 2006 to drive change by empowering women impact entrepreneurs. Open to women-run and
+                  women-owned businesses from any country addressing social and environmental challenges aligned
+                  with the United Nations Sustainable Development Goals. Canadian entrepreneurs compete in the
                   North America region alongside United States applicants.
                 </p>
               </div>
@@ -130,7 +130,7 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Cartier Women's Initiative Award Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Regional Awards - North America */}
                 <Card className="border-purple-200">
@@ -169,15 +169,15 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-purple-50 rounded-lg">
                       <h5 className="font-semibold mb-2">📋 North America Region Details:</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
                         <div>
                           <ul className="space-y-1">
                             <li>• <strong>Coverage:</strong> Canada, United States, Mexico</li>
-                            <li>• <strong>Duration:</strong> January-December 2026 fellowship</li>
-                            <li>• <strong>In-Person:</strong> 1 week event April/May 2026</li>
+                            <li>• <strong>Duration:</strong> January-December 2027 fellowship</li>
+                            <li>• <strong>In-Person:</strong> 1 week event April/May 2027</li>
                           </ul>
                         </div>
                         <div>
@@ -239,7 +239,7 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Eligibility Requirements for Canadian Entrepreneurs</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -262,7 +262,7 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
                       <div className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
                         <div>
-                          <strong>Early-Stage:</strong> Proven business model, 1-6 years of licensed/registered operations (June 2019-June 2024 for 2026 edition)
+                          <strong>Early-Stage:</strong> Proven business model, 1-6 years of licensed/registered operations (June 2020-June 2026 for 2027 edition)
                         </div>
                       </div>
                       <div className="flex items-start">
@@ -284,7 +284,7 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
                       <div className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-blue-600 mr-3 mt-0.5" />
                         <div>
-                          <strong>Legal Age:</strong> Must be 18+ years old by June 24, 2025 application deadline
+                          <strong>Legal Age:</strong> Must be 18+ years old by June 24, 2026 application deadline
                         </div>
                       </div>
                       <div className="flex items-start">
@@ -296,7 +296,7 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
                       <div className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-blue-600 mr-3 mt-0.5" />
                         <div>
-                          <strong>Time Commitment:</strong> January-December 2026 fellowship, 1-3 hours/week + 1 week in-person event
+                          <strong>Time Commitment:</strong> January-December 2027 fellowship, 1-3 hours/week + 1 week in-person event
                         </div>
                       </div>
                       <div className="flex items-start">
@@ -318,7 +318,7 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Application Process & Timeline</h2>
-              
+
               <div className="space-y-6">
                 <div className="grid md:grid-cols-4 gap-6">
                   {[
@@ -330,7 +330,7 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
                       color: "purple"
                     },
                     {
-                      step: "2", 
+                      step: "2",
                       title: "Complete Application",
                       description: "Submit detailed business and impact information in English",
                       icon: <FileText className="w-6 h-6" />,
@@ -339,25 +339,25 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
                     {
                       step: "3",
                       title: "Submit by Deadline",
-                      description: "June 24, 2025 at 2:00 PM CEST (400MB/file, 800MB total)",
+                      description: "June 24, 2026 at 2:00 PM CEST (400MB/file, 800MB total)",
                       icon: <Calendar className="w-6 h-6" />,
                       color: "green"
                     },
                     {
                       step: "4",
                       title: "Await Results",
-                      description: "Notification by December 2025, fellowship starts January 2026",
+                      description: "Notification by December 2026, fellowship starts January 2027",
                       icon: <Award className="w-6 h-6" />,
                       color: "orange"
                     }
                   ].map((item, index) => {
                     const colors = {
                       purple: "bg-purple-500 text-white",
-                      blue: "bg-blue-500 text-white", 
+                      blue: "bg-blue-500 text-white",
                       green: "bg-green-500 text-white",
                       orange: "bg-orange-500 text-white"
                     }
-                    
+
                     return (
                       <Card key={index} className="text-center">
                         <CardHeader>
@@ -410,14 +410,14 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">UN Sustainable Development Goals Impact</h2>
-              
+
               <div className="bg-green-50 border border-green-200 rounded-lg p-8 mb-8">
                 <h3 className="text-xl font-bold text-green-800 mb-4">17 UN Sustainable Development Goals</h3>
                 <p className="text-gray-700 mb-4">
-                  All applicants must demonstrate how their business contributes to at least one of the 17 United Nations 
+                  All applicants must demonstrate how their business contributes to at least one of the 17 United Nations
                   Sustainable Development Goals - a universal call to tackle social, economic, and environmental challenges by 2030.
                 </p>
-                
+
                 <div className="grid md:grid-cols-3 gap-4 text-sm">
                   <div>
                     <h4 className="font-semibold text-green-700 mb-2">Improving Lives:</h4>
@@ -460,7 +460,7 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Application Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -542,15 +542,15 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
                 Ready to Apply for Cartier Women's Initiative?
               </h2>
               <p className="text-xl text-purple-100 mb-8">
-                Get our complete application guide with UN SDG alignment tools and impact articulation frameworks, 
+                Get our complete application guide with UN SDG alignment tools and impact articulation frameworks,
                 or work with our impact entrepreneurship specialists for expert application support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free Application Guide</h4>
                   <p className="text-purple-100 text-sm mb-4">
-                    Get our comprehensive Cartier Women's Initiative application guide with category selection, 
+                    Get our comprehensive Cartier Women's Initiative application guide with category selection,
                     UN SDG frameworks, and impact demonstration templates.
                   </p>
                   <Button size="lg" className="w-full bg-white text-purple-700 hover:bg-gray-100" asChild>
@@ -564,7 +564,7 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
                 <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Expert Application Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with impact entrepreneurship specialists who understand Cartier criteria and can help 
+                    Work with impact entrepreneurship specialists who understand Cartier criteria and can help
                     optimize your application for UN SDG alignment and impact articulation.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
@@ -574,7 +574,7 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-purple-200 text-sm mt-6">
                 Expert guidance • Impact frameworks • UN SDG alignment • Global recognition success
               </p>

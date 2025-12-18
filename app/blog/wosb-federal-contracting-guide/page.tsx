@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "WOSB Federal Contracting Guide 2025 | Women-Owned Small Business Certification",
+  title: "WOSB Federal Contracting Guide 2026 | Women-Owned Small Business Certification",
   description: "Complete guide to WOSB and EDWOSB certification for federal contracting. Learn how women-owned businesses can access $2M+ government contracts.",
   keywords: "WOSB certification, women owned small business, federal contracting, EDWOSB, government contracts women, SBA certification",
   openGraph: {
-    title: "WOSB Federal Contracting Guide 2025 | Women-Owned Small Business Certification",
+    title: "WOSB Federal Contracting Guide 2026 | Women-Owned Small Business Certification",
     description: "Complete guide to WOSB certification and federal contracting opportunities for women-owned businesses.",
-    url: "https://grantfinder.pro/blog/wosb-federal-contracting-guide",
+    url: "https://fsidigital.ca/blog/wosb-federal-contracting-guide",
   },
 }
 

@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women Manufacturing Grants Canada 2025-2026 | $10M Equipment Funding Ontario Toronto Vancouver Calgary Montreal | Advanced Manufacturing Business Loans Women Entrepreneurs",
-  description: "Complete 2025-2026 guide to manufacturing grants for women-owned businesses in Ontario, Quebec, BC, Alberta. Equipment funding $10K-$10M, productivity improvement grants, automation financing, advanced manufacturing support Toronto, Vancouver, Calgary, Montreal, Ottawa. NRC IRAP, CDEM, provincial equipment loans, Industry 4.0 smart factory funding for Canadian women manufacturers.",
-  keywords: "women manufacturing grants Canada 2025, equipment funding women Ontario, manufacturing business loans Toronto, productivity grants Vancouver, automation financing Calgary, women industrial business grants Montreal, advanced manufacturing funding women Quebec, equipment purchase grants BC, women manufacturing loans Alberta, smart factory funding women Canada, Industry 4.0 grants women entrepreneurs, production equipment financing women business owners, machinery grants women manufacturers Ontario, digital manufacturing transformation funding women, robotics automation grants women-owned factories, lean manufacturing improvement grants women Canada, manufacturing modernization loans women Toronto, equipment upgrade funding women Vancouver, production capacity expansion grants women Calgary, manufacturing technology adoption funding women Montreal",
+  title: "Women Manufacturing Grants Canada 2026-2027 | $10M Equipment Funding Ontario Toronto Vancouver Calgary Montreal | Advanced Manufacturing Business Loans Women Entrepreneurs",
+  description: "Complete 2026-2027 guide to manufacturing grants for women-owned businesses in Ontario, Quebec, BC, Alberta. Equipment funding $10K-$10M, productivity improvement grants, automation financing, advanced manufacturing support Toronto, Vancouver, Calgary, Montreal, Ottawa. NRC IRAP, CDEM, provincial equipment loans, Industry 4.0 smart factory funding for Canadian women manufacturers.",
+  keywords: "women manufacturing grants Canada 2026, equipment funding women Ontario, manufacturing business loans Toronto, productivity grants Vancouver, automation financing Calgary, women industrial business grants Montreal, advanced manufacturing funding women Quebec, equipment purchase grants BC, women manufacturing loans Alberta, smart factory funding women Canada, Industry 4.0 grants women entrepreneurs, production equipment financing women business owners, machinery grants women manufacturers Ontario, digital manufacturing transformation funding women, robotics automation grants women-owned factories, lean manufacturing improvement grants women Canada, manufacturing modernization loans women Toronto, equipment upgrade funding women Vancouver, production capacity expansion grants women Calgary, manufacturing technology adoption funding women Montreal",
   openGraph: {
-    title: "Women Manufacturing Grants Canada 2025 | Equipment Funding Toronto Vancouver Calgary Montreal",
+    title: "Women Manufacturing Grants Canada 2026 | Equipment Funding Toronto Vancouver Calgary Montreal",
     description: "$10K-$10M equipment grants, productivity loans, automation financing for women-owned manufacturing businesses across Canada. Ontario, Quebec, BC, Alberta programs.",
-    url: "https://grantfinder.pro/blog/women-manufacturing-grants-canada",
+    url: "https://fsidigital.ca/blog/women-manufacturing-grants-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,13 +29,13 @@ export default function WomenManufacturingGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🏭 Manufacturing Equipment Grants 2025-2026 | All Canadian Provinces
+                🏭 Manufacturing Equipment Grants 2026-2027 | All Canadian Provinces
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Women Manufacturing Business Grants Canada: Equipment Funding, Productivity Loans & Automation Financing for Ontario, Quebec, BC, Alberta Women Entrepreneurs
               </h1>
               <p className="text-xl text-slate-100 mb-8">
-                Comprehensive 2025-2026 guide to manufacturing grants, equipment financing, and productivity improvement 
+                Comprehensive 2026-2027 guide to manufacturing grants, equipment financing, and productivity improvement 
                 funding for women-owned production, processing, and industrial businesses across Canada. Access $10,000 
                 to $10 million in federal manufacturing grants through NRC IRAP, Canadian Digital Excellence Manufacturing 
                 (CDEM) automation funding, provincial equipment purchase programs in Ontario (Toronto, Ottawa, Hamilton, 
@@ -64,7 +64,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Manufacturing Equipment Grants by Province and Major City (2025-2026 Funding Available)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Manufacturing Equipment Grants by Province and Major City (2026-2027 Funding Available)</h2>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-green-200 hover:shadow-lg transition-shadow">
@@ -157,7 +157,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
               </div>
 
               <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-6">
-                <h3 className="font-bold text-yellow-900 mb-3 text-lg">🔥 High-Demand Manufacturing Equipment Funding Keywords 2025-2026:</h3>
+                <h3 className="font-bold text-yellow-900 mb-3 text-lg">🔥 High-Demand Manufacturing Equipment Funding Keywords 2026-2027:</h3>
                 <div className="grid md:grid-cols-3 gap-4 text-sm text-yellow-800">
                   <div>
                     <strong>Equipment Purchase:</strong> CNC machinery grants women, industrial equipment loans women-owned businesses, production line financing women manufacturers, automated assembly equipment funding women Canada
@@ -174,7 +174,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates with High CPC Keywords */}
+        {/* Enhanced 2026 Program Updates with High CPC Keywords */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -183,7 +183,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 2025-2026 Women Manufacturing Funding Highlights (High-Value Equipment Grants & Business Loans)</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 2026-2027 Women Manufacturing Funding Highlights (High-Value Equipment Grants & Business Loans)</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>NRC IRAP Manufacturing R&D:</strong> Up to $10,000,000 non-repayable contributions for women-owned industrial research, process innovation, automation projects, quality improvement initiatives across all Canadian provinces
@@ -211,7 +211,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Manufacturing Innovation Ecosystem for Women Entrepreneurs Across Canada: Toronto to Vancouver Manufacturing Equipment Financing 2025-2026</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Manufacturing Innovation Ecosystem for Women Entrepreneurs Across Canada: Toronto to Vancouver Manufacturing Equipment Financing 2026-2027</h2>
                 <p className="text-lg text-gray-600 mb-4">
                   Canadian women manufacturing entrepreneurs have access to comprehensive funding for equipment purchases, 
                   productivity improvements, automation, advanced manufacturing technology, and digital transformation across 
@@ -269,7 +269,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
               {/* Regional Manufacturing Statistics */}
               <Card className="border-gray-200 bg-gradient-to-br from-gray-50 to-slate-50 mb-8">
                 <CardHeader>
-                  <CardTitle className="text-gray-800 text-2xl">📊 Women Manufacturing Business Statistics by Canadian Region (2025 Data)</CardTitle>
+                  <CardTitle className="text-gray-800 text-2xl">📊 Women Manufacturing Business Statistics by Canadian Region (2026 Data)</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-6">
@@ -324,7 +324,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section id="manufacturing-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Manufacturing Grants and Equipment Financing for Women Entrepreneurs Canada 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Manufacturing Grants and Equipment Financing for Women Entrepreneurs Canada 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete guide to federal manufacturing funding programs available to women-owned production businesses 
                 across all Canadian provinces including Ontario women manufacturers Toronto Ottawa Hamilton, Quebec women 
@@ -696,7 +696,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                         <div>
                           <p className="font-semibold text-gray-800 mb-2">Ontario BDC Manufacturing:</p>
                           <ul className="space-y-1 text-gray-700">
-                            <li>• Toronto Business Centre (416-954-2025)</li>
+                            <li>• Toronto Business Centre (416-954-2026)</li>
                             <li>• Mississauga Manufacturing Hub</li>
                             <li>• Ottawa Technology & Manufacturing</li>
                             <li>• Hamilton Industrial Center</li>
@@ -743,7 +743,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Ontario Manufacturing Grants for Women Entrepreneurs - Equipment Funding, Productivity Loans, Automation Financing Toronto Ottawa Hamilton 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Ontario Manufacturing Grants for Women Entrepreneurs - Equipment Funding, Productivity Loans, Automation Financing Toronto Ottawa Hamilton 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
                 Complete guide to Ontario provincial manufacturing support programs for women-owned production businesses 
                 in Greater Toronto Area (Toronto, Mississauga, Brampton, Markham, Vaughan, Richmond Hill, Oakville, 
@@ -970,7 +970,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Quebec Manufacturing Grants for Women Entrepreneurs - Financement Équipement Fabrication Femmes Montréal Québec Laval 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Quebec Manufacturing Grants for Women Entrepreneurs - Financement Équipement Fabrication Femmes Montréal Québec Laval 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
                 Guide complet des programmes de financement manufacturier provincial pour les femmes entrepreneures québécoises 
                 dans la région du Grand Montréal (Montréal, Laval, Longueuil, Terrebonne, Repentigny), région de Québec 
@@ -1119,7 +1119,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">British Columbia Manufacturing Grants for Women Entrepreneurs - Equipment Funding Vancouver Surrey Burnaby Richmond Victoria 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">British Columbia Manufacturing Grants for Women Entrepreneurs - Equipment Funding Vancouver Surrey Burnaby Richmond Victoria 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
                 Complete guide to BC provincial manufacturing support programs for women-owned production businesses 
                 in Metro Vancouver (Vancouver, Surrey, Burnaby, Richmond, Coquitlam, New Westminster, North Vancouver, 
@@ -1305,7 +1305,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section className="py-16 bg-gradient-to-br from-red-50 to-orange-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Alberta Manufacturing Grants for Women Entrepreneurs - Equipment Funding Calgary Edmonton Red Deer Lethbridge 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Alberta Manufacturing Grants for Women Entrepreneurs - Equipment Funding Calgary Edmonton Red Deer Lethbridge 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
                 Complete guide to Alberta provincial manufacturing support programs for women-owned production businesses 
                 in Calgary Region (Calgary, Airdrie, Okotoks, Cochrane, Chestermere), Edmonton Metropolitan (Edmonton, 
@@ -1463,7 +1463,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Manufacturing Sector-Specific Equipment Grants for Women Entrepreneurs Canada - Industry-Focused Funding Programs 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Manufacturing Sector-Specific Equipment Grants for Women Entrepreneurs Canada - Industry-Focused Funding Programs 2026-2027</h2>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Food & Beverage Manufacturing */}
@@ -1570,7 +1570,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section className="py-16 bg-gradient-to-br from-slate-50 to-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Manufacturing Grant Application Success Strategies 2025-2026 - Expert Tips for Equipment Funding Approval Canada</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Manufacturing Grant Application Success Strategies 2026-2027 - Expert Tips for Equipment Funding Approval Canada</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Proven strategies and regional insights for women manufacturing entrepreneurs to maximize equipment grant 
                 and loan approval rates across all Canadian provinces. Application optimization techniques specific to 
@@ -1814,7 +1814,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                 Ready to Access Manufacturing Equipment Grants and Financing for Your Women-Owned Business Across Canada?
               </h2>
               <p className="text-xl text-slate-100 mb-8">
-                Get our complete 2025-2026 women manufacturing grants guide with program navigator, regional funding 
+                Get our complete 2026-2027 women manufacturing grants guide with program navigator, regional funding 
                 comparison, application templates covering Toronto, Vancouver, Montreal, Calgary, Ottawa, and all 
                 Canadian manufacturing regions - or work with our manufacturing funding specialists for expert 
                 application support maximizing your equipment grant and loan approval success.

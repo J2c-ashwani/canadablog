@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "California Tech Startup Grants 2025-2026 | $50K CalSEED, $50K SBIR Match, Tax Credits & Silicon Valley Funding Programs",
-  description: "Complete 2025-2026 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SBIR State Match $50,000, California Competes Tax Credit up to 25%, GO-Biz innovation programs, Accelerate CA Hubs for Silicon Valley, Bay Area, Los Angeles, San Diego tech startups.",
-  keywords: "California tech startup grants 2025, CalSEED grants $50000, SBIR state match California, California Competes Tax Credit, GO-Biz incentives, Silicon Valley startup funding, Bay Area tech grants, Los Angeles innovation programs, San Diego biotech funding, California cleantech grants, agtech funding California, biotech grants Bay Area, software startup incentives, hardware startup California, non-dilutive California grants, California small business grants technology",
+  title: "California Tech Startup Grants 2026-2027 | $50K CalSEED, $50K SBIR Match, Tax Credits & Silicon Valley Funding Programs",
+  description: "Complete 2026-2027 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SBIR State Match $50,000, California Competes Tax Credit up to 25%, GO-Biz innovation programs, Accelerate CA Hubs for Silicon Valley, Bay Area, Los Angeles, San Diego tech startups.",
+  keywords: "California tech startup grants 2026, CalSEED grants $50000, SBIR state match California, California Competes Tax Credit, GO-Biz incentives, Silicon Valley startup funding, Bay Area tech grants, Los Angeles innovation programs, San Diego biotech funding, California cleantech grants, agtech funding California, biotech grants Bay Area, software startup incentives, hardware startup California, non-dilutive California grants, California small business grants technology",
   openGraph: {
-    title: "California Tech Grants 2025 | $50K CalSEED, SBIR Match, Tax Credits",
+    title: "California Tech Grants 2026 | $50K CalSEED, SBIR Match, Tax Credits",
     description: "Complete guide to California tech startup grants, tax incentives, and innovation programs for Silicon Valley and statewide tech companies.",
-    url: "https://grantfinder.pro/blog/california-tech-programs",
+    url: "https://fsidigital.ca/blog/california-tech-programs",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,13 +29,13 @@ export default function CaliforniaTechProgramsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🌟 California Technology Startup Grants & Innovation Programs 2025-2026
+                🌟 California Technology Startup Grants & Innovation Programs 2026-2027
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                California Tech Startup Grants 2025-2026: $50K CalSEED Clean Energy Grants, $50K SBIR State Match, California Competes Tax Credit & GO-Biz Innovation Programs for Silicon Valley, Bay Area & Statewide Technology Companies
+                California Tech Startup Grants 2026-2027: $50K CalSEED Clean Energy Grants, $50K SBIR State Match, California Competes Tax Credit & GO-Biz Innovation Programs for Silicon Valley, Bay Area & Statewide Technology Companies
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Comprehensive 2025-2026 guide to California technology startup grants, tax incentives, innovation programs, and non-dilutive funding opportunities providing up to $50,000 CalSEED clean energy grants, $50,000 SBIR State Match Program enhancing federal SBIR/STTR awards, California Competes Tax Credit offering up to 25% income tax reduction, GO-Biz technology incentives, Accelerate CA Innovation Hubs supporting Silicon Valley, San Francisco Bay Area, Los Angeles, San Diego, Sacramento, and regional California tech startups. State programs serve cleantech, agtech, biotech, software, hardware, artificial intelligence, machine learning, and innovation companies throughout California requiring no equity, complementing federal funding, advancing California's position as global technology and innovation leader driving economic growth, job creation, and competitive advantage for startups choosing California over other states[web:220][web:224].
+                Comprehensive 2026-2027 guide to California technology startup grants, tax incentives, innovation programs, and non-dilutive funding opportunities providing up to $50,000 CalSEED clean energy grants, $50,000 SBIR State Match Program enhancing federal SBIR/STTR awards, California Competes Tax Credit offering up to 25% income tax reduction, GO-Biz technology incentives, Accelerate CA Innovation Hubs supporting Silicon Valley, San Francisco Bay Area, Los Angeles, San Diego, Sacramento, and regional California tech startups. State programs serve cleantech, agtech, biotech, software, hardware, artificial intelligence, machine learning, and innovation companies throughout California requiring no equity, complementing federal funding, advancing California's position as global technology and innovation leader driving economic growth, job creation, and competitive advantage for startups choosing California over other states[web:220][web:224].
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>
@@ -57,7 +57,7 @@ export default function CaliforniaTechProgramsPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">California Technology Startup Grants by Region and Innovation Hub (2025-2026 Funding Programs Available Statewide)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">California Technology Startup Grants by Region and Innovation Hub (2026-2027 Funding Programs Available Statewide)</h2>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-blue-200 hover:shadow-lg transition-shadow">
@@ -162,7 +162,7 @@ export default function CaliforniaTechProgramsPage() {
               </div>
 
               <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-6">
-                <h3 className="font-bold text-blue-900 mb-3 text-lg">🔥 High-Value California Tech Grant Keywords 2025-2026 (High CPC, High CTR, High CPM):</h3>
+                <h3 className="font-bold text-blue-900 mb-3 text-lg">🔥 High-Value California Tech Grant Keywords 2026-2027 (High CPC, High CTR, High CPM):</h3>
                 <div className="grid md:grid-cols-3 gap-4 text-sm text-blue-800">
                   <div>
                     <strong>Grant Programs (High CPC):</strong> California technology startup grants $50000, CalSEED clean energy grants non-dilutive funding, SBIR state match California $50K federal enhancement, California Competes Tax Credit 25% income tax reduction, GO-Biz innovation incentives Silicon Valley, Accelerate CA Innovation Hubs regional funding, California small business grants technology companies no equity required
@@ -171,7 +171,7 @@ export default function CaliforniaTechProgramsPage() {
                     <strong>Technology Focus (Long-tail Keywords):</strong> Silicon Valley software startup funding programs, Bay Area AI machine learning grants California, Los Angeles cleantech startup grants CalSEED, San Diego biotech life sciences funding SBIR match, Sacramento agtech precision farming grants Davis, Orange County medical device startup incentives, California hardware manufacturing grants, renewable energy startup funding California, food technology startup grants Bay Area
                   </div>
                   <div>
-                    <strong>Application Process (User Intent):</strong> How to apply CalSEED grants California 2025, SBIR state match application requirements California, California Competes Tax Credit eligibility technology startups, GO-Biz incentives application process Silicon Valley, Accelerate CA Hub locations California statewide, California business registration startup grants, grants.ca.gov portal technology funding, CalOSBA small business programs tech companies
+                    <strong>Application Process (User Intent):</strong> How to apply CalSEED grants California 2026, SBIR state match application requirements California, California Competes Tax Credit eligibility technology startups, GO-Biz incentives application process Silicon Valley, Accelerate CA Hub locations California statewide, California business registration startup grants, grants.ca.gov portal technology funding, CalOSBA small business programs tech companies
                   </div>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function CaliforniaTechProgramsPage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-blue-50 border-b-2 border-blue-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -188,7 +188,7 @@ export default function CaliforniaTechProgramsPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-blue-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-blue-800 mb-2">🌟 2025-2026 California Technology Startup Funding Program Highlights</h3>
+                      <h3 className="text-lg font-bold text-blue-800 mb-2">🌟 2026-2027 California Technology Startup Funding Program Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700">
                         <div>
                           <strong>CalSEED Clean Energy Grants:</strong> $50,000 non-dilutive funding early-stage cleantech startups California no equity required supporting renewable energy, energy storage, grid technology, zero-emission vehicles, sustainable agriculture innovations advancing California climate goals[web:224]
@@ -216,7 +216,7 @@ export default function CaliforniaTechProgramsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete California Technology Startup Funding Ecosystem 2025-2026</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete California Technology Startup Funding Ecosystem 2026-2027</h2>
                 <p className="text-lg text-gray-600 mb-4">
                   California provides comprehensive technology startup grants, tax incentives, and innovation programs supporting 
                   Silicon Valley, Bay Area, Los Angeles, San Diego, and regional California technology companies. State programs 
@@ -265,7 +265,7 @@ export default function CaliforniaTechProgramsPage() {
         <section id="california-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">California Technology Startup Grant Programs and Tax Incentives 2025-2026 Complete Details</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">California Technology Startup Grant Programs and Tax Incentives 2026-2027 Complete Details</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete breakdown of CalSEED grants, SBIR State Match, California Competes Tax Credit, GO-Biz programs with application strategies, eligibility requirements, success rates, and funding timelines supporting Silicon Valley, Bay Area, and statewide California technology innovation ecosystem
               </p>
@@ -344,13 +344,13 @@ export default function CaliforniaTechProgramsPage() {
                     </div>
 
                     <div className="bg-blue-50 p-6 rounded-lg border-2 border-blue-200 mt-6">
-                      <h4 className="font-bold text-lg mb-4 text-blue-800">📍 CalSEED Application Deadlines and Accelerate CA Hub Locations 2025-2026</h4>
+                      <h4 className="font-bold text-lg mb-4 text-blue-800">📍 CalSEED Application Deadlines and Accelerate CA Hub Locations 2026-2027</h4>
                       <div className="grid md:grid-cols-3 gap-4 text-sm">
                         <div>
                           <p className="font-semibold text-gray-800 mb-2">Application Cycles:</p>
                           <ul className="space-y-1 text-gray-700">
-                            <li>• <strong>Spring 2025:</strong> Opens February</li>
-                            <li>• <strong>Fall 2025:</strong> Opens August</li>
+                            <li>• <strong>Spring 2026:</strong> Opens February</li>
+                            <li>• <strong>Fall 2026:</strong> Opens August</li>
                             <li>• <strong>Cohort Duration:</strong> 10 weeks training</li>
                             <li>• <strong>Demo Day:</strong> Investor showcase</li>
                           </ul>
@@ -530,7 +530,7 @@ export default function CaliforniaTechProgramsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">California Technology Startup Grant Application Success Strategies 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">California Technology Startup Grant Application Success Strategies 2026-2027</h2>
               
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-blue-200">

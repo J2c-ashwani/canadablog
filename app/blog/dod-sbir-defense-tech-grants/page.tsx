@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "DOD SBIR Defense Tech Grants 2025-2026 | $256K Phase I, $1.7M Phase II Cybersecurity & Aerospace Funding",
-  description: "Complete 2025-2026 guide to Department of Defense SBIR/STTR grants for defense tech startups. Phase I up to $256K, Phase II up to $1.7M for cybersecurity, aerospace, UAV, advanced materials innovation.",
-  keywords: "DOD SBIR grants 2025, defense tech grants, cybersecurity SBIR, aerospace funding, UAV grants, military technology funding, DOD innovation grants",
+  title: "DOD SBIR Defense Tech Grants 2026-2027 | $256K Phase I, $1.7M Phase II Cybersecurity & Aerospace Funding",
+  description: "Complete 2026-2027 guide to Department of Defense SBIR/STTR grants for defense tech startups. Phase I up to $256K, Phase II up to $1.7M for cybersecurity, aerospace, UAV, advanced materials innovation.",
+  keywords: "DOD SBIR grants 2026, defense tech grants, cybersecurity SBIR, aerospace funding, UAV grants, military technology funding, DOD innovation grants",
   openGraph: {
-    title: "DOD SBIR Grants 2025 | $256K-$1.7M Defense Tech Funding",
+    title: "DOD SBIR Grants 2026 | $256K-$1.7M Defense Tech Funding",
     description: "Complete guide to DOD SBIR/STTR grants for defense and aerospace tech startups.",
-    url: "https://grantfinder.pro/blog/dod-sbir-defense-tech-grants",
+    url: "https://fsidigital.ca/blog/dod-sbir-defense-tech-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,13 +29,13 @@ export default function DODSBIRDefenseTechGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🛡️ DOD SBIR/STTR Defense Tech Grants 2025-2026
+                🛡️ DOD SBIR/STTR Defense Tech Grants 2026-2027
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 DOD SBIR Grants: $256K Phase I, $1.7M Phase II Non-Dilutive Funding for Defense, Cybersecurity & Aerospace Innovation
               </h1>
               <p className="text-xl text-slate-100 mb-8">
-                Comprehensive 2025-2026 guide to Department of Defense SBIR/STTR grants providing up to $1,700,000 in 
+                Comprehensive 2026-2027 guide to Department of Defense SBIR/STTR grants providing up to $1,700,000 in 
                 non-dilutive funding for cybersecurity, aerospace, UAV technology, advanced materials, sensors, and military 
                 innovations. Complete application strategies, eligibility requirements, success rates, and funding timelines 
                 for Phase I ($256,000) and Phase II ($1,700,000) awards supporting defense tech startups across all 50 states. 
@@ -63,7 +63,7 @@ export default function DODSBIRDefenseTechGrantsPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">DOD SBIR Defense Tech Grants by Region and Military Hub (2025-2026 Funding Available)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">DOD SBIR Defense Tech Grants by Region and Military Hub (2026-2027 Funding Available)</h2>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-slate-200 hover:shadow-lg transition-shadow">
@@ -156,7 +156,7 @@ export default function DODSBIRDefenseTechGrantsPage() {
               </div>
 
               <div className="bg-slate-50 border-2 border-slate-300 rounded-lg p-6">
-                <h3 className="font-bold text-slate-900 mb-3 text-lg">🔥 High-Demand DOD SBIR Defense Tech Keywords 2025-2026:</h3>
+                <h3 className="font-bold text-slate-900 mb-3 text-lg">🔥 High-Demand DOD SBIR Defense Tech Keywords 2026-2027:</h3>
                 <div className="grid md:grid-cols-3 gap-4 text-sm text-slate-800">
                   <div>
                     <strong>Program Types:</strong> DOD SBIR Phase I $256K, DOD SBIR Phase II $1.7M, Army Navy Air Force grants, DARPA innovation, non-dilutive defense funding no equity
@@ -173,7 +173,7 @@ export default function DODSBIRDefenseTechGrantsPage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-slate-50 border-b-2 border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -182,7 +182,7 @@ export default function DODSBIRDefenseTechGrantsPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-slate-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-slate-800 mb-2">🛡️ 2025-2026 DOD SBIR Program Highlights</h3>
+                      <h3 className="text-lg font-bold text-slate-800 mb-2">🛡️ 2026-2027 DOD SBIR Program Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-slate-700">
                         <div>
                           <strong>Phase I Funding:</strong> Up to $256,000 for 6-12 months proving technical feasibility of defense innovation[web:195][web:197]
@@ -256,7 +256,7 @@ export default function DODSBIRDefenseTechGrantsPage() {
         <section id="dod-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">DOD SBIR and STTR Program Details 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">DOD SBIR and STTR Program Details 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete breakdown of Phase I, Phase II funding programs with defense tech topic areas and application timelines
               </p>
@@ -335,15 +335,15 @@ export default function DODSBIRDefenseTechGrantsPage() {
                     </div>
 
                     <div className="bg-slate-50 p-6 rounded-lg border-2 border-slate-200 mt-6">
-                      <h4 className="font-bold text-lg mb-4 text-slate-800">📍 DOD SBIR Phase I Application Deadlines 2025-2026</h4>
+                      <h4 className="font-bold text-lg mb-4 text-slate-800">📍 DOD SBIR Phase I Application Deadlines 2026-2027</h4>
                       <div className="grid md:grid-cols-3 gap-4 text-sm">
                         <div>
                           <p className="font-semibold text-gray-800 mb-2">Quarterly Releases:</p>
                           <ul className="space-y-1 text-gray-700">
                             <li>• <strong>Release 1:</strong> October 2024</li>
-                            <li>• <strong>Release 2:</strong> January 2025</li>
-                            <li>• <strong>Release 3:</strong> April 2025</li>
-                            <li>• <strong>Release 4:</strong> July 2025</li>
+                            <li>• <strong>Release 2:</strong> January 2026</li>
+                            <li>• <strong>Release 3:</strong> April 2026</li>
+                            <li>• <strong>Release 4:</strong> July 2026</li>
                           </ul>
                         </div>
                         <div>
@@ -445,7 +445,7 @@ export default function DODSBIRDefenseTechGrantsPage() {
                   <CardHeader className="bg-gradient-to-r from-indigo-100 to-cyan-100">
                     <div className="flex items-center mb-2">
                       <Building className="w-6 h-6 text-indigo-600 mr-3" />
-                      <CardTitle className="text-indigo-700 text-2xl">DOD SBIR Topic Areas Across Military Components 2025-2026</CardTitle>
+                      <CardTitle className="text-indigo-700 text-2xl">DOD SBIR Topic Areas Across Military Components 2026-2027</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
@@ -492,7 +492,7 @@ export default function DODSBIRDefenseTechGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">DOD SBIR Application Success Strategies 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">DOD SBIR Application Success Strategies 2026-2027</h2>
               
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-slate-200">

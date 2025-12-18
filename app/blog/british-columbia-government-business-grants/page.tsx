@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "British Columbia Government Business Grants 2025 | BC Provincial Funding Programs Guide",
+  title: "British Columbia Government Business Grants 2026 | BC Provincial Funding Programs Guide",
   description: "Complete guide to British Columbia government business grants and provincial funding programs. Access Innovate BC, CleanBC, Creative BC, and PacifiCan regional funding for BC businesses.",
-  keywords: "British Columbia government business grants, BC provincial funding, Innovate BC grants, CleanBC funding, Creative BC support, PacifiCan regional funding, BC business support programs 2025",
+  keywords: "British Columbia government business grants, BC provincial funding, Innovate BC grants, CleanBC funding, Creative BC support, PacifiCan regional funding, BC business support programs 2026",
   openGraph: {
-    title: "British Columbia Government Business Grants 2025 | BC Provincial Funding Guide",
+    title: "British Columbia Government Business Grants 2026 | BC Provincial Funding Guide",
     description: "Comprehensive guide to BC provincial business grants offering funding for innovation, clean technology, creative industries, and regional development.",
-    url: "https://grantfinder.pro/blog/british-columbia-government-business-grants",
+    url: "https://fsidigital.ca/blog/british-columbia-government-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

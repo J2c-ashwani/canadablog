@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "National Women's Business Council (NWBC) Programs Guide 2025 | Federal Women's Business Advisory",
+  title: "National Women's Business Council (NWBC) Programs Guide 2026 | Federal Women's Business Advisory",
   description: "Complete guide to NWBC programs and initiatives. Learn how the National Women's Business Council supports women entrepreneurs through policy and advocacy.",
   keywords: "NWBC, national womens business council, women business policy, federal women entrepreneur support, women business advocacy",
   openGraph: {
-    title: "National Women's Business Council (NWBC) Programs Guide 2025",
+    title: "National Women's Business Council (NWBC) Programs Guide 2026",
     description: "Complete guide to NWBC programs, research initiatives, and policy advocacy for women entrepreneurs.",
-    url: "https://grantfinder.pro/blog/nwbc-programs-guide",
+    url: "https://fsidigital.ca/blog/nwbc-programs-guide",
   },
 }
 
@@ -78,16 +78,16 @@ export default function NWBCProgramsGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* What is NWBC */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the National Women's Business Council (NWBC)?</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  The National Women's Business Council is a federal advisory council created to serve as an independent 
-                  voice for women's business issues. Established in 1988, the NWBC provides policy advice and 
+                  The National Women's Business Council is a federal advisory council created to serve as an independent
+                  voice for women's business issues. Established in 1988, the NWBC provides policy advice and
                   recommendations to the President, Congress, and the Small Business Administration.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">NWBC Mission</h4>
@@ -98,7 +98,7 @@ export default function NWBCProgramsGuide() {
                       <li>• Monitor program effectiveness</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-cyan-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-cyan-800">Key Focus Areas</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -114,7 +114,7 @@ export default function NWBCProgramsGuide() {
               {/* NWBC Structure */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">NWBC Structure and Leadership</h2>
-                
+
                 <div className="space-y-8">
                   {/* Council Composition */}
                   <Card className="border-blue-200">
@@ -140,7 +140,7 @@ export default function NWBCProgramsGuide() {
                         </div>
                       </div>
                       <p className="text-gray-700 mb-4">
-                        The NWBC consists of 15 members appointed by the President, representing diverse industries, 
+                        The NWBC consists of 15 members appointed by the President, representing diverse industries,
                         geographic regions, and business sizes to provide comprehensive perspective on women's business issues.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -176,7 +176,7 @@ export default function NWBCProgramsGuide() {
                     </CardHeader>
                     <CardContent>
                       <p className="text-gray-700 mb-4">
-                        Federal agency representatives serve as non-voting ex-officio members, providing government 
+                        Federal agency representatives serve as non-voting ex-officio members, providing government
                         perspective and ensuring coordination across federal programs.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -207,7 +207,7 @@ export default function NWBCProgramsGuide() {
               {/* NWBC Programs and Initiatives */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">NWBC Programs and Initiatives</h2>
-                
+
                 <div className="space-y-6">
                   <Card className="border-orange-200">
                     <CardHeader>
@@ -293,7 +293,7 @@ export default function NWBCProgramsGuide() {
               {/* Key Reports and Publications */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Key NWBC Reports and Publications</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">📊 Major Research Reports:</h4>
@@ -316,7 +316,7 @@ export default function NWBCProgramsGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-blue-700">🎯 Policy Recommendations:</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -350,7 +350,7 @@ export default function NWBCProgramsGuide() {
                     <div>
                       <p className="text-blue-800 font-medium">Public Participation:</p>
                       <p className="text-blue-700 text-sm">
-                        While NWBC doesn't provide direct services to businesses, women entrepreneurs can engage 
+                        While NWBC doesn't provide direct services to businesses, women entrepreneurs can engage
                         with the council through public meetings, comment periods, and research participation.
                       </p>
                     </div>
@@ -391,7 +391,7 @@ export default function NWBCProgramsGuide() {
               {/* NWBC Impact */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">NWBC Policy Impact and Achievements</h2>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
@@ -428,7 +428,7 @@ export default function NWBCProgramsGuide() {
               <div className="bg-gradient-to-r from-blue-600 to-cyan-700 rounded-lg p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">Navigate Federal Women's Business Programs Like a Pro</h3>
                 <p className="text-blue-100 mb-6 text-lg">
-                  Get expert guidance on leveraging federal programs, NWBC research, and policy developments to grow your 
+                  Get expert guidance on leveraging federal programs, NWBC research, and policy developments to grow your
                   women-owned business. Book your FREE consultation today.
                 </p>
                 <div className="bg-white/10 rounded-lg p-4 mb-6">

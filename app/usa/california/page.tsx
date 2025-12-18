@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   keywords:
     "California small business grants, CA state funding, California government grants, small business funding California",
   alternates: {
-    canonical: "https://grantfinder.pro/usa/california",
+    canonical: "https://fsidigital.ca/usa/california",
   },
 }
 

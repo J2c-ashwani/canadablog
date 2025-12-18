@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Ontario Innovation Grants & Tax Credits 2025 | OITC 10% Tax Credit | $3.2B+ R&D Funding",
+  title: "Ontario Innovation Grants & Tax Credits 2026 | OITC 10% Tax Credit | $3.2B+ R&D Funding",
   description: "Complete guide to Ontario innovation grants and tax credits. Access $3.2B+ through Ontario Innovation Tax Credit (10% OITC), Jobs and Prosperity Fund, OCE programs, and advanced manufacturing support.",
   keywords: "Ontario innovation grants, OITC tax credit, Ontario Innovation Tax Credit, Jobs and Prosperity Fund Ontario, Ontario Centres of Excellence, Ontario R&D tax credits, advanced manufacturing Ontario, life sciences Ontario grants",
   openGraph: {
-    title: "Ontario Innovation Grants & Tax Credits 2025 | $3.2B+ OITC & R&D Support",
+    title: "Ontario Innovation Grants & Tax Credits 2026 | $3.2B+ OITC & R&D Support",
     description: "Access $3.2B+ in Ontario innovation funding. Complete guide to OITC, Jobs and Prosperity Fund, and provincial R&D programs.",
-    url: "https://grantfinder.pro/blog/ontario-innovation-grants-tax-credits",
+    url: "https://fsidigital.ca/blog/ontario-innovation-grants-tax-credits",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,11 +32,11 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                 🍁 Ontario Provincial Innovation Support
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Ontario Innovation Grants & Tax Credits 2025
+                Ontario Innovation Grants & Tax Credits 2026
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Access $3.2B+ in Ontario innovation funding through the 10% Ontario Innovation Tax Credit (OITC), 
-                Jobs and Prosperity Fund, Ontario Centres of Excellence, and sector-specific programs supporting 
+                Access $3.2B+ in Ontario innovation funding through the 10% Ontario Innovation Tax Credit (OITC),
+                Jobs and Prosperity Fund, Ontario Centres of Excellence, and sector-specific programs supporting
                 advanced manufacturing, life sciences, AI & digital technology across Canada's largest innovation ecosystem.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -86,7 +86,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Ontario Innovation Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Ontario Innovation Tax Credit */}
                 <Card className="border-blue-200">
@@ -112,7 +112,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Ontario's premier R&D tax incentive providing a 10% refundable tax credit on eligible Ontario research and 
+                      Ontario's premier R&D tax incentive providing a 10% refundable tax credit on eligible Ontario research and
                       development expenditures, stackable with federal SR&ED tax credits for combined support up to 75%.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -162,7 +162,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Ontario's flagship economic development program supporting large-scale business expansion, modernization, 
+                      Ontario's flagship economic development program supporting large-scale business expansion, modernization,
                       and commercialization projects that create jobs and drive innovation across strategic sectors.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -212,7 +212,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Ontario's innovation network facilitating university-industry collaboration, technology commercialization, 
+                      Ontario's innovation network facilitating university-industry collaboration, technology commercialization,
                       and talent development through multiple funding streams and partnership programs.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -262,7 +262,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Network of 17 regional innovation centres across Ontario providing free advisory services, mentorship, 
+                      Network of 17 regional innovation centres across Ontario providing free advisory services, mentorship,
                       and connections to funding programs for technology startups and scale-ups.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -297,7 +297,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Ontario Innovation Sector Highlights</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Advanced Manufacturing */}
                 <Card className="hover:shadow-lg transition-all border-blue-200">
@@ -310,7 +310,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Ontario's largest innovation sector with comprehensive support for Industry 4.0, automation, 
+                      Ontario's largest innovation sector with comprehensive support for Industry 4.0, automation,
                       and manufacturing technology development.
                     </p>
                     <div className="space-y-2">
@@ -345,7 +345,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Canada's premier life sciences cluster supporting biotech, pharma, medical devices, 
+                      Canada's premier life sciences cluster supporting biotech, pharma, medical devices,
                       and health technology innovation.
                     </p>
                     <div className="space-y-2">
@@ -380,7 +380,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Leading artificial intelligence and digital innovation ecosystem with Vector Institute 
+                      Leading artificial intelligence and digital innovation ecosystem with Vector Institute
                       and comprehensive AI research support.
                     </p>
                     <div className="space-y-2">
@@ -415,7 +415,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Growing cleantech sector with support for renewable energy, environmental technology, 
+                      Growing cleantech sector with support for renewable energy, environmental technology,
                       and sustainable innovation.
                     </p>
                     <div className="space-y-2">
@@ -450,7 +450,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Agricultural technology and food innovation support with focus on precision agriculture 
+                      Agricultural technology and food innovation support with focus on precision agriculture
                       and food processing technology.
                     </p>
                     <div className="space-y-2">
@@ -485,7 +485,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Support for frontier technologies including quantum computing, space tech, 
+                      Support for frontier technologies including quantum computing, space tech,
                       and next-generation innovation.
                     </p>
                     <div className="space-y-2">
@@ -518,7 +518,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Ontario Regional Innovation Hubs</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-blue-200">
                   <CardHeader>
@@ -527,7 +527,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Toronto Innovation Corridor:</strong> Canada's largest tech hub with MaRS Discovery District, 
+                        <strong>Toronto Innovation Corridor:</strong> Canada's largest tech hub with MaRS Discovery District,
                         Vector Institute for AI, and extensive startup ecosystem.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -547,7 +547,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Technology Corridor:</strong> National capital region with strengths in telecommunications, 
+                        <strong>Technology Corridor:</strong> National capital region with strengths in telecommunications,
                         cybersecurity, and government technology.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -567,7 +567,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Innovation Triangle:</strong> University of Waterloo ecosystem with Communitech hub 
+                        <strong>Innovation Triangle:</strong> University of Waterloo ecosystem with Communitech hub
                         and strong automotive tech presence.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -587,7 +587,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Advanced Manufacturing Hub:</strong> Strong manufacturing base with growing health sciences 
+                        <strong>Advanced Manufacturing Hub:</strong> Strong manufacturing base with growing health sciences
                         and agricultural technology sectors.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -609,7 +609,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Ontario Innovation Funding Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -691,10 +691,10 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                 Ready to Access Ontario Innovation Funding?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get expert help navigating Ontario's innovation ecosystem and maximizing your OITC, JPF, and OCE funding. 
+                Get expert help navigating Ontario's innovation ecosystem and maximizing your OITC, JPF, and OCE funding.
                 Our Ontario specialists have secured $420M+ in provincial innovation funding.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>
                   <Link href="/contact?service=ontario-innovation-expert-help">
@@ -707,7 +707,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                   </Link>
                 </Button>
               </div>
-              
+
               <p className="text-blue-200 text-sm mt-6">
                 83% success rate • $420M+ secured • OITC, JPF & OCE expertise
               </p>

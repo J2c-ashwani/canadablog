@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Canadian Government Grants for Business | Federal & Provincial Funding",
     description: "Find Canadian government grants for startups and small businesses.",
-    url: "https://grantfinder.pro/canada",
+    url: "https://fsidigital.ca/canada",
   },
 }
 

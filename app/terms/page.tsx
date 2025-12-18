@@ -11,7 +11,7 @@ export default function TermsOfService() {
           <h1 className="text-4xl font-bold text-gray-900 mb-8">Terms of Service</h1>
           <div className="bg-white rounded-lg shadow-sm p-8 prose max-w-none">
             <p className="text-gray-600 mb-6">Last updated: {new Date().toLocaleDateString()}</p>
-            
+
             <h2>Acceptance of Terms</h2>
             <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
 
@@ -43,7 +43,7 @@ export default function TermsOfService() {
             <p>We shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website or reliance on the information provided.</p>
 
             <h2>Contact Information</h2>
-            <p>For questions about these Terms of Service, please contact us at legal@grantfinderpro.com</p>
+            <p>For questions about these Terms of Service, please contact us at hello@fsidigital.ca</p>
           </div>
         </div>
       </div>

@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Alberta Government Business Grants 2025 | Provincial Energy & Innovation Funding Programs Guide",
+  title: "Alberta Government Business Grants 2026 | Provincial Energy & Innovation Funding Programs Guide",
   description: "Complete guide to Alberta government business grants and provincial funding programs. Access Alberta Innovates, ERA programs, diversification initiatives, and energy sector funding for Alberta businesses.",
-  keywords: "Alberta government business grants, Alberta provincial funding, Alberta Innovates grants, ERA funding, Alberta energy diversification programs, Alberta business support programs 2025",
+  keywords: "Alberta government business grants, Alberta provincial funding, Alberta Innovates grants, ERA funding, Alberta energy diversification programs, Alberta business support programs 2026",
   openGraph: {
-    title: "Alberta Government Business Grants 2025 | Energy & Innovation Provincial Funding Guide",
+    title: "Alberta Government Business Grants 2026 | Energy & Innovation Provincial Funding Guide",
     description: "Comprehensive guide to Alberta provincial business grants offering funding for energy innovation, economic diversification, and technology development.",
-    url: "https://grantfinder.pro/blog/alberta-government-business-grants",
+    url: "https://fsidigital.ca/blog/alberta-government-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

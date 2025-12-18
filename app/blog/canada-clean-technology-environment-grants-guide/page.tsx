@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Clean Technology & Environment Grants 2025 | $1.2B+ Sustainability Funding Programs Guide",
+  title: "Canada Clean Technology & Environment Grants 2026 | $1.2B+ Sustainability Funding Programs Guide",
   description: "Complete guide to Canada's clean technology and environmental grants. Access SDTC funding, Clean Growth Program, and 22+ programs offering $1.2B+ for cleantech innovation.",
-  keywords: "Canada clean technology grants, environmental funding, SDTC grants, renewable energy funding, carbon capture grants, sustainability programs Canada 2025",
+  keywords: "Canada clean technology grants, environmental funding, SDTC grants, renewable energy funding, carbon capture grants, sustainability programs Canada 2026",
   openGraph: {
-    title: "Canada Clean Technology & Environment Grants 2025 | $1.2B+ Sustainability Funding Guide",
+    title: "Canada Clean Technology & Environment Grants 2026 | $1.2B+ Sustainability Funding Guide",
     description: "Comprehensive guide to Canada's clean technology and environmental funding ecosystem with 22+ programs offering $1.2B+ for sustainability innovation.",
-    url: "https://grantfinder.pro/blog/canada-clean-technology-environment-grants-guide",
+    url: "https://fsidigital.ca/blog/canada-clean-technology-environment-grants-guide",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -81,7 +81,7 @@ export default function CanadaCleanTechnologyEnvironmentGrantsGuidePage() {
                 <p className="text-lg text-gray-700 mb-6">
                   Canada's clean technology sector represents a $13.5 billion industry employing over 300,000 Canadians, positioning the nation as a global leader in environmental innovation and sustainability solutions. With over $1.2 billion available annually through 22+ specialized programs, Canada provides comprehensive support for renewable energy, carbon capture, waste management, water treatment, and net-zero transition technologies. From SDTC's pre-commercial cleantech development to the $8B Net Zero Accelerator, Canada drives environmental excellence and economic competitiveness.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-green-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-green-800">CleanTech Policy Priorities</h4>
@@ -92,7 +92,7 @@ export default function CanadaCleanTechnologyEnvironmentGrantsGuidePage() {
                       <li>• Circular economy and waste-to-energy solutions</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">Strategic Environmental Integration</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -113,7 +113,7 @@ export default function CanadaCleanTechnologyEnvironmentGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Clean Technology & Environment Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Sustainable Development Technology Canada */}
                 <Card className="border-green-200">
@@ -469,7 +469,7 @@ export default function CanadaCleanTechnologyEnvironmentGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Clean Technology Funding Strategy Framework</h2>
-              
+
               <div className="space-y-6">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -547,7 +547,7 @@ export default function CanadaCleanTechnologyEnvironmentGrantsGuidePage() {
               <p className="text-xl text-green-100 mb-8">
                 Get our complete clean technology funding guide or work with our cleantech specialists who have secured over $22M in environmental grants with 93% success rate across all major programs.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">DIY CleanTech Approach</h4>
@@ -574,7 +574,7 @@ export default function CanadaCleanTechnologyEnvironmentGrantsGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-green-200 text-sm mt-6">
                 93% success rate for cleantech applications • Average funding secured: $680K • Multi-program expertise
               </p>

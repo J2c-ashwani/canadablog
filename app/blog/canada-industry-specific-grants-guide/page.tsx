@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Industry Specific Grants 2025 | $1.5B+ Sector-Focused Programs Across 25+ Industries",
+  title: "Canada Industry Specific Grants 2026 | $1.5B+ Sector-Focused Programs Across 25+ Industries",
   description: "Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agriculture, services, technology, healthcare, construction, and specialized industry funding.",
   keywords: "Canada industry specific grants, manufacturing grants Canada, agriculture grants, service industry funding, sector specific programs, industry targeted grants, specialized business funding",
 }
@@ -26,7 +26,7 @@ export default function CanadaIndustrySpecificGrantsGuide() {
                 🏭 Canadian Industry Specific Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Canada Industry Specific Grants 2025
+                Canada Industry Specific Grants 2026
               </h1>
               <p className="text-xl text-indigo-100 mb-8">
                 Access $1.5B+ in Canadian sector-focused funding across 25+ specialized industry programs. From manufacturing 

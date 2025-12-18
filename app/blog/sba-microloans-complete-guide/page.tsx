@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "SBA Microloans Complete Guide 2025 | Small Business Microloan Program",
+  title: "SBA Microloans Complete Guide 2026 | Small Business Microloan Program",
   description: "Complete guide to SBA microloans. Learn eligibility, application process, and how to secure up to $50K in small business funding with business mentoring included.",
   keywords: "SBA microloans, small business microloans, SBA microloan program, startup funding, small business loans",
   openGraph: {
-    title: "SBA Microloans Complete Guide 2025",
+    title: "SBA Microloans Complete Guide 2026",
     description: "Complete guide to SBA microloans with application process and mentoring benefits.",
-    url: "https://grantfinder.pro/blog/sba-microloans-complete-guide",
+    url: "https://fsidigital.ca/blog/sba-microloans-complete-guide",
   },
 }
 
@@ -186,7 +186,7 @@ export default function SBAMicroloansGuide() {
                           </ul>
                         </div>
                         <div>
-                          <h5 className="font-semibold mb-3 text-purple-700">Interest Rates (2025):</h5>
+                          <h5 className="font-semibold mb-3 text-purple-700">Interest Rates (2026):</h5>
                           <ul className="text-sm text-gray-700 space-y-1">
                             <li>• Typically 8% - 13%</li>
                             <li>• Set by intermediary lender</li>

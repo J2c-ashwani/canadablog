@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Women Business Grants Canada 2025 | $6B+ Funding for Women Entrepreneurs",
     description: "Comprehensive funding guide for Canadian women entrepreneurs with federal programs, provincial grants, and $6B+ available through Women Entrepreneurship Strategy.",
-    url: "https://grantfinder.pro/canada/women-business-grants",
+    url: "https://fsidigital.ca/canada/women-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

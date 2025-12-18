@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Stage 4: Commercialization & Scale-Up Funding Canada 2025 | Strategic Innovation Fund | Up to $100M",
+  title: "Stage 4: Commercialization & Scale-Up Funding Canada 2026 | Strategic Innovation Fund | Up to $100M",
   description: "Complete guide to Canadian commercialization and scale-up funding. Access up to $100M through Strategic Innovation Fund, Export Development Canada, BDC Scale-up ventures, and TRL 9 market entry programs.",
   keywords: "commercialization funding Canada, scale-up grants, Strategic Innovation Fund, export development funding, BDC scale-up, market entry funding, TRL 9 funding, manufacturing scale-up grants Canada",
   openGraph: {
-    title: "Stage 4: Commercialization & Scale-Up Funding Canada 2025 | Up to $100M",
+    title: "Stage 4: Commercialization & Scale-Up Funding Canada 2026 | Up to $100M",
     description: "Access up to $100M in commercialization funding. Complete guide to Strategic Innovation Fund and scale-up programs.",
-    url: "https://grantfinder.pro/blog/commercialization-scale-up-funding-canada",
+    url: "https://fsidigital.ca/blog/commercialization-scale-up-funding-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,7 +32,7 @@ export default function CommercializationScaleUpFundingCanadaPage() {
                 💼 Stage 4: Commercialization & Scale-Up Funding
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Stage 4: Commercialization & Scale-Up Funding Canada 2025
+                Stage 4: Commercialization & Scale-Up Funding Canada 2026
               </h1>
               <p className="text-xl text-emerald-100 mb-8">
                 Access up to $100M in commercialization and scale-up funding through Strategic Innovation Fund, 

@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Industry-Specific Business Grants Guide 2025 | Sector-Focused Funding Programs",
+  title: "Industry-Specific Business Grants Guide 2026 | Sector-Focused Funding Programs",
   description: "Complete guide to industry-specific business grants. Find targeted funding for manufacturing, healthcare, technology, agriculture, and specialized business sectors.",
   keywords: "industry specific grants, sector grants, manufacturing grants, healthcare grants, technology grants, agriculture grants",
   openGraph: {
-    title: "Industry-Specific Business Grants Guide 2025",
+    title: "Industry-Specific Business Grants Guide 2026",
     description: "Complete guide to industry-specific business grants with targeted funding for specialized sectors.",
-    url: "https://grantfinder.pro/blog/industry-specific-business-grants-guide",
+    url: "https://fsidigital.ca/blog/industry-specific-business-grants-guide",
   },
 }
 

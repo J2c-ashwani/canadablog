@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Indigenous Women Business Grants Canada 2025-2026 | NACCA Funding $50K, First Nations Support, Cultural Enterprise Grants Toronto Vancouver Winnipeg",
-  description: "Complete 2025-2026 guide to Indigenous women business grants in Canada. NACCA Aboriginal Entrepreneurship Program, IWEF funding $50K loans, First Nations Métis Inuit women entrepreneurs support. Indigenous Financial Institutions financing Toronto Vancouver Winnipeg Calgary Ottawa Saskatoon Regina Thunder Bay",
-  keywords: "Indigenous women business grants Canada 2025, NACCA funding First Nations, Aboriginal Entrepreneurship Program women, IWEF Indigenous Women Entrepreneurship Fund, First Nations business loans Métis Inuit women entrepreneurs, cultural enterprise grants Canada, Indigenous Financial Institutions IFI, women entrepreneurship loan fund $50K, Indigenous business development support Ontario BC Alberta Manitoba Saskatchewan",
+  title: "Indigenous Women Business Grants Canada 2026-2027 | NACCA Funding $50K, First Nations Support, Cultural Enterprise Grants Toronto Vancouver Winnipeg",
+  description: "Complete 2026-2027 guide to Indigenous women business grants in Canada. NACCA Aboriginal Entrepreneurship Program, IWEF funding $50K loans, First Nations Métis Inuit women entrepreneurs support. Indigenous Financial Institutions financing Toronto Vancouver Winnipeg Calgary Ottawa Saskatoon Regina Thunder Bay",
+  keywords: "Indigenous women business grants Canada 2026, NACCA funding First Nations, Aboriginal Entrepreneurship Program women, IWEF Indigenous Women Entrepreneurship Fund, First Nations business loans Métis Inuit women entrepreneurs, cultural enterprise grants Canada, Indigenous Financial Institutions IFI, women entrepreneurship loan fund $50K, Indigenous business development support Ontario BC Alberta Manitoba Saskatchewan",
   openGraph: {
-    title: "Indigenous Women Business Grants Canada 2025 | NACCA Funding First Nations Support",
+    title: "Indigenous Women Business Grants Canada 2026 | NACCA Funding First Nations Support",
     description: "$50K-$250K Indigenous women business funding through NACCA, IWEF, Aboriginal Entrepreneurship Program across Canada.",
-    url: "https://grantfinder.pro/blog/indigenous-women-business-grants-canada",
+    url: "https://fsidigital.ca/blog/indigenous-women-business-grants-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,13 +29,13 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🪶 Indigenous Women Business Funding 2025-2026
+                🪶 Indigenous Women Business Funding 2026-2027
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Indigenous Women Business Grants Canada: NACCA Funding, First Nations Support & Cultural Enterprise Grants
               </h1>
               <p className="text-xl text-orange-100 mb-8">
-                Comprehensive 2025-2026 guide to Indigenous women business grants and loans across Canada. Access up to 
+                Comprehensive 2026-2027 guide to Indigenous women business grants and loans across Canada. Access up to 
                 $50,000 through NACCA Women Entrepreneurship Loan Fund (WELF), $100,000 Aboriginal Entrepreneurship Program, 
                 and $250,000 community business funding for First Nations, Métis, and Inuit women entrepreneurs. Complete 
                 funding guide through Indigenous Financial Institutions (IFIs) serving all provinces including Ontario 
@@ -64,7 +64,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Indigenous Women Business Grants by Province and Territory (2025-2026 NACCA Funding Available)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Indigenous Women Business Grants by Province and Territory (2026-2027 NACCA Funding Available)</h2>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-orange-200 hover:shadow-lg transition-shadow">
@@ -157,7 +157,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
               </div>
 
               <div className="bg-orange-50 border-2 border-orange-300 rounded-lg p-6">
-                <h3 className="font-bold text-orange-900 mb-3 text-lg">🔥 High-Demand Indigenous Women Business Funding Keywords 2025-2026:</h3>
+                <h3 className="font-bold text-orange-900 mb-3 text-lg">🔥 High-Demand Indigenous Women Business Funding Keywords 2026-2027:</h3>
                 <div className="grid md:grid-cols-3 gap-4 text-sm text-orange-800">
                   <div>
                     <strong>NACCA Funding:</strong> Aboriginal Entrepreneurship Program women, Indigenous Financial Institutions IFI loans, Women Entrepreneurship Loan Fund $50K, First Nations Métis Inuit women grants
@@ -174,7 +174,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-orange-50 border-b-2 border-orange-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -183,7 +183,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-orange-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-orange-800 mb-2">🚀 2025-2026 Indigenous Women Business Funding Highlights</h3>
+                      <h3 className="text-lg font-bold text-orange-800 mb-2">🚀 2026-2027 Indigenous Women Business Funding Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-orange-700">
                         <div>
                           <strong>NACCA 10-Year Agreement:</strong> Historic $830M over 10 years funding agreement with Indigenous Services Canada expanding Aboriginal Entrepreneurship Program for women across all provinces
@@ -192,7 +192,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
                           <strong>Women Entrepreneurship Loan Fund:</strong> Up to $50,000 microloans for Indigenous women entrepreneurs through 50+ Indigenous Financial Institutions nationwide
                         </div>
                         <div>
-                          <strong>IWEF 2025 Recipients:</strong> Indigenous Women Entrepreneurship Fund awarded $2,500 grants to 8 Indigenous women businesses with CCIB membership support
+                          <strong>IWEF 2026 Recipients:</strong> Indigenous Women Entrepreneurship Fund awarded $2,500 grants to 8 Indigenous women businesses with CCIB membership support
                         </div>
                         <div>
                           <strong>Network Expansion:</strong> Over 5,000 advisory services, 5,000 training participants, 600+ loans worth $11.4M delivered through IFI network for Indigenous women since 2022
@@ -215,7 +215,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
                 <p className="text-lg text-gray-600 mb-4">
                   Indigenous women entrepreneurs across Canada have access to comprehensive business funding through the National 
                   Aboriginal Capital Corporations Association (NACCA) network of over 50 Indigenous Financial Institutions (IFIs). 
-                  The historic 10-year, $830 million funding agreement with Indigenous Services Canada signed in May 2025 represents 
+                  The historic 10-year, $830 million funding agreement with Indigenous Services Canada signed in May 2026 represents 
                   unprecedented support for First Nations, Métis, and Inuit women business owners from startup through growth stages.
                 </p>
                 <p className="text-lg text-gray-600">
@@ -243,7 +243,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
                 <div className="bg-yellow-50 p-6 rounded-lg">
                   <div className="text-4xl font-bold text-yellow-600 mb-2">$830M</div>
                   <div className="text-gray-600 font-semibold">10-Year Funding</div>
-                  <div className="text-sm text-gray-500 mt-2">Historic NACCA federal agreement 2025</div>
+                  <div className="text-sm text-gray-500 mt-2">Historic NACCA federal agreement 2026</div>
                 </div>
                 <div className="bg-blue-50 p-6 rounded-lg">
                   <div className="text-4xl font-bold text-blue-600 mb-2">$3.3B</div>
@@ -258,7 +258,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
         <section id="indigenous-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Indigenous Women Business Grants and Loans Canada 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Indigenous Women Business Grants and Loans Canada 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete guide to federal Indigenous business funding programs available to First Nations, Métis, and 
                 Inuit women entrepreneurs across all Canadian provinces and territories through NACCA network.
@@ -448,13 +448,13 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
                   <CardContent className="pt-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-pink-800">IWEF 2025 Program Details</h4>
+                        <h4 className="font-bold text-xl mb-4 text-pink-800">IWEF 2026 Program Details</h4>
                         <div className="space-y-3">
                           <div className="bg-pink-50 p-4 rounded-lg border border-pink-200">
                             <p className="font-semibold text-gray-800 mb-3">Indigenous Women Entrepreneurship Fund:</p>
                             <ul className="space-y-2 text-sm text-gray-700">
                               <li>• <strong>Grant Amount:</strong> $2,500 non-repayable grants for Indigenous women entrepreneurs</li>
-                              <li>• <strong>2025 Recipients:</strong> 8 Indigenous women business owners received IWEF funding</li>
+                              <li>• <strong>2026 Recipients:</strong> 8 Indigenous women business owners received IWEF funding</li>
                               <li>• <strong>Eligibility:</strong> Must be Canadian Council for Indigenous Business (CCIB) member</li>
                               <li>• <strong>Application:</strong> Annual competitive application process through CCIB</li>
                               <li>• <strong>Support Included:</strong> Access to CCIB network, mentorship, business development resources</li>
@@ -744,7 +744,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Indigenous Women Business Grant Application Success Strategies 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Indigenous Women Business Grant Application Success Strategies 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Proven strategies for First Nations, Métis, and Inuit women entrepreneurs to maximize NACCA funding 
                 approval rates and Indigenous business grant success across Canada.
@@ -907,7 +907,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
                 Ready to Access Indigenous Women Business Funding and Start Your Entrepreneurship Journey Across Canada?
               </h2>
               <p className="text-xl text-orange-100 mb-8">
-                Get our complete 2025-2026 Indigenous women business grants guide with NACCA program navigator, IFI directory, 
+                Get our complete 2026-2027 Indigenous women business grants guide with NACCA program navigator, IFI directory, 
                 application templates covering First Nations, Métis, Inuit women entrepreneurs in Ontario, BC, Alberta, 
                 Manitoba, Saskatchewan, Quebec, Atlantic Canada, and Northern territories - or work with our Indigenous 
                 business funding specialists for expert application support maximizing your NACCA loan and grant approval success.

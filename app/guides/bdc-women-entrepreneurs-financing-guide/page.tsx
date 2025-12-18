@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Apply for BDC Women Entrepreneurs Financing 2025",
     description: "Complete guide to BDC financing applications with step-by-step process and advisor engagement strategies.",
-    url: "https://grantfinder.pro/guides/bdc-women-entrepreneurs-financing-guide",
+    url: "https://fsidigital.ca/guides/bdc-women-entrepreneurs-financing-guide",
   },
 }
 

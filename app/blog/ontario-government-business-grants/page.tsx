@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Ontario Government Business Grants 2025 | Provincial Funding Programs Guide | OCED Support",
+  title: "Ontario Government Business Grants 2026 | Provincial Funding Programs Guide | OCED Support",
   description: "Complete guide to Ontario government business grants and provincial funding programs. Access Ontario Creates, OCED programs, Starter Company Plus, and innovation funding for businesses in Ontario.",
-  keywords: "Ontario government business grants, Ontario provincial funding, OCED grants, Starter Company Plus Ontario, Ontario Creates funding, Ontario business support programs 2025",
+  keywords: "Ontario government business grants, Ontario provincial funding, OCED grants, Starter Company Plus Ontario, Ontario Creates funding, Ontario business support programs 2026",
   openGraph: {
-    title: "Ontario Government Business Grants 2025 | Provincial Funding Programs Guide",
+    title: "Ontario Government Business Grants 2026 | Provincial Funding Programs Guide",
     description: "Comprehensive guide to Ontario provincial business grants offering funding for startups, innovation, and business growth across all sectors.",
-    url: "https://grantfinder.pro/blog/ontario-government-business-grants",
+    url: "https://fsidigital.ca/blog/ontario-government-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -35,8 +35,8 @@ export default function OntarioGovernmentBusinessGrantsBlogPage() {
                 Ontario Government Business Grants & Provincial Funding
               </h1>
               <p className="text-xl text-red-100 mb-8">
-                Ontario's comprehensive provincial business support ecosystem offering grants, loans, and incentives 
-                from $5,000 to $10M+ through Ontario Creates, OCED programs, Starter Company Plus, and innovation 
+                Ontario's comprehensive provincial business support ecosystem offering grants, loans, and incentives
+                from $5,000 to $10M+ through Ontario Creates, OCED programs, Starter Company Plus, and innovation
                 initiatives supporting business growth across Canada's largest provincial economy.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -81,13 +81,13 @@ export default function OntarioGovernmentBusinessGrantsBlogPage() {
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Ontario as Provincial Economic Powerhouse</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Ontario represents Canada's largest provincial economy, contributing over 38% of national GDP with 
-                  comprehensive business support infrastructure spanning multiple ministries and agencies. The provincial 
-                  government delivers targeted funding through Ontario Centre for Entrepreneurship & Development (OCED), 
-                  Ontario Creates, Ministry of Economic Development, and regional development corporations, creating 
+                  Ontario represents Canada's largest provincial economy, contributing over 38% of national GDP with
+                  comprehensive business support infrastructure spanning multiple ministries and agencies. The provincial
+                  government delivers targeted funding through Ontario Centre for Entrepreneurship & Development (OCED),
+                  Ontario Creates, Ministry of Economic Development, and regional development corporations, creating
                   Canada's most diverse provincial business support ecosystem.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-red-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-red-800">Provincial Policy Priorities</h4>
@@ -98,7 +98,7 @@ export default function OntarioGovernmentBusinessGrantsBlogPage() {
                       <li>• Regional economic development and diversification</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">Strategic Provincial Integration</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -119,7 +119,7 @@ export default function OntarioGovernmentBusinessGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Ontario Provincial Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Starter Company Plus */}
                 <Card className="border-red-200">
@@ -149,7 +149,7 @@ export default function OntarioGovernmentBusinessGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Ontario's flagship entrepreneurship program providing funding, training, and mentorship for 
+                      Ontario's flagship entrepreneurship program providing funding, training, and mentorship for
                       new and early-stage businesses, delivered through regional partners across the province.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
@@ -212,7 +212,7 @@ export default function OntarioGovernmentBusinessGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Ontario's creative industries agency supporting film, television, digital media, music, 
+                      Ontario's creative industries agency supporting film, television, digital media, music,
                       book publishing, and interactive digital media companies through comprehensive funding programs.
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
@@ -268,7 +268,7 @@ export default function OntarioGovernmentBusinessGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Provincial innovation agency providing funding and support for technology companies, 
+                      Provincial innovation agency providing funding and support for technology companies,
                       research commercialization, and innovation ecosystem development across Ontario.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
@@ -331,7 +331,7 @@ export default function OntarioGovernmentBusinessGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Provincial regional development initiatives supporting economic diversification, 
+                      Provincial regional development initiatives supporting economic diversification,
                       job creation, and business growth in specific geographic areas across Ontario.
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
@@ -371,10 +371,10 @@ export default function OntarioGovernmentBusinessGrantsBlogPage() {
                 Ready to Access Ontario Provincial Business Funding?
               </h2>
               <p className="text-xl text-red-100 mb-8">
-                Get the complete Ontario provincial application guide or work with our Ontario business funding specialists 
+                Get the complete Ontario provincial application guide or work with our Ontario business funding specialists
                 who have secured $12M+ in provincial grants with expertise across all Ontario programs.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">DIY Ontario Approach</h4>
@@ -401,7 +401,7 @@ export default function OntarioGovernmentBusinessGrantsBlogPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-red-200 text-sm mt-6">
                 87% success rate for Ontario applications • Average funding secured: $285K • All provincial programs expertise
               </p>

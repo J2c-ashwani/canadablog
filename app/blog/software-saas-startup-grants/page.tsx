@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Software & SaaS Startup Grants 2025-2026 | $305K NSF SBIR, $1.25M Phase II, DOD Software Modernization Non-Dilutive Funding",
-  description: "Complete 2025-2026 guide to software and SaaS startup grants. NSF SBIR Phase I $305,000, Phase II $1.25M, Fast-Track $1.555M non-dilutive funding for enterprise software, cloud platforms, developer tools, AI/ML, cybersecurity, software automation supporting zero equity retention commercialization.",
-  keywords: "software startup grants 2025, SaaS startup grants NSF SBIR, enterprise software grants $305K, cloud platform funding non-dilutive, developer tools grants Phase II, NSF SBIR software innovation $1.25M, DOD software modernization grants, AI ML software grants, cybersecurity software funding, software automation grants zero equity",
+  title: "Software & SaaS Startup Grants 2026-2027 | $305K NSF SBIR, $1.25M Phase II, DOD Software Modernization Non-Dilutive Funding",
+  description: "Complete 2026-2027 guide to software and SaaS startup grants. NSF SBIR Phase I $305,000, Phase II $1.25M, Fast-Track $1.555M non-dilutive funding for enterprise software, cloud platforms, developer tools, AI/ML, cybersecurity, software automation supporting zero equity retention commercialization.",
+  keywords: "software startup grants 2026, SaaS startup grants NSF SBIR, enterprise software grants $305K, cloud platform funding non-dilutive, developer tools grants Phase II, NSF SBIR software innovation $1.25M, DOD software modernization grants, AI ML software grants, cybersecurity software funding, software automation grants zero equity",
   openGraph: {
-    title: "Software & SaaS Grants 2025 | $305K NSF SBIR, $1.25M Phase II Non-Dilutive",
+    title: "Software & SaaS Grants 2026 | $305K NSF SBIR, $1.25M Phase II Non-Dilutive",
     description: "Complete guide to software and SaaS startup grants from NSF SBIR, DOD, state programs.",
-    url: "https://grantfinder.pro/blog/software-saas-startup-grants",
+    url: "https://fsidigital.ca/blog/software-saas-startup-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -31,7 +31,7 @@ export default function SoftwareSaaSStartupGrantsPage() {
               {/* Badge */}
               <div className="flex justify-center mb-6">
                 <Badge className="bg-white/20 text-white border-white/30 px-4 py-2 text-sm font-medium backdrop-blur-sm">
-                  💻 Software & SaaS Grants 2025-2026
+                  💻 Software & SaaS Grants 2026-2027
                 </Badge>
               </div>
 
@@ -266,7 +266,7 @@ export default function SoftwareSaaSStartupGrantsPage() {
           </div>
         </section>
 
-        {/* 2025 Updates - Highlight What's New */}
+        {/* 2026 Updates - Highlight What's New */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
@@ -276,7 +276,7 @@ export default function SoftwareSaaSStartupGrantsPage() {
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-indigo-900 mb-2">What's New in 2025-2026</h3>
+                    <h3 className="text-2xl font-bold text-indigo-900 mb-2">What's New in 2026-2027</h3>
                     <p className="text-gray-700">Recent NSF SBIR updates that benefit software startups</p>
                   </div>
                 </div>

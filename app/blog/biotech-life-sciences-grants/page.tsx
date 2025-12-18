@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Biotech & Life Sciences Grants 2025-2026 | $306K NIH SBIR, $2M Phase II, $1.2B Seed Fund, FDA Orphan Drug Grants Non-Dilutive",
-  description: "Complete 2025-2026 guide to biotech and life sciences grants. NIH SBIR Phase I $306K, Phase II $2M, $1.2B Seed Fund, FDA Orphan Drug designation grants, state life sciences centers supporting therapeutics, medical devices, diagnostics, drug discovery with zero equity funding.",
-  keywords: "biotech grants 2025, life sciences SBIR funding, NIH grants $306K, therapeutics development grants, medical device funding Phase II, diagnostics grants NIH, drug discovery SBIR $2M, FDA orphan drug grants, preclinical research funding, clinical trials grants, state life sciences centers",
+  title: "Biotech & Life Sciences Grants 2026-2027 | $306K NIH SBIR, $2M Phase II, $1.2B Seed Fund, FDA Orphan Drug Grants Non-Dilutive",
+  description: "Complete 2026-2027 guide to biotech and life sciences grants. NIH SBIR Phase I $306K, Phase II $2M, $1.2B Seed Fund, FDA Orphan Drug designation grants, state life sciences centers supporting therapeutics, medical devices, diagnostics, drug discovery with zero equity funding.",
+  keywords: "biotech grants 2026, life sciences SBIR funding, NIH grants $306K, therapeutics development grants, medical device funding Phase II, diagnostics grants NIH, drug discovery SBIR $2M, FDA orphan drug grants, preclinical research funding, clinical trials grants, state life sciences centers",
   openGraph: {
-    title: "Biotech & Life Sciences Grants 2025 | $306K NIH SBIR + $1.2B Seed Fund",
+    title: "Biotech & Life Sciences Grants 2026 | $306K NIH SBIR + $1.2B Seed Fund",
     description: "Complete guide to biotech and life sciences grants from NIH, FDA, and state programs.",
-    url: "https://grantfinder.pro/blog/biotech-life-sciences-grants",
+    url: "https://fsidigital.ca/blog/biotech-life-sciences-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -31,7 +31,7 @@ export default function BiotechLifeSciencesGrantsPage() {
               {/* Badge */}
               <div className="flex justify-center mb-6">
                 <Badge className="bg-white/20 text-white border-white/30 px-4 py-2 text-sm font-medium backdrop-blur-sm">
-                  🧬 Biotech & Life Sciences Grants 2025-2026
+                  🧬 Biotech & Life Sciences Grants 2026-2027
                 </Badge>
               </div>
 
@@ -93,7 +93,7 @@ export default function BiotechLifeSciencesGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
                 Federal and state funding for therapeutics, medical devices, diagnostics, drug discovery, and biomedical innovation.
               </p>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 {/* NIH SBIR/STTR */}
                 <Card className="border-2 border-teal-200 hover:shadow-xl transition-all hover:-translate-y-1">
@@ -227,7 +227,7 @@ export default function BiotechLifeSciencesGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 NIH SBIR/STTR and FDA grants support biomedical innovations across therapeutic areas.
               </p>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <Card className="border-l-4 border-l-teal-500 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
@@ -308,7 +308,7 @@ export default function BiotechLifeSciencesGrantsPage() {
           </div>
         </section>
 
-        {/* 2025 Updates */}
+        {/* 2026 Updates */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
@@ -318,11 +318,11 @@ export default function BiotechLifeSciencesGrantsPage() {
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-teal-900 mb-2">What's New in Biotech Funding 2025-2026</h3>
+                    <h3 className="text-2xl font-bold text-teal-900 mb-2">What's New in Biotech Funding 2026-2027</h3>
                     <p className="text-gray-700">Recent NIH investments and program updates for biotech entrepreneurs</p>
                   </div>
                 </div>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white rounded-lg p-5 border border-teal-100">
                     <div className="flex items-center mb-2">
@@ -369,7 +369,7 @@ export default function BiotechLifeSciencesGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Everything you need to know about NIH SBIR/STTR, FDA Orphan Drug programs, and state life sciences funding.
               </p>
-              
+
               <div className="space-y-8">
                 {/* NIH SBIR Phase I */}
                 <Card id="nih-sbir-details" className="border-2 border-teal-200">
@@ -403,7 +403,7 @@ export default function BiotechLifeSciencesGrantsPage() {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="bg-white p-4 rounded-lg border border-gray-200">
                           <h5 className="font-semibold text-gray-800 mb-3">Phase I Focus Areas:</h5>
                           <ul className="space-y-2 text-sm text-gray-700">
@@ -426,7 +426,7 @@ export default function BiotechLifeSciencesGrantsPage() {
                           </ul>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-bold text-xl mb-4 text-gray-800">Biotech Success Stories</h4>
                         <div className="space-y-4">
@@ -636,7 +636,7 @@ export default function BiotechLifeSciencesGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 Proven tactics to increase your chances of winning NIH SBIR/STTR and FDA funding.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-2 border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -756,7 +756,7 @@ export default function BiotechLifeSciencesGrantsPage() {
               <p className="text-xl text-teal-100 mb-10 max-w-2xl mx-auto">
                 Download our free biotech grants guide or get personalized help from specialists experienced in NIH SBIR/STTR applications.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 <Card className="bg-white/10 backdrop-blur border-2 border-white/20 hover:bg-white/15 transition-all">
                   <CardContent className="pt-6 text-center">

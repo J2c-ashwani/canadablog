@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Quebec Women Business Grants 2025 | $720M Francophone Entrepreneur Support Programs",
+  title: "Quebec Women Business Grants 2026 | $720M Francophone Entrepreneur Support Programs",
   description: "Complete guide to Quebec women entrepreneurship support with Réseau des Femmes d'Affaires, Investissement Québec, J. Armand Bombardier grants, and francophone women business funding.",
   keywords: "Quebec women business grants, RFAQ grants, Investissement Quebec women, francophone women entrepreneurs, Quebec women leadership",
   openGraph: {
-    title: "Quebec Women Business Grants 2025 | $720M Francophone Support",
+    title: "Quebec Women Business Grants 2026 | $720M Francophone Support",
     description: "Comprehensive guide to Quebec women business support with provincial grants, microfinancing, and francophone entrepreneur programs.",
-    url: "https://grantfinder.pro/blog/quebec-women-business-grants",
+    url: "https://fsidigital.ca/blog/quebec-women-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,7 +29,7 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🇨🇦 Quebec Women Business Support 2025
+                🇨🇦 Quebec Women Business Support 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Quebec Women Business Grants & Entrepreneur Support
@@ -55,7 +55,7 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -64,7 +64,7 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Quebec Women Entrepreneurship 2025 Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Quebec Women Entrepreneurship 2026 Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>$720M Provincial Support:</strong> Comprehensive francophone women business ecosystem

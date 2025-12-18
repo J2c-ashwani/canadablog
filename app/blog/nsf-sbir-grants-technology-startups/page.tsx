@@ -9,13 +9,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "NSF SBIR Grants 2025-2026 | $275K Phase I, $2M Phase II Technology Startup Funding - Complete Application Guide",
-  description: "Complete 2025-2026 guide to NSF SBIR/STTR grants for technology startups. Phase I funding up to $275K, Phase II up to $2M for AI, deep tech, biotech, software, hardware innovation. Application strategies, eligibility, deadlines.",
-  keywords: "NSF SBIR grants 2025, NSF STTR funding, America's Seed Fund, Phase I Phase II grants, deep tech startup funding, AI innovation grants, NSF technology grants, non-dilutive startup funding",
+  title: "NSF SBIR Grants 2026-2027 | $275K Phase I, $2M Phase II Technology Startup Funding - Complete Application Guide",
+  description: "Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Phase I funding up to $275K, Phase II up to $2M for AI, deep tech, biotech, software, hardware innovation. Application strategies, eligibility, deadlines.",
+  keywords: "NSF SBIR grants 2026, NSF STTR funding, America's Seed Fund, Phase I Phase II grants, deep tech startup funding, AI innovation grants, NSF technology grants, non-dilutive startup funding",
   openGraph: {
-    title: "NSF SBIR Grants 2025 | $275K-$2M Technology Startup Funding",
+    title: "NSF SBIR Grants 2026 | $275K-$2M Technology Startup Funding",
     description: "Complete guide to NSF SBIR/STTR grants with Phase I $275K and Phase II $2M funding for tech startups.",
-    url: "https://grantfinder.pro/blog/nsf-sbir-grants-technology-startups",
+    url: "https://fsidigital.ca/blog/nsf-sbir-grants-technology-startups",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -30,13 +30,13 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🚀 NSF SBIR/STTR Grants 2025-2026
+                🚀 NSF SBIR/STTR Grants 2026-2027
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 NSF SBIR Grants: $275K Phase I, $2M Phase II Non-Dilutive Funding for Technology Startups
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Comprehensive 2025-2026 guide to National Science Foundation SBIR/STTR grants providing up to $2,000,000 
+                Comprehensive 2026-2027 guide to National Science Foundation SBIR/STTR grants providing up to $2,000,000 
                 in non-dilutive funding for deep tech, AI, software, hardware, biotech, and advanced technology innovation. 
                 Complete application strategies, eligibility requirements, success rates, and funding timelines for Phase I 
                 ($275,000) and Phase II ($2,000,000) awards supporting technology startups across all 50 states. America's 
@@ -63,7 +63,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">NSF SBIR Grants by Tech Hub and State (2025-2026 Funding Available)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">NSF SBIR Grants by Tech Hub and State (2026-2027 Funding Available)</h2>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-blue-200 hover:shadow-lg transition-shadow">
@@ -156,7 +156,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
               </div>
 
               <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-6">
-                <h3 className="font-bold text-blue-900 mb-3 text-lg">🔥 High-Demand NSF SBIR Keywords 2025-2026:</h3>
+                <h3 className="font-bold text-blue-900 mb-3 text-lg">🔥 High-Demand NSF SBIR Keywords 2026-2027:</h3>
                 <div className="grid md:grid-cols-3 gap-4 text-sm text-blue-800">
                   <div>
                     <strong>Program Types:</strong> NSF SBIR Phase I $275K, NSF SBIR Phase II $2M, America's Seed Fund, Fast-Track pilot to Phase II, non-dilutive startup funding no equity
@@ -173,7 +173,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-blue-50 border-b-2 border-blue-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -182,7 +182,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-blue-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-blue-800 mb-2">🚀 2025-2026 NSF SBIR Program Highlights</h3>
+                      <h3 className="text-lg font-bold text-blue-800 mb-2">🚀 2026-2027 NSF SBIR Program Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700">
                         <div>
                           <strong>Phase I Increase:</strong> Maximum Phase I awards increased to $275,000 (from $256,000) with 6-12 month project duration for technical feasibility[web:151][web:153]
@@ -256,7 +256,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
         <section id="nsf-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NSF SBIR and STTR Program Details 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NSF SBIR and STTR Program Details 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete breakdown of Phase I, Phase II, and Fast-Track funding programs with eligibility, timelines, and award amounts
               </p>
@@ -336,24 +336,24 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
                     </div>
 
                     <div className="bg-blue-50 p-6 rounded-lg border-2 border-blue-200 mt-6">
-                      <h4 className="font-bold text-lg mb-4 text-blue-800">📍 NSF SBIR Phase I Application Deadlines 2025-2026 (Rolling Windows)</h4>
+                      <h4 className="font-bold text-lg mb-4 text-blue-800">📍 NSF SBIR Phase I Application Deadlines 2026-2027 (Rolling Windows)</h4>
                       <div className="grid md:grid-cols-3 gap-4 text-sm">
                         <div>
                           <p className="font-semibold text-gray-800 mb-2">Window Opens:</p>
                           <ul className="space-y-1 text-gray-700">
-                            <li>• January 15, 2025</li>
-                            <li>• April 15, 2025</li>
-                            <li>• July 15, 2025</li>
-                            <li>• October 15, 2025</li>
+                            <li>• January 15, 2026</li>
+                            <li>• April 15, 2026</li>
+                            <li>• July 15, 2026</li>
+                            <li>• October 15, 2026</li>
                           </ul>
                         </div>
                         <div>
                           <p className="font-semibold text-gray-800 mb-2">Window Closes:</p>
                           <ul className="space-y-1 text-gray-700">
-                            <li>• February 28, 2025</li>
-                            <li>• May 31, 2025</li>
-                            <li>• August 31, 2025</li>
-                            <li>• November 30, 2025</li>
+                            <li>• February 28, 2026</li>
+                            <li>• May 31, 2026</li>
+                            <li>• August 31, 2026</li>
+                            <li>• November 30, 2026</li>
                           </ul>
                         </div>
                         <div>
@@ -784,7 +784,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NSF SBIR Application Success Strategies 2025-2026</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">NSF SBIR Application Success Strategies 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Proven strategies for technology startups to maximize NSF SBIR approval rates and win Phase I, Phase II funding
               </p>
@@ -946,7 +946,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
                 Ready to Access NSF SBIR Funding and Win Federal Technology Grants?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get our complete 2025-2026 NSF SBIR application guide with Phase I/II proposal templates, technical 
+                Get our complete 2026-2027 NSF SBIR application guide with Phase I/II proposal templates, technical 
                 writing strategies, commercialization frameworks, and reviewer evaluation criteria - or work with our 
                 SBIR specialists for expert proposal development maximizing your grant approval success.
               </p>

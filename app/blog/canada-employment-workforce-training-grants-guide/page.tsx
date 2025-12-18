@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Employment & Workforce Training Grants 2025 | $1.9B+ Skills Development Funding Programs Guide",
+  title: "Canada Employment & Workforce Training Grants 2026 | $1.9B+ Skills Development Funding Programs Guide",
   description: "Complete guide to Canada's employment and workforce training grants. Access Canada Job Grant, Skills Development programs, and 28+ programs offering $1.9B+ for workforce excellence.",
-  keywords: "Canada employment grants, workforce training funding, Canada Job Grant, skills development programs, employee training grants Canada 2025",
+  keywords: "Canada employment grants, workforce training funding, Canada Job Grant, skills development programs, employee training grants Canada 2026",
   openGraph: {
-    title: "Canada Employment & Workforce Training Grants 2025 | $1.9B+ Skills Development Funding Guide",
+    title: "Canada Employment & Workforce Training Grants 2026 | $1.9B+ Skills Development Funding Guide",
     description: "Comprehensive guide to Canada's employment and workforce training funding ecosystem with 28+ programs offering $1.9B+ for skills development and job creation.",
-    url: "https://grantfinder.pro/blog/canada-employment-workforce-training-grants-guide",
+    url: "https://fsidigital.ca/blog/canada-employment-workforce-training-grants-guide",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -209,7 +209,7 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h5 className="font-semibold mb-2 text-green-700">2025/26 Priority Sectors:</h5>
+                        <h5 className="font-semibold mb-2 text-green-700">2026/26 Priority Sectors:</h5>
                         <ul className="text-sm text-gray-600 space-y-1">
                           <li>• <strong>Healthcare:</strong> Patient care, medical administration</li>
                           <li>• <strong>Clean Energy:</strong> Renewable energy systems, efficiency</li>
@@ -226,7 +226,7 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
                           <li>• No financial circumstances requirements</li>
                           <li>• BC Services Card Account required</li>
                           <li>• Early registration encouraged (limited spaces)</li>
-                          <li>• Fall 2025 semester programs opening</li>
+                          <li>• Fall 2026 semester programs opening</li>
                         </ul>
                       </div>
                     </div>

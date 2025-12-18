@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Agri-Food Technology Grants 2025 | $2.3B+ AgriInnovate & Precision Agriculture Funding",
+  title: "Canada Agri-Food Technology Grants 2026 | $2.3B+ AgriInnovate & Precision Agriculture Funding",
   description: "Complete guide to Canadian agri-food technology innovation grants. Access $2.3B+ funding through AgriInnovate, precision agriculture programs, food processing technology, and 32+ agritech grants.",
   keywords: "Canada agriculture grants, AgriInnovate funding, precision agriculture grants Canada, food technology funding, agritech innovation grants, farm technology grants, food processing grants Canada, sustainable agriculture funding",
   openGraph: {
-    title: "Canada Agri-Food Technology Grants 2025 | $2.3B+ AgriTech Funding",
+    title: "Canada Agri-Food Technology Grants 2026 | $2.3B+ AgriTech Funding",
     description: "Access $2.3B+ in agri-food technology funding. Complete guide to AgriInnovate, precision agriculture, and food processing grants.",
-    url: "https://grantfinder.pro/blog/canada-agri-food-technology-innovation-grants",
+    url: "https://fsidigital.ca/blog/canada-agri-food-technology-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,7 +32,7 @@ export default function CanadaAgriFoodTechnologyInnovationGrantsPage() {
                 🌾 Agri-Food Technology Innovation Grants
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Canada Agri-Food Technology Innovation Grants 2025
+                Canada Agri-Food Technology Innovation Grants 2026
               </h1>
               <p className="text-xl text-green-100 mb-8">
                 Access $2.3B+ in agricultural technology and food innovation funding through 32+ federal and provincial programs. 

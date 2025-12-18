@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Manufacturing & Industry Grants 2025 | $3.1B+ Advanced Manufacturing Funding Programs Guide",
+  title: "Canada Manufacturing & Industry Grants 2026 | $3.1B+ Advanced Manufacturing Funding Programs Guide",
   description: "Complete guide to Canada's manufacturing and industry grants. Access NGen funding, Advanced Manufacturing Investment Strategy, productivity programs, and 38+ programs offering $3.1B+ for manufacturing excellence.",
-  keywords: "Canada manufacturing grants, advanced manufacturing funding, NGen grants, manufacturing productivity programs, industry 4.0 funding Canada 2025",
+  keywords: "Canada manufacturing grants, advanced manufacturing funding, NGen grants, manufacturing productivity programs, industry 4.0 funding Canada 2026",
   openGraph: {
-    title: "Canada Manufacturing & Industry Grants 2025 | $3.1B+ Advanced Manufacturing Funding Guide",
+    title: "Canada Manufacturing & Industry Grants 2026 | $3.1B+ Advanced Manufacturing Funding Guide",
     description: "Comprehensive guide to Canada's manufacturing and industry funding ecosystem with 38+ programs offering $3.1B+ for productivity, automation, and competitiveness.",
-    url: "https://grantfinder.pro/blog/canada-manufacturing-industry-grants-guide",
+    url: "https://fsidigital.ca/blog/canada-manufacturing-industry-grants-guide",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -68,7 +68,7 @@ export default function CanadaManufacturingIndustryGrantsGuidePage() {
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-purple-600 mb-2">$87.5M</div>
-                  <div className="text-gray-600">NGen Investment 2025</div>
+                  <div className="text-gray-600">NGen Investment 2026</div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-orange-600 mb-2">40%</div>
@@ -81,7 +81,7 @@ export default function CanadaManufacturingIndustryGrantsGuidePage() {
                 <p className="text-lg text-gray-700 mb-6">
                   Canada operates one of North America's most comprehensive manufacturing support ecosystems, with over $3.1 billion available annually through federal and provincial programs targeting productivity improvements, automation adoption, Industry 4.0 transformation, and advanced manufacturing capabilities. From the Next Generation Manufacturing Canada (NGen) supercluster to provincial advanced manufacturing investment strategies, Canada provides unparalleled support for manufacturing excellence across all sectors and company sizes.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-gray-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-gray-800">Manufacturing Policy Priorities</h4>
@@ -92,7 +92,7 @@ export default function CanadaManufacturingIndustryGrantsGuidePage() {
                       <li>• Supply chain resilience and competitiveness</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-green-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-green-800">Strategic Manufacturing Integration</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -113,7 +113,7 @@ export default function CanadaManufacturingIndustryGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Manufacturing & Industry Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* NGen - Next Generation Manufacturing Canada */}
                 <Card className="border-blue-200">
@@ -143,11 +143,11 @@ export default function CanadaManufacturingIndustryGrantsGuidePage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Canada's advanced manufacturing innovation supercluster co-investing $87.5M in 2025 for collaborative projects that accelerate advanced manufacturing capabilities, digitalization, and global competitiveness.
+                      Canada's advanced manufacturing innovation supercluster co-investing $87.5M in 2026 for collaborative projects that accelerate advanced manufacturing capabilities, digitalization, and global competitiveness.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
                       <div>
-                        <h5 className="font-semibold mb-2">2025 Program Focus:</h5>
+                        <h5 className="font-semibold mb-2">2026 Program Focus:</h5>
                         <ul className="text-sm text-gray-600 space-y-1">
                           <li>• Advanced Manufacturing Technology Program</li>
                           <li>• Collaborative projects $1.5M - $8M</li>
@@ -465,7 +465,7 @@ export default function CanadaManufacturingIndustryGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Manufacturing Funding Strategy Framework</h2>
-              
+
               <div className="space-y-6">
                 <Card className="border-blue-200">
                   <CardHeader>
@@ -543,7 +543,7 @@ export default function CanadaManufacturingIndustryGrantsGuidePage() {
               <p className="text-xl text-gray-100 mb-8">
                 Get our complete manufacturing funding strategy guide or work with our manufacturing specialists who have secured over $18M in manufacturing grants with 89% success rate across all major programs.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">DIY Manufacturing Approach</h4>
@@ -570,7 +570,7 @@ export default function CanadaManufacturingIndustryGrantsGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-gray-200 text-sm mt-6">
                 89% success rate for manufacturing applications • Average funding secured: $485K • Multi-program expertise
               </p>

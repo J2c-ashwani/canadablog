@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women Entrepreneurship Strategy Canada 2025 | $6B+ Female Business Grants & Loans",
+  title: "Women Entrepreneurship Strategy Canada 2026 | $6B+ Female Business Grants & Loans",
   description: "Complete guide to Canada's Women Entrepreneurship Strategy. Access $6B+ in women business grants, female entrepreneur funding, and women-owned business loans across all Canadian provinces.",
   keywords: "women entrepreneurship strategy Canada, female business grants Canada, women business loans Canada, women entrepreneur funding, Canadian women-owned business support, female startup grants, women small business funding, WES program Canada, women entrepreneurship loan fund, grants for women entrepreneurs Canada",
   openGraph: {
-    title: "Women Entrepreneurship Strategy Canada 2025 | $6B+ Female Business Grants",
+    title: "Women Entrepreneurship Strategy Canada 2026 | $6B+ Female Business Grants",
     description: "Access $6B+ in Canadian government funding for women entrepreneurs. Complete guide to WES grants, loans, and support programs for female-owned businesses.",
-    url: "https://grantfinder.pro/blog/women-entrepreneurship-strategy-canada",
+    url: "https://fsidigital.ca/blog/women-entrepreneurship-strategy-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,7 +32,7 @@ export default function WESBlogPage() {
                 👩‍💼 Women Entrepreneurship Strategy Guide
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Women Entrepreneurship Strategy Canada 2025
+                Women Entrepreneurship Strategy Canada 2026
               </h1>
               <p className="text-xl text-pink-100 mb-8">
                 Access $6+ billion in Canadian government funding for women entrepreneurs. Complete guide to 

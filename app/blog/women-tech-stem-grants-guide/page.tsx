@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women in Technology & STEM Grants Guide 2025 | Female Tech Entrepreneur Funding",
+  title: "Women in Technology & STEM Grants Guide 2026 | Female Tech Entrepreneur Funding",
   description: "Complete guide to grants for women in technology and STEM fields. Discover SBIR, NSF, and private grants offering up to $1M for female tech entrepreneurs.",
   keywords: "women in technology grants, STEM grants women, female tech entrepreneur funding, SBIR women, NSF women grants, women innovation grants",
   openGraph: {
-    title: "Women in Technology & STEM Grants Guide 2025 | Female Tech Entrepreneur Funding",
+    title: "Women in Technology & STEM Grants Guide 2026 | Female Tech Entrepreneur Funding",
     description: "Complete guide to technology and STEM grants specifically for women entrepreneurs and female innovators.",
-    url: "https://grantfinder.pro/blog/women-tech-stem-grants-guide",
+    url: "https://fsidigital.ca/blog/women-tech-stem-grants-guide",
   },
 }
 

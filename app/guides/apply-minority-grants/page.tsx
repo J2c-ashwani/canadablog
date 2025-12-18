@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Apply for Minority & Women Business Grants 2025",
     description: "Step-by-step guide to minority and women business grant applications and certifications.",
-    url: "https://grantfinder.pro/guides/apply-minority-grants",
+    url: "https://fsidigital.ca/guides/apply-minority-grants",
   },
 }
 

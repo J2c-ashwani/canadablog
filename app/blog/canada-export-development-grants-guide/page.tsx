@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Export Development Grants 2025 | $680M+ International Market Expansion Across 18+ Programs",
+  title: "Canada Export Development Grants 2026 | $680M+ International Market Expansion Across 18+ Programs",
   description: "Complete guide to Canadian export development grants. Access all 18+ international market expansion programs including CanExport SMEs, EDC Trade Impact, provincial export programs, and trade mission funding.",
   keywords: "Canada export development grants, CanExport SMEs, international market expansion funding, export readiness programs, trade mission grants, EDC Trade Impact Program, international business development",
 }
@@ -26,7 +26,7 @@ export default function CanadaExportDevelopmentGrantsGuide() {
                 🌍 Canadian Export Development Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Canada Export Development Grants 2025
+                Canada Export Development Grants 2026
               </h1>
               <p className="text-xl text-emerald-100 mb-8">
                 Access $680M+ in Canadian international market expansion funding across 18+ specialized programs. From CanExport SMEs 

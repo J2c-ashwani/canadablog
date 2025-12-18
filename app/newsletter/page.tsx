@@ -7,7 +7,7 @@ import { CheckCircle, Users, TrendingUp, Award } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Newsletter - Weekly Grant Updates | Grant Finder Pro",
+  title: "Newsletter - Weekly Grant Updates | FSI Digital",
   description:
     "Get weekly government grant updates, funding opportunities, and expert tips delivered to your inbox. Plus free Ultimate Grant Guide PDF.",
   keywords: "grant newsletter, funding updates, government grants newsletter, startup funding news",
@@ -131,7 +131,7 @@ export default function NewsletterPage() {
               </div>
               <div className="text-center">
                 <p className="text-gray-600 mb-4 italic">
-                  "Grant Finder Pro's newsletter is the first email I read every week. It's helped our nonprofit secure
+                  "FSI Digital's newsletter is the first email I read every week. It's helped our nonprofit secure
                   over $200,000 in funding."
                 </p>
                 <div className="font-semibold">Michael Rodriguez</div>

@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Atlantic Canada Innovation Grants & Funding 2025 | 15% ACITC | $650M+ Ocean Tech Support",
+  title: "Atlantic Canada Innovation Grants & Funding 2026 | 15% ACITC | $650M+ Ocean Tech Support",
   description: "Complete guide to Atlantic Canada innovation grants. Access $650M+ through Atlantic Innovation Fund, ACOA programs, 15% ACITC tax credit, and ocean technology, renewable energy, aerospace funding.",
   keywords: "Atlantic Canada innovation grants, ACOA funding, Atlantic Innovation Fund, ACITC tax credit, ocean technology grants, maritime innovation Atlantic, renewable energy Atlantic, aerospace Atlantic Canada",
   openGraph: {
-    title: "Atlantic Canada Innovation Grants 2025 | $650M+ Ocean Tech & Maritime",
+    title: "Atlantic Canada Innovation Grants 2026 | $650M+ Ocean Tech & Maritime",
     description: "Access $650M+ in Atlantic Canada innovation funding. Complete guide to ACOA, Atlantic Innovation Fund, and ocean technology programs.",
-    url: "https://grantfinder.pro/blog/atlantic-canada-innovation-grants",
+    url: "https://fsidigital.ca/blog/atlantic-canada-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -32,11 +32,11 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                 ⚓ Atlantic Canada Provincial Innovation Support
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Atlantic Canada Innovation Grants & Funding 2025
+                Atlantic Canada Innovation Grants & Funding 2026
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Access $650M+ in Atlantic Canada innovation funding through the Atlantic Innovation Fund, ACOA regional development programs, 
-                15% Atlantic Canada Innovation Tax Credit (ACITC), and sector-specific support for ocean technology leadership, 
+                Access $650M+ in Atlantic Canada innovation funding through the Atlantic Innovation Fund, ACOA regional development programs,
+                15% Atlantic Canada Innovation Tax Credit (ACITC), and sector-specific support for ocean technology leadership,
                 renewable energy excellence, and aerospace innovation across Canada's maritime innovation ecosystem.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -86,7 +86,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Atlantic Canada Innovation Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Atlantic Innovation Fund */}
                 <Card className="border-blue-200">
@@ -112,7 +112,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Federal program supporting innovation-driven companies and economic development organizations in Atlantic Canada 
+                      Federal program supporting innovation-driven companies and economic development organizations in Atlantic Canada
                       with repayable contributions for R&D, commercialization, and business scale-up projects.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -162,7 +162,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Atlantic Canada Opportunities Agency (ACOA) providing comprehensive business development support including 
+                      Atlantic Canada Opportunities Agency (ACOA) providing comprehensive business development support including
                       innovation funding, market expansion assistance, and regional economic development initiatives.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -212,7 +212,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Sector-specific funding for ocean technology development including marine renewable energy, ocean observation, 
+                      Sector-specific funding for ocean technology development including marine renewable energy, ocean observation,
                       aquaculture technology, and maritime innovation through various federal and provincial programs.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -262,7 +262,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Atlantic provinces offer R&D tax credits including Nova Scotia's 15% ACITC (Atlantic Canada Innovation Tax Credit), 
+                      Atlantic provinces offer R&D tax credits including Nova Scotia's 15% ACITC (Atlantic Canada Innovation Tax Credit),
                       New Brunswick's R&D tax credit, and Newfoundland's R&D tax credit, stackable with federal SR&ED.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -297,7 +297,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Atlantic Canada Innovation Sector Excellence</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Ocean Technology Leadership */}
                 <Card className="hover:shadow-lg transition-all border-blue-200">
@@ -310,7 +310,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      World-leading ocean technology cluster with expertise in marine renewable energy, 
+                      World-leading ocean technology cluster with expertise in marine renewable energy,
                       ocean observation, aquaculture tech, and underwater systems.
                     </p>
                     <div className="space-y-2">
@@ -345,7 +345,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Strong renewable energy sector with wind power, tidal energy, and grid modernization 
+                      Strong renewable energy sector with wind power, tidal energy, and grid modernization
                       expertise serving Atlantic and international markets.
                     </p>
                     <div className="space-y-2">
@@ -380,7 +380,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Growing aerospace sector with strengths in MRO (maintenance, repair, overhaul), 
+                      Growing aerospace sector with strengths in MRO (maintenance, repair, overhaul),
                       composites, and defence technology applications.
                     </p>
                     <div className="space-y-2">
@@ -415,7 +415,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Growing technology sector with software development, cybersecurity, gaming, 
+                      Growing technology sector with software development, cybersecurity, gaming,
                       and IT services supporting regional and global clients.
                     </p>
                     <div className="space-y-2">
@@ -450,7 +450,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Emerging life sciences sector with medical devices, digital health, 
+                      Emerging life sciences sector with medical devices, digital health,
                       and marine biotechnology innovation.
                     </p>
                     <div className="space-y-2">
@@ -485,7 +485,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Agricultural technology and natural resource innovation including fisheries tech, 
+                      Agricultural technology and natural resource innovation including fisheries tech,
                       forestry innovation, and food processing.
                     </p>
                     <div className="space-y-2">
@@ -518,7 +518,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Atlantic Canada Regional Innovation Hubs</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-blue-200">
                   <CardHeader>
@@ -527,7 +527,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Ocean Tech Capital:</strong> Atlantic Canada's innovation leader with COVE, Ocean Supercluster, 
+                        <strong>Ocean Tech Capital:</strong> Atlantic Canada's innovation leader with COVE, Ocean Supercluster,
                         strong universities (Dalhousie, SMU), and vibrant startup ecosystem.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -547,7 +547,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Energy & IT Hub:</strong> Energy innovation focus with Irving, growing IT sector, 
+                        <strong>Energy & IT Hub:</strong> Energy innovation focus with Irving, growing IT sector,
                         and strong University of New Brunswick research commercialization.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -567,7 +567,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Offshore & Ocean Tech:</strong> Offshore oil & gas expertise transitioning to ocean technology, 
+                        <strong>Offshore & Ocean Tech:</strong> Offshore oil & gas expertise transitioning to ocean technology,
                         renewable energy, and Memorial University research strength.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -587,7 +587,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>AgriTech & Aerospace:</strong> Agricultural technology focus, aerospace manufacturing, 
+                        <strong>AgriTech & Aerospace:</strong> Agricultural technology focus, aerospace manufacturing,
                         and growing IT sector with strong quality of life advantages.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -609,7 +609,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Atlantic Canada Funding Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -691,10 +691,10 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                 Ready to Access Atlantic Canada Innovation Funding?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get expert help navigating Atlantic Canada's innovation ecosystem and maximizing your ACOA, Atlantic Innovation Fund, 
+                Get expert help navigating Atlantic Canada's innovation ecosystem and maximizing your ACOA, Atlantic Innovation Fund,
                 and provincial tax credit funding. Our Atlantic specialists have secured $85M+ in regional innovation funding.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Button size="lg" className="bg-white text-blue-800 hover:bg-gray-100" asChild>
                   <Link href="/contact?service=atlantic-canada-innovation-grants-expert-help">
@@ -707,7 +707,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                   </Link>
                 </Button>
               </div>
-              
+
               <p className="text-blue-200 text-sm mt-6">
                 75% success rate • $85M+ secured • Ocean Tech, ACOA & Regional expertise
               </p>

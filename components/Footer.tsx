@@ -11,7 +11,7 @@ export function Footer() {
 
   const handleFooterSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
+
     if (!email) {
       alert('Please enter your email address');
       return;
@@ -23,8 +23,8 @@ export function Footer() {
       const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          email, 
+        body: JSON.stringify({
+          email,
           name: '',
         }),
       });
@@ -53,15 +53,15 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">GF</span>
+                <span className="text-white font-bold text-sm">FD</span>
               </div>
-              <span className="font-bold text-xl">Grant Finder Pro</span>
+              <span className="font-bold text-xl">FSI Digital</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Your trusted source for government grants and funding opportunities for startups and small businesses in
               USA and Canada.
             </p>
-            
+
             {/* Resources Links */}
             <div className="space-y-2">
               <h4 className="font-semibold text-sm text-gray-300">Resources</h4>
@@ -193,7 +193,7 @@ export function Footer() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <Button 
+              <Button
                 type="submit"
                 className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90"
                 disabled={isLoading}
@@ -207,7 +207,7 @@ export function Footer() {
 
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">© 2025 Grant Finder Pro. All rights reserved.</p>
+            <p className="text-gray-400 text-sm">© 2025 FSI Digital. All rights reserved.</p>
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 mt-2 md:mt-0">
               <p className="text-gray-400 text-sm">
                 Last updated: January 2025

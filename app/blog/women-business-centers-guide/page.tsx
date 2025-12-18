@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women's Business Centers Guide 2025 | SBA-Funded Support for Female Entrepreneurs",
+  title: "Women's Business Centers Guide 2026 | SBA-Funded Support for Female Entrepreneurs",
   description: "Complete guide to Women's Business Centers (WBC). Learn how to access SBA-funded counseling, training, and capital assistance for women entrepreneurs.",
   keywords: "womens business centers, WBC, SBA women entrepreneurs, female business support, women business counseling",
   openGraph: {
-    title: "Women's Business Centers Guide 2025 | SBA-Funded Support",
+    title: "Women's Business Centers Guide 2026 | SBA-Funded Support",
     description: "Complete guide to accessing Women's Business Centers for counseling, training, and capital assistance.",
-    url: "https://grantfinder.pro/blog/women-business-centers-guide",
+    url: "https://fsidigital.ca/blog/women-business-centers-guide",
   },
 }
 

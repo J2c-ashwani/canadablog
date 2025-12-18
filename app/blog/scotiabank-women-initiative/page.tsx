@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Scotiabank Women Initiative 2025 | Capital Funding + Mentorship + Education for Women Entrepreneurs",
+  title: "Scotiabank Women Initiative 2026 | Capital Funding + Mentorship + Education for Women Entrepreneurs",
   description: "Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and comprehensive support for Canadian women-led businesses.",
   keywords: "Scotiabank Women Initiative, women business funding, ScotiaRISE, women entrepreneur support, banking for women businesses",
   openGraph: {
-    title: "Scotiabank Women Initiative 2025 | Capital + Mentorship + Education",
+    title: "Scotiabank Women Initiative 2026 | Capital + Mentorship + Education",
     description: "Comprehensive banking and support program for women-led businesses with capital access, mentorship, and educational resources.",
-    url: "https://grantfinder.pro/blog/scotiabank-women-initiative",
+    url: "https://fsidigital.ca/blog/scotiabank-women-initiative",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -55,7 +55,7 @@ export default function ScotiabankWomenInitiativeGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -64,7 +64,7 @@ export default function ScotiabankWomenInitiativeGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Scotiabank Women Initiative 2025 Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Scotiabank Women Initiative 2026 Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>Capital Access:</strong> Financing solutions tailored for women-owned businesses

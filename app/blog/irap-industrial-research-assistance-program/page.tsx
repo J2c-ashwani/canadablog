@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Industrial Research Assistance Program (IRAP) 2025 | Up to $1M Tech Grants",
+  title: "Industrial Research Assistance Program (IRAP) 2026 | Up to $1M Tech Grants",
   description: "Complete guide to IRAP funding for Canadian tech SMEs. Learn eligibility, application process, and get up to $1M in non-repayable R&D grants.",
   keywords: "IRAP, Industrial Research Assistance Program, Canada tech grants, R&D funding Canada, NRC IRAP, innovation grants",
   openGraph: {
-    title: "Industrial Research Assistance Program (IRAP) 2025 | Up to $1M Tech Grants",
+    title: "Industrial Research Assistance Program (IRAP) 2026 | Up to $1M Tech Grants",
     description: "Complete guide to IRAP - non-repayable R&D grants up to $1M for Canadian tech businesses.",
-    url: "https://grantfinder.pro/blog/irap-industrial-research-assistance-program",
+    url: "https://fsidigital.ca/blog/irap-industrial-research-assistance-program",
   },
 }
 
@@ -34,7 +34,7 @@ export default function IRAPBlogPage() {
                 Industrial Research Assistance Program (IRAP)
               </h1>
               <p className="text-xl text-green-100 mb-8">
-                Everything you need to know about securing non-repayable R&D grants up to $1M 
+                Everything you need to know about securing non-repayable R&D grants up to $1M
                 for your Canadian tech business through the National Research Council's IRAP program.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -79,12 +79,12 @@ export default function IRAPBlogPage() {
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">What is IRAP?</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  The Industrial Research Assistance Program (IRAP) is Canada's largest technology assistance 
-                  program for small and medium-sized enterprises. Delivered by the National Research Council of 
-                  Canada (NRC), IRAP provides funding and advisory services to help innovative Canadian businesses 
+                  The Industrial Research Assistance Program (IRAP) is Canada's largest technology assistance
+                  program for small and medium-sized enterprises. Delivered by the National Research Council of
+                  Canada (NRC), IRAP provides funding and advisory services to help innovative Canadian businesses
                   accelerate technology development and commercialization.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-green-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-green-800">Program Benefits</h4>
@@ -95,7 +95,7 @@ export default function IRAPBlogPage() {
                       <li>• Youth employment funding</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">Eligible Activities</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -116,7 +116,7 @@ export default function IRAPBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Funding Categories</h2>
-              
+
               <div className="space-y-8">
                 {/* Research & Development */}
                 <Card className="border-green-200">
@@ -274,7 +274,7 @@ export default function IRAPBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Eligibility Requirements</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">✅ Eligible Companies:</h4>
@@ -297,7 +297,7 @@ export default function IRAPBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-red-700">❌ Ineligible Organizations:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -329,7 +329,7 @@ export default function IRAPBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Application Process</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <span className="bg-green-500 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold mr-4 mt-0.5">1</span>
@@ -376,7 +376,7 @@ export default function IRAPBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">IRAP Success Tips</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">✅ Increase Your Success Rate:</h4>
@@ -399,7 +399,7 @@ export default function IRAPBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Mistakes to Avoid:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -434,10 +434,10 @@ export default function IRAPBlogPage() {
                 Ready to Apply for IRAP Funding?
               </h2>
               <p className="text-xl text-green-100 mb-8">
-                Get the detailed application guide or work with our experts to maximize 
+                Get the detailed application guide or work with our experts to maximize
                 your IRAP approval chances and secure the R&D funding you need.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 {/* Get Application Guide CTA */}
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
@@ -466,7 +466,7 @@ export default function IRAPBlogPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-green-200 text-sm mt-6">
                 89% approval rate with expert help vs 52% DIY • Average funding secured: $320K
               </p>

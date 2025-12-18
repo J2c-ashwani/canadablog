@@ -16,7 +16,7 @@ export default function ThankYouPage() {
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-green-500 to-blue-500 rounded-full mb-6 animate-bounce">
               <CheckCircle className="w-12 h-12 text-white" />
@@ -67,7 +67,7 @@ export default function ThankYouPage() {
                 <Mail className="w-5 h-5 text-yellow-600 mr-3 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm text-gray-700">
-                    <strong>Didn't receive the email?</strong> Check your spam folder or contact us at support@grantfinder.pro
+                    <strong>Didn't receive the email?</strong> Check your spam folder or contact us at hello@fsidigital.ca
                   </p>
                 </div>
               </div>

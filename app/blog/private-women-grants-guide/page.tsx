@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Private Women Grants Guide 2025 | Foundation Grants for Female Entrepreneurs",
+  title: "Private Women Grants Guide 2026 | Foundation Grants for Female Entrepreneurs",
   description: "Complete guide to private foundation grants for women entrepreneurs. Discover 50+ foundations offering grants up to $250K for women-owned businesses.",
   keywords: "private women grants, foundation grants women entrepreneurs, female entrepreneur funding, women business grants private, amber grant foundation",
   openGraph: {
-    title: "Private Women Grants Guide 2025 | Foundation Grants for Female Entrepreneurs",
+    title: "Private Women Grants Guide 2026 | Foundation Grants for Female Entrepreneurs",
     description: "Complete guide to private foundation grants specifically for women entrepreneurs and female business owners.",
-    url: "https://grantfinder.pro/blog/private-women-grants-guide",
+    url: "https://fsidigital.ca/blog/private-women-grants-guide",
   },
 }
 

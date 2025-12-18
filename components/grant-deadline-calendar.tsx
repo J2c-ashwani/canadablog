@@ -80,9 +80,9 @@ export function GrantDeadlineCalendar() {
 
     const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Grant Finder Pro//Grant Deadline//EN
+PRODID:-//FSI Digital//Grant Deadline//EN
 BEGIN:VEVENT
-UID:${grant.id}@grantfinder.pro
+UID:${grant.id}@fsidigital.ca
 DTSTAMP:${formatDate(new Date())}
 DTSTART:${formatDate(startDate)}
 DTEND:${formatDate(endDate)}

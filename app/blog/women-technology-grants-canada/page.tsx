@@ -8,13 +8,13 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women in Technology Grants Canada 2025 | AI, Software & Digital Innovation Funding",
+  title: "Women in Technology Grants Canada 2026 | AI, Software & Digital Innovation Funding",
   description: "Complete guide to Canadian women technology grants with NRC IRAP, Innovate BC, Alberta Innovates, AI funding, software development support, and digital innovation programs.",
   keywords: "women technology grants Canada, women in tech funding, AI grants women, software development funding, digital innovation support",
   openGraph: {
-    title: "Women in Technology Grants Canada 2025 | Tech Innovation Funding",
+    title: "Women in Technology Grants Canada 2026 | Tech Innovation Funding",
     description: "Comprehensive guide to technology grants for Canadian women entrepreneurs in software, AI, digital innovation, and tech startups.",
-    url: "https://grantfinder.pro/blog/women-technology-grants-canada",
+    url: "https://fsidigital.ca/blog/women-technology-grants-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }
@@ -29,15 +29,15 @@ export default function WomenTechnologyGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                💻 Tech Innovation Funding 2025
+                💻 Tech Innovation Funding 2026
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Women in Technology Grants Canada
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Comprehensive guide to Canadian technology grants for women entrepreneurs in software development, 
-                AI and machine learning, digital innovation, clean tech, and tech startups. Access federal programs 
-                like NRC IRAP, provincial innovation funding through Innovate BC and Alberta Innovates, women-specific 
+                Comprehensive guide to Canadian technology grants for women entrepreneurs in software development,
+                AI and machine learning, digital innovation, clean tech, and tech startups. Access federal programs
+                like NRC IRAP, provincial innovation funding through Innovate BC and Alberta Innovates, women-specific
                 tech accelerators, and specialized support for women building technology companies across Canada.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -56,7 +56,7 @@ export default function WomenTechnologyGrantsCanadaPage() {
           </div>
         </section>
 
-        {/* Enhanced 2025 Program Updates */}
+        {/* Enhanced 2026 Program Updates */}
         <section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -65,7 +65,7 @@ export default function WomenTechnologyGrantsCanadaPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Women Tech Funding 2025 Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 Women Tech Funding 2026 Highlights</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>NRC IRAP:</strong> Up to $10M for industrial R&D and technology commercialization
@@ -95,9 +95,9 @@ export default function WomenTechnologyGrantsCanadaPage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada's Innovation Ecosystem for Women Tech Entrepreneurs</h2>
                 <p className="text-lg text-gray-600">
-                  Canadian women technology entrepreneurs have access to comprehensive funding across software development, 
-                  AI/ML research, digital innovation, clean tech, and hardware development. Federal programs like NRC IRAP 
-                  provide up to $10M for R&D, while provincial innovation agencies offer grants, loans, and acceleration 
+                  Canadian women technology entrepreneurs have access to comprehensive funding across software development,
+                  AI/ML research, digital innovation, clean tech, and hardware development. Federal programs like NRC IRAP
+                  provide up to $10M for R&D, while provincial innovation agencies offer grants, loans, and acceleration
                   programs. Women-specific tech accelerators and diversity initiatives provide additional support pathways.
                 </p>
               </div>
@@ -129,7 +129,7 @@ export default function WomenTechnologyGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Women Technology Funding Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* NRC IRAP */}
                 <Card className="border-blue-200">
@@ -225,8 +225,8 @@ export default function WomenTechnologyGrantsCanadaPage() {
                             <span className="text-orange-700 font-bold">Innovation & Commercialization</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Provincial Crown corporation supporting women in AI, clean energy, agriculture technology, 
-                            health innovation, and digital transformation with grants, investments, and commercialization support.</p>
+                            <p>Provincial Crown corporation supporting women in AI, clean energy, agriculture technology,
+                              health innovation, and digital transformation with grants, investments, and commercialization support.</p>
                           </div>
                         </div>
                       </div>
@@ -281,7 +281,7 @@ export default function WomenTechnologyGrantsCanadaPage() {
                   </CardContent>
                 </Card>
 
-                 {/* AI & ML Specific Programs */}
+                {/* AI & ML Specific Programs */}
                 <Card className="border-indigo-200">
                   <CardHeader>
                     <div className="flex items-center mb-2">
@@ -299,9 +299,9 @@ export default function WomenTechnologyGrantsCanadaPage() {
                             <span className="text-indigo-700 font-bold">AI/ML Innovation</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Specialized funding for women entrepreneurs developing artificial intelligence, machine learning, 
-                            deep learning, natural language processing, and computer vision solutions through federal SR&ED tax 
-                            credits and provincial AI research programs.</p>
+                            <p>Specialized funding for women entrepreneurs developing artificial intelligence, machine learning,
+                              deep learning, natural language processing, and computer vision solutions through federal SR&ED tax
+                              credits and provincial AI research programs.</p>
                           </div>
                         </div>
                       </div>
@@ -365,7 +365,7 @@ export default function WomenTechnologyGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Tech Funding Success Strategies for Women</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -447,15 +447,15 @@ export default function WomenTechnologyGrantsCanadaPage() {
                 Ready to Access Women Technology Funding in Canada?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get our complete women technology grants guide with program navigator and technical application strategies, 
+                Get our complete women technology grants guide with program navigator and technical application strategies,
                 or work with our tech funding specialists for expert support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free Tech Funding Guide</h4>
                   <p className="text-blue-100 text-sm mb-4">
-                    Get our comprehensive women technology grants guide with NRC IRAP insights, 
+                    Get our comprehensive women technology grants guide with NRC IRAP insights,
                     provincial innovation programs, and AI/ML funding strategies.
                   </p>
                   <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100" asChild>
@@ -469,7 +469,7 @@ export default function WomenTechnologyGrantsCanadaPage() {
                 <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Expert Tech Funding Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with tech funding specialists who understand Canadian innovation programs 
+                    Work with tech funding specialists who understand Canadian innovation programs
                     and can help optimize your technology grant applications.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
@@ -479,7 +479,7 @@ export default function WomenTechnologyGrantsCanadaPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-blue-200 text-sm mt-6">
                 Expert guidance • Tech innovation funding • AI/ML support • Women technology entrepreneur success
               </p>

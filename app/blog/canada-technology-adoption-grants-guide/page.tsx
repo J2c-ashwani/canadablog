@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Technology Adoption Grants 2025 | $950M+ Digital Transformation Across 22+ Programs",
+  title: "Canada Technology Adoption Grants 2026 | $950M+ Digital Transformation Across 22+ Programs",
   description: "Complete guide to Canadian technology adoption grants. Access all 22+ digital transformation programs including CDAP, provincial tech grants, AI adoption funding, and cybersecurity support.",
   keywords: "Canada technology adoption grants, CDAP program, digital transformation funding, technology integration grants, AI adoption support, cybersecurity funding, automation grants Canada",
 }
@@ -26,7 +26,7 @@ export default function CanadaTechnologyAdoptionGrantsGuide() {
                 💻 Canadian Technology Adoption Funding
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Canada Technology Adoption Grants 2025
+                Canada Technology Adoption Grants 2026
               </h1>
               <p className="text-xl text-cyan-100 mb-8">
                 Access $950M+ in Canadian digital transformation funding across 22+ specialized programs. From CDAP to AI adoption grants - 
