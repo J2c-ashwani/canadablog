@@ -29,12 +29,9 @@ export const metadata: Metadata = {
   robots: "index, follow",
   metadataBase: new URL("https://fsidigital.ca"),
   alternates: {
-    canonical: "https://fsidigital.ca",
+    canonical: "./",
   },
   viewport: "width=device-width, initial-scale=1",
-  verification: {
-    google: "your-google-verification-code",
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
