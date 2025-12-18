@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: "Government Grants for Startups & Businesses | USA & Canada Funding",
   description:
     "Find government grants for startups and small businesses in USA and Canada. Free grant finder tool, application guides, and funding opportunities.",
-  keywords: "government grants, startup funding, small business grants, USA grants, Canada grants, business funding",
+  keywords: "government grants, startup funding, small business grants, USA grants, Canada grants, business funding, business investment, angel investors, venture capital alternatives, startup investment, non-dilutive funding",
   authors: [{ name: "FSI Digital" }],
   creator: "FSI Digital",
   publisher: "FSI Digital",
@@ -88,15 +88,38 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "FSI Digital",
-              url: "https://fsidigital.ca",
-              logo: "https://fsidigital.ca/logo.png",
-              description: "Find government grants for startups and small businesses in USA and Canada",
-              sameAs: [
-                "https://twitter.com/fsidigital",
-                "https://linkedin.com/company/fsidigital"
-              ],
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "name": "FSI Digital",
+                  "url": "https://fsidigital.ca",
+                  "logo": "https://fsidigital.ca/logo.png",
+                  "description": "Find government grants for startups and small businesses in USA and Canada",
+                  "sameAs": [
+                    "https://twitter.com/fsidigital",
+                    "https://linkedin.com/company/fsidigital"
+                  ],
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "contactType": "customer support",
+                    "email": "support@fsidigital.ca"
+                  },
+                  "areaServed": ["US", "CA", "MX"]
+                },
+                {
+                  "@type": "WebSite",
+                  "name": "FSI Digital Government Grants",
+                  "url": "https://fsidigital.ca",
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                      "@type": "EntryPoint",
+                      "urlTemplate": "https://fsidigital.ca/search?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                  }
+                }
+              ]
             }),
           }}
         />

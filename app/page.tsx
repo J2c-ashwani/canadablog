@@ -19,7 +19,7 @@ export default function HomePage() {
   // Hero section form handler
   const handleHeroSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
+
     if (!email) {
       alert('Please enter your email address');
       return;
@@ -31,8 +31,8 @@ export default function HomePage() {
       const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          email, 
+        body: JSON.stringify({
+          email,
           name: '',
         }),
       });
@@ -58,7 +58,7 @@ export default function HomePage() {
   // Newsletter section form handler
   const handleNewsletterSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
+
     if (!emailNewsletter) {
       alert('Please enter your email address');
       return;
@@ -70,8 +70,8 @@ export default function HomePage() {
       const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          email: emailNewsletter, 
+        body: JSON.stringify({
+          email: emailNewsletter,
           name: '',
         }),
       });
@@ -113,8 +113,7 @@ export default function HomePage() {
               </span>
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-blue-100 leading-relaxed text-pretty px-4 sm:px-0">
-              Discover thousands of government funding opportunities in USA and Canada. Get our AI-powered grant finder
-              and free PDF guide with top 50 startup grants.
+              Secure non-dilutive <strong>investment</strong> for your business. Discover thousands of government funding opportunities in USA and Canada. The smartest alternative to <strong>investor</strong> capital.
             </p>
 
             <form onSubmit={handleHeroSubmit} className="flex flex-col gap-4 justify-center items-center mb-8 sm:mb-12 px-4 sm:px-0">

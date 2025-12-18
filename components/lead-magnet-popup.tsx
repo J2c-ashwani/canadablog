@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { X, Download, Gift } from "lucide-react"
+import { Download, Gift } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 
 export function LeadMagnetPopup() {
@@ -51,7 +51,7 @@ export function LeadMagnetPopup() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           email,
           name: ''
         }),
@@ -68,14 +68,16 @@ export function LeadMagnetPopup() {
     }
   }
 
-  const handleClose = () => {
-    setIsOpen(false)
-    localStorage.setItem("newsletter-popup-shown", "true")
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open)
+    if (!open) {
+      localStorage.setItem("newsletter-popup-shown", "true")
+    }
   }
 
   if (isSubmitted) {
     return (
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <Dialog open={isOpen} onOpenChange={handleOpenChange}>
         <DialogContent className="sm:max-w-md">
           <div className="text-center py-6">
             <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
@@ -102,11 +104,9 @@ export function LeadMagnetPopup() {
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-md">
-        <Button variant="ghost" size="sm" className="absolute right-4 top-4" onClick={handleClose}>
-          <X className="h-4 w-4" />
-        </Button>
+
 
         <DialogHeader className="text-center">
           <div className="flex items-center justify-center gap-2 mb-2">
