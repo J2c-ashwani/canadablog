@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SBIR Small Business Innovation Research 2026",
     description: "Complete guide to SBIR grants with Phase I & II funding for innovative small businesses.",
-    url: "https://fsidigital.ca/blog/sbir-small-business-guide",
+    url: "https://www.fsidigital.ca/blog/sbir-small-business-guide",
   },
 }
 

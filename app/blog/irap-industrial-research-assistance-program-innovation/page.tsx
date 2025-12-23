@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "IRAP Industrial Research Assistance Program 2026 | Up to $500K Innovation Funding",
     description: "Complete guide to IRAP innovation funding with 60-80% R&D support, dedicated advisors, and up to $500K for Canadian SMEs under 500 employees.",
-    url: "https://fsidigital.ca/blog/irap-industrial-research-assistance-program-innovation",
+    url: "https://www.fsidigital.ca/blog/irap-industrial-research-assistance-program-innovation",
     images: ["/api/placeholder/1200/630"],
   },
 }

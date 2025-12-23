@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Apply for AI Grants Canada 2025 | Scale AI & Machine Learning Funding",
     description: "Complete application guide for Canadian AI grants with Scale AI, CDAP, and research funding strategies.",
-    url: "https://fsidigital.ca/guides/canada-digital-ai-funding-guide",
+    url: "https://www.fsidigital.ca/guides/canada-digital-ai-funding-guide",
   },
 }
 

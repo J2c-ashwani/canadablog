@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Clean Tech & Energy Grants 2026 | $200K DOE SBIR + $1.6M Phase II",
     description: "Complete guide to clean tech and energy grants from DOE, EPA, and state programs.",
-    url: "https://fsidigital.ca/blog/clean-tech-energy-grants",
+    url: "https://www.fsidigital.ca/blog/clean-tech-energy-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

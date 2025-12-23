@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Youth Entrepreneurship Funding Application Guide 2025 | CYBF & Young Entrepreneur Grants",
     description: "Step-by-step guide with templates and strategies for successful youth entrepreneurship funding applications in Canada.",
-    url: "https://fsidigital.ca/guides/apply-youth-entrepreneurship-funding",
+    url: "https://www.fsidigital.ca/guides/apply-youth-entrepreneurship-funding",
   },
 }
 

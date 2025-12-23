@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "State & Local Business Grants Guide 2026",
     description: "Complete guide to state and local business grants with regional funding opportunities.",
-    url: "https://fsidigital.ca/blog/state-local-business-grants-guide",
+    url: "https://www.fsidigital.ca/blog/state-local-business-grants-guide",
   },
 }
 

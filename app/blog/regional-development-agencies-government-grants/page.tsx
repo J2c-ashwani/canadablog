@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Regional Development Agencies Canada 2026 | RDA Federal Funding Guide",
     description: "Comprehensive guide to Canada's 7 Regional Development Agencies offering targeted federal funding from $125K to $10M for regional economic development.",
-    url: "https://fsidigital.ca/blog/regional-development-agencies-government-grants",
+    url: "https://www.fsidigital.ca/blog/regional-development-agencies-government-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

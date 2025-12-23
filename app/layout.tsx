@@ -19,15 +19,15 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Government Grants for Startups & Businesses | USA & Canada Funding",
+  title: "FSI Digital | Government Grants for Startups & Businesses",
   description:
     "Find government grants for startups and small businesses in USA and Canada. Free grant finder tool, application guides, and funding opportunities.",
-  keywords: "government grants, startup funding, small business grants, USA grants, Canada grants, business funding, business investment, angel investors, venture capital alternatives, startup investment, non-dilutive funding",
+  keywords: "FSI, FSI Digital, FSIDigital, FSI Grants, government grants, startup funding, small business grants, USA grants, Canada grants, business funding, business investment, angel investors, venture capital alternatives, startup investment, non-dilutive funding",
   authors: [{ name: "FSI Digital" }],
   creator: "FSI Digital",
   publisher: "FSI Digital",
   robots: "index, follow",
-  metadataBase: new URL("https://fsidigital.ca"),
+  metadataBase: new URL("https://www.fsidigital.ca"),
   alternates: {
     canonical: "./",
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://fsidigital.ca",
+    url: "https://www.fsidigital.ca",
     siteName: "FSI Digital",
     title: "Government Grants for Startups & Businesses | USA & Canada",
     description:
@@ -103,8 +103,9 @@ export default function RootLayout({
                 {
                   "@type": "Organization",
                   "name": "FSI Digital",
-                  "url": "https://fsidigital.ca",
-                  "logo": "https://fsidigital.ca/logo.png",
+                  "alternateName": ["FSI", "FSIDigital", "FSI Grants"],
+                  "url": "https://www.fsidigital.ca",
+                  "logo": "https://www.fsidigital.ca/logo.png",
                   "description": "Find government grants for startups and small businesses in USA and Canada",
                   "sameAs": [
                     "https://twitter.com/fsidigital",
@@ -120,12 +121,12 @@ export default function RootLayout({
                 {
                   "@type": "WebSite",
                   "name": "FSI Digital Government Grants",
-                  "url": "https://fsidigital.ca",
+                  "url": "https://www.fsidigital.ca",
                   "potentialAction": {
                     "@type": "SearchAction",
                     "target": {
                       "@type": "EntryPoint",
-                      "urlTemplate": "https://fsidigital.ca/search?q={search_term_string}"
+                      "urlTemplate": "https://www.fsidigital.ca/search?q={search_term_string}"
                     },
                     "query-input": "required name=search_term_string"
                   }

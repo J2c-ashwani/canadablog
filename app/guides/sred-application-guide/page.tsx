@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Apply for SR&ED Tax Credits 2025",
     description: "Complete guide to SR&ED tax credit applications with step-by-step process and winning strategies.",
-    url: "https://fsidigital.ca/guides/sred-application-guide",
+    url: "https://www.fsidigital.ca/guides/sred-application-guide",
   },
 }
 

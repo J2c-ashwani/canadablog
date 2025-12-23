@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Women in Technology & STEM Grants Guide 2026 | Female Tech Entrepreneur Funding",
     description: "Complete guide to technology and STEM grants specifically for women entrepreneurs and female innovators.",
-    url: "https://fsidigital.ca/blog/women-tech-stem-grants-guide",
+    url: "https://www.fsidigital.ca/blog/women-tech-stem-grants-guide",
   },
 }
 

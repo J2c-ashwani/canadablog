@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Small Business Grants Complete Guide 2026",
     description: "Complete guide to small business grants with SBA programs, federal funding, and application strategies.",
-    url: "https://fsidigital.ca/blog/small-business-grants-complete-guide",
+    url: "https://www.fsidigital.ca/blog/small-business-grants-complete-guide",
   },
 }
 

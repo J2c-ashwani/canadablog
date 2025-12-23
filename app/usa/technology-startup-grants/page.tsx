@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "USA Technology Startup Grants 2025 | $2.5M SBIR STTR Funding",
     description: "Comprehensive funding guide for American tech startups with federal SBIR/STTR, state programs, and $2.5M+ available through innovation grants.",
-    url: "https://fsidigital.ca/usa/technology-startup-grants",
+    url: "https://www.fsidigital.ca/usa/technology-startup-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

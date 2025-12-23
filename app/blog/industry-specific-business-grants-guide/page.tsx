@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Industry-Specific Business Grants Guide 2026",
     description: "Complete guide to industry-specific business grants with targeted funding for specialized sectors.",
-    url: "https://fsidigital.ca/blog/industry-specific-business-grants-guide",
+    url: "https://www.fsidigital.ca/blog/industry-specific-business-grants-guide",
   },
 }
 

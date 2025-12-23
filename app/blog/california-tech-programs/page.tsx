@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "California Tech Grants 2026 | $50K CalSEED, SBIR Match, Tax Credits",
     description: "Complete guide to California tech startup grants, tax incentives, and innovation programs for Silicon Valley and statewide tech companies.",
-    url: "https://fsidigital.ca/blog/california-tech-programs",
+    url: "https://www.fsidigital.ca/blog/california-tech-programs",
     images: ["/api/placeholder/1200/630"],
   },
 }

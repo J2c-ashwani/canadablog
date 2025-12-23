@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hardware & IoT Grants 2026 | $305K NSF SBIR + DOD Electronics",
     description: "Complete guide to hardware and IoT startup grants from NSF, DOD, and advanced manufacturing programs.",
-    url: "https://fsidigital.ca/blog/hardware-iot-startup-grants",
+    url: "https://www.fsidigital.ca/blog/hardware-iot-startup-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

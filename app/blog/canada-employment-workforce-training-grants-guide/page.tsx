@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Canada Employment & Workforce Training Grants 2026 | $1.9B+ Skills Development Funding Guide",
     description: "Comprehensive guide to Canada's employment and workforce training funding ecosystem with 28+ programs offering $1.9B+ for skills development and job creation.",
-    url: "https://fsidigital.ca/blog/canada-employment-workforce-training-grants-guide",
+    url: "https://www.fsidigital.ca/blog/canada-employment-workforce-training-grants-guide",
     images: ["/api/placeholder/1200/630"],
   },
 }

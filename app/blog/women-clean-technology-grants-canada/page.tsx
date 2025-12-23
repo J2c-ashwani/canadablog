@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Women Clean Technology Grants Canada 2026 | Clean Energy Sustainability Funding",
     description: "$10M+ clean tech grants for women innovators in renewable energy, circular economy, environmental sustainability.",
-    url: "https://fsidigital.ca/blog/women-clean-technology-grants-canada",
+    url: "https://www.fsidigital.ca/blog/women-clean-technology-grants-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }

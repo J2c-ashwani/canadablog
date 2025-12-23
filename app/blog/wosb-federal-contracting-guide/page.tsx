@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "WOSB Federal Contracting Guide 2026 | Women-Owned Small Business Certification",
     description: "Complete guide to WOSB certification and federal contracting opportunities for women-owned businesses.",
-    url: "https://fsidigital.ca/blog/wosb-federal-contracting-guide",
+    url: "https://www.fsidigital.ca/blog/wosb-federal-contracting-guide",
   },
 }
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Canada Agriculture & Agri-Food Grants 2026 | $2.3B+ Agricultural Innovation Funding Guide",
     description: "Comprehensive guide to Canada's agriculture and agri-food funding ecosystem with 32+ programs offering $2.3B+ for innovation, sustainability, and growth.",
-    url: "https://fsidigital.ca/blog/canada-agriculture-agrifood-grants-guide",
+    url: "https://www.fsidigital.ca/blog/canada-agriculture-agrifood-grants-guide",
     images: ["/api/placeholder/1200/630"],
   },
 }

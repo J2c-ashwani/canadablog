@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Quebec Business Grants Application Guide 2025 | Aide aux Entreprises Provincial Funding Process",
     description: "Step-by-step guide with templates and strategies for successful Quebec provincial funding applications and R&D tax credit optimization.",
-    url: "https://fsidigital.ca/guides/apply-quebec-business-grants",
+    url: "https://www.fsidigital.ca/guides/apply-quebec-business-grants",
   },
 }
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Strategic Innovation Fund Application Guide 2025 | SIF Funding Process",
     description: "Step-by-step guide with templates and strategies for successful Strategic Innovation Fund applications for Canadian innovation projects.",
-    url: "https://fsidigital.ca/guides/apply-strategic-innovation-fund",
+    url: "https://www.fsidigital.ca/guides/apply-strategic-innovation-fund",
   },
 }
 

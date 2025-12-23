@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Indigenous & Rural Business Funding Canada 2026 | $500K+ Aboriginal & Rural Business Grants",
     description: "Access $500K+ in Canadian funding for Indigenous and rural businesses. Complete guide to Aboriginal business grants, NACCA loans, and rural development programs.",
-    url: "https://fsidigital.ca/blog/indigenous-rural-business-funding-canada",
+    url: "https://www.fsidigital.ca/blog/indigenous-rural-business-funding-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }

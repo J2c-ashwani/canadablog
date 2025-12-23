@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Massachusetts Tech Grants 2026 | $500K START, $350K MassCEC, MLSC Biotech",
     description: "Complete guide to Massachusetts tech startup grants, biotech funding, clean energy programs for Boston Cambridge innovation ecosystem.",
-    url: "https://fsidigital.ca/blog/massachusetts-tech-programs",
+    url: "https://www.fsidigital.ca/blog/massachusetts-tech-programs",
     images: ["/api/placeholder/1200/630"],
   },
 }

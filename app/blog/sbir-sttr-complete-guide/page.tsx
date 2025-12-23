@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SBIR & STTR Grants Complete Guide 2026",
     description: "Complete guide to SBIR and STTR grants with eligibility, application process, and winning strategies.",
-    url: "https://fsidigital.ca/blog/sbir-sttr-complete-guide",
+    url: "https://www.fsidigital.ca/blog/sbir-sttr-complete-guide",
   },
 }
 

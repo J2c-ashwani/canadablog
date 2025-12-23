@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Grant News & Funding Alerts | FSI Digital Blog",
     description: "Latest grant opportunities, funding alerts, and application guides for USA and Canada.",
-    url: "https://fsidigital.ca/blog",
+    url: "https://www.fsidigital.ca/blog",
     siteName: "FSI Digital",
     images: [
       {

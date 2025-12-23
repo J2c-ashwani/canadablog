@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "British Columbia Innovation Grants & Tax Credits 2026 | $1.8B+ BCITC & CleanTech",
     description: "Access $1.8B+ in BC innovation funding. Complete guide to BCITC, Innovate BC, and Pacific gateway programs.",
-    url: "https://fsidigital.ca/blog/british-columbia-innovation-grants",
+    url: "https://www.fsidigital.ca/blog/british-columbia-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

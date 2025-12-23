@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Amber Grant for Women Canada 2026 | Monthly $10K + $25K Annual",
     description: "Monthly $10,000 grants and $25,000 annual award for Canadian women entrepreneurs. Simple application with rolling monthly deadlines.",
-    url: "https://fsidigital.ca/blog/amber-grant-women-canada",
+    url: "https://www.fsidigital.ca/blog/amber-grant-women-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }

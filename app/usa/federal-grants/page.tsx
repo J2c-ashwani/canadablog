@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Federal Grants for Small Business | USA Government Funding Programs",
     description: "Find federal grants for small businesses in the USA.",
-    url: "https://fsidigital.ca/usa/federal-grants",
+    url: "https://www.fsidigital.ca/usa/federal-grants",
   },
 }
 

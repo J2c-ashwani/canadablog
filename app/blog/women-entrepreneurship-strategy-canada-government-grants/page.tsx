@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Women Entrepreneurship Strategy Canada 2026 | WES Federal Funding Guide",
     description: "Comprehensive guide to WES federal funding programs offering up to $6B for women entrepreneurs through ecosystem support, loans, and business development.",
-    url: "https://fsidigital.ca/blog/women-entrepreneurship-strategy-canada-government-grants",
+    url: "https://www.fsidigital.ca/blog/women-entrepreneurship-strategy-canada-government-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

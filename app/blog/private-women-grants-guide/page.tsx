@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Private Women Grants Guide 2026 | Foundation Grants for Female Entrepreneurs",
     description: "Complete guide to private foundation grants specifically for women entrepreneurs and female business owners.",
-    url: "https://fsidigital.ca/blog/private-women-grants-guide",
+    url: "https://www.fsidigital.ca/blog/private-women-grants-guide",
   },
 }
 

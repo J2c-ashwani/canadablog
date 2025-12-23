@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "BDC Women Entrepreneurs Financing 2026 | Flexible Loans & Advisory Services",
     description: "Comprehensive financing and advisory services for women-led businesses with flexible terms and strategic growth support from BDC.",
-    url: "https://fsidigital.ca/blog/bdc-women-entrepreneurs-financing",
+    url: "https://www.fsidigital.ca/blog/bdc-women-entrepreneurs-financing",
     images: ["/api/placeholder/1200/630"],
   },
 }

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "State Women Business Programs Guide 2026 | Local Government Grants",
     description: "Complete guide to state and local government programs supporting women entrepreneurs across all 50 states.",
-    url: "https://fsidigital.ca/blog/state-women-business-programs-guide",
+    url: "https://www.fsidigital.ca/blog/state-women-business-programs-guide",
   },
 }
 

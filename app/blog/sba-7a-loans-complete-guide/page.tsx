@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SBA 7(a) Loans Complete Guide 2026",
     description: "Complete guide to SBA 7(a) loans with application process and eligibility requirements.",
-    url: "https://fsidigital.ca/blog/sba-7a-loans-complete-guide",
+    url: "https://www.fsidigital.ca/blog/sba-7a-loans-complete-guide",
   },
 }
 

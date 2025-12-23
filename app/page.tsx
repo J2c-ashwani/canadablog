@@ -113,7 +113,7 @@ export default function HomePage() {
               </span>
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-blue-100 leading-relaxed text-pretty px-4 sm:px-0">
-              Secure non-dilutive <strong>investment</strong> for your business. Discover thousands of government funding opportunities in USA and Canada. The smartest alternative to <strong>investor</strong> capital.
+              <strong>FSI Digital</strong> helps you secure non-dilutive <strong>investment</strong> for your business. Discover thousands of government funding opportunities in USA and Canada. The smartest alternative to <strong>investor</strong> capital.
             </p>
 
             <form onSubmit={handleHeroSubmit} className="flex flex-col gap-4 justify-center items-center mb-8 sm:mb-12 px-4 sm:px-0">

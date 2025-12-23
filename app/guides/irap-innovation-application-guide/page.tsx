@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Apply for IRAP Innovation Funding 2025",
     description: "Complete guide to IRAP innovation applications with step-by-step process and ITA engagement strategies.",
-    url: "https://fsidigital.ca/guides/irap-innovation-application-guide",
+    url: "https://www.fsidigital.ca/guides/irap-innovation-application-guide",
   },
 }
 

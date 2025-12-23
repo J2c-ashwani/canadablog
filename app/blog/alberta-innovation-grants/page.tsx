@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Alberta Innovation Grants & Funding 2026 | $950M+ Energy & AI Support",
     description: "Access $950M+ in Alberta innovation funding. Complete guide to Alberta Innovates, ERA, and diversification programs.",
-    url: "https://fsidigital.ca/blog/alberta-innovation-grants",
+    url: "https://www.fsidigital.ca/blog/alberta-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Federal Grants for Women, Minorities & Veterans 2026",
     description: "Complete guide to specialized federal grants for women, minority, and veteran entrepreneurs.",
-    url: "https://fsidigital.ca/blog/federal-grants-women-minorities",
+    url: "https://www.fsidigital.ca/blog/federal-grants-women-minorities",
   },
 }
 

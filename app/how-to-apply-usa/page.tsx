@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   keywords:
     "how to apply for government grants USA, grant application process, USA grant applications, government funding application",
   alternates: {
-    canonical: "https://fsidigital.ca/how-to-apply-usa",
+    canonical: "https://www.fsidigital.ca/how-to-apply-usa",
   },
 }
 

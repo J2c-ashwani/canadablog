@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Alberta Government Business Grants 2026 | Energy & Innovation Provincial Funding Guide",
     description: "Comprehensive guide to Alberta provincial business grants offering funding for energy innovation, economic diversification, and technology development.",
-    url: "https://fsidigital.ca/blog/alberta-government-business-grants",
+    url: "https://www.fsidigital.ca/blog/alberta-government-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

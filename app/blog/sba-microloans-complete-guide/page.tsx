@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SBA Microloans Complete Guide 2026",
     description: "Complete guide to SBA microloans with application process and mentoring benefits.",
-    url: "https://fsidigital.ca/blog/sba-microloans-complete-guide",
+    url: "https://www.fsidigital.ca/blog/sba-microloans-complete-guide",
   },
 }
 

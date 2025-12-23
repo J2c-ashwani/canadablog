@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ontario Government Business Grants 2026 | Provincial Funding Programs Guide",
     description: "Comprehensive guide to Ontario provincial business grants offering funding for startups, innovation, and business growth across all sectors.",
-    url: "https://fsidigital.ca/blog/ontario-government-business-grants",
+    url: "https://www.fsidigital.ca/blog/ontario-government-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

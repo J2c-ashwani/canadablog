@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Apply for Federal Grants 2025",
     description: "Complete guide to applying for federal grants with winning strategies and step-by-step process.",
-    url: "https://fsidigital.ca/guides/apply-federal-grants",
+    url: "https://www.fsidigital.ca/guides/apply-federal-grants",
   },
 }
 

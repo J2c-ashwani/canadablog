@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Quebec Government Business Grants 2026 | Aide aux Entreprises Provincial Funding Guide",
     description: "Comprehensive guide to Quebec provincial business grants offering aide aux entreprises funding for innovation, commercialization, and international expansion.",
-    url: "https://fsidigital.ca/blog/quebec-government-business-grants",
+    url: "https://www.fsidigital.ca/blog/quebec-government-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

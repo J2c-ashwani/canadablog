@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SBA Disaster Relief Loans Guide 2026",
     description: "Complete guide to SBA disaster relief loans for emergency business funding and recovery.",
-    url: "https://fsidigital.ca/blog/sba-disaster-relief-loans-guide",
+    url: "https://www.fsidigital.ca/blog/sba-disaster-relief-loans-guide",
   },
 }
 

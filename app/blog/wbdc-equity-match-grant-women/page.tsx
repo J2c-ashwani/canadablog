@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "WBDC Equity Match Grant 2027 | Quarterly $2.5K-$10K Awards",
     description: "Quarterly grant program requiring 1:1 match for Connecticut women-owned business growth projects.",
-    url: "https://fsidigital.ca/blog/wbdc-equity-match-grant-women",
+    url: "https://www.fsidigital.ca/blog/wbdc-equity-match-grant-women",
     images: ["/api/placeholder/1200/630"],
   },
 }

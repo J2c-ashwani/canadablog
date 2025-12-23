@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ontario Innovation Grants & Tax Credits 2026 | $3.2B+ OITC & R&D Support",
     description: "Access $3.2B+ in Ontario innovation funding. Complete guide to OITC, Jobs and Prosperity Fund, and provincial R&D programs.",
-    url: "https://fsidigital.ca/blog/ontario-innovation-grants-tax-credits",
+    url: "https://www.fsidigital.ca/blog/ontario-innovation-grants-tax-credits",
     images: ["/api/placeholder/1200/630"],
   },
 }

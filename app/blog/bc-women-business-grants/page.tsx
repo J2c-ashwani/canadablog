@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "BC Women Business Grants 2026 | $650M Innovation Support",
     description: "Comprehensive guide to BC women business support with WeBC financing, innovation programs, and technology leadership funding.",
-    url: "https://fsidigital.ca/blog/bc-women-business-grants",
+    url: "https://www.fsidigital.ca/blog/bc-women-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

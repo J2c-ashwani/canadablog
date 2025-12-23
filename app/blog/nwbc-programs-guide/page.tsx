@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "National Women's Business Council (NWBC) Programs Guide 2026",
     description: "Complete guide to NWBC programs, research initiatives, and policy advocacy for women entrepreneurs.",
-    url: "https://fsidigital.ca/blog/nwbc-programs-guide",
+    url: "https://www.fsidigital.ca/blog/nwbc-programs-guide",
   },
 }
 

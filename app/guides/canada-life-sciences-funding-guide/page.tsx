@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Apply for Biotech Grants Canada 2025 | Life Sciences Funding Guide",
     description: "Complete application guide for Canadian life sciences grants with IRAP, clinical trials, and medical device funding strategies.",
-    url: "https://fsidigital.ca/guides/canada-life-sciences-funding-guide",
+    url: "https://www.fsidigital.ca/guides/canada-life-sciences-funding-guide",
   },
 }
 

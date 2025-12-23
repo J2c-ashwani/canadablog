@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Women's Business Centers Guide 2026 | SBA-Funded Support",
     description: "Complete guide to accessing Women's Business Centers for counseling, training, and capital assistance.",
-    url: "https://fsidigital.ca/blog/women-business-centers-guide",
+    url: "https://www.fsidigital.ca/blog/women-business-centers-guide",
   },
 }
 

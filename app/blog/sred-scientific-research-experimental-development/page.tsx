@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SR&ED Tax Credits Canada 2026 | 65% Refundable R&D Tax Incentives Guide",
     description: "Complete guide to Canada's SR&ED program with enhanced 2026 rates. 35% federal + provincial credits up to 65% total on $4.5M expenditure limit.",
-    url: "https://fsidigital.ca/blog/sred-scientific-research-experimental-development",
+    url: "https://www.fsidigital.ca/blog/sred-scientific-research-experimental-development",
     images: ["/api/placeholder/1200/630"],
   },
 }

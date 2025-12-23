@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Scotiabank Women Initiative 2026 | Capital + Mentorship + Education",
     description: "Comprehensive banking and support program for women-led businesses with capital access, mentorship, and educational resources.",
-    url: "https://fsidigital.ca/blog/scotiabank-women-initiative",
+    url: "https://www.fsidigital.ca/blog/scotiabank-women-initiative",
     images: ["/api/placeholder/1200/630"],
   },
 }

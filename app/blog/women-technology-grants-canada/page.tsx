@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Women in Technology Grants Canada 2026 | Tech Innovation Funding",
     description: "Comprehensive guide to technology grants for Canadian women entrepreneurs in software, AI, digital innovation, and tech startups.",
-    url: "https://fsidigital.ca/blog/women-technology-grants-canada",
+    url: "https://www.fsidigital.ca/blog/women-technology-grants-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "BMO Celebrating Women Grant 2026 | $10K Grants + Advisory",
     description: "Annual grant program from BMO supporting women-owned businesses with $10,000 grants, business advisory, and comprehensive resources.",
-    url: "https://fsidigital.ca/blog/bmo-celebrating-women-grant",
+    url: "https://www.fsidigital.ca/blog/bmo-celebrating-women-grant",
     images: ["/api/placeholder/1200/630"],
   },
 }

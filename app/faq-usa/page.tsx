@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   keywords:
     "USA small business grants FAQ, government grants questions, small business funding FAQ, grant application help",
   alternates: {
-    canonical: "https://fsidigital.ca/faq-usa",
+    canonical: "https://www.fsidigital.ca/faq-usa",
   },
 }
 

@@ -8,21 +8,21 @@ export function generateBlogPostSchema(post: BlogPost) {
     "description": post.excerpt,
     "image": {
       "@type": "ImageObject",
-      "url": `https://fsidigital.ca/images/blog/${post.image}`,
+      "url": `https://www.fsidigital.ca/images/blog/${post.image}`,
       "width": 1200,
       "height": 630
     },
     "author": {
       "@type": "Person",
       "name": post.author,
-      "url": "https://fsidigital.ca"
+      "url": "https://www.fsidigital.ca"
     },
     "publisher": {
       "@type": "Organization",
       "name": "FSI Digital",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://fsidigital.ca/images/logo.png",
+        "url": "https://www.fsidigital.ca/images/logo.png",
         "width": 200,
         "height": 50
       }
@@ -31,7 +31,7 @@ export function generateBlogPostSchema(post: BlogPost) {
     "dateModified": post.date,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://fsidigital.ca/blog/${post.slug}`
+      "@id": `https://www.fsidigital.ca/blog/${post.slug}`
     },
     "articleSection": post.category,
     "keywords": post.seo.keywords.join(", "),
@@ -49,19 +49,19 @@ export function generateBreadcrumbSchema(post: BlogPost) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://fsidigital.ca"
+        "item": "https://www.fsidigital.ca"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://fsidigital.ca/blog"
+        "item": "https://www.fsidigital.ca/blog"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": `https://fsidigital.ca/blog/${post.slug}`
+        "item": `https://www.fsidigital.ca/blog/${post.slug}`
       }
     ]
   };
@@ -73,13 +73,13 @@ export function generateBlogSchema() {
     "@type": "Blog",
     "name": "FSI Digital Blog",
     "description": "Latest grant opportunities, funding alerts, and application guides for USA and Canada",
-    "url": "https://fsidigital.ca/blog",
+    "url": "https://www.fsidigital.ca/blog",
     "publisher": {
       "@type": "Organization",
       "name": "FSI Digital",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://fsidigital.ca/images/logo.png"
+        "url": "https://www.fsidigital.ca/images/logo.png"
       }
     },
     "inLanguage": "en-US"

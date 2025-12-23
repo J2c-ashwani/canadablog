@@ -8,7 +8,7 @@ export function generateMetadata(post: BlogPost) {
     openGraph: {
       title: post.seo.metaTitle || post.title,
       description: post.seo.metaDescription || post.excerpt,
-      url: `https://fsidigital.ca/blog/${post.slug}`,
+      url: `https://www.fsidigital.ca/blog/${post.slug}`,
       siteName: 'FSI Digital',
       images: [
         {
@@ -29,7 +29,7 @@ export function generateMetadata(post: BlogPost) {
       images: [post.seo.ogImage || `/images/blog/${post.image}`],
     },
     alternates: {
-      canonical: `https://fsidigital.ca/blog/${post.slug}`,
+      canonical: `https://www.fsidigital.ca/blog/${post.slug}`,
     },
   };
 }
@@ -41,7 +41,7 @@ export function generateBlogPageMetadata() {
     openGraph: {
       title: 'Grant News & Funding Alerts | FSI Digital Blog',
       description: 'Latest grant opportunities, funding alerts, and application guides for USA and Canada.',
-      url: 'https://fsidigital.ca/blog',
+      url: 'https://www.fsidigital.ca/blog',
       siteName: 'FSI Digital',
       images: [
         {

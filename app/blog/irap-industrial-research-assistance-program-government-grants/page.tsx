@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "IRAP Industrial Research Assistance Program Canada 2026 | Government R&D Funding",
     description: "Comprehensive guide to IRAP federal R&D funding with compliance requirements and government program integration strategies.",
-    url: "https://fsidigital.ca/blog/irap-industrial-research-assistance-program-government-grants",
+    url: "https://www.fsidigital.ca/blog/irap-industrial-research-assistance-program-government-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

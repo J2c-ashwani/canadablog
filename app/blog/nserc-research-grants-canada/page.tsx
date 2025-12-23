@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "NSERC Research Grants Canada 2026 | Natural Sciences & Engineering Funding",
     description: "Complete guide to NSERC research funding with Idea to Innovation grants, university-industry partnerships, and technology commercialization support.",
-    url: "https://fsidigital.ca/blog/nserc-research-grants-canada",
+    url: "https://www.fsidigital.ca/blog/nserc-research-grants-canada",
     images: ["/api/placeholder/1200/630"],
   },
 }

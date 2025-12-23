@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Canadian Government Grants for Business 2025 | Federal & Provincial $12B+ Available",
     description: "Complete guide to Canadian government business grants with federal and provincial programs offering $12B+ in funding opportunities.",
-    url: "https://fsidigital.ca/canada/government-grants",
+    url: "https://www.fsidigital.ca/canada/government-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

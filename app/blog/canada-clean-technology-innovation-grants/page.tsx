@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Canada Clean Technology Innovation Grants 2026 | $1.2B+ CleanTech Funding",
     description: "Access $1.2B+ in clean technology innovation funding. Complete guide to SDTC grants, Clean Technology ITCs, and 22+ programs supporting environmental innovation.",
-    url: "https://fsidigital.ca/blog/canada-clean-technology-innovation-grants",
+    url: "https://www.fsidigital.ca/blog/canada-clean-technology-innovation-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

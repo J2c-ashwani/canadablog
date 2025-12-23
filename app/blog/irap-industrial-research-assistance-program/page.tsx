@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Industrial Research Assistance Program (IRAP) 2026 | Up to $1M Tech Grants",
     description: "Complete guide to IRAP - non-repayable R&D grants up to $1M for Canadian tech businesses.",
-    url: "https://fsidigital.ca/blog/irap-industrial-research-assistance-program",
+    url: "https://www.fsidigital.ca/blog/irap-industrial-research-assistance-program",
   },
 }
 

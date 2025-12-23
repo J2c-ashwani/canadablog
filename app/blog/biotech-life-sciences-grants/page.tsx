@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Biotech & Life Sciences Grants 2026 | $306K NIH SBIR + $1.2B Seed Fund",
     description: "Complete guide to biotech and life sciences grants from NIH, FDA, and state programs.",
-    url: "https://fsidigital.ca/blog/biotech-life-sciences-grants",
+    url: "https://www.fsidigital.ca/blog/biotech-life-sciences-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

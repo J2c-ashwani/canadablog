@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI & ML Grants 2026 | $305K NSF SBIR + $100M Research Institutes",
     description: "Complete guide to AI and machine learning grants from NSF, NAIRR, DOD, and state programs.",
-    url: "https://fsidigital.ca/blog/ai-machine-learning-grants",
+    url: "https://www.fsidigital.ca/blog/ai-machine-learning-grants",
     images: ["/images/blog/usa-grants-theme.png"],
   },
 }

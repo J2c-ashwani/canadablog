@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cybersecurity Grants 2026 | $1.8M DOD SBIR + DHS Cyber Funding",
     description: "Complete guide to cybersecurity grants from DOD, DHS, NSA, and defense programs.",
-    url: "https://fsidigital.ca/blog/cybersecurity-grants",
+    url: "https://www.fsidigital.ca/blog/cybersecurity-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

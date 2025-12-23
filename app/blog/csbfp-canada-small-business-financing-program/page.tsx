@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Canada Small Business Financing Program (CSBFP) 2026 | Up to $1M Business Loans",
     description: "Complete guide to CSBFP - government-guaranteed loans up to $1M for Canadian small businesses.",
-    url: "https://fsidigital.ca/blog/csbfp-canada-small-business-financing-program",
+    url: "https://www.fsidigital.ca/blog/csbfp-canada-small-business-financing-program",
   },
 }
 

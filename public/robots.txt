@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://fsidigital.ca/sitemap.xml
+Sitemap: https://www.fsidigital.ca/sitemap.xml
 
 # Disallow admin areas
 Disallow: /admin/

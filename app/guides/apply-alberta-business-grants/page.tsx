@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Alberta Business Grants Application Guide 2025 | Energy & Innovation Provincial Funding Process",
     description: "Step-by-step guide with templates and strategies for successful Alberta provincial funding applications and clean technology development.",
-    url: "https://fsidigital.ca/guides/apply-alberta-business-grants",
+    url: "https://www.fsidigital.ca/guides/apply-alberta-business-grants",
   },
 }
 

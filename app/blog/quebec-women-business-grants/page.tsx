@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Quebec Women Business Grants 2026 | $720M Francophone Support",
     description: "Comprehensive guide to Quebec women business support with provincial grants, microfinancing, and francophone entrepreneur programs.",
-    url: "https://fsidigital.ca/blog/quebec-women-business-grants",
+    url: "https://www.fsidigital.ca/blog/quebec-women-business-grants",
     images: ["/api/placeholder/1200/630"],
   },
 }

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Canada Regional Economic Development Grants 2026 | $2.8B+ Community Growth Funding Guide",
     description: "Comprehensive guide to Canada's regional economic development funding ecosystem with 35+ programs offering $2.8B+ for community and regional growth.",
-    url: "https://fsidigital.ca/blog/canada-regional-economic-development-grants-guide",
+    url: "https://www.fsidigital.ca/blog/canada-regional-economic-development-grants-guide",
     images: ["/api/placeholder/1200/630"],
   },
 }
