@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Canada Agri-Food Technology Grants 2026 | $2.3B+ AgriTech Funding",
     description: "Access $2.3B+ in agri-food technology funding. Complete guide to AgriInnovate, precision agriculture, and food processing grants.",
     url: "https://www.fsidigital.ca/blog/canada-agri-food-technology-innovation-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Canada Life Sciences Grants 2026 | $720M+ Biotech & Medical Device Funding",
     description: "Access $720M+ in life sciences funding. Complete guide to biotechnology grants, medical device funding, and clinical trials support.",
     url: "https://www.fsidigital.ca/blog/canada-life-sciences-innovation-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

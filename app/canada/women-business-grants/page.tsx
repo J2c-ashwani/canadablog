@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Women Business Grants Canada 2025 | $6B+ Funding for Women Entrepreneurs",
     description: "Comprehensive funding guide for Canadian women entrepreneurs with federal programs, provincial grants, and $6B+ available through Women Entrepreneurship Strategy.",
     url: "https://www.fsidigital.ca/canada/women-business-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

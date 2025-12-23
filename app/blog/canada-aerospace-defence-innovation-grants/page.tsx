@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Canada Aerospace & Defence Grants 2026 | $450M+ Space & Aviation Funding",
     description: "Access $450M+ in aerospace and defence funding. Complete guide to CSA, defence innovation, and aviation technology grants.",
     url: "https://www.fsidigital.ca/blog/canada-aerospace-defence-innovation-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

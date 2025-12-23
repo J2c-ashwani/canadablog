@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "British Columbia Government Business Grants 2026 | BC Provincial Funding Guide",
     description: "Comprehensive guide to BC provincial business grants offering funding for innovation, clean technology, creative industries, and regional development.",
     url: "https://www.fsidigital.ca/blog/british-columbia-government-business-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

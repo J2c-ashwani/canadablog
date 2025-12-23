@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Quebec Innovation Grants & Tax Credits 2026 | $2.5B+ CRIC & R&D Support",
     description: "Access $2.5B+ in Quebec innovation funding. Complete guide to 30% CRIC, Investissement Québec, and francophone innovation programs.",
     url: "https://www.fsidigital.ca/blog/quebec-innovation-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

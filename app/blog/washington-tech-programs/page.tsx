@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Washington Tech Grants 2026 | $1M WRF, $540K Innovation, Clean Energy",
     description: "Complete guide to Washington state tech startup grants, University of Washington commercialization funding, and Seattle innovation programs.",
     url: "https://www.fsidigital.ca/blog/washington-tech-programs",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

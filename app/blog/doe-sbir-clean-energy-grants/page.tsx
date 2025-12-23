@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "DOE SBIR Grants 2026 | $200K-$1.85M Clean Energy Funding",
     description: "Complete guide to DOE SBIR/STTR grants for clean energy and climate tech startups.",
     url: "https://www.fsidigital.ca/blog/doe-sbir-clean-energy-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

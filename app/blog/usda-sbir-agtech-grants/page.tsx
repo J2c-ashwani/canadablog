@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "USDA SBIR Grants 2026 | $125K-$575K AgTech Funding",
     description: "Complete guide to USDA SBIR/STTR grants for agriculture and food tech startups.",
     url: "https://www.fsidigital.ca/blog/usda-sbir-agtech-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

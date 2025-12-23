@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Stage 1: Ideation & Research Funding Canada 2026 | NSERC Discovery Grants",
     description: "Access up to $1M in early-stage research funding. Complete guide to NSERC Discovery Grants and concept development programs.",
     url: "https://www.fsidigital.ca/blog/ideation-research-funding-canada",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

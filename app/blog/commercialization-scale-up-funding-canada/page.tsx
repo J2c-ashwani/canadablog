@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Stage 4: Commercialization & Scale-Up Funding Canada 2026 | Up to $100M",
     description: "Access up to $100M in commercialization funding. Complete guide to Strategic Innovation Fund and scale-up programs.",
     url: "https://www.fsidigital.ca/blog/commercialization-scale-up-funding-canada",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

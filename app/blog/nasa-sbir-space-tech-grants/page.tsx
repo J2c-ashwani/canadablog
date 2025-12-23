@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "NASA SBIR Grants 2026 | $150K-$850K Space Tech Funding",
     description: "Complete guide to NASA SBIR/STTR grants for space and aeronautics tech startups.",
     url: "https://www.fsidigital.ca/blog/nasa-sbir-space-tech-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

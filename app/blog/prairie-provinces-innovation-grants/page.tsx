@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Prairie Provinces Innovation Grants 2026 | $580M+ AgriFood & Mining Tech",
     description: "Access $580M+ in Prairie innovation funding. Complete guide to Saskatchewan, Manitoba, PrairiesCan programs.",
     url: "https://www.fsidigital.ca/blog/prairie-provinces-innovation-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

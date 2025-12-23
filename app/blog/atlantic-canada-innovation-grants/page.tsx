@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Atlantic Canada Innovation Grants 2026 | $650M+ Ocean Tech & Maritime",
     description: "Access $650M+ in Atlantic Canada innovation funding. Complete guide to ACOA, Atlantic Innovation Fund, and ocean technology programs.",
     url: "https://www.fsidigital.ca/blog/atlantic-canada-innovation-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Cartier Women's Initiative 2026-2027 | $100K for Impact Entrepreneurs",
     description: "International program supporting Canadian women founders with $100K grants, executive coaching, and year-long fellowship for impact-driven businesses.",
     url: "https://www.fsidigital.ca/blog/cartier-womens-initiative-canada",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

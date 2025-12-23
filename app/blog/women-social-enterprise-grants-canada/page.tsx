@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Women Social Enterprise Grants Canada 2026 | Social Impact Funding",
     description: "$10K-$1M social enterprise funding for women-led purpose-driven businesses across Canada.",
     url: "https://www.fsidigital.ca/blog/women-social-enterprise-grants-canada",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

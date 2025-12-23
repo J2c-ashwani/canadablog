@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Stage 2: Development & Proof-of-Concept Funding Canada 2026 | IRAP & SR&ED",
     description: "Access up to $5M in technology development funding. Complete guide to IRAP, SR&ED, and proof-of-concept programs.",
     url: "https://www.fsidigital.ca/blog/development-proof-concept-funding-canada",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

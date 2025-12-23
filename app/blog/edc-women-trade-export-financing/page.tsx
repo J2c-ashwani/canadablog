@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "EDC Women in Trade Export Financing 2026 | Equity Capital for Women Exporters",
     description: "Comprehensive export financing and equity capital for women-owned businesses targeting international markets through Export Development Canada.",
     url: "https://www.fsidigital.ca/blog/edc-women-trade-export-financing",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

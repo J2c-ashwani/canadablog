@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "British Columbia Innovation Grants & Tax Credits 2026 | $1.8B+ BCITC & CleanTech",
     description: "Access $1.8B+ in BC innovation funding. Complete guide to BCITC, Innovate BC, and Pacific gateway programs.",
     url: "https://www.fsidigital.ca/blog/british-columbia-innovation-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

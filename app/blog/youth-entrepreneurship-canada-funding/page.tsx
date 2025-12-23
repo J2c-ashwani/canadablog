@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Youth Entrepreneurship Canada 2026 | $60K+ Young Entrepreneur Grants & Funding",
     description: "Access $60K+ in Canadian government funding for young entrepreneurs. Complete guide to CYBF grants, Youth Employment Strategy, and startup funding for youth aged 18-35.",
     url: "https://www.fsidigital.ca/blog/youth-entrepreneurship-canada-funding",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

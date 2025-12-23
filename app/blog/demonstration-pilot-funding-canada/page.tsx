@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Stage 3: Demonstration & Pilot Funding Canada 2026 | SDTC & Clean Growth",
     description: "Access up to $15M in demonstration and pilot funding. Complete guide to SDTC, Clean Growth, and sector pilot programs.",
     url: "https://www.fsidigital.ca/blog/demonstration-pilot-funding-canada",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Ontario Women Business Grants 2026 | $850M Provincial Support",
     description: "Comprehensive guide to Ontario women business support with non-repayable grants, microfinancing, and technology funding programs.",
     url: "https://www.fsidigital.ca/blog/ontario-women-business-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

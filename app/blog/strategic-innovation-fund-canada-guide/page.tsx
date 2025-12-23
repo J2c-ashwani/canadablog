@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Strategic Innovation Fund Canada 2026 | $100M+ SIF Funding Guide",
     description: "Access up to $100M through Canada's Strategic Innovation Fund. Complete guide to SIF eligibility, application process, and transformative innovation funding.",
     url: "https://www.fsidigital.ca/blog/strategic-innovation-fund-canada-guide",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

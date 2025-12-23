@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Agriculture & Agri-Food Canada Grants 2026 | Federal Funding Programs Guide",
     description: "Comprehensive guide to AAFC federal funding programs offering up to $5M for agriculture, agri-food innovation, research, and sustainable development.",
     url: "https://www.fsidigital.ca/blog/agriculture-agri-food-canada-government-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

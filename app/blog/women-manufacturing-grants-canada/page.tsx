@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Women Manufacturing Grants Canada 2026 | Equipment Funding Toronto Vancouver Calgary Montreal",
     description: "$10K-$10M equipment grants, productivity loans, automation financing for women-owned manufacturing businesses across Canada. Ontario, Quebec, BC, Alberta programs.",
     url: "https://www.fsidigital.ca/blog/women-manufacturing-grants-canada",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

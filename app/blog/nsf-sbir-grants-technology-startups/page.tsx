@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "NSF SBIR Grants 2026 | $275K-$2M Technology Startup Funding",
     description: "Complete guide to NSF SBIR/STTR grants with Phase I $275K and Phase II $2M funding for tech startups.",
     url: "https://www.fsidigital.ca/blog/nsf-sbir-grants-technology-startups",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

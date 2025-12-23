@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Canada Manufacturing & Industry Grants 2026 | $3.1B+ Advanced Manufacturing Funding Guide",
     description: "Comprehensive guide to Canada's manufacturing and industry funding ecosystem with 38+ programs offering $3.1B+ for productivity, automation, and competitiveness.",
     url: "https://www.fsidigital.ca/blog/canada-manufacturing-industry-grants-guide",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

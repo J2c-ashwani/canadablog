@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Canadian Small Business Grants 2025 | $8B+ Available for SMEs",
     description: "Complete guide to small business grants in Canada with federal and provincial programs offering up to $1M in funding.",
     url: "https://www.fsidigital.ca/canada/small-business-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

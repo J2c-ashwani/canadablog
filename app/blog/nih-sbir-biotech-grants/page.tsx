@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "NIH SBIR Grants 2026 | $285K-$2M Biotech Funding",
     description: "Complete guide to NIH SBIR/STTR grants for biotech and health tech startups.",
     url: "https://www.fsidigital.ca/blog/nih-sbir-biotech-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

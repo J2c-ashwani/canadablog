@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "DOD SBIR Grants 2026 | $256K-$1.7M Defense Tech Funding",
     description: "Complete guide to DOD SBIR/STTR grants for defense and aerospace tech startups.",
     url: "https://www.fsidigital.ca/blog/dod-sbir-defense-tech-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Alberta Women Business Grants 2026 | $580M Provincial Support",
     description: "Comprehensive guide to Alberta women business support with AWE financing, energy sector programs, and technology funding.",
     url: "https://www.fsidigital.ca/blog/alberta-women-business-grants",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 

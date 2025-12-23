@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Colorado Tech Grants 2026 | $250K Early-Stage, 35% Tax Credit, SBIR Match",
     description: "Complete guide to Colorado tech startup grants, Advanced Industries programs, and innovation funding.",
     url: "https://www.fsidigital.ca/blog/colorado-tech-programs",
-    images: ["/api/placeholder/1200/630"],
+    images: ["/og-image.jpg"],
   },
 }
 
