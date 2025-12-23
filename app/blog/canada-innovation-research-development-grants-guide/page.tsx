@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Canada Innovation & R&D Grants 2026 | $4.2B+ Research Development Funding Guide",
     description: "Comprehensive guide to Canada's innovation and R&D funding ecosystem with 45+ programs offering $4.2B+ for research, development, and commercialization.",
     url: "https://www.fsidigital.ca/blog/canada-innovation-research-development-grants-guide",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Canada Innovation Grants 2025 | $4.2B+ R&D Funding for Canadian Innovators",
     description: "Complete guide to Canadian innovation funding with federal and provincial programs offering $4.2B+ for research, development, and commercialization.",
     url: "https://grantfinder.pro/canada/innovation-grants",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

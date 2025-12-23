@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Cybersecurity Grants 2026 | $1.8M DOD SBIR + DHS Cyber Funding",
     description: "Complete guide to cybersecurity grants from DOD, DHS, NSA, and defense programs.",
     url: "https://www.fsidigital.ca/blog/cybersecurity-grants",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

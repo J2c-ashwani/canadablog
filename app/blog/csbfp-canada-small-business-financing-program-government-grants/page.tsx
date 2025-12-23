@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "CSBFP Canada Small Business Financing Program 2026 | Government Guaranteed Loans",
     description: "Comprehensive guide to CSBFP federal loan guarantee program with up to $1M in government-backed financing for Canadian small businesses.",
     url: "https://www.fsidigital.ca/blog/csbfp-canada-small-business-financing-program-government-grants",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

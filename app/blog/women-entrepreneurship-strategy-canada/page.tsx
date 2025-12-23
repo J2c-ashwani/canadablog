@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Women Entrepreneurship Strategy Canada 2026 | $6B+ Female Business Grants",
     description: "Access $6B+ in Canadian government funding for women entrepreneurs. Complete guide to WES grants, loans, and support programs for female-owned businesses.",
     url: "https://www.fsidigital.ca/blog/women-entrepreneurship-strategy-canada",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

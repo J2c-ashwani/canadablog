@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Canada Clean Technology & Environment Grants 2026 | $1.2B+ Sustainability Funding Guide",
     description: "Comprehensive guide to Canada's clean technology and environmental funding ecosystem with 22+ programs offering $1.2B+ for sustainability innovation.",
     url: "https://www.fsidigital.ca/blog/canada-clean-technology-environment-grants-guide",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

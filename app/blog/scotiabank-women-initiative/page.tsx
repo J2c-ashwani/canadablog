@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Scotiabank Women Initiative 2026 | Capital + Mentorship + Education",
     description: "Comprehensive banking and support program for women-led businesses with capital access, mentorship, and educational resources.",
     url: "https://www.fsidigital.ca/blog/scotiabank-women-initiative",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Women Entrepreneurship Fund Canada 2026 | Non-Repayable Business Grants",
     description: "Complete guide to WEF non-repayable grants for women-owned business expansion, innovation, equipment, and market access from Innovation, Science & Economic Development Canada.",
     url: "https://www.fsidigital.ca/blog/women-entrepreneurship-fund-canada",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

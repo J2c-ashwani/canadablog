@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Biotech & Life Sciences Grants 2026 | $306K NIH SBIR + $1.2B Seed Fund",
     description: "Complete guide to biotech and life sciences grants from NIH, FDA, and state programs.",
     url: "https://www.fsidigital.ca/blog/biotech-life-sciences-grants",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

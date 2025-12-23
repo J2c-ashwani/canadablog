@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Canada Digital & AI Innovation Grants 2026 | $850M+ AI Funding",
     description: "Access $850M+ in digital and AI funding. Complete guide to Scale AI, CDAP, and 25+ AI innovation grants.",
     url: "https://www.fsidigital.ca/blog/canada-digital-ai-innovation-grants",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

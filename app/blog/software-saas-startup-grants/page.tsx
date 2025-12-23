@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Software & SaaS Grants 2026 | $305K NSF SBIR, $1.25M Phase II Non-Dilutive",
     description: "Complete guide to software and SaaS startup grants from NSF SBIR, DOD, state programs.",
     url: "https://www.fsidigital.ca/blog/software-saas-startup-grants",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

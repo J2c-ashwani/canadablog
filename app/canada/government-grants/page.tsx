@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Canadian Government Grants for Business 2025 | Federal & Provincial $12B+ Available",
     description: "Complete guide to Canadian government business grants with federal and provincial programs offering $12B+ in funding opportunities.",
     url: "https://www.fsidigital.ca/canada/government-grants",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

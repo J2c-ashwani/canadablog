@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Hardware & IoT Grants 2026 | $305K NSF SBIR + DOD Electronics",
     description: "Complete guide to hardware and IoT startup grants from NSF, DOD, and advanced manufacturing programs.",
     url: "https://www.fsidigital.ca/blog/hardware-iot-startup-grants",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

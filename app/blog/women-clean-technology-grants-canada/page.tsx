@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Women Clean Technology Grants Canada 2026 | Clean Energy Sustainability Funding",
     description: "$10M+ clean tech grants for women innovators in renewable energy, circular economy, environmental sustainability.",
     url: "https://www.fsidigital.ca/blog/women-clean-technology-grants-canada",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

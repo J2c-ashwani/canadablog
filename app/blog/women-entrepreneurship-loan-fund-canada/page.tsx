@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Women Entrepreneurship Loan Fund (WELF) 2026 | Up to $50K for Women Entrepreneurs",
     description: "Complete guide to WELF microloans with up to $50,000 for women-owned businesses, startups, and underrepresented groups through five national delivery organizations.",
     url: "https://www.fsidigital.ca/blog/women-entrepreneurship-loan-fund-canada",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

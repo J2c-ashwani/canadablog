@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "New York Tech Grants 2026 | START-UP NY Tax-Free, $250K Seed Fund, NYSERDA",
     description: "Complete guide to New York tech startup grants, tax incentives, and innovation programs for NYC and statewide ecosystem.",
     url: "https://www.fsidigital.ca/blog/new-york-tech-programs",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

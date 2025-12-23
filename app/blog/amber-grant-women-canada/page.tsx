@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Amber Grant for Women Canada 2026 | Monthly $10K + $25K Annual",
     description: "Monthly $10,000 grants and $25,000 annual award for Canadian women entrepreneurs. Simple application with rolling monthly deadlines.",
     url: "https://www.fsidigital.ca/blog/amber-grant-women-canada",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

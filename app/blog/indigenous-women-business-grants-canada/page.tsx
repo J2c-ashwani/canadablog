@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Indigenous Women Business Grants Canada 2026 | NACCA Funding First Nations Support",
     description: "$50K-$250K Indigenous women business funding through NACCA, IWEF, Aboriginal Entrepreneurship Program across Canada.",
     url: "https://www.fsidigital.ca/blog/indigenous-women-business-grants-canada",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

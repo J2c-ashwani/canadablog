@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Canada Advanced Manufacturing Innovation Grants 2026 | $3.1B+ Industry 4.0 Funding",
     description: "Access $3.1B+ in advanced manufacturing funding. Complete guide to NGen, automation programs, and 38+ Industry 4.0 innovation grants.",
     url: "https://www.fsidigital.ca/blog/canada-advanced-manufacturing-innovation-grants",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

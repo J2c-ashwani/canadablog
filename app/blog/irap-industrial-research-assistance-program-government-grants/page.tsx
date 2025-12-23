@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "IRAP Industrial Research Assistance Program Canada 2026 | Government R&D Funding",
     description: "Comprehensive guide to IRAP federal R&D funding with compliance requirements and government program integration strategies.",
     url: "https://www.fsidigital.ca/blog/irap-industrial-research-assistance-program-government-grants",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

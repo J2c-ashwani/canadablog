@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       "Find government grants for startups and small businesses in USA and Canada. Free grant finder tool, application guides, and funding opportunities.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Government Grants for Startups and Businesses",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Government Grants for Startups & Businesses | USA & Canada",
     description: "Find government grants for startups and small businesses in USA and Canada.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   generator: 'FSI Digital'
 }

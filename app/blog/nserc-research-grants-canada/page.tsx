@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "NSERC Research Grants Canada 2026 | Natural Sciences & Engineering Funding",
     description: "Complete guide to NSERC research funding with Idea to Innovation grants, university-industry partnerships, and technology commercialization support.",
     url: "https://www.fsidigital.ca/blog/nserc-research-grants-canada",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

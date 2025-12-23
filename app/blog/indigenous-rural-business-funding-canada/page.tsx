@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Indigenous & Rural Business Funding Canada 2026 | $500K+ Aboriginal & Rural Business Grants",
     description: "Access $500K+ in Canadian funding for Indigenous and rural businesses. Complete guide to Aboriginal business grants, NACCA loans, and rural development programs.",
     url: "https://www.fsidigital.ca/blog/indigenous-rural-business-funding-canada",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

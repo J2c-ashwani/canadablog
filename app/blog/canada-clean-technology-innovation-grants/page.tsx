@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Canada Clean Technology Innovation Grants 2026 | $1.2B+ CleanTech Funding",
     description: "Access $1.2B+ in clean technology innovation funding. Complete guide to SDTC grants, Clean Technology ITCs, and 22+ programs supporting environmental innovation.",
     url: "https://www.fsidigital.ca/blog/canada-clean-technology-innovation-grants",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

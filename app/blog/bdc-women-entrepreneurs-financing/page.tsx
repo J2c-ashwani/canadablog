@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "BDC Women Entrepreneurs Financing 2026 | Flexible Loans & Advisory Services",
     description: "Comprehensive financing and advisory services for women-led businesses with flexible terms and strategic growth support from BDC.",
     url: "https://www.fsidigital.ca/blog/bdc-women-entrepreneurs-financing",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

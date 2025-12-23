@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Women Export Trade Grants Canada 2026 | CanExport Funding International Expansion",
     description: "$75K CanExport grants for women exporters expanding globally across all Canadian provinces.",
     url: "https://www.fsidigital.ca/blog/women-export-trade-grants-canada",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

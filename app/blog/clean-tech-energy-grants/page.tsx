@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Clean Tech & Energy Grants 2026 | $200K DOE SBIR + $1.6M Phase II",
     description: "Complete guide to clean tech and energy grants from DOE, EPA, and state programs.",
     url: "https://www.fsidigital.ca/blog/clean-tech-energy-grants",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 

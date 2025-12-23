@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "WBDC Equity Match Grant 2027 | Quarterly $2.5K-$10K Awards",
     description: "Quarterly grant program requiring 1:1 match for Connecticut women-owned business growth projects.",
     url: "https://www.fsidigital.ca/blog/wbdc-equity-match-grant-women",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 }
 
