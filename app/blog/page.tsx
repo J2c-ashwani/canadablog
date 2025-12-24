@@ -6,7 +6,7 @@ import BlogCard from '@/components/blog/BlogCard';
 import CategorySidebar from '@/components/blog/CategorySidebar';
 import NewsletterBox from '@/components/blog/NewsletterBox';
 import AdSlot from '@/components/blog/AdSlot';
-import { getAllBlogPosts } from '@/lib/data/blogPosts';
+import { getGrantNewsPosts } from '@/lib/data/blogPosts';
 import { generateBlogPageMetadata } from '@/lib/seo';
 import { generateBlogSchema } from '@/lib/schema';
 
@@ -36,7 +36,7 @@ export default function BlogPage({
 }: {
   searchParams: { category?: string; page?: string }
 }) {
-  const allPosts = getAllBlogPosts();
+  const allPosts = getGrantNewsPosts();
   const selectedCategory = searchParams.category;
   const currentPage = parseInt(searchParams.page || '1');
   const postsPerPage = 9;
@@ -84,7 +84,7 @@ export default function BlogPage({
         </div>
 
         {/* Featured Stories */}
-        <FeaturedStories />
+        <FeaturedStories type="grant-news" />
 
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Main Content */}
@@ -155,7 +155,7 @@ export default function BlogPage({
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-8 space-y-6">
-              <CategorySidebar />
+              <CategorySidebar type="grant-news" />
 
               {/* Sidebar Ad */}
               <AdSlot

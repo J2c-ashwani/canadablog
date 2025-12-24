@@ -4,8 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Calendar, Clock, User, ArrowRight } from 'lucide-react';
 import { getFeaturedPosts, blogCategories } from '@/lib/data/blogPosts';
 
-export default function FeaturedStories() {
-  const featuredPosts = getFeaturedPosts();
+
+export default function FeaturedStories({ type }: { type?: 'grant-news' | 'expert-insight' }) {
+  let featuredPosts = getFeaturedPosts();
+
+  if (type) {
+    featuredPosts = featuredPosts.filter(post => post.type === type);
+  }
+
 
   if (featuredPosts.length === 0) return null;
 

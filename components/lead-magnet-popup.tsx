@@ -16,16 +16,16 @@ export function LeadMagnetPopup() {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    // Show popup after 30 seconds or when user scrolls 50% down the page
+    // Show popup after 60 seconds or when user scrolls 70% down the page
     const timer = setTimeout(() => {
       if (!localStorage.getItem("newsletter-popup-shown")) {
         setIsOpen(true)
       }
-    }, 30000)
+    }, 60000)
 
     const handleScroll = () => {
       const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
-      if (scrollPercent > 50 && !localStorage.getItem("newsletter-popup-shown")) {
+      if (scrollPercent > 70 && !localStorage.getItem("newsletter-popup-shown")) {
         setIsOpen(true)
       }
     }

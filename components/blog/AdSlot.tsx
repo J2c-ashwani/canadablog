@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface AdSlotProps {
   adSlot: string;
@@ -9,16 +9,22 @@ interface AdSlotProps {
   className?: string;
 }
 
-export default function AdSlot({ 
-  adSlot, 
-  adFormat = 'auto', 
-  style = { display: 'block' }, 
-  className = '' 
+export default function AdSlot({
+  adSlot,
+  adFormat = 'auto',
+  style = { display: 'block' },
+  className = ''
 }: AdSlotProps) {
+  const adPushed = useRef(false);
+
   useEffect(() => {
+    // Prevent double execution in Strict Mode or if ID is missing
+    if (adPushed.current || !process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID) return;
+
     try {
       // @ts-ignore
       (window.adsbygoogle = window.adsbygoogle || []).push({});
+      adPushed.current = true;
     } catch (err) {
       console.log('AdSense error:', err);
     }

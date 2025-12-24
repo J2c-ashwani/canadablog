@@ -145,7 +145,7 @@ export default function HomePage() {
                 className="bg-white/10 border-white/30 text-white hover:bg-white/20 h-12"
                 asChild
               >
-                <Link href="/ai-grant-finder">
+                <Link href="/grant-finder">
                   <Search className="w-4 h-4 mr-2" />
                   AI Grant Finder
                 </Link>

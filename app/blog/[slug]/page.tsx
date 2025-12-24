@@ -48,9 +48,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             <article className="lg:col-span-3 bg-white dark:bg-neutral-950 rounded-2xl shadow-lg p-8">
               <div className="mb-8">
                 <Button variant="ghost" asChild>
-                  <Link href="/blog">
+                  <Link href={post.type === 'expert-insight' ? '/expert-insights' : '/blog'}>
                     <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back to Blog
+                    {post.type === 'expert-insight' ? 'Back to Expert Insights' : 'Back to Grant News'}
                   </Link>
                 </Button>
               </div>
@@ -135,7 +135,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             </article>
 
             <aside className="sticky top-8 lg:col-span-1 space-y-6">
-              <CategorySidebar />
+              <CategorySidebar type={post.type} />
               <AdSlot adSlot="3456789012" adFormat="vertical" style={{ minHeight: 600 }} />
               <NewsletterBox />
             </aside>

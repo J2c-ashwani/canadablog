@@ -166,11 +166,15 @@ export function Header() {
                 AI Grant Finder
               </Link>
 
+              <Link href="/blog" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
+                Grant News
+              </Link>
+
               <Link href="/guides" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
                 Guides
               </Link>
 
-              <Link href="/blog" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
+              <Link href="/expert-insights" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
                 Expert Insights
               </Link>
 
@@ -333,6 +337,14 @@ export function Header() {
                 </Link>
 
                 <Link
+                  href="/blog"
+                  className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Grant News
+                </Link>
+
+                <Link
                   href="/guides"
                   className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
                   onClick={() => setIsMenuOpen(false)}
@@ -341,7 +353,7 @@ export function Header() {
                 </Link>
 
                 <Link
-                  href="/blog"
+                  href="/expert-insights"
                   className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
