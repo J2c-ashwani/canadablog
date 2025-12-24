@@ -35,7 +35,7 @@ export default function IRAPInnovationFundingGuidePage() {
                 Industrial Research Assistance Program (IRAP)
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Canada's premier R&D innovation funding program providing 60-80% non-repayable contributions up to $500K 
+                Canada's premier R&D innovation funding program providing 60-80% non-repayable contributions up to $500K
                 for SME innovation projects, plus dedicated Industrial Technology Advisor support from the National Research Council.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -45,7 +45,7 @@ export default function IRAPInnovationFundingGuidePage() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild>
-                  <Link href="/downloads/irap-innovation-application-guide">
+                  <Link href="/download/irap-innovation-application-guide">
                     Get Free IRAP Innovation Guide
                   </Link>
                 </Button>
@@ -93,7 +93,7 @@ export default function IRAPInnovationFundingGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada's Leading SME Innovation Program</h2>
                 <p className="text-lg text-gray-600">
-                  IRAP combines generous non-repayable funding with dedicated advisory support to help Canadian SMEs 
+                  IRAP combines generous non-repayable funding with dedicated advisory support to help Canadian SMEs
                   develop and commercialize innovative technologies with strong market potential.
                 </p>
               </div>
@@ -125,7 +125,7 @@ export default function IRAPInnovationFundingGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Innovation Funding Streams & Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* R&D Project Funding */}
                 <Card className="border-blue-200">
@@ -168,7 +168,7 @@ export default function IRAPInnovationFundingGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-blue-50 rounded-lg">
                       <h5 className="font-semibold mb-2">📋 R&D Funding Coverage:</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -235,7 +235,7 @@ export default function IRAPInnovationFundingGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Innovation Eligibility Requirements</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Company Eligibility */}
                 <Card className="border-green-200">
@@ -255,7 +255,7 @@ export default function IRAPInnovationFundingGuidePage() {
                           <li>• Commitment to R&D and innovation</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-blue-700 mb-2">🎯 Business Characteristics</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -288,7 +288,7 @@ export default function IRAPInnovationFundingGuidePage() {
                           <li>• Pre-commercial technology validation</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-purple-700 mb-2">🚫 Non-Eligible Activities</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -312,7 +312,7 @@ export default function IRAPInnovationFundingGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Industrial Technology Advisors (ITAs)</h2>
-              
+
               <div className="space-y-6">
                 <Card className="border-orange-200">
                   <CardHeader>
@@ -393,7 +393,7 @@ export default function IRAPInnovationFundingGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Innovation Application Process</h2>
-              
+
               <div className="space-y-6">
                 <div className="grid md:grid-cols-4 gap-6">
                   {[
@@ -405,7 +405,7 @@ export default function IRAPInnovationFundingGuidePage() {
                       color: "blue"
                     },
                     {
-                      step: "2", 
+                      step: "2",
                       title: "Project Assessment",
                       description: "ITA evaluates innovation project feasibility and eligibility",
                       icon: <Users className="w-6 h-6" />,
@@ -428,11 +428,11 @@ export default function IRAPInnovationFundingGuidePage() {
                   ].map((item, index) => {
                     const colors = {
                       blue: "bg-blue-500 text-white",
-                      green: "bg-green-500 text-white", 
+                      green: "bg-green-500 text-white",
                       purple: "bg-purple-500 text-white",
                       orange: "bg-orange-500 text-white"
                     }
-                    
+
                     return (
                       <Card key={index} className="text-center">
                         <CardHeader>
@@ -485,7 +485,7 @@ export default function IRAPInnovationFundingGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Innovation Application Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -567,10 +567,10 @@ export default function IRAPInnovationFundingGuidePage() {
                 Ready to Access IRAP's $500K Innovation Funding?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get our complete IRAP innovation application guide or work with our R&D funding specialists who understand 
+                Get our complete IRAP innovation application guide or work with our R&D funding specialists who understand
                 the IRAP process and can help you connect with the right Industrial Technology Advisor.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free IRAP Innovation Guide</h4>
@@ -578,7 +578,7 @@ export default function IRAPInnovationFundingGuidePage() {
                     Get our comprehensive IRAP innovation application guide with project planning templates, eligibility checklist, and ITA contact directory.
                   </p>
                   <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100" asChild>
-                    <Link href="/downloads/irap-innovation-application-guide">
+                    <Link href="/download/irap-innovation-application-guide">
                       <Download className="w-4 h-4 mr-2" />
                       Get IRAP Innovation Guide
                     </Link>
@@ -591,13 +591,13 @@ export default function IRAPInnovationFundingGuidePage() {
                     Work with R&D funding specialists who can help optimize your IRAP innovation application and connect you with the right ITA in your region.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
-                    <Link href="/contact?service=irap-innovation-expert-help">
+                    <Link href="/download/irap-innovation-application-guide?service=irap-innovation-expert-help">
                       Get IRAP Expert Help
                     </Link>
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-blue-200 text-sm mt-6">
                 Expert guidance • ITA network connections • Application optimization • Innovation success rate improvement
               </p>

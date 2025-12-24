@@ -34,8 +34,8 @@ export default function CanadaDigitalAIFundingGuide() {
                 How to Apply for AI Grants in Canada 2025
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Complete step-by-step guide to applying for artificial intelligence and machine learning grants in Canada. 
-                Learn the Scale AI application process, CDAP digital adoption strategies, and how to secure up to $5M+ in AI 
+                Complete step-by-step guide to applying for artificial intelligence and machine learning grants in Canada.
+                Learn the Scale AI application process, CDAP digital adoption strategies, and how to secure up to $5M+ in AI
                 innovation funding across 25+ programs for deep learning, computer vision, and NLP projects.
               </p>
             </div>
@@ -72,19 +72,19 @@ export default function CanadaDigitalAIFundingGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* AI Funding Overview */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada AI Grant Application Overview</h2>
-                
+
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
                   <div className="flex items-start">
                     <Brain className="w-8 h-8 text-blue-600 mr-4 mt-1" />
                     <div>
                       <h4 className="font-bold text-blue-800 mb-2">Artificial Intelligence Funding Focus</h4>
                       <p className="text-blue-700">
-                        Canada provides $850M+ annually in AI and machine learning funding through federal programs supporting 
-                        deep learning research, computer vision applications, natural language processing, predictive analytics, 
+                        Canada provides $850M+ annually in AI and machine learning funding through federal programs supporting
+                        deep learning research, computer vision applications, natural language processing, predictive analytics,
                         and AI-powered business solutions across all industries.
                       </p>
                     </div>
@@ -139,7 +139,7 @@ export default function CanadaDigitalAIFundingGuide() {
               {/* Scale AI Application */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Scale AI Grant Application Process (Up to $5M+)</h2>
-                
+
                 <Card className="border-blue-200">
                   <CardHeader>
                     <CardTitle className="text-blue-700 flex items-center">
@@ -162,7 +162,7 @@ export default function CanadaDigitalAIFundingGuide() {
                         <span><strong>Type:</strong> AI Supply Chain</span>
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h5 className="font-semibold mb-3 text-blue-700">Scale AI Eligibility:</h5>
@@ -194,7 +194,7 @@ export default function CanadaDigitalAIFundingGuide() {
               {/* CDAP AI Tools */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">CDAP AI Tools & Digital Adoption Funding</h2>
-                
+
                 <Card className="border-purple-200">
                   <CardHeader>
                     <CardTitle className="text-purple-700 flex items-center">
@@ -217,7 +217,7 @@ export default function CanadaDigitalAIFundingGuide() {
                         <span><strong>Focus:</strong> AI Adoption</span>
                       </div>
                     </div>
-                    
+
                     <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
                       <h4 className="font-bold mb-2 text-purple-800">AI Tools Eligible for CDAP Funding:</h4>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-purple-700">
@@ -241,7 +241,7 @@ export default function CanadaDigitalAIFundingGuide() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h5 className="font-semibold mb-3 text-purple-700">CDAP Application Steps:</h5>
@@ -271,7 +271,7 @@ export default function CanadaDigitalAIFundingGuide() {
               {/* IRAP AI Projects */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">IRAP Machine Learning & AI Development Funding</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-green-200">
                     <CardHeader>
@@ -285,21 +285,21 @@ export default function CanadaDigitalAIFundingGuide() {
                             <p className="text-sm text-gray-600">Up to $500K non-repayable</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded">
                           <div>
                             <strong>Coverage Rate</strong>
                             <p className="text-sm text-gray-600">60-80% of AI development costs</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded">
                           <div>
                             <strong>Project Types</strong>
                             <p className="text-sm text-gray-600">Deep learning, NLP, computer vision</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded">
                           <div>
                             <strong>Advisor Support</strong>
@@ -353,7 +353,7 @@ export default function CanadaDigitalAIFundingGuide() {
               {/* Program Selection Matrix */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">AI Funding Program Selection by Project Stage</h2>
-                
+
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse">
                     <thead>
@@ -436,7 +436,7 @@ export default function CanadaDigitalAIFundingGuide() {
               {/* Success Strategies */}
               <div className="bg-green-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">AI Grant Application Success Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Best Practices</h4>
@@ -459,7 +459,7 @@ export default function CanadaDigitalAIFundingGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Mistakes</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -487,7 +487,7 @@ export default function CanadaDigitalAIFundingGuide() {
               {/* Official Resources */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Official AI Funding Resources</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-blue-200">
                     <CardHeader>
@@ -505,7 +505,7 @@ export default function CanadaDigitalAIFundingGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">CDAP</h5>
@@ -548,14 +548,14 @@ export default function CanadaDigitalAIFundingGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">AI ROI Calculator</h5>
                           <p className="text-sm text-gray-600">Calculate machine learning ROI</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="/tools/ai-roi-calculator">
+                          <Link href="/contact">
                             Calculate ROI
                           </Link>
                         </Button>
@@ -582,7 +582,7 @@ export default function CanadaDigitalAIFundingGuide() {
                 <Download className="w-16 h-16 mx-auto mb-4 text-blue-100" />
                 <h3 className="text-2xl font-bold mb-4">Get Your Free AI Funding Application Kit</h3>
                 <p className="text-blue-100 mb-6 text-lg">
-                  Download our comprehensive AI grants guide with Scale AI templates, CDAP tools, machine learning 
+                  Download our comprehensive AI grants guide with Scale AI templates, CDAP tools, machine learning
                   project frameworks, and successful AI application examples.
                 </p>
                 <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>
@@ -598,7 +598,7 @@ export default function CanadaDigitalAIFundingGuide() {
                 <Users className="w-16 h-16 mx-auto mb-4 text-purple-100" />
                 <h3 className="text-2xl font-bold mb-4">Ready to Apply for AI Grants?</h3>
                 <p className="text-purple-100 mb-6 text-lg">
-                  Our AI funding specialists understand Scale AI, CDAP, and machine learning programs. 
+                  Our AI funding specialists understand Scale AI, CDAP, and machine learning programs.
                   We've secured $85M+ in artificial intelligence funding with 79% success rate.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

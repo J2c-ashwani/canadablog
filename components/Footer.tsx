@@ -99,7 +99,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/usa/minority-business-grants" className="text-gray-400 hover:text-white text-sm">
+                <Link href="/contact" className="text-gray-400 hover:text-white text-sm">
                   Minority-Owned Business
                 </Link>
               </li>
@@ -109,7 +109,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/usa/renewable-energy-grants" className="text-gray-400 hover:text-white text-sm">
+                <Link href="/contact" className="text-gray-400 hover:text-white text-sm">
                   Green Energy
                 </Link>
               </li>
@@ -136,7 +136,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/canada/indigenous-entrepreneur-grants" className="text-gray-400 hover:text-white text-sm">
+                <Link href="/contact" className="text-gray-400 hover:text-white text-sm">
                   Indigenous Entrepreneurs
                 </Link>
               </li>
@@ -146,7 +146,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/canada/green-energy-grants" className="text-gray-400 hover:text-white text-sm">
+                <Link href="/contact" className="text-gray-400 hover:text-white text-sm">
                   Green Energy
                 </Link>
               </li>

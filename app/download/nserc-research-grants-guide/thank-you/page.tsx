@@ -16,13 +16,13 @@ export default function NSERCResearchGrantsDownloadThankYouPage() {
               <div className="bg-indigo-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="w-12 h-12 text-indigo-600" />
               </div>
-              
+
               <h1 className="text-4xl font-bold text-gray-900 mb-4">
                 Your NSERC Research Toolkit is On Its Way!
               </h1>
-              
+
               <p className="text-xl text-gray-600 mb-8">
-                Check your email for instant access to the NSERC Research Grants Application Toolkit. 
+                Check your email for instant access to the NSERC Research Grants Application Toolkit.
                 If you don't see it in a few minutes, check your spam folder.
               </p>
 
@@ -67,7 +67,7 @@ export default function NSERCResearchGrantsDownloadThankYouPage() {
               <div className="bg-indigo-50 border border-indigo-200 p-6 rounded-lg mb-8">
                 <h3 className="font-bold text-indigo-800 mb-4">Ready for Expert NSERC Research Support?</h3>
                 <p className="text-indigo-700 mb-4">
-                  Our NSERC research specialists have secured $25M+ in funding with 92% success rate and extensive university-industry partnership connections. 
+                  Our NSERC research specialists have secured $25M+ in funding with 92% success rate and extensive university-industry partnership connections.
                   Get professional guidance for your Natural Sciences & Engineering research applications.
                 </p>
                 <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700" asChild>
@@ -86,7 +86,7 @@ export default function NSERCResearchGrantsDownloadThankYouPage() {
                     </Link>
                   </Button>
                   <Button variant="outline" asChild>
-                    <Link href="/canada/research-grants">
+                    <Link href="/contact">
                       Explore Research Grants
                     </Link>
                   </Button>

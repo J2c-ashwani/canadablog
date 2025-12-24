@@ -34,8 +34,8 @@ export default function CanadaLifeSciencesFundingGuide() {
                 How to Apply for Biotech Grants in Canada 2025
               </h1>
               <p className="text-xl text-teal-100 mb-8">
-                Complete step-by-step guide to applying for life sciences and biotechnology grants in Canada. 
-                Learn IRAP biotech applications, clinical trials funding process, medical device regulatory pathways, 
+                Complete step-by-step guide to applying for life sciences and biotechnology grants in Canada.
+                Learn IRAP biotech applications, clinical trials funding process, medical device regulatory pathways,
                 and how to secure up to $10M in drug development funding across 18+ pharmaceutical and health technology programs.
               </p>
             </div>
@@ -72,19 +72,19 @@ export default function CanadaLifeSciencesFundingGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* Life Sciences Overview */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada Life Sciences Grant Application Overview</h2>
-                
+
                 <div className="bg-teal-50 border border-teal-200 rounded-lg p-6 mb-6">
                   <div className="flex items-start">
                     <Microscope className="w-8 h-8 text-teal-600 mr-4 mt-1" />
                     <div>
                       <h4 className="font-bold text-teal-800 mb-2">Biotechnology & Health Innovation Focus</h4>
                       <p className="text-teal-700">
-                        Canada provides $720M+ annually in life sciences funding through federal programs supporting 
-                        drug development, medical devices, diagnostics, clinical trials, biomanufacturing, and health 
+                        Canada provides $720M+ annually in life sciences funding through federal programs supporting
+                        drug development, medical devices, diagnostics, clinical trials, biomanufacturing, and health
                         technology innovation from preclinical research to commercialization.
                       </p>
                     </div>
@@ -139,7 +139,7 @@ export default function CanadaLifeSciencesFundingGuide() {
               {/* IRAP Biotech Application */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">IRAP Biotechnology Funding Application (Up to $500K)</h2>
-                
+
                 <Card className="border-teal-200">
                   <CardHeader>
                     <CardTitle className="text-teal-700 flex items-center">
@@ -162,7 +162,7 @@ export default function CanadaLifeSciencesFundingGuide() {
                         <span><strong>Type:</strong> R&D Projects</span>
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h5 className="font-semibold mb-3 text-teal-700">Biotech Eligibility:</h5>
@@ -194,7 +194,7 @@ export default function CanadaLifeSciencesFundingGuide() {
               {/* Clinical Trials Funding Process */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Clinical Trials Funding Application Process</h2>
-                
+
                 <Card className="border-cyan-200">
                   <CardHeader>
                     <CardTitle className="text-cyan-700 flex items-center">
@@ -217,7 +217,7 @@ export default function CanadaLifeSciencesFundingGuide() {
                         <span><strong>Coverage:</strong> Variable</span>
                       </div>
                     </div>
-                    
+
                     <div className="bg-cyan-50 border border-cyan-200 rounded-lg p-4 mb-4">
                       <h4 className="font-bold mb-2 text-cyan-800">Clinical Trial Funding by Phase:</h4>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-cyan-700">
@@ -241,7 +241,7 @@ export default function CanadaLifeSciencesFundingGuide() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h5 className="font-semibold mb-3 text-cyan-700">Application Requirements:</h5>
@@ -271,7 +271,7 @@ export default function CanadaLifeSciencesFundingGuide() {
               {/* Medical Device Regulatory */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Medical Device Funding & Regulatory Pathway</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-blue-200">
                     <CardHeader>
@@ -285,21 +285,21 @@ export default function CanadaLifeSciencesFundingGuide() {
                             <p className="text-sm text-gray-600">Self-declaration, basic requirements</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                           <div>
                             <strong>Class II (Moderate Risk)</strong>
                             <p className="text-sm text-gray-600">Conformity assessment required</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                           <div>
                             <strong>Class III (High Risk)</strong>
                             <p className="text-sm text-gray-600">Full regulatory review needed</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                           <div>
                             <strong>Class IV (Highest Risk)</strong>
@@ -353,7 +353,7 @@ export default function CanadaLifeSciencesFundingGuide() {
               {/* Program Selection Matrix */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Life Sciences Program Selection by Stage</h2>
-                
+
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse">
                     <thead>
@@ -436,7 +436,7 @@ export default function CanadaLifeSciencesFundingGuide() {
               {/* Success Strategies */}
               <div className="bg-green-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Life Sciences Funding Success Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Best Practices</h4>
@@ -459,7 +459,7 @@ export default function CanadaLifeSciencesFundingGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Mistakes</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -487,7 +487,7 @@ export default function CanadaLifeSciencesFundingGuide() {
               {/* Official Resources */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Official Life Sciences Resources</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-teal-200">
                     <CardHeader>
@@ -505,7 +505,7 @@ export default function CanadaLifeSciencesFundingGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-teal-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">CIHR Clinical Trials</h5>
@@ -548,14 +548,14 @@ export default function CanadaLifeSciencesFundingGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-cyan-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">Clinical Trial Planner</h5>
                           <p className="text-sm text-gray-600">Budget and timeline tools</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="/tools/clinical-trial-planner">
+                          <Link href="/contact">
                             Plan Trial
                           </Link>
                         </Button>
@@ -582,7 +582,7 @@ export default function CanadaLifeSciencesFundingGuide() {
                 <Download className="w-16 h-16 mx-auto mb-4 text-teal-100" />
                 <h3 className="text-2xl font-bold mb-4">Get Your Free Life Sciences Funding Kit</h3>
                 <p className="text-teal-100 mb-6 text-lg">
-                  Download our comprehensive biotech funding guide with IRAP templates, clinical trials checklists, 
+                  Download our comprehensive biotech funding guide with IRAP templates, clinical trials checklists,
                   medical device regulatory tools, and successful application examples.
                 </p>
                 <Button size="lg" className="bg-white text-teal-700 hover:bg-gray-100" asChild>
@@ -598,7 +598,7 @@ export default function CanadaLifeSciencesFundingGuide() {
                 <Users className="w-16 h-16 mx-auto mb-4 text-cyan-100" />
                 <h3 className="text-2xl font-bold mb-4">Ready to Apply for Life Sciences Grants?</h3>
                 <p className="text-cyan-100 mb-6 text-lg">
-                  Our life sciences funding specialists understand IRAP biotech, clinical trials, and medical device programs. 
+                  Our life sciences funding specialists understand IRAP biotech, clinical trials, and medical device programs.
                   We've secured $95M+ in biotechnology funding with 76% success rate.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

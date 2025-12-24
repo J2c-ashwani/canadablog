@@ -34,8 +34,8 @@ export default function CanadaCleanTechFundingGuide() {
                 How to Apply for Canada Clean Technology Funding
               </h1>
               <p className="text-xl text-teal-100 mb-8">
-                Complete step-by-step guide to applying for clean technology funding in Canada. Learn the SDTC application 
-                process, Clean Tech ITC claims, Net Zero Accelerator strategies, and how to secure up to $15M in environmental 
+                Complete step-by-step guide to applying for clean technology funding in Canada. Learn the SDTC application
+                process, Clean Tech ITC claims, Net Zero Accelerator strategies, and how to secure up to $15M in environmental
                 innovation funding across 22+ programs.
               </p>
             </div>
@@ -72,18 +72,18 @@ export default function CanadaCleanTechFundingGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* CleanTech Funding Overview */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada Clean Technology Funding Overview</h2>
-                
+
                 <div className="bg-teal-50 border border-teal-200 rounded-lg p-6 mb-6">
                   <div className="flex items-start">
                     <Leaf className="w-8 h-8 text-teal-600 mr-4 mt-1" />
                     <div>
                       <h4 className="font-bold text-teal-800 mb-2">Environmental Innovation Focus</h4>
                       <p className="text-teal-700">
-                        Canada provides $1.2B+ annually in clean technology funding through federal and provincial programs 
+                        Canada provides $1.2B+ annually in clean technology funding through federal and provincial programs
                         supporting renewable energy, emissions reduction, sustainable technologies, and net-zero transition projects.
                       </p>
                     </div>
@@ -138,7 +138,7 @@ export default function CanadaCleanTechFundingGuide() {
               {/* SDTC Application Process */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">SDTC Application Process (Up to $15M)</h2>
-                
+
                 <Card className="border-teal-200">
                   <CardHeader>
                     <CardTitle className="text-teal-700 flex items-center">
@@ -161,7 +161,7 @@ export default function CanadaCleanTechFundingGuide() {
                         <span><strong>Stage:</strong> Demonstration</span>
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h5 className="font-semibold mb-3 text-teal-700">Eligibility Requirements:</h5>
@@ -193,7 +193,7 @@ export default function CanadaCleanTechFundingGuide() {
               {/* Clean Technology ITCs */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Clean Technology Investment Tax Credits</h2>
-                
+
                 <Card className="border-green-200">
                   <CardHeader>
                     <CardTitle className="text-green-700 flex items-center">
@@ -216,7 +216,7 @@ export default function CanadaCleanTechFundingGuide() {
                         <span><strong>Hydrogen:</strong> 15% ITC</span>
                       </div>
                     </div>
-                    
+
                     <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
                       <h4 className="font-bold mb-2 text-green-800">Eligible Equipment (30% ITC):</h4>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
@@ -240,7 +240,7 @@ export default function CanadaCleanTechFundingGuide() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h5 className="font-semibold mb-3 text-green-700">ITC Claim Process:</h5>
@@ -270,7 +270,7 @@ export default function CanadaCleanTechFundingGuide() {
               {/* Net Zero Accelerator */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Net Zero Accelerator Application</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-blue-200">
                     <CardHeader>
@@ -284,21 +284,21 @@ export default function CanadaCleanTechFundingGuide() {
                             <p className="text-sm text-gray-600">$10M - $100M per project</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                           <div>
                             <strong>Project Requirements</strong>
                             <p className="text-sm text-gray-600">Minimum $50M total project cost</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                           <div>
                             <strong>Focus Areas</strong>
                             <p className="text-sm text-gray-600">Industrial decarbonization & CCUS</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-blue-50 rounded">
                           <div>
                             <strong>Net-Zero Commitment</strong>
@@ -352,7 +352,7 @@ export default function CanadaCleanTechFundingGuide() {
               {/* Program Selection Matrix */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">CleanTech Program Selection by Stage</h2>
-                
+
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse">
                     <thead>
@@ -435,7 +435,7 @@ export default function CanadaCleanTechFundingGuide() {
               {/* Success Strategies */}
               <div className="bg-green-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">CleanTech Funding Success Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Best Practices</h4>
@@ -458,7 +458,7 @@ export default function CanadaCleanTechFundingGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Mistakes</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -486,7 +486,7 @@ export default function CanadaCleanTechFundingGuide() {
               {/* Official Resources */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Official CleanTech Resources</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-teal-200">
                     <CardHeader>
@@ -504,7 +504,7 @@ export default function CanadaCleanTechFundingGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-teal-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">Clean Tech ITCs</h5>
@@ -547,14 +547,14 @@ export default function CanadaCleanTechFundingGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">ITC Calculator</h5>
                           <p className="text-sm text-gray-600">Calculate your Clean Tech ITC savings</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="/tools/cleantech-itc-calculator">
+                          <Link href="/contact">
                             Calculate ITCs
                           </Link>
                         </Button>
@@ -581,7 +581,7 @@ export default function CanadaCleanTechFundingGuide() {
                 <Download className="w-16 h-16 mx-auto mb-4 text-teal-100" />
                 <h3 className="text-2xl font-bold mb-4">Get Your Free CleanTech Funding Application Kit</h3>
                 <p className="text-teal-100 mb-6 text-lg">
-                  Download our comprehensive clean technology funding guide with SDTC templates, Clean Tech ITC calculators, 
+                  Download our comprehensive clean technology funding guide with SDTC templates, Clean Tech ITC calculators,
                   program selection tools, and successful application examples.
                 </p>
                 <Button size="lg" className="bg-white text-teal-700 hover:bg-gray-100" asChild>
@@ -597,7 +597,7 @@ export default function CanadaCleanTechFundingGuide() {
                 <Users className="w-16 h-16 mx-auto mb-4 text-green-100" />
                 <h3 className="text-2xl font-bold mb-4">Ready to Apply for CleanTech Funding?</h3>
                 <p className="text-green-100 mb-6 text-lg">
-                  Our clean technology funding specialists understand SDTC, Clean Tech ITCs, and Net Zero programs. 
+                  Our clean technology funding specialists understand SDTC, Clean Tech ITCs, and Net Zero programs.
                   We've secured $75M+ in environmental innovation funding with 85% success rate.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -165,7 +165,7 @@ export default function CanadaGrantsPage() {
                     <span className="text-sm">Clean tech companies</span>
                   </div>
                   <Button className="w-full mt-4" asChild>
-                    <Link href="/canada/green-energy-grants">
+                    <Link href="/contact">
                       Learn More <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
                   </Button>

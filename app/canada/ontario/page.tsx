@@ -179,7 +179,7 @@ export default function OntarioGrantsPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2 text-sm">
-                    <a href="/canada/quebec" className="block text-primary hover:underline">
+                    <a href="/contact" className="block text-primary hover:underline">
                       Quebec Small Business Grants
                     </a>
                     <a href="/canada/government-grants" className="block text-primary hover:underline">

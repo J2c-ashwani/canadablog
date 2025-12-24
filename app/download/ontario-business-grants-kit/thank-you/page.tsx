@@ -16,14 +16,14 @@ export default function OntarioBusinessGrantsThankYouPage() {
               <div className="bg-red-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="w-12 h-12 text-red-600" />
               </div>
-              
+
               <h1 className="text-4xl font-bold text-gray-900 mb-4">
                 Your Ontario Business Grants Toolkit is On Its Way!
               </h1>
-              
+
               <p className="text-xl text-gray-600 mb-8">
-                Check your email for instant access to the Ontario Business Grants Application Toolkit with provincial 
-                program templates, regional development strategies, funding calculators, and Ontario business ecosystem 
+                Check your email for instant access to the Ontario Business Grants Application Toolkit with provincial
+                program templates, regional development strategies, funding calculators, and Ontario business ecosystem
                 access guides. If you don't see it in a few minutes, check your spam folder.
               </p>
 
@@ -68,8 +68,8 @@ export default function OntarioBusinessGrantsThankYouPage() {
               <div className="bg-red-50 border border-red-200 p-6 rounded-lg mb-8">
                 <h3 className="font-bold text-red-800 mb-4">Ready for Expert Ontario Funding Support?</h3>
                 <p className="text-red-700 mb-4">
-                  Our Ontario business grant specialists have helped secure $12M+ in provincial funding approvals with an 
-                  87% success rate. Get personalized guidance for program selection, application optimization, and regional 
+                  Our Ontario business grant specialists have helped secure $12M+ in provincial funding approvals with an
+                  87% success rate. Get personalized guidance for program selection, application optimization, and regional
                   economic impact demonstration tailored to your Ontario location.
                 </p>
                 <Button size="lg" className="bg-red-600 hover:bg-red-700" asChild>
@@ -88,7 +88,7 @@ export default function OntarioBusinessGrantsThankYouPage() {
                     </Link>
                   </Button>
                   <Button variant="outline" asChild>
-                    <Link href="/canada/ontario-business-grants">
+                    <Link href="/contact">
                       Explore All Ontario Programs
                     </Link>
                   </Button>

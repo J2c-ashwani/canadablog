@@ -34,8 +34,8 @@ export default function CanadaManufacturingFundingGuide() {
                 How to Apply for Canada Manufacturing Funding
               </h1>
               <p className="text-xl text-gray-300 mb-8">
-                Complete step-by-step guide to applying for advanced manufacturing funding in Canada. Learn the NGen application 
-                process, IRAP manufacturing support, CDAP digital adoption, and how to secure up to $10M in Industry 4.0 
+                Complete step-by-step guide to applying for advanced manufacturing funding in Canada. Learn the NGen application
+                process, IRAP manufacturing support, CDAP digital adoption, and how to secure up to $10M in Industry 4.0
                 funding across 38+ programs.
               </p>
             </div>
@@ -72,18 +72,18 @@ export default function CanadaManufacturingFundingGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* Manufacturing Funding Overview */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada Advanced Manufacturing Funding Overview</h2>
-                
+
                 <div className="bg-gray-100 border border-gray-300 rounded-lg p-6 mb-6">
                   <div className="flex items-start">
                     <Factory className="w-8 h-8 text-gray-700 mr-4 mt-1" />
                     <div>
                       <h4 className="font-bold text-gray-800 mb-2">Industry 4.0 Focus</h4>
                       <p className="text-gray-700">
-                        Canada provides $3.1B+ annually in advanced manufacturing funding through federal and provincial programs 
+                        Canada provides $3.1B+ annually in advanced manufacturing funding through federal and provincial programs
                         supporting automation, robotics, AI integration, smart manufacturing, and productivity enhancement.
                       </p>
                     </div>
@@ -138,7 +138,7 @@ export default function CanadaManufacturingFundingGuide() {
               {/* NGen Application Process */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">NGen Application Process (Up to $10M)</h2>
-                
+
                 <Card className="border-gray-300">
                   <CardHeader>
                     <CardTitle className="text-gray-800 flex items-center">
@@ -161,7 +161,7 @@ export default function CanadaManufacturingFundingGuide() {
                         <span><strong>Type:</strong> Collaborative</span>
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h5 className="font-semibold mb-3 text-gray-700">Eligibility Requirements:</h5>
@@ -193,7 +193,7 @@ export default function CanadaManufacturingFundingGuide() {
               {/* IRAP Manufacturing */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">IRAP Manufacturing Innovation Funding</h2>
-                
+
                 <Card className="border-blue-200">
                   <CardHeader>
                     <CardTitle className="text-blue-700 flex items-center">
@@ -216,7 +216,7 @@ export default function CanadaManufacturingFundingGuide() {
                         <span><strong>Type:</strong> Non-Repayable</span>
                       </div>
                     </div>
-                    
+
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
                       <h4 className="font-bold mb-2 text-blue-800">Manufacturing Innovation Projects:</h4>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700">
@@ -240,7 +240,7 @@ export default function CanadaManufacturingFundingGuide() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h5 className="font-semibold mb-3 text-blue-700">Application Process:</h5>
@@ -270,7 +270,7 @@ export default function CanadaManufacturingFundingGuide() {
               {/* CDAP Digital Adoption */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">CDAP Manufacturing Digital Adoption</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-purple-200">
                     <CardHeader>
@@ -284,21 +284,21 @@ export default function CanadaManufacturingFundingGuide() {
                             <p className="text-sm text-gray-600">$15K for digital adoption plan</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
                           <div>
                             <strong>Loan Component</strong>
                             <p className="text-sm text-gray-600">Up to $100K interest-free</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
                           <div>
                             <strong>Advisor Support</strong>
                             <p className="text-sm text-gray-600">Digital advisor included</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
                           <div>
                             <strong>Technology Focus</strong>
@@ -352,7 +352,7 @@ export default function CanadaManufacturingFundingGuide() {
               {/* Program Selection Matrix */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Manufacturing Program Selection by Need</h2>
-                
+
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse">
                     <thead>
@@ -435,7 +435,7 @@ export default function CanadaManufacturingFundingGuide() {
               {/* Success Strategies */}
               <div className="bg-blue-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Manufacturing Funding Success Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Best Practices</h4>
@@ -458,7 +458,7 @@ export default function CanadaManufacturingFundingGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Mistakes</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -486,7 +486,7 @@ export default function CanadaManufacturingFundingGuide() {
               {/* Official Resources */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Official Manufacturing Resources</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-gray-300">
                     <CardHeader>
@@ -504,7 +504,7 @@ export default function CanadaManufacturingFundingGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">IRAP</h5>
@@ -547,14 +547,14 @@ export default function CanadaManufacturingFundingGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">ROI Calculator</h5>
                           <p className="text-sm text-gray-600">Calculate automation ROI</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="/tools/manufacturing-roi-calculator">
+                          <Link href="/contact">
                             Calculate ROI
                           </Link>
                         </Button>
@@ -581,7 +581,7 @@ export default function CanadaManufacturingFundingGuide() {
                 <Download className="w-16 h-16 mx-auto mb-4 text-gray-300" />
                 <h3 className="text-2xl font-bold mb-4">Get Your Free Manufacturing Funding Application Kit</h3>
                 <p className="text-gray-300 mb-6 text-lg">
-                  Download our comprehensive manufacturing funding guide with NGen templates, IRAP application tools, 
+                  Download our comprehensive manufacturing funding guide with NGen templates, IRAP application tools,
                   ROI calculators, and successful project examples.
                 </p>
                 <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100" asChild>
@@ -597,7 +597,7 @@ export default function CanadaManufacturingFundingGuide() {
                 <Users className="w-16 h-16 mx-auto mb-4 text-blue-100" />
                 <h3 className="text-2xl font-bold mb-4">Ready to Apply for Manufacturing Funding?</h3>
                 <p className="text-blue-100 mb-6 text-lg">
-                  Our manufacturing funding specialists understand NGen, IRAP, and CDAP programs. 
+                  Our manufacturing funding specialists understand NGen, IRAP, and CDAP programs.
                   We've secured $120M+ in advanced manufacturing funding with 82% success rate.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

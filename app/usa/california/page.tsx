@@ -235,7 +235,7 @@ export default function CaliforniaGrantsPage() {
                     <a href="/usa/texas" className="block text-primary hover:underline">
                       Texas Business Funding
                     </a>
-                    <a href="/usa/new-york" className="block text-primary hover:underline">
+                    <a href="/contact" className="block text-primary hover:underline">
                       New York State Grants
                     </a>
                   </div>

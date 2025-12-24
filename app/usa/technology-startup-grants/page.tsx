@@ -24,7 +24,7 @@ export default function USATechnologyStartupGrantsPage() {
     <>
       <Header />
       <div className="min-h-screen bg-gray-50">
-               {/* Hero Section - FIXED CTAs */}
+        {/* Hero Section - FIXED CTAs */}
         <section className="relative bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 text-white py-24 overflow-hidden">
           <div className="absolute inset-0 bg-black/20" />
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,7 +36,7 @@ export default function USATechnologyStartupGrantsPage() {
                 $2.5+ Million Available for Technology Startups Across America
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed max-w-3xl mx-auto">
-                Access comprehensive federal SBIR/STTR funding, NSF innovation grants, DOE tech programs, and state-level 
+                Access comprehensive federal SBIR/STTR funding, NSF innovation grants, DOE tech programs, and state-level
                 startup support designed specifically for technology entrepreneurs across all 50 states.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -378,8 +378,8 @@ export default function USATechnologyStartupGrantsPage() {
                       <li>• GO-Biz tech incentives</li>
                     </ul>
                     <Button className="w-full" variant="outline" asChild>
-                    <Link href="/blog/california-tech-programs">
-                      Explore California Programs
+                      <Link href="/blog/california-tech-programs">
+                        Explore California Programs
                       </Link>
                     </Button>
                   </CardContent>
@@ -404,9 +404,9 @@ export default function USATechnologyStartupGrantsPage() {
                       <li>• Life Sciences Center grants</li>
                     </ul>
                     <Button className="w-full" variant="outline" asChild>
-                        <Link href="/blog/massachusetts-tech-programs">
-                      Explore Massachusetts Programs
-                        </Link>
+                      <Link href="/blog/massachusetts-tech-programs">
+                        Explore Massachusetts Programs
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -430,9 +430,9 @@ export default function USATechnologyStartupGrantsPage() {
                       <li>• NYC Economic Development</li>
                     </ul>
                     <Button className="w-full" variant="outline" asChild>
-                        <Link href="/blog/new-york-tech-programs">
-                      Explore New York Programs
-                        </Link>
+                      <Link href="/blog/new-york-tech-programs">
+                        Explore New York Programs
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -456,9 +456,9 @@ export default function USATechnologyStartupGrantsPage() {
                       <li>• Governor's University Research</li>
                     </ul>
                     <Button className="w-full" variant="outline" asChild>
-                        <Link href="/blog/texas-tech-programs">
-                      Explore Texas Programs
-                        </Link>
+                      <Link href="/blog/texas-tech-programs">
+                        Explore Texas Programs
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -482,9 +482,9 @@ export default function USATechnologyStartupGrantsPage() {
                       <li>• SBIR Phase 0 support</li>
                     </ul>
                     <Button className="w-full" variant="outline" asChild>
-                        <Link href="/blog/washington-tech-programs">
-                      Explore Washington Programs
-                        </Link>
+                      <Link href="/blog/washington-tech-programs">
+                        Explore Washington Programs
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -508,9 +508,9 @@ export default function USATechnologyStartupGrantsPage() {
                       <li>• Clean Energy Fund</li>
                     </ul>
                     <Button className="w-full" variant="outline" asChild>
-                        <Link href="/blog/colorado-tech-programs">
-                      Explore Colorado Programs
-                        </Link>
+                      <Link href="/blog/colorado-tech-programs">
+                        Explore Colorado Programs
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -749,7 +749,7 @@ export default function USATechnologyStartupGrantsPage() {
           </div>
         </section>
 
-                {/* CTA Section - FIXED ALL BUTTONS */}
+        {/* CTA Section - FIXED ALL BUTTONS */}
         <section className="py-20 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
@@ -759,7 +759,7 @@ export default function USATechnologyStartupGrantsPage() {
               <p className="text-xl text-blue-100 mb-8">
                 Get expert assistance with SBIR/STTR applications and maximize your chances of winning federal funding
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <Card className="bg-white/10 backdrop-blur border-white/20">
                   <CardHeader>
@@ -770,7 +770,7 @@ export default function USATechnologyStartupGrantsPage() {
                       Download our comprehensive SBIR/STTR application guide with templates and success strategies
                     </p>
                     <Button className="w-full bg-white text-blue-700 hover:bg-gray-100" asChild>
-                      <Link href="/download/usa-technology-startup-grants-guide">
+                      <Link href="/contact">
                         Download Free Guide
                       </Link>
                     </Button>

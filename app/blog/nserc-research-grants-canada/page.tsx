@@ -35,7 +35,7 @@ export default function NSERCResearchGrantsGuidePage() {
                 Natural Sciences & Engineering Research Council (NSERC)
               </h1>
               <p className="text-xl text-indigo-100 mb-8">
-                Comprehensive research funding supporting university-industry partnerships, technology transfer, and collaborative R&D initiatives. 
+                Comprehensive research funding supporting university-industry partnerships, technology transfer, and collaborative R&D initiatives.
                 From Idea to Innovation grants up to $350K to large-scale research partnerships driving Canadian innovation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -45,7 +45,7 @@ export default function NSERCResearchGrantsGuidePage() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild>
-                  <Link href="/downloads/nserc-research-grants-guide">
+                  <Link href="/download/nserc-research-grants-guide">
                     Get Free NSERC Guide
                   </Link>
                 </Button>
@@ -93,7 +93,7 @@ export default function NSERCResearchGrantsGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada's Premier Research Funding Agency</h2>
                 <p className="text-lg text-gray-600">
-                  NSERC supports university researchers and students in the natural sciences and engineering, fostering innovation 
+                  NSERC supports university researchers and students in the natural sciences and engineering, fostering innovation
                   through discovery research, strategic partnerships, and technology transfer to Canadian industry.
                 </p>
               </div>
@@ -125,7 +125,7 @@ export default function NSERCResearchGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">NSERC Funding Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Idea to Innovation (I2I) Grants */}
                 <Card className="border-indigo-200">
@@ -183,7 +183,7 @@ export default function NSERCResearchGrantsGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-yellow-50 rounded-lg">
                       <h5 className="font-semibold mb-2">⚠️ Current Status (2026):</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -288,7 +288,7 @@ export default function NSERCResearchGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">NSERC Eligibility & Requirements</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Researcher Eligibility */}
                 <Card className="border-indigo-200">
@@ -308,7 +308,7 @@ export default function NSERCResearchGrantsGuidePage() {
                           <li>• Strong publication and funding record</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-green-700 mb-2">🎯 Research Areas</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -341,7 +341,7 @@ export default function NSERCResearchGrantsGuidePage() {
                           <li>• International collaborations (limited)</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-blue-700 mb-2">🏢 Industry Partners</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -365,7 +365,7 @@ export default function NSERCResearchGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">NSERC Application Process</h2>
-              
+
               <div className="space-y-6">
                 <div className="grid md:grid-cols-4 gap-6">
                   {[
@@ -377,7 +377,7 @@ export default function NSERCResearchGrantsGuidePage() {
                       color: "indigo"
                     },
                     {
-                      step: "2", 
+                      step: "2",
                       title: "Partner Engagement",
                       description: "Identify and secure industry or institutional partners",
                       icon: <Building className="w-6 h-6" />,
@@ -400,11 +400,11 @@ export default function NSERCResearchGrantsGuidePage() {
                   ].map((item, index) => {
                     const colors = {
                       indigo: "bg-indigo-500 text-white",
-                      green: "bg-green-500 text-white", 
+                      green: "bg-green-500 text-white",
                       blue: "bg-blue-500 text-white",
                       purple: "bg-purple-500 text-white"
                     }
-                    
+
                     return (
                       <Card key={index} className="text-center">
                         <CardHeader>
@@ -457,7 +457,7 @@ export default function NSERCResearchGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">NSERC Application Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -539,10 +539,10 @@ export default function NSERCResearchGrantsGuidePage() {
                 Ready to Access NSERC Research Funding?
               </h2>
               <p className="text-xl text-indigo-100 mb-8">
-                Get our complete NSERC application guide or work with our research funding specialists who understand 
+                Get our complete NSERC application guide or work with our research funding specialists who understand
                 university-industry partnerships and have helped secure millions in NSERC grants.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free NSERC Research Guide</h4>
@@ -550,7 +550,7 @@ export default function NSERCResearchGrantsGuidePage() {
                     Get our comprehensive NSERC application guide with I2I templates, partner engagement strategies, and successful proposal examples.
                   </p>
                   <Button size="lg" className="w-full bg-white text-indigo-700 hover:bg-gray-100" asChild>
-                    <Link href="/downloads/nserc-research-grants-guide">
+                    <Link href="/download/nserc-research-grants-guide">
                       <Download className="w-4 h-4 mr-2" />
                       Get NSERC Guide
                     </Link>
@@ -563,13 +563,13 @@ export default function NSERCResearchGrantsGuidePage() {
                     Work with research funding specialists who can help develop winning NSERC proposals and identify the right industry partnerships.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
-                    <Link href="/contact?service=nserc-expert-help">
+                    <Link href="/download/nserc-research-grants-guide?service=nserc-expert-help">
                       Get NSERC Expert Help
                     </Link>
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-indigo-200 text-sm mt-6">
                 Expert guidance • University connections • Industry partnerships • Successful track record
               </p>
