@@ -104,7 +104,7 @@ export const grantsDatabase: Grant[] = [
     fundingMax: 400000,
     eligibility: ["Minority-owned businesses", "Socially disadvantaged businesses", "51% minority ownership"],
     deadline: "June 10, 2025",
-    applicationLink: "https://www.mbda.gov/grants-and-contracts",
+    applicationLink: "https://www.mbda.gov/business-centers",
     agency: "Minority Business Development Agency",
     status: "Active",
     tags: ["Minority", "Diversity", "Business Development", "Federal"],

@@ -213,7 +213,20 @@ export default function USAGrantsPage() {
                   </div>
                 </div>
                 <Button className="w-full" asChild>
-                  <Link href="/usa/california">Browse by State</Link>
+                  <div className="grid grid-cols-2 gap-3">
+                    <Button className="w-full" variant="outline" asChild>
+                      <Link href="/usa/california">California</Link>
+                    </Button>
+                    <Button className="w-full" variant="outline" asChild>
+                      <Link href="/usa/texas">Texas</Link>
+                    </Button>
+                    <Button className="w-full" variant="outline" asChild>
+                      <Link href="/usa/new-york">New York</Link>
+                    </Button>
+                    <Button className="w-full" variant="outline" asChild>
+                      <Link href="/usa/florida">Florida</Link>
+                    </Button>
+                  </div>
                 </Button>
               </CardContent>
             </Card>

@@ -512,7 +512,7 @@ export default function CanadaDigitalAIFundingGuide() {
                           <p className="text-sm text-gray-600">Canada Digital Adoption Program</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="https://www.ic.gc.ca/cdap" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://ised-isde.canada.ca/site/canada-digital-adoption-program/en" target="_blank" rel="noopener noreferrer">
                             Apply <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </Button>

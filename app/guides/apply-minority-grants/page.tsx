@@ -34,7 +34,7 @@ export default function ApplyMinorityGrantsGuide() {
                 How to Apply for Minority & Women Business Grants
               </h1>
               <p className="text-xl text-pink-100 mb-8">
-                Complete step-by-step guide to applying for minority, women, and veteran business grants. 
+                Complete step-by-step guide to applying for minority, women, and veteran business grants.
                 Learn certification requirements, application strategies, and access targeted funding opportunities.
               </p>
             </div>
@@ -71,11 +71,11 @@ export default function ApplyMinorityGrantsGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* Certification Programs Overview */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Federal Certification Programs</h2>
-                
+
                 <div className="space-y-6">
                   <Card className="border-pink-200">
                     <CardHeader>
@@ -99,7 +99,7 @@ export default function ApplyMinorityGrantsGuide() {
                           <span><strong>Process:</strong> Self or 3rd party</span>
                         </div>
                       </div>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-pink-700">Basic Requirements:</h5>
@@ -147,7 +147,7 @@ export default function ApplyMinorityGrantsGuide() {
                           <span><strong>Goal:</strong> 5% of contracts</span>
                         </div>
                       </div>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-purple-700">Social Disadvantage:</h5>
@@ -211,7 +211,7 @@ export default function ApplyMinorityGrantsGuide() {
               {/* Certification Application Process */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Certification Application Process</h2>
-                
+
                 <div className="space-y-6">
                   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div className="text-center">
@@ -260,7 +260,7 @@ export default function ApplyMinorityGrantsGuide() {
               {/* Required Documentation */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Required Documentation Checklist</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <Card className="border-blue-200">
                     <CardHeader>
@@ -275,7 +275,7 @@ export default function ApplyMinorityGrantsGuide() {
                             <p className="text-sm text-gray-600">Articles of incorporation, operating agreements, bylaws</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start">
                           <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
                           <div>
@@ -283,7 +283,7 @@ export default function ApplyMinorityGrantsGuide() {
                             <p className="text-sm text-gray-600">Stock certificates, ownership percentages, voting agreements</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start">
                           <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
                           <div>
@@ -291,7 +291,7 @@ export default function ApplyMinorityGrantsGuide() {
                             <p className="text-sm text-gray-600">Tax returns, financial statements, bank statements</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start">
                           <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
                           <div>
@@ -302,7 +302,7 @@ export default function ApplyMinorityGrantsGuide() {
                       </div>
                     </CardContent>
                   </Card>
-                  
+
                   <Card className="border-green-200">
                     <CardHeader>
                       <CardTitle className="text-green-700">👤 Personal Documents</CardTitle>
@@ -316,7 +316,7 @@ export default function ApplyMinorityGrantsGuide() {
                             <p className="text-sm text-gray-600">Birth certificate, passport, citizenship documents</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start">
                           <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
                           <div>
@@ -324,7 +324,7 @@ export default function ApplyMinorityGrantsGuide() {
                             <p className="text-sm text-gray-600">Personal tax returns, financial statements, net worth</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start">
                           <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
                           <div>
@@ -332,7 +332,7 @@ export default function ApplyMinorityGrantsGuide() {
                             <p className="text-sm text-gray-600">DD-214, VA disability rating, service records</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start">
                           <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
                           <div>
@@ -349,7 +349,7 @@ export default function ApplyMinorityGrantsGuide() {
               {/* Application Tips */}
               <div className="bg-green-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Certification Success Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Best Practices</h4>
@@ -376,7 +376,7 @@ export default function ApplyMinorityGrantsGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Pitfalls</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -408,7 +408,7 @@ export default function ApplyMinorityGrantsGuide() {
               {/* Grant Opportunities */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Grant Opportunities for Certified Businesses</h2>
-                
+
                 <div className="space-y-6">
                   <Card className="border-pink-200">
                     <CardHeader>
@@ -471,7 +471,7 @@ export default function ApplyMinorityGrantsGuide() {
               {/* Official Certification Resources */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Official Certification Resources</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-pink-200">
                     <CardHeader>
@@ -489,7 +489,7 @@ export default function ApplyMinorityGrantsGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-pink-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">VetBiz.va.gov</h5>
@@ -532,14 +532,14 @@ export default function ApplyMinorityGrantsGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">MBDA Business Centers</h5>
                           <p className="text-sm text-gray-600">Minority business development assistance</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="https://www.mbda.gov/" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://www.mbda.gov/business-centers" target="_blank" rel="noopener noreferrer">
                             Visit <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </Button>
@@ -551,7 +551,7 @@ export default function ApplyMinorityGrantsGuide() {
                           <p className="text-sm text-gray-600">Training and counseling for women entrepreneurs</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="https://www.sba.gov/local-assistance/resource-partners/womens-business-centers-wbc" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://www.sba.gov/local-assistance/resource-partners/womens-business-centers" target="_blank" rel="noopener noreferrer">
                             Visit <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </Button>
@@ -566,7 +566,7 @@ export default function ApplyMinorityGrantsGuide() {
                 <Users className="w-16 h-16 mx-auto mb-4 text-pink-100" />
                 <h3 className="text-2xl font-bold mb-4">Ready to Get Certified?</h3>
                 <p className="text-pink-100 mb-6 text-lg">
-                  Need help with your minority, women, or veteran business certification? Our experts can guide you through 
+                  Need help with your minority, women, or veteran business certification? Our experts can guide you through
                   the entire process and help you access targeted funding opportunities.
                 </p>
                 <Button size="lg" className="bg-white text-pink-700 hover:bg-gray-100" asChild>

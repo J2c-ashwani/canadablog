@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
+import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
   title: "Texas Business Funding Programs 2025 | State Grants & Incentives",
@@ -18,38 +19,78 @@ export const metadata: Metadata = {
   },
 }
 
-const texasGrants = [
+const texasGrants: Grant[] = [
   {
+    id: "tx-enterprise-fund",
     name: "Texas Enterprise Fund",
-    fundingAmount: "$10M+",
-    eligibility: "Large job-creating projects",
+    fundingMin: 100000,
+    fundingMax: 10000000,
+    eligibility: ["Projects creating >75 jobs (urban) or >25 (rural)", "Regional HQ or primary employers"],
     deadline: "Rolling basis",
     applicationLink: "https://gov.texas.gov/business/page/texas-enterprise-fund",
-    description: "Incentive fund for major business relocations and expansions",
+    description: "A 'deal-closing' grant fund for projects that are considering Texas and at least one other out-of-state site.",
+    country: "USA",
+    region: "Texas",
+    category: "Business Growth",
+    agency: "Office of the Governor",
+    status: "Active",
+    tags: ["Job Creation", "Relocation", "Incentive"],
+    requirements: ["Competitive site selection", "City/County support", "High average wages"],
+    lastUpdated: "2025-01-20"
   },
   {
+    id: "tx-capital-fund",
     name: "Texas Capital Fund",
-    fundingAmount: "$5M",
-    eligibility: "Infrastructure and community development",
+    fundingMin: 50000,
+    fundingMax: 1500000,
+    eligibility: ["Non-entitlted communities", "County governments", "Public infrastructure support"],
     deadline: "Quarterly",
-    applicationLink: "https://www.texaswideopenforbusiness.com/",
-    description: "Infrastructure grants supporting business development",
+    applicationLink: "https://www.texasagriculture.gov/Grants-Services/",
+    description: "Provides financial resources to non-entitlement communities ensuring that businesses have infrastructure needed to grow.",
+    country: "USA",
+    region: "Texas",
+    category: "Infrastructure",
+    agency: "Texas Department of Agriculture",
+    status: "Active",
+    tags: ["Infrastructure", "Rural Development", "Community"],
+    requirements: ["Community sponsorship", "infrastructure improvement plan", "Job creation"],
+    lastUpdated: "2025-01-20"
   },
   {
+    id: "tx-skills-dev",
     name: "Skills Development Fund",
-    fundingAmount: "$500K",
-    eligibility: "Job training programs",
+    fundingMin: 100000,
+    fundingMax: 500000,
+    eligibility: ["Texas employers", "Community colleges", "Technical colleges"],
     deadline: "Annual",
     applicationLink: "https://www.twc.texas.gov/programs/skills-development-fund",
-    description: "Customized job training for businesses",
+    description: "Texas' premier job-training program providing customized training opportunities for Texas businesses and workers.",
+    country: "USA",
+    region: "Texas",
+    category: "Workforce",
+    agency: "Texas Workforce Commission",
+    status: "Active",
+    tags: ["Training", "Workforce", "Skills"],
+    requirements: ["Partnership with college", "Curriculum development", "Full-time employees"],
+    lastUpdated: "2025-01-20"
   },
   {
-    name: "Texas Research Incentive Program",
-    fundingAmount: "$2M",
-    eligibility: "Research institutions and companies",
-    deadline: "Annual",
-    applicationLink: "https://www.thecb.state.tx.us/",
-    description: "Funding for research and development projects",
+    id: "tx-product-dev",
+    name: "Product Development & Small Business Incubator Fund",
+    fundingMin: 1000000,
+    fundingMax: 5000000,
+    eligibility: ["Small businesses", "Non-profits", "Incubators"],
+    deadline: "Rolling",
+    applicationLink: "https://gov.texas.gov/business/page/product-development-and-small-business-incubator-fund",
+    description: "Revolving loan program aiding in the development, production and commercialization of new or improved products.",
+    country: "USA",
+    region: "Texas",
+    category: "Innovation",
+    agency: "Texas Economic Development Bank",
+    status: "Active",
+    tags: ["Product Development", "Incubator", "Commercialization"],
+    requirements: ["Product viability", "Primary place of business in Texas", "Creditworthiness"],
+    lastUpdated: "2025-01-20"
   },
 ]
 
@@ -114,7 +155,6 @@ export default function TexasGrantsPage() {
             <GrantComparisonTable
               grants={texasGrants}
               title="Texas Business Funding Programs Comparison"
-              description="Compare funding amounts, eligibility requirements, and deadlines for top Texas state programs"
             />
           </div>
 

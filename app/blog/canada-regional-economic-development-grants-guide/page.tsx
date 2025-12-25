@@ -81,7 +81,7 @@ export default function CanadaRegionalEconomicDevelopmentGrantsGuidePage() {
                 <p className="text-lg text-gray-700 mb-6">
                   Canada's regional economic development framework represents one of the world's most comprehensive approaches to place-based economic growth, with over $2.8 billion invested annually through 35+ specialized programs delivered by six federal Regional Development Agencies (RDAs) and complementary provincial initiatives. From Atlantic Canada's innovation ecosystem to Western diversification and Northern development, Canada provides targeted support for regional competitiveness, community resilience, and inclusive economic growth across all provinces and territories.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-orange-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-orange-800">Regional Policy Priorities</h4>
@@ -92,7 +92,7 @@ export default function CanadaRegionalEconomicDevelopmentGrantsGuidePage() {
                       <li>• Indigenous economic development and reconciliation</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">Strategic Regional Integration</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -113,7 +113,7 @@ export default function CanadaRegionalEconomicDevelopmentGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Regional Development Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Atlantic Canada Opportunities Agency */}
                 <Card className="border-blue-200">
@@ -460,7 +460,7 @@ export default function CanadaRegionalEconomicDevelopmentGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Regional Development Funding Strategy Framework</h2>
-              
+
               <div className="space-y-6">
                 <Card className="border-orange-200">
                   <CardHeader>
@@ -538,7 +538,7 @@ export default function CanadaRegionalEconomicDevelopmentGrantsGuidePage() {
               <p className="text-xl text-orange-100 mb-8">
                 Get our complete regional development funding guide or work with our community development specialists who have secured over $15M in regional grants with 91% success rate across all RDA programs.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">DIY Regional Approach</h4>
@@ -546,7 +546,7 @@ export default function CanadaRegionalEconomicDevelopmentGrantsGuidePage() {
                     Get our comprehensive regional development guide with RDA-specific templates and strategies.
                   </p>
                   <Button size="lg" className="w-full bg-white text-orange-700 hover:bg-gray-100" asChild>
-                    <Link href="/guides/canada-regional-development-funding">
+                    <Link href="/guides/apply-regional-development-agencies">
                       <Download className="w-4 h-4 mr-2" />
                       Get Regional Guide
                     </Link>
@@ -565,7 +565,7 @@ export default function CanadaRegionalEconomicDevelopmentGrantsGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-orange-200 text-sm mt-6">
                 91% success rate for regional applications • Average funding secured: $425K • All RDA expertise
               </p>

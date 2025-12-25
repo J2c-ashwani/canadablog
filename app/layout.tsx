@@ -69,8 +69,7 @@ export default function RootLayout({
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1200907614877581"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         {/* Google Analytics GA4 */}
         <Script
@@ -86,8 +85,7 @@ export default function RootLayout({
             gtag('config', 'G-DZ55NMNLYM');
           `}
         </Script>
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
-        <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
+
       </head>
       <body className="font-sans">
         {children}

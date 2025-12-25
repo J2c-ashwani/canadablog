@@ -551,7 +551,7 @@ export default function CanadaManufacturingIndustryGrantsGuidePage() {
                     Get our comprehensive manufacturing funding guide with program-specific templates and strategies.
                   </p>
                   <Button size="lg" className="w-full bg-white text-gray-700 hover:bg-gray-100" asChild>
-                    <Link href="/guides/canada-manufacturing-funding">
+                    <Link href="/guides/canada-manufacturing-funding-guide">
                       <Download className="w-4 h-4 mr-2" />
                       Get Manufacturing Guide
                     </Link>

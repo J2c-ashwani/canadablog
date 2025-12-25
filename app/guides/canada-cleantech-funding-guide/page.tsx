@@ -499,7 +499,7 @@ export default function CanadaCleanTechFundingGuide() {
                           <p className="text-sm text-gray-600">Sustainable Development Technology Canada</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="https://www.sdtc.ca" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://ised-isde.canada.ca/site/sustainable-development-technology-canada/en" target="_blank" rel="noopener noreferrer">
                             Visit <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </Button>
@@ -523,7 +523,7 @@ export default function CanadaCleanTechFundingGuide() {
                           <p className="text-sm text-gray-600">Strategic Innovation Fund stream</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="https://www.ic.gc.ca/netzero" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://ised-isde.canada.ca/site/net-zero-accelerator/en" target="_blank" rel="noopener noreferrer">
                             Explore <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </Button>

@@ -34,7 +34,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                 How to Apply for Women Entrepreneurship Loan Fund
               </h1>
               <p className="text-xl text-pink-100 mb-8">
-                Complete step-by-step guide to applying for WELF microloans through five national delivery organizations. 
+                Complete step-by-step guide to applying for WELF microloans through five national delivery organizations.
                 Learn partner selection, application strategies, and how to secure up to $50,000 in women entrepreneur financing.
               </p>
             </div>
@@ -71,19 +71,19 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* WELF Application Overview */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">WELF Microloan Application Process</h2>
-                
+
                 <div className="bg-pink-50 border border-pink-200 rounded-lg p-6 mb-6">
                   <div className="flex items-start">
                     <Heart className="w-8 h-8 text-pink-600 mr-4 mt-1" />
                     <div>
                       <h4 className="font-bold text-pink-800 mb-2">Women Entrepreneur Focus</h4>
                       <p className="text-pink-700">
-                        WELF addresses capital access barriers for women entrepreneurs through flexible microloans 
-                        delivered by five specialized national organizations, each serving different entrepreneur communities 
+                        WELF addresses capital access barriers for women entrepreneurs through flexible microloans
+                        delivered by five specialized national organizations, each serving different entrepreneur communities
                         and business stages with customized support services.
                       </p>
                     </div>
@@ -138,7 +138,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
               {/* Eligibility Requirements */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">WELF Women Entrepreneur Eligibility</h2>
-                
+
                 <Card className="border-green-200">
                   <CardHeader>
                     <CardTitle className="text-green-700 flex items-center">
@@ -161,7 +161,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                         <span><strong>Ownership:</strong> 51%+ women</span>
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h5 className="font-semibold mb-3 text-green-700">Business Owner Requirements:</h5>
@@ -193,7 +193,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
               {/* WELF Delivery Partners */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">WELF Delivery Partner Selection Guide</h2>
-                
+
                 <div className="space-y-6">
                   {/* WEOC */}
                   <Card className="border-pink-200">
@@ -218,7 +218,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                           <span><strong>Coverage:</strong> All provinces</span>
                         </div>
                       </div>
-                      
+
                       <div className="bg-pink-50 border border-pink-200 rounded-lg p-4 mb-4">
                         <h4 className="font-bold mb-2 text-pink-800">Best For:</h4>
                         <div className="grid md:grid-cols-2 gap-4 text-sm text-pink-700">
@@ -234,7 +234,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-pink-700">Application Requirements:</h5>
@@ -257,7 +257,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                           </ul>
                         </div>
                       </div>
-                      
+
                       <div className="mt-4">
                         <Button variant="outline" className="w-full" asChild>
                           <Link href="https://weoc.ca/" target="_blank" rel="noopener noreferrer">
@@ -291,7 +291,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                           <span><strong>Focus:</strong> Indigenous women</span>
                         </div>
                       </div>
-                      
+
                       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
                         <h4 className="font-bold mb-2 text-blue-800">Best For:</h4>
                         <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700">
@@ -307,7 +307,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="mt-4">
                         <Button variant="outline" className="w-full" asChild>
                           <Link href="https://nacca.ca/" target="_blank" rel="noopener noreferrer">
@@ -341,7 +341,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                           <span><strong>Support:</strong> 2 years mentorship</span>
                         </div>
                       </div>
-                      
+
                       <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
                         <h4 className="font-bold mb-2 text-purple-800">Best For:</h4>
                         <div className="grid md:grid-cols-2 gap-4 text-sm text-purple-700">
@@ -357,7 +357,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="mt-4">
                         <Button variant="outline" className="w-full" asChild>
                           <Link href="https://www.nventure.ca/" target="_blank" rel="noopener noreferrer">
@@ -391,7 +391,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                           <span><strong>Focus:</strong> Impact ventures</span>
                         </div>
                       </div>
-                      
+
                       <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
                         <h4 className="font-bold mb-2 text-green-800">Best For:</h4>
                         <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
@@ -407,7 +407,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="mt-4">
                         <Button variant="outline" className="w-full" asChild>
                           <Link href="https://coralus.world/" target="_blank" rel="noopener noreferrer">
@@ -441,7 +441,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                           <span><strong>Region:</strong> Quebec</span>
                         </div>
                       </div>
-                      
+
                       <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
                         <h4 className="font-bold mb-2 text-orange-800">Best For:</h4>
                         <div className="grid md:grid-cols-2 gap-4 text-sm text-orange-700">
@@ -457,10 +457,10 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="mt-4">
                         <Button variant="outline" className="w-full" asChild>
-                          <Link href="https://evol.ca/" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://www.evol.ca/en" target="_blank" rel="noopener noreferrer">
                             Apply Through Evol <ExternalLink className="w-4 h-4 ml-2" />
                           </Link>
                         </Button>
@@ -473,7 +473,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
               {/* Application Components */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">WELF Application Components</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <Card className="border-pink-200">
                     <CardHeader>
@@ -488,7 +488,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                             <p className="text-sm text-gray-600">Business concept, mission, and key highlights</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start">
                           <FileText className="w-5 h-5 text-pink-500 mr-3 mt-0.5" />
                           <div>
@@ -496,7 +496,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                             <p className="text-sm text-gray-600">Target market, competition, and positioning</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start">
                           <FileText className="w-5 h-5 text-pink-500 mr-3 mt-0.5" />
                           <div>
@@ -504,7 +504,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                             <p className="text-sm text-gray-600">Business model, processes, and suppliers</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start">
                           <FileText className="w-5 h-5 text-pink-500 mr-3 mt-0.5" />
                           <div>
@@ -515,7 +515,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                       </div>
                     </CardContent>
                   </Card>
-                  
+
                   <Card className="border-green-200">
                     <CardHeader>
                       <CardTitle className="text-green-700">📋 Financial Components</CardTitle>
@@ -529,7 +529,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                             <p className="text-sm text-gray-600">3-year revenue, expenses, and cash flow</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start">
                           <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
                           <div>
@@ -537,7 +537,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                             <p className="text-sm text-gray-600">Detailed breakdown of loan allocation</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start">
                           <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
                           <div>
@@ -545,7 +545,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                             <p className="text-sm text-gray-600">Owner's assets, liabilities, and net worth</p>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start">
                           <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
                           <div>
@@ -562,7 +562,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
               {/* Success Strategies */}
               <div className="bg-green-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">WELF Application Success Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Winning Strategies</h4>
@@ -585,7 +585,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Pitfalls</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -613,7 +613,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
               {/* Official Resources */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Official WELF Resources</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-pink-200">
                     <CardHeader>
@@ -631,7 +631,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-pink-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">WEOC National</h5>
@@ -674,7 +674,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">Partner Selection Help</h5>
@@ -708,7 +708,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                 <Download className="w-16 h-16 mx-auto mb-4 text-pink-100" />
                 <h3 className="text-2xl font-bold mb-4">Get Your Free WELF Application Kit</h3>
                 <p className="text-pink-100 mb-6 text-lg">
-                  Download our comprehensive WELF application guide with delivery partner comparison, 
+                  Download our comprehensive WELF application guide with delivery partner comparison,
                   business plan templates, and successful application strategies.
                 </p>
                 <Button size="lg" className="bg-white text-pink-700 hover:bg-gray-100" asChild>
@@ -724,7 +724,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                 <Users className="w-16 h-16 mx-auto mb-4 text-green-100" />
                 <h3 className="text-2xl font-bold mb-4">Ready to Apply for WELF Women Entrepreneur Funding?</h3>
                 <p className="text-green-100 mb-6 text-lg">
-                  Our women entrepreneur funding specialists can help you choose the right delivery partner, 
+                  Our women entrepreneur funding specialists can help you choose the right delivery partner,
                   develop a compelling business plan, and maximize your chances of securing up to $50K in financing.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

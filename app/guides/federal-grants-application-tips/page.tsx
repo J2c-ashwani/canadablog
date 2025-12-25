@@ -44,11 +44,11 @@ export default function FederalGrantsApplicationGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* Pre-Application Preparation */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Pre-Application Preparation</h2>
-                
+
                 <div className="space-y-6">
                   <Card className="border-blue-200">
                     <CardHeader>
@@ -123,7 +123,7 @@ export default function FederalGrantsApplicationGuide() {
               {/* Application Process Steps */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Federal Grant Application Process</h2>
-                
+
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                   <div className="text-center">
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -182,7 +182,7 @@ export default function FederalGrantsApplicationGuide() {
               {/* Key Application Components */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Key Application Components</h2>
-                
+
                 <div className="space-y-6">
                   <Card className="border-purple-200">
                     <CardHeader>
@@ -259,7 +259,7 @@ export default function FederalGrantsApplicationGuide() {
               {/* Common Mistakes */}
               <div className="bg-red-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Common Application Mistakes to Avoid</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Fatal Mistakes:</h4>
@@ -273,7 +273,7 @@ export default function FederalGrantsApplicationGuide() {
                       <li>• Inadequate cost sharing documentation</li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-orange-700">⚠️ Quality Issues:</h4>
                     <ul className="space-y-2 text-gray-700">
@@ -292,7 +292,7 @@ export default function FederalGrantsApplicationGuide() {
               {/* Success Tips */}
               <div className="bg-green-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Winning Application Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-3 gap-6">
                   <Card className="border-green-200 bg-white">
                     <CardHeader>
@@ -344,7 +344,7 @@ export default function FederalGrantsApplicationGuide() {
               {/* Timeline Planning */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Application Timeline Planning</h2>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-center p-4 bg-blue-50 rounded-lg">
                     <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
@@ -355,7 +355,7 @@ export default function FederalGrantsApplicationGuide() {
                       <p className="text-sm text-gray-600">Begin research, team building, and initial planning</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center p-4 bg-green-50 rounded-lg">
                     <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
                       60
@@ -365,7 +365,7 @@ export default function FederalGrantsApplicationGuide() {
                       <p className="text-sm text-gray-600">Start writing, gather documents, develop partnerships</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center p-4 bg-yellow-50 rounded-lg">
                     <div className="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
                       30
@@ -375,7 +375,7 @@ export default function FederalGrantsApplicationGuide() {
                       <p className="text-sm text-gray-600">Complete first draft, begin internal reviews</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center p-4 bg-red-50 rounded-lg">
                     <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
                       7
@@ -391,7 +391,7 @@ export default function FederalGrantsApplicationGuide() {
               {/* Government Resources */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Official Government Resources</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-blue-200">
                     <CardHeader>
@@ -409,7 +409,7 @@ export default function FederalGrantsApplicationGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">SAM.gov</h5>
@@ -440,14 +440,14 @@ export default function FederalGrantsApplicationGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
                         <div>
-                          <h5 className="font-semibold">CFDA.gov</h5>
-                          <p className="text-sm text-gray-600">Catalog of Federal Domestic Assistance</p>
+                          <h5 className="font-semibold">Assistance Listings</h5>
+                          <p className="text-sm text-gray-600">Formerly CFDA - Federal Assistance Listings</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="https://www.cfda.gov/" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://sam.gov/content/assistance-listings" target="_blank" rel="noopener noreferrer">
                             Visit <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </Button>
@@ -462,7 +462,7 @@ export default function FederalGrantsApplicationGuide() {
                 <Users className="w-16 h-16 mx-auto mb-4 text-blue-100" />
                 <h3 className="text-2xl font-bold mb-4">Need Personalized Help?</h3>
                 <p className="text-blue-100 mb-6 text-lg">
-                  Still have questions about federal grant applications? Our experts are here to help guide you through 
+                  Still have questions about federal grant applications? Our experts are here to help guide you through
                   the process and maximize your chances of success.
                 </p>
                 <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>

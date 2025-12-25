@@ -34,7 +34,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
                 How to Apply for SBA Growth Accelerator Fund
               </h1>
               <p className="text-xl text-green-100 mb-8">
-                Complete step-by-step guide to applying for SBA Growth Accelerator Fund. Learn how to secure 
+                Complete step-by-step guide to applying for SBA Growth Accelerator Fund. Learn how to secure
                 $10K-$500K in funding to support small business accelerators and incubators.
               </p>
             </div>
@@ -71,18 +71,18 @@ export default function SBAGrowthAcceleratorFundGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* Program Overview */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">SBA Growth Accelerator Fund Overview</h2>
-                
+
                 <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
                   <div className="flex items-start">
                     <Rocket className="w-8 h-8 text-green-600 mr-4 mt-1" />
                     <div>
                       <h4 className="font-bold text-green-800 mb-2">Supporting the Entrepreneurial Ecosystem</h4>
                       <p className="text-green-700">
-                        The SBA Growth Accelerator Fund Competition provides funding to accelerators and incubators 
+                        The SBA Growth Accelerator Fund Competition provides funding to accelerators and incubators
                         that help entrepreneurs start and grow businesses, with focus on underserved communities.
                       </p>
                     </div>
@@ -127,7 +127,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
               {/* Application Process */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Growth Accelerator Fund Application Process</h2>
-                
+
                 <div className="space-y-6">
                   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div className="text-center">
@@ -176,7 +176,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
               {/* Eligibility Requirements */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Eligibility Requirements</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Eligible Organizations:</h4>
@@ -199,7 +199,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Program Requirements:</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -227,7 +227,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
               {/* Application Components */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Application Components</h2>
-                
+
                 <Card className="border-teal-200">
                   <CardHeader>
                     <CardTitle className="text-teal-700 flex items-center">
@@ -250,7 +250,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
                         <span><strong>Match:</strong> May require cost sharing</span>
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h5 className="font-semibold mb-3 text-teal-700">Program Description:</h5>
@@ -282,7 +282,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
               {/* Budget and Financial Requirements */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Budget and Financial Requirements</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-blue-200">
                     <CardHeader>
@@ -329,7 +329,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
               {/* Evaluation Criteria */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Application Evaluation Criteria</h2>
-                
+
                 <div className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <Card className="border-green-200">
@@ -398,7 +398,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
               {/* Success Strategies */}
               <div className="bg-teal-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Application Success Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Winning Strategies</h4>
@@ -421,7 +421,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Mistakes</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -461,7 +461,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
                       <li>• Demographic data on entrepreneurs</li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-blue-700">📋 Reporting Schedule:</h4>
                     <ul className="space-y-2 text-gray-700 text-sm">
@@ -479,7 +479,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
               {/* Official Resources */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Official SBA Resources</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-green-200">
                     <CardHeader>
@@ -497,7 +497,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">Growth Accelerator Fund</h5>
@@ -535,12 +535,12 @@ export default function SBAGrowthAcceleratorFundGuide() {
                           <p className="text-sm text-gray-600">Small Business Development Centers</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="https://americassbdc.org/" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://www.sba.gov/local-assistance" target="_blank" rel="noopener noreferrer">
                             Visit <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-teal-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">SCORE</h5>
@@ -574,7 +574,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
                 <Users className="w-16 h-16 mx-auto mb-4 text-green-100" />
                 <h3 className="text-2xl font-bold mb-4">Ready to Apply for SBA Growth Accelerator Fund?</h3>
                 <p className="text-green-100 mb-6 text-lg">
-                  Need expert guidance on your accelerator fund application? Our specialists can help you develop 
+                  Need expert guidance on your accelerator fund application? Our specialists can help you develop
                   a winning proposal, structure your program, and navigate the competitive application process.
                 </p>
                 <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>

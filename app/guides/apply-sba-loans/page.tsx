@@ -34,7 +34,7 @@ export default function ApplySBALoansGuide() {
                 How to Apply for SBA Loans
               </h1>
               <p className="text-xl text-green-100 mb-8">
-                Complete step-by-step guide to applying for SBA loans. Learn the requirements, process, and strategies 
+                Complete step-by-step guide to applying for SBA loans. Learn the requirements, process, and strategies
                 for securing up to $5M in Small Business Administration funding.
               </p>
             </div>
@@ -71,11 +71,11 @@ export default function ApplySBALoansGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* SBA Loan Types Comparison */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Choose Your SBA Loan Program</h2>
-                
+
                 <div className="space-y-6">
                   <Card className="border-green-200">
                     <CardHeader>
@@ -99,7 +99,7 @@ export default function ApplySBALoansGuide() {
                           <span><strong>Down Payment:</strong> 10-15%</span>
                         </div>
                       </div>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-green-700">Best For:</h5>
@@ -147,7 +147,7 @@ export default function ApplySBALoansGuide() {
                           <span><strong>Structure:</strong> 50/40/10</span>
                         </div>
                       </div>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-blue-700">Requirements:</h5>
@@ -195,12 +195,12 @@ export default function ApplySBALoansGuide() {
                           <span><strong>Average:</strong> $13K</span>
                         </div>
                       </div>
-                      
+
                       <p className="text-gray-700 mb-4">
-                        Perfect for startups and small businesses needing smaller amounts. Includes business counseling 
+                        Perfect for startups and small businesses needing smaller amounts. Includes business counseling
                         and has simpler application requirements.
                       </p>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-purple-700">Ideal For:</h5>
@@ -231,7 +231,7 @@ export default function ApplySBALoansGuide() {
               {/* Eligibility Requirements */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">SBA Loan Eligibility Requirements</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <Card className="border-green-200">
                     <CardHeader>
@@ -298,7 +298,7 @@ export default function ApplySBALoansGuide() {
               {/* Required Documents */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Required Documentation Checklist</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-blue-700">📊 Financial Documents</h4>
@@ -310,7 +310,7 @@ export default function ApplySBALoansGuide() {
                           <p className="text-sm text-gray-600">Profit & loss, balance sheet (last 3 years)</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start">
                         <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
                         <div>
@@ -318,7 +318,7 @@ export default function ApplySBALoansGuide() {
                           <p className="text-sm text-gray-600">For all owners with 20%+ ownership</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start">
                         <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
                         <div>
@@ -326,7 +326,7 @@ export default function ApplySBALoansGuide() {
                           <p className="text-sm text-gray-600">Business & personal (last 3 years)</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start">
                         <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
                         <div>
@@ -334,7 +334,7 @@ export default function ApplySBALoansGuide() {
                           <p className="text-sm text-gray-600">Business & personal (last 3 months)</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start">
                         <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
                         <div>
@@ -344,7 +344,7 @@ export default function ApplySBALoansGuide() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">📋 Legal & Business Documents</h4>
                     <div className="space-y-3">
@@ -355,7 +355,7 @@ export default function ApplySBALoansGuide() {
                           <p className="text-sm text-gray-600">Business formation documents</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start">
                         <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
                         <div>
@@ -363,7 +363,7 @@ export default function ApplySBALoansGuide() {
                           <p className="text-sm text-gray-600">Partnership/LLC agreements</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start">
                         <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
                         <div>
@@ -371,7 +371,7 @@ export default function ApplySBALoansGuide() {
                           <p className="text-sm text-gray-600">Industry-specific licenses & permits</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start">
                         <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
                         <div>
@@ -379,7 +379,7 @@ export default function ApplySBALoansGuide() {
                           <p className="text-sm text-gray-600">Comprehensive business plan with projections</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start">
                         <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
                         <div>
@@ -395,7 +395,7 @@ export default function ApplySBALoansGuide() {
               {/* Application Process Steps */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">SBA Loan Application Process</h2>
-                
+
                 <div className="space-y-6">
                   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div className="text-center">
@@ -442,7 +442,7 @@ export default function ApplySBALoansGuide() {
                   <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
                     <h4 className="font-bold text-lg mb-3 text-yellow-800">💡 Pro Tip: Work with SBA Preferred Lenders</h4>
                     <p className="text-yellow-700">
-                      SBA Preferred Lenders have delegated authority to approve loans without SBA pre-approval, 
+                      SBA Preferred Lenders have delegated authority to approve loans without SBA pre-approval,
                       significantly reducing processing time from months to weeks.
                     </p>
                   </div>
@@ -452,7 +452,7 @@ export default function ApplySBALoansGuide() {
               {/* Timeline & Expectations */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Application Timeline & What to Expect</h2>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-center p-4 bg-green-50 rounded-lg">
                     <div className="w-20 h-12 bg-green-600 rounded flex items-center justify-center text-white font-bold mr-4">
@@ -463,7 +463,7 @@ export default function ApplySBALoansGuide() {
                       <p className="text-sm text-gray-600">Gather documentation, research lenders, initial consultations</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center p-4 bg-blue-50 rounded-lg">
                     <div className="w-20 h-12 bg-blue-600 rounded flex items-center justify-center text-white font-bold mr-4">
                       Week 3-4
@@ -473,7 +473,7 @@ export default function ApplySBALoansGuide() {
                       <p className="text-sm text-gray-600">Complete application forms, submit to chosen lender</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center p-4 bg-purple-50 rounded-lg">
                     <div className="w-20 h-12 bg-purple-600 rounded flex items-center justify-center text-white font-bold mr-4">
                       Week 5-8
@@ -483,7 +483,7 @@ export default function ApplySBALoansGuide() {
                       <p className="text-sm text-gray-600">Credit analysis, cash flow review, collateral evaluation</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center p-4 bg-orange-50 rounded-lg">
                     <div className="w-20 h-12 bg-orange-600 rounded flex items-center justify-center text-white font-bold mr-4">
                       Week 9-12
@@ -499,7 +499,7 @@ export default function ApplySBALoansGuide() {
               {/* Approval Tips */}
               <div className="bg-green-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">SBA Loan Approval Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Strengthen Your Application</h4>
@@ -526,7 +526,7 @@ export default function ApplySBALoansGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-blue-700">🎯 Lender Selection Tips</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -558,7 +558,7 @@ export default function ApplySBALoansGuide() {
               {/* Official SBA Resources */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Official SBA Loan Resources</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-green-200">
                     <CardHeader>
@@ -576,7 +576,7 @@ export default function ApplySBALoansGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">SBA Lender Match</h5>
@@ -607,14 +607,14 @@ export default function ApplySBALoansGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">Small Business Development Centers</h5>
                           <p className="text-sm text-gray-600">Business counseling & loan preparation help</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="https://americassbdc.org/" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://www.sba.gov/local-assistance" target="_blank" rel="noopener noreferrer">
                             Visit <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </Button>
@@ -629,7 +629,7 @@ export default function ApplySBALoansGuide() {
                 <Users className="w-16 h-16 mx-auto mb-4 text-green-100" />
                 <h3 className="text-2xl font-bold mb-4">Ready to Apply for an SBA Loan?</h3>
                 <p className="text-green-100 mb-6 text-lg">
-                  Need help preparing your SBA loan application? Our experts can guide you through the process, 
+                  Need help preparing your SBA loan application? Our experts can guide you through the process,
                   review your documentation, and connect you with the right lenders.
                 </p>
                 <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>

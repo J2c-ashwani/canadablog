@@ -75,6 +75,9 @@ export function Footer() {
                 <Link href="/guides" className="text-gray-400 hover:text-white text-sm">
                   Grant Guides
                 </Link>
+                <Link href="/resources" className="text-gray-400 hover:text-white text-sm">
+                  Business Tools
+                </Link>
               </div>
             </div>
           </div>

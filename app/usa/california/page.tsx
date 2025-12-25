@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
+import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
   title: "California Small Business Grants 2025 | State Funding Programs",
@@ -18,38 +19,78 @@ export const metadata: Metadata = {
   },
 }
 
-const californiaGrants = [
+const californiaGrants: Grant[] = [
   {
+    id: "ca-loan-guarantee",
     name: "California Small Business Loan Guarantee Program",
-    fundingAmount: "$2.5M",
-    eligibility: "Small businesses with <$14M revenue",
+    fundingMin: 50000,
+    fundingMax: 2500000,
+    eligibility: ["Small businesses with <500 employees", "CA-based operations", "Non-profits"],
     deadline: "Rolling basis",
     applicationLink: "https://www.ibank.ca.gov/small-business/loan-guarantee-program/",
-    description: "Loan guarantees to help small businesses access capital",
+    description: "Loan guarantees to help small businesses access capital for startup costs, inventory, and expansion.",
+    country: "USA",
+    region: "California",
+    category: "Small Business",
+    agency: "IBank",
+    status: "Active",
+    tags: ["Loan Guarantee", "Capital Access", "Small Business"],
+    requirements: ["Lender pre-qualification", "Business plan", "Financial statements"],
+    lastUpdated: "2025-01-20"
   },
   {
+    id: "ca-competes",
     name: "California Competes Tax Credit",
-    fundingAmount: "$180M annually",
-    eligibility: "Businesses creating jobs in CA",
+    fundingMin: 20000,
+    fundingMax: 10000000,
+    eligibility: ["Businesses creating jobs in CA", "All industries", "Startups and established firms"],
     deadline: "Multiple rounds yearly",
     applicationLink: "https://www.business.ca.gov/advantages/california-competes/",
-    description: "Tax credits for businesses that want to come to or stay and grow in California",
+    description: "Income tax credits for businesses that want to locate in California or stay and grow in the state.",
+    country: "USA",
+    region: "California",
+    category: "Tax Credit",
+    agency: "GO-Biz",
+    status: "Active",
+    tags: ["Tax Credit", "Job Creation", "Economic Development"],
+    requirements: ["Online application", "5-year growth plan", "Job creation milestones"],
+    lastUpdated: "2025-01-20"
   },
   {
+    id: "ca-calseed",
     name: "CalSEED Program",
-    fundingAmount: "$150K",
-    eligibility: "Clean energy startups",
-    deadline: "Quarterly",
+    fundingMin: 150000,
+    fundingMax: 600000,
+    eligibility: ["Clean energy startups", "California-based innovators", "Early-stage technology"],
+    deadline: "Annual",
     applicationLink: "https://www.calseed.fund/",
-    description: "Early-stage funding for clean energy innovations",
+    description: "Early-stage funding for clean energy concepts and prototypes helping California meet climate goals.",
+    country: "USA",
+    region: "California",
+    category: "Green Energy",
+    agency: "California Energy Commission",
+    status: "Upcoming",
+    tags: ["Clean Energy", "Innovation", "Startup"],
+    requirements: ["Concept proposal", "Technical merit review", "Equity-free requirement"],
+    lastUpdated: "2025-01-20"
   },
   {
+    id: "ca-calcap",
     name: "California Capital Access Program",
-    fundingAmount: "$2.5M",
-    eligibility: "Small businesses unable to get conventional loans",
+    fundingMin: 5000,
+    fundingMax: 5000000,
+    eligibility: ["Small businesses", "Manufacturers", "Service providers"],
     deadline: "Rolling",
     applicationLink: "https://www.treasurer.ca.gov/cpcfa/calcap/",
-    description: "Loan loss reserve program for small business lending",
+    description: "A loan loss reserve program that may provide up to 100% coverage on losses as a result of certain loan defaults.",
+    country: "USA",
+    region: "California",
+    category: "Small Business",
+    agency: "State Treasurer's Office",
+    status: "Active",
+    tags: ["Loans", "Capital Access", "Collateral Support"],
+    requirements: ["Participating lender application", "Business license", "Credit check"],
+    lastUpdated: "2025-01-20"
   },
 ]
 
@@ -114,7 +155,6 @@ export default function CaliforniaGrantsPage() {
             <GrantComparisonTable
               grants={californiaGrants}
               title="California Small Business Grants Comparison"
-              description="Compare funding amounts, eligibility requirements, and deadlines for top California state grant programs"
             />
           </div>
 

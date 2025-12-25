@@ -81,7 +81,7 @@ export default function AgricultureAgriFoodDownloadPage() {
                 AAFC Agricultural Application Toolkit
               </h1>
               <p className="text-xl text-green-100 mb-8">
-                Get instant access to comprehensive Agriculture & Agri-Food Canada application templates, federal compliance strategies, 
+                Get instant access to comprehensive Agriculture & Agri-Food Canada application templates, federal compliance strategies,
                 and sector-specific guides used by successful applicants to secure $18M+ in AAFC funding approvals.
               </p>
             </div>
@@ -95,7 +95,7 @@ export default function AgricultureAgriFoodDownloadPage() {
                 {/* Left - What's Included */}
                 <div>
                   <h2 className="text-3xl font-bold text-gray-900 mb-8">What's Included in Your AAFC Agricultural Toolkit</h2>
-                  
+
                   <div className="space-y-6">
                     <Card className="border-green-200">
                       <CardHeader>
@@ -217,7 +217,7 @@ export default function AgricultureAgriFoodDownloadPage() {
                   <div className="mt-8 bg-green-50 border border-green-200 p-6 rounded-lg">
                     <h4 className="font-bold text-green-800 mb-2">Bonus: Agricultural Funding Expert Consultation</h4>
                     <p className="text-green-700 text-sm">
-                      Download includes a complimentary 30-minute AAFC strategy consultation with our agricultural 
+                      Download includes a complimentary 30-minute AAFC strategy consultation with our agricultural
                       funding experts who have secured $18M+ in Agriculture & Agri-Food Canada funding approvals.
                     </p>
                   </div>
@@ -238,9 +238,9 @@ export default function AgricultureAgriFoodDownloadPage() {
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <Label htmlFor="firstName">First Name *</Label>
-                          <Input 
-                            id="firstName" 
-                            required 
+                          <Input
+                            id="firstName"
+                            required
                             value={formData.firstName}
                             onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                             placeholder="Your first name"
@@ -249,9 +249,9 @@ export default function AgricultureAgriFoodDownloadPage() {
                         </div>
                         <div>
                           <Label htmlFor="lastName">Last Name *</Label>
-                          <Input 
-                            id="lastName" 
-                            required 
+                          <Input
+                            id="lastName"
+                            required
                             value={formData.lastName}
                             onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                             placeholder="Your last name"
@@ -262,10 +262,10 @@ export default function AgricultureAgriFoodDownloadPage() {
 
                       <div>
                         <Label htmlFor="email">Business Email *</Label>
-                        <Input 
-                          id="email" 
-                          type="email" 
-                          required 
+                        <Input
+                          id="email"
+                          type="email"
+                          required
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="your.email@company.com"
@@ -275,9 +275,9 @@ export default function AgricultureAgriFoodDownloadPage() {
 
                       <div>
                         <Label htmlFor="company">Company/Organization *</Label>
-                        <Input 
-                          id="company" 
-                          required 
+                        <Input
+                          id="company"
+                          required
                           value={formData.company}
                           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                           placeholder="Your agricultural business name"
@@ -287,8 +287,8 @@ export default function AgricultureAgriFoodDownloadPage() {
 
                       <div>
                         <Label htmlFor="role">Your Role *</Label>
-                        <Select 
-                          required 
+                        <Select
+                          required
                           value={formData.role}
                           onValueChange={(value) => setFormData({ ...formData, role: value })}
                         >
@@ -309,7 +309,7 @@ export default function AgricultureAgriFoodDownloadPage() {
 
                       <div>
                         <Label htmlFor="agriculturalSector">Agricultural Sector *</Label>
-                        <Select 
+                        <Select
                           required
                           value={formData.agriculturalSector}
                           onValueChange={(value) => setFormData({ ...formData, agriculturalSector: value })}
@@ -332,7 +332,7 @@ export default function AgricultureAgriFoodDownloadPage() {
 
                       <div>
                         <Label htmlFor="targetProgram">Target AAFC Program</Label>
-                        <Select 
+                        <Select
                           value={formData.targetProgram}
                           onValueChange={(value) => setFormData({ ...formData, targetProgram: value })}
                         >
@@ -353,7 +353,7 @@ export default function AgricultureAgriFoodDownloadPage() {
 
                       <div>
                         <Label htmlFor="fundingAmount">Expected AAFC Funding Request</Label>
-                        <Select 
+                        <Select
                           value={formData.fundingAmount}
                           onValueChange={(value) => setFormData({ ...formData, fundingAmount: value })}
                         >
@@ -373,7 +373,7 @@ export default function AgricultureAgriFoodDownloadPage() {
 
                       <div>
                         <Label htmlFor="innovationFocus">Innovation/Project Focus</Label>
-                        <Select 
+                        <Select
                           value={formData.innovationFocus}
                           onValueChange={(value) => setFormData({ ...formData, innovationFocus: value })}
                         >
@@ -395,7 +395,7 @@ export default function AgricultureAgriFoodDownloadPage() {
 
                       <div>
                         <Label htmlFor="projectStage">Project Development Stage</Label>
-                        <Select 
+                        <Select
                           value={formData.projectStage}
                           onValueChange={(value) => setFormData({ ...formData, projectStage: value })}
                         >
@@ -415,8 +415,8 @@ export default function AgricultureAgriFoodDownloadPage() {
 
                       <div>
                         <Label htmlFor="challenges">Biggest AAFC Challenge (Optional)</Label>
-                        <Textarea 
-                          id="challenges" 
+                        <Textarea
+                          id="challenges"
                           value={formData.challenges}
                           onChange={(e) => setFormData({ ...formData, challenges: e.target.value })}
                           placeholder="What's your biggest challenge with AAFC agricultural funding or program selection?"
@@ -435,14 +435,14 @@ export default function AgricultureAgriFoodDownloadPage() {
                         <label className="flex items-start space-x-2">
                           <input type="checkbox" className="mt-1" required />
                           <span>
-                            I agree to receive email communications about Agriculture & Agri-Food Canada funding opportunities and 
+                            I agree to receive email communications about Agriculture & Agri-Food Canada funding opportunities and
                             related federal agricultural programs. You can unsubscribe at any time.
                           </span>
                         </label>
                       </div>
 
-                      <Button 
-                        type="submit" 
+                      <Button
+                        type="submit"
                         disabled={isSubmitting}
                         className="w-full bg-green-600 hover:bg-green-700 text-lg py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
@@ -503,7 +503,7 @@ export default function AgricultureAgriFoodDownloadPage() {
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-white p-6 rounded-lg shadow">
                   <p className="text-gray-700 mb-4 italic">
-                    "The AgriInnovate application template was exactly what we needed. We secured $850K for our 
+                    "The AgriInnovate application template was exactly what we needed. We secured $850K for our
                     precision agriculture platform and the federal compliance checklist kept us on track."
                   </p>
                   <div className="flex items-center">
@@ -518,7 +518,7 @@ export default function AgricultureAgriFoodDownloadPage() {
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow">
                   <p className="text-gray-700 mb-4 italic">
-                    "The agricultural partnership guide helped us connect with the right research institutions. 
+                    "The agricultural partnership guide helped us connect with the right research institutions.
                     Our AgriScience cluster proposal was approved for $12M in federal funding."
                   </p>
                   <div className="flex items-center">
@@ -532,6 +532,50 @@ export default function AgricultureAgriFoodDownloadPage() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Resources - Engagement Booster */}
+        <section className="py-12 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">More Free Resources for Your Business</h3>
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              <Card className="hover:shadow-md transition-shadow cursor-pointer border-green-100">
+                <CardHeader>
+                  <CardTitle className="text-lg text-green-700">Grant Finder Tool</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600 mb-4">Match your business with 5,000+ active funding opportunities in seconds.</p>
+                  <Button variant="outline" className="w-full text-green-700 border-green-200 hover:bg-green-50" asChild>
+                    <Link href="/grant-finder">Find Grants Now</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow cursor-pointer border-blue-100">
+                <CardHeader>
+                  <CardTitle className="text-lg text-blue-700">Application Guides</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600 mb-4">Step-by-step instructions for winning federal and provincial grants.</p>
+                  <Button variant="outline" className="w-full text-blue-700 border-blue-200 hover:bg-blue-50" asChild>
+                    <Link href="/guides">Read Guides</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow cursor-pointer border-purple-100">
+                <CardHeader>
+                  <CardTitle className="text-lg text-purple-700">Expert Review</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600 mb-4">Get your application reviewed by funding experts before submission.</p>
+                  <Button variant="outline" className="w-full text-purple-700 border-purple-200 hover:bg-purple-50" asChild>
+                    <Link href="/contact">Contact Experts</Link>
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>

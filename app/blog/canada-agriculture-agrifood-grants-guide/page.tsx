@@ -81,7 +81,7 @@ export default function CanadaAgricultureAgrifoodGrantsGuidePage() {
                 <p className="text-lg text-gray-700 mb-6">
                   Canada's agriculture and agri-food industry generates approximately $150 billion annually, representing 7% of the country's GDP and employing over 2.1 million Canadians. With over $2.3 billion available through 32+ specialized programs, Canada provides comprehensive support for agricultural innovation, sustainability, food processing, and market development. From the $3.5B Sustainable Canadian Agricultural Partnership to AgriInnovate's $5M commercialization support, Canada leads global agricultural excellence.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-green-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-green-800">Agricultural Policy Priorities</h4>
@@ -92,7 +92,7 @@ export default function CanadaAgricultureAgrifoodGrantsGuidePage() {
                       <li>• Export market development and international competitiveness</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">Strategic Agricultural Integration</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -113,7 +113,7 @@ export default function CanadaAgricultureAgrifoodGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Agriculture & Agri-Food Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Sustainable Canadian Agricultural Partnership */}
                 <Card className="border-green-200">
@@ -522,7 +522,7 @@ export default function CanadaAgricultureAgrifoodGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Agriculture Funding Strategy Framework</h2>
-              
+
               <div className="space-y-6">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -600,7 +600,7 @@ export default function CanadaAgricultureAgrifoodGrantsGuidePage() {
               <p className="text-xl text-green-100 mb-8">
                 Get our complete agriculture funding strategy guide or work with our agri-food specialists who have secured over $12M in agricultural grants with 92% success rate across all major programs.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">DIY Agriculture Approach</h4>
@@ -608,7 +608,7 @@ export default function CanadaAgricultureAgrifoodGrantsGuidePage() {
                     Get our comprehensive agriculture funding guide with program-specific templates and strategies.
                   </p>
                   <Button size="lg" className="w-full bg-white text-green-700 hover:bg-gray-100" asChild>
-                    <Link href="/guides/canada-agriculture-funding">
+                    <Link href="/guides/canada-agri-food-funding-guide">
                       <Download className="w-4 h-4 mr-2" />
                       Get Agriculture Guide
                     </Link>
@@ -627,7 +627,7 @@ export default function CanadaAgricultureAgrifoodGrantsGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-green-200 text-sm mt-6">
                 92% success rate for agriculture applications • Average funding secured: $385K • Multi-program expertise
               </p>

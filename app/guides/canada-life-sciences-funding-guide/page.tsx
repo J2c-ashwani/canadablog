@@ -500,7 +500,7 @@ export default function CanadaLifeSciencesFundingGuide() {
                           <p className="text-sm text-gray-600">Biotech innovation funding</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="https://nrc.canada.ca/irap" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://nrc.canada.ca/en/support-technology-innovation/nrc-irap" target="_blank" rel="noopener noreferrer">
                             Visit <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </Button>

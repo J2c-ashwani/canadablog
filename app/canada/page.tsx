@@ -188,14 +188,14 @@ export default function CanadaGrantsPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { province: "Ontario", grants: 65, funding: "$200M" },
-              { province: "Quebec", grants: 55, funding: "$150M" },
-              { province: "Alberta", grants: 42, funding: "$120M" },
-              { province: "British Columbia", grants: 48, funding: "$140M" },
-              { province: "Manitoba", grants: 25, funding: "$60M" },
-              { province: "Saskatchewan", grants: 22, funding: "$50M" },
-              { province: "Nova Scotia", grants: 18, funding: "$40M" },
-              { province: "New Brunswick", grants: 15, funding: "$35M" },
+              { province: "Ontario", grants: 65, funding: "$200M", slug: "ontario" },
+              { province: "Quebec", grants: 55, funding: "$150M", slug: "quebec" },
+              { province: "Alberta", grants: 42, funding: "$120M", slug: "alberta" },
+              { province: "British Columbia", grants: 48, funding: "$140M", slug: "british-columbia" },
+              { province: "Manitoba", grants: 25, funding: "$60M", slug: "manitoba" },
+              { province: "Saskatchewan", grants: 22, funding: "$50M", slug: "saskatchewan" },
+              { province: "Nova Scotia", grants: 18, funding: "$40M", slug: "nova-scotia" },
+              { province: "New Brunswick", grants: 15, funding: "$35M", slug: "new-brunswick" },
             ].map((province) => (
               <Card key={province.province} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
@@ -214,7 +214,7 @@ export default function CanadaGrantsPage() {
                     </div>
                   </div>
                   <Button className="w-full mt-4 bg-transparent" variant="outline" asChild>
-                    <Link href={`/canada/${province.province.toLowerCase().replace(" ", "-")}`}>View Grants</Link>
+                    <Link href={`/canada/${province.slug}`}>View Grants</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -240,7 +240,7 @@ export default function CanadaGrantsPage() {
                 description: "Dedicated funding for women entrepreneurs",
                 icon: Users,
                 count: "45+ grants",
-                href: "/canada/women-business-grants",
+                href: "/canada/women-entrepreneurship-grants",
               },
               {
                 title: "Indigenous Entrepreneurs",

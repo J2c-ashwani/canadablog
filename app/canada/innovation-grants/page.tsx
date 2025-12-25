@@ -36,7 +36,7 @@ export default function CanadaInnovationGrantsPage() {
                 $4.2B+ Available for Canadian Innovation
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed max-w-3xl mx-auto">
-                Access Canada's comprehensive innovation funding ecosystem. From SR&ED tax credits to Strategic Innovation Fund - 
+                Access Canada's comprehensive innovation funding ecosystem. From SR&ED tax credits to Strategic Innovation Fund -
                 accelerate your research, development, and technology commercialization with government support.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -93,7 +93,7 @@ export default function CanadaInnovationGrantsPage() {
                   Canada's Flagship Innovation Programs
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Access Canada's premier innovation funding programs designed to support 
+                  Access Canada's premier innovation funding programs designed to support
                   research, development, and technology commercialization across all sectors.
                 </p>
               </div>
@@ -128,7 +128,7 @@ export default function CanadaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Canada's largest R&D tax incentive program providing refundable tax credits 
+                      Canada's largest R&D tax incentive program providing refundable tax credits
                       for eligible research and experimental development activities.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -182,7 +182,7 @@ export default function CanadaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Non-repayable contributions for SMEs developing and commercializing 
+                      Non-repayable contributions for SMEs developing and commercializing
                       innovative technologies and solutions with dedicated advisory support.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -236,7 +236,7 @@ export default function CanadaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Large-scale funding for transformative innovation projects that drive 
+                      Large-scale funding for transformative innovation projects that drive
                       economic growth, create jobs, and enhance Canada's global competitiveness.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -290,7 +290,7 @@ export default function CanadaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Comprehensive research funding supporting university-industry partnerships, 
+                      Comprehensive research funding supporting university-industry partnerships,
                       technology transfer, and collaborative R&D initiatives.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -331,7 +331,7 @@ export default function CanadaInnovationGrantsPage() {
                   Innovation Funding by Industry Sector
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Specialized innovation programs targeting key sectors driving 
+                  Specialized innovation programs targeting key sectors driving
                   Canada's economic growth and technological advancement.
                 </p>
               </div>
@@ -401,7 +401,7 @@ export default function CanadaInnovationGrantsPage() {
                     blue: "border-blue-200 hover:border-blue-300",
                     yellow: "border-yellow-200 hover:border-yellow-300"
                   }
-                  
+
                   return (
                     <Card key={index} className={`hover:shadow-lg transition-all ${colorClasses[sector.color as keyof typeof colorClasses]}`}>
                       <CardHeader>
@@ -451,7 +451,7 @@ export default function CanadaInnovationGrantsPage() {
                   Funding for Every Stage of Innovation
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  From early-stage research to market commercialization - Canada provides 
+                  From early-stage research to market commercialization - Canada provides
                   comprehensive support throughout your innovation journey.
                 </p>
               </div>
@@ -471,7 +471,7 @@ export default function CanadaInnovationGrantsPage() {
                   {
                     icon: <Beaker className="w-8 h-8 text-blue-500" />,
                     title: "Development & Proof",
-                    stage: "Stage 2", 
+                    stage: "Stage 2",
                     programs: ["IRAP Technology Development", "SR&ED Tax Credits", "NSERC CRD"],
                     funding: "Up to $5M",
                     color: "blue",
@@ -505,14 +505,14 @@ export default function CanadaInnovationGrantsPage() {
                     purple: "border-l-purple-500 bg-purple-50",
                     green: "border-l-green-500 bg-green-50"
                   }
-                  
+
                   const buttonColors = {
                     yellow: "bg-yellow-600 hover:bg-yellow-700",
                     blue: "bg-blue-600 hover:bg-blue-700",
                     purple: "bg-purple-600 hover:bg-purple-700",
                     green: "bg-green-600 hover:bg-green-700"
                   }
-                  
+
                   return (
                     <Card key={index} className={`border-l-4 ${colorClasses[stage.color as keyof typeof colorClasses]} hover:shadow-lg transition-all`}>
                       <CardHeader>
@@ -535,23 +535,23 @@ export default function CanadaInnovationGrantsPage() {
                             </div>
                           ))}
                         </div>
-                        
+
                         {/* Action Buttons */}
                         <div className="space-y-2">
-                          <Button 
-                            className={`w-full ${buttonColors[stage.color as keyof typeof buttonColors]} text-white`} 
-                            size="sm" 
+                          <Button
+                            className={`w-full ${buttonColors[stage.color as keyof typeof buttonColors]} text-white`}
+                            size="sm"
                             asChild
                           >
                             <Link href={`/blog/${stage.slug}`}>
                               Learn More About {stage.stage}
                             </Link>
                           </Button>
-                          
-                          <Button 
-                            variant="outline" 
-                            className="w-full" 
-                            size="sm" 
+
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            size="sm"
                             asChild
                           >
                             <Link href={`/contact?service=${stage.slug}-expert-help`}>
@@ -580,7 +580,7 @@ export default function CanadaInnovationGrantsPage() {
                   Provincial Innovation Support
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Provincial governments complement federal programs with region-specific 
+                  Provincial governments complement federal programs with region-specific
                   innovation initiatives and enhanced tax credit opportunities.
                 </p>
               </div>
@@ -599,7 +599,7 @@ export default function CanadaInnovationGrantsPage() {
                     highlights: ["Advanced Manufacturing", "Life Sciences Hub", "AI & Digital Tech"]
                   },
                   {
-                    province: "Quebec", 
+                    province: "Quebec",
                     icon: <MapPin className="w-6 h-6 text-blue-500" />,
                     credit: "30% CRIC",
                     programs: ["Quebec R&D Tax Credit (CRIC)", "Investissement Québec", "PRIMA Quebec"],
@@ -662,7 +662,7 @@ export default function CanadaInnovationGrantsPage() {
                     teal: "border-teal-200 hover:border-teal-300",
                     purple: "border-purple-200 hover:border-purple-300"
                   }
-                  
+
                   const buttonColors = {
                     red: "bg-red-600 hover:bg-red-700",
                     blue: "bg-blue-600 hover:bg-blue-700",
@@ -671,7 +671,7 @@ export default function CanadaInnovationGrantsPage() {
                     teal: "bg-teal-600 hover:bg-teal-700",
                     purple: "bg-purple-600 hover:bg-purple-700"
                   }
-                  
+
                   return (
                     <Card key={index} className={`hover:shadow-lg transition-all ${colorClasses[region.color as keyof typeof colorClasses]}`}>
                       <CardHeader>
@@ -688,7 +688,7 @@ export default function CanadaInnovationGrantsPage() {
                       </CardHeader>
                       <CardContent>
                         <div className="text-2xl font-bold text-gray-900 mb-3">{region.total}</div>
-                        
+
                         <div className="space-y-2 mb-4">
                           <h5 className="font-semibold text-sm">Major Programs:</h5>
                           {region.programs.map((program, idx) => (
@@ -698,7 +698,7 @@ export default function CanadaInnovationGrantsPage() {
                             </div>
                           ))}
                         </div>
-                        
+
                         <div className="space-y-2 mb-4">
                           <h5 className="font-semibold text-sm">Innovation Highlights:</h5>
                           {region.highlights.map((highlight, idx) => (
@@ -708,23 +708,23 @@ export default function CanadaInnovationGrantsPage() {
                             </div>
                           ))}
                         </div>
-                        
+
                         {/* Action Buttons */}
                         <div className="space-y-2">
-                          <Button 
-                            className={`w-full ${buttonColors[region.color as keyof typeof buttonColors]} text-white`} 
-                            size="sm" 
+                          <Button
+                            className={`w-full ${buttonColors[region.color as keyof typeof buttonColors]} text-white`}
+                            size="sm"
                             asChild
                           >
                             <Link href={`/blog/${region.slug}`}>
                               Explore {region.province} Programs
                             </Link>
                           </Button>
-                          
-                          <Button 
-                            variant="outline" 
-                            className="w-full" 
-                            size="sm" 
+
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            size="sm"
                             asChild
                           >
                             <Link href={`/contact?service=${region.slug}-expert-help`}>
@@ -829,10 +829,10 @@ export default function CanadaInnovationGrantsPage() {
                 Accelerate Your Innovation with Canada's $4.2B+ Funding Ecosystem
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Innovation funding spans multiple programs, departments, and jurisdictions. Our specialists understand 
+                Innovation funding spans multiple programs, departments, and jurisdictions. Our specialists understand
                 the complex R&D landscape and have secured over $35M in innovation funding with 91% success rate.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">DIY Innovation Approach</h4>
@@ -840,7 +840,7 @@ export default function CanadaInnovationGrantsPage() {
                     Get our comprehensive innovation funding guide with program-specific strategies and templates.
                   </p>
                   <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100" asChild>
-                    <Link href="/guides/canada-innovation-funding">
+                    <Link href="/guides/canada-innovation-rd-funding-guide">
                       Get Innovation Guide
                     </Link>
                   </Button>
@@ -858,7 +858,7 @@ export default function CanadaInnovationGrantsPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-blue-200 text-sm mt-6">
                 91% success rate for innovation applications • Average funding secured: $485K • Multi-program expertise
               </p>

@@ -34,7 +34,7 @@ export default function DOECleanEnergyGrantsGuide() {
                 Department of Energy Clean Energy Grants
               </h1>
               <p className="text-xl text-green-100 mb-8">
-                Complete guide to securing Department of Energy clean energy grants. Access billions in funding 
+                Complete guide to securing Department of Energy clean energy grants. Access billions in funding
                 for renewable energy, energy efficiency, and innovative clean technology projects.
               </p>
             </div>
@@ -71,11 +71,11 @@ export default function DOECleanEnergyGrantsGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* DOE Clean Energy Programs */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Major DOE Clean Energy Grant Programs</h2>
-                
+
                 <div className="space-y-6">
                   <Card className="border-green-200">
                     <CardHeader>
@@ -99,7 +99,7 @@ export default function DOECleanEnergyGrantsGuide() {
                           <span><strong>Funding:</strong> $50K - $7M</span>
                         </div>
                       </div>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-green-700">Research Areas:</h5>
@@ -147,7 +147,7 @@ export default function DOECleanEnergyGrantsGuide() {
                           <span><strong>Funding:</strong> $100K - $10M</span>
                         </div>
                       </div>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-blue-700">Program Areas:</h5>
@@ -195,7 +195,7 @@ export default function DOECleanEnergyGrantsGuide() {
                           <span><strong>Funding:</strong> $500K - $10M</span>
                         </div>
                       </div>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-purple-700">Technology Areas:</h5>
@@ -259,7 +259,7 @@ export default function DOECleanEnergyGrantsGuide() {
               {/* Application Process */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">DOE Grant Application Process</h2>
-                
+
                 <div className="space-y-6">
                   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div className="text-center">
@@ -326,7 +326,7 @@ export default function DOECleanEnergyGrantsGuide() {
               {/* Eligibility & Requirements */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Eligibility Requirements</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <Card className="border-green-200">
                     <CardHeader>
@@ -393,7 +393,7 @@ export default function DOECleanEnergyGrantsGuide() {
               {/* Official DOE Resources */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Official DOE Clean Energy Resources</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-green-200">
                     <CardHeader>
@@ -411,14 +411,14 @@ export default function DOECleanEnergyGrantsGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">ARPA-E FOAs</h5>
                           <p className="text-sm text-gray-600">Advanced research funding opportunities</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="https://arpa-e.energy.gov/funding-opportunities" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://arpa-e.energy.gov/" target="_blank" rel="noopener noreferrer">
                             Visit <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </Button>
@@ -454,7 +454,7 @@ export default function DOECleanEnergyGrantsGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">Wind Energy Technologies</h5>
@@ -488,7 +488,7 @@ export default function DOECleanEnergyGrantsGuide() {
                 <Users className="w-16 h-16 mx-auto mb-4 text-green-100" />
                 <h3 className="text-2xl font-bold mb-4">Ready to Apply for DOE Clean Energy Grants?</h3>
                 <p className="text-green-100 mb-6 text-lg">
-                  Need expert guidance on DOE clean energy grant applications? Our specialists can help you navigate 
+                  Need expert guidance on DOE clean energy grant applications? Our specialists can help you navigate
                   the process and develop winning proposals for renewable energy and efficiency projects.
                 </p>
                 <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>

@@ -555,7 +555,7 @@ export default function CanadaCleanTechnologyEnvironmentGrantsGuidePage() {
                     Get our comprehensive clean technology funding guide with program-specific templates and strategies.
                   </p>
                   <Button size="lg" className="w-full bg-white text-green-700 hover:bg-gray-100" asChild>
-                    <Link href="/guides/canada-cleantech-funding">
+                    <Link href="/guides/canada-cleantech-funding-guide">
                       <Download className="w-4 h-4 mr-2" />
                       Get CleanTech Guide
                     </Link>

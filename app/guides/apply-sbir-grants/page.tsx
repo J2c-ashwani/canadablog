@@ -34,7 +34,7 @@ export default function ApplySBIRGrantsGuide() {
                 How to Apply for SBIR Grants
               </h1>
               <p className="text-xl text-purple-100 mb-8">
-                Complete step-by-step guide to applying for Small Business Innovation Research (SBIR) grants. 
+                Complete step-by-step guide to applying for Small Business Innovation Research (SBIR) grants.
                 Learn the application process, requirements, and winning strategies for securing up to $1.7M in R&D funding.
               </p>
             </div>
@@ -67,11 +67,11 @@ export default function ApplySBIRGrantsGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* Eligibility Check */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">SBIR Eligibility Checklist</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <Card className="border-green-200">
                     <CardHeader>
@@ -138,7 +138,7 @@ export default function ApplySBIRGrantsGuide() {
               {/* Phase I Application Guide */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Phase I Application Components</h2>
-                
+
                 <div className="space-y-6">
                   <Card className="border-purple-200">
                     <CardHeader>
@@ -245,10 +245,10 @@ export default function ApplySBIRGrantsGuide() {
               {/* Phase II Information */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Phase II Application Requirements</h2>
-                
+
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
                   <p className="text-blue-800">
-                    <strong>Important:</strong> Only Phase I recipients can apply for Phase II funding. 
+                    <strong>Important:</strong> Only Phase I recipients can apply for Phase II funding.
                     Phase II applications are typically due 12-18 months after Phase I award.
                   </p>
                 </div>
@@ -265,7 +265,7 @@ export default function ApplySBIRGrantsGuide() {
                       <li>• Intellectual property status</li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4">Phase II Benefits:</h4>
                     <ul className="space-y-2 text-gray-700">
@@ -283,7 +283,7 @@ export default function ApplySBIRGrantsGuide() {
               {/* Application Timeline */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">SBIR Application Timeline</h2>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-center p-4 bg-purple-50 rounded-lg">
                     <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
@@ -294,7 +294,7 @@ export default function ApplySBIRGrantsGuide() {
                       <p className="text-sm text-gray-600">Research topics, identify opportunities, begin team building</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center p-4 bg-blue-50 rounded-lg">
                     <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
                       4M
@@ -304,7 +304,7 @@ export default function ApplySBIRGrantsGuide() {
                       <p className="text-sm text-gray-600">Contact program officers, refine research approach, complete registrations</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center p-4 bg-green-50 rounded-lg">
                     <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
                       3M
@@ -314,7 +314,7 @@ export default function ApplySBIRGrantsGuide() {
                       <p className="text-sm text-gray-600">Begin proposal writing, market research, competitive analysis</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center p-4 bg-orange-50 rounded-lg">
                     <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
                       1M
@@ -324,7 +324,7 @@ export default function ApplySBIRGrantsGuide() {
                       <p className="text-sm text-gray-600">Complete first draft, internal reviews, budget finalization</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center p-4 bg-red-50 rounded-lg">
                     <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
                       1W
@@ -340,7 +340,7 @@ export default function ApplySBIRGrantsGuide() {
               {/* Winning Tips */}
               <div className="bg-green-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">SBIR Winning Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-3 gap-6">
                   <Card className="border-green-200 bg-white">
                     <CardHeader>
@@ -392,7 +392,7 @@ export default function ApplySBIRGrantsGuide() {
               {/* Major SBIR Agencies */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Major SBIR Participating Agencies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-blue-200">
                     <CardHeader>
@@ -405,12 +405,12 @@ export default function ApplySBIRGrantsGuide() {
                           <p className="text-sm text-gray-600">$1.8B annually - Defense technologies</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="https://www.sbir.gov/node/1088" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://www.defensesbirsttr.mil/" target="_blank" rel="noopener noreferrer">
                             Visit <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">National Institutes of Health (NIH)</h5>
@@ -441,14 +441,14 @@ export default function ApplySBIRGrantsGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">Department of Energy (DOE)</h5>
                           <p className="text-sm text-gray-600">$150M annually - Energy technologies</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="https://www.sbir.gov/node/1090" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://science.osti.gov/sbir" target="_blank" rel="noopener noreferrer">
                             Visit <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </Button>
@@ -461,7 +461,7 @@ export default function ApplySBIRGrantsGuide() {
               {/* Official Resources */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Official SBIR Resources</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card className="border-purple-200">
                     <CardHeader>
@@ -479,7 +479,7 @@ export default function ApplySBIRGrantsGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">Grants.gov</h5>
@@ -510,14 +510,14 @@ export default function ApplySBIRGrantsGuide() {
                           </Link>
                         </Button>
                       </div>
-                      
+
                       <div className="flex items-center justify-between p-3 bg-orange-50 rounded-lg">
                         <div>
                           <h5 className="font-semibold">SBA.gov</h5>
                           <p className="text-sm text-gray-600">Small Business Administration resources</p>
                         </div>
                         <Button size="sm" asChild>
-                          <Link href="https://www.sba.gov/funding-programs/investment-capital/sbir-sttr-grants" target="_blank" rel="noopener noreferrer">
+                          <Link href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/sbir-sttr" target="_blank" rel="noopener noreferrer">
                             Visit <ExternalLink className="w-3 h-3 ml-1" />
                           </Link>
                         </Button>
@@ -532,7 +532,7 @@ export default function ApplySBIRGrantsGuide() {
                 <Users className="w-16 h-16 mx-auto mb-4 text-purple-100" />
                 <h3 className="text-2xl font-bold mb-4">Ready to Apply for SBIR Funding?</h3>
                 <p className="text-purple-100 mb-6 text-lg">
-                  Need help with your SBIR application? Our experts can guide you through the process, 
+                  Need help with your SBIR application? Our experts can guide you through the process,
                   review your proposal, and help maximize your chances of winning funding.
                 </p>
                 <Button size="lg" className="bg-white text-purple-700 hover:bg-gray-100" asChild>

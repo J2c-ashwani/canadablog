@@ -81,7 +81,7 @@ export default function CanadaInnovationRDGrantsGuidePage() {
                 <p className="text-lg text-gray-700 mb-6">
                   Canada operates one of the world's most comprehensive innovation and R&D funding ecosystems, with over $4.2 billion available annually through federal and provincial programs. From the flagship SR&ED tax credit program supporting 25,000+ companies annually to the Strategic Innovation Fund backing transformative projects up to $100M+, Canada provides unparalleled support for research, development, and commercialization across all sectors and business stages.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">Innovation Policy Priorities</h4>
@@ -92,7 +92,7 @@ export default function CanadaInnovationRDGrantsGuidePage() {
                       <li>• Clean technology and sustainable innovation leadership</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-green-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-green-800">Strategic Innovation Integration</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -113,7 +113,7 @@ export default function CanadaInnovationRDGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Innovation & R&D Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* SR&ED Tax Credit Program */}
                 <Card className="border-blue-200">
@@ -444,7 +444,7 @@ export default function CanadaInnovationRDGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Innovation Funding Strategy Framework</h2>
-              
+
               <div className="space-y-6">
                 <Card className="border-blue-200">
                   <CardHeader>
@@ -522,7 +522,7 @@ export default function CanadaInnovationRDGrantsGuidePage() {
               <p className="text-xl text-blue-100 mb-8">
                 Get our complete innovation funding strategy guide or work with our R&D specialists who have secured over $25M in innovation grants with 91% success rate across all major programs.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">DIY Innovation Approach</h4>
@@ -530,7 +530,7 @@ export default function CanadaInnovationRDGrantsGuidePage() {
                     Get our comprehensive innovation funding guide with program-specific templates and strategies.
                   </p>
                   <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100" asChild>
-                    <Link href="/guides/canada-innovation-rd-funding">
+                    <Link href="/guides/apply-strategic-innovation-fund">
                       <Download className="w-4 h-4 mr-2" />
                       Get Innovation Guide
                     </Link>
@@ -549,7 +549,7 @@ export default function CanadaInnovationRDGrantsGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-blue-200 text-sm mt-6">
                 91% success rate for innovation applications • Average funding secured: $425K • Multi-program expertise
               </p>

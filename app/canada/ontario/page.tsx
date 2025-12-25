@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
+import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
   title: "Ontario Business Grants 2025 | Provincial Funding Programs",
@@ -18,38 +19,78 @@ export const metadata: Metadata = {
   },
 }
 
-const ontarioGrants = [
+const ontarioGrants: Grant[] = [
   {
+    id: "on-together-fund",
     name: "Ontario Together Fund",
-    fundingAmount: "$2.5M",
-    eligibility: "Ontario businesses and organizations",
+    fundingMin: 250000,
+    fundingMax: 2500000,
+    eligibility: ["Ontario businesses", "Organizations", "Manufacturers"],
     deadline: "Rolling basis",
     applicationLink: "https://www.ontario.ca/page/ontario-together-fund",
-    description: "Support for businesses adapting to economic challenges",
+    description: "Support for businesses adapting to economic challenges and strengthening supply chains.",
+    country: "Canada",
+    region: "Ontario",
+    category: "Business Growth",
+    agency: "Ontario Ministry of Economic Development",
+    status: "Active",
+    tags: ["Manufacturing", "Innovation", "Supply Chain"],
+    requirements: ["Project proposal", "Financial statements", "Job creation potential"],
+    lastUpdated: "2025-01-01"
   },
   {
+    id: "on-tax-credit",
     name: "Ontario Innovation Tax Credit",
-    fundingAmount: "10% tax credit",
-    eligibility: "R&D performing corporations",
+    fundingMin: 10000,
+    fundingMax: 500000,
+    eligibility: ["R&D performing corporations", "CCPCs", "Ontario residents"],
     deadline: "Annual",
     applicationLink: "https://www.ontario.ca/page/ontario-innovation-tax-credit",
-    description: "Tax credit for research and development expenditures",
+    description: "10% refundable tax credit for scientific research and experimental development.",
+    country: "Canada",
+    region: "Ontario",
+    category: "R&D",
+    agency: "Ontario Ministry of Finance",
+    status: "Active",
+    tags: ["Tax Credit", "R&D", "Innovation"],
+    requirements: ["Tax return filing", "SR&ED claim"],
+    lastUpdated: "2025-01-01"
   },
   {
+    id: "on-scale-vouchers",
     name: "Ontario Scale-Up Vouchers Program",
-    fundingAmount: "$25K",
-    eligibility: "High-growth potential companies",
+    fundingMin: 10000,
+    fundingMax: 25000,
+    eligibility: ["High-growth potential companies", "Tech startups"],
     deadline: "Quarterly",
     applicationLink: "https://www.ontario.ca/page/ontario-scale-vouchers-program",
-    description: "Vouchers for business advisory services",
+    description: "Vouchers for accessing high-impact business advisory services.",
+    country: "Canada",
+    region: "Ontario",
+    category: "Startups",
+    agency: "Ontario Centres of Excellence",
+    status: "Active",
+    tags: ["Voucher", "Advisory", "Scale-up"],
+    requirements: ["Application form", "Growth plan"],
+    lastUpdated: "2025-01-01"
   },
   {
+    id: "oce-tech",
     name: "Ontario Centres of Excellence",
-    fundingAmount: "$500K",
-    eligibility: "Technology companies",
+    fundingMin: 50000,
+    fundingMax: 500000,
+    eligibility: ["Technology companies", "Startups", "Researchers"],
     deadline: "Multiple rounds",
     applicationLink: "https://www.oce-ontario.org/",
-    description: "Funding for technology commercialization",
+    description: "Funding for technology commercialization and industry-academic collaboration.",
+    country: "Canada",
+    region: "Ontario",
+    category: "Technology",
+    agency: "Ontario Centres of Excellence",
+    status: "Active",
+    tags: ["Deep Tech", "Commercialization", "Research"],
+    requirements: ["Collaboration agreement", "Project plan"],
+    lastUpdated: "2025-01-01"
   },
 ]
 
@@ -114,7 +155,6 @@ export default function OntarioGrantsPage() {
             <GrantComparisonTable
               grants={ontarioGrants}
               title="Ontario Business Grants Comparison"
-              description="Compare funding amounts, eligibility requirements, and deadlines for top Ontario provincial programs"
             />
           </div>
 

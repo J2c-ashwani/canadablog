@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
+import { blogPosts } from '@/lib/data/blogPosts'
+import { guidesDatabase as guides } from '@/lib/data/guides'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.fsidigital.ca'
@@ -40,35 +42,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return results
   }
 
-  // Get ALL pages recursively
-  const allPaths = getAllPagePaths()
+  // Get ALL static pages recursively
+  const staticPaths = getAllPagePaths()
 
   // Remove duplicates and sort
-  const uniquePaths = [...new Set(allPaths)].sort()
+  const uniqueStaticPaths = [...new Set(staticPaths)].sort()
 
   // ============================================
-  // CREATE SITEMAP ENTRIES WITH PRIORITIES
+  // CREATE SITEMAP ENTRIES
   // ============================================
-  const sitemapEntries = uniquePaths.map((urlPath) => {
+
+  // 1. Static Pages
+  const staticEntries = uniqueStaticPaths.map((urlPath) => {
     let priority = 0.7
     let changeFrequency: 'daily' | 'weekly' | 'monthly' | 'yearly' = 'monthly'
 
-    // Set priority and frequency based on path type
     if (urlPath === '/') {
       priority = 1.0
       changeFrequency = 'daily'
-    } else if (urlPath === '/grants' || urlPath === '/grant-finder') {
+    } else if (urlPath === '/grants' || urlPath === '/grant-finder' || urlPath === '/resources') {
       priority = 0.9
       changeFrequency = 'daily'
     } else if (urlPath === '/blog' || urlPath === '/guides') {
       priority = 0.9
       changeFrequency = 'weekly'
-    } else if (urlPath.startsWith('/blog/')) {
-      priority = 0.7
-      changeFrequency = 'weekly'
-    } else if (urlPath.startsWith('/guides/')) {
-      priority = 0.8
-      changeFrequency = 'monthly'
     } else if (urlPath.startsWith('/usa/') || urlPath.startsWith('/canada/')) {
       priority = 0.9
       changeFrequency = 'weekly'
@@ -81,9 +78,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     } else if (urlPath === '/about' || urlPath === '/contact') {
       priority = 0.8
       changeFrequency = 'monthly'
-    } else if (urlPath === '/newsletter' || urlPath === '/search') {
-      priority = 0.7
-      changeFrequency = 'weekly'
     }
 
     return {
@@ -94,18 +88,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
+  // 2. Dynamic Blog Posts
+  const blogEntries = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
+  // 3. Dynamic Guides
+  const guideEntries = guides.map((guide) => ({
+    url: `${baseUrl}/guides/${guide.slug}`,
+    lastModified: new Date(guide.lastUpdated),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
+  const allEntries = [...staticEntries, ...blogEntries, ...guideEntries]
+
   // ============================================
   // LOG DETAILED BREAKDOWN
   // ============================================
-  console.log(`\n✅ Sitemap generated with ${sitemapEntries.length} URLs\n`)
+  console.log(`\n✅ Sitemap generated with ${allEntries.length} URLs\n`)
   console.log(`📊 Breakdown:`)
-  console.log(`   - Total pages: ${sitemapEntries.length}`)
-  console.log(`   - Blog posts: ${sitemapEntries.filter(e => e.url.includes('/blog/') && e.url.split('/').length === 5).length}`)
-  console.log(`   - Guides: ${sitemapEntries.filter(e => e.url.includes('/guides/') && e.url.split('/').length === 5).length}`)
-  console.log(`   - Downloads: ${sitemapEntries.filter(e => e.url.includes('/download/')).length}`)
-  console.log(`   - USA pages: ${sitemapEntries.filter(e => e.url.includes('/usa/')).length}`)
-  console.log(`   - Canada pages: ${sitemapEntries.filter(e => e.url.includes('/canada/')).length}`)
-  console.log(`   - Core pages: ${sitemapEntries.filter(e => !e.url.includes('/blog/') && !e.url.includes('/guides/') && !e.url.includes('/download/') && !e.url.includes('/usa/') && !e.url.includes('/canada/')).length}\n`)
+  console.log(`   - Static pages: ${staticEntries.length}`)
+  console.log(`   - Blog posts: ${blogEntries.length}`)
+  console.log(`   - Guides: ${guideEntries.length}`)
+  console.log(`   - Total: ${allEntries.length}\n`)
 
-  return sitemapEntries
+  return allEntries
 }

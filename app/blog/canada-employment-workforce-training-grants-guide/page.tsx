@@ -81,7 +81,7 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
                 <p className="text-lg text-gray-700 mb-6">
                   Canada's workforce development ecosystem represents one of the world's most comprehensive approaches to skills training and employment support, with over $1.9 billion invested annually through 28+ specialized programs. From the Canada Job Grant's $194M national allocation to provincial future skills initiatives, Canada provides unparalleled support for workforce capacity building, skills development, and economic competitiveness across all sectors and regions.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-purple-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-purple-800">Workforce Policy Priorities</h4>
@@ -92,7 +92,7 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
                       <li>• Youth employment and career development</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">Strategic Workforce Integration</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -113,7 +113,7 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Employment & Workforce Training Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Canada Job Grant */}
                 <Card className="border-purple-200">
@@ -472,7 +472,7 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Employment Funding Strategy Framework</h2>
-              
+
               <div className="space-y-6">
                 <Card className="border-purple-200">
                   <CardHeader>
@@ -550,7 +550,7 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
               <p className="text-xl text-purple-100 mb-8">
                 Get our complete employment funding strategy guide or work with our workforce development specialists who have secured over $8M in training grants with 94% success rate across all major programs.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">DIY Training Approach</h4>
@@ -558,7 +558,7 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
                     Get our comprehensive employment funding guide with program-specific templates and strategies.
                   </p>
                   <Button size="lg" className="w-full bg-white text-purple-700 hover:bg-gray-100" asChild>
-                    <Link href="/guides/canada-employment-training-funding">
+                    <Link href="/guides/apply-federal-grants">
                       <Download className="w-4 h-4 mr-2" />
                       Get Training Guide
                     </Link>
@@ -577,7 +577,7 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-purple-200 text-sm mt-6">
                 94% success rate for training applications • Average funding secured: $28K • Multi-program expertise
               </p>
