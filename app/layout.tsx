@@ -28,9 +28,16 @@ export const metadata: Metadata = {
   publisher: "FSI Digital",
   robots: "index, follow",
   metadataBase: new URL("https://www.fsidigital.ca"),
-  alternates: {
-    canonical: "./",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/apple-touch-icon.png",
+    other: {
+      rel: "apple-touch-icon-precomposed",
+      url: "/apple-touch-icon.png",
+    },
   },
+  manifest: "/site.webmanifest",
   viewport: "width=device-width, initial-scale=1",
   openGraph: {
     type: "website",

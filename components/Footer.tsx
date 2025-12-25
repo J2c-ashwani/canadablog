@@ -52,10 +52,11 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">FD</span>
-              </div>
-              <span className="font-bold text-xl">FSI Digital</span>
+              <img
+                src="/logo.png"
+                alt="FSI Digital"
+                className="h-8 w-auto object-contain bg-white rounded px-1"
+              />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Your trusted source for government grants and funding opportunities for startups and small businesses in

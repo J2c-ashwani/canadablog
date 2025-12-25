@@ -9,6 +9,15 @@ import { Badge } from "@/components/ui/badge"
 import { Search, Download, TrendingUp, Users, DollarSign, Calendar, ArrowRight, CheckCircle } from "lucide-react"
 import Link from "next/link"
 import { useState, FormEvent } from 'react';
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "FSI Digital | Government Grants for Startups & Businesses",
+  description: "Find government grants for startups and small businesses in USA and Canada. Free grant finder tool, application guides, and funding opportunities.",
+  alternates: {
+    canonical: "https://www.fsidigital.ca",
+  },
+}
 
 export default function HomePage() {
   const [email, setEmail] = useState('');

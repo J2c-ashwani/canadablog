@@ -43,13 +43,12 @@ export function Header() {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16 gap-4">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xs sm:text-sm">FD</span>
-              </div>
-              <span className="font-bold text-base lg:text-lg xl:text-xl text-gray-900 whitespace-nowrap">
-                FSI Digital
-              </span>
+            <Link href="/" className="flex items-center flex-shrink-0">
+              <img
+                src="/logo.png"
+                alt="FSI Digital Logo"
+                className="h-10 w-auto object-contain"
+              />
             </Link>
 
             {/* Desktop Navigation */}

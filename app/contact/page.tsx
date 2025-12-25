@@ -4,6 +4,15 @@ import React, { useState } from "react"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Loader2, CheckCircle } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Contact Us | FSI Digital",
+  description: "Contact FSI Digital for questions about government grants, funding opportunities, and application guides.",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/contact",
+  },
+}
 
 export default function Contact() {
   const [formData, setFormData] = useState({
