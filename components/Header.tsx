@@ -41,13 +41,13 @@ export function Header() {
     <>
       <header className="bg-white border-b border-gray-200 sticky top-0 z-40 backdrop-blur-sm bg-white/95">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-14 sm:h-16 gap-4">
+          <div className="flex justify-between items-center h-16 sm:h-24 gap-4">
             {/* Logo */}
             <Link href="/" className="flex items-center flex-shrink-0">
               <img
                 src="/logo.png"
                 alt="FSI Digital Logo"
-                className="h-10 w-auto object-contain"
+                className="h-12 sm:h-20 w-auto object-contain"
               />
             </Link>
 
