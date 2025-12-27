@@ -94,7 +94,7 @@ export default function RootLayout({
         </Script>
 
       </head>
-      <body className="font-sans">
+      <body className="font-sans" suppressHydrationWarning>
         {children}
         <CookieConsent />
         <LeadMagnetPopup />
