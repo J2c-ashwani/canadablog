@@ -783,7 +783,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 43,
-    slug: "cybersecurity-startup-grants",
+    slug: "cybersecurity-grants",
     title: "Cybersecurity Grants 2026-2027 | $1.8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive",
     excerpt: "Complete 2026-2027 guide to cybersecurity grants. DOD SBIR Phase I $200K-$400K, Phase II $1.8M, DHS cybersecurity funding, NSA research programs supporting security software, encryption, threat detection, zero-trust, cloud security with zero equity.",
     category: "USA News",
