@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     url: "https://www.fsidigital.ca/usa/technology-startup-grants",
     images: ["/og-image.png"],
   },
+  alternates: {
+    canonical: "https://www.fsidigital.ca/usa/technology-startup-grants",
+  },
 }
 
 export default function USATechnologyStartupGrantsPage() {

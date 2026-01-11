@@ -29,7 +29,10 @@ export const metadata: Metadata = {
   robots: "index, follow",
   metadataBase: new URL("https://www.fsidigital.ca"),
   icons: {
-    icon: "/icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
+    ],
     shortcut: "/icon.png",
     apple: "/apple-touch-icon.png",
     other: {

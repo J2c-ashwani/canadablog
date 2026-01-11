@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     description: "Complete guide to industry-specific business grants with targeted funding for specialized sectors.",
     url: "https://www.fsidigital.ca/blog/industry-specific-business-grants-guide",
   },
+  alternates: {
+    canonical: "https://www.fsidigital.ca/blog/industry-specific-business-grants-guide",
+  },
 }
 
 export default function IndustrySpecificBusinessGrantsGuide() {
@@ -34,7 +37,7 @@ export default function IndustrySpecificBusinessGrantsGuide() {
                 Industry-Specific Business Grants Guide
               </h1>
               <p className="text-xl text-teal-100 mb-8">
-                Complete guide to industry-specific business grants. Find targeted funding programs for manufacturing, 
+                Complete guide to industry-specific business grants. Find targeted funding programs for manufacturing,
                 healthcare, technology, agriculture, and other specialized business sectors.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -79,14 +82,14 @@ export default function IndustrySpecificBusinessGrantsGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* What are Industry-Specific Grants */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">What are Industry-Specific Business Grants?</h2>
-                
+
                 <p className="text-lg text-gray-700 mb-6">
-                  Industry-specific business grants are targeted funding programs designed to address the unique needs, 
-                  challenges, and opportunities within particular business sectors. These grants often focus on innovation, 
+                  Industry-specific business grants are targeted funding programs designed to address the unique needs,
+                  challenges, and opportunities within particular business sectors. These grants often focus on innovation,
                   research, modernization, and growth within specialized industries.
                 </p>
 
@@ -128,7 +131,7 @@ export default function IndustrySpecificBusinessGrantsGuide() {
               {/* Major Industry Grant Categories */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Major Industry Grant Categories</h2>
-                
+
                 <div className="space-y-8">
                   {/* Healthcare & Life Sciences */}
                   <Card className="border-pink-200">
@@ -153,12 +156,12 @@ export default function IndustrySpecificBusinessGrantsGuide() {
                           <span><strong>Focus:</strong> Research & Innovation</span>
                         </div>
                       </div>
-                      
+
                       <p className="text-gray-700 mb-4">
-                        Grants for medical device development, pharmaceutical research, healthcare technology, 
+                        Grants for medical device development, pharmaceutical research, healthcare technology,
                         and clinical innovations from NIH, FDA, and private health foundations.
                       </p>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-pink-700">Major Programs:</h5>
@@ -207,12 +210,12 @@ export default function IndustrySpecificBusinessGrantsGuide() {
                           <span><strong>Focus:</strong> Modernization & Efficiency</span>
                         </div>
                       </div>
-                      
+
                       <p className="text-gray-700 mb-4">
-                        Funding for manufacturing innovation, automation, supply chain improvements, 
+                        Funding for manufacturing innovation, automation, supply chain improvements,
                         and advanced manufacturing technologies.
                       </p>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-orange-700">Key Programs:</h5>
@@ -261,12 +264,12 @@ export default function IndustrySpecificBusinessGrantsGuide() {
                           <span><strong>Focus:</strong> Innovation & Commercialization</span>
                         </div>
                       </div>
-                      
+
                       <p className="text-gray-700 mb-4">
-                        Grants for software development, artificial intelligence, cybersecurity, 
+                        Grants for software development, artificial intelligence, cybersecurity,
                         and emerging technology commercialization.
                       </p>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-blue-700">Major Sources:</h5>
@@ -315,12 +318,12 @@ export default function IndustrySpecificBusinessGrantsGuide() {
                           <span><strong>Focus:</strong> Sustainability & Innovation</span>
                         </div>
                       </div>
-                      
+
                       <p className="text-gray-700 mb-4">
-                        Funding for agricultural innovation, food safety, sustainable farming, 
+                        Funding for agricultural innovation, food safety, sustainable farming,
                         and rural business development.
                       </p>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-green-700">USDA Programs:</h5>
@@ -369,12 +372,12 @@ export default function IndustrySpecificBusinessGrantsGuide() {
                           <span><strong>Focus:</strong> Clean Technology</span>
                         </div>
                       </div>
-                      
+
                       <p className="text-gray-700 mb-4">
-                        Grants for renewable energy, environmental remediation, clean technology 
+                        Grants for renewable energy, environmental remediation, clean technology
                         development, and sustainability initiatives.
                       </p>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-emerald-700">Major Programs:</h5>
@@ -405,7 +408,7 @@ export default function IndustrySpecificBusinessGrantsGuide() {
               {/* How to Find Industry Grants */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">How to Find Industry-Specific Grants</h2>
-                
+
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                   <div className="text-center">
                     <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -452,7 +455,7 @@ export default function IndustrySpecificBusinessGrantsGuide() {
               {/* Application Success Tips */}
               <div className="bg-cyan-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Industry Grant Application Success Tips</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Best Practices</h4>
@@ -475,7 +478,7 @@ export default function IndustrySpecificBusinessGrantsGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-teal-700">🎯 Application Tips</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -504,7 +507,7 @@ export default function IndustrySpecificBusinessGrantsGuide() {
               <div className="bg-gradient-to-r from-teal-600 to-cyan-700 rounded-lg p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">Ready to Find Industry-Specific Grants?</h3>
                 <p className="text-teal-100 mb-6 text-lg">
-                  Get our comprehensive industry grant directory with sector-specific programs, 
+                  Get our comprehensive industry grant directory with sector-specific programs,
                   application strategies, and industry funding resources.
                 </p>
                 <Button size="lg" className="bg-white text-teal-700 hover:bg-gray-100" asChild>
