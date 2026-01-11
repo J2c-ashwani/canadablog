@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen, DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, Globe, RefreshCw, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, Cpu, FileText } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -13,12 +13,34 @@ import NewsletterBox from '@/components/blog/NewsletterBox';
 import { getBlogPostBySlug, blogCategories } from '@/lib/data/blogPosts';
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
 import { generateBlogPostSchema, generateBreadcrumbSchema } from '@/lib/schema';
+import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable";
+import { ExpertTipBox } from "@/components/blog/ExpertTipBox";
+
+// Icon mapping for dynamic rendering from data
+const iconMap: Record<string, any> = {
+  DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, Globe, RefreshCw, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, Cpu, FileText
+};
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const { slug } = params;
   const post = getBlogPostBySlug(slug);
   if (!post) return { title: 'Post Not Found' };
-  return generateSEOMetadata({ ...post, content: '' }); // omit content for seo metadata
+
+  // Site-Wide Enrichment Logic:
+  // Dynamically INDEX posts only if they have been enriched with High Value content stats/tips.
+  const isEnriched = !!(post.metrics || post.expertTip);
+
+  return {
+    ...generateSEOMetadata({ ...post, content: '' }),
+    robots: {
+      index: isEnriched,
+      follow: true,
+      googleBot: {
+        index: isEnriched,
+        follow: true,
+      },
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
@@ -97,6 +119,34 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                   loading="eager"
                 />
               </div>
+
+              {/* DYNAMIC ENRICHMENT: Success Metrics Table */}
+              {post.metrics && (
+                <div className="mb-10 not-prose">
+                  <GrantSuccessTable
+                    title="Quick Funding Facts"
+                    metrics={post.metrics.map(m => {
+                      const IconComponent = m.iconName ? iconMap[m.iconName] : Target;
+                      return {
+                        ...m,
+                        icon: <IconComponent className="w-6 h-6" />
+                      };
+                    })}
+                  />
+                </div>
+              )}
+
+              {/* DYNAMIC ENRICHMENT: Expert Tip */}
+              {post.expertTip && (
+                <div className="mb-10 not-prose">
+                  <ExpertTipBox
+                    type={post.expertTip.type}
+                    title={post.expertTip.title}
+                  >
+                    <div dangerouslySetInnerHTML={{ __html: post.expertTip.content }} />
+                  </ExpertTipBox>
+                </div>
+              )}
 
               <div
                 className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700"

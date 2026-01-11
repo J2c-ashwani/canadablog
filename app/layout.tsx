@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import Script from "next/script"
 import "./globals.css"
@@ -17,6 +17,11 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   display: "swap",
 })
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   title: "FSI Digital | Government Grants for Startups & Businesses",
@@ -41,7 +46,7 @@ export const metadata: Metadata = {
     },
   },
   manifest: "/site.webmanifest",
-  viewport: "width=device-width, initial-scale=1",
+  // viewport moved to separate export
   openGraph: {
     type: "website",
     locale: "en_US",

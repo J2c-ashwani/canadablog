@@ -3,17 +3,19 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Mountain } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Mountain, PieChart, TrendingUp, HelpCircle, Lightbulb, Zap } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable"
+import { ExpertTipBox } from "@/components/blog/ExpertTipBox"
 
 export const metadata: Metadata = {
-  title: "British Columbia Government Business Grants 2026 | BC Provincial Funding Programs Guide",
-  description: "Complete guide to British Columbia government business grants and provincial funding programs. Access Innovate BC, CleanBC, Creative BC, and PacifiCan regional funding for BC businesses.",
-  keywords: "British Columbia government business grants, BC provincial funding, Innovate BC grants, CleanBC funding, Creative BC support, PacifiCan regional funding, BC business support programs 2026",
+  title: "British Columbia Government Business Grants 2026 | BC Funding Guide",
+  description: "Complete guide to British Columbia's $1.8B funding ecosystem. Access Innovate BC, CleanBC, and PacifiCan grants for tech, clean energy, and export businesses.",
+  keywords: "British Columbia business grants, BC provincial funding, Innovate BC grants, CleanBC funding, Creative BC support, PacifiCan regional funding, BC tech grants",
   openGraph: {
     title: "British Columbia Government Business Grants 2026 | BC Provincial Funding Guide",
-    description: "Comprehensive guide to BC provincial business grants offering funding for innovation, clean technology, creative industries, and regional development.",
+    description: "Expert guide to BC's unique mix of Clean Tech, Innovation, and Creative Industry grants. Strategies for successful applications.",
     url: "https://www.fsidigital.ca/blog/british-columbia-government-business-grants",
     images: ["/og-image.png"],
   },
@@ -29,15 +31,14 @@ export default function BritishColumbiaGovernmentBusinessGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🏔️ Pacific Province Business Support Programs
+                🏔️ Pacific Province Business Support
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                British Columbia Government Business Grants & Provincial Funding
+                British Columbia Government Business Grants
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                British Columbia's comprehensive provincial business support ecosystem offering grants, loans, and incentives 
-                from $5,000 to $5M+ through Innovate BC, CleanBC, Creative BC, and PacifiCan regional initiatives 
-                supporting innovation, sustainability, and creative industries in Canada's Pacific gateway province.
+                BC is unique: it combines provincial funding from Innovate BC with federal "PacifiCan" dollars.
+                Whether you are a Vancouver tech startup or a forestry company in Prince George, there is a specific stream for you.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>
@@ -55,504 +56,213 @@ export default function BritishColumbiaGovernmentBusinessGrantsBlogPage() {
           </div>
         </section>
 
-        {/* Program Statistics */}
-        <section className="py-16 bg-white">
+        {/* BC Success Metrics */}
+        <section className="py-12 -mt-8 relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center mb-12">
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">$5M+</div>
-                  <div className="text-gray-600">Max BC Provincial Funding</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">$1.8B</div>
-                  <div className="text-gray-600">Annual Provincial Investment</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">40+</div>
-                  <div className="text-gray-600">Provincial Program Streams</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-orange-600 mb-2">18,000+</div>
-                  <div className="text-gray-600">Businesses Supported Annually</div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">BC as Canada's Pacific Innovation Hub</h2>
-                <p className="text-lg text-gray-700 mb-6">
-                  British Columbia serves as Canada's gateway to Asia-Pacific markets and innovation, with a provincial 
-                  economy focused on technology, clean energy, creative industries, and sustainable development. The BC 
-                  government delivers comprehensive business support through Innovate BC, CleanBC programs, Creative BC, 
-                  and strategic partnerships with PacifiCan federal regional development, creating Canada's most 
-                  sustainability-focused provincial business ecosystem.
-                </p>
-                
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 p-6 rounded-lg">
-                    <h4 className="font-bold text-lg mb-3 text-blue-800">Provincial Policy Priorities</h4>
-                    <ul className="text-gray-700 space-y-2">
-                      <li>• Clean technology and sustainable innovation</li>
-                      <li>• Digital transformation and technology adoption</li>
-                      <li>• Creative industries and cultural content development</li>
-                      <li>• Asia-Pacific trade and export competitiveness</li>
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-green-50 p-6 rounded-lg">
-                    <h4 className="font-bold text-lg mb-3 text-green-800">Strategic Provincial Integration</h4>
-                    <ul className="text-gray-700 space-y-2">
-                      <li>• Coordination with PacifiCan regional development</li>
-                      <li>• CleanBC climate action and emission reduction goals</li>
-                      <li>• Asia-Pacific Gateway trade and investment facilitation</li>
-                      <li>• Indigenous reconciliation and economic development</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <GrantSuccessTable
+              title="BC Funding Ecosystem Snapshot"
+              metrics={[
+                {
+                  label: "Max Tech Grant",
+                  value: "$300,000",
+                  icon: <DollarSign className="w-6 h-6" />,
+                  description: "Via Ignite Program",
+                  color: "text-blue-600"
+                },
+                {
+                  label: "CleanBC Fund",
+                  value: "$280M+",
+                  icon: <Mountain className="w-6 h-6" />,
+                  description: "For emission reduction",
+                  color: "text-green-600"
+                },
+                {
+                  label: "Tax Credits",
+                  value: "30-50%",
+                  icon: <PieChart className="w-6 h-6" />,
+                  description: "For R&D and Media",
+                  color: "text-purple-600"
+                },
+                {
+                  label: "PacifiCan",
+                  value: "$5M Cap",
+                  icon: <Target className="w-6 h-6" />,
+                  description: "Federal top-up for BC",
+                  color: "text-teal-600"
+                }
+              ]}
+              className="bg-white/95 backdrop-blur shadow-xl border-blue-100"
+            />
           </div>
         </section>
 
-        {/* Major BC Provincial Programs */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-12 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major BC Provincial Programs</h2>
-              
-              <div className="space-y-8">
-                {/* Innovate BC */}
-                <Card className="border-blue-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Shield className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle className="text-blue-700">Innovate BC</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-4 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $3M</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Innovation Focus</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Tech Development</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-orange-600 mr-2" />
-                        <span><strong>Scale-up Support</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      BC's flagship innovation agency providing funding and support for technology companies, 
-                      research commercialization, and innovation ecosystem development across British Columbia.
-                    </p>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Key Program Streams:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Ignite Program (up to $300K)</li>
-                          <li>• Platform Program (up to $3M)</li>
-                          <li>• Sector Innovation Programs</li>
-                          <li>• International market development</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Innovation Focus Areas:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Information and communications technology</li>
-                          <li>• Life sciences and health technologies</li>
-                          <li>• Clean technology and renewable energy</li>
-                          <li>• Advanced materials and manufacturing</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Provincial Requirements:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• BC-based business operations</li>
-                          <li>• Technology commercialization focus</li>
-                          <li>• Export and scale-up potential</li>
-                          <li>• Job creation and economic impact</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+            <div className="grid lg:grid-cols-3 gap-12">
+              <div className="lg:col-span-2 space-y-12">
 
-                {/* CleanBC Programs */}
-                <Card className="border-green-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Mountain className="w-6 h-6 text-green-600 mr-3" />
-                      <CardTitle className="text-green-700">CleanBC Industry Fund & Programs</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-4 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $5M</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Clean Technology</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Emission Reduction</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-orange-600 mr-2" />
-                        <span><strong>Industrial Focus</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Provincial clean technology and climate action programs supporting businesses in reducing 
-                      greenhouse gas emissions, adopting clean technologies, and advancing BC's net-zero goals.
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-2 text-green-700">CleanBC Industry Fund:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Large industrial emission reduction projects</li>
-                          <li>• Clean technology adoption and deployment</li>
-                          <li>• Energy efficiency and fuel switching</li>
-                          <li>• Carbon capture and industrial process improvements</li>
-                          <li>• Minimum $3M project investment requirement</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2 text-blue-700">Additional CleanBC Programs:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• CleanBC Commercial Express (up to $125K)</li>
-                          <li>• Custom Efficiency Program (energy retrofits)</li>
-                          <li>• CleanBC Go Electric commercial rebates</li>
-                          <li>• Sustainable Transportation programs</li>
-                          <li>• Building retrofits and efficiency upgrades</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Creative BC */}
-                <Card className="border-purple-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Award className="w-6 h-6 text-purple-600 mr-3" />
-                      <CardTitle className="text-purple-700">Creative BC</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-4 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $10M+</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Creative Industries</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Content Creation</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-orange-600 mr-2" />
-                        <span><strong>Export Development</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      BC's creative industries agency supporting film, television, interactive media, music, 
-                      and digital content companies through comprehensive funding and tax credit programs.
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-2 text-purple-700">Creative Industries Supported:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Film and television production</li>
-                          <li>• Interactive digital media and gaming</li>
-                          <li>• Music creation, recording, and publishing</li>
-                          <li>• Digital animation and visual effects</li>
-                          <li>• Publishing and magazine production</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2 text-green-700">Key Program Streams:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• BC Production Services Tax Credit</li>
-                          <li>• Interactive Digital Media Tax Credit</li>
-                          <li>• Business Foundations Program ($2K-$10K)</li>
-                          <li>• Music Industry development funding</li>
-                          <li>• International trade and market development</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* BC Manufacturing Jobs Fund */}
-                <Card className="border-orange-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Building className="w-6 h-6 text-orange-600 mr-3" />
-                      <CardTitle className="text-orange-700">BC Manufacturing Jobs Fund (BCMJF)</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-4 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Min. $100K</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Manufacturing</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Up to 20% Funding</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-orange-600 mr-2" />
-                        <span><strong>Capital Investment</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Provincial manufacturing competitiveness program supporting capital investments, equipment 
-                      upgrades, and productivity improvements in BC's manufacturing sector.
-                    </p>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Eligible Activities:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Machinery and equipment purchases</li>
-                          <li>• Manufacturing process improvements</li>
-                          <li>• Technology adoption and automation</li>
-                          <li>• Facility upgrades and modifications</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Manufacturing Sectors:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Food and beverage processing</li>
-                          <li>• Wood products and forestry</li>
-                          <li>• Advanced manufacturing and materials</li>
-                          <li>• Clean technology manufacturing</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Provincial Requirements:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• BC manufacturing operations</li>
-                          <li>• Minimum $500K total project investment</li>
-                          <li>• Job creation and retention commitment</li>
-                          <li>• Environmental compliance and sustainability</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* PacifiCan Regional Programs */}
-                <Card className="border-teal-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <FileText className="w-6 h-6 text-teal-600 mr-3" />
-                      <CardTitle className="text-teal-700">PacifiCan Regional Development Programs</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-4 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $5M</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Federal-Regional</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Economic Growth</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-orange-600 mr-2" />
-                        <span><strong>Innovation Support</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Federal regional development programs delivered through PacifiCan (Pacific Economic Development 
-                      Canada) supporting BC business growth, innovation, and economic diversification.
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-2 text-teal-700">Key PacifiCan Programs:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Regional Economic Growth through Innovation (REGI)</li>
-                          <li>• Business Scale-Up and Productivity program</li>
-                          <li>• Regional Artificial Intelligence Initiative (RAII)</li>
-                          <li>• Indigenous Business Development support</li>
-                          <li>• Tourism and creative industries development</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2 text-blue-700">Regional Focus Areas:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Technology commercialization and scale-up</li>
-                          <li>• Clean technology and sustainability</li>
-                          <li>• Asia-Pacific trade and export development</li>
-                          <li>• Rural and Indigenous economic development</li>
-                          <li>• Innovation ecosystem capacity building</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Additional BC Programs */}
-                <Card className="border-pink-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Users className="w-6 h-6 text-pink-600 mr-3" />
-                      <CardTitle className="text-pink-700">Additional BC Provincial Initiatives</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-2 text-pink-700">Workforce and Skills Development:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• <strong>BC Employer Training Grant (ETG):</strong> Up to $300K for employee training</li>
-                          <li>• <strong>WorkBC programs:</strong> Workforce development and skills training</li>
-                          <li>• <strong>Indigenous Skills and Employment:</strong> First Nations workforce development</li>
-                          <li>• <strong>Women in Trades:</strong> Gender diversity in skilled trades</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2 text-green-700">Specialized Provincial Programs:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• <strong>Small Business BC:</strong> Workplace accessibility grants up to $5K</li>
-                          <li>• <strong>Community Futures:</strong> Loans and funding up to $1M</li>
-                          <li>• <strong>BC Agritech programs:</strong> Agricultural innovation support</li>
-                          <li>• <strong>Forestry Innovation:</strong> Forest sector technology and sustainability</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* BC Provincial Policy Integration */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BC Provincial Policy Integration</h2>
-              
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-bold text-lg mb-4 text-blue-700">🌊 Pacific Gateway Strategy Integration:</h4>
-                  <ul className="space-y-3 text-gray-700">
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Asia-Pacific Trade Leadership:</strong> BC as Canada's gateway to Asian markets and trade relationships</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Federal-Provincial Coordination:</strong> Integration with PacifiCan and federal trade initiatives</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Innovation Corridor Development:</strong> Vancouver-Seattle tech corridor and cross-border collaboration</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Indigenous Economic Reconciliation:</strong> Truth and Reconciliation economic development initiatives</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="font-bold text-lg mb-4 text-green-700">🌱 CleanBC Climate Leadership:</h4>
-                  <ul className="space-y-3 text-gray-700">
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Net-Zero by 2050:</strong> Provincial climate commitments driving clean technology adoption</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Carbon Pricing Integration:</strong> Business competitiveness and emission reduction balance</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Clean Energy Leadership:</strong> Renewable energy development and clean technology export</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Sustainable Resource Management:</strong> Forestry, mining, and ocean resource sustainability</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Dual CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-3xl font-bold mb-6">
-                Ready to Access BC Provincial Business Funding?
-              </h2>
-              <p className="text-xl text-blue-100 mb-8">
-                Get the complete British Columbia provincial application guide or work with our BC business funding specialists 
-                who have secured $8M+ in provincial grants with expertise across all BC programs.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
-                  <h4 className="font-semibold text-white mb-2">DIY BC Approach</h4>
-                  <p className="text-blue-100 text-sm mb-4">
-                    Get our comprehensive BC provincial application guide with program-specific templates and strategies.
+                {/* Intro */}
+                <div className="prose prose-lg max-w-none text-slate-700">
+                  <h2 className="text-3xl font-bold text-slate-900">The "Green & Tech" Focus</h2>
+                  <p>
+                    Unlike Alberta (Energy) or Ontario (Manufacturing), British Columbia's funding landscape is
+                    dominated by two themes: <strong>Clean Technology</strong> and <strong>Digital Innovation</strong>.
+                    If your business reduces greenhouse gases or exports software, you have a much stronger alignment
+                    with provincial priorities compared to other sectors.
                   </p>
-                  <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100" asChild>
-                    <Link href="/guides/apply-british-columbia-grants">
-                      <Download className="w-4 h-4 mr-2" />
-                      Get BC Guide
-                    </Link>
-                  </Button>
                 </div>
 
-                <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
-                  <h4 className="font-semibold text-white mb-2">Expert BC Support</h4>
-                  <p className="text-yellow-100 text-sm mb-4">
-                    Work with BC business specialists who have secured $8M+ in provincial funding with 85% success rate.
+                {/* Eligibility Quiz Section */}
+                <div className="bg-slate-50 border border-slate-200 rounded-xl p-8">
+                  <div className="flex items-center mb-6">
+                    <HelpCircle className="w-8 h-8 text-blue-600 mr-3" />
+                    <h3 className="text-2xl font-bold text-slate-900">Which BC Agency is for You?</h3>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 bg-white rounded-lg border border-slate-200 hover:border-blue-300 transition-colors">
+                      <div className="flex items-center mb-2">
+                        <Zap className="w-5 h-5 text-blue-600 mr-2" />
+                        <span className="font-bold text-slate-900">Innovate BC</span>
+                      </div>
+                      <p className="text-sm text-slate-600">For Tech Startups, R&D, and SaaS companies building IP.</p>
+                    </div>
+                    <div className="p-4 bg-white rounded-lg border border-slate-200 hover:border-green-300 transition-colors">
+                      <div className="flex items-center mb-2">
+                        <Mountain className="w-5 h-5 text-green-600 mr-2" />
+                        <span className="font-bold text-slate-900">CleanBC</span>
+                      </div>
+                      <p className="text-sm text-slate-600">For Industrial businesses reducing emissions or adopting electric fleets.</p>
+                    </div>
+                    <div className="p-4 bg-white rounded-lg border border-slate-200 hover:border-purple-300 transition-colors">
+                      <div className="flex items-center mb-2">
+                        <Award className="w-5 h-5 text-purple-600 mr-2" />
+                        <span className="font-bold text-slate-900">Creative BC</span>
+                      </div>
+                      <p className="text-sm text-slate-600">For Film, Music, Books, and Interactive Media creators.</p>
+                    </div>
+                    <div className="p-4 bg-white rounded-lg border border-slate-200 hover:border-teal-300 transition-colors">
+                      <div className="flex items-center mb-2">
+                        <Users className="w-5 h-5 text-teal-600 mr-2" />
+                        <span className="font-bold text-slate-900">PacifiCan</span>
+                      </div>
+                      <p className="text-sm text-slate-600">For established businesses expanding operations or exports.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <ExpertTipBox type="tip" title="BC Exclusive: The 'IP' Advantage">
+                  <p>
+                    British Columbia runs the unique "Intellectual Property (IP) Strategy."
+                    If you apply for Innovate BC programs, showing that you own your IP (patents, trademarks) can be a
+                    significant ranking factor. They want to fund companies that keep wealth in BC, not just those that import tech.
                   </p>
-                  <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
-                    <Link href="/contact?service=bc-business-expert-help">
-                      Get BC Expert Help
-                    </Link>
-                  </Button>
+                </ExpertTipBox>
+
+                {/* Major BC Provincial Programs */}
+                <div className="space-y-8 mt-12">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8">Top 3 BC Grant Programs</h2>
+
+                  {/* Innovate BC */}
+                  <Card className="border-blue-200 bg-blue-50/10">
+                    <CardHeader>
+                      <div className="flex items-center mb-2">
+                        <Shield className="w-6 h-6 text-blue-600 mr-3" />
+                        <CardTitle className="text-blue-700">Innovate BC: Ignite & Hiring</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <p className="text-gray-700">
+                          The central hub for tech funding. Their "Ignite" program offers up to $300,000 for R&D projects giving you a massive runway.
+                          Unlike loans, this is non-repayable, provided you can match a portion of the funds (often 1:3).
+                        </p>
+                        <div className="bg-white p-4 rounded-lg border border-blue-100">
+                          <h5 className="font-bold text-blue-900 text-sm mb-2">Also: The Digital Skills Youth Internship</h5>
+                          <p className="text-sm text-slate-600">
+                            Need a developer? Innovate BC often covers up to 100% of a student's salary for 4 months.
+                            This is the easiest "first grant" for many startups.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* CleanBC Programs */}
+                  <Card className="border-green-200">
+                    <CardHeader>
+                      <div className="flex items-center mb-2">
+                        <Mountain className="w-6 h-6 text-green-600 mr-3" />
+                        <CardTitle className="text-green-700">CleanBC: The 'Go Electric' Rebates</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 mb-4">
+                        If your business has vehicles (delivery vans, trucks), CleanBC is practically giving away money.
+                        They offer substantial rebates for switching to EV fleets and installing chargers.
+                      </p>
+                      <ExpertTipBox type="success" title="Stacking Opportunity">
+                        <p>
+                          You can often stack CleanBC rebates with federal iZEV incentives.
+                          This can reduce the cost of a commercial electric van by up to $15,000+ combined.
+                        </p>
+                      </ExpertTipBox>
+                    </CardContent>
+                  </Card>
+
+                  {/* PacifiCan */}
+                  <Card className="border-teal-200">
+                    <CardHeader>
+                      <div className="flex items-center mb-2">
+                        <Target className="w-6 h-6 text-teal-600 mr-3" />
+                        <CardTitle className="text-teal-700">PacifiCan: The Scale-Up Engine</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 mb-4">
+                        Formerly part of Western Economic Diversification, PacifiCan is now BC-specific.
+                        Their "Business Scale-Up and Productivity" (BSP) stream offers <strong>interest-free loans</strong> up to $5M.
+                        Yes, it's a loan, but 0% interest with no payments for the first year is incredible leverage.
+                      </p>
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
-              
-              <p className="text-blue-200 text-sm mt-6">
-                85% success rate for BC applications • Average funding secured: $325K • All BC programs expertise
-              </p>
+
+              {/* Sidebar */}
+              <div className="lg:col-span-1">
+                <div className="sticky top-24 space-y-8">
+                  <div className="bg-blue-50 p-6 rounded-xl border border-blue-100 shadow-sm">
+                    <h4 className="font-bold text-blue-900 mb-4">Regional BC Focus</h4>
+                    <div className="space-y-4">
+                      <p className="text-sm text-blue-800 mb-2">Extra points if you are in:</p>
+                      <ul className="space-y-2 text-sm">
+                        <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-blue-500" /> The Kootenays</li>
+                        <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-blue-500" /> Northern BC</li>
+                        <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-blue-500" /> Vancouver Island (North)</li>
+                      </ul>
+                      <div className="mt-2 text-xs text-slate-500">
+                        Metro Vancouver applicants face higher competition.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-teal-600 p-6 rounded-xl shadow-lg text-white">
+                    <h4 className="font-bold text-lg mb-2">BC Grant Strategy</h4>
+                    <p className="text-teal-100 text-sm mb-6">
+                      Need to choose between Innovate BC vs PacifiCan? We can help map your funding roadmap.
+                    </p>
+                    <Button variant="secondary" className="w-full text-teal-900 font-bold" asChild>
+                      <Link href="/contact">Get Expert Advice</Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
+
+        <Footer />
       </div>
-      <Footer />
     </>
   )
 }

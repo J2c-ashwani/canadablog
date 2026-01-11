@@ -159,7 +159,7 @@ export function Footer() {
 
           {/* Legal Pages */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-lg">Legal</h3>
+            <h3 className="font-semibold text-lg">Legal & Editorial</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/privacy" className="text-gray-400 hover:text-white text-sm">
@@ -169,6 +169,16 @@ export function Footer() {
               <li>
                 <Link href="/terms" className="text-gray-400 hover:text-white text-sm">
                   Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/editorial-policy" className="text-gray-400 hover:text-white text-sm">
+                  Editorial Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/about/author" className="text-gray-400 hover:text-white text-sm">
+                  Editor Profile
                 </Link>
               </li>
               <li>

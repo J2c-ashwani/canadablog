@@ -12,7 +12,7 @@ export interface BlogPost {
   author: string;
   date: string;
   readTime: string;
-  image: "/images/blog/usa-grants-theme.png",
+  image: string;
   featured: boolean;
   content: string;
   type: BlogPostType;
@@ -22,6 +22,19 @@ export interface BlogPost {
     metaDescription?: string;
     ogImage?: string;
   };
+  // Added for AdSense Site-Wide Enrichment
+  metrics?: {
+    label: string
+    value: string
+    description: string
+    color: string
+    iconName?: string
+  }[]
+  expertTip?: {
+    title: string
+    content: string
+    type: 'tip' | 'warning' | 'success'
+  }
 }
 
 export const blogPosts: BlogPost[] = [
@@ -59,6 +72,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["AI", "&", "Machine", "Learning", "Grants"]
+    },
+    metrics: [
+      { label: 'Funding', value: '$305K - $1.25M', description: 'NSF SBIR Phases', color: 'text-blue-600', iconName: 'DollarSign' },
+      { label: 'Equity', value: '0%', description: 'Non-dilutive', color: 'text-green-600', iconName: 'Shield' },
+      { label: 'Focus', value: 'High Tech', description: 'Deep tech R&D', color: 'text-purple-600', iconName: 'Zap' },
+      { label: 'Stage', value: 'Seed/Early', description: 'Proof of concept', color: 'text-orange-600', iconName: 'Mountain' }
+    ],
+    expertTip: {
+      title: "Commercial Potential is Critical",
+      type: 'tip',
+      content: "NSF implies 'science', but the SBIR program is about <strong>commercialization</strong>. You must show a clear path to market revenue, not just cool tech."
     }
   },
   {
@@ -77,6 +101,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Alberta", "Government", "Business", "Grants", "2026"]
+    },
+    metrics: [
+      { label: 'Voucher', value: '$15k - $100k', description: 'Alberta Innovates', color: 'text-blue-600', iconName: 'Zap' },
+      { label: 'Clean Tech', value: '$5M+', description: 'ERA Funding', color: 'text-green-600', iconName: 'Leaf' },
+      { label: 'Match', value: '25% - 75%', description: 'Investment required', color: 'text-purple-600', iconName: 'PieChart' },
+      { label: 'Sector', value: 'Diversified', description: 'Tech, Ag, Energy', color: 'text-orange-600', iconName: 'Target' }
+    ],
+    expertTip: {
+      title: "Alberta Innovates is your First Stop",
+      type: 'success',
+      content: "For most Alberta tech startups, the <strong>Alberta Innovates Voucher Program</strong> is the entry point. It pays service providers directly to help you build or market your product."
     }
   },
   {
@@ -113,6 +148,16 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Alberta", "Small", "Business", "Grants", "2026"]
+    },
+    metrics: [
+      { label: 'Training', value: '$3000', description: 'Job Grant per hire', color: 'text-blue-600', iconName: 'Users' },
+      { label: 'Digital', value: '$15,000', description: 'CDAP + Retooling', color: 'text-purple-600', iconName: 'Globe' },
+      { label: 'Rural', value: 'Priority', description: 'Regional relief', color: 'text-green-600', iconName: 'Mountain' }
+    ],
+    expertTip: {
+      title: "Look for 'CARES'",
+      type: 'tip',
+      content: "The Community and Regional Economic Support (CARES) program often funds local initiatives. Check with your local Chamber of Commerce for municipal-level grants."
     }
   },
   {
@@ -149,6 +194,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Amber", "Grant", "for", "Women", "Canada"]
+    },
+    metrics: [
+      { label: 'Value', value: '$10,000', description: 'Monthly Grant', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Annual', value: '$25,000', description: 'Year-End Bonus', color: 'text-purple-600', iconName: 'Gift' },
+      { label: 'Fee', value: '$15 USD', description: 'Application Fee', color: 'text-gray-600', iconName: 'CreditCard' },
+      { label: 'Ease', value: 'High', description: 'Simple Form', color: 'text-blue-600', iconName: 'Smile' }
+    ],
+    expertTip: {
+      title: "Tell Your Story",
+      type: 'tip',
+      content: "The Amber Grant is not about ROI or spreadsheets. They want to hear your <strong>personal story</strong> and passion. Be authentic, vulnerable, and explain what the money would specifically do for you <em>right now</em>."
     }
   },
   {
@@ -167,6 +223,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Atlantic", "Canada", "Innovation", "Grants", "&"]
+    },
+    metrics: [
+      { label: 'Funding', value: '$500k - $3M', description: 'Atlantic Innovation Fund', color: 'text-blue-600', iconName: 'DollarSign' },
+      { label: 'Credit', value: '15%', description: 'Investment Tax Credit', color: 'text-green-600', iconName: 'PieChart' },
+      { label: 'Focus', value: 'Ocean Tech', description: 'Blue Economy', color: 'text-blue-500', iconName: 'Anchor' },
+      { label: 'Partner', value: 'ACOA', description: 'Regional Agency', color: 'text-purple-600', iconName: 'Handshake' }
+    ],
+    expertTip: {
+      title: "Collaborate with Universities",
+      type: 'tip',
+      content: "The AIF strongly favors projects that involve <strong>collaboration with Atlantic research institutions</strong>. Adding Dalhousie or UNB as a partner significantly increases your success probability."
     }
   },
   {
@@ -185,6 +252,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Atlantic", "Canada", "Small", "Business", "Grants"]
+    },
+    metrics: [
+      { label: 'Funding', value: '$50k - $250k', description: 'ACOA Programs', color: 'text-blue-600', iconName: 'DollarSign' },
+      { label: 'Match', value: '25% - 75%', description: 'Investment required', color: 'text-purple-600', iconName: 'PieChart' },
+      { label: 'Focus', value: 'Regional', description: 'Local Impact', color: 'text-green-600', iconName: 'MapPin' },
+      { label: 'Sector', value: 'Diversified', description: 'Tourism, Tech, Ag', color: 'text-orange-600', iconName: 'Target' }
+    ],
+    expertTip: {
+      title: "Leverage ACOA's Network",
+      type: 'success',
+      content: "ACOA (Atlantic Canada Opportunities Agency) is more than just funding; they offer invaluable <strong>business advisory services and connections</strong>. Engage with their business development officers early."
     }
   },
   {
@@ -275,6 +353,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["BMO", "Celebrating", "Women", "Grant", "2026"]
+    },
+    metrics: [
+      { label: 'Grant', value: '$10,000', description: 'Cash Award', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Support', value: 'Advisory', description: 'BMO Specialists', color: 'text-blue-600', iconName: 'Users' },
+      { label: 'Region', value: 'North America', description: 'USA & Canada', color: 'text-purple-600', iconName: 'Globe' },
+      { label: 'Focus', value: 'Growth', description: 'Innovation/Community', color: 'text-orange-600', iconName: 'TrendingUp' }
+    ],
+    expertTip: {
+      title: "Show Community Impact",
+      type: 'tip',
+      content: "BMO looks for businesses that give back. In your application, explicitly highlight how your growth will <strong>positively impact your local community</strong> or industry."
     }
   },
   {
@@ -653,6 +742,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Startup", "Funding", "Grants", "2026"]
+    },
+    metrics: [
+      { label: 'Loan', value: '$60,000', description: 'Futurpreneur', color: 'text-blue-600', iconName: 'Rocket' },
+      { label: 'Grant', value: '$30,000', description: 'Training Grants', color: 'text-green-600', iconName: 'Users' },
+      { label: 'Credit', value: '45%', description: 'SR&ED Refund', color: 'text-purple-600', iconName: 'PieChart' },
+      { label: 'Equity', value: 'VC/Angel', description: 'Gov Matching', color: 'text-orange-600', iconName: 'TrendingUp' }
+    ],
+    expertTip: {
+      title: "Bootstrap First",
+      type: 'warning',
+      content: "Most 'startup grants' are actually for <strong>hiring</strong> or <strong>training</strong>, not for general operating costs. You need to have some initial capital (bootstrap) to pay upfront costs before the grant reimburses you."
     }
   },
   {

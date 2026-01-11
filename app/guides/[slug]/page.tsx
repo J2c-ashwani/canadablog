@@ -7,11 +7,41 @@ import { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Download, MessageCircle } from "lucide-react";
+import { Download, MessageCircle, DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, RefreshCw, Clock, Globe, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, User, Cpu, FileText, BookOpen, AlertTriangle, Factory } from "lucide-react";
+import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable";
+import { ExpertTipBox } from "@/components/blog/ExpertTipBox";
+
+// Icon mapping for dynamic rendering from data
+const iconMap: Record<string, any> = {
+  DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, RefreshCw, Clock, Globe, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, User, Cpu, FileText, BookOpen, AlertTriangle, Factory
+};
 
 export async function generateStaticParams() {
   const guideList = guides ?? [];
   return guideList.map((g) => ({ slug: g.slug }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const guide = guides.find((g) => g.slug === params.slug);
+  if (!guide) return { title: 'Guide Not Found' };
+
+  // Site-Wide Enrichment Logic:
+  // If the guide has been "Enriched" (has metrics or tips), we INDEX it.
+  // Otherwise, we keep it noindex to prevent Low Value Content penalties.
+  const isEnriched = !!(guide.metrics || guide.expertTip);
+
+  return {
+    title: guide.title,
+    description: guide.description,
+    robots: {
+      index: isEnriched,
+      follow: true,
+      googleBot: {
+        index: isEnriched,
+        follow: true,
+      },
+    },
+  };
 }
 
 export default function GuidePage({ params }: { params: { slug: string } }) {
@@ -43,6 +73,34 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
           <h1 className="text-3xl font-bold">{guide.title}</h1>
           <p className="text-gray-700 mt-2">{guide.description}</p>
         </header>
+
+        {/* DYNAMIC ENRICHMENT: Success Metrics Table */}
+        {guide.metrics && (
+          <section className="mb-10">
+            <GrantSuccessTable
+              title="Funding Snapshot"
+              metrics={guide.metrics.map(m => {
+                const IconComponent = m.iconName ? iconMap[m.iconName] : Target;
+                return {
+                  ...m,
+                  icon: <IconComponent className="w-6 h-6" />
+                };
+              })}
+            />
+          </section>
+        )}
+
+        {/* DYNAMIC ENRICHMENT: Expert Tip */}
+        {guide.expertTip && (
+          <section className="mb-10">
+            <ExpertTipBox
+              type={guide.expertTip.type}
+              title={guide.expertTip.title}
+            >
+              <div dangerouslySetInnerHTML={{ __html: guide.expertTip.content }} />
+            </ExpertTipBox>
+          </section>
+        )}
 
         {/* CTA - NO FORM */}
         <section className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-4">

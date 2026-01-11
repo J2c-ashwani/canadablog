@@ -10,6 +10,22 @@ export interface Guide {
   featured: boolean
   highlights: string[]
   lastUpdated: string
+  // Added for AdSense/Page logic compliance
+  categories?: string[]
+  region?: string
+  // Added for Quality Enrichment (Phase 5)
+  metrics?: {
+    label: string
+    value: string
+    description: string
+    color: string
+    iconName?: string // We will use string mapping in the component to avoid massive icon imports here if needed, or just standard icon mapping
+  }[]
+  expertTip?: {
+    title: string
+    content: string
+    type: 'tip' | 'warning' | 'success'
+  }
 }
 
 export const guidesDatabase: Guide[] = [
@@ -30,7 +46,18 @@ export const guidesDatabase: Guide[] = [
       'Common mistakes to avoid',
       'Timeline and deadlines'
     ],
-    lastUpdated: '2025-10-14'
+    lastUpdated: '2025-10-14',
+    metrics: [
+      { label: 'Time', value: '30-90 Days', description: 'Approval timeline', color: 'text-blue-600', iconName: 'Clock' },
+      { label: 'Credit', value: '640+', description: 'Min. Score (Preferred)', color: 'text-green-600', iconName: 'TrendingUp' },
+      { label: 'Down Pmt', value: '10-20%', description: 'Equity injection', color: 'text-purple-600', iconName: 'PieChart' },
+      { label: 'Guarantee', value: '75-85%', description: 'SBA backing', color: 'text-orange-600', iconName: 'Shield' }
+    ],
+    expertTip: {
+      title: "The 'Credit Elsewhere' Test",
+      type: 'warning',
+      content: "The SBA will ONLY fund you if you <strong>cannot</strong> get a loan elsewhere on reasonable terms. You must prove you were rejected or couldn't get a standard bank loan first."
+    }
   },
   {
     id: 'apply-federal-grants',
@@ -47,7 +74,18 @@ export const guidesDatabase: Guide[] = [
       'Grants.gov navigation',
       'SAM.gov setup guide'
     ],
-    lastUpdated: '2025-10-01'
+    lastUpdated: '2025-10-01',
+    metrics: [
+      { label: 'Platform', value: 'Grants.gov', description: 'Sole official source', color: 'text-blue-600', iconName: 'Globe' },
+      { label: 'ID Required', value: 'UEI', description: 'Unique Entity ID (SAM)', color: 'text-green-600', iconName: 'Shield' },
+      { label: 'Cost', value: 'Free', description: 'Never pay to apply', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Database', value: 'CFDA', description: 'Catalog of Federal Assist.', color: 'text-purple-600', iconName: 'BookOpen' }
+    ],
+    expertTip: {
+      title: "Beware of 'Free Money' Scams",
+      type: 'warning',
+      content: "The US Government does not give 'free money' for personal debt or starting a business without strings attached. Real federal grants are for specific projects (Health, Science, Education). If someone asks for a fee to apply, it is a scam."
+    }
   },
   {
     id: 'apply-sba-loans',
@@ -81,7 +119,18 @@ export const guidesDatabase: Guide[] = [
       'Technical proposal writing',
       'Commercialization planning'
     ],
-    lastUpdated: '2025-09-25'
+    lastUpdated: '2025-09-25',
+    metrics: [
+      { label: 'Phase I', value: '$150k - $250k', description: 'Feasibility Study', color: 'text-blue-600', iconName: 'Zap' },
+      { label: 'Phase II', value: '$1M - $1.5M', description: 'Prototype Dev', color: 'text-green-600', iconName: 'Rocket' },
+      { label: 'Equity', value: '0%', description: 'Non-dilutive funding', color: 'text-purple-600', iconName: 'PieChart' },
+      { label: 'Competition', value: 'High', description: '<15% Success Rate', color: 'text-orange-600', iconName: 'Target' }
+    ],
+    expertTip: {
+      title: "Talk to the Program Manager",
+      type: 'tip',
+      content: "Before writing the 50-page proposal, <strong>email the Program Manager</strong> with a 1-page summary. If they say it's not a fit, you just saved 100 hours of work."
+    }
   },
   {
     id: 'apply-sbir-grants',
@@ -166,7 +215,18 @@ export const guidesDatabase: Guide[] = [
       'Budget justification strategies',
       'Review criteria understanding'
     ],
-    lastUpdated: '2025-10-08'
+    lastUpdated: '2025-10-08',
+    metrics: [
+      { label: 'Rejection', value: 'Generic', description: 'Most common reason', color: 'text-red-600', iconName: 'AlertTriangle' },
+      { label: 'Format', value: 'Strict', description: 'Follow font/margin rules', color: 'text-blue-600', iconName: 'CheckCircle' },
+      { label: 'Budget', value: 'Real', description: 'Justify every dollar', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Review', value: 'Peers', description: 'Scored by experts', color: 'text-purple-600', iconName: 'Users' }
+    ],
+    expertTip: {
+      title: "Answer the 'So What?'",
+      type: 'tip',
+      content: "Don't just describe <em>what</em> you will do. Explain <em>why it matters</em>. If your project succeeds, who benefits? How does the taxpayer get a return on investment?"
+    }
   },
   {
     id: 'apply-doe-clean-energy-grants',
@@ -219,7 +279,18 @@ export const guidesDatabase: Guide[] = [
       'Project eligibility criteria',
       'Partnership requirements'
     ],
-    lastUpdated: '2025-09-20'
+    lastUpdated: '2025-09-20',
+    metrics: [
+      { label: 'Min Project', value: '$10 Million', description: 'Target project size', color: 'text-blue-600', iconName: 'Target' },
+      { label: 'Funding Type', value: 'Contribution', description: 'Repayable & Non-repay', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Duration', value: 'Multi-year', description: 'Long-term partnership', color: 'text-purple-600', iconName: 'Clock' },
+      { label: 'Sectors', value: 'All Industrial', description: 'Technology focus', color: 'text-orange-600', iconName: 'Factory' }
+    ],
+    expertTip: {
+      title: "SIF is for 'Market Movers'",
+      type: 'warning',
+      content: "The Strategic Innovation Fund (SIF) is not for early-stage startups. It is designed for massive projects that create hundreds of jobs. If you are requesting less than $10M, look at <strong>IRAP</strong> or <strong>Regional Agencies</strong> instead."
+    }
   },
   {
     id: 'apply-irap-grants',
@@ -236,7 +307,18 @@ export const guidesDatabase: Guide[] = [
       'Application process timeline',
       'Advisory services access'
     ],
-    lastUpdated: '2025-10-05'
+    lastUpdated: '2025-10-05',
+    metrics: [
+      { label: 'Salary Coverage', value: 'Up to 80%', description: 'For technical staff', color: 'text-green-600', iconName: 'Users' },
+      { label: 'Project Cap', value: '$150k - $500k', description: 'Typical first project', color: 'text-blue-600', iconName: 'PieChart' },
+      { label: 'Speed', value: 'Fast', description: 'Monthly approvals', color: 'text-yellow-600', iconName: 'Zap' },
+      { label: 'Equity', value: '0%', description: 'Non-dilutive grant', color: 'text-purple-600', iconName: 'Shield' }
+    ],
+    expertTip: {
+      title: "The 'ITA' Factor",
+      type: 'tip',
+      content: "You cannot apply for IRAP through a portal. You must be 'invited' by an Industrial Technology Advisor (ITA). Your first step is not filling a form, but calling IRAP (1-877-994-4727) to request a consultation."
+    }
   },
   {
     id: 'apply-irap-government-grants',
@@ -287,7 +369,18 @@ export const guidesDatabase: Guide[] = [
       'Documentation requirements',
       'Claim calculation'
     ],
-    lastUpdated: '2025-10-01'
+    lastUpdated: '2025-10-01',
+    metrics: [
+      { label: 'Tax Credit', value: '35%', description: 'For CCPCs', color: 'text-green-600', iconName: 'PieChart' },
+      { label: 'Refundable', value: 'Yes', description: 'Cash back for small biz', color: 'text-blue-600', iconName: 'DollarSign' },
+      { label: 'Deadline', value: '18 Months', description: 'After fiscal year end', color: 'text-red-600', iconName: 'Clock' },
+      { label: 'Success Rate', value: 'Audit Risk', description: 'Requires technical docs', color: 'text-orange-600', iconName: 'AlertTriangle' }
+    ],
+    expertTip: {
+      title: "Technological Uncertainty is Key",
+      type: 'warning',
+      content: "SR&ED is not for 'standard engineering' or 'bug fixing'. To qualify, you must prove you faced a technological uncertainty that standard practice could not resolve. Document your failures—they are your proof!"
+    }
   },
   {
     id: 'apply-women-entrepreneurship-strategy',
@@ -372,7 +465,18 @@ export const guidesDatabase: Guide[] = [
       'Futurpreneur programs',
       'Mentorship support'
     ],
-    lastUpdated: '2025-09-14'
+    lastUpdated: '2025-09-14',
+    metrics: [
+      { label: 'Loan', value: '$60k', description: 'Futurpreneur + BDC', color: 'text-blue-600', iconName: 'DollarSign' },
+      { label: 'Age', value: '18 - 39', description: 'Eligibility Range', color: 'text-green-600', iconName: 'User' },
+      { label: 'Mentor', value: 'Included', description: '2 Years Support', color: 'text-purple-600', iconName: 'Users' },
+      { label: 'Credit', value: 'Flexible', description: 'No credit history ok', color: 'text-orange-600', iconName: 'ThumbsUp' }
+    ],
+    expertTip: {
+      title: "The Mentor is the Key",
+      type: 'success',
+      content: "Futurpreneur isn't just money; it's a mentorship program. Showing that you are <strong>coachable</strong> during the interview is just as important as your business plan."
+    }
   },
   {
     id: 'bdc-women-entrepreneurs-financing-guide',
@@ -390,6 +494,34 @@ export const guidesDatabase: Guide[] = [
       'Advisory services'
     ],
     lastUpdated: '2025-09-10'
+  },
+  {
+    id: 'canada-digital-ai-funding-guide',
+    title: 'Canada Digital & AI Funding Guide',
+    slug: 'canada-digital-ai-funding-guide',
+    description: 'Funding opportunities for digital transformation and AI development projects.',
+    category: 'Canada',
+    tags: ['Digital', 'AI', 'Technology'],
+    readTime: '14 min',
+    difficulty: 'Advanced',
+    featured: false,
+    highlights: [
+      'AI research funding',
+      'Digital adoption programs',
+      'Tech commercialization'
+    ],
+    lastUpdated: '2025-09-10',
+    metrics: [
+      { label: 'Grant', value: '$15,000', description: 'CDAP Boost', color: 'text-blue-600', iconName: 'Zap' },
+      { label: 'Wage', value: '$7,300', description: 'Digital Youth', color: 'text-green-600', iconName: 'Users' },
+      { label: 'Scale AI', value: '50%', description: 'Project reimbursement', color: 'text-purple-600', iconName: 'PieChart' },
+      { label: 'Loan', value: '$100k', description: '0% Interest (BDC)', color: 'text-orange-600', iconName: 'DollarSign' }
+    ],
+    expertTip: {
+      title: "Stack CDAP with Wage Subsidies",
+      type: 'tip',
+      content: "Smart founders stack grants. Use the <strong>CDAP</strong> grant to pay for a digital strategy, then use a <strong>Digital Youth Internship</strong> grant to hire a student to implement it."
+    }
   },
   {
     id: 'edc-women-trade-export-financing-guide',
@@ -476,7 +608,18 @@ export const guidesDatabase: Guide[] = [
       'Regional incentives',
       'Application timelines'
     ],
-    lastUpdated: '2025-09-12'
+    lastUpdated: '2025-09-12',
+    metrics: [
+      { label: 'Grant', value: '$2,500', description: 'Digital Main St.', color: 'text-blue-600', iconName: 'Globe' },
+      { label: 'Training', value: '100% Free', description: 'Skills Development', color: 'text-green-600', iconName: 'BookOpen' },
+      { label: 'Region', value: 'Ontario Wide', description: 'All Municipalities', color: 'text-purple-600', iconName: 'MapPin' },
+      { label: 'Type', value: 'Voucher', description: 'Service payment', color: 'text-orange-600', iconName: 'Zap' }
+    ],
+    expertTip: {
+      title: "Focus on 'SWODF' and 'EODF'",
+      type: 'tip',
+      content: "Outside of Toronto? The <strong>Southwestern (SWODF)</strong> and <strong>Eastern (EODF)</strong> Ontario Development Funds are the real heavy hitters for manufacturing and expansion projects over $500k."
+    }
   },
   {
     id: 'apply-quebec-business-grants',
@@ -493,7 +636,18 @@ export const guidesDatabase: Guide[] = [
       'Investissement Québec',
       'Language requirements'
     ],
-    lastUpdated: '2025-09-08'
+    lastUpdated: '2025-09-08',
+    metrics: [
+      { label: 'Loan', value: '$50k+', description: 'Impulsion PME', color: 'text-blue-600', iconName: 'DollarSign' },
+      { label: 'Credit', value: '30%', description: 'CDAE Tax Credit', color: 'text-green-600', iconName: 'PieChart' },
+      { label: 'Focus', value: 'Tech & AI', description: 'Montreal Hub', color: 'text-purple-600', iconName: 'Cpu' },
+      { label: 'Language', value: 'French', description: 'Required for docs', color: 'text-red-600', iconName: 'FileText' }
+    ],
+    expertTip: {
+      title: "Investissement Québec is King",
+      type: 'success',
+      content: "In Quebec, <strong>Investissement Québec (IQ)</strong> is the central hub. Unlike other provinces with fragmented agencies, IQ handles loans, equity, and grants under one roof. Start there."
+    }
   },
   {
     id: 'apply-british-columbia-grants',
@@ -510,7 +664,18 @@ export const guidesDatabase: Guide[] = [
       'Tech sector support',
       'Clean energy incentives'
     ],
-    lastUpdated: '2025-09-05'
+    lastUpdated: '2025-09-05',
+    metrics: [
+      { label: 'Grant', value: '$10,000', description: 'Launch Online', color: 'text-blue-600', iconName: 'Globe' },
+      { label: 'Tax Credit', value: '30%', description: 'Venture Capital', color: 'text-green-600', iconName: 'TrendingUp' },
+      { label: 'Sector', value: 'Clean BC', description: 'Green Energy Focus', color: 'text-green-600', iconName: 'Leaf' },
+      { label: 'Region', value: 'BC Wide', description: 'Including Rural', color: 'text-purple-600', iconName: 'MapPin' }
+    ],
+    expertTip: {
+      title: "Target 'Innovate BC'",
+      type: 'tip',
+      content: "If you are a tech company, <strong>Innovate BC</strong> is your primary target. Their 'Hiring Grant' is one of the easiest ways to get $10,000 funded for a student or co-op hire."
+    }
   },
   {
     id: 'apply-alberta-business-grants',
@@ -527,7 +692,18 @@ export const guidesDatabase: Guide[] = [
       'Innovation grants',
       'Regional support'
     ],
-    lastUpdated: '2025-09-02'
+    lastUpdated: '2025-09-02',
+    metrics: [
+      { label: 'Voucher', value: '$15k - $100k', description: 'Alberta Innovates', color: 'text-blue-600', iconName: 'Zap' },
+      { label: 'Clean Tech', value: '$5M+', description: 'ERA Funding', color: 'text-green-600', iconName: 'Leaf' },
+      { label: 'Match', value: '25% - 75%', description: 'Investment required', color: 'text-purple-600', iconName: 'PieChart' },
+      { label: 'Sector', value: 'Diversified', description: 'Tech, Ag, Energy', color: 'text-orange-600', iconName: 'Target' }
+    ],
+    expertTip: {
+      title: "Alberta Innovates is your First Stop",
+      type: 'success',
+      content: "For most Alberta tech startups, the <strong>Alberta Innovates Voucher Program</strong> is the entry point. It pays service providers directly to help you build or market your product."
+    }
   },
   {
     id: 'apply-agriculture-agri-food-canada',
@@ -544,7 +720,18 @@ export const guidesDatabase: Guide[] = [
       'Farm business support',
       'Processing incentives'
     ],
-    lastUpdated: '2025-08-25'
+    lastUpdated: '2025-08-25',
+    metrics: [
+      { label: 'Funding', value: '$5 Million', description: 'Max per project', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Type', value: 'Repayable', description: '0% Interest Loan', color: 'text-blue-600', iconName: 'RefreshCw' },
+      { label: 'Focus', value: 'Innovation', description: 'New tech adoption', color: 'text-purple-600', iconName: 'Zap' },
+      { label: 'Status', value: 'Open', description: 'Continuous Intake', color: 'text-green-600', iconName: 'CheckCircle' }
+    ],
+    expertTip: {
+      title: "It's Not Just for Farmers",
+      type: 'tip',
+      content: "AgriInnovate is often misunderstood. It is for <strong>commercializing new agricultural technology</strong>. If you are a tech company building sensors for farms, YOU are eligible, not just the farmer."
+    }
   },
 
   // Canada Sector-Specific Guides
@@ -701,7 +888,7 @@ export function getFeaturedGuides(): Guide[] {
 }
 
 export function getGuidesByTag(tag: string): Guide[] {
-  return guidesDatabase.filter(guide => 
+  return guidesDatabase.filter(guide =>
     guide.tags.some(t => t.toLowerCase().includes(tag.toLowerCase()))
   )
 }

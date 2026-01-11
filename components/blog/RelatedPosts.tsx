@@ -10,13 +10,14 @@ interface RelatedPostsProps {
 
 export default function RelatedPosts({ currentPost, maxPosts = 3 }: RelatedPostsProps) {
   // Get posts from the same category, excluding current post
+  // QUALITY SHIELD: Only suggest enriched posts
   let relatedPosts = getBlogPostsByCategory(currentPost.category)
-    .filter(post => post.id !== currentPost.id);
+    .filter(post => post.id !== currentPost.id && !!(post.metrics || post.expertTip));
 
   // If not enough posts in same category, fill with other recent posts
   if (relatedPosts.length < maxPosts) {
     const allPosts = getAllBlogPosts()
-      .filter(post => post.id !== currentPost.id && !relatedPosts.includes(post));
+      .filter(post => post.id !== currentPost.id && !relatedPosts.includes(post) && !!(post.metrics || post.expertTip));
     relatedPosts = [...relatedPosts, ...allPosts].slice(0, maxPosts);
   }
 
