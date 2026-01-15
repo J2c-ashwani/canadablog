@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Mail, Linkedin, Award, BookOpen } from "lucide-react"
+import { Mail, Award, BookOpen } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -24,9 +24,13 @@ export default function AuthorPage() {
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
                         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8">
 
-                            {/* Profile Image Placeholer */}
-                            <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-slate-200 flex items-center justify-center flex-shrink-0 border-4 border-white shadow-lg overflow-hidden">
-                                <span className="text-4xl text-slate-400 font-bold">AK</span>
+                            {/* Profile Image */}
+                            <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-slate-200 flex-shrink-0 border-4 border-white shadow-lg overflow-hidden">
+                                <img
+                                    src="/author-ashwani.jpg"
+                                    alt="Ashwani K. - Funding Research Writer"
+                                    className="w-full h-full object-cover"
+                                />
                             </div>
 
                             <div className="text-center md:text-left">
@@ -38,14 +42,10 @@ export default function AuthorPage() {
 
                                 <div className="flex flex-wrap justify-center md:justify-start gap-3">
                                     <Button variant="outline" size="sm" asChild>
-                                        <Link href="mailto:contact@fsidigital.ca">
+                                        <Link href="mailto:hello@fsidigital.ca">
                                             <Mail className="w-4 h-4 mr-2" />
                                             Contact
                                         </Link>
-                                    </Button>
-                                    <Button variant="outline" size="sm" disabled>
-                                        <Linkedin className="w-4 h-4 mr-2" />
-                                        LinkedIn
                                     </Button>
                                 </div>
                             </div>
