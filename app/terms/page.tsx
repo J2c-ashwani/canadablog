@@ -1,6 +1,15 @@
 import React from 'react'
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Terms of Service | FSI Digital",
+  description: "Terms of service for FSI Digital. Read our terms and conditions for using our government grant information platform.",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/terms",
+  },
+}
 
 export default function TermsOfService() {
   return (

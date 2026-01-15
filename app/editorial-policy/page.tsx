@@ -5,11 +5,10 @@ import { CheckCircle, Shield, FileText, Scale, UserCheck, AlertTriangle } from "
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-    title: "Editorial Policy & Standards | Government Grants Canada",
-    description: "Our commitment to accuracy, independence, and transparency in reporting on Canadian government grants and business funding.",
-    robots: {
-        index: false,
-        follow: true,
+    title: "Editorial Policy & Standards | FSI Digital",
+    description: "Our commitment to accuracy, independence, and transparency in reporting on government grants and business funding for USA and Canada.",
+    alternates: {
+        canonical: "https://www.fsidigital.ca/editorial-policy",
     },
 }
 

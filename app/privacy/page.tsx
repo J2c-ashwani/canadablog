@@ -1,6 +1,15 @@
 import React from 'react'
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | FSI Digital",
+  description: "Privacy policy for FSI Digital. Learn how we collect, use, and protect your information.",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/privacy",
+  },
+}
 
 export default function PrivacyPolicy() {
   return (
