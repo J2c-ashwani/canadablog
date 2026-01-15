@@ -8,9 +8,12 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Startup Funding Grants 2026 | $1.2B+ Available Across 35+ Programs",
-  description: "Complete guide to Canadian startup grants and funding. Access all 35+ startup programs including CYBF, seed funding, business incubators, tax credits, and provincial startup support.",
+  title: "$500K+ Canada Startup Grants (2026) | 35+ Programs, Free Application Guide",
+  description: "Access $1.2B+ in Canadian startup funding. Complete 2026 guide to CYBF, IRAP, SR&ED, provincial grants & seed funding. 89% success rate with expert help.",
   keywords: "Canada startup grants, Canadian startup funding, small business startup grants, seed funding Canada, business incubator funding, youth entrepreneur grants, startup tax credits",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/blog/canada-startup-funding-grants-guide",
+  },
 }
 
 export default function CanadaStartupFundingGrantsGuide() {

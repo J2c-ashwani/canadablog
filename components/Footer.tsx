@@ -81,6 +81,22 @@ export function Footer() {
                 </Link>
               </div>
             </div>
+
+            {/* Popular Guides (SEO Internal Links) */}
+            <div className="space-y-2 mt-4">
+              <h4 className="font-semibold text-sm text-gray-300">Popular Guides</h4>
+              <div className="flex flex-col space-y-1">
+                <Link href="/blog/canada-startup-funding-grants-guide" className="text-gray-400 hover:text-white text-sm">
+                  Canada Startup Grants
+                </Link>
+                <Link href="/blog/sba-microloans-complete-guide" className="text-gray-400 hover:text-white text-sm">
+                  SBA Microloans Guide
+                </Link>
+                <Link href="/blog/quebec-government-business-grants" className="text-gray-400 hover:text-white text-sm">
+                  Quebec Business Grants
+                </Link>
+              </div>
+            </div>
           </div>
 
           {/* USA Grants */}

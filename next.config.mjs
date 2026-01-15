@@ -11,6 +11,18 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // SEO: Consolidate www and non-www (Phase 10A)
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'fsidigital.ca',
+          },
+        ],
+        destination: 'https://www.fsidigital.ca/:path*',
+        permanent: true,
+      },
       {
         source: '/portfolio',
         destination: '/',

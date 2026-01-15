@@ -8,13 +8,16 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "SBA Microloans Complete Guide 2026 | Small Business Microloan Program",
-  description: "Complete guide to SBA microloans. Learn eligibility, application process, and how to secure up to $50K in small business funding with business mentoring included.",
+  title: "SBA Microloans 2026: Get Up to $50K + Free Mentoring | Complete Guide",
+  description: "How to get SBA microloans in 2026. Easier than 7(a), faster approval (2-4 weeks), 8-13% rates, and FREE business mentoring included. Step-by-step application.",
   keywords: "SBA microloans, small business microloans, SBA microloan program, startup funding, small business loans",
   openGraph: {
-    title: "SBA Microloans Complete Guide 2026",
-    description: "Complete guide to SBA microloans with application process and mentoring benefits.",
+    title: "SBA Microloans 2026: Get Up to $50K + Free Mentoring",
+    description: "Complete guide to SBA microloans with faster approval and mentoring benefits.",
     url: "https://www.fsidigital.ca/blog/sba-microloans-complete-guide",
+  },
+  alternates: {
+    canonical: "https://www.fsidigital.ca/blog/sba-microloans-complete-guide",
   },
 }
 
@@ -34,7 +37,7 @@ export default function SBAMicroloansGuide() {
                 SBA Microloans Complete Guide
               </h1>
               <p className="text-xl text-purple-100 mb-8">
-                Everything you need to know about SBA microloans - perfect for startups and small businesses 
+                Everything you need to know about SBA microloans - perfect for startups and small businesses
                 needing smaller amounts. Get up to $50K plus free business mentoring.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -79,14 +82,14 @@ export default function SBAMicroloansGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* What are SBA Microloans */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">What are SBA Microloans?</h2>
-                
+
                 <p className="text-lg text-gray-700 mb-6">
-                  SBA microloans are small, short-term loans provided through nonprofit community-based intermediary lenders. 
-                  These loans are perfect for startups and small businesses that need smaller amounts of capital and can 
+                  SBA microloans are small, short-term loans provided through nonprofit community-based intermediary lenders.
+                  These loans are perfect for startups and small businesses that need smaller amounts of capital and can
                   benefit from business mentoring and technical assistance.
                 </p>
 
@@ -128,7 +131,7 @@ export default function SBAMicroloansGuide() {
               {/* Microloan Program Structure */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">SBA Microloan Program Structure</h2>
-                
+
                 <div className="space-y-6">
                   <Card className="border-purple-200">
                     <CardHeader>
@@ -152,7 +155,7 @@ export default function SBAMicroloansGuide() {
                           <span><strong>Average:</strong> $13,000</span>
                         </div>
                       </div>
-                      
+
                       <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
                         <h4 className="font-bold mb-2 text-purple-800">Three-Party Structure:</h4>
                         <p className="text-sm text-purple-700 mb-3">
@@ -173,7 +176,7 @@ export default function SBAMicroloansGuide() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
                           <h5 className="font-semibold mb-3 text-purple-700">Loan Uses:</h5>
@@ -204,14 +207,14 @@ export default function SBAMicroloansGuide() {
               {/* Business Mentoring Component */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Business Mentoring & Technical Assistance</h2>
-                
+
                 <div className="bg-pink-50 border border-pink-200 rounded-lg p-6 mb-6">
                   <div className="flex items-start">
                     <Users className="w-8 h-8 text-pink-600 mr-4 mt-1" />
                     <div>
                       <h4 className="font-bold text-pink-800 mb-2">Unique Advantage of Microloans</h4>
                       <p className="text-pink-700">
-                        Unlike other SBA loan programs, microloans come with mandatory business counseling and mentoring, 
+                        Unlike other SBA loan programs, microloans come with mandatory business counseling and mentoring,
                         providing invaluable support for new entrepreneurs and growing businesses.
                       </p>
                     </div>
@@ -254,7 +257,7 @@ export default function SBAMicroloansGuide() {
               {/* Eligibility Requirements */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">SBA Microloan Eligibility Requirements</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Basic Requirements:</h4>
@@ -277,7 +280,7 @@ export default function SBAMicroloansGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Restrictions:</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -305,7 +308,7 @@ export default function SBAMicroloansGuide() {
               {/* Application Process */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">SBA Microloan Application Process</h2>
-                
+
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                   <div className="text-center">
                     <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -362,7 +365,7 @@ export default function SBAMicroloansGuide() {
                       <li>• Community development corporations</li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-blue-700">👥 Specialized Organizations:</h4>
                     <ul className="space-y-2 text-gray-700 text-sm">
@@ -378,7 +381,7 @@ export default function SBAMicroloansGuide() {
               {/* Success Tips */}
               <div className="bg-green-50 rounded-lg p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Microloan Success Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Best Practices</h4>
@@ -401,7 +404,7 @@ export default function SBAMicroloansGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-purple-700">🎯 Application Tips</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -430,7 +433,7 @@ export default function SBAMicroloansGuide() {
               <div className="bg-gradient-to-r from-purple-600 to-pink-700 rounded-lg p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">Ready to Apply for SBA Microloan?</h3>
                 <p className="text-purple-100 mb-6 text-lg">
-                  Get our comprehensive SBA loan application guide including microloan application tips, 
+                  Get our comprehensive SBA loan application guide including microloan application tips,
                   intermediary directory, and mentoring program details.
                 </p>
                 <Button size="lg" className="bg-white text-purple-700 hover:bg-gray-100" asChild>

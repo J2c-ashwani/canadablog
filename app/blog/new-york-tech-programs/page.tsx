@@ -8,14 +8,17 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "New York Tech Startup Grants 2026-2027 | START-UP NY Tax-Free 10 Years, $250K Seed Matching Fund, NYSERDA Clean Energy Innovation Programs",
-  description: "Complete 2026-2027 guide to New York technology startup grants and incentives. START-UP NY program 10-year tax-free operation university campuses, Pre-Seed Seed Matching Fund $50K-$250K, NYSERDA innovation grants clean energy, Empire State Development ESD programs, NYC Economic Development Corporation grants supporting Manhattan Brooklyn Queens innovation ecosystem.",
-  keywords: "New York tech startup grants 2026, START-UP NY program tax free, NYSERDA innovation grants, Empire State Development ESD funding, NYC tech grants Manhattan Brooklyn, Pre-Seed Seed Matching Fund New York, FuzeHub manufacturing grants, New York technology incentives, NYC Economic Development Corporation NYCEDC, clean energy grants NYSERDA",
+  title: "New York Tech Grants 2026: 10-Year Tax-Free (START-UP NY) + $250K Seed Fund",
+  description: "Complete 2026 NY tech grant guide. START-UP NY = 10 years tax-free on university campuses. Pre-Seed Fund up to $250K. NYSERDA clean energy. FuzeHub $65K.",
+  keywords: "New York tech startup grants 2026, START-UP NY program tax free, NYSERDA innovation grants, Empire State Development ESD funding, NYC tech grants Manhattan Brooklyn",
   openGraph: {
-    title: "New York Tech Grants 2026 | START-UP NY Tax-Free, $250K Seed Fund, NYSERDA",
-    description: "Complete guide to New York tech startup grants, tax incentives, and innovation programs for NYC and statewide ecosystem.",
+    title: "NY Tech Grants 2026: 10-Year Tax-Free + $250K Seed Fund",
+    description: "START-UP NY, Pre-Seed Matching Fund, NYSERDA innovation programs for NYC and statewide.",
     url: "https://www.fsidigital.ca/blog/new-york-tech-programs",
     images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://www.fsidigital.ca/blog/new-york-tech-programs",
   },
 }
 
@@ -58,7 +61,7 @@ export default function NewYorkTechProgramsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">New York Technology Startup Grants by Region and Innovation Hub (2026-2027 Funding Programs Available Statewide)</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-blue-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -264,7 +267,7 @@ export default function NewYorkTechProgramsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">New York Technology Startup Grant Programs 2026-2027 Complete Details</h2>
-              
+
               {/* START-UP NY Program - FULLY DETAILED */}
               <Card className="border-blue-200 mb-8">
                 <CardHeader className="bg-gradient-to-r from-blue-100 to-indigo-100">
@@ -380,7 +383,7 @@ export default function NewYorkTechProgramsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">New York Technology Startup Grant Application Success Strategies 2026-2027</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -476,7 +479,7 @@ export default function NewYorkTechProgramsPage() {
               <p className="text-xl text-blue-100 mb-8">
                 Get our complete New York technology grants guide with START-UP NY, Matching Fund, NYSERDA application templates or work with specialists.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2 text-lg">📥 Free New York Guide</h4>
@@ -509,6 +512,51 @@ export default function NewYorkTechProgramsPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema for Rich Results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the START-UP NY program?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "START-UP NY helps new and expanding businesses operate tax-free for 10 years on or near eligible university campuses throughout New York State. Partner businesses with SUNY, CUNY, Cornell, Columbia, or NYU gain access to research facilities, faculty expertise, and student talent."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much can I get from the NY Pre-Seed Matching Fund?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Pre-Seed and Seed Matching Fund offers $50,000 to $250,000 for early-stage startups in high-growth industries. However, you must have matching funds from a private co-investor to qualify."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is FuzeHub manufacturing grant amount?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "FuzeHub Manufacturing Grants provide up to $65,000 for New York State manufacturing technology companies. Startup eligibility requires annual revenue under $100K, total revenue under $500K, and being in business less than 5 years (7 years for life sciences)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are NYC tech startups eligible for state grants?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, NYC tech startups in Manhattan, Brooklyn, Queens, and other boroughs can access all New York State programs including START-UP NY, Pre-Seed Matching Fund, NYSERDA clean energy grants, and NYC Economic Development Corporation (NYCEDC) programs."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

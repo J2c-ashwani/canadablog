@@ -8,14 +8,17 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Quebec Government Business Grants 2026 | Aide aux Entreprises & Provincial Funding Programs Guide",
-  description: "Complete guide to Quebec government business grants and aide aux entreprises provincial funding. Access Investissement Quebec, ESSOR, PSCE programs, and R&D tax credits for Quebec businesses.",
+  title: "Quebec Business Grants 2026: Up to $15M | Investissement Québec, ESSOR, R&D Credits",
+  description: "Complete 2026 guide to Quebec government grants. Access $3.2B+ annually through ESSOR ($15M), PSCE ($250K), 30% R&D tax credits. Bilingual application support.",
   keywords: "Quebec government business grants, aide aux entreprises Quebec, Investissement Quebec ESSOR, PSCE Quebec funding, Quebec R&D tax credits, Quebec provincial funding programs 2026",
   openGraph: {
-    title: "Quebec Government Business Grants 2026 | Aide aux Entreprises Provincial Funding Guide",
-    description: "Comprehensive guide to Quebec provincial business grants offering aide aux entreprises funding for innovation, commercialization, and international expansion.",
+    title: "Quebec Business Grants 2026: Up to $15M Available",
+    description: "Comprehensive guide to Quebec provincial business grants and aide aux entreprises funding.",
     url: "https://www.fsidigital.ca/blog/quebec-government-business-grants",
     images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://www.fsidigital.ca/blog/quebec-government-business-grants",
   },
 }
 
@@ -555,6 +558,51 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema for Rich Results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the maximum Quebec business grant amount available?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Quebec offers grants up to $15M through the ESSOR program via Investissement Québec. Smaller programs like PSCE offer up to $250K for commercialization, and NovaScience provides up to $75K for innovation management."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the Quebec R&D tax credit rate?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Quebec offers up to 30% refundable R&D tax credits for eligible small and medium businesses, making it one of the most generous R&D support jurisdictions in North America. The basic credit is 14%, with enhanced rates for SMBs and university partnerships."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the ESSOR program in Quebec?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "ESSOR is Quebec's flagship productivity program delivered through Investissement Québec. It supports manufacturing and wholesale/retail businesses with grants up to $15M for productivity improvements, environmental impact reduction, and internationalization strategies."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can English businesses apply for Quebec grants?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Quebec government grants are available to businesses operating in Quebec regardless of language. Applications can be submitted in both French and English, though some programs may have French-language requirements for documentation."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }
