@@ -102,7 +102,18 @@ export const guidesDatabase: Guide[] = [
       'Eligibility requirements',
       'Document preparation guide'
     ],
-    lastUpdated: '2025-09-28'
+    lastUpdated: '2025-09-28',
+    metrics: [
+      { label: '7(a) Max', value: '$5M', description: 'General purpose', color: 'text-blue-600', iconName: 'DollarSign' },
+      { label: '504 Max', value: '$5.5M', description: 'Real estate/equipment', color: 'text-green-600', iconName: 'Building' },
+      { label: 'Microloan', value: '$50K', description: 'Small startups', color: 'text-purple-600', iconName: 'Zap' },
+      { label: 'Guarantee', value: '75-90%', description: 'SBA backing', color: 'text-orange-600', iconName: 'Shield' }
+    ],
+    expertTip: {
+      title: "Pick the Right SBA Program",
+      type: 'tip',
+      content: "Most people apply for 7(a) when they should use 504. If you need <strong>real estate or long-term equipment</strong> (10+ years), the 504 program offers better rates and longer terms."
+    }
   },
   {
     id: 'sbir-research-grants-guide',
@@ -147,7 +158,18 @@ export const guidesDatabase: Guide[] = [
       'Proposal requirements',
       'Budget preparation'
     ],
-    lastUpdated: '2025-09-20'
+    lastUpdated: '2025-09-20',
+    metrics: [
+      { label: 'Phase I', value: '$150-250K', description: 'Feasibility', color: 'text-blue-600', iconName: 'Zap' },
+      { label: 'Phase II', value: '$1-1.5M', description: 'Development', color: 'text-green-600', iconName: 'Rocket' },
+      { label: 'STTR', value: 'Requires', description: 'Research partner', color: 'text-purple-600', iconName: 'Users' },
+      { label: 'Rate', value: '<15%', description: 'Success rate', color: 'text-red-600', iconName: 'Target' }
+    ],
+    expertTip: {
+      title: "STTR Needs a Research Partner",
+      type: 'warning',
+      content: "SBIR is for solo companies. <strong>STTR requires a partnership</strong> with a university or research institution. Don't apply to STTR unless you already have that MOU signed."
+    }
   },
   {
     id: 'apply-small-business-grants',
@@ -164,7 +186,18 @@ export const guidesDatabase: Guide[] = [
       'Basic eligibility criteria',
       'Application best practices'
     ],
-    lastUpdated: '2025-10-05'
+    lastUpdated: '2025-10-05',
+    metrics: [
+      { label: 'Grants.gov', value: '1000+', description: 'Active opportunities', color: 'text-blue-600', iconName: 'Search' },
+      { label: 'Avg Award', value: '$50-500K', description: 'Typical range', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Success', value: '10-30%', description: 'Approval rate', color: 'text-orange-600', iconName: 'TrendingUp' },
+      { label: 'Time', value: '3-12 mo', description: 'Application to award', color: 'text-purple-600', iconName: 'Clock' }
+    ],
+    expertTip: {
+      title: "Federal Grants Are Project-Based",
+      type: 'warning',
+      content: "The federal government does NOT give grants for 'starting a business' or 'paying off debt.' Federal grants fund <strong>specific projects</strong> (R&D, community programs, education). Check eligibility carefully."
+    }
   },
   {
     id: 'apply-minority-grants',
@@ -181,7 +214,18 @@ export const guidesDatabase: Guide[] = [
       'MBDA programs',
       'Set-aside opportunities'
     ],
-    lastUpdated: '2025-09-18'
+    lastUpdated: '2025-09-18',
+    metrics: [
+      { label: 'MBDA', value: 'Free', description: 'Business centers', color: 'text-green-600', iconName: 'Building' },
+      { label: '8(a)', value: '9 Years', description: 'Program duration', color: 'text-blue-600', iconName: 'Clock' },
+      { label: 'Set-Aside', value: '5%', description: 'Federal contracting goal', color: 'text-purple-600', iconName: 'Target' },
+      { label: 'Certification', value: 'Required', description: 'MBE/DBE status', color: 'text-orange-600', iconName: 'Award' }
+    ],
+    expertTip: {
+      title: "8(a) Program is a Game-Changer",
+      type: 'success',
+      content: "The SBA 8(a) Business Development Program provides <strong>9 years of sole-source federal contracts</strong> and mentorship. It's competitive to get in, but worth the effort for minority entrepreneurs."
+    }
   },
   {
     id: 'sba-growth-accelerator-fund-guide',
@@ -198,7 +242,18 @@ export const guidesDatabase: Guide[] = [
       'Program requirements',
       'Impact measurement'
     ],
-    lastUpdated: '2025-09-15'
+    lastUpdated: '2025-09-15',
+    metrics: [
+      { label: 'Prize', value: '$50K-200K', description: 'Cash prizes', color: 'text-green-600', iconName: 'Award' },
+      { label: 'Focus', value: 'STEM/R&D', description: 'Underserved groups', color: 'text-blue-600', iconName: 'Users' },
+      { label: 'Equity', value: '0%', description: 'It\'s a prize', color: 'text-purple-600', iconName: 'PieChart' },
+      { label: 'Tracks', value: '2 Stages', description: 'Stage 1 & 2', color: 'text-orange-600', iconName: 'Rocket' }
+    ],
+    expertTip: {
+      title: "Verify Eligibility First",
+      type: 'warning',
+      content: "This is for <strong>organizations supporting startups</strong>, not startups themselves. Accelerators, incubators, and non-profits are the applicants."
+    }
   },
   {
     id: 'federal-grants-application-tips',
@@ -243,7 +298,18 @@ export const guidesDatabase: Guide[] = [
       'Technical proposal requirements',
       'Energy impact metrics'
     ],
-    lastUpdated: '2025-09-12'
+    lastUpdated: '2025-09-12',
+    metrics: [
+      { label: 'Funding', value: '$100M+', description: 'Clean energy pool', color: 'text-green-600', iconName: 'Leaf' },
+      { label: 'Focus', value: 'CleanTech', description: 'Renewable energy', color: 'text-blue-600', iconName: 'Zap' },
+      { label: 'Type', value: 'R&D', description: 'Research projects', color: 'text-purple-600', iconName: 'Lightbulb' },
+      { label: 'Timeline', value: 'Rolling', description: 'Various deadlines', color: 'text-orange-600', iconName: 'Clock' }
+    ],
+    expertTip: {
+      title: "DOE Favors National Labs Partnerships",
+      type: 'tip',
+      content: "DOE grants have <strong>higher success rates</strong> when you partner with a National Laboratory (like Argonne, NREL, or Sandia). They provide technical expertise and credibility."
+    }
   },
   {
     id: 'california-loan-guarantee-guide',
@@ -260,7 +326,18 @@ export const guidesDatabase: Guide[] = [
       'Application process',
       'Lender requirements'
     ],
-    lastUpdated: '2025-09-08'
+    lastUpdated: '2025-09-08',
+    metrics: [
+      { label: 'State', value: 'California', description: 'CA only', color: 'text-blue-600', iconName: 'MapPin' },
+      { label: 'Max', value: '$2.5M', description: 'Guarantee amount', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Fee', value: 'Low', description: 'State subsidy', color: 'text-purple-600', iconName: 'Award' },
+      { label: 'Type', value: 'Guarantee', description: 'Backs lender', color: 'text-orange-600', iconName: 'Shield' }
+    ],
+    expertTip: {
+      title: "CA Guarantee vs SBA",
+      type: 'tip',
+      content: "California's program has <strong>looser credit requirements</strong> than SBA 7(a) but lower maximum amounts. Try CA first if you have credit challenges."
+    }
   },
 
   // Canada Federal Guides
@@ -335,7 +412,18 @@ export const guidesDatabase: Guide[] = [
       'Funding amounts',
       'Success criteria'
     ],
-    lastUpdated: '2025-09-30'
+    lastUpdated: '2025-09-30',
+    metrics: [
+      { label: 'NRC', value: 'IRAP', description: 'Federal program', color: 'text-blue-600', iconName: 'Flag' },
+      { label: 'Coverage', value: 'Up to 80%', description: 'Salary support', color: 'text-green-600', iconName: 'Users' },
+      { label: 'Type', value: 'Grant', description: 'Non-repayable', color: 'text-purple-600', iconName: 'DollarSign' },
+      { label: 'Speed', value: 'Fast', description: 'Monthly intake', color: 'text-orange-600', iconName: 'Zap' }
+    ],
+    expertTip: {
+      title: "Call First, Apply Later",
+      type: 'tip',
+      content: "IRAP doesn't have an online application. You must <strong>call 1-877-994-4727</strong> to request an Industrial Technology Advisor (ITA) consultation. They decide if you're eligible BEFORE you prepare anything."
+    }
   },
   {
     id: 'irap-innovation-application-guide',
@@ -352,7 +440,18 @@ export const guidesDatabase: Guide[] = [
       'Technical advisory benefits',
       'Funding allocation process'
     ],
-    lastUpdated: '2025-09-25'
+    lastUpdated: '2025-09-25',
+    metrics: [
+      { label: 'Contribution', value: '80%', description: 'Salaries covered', color: 'text-green-600', iconName: 'Users' },
+      { label: 'Contractors', value: '50%', description: 'Costs covered', color: 'text-blue-600', iconName: 'FileText' },
+      { label: 'Project', value: '$50K-500K', description: 'Typical range', color: 'text-purple-600', iconName: 'DollarSign' },
+      { label: 'Advisory', value: 'Free', description: 'ITA support', color: 'text-orange-600', iconName: 'Lightbulb' }
+    ],
+    expertTip: {
+      title: "The ITA Relationship is Key",
+      type: 'tip',
+      content: "You cannot apply online blindly. <strong>You must engage an Industrial Technology Advisor (ITA)</strong> first. They invite you to apply. Cold applications don't exist."
+    }
   },
   {
     id: 'sred-application-guide',
@@ -397,7 +496,18 @@ export const guidesDatabase: Guide[] = [
       'Funding programs breakdown',
       'Mentorship opportunities'
     ],
-    lastUpdated: '2025-10-10'
+    lastUpdated: '2025-10-10',
+    metrics: [
+      { label: 'Total', value: '$6B', description: 'WES Ecosystem', color: 'text-pink-600', iconName: 'DollarSign' },
+      { label: 'Programs', value: '15+', description: 'Federal initiatives', color: 'text-blue-600', iconName: 'Award' },
+      { label: 'Focus', value: 'Women', description: 'Female entrepreneurs', color: 'text-pink-600', iconName: 'Users' },
+      { label: 'Type', value: 'Multiple', description: 'Grants/loans/support', color: 'text-purple-600', iconName: 'Zap' }
+    ],
+    expertTip: {
+      title: "WES is an Ecosystem, Not a Program",
+      type: 'success',
+      content: "Women Entrepreneurship Strategy isn't one application. It's <strong>15+ coordinated programs</strong> (grants, loans, mentorship). Stack multiple WES programs for maximum benefit."
+    }
   },
   {
     id: 'apply-women-entrepreneurship-strateg',
@@ -414,7 +524,18 @@ export const guidesDatabase: Guide[] = [
       'Funding options',
       'Resource centers'
     ],
-    lastUpdated: '2025-09-28'
+    lastUpdated: '2025-09-28',
+    metrics: [
+      { label: 'Total', value: '$6B', description: 'WES Investment', color: 'text-pink-600', iconName: 'DollarSign' },
+      { label: 'Access', value: 'Multi', description: 'Various pathways', color: 'text-blue-600', iconName: 'Award' },
+      { label: 'Gender', value: 'Women', description: 'Female owned 51%+', color: 'text-pink-600', iconName: 'Users' },
+      { label: 'Support', value: 'Holistic', description: 'Full ecosystem', color: 'text-green-600', iconName: 'Heart' }
+    ],
+    expertTip: {
+      title: "Alternative WES Entry Points",
+      type: 'tip',
+      content: "Can't access WES grants directly? Use <strong>WES ecosystem partners</strong> like Women's Enterprise Organizations for mentorship, then leverage that relationship for funding introductions."
+    }
   },
   {
     id: 'women-entrepreneurship-fund-guide',
@@ -448,7 +569,18 @@ export const guidesDatabase: Guide[] = [
       'Application process',
       'BDC partnership'
     ],
-    lastUpdated: '2025-09-18'
+    lastUpdated: '2025-09-18',
+    metrics: [
+      { label: 'Loan', value: '$50K', description: 'Max amount', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Admin', value: 'Partners', description: 'Distributed by WEOs', color: 'text-blue-600', iconName: 'Handshake' },
+      { label: 'Terms', value: 'Flexible', description: 'Low interest', color: 'text-purple-600', iconName: 'Smile' },
+      { label: 'Focus', value: 'Startups', description: 'Women-owned/led', color: 'text-orange-600', iconName: 'Users' }
+    ],
+    expertTip: {
+      title: "Apply via Partners",
+      type: 'tip',
+      content: "You don't apply to the government directly. Apply through <strong>Women's Enterprise Organizations (WEOs)</strong> like WEOC or Coralus. Each has different criteria."
+    }
   },
   {
     id: 'apply-youth-entrepreneurship-funding',
@@ -493,7 +625,18 @@ export const guidesDatabase: Guide[] = [
       'Women-specific programs',
       'Advisory services'
     ],
-    lastUpdated: '2025-09-10'
+    lastUpdated: '2025-09-10',
+    metrics: [
+      { label: 'BDC', value: 'Loans', description: 'Federal bank', color: 'text-blue-600', iconName: 'Building' },
+      { label: 'Women', value: 'Priority', description: 'Female entrepreneurs', color: 'text-pink-600', iconName: 'Users' },
+      { label: 'Type', value: 'Financing', description: 'Loans + advisory', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Support', value: 'Holistic', description: 'Capital + mentorship', color: 'text-purple-600', iconName: 'Award' }
+    ],
+    expertTip: {
+      title: "BDC Women Loan Advantages",
+      type: 'success',
+      content: "BDC's Women Entrepreneurship Program offers <strong>flexible terms and mentorship</strong> not available in traditional banking, plus can be stacked with government grants."
+    }
   },
   {
     id: 'canada-digital-ai-funding-guide',
@@ -538,7 +681,18 @@ export const guidesDatabase: Guide[] = [
       'Trade insurance',
       'Market expansion support'
     ],
-    lastUpdated: '2025-09-05'
+    lastUpdated: '2025-09-05',
+    metrics: [
+      { label: 'EDC', value: 'Crown Corp', description: 'Federal export bank', color: 'text-blue-600', iconName: 'Flag' },
+      { label: 'Focus', value: 'Trade', description: 'International sales', color: 'text-green-600', iconName: 'Globe' },
+      { label: 'Women', value: 'Priority', description: 'Female exporters', color: 'text-pink-600', iconName: 'Users' },
+      { label: 'Service', value: 'Insurance', description: 'Risk protection', color: 'text-purple-600', iconName: 'Shield' }
+    ],
+    expertTip: {
+      title: "EDC + CanExport Stack",
+      type: 'success',
+      content: "Women exporters can combine <strong>CanExport grants (up to $75K) with EDC financing</strong> for comprehensive international expansion support."
+    }
   },
   {
     id: 'nserc-research-grants-guide',
@@ -555,7 +709,18 @@ export const guidesDatabase: Guide[] = [
       'Grant types',
       'Proposal requirements'
     ],
-    lastUpdated: '2025-08-30'
+    lastUpdated: '2025-08-30',
+    metrics: [
+      { label: 'Value', value: '$20K-1M+', description: 'Varies by grant', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Duration', value: '1-5 Years', description: 'Multi-year funding', color: 'text-blue-600', iconName: 'Clock' },
+      { label: 'Focus', value: 'NSE', description: 'Natural Sciences/Eng', color: 'text-purple-600', iconName: 'Zap' },
+      { label: 'Partners', value: 'Industry', description: 'Alliance grants', color: 'text-orange-600', iconName: 'Handshake' }
+    ],
+    expertTip: {
+      title: "Industry Partnerships Boost Success",
+      type: 'tip',
+      content: "Alliance grants require a <strong>private sector partner</strong>. Bringing cash/in-kind contributions from industry significantly increases your approval odds."
+    }
   },
   {
     id: 'apply-regional-development-agencies',
@@ -572,7 +737,18 @@ export const guidesDatabase: Guide[] = [
       'Regional programs',
       'Application processes'
     ],
-    lastUpdated: '2025-09-01'
+    lastUpdated: '2025-09-01',
+    metrics: [
+      { label: 'Agencies', value: '6 RDAs', description: 'Regional coverage', color: 'text-blue-600', iconName: 'MapPin' },
+      { label: 'Funding', value: 'Varies', description: 'By region/program', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Focus', value: 'Regional', description: 'Economic development', color: 'text-purple-600', iconName: 'TrendingUp' },
+      { label: 'Type', value: 'Mixed', description: 'Grants & loans', color: 'text-orange-600', iconName: 'Award' }
+    ],
+    expertTip: {
+      title: "Know Your RDA",
+      type: 'tip',
+      content: "Each region has its own RDA: <strong>WD (West), PrairiesCan, FedDev Ontario, FedDev Southern Ontario, CED Quebec, ACOA (Atlantic)</strong>. Apply to YOUR regional agency, not all six."
+    }
   },
   {
     id: 'apply-indigenous-rural-business-funding',
@@ -589,7 +765,18 @@ export const guidesDatabase: Guide[] = [
       'Rural business support',
       'Community economic development'
     ],
-    lastUpdated: '2025-08-28'
+    lastUpdated: '2025-08-28',
+    metrics: [
+      { label: 'IAND', value: 'Priority', description: 'Indigenous programs', color: 'text-red-600', iconName: 'Users' },
+      { label: 'Rural', value: 'USDA/NRC', description: 'Federal support', color: 'text-green-600', iconName: 'Leaf' },
+      { label: 'Community', value: 'Focus', description: 'Economic development', color: 'text-blue-600', iconName: 'Home' },
+      { label: 'Support', value: 'Enhanced', description: 'Advisory services', color: 'text-purple-600', iconName: 'Award' }
+    ],
+    expertTip: {
+      title: "Indigenous Set-Asides Have Priority",
+      type: 'success',
+      content: "Many federal programs have <strong>dedicated Indigenous set-asides</strong> with less competition. IAND programs also provide culturally relevant business support unavailable elsewhere."
+    }
   },
 
   // Canada Provincial Guides
@@ -750,7 +937,18 @@ export const guidesDatabase: Guide[] = [
       'Environmental innovation',
       'Sustainability funding'
     ],
-    lastUpdated: '2025-09-15'
+    lastUpdated: '2025-09-15',
+    metrics: [
+      { label: 'SDTC', value: '$10M', description: 'Max per project', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Focus', value: 'CleanTech', description: 'Environmental tech', color: 'text-green-600', iconName: 'Leaf' },
+      { label: 'Stage', value: 'Scale-Up', description: 'Post-prototype', color: 'text-blue-600', iconName: 'TrendingUp' },
+      { label: 'Type', value: 'Non-Repay', description: 'Grant funding', color: 'text-purple-600', iconName: 'Award' }
+    ],
+    expertTip: {
+      title: "SDTC Environmental Impact",
+      type: 'warning',
+      content: "SDTC requires <strong>quantifiable environmental benefits</strong> (GHG reduction, water savings, etc.). Vague sustainability claims won't meet the criteria."
+    }
   },
   {
     id: 'canada-digital-ai-funding-guide',
@@ -784,7 +982,18 @@ export const guidesDatabase: Guide[] = [
       'Clinical trial support',
       'Commercialization funding'
     ],
-    lastUpdated: '2025-09-05'
+    lastUpdated: '2025-09-05',
+    metrics: [
+      { label: 'Focus', value: 'BioTech', description: 'Life sciences', color: 'text-purple-600', iconName: 'Zap' },
+      { label: 'Funding', value: '$1M+', description: 'R&D projects', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Stage', value: 'Clinical', description: 'Trials supported', color: 'text-blue-600', iconName: 'TrendingUp' },
+      { label: 'Type', value: 'Mixed', description: 'Grants + loans', color: 'text-orange-600', iconName: 'Award' }
+    ],
+    expertTip: {
+      title: "Regulatory Pathway Critical",
+      type: 'warning',
+      content: "Life sciences funding requires <strong>clear regulatory pathway</strong> (FDA/Health Canada). Demonstrate you understand approval process before applying."
+    }
   },
   {
     id: 'canada-aerospace-defence-funding-guide',
@@ -801,7 +1010,18 @@ export const guidesDatabase: Guide[] = [
       'Defence procurement',
       'Innovation support'
     ],
-    lastUpdated: '2025-08-30'
+    lastUpdated: '2025-08-30',
+    metrics: [
+      { label: 'Sector', value: 'Aerospace', description: 'Defence focus', color: 'text-blue-600', iconName: 'Rocket' },
+      { label: 'Max', value: '$10M+', description: 'Large projects', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Security', value: 'Clearance', description: 'May be required', color: 'text-red-600', iconName: 'Shield' },
+      { label: 'Contracts', value: 'DND', description: 'Defence procurement', color: 'text-purple-600', iconName: 'Flag' }
+    ],
+    expertTip: {
+      title: "Defence Contracts = Long Sales Cycle",
+      type: 'tip',
+      content: "Aerospace/defence funding often requires <strong>2-3 years from application to contract</strong>. Have runway capital while pursuing these opportunities."
+    }
   },
   {
     id: 'canada-manufacturing-funding-guide',
@@ -818,7 +1038,18 @@ export const guidesDatabase: Guide[] = [
       'Automation funding',
       'Export support'
     ],
-    lastUpdated: '2025-08-28'
+    lastUpdated: '2025-08-28',
+    metrics: [
+      { label: 'Sector', value: 'Mfg', description: 'Manufacturing', color: 'text-blue-600', iconName: 'Factory' },
+      { label: 'Focus', value: 'Auto/Tech', description: 'Industry 4.0', color: 'text-purple-600', iconName: 'Zap' },
+      { label: 'Max', value: '$5M', description: 'Equipment/expansion', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Type', value: 'Multiple', description: 'Fed + provincial', color: 'text-orange-600', iconName: 'Award' }
+    ],
+    expertTip: {
+      title: "Provincial Manufacturing Grants",
+      type: 'tip',
+      content: "Manufacturing grants vary widely by province. <strong>Ontario (SWODF/EODF) and Quebec (IQ) offer largest amounts</strong> for equipment and expansion."
+    }
   },
   {
     id: 'canada-agri-food-funding-guide',
@@ -835,7 +1066,18 @@ export const guidesDatabase: Guide[] = [
       'Farm innovation',
       'Processing modernization'
     ],
-    lastUpdated: '2025-08-25'
+    lastUpdated: '2025-08-25',
+    metrics: [
+      { label: 'Focus', value: 'Agri-Food', description: 'Farm + processing', color: 'text-green-600', iconName: 'Leaf' },
+      { label: 'Range', value: '$10K-5M', description: 'Project scale', color: 'text-blue-600', iconName: 'DollarSign' },
+      { label: 'Type', value: 'Multiple', description: 'Grants/loans/tax', color: 'text-purple-600', iconName: 'Award' },
+      { label: 'Scope', value: 'National', description: 'All provinces', color: 'text-orange-600', iconName: 'MapPin' }
+    ],
+    expertTip: {
+      title: "Ag Programs Are Fragmented",
+      type: 'tip',
+      content: "Agriculture funding comes from <strong>federal + provincial + regional agencies</strong>. Check all three levels simultaneously for maximum coverage."
+    }
   },
 
   // Specialized Loan Programs
@@ -854,7 +1096,18 @@ export const guidesDatabase: Guide[] = [
       'Program terms',
       'Application process'
     ],
-    lastUpdated: '2025-09-20'
+    lastUpdated: '2025-09-20',
+    metrics: [
+      { label: 'Max Loan', value: '$1M', description: 'Per borrower', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Equipment', value: '$350K', description: 'Max for assets', color: 'text-blue-600', iconName: 'Award' },
+      { label: 'Leasehold', value: '$350K', description: 'Improvements', color: 'text-purple-600', iconName: 'Building' },
+      { label: 'Guarantee', value: '85%', description: 'Government backed', color: 'text-orange-600', iconName: 'Shield' }
+    ],
+    expertTip: {
+      title: "CSBFP Doesn't Replace Collateral",
+      type: 'warning',
+      content: "Banks still lend to YOU. The CSBFP guarantee protects <strong>the bank</strong>, not you. If you default, you still owe. But it makes getting approved easier for startups without assets."
+    }
   },
   {
     id: 'apply-csbfp-government-financing',
@@ -871,7 +1124,18 @@ export const guidesDatabase: Guide[] = [
       'Lender selection',
       'Documentation required'
     ],
-    lastUpdated: '2025-09-18'
+    lastUpdated: '2025-09-18',
+    metrics: [
+      { label: 'Max', value: '$1M', description: 'Total financing', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Fee', value: '2%', description: 'Registration fee', color: 'text-blue-600', iconName: 'DollarSign' },
+      { label: 'Term', value: '10-15 yr', description: 'Amortization', color: 'text-purple-600', iconName: 'Clock' },
+      { label: 'Type', value: 'Secured', description: 'Asset-backed', color: 'text-orange-600', iconName: 'Shield' }
+    ],
+    expertTip: {
+      title: "Shop Your Lender",
+      type: 'tip',
+      content: "<strong>All Canadian banks participate in CSBFP</strong>, but approval rates vary. If one bank rejects you, try another. The program is the same, but credit policies differ."
+    }
   }
 ]
 

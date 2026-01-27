@@ -7,13 +7,13 @@ import { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Download, MessageCircle, DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, RefreshCw, Clock, Globe, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, User, Cpu, FileText, BookOpen, AlertTriangle, Factory } from "lucide-react";
+import { Download, MessageCircle, DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, RefreshCw, Clock, Globe, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, User, Cpu, FileText, BookOpen, AlertTriangle, Factory, Building, Lightbulb, Flag, Home, Settings } from "lucide-react";
 import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable";
 import { ExpertTipBox } from "@/components/blog/ExpertTipBox";
 
 // Icon mapping for dynamic rendering from data
 const iconMap: Record<string, any> = {
-  DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, RefreshCw, Clock, Globe, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, User, Cpu, FileText, BookOpen, AlertTriangle, Factory
+  DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, RefreshCw, Clock, Globe, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, User, Cpu, FileText, BookOpen, AlertTriangle, Factory, Building, Lightbulb, Flag, Home, Settings
 };
 
 export async function generateStaticParams() {
