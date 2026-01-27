@@ -165,9 +165,9 @@ export function Header() {
                 AI Grant Finder
               </Link>
 
-              <Link href="/resources" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
+              {/* <Link href="/resources" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
                 Tools
-              </Link>
+              </Link> */}
 
               <Link href="/blog" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
                 Grant News
@@ -339,13 +339,13 @@ export function Header() {
                   AI Grant Finder
                 </Link>
 
-                <Link
+                {/* <Link
                   href="/resources"
                   className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Business Tools
-                </Link>
+                </Link> */}
 
                 <Link
                   href="/blog"
