@@ -917,6 +917,328 @@ export const usStates: StateGrant[] = [
         ],
         expertTip: { title: 'Water Technology', type: 'tip', content: 'Wisconsin is the <strong>Water Technology Hub</strong> of the US. Water tech startups have unique advantages here.' },
         seoKeywords: ['wisconsin small business grants', 'wedc wisconsin grants', 'milwaukee startup funding']
+    },
+    {
+        id: 'maine',
+        name: 'Maine',
+        slug: 'maine',
+        abbreviation: 'ME',
+        region: 'Northeast',
+        totalFunding: '$350M+',
+        description: 'Maine offers funding through MTI for forestry, boat building, and tech innovation, along with diverse small business support programs.',
+        topPrograms: [
+            { name: 'MTI Tech Asset Fund', amount: '$50K', focus: 'R&D' },
+            { name: 'Maine Venture Fund', amount: '$500K', focus: 'Equity' },
+            { name: 'Seed Grant', amount: '$25K', focus: 'Early Stage' }
+        ],
+        keyIndustries: ['Forestry', 'Marine', 'Technology', 'Agriculture'],
+        metrics: [
+            { label: 'MTI', value: '$5M', description: 'Tech fund', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'Marine', value: 'Hub', description: 'Blue economy', color: 'text-blue-600', iconName: 'Anchor' },
+            { label: 'Tax', value: 'Credit', description: 'R&D', color: 'text-purple-600', iconName: 'PieChart' },
+            { label: 'Remote', value: 'Growth', description: 'Talent', color: 'text-orange-600', iconName: 'Users' }
+        ],
+        expertTip: { title: 'MTI Funding', type: 'success', content: '<strong>Maine Technology Institute (MTI)</strong> is the primary funding source. They offer grants, loans, and equity investments.' },
+        seoKeywords: ['maine small business grants', 'mti maine grants', 'maine startup funding']
+    },
+    {
+        id: 'maryland',
+        name: 'Maryland',
+        slug: 'maryland',
+        abbreviation: 'MD',
+        region: 'Northeast',
+        totalFunding: '$2.1B+',
+        description: 'Maryland is a leader in biotech and cybersecurity, offering TEDCO funding and proximity to federal agencies.',
+        topPrograms: [
+            { name: 'TEDCO Builder Fund', amount: '$50K', focus: 'Startups' },
+            { name: 'MII Funding', amount: '$115K', focus: 'University Tech' },
+            { name: 'Cyber Tax Credit', amount: '33%', focus: 'Security' }
+        ],
+        keyIndustries: ['Biotech', 'Cybersecurity', 'Aerospace', 'Manufacturing'],
+        metrics: [
+            { label: 'TEDCO', value: '$200K', description: 'Seed fund', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'Cyber', value: '#1', description: 'In nation', color: 'text-blue-600', iconName: 'Shield' },
+            { label: 'Bio', value: 'Hub', description: 'MedTech', color: 'text-purple-600', iconName: 'Activity' },
+            { label: 'Gov', value: 'Contracts', description: 'Federal', color: 'text-orange-600', iconName: 'Building' }
+        ],
+        expertTip: { title: 'TEDCO is Key', type: 'success', content: '<strong>TEDCO</strong> is the hub for Maryland startups. Their Builder Fund specifically targets disadvantaged founders.' },
+        seoKeywords: ['maryland small business grants', 'tedco grants', 'maryland startup funding']
+    },
+    {
+        id: 'mississippi',
+        name: 'Mississippi',
+        slug: 'mississippi',
+        abbreviation: 'MS',
+        region: 'Southeast',
+        totalFunding: '$480M+',
+        description: 'Mississippi provides incentives for manufacturing and agriculture through MDA and the Mississippi Business Finance Corporation.',
+        topPrograms: [
+            { name: 'MDA Grants', amount: '$100K', focus: 'Development' },
+            { name: 'Job Protection Grant', amount: '$200K', focus: 'Retention' },
+            { name: 'Minority Business', amount: '$25K', focus: 'Diverse Founders' }
+        ],
+        keyIndustries: ['Manufacturing', 'Agriculture', 'Energy', 'Blue Economy'],
+        metrics: [
+            { label: 'MDA', value: '$100K', description: 'Dev grant', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'Cost', value: 'Lowest', description: 'In nation', color: 'text-blue-600', iconName: 'TrendingDown' },
+            { label: 'Ag', value: 'Focus', description: 'Key sector', color: 'text-purple-600', iconName: 'Sprout' },
+            { label: 'River', value: 'Hub', description: 'Logistics', color: 'text-orange-600', iconName: 'Globe' }
+        ],
+        expertTip: { title: 'Low Cost of Living', type: 'tip', content: 'Mississippi has the <strong>lowest cost of doing business</strong> in the US. Great for maximizing runway.' },
+        seoKeywords: ['mississippi small business grants', 'mda grants', 'jackson startup funding']
+    },
+    {
+        id: 'nebraska',
+        name: 'Nebraska',
+        slug: 'nebraska',
+        abbreviation: 'NE',
+        region: 'Midwest',
+        totalFunding: '$550M+',
+        description: 'Nebraska offers strong ag-tech and manufacturing incentives through DED and the Nebraska Innovation Fund.',
+        topPrograms: [
+            { name: 'Innovation Fund', amount: '$100K', focus: 'Prototyping' },
+            { name: 'Customized Training', amount: '$4K/job', focus: 'Workforce' },
+            { name: 'Rural Grant', amount: '$50K', focus: 'Development' }
+        ],
+        keyIndustries: ['AgTech', 'Manufacturing', 'Fintech', 'Biofuels'],
+        metrics: [
+            { label: 'Fund', value: '$100K', description: 'Proto grant', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'Ag', value: '#3', description: 'Producer', color: 'text-blue-600', iconName: 'Sprout' },
+            { label: 'Tech', value: 'Silicon', description: 'Prairie', color: 'text-purple-600', iconName: 'Cpu' },
+            { label: 'Jobs', value: 'High', description: 'Retention', color: 'text-orange-600', iconName: 'Users' }
+        ],
+        expertTip: { title: 'Silicon Prairie', type: 'success', content: 'Lincoln and Omaha are the heart of the <strong>Silicon Prairie</strong>. Tech density is surprisingly high.' },
+        seoKeywords: ['nebraska small business grants', 'ded nebraska grants', 'omaha startup funding']
+    },
+    {
+        id: 'new-hampshire',
+        name: 'New Hampshire',
+        slug: 'new-hampshire',
+        abbreviation: 'NH',
+        region: 'Northeast',
+        totalFunding: '$320M+',
+        description: 'New Hampshire offers a tax-friendly environment with no sales or income tax, supported by BFA loans and training grants.',
+        topPrograms: [
+            { name: 'Job Training Fund', amount: '50%', focus: 'Matching' },
+            { name: 'BFA Loans', amount: '$500K', focus: 'Growth' },
+            { name: 'Co-op Fund', amount: '$100K', focus: 'Development' }
+        ],
+        keyIndustries: ['Manufacturing', 'Technology', 'Tourism', 'Healthcare'],
+        metrics: [
+            { label: 'Tax', value: '0%', description: 'Sales/Income', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'BFA', value: 'Loan', description: 'Guarantee', color: 'text-blue-600', iconName: 'Shield' },
+            { label: 'Tech', value: 'High', description: 'Concentration', color: 'text-purple-600', iconName: 'Cpu' },
+            { label: 'QOL', value: '#1', description: 'Ranked', color: 'text-orange-600', iconName: 'Star' }
+        ],
+        expertTip: { title: 'Tax Advantage', type: 'tip', content: 'New Hampshire has <strong>no sales tax and no personal income tax</strong>. It is the tax haven of New England.' },
+        seoKeywords: ['new hampshire small business grants', 'bfa new hampshire', 'nh business finance authority']
+    },
+    {
+        id: 'new-mexico',
+        name: 'New Mexico',
+        slug: 'new-mexico',
+        abbreviation: 'NM',
+        region: 'Southwest',
+        totalFunding: '$450M+',
+        description: 'New Mexico leverages its national labs for deep tech funding through NMSBA and LEED incentives.',
+        topPrograms: [
+            { name: 'LEDA Grants', amount: '$1M', focus: 'Job Creation' },
+            { name: 'JTIP Training', amount: '50%', focus: 'Wage Reimbursement' },
+            { name: 'Small Business Grant', amount: '$50K', focus: 'General' }
+        ],
+        keyIndustries: ['Aerospace', 'Film', 'Energy', 'Deep Tech'],
+        metrics: [
+            { label: 'LEDA', value: '$1M', description: 'Max project', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'Labs', value: '2', description: 'National Labs', color: 'text-blue-600', iconName: 'Beaker' },
+            { label: 'Film', value: '35%', description: 'Tax credit', color: 'text-purple-600', iconName: 'Video' },
+            { label: 'Space', value: 'Port', description: 'Hub', color: 'text-orange-600', iconName: 'Rocket' }
+        ],
+        expertTip: { title: 'Lab Partnership', type: 'success', content: 'Partner with <strong>Los Alamos or Sandia National Labs</strong>. The NMSBA program pays for their scientists to solve your technical problems.' },
+        seoKeywords: ['new mexico small business grants', 'leda grants nm', 'new mexico startup funding']
+    },
+    {
+        id: 'north-dakota',
+        name: 'North Dakota',
+        slug: 'north-dakota',
+        abbreviation: 'ND',
+        region: 'Midwest',
+        totalFunding: '$380M+',
+        description: 'North Dakota offers robust agriculture, energy, and drone tech incentives through the Commerce Department and BND.',
+        topPrograms: [
+            { name: 'LIFT Fund', amount: '$1M', focus: 'Tech Innovation' },
+            { name: 'APUC Grants', amount: '$50K', focus: 'Ag Products' },
+            { name: 'Flex PACE', amount: '$100K', focus: 'Interest Buydown' }
+        ],
+        keyIndustries: ['UAS/Drones', 'Agriculture', 'Energy', 'Manufacturing'],
+        metrics: [
+            { label: 'LIFT', value: '$1M', description: 'Loan fund', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'Drones', value: '#1', description: 'Test site', color: 'text-blue-600', iconName: 'Plane' },
+            { label: 'Bank', value: 'State', description: 'Owned', color: 'text-purple-600', iconName: 'Building' },
+            { label: 'Oil', value: '#2', description: 'Producer', color: 'text-orange-600', iconName: 'Droplet' }
+        ],
+        expertTip: { title: 'Bank of North Dakota', type: 'tip', content: 'The <strong>Bank of North Dakota</strong> is the only state-owned bank in the US. They offer unique business financing programs not available elsewhere.' },
+        seoKeywords: ['north dakota small business grants', 'lift fund nd', 'north dakota startup funding']
+    },
+    {
+        id: 'oklahoma',
+        name: 'Oklahoma',
+        slug: 'oklahoma',
+        abbreviation: 'OK',
+        region: 'Southwest',
+        totalFunding: '$650M+',
+        description: 'Oklahoma incentivizes aerospace, energy, and biotech through OCAST and the Quality Jobs program.',
+        topPrograms: [
+            { name: 'Quality Jobs', amount: '5%', focus: 'Cash Rebate' },
+            { name: 'OCAST Funding', amount: '$300K', focus: 'R&D' },
+            { name: 'Business Expansion', amount: '$1M', focus: 'Growth' }
+        ],
+        keyIndustries: ['Aerospace', 'Energy', 'Biotech', 'Manufacturing'],
+        metrics: [
+            { label: 'Rebate', value: '5%', description: 'Payroll cash', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'Aero', value: 'MRO', description: 'Capital', color: 'text-blue-600', iconName: 'Plane' },
+            { label: 'Cost', value: 'Low', description: 'Living', color: 'text-purple-600', iconName: 'Home' },
+            { label: 'Tech', value: 'Rising', description: 'Tulsa/OKC', color: 'text-orange-600', iconName: 'TrendingUp' }
+        ],
+        expertTip: { title: 'Tulsa Remote', type: 'success', content: '<strong>Tulsa Remote</strong> pays remote workers $10,000 to move there. Great for founders bootstrapping with a remote job.' },
+        seoKeywords: ['oklahoma small business grants', 'ocast grants', 'oklahoma startup funding']
+    },
+    {
+        id: 'rhode-island',
+        name: 'Rhode Island',
+        slug: 'rhode-island',
+        abbreviation: 'RI',
+        region: 'Northeast',
+        totalFunding: '$250M+',
+        description: 'Rhode Island supports innovation and blue economy projects through Commerce RI and the Innovation Voucher program.',
+        topPrograms: [
+            { name: 'Innovation Voucher', amount: '$50K', focus: 'R&D' },
+            { name: 'Small Biz Grant', amount: '$5K', focus: 'General' },
+            { name: 'Wavemaker Fellowship', amount: 'Loan', focus: 'Talent' }
+        ],
+        keyIndustries: ['Blue Economy', 'Biotech', 'Design', 'Manufacturing'],
+        metrics: [
+            { label: 'Voucher', value: '$50K', description: 'R&D', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'Ocean', value: 'Tech', description: 'Hub', color: 'text-blue-600', iconName: 'Anchor' },
+            { label: 'Design', value: 'RISD', description: 'Talent', color: 'text-purple-600', iconName: 'PenTool' },
+            { label: 'Size', value: 'Small', description: 'Access', color: 'text-orange-600', iconName: 'Map' }
+        ],
+        expertTip: { title: 'Small State Access', type: 'tip', content: 'In Rhode Island, you can <strong>meet the Governor or Commerce Secretary</strong> easily. It is easier to get attention here than anywhere else.' },
+        seoKeywords: ['rhode island small business grants', 'commerce ri grants', 'providence startup funding']
+    },
+    {
+        id: 'south-carolina',
+        name: 'South Carolina',
+        slug: 'south-carolina',
+        abbreviation: 'SC',
+        region: 'Southeast',
+        totalFunding: '$890M+',
+        description: 'South Carolina drives manufacturing and tech growth through the Coordinating Council and SCRA programs.',
+        topPrograms: [
+            { name: 'SCRA Grants', amount: '$50K', focus: 'Tech Startups' },
+            { name: 'Job Tax Credit', amount: '$1.5K', focus: 'Hiring' },
+            { name: 'Rural Infrastructure', amount: '$500K', focus: 'Development' }
+        ],
+        keyIndustries: ['Manufacturing', 'Automotive', 'Aerospace', 'Logistics'],
+        metrics: [
+            { label: 'SCRA', value: '$50K', description: 'Tech grant', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'Auto', value: 'BMW', description: 'Manufacturing', color: 'text-blue-600', iconName: 'Car' },
+            { label: 'Port', value: 'Top 10', description: 'Charleston', color: 'text-purple-600', iconName: 'Anchor' },
+            { label: 'Growth', value: 'Fast', description: 'Economy', color: 'text-orange-600', iconName: 'TrendingUp' }
+        ],
+        expertTip: { title: 'SCRA Support', type: 'success', content: '<strong>SCRA (South Carolina Research Authority)</strong> is a fantastic partner. They offer grants, labs, and mentoring for tech companies.' },
+        seoKeywords: ['south carolina small business grants', 'scra grants', 'charleston startup funding']
+    },
+    {
+        id: 'south-dakota',
+        name: 'South Dakota',
+        slug: 'south-dakota',
+        abbreviation: 'SD',
+        region: 'Midwest',
+        totalFunding: '$220M+',
+        description: 'South Dakota offers a low-tax environment and business incentives through GOED and the REDI Fund.',
+        topPrograms: [
+            { name: 'REDI Fund', amount: 'Loan', focus: 'Job Creation' },
+            { name: 'Workforce Development', amount: '$1K/employee', focus: 'Training' },
+            { name: 'Proof of Concept', amount: '$25K', focus: 'Tech' }
+        ],
+        keyIndustries: ['Agriculture', 'Financial Services', 'Manufacturing', 'Bioscience'],
+        metrics: [
+            { label: 'Tax', value: '0%', description: 'Corp/Income', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'Finance', value: 'Hub', description: 'Banking', color: 'text-blue-600', iconName: 'Briefcase' },
+            { label: 'Cost', value: 'Low', description: 'Operations', color: 'text-purple-600', iconName: 'TrendingDown' },
+            { label: 'Regs', value: 'Light', description: 'Business', color: 'text-orange-600', iconName: 'CheckCircle' }
+        ],
+        expertTip: { title: 'Zero Tax', type: 'tip', content: 'South Dakota has <strong>no corporate or personal income tax</strong>. It is one of the most tax-friendly states for incorporation.' },
+        seoKeywords: ['south dakota small business grants', 'goed south dakota', 'sioux falls startup funding']
+    },
+    {
+        id: 'vermont',
+        name: 'Vermont',
+        slug: 'vermont',
+        abbreviation: 'VT',
+        region: 'Northeast',
+        totalFunding: '$280M+',
+        description: 'Vermont incentives remote work, green energy, and small business through ACCD and VEDA programs.',
+        topPrograms: [
+            { name: 'VEDA Financing', amount: '$500K', focus: 'Growth' },
+            { name: 'Windham County', amount: '$50K', focus: 'Regional' },
+            { name: 'Working Lands', amount: '$20K', focus: 'Agriculture' }
+        ],
+        keyIndustries: ['Agriculture', 'Green Energy', 'Tourism', 'Manufacturing'],
+        metrics: [
+            { label: 'VEDA', value: '$500K', description: 'Loans', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'Green', value: 'Focus', description: 'Economy', color: 'text-blue-600', iconName: 'Leaf' },
+            { label: 'Food', value: 'Hub', description: 'Farm-to-table', color: 'text-purple-600', iconName: 'Sprout' },
+            { label: 'Brand', value: 'Strong', description: 'Made in VT', color: 'text-orange-600', iconName: 'Star' }
+        ],
+        expertTip: { title: 'Working Lands', type: 'tip', content: 'If you are in food or forestry, the <strong>Working Lands Enterprise Fund</strong> is a dedicated grant source just for you.' },
+        seoKeywords: ['vermont small business grants', 'veda loans', 'burlington startup funding']
+    },
+    {
+        id: 'west-virginia',
+        name: 'West Virginia',
+        slug: 'west-virginia',
+        abbreviation: 'WV',
+        region: 'Southeast',
+        totalFunding: '$350M+',
+        description: 'West Virginia aims to diversify its economy with tech and remote work incentives through Ascend WV and WVEDA.',
+        topPrograms: [
+            { name: 'Ascend WV', amount: '$12K', focus: 'Remote Work' },
+            { name: 'CARES Grant', amount: '$5K', focus: 'Small Business' },
+            { name: 'Tourism Matching', amount: '$20K', focus: 'Marketing' }
+        ],
+        keyIndustries: ['Energy', 'Tourism', 'Manufacturing', 'Technology'],
+        metrics: [
+            { label: 'Ascend', value: '$12K', description: 'Relocation', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'Nature', value: 'Asset', description: 'Tourism', color: 'text-blue-600', iconName: 'Mountain' },
+            { label: 'Energy', value: 'Shift', description: 'Transition', color: 'text-purple-600', iconName: 'Zap' },
+            { label: 'Cost', value: 'Low', description: 'Living', color: 'text-orange-600', iconName: 'Home' }
+        ],
+        expertTip: { title: 'Ascend WV', type: 'success', content: '<strong>Ascend WV</strong> pays remote workers $12,000 to move there. A great way to bootstrap a startup with low overhead.' },
+        seoKeywords: ['west virginia small business grants', 'wveda grants', 'charleston wv startup funding']
+    },
+    {
+        id: 'wyoming',
+        name: 'Wyoming',
+        slug: 'wyoming',
+        abbreviation: 'WY',
+        region: 'West',
+        totalFunding: '$310M+',
+        description: 'Wyoming provides a crypto-friendly, low-tax environment with incentives through the Wyoming Business Council.',
+        topPrograms: [
+            { name: 'Business Ready', amount: '$500K', focus: 'Infrastructure' },
+            { name: 'Kickstart Wyoming', amount: '$50K', focus: 'Startups' },
+            { name: 'SBIR Matching', amount: '$200K', focus: 'R&D' }
+        ],
+        keyIndustries: ['Blockchain', 'Energy', 'Tourism', 'Agriculture'],
+        metrics: [
+            { label: 'Kickstart', value: '$50K', description: 'Seed grant', color: 'text-green-600', iconName: 'DollarSign' },
+            { label: 'Crypto', value: 'Friendly', description: 'Laws', color: 'text-blue-600', iconName: 'Lock' },
+            { label: 'Tax', value: 'None', description: 'Corp/Income', color: 'text-purple-600', iconName: 'Award' },
+            { label: 'Match', value: '$200K', description: 'SBIR', color: 'text-orange-600', iconName: 'Zap' }
+        ],
+        expertTip: { title: 'Blockchain Haven', type: 'success', content: 'Wyoming has the most <strong>blockchain-friendly laws</strong> in the US. Great for DAO and crypto entity formation.' },
+        seoKeywords: ['wyoming small business grants', 'wyoming business council', 'cheyenne startup funding']
     }
 ];
 
