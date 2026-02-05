@@ -3,6 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import { blogPosts } from '@/lib/data/blogPosts'
 import { guidesDatabase as guides } from '@/lib/data/guides'
+import { getAllStates } from '@/lib/data/states'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.fsidigital.ca'
@@ -18,7 +19,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/grant-finder',
     '/resources',
     '/editorial-policy',
-    '/about/author'
+    '/about/author',
+    '/usa',
+    '/canada'
   ].map(route => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
@@ -44,7 +47,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  console.log(`\n✅ Sitemap generated with ${coreRoutes.length + blogRoutes.length + guideRoutes.length} URLs (Full Site)\n`)
+  // US State Pages (Programmatic SEO)
+  const stateRoutes = getAllStates().map(state => ({
+    url: `${baseUrl}/usa/${state.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
 
-  return [...coreRoutes, ...blogRoutes, ...guideRoutes]
+  const totalUrls = coreRoutes.length + blogRoutes.length + guideRoutes.length + stateRoutes.length
+  console.log(`\n✅ Sitemap generated with ${totalUrls} URLs (Full Site + ${stateRoutes.length} State Pages)\n`)
+
+  return [...coreRoutes, ...blogRoutes, ...guideRoutes, ...stateRoutes]
 }
+
