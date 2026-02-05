@@ -10,8 +10,9 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable';
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox';
 import { GlobalGrantGuide } from '@/components/blog/GlobalGrantGuide';
-import { getStateDetailBySlug, getAllStateDetails } from '@/lib/data/stateDetails';
+import { getStateDetailBySlug, getAllStateDetails, getQueryBasedSections, getQueryExpanders, getRelatedGuides } from '@/lib/data/stateDetails';
 import {
+
     ArrowLeft, DollarSign, Users, Briefcase, Target, Building, Zap, TrendingUp,
     Rocket, Mountain, Globe, Leaf, Cpu, Shield, Clock, Award, CheckCircle,
     AlertTriangle, FileText, ExternalLink, ChevronRight, List, HelpCircle,
@@ -138,7 +139,10 @@ export default function StatePage({ params }: { params: { state: string } }) {
                             <li><a href="#success" className="text-green-600 hover:underline">6. Success Stories</a></li>
                             <li><a href="#tips" className="text-green-600 hover:underline">7. Expert Tips</a></li>
                             <li><a href="#faqs" className="text-green-600 hover:underline">8. FAQs</a></li>
-                            <li><a href="#resources" className="text-green-600 hover:underline">9. Resources</a></li>
+                            <li><a href="#common-questions" className="text-green-600 hover:underline">9. Common Questions</a></li>
+                            <li><a href="#resources" className="text-green-600 hover:underline">10. Resources</a></li>
+                            <li><a href="#related-programs" className="text-green-600 hover:underline">11. Related Programs</a></li>
+                            <li><a href="#related-guides" className="text-green-600 hover:underline">12. Related Guides</a></li>
                         </ul>
                     </nav>
 
@@ -421,9 +425,33 @@ export default function StatePage({ params }: { params: { state: string } }) {
                         </div>
                     </section>
 
+                    {/* Common Questions Section - Query-Based H2s for SEO */}
+                    <section id="common-questions" className="mb-12">
+                        <h2 className="text-3xl font-bold mb-6 text-gray-900">
+                            Common Questions About {state.name} Business Grants
+                        </h2>
+                        <p className="text-gray-600 mb-8">
+                            Get detailed answers to the most frequently searched questions about business funding in {state.name}.
+                        </p>
+
+                        <div className="space-y-8">
+                            {getQueryBasedSections(state).map((section, idx) => (
+                                <article key={idx} className="border-b border-gray-200 pb-6 last:border-0">
+                                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                                        {section.question}
+                                    </h3>
+                                    <p className="text-gray-700 leading-relaxed">
+                                        {section.answer}
+                                    </p>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
+
                     {/* Resources Section */}
                     <section id="resources" className="mb-12">
                         <h2 className="text-3xl font-bold mb-6 text-gray-900">
+
                             Official Resources
                         </h2>
 
@@ -447,8 +475,73 @@ export default function StatePage({ params }: { params: { state: string } }) {
                         </div>
                     </section>
 
+                    {/* Related Programs Section - Query Expanders for Secondary Keywords */}
+                    <section id="related-programs" className="mb-12">
+                        <h2 className="text-3xl font-bold mb-6 text-gray-900">
+                            Related Grant Programs in {state.name}
+                        </h2>
+                        <p className="text-gray-600 mb-6">
+                            Explore additional funding opportunities and related searches for {state.name} businesses.
+                        </p>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                            {getQueryExpanders(state).map((phrase, idx) => (
+                                <div key={idx} className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-green-50 transition-colors">
+                                    <ChevronRight className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
+                                    <span className="text-gray-700 text-sm">{phrase}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Related Guides Section - Internal Linking for SEO Authority */}
+                    <section id="related-guides" className="mb-12">
+                        <h2 className="text-3xl font-bold mb-6 text-gray-900">
+                            Related Grant Guides
+                        </h2>
+                        <p className="text-gray-600 mb-6">
+                            Explore our comprehensive guides on grant applications and funding strategies.
+                        </p>
+
+                        <div className="grid md:grid-cols-2 gap-4">
+                            {getRelatedGuides(state).map((guideSlug, idx) => (
+                                <Link
+                                    key={idx}
+                                    href={`/guides/${guideSlug}`}
+                                    className="flex items-center p-4 border rounded-lg hover:border-green-500 hover:shadow-md transition-all group"
+                                >
+                                    <BookOpen className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+                                    <span className="text-gray-700 group-hover:text-green-600 capitalize">
+                                        {guideSlug.replace(/-/g, ' ').replace('apply ', 'How to Apply for ').replace('guide', 'Guide')}
+                                    </span>
+                                    <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+                                </Link>
+                            ))}
+                        </div>
+
+                        {/* Internal Links to Hub Pages */}
+                        <div className="mt-8 p-6 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl">
+                            <h3 className="font-bold text-lg mb-4">Explore More Funding Resources</h3>
+                            <div className="flex flex-wrap gap-4">
+                                <Link href="/usa" className="inline-flex items-center text-green-600 hover:underline">
+                                    <MapPin className="w-4 h-4 mr-1" /> All USA State Grants
+                                </Link>
+                                <Link href="/blog/usa-federal-grants" className="inline-flex items-center text-green-600 hover:underline">
+                                    <Building className="w-4 h-4 mr-1" /> Federal Grants Guide
+                                </Link>
+                                <Link href="/blog/state-province-grants" className="inline-flex items-center text-green-600 hover:underline">
+                                    <Globe className="w-4 h-4 mr-1" /> State vs Province Comparison
+                                </Link>
+                                <Link href="/guides" className="inline-flex items-center text-green-600 hover:underline">
+                                    <BookOpen className="w-4 h-4 mr-1" /> All Guides
+                                </Link>
+                            </div>
+                        </div>
+                    </section>
+
                     {/* Global Grant Guide (Universal Content) */}
                     <GlobalGrantGuide />
+
 
                     {/* CTA Section */}
                     <section className="bg-gradient-to-r from-green-600 to-blue-600 rounded-xl p-8 text-white text-center">

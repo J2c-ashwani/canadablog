@@ -3,9 +3,11 @@ import { Footer } from "@/components/Footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, DollarSign, Building2, Users, Lightbulb, TrendingUp, Landmark } from "lucide-react"
+import { ArrowRight, DollarSign, Building2, Users, Lightbulb, TrendingUp, Landmark, MapPin } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import { getAllStateDetails } from "@/lib/data/stateDetails"
+
 
 export const metadata: Metadata = {
   title: "USA Government Grants | Federal & State Business Funding 2025",
@@ -256,6 +258,47 @@ export default function USAGrantsPage() {
                 </Button>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* All 50 States Section - Internal Linking for SEO */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-green-100 text-green-800">Complete Coverage</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Business Grants by State
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Explore comprehensive funding guides for all 50 US states. Find state-specific grants, tax credits, and business incentives in your area.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+            {getAllStateDetails().map((state) => (
+              <Link
+                key={state.slug}
+                href={`/usa/${state.slug}`}
+                className="flex items-center p-3 bg-white rounded-lg border hover:border-green-500 hover:shadow-md transition-all group"
+              >
+                <MapPin className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
+                <span className="text-sm text-gray-700 group-hover:text-green-600 truncate">
+                  {state.abbreviation} - {state.name}
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-gray-600 mb-4">
+              Can&apos;t find your state? Our grant database covers all 50 states with over 5,000+ funding opportunities.
+            </p>
+            <Button asChild>
+              <Link href="/grant-finder">
+                Use Our Grant Finder Tool <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

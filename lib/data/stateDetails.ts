@@ -39,7 +39,7 @@ export interface StateDetailedGrant {
         introduction: string;
         economicLandscape: string;
         keyOpportunities: string;
-        futureTrends?: { trend: string; description: string }[]; // Updated to array of objects
+        futureTrends?: string | { trend: string; description: string }[]; // Allow both formats
     };
 
     // Top Programs Section (~800 words - 8+ programs)
@@ -119,6 +119,18 @@ export interface StateDetailedGrant {
     // SEO
     seoKeywords: string[];
     metaDescription: string;
+
+    // NEW: Query-Based SEO Sections (for intent-based H2s)
+    queryBasedSections?: {
+        question: string;  // H2 heading as a search query
+        answer: string;    // Detailed answer (100-200 words)
+    }[];
+
+    // NEW: Query Expanders (secondary keyword triggers)
+    queryExpanders?: string[];
+
+    // NEW: Related Guides for internal linking
+    relatedGuides?: string[];  // Guide slugs to link to
 }
 
 export const stateDetails: StateDetailedGrant[] = [
@@ -18900,5 +18912,129 @@ export function getStateDetailBySlug(slug: string): StateDetailedGrant | undefin
 
 export function getAllStateDetails(): StateDetailedGrant[] {
     return stateDetails;
+}
+
+// SEO ENHANCEMENT: Dynamic Query-Based Content Generation
+// These functions generate intent-based H2s and query expanders for all 50 states
+
+/**
+ * Generates query-based SEO sections for a state
+ * These become H2 headings that match search intent
+ */
+export function getQueryBasedSections(state: StateDetailedGrant): { question: string; answer: string }[] {
+    const name = state.name;
+    const funding = state.heroStats.totalFunding;
+    const programCount = state.heroStats.programCount;
+    const successRate = state.heroStats.successRate;
+    const processingTime = state.heroStats.avgProcessingTime;
+
+    // Extract top industries from industryFocus
+    const topIndustries = state.industryFocus.primary.slice(0, 3).map(i => i.name);
+    const industryList = topIndustries.join(', ');
+
+    return [
+        {
+            question: `Who is eligible for business grants in ${name}?`,
+            answer: `${name} business grants are available to for-profit businesses that are registered and operating within the state. Most programs require businesses to be incorporated in ${name}, employ ${name} residents, and be in good standing with state tax authorities. Specific eligibility varies by program: some target startups under 5 years old, while others focus on established SMBs with $1M+ revenue. Key eligibility factors include: employee count (many require 500 or fewer employees), industry sector (${industryList} are priority sectors), and project type (R&D, expansion, job creation). Check each program's specific requirements carefully—some have citizenship requirements while others are open to all legal residents.`
+        },
+        {
+            question: `How much grant funding can businesses get in ${name}?`,
+            answer: `${name} offers ${funding} in total business funding across ${programCount} programs. Individual grant amounts vary significantly: micro-grants range from $5,000-$25,000 for early-stage businesses, standard programs offer $50,000-$500,000 for growth initiatives, and large enterprise grants can exceed $1 million for major job creation or facility expansion. Tax credit programs like the ${name} job creation incentives can be worth millions over several years. The key is to apply to multiple programs simultaneously—you can legally "stack" state grants with federal programs like SBIR/STTR for maximum funding.`
+        },
+        {
+            question: `Are grants taxable in ${name}?`,
+            answer: `Generally, business grants in ${name} are considered taxable income at the federal level by the IRS. However, ${name} state tax treatment varies by program type. Grant funds used for specific purposes (equipment, R&D, payroll) may be deductible as business expenses, offsetting the tax impact. Tax credits are different—they directly reduce your tax liability dollar-for-dollar, making them more valuable than equivalent grant amounts. Consult a CPA familiar with ${name} business incentives before accepting large grants to optimize your tax strategy. The ${name} Department of Revenue can provide specific guidance on state tax implications.`
+        },
+        {
+            question: `Grants for women entrepreneurs in ${name}`,
+            answer: `${name} offers multiple funding pathways specifically for women-owned businesses. Federal programs like the SBA's Women-Owned Small Business (WOSB) Federal Contracting Program provide access to set-aside contracts. Many ${name} state programs provide bonus scoring or dedicated tracks for women-owned businesses. Organizations like Women's Business Centers and SCORE provide free counseling to women entrepreneurs. To maximize opportunities: get your woman-owned business certification (WBENC or SBA equivalent), join ${name} women's business associations, and apply to both general programs (where you may receive preference) and women-specific grants. Average funding ranges from $5,000 to $250,000 depending on the program.`
+        },
+        {
+            question: `Minority business grants in ${name}`,
+            answer: `${name} minority-owned businesses can access dedicated funding through multiple channels. The SBA's 8(a) Business Development Program provides 9 years of sole-source federal contracting access. State-level minority business enterprise (MBE) certification unlocks set-aside procurement opportunities. Many ${name} programs offer enhanced scoring or dedicated funding pools for minority entrepreneurs. Key steps: obtain official MBE certification through ${name}'s certification agency, connect with local MBDA Business Centers for free advisory services, and explore both general programs (with diversity preferences) and minority-specific grants. Funding typically ranges from $10,000 to $500,000 based on program and business size.`
+        },
+        {
+            question: `Startup vs small business grants in ${name} - what's the difference?`,
+            answer: `In ${name}, startup grants and small business grants serve different purposes and have distinct requirements. Startup grants (typically for businesses under 3 years old) focus on proof-of-concept, MVP development, and initial market traction—amounts range from $10,000-$150,000 with less emphasis on revenue history. Small business grants target established companies (3+ years) with proven revenue, emphasizing expansion, job creation, and capital investment—amounts range from $50,000-$500,000 but require demonstrated financial stability. Startups should target innovation-focused programs like SBIR Phase I, while established SMBs benefit more from state economic development grants tied to specific outcomes like hiring or equipment purchases.`
+        },
+        {
+            question: `How long does grant approval take in ${name}?`,
+            answer: `${name} grant processing times vary by program complexity: micro-grants and simplified programs typically take 2-4 weeks from submission to decision. Standard state grants require ${processingTime} including application review, due diligence, and award negotiation. Large enterprise incentives can take 6-12 months due to legislative approvals and complex economic impact analysis. Pro tips to speed up approval: submit complete applications (incomplete submissions cause significant delays), apply early in funding cycles (programs often have rolling deadlines with faster processing for early applicants), and establish relationships with program administrators before applying. Current average success rate in ${name} is ${successRate}.`
+        },
+        {
+            question: `Best grants for ${topIndustries[0] || 'technology'} businesses in ${name}`,
+            answer: `${topIndustries[0] || 'Technology'} is a priority sector in ${name}, with dedicated funding programs and enhanced incentives. Key opportunities include state innovation grants specifically for ${topIndustries[0]?.toLowerCase() || 'tech'} companies, R&D tax credits for qualified research activities, and workforce training subsidies for technical hiring. Federal programs like SBIR/STTR provide non-dilutive funding for technology R&D. ${name} also offers industry-specific incentives including equipment tax exemptions as major programs offer ${state.industryFocus.primary[0]?.funding || 'significant funding'} in this sector. Connect with ${name}'s economic development office for sector-specific guidance.`
+        },
+        {
+            question: `Free money for small businesses in ${name} - fact or fiction?`,
+            answer: `Yes, "free money" in the form of grants does exist in ${name}, but it comes with important caveats. Grants from programs in ${name} are non-repayable and don't require equity—that's truly free capital. However: grants are highly competitive (${successRate} success rates are typical), they require significant application effort, most have specific use requirements (you can't just use funds for anything), and reporting/compliance is mandatory. The ${funding} available across ${programCount} programs represents real opportunity, but it's not "easy money." Treat grant applications like fundraising pitches: professional proposals with clear ROI projections win. Avoid grant scams that charge upfront fees—legitimate programs never charge to apply.`
+        },
+        {
+            question: `Government grants vs SBA loans in ${name}`,
+            answer: `${name} entrepreneurs should understand the trade-offs: Government grants are non-repayable but highly competitive (${successRate} approval), limited to specific uses, and require significant application time. SBA loans (7(a), 504, microloans) have higher approval rates (50-70% for qualified applicants), offer flexible use of funds, and provide larger amounts (up to $5M), but require repayment with interest. Best strategy: apply for grants first for funding without debt, use SBA loans for remaining capital needs. Many ${name} businesses successfully combine both—using grant funds for innovation/R&D and loans for working capital and equipment. The ${name} Small Business Development Center provides free guidance on both options.`
+        },
+        {
+            question: `How to apply for business grants in ${name} - step by step`,
+            answer: `${name} grant application success follows a proven process: 1) Research & Match (2-4 weeks): Search ${name}'s economic development website and Grants.gov for relevant programs. 2) Prepare Foundation (1-2 weeks): Gather business registration documents, tax returns, financial statements, and SAM.gov registration. 3) Write Proposal (2-4 weeks): Follow the specific format required—most want executive summary, project description, timeline, budget, and impact metrics. 4) Submit & Respond (varies): Submit before deadlines, respond promptly to information requests. 5) Award & Comply: If awarded, follow all reporting requirements carefully. Current average processing time in ${name} is ${processingTime}. Success rate improves dramatically with complete, professional applications.`
+        },
+        {
+            question: `${name} small business grant deadlines 2026`,
+            answer: `${name} offers grants with various deadline structures: Rolling admission programs accept applications year-round (apply early—funds deplete over time). Quarterly deadline programs have cycles in March, June, September, December. Annual competitions typically have single deadlines in Q1 or Q4. Federal pass-through programs follow federal fiscal year timing (October-September). Key dates to monitor: check the ${name} Economic Development Agency website monthly for new announcements. Set up Grants.gov email alerts for your industry. Join ${name} business associations for early deadline notifications. Pro tip: start applications 6-8 weeks before deadlines—rushing leads to weak proposals and lower success rates.`
+        }
+    ];
+}
+
+/**
+ * Generates query expander phrases for secondary keyword targeting
+ * These trigger searches you didn't directly target
+ */
+export function getQueryExpanders(state: StateDetailedGrant): string[] {
+    const name = state.name;
+    const abbreviation = state.abbreviation;
+
+    return [
+        `Federal grants for ${name} businesses`,
+        `City-level business grants in ${name}`,
+        `Non-repayable grants in ${name}`,
+        `Emergency funding programs in ${name}`,
+        `SBA loans vs grants in ${name}`,
+        `Minority-owned business funding ${name}`,
+        `Women entrepreneur grants ${abbreviation}`,
+        `Tech startup grants ${name} 2026`,
+        `Small business grants near me ${name}`,
+        `Free government money ${name} small business`,
+        `${name} business incentives and tax credits`,
+        `How to get a business grant in ${name}`
+    ];
+}
+
+/**
+ * Returns relevant guide slugs for internal linking based on state's industries
+ */
+export function getRelatedGuides(state: StateDetailedGrant): string[] {
+    const baseGuides = [
+        'apply-small-business-grants',
+        'federal-grants-application-tips'
+    ];
+
+    const industryGuides: Record<string, string[]> = {
+        'Technology': ['sbir-research-grants-guide', 'apply-sbir-grants'],
+        'Clean Energy': ['apply-doe-clean-energy-grants', 'canada-cleantech-funding-guide'],
+        'Manufacturing': ['apply-small-business-grants'],
+        'Agriculture': ['apply-agriculture-agri-food-canada'],
+        'Research': ['nserc-research-grants-guide', 'sbir-research-grants-guide'],
+        'Women-Owned': ['apply-women-entrepreneurship-strategy', 'bdc-women-entrepreneurs-financing-guide'],
+    };
+
+    const relevantGuides = new Set(baseGuides);
+
+    for (const industry of state.industryFocus.primary) {
+        const guides = industryGuides[industry.name];
+        if (guides) {
+            guides.forEach(g => relevantGuides.add(g));
+        }
+    }
+
+    return Array.from(relevantGuides).slice(0, 5);
 }
 
