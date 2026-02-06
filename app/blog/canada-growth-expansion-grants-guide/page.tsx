@@ -3,37 +3,49 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, TrendingUp, Building, Users, Zap, Globe, Factory, Award, HelpCircle, ExternalLink, ArrowRight, MousePointerClick } from "lucide-react"
+import { CheckCircle, DollarSign, Target, TrendingUp, Building, Globe, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Factory, Scale, Briefcase } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Growth & Expansion Grants 2026 | $2.8B+ Scale-Up Funding Across 42+ Programs",
-  description: "Complete guide to Canadian business expansion grants. Access all 42+ growth programs including Strategic Innovation Fund, provincial expansion funds, export development grants, and scale-up incentives.",
-  keywords: "Canada business expansion grants, scale-up funding Canada, business growth grants, Strategic Innovation Fund, market expansion funding, facility expansion grants, growth capital programs",
+  title: "Canada Business Expansion Grants 2026 | 0% Interest Loans & Funding",
+  description: "Complete 2026 guide to business scaling funding. Learn about the Business Scale-up and Productivity (BSP) program (0% interest loans), Regional Development Agencies, and the Canada Growth Fund.",
+  keywords: "Canada business expansion grants, Business Scale-up and Productivity, REGI program, FedDev Ontario funding, PrairiesCan grants, 0% interest business loans",
 }
 
 export default function CanadaGrowthExpansionGrantsGuide() {
   const faqData = [
     {
-      question: "What can expansion grants be used for?",
-      answer: "They are typically restricted to 'capital expenditures' (CapEx) like buying new machinery, expanding a facility, or implementing new software systems. They almost never cover general operating costs, rent, or existing staff salaries."
+      question: "Is the Business Scale-up (BSP) program a grant or loan?",
+      answer: "It is an interest-free, repayable contribution (loan). You pay back 100% of the principal, but with 0% interest and no collateral. This is significantly cheaper than bank debt."
     },
     {
-      question: "Do I need to be profitable?",
-      answer: "For growth funding, yes, usually. Unlike startup grants, expansion programs (especially loans/financing) want to see a track record of revenue and often profitability to ensure you can manage the growth and repay any repayable portions."
+      question: "Do I need to be profitable to apply for expansion funding?",
+      answer: "Generally, yes OR have a clear path to profitability. RDAs (like FedDev or PrairiesCan) look for 'high growth' potential (20%+ year-over-year) and usually require 2-3 years of financial statements."
     },
     {
-      question: "Are these grants taxable?",
-      answer: "Yes. Government grants are considered taxable income. However, if you use the grant to buy equipment, you can't depreciate (CCA) the portion of the cost covered by the grant, which effectively neutralizes the tax."
+      question: "What is the minimum revenue required?",
+      answer: "While not explicitly stated for all regions, most successful BSP applicants have at least $500,000 in annual revenue. Some streams require $1M+. It is NOT for pre-revenue startups."
     },
     {
-      question: "Can I use grants to buy a building?",
-      answer: "Direct grants for buying real estate are very rare. However, BDC provides commercial real estate financing, and sometimes regional development agencies can support facility expansion/renovation costs if it leads to job creation."
+      question: "Can I use expansion funds to buy a building?",
+      answer: "No. Federal expansion funds (REGI/BSP) typically exclude land and building purchases. They fund equipment, technology adoption, and market expansion costs."
     },
     {
-      question: "What is the stacking limit?",
-      answer: "Government rules usually limit total government assistance (federal + provincial + municipal) to 75% or 90% of the project cost. You must almost always provide the remaining 10-25% from your own equity or private financing."
+      question: "What is the Canada Growth Fund?",
+      answer: "The CGF is a $15 Billion arm's length public investment vehicle. It targets massive scale-ups (deal sizes >$20M) in Clean Tech and low-carbon supply chains, often using 'Contracts for Difference'."
+    },
+    {
+      question: "How long is the repayment period?",
+      answer: "Typically, you get a 1-2 year grace period (no payments) during the project, followed by a 5-year repayment schedule. Total term is often 7+ years."
+    },
+    {
+      question: "Does EDC offer grants for expansion?",
+      answer: "No, EDC offers Loan Guarantees. They guarantee 80% of a loan from your bank, which encourages your bank to lend you more money at better rates."
+    },
+    {
+      question: "Are there specific grants for manufacturing expansion?",
+      answer: "Yes. The 'Advanced Manufacturing and Innovation Competitiveness' (AMIC) stream in Ontario and similar tech-manufacturing streams in other provinces are very active."
     }
   ];
 
@@ -49,6 +61,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
       }
     }))
   };
+
   return (
     <>
       <Header />
@@ -58,651 +71,333 @@ export default function CanadaGrowthExpansionGrantsGuide() {
       />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-green-600 to-emerald-700 text-white py-20">
+        <section className="bg-gradient-to-br from-emerald-900 to-teal-900 text-white py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-6 bg-white/20 text-white border-white/30">
-                📈 Canadian Growth & Expansion Funding
+              <Badge className="mb-6 bg-emerald-500/20 text-emerald-100 border-emerald-400/30 px-4 py-1.5 text-sm uppercase tracking-wide">
+                📈 Scaling Up in 2026
               </Badge>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Canada Growth & Expansion Grants 2026
+              <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+                Canada Expansion Funding: <span className="text-emerald-400">The 0% Interest Ecosystem</span>
               </h1>
-              <p className="text-xl text-green-100 mb-8">
-                Access $2.8B+ in Canadian scale-up funding across 42+ specialized programs. From Strategic Innovation Fund
-                to provincial expansion grants - complete guide to scaling your established business nationwide.
+              <p className="text-xl text-emerald-100 mb-10 leading-relaxed max-w-3xl mx-auto">
+                Once you hit $500k in revenue, the game changes. You stop asking for small grants and start leveraging <strong>Regional Development Agencies (RDAs)</strong> for multi-million dollar interest-free capital.
               </p>
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
-                <Link href="/contact?service=growth-expansion-grants-expert-help">
-                  Get Expert Help with Growth Grants
-                </Link>
-              </Button>
-              <p className="text-green-200 text-sm mt-4">
-                Free consultation • 91% growth funding success rate • Average funding: $127K
-              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-white hover:bg-gray-100 text-emerald-900 font-bold text-lg px-10 py-6 shadow-xl" asChild>
+                  <Link href="#rda-map">
+                    Find Your RDA
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-2 border-emerald-400/50 text-white hover:bg-emerald-900/50 font-semibold text-lg px-10 py-6" asChild>
+                  <Link href="#bsp-program">
+                    BSP Program Details
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Key Statistics */}
-        <section className="py-16 bg-white">
+        {/* The "Not Free Money" Alert */}
+        <section className="py-12 bg-white -mt-8 relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">$2.8B+</div>
-                  <div className="text-gray-600">Growth Funding Available</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-emerald-600 mb-2">42+</div>
-                  <div className="text-gray-600">Active Expansion Programs</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">91%</div>
-                  <div className="text-gray-600">Expert Success Rate</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">$127K</div>
-                  <div className="text-gray-600">Average Growth Funding</div>
+            <div className="max-w-5xl mx-auto">
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg shadow-sm">
+                <div className="flex items-start">
+                  <Lightbulb className="w-8 h-8 text-blue-600 mr-4 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-xl font-bold text-blue-900 mb-2">Shift Your Mindset: Repayable Contributions</h3>
+                    <p className="text-blue-800 mb-4">
+                      At the expansion stage, the government rarely gives "Free Grants". Instead, they offer <strong>"Repayable Contributions"</strong>.
+                    </p>
+                    <p className="text-blue-800">
+                      <strong>Why this is effectively free money:</strong> In an era of 7% interest rates, a 0% loan for 7 years is a massive subsidy. Inflation eats the principal, saving you 30-40% in real dollar value.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Major Federal Growth Programs */}
-        <section className="py-20 bg-gray-50">
+        {/* Section 1: The Regional Development Agencies (RDAs) */}
+        <section id="rda-map" className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-4">What Federal Growth Programs Support Expansion?</h2>
-              <p className="text-center text-gray-600 mb-12">
-                Large-scale federal programs designed to support significant business expansion and market growth.
-              </p>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Who holds the Chequebook?</h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  Canada delivers expansion funding regionally. You do not apply to "Ottawa"; you apply to the agency covering your postal code.
+                </p>
+              </div>
 
-              <div className="grid md:grid-cols-2 gap-8 mb-16">
-                {/* Strategic Innovation Fund */}
-                <Card className="border-2 border-green-200">
-                  <CardHeader>
-                    <CardTitle className="text-green-700">Strategic Innovation Fund (SIF)</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $50M</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <TrendingUp className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Large Scale</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Major funding for transformative business expansion projects and technology advancement initiatives.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Large-scale expansion projects</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Technology commercialization</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Significant job creation requirements</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Industrial and technology sectors focus</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Canada Growth Fund */}
-                <Card className="border-2 border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-700">Canada Growth Fund (CGF)</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Flexible Financing</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Zap className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Clean Tech</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Innovative financing for businesses deploying technologies that reduce carbon emissions and grow the economy.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Clean technology commercialization</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Concessional financing instruments</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Canadian presence required</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Intellectual property ownership</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Regional Development Agencies */}
-                <Card className="border-2 border-purple-200">
-                  <CardHeader>
-                    <CardTitle className="text-purple-700">Regional Development Agency Programs</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>$125K - $10M</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Regional Focus</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Region-specific expansion funding through six federal development agencies across Canada.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>FedDev Ontario - Up to $10M</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>PrairiesCan - Prairie provinces focus</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>WD - Western Economic Diversification</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>ACOA - Atlantic Canada expansion</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Export Development Programs */}
-                <Card className="border-2 border-orange-200">
-                  <CardHeader>
-                    <CardTitle className="text-orange-700">Export Development & International Expansion</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $50K</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Globe className="w-5 h-5 text-orange-600 mr-2" />
-                        <span><strong>Global Markets</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Support for Canadian businesses expanding into international markets and developing export capabilities.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>CanExport SMEs - Up to $50K per project</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Export Development Canada support</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Trade Commissioner Service access</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Market entry research funding</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
+              <div className="overflow-x-auto bg-white rounded-xl shadow-lg border border-gray-200">
+                <table className="min-w-full text-sm text-left">
+                  <thead className="bg-gray-900 text-white font-bold">
+                    <tr>
+                      <th className="p-5">Region</th>
+                      <th className="p-5">Agency Name</th>
+                      <th className="p-5">Flagship Program</th>
+                      <th className="p-5">Max Funding</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-5 font-bold text-emerald-900">Southern Ontario</td>
+                      <td className="p-5 text-gray-700">FedDev Ontario</td>
+                      <td className="p-5 text-gray-600">Business Scale-up & Productivity</td>
+                      <td className="p-5 font-bold text-gray-900">$10 Million</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-5 font-bold text-emerald-900">Northern Ontario</td>
+                      <td className="p-5 text-gray-700">FedNor</td>
+                      <td className="p-5 text-gray-600">REGI Scale-up</td>
+                      <td className="p-5 font-bold text-gray-900">$5 Million</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-5 font-bold text-emerald-900">Western Canada (AB, SK, MB)</td>
+                      <td className="p-5 text-gray-700">PrairiesCan</td>
+                      <td className="p-5 text-gray-600">Business Scale-up</td>
+                      <td className="p-5 font-bold text-gray-900">$5 Million</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-5 font-bold text-emerald-900">British Columbia</td>
+                      <td className="p-5 text-gray-700">PacifiCan</td>
+                      <td className="p-5 text-gray-600">Business Scale-up</td>
+                      <td className="p-5 font-bold text-gray-900">$5 Million</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-5 font-bold text-emerald-900">Quebec</td>
+                      <td className="p-5 text-gray-700">CED (DEC)</td>
+                      <td className="p-5 text-gray-600">REGI</td>
+                      <td className="p-5 font-bold text-gray-900">$2 Million</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-5 font-bold text-emerald-900">Atlantic Canada</td>
+                      <td className="p-5 text-gray-700">ACOA</td>
+                      <td className="p-5 text-gray-600">Regional Economic Growth</td>
+                      <td className="p-5 font-bold text-gray-900">Based on Project</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Provincial Growth & Expansion Programs */}
-        <section className="py-20 bg-white">
+        {/* Section 2: BSP Deep Dive */}
+        <section id="bsp-program" className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Which Provinces Offer Expansion Funding?</h2>
+              <div className="flex flex-col md:flex-row gap-12 items-start">
+                <div className="flex-1">
+                  <div className="flex items-center mb-6">
+                    <TrendingUp className="w-10 h-10 text-emerald-600 mr-4" />
+                    <h2 className="text-3xl font-bold text-gray-900">The "BSP" Program Masterclass</h2>
+                  </div>
+                  <Badge className="bg-emerald-100 text-emerald-800 mb-6 px-3 py-1">Best Capital in Canada</Badge>
+                  <p className="text-lg text-gray-700 mb-6">
+                    The <strong>Business Scale-up and Productivity (BSP)</strong> program is the holy grail for established SMEs. It provides upfront cash to buy equipment or expand markets.
+                  </p>
 
-              <div className="grid md:grid-cols-3 gap-6 mb-12">
-                {/* Ontario Growth Programs */}
-                <Card className="border-2 border-red-200">
-                  <CardHeader>
-                    <CardTitle className="text-red-700 text-lg">Ontario Expansion Programs</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Jobs and Prosperity Fund</strong> - Up to $5M</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>SWODF/EODF</strong> - Up to $5M repayable</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Ontario Innovation Tax Credit</strong> - 3.5%</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Advanced Manufacturing Fund</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Scale-up Ventures Fund</strong></span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Quebec Growth Programs */}
-                <Card className="border-2 border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-700 text-lg">Quebec Expansion Support</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Investissement Québec</strong> - Up to $10M</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>MEI Economic Development</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Quebec R&D Tax Credits</strong> - 37.5%</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Manufacturing Expansion Program</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Tech Transfer Tax Credit</strong></span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* BC Growth Programs */}
-                <Card className="border-2 border-green-200">
-                  <CardHeader>
-                    <CardTitle className="text-green-700 text-lg">BC Scale-Up Programs</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>InBC Investment Corp</strong> - Growth capital</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>CleanBC Industry Fund</strong> - Up to $5M</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>BC Manufacturing Jobs Fund</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Rural Dividend Program</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Tech Sector Expansion Support</strong></span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Additional Provincial Programs */}
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card className="border-2 border-yellow-200">
-                  <CardHeader>
-                    <CardTitle className="text-yellow-700">Prairie Provinces Expansion</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Alberta:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• Alberta Investment Tax Credit</li>
-                          <li>• Innovation Employment Grant</li>
-                          <li>• Energy Diversification Program</li>
-                          <li>• Rural Economic Development</li>
+                  <div className="grid md:grid-cols-2 gap-6 mb-8">
+                    <Card className="border-emerald-100 bg-white">
+                      <CardHeader>
+                        <CardTitle className="text-lg text-emerald-900">The Terms</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-3">
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-emerald-600 mr-2" /> <strong>0% Interest</strong> (Always)</li>
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-emerald-600 mr-2" /> <strong>Unsecured</strong> (Usually no personal guarantee)</li>
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-emerald-600 mr-2" /> <strong>Up to 50%</strong> of project costs</li>
                         </ul>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-emerald-100 bg-white">
+                      <CardHeader>
+                        <CardTitle className="text-lg text-emerald-900">The Catch</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-3">
+                          <li className="flex items-center"><AlertTriangle className="w-3 h-3 text-orange-500 mr-2" /> <strong>Match Funding:</strong> You must prove you have the other 50%.</li>
+                          <li className="flex items-center"><AlertTriangle className="w-3 h-3 text-orange-500 mr-2" /> <strong>High Bar:</strong> Rejection rate is ~60%.</li>
+                          <li className="flex items-center"><AlertTriangle className="w-3 h-3 text-orange-500 mr-2" /> <strong>Reporting:</strong> Strict quarterly reporting on jobs created.</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  <h3 className="font-bold text-gray-900 mb-3">Case Study: "MetalFab Inc."</h3>
+                  <div className="bg-white border border-gray-200 p-6 rounded-lg shadow-sm">
+                    <p className="text-gray-700 mb-4 text-sm">
+                      MetalFab Inc. had $3M revenue and wanted to buy a $1M automated laser cutter to export to the USA.
+                    </p>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between border-b border-gray-100 pb-1">
+                        <span>Total Project:</span>
+                        <span className="font-bold">$1,000,000</span>
                       </div>
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Saskatchewan:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• Manufacturing and Processing Expansion</li>
-                          <li>• Agriculture Value-Added Fund</li>
-                          <li>• Innovation Saskatchewan Growth</li>
-                        </ul>
+                      <div className="flex justify-between border-b border-gray-100 pb-1 text-emerald-700">
+                        <span>FedDev Ontario (BSP) Contribution (0% Loan):</span>
+                        <span className="font-bold">$350,000</span>
                       </div>
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Manitoba:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• Manitoba Growth and Productivity</li>
-                          <li>• Innovation Growth Program</li>
-                          <li>• Manufacturing Expansion Incentive</li>
-                        </ul>
+                      <div className="flex justify-between border-b border-gray-100 pb-1 text-blue-700">
+                        <span>Bank Finance (Equipment Loan):</span>
+                        <span className="font-bold">$550,000</span>
+                      </div>
+                      <div className="flex justify-between border-b border-gray-100 pb-1">
+                        <span>Company Cash:</span>
+                        <span className="font-bold">$100,000</span>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 border-indigo-200">
-                  <CardHeader>
-                    <CardTitle className="text-indigo-700">Atlantic & Territories Expansion</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Atlantic Canada:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• Nova Scotia Productivity Investment</li>
-                          <li>• New Brunswick Growth Fund</li>
-                          <li>• PEI Business Development</li>
-                          <li>• Newfoundland Manufacturing Support</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Territories:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• NWT Business Expansion Program</li>
-                          <li>• Yukon Economic Development</li>
-                          <li>• Nunavut Growth Initiative</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    <p className="mt-4 text-xs text-gray-500 bg-gray-50 p-2 rounded">
+                      <strong>Outcome:</strong> By stacking the government 0% loan with a bank loan, they only needed $100k cash to buy a $1M machine.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Industry-Specific Growth Programs */}
-        <section className="py-20 bg-gray-50">
+        {/* Section 3: Canada Growth Fund */}
+        <section className="py-20 bg-gray-900 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8">Are There Industry-Specific Growth Grants?</h2>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="text-center">
-                  <CardHeader>
-                    <Factory className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Manufacturing & Processing</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Specialized expansion programs for manufacturing and processing businesses.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Advanced Manufacturing Fund</li>
-                      <li>• Clean Manufacturing Incentive</li>
-                      <li>• Processing Equipment Tax Credit</li>
-                      <li>• Automation & Productivity Grants</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="text-center">
-                  <CardHeader>
-                    <Zap className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Technology & Innovation</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Growth funding for technology companies and innovative businesses.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Tech Scale-Up Program</li>
-                      <li>• AI & Machine Learning Fund</li>
-                      <li>• Software Development Credits</li>
-                      <li>• Digital Innovation Incentives</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="text-center">
-                  <CardHeader>
-                    <Building className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Clean Technology</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Environmental and clean technology expansion support programs.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Clean Technology Fund</li>
-                      <li>• Net Zero Accelerator</li>
-                      <li>• Sustainable Development Goals</li>
-                      <li>• Carbon Reduction Incentives</li>
-                    </ul>
-                  </CardContent>
-                </Card>
+              <div className="flex items-center mb-8">
+                <Scale className="w-10 h-10 text-emerald-400 mr-4" />
+                <div>
+                  <h2 className="text-3xl font-bold">The Heavyweight: Canada Growth Fund (CGF)</h2>
+                  <p className="text-emerald-300">For $20M+ Deals</p>
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Growth Tax Credits & Incentives */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8">What Tax Credits Support Business Growth?</h2>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="text-center">
-                  <CardHeader>
-                    <Award className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Investment Tax Credits</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Tax credits for capital investments and equipment purchases.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Capital Cost Allowance acceleration</li>
-                      <li>• Manufacturing equipment credits</li>
-                      <li>• Clean energy investment credits</li>
-                      <li>• Innovation property incentives</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="text-center">
-                  <CardHeader>
-                    <Award className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">R&D Tax Credits</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Enhanced R&D credits for growing businesses developing new products.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Federal SR&ED: Up to 35%</li>
-                      <li>• Provincial R&D: Up to 37.5%</li>
-                      <li>• Combined rates up to 67%</li>
-                      <li>• Patent box regimes</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="text-center">
-                  <CardHeader>
-                    <Award className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Employment Incentives</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Job creation incentives and wage subsidies for expanding businesses.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Job Creation Tax Credit</li>
-                      <li>• Training and development grants</li>
-                      <li>• Youth employment incentives</li>
-                      <li>• Skills development programs</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Business Expansion FAQs</h2>
-          <div className="space-y-6">
-            {faqData.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
-                  <HelpCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
-                  {faq.question}
-                </h3>
-                <p className="text-gray-700 ml-9">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Official Resources Section */}
-        <section className="py-16 bg-gray-50 border-t border-gray-200">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Official Growth Resources</h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-                    <Building className="w-5 h-5 mr-2 text-green-600" />
-                    Government Programs
-                  </h3>
-                  <ul className="space-y-3">
-                    <li>
-                      <a href="https://ised-isde.canada.ca/site/strategic-innovation-fund/en" target="_blank" rel="noopener noreferrer" className="flex items-center text-green-600 hover:underline">
-                        Strategic Innovation Fund <ExternalLink className="w-4 h-4 ml-1" />
-                      </a>
+              <div className="grid md:grid-cols-2 gap-12">
+                <div>
+                  <p className="text-lg text-gray-300 mb-6">
+                    If you are building a massive Clean Tech plant or infrastructure, BSP is too small. Enter the **$15 Billion** Canada Growth Fund.
+                  </p>
+                  <ul className="space-y-4">
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-1" />
+                      <div>
+                        <strong className="text-white">Contracts for Difference (CfD):</strong>
+                        <p className="text-sm text-gray-400">The government guarantees a future price for your carbon credits or hydrogen, removing market risk.</p>
+                      </div>
                     </li>
-                    <li>
-                      <a href="https://www.bdc.ca/en/financing/business-expansion-loans" target="_blank" rel="noopener noreferrer" className="flex items-center text-green-600 hover:underline">
-                        BDC Expansion Financing <ExternalLink className="w-4 h-4 ml-1" />
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://www.canada.ca/en/services/business/grants.html" target="_blank" rel="noopener noreferrer" className="flex items-center text-green-600 hover:underline">
-                        Government of Canada Business Grants <ExternalLink className="w-4 h-4 ml-1" />
-                      </a>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-1" />
+                      <div>
+                        <strong className="text-white">Equity & Debt:</strong>
+                        <p className="text-sm text-gray-400">They can take an equity stake or provide concessional debt to make the project bankable.</p>
+                      </div>
                     </li>
                   </ul>
                 </div>
-                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-                    <MousePointerClick className="w-5 h-5 mr-2 text-green-600" />
-                    Related Guides
-                  </h3>
-                  <ul className="space-y-3">
-                    <li>
-                      <Link href="/blog/commercialization-scale-up-funding-canada" className="flex items-center text-green-600 hover:underline">
-                        Commercialization & Scale-Up Guide <ArrowRight className="w-4 h-4 ml-1" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/blog/canada-manufacturing-industry-grants-guide" className="flex items-center text-green-600 hover:underline">
-                        Manufacturing Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
-                      </Link>
-                    </li>
-                  </ul>
+                <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                  <h4 className="font-bold text-white mb-4">Target Sectors</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="bg-gray-700 px-3 py-1 rounded-full text-sm">Carbon Capture (CCUS)</span>
+                    <span className="bg-gray-700 px-3 py-1 rounded-full text-sm">Hydrogen</span>
+                    <span className="bg-gray-700 px-3 py-1 rounded-full text-sm">Biofuels</span>
+                    <span className="bg-gray-700 px-3 py-1 rounded-full text-sm">Critical Minerals</span>
+                  </div>
+                  <div className="mt-8">
+                    <Button className="w-full bg-emerald-600 hover:bg-emerald-700">
+                      Visit CGF Investment Team
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Strong Single CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-green-600 to-emerald-800">
+        {/* Section 4: Export Development Canada (EDC) */}
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-4xl font-bold mb-6">
-                Scale Your Business with Expert Navigation of 42+ Growth Programs
-              </h2>
-              <p className="text-xl text-green-100 mb-8">
-                Ready to scale? The Canadian growth funding landscape spans federal mega-programs, provincial expansion funds,
-                export development grants, and industry-specific incentives. Our growth specialists have helped 300+ Canadian
-                businesses secure over $38M in expansion funding with a 91% success rate.
-              </p>
-              <div className="bg-white/10 rounded-lg p-6 mb-8">
-                <h4 className="font-semibold mb-4">Our Complete Growth Funding Success Package Includes:</h4>
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>All 42+ program eligibility assessment</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Strategic Innovation Fund preparation</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Provincial expansion fund applications</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Export development program coordination</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>91% success rate for growth applications</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Average $127K expansion funding secured</span>
-                  </div>
-                </div>
+            <div className="max-w-6xl mx-auto">
+              <div className="flex items-center mb-8">
+                <Globe className="w-10 h-10 text-blue-600 mr-4" />
+                <h2 className="text-3xl font-bold text-gray-900">Export Development Canada (EDC)</h2>
               </div>
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
-                <Link href="/contact?service=growth-expansion-grants-expert-help">
-                  Get Expert Help with All Growth Programs
-                </Link>
-              </Button>
-              <p className="text-green-200 text-sm mt-4">
-                Free consultation • Scale-up specialists • Multi-program expertise
+              <p className="text-lg text-gray-600 mb-10 max-w-3xl">
+                EDC is not a grant agency; they are an insurance agency. But their "Export Guarantee Program" is powerful for scaling.
               </p>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                <Card>
+                  <CardHeader><CardTitle className="text-lg">Export Guarantee</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600">EDC tells your bank: "If they default, we cover 80%." This makes your bank willing to lend you millions for international expansion.</p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader><CardTitle className="text-lg">Credit Insurance</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600">If your US customer goes bankrupt and doesn't pay your $500k invoice, EDC pays you. This lets you sleep at night.</p>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader><CardTitle className="text-lg">Direct Lending</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600">For larger mid-market firms, EDC can lend directly alongside your bank to increase available working capital.</p>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </section>
+
+        {/* Detailed FAQ Section */}
+        <section className="py-20 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-600 pl-8">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="py-24 bg-emerald-900 text-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-4xl font-bold mb-6">Ready to Scale?</h2>
+              <p className="text-xl text-emerald-100 mb-10">
+                Navigating the BSP application process is complex. Our team can help structure your project to maximize RDA funding.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <Button size="lg" className="bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-lg px-8 py-4 h-auto" asChild>
+                  <Link href="/contact?service=expansion-funding-strategy">
+                    <Factory className="w-5 h-5 mr-2" />
+                    Book Expansion Strategy Call
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-emerald-400 text-emerald-100 hover:bg-emerald-800 hover:text-white font-semibold text-lg px-8 py-4 h-auto" asChild>
+                  <Link href="/blog/canada-innovation-research-development-grants-guide">
+                    Explore R&D Grants
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <Footer />
       </div>
-      <Footer />
     </>
   )
 }

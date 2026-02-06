@@ -3,45 +3,51 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ArrowRight, Zap, Sun, Wind, Battery, Leaf, Droplet } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Leaf, Zap, Wind, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Factory, Briefcase } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Clean Tech & Energy Grants 2026-2027 | $200K DOE SBIR, $1.6M Phase II, EPA Environmental Tech Non-Dilutive Funding",
-  description: "Complete 2026-2027 guide to clean tech and energy grants. DOE SBIR Phase I $200K, Phase II $1.6M, EPA environmental technology, state energy programs supporting renewable energy, battery tech, climate solutions, solar, wind, hydrogen with zero equity.",
-  keywords: "clean tech grants 2026, renewable energy startup funding, DOE SBIR $200K, battery technology grants, climate tech funding Phase II, solar energy grants, wind power funding, hydrogen grants, EPA environmental tech, state energy programs",
-  openGraph: {
-    title: "Clean Tech & Energy Grants 2026 | $200K DOE SBIR + $1.6M Phase II",
-    description: "Complete guide to clean tech and energy grants from DOE, EPA, and state programs.",
-    url: "https://www.fsidigital.ca/blog/clean-tech-energy-grants",
-    images: ["/og-image.png"],
-  },
+  title: "Clean Tech & Energy Grants Canada 2026 | 30% Tax Credits & Funding",
+  description: "Complete 2026 guide to Canadian Clean Tech funding. Learn about the 30% Clean Tech Investment Tax Credit (ITC), SDTC grants, and NRCan energy efficiency programs.",
+  keywords: "Canada clean tech grants, clean technology investment tax credit ITC, SDTC funding, NRCan grants, ZEVIP program, green business grants Canada",
 }
 
-export default function CleanTechEnergyGrantsPage() {
+export default function CleanTechEnergyGrantsGuide() {
   const faqData = [
     {
-      question: "Does my project need to be 100% renewable?",
-      answer: "Not necessarily. DOE funds efficiency improvements, carbon capture, and grid modernization. However, net-zero goals are a major priority."
+      question: "What is the Clean Tech Investment Tax Credit (ITC)?",
+      answer: "The ITC is a refundable tax credit that covers 30% of the capital cost of eligible clean tech property (e.g., solar panels, wind turbines, energy storage). It is available now and is a massive incentive."
     },
     {
-      question: "Can I partner with a National Lab?",
-      answer: "Yes! DOE highly encourages partnerships with National Labs (like NREL, Argonne). The Phase I option often includes TABA funding to facilitate these collaborations."
+      question: "Is Sustainable Development Technology Canada (SDTC) accepting applications?",
+      answer: "SDTC is the primary federl funder for clean tech pilots. While it faced governance reviews in 2024/2025, its core mandate remains. Check the official portal for the specific 'Seed', 'Start-up', or 'Scale-up' stream status."
     },
     {
-      question: "What is ARPA-E?",
-      answer: "ARPA-E funds high-potential, high-impact energy technologies that are too early for private investment. It's a separate, prestigious program for breakthrough innovations."
+      question: "Can I get funding for EV chargers?",
+      answer: "Yes. The Zero Emission Vehicle Infrastructure Program (ZEVIP) funds up to 50% of the cost of installing EV chargers for fleets, workplaces, or public use."
     },
     {
-      question: "Are these grants taxable?",
-      answer: "Generally, yes. SBIR/STTR grants are considered income for business tax purposes. Consult a tax professional for R&D tax credit eligibility."
+      question: "What is the Clean Growth Hub?",
+      answer: "The Clean Growth Hub is not a fund itself; it is a 'whole-of-government' concierge service. You fill out one form, and they tell you which of the 160+ federal clean programs fits your project."
     },
     {
-      question: "Does nuclear energy qualify?",
-      answer: "Yes. The Office of Nuclear Energy funds advanced reactor concepts, fuel cycle R&D, and nuclear-renewable hybrid systems."
+      question: "Are there grants for energy efficiency retrofits?",
+      answer: "Yes, but they are often regional. In BC, CleanBC offers rebates. Nationally, the 'Green and Inclusive Community Buildings' program funds larger retrofits. For SMEs, look for 'Energy Manager' programs."
+    },
+    {
+      question: "Does this apply to Hydrogen projects?",
+      answer: "Yes. Hydrogen has its own massive Investment Tax Credit (up to 40% depending on carbon intensity). It is a strategic priority for Canada."
+    },
+    {
+      question: "Can I stack the ITC with grants?",
+      answer: "Generally, yes, but the ITC amount will be calculated on the 'net' cost (Cost minus Grant). You cannot get Paid twice for the same dollar."
+    },
+    {
+      question: "What about Agricultural Clean Tech?",
+      answer: "Agriculture and Agri-Food Canada (AAFC) runs the 'Agricultural Clean Technology Program' specifically for farmers adopting dryers, solar, or precision ag tech."
     }
-  ]
+  ];
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -54,7 +60,7 @@ export default function CleanTechEnergyGrantsPage() {
         "text": item.answer
       }
     }))
-  }
+  };
 
   return (
     <>
@@ -64,336 +70,50 @@ export default function CleanTechEnergyGrantsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="min-h-screen bg-gray-50">
-        {/* Clean Hero Section */}
-        <section className="bg-gradient-to-br from-green-900 via-emerald-800 to-teal-900 text-white py-20 md:py-28">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-br from-emerald-900 to-green-800 text-white py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-5xl mx-auto">
-              {/* Badge */}
-              <div className="flex justify-center mb-6">
-                <Badge className="bg-green-500 text-white border-green-600 px-4 py-2 text-sm font-medium">
-                  🌱 Clean Tech & Energy Grants 2026-2027
-                </Badge>
-              </div>
-
-              {/* Main Headline */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center leading-tight">
-                Get Up to $1.6M in<br />Clean Energy Funding
+            <div className="max-w-4xl mx-auto text-center">
+              <Badge className="mb-6 bg-emerald-500/20 text-emerald-100 border-emerald-400/30 px-4 py-1.5 text-sm uppercase tracking-wide">
+                🌱 Net-Zero Economy 2026
+              </Badge>
+              <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+                Canada Clean Tech Funding: <span className="text-emerald-400">The 30% ITC Era</span>
               </h1>
-
-              {/* Subheadline */}
-              <p className="text-xl md:text-2xl text-green-100 mb-8 text-center max-w-3xl mx-auto font-light">
-                DOE SBIR grants for clean tech startups. Zero equity required for renewable energy, battery technology, climate solutions, solar, wind, and hydrogen innovations.
+              <p className="text-xl text-emerald-100 mb-10 leading-relaxed max-w-3xl mx-auto">
+                Canada is pouring billions into the green transition. The headline isn't just grants anymore; it's the <strong>refundable 30% Investment Tax Credit (ITC)</strong> that puts cash back in your pocket.
               </p>
-
-              {/* Key Stats */}
-              <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto mb-10">
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold mb-1 text-green-400">$200K</div>
-                  <div className="text-sm md:text-base text-gray-300">Phase I Grants</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold mb-1 text-green-400">$1.6M</div>
-                  <div className="text-sm md:text-base text-gray-300">Phase II Maximum</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold mb-1 text-green-400">0%</div>
-                  <div className="text-sm md:text-base text-gray-300">Equity Required</div>
-                </div>
-              </div>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button size="lg" className="bg-green-500 text-white hover:bg-green-600 font-semibold px-8 py-6 text-lg w-full sm:w-auto shadow-xl" asChild>
-                  <Link href="#cleantech-grants">
-                    View Clean Tech Programs
-                    <ArrowRight className="ml-2 w-5 h-5" />
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-white hover:bg-gray-100 text-emerald-900 font-bold text-lg px-10 py-6 shadow-xl" asChild>
+                  <Link href="#itc-tax-credit">
+                    The 30% ITC Explained
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="border-2 border-green-500 bg-transparent text-green-300 hover:bg-green-500 hover:text-white font-semibold px-8 py-6 text-lg w-full sm:w-auto" asChild>
-                  <Link href="/download/clean-tech-energy-grants-guide">
-                    <Download className="mr-2 w-5 h-5" />
-                    Free Energy Guide
+                <Button size="lg" variant="outline" className="border-2 border-emerald-400/50 text-white hover:bg-emerald-900/50 font-semibold text-lg px-10 py-6" asChild>
+                  <Link href="#sdtc-funding">
+                    SDTC Grants
                   </Link>
                 </Button>
               </div>
-
-              {/* Trust Indicator */}
-              <p className="text-center text-gray-300 mt-8 text-sm">
-                ✓ $65M annual DOE funding • ✓ National lab partnerships • ✓ Non-dilutive capital
-              </p>
             </div>
           </div>
         </section>
 
-        {/* Quick Overview - Main Programs */}
-        <section className="py-12 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Clean Tech & Energy Grant Programs</h2>
-              <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
-                Federal and state funding for renewable energy, battery technology, climate solutions, and environmental innovation.
-              </p>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                {/* DOE SBIR */}
-                <Card className="border-2 border-green-200 hover:shadow-xl transition-all hover:-translate-y-1">
-                  <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
-                    <div className="flex items-center mb-2">
-                      <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-3">
-                        <Sun className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <div className="text-2xl font-bold text-green-700">$200,000</div>
-                        <div className="text-sm text-gray-600">DOE SBIR Phase I</div>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg mb-3">Clean Energy Innovation</h3>
-                    <ul className="space-y-2 text-sm text-gray-700 mb-4">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>Solar, wind, geothermal technologies</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>Battery storage & grid integration</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>Hydrogen production & fuel cells</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>6-12 months feasibility study</span>
-                      </li>
-                    </ul>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="#doe-sbir-details">Learn More</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* DOE Phase II */}
-                <Card className="border-2 border-emerald-200 hover:shadow-xl transition-all hover:-translate-y-1">
-                  <CardHeader className="bg-gradient-to-br from-emerald-50 to-teal-50">
-                    <div className="flex items-center mb-2">
-                      <div className="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center mr-3">
-                        <Battery className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <div className="text-2xl font-bold text-emerald-700">$1.6M</div>
-                        <div className="text-sm text-gray-600">DOE SBIR Phase II</div>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg mb-3">Full Development</h3>
-                    <ul className="space-y-2 text-sm text-gray-700 mb-4">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>24 months prototype development</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>Testing, validation & certification</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>National lab partnerships available</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>Commercialization support included</span>
-                      </li>
-                    </ul>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="#phase-2-details">Learn More</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* EPA & State */}
-                <Card className="border-2 border-teal-200 hover:shadow-xl transition-all hover:-translate-y-1 relative">
-                  <div className="absolute -top-3 -right-3 bg-blue-400 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                    CLIMATE TECH
-                  </div>
-                  <CardHeader className="bg-gradient-to-br from-teal-50 to-cyan-50">
-                    <div className="flex items-center mb-2">
-                      <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center mr-3">
-                        <Leaf className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <div className="text-2xl font-bold text-teal-700">$5M+</div>
-                        <div className="text-sm text-gray-600">EPA & State Programs</div>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg mb-3">Environmental Tech</h3>
-                    <ul className="space-y-2 text-sm text-gray-700 mb-4">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>EPA SBIR environmental solutions</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>State clean energy programs</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>Carbon capture & climate tech</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>Water treatment & air quality</span>
-                      </li>
-                    </ul>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="#epa-state-details">Learn More</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Technology Categories */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Clean Technologies That Qualify</h2>
-              <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-                DOE and EPA grants support a wide range of clean energy and environmental innovations.
-              </p>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <Card className="border-l-4 border-l-green-500 hover:shadow-lg transition-shadow">
-                  <CardContent className="pt-6">
-                    <Sun className="w-8 h-8 text-green-600 mb-3" />
-                    <h3 className="font-bold text-lg mb-2">Solar Energy</h3>
-                    <p className="text-sm text-gray-600 mb-3">Photovoltaics, CSP, agrivoltaics, solar-thermal, BIPV, perovskites, thin-film technologies</p>
-                    <p className="text-xs text-green-700 font-semibold">SETO active funding</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-l-4 border-l-emerald-500 hover:shadow-lg transition-shadow">
-                  <CardContent className="pt-6">
-                    <Battery className="w-8 h-8 text-emerald-600 mb-3" />
-                    <h3 className="font-bold text-lg mb-2">Energy Storage</h3>
-                    <p className="text-sm text-gray-600 mb-3">Lithium-ion, solid-state batteries, flow batteries, thermal storage, grid-scale systems</p>
-                    <p className="text-xs text-emerald-700 font-semibold">$65M VTO funding</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-l-4 border-l-teal-500 hover:shadow-lg transition-shadow">
-                  <CardContent className="pt-6">
-                    <Wind className="w-8 h-8 text-teal-600 mb-3" />
-                    <h3 className="font-bold text-lg mb-2">Wind & Water Power</h3>
-                    <p className="text-sm text-gray-600 mb-3">Offshore wind, floating turbines, hydropower, tidal energy, wave energy converters</p>
-                    <p className="text-xs text-teal-700 font-semibold">WETO priority area</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-l-4 border-l-cyan-500 hover:shadow-lg transition-shadow">
-                  <CardContent className="pt-6">
-                    <Zap className="w-8 h-8 text-cyan-600 mb-3" />
-                    <h3 className="font-bold text-lg mb-2">Hydrogen & Fuel Cells</h3>
-                    <p className="text-sm text-gray-600 mb-3">Green hydrogen, electrolyzers, fuel cells, hydrogen storage, distribution systems</p>
-                    <p className="text-xs text-cyan-700 font-semibold">HFTO focus area</p>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Additional Categories Row */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-                <Card className="border-l-4 border-l-blue-500 hover:shadow-lg transition-shadow">
-                  <CardContent className="pt-6">
-                    <Globe className="w-8 h-8 text-blue-600 mb-3" />
-                    <h3 className="font-bold text-lg mb-2">Geothermal Energy</h3>
-                    <p className="text-sm text-gray-600 mb-3">Enhanced geothermal, district heating, direct use applications, exploration tech</p>
-                    <p className="text-xs text-blue-700 font-semibold">GTO programs</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-l-4 border-l-indigo-500 hover:shadow-lg transition-shadow">
-                  <CardContent className="pt-6">
-                    <Leaf className="w-8 h-8 text-indigo-600 mb-3" />
-                    <h3 className="font-bold text-lg mb-2">Bioenergy</h3>
-                    <p className="text-sm text-gray-600 mb-3">Biofuels, biomass, biogas, algae, cellulosic ethanol, renewable diesel, SAF</p>
-                    <p className="text-xs text-indigo-700 font-semibold">BETO funding</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-l-4 border-l-purple-500 hover:shadow-lg transition-shadow">
-                  <CardContent className="pt-6">
-                    <Droplet className="w-8 h-8 text-purple-600 mb-3" />
-                    <h3 className="font-bold text-lg mb-2">Carbon Capture</h3>
-                    <p className="text-sm text-gray-600 mb-3">Direct air capture, CCUS, carbon utilization, sequestration, negative emissions</p>
-                    <p className="text-xs text-purple-700 font-semibold">FECM priority</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-l-4 border-l-pink-500 hover:shadow-lg transition-shadow">
-                  <CardContent className="pt-6">
-                    <Building className="w-8 h-8 text-pink-600 mb-3" />
-                    <h3 className="font-bold text-lg mb-2">Buildings & Industry</h3>
-                    <p className="text-sm text-gray-600 mb-3">Heat pumps, HVAC, lighting, industrial decarbonization, process efficiency</p>
-                    <p className="text-xs text-pink-700 font-semibold">BTO & IEDO focus</p>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 2026 Updates */}
-        <section className="py-12 bg-white">
+        {/* The "Concierge" Alert */}
+        <section className="py-12 bg-white -mt-8 relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl p-8">
-                <div className="flex items-start mb-6">
-                  <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                    <TrendingUp className="w-6 h-6 text-white" />
-                  </div>
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg shadow-sm">
+                <div className="flex items-start">
+                  <Lightbulb className="w-8 h-8 text-blue-600 mr-4 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-2xl font-bold text-green-900 mb-2">What&apos;s New in Clean Energy Funding 2026-2027</h3>
-                    <p className="text-gray-700">Recent DOE and EPA investments for clean tech entrepreneurs</p>
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-white rounded-lg p-5 border border-green-100">
-                    <div className="flex items-center mb-2">
-                      <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                      <h4 className="font-bold text-gray-900">$65M Annual DOE SBIR</h4>
-                    </div>
-                    <p className="text-sm text-gray-700">DOE SBIR/STTR FY 2026 Phase I Release 2 offers $65 million for clean energy innovation. Phase I up to $200K, Phase II up to $1.6M with national lab partnerships.</p>
-                  </div>
-
-                  <div className="bg-white rounded-lg p-5 border border-green-100">
-                    <div className="flex items-center mb-2">
-                      <Sun className="w-5 h-5 text-orange-600 mr-2" />
-                      <h4 className="font-bold text-gray-900">Solar Technology Focus</h4>
-                    </div>
-                    <p className="text-sm text-gray-700">SETO funding covers dual-use PV, agrivoltaics, BIPV, floating PV, CSP Gen3, solar microgrids, cybersecurity, and manufacturing innovations for 2026 cycle.</p>
-                  </div>
-
-                  <div className="bg-white rounded-lg p-5 border border-green-100">
-                    <div className="flex items-center mb-2">
-                      <Battery className="w-5 h-5 text-blue-600 mr-2" />
-                      <h4 className="font-bold text-gray-900">EV Battery Innovation</h4>
-                    </div>
-                    <p className="text-sm text-gray-700">VTO $65M focuses on EV battery cells, recycling efficiency, thermal runaway mitigation, modular HD batteries, firefighting tech, electrified hydraulics for 2026.</p>
-                  </div>
-
-                  <div className="bg-white rounded-lg p-5 border border-green-100">
-                    <div className="flex items-center mb-2">
-                      <Rocket className="w-5 h-5 text-purple-600 mr-2" />
-                      <h4 className="font-bold text-gray-900">Commercialization Support</h4>
-                    </div>
-                    <p className="text-sm text-gray-700">DOE offers Phase IIB commercialization funding, TABA (Technical and Business Assistance), American-Made Network connections, and follow-on support bridging to market.</p>
+                    <h3 className="text-xl font-bold text-blue-900 mb-2">First Stop: The Clean Growth Hub</h3>
+                    <p className="text-blue-800 mb-4">
+                      Clean Tech is complex. 16 federal departments have funding. To avoid navigating 16 websites, go to the <strong>Clean Growth Hub</strong>.
+                    </p>
+                    <p className="text-blue-800">
+                      They offer a free advisory service where you submit one project form, and they tell you exactly which grants (SDTC, NRCan, CIB) you qualify for.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -401,466 +121,259 @@ export default function CleanTechEnergyGrantsPage() {
           </div>
         </section>
 
-        // ... (keep all the existing code up to the 2026 Updates section, then add:)
-
-        {/* Detailed Programs Section - THIS WAS MISSING */}
-        <section id="cleantech-grants" className="py-16 bg-gray-50">
+        {/* Section 1: The ITC Masterclass */}
+        <section id="itc-tax-credit" className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Complete Clean Tech Grant Program Details</h2>
-              <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
-                Everything you need to know about DOE SBIR, EPA environmental tech, and state clean energy programs.
-              </p>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">1. The Game Changer: Clean Tech ITC</h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  Forget competitive grant applications. This is a tax credit enshrined in law. If you buy eligible equipment, you get 30% back.
+                </p>
+              </div>
 
-              <div className="space-y-8">
-                {/* DOE SBIR Phase I */}
-                <Card id="doe-sbir-details" className="border-2 border-green-200">
-                  <CardHeader className="bg-gradient-to-r from-green-100 to-emerald-100">
-                    <div className="flex items-center mb-2">
-                      <Sun className="w-6 h-6 text-green-600 mr-3" />
-                      <CardTitle className="text-green-700 text-2xl">DOE SBIR Phase I - $200,000 Clean Energy Innovation</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-6">
-                    <div className="grid md:grid-cols-2 gap-6 mb-6">
-                      <div>
-                        <h4 className="font-bold text-xl mb-4 text-green-800">Program Overview</h4>
-                        <div className="bg-green-50 p-4 rounded-lg border border-green-200 mb-4">
-                          <div className="space-y-3">
-                            <div className="flex justify-between items-center">
-                              <span className="font-semibold text-gray-700">Phase I Award:</span>
-                              <span className="text-green-700 font-bold text-xl">$200,000</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                              <span className="font-semibold text-gray-700">Duration:</span>
-                              <span className="text-emerald-700 font-bold">6-12 months</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                              <span className="font-semibold text-gray-700">Equity Required:</span>
-                              <span className="text-green-700 font-bold">0% Non-dilutive</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                              <span className="font-semibold text-gray-700">Annual Funding:</span>
-                              <span className="text-teal-700 font-bold">$65M total</span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="bg-white p-4 rounded-lg border border-gray-200">
-                          <h5 className="font-semibold text-gray-800 mb-3">DOE Technology Focus Areas (FY2026):</h5>
-                          <ul className="space-y-2 text-sm text-gray-700">
-                            <li className="flex items-start">
-                              <Sun className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                              <span><strong>Solar Energy:</strong> SETO - Dual-use PV, agrivoltaics, BIPV, floating solar, CSP Gen3</span>
-                            </li>
-                            <li className="flex items-start">
-                              <Battery className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                              <span><strong>Vehicle Technologies:</strong> VTO - EV batteries, recycling, thermal safety, HD electrification</span>
-                            </li>
-                            <li className="flex items-start">
-                              <Wind className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                              <span><strong>Wind/Water:</strong> WETO - Offshore wind, floating turbines, hydropower, tidal energy</span>
-                            </li>
-                            <li className="flex items-start">
-                              <Zap className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                              <span><strong>Hydrogen & Fuel Cells:</strong> HFTO - Green hydrogen, electrolyzers, fuel cells, storage</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">Clean Tech Success Stories</h4>
-                        <div className="space-y-4">
-                          <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                            <div className="flex items-center mb-2">
-                              <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center mr-2">
-                                <Sun className="w-5 h-5 text-white" />
-                              </div>
-                              <p className="font-bold text-green-800">Solar Innovation - Perovskite</p>
-                            </div>
-                            <p className="text-sm text-gray-700 mb-2">
-                              $200K Phase I → developed tandem perovskite-silicon solar cells with 30%+ efficiency → Phase II $1.6M for manufacturing scale-up → partnered with national lab → pilot production facility → Series A $25M.
-                            </p>
-                            <div className="flex flex-wrap gap-2 text-xs">
-                              <span className="bg-green-100 text-green-800 px-2 py-1 rounded">$25M Series A</span>
-                              <span className="bg-green-100 text-green-800 px-2 py-1 rounded">30% efficiency</span>
-                              <span className="bg-green-100 text-green-800 px-2 py-1 rounded">DOE funded</span>
-                            </div>
-                          </div>
-
-                          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                            <div className="flex items-center mb-2">
-                              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-2">
-                                <Battery className="w-5 h-5 text-white" />
-                              </div>
-                              <p className="font-bold text-blue-800">Battery Storage Breakthrough</p>
-                            </div>
-                            <p className="text-sm text-gray-700 mb-2">
-                              $200K Phase I → validated solid-state battery technology → $1.6M Phase II development → grid-scale demo with utility partner → $50M strategic investment from automotive OEM → commercial deployment 2026.
-                            </p>
-                            <div className="flex flex-wrap gap-2 text-xs">
-                              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">$50M investment</span>
-                              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">Grid-scale</span>
-                              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">OEM partner</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+              <div className="flex flex-col md:flex-row gap-12 items-start">
+                <div className="flex-1">
+                  <div className="bg-emerald-50 border border-emerald-100 p-8 rounded-2xl mb-8">
+                    <div className="flex items-center justify-between mb-6">
+                      <h3 className="text-2xl font-bold text-emerald-900">Clean Technology ITC</h3>
+                      <Badge className="bg-emerald-600 text-white text-lg px-4 py-1">30% Refundable</Badge>
                     </div>
 
-                    <div className="bg-green-50 p-6 rounded-lg border-2 border-green-200">
-                      <h4 className="font-bold text-lg mb-4 text-green-800">Application Strategy & Requirements</h4>
-                      <div className="grid md:grid-cols-3 gap-4 text-sm">
-                        <div>
-                          <p className="font-semibold text-gray-800 mb-2 flex items-center">
-                            <Building className="w-4 h-4 mr-2 text-green-600" />
-                            Eligibility
-                          </p>
-                          <ul className="space-y-1 text-gray-700">
-                            <li>• US small business &lt;500 employees</li>
-                            <li>• 51%+ owned by US citizens/residents</li>
-                            <li>• At least 2/3 R&D performed in US</li>
-                            <li>• Clean energy technology focus</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-gray-800 mb-2 flex items-center">
-                            <FileText className="w-4 h-4 mr-2 text-green-600" />
-                            Application Process
-                          </p>
-                          <ul className="space-y-1 text-gray-700">
-                            <li>• Identify DOE office & subtopic</li>
-                            <li>• Technical innovation description</li>
-                            <li>• Energy impact assessment</li>
-                            <li>• Commercialization strategy</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-gray-800 mb-2 flex items-center">
-                            <Target className="w-4 h-4 mr-2 text-green-600" />
-                            Success Factors
-                          </p>
-                          <ul className="space-y-1 text-gray-700">
-                            <li>• Clear energy efficiency gains</li>
-                            <li>• Cost reduction pathway</li>
-                            <li>• Market size & adoption plan</li>
-                            <li>• Technical risk mitigation</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* DOE SBIR Phase II */}
-                <Card id="phase-2-details" className="border-2 border-emerald-200">
-                  <CardHeader className="bg-gradient-to-r from-emerald-100 to-teal-100">
-                    <div className="flex items-center mb-2">
-                      <Battery className="w-6 h-6 text-emerald-600 mr-3" />
-                      <CardTitle className="text-emerald-700 text-2xl">DOE SBIR Phase II - $1.6M R&D & Commercialization</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-emerald-800">Program Details</h4>
-                        <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-200 mb-4">
-                          <div className="space-y-3">
-                            <div className="flex justify-between items-center">
-                              <span className="font-semibold text-gray-700">Maximum Award:</span>
-                              <span className="text-emerald-700 font-bold text-xl">$1,600,000</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                              <span className="font-semibold text-gray-700">Duration:</span>
-                              <span className="text-teal-700 font-bold">24 months</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                              <span className="font-semibold text-gray-700">Requirement:</span>
-                              <span className="text-green-700 font-bold">Successful Phase I</span>
-                            </div>
-                          </div>
-                        </div>
-                        <p className="text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
-                          Phase II supports full technology development, prototype testing, manufacturing readiness, and commercialization. DOE provides access to national laboratories, TABA support, and American-Made Network connections. Combined Phase I + II provides ~$1.8M total non-dilutive funding.
-                        </p>
+                        <h4 className="font-bold text-gray-900 mb-2">Eligible Equipment:</h4>
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li className="flex items-center"><CheckCircle className="w-4 h-4 text-emerald-500 mr-2" /> Solar Panels</li>
+                          <li className="flex items-center"><CheckCircle className="w-4 h-4 text-emerald-500 mr-2" /> Wind Turbines</li>
+                          <li className="flex items-center"><CheckCircle className="w-4 h-4 text-emerald-500 mr-2" /> Energy Storage (Batteries)</li>
+                          <li className="flex items-center"><CheckCircle className="w-4 h-4 text-emerald-500 mr-2" /> Electric Heating (Heat Pumps)</li>
+                        </ul>
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">Phase II Objectives</h4>
-                        <div className="bg-white p-4 rounded-lg border border-gray-200">
-                          <p className="font-semibold text-gray-800 mb-3">Development Milestones:</p>
-                          <ul className="space-y-2 text-sm text-gray-700">
-                            <li className="flex items-start">
-                              <Rocket className="w-4 h-4 text-emerald-600 mr-2 mt-0.5 flex-shrink-0" />
-                              <span><strong>Technology Development:</strong> Prototype refinement, performance validation, field testing</span>
-                            </li>
-                            <li className="flex items-start">
-                              <Shield className="w-4 h-4 text-emerald-600 mr-2 mt-0.5 flex-shrink-0" />
-                              <span><strong>Manufacturing:</strong> Production scale-up, supply chain development, cost reduction</span>
-                            </li>
-                            <li className="flex items-start">
-                              <Users className="w-4 h-4 text-emerald-600 mr-2 mt-0.5 flex-shrink-0" />
-                              <span><strong>National Lab Support:</strong> Testing facilities, expert consultation, technology transfer</span>
-                            </li>
-                            <li className="flex items-start">
-                              <DollarSign className="w-4 h-4 text-emerald-600 mr-2 mt-0.5 flex-shrink-0" />
-                              <span><strong>Commercialization:</strong> Customer pilots, strategic partnerships, investor connections</span>
-                            </li>
-                          </ul>
-                        </div>
+                        <h4 className="font-bold text-gray-900 mb-2">Key Details:</h4>
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li className="flex items-center"><AlertTriangle className="w-4 h-4 text-emerald-500 mr-2" /> Available NOW (Retroactive to 2023)</li>
+                          <li className="flex items-center"><AlertTriangle className="w-4 h-4 text-emerald-500 mr-2" /> Must meet Labour Conditions</li>
+                          <li className="flex items-center"><AlertTriangle className="w-4 h-4 text-emerald-500 mr-2" /> Refundable (Check arrives even if no profit)</li>
+                        </ul>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
 
-                {/* EPA & State Programs */}
-                <Card id="epa-state-details" className="border-2 border-teal-200">
-                  <CardHeader className="bg-gradient-to-r from-teal-100 to-cyan-100">
-                    <div className="flex items-center mb-2">
-                      <Leaf className="w-6 h-6 text-teal-600 mr-3" />
-                      <CardTitle className="text-teal-700 text-2xl">EPA SBIR + State Clean Energy Programs</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="font-bold text-xl mb-4 text-teal-800">EPA SBIR Environmental Tech</h4>
-                        <div className="bg-teal-50 p-4 rounded-lg border border-teal-200 mb-4">
-                          <p className="font-semibold text-gray-800 mb-3">EPA Focus Areas:</p>
-                          <ul className="text-sm text-gray-700 space-y-2">
-                            <li>• Air quality monitoring & pollution control</li>
-                            <li>• Water treatment & purification technologies</li>
-                            <li>• Waste management & circular economy</li>
-                            <li>• Environmental monitoring & sensors</li>
-                            <li>• Climate adaptation & resilience</li>
-                            <li>• Green chemistry & safer materials</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">State Energy Programs</h4>
-                        <div className="space-y-3 text-sm">
-                          <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                            <p className="font-semibold text-green-800 mb-2">California Energy Innovation</p>
-                            <p className="text-gray-700">EPIC program, CEC grants, CARB zero-emission tech, EV infrastructure, renewable integration, energy storage funding opportunities.</p>
-                          </div>
-                          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                            <p className="font-semibold text-blue-800 mb-2">New York State Energy</p>
-                            <p className="text-gray-700">NYSERDA clean energy programs, offshore wind support, building decarbonization, EV charging, clean heating & cooling grants.</p>
-                          </div>
-                          <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                            <p className="font-semibold text-purple-800 mb-2">Texas & Regional Programs</p>
-                            <p className="text-gray-700">Texas State Energy Conservation Office, regional clean energy funds, grid modernization, renewable integration, carbon management.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                  <div className="bg-white border border-gray-200 p-6 rounded-lg shadow-sm">
+                    <h4 className="font-bold text-gray-900 mb-2">The "Prevailing Wage" Catch</h4>
+                    <p className="text-gray-600 text-sm">
+                      To get the full 30%, you must pay "prevailing union wages" to the workers installing the equipment. If you don't, the credit drops to 20%.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Success Strategies */}
-        <section className="py-16 bg-white">
+        {/* Section 2: SDTC Funding */}
+        <section id="sdtc-funding" className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Clean Tech Grant Application Success Strategies</h2>
-              <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-                Proven tactics to increase your chances of winning DOE and EPA clean energy funding.
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card className="border-2 border-green-200">
-                  <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
-                    <CardTitle className="text-green-700 text-xl flex items-center">
-                      <CheckCircle className="w-6 h-6 mr-3" />
-                      What Works for Clean Tech
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="pt-6">
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="font-bold text-gray-900 mb-2 flex items-center">
-                          <Target className="w-5 h-5 text-green-600 mr-2" />
-                          Quantify Energy Impact
-                        </h4>
-                        <p className="text-sm text-gray-700">
-                          Provide specific energy savings (kWh, BTU), GHG reduction (tons CO2e), or efficiency gains (%). DOE reviewers prioritize measurable energy/environmental impact with clear baseline comparisons.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-bold text-gray-900 mb-2 flex items-center">
-                          <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                          Show Cost Reduction Pathway
-                        </h4>
-                        <p className="text-sm text-gray-700">
-                          Demonstrate path to cost competitiveness with incumbent technologies. Include levelized cost analysis (LCOE for energy), manufacturing scale-up projections, and market adoption timeline.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-bold text-gray-900 mb-2 flex items-center">
-                          <Building className="w-5 h-5 text-green-600 mr-2" />
-                          Leverage National Lab Partnerships
-                        </h4>
-                        <p className="text-sm text-gray-700">
-                          Propose collaboration with DOE national labs for testing, validation, or technical expertise. Shows seriousness and provides access to world-class facilities and researchers.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-bold text-gray-900 mb-2 flex items-center">
-                          <Users className="w-5 h-5 text-green-600 mr-2" />
-                          Align with DOE Priority Areas
-                        </h4>
-                        <p className="text-sm text-gray-700">
-                          Match your technology to specific DOE office priorities (SETO solar, VTO vehicles, WETO wind, etc.). Use language from funding announcements and cite relevant DOE technical targets.
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 border-red-200">
-                  <CardHeader className="bg-gradient-to-br from-red-50 to-orange-50">
-                    <CardTitle className="text-red-700 text-xl flex items-center">
-                      <AlertCircle className="w-6 h-6 mr-3" />
-                      Common Clean Tech Mistakes
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="pt-6">
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="font-bold text-gray-900 mb-2 flex items-center">
-                          <AlertCircle className="w-5 h-5 text-red-600 mr-2" />
-                          Vague Environmental Claims
-                        </h4>
-                        <p className="text-sm text-gray-700">
-                          Making general "green" or "sustainable" statements without quantified impact. DOE requires specific energy metrics, emissions reductions, and performance benchmarks with verifiable data.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-bold text-gray-900 mb-2 flex items-center">
-                          <AlertCircle className="w-5 h-5 text-red-600 mr-2" />
-                          Ignoring Market Barriers
-                        </h4>
-                        <p className="text-sm text-gray-700">
-                          Not addressing cost, policy, or infrastructure challenges to adoption. Clean tech faces real deployment barriers - show awareness and mitigation strategies for commercialization hurdles.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-bold text-gray-900 mb-2 flex items-center">
-                          <AlertCircle className="w-5 h-5 text-red-600 mr-2" />
-                          Underestimating Technical Risk
-                        </h4>
-                        <p className="text-sm text-gray-700">
-                          Overpromising performance without acknowledging technical challenges. Be realistic about TRL progression, identify key technical risks, and explain de-risking approach.
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-bold text-gray-900 mb-2 flex items-center">
-                          <AlertCircle className="w-5 h-5 text-red-600 mr-2" />
-                          Weak Competitive Analysis
-                        </h4>
-                        <p className="text-sm text-gray-700">
-                          Claiming "no competition" or ignoring incumbent solutions. Show deep understanding of competitive landscape, explain differentiation, and justify why your approach will win in market.
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              <div className="flex items-center mb-8">
+                <Leaf className="w-10 h-10 text-emerald-600 mr-4" />
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900">2. SDTC (Sustainable Development Technology Canada)</h2>
+                  <p className="text-gray-600">The premier funder for IP-rich Clean Tech</p>
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* FAQ Section */}
-        <section className="py-16 bg-green-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
-              <div className="grid gap-6">
-                {faqData.map((faq, index) => (
-                  <Card key={index} className="border-l-4 border-l-green-600">
-                    <CardHeader>
-                      <CardTitle className="text-xl text-green-800 flex items-start">
-                        <div className="bg-green-100 p-2 rounded-full mr-3 mt-0.5">
-                          <Sun className="w-5 h-5 text-green-600" />
-                        </div>
-                        {faq.question}
-                      </CardTitle>
-                    </CardHeader>
+              <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+                <p className="text-gray-700 text-lg mb-8">
+                  If you are <strong>Inventing</strong> new clean tech (not just buying solar panels), SDTC is your partner. They fund 33-50% of your pilot project costs.
+                </p>
+
+                <div className="grid md:grid-cols-3 gap-6">
+                  <Card className="border-emerald-100 bg-emerald-50/50">
+                    <CardHeader><CardTitle className="text-emerald-900">Seed Funding</CardTitle></CardHeader>
                     <CardContent>
-                      <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                      <p className="font-bold text-lg mb-2">$50k - $100k</p>
+                      <p className="text-xs text-gray-600 mb-4">Nomination based. Must be recommended by an accelerator (like MaRS, Foresight).</p>
                     </CardContent>
                   </Card>
+                  <Card className="border-emerald-100 bg-emerald-50/50">
+                    <CardHeader><CardTitle className="text-emerald-900">Start-up</CardTitle></CardHeader>
+                    <CardContent>
+                      <p className="font-bold text-lg mb-2">Ave. $3 Million</p>
+                      <p className="text-xs text-gray-600 mb-4">For demonstrating your tech in a real-world setting (a pilot).</p>
+                    </CardContent>
+                  </Card>
+                  <Card className="border-emerald-100 bg-emerald-50/50">
+                    <CardHeader><CardTitle className="text-emerald-900">Scale-up</CardTitle></CardHeader>
+                    <CardContent>
+                      <p className="font-bold text-lg mb-2">$10 Million+</p>
+                      <p className="text-xs text-gray-600 mb-4">For building the first commercial plant or massive rollout.</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: NRCan ZEVIP */}
+        <section className="py-20 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="flex items-center mb-8">
+                <Zap className="w-10 h-10 text-yellow-600 mr-4" />
+                <h2 className="text-3xl font-bold text-gray-900">3. ZEVIP (EV Chargers)</h2>
+              </div>
+              <p className="text-lg text-gray-600 mb-10 max-w-3xl">
+                The <strong>Zero Emission Vehicle Infrastructure Program (ZEVIP)</strong> is aggressive. Canada wants chargers everywhere.
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-12">
+                <div>
+                  <h3 className="font-bold text-xl mb-4">The Deal:</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-yellow-500 mr-3 mt-1" />
+                      <span className="text-gray-700"><strong>50% Funding</strong> for purchase and installation.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-yellow-500 mr-3 mt-1" />
+                      <span className="text-gray-700">Up to <strong>$5,000 per connector</strong> (Level 2).</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-yellow-500 mr-3 mt-1" />
+                      <span className="text-gray-700">Up to <strong>$50,000 per connector</strong> (Fast Charger).</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-gray-100 p-6 rounded-xl">
+                  <h3 className="font-bold text-xl mb-4">Who is it for?</h3>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline" className="bg-white">Workplaces</Badge>
+                    <Badge variant="outline" className="bg-white">Apartment Buildings</Badge>
+                    <Badge variant="outline" className="bg-white">Retail Stores</Badge>
+                    <Badge variant="outline" className="bg-white">Fleets</Badge>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-4">
+                    *Note: Deadlines are strict. Rounds open for short windows (e.g., 3 months).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Deep Dive Text Content - SEO & Authority */}
+        <section className="py-20 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto prose prose-lg prose-emerald text-gray-700">
+              <h2>Mastering the 30% Clean Tech ITC</h2>
+              <p>
+                The <strong>Clean Technology Investment Tax Credit (ITC)</strong> is the single most significant policy shift in Canadian green energy history. It moves funding from "Permission-based" (Grants) to "Rights-based" (Tax Credits). If you follow the rules, the government <em>must</em> pay you.
+              </p>
+
+              <h3>1. The "Prevailing Wage" Trap</h3>
+              <p>
+                This is where most businesses will fail. To get the full 30% credit, you must pay "Prevailing Wages" to the workers (electricians, HVAC installers) who physically install the equipment.
+              </p>
+              <ul>
+                <li><strong>The Rule:</strong> You must check the Union wage rate for that specific job in your postal code.</li>
+                <li><strong>The Penalty:</strong> If you pay even $1 below this rate (or fail to document it), your tax credit drops to 20%.</li>
+                <li><strong>The Solution:</strong> Add a clause to your specialized contractor's agreement: <em>"Contractor certifies that all labor is paid in accordance with the Prevailing Wage requirements of the Clean Tech ITC."</em></li>
+              </ul>
+
+              <h3>2. Stacking Rules</h3>
+              <p>
+                Can you get a grant AND the tax credit? Yes, but you can't double-dip.
+              </p>
+              <p>
+                <strong>Example:</strong>
+              </p>
+              <ul>
+                <li><strong>Project Cost:</strong> $1,000,000</li>
+                <li><strong>Grant Received (e.g., Provincial):</strong> $200,000</li>
+                <li><strong>Net Cost for ITC:</strong> $800,000 ($1M - $200k)</li>
+                <li><strong>ITC Refund (30%):</strong> $240,000</li>
+              </ul>
+              <p>
+                <strong>Total Funding:</strong> $200k (Grant) + $240k (ITC) = $440,000 (44% of project).
+              </p>
+
+              <h3>3. Carbon Credits (The Hidden Revenue)</h3>
+              <p>
+                Grants and Tax Credits pay for the <em>Capital Cost</em> (CAPEX). Carbon Credits pay for the <em>Operation</em> (OPEX).
+              </p>
+              <p>
+                In Canada, large emitters rely on the <strong>Output-Based Pricing System (OBPS)</strong>. If your project generates "Offset Credits" (e.g., you capture methane or generate renewable power), you can sell those credits to heavy polluters.
+              </p>
+              <p>
+                <strong>Price Floor:</strong> Carbon price is rising to $170/tonne by 2030. If your project offsets 10,000 tonnes per year, that is $1.7 Million in annual recurring revenue.
+              </p>
+
+              <h3>4. Navigating SDTC</h3>
+              <p>
+                The Sustainable Development Technology Canada (SDTC) fund is for "First-of-kind" deployments. They are looking for technology risk.
+              </p>
+              <ul>
+                <li><strong>Do not apply</strong> if you are buying off-the-shelf solar panels (Use the ITC).</li>
+                <li><strong>Do apply</strong> if you invented a new transparent solar glass that has never been tested on a skyscraper before.</li>
+              </ul>
+              <p>
+                SDTC applications are rigorous (Phase 1: SOI, Phase 2: Full Proposal, Phase 3: Due Diligence). Expect a 6-9 month timeline.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Detailed FAQ Section */}
+        <section className="py-20 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-600 pl-8">{faq.answer}</p>
+                  </div>
                 ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-green-900 via-emerald-800 to-teal-900">
+        {/* Final CTA */}
+        <section className="py-24 bg-emerald-900 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Ready to Apply for Clean Energy Grants?
-              </h2>
-              <p className="text-xl text-green-100 mb-10 max-w-2xl mx-auto">
-                Download our free clean tech grants guide or get personalized help from specialists experienced in DOE and EPA funding.
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-4xl font-bold mb-6">Connect with the Hub</h2>
+              <p className="text-xl text-emerald-100 mb-10">
+                Don't guess. Let the federal experts tell you what you qualify for.
               </p>
-
-              <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                <Card className="bg-white/10 backdrop-blur border-2 border-white/20 hover:bg-white/15 transition-all">
-                  <CardContent className="pt-6 text-center">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Download className="w-8 h-8 text-green-600" />
-                    </div>
-                    <h3 className="font-bold text-xl mb-2 text-white">Free Clean Tech Guide</h3>
-                    <p className="text-green-100 text-sm mb-6">
-                      Comprehensive PDF with DOE SBIR templates, EPA programs, state funding, and winning strategies for renewable energy.
-                    </p>
-                    <Button size="lg" className="w-full bg-white text-green-700 hover:bg-green-50 font-semibold" asChild>
-                      <Link href="/download/clean-tech-energy-grants-guide">
-                        Download Now (Free)
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-yellow-500/20 backdrop-blur border-2 border-yellow-400 hover:bg-yellow-500/25 transition-all">
-                  <CardContent className="pt-6 text-center">
-                    <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Users className="w-8 h-8 text-gray-900" />
-                    </div>
-                    <h3 className="font-bold text-xl mb-2 text-white">Expert Clean Tech Support</h3>
-                    <p className="text-yellow-100 text-sm mb-6">
-                      Work with specialists who&apos;ve helped clean tech startups win DOE grants, partner with national labs, and commercialize energy innovations.
-                    </p>
-                    <Button size="lg" className="w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold" asChild>
-                      <Link href="/contact?service=cleantech-grants-help">
-                        Get Expert Help
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <Button size="lg" className="bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-lg px-8 py-4 h-auto" asChild>
+                  <Link href="https://ised-isde.canada.ca/site/clean-growth-hub/en" target="_blank" rel="noopener noreferrer">
+                    <Leaf className="w-5 h-5 mr-2" />
+                    Visit Clean Growth Hub
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-emerald-400 text-emerald-100 hover:bg-emerald-800 hover:text-white font-semibold text-lg px-8 py-4 h-auto" asChild>
+                  <Link href="/blog/canada-innovation-research-development-grants-guide">
+                    Explore R&D Grants
+                  </Link>
+                </Button>
               </div>
-
-              <p className="text-green-200 mt-8 text-sm">
-                ✓ $65M DOE funding • ✓ National lab partnerships • ✓ Zero equity required
-              </p>
             </div>
           </div>
         </section>
+
+        <Footer />
       </div>
-      <Footer />
     </>
   )
 }

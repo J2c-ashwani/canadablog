@@ -3,43 +3,49 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Zap, Lightbulb, Beaker, HelpCircle } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Microscope, Cpu, FlaskConical, Building, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, FileText, Users, Calculator, Scale } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Innovation & R&D Grants 2026 | $4.2B+ Research Development Funding Programs Guide",
-  description: "Complete guide to Canada's innovation and R&D grants. Access SR&ED tax credits, IRAP funding, Strategic Innovation Fund, and 45+ programs offering $4.2B+ for research and development.",
-  keywords: "Canada innovation grants, R&D funding Canada, SR&ED tax credits, IRAP funding, Strategic Innovation Fund, research development grants Canada 2026",
-  openGraph: {
-    title: "Canada Innovation & R&D Grants 2026 | $4.2B+ Research Development Funding Guide",
-    description: "Comprehensive guide to Canada's innovation and R&D funding ecosystem with 45+ programs offering $4.2B+ for research, development, and commercialization.",
-    url: "https://www.fsidigital.ca/blog/canada-innovation-research-development-grants-guide",
-    images: ["/og-image.png"],
-  },
+  title: "Canada R&D Grants 2026 | SR&ED & IRAP Funding Guide",
+  description: "Complete 2026 guide to Canadian R&D funding. Major SR&ED update (limit doubled to $6M), NRC IRAP grants, and how to stack funding to cover 80% of dev & research costs.",
+  keywords: "SR&ED tax credit 2026, NRC IRAP grants, Canada innovation funding, R&D grants canada, SRED refund rates, research and development tax credits",
 }
 
-export default function CanadaInnovationRDGrantsGuidePage() {
+export default function CanadaInnovationGrantsGuide() {
   const faqData = [
     {
+      question: "What is the new SR&ED limit for 2026?",
+      answer: "Major Update: The expenditure limit for the enhanced 35% refundable tax credit has effectively doubled from $3 million to $6 million for tax years starting after Dec 2024. This allows scaling tech firms to claim significantly more cash back."
+    },
+    {
       question: "What is the difference between IRAP and SR&ED?",
-      answer: "IRAP is an upfront 'grant' (non-repayable contribution) that you apply for before starting the project to help with cash flow. SR&ED is a tax credit you claim after the year is done to get a refund on money you already spent. Strategies often use both."
+      answer: "Timing is the key difference. IRAP is a 'Grant' (Contribution) that pays you monthly *while* you do the work (improving cash flow). SR&ED is a 'Tax Credit' that pays you a lump sum *after* your fiscal year ends (retroactive)."
     },
     {
       question: "Can I claim both IRAP and SR&ED?",
-      answer: "Yes, but you cannot 'double dip'. You must deduct the IRAP funding from your SR&ED expense pool. Basically, the government won't give you a tax credit on money they already gave you for free. But stacking them effectively is a standard way to maximize funding."
+      answer: "Yes, but you cannot 'double dip'. You must subtract the IRAP grant amount from your SR&ED eligible expenses. However, using both is still the optimal strategy: IRAP funds the project now, SR&ED tops up the refund later."
     },
     {
-      question: "Is software development eligible?",
-      answer: "Yes, if there is 'technological uncertainty' (you don't know if it's possible) and 'technological advancement' (you learn something new). Routine bug fixing or using standard libraries is not eligible. Building a new algorithm or architecture often is."
+      question: "Does software development count as R&D?",
+      answer: "Yes, IF there is 'Technical Uncertainty'. Building a standard CRUD app or website is not SR&ED. Developing a novel algorithm, resolving a systemic database bottleneck, or creating a new encryption method often is."
     },
     {
-      question: "How long does SIF take to approve?",
-      answer: "The Strategic Innovation Fund (SIF) is for large/complex projects and the process is lengthy, often taking 6-12 months or more. It involves multiple stages of due diligence and negotiation."
+      question: "How long does it take to get the money?",
+      answer: "IRAP: Approval takes 1-3 months, then monthly claims are paid in weeks. SR&ED: Processing takes 2-6 months *after* you file your taxes. It is a slower, but guaranteed, mechanism."
     },
     {
-      question: "What is TRL?",
-      answer: "Technology Readiness Level (TRL) is a scale from 1 (Basic Principle) to 9 (Proven in Operation). Grants usually target specific TRLs. For example, research grants might be TRL 1-4, while commercialization grants might be TRL 7-9."
+      question: "Can I claim SR&ED if I fail?",
+      answer: "Yes! In fact, failure often proves there was 'Technical Uncertainty'. If the solution was obvious and you succeeded easily, it might NOT be SR&ED. Documenting your failures is key evidence."
+    },
+    {
+      question: "What expenses are eligible?",
+      answer: "1. Salaries (T4) of technical staff (Developers, Engineers). 2. Subcontractors (Canadians only). 3. Materials consumed or transformed. 4. Overhead (Proxy method, usually 55% of salaries)."
+    },
+    {
+      question: "Is marketing eligible for SR&ED?",
+      answer: "No. Market research, sales, routine data collection, and style changes are strictly excluded. The work must be 'Scientific' or 'Technological' in nature."
     }
   ];
 
@@ -55,6 +61,7 @@ export default function CanadaInnovationRDGrantsGuidePage() {
       }
     }))
   };
+
   return (
     <>
       <Header />
@@ -64,27 +71,27 @@ export default function CanadaInnovationRDGrantsGuidePage() {
       />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
+        <section className="bg-gradient-to-br from-violet-900 to-fuchsia-900 text-white py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🚀 Innovation & R&D Funding Ecosystem
+              <Badge className="mb-6 bg-fuchsia-500/20 text-fuchsia-100 border-fuchsia-400/30 px-4 py-1.5 text-sm uppercase tracking-wide">
+                🔬 Innovation Economy 2026
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Canada Innovation & R&D Grants Guide
+              <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+                Canada R&D Funding: <span className="text-fuchsia-400">The Power of "The Stack"</span>
               </h1>
-              <p className="text-xl text-blue-100 mb-8">
-                Access Canada's comprehensive innovation and research development funding ecosystem with $4.2B+ available annually through 45+ federal and provincial programs. From SR&ED tax credits to Strategic Innovation Fund - find the perfect R&D funding for your innovation projects.
+              <p className="text-xl text-fuchsia-100 mb-10 leading-relaxed max-w-3xl mx-auto">
+                Canada has one of the world's most generous R&D funding ecosystems. Learn how smart founders use <strong>IRAP</strong> for upfront cash and the upgraded <strong>SR&ED (now $6M limit)</strong> for backend refunds.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>
-                  <Link href="/grant-finder?category=innovation-rd">
-                    Find Your R&D Program
+                <Button size="lg" className="bg-white hover:bg-gray-100 text-violet-900 font-bold text-lg px-10 py-6 shadow-xl" asChild>
+                  <Link href="#sred-masterclass">
+                    New SR&ED Rules ($6M)
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild>
-                  <Link href="/canada/government-grants">
-                    Back to All Programs
+                <Button size="lg" variant="outline" className="border-2 border-fuchsia-400/50 text-white hover:bg-fuchsia-900/50 font-semibold text-lg px-10 py-6" asChild>
+                  <Link href="#irap-grants">
+                    IRAP Grants
                   </Link>
                 </Button>
               </div>
@@ -92,54 +99,21 @@ export default function CanadaInnovationRDGrantsGuidePage() {
           </div>
         </section>
 
-        {/* Innovation Funding Statistics */}
-        <section className="py-16 bg-white">
+        {/* The 2026 Update Alert */}
+        <section className="py-12 bg-white -mt-8 relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center mb-12">
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">$4.2B+</div>
-                  <div className="text-gray-600">Annual Innovation Funding</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">45+</div>
-                  <div className="text-gray-600">Active R&D Programs</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">$100M</div>
-                  <div className="text-gray-600">Maximum Project Funding</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-orange-600 mb-2">35%</div>
-                  <div className="text-gray-600">SR&ED Refundable Rate</div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada as Global Innovation Leader</h2>
-                <p className="text-lg text-gray-700 mb-6">
-                  Canada operates one of the world's most comprehensive innovation and R&D funding ecosystems, with over $4.2 billion available annually through federal and provincial programs. From the flagship SR&ED tax credit program supporting 25,000+ companies annually to the Strategic Innovation Fund backing transformative projects up to $100M+, Canada provides unparalleled support for research, development, and commercialization across all sectors and business stages.
-                </p>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 p-6 rounded-lg">
-                    <h4 className="font-bold text-lg mb-3 text-blue-800">Innovation Policy Priorities</h4>
-                    <ul className="text-gray-700 space-y-2">
-                      <li>• Research and experimental development excellence</li>
-                      <li>• Technology commercialization and scale-up support</li>
-                      <li>• International competitiveness and export development</li>
-                      <li>• Clean technology and sustainable innovation leadership</li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-green-50 p-6 rounded-lg">
-                    <h4 className="font-bold text-lg mb-3 text-green-800">Strategic Innovation Integration</h4>
-                    <ul className="text-gray-700 space-y-2">
-                      <li>• Federal-provincial R&D program coordination</li>
-                      <li>• University-industry collaboration initiatives</li>
-                      <li>• Innovation supercluster ecosystem development</li>
-                      <li>• International research partnership facilitation</li>
-                    </ul>
+            <div className="max-w-5xl mx-auto">
+              <div className="bg-violet-50 border-l-4 border-violet-500 p-6 rounded-r-lg shadow-sm">
+                <div className="flex items-start">
+                  <Lightbulb className="w-8 h-8 text-violet-600 mr-4 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-xl font-bold text-violet-900 mb-2">2026 Alert: SR&ED Limit Doubled</h3>
+                    <p className="text-violet-800 mb-4">
+                      Historically, the enhanced 35% refund was capped at $3 million of expenditures. <strong>This cap has been raised to $6 million</strong>.
+                    </p>
+                    <p className="text-violet-800">
+                      <strong>Impact:</strong> Mid-sized tech companies (CCPCs) can now get up to <strong>$2.1 Million</strong> in cash refunds annually, rather than being capped at ~$1M.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -147,471 +121,281 @@ export default function CanadaInnovationRDGrantsGuidePage() {
           </div>
         </section>
 
-        {/* Major Innovation Programs */}
-        <section className="py-16 bg-gray-50">
+        {/* Section 1: SR&ED Masterclass */}
+        <section id="sred-masterclass" className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Innovation & R&D Programs</h2>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">1. SR&ED Masterclass</h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  Scientific Research and Experimental Development (SR&ED) is an entitlement, not a competition. If you qualify, you get the money. But *do* you qualify?
+                </p>
+              </div>
 
-              <div className="space-y-8">
-                {/* SR&ED Tax Credit Program */}
-                <Card className="border-blue-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Shield className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle className="text-blue-700">SR&ED - Scientific Research & Experimental Development</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-4 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>$4.5B Budget</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Tax Credit</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Up to 35%</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-orange-600 mr-2" />
-                        <span><strong>All Businesses</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Canada's largest R&D tax incentive program providing refundable tax credits for research and experimental development activities. Enhanced in 2026 with increased refundable limit to $4.5M for CCPCs.
+              <div className="flex flex-col md:flex-row gap-12 items-start">
+                <div className="flex-1">
+                  {/* The "Why" Test */}
+                  <div className="bg-white border border-gray-200 p-8 rounded-xl shadow-sm mb-8">
+                    <h3 className="font-bold text-2xl text-violet-900 mb-6">The "Why" Test (Technical Uncertainty)</h3>
+                    <p className="text-gray-700 mb-6">
+                      This is where 90% of claims fail audit. You must prove that at the outset, you <strong>did not know</strong> if the project was technically possible, or how to achieve it.
                     </p>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Enhanced 2026 Benefits:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• 35% refundable ITC on first $4.5M (up from $3M)</li>
-                          <li>• 15% non-refundable above limit</li>
-                          <li>• Provincial supplements up to 30% additional</li>
-                          <li>• Covers salaries, materials, contractors, overhead</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Eligible Activities:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Software development and innovation</li>
-                          <li>• Advanced manufacturing processes</li>
-                          <li>• Biotechnology and life sciences research</li>
-                          <li>• Clean technology development</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Application Process:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Filed with corporate tax return</li>
-                          <li>• Rolling intake - no deadlines</li>
-                          <li>• CRA review and audit process</li>
-                          <li>• Professional preparation recommended</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
 
-                {/* IRAP Program */}
-                <Card className="border-green-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Zap className="w-6 h-6 text-green-600 mr-3" />
-                      <CardTitle className="text-green-700">IRAP - Industrial Research Assistance Program</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-4 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $500K</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Non-Repayable</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>60-80% Funding</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-orange-600 mr-2" />
-                        <span><strong>SMEs Only</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      National Research Council's flagship program supporting Canadian SMEs with non-repayable contributions for technology innovation and commercialization projects.
-                    </p>
                     <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-2 text-green-700">2026 Program Updates:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• <strong>Funding:</strong> 60-80% of eligible costs up to $500K per project</li>
-                          <li>• <strong>Duration:</strong> 12-24 months with possible extension</li>
-                          <li>• <strong>Focus:</strong> Technology development and commercialization</li>
-                          <li>• <strong>Advisory:</strong> Dedicated industrial technology advisors</li>
-                        </ul>
+                      <div className="bg-red-50 p-4 rounded border border-red-100">
+                        <h5 className="font-bold text-red-800 mb-2">❌ Standard Development</h5>
+                        <p className="text-sm text-gray-600 mb-2">"We built a React website with a MongoDB backend."</p>
+                        <p className="text-xs text-red-600 font-bold">Why it fails: Standard libraries, known patterns, no unknown obstacles.</p>
                       </div>
-                      <div>
-                        <h5 className="font-semibold mb-2 text-blue-700">Eligibility Requirements:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Canadian-incorporated for-profit SMEs</li>
-                          <li>• Fewer than 500 full-time employees</li>
-                          <li>• Demonstrated innovation capacity</li>
-                          <li>• Potential for commercialization and growth</li>
-                        </ul>
+                      <div className="bg-emerald-50 p-4 rounded border border-emerald-100">
+                        <h5 className="font-bold text-emerald-800 mb-2">✅ Experimental Development</h5>
+                        <p className="text-sm text-gray-600 mb-2">"We built a custom sharding algorithm because MongoDB failed at our specific write-throughput scale."</p>
+                        <p className="text-xs text-emerald-600 font-bold">Why it wins: Standard tools failed. You had to invent a solution.</p>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
 
-                {/* Strategic Innovation Fund */}
-                <Card className="border-purple-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Award className="w-6 h-6 text-purple-600 mr-3" />
-                      <CardTitle className="text-purple-700">Strategic Innovation Fund (SIF)</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-4 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>$10M - $100M+</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Large Projects</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Transformative</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-orange-600 mr-2" />
-                        <span><strong>All Sizes</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Federal flagship program supporting large-scale, transformative innovation projects that drive economic growth, create jobs, and enhance Canada's global competitiveness.
-                    </p>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Program Focus Areas:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Advanced manufacturing and materials</li>
-                          <li>• Clean technology and sustainability</li>
-                          <li>• Digital industries and AI</li>
-                          <li>• Health and life sciences</li>
+                  {/* Refund Rates */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <Card className="border-violet-100 bg-violet-50/50">
+                      <CardHeader>
+                        <CardTitle className="text-lg text-violet-900">Federal Rate</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="text-3xl font-bold text-violet-700 mb-2">35% Refundable</div>
+                        <p className="text-sm text-gray-600 mb-4">For Canadian-Controlled Private Corps (CCPCs) on first $6M.</p>
+                        <ul className="text-sm space-y-2">
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-violet-600 mr-2" /> Cash Cheque (Not just tax credit)</li>
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-violet-600 mr-2" /> Covers Salaries & Materials</li>
                         </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Funding Structure:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Repayable and non-repayable contributions</li>
-                          <li>• Minimum $10M contribution requests</li>
-                          <li>• Typically covers 50%+ of project costs</li>
-                          <li>• Multi-year project timelines</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Application Requirements:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Significant economic impact demonstration</li>
-                          <li>• Innovation and competitiveness focus</li>
-                          <li>• Environmental and social benefits</li>
-                          <li>• Industry collaboration potential</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                      </CardContent>
+                    </Card>
 
-                {/* Innovation Superclusters */}
-                <Card className="border-orange-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Lightbulb className="w-6 h-6 text-orange-600 mr-3" />
-                      <CardTitle className="text-orange-700">Innovation Superclusters Initiative</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-4 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $40M</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Collaborative</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Ecosystem</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-orange-600 mr-2" />
-                        <span><strong>Multi-Partner</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Large-scale collaborative innovation projects connecting businesses, research institutions, and not-for-profits to address global challenges and build innovation ecosystems.
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-2 text-orange-700">Active Superclusters:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• <strong>Digital Technology:</strong> AI, quantum computing, cybersecurity</li>
-                          <li>• <strong>Next Generation Manufacturing:</strong> Advanced materials, automation</li>
-                          <li>• <strong>Ocean:</strong> Marine technology and clean ocean solutions</li>
-                          <li>• <strong>AI-Powered Supply Chains:</strong> Logistics innovation</li>
-                          <li>• <strong>Scale AI:</strong> Artificial intelligence applications</li>
+                    <Card className="border-pink-100 bg-pink-50/50">
+                      <CardHeader>
+                        <CardTitle className="text-lg text-pink-900">Provincial Top-Up</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="text-3xl font-bold text-pink-700 mb-2">+10% to 30%</div>
+                        <p className="text-sm text-gray-600 mb-4">Most provinces reduce your R&D cost further.</p>
+                        <ul className="text-sm space-y-2">
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-pink-600 mr-2" /> Ontario (OITC): +8% Refundable</li>
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-pink-600 mr-2" /> BC: +10% Credit</li>
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-pink-600 mr-2" /> Quebec: Up to 30% (Best in Canada)</li>
                         </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2 text-blue-700">Project Requirements:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Multi-partner collaboration (3+ organizations)</li>
-                          <li>• Industry-academia partnerships</li>
-                          <li>• Significant economic impact potential</li>
-                          <li>• Knowledge sharing and commercialization</li>
-                          <li>• IP development and retention in Canada</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Clean Technology Programs */}
-                <Card className="border-teal-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Beaker className="w-6 h-6 text-teal-600 mr-3" />
-                      <CardTitle className="text-teal-700">Clean Technology Innovation Programs</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-4 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>$1.2B+</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Clean Tech Focus</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Sustainability</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-orange-600 mr-2" />
-                        <span><strong>All Stages</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Specialized funding streams supporting clean technology innovation, environmental solutions, and sustainable development across multiple federal departments and agencies.
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-2 text-teal-700">Major Programs:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• <strong>Clean Growth Program:</strong> Technology development and demonstration</li>
-                          <li>• <strong>Sustainable Development Technology Canada:</strong> Pre-commercial cleantech</li>
-                          <li>• <strong>Clean Technology Stream (SIF):</strong> Large-scale deployment</li>
-                          <li>• <strong>Agricultural Clean Technology Program:</strong> Sector-specific innovation</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2 text-green-700">Technology Areas:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Renewable energy and storage systems</li>
-                          <li>• Energy efficiency and smart grid technologies</li>
-                          <li>• Clean transportation and mobility solutions</li>
-                          <li>• Environmental monitoring and remediation</li>
-                          <li>• Circular economy and waste reduction</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Provincial R&D Programs */}
-                <Card className="border-pink-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Building className="w-6 h-6 text-pink-600 mr-3" />
-                      <CardTitle className="text-pink-700">Provincial Innovation & R&D Programs</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-2 text-pink-700">Major Provincial Programs:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• <strong>Ontario Innovation Tax Credit:</strong> Additional 10% refundable credit</li>
-                          <li>• <strong>Quebec R&D Tax Credit:</strong> Up to 30% provincial supplement</li>
-                          <li>• <strong>BC Innovation Council:</strong> Technology development funding</li>
-                          <li>• <strong>Alberta Innovates:</strong> Research and commercialization support</li>
-                          <li>• <strong>Mitacs Research Training:</strong> Graduate student and postdoc support</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2 text-green-700">Provincial Advantages:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Stackable with federal SR&ED credits</li>
-                          <li>• Regional economic development focus</li>
-                          <li>• Industry cluster and ecosystem support</li>
-                          <li>• University-industry collaboration programs</li>
-                          <li>• Sector-specific innovation initiatives</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Application Strategy Framework */}
-        <section className="py-16 bg-white">
+        {/* Section 2: NRC IRAP */}
+        <section id="irap-grants" className="py-20 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="flex flex-col md:flex-row-reverse gap-12 items-center mb-12">
+                <div className="flex-1">
+                  <div className="flex items-center mb-6">
+                    <Microscope className="w-10 h-10 text-orange-600 mr-4" />
+                    <h2 className="text-3xl font-bold text-gray-900">2. NRC IRAP (The Accelerator)</h2>
+                  </div>
+                  <Badge className="bg-orange-100 text-orange-800 mb-6 px-3 py-1">Discretionary Grant</Badge>
+                  <p className="text-lg text-gray-700 mb-6">
+                    While SR&ED is for everyone, IRAP is for the "Chosen Few". An Industrial Technology Advisor (ITA) must vet your project. If they like it, they fund it <strong>upfront</strong>.
+                  </p>
+
+                  <div className="space-y-6">
+                    <div className="flex items-start bg-white p-4 rounded-lg shadow-sm">
+                      <DollarSign className="w-6 h-6 text-orange-500 mr-4 mt-1" />
+                      <div>
+                        <h4 className="font-bold text-gray-900">Cash Flow Friendly</h4>
+                        <p className="text-sm text-gray-600">IRAP pays monthly. You don't have to wait 18 months for a tax return. This is critical for startups burning cash.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start bg-white p-4 rounded-lg shadow-sm">
+                      <Target className="w-6 h-6 text-orange-500 mr-4 mt-1" />
+                      <div>
+                        <h4 className="font-bold text-gray-900">Coverage Rates</h4>
+                        <p className="text-sm text-gray-600">Typically covers <strong>80% of internal labour salaries</strong> and <strong>50% of contractor costs</strong> for the project duration.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start bg-white p-4 rounded-lg shadow-sm">
+                      <Users className="w-6 h-6 text-orange-500 mr-4 mt-1" />
+                      <div>
+                        <h4 className="font-bold text-gray-900">Youth Employment Program (YEP)</h4>
+                        <p className="text-sm text-gray-600">A special IRAP stream giving up to $30,000 to hire a recent science/tech graduate.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="w-full md:w-1/3">
+                  <div className="bg-orange-900 text-white p-8 rounded-xl">
+                    <h4 className="font-bold text-xl mb-4">The "ITA" Gatekeeper</h4>
+                    <p className="text-orange-200 text-sm mb-6">
+                      You cannot apply for IRAP on a website. You must call 1-877-994-4727 and request a meeting with an Industrial Technology Advisor (ITA).
+                    </p>
+                    <div className="bg-orange-800 p-4 rounded border border-orange-700">
+                      <h5 className="font-bold text-sm mb-2 text-white">Pitching your ITA:</h5>
+                      <ul className="space-y-2 text-xs text-orange-100">
+                        <li>• Focus on Technical Innovation (not just sales).</li>
+                        <li>• Use terms like "De-risking technology".</li>
+                        <li>• Show you create Canadian jobs.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: The Stack Strategy */}
+        <section className="py-20 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12">The "Double Dip" Strategy (Stacking)</h2>
+              <div className="bg-gray-900 text-gray-300 rounded-2xl p-8 md:p-12">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                  <div>
+                    <p className="text-lg mb-6">
+                      Technically, you cannot get funded twice for the same dollar. If IRAP pays $80k of a $100k salary, you can only claim SR&ED on the remaining $20k.
+                    </p>
+                    <p className="text-lg mb-6 font-bold text-white">
+                      BUT... Using both maximizes your net benefit.
+                    </p>
+                    <div className="space-y-4">
+                      <div className="flex justify-between border-b border-gray-700 pb-2">
+                        <span>Developer Salary:</span>
+                        <span className="text-white">$100,000</span>
+                      </div>
+                      <div className="flex justify-between border-b border-gray-700 pb-2">
+                        <span className="text-orange-400">Less: IRAP Grant (80%)</span>
+                        <span className="text-orange-400">-$80,000</span>
+                      </div>
+                      <div className="flex justify-between border-b border-gray-700 pb-2">
+                        <span>Net Cost to You:</span>
+                        <span className="text-white">$20,000</span>
+                      </div>
+                      <div className="flex justify-between border-b border-gray-700 pb-2">
+                        <span className="text-violet-400">Less: SR&ED on remaining $20k (~40%)</span>
+                        <span className="text-violet-400">-$8,000</span>
+                      </div>
+                      <div className="flex justify-between text-xl font-bold pt-2">
+                        <span className="text-emerald-400">Final Cost:</span>
+                        <span className="text-emerald-400">$12,000</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-gray-800 p-8 rounded-xl border border-gray-700 text-center">
+                    <h4 className="text-2xl font-bold text-white mb-2">12 Cents on the Dollar</h4>
+                    <p className="text-gray-400 mb-6">
+                      By stacking IRAP and SR&ED, you can effectively employ top-tier R&D talent for ~12% of their actual salary.
+                    </p>
+                    <div className="bg-gray-700 p-4 rounded text-left">
+                      <p className="text-xs text-gray-300 mb-2"><strong>Why this matters:</strong></p>
+                      <p className="text-sm text-gray-200">
+                        It de-risks innovation. You can afford to fail when the government pays 88% of the cost.
+                      </p>
+                    </div>
+                    <div className="mt-8">
+                      <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white" asChild>
+                        <Link href="/contact?service=rd-strategy-session">
+                          <Calculator className="w-5 h-5 mr-2" />
+                          Plan My R&D Stack
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: Refund Flow Chart */}
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Innovation Funding Strategy Framework</h2>
-
-              <div className="space-y-6">
-                <Card className="border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-700">Multi-Program Optimization Strategy</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Strategic Program Stacking:</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• Combine SR&ED with provincial R&D credits (up to 65% total)</li>
-                          <li>• Use IRAP for project-specific non-repayable funding</li>
-                          <li>• Leverage SIF for large-scale transformative projects</li>
-                          <li>• Access sector-specific programs for specialized support</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Timeline Coordination:</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• SR&ED: File with annual corporate tax returns</li>
-                          <li>• IRAP: Rolling intake with 2026 cohort opening</li>
-                          <li>• SIF: Competitive process with rolling submissions</li>
-                          <li>• Provincial: Various deadlines and intake periods</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-green-200">
-                  <CardHeader>
-                    <CardTitle className="text-green-700">Innovation Excellence Best Practices</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Technical Innovation Documentation:</strong> Maintain detailed records of experimental development, technical challenges, and systematic investigation processes
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Commercialization Strategy:</strong> Demonstrate clear pathway from research to market with economic impact potential
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Collaboration and Partnerships:</strong> Leverage university-industry partnerships and international collaboration opportunities
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>IP Strategy and Protection:</strong> Develop comprehensive intellectual property strategy with retention in Canada
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              <h2 className="text-3xl font-bold text-center mb-12">The Refund Timeline</h2>
+              <div className="relative border-l-4 border-violet-200 ml-6 space-y-12">
+                <div className="relative pl-8">
+                  <div className="absolute -left-3.5 top-1 bg-violet-600 w-6 h-6 rounded-full border-4 border-white"></div>
+                  <h4 className="font-bold text-gray-900">Fiscal Year End</h4>
+                  <p className="text-gray-600">Your accountant prepares your T2 Corporate Tax Return.</p>
+                </div>
+                <div className="relative pl-8">
+                  <div className="absolute -left-3.5 top-1 bg-violet-600 w-6 h-6 rounded-full border-4 border-white"></div>
+                  <h4 className="font-bold text-gray-900">Technical Writing</h4>
+                  <p className="text-gray-600">You write the "Technical Narrative" explaining the uncertainty and advancement.</p>
+                </div>
+                <div className="relative pl-8">
+                  <div className="absolute -left-3.5 top-1 bg-violet-600 w-6 h-6 rounded-full border-4 border-white"></div>
+                  <h4 className="font-bold text-gray-900">Submission (T661 Form)</h4>
+                  <p className="text-gray-600">You attach the T661 to your tax return. (Deadline: 18 months after year end).</p>
+                </div>
+                <div className="relative pl-8">
+                  <div className="absolute -left-3.5 top-1 bg-emerald-500 w-6 h-6 rounded-full border-4 border-white"></div>
+                  <h4 className="font-bold text-gray-900">Direct Deposit</h4>
+                  <p className="text-gray-600">CRA processes the claim. Cheque arrives in your bank (2-6 months typically).</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Innovation Funding FAQs</h2>
-          <div className="space-y-6">
-            {faqData.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
-                  <HelpCircle className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
-                  {faq.question}
-                </h3>
-                <p className="text-gray-700 ml-9">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Dual CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800">
+        {/* Detailed FAQ Section */}
+        <section className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-3xl font-bold mb-6">
-                Ready to Access Canada's $4.2B+ Innovation Funding Ecosystem?
-              </h2>
-              <p className="text-xl text-blue-100 mb-8">
-                Get our complete innovation funding strategy guide or work with our R&D specialists who have secured over $25M in innovation grants with 91% success rate across all major programs.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
-                  <h4 className="font-semibold text-white mb-2">DIY Innovation Approach</h4>
-                  <p className="text-blue-100 text-sm mb-4">
-                    Get our comprehensive innovation funding guide with program-specific templates and strategies.
-                  </p>
-                  <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100" asChild>
-                    <Link href="/guides/apply-strategic-innovation-fund">
-                      <Download className="w-4 h-4 mr-2" />
-                      Get Innovation Guide
-                    </Link>
-                  </Button>
-                </div>
-
-                <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
-                  <h4 className="font-semibold text-white mb-2">Expert Innovation Support</h4>
-                  <p className="text-yellow-100 text-sm mb-4">
-                    Work with R&D specialists who have secured $25M+ with 91% success rate across SR&ED, IRAP, SIF, and provincial programs.
-                  </p>
-                  <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
-                    <Link href="/contact?service=innovation-rd-expert-help">
-                      Get Innovation Expert Help
-                    </Link>
-                  </Button>
-                </div>
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-indigo-500 mr-3 mt-0.5 flex-shrink-0" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-600 pl-8">{faq.answer}</p>
+                  </div>
+                ))}
               </div>
-
-              <p className="text-blue-200 text-sm mt-6">
-                91% success rate for innovation applications • Average funding secured: $425K • Multi-program expertise
-              </p>
             </div>
           </div>
         </section>
+
+        {/* Final CTA */}
+        <section className="py-24 bg-gray-900 text-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Related R&D Funding</h2>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/blog/canada-hiring-training-grants-guide" className="px-6 py-3 bg-gray-100 rounded-full hover:bg-gray-200 text-gray-700 font-medium transition-colors">
+                Hiring Grants (Non-R&D)
+              </Link>
+              <Link href="/blog/canada-technology-adoption-grants-guide" className="px-6 py-3 bg-gray-100 rounded-full hover:bg-gray-200 text-gray-700 font-medium transition-colors">
+                Tech Adoption (CDAP Alternatives)
+              </Link>
+              <Link href="/blog/clean-tech-energy-grants" className="px-6 py-3 bg-gray-100 rounded-full hover:bg-gray-200 text-gray-700 font-medium transition-colors">
+                Clean Tech Specifics
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-gray-400 mb-6">Need an R&D Tax Credit Consultant?</p>
+            <Button size="lg" className="bg-violet-600 hover:bg-violet-700 text-white font-bold" asChild>
+              <Link href="/contact?service=sred-audit">
+                Get a Free Claim Assessment
+              </Link>
+            </Button>
+          </div>
+        </section>
+
+        <Footer />
       </div>
-      <Footer />
     </>
   )
 }

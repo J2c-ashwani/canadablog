@@ -3,87 +3,95 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, ExternalLink } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Heart, Users, Megaphone, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Map, Briefcase } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women Entrepreneurship Loan Fund (WELF) 2026 | Up to $50K Microloans for Women Entrepreneurs",
-  description: "Complete guide to WELF microloans from Innovation, Science & Economic Development Canada. Get up to $50,000 in financing specifically for women-owned businesses, startups, and underrepresented entrepreneurs.",
-  keywords: "Women Entrepreneurship Loan Fund, WELF Canada, women business microloans, women entrepreneur financing, women startup loans, WEOC loans, NACCA women funding",
-  openGraph: {
-    title: "Women Entrepreneurship Loan Fund (WELF) 2026 | Up to $50K for Women Entrepreneurs",
-    description: "Complete guide to WELF microloans with up to $50,000 for women-owned businesses, startups, and underrepresented groups through five national delivery organizations.",
-    url: "https://www.fsidigital.ca/blog/women-entrepreneurship-loan-fund-canada",
-    images: ["/og-image.png"],
-  },
+  title: "Women Entrepreneurship Loan Fund (WELF) 2026 | $50k Funding Guide",
+  description: "Complete 2026 guide to the Women Entrepreneurship Loan Fund. Get up to $50,000 in loans via delivery partners like Coralus, PARO, and NACCA.",
+  keywords: "women entrepreneurship loan fund WELF, WELF delivery partners, loans for women Canada, Coralus funding, PARO loans, NACCA indigenous loans",
 }
 
-const faqData = [
-  {
-    question: "What is the Women Entrepreneurship Loan Fund (WELF)?",
-    answer: "WELF is a $55 million federal initiative providing microloans up to $50,000 for women entrepreneurs, delivered through five national organizations: WEOC, NACCA, Nventure, Coralus, and Evol."
-  },
-  {
-    question: "Who delivers WELF loans?",
-    answer: "WELF is delivered through five national partners: Women's Enterprise Organizations of Canada (WEOC), National Aboriginal Capital Corporations Association (NACCA), Nventure (formerly Futurpreneur), Coralus (formerly SheEO), and Evol (Quebec-based)."
-  },
-  {
-    question: "What can I use WELF loan funds for?",
-    answer: "WELF loans can be used for working capital, equipment purchases, inventory, marketing, leasehold improvements, and professional services. They cannot be used for personal expenses, real estate purchases, or debt refinancing."
-  },
-  {
-    question: "What are the typical WELF loan terms?",
-    answer: "WELF loans offer up to $50,000 with repayment periods up to 5 years, interest rates from prime + 2% to prime + 4%, minimal collateral requirements, and flexible payment options. Some partners like Coralus offer 0% interest."
-  }
-]
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqData.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
+export default function WomenUserLoanFundGuide() {
+  const faqData = [
+    {
+      question: "Is WELF a grant or a loan?",
+      answer: "It is a LOAN. You must pay it back. However, it is designed to be more accessible than bank loans, often with lower barriers to entry and built-in mentorship."
+    },
+    {
+      question: "What is the maximum amount I can borrow?",
+      answer: "Typically up to $50,000. Some partners may offer smaller micro-loans (e.g., $5,000 or $10,000) for startups, while the full $50k is often reserved for expansion."
+    },
+    {
+      question: "Where do I apply?",
+      answer: "You cannot apply on a government website. You must apply through a 'Delivery Partner' (like Coralus, PARO, or NACCA) that serves your region or demographic."
+    },
+    {
+      question: "Do I need good credit?",
+      answer: "WELF lenders are 'Character Based'. They do check personal credit, but they are more forgiving of life events (divorce, health issues) than major banks."
+    },
+    {
+      question: "Can I use the money to pay off debt?",
+      answer: "Usually, no. WELF is for 'Growth' (marketing, inventory, equipment, hiring). Using it to refinance existing high-interest debt is typically not allowed."
+    },
+    {
+      question: "Is there a mentorship requirement?",
+      answer: "Yes. Most partners require you to participate in advisory circles or mentorship programs. This is a feature, not a bug—it connects you with other founders."
+    },
+    {
+      question: "How long does it take to get approved?",
+      answer: "It varies by partner, but typically 4-8 weeks. It is not an instant 'click-loan'. You will need to submit a business plan and cash flow projections."
+    },
+    {
+      question: "Is this different from the 'Women Entrepreneurship Fund'?",
+      answer: "Yes. The 'Women Entrepreneurship Fund' (WEF) was a direct GRANT program that ended in 2019/2020. WELF is the current LOAN program active in 2026."
     }
-  }))
-}
+  ];
 
-export default function WomenEntrepreneurshipLoanFundGuidePage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
     <>
+      <Header />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-pink-600 to-purple-800 text-white py-16">
+        <section className="bg-gradient-to-br from-purple-900 to-indigo-900 text-white py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                💼 Women Entrepreneurship Loan Fund 2026
+              <Badge className="mb-6 bg-purple-500/20 text-purple-100 border-purple-400/30 px-4 py-1.5 text-sm uppercase tracking-wide">
+                🏦 The WELF Handbook
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Women Entrepreneurship Loan Fund (WELF)
+              <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+                Women Entrepreneurship Loan Fund: <span className="text-purple-400">Your $50k Guide</span>
               </h1>
-              <p className="text-xl text-pink-100 mb-8">
-                National microloan program providing up to $50,000 in financing for women entrepreneurs,
-                particularly startups, underrepresented groups, and sole proprietorships through five dedicated
-                delivery organizations across Canada.
+              <p className="text-xl text-purple-100 mb-10 leading-relaxed max-w-3xl mx-auto">
+                The government allocated $55 Million to loan funds specifically for women. But you can't apply to "The Government". You must find the right <strong>Delivery Partner</strong> for you.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-white text-pink-700 hover:bg-gray-100" asChild>
-                  <Link href="#eligibility">
-                    Check WELF Eligibility
+                <Button size="lg" className="bg-white hover:bg-gray-100 text-purple-900 font-bold text-lg px-10 py-6 shadow-xl" asChild>
+                  <Link href="#delivery-directory">
+                    Find Your Partner
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild>
-                  <Link href="/guides/women-entrepreneurship-loan-fund-guide">
-                    Get Free WELF Application Guide
+                <Button size="lg" variant="outline" className="border-2 border-purple-400/50 text-white hover:bg-purple-900/50 font-semibold text-lg px-10 py-6" asChild>
+                  <Link href="#welf-terms">
+                    Loan Terms
                   </Link>
                 </Button>
               </div>
@@ -91,370 +99,177 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
           </div>
         </section>
 
-        {/* Enhanced 2026 Program Updates */}
-        <section className="py-8 bg-green-50 border-b-2 border-green-200">
+        {/* The "Partner" Alert */}
+        <section className="py-12 bg-white -mt-8 relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <Card className="border-green-200 bg-green-50">
-                <CardContent className="pt-6">
-                  <div className="flex items-start">
-                    <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
-                    <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 WELF 2026 Program Enhancements</h3>
-                      <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
-                        <div>
-                          <strong>$55 Million Allocated:</strong> Federal funding through Budget 2021 now fully deployed
-                        </div>
-                        <div>
-                          <strong>Five National Partners:</strong> WEOC, NACCA, Nventure, Coralus, and Evol delivering loans
-                        </div>
-                        <div>
-                          <strong>Expanded Accessibility:</strong> Enhanced support for underrepresented women entrepreneurs
-                        </div>
-                        <div>
-                          <strong>Flexible Terms:</strong> Customized repayment options based on business cash flow
-                        </div>
-                      </div>
-                    </div>
+            <div className="max-w-5xl mx-auto">
+              <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-lg shadow-sm">
+                <div className="flex items-start">
+                  <Heart className="w-8 h-8 text-indigo-600 mr-4 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-xl font-bold text-indigo-900 mb-2">Crucial: Pick the Right Partner</h3>
+                    <p className="text-indigo-800 mb-4">
+                      Each "Delivery Partner" has a specific focus. Some are for Indigenous women, some for Francophones, some for broad startups.
+                    </p>
+                    <p className="text-indigo-800">
+                      <strong>Do not carpet bomb applications.</strong> Pick the one that aligns with your identity and location.
+                    </p>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* WELF Program Overview */}
-        <section className="py-16 bg-white">
+        {/* Section 1: Delivery Partner Directory */}
+        <section id="delivery-directory" className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Addressing Capital Barriers for Women Entrepreneurs</h2>
-                <p className="text-lg text-gray-600">
-                  WELF tackles a critical gap in Canadian business financing by providing accessible microloans
-                  specifically for women entrepreneurs who face difficulty accessing traditional capital, particularly
-                  in smaller amounts needed for startup and early-stage growth.
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">The WELF Directory</h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  Who holds the chequebook?
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-4 gap-8 text-center mb-12">
-                <div>
-                  <div className="text-3xl font-bold text-pink-600 mb-2">$50K</div>
-                  <div className="text-gray-600">Maximum Loan Amount</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">$55M</div>
-                  <div className="text-gray-600">Total Federal Funding</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">5</div>
-                  <div className="text-gray-600">National Delivery Partners</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-orange-600 mb-2">100%</div>
-                  <div className="text-gray-600">Women-Focused Program</div>
-                </div>
+              <div className="grid md:grid-cols-2 gap-8">
+                <Card className="border-purple-100 bg-purple-50/50">
+                  <CardHeader><CardTitle className="text-purple-900">Coralus (Formerly SheEO)</CardTitle></CardHeader>
+                  <CardContent>
+                    <Badge className="mb-2 bg-purple-200 text-purple-800">National</Badge>
+                    <p className="text-sm text-gray-600 mb-4">Focus on "Radical Generosity". Community funded loops. Very strong for social impact businesses.</p>
+                    <ul className="text-sm space-y-2">
+                      <li className="flex items-center"><CheckCircle className="w-3 h-3 text-purple-600 mr-2" /> 0% Interest Loans (Often)</li>
+                      <li className="flex items-center"><CheckCircle className="w-3 h-3 text-purple-600 mr-2" /> Massive global network</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-pink-100 bg-pink-50/50">
+                  <CardHeader><CardTitle className="text-pink-900">PARO Settlement Services</CardTitle></CardHeader>
+                  <CardContent>
+                    <Badge className="mb-2 bg-pink-200 text-pink-800">Ontario / National Reach</Badge>
+                    <p className="text-sm text-gray-600 mb-4">Famous for "Peer Lending Circles". You form a group of 4-7 women who co-vouch for loans.</p>
+                    <ul className="text-sm space-y-2">
+                      <li className="flex items-center"><CheckCircle className="w-3 h-3 text-pink-600 mr-2" /> Tiered borrowing ($1k -> $5k)</li>
+                      <li className="flex items-center"><CheckCircle className="w-3 h-3 text-pink-600 mr-2" /> No collateral needed</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-rose-100 bg-rose-50/50">
+                  <CardHeader><CardTitle className="text-rose-900">NACCA (Indigenous)</CardTitle></CardHeader>
+                  <CardContent>
+                    <Badge className="mb-2 bg-rose-200 text-rose-800">National (Indigenous)</Badge>
+                    <p className="text-sm text-gray-600 mb-4">National Aboriginal Capital Corporations Association. Delivers loans through local Aboriginal Financial Institutions (AFIs).</p>
+                    <ul className="text-sm space-y-2">
+                      <li className="flex items-center"><CheckCircle className="w-3 h-3 text-rose-600 mr-2" /> Up to $50k (sometimes more)</li>
+                      <li className="flex items-center"><CheckCircle className="w-3 h-3 text-rose-600 mr-2" /> Often includes non-repayable grants</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-blue-100 bg-blue-50/50">
+                  <CardHeader><CardTitle className="text-blue-900">Northumberland CFDC (DELIA)</CardTitle></CardHeader>
+                  <CardContent>
+                    <Badge className="mb-2 bg-blue-200 text-blue-800">Eastern Ontario / Pilot</Badge>
+                    <p className="text-sm text-gray-600 mb-4">The "DELIA" program offers micro-loans specifically aiming for automated, faster approval processes.</p>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
         </section>
 
-        {/* WELF Delivery Organizations */}
-        <section className="py-16 bg-gray-50">
+        {/* Section 2: Loan Terms */}
+        <section id="welf-terms" className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">WELF Delivery Organizations & Loan Programs</h2>
+              <div className="flex items-center mb-8">
+                <Target className="w-10 h-10 text-purple-600 mr-4" />
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900">2. The Terms</h2>
+                  <p className="text-gray-600">What you are signing up for</p>
+                </div>
+              </div>
 
-              <div className="space-y-8">
-                {/* WEOC */}
-                <Card className="border-pink-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Sparkles className="w-6 h-6 text-pink-600 mr-3" />
-                      <CardTitle className="text-pink-700">Women's Enterprise Organizations of Canada (WEOC)</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="font-bold text-lg mb-3 text-pink-800">WEOC National Loan Program</h4>
-                        <div className="space-y-3">
-                          <div className="flex items-center justify-between bg-pink-50 p-3 rounded-lg">
-                            <span className="font-semibold">Loan Amount:</span>
-                            <span className="text-pink-700 font-bold">Up to $50,000</span>
-                          </div>
-                          <div className="space-y-2 text-sm text-gray-700">
-                            <p>• Available to women entrepreneurs across Canada</p>
-                            <p>• Flexible repayment terms up to 5 years</p>
-                            <p>• Interest rates starting at prime + 2%</p>
-                            <p>• Business advisory support included</p>
-                            <p>• Provincial WEOC network support</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-3 text-gray-800">Eligibility & Focus</h4>
-                        <div className="text-sm text-gray-700 space-y-2">
-                          <p><strong>Target Groups:</strong> Women-owned businesses (51%+ ownership)</p>
-                          <p><strong>Business Stage:</strong> Startups and existing businesses</p>
-                          <p><strong>Geographic Coverage:</strong> All provinces and territories</p>
-                          <p><strong>Loan Uses:</strong> Working capital, equipment, inventory, marketing</p>
-                          <p><strong>Apply:</strong> Through provincial WEOC organizations</p>
-                        </div>
-                      </div>
-                    </div>
+              <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+                <div className="grid md:grid-cols-2 gap-12">
+                  <div>
+                    <p className="text-gray-700 text-lg mb-6">
+                      WELF loans are generally more favorable than bank loans, but they are serious financial commitments.
+                    </p>
 
-                    <div className="mt-6 p-4 bg-pink-50 rounded-lg">
-                      <h5 className="font-semibold mb-2">📋 WEOC Provincial Network:</h5>
-                      <div className="grid md:grid-cols-3 gap-4 text-sm">
-                        <div>
-                          <ul className="space-y-1">
-                            <li>• <strong>BC:</strong> Women's Enterprise Centre</li>
-                            <li>• <strong>AB:</strong> Alberta Women Entrepreneurs</li>
-                            <li>• <strong>SK:</strong> Women Entrepreneurs of Saskatchewan</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <ul className="space-y-1">
-                            <li>• <strong>MB:</strong> Women's Enterprise Centre Manitoba</li>
-                            <li>• <strong>ON:</strong> Women's Enterprise Skills Training</li>
-                            <li>• <strong>NB:</strong> CBDC Women in Business</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <ul className="space-y-1">
-                            <li>• <strong>NS:</strong> Women's Enterprise Network</li>
-                            <li>• <strong>PEI:</strong> Island Women's Enterprise</li>
-                            <li>• <strong>NL:</strong> Newfoundland Women's Network</li>
-                          </ul>
-                        </div>
+                    <div className="space-y-4">
+                      <div className="flex justify-between border-b border-gray-100 pb-2">
+                        <span className="text-gray-700">Interest Rate:</span>
+                        <span className="font-bold text-purple-700">Often Prime + 2% (or Fixed low rate)</span>
+                      </div>
+                      <div className="flex justify-between border-b border-gray-100 pb-2">
+                        <span className="text-gray-700">Term Length:</span>
+                        <span className="font-bold text-gray-900">Up to 5 Years</span>
+                      </div>
+                      <div className="flex justify-between border-b border-gray-100 pb-2">
+                        <span className="text-gray-700">Personal Guarantee:</span>
+                        <span className="font-bold text-gray-900">Often Required (but rarely collateralized against home)</span>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
 
-                {/* NACCA */}
-                <Card className="border-blue-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Heart className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle className="text-blue-700">National Aboriginal Capital Corporations Association (NACCA)</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="font-bold text-lg mb-3 text-blue-800">NACCA Indigenous Women Entrepreneurs</h4>
-                        <div className="space-y-3">
-                          <div className="flex items-center justify-between bg-blue-50 p-3 rounded-lg">
-                            <span className="font-semibold">Loan Amount:</span>
-                            <span className="text-blue-700 font-bold">Up to $50,000</span>
-                          </div>
-                          <div className="text-sm text-gray-700 space-y-1">
-                            <p>• Dedicated to Indigenous women entrepreneurs</p>
-                            <p>• First Nations, Métis, and Inuit women</p>
-                            <p>• Culturally appropriate business support</p>
-                            <p>• Network of 59 Aboriginal Financial Institutions</p>
-                            <p>• Community-based delivery model</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-3 text-gray-800">Indigenous Business Support</h4>
-                        <div className="text-sm text-gray-700 space-y-2">
-                          <p><strong>Priority Focus:</strong> Indigenous women business ownership and leadership</p>
-                          <p><strong>Loan Flexibility:</strong> Adapted to Indigenous community needs</p>
-                          <p><strong>Advisory Services:</strong> Business planning and mentorship</p>
-                          <p><strong>Cultural Context:</strong> Understanding of Indigenous business challenges</p>
-                          <p><strong>Network:</strong> Access to AFI network across Canada</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Nventure */}
-                <Card className="border-purple-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Lightbulb className="w-6 h-6 text-purple-600 mr-3" />
-                      <CardTitle className="text-purple-700">Nventure (Formerly Futurpreneur Canada)</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="font-bold text-lg mb-3 text-purple-800">Young Women Entrepreneurs (18-39)</h4>
-                        <div className="space-y-3">
-                          <div className="flex items-center justify-between bg-purple-50 p-3 rounded-lg">
-                            <span className="font-semibold">Loan Amount:</span>
-                            <span className="text-purple-700 font-bold">Up to $50,000</span>
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            <p>Financing for young women entrepreneurs aged 18-39 launching innovative startups with comprehensive mentorship and business development support.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-3 text-gray-800">Program Features</h4>
-                        <div className="text-sm text-gray-700 space-y-2">
-                          <p><strong>Age Range:</strong> 18-39 years old women entrepreneurs</p>
-                          <p><strong>Mentorship:</strong> 2 years of one-on-one business mentoring</p>
-                          <p><strong>Resources:</strong> Online learning tools and networking</p>
-                          <p><strong>Collateral:</strong> Reduced collateral requirements</p>
-                          <p><strong>Combination Loans:</strong> Can combine with other Nventure financing</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Coralus */}
-                <Card className="border-green-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Award className="w-6 h-6 text-green-600 mr-3" />
-                      <CardTitle className="text-green-700">Coralus (Formerly SheEO)</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="font-bold text-lg mb-3 text-green-800">Women-Led Social Ventures</h4>
-                        <div className="space-y-3">
-                          <div className="flex items-center justify-between bg-green-50 p-3 rounded-lg">
-                            <span className="font-semibold">Loan Amount:</span>
-                            <span className="text-green-700 font-bold">Up to $50,000</span>
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            <p>Interest-free, community-backed loans for women-led ventures solving social and environmental problems through innovative business models.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-3 text-gray-800">Unique Model Features</h4>
-                        <div className="text-sm text-gray-700 space-y-2">
-                          <p><strong>Loan Terms:</strong> 0% interest with flexible repayment</p>
-                          <p><strong>Community Support:</strong> Network of Activator community members</p>
-                          <p><strong>Focus Areas:</strong> Impact-driven, world-changing ventures</p>
-                          <p><strong>Selection:</strong> Community-based selection process</p>
-                          <p><strong>Resources:</strong> Access to expertise, connections, and support</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Evol */}
-                <Card className="border-orange-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Building className="w-6 h-6 text-orange-600 mr-3" />
-                      <CardTitle className="text-orange-700">Evol (Quebec-based)</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="font-bold text-lg mb-3 text-orange-800">Quebec Women Entrepreneurs</h4>
-                        <div className="space-y-3">
-                          <div className="flex items-center justify-between bg-orange-50 p-3 rounded-lg">
-                            <span className="font-semibold">Loan Amount:</span>
-                            <span className="text-orange-700 font-bold">Up to $50,000</span>
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            <p>Specialized financing for Quebec women entrepreneurs with bilingual support and Quebec market expertise for francophone business owners.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-3 text-gray-800">Quebec-Specific Support</h4>
-                        <div className="text-sm text-gray-700 space-y-2">
-                          <p><strong>Language:</strong> Bilingual English/French services</p>
-                          <p><strong>Local Expertise:</strong> Quebec market and regulatory knowledge</p>
-                          <p><strong>Networks:</strong> Quebec business ecosystem connections</p>
-                          <p><strong>Advisory:</strong> Business coaching and mentorship</p>
-                          <p><strong>Regional:</strong> Serving all Quebec regions</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                  <div className="bg-purple-50/50 p-6 rounded-xl border border-purple-100">
+                    <h4 className="font-bold text-purple-900 mb-4">The "Character Based" Difference</h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Traditional banks use algorithms. WELF partners use committees.
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      If you have a 600 credit score because of a divorce 3 years ago, a bank auto-rejects you. A WELF partner listens to the story, looks at your current cash flow, and *can* approve you.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Eligibility Requirements */}
-        <section id="eligibility" className="py-16 bg-white">
+        {/* Section 3: Mentorship */}
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">WELF Women Entrepreneur Eligibility Requirements</h2>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">The Hidden Benefit: Mentorship</h2>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  You come for the money. You stay for the advice.
+                </p>
+              </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
-                {/* Business Eligibility */}
-                <Card className="border-green-200">
+              <div className="grid md:grid-cols-3 gap-8">
+                <Card className="hover:shadow-lg transition-shadow border-blue-200 bg-blue-50/20">
                   <CardHeader>
-                    <CardTitle className="text-green-700">Business Owner Eligibility Criteria</CardTitle>
+                    <Users className="w-10 h-10 text-blue-600 mb-2" />
+                    <CardTitle className="text-lg">Peer Circles</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="font-semibold text-green-700 mb-2">✅ Essential Requirements</h4>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Self-identifying woman entrepreneur (51%+ ownership)</li>
-                          <li>• Canadian citizen, permanent resident, or protected person</li>
-                          <li>• Legally registered business or business in formation</li>
-                          <li>• Operating or planning to operate in Canada</li>
-                          <li>• Viable business plan with revenue potential</li>
-                          <li>• Demonstrated need for capital access</li>
-                        </ul>
-                      </div>
-
-                      <div>
-                        <h4 className="font-semibold text-blue-700 mb-2">🎯 Priority Groups</h4>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Startups and early-stage businesses</li>
-                          <li>• Sole proprietorships and microbusinesses</li>
-                          <li>• Indigenous women entrepreneurs</li>
-                          <li>• Racialized and immigrant women</li>
-                          <li>• Women with disabilities</li>
-                          <li>• LGBTQ2S+ women entrepreneurs</li>
-                        </ul>
-                      </div>
-                    </div>
+                    <p className="text-sm text-gray-600">With PARO or Coralus, you join a cohort. These women become your first customers, your advisors, and your friends.</p>
                   </CardContent>
                 </Card>
 
-                {/* Loan Use Eligibility */}
-                <Card className="border-blue-200">
+                <Card className="hover:shadow-lg transition-shadow border-indigo-200 bg-indigo-50/20">
                   <CardHeader>
-                    <CardTitle className="text-blue-700">Eligible Loan Uses & Purposes</CardTitle>
+                    <Megaphone className="w-10 h-10 text-indigo-600 mb-2" />
+                    <CardTitle className="text-lg">Visibility</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="font-semibold text-blue-700 mb-2">✅ Approved Loan Uses</h4>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Working capital and operating expenses</li>
-                          <li>• Equipment and technology purchases</li>
-                          <li>• Inventory and supplies</li>
-                          <li>• Marketing and business development</li>
-                          <li>• Leasehold improvements and renovations</li>
-                          <li>• Professional services and training</li>
-                        </ul>
-                      </div>
+                    <p className="text-sm text-gray-600">Successful WELF recipients are heavily promoted by the government and partners. It is free PR.</p>
+                  </CardContent>
+                </Card>
 
-                      <div>
-                        <h4 className="font-semibold text-purple-700 mb-2">🚫 Non-Eligible Uses</h4>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Personal expenses or debt consolidation</li>
-                          <li>• Real estate property purchases</li>
-                          <li>• Refinancing existing business debt</li>
-                          <li>• Passive investments or securities</li>
-                          <li>• Activities outside of Canada</li>
-                        </ul>
-                      </div>
-                    </div>
+                <Card className="hover:shadow-lg transition-shadow border-yellow-200 bg-yellow-50/20">
+                  <CardHeader>
+                    <Award className="w-10 h-10 text-yellow-600 mb-2" />
+                    <CardTitle className="text-lg">Follow-on Funding</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600">Repaying a WELF loan builds a "Business Credit History", unlocking larger BDC loans ($100k+) later.</p>
                   </CardContent>
                 </Card>
               </div>
@@ -462,346 +277,53 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
           </div>
         </section>
 
-        {/* Loan Terms & Conditions */}
-        <section className="py-16 bg-gray-50">
+        {/* Detailed FAQ Section */}
+        <section className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">WELF Loan Terms & Repayment Conditions</h2>
-
+              <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
               <div className="space-y-6">
-                <Card className="border-pink-200">
-                  <CardHeader>
-                    <CardTitle className="text-pink-700">Standard WELF Loan Terms</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="font-bold text-lg mb-3 text-pink-800">Loan Structure</h4>
-                        <div className="space-y-2 text-sm text-gray-700">
-                          <div className="flex items-center">
-                            <DollarSign className="w-4 h-4 text-green-500 mr-2" />
-                            <span><strong>Maximum Amount:</strong> $50,000 per entrepreneur</span>
-                          </div>
-                          <div className="flex items-center">
-                            <Clock className="w-4 h-4 text-blue-500 mr-2" />
-                            <span><strong>Repayment Period:</strong> Up to 5 years typical</span>
-                          </div>
-                          <div className="flex items-center">
-                            <Calculator className="w-4 h-4 text-purple-500 mr-2" />
-                            <span><strong>Interest Rates:</strong> Prime + 2% to Prime + 4%</span>
-                          </div>
-                          <div className="flex items-center">
-                            <Shield className="w-4 h-4 text-orange-500 mr-2" />
-                            <span><strong>Collateral:</strong> Minimal requirements (varies by lender)</span>
-                          </div>
-                          <div className="flex items-center">
-                            <FileText className="w-4 h-4 text-teal-500 mr-2" />
-                            <span><strong>Grace Period:</strong> May include payment deferral options</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-3 text-blue-800">Flexible Features</h4>
-                        <div className="text-sm text-gray-700 space-y-2">
-                          <p><strong>Customized Terms:</strong> Adapted to business cash flow and stage</p>
-                          <p><strong>Payment Flexibility:</strong> Monthly, bi-weekly, or seasonal options</p>
-                          <p><strong>Early Repayment:</strong> No penalties for early loan payoff</p>
-                          <p><strong>Support Services:</strong> Business advisory included with loan</p>
-                          <p><strong>Credit Building:</strong> Helps establish business credit history</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-green-200 bg-green-50">
-                  <CardContent className="pt-6">
-                    <div className="flex items-start">
-                      <Shield className="w-6 h-6 text-green-600 mr-3 mt-1" />
-                      <div>
-                        <h4 className="font-bold text-green-800 mb-2">WELF vs Traditional Bank Financing</h4>
-                        <p className="text-green-700 mb-2">
-                          WELF loans offer significant advantages for women entrepreneurs compared to traditional bank financing:
-                        </p>
-                        <div className="grid md:grid-cols-3 gap-4 text-sm text-green-700">
-                          <div>
-                            <strong>Lower Barriers:</strong> Reduced collateral and credit requirements
-                          </div>
-                          <div>
-                            <strong>Better Terms:</strong> More flexible repayment and lower rates
-                          </div>
-                          <div>
-                            <strong>Added Support:</strong> Business advisory and mentorship included
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-purple-500 mr-3 mt-0.5 flex-shrink-0" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-600 pl-8">{faq.answer}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* Application Process */}
-        <section className="py-16 bg-white">
+        {/* Final CTA */}
+        <section className="py-24 bg-purple-900 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">WELF Microloan Application Process</h2>
-
-              <div className="space-y-6">
-                <div className="grid md:grid-cols-4 gap-6">
-                  {[
-                    {
-                      step: "1",
-                      title: "Choose Delivery Partner",
-                      description: "Select appropriate WELF organization (WEOC, NACCA, Nventure, Coralus, Evol)",
-                      icon: <Building className="w-6 h-6" />,
-                      color: "pink"
-                    },
-                    {
-                      step: "2",
-                      title: "Initial Application",
-                      description: "Submit online application with business plan and financial information",
-                      icon: <Send className="w-6 h-6" />,
-                      color: "green"
-                    },
-                    {
-                      step: "3",
-                      title: "Review & Assessment",
-                      description: "Organization reviews eligibility, business viability, and loan requirements",
-                      icon: <Users className="w-6 h-6" />,
-                      color: "purple"
-                    },
-                    {
-                      step: "4",
-                      title: "Approval & Funding",
-                      description: "Loan approval, agreement signing, and fund disbursement",
-                      icon: <Clock className="w-6 h-6" />,
-                      color: "orange"
-                    }
-                  ].map((item, index) => {
-                    const colors = {
-                      pink: "bg-pink-500 text-white",
-                      green: "bg-green-500 text-white",
-                      purple: "bg-purple-500 text-white",
-                      orange: "bg-orange-500 text-white"
-                    }
-
-                    return (
-                      <Card key={index} className="text-center">
-                        <CardHeader>
-                          <div className={`w-12 h-12 rounded-full ${colors[item.color as keyof typeof colors]} flex items-center justify-center mx-auto mb-3`}>
-                            {item.icon}
-                          </div>
-                          <CardTitle className="text-lg">Step {item.step}: {item.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-gray-600">{item.description}</p>
-                        </CardContent>
-                      </Card>
-                    )
-                  })}
-                </div>
-
-                <Card className="border-blue-200 bg-blue-50">
-                  <CardContent className="pt-6">
-                    <div className="flex items-start">
-                      <AlertCircle className="w-6 h-6 text-blue-600 mr-3 mt-1" />
-                      <div>
-                        <h4 className="font-bold text-blue-800 mb-2">📅 WELF Application Timeline & Documents</h4>
-                        <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700">
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• <strong>Application Review:</strong> 2-4 weeks typical timeline</li>
-                              <li>• <strong>Decision Time:</strong> 4-6 weeks from complete application</li>
-                              <li>• <strong>Fund Disbursement:</strong> 1-2 weeks after approval</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• <strong>Required:</strong> Business plan, financial statements, ID</li>
-                              <li>• <strong>Optional:</strong> Credit report, references, collateral details</li>
-                              <li>• <strong>Rolling Intake:</strong> Applications accepted year-round</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Success Strategies */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">WELF Application Success Strategies</h2>
-
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card className="border-green-200">
-                  <CardHeader>
-                    <CardTitle className="text-green-700">✅ Best Practices for WELF Success</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Choose Right Partner:</strong> Select delivery organization that best matches your business needs and profile
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Strong Business Plan:</strong> Clear revenue model, market analysis, and realistic financial projections
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Demonstrate Need:</strong> Show why traditional financing isn't accessible and how WELF fills the gap
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Complete Documentation:</strong> Provide all required documents with accurate, up-to-date information
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-red-200">
-                  <CardHeader>
-                    <CardTitle className="text-red-700">❌ Common WELF Application Mistakes</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Wrong Organization:</strong> Applying to delivery partner that doesn't serve your specific needs or region
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Weak Financial Plan:</strong> Unrealistic projections or insufficient market research
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Incomplete Application:</strong> Missing documentation or vague business descriptions
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Ineligible Loan Use:</strong> Requesting funds for non-approved purposes like personal expenses
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Official Government Resources */}
-        <section className="py-12 bg-white border-t border-gray-100">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Official WELF Delivery Partners</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <a href="https://weoc.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-pink-50 transition-colors border border-gray-200">
-                  <ExternalLink className="w-6 h-6 text-pink-600 mr-3 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-gray-900">WEOC</div>
-                    <div className="text-sm text-gray-600">Women's Enterprise Organizations of Canada</div>
-                  </div>
-                </a>
-                <a href="https://nacca.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-pink-50 transition-colors border border-gray-200">
-                  <ExternalLink className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-gray-900">NACCA</div>
-                    <div className="text-sm text-gray-600">National Aboriginal Capital Corporations</div>
-                  </div>
-                </a>
-                <a href="https://www.nventure.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-pink-50 transition-colors border border-gray-200">
-                  <ExternalLink className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-gray-900">Nventure</div>
-                    <div className="text-sm text-gray-600">Young Entrepreneurs (18-39)</div>
-                  </div>
-                </a>
-                <a href="https://coralus.world/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-pink-50 transition-colors border border-gray-200">
-                  <ExternalLink className="w-6 h-6 text-green-600 mr-3 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-gray-900">Coralus</div>
-                    <div className="text-sm text-gray-600">Women-led social ventures</div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Dual CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-pink-600 to-purple-800">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-3xl font-bold mb-6">
-                Ready to Access WELF's $50K Women Entrepreneur Funding?
-              </h2>
-              <p className="text-xl text-pink-100 mb-8">
-                Get our complete WELF application guide with delivery organization comparison, eligibility checklist,
-                and application templates, or work with our women entrepreneur funding specialists for expert support.
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-4xl font-bold mb-6">Start Your Application</h2>
+              <p className="text-xl text-purple-100 mb-10">
+                The first step is checking eligibility with the partner nearest you.
               </p>
-
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
-                  <h4 className="font-semibold text-white mb-2">Free WELF Application Guide</h4>
-                  <p className="text-pink-100 text-sm mb-4">
-                    Get our comprehensive WELF guide with delivery organization comparison, business plan templates,
-                    and step-by-step application instructions.
-                  </p>
-                  <Button size="lg" className="w-full bg-white text-pink-700 hover:bg-gray-100" asChild>
-                    <Link href="/guides/women-entrepreneurship-loan-fund-guide">
-                      <Download className="w-4 h-4 mr-2" />
-                      Get WELF Application Guide
-                    </Link>
-                  </Button>
-                </div>
-
-                <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
-                  <h4 className="font-semibold text-white mb-2">Expert WELF Support</h4>
-                  <p className="text-yellow-100 text-sm mb-4">
-                    Work with women entrepreneur funding specialists who can help you choose the right delivery partner
-                    and optimize your WELF application for maximum success.
-                  </p>
-                  <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
-                    <Link href="/contact?service=welf-women-entrepreneur-expert-help">
-                      Get WELF Expert Help
-                    </Link>
-                  </Button>
-                </div>
+                <Button size="lg" className="bg-white text-purple-900 hover:bg-purple-50 font-bold text-lg px-8 py-4 h-auto" asChild>
+                  <Link href="https://ised-isde.canada.ca/site/women-entrepreneurship-strategy/en/women-entrepreneurship-loan-fund" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-5 h-5 mr-2" />
+                    Official WELF Partner List
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-purple-400 text-purple-100 hover:bg-purple-800 hover:text-white font-semibold text-lg px-8 py-4 h-auto" asChild>
+                  <Link href="/blog/ontario-women-business-grants">
+                    See Ontario Women's Grants
+                  </Link>
+                </Button>
               </div>
-
-              <p className="text-pink-200 text-sm mt-6">
-                Expert guidance • Delivery partner selection • Application optimization • Women entrepreneur success support
-              </p>
             </div>
           </div>
         </section>
+
+        <Footer />
       </div>
-      <Footer />
     </>
   )
 }

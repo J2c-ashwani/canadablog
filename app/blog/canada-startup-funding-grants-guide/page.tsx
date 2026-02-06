@@ -3,40 +3,49 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Building, Users, Zap, Lightbulb, MapPin, Award, HelpCircle, ExternalLink, ArrowRight, MousePointerClick } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Rocket, Users, Building, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Briefcase, Globe, Zap, Layers } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "$500K+ Canada Startup Grants (2026) | 35+ Programs, Free Application Guide",
-  description: "Access $1.2B+ in Canadian startup funding. Complete 2026 guide to CYBF, IRAP, SR&ED, provincial grants & seed funding. 89% success rate with expert help.",
-  keywords: "Canada startup grants, Canadian startup funding, small business startup grants, seed funding Canada, business incubator funding, youth entrepreneur grants, startup tax credits",
-  alternates: {
-    canonical: "https://www.fsidigital.ca/blog/canada-startup-funding-grants-guide",
-  },
+  title: "Canada Startup Funding 2026 Guide | Grants, Loans & Futurpreneur",
+  description: "Complete 2026 guide to Canadian startup funding. Futurpreneur loans (up to $75k), Innovative Solutions Canada grants ($150k+), and hiring subsidies for new businesses.",
+  keywords: "startup grants Canada 2026, Futurpreneur eligibility, Innovative Solutions Canada, startup business loans, seed funding Canada, small business startup grants",
 }
 
 export default function CanadaStartupFundingGrantsGuide() {
   const faqData = [
     {
-      question: "Is there 'free money' to start a business in Canada?",
-      answer: "Rarely. Most 'grants' for startups are actually cost-sharing programs (where you pay 50% and they pay 50%) or wage subsidies. The 'free money' usually comes in the form of services, mentorship, or tax credits (like SR&ED) rather than upfront cash checks."
+      question: "Are there free grants to start a business in Canada?",
+      answer: "Rarely 'unrestricted' ones. Most startup funding is either 1) repayable loans (like Futurpreneur), 2) hiring subsidies (like SWPP), or 3) specific to R&D (like IRAP). The 'free money' for general startup costs is largely a myth, currently."
     },
     {
-      question: "Does the government take equity in my company?",
-      answer: "No. Federal and provincial government funding is 'non-dilutive,' meaning you keep 100% of your shares. This is the biggest advantage over venture capital."
+      question: "How much can I get from Futurpreneur in 2026?",
+      answer: "You can access up to $75,000 total. This is split between Futurpreneur (up to $20,000) and BDC (up to $55,000). There is also a 'Side Hustle' program offering up to $25,000 for part-time founders."
     },
     {
-      question: "Do I have to pay back CYBF / Futurpreneur loans?",
-      answer: "Yes. Futurpreneur and BDC startup loans must be repaid with interest. However, they are easier to qualify for than bank loans because they don't always require 2 years of financial history."
+      question: "What is the Innovative Solutions Canada (ISC) program?",
+      answer: "ISC is the government's 'buy first' program. Instead of a standard grant, they pay you to build a prototype that solves a government problem. Phase 1 grants are up to $150,000, and Phase 2 can go up to $2 million."
     },
     {
-      question: "Do I need a business plan?",
-      answer: "Absolutely. You cannot access any startup funding—grant or loan—without a solid business plan and 2-year cash flow projection. Lenders need to see how they will get their money back."
+      question: "Can I get funding for an app idea?",
+      answer: "Funding usually requires a 'Minimum Viable Product' (MVP) or prototype. IRAP or ISC may fund the *development* of innovative technology, but they rarely fund ideas on a napkin. You typically need to demonstrate technical uncertainty or innovation."
     },
     {
-      question: "What is the easiest grant to get?",
-      answer: "Hiring grants and wage subsidies (like the Student Work Placement Program or Canada Summer Jobs) are generally the most accessible and have the highest approval rates for startups."
+      question: "Do hiring grants work for startups?",
+      answer: "Yes, they are the easiest money to get. Programs like the Student Work Placement Program (SWPP) can cover 50-70% of a student's salary, allowing you to hire developers or marketers cheaply."
+    },
+    {
+      question: "What is the Startup Visa Program?",
+      answer: "It is for international founders who want to build in Canada. You must get a 'Letter of Support' from a designated organization (Angel Group, VC, or Incubator) to qualify for a permanent resident visa."
+    },
+    {
+      question: "Do Provincial grants exist for startups?",
+      answer: "Yes. For example, 'Summer Company' (Ontario) gives $3,000 to students. 'Self-Employment Program' (National) offers income support while you launch. Always check your local Economic Development center."
+    },
+    {
+      question: "Can I use personal credit lines?",
+      answer: "Yes, but be careful. Personal debt puts your personal assets (house, car) at risk. Programs like Futurpreneur are 'Character Based' but generally do not put a lien on your primary residence."
     }
   ];
 
@@ -52,6 +61,7 @@ export default function CanadaStartupFundingGrantsGuide() {
       }
     }))
   };
+
   return (
     <>
       <Header />
@@ -61,474 +71,323 @@ export default function CanadaStartupFundingGrantsGuide() {
       />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-20">
+        <section className="bg-gradient-to-br from-indigo-900 to-purple-900 text-white py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-6 bg-white/20 text-white border-white/30">
-                🚀 Canadian Startup Funding
+              <Badge className="mb-6 bg-indigo-500/20 text-indigo-100 border-indigo-400/30 px-4 py-1.5 text-sm uppercase tracking-wide">
+                🚀 2026 Startup Ecosystem
               </Badge>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Canada Startup Funding Grants 2026
+              <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+                Canada Startup Funding 2026: <span className="text-indigo-400">Futurpreneur, ISC & Hidden Grants</span>
               </h1>
-              <p className="text-xl text-blue-100 mb-8">
-                Access $1.2B+ in Canadian startup funding across 35+ specialized programs. From seed grants to
-                incubator funding - complete guide to launching your business in Canada with government support.
+              <p className="text-xl text-indigo-100 mb-10 leading-relaxed max-w-3xl mx-auto">
+                Stop looking for "free money" that doesn't exist. This guide reveals the <strong>real</strong> funding sources for Canadian startups: low-interest loans, government procurement tracks, and hiring subsidies that extend your runway.
               </p>
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
-                <Link href="/contact?service=startup-grants-expert-help">
-                  Get Expert Help with Startup Grants
-                </Link>
-              </Button>
-              <p className="text-blue-200 text-sm mt-4">
-                Free consultation • 89% startup success rate • Average funding: $45K across multiple programs
-              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold text-lg px-10 py-6 shadow-xl" asChild>
+                  <Link href="#futurpreneur-breakdown">
+                    Futurpreneur Loans ($75k)
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-2 border-indigo-400/50 text-white hover:bg-indigo-900/50 font-semibold text-lg px-10 py-6" asChild>
+                  <Link href="#hiring-grants">
+                    Easy Hiring Grants
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Key Statistics */}
-        <section className="py-16 bg-white">
+        {/* Reality Check Alert */}
+        <section className="py-12 bg-white -mt-8 relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">$1.2B+</div>
-                  <div className="text-gray-600">Startup Funding Available</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-indigo-600 mb-2">35+</div>
-                  <div className="text-gray-600">Active Startup Programs</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">89%</div>
-                  <div className="text-gray-600">Expert Success Rate</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">$45K</div>
-                  <div className="text-gray-600">Average First Funding</div>
+            <div className="max-w-5xl mx-auto">
+              <div className="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg shadow-sm">
+                <div className="flex items-start">
+                  <AlertTriangle className="w-8 h-8 text-orange-600 mr-4 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-xl font-bold text-orange-900 mb-2">The "Grant Myth" vs. Reality</h3>
+                    <p className="text-orange-800 mb-4">
+                      <strong>Myth:</strong> "I can get a $50,000 grant to start my coffee shop/agency/app."
+                    </p>
+                    <p className="text-orange-800">
+                      <strong>Reality:</strong> The government rarely funds 100% of startup costs. They fund <strong>Growth</strong> (Exporting, Hiring) or <strong>Innovation</strong> (R&D). For starting up, you leverage <strong>Loans</strong> (Futurpreneur) and reduce costs with <strong>Hiring Grants</strong>.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Federal Startup Programs */}
-        <section className="py-20 bg-gray-50">
+        {/* Section 1: Futurpreneur Masterclass */}
+        <section id="futurpreneur-breakdown" className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-4">What Federal Startup Funding is Available?</h2>
-              <p className="text-center text-gray-600 mb-12">
-                Government of Canada programs specifically designed to support new business formation and early-stage growth.
-              </p>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Deep Dive: The Futurpreneur Application</h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  This is the "Gold Standard" for Canadian startups aged 18-39. It's not just money; it's a 2-year mentorship that dramatically increases your survival rate.
+                </p>
+              </div>
 
-              <div className="grid md:grid-cols-2 gap-8 mb-16">
-                {/* Youth Entrepreneurship Programs */}
-                <Card className="border-2 border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-700">Youth Entrepreneurship Programs (CYBF)</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $60K</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Ages 18-39</strong></span>
-                      </div>
-                    </div>
+              <div className="flex flex-col md:flex-row gap-12 items-start">
+                <div className="flex-1">
+                  <div className="grid md:grid-cols-2 gap-6 mb-8">
+                    <Card className="border-indigo-100 bg-indigo-50/50">
+                      <CardHeader>
+                        <CardTitle className="text-lg text-indigo-900">Core Startup Program</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="text-3xl font-bold text-indigo-700 mb-2">Up to $75,000</div>
+                        <p className="text-sm text-gray-600 mb-4">For full-time founders ready to launch.</p>
+                        <ul className="text-sm space-y-2">
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-indigo-600 mr-2" /> $20k from Futurpreneur</li>
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-indigo-600 mr-2" /> $55k from BDC</li>
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-indigo-600 mr-2" /> Interest Only (Year 1)</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-green-100 bg-green-50/50">
+                      <CardHeader>
+                        <CardTitle className="text-lg text-green-900">Side Hustle Program</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="text-3xl font-bold text-green-700 mb-2">Up to $25,000</div>
+                        <p className="text-sm text-gray-600 mb-4">Keep your day job while you build.</p>
+                        <ul className="text-sm space-y-2">
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-green-600 mr-2" /> Keep full-time job</li>
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-green-600 mr-2" /> Lower credit requirements</li>
+                          <li className="flex items-center"><CheckCircle className="w-3 h-3 text-green-600 mr-2" /> Expert mentorship included</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  <h3 className="font-bold text-gray-900 mb-3">The "Secret Sauce" for Approval</h3>
+                  <div className="bg-indigo-50 border border-indigo-100 p-6 rounded-xl">
                     <p className="text-gray-700 mb-4">
-                      Comprehensive startup support including CYBF loans, Futurpreneur mentorship, and Youth Employment Strategy funding.
+                      Futurpreneur doesn't care about your "Idea". They care about your "Cash Flow".
                     </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>CYBF startup loans with BDC partnership</span>
+                    <h4 className="font-bold text-indigo-900 mb-2">The Cash Flow Template Strategy:</h4>
+                    <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
+                      <li><strong>Be Realistic:</strong> Don't project $1M revenue in Month 3. They will reject you for lack of realism.</li>
+                      <li><strong>Show the Loan Repayment:</strong> Make sure your expenses line includes the monthly loan payment ($600-$800). If you forget this, you look incompetent.</li>
+                      <li><strong>Living Expenses:</strong> If you are full-time, how are you eating? Your cash flow MUST show you paying yourself enough to survive, OR you must prove you have personal savings.</li>
+                    </ol>
+                  </div>
+                </div>
+
+                <div className="w-full md:w-1/3">
+                  <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-lg relative">
+                    <div className="absolute -top-3 -right-3 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                      REQUIRED DOCUMENT
+                    </div>
+                    <h4 className="font-bold text-gray-900 mb-4">The Application "Key"</h4>
+                    <p className="text-gray-600 text-sm mb-4">
+                      You cannot apply without a <strong>Business Plan</strong> and <strong>Cash Flow Projection</strong>.
+                    </p>
+                    <ul className="space-y-3 mb-6">
+                      <li className="flex items-start text-sm text-gray-700">
+                        <CheckCircle className="w-4 h-4 text-emerald-500 mr-2 mt-0.5" />
+                        <span>24-month month-by-month cash flow</span>
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>2-year mentorship programs</span>
+                      <li className="flex items-start text-sm text-gray-700">
+                        <CheckCircle className="w-4 h-4 text-emerald-500 mr-2 mt-0.5" />
+                        <span>Detailed competitor analysis</span>
                       </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Business plan development support</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Youth Employment Strategy wage subsidies</span>
+                      <li className="flex items-start text-sm text-gray-700">
+                        <CheckCircle className="w-4 h-4 text-emerald-500 mr-2 mt-0.5" />
+                        <span>Personal credit check (soft/hard)</span>
                       </li>
                     </ul>
-                  </CardContent>
-                </Card>
-
-                {/* IRAP Startup Support */}
-                <Card className="border-2 border-green-200">
-                  <CardHeader>
-                    <CardTitle className="text-green-700">IRAP Innovation Support for Startups</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $300K</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Zap className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Technology</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      NRC-IRAP funding for technology startups developing innovative products and services.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>R&D project funding up to 67%</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Technical advisory services</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Youth employment support</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Innovation ecosystem connections</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Women Entrepreneurship Strategy */}
-                <Card className="border-2 border-pink-200">
-                  <CardHeader>
-                    <CardTitle className="text-pink-700">Women Entrepreneurship Strategy (WES)</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $100K</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-pink-600 mr-2" />
-                        <span><strong>Women-Led</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Comprehensive ecosystem funding for women entrepreneurs including loans, grants, and ecosystem support.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Women Entrepreneurship Loan Fund</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Ecosystem funding programs</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Mentorship and networking programs</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Market access support initiatives</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Indigenous & Rural Startup Support */}
-                <Card className="border-2 border-orange-200">
-                  <CardHeader>
-                    <CardTitle className="text-orange-700">Indigenous & Rural Startup Support</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $200K</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <MapPin className="w-5 h-5 text-orange-600 mr-2" />
-                        <span><strong>Special Focus</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Specialized startup funding for Indigenous entrepreneurs and rural community businesses.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Aboriginal Entrepreneurship Program</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>NACCA business loans and advisory</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Community Futures rural startup support</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Cultural business development guidance</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
+                    <Button className="w-full bg-indigo-600 hover:bg-indigo-700" asChild>
+                      <a href="https://www.futurpreneur.ca" target="_blank" rel="noopener noreferrer">
+                        Start Eligibility Check <ExternalLink className="w-4 h-4 ml-2" />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Provincial Startup Programs */}
+        {/* Section 2: Incubators & Accelerators */}
+        <section className="py-20 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">The Accelerator Ecosystem</h2>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  Sometimes the best funding isn't a grant; it's an investment from a top-tier accelerator. These programs often provide $50k-$150k in exchange for small equity (5-7%).
+                </p>
+              </div>
+
+              <div className="overflow-x-auto bg-white rounded-xl shadow-sm border border-gray-200">
+                <table className="min-w-full text-sm text-left">
+                  <thead className="bg-gray-100 text-gray-900 font-bold">
+                    <tr>
+                      <th className="p-5">Accelerator Name</th>
+                      <th className="p-5">Location</th>
+                      <th className="p-5">Focus</th>
+                      <th className="p-5">Typical Funding/Value</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-5 font-semibold text-gray-900">Creative Destruction Lab (CDL)</td>
+                      <td className="p-5 text-gray-600">Tor/Van/Mtl/Cal/Hal</td>
+                      <td className="p-5 text-gray-600">Deep Tech, AI, Climate</td>
+                      <td className="p-5 text-emerald-600 font-bold">Access to Angel Investors (No direct cash, massive network)</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-5 font-semibold text-gray-900">DMZ (Toronto Metropolitan U)</td>
+                      <td className="p-5 text-gray-600">Toronto</td>
+                      <td className="p-5 text-gray-600">SaaS, Tech</td>
+                      <td className="p-5 text-emerald-600 font-bold">Sales Training + Global expansion support</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-5 font-semibold text-gray-900">Highline Beta</td>
+                      <td className="p-5 text-gray-600">National</td>
+                      <td className="p-5 text-gray-600">Venture Studio</td>
+                      <td className="p-5 text-emerald-600 font-bold">Pre-seed investment (~$100k) for co-creation</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-5 font-semibold text-gray-900">FounderFuel</td>
+                      <td className="p-5 text-gray-600">Montreal</td>
+                      <td className="p-5 text-gray-600">Tech / Software</td>
+                      <td className="p-5 text-emerald-600 font-bold">$120k for ~5-7% equity (Demo Day)</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-5 font-semibold text-gray-900">Foresight Canada</td>
+                      <td className="p-5 text-gray-600">BC / Alberta</td>
+                      <td className="p-5 text-gray-600">Clean Tech</td>
+                      <td className="p-5 text-emerald-600 font-bold">Industry pilot connections</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: Innovative Solutions Canada */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Which Provincial Governments Offer Startup Grants?</h2>
-
-              <div className="grid md:grid-cols-3 gap-6 mb-12">
-                {/* Ontario Startup Programs */}
-                <Card className="border-2 border-red-200">
-                  <CardHeader>
-                    <CardTitle className="text-red-700 text-lg">Ontario Startup Ecosystem</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Ontario Venture Capital Fund</strong> - Up to $500K</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>ONRamp</strong> - Tech startup accelerator</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>MaRS IAF</strong> - Innovation funding</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Ontario Small Business Support Grant</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Digital Main Street</strong> - Digital startup support</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Quebec Startup Programs */}
-                <Card className="border-2 border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-700 text-lg">Quebec Startup Ecosystem</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Quebec Startup Fund</strong> - Up to $200K</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Investissement Québec</strong> - Startup support</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Techno Montréal</strong> - Tech incubator</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Quebec R&D Tax Credits</strong> - 37.5%</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Desjardins Startup Program</strong></span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* BC Startup Programs */}
-                <Card className="border-2 border-green-200">
-                  <CardHeader>
-                    <CardTitle className="text-green-700 text-lg">BC Startup Ecosystem</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>BC Small Business Venture Capital</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Innovate BC</strong> - Startup programs</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>CleanBC Startup Fund</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Launch Academy</strong> - Vancouver</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Accelerate Okanagan</strong></span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
+              <div className="flex items-center mb-8">
+                <Target className="w-10 h-10 text-red-600 mr-4" />
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900">2. Innovative Solutions Canada (ISC)</h2>
+                  <p className="text-gray-600">For Tech & R&D Startups</p>
+                </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
-                {/* Prairie Provinces - FIXED */}
-                <Card className="border-2 border-yellow-200">
-                  <CardHeader>
-                    <CardTitle className="text-yellow-700">Prairie Provinces Startup Support</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Alberta:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• Alberta Startup Fund - Up to $150K</li>
-                          <li>• Calgary Economic Development</li>
-                          <li>• Edmonton Startup Programs</li>
-                          <li>• Energy Diversification Startup Fund</li>
-                        </ul>
+              <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 mb-12">
+                <div className="grid md:grid-cols-2 gap-12">
+                  <div>
+                    <p className="text-gray-700 text-lg mb-6">
+                      ISC is not a charity; it's a <strong>Challenge</strong>. Government departments (like the Navy or Health Canada) post "Problems". If your startup can build the solution, they fund the development.
+                    </p>
+                    <div className="space-y-6">
+                      <div className="flex">
+                        <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-700 font-bold mr-4 flex-shrink-0">1</div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">Phase 1: Proof of Concept</h4>
+                          <p className="text-gray-600 text-sm">Grant up to <span className="text-red-600 font-bold">$150,000</span> to prove your idea works (6 months).</p>
+                        </div>
                       </div>
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Saskatchewan:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• Innovation Saskatchewan Programs</li>
-                          <li>• Saskatchewan Small Business Loans</li>
-                          <li>• Agriculture Startup Support</li>
-                        </ul>
+                      <div className="flex">
+                        <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-700 font-bold mr-4 flex-shrink-0">2</div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">Phase 2: Prototype</h4>
+                          <p className="text-gray-600 text-sm">Grant up to <span className="text-red-600 font-bold">$1 Million+</span> to build the working model (2 years).</p>
+                        </div>
                       </div>
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Manitoba:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• Manitoba Small Business Venture Capital</li>
-                          <li>• Innovation Growth Program</li>
-                          <li>• North Forge Technology Incubator</li>
-                        </ul>
+                      <div className="flex">
+                        <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-700 font-bold mr-4 flex-shrink-0">3</div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">Phase 3: Sales</h4>
+                          <p className="text-gray-600 text-sm">The government becomes your first customer.</p>
+                        </div>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-
-                {/* Atlantic & Territories - FIXED */}
-                <Card className="border-2 border-indigo-200">
-                  <CardHeader>
-                    <CardTitle className="text-indigo-700">Atlantic Canada & Territories</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Atlantic Canada:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• ACOA Business Development Program</li>
-                          <li>• Nova Scotia Small Business Fund</li>
-                          <li>• New Brunswick Innovation Foundation</li>
-                          <li>• PEI Development Fund</li>
-                          <li>• Newfoundland Business Growth</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Territories:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• NWT Business Development</li>
-                          <li>• Yukon Small Business Support</li>
-                          <li>• Nunavut Economic Development</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                  <div className="bg-gray-100 p-6 rounded-xl border border-gray-200">
+                    <h4 className="font-bold text-gray-900 mb-4 text-center">Is Your Startup Eligible?</h4>
+                    <ul className="space-y-4">
+                      <li className="flex items-center text-sm text-gray-700 bg-white p-3 rounded shadow-sm">
+                        <CheckCircle className="w-4 h-4 text-emerald-500 mr-3" />
+                        Canadian for-profit corporation (fewer than 500 FTEs)
+                      </li>
+                      <li className="flex items-center text-sm text-gray-700 bg-white p-3 rounded shadow-sm">
+                        <CheckCircle className="w-4 h-4 text-emerald-500 mr-3" />
+                        50% of FTEs and wages based in Canada
+                      </li>
+                      <li className="flex items-center text-sm text-gray-700 bg-white p-3 rounded shadow-sm">
+                        <CheckCircle className="w-4 h-4 text-emerald-500 mr-3" />
+                        R&D happens in Canada
+                      </li>
+                      <li className="flex items-center text-sm text-gray-700 bg-white p-3 rounded shadow-sm border border-red-200">
+                        <AlertTriangle className="w-4 h-4 text-red-500 mr-3" />
+                        Must have sufficient "Freedom to Operate" (IP rights)
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Business Incubator & Accelerator Programs */}
-        <section className="py-20 bg-gray-50">
+        {/* Section 4: The "Easy Wins" (Hiring) */}
+        <section id="hiring-grants" className="py-20 bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Are There Incubators for Canadian Startups?</h2>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl font-bold text-gray-900">3. The Hiring Strategy: How to Extend Runway</h2>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
+                  For a startup, cash burn is the enemy. Hiring grants reduce your burn rate on talent by 50-70%.
+                </p>
+              </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card className="border-2 border-purple-200">
+              <div className="grid md:grid-cols-3 gap-8">
+                <Card className="hover:shadow-lg transition-shadow border-emerald-200 bg-emerald-50/30">
                   <CardHeader>
-                    <CardTitle className="text-purple-700">Major Canadian Incubators</CardTitle>
+                    <Users className="w-10 h-10 text-emerald-600 mb-2" />
+                    <CardTitle className="text-lg">Student Work Placement (SWPP)</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ul className="space-y-3 text-sm">
-                      <li className="flex items-center">
-                        <Lightbulb className="w-4 h-4 text-orange-500 mr-2" />
-                        <span><strong>MaRS Discovery District</strong> (Toronto) - $25K-$100K</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Lightbulb className="w-4 h-4 text-orange-500 mr-2" />
-                        <span><strong>Techstars Toronto</strong> - $120K USD investment</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Lightbulb className="w-4 h-4 text-orange-500 mr-2" />
-                        <span><strong>Communitech</strong> (Waterloo) - Up to $250K</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Lightbulb className="w-4 h-4 text-orange-500 mr-2" />
-                        <span><strong>DMZ at Ryerson</strong> (Toronto)</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Lightbulb className="w-4 h-4 text-orange-500 mr-2" />
-                        <span><strong>Creative Destruction Lab</strong> - Multiple locations</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Lightbulb className="w-4 h-4 text-orange-500 mr-2" />
-                        <span><strong>Techstars Montreal</strong> - French & English</span>
-                      </li>
-                    </ul>
+                    <p className="text-3xl font-bold text-emerald-700 mb-2">Up to $7,000</p>
+                    <p className="text-sm text-gray-600 mb-4">Per student, per semester. Great for interns.</p>
+                    <div className="text-xs text-gray-500 font-medium bg-white px-2 py-1 rounded inline-block">TECH, MARKETING, BUSINESS</div>
                   </CardContent>
                 </Card>
 
-                <Card className="border-2 border-teal-200">
+                <Card className="hover:shadow-lg transition-shadow border-blue-200 bg-blue-50/30">
                   <CardHeader>
-                    <CardTitle className="text-teal-700">Regional Accelerators</CardTitle>
+                    <Briefcase className="w-10 h-10 text-blue-600 mb-2" />
+                    <CardTitle className="text-lg">IRAP Youth Employment</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ul className="space-y-3 text-sm">
-                      <li className="flex items-center">
-                        <Building className="w-4 h-4 text-teal-500 mr-2" />
-                        <span><strong>Launch Academy</strong> (Vancouver) - $25K investment</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Building className="w-4 h-4 text-teal-500 mr-2" />
-                        <span><strong>Propel ICT</strong> (Atlantic Canada)</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Building className="w-4 h-4 text-teal-500 mr-2" />
-                        <span><strong>Platform Calgary</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <Building className="w-4 h-4 text-teal-500 mr-2" />
-                        <span><strong>Innovation Saskatchewan</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <Building className="w-4 h-4 text-teal-500 mr-2" />
-                        <span><strong>North Forge</strong> (Winnipeg)</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Building className="w-4 h-4 text-teal-500 mr-2" />
-                        <span><strong>Volta</strong> (Halifax)</span>
-                      </li>
-                    </ul>
+                    <p className="text-3xl font-bold text-blue-700 mb-2">Up to $30,000</p>
+                    <p className="text-sm text-gray-600 mb-4">To hire a graduate (under 30) for 6-12 months.</p>
+                    <div className="text-xs text-gray-500 font-medium bg-white px-2 py-1 rounded inline-block">R&D, ENGINEERING, SCIENCE</div>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow border-purple-200 bg-purple-50/30">
+                  <CardHeader>
+                    <Award className="w-10 h-10 text-purple-600 mb-2" />
+                    <CardTitle className="text-lg">Mitacs Accelerate</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-3xl font-bold text-purple-700 mb-2">$15,000 Package</p>
+                    <p className="text-sm text-gray-600 mb-4">You pay $7.5k, Mitacs pays $7.5k for a Master's/PhD intern.</p>
+                    <div className="text-xs text-gray-500 font-medium bg-white px-2 py-1 rounded inline-block">DEEP TECH, AI, HEALTH</div>
                   </CardContent>
                 </Card>
               </div>
@@ -536,189 +395,82 @@ export default function CanadaStartupFundingGrantsGuide() {
           </div>
         </section>
 
-        {/* Startup Tax Credits & Incentives */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8">What Tax Credits Can Startups Claim?</h2>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="text-center">
-                  <CardHeader>
-                    <Award className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Scientific Research & Experimental Development (SR&ED)</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Up to 67% refundable tax credits for qualified R&D activities by startups.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Federal: Up to 35% refundable</li>
-                      <li>• Provincial: Additional 10-37.5%</li>
-                      <li>• Startup-friendly application process</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="text-center">
-                  <CardHeader>
-                    <Award className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Angel Investor Tax Credits</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Provincial tax credits for investors in eligible startups.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• BC: 30% tax credit</li>
-                      <li>• Ontario: 25% tax credit</li>
-                      <li>• Saskatchewan: 45% tax credit</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="text-center">
-                  <CardHeader>
-                    <Award className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Capital Gains Exemption</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Qualified Small Business Corporation shares eligible for capital gains exemption.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Up to $913,630 lifetime exemption</li>
-                      <li>• Qualified small business criteria</li>
-                      <li>• Startup exit planning benefit</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Startup Funding FAQs</h2>
-          <div className="space-y-6">
-            {faqData.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
-                  <HelpCircle className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
-                  {faq.question}
-                </h3>
-                <p className="text-gray-700 ml-9">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Official Resources Section */}
-        <section className="py-16 bg-gray-50 border-t border-gray-200">
+        {/* Startup Visa & International */}
+        <section className="py-16 bg-blue-900 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Official Startup Resources</h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-                    <Building className="w-5 h-5 mr-2 text-blue-600" />
-                    Government Programs
-                  </h3>
-                  <ul className="space-y-3">
-                    <li>
-                      <a href="https://www.futurpreneur.ca/en/" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
-                        Futurpreneur Canada <ExternalLink className="w-4 h-4 ml-1" />
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://nrc.canada.ca/en/support-technology-innovation/industrial-research-assistance-program" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
-                        NRC IRAP <ExternalLink className="w-4 h-4 ml-1" />
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://www.bdc.ca/en/financing/startup-financing" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
-                        BDC Startup Financing <ExternalLink className="w-4 h-4 ml-1" />
-                      </a>
-                    </li>
-                  </ul>
+              <div className="flex items-center justify-center mb-8">
+                <Globe className="w-10 h-10 text-blue-300 mr-4" />
+                <h2 className="text-3xl font-bold text-center">International Founders: Startup Visa</h2>
+              </div>
+              <p className="text-lg text-blue-100 text-center mb-10">
+                If you are not a Canadian PR/Citizen, you cannot apply for Futurpreneur. However, Canada wants you. The **Startup Visa Program** is your pathway.
+              </p>
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <div className="bg-blue-800 p-6 rounded-lg border border-blue-700">
+                  <h3 className="font-bold text-xl mb-2">Designated Orgs</h3>
+                  <p className="text-sm text-blue-200">You must get a "Letter of Support" from an approved Angel Group, VC fund, or Incubator.</p>
                 </div>
-                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-                    <MousePointerClick className="w-5 h-5 mr-2 text-blue-600" />
-                    Related Guides
-                  </h3>
-                  <ul className="space-y-3">
-                    <li>
-                      <Link href="/blog/small-business-grants-complete-guide" className="flex items-center text-blue-600 hover:underline">
-                        Complete Small Business Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/blog/women-entrepreneurship-fund-canada" className="flex items-center text-blue-600 hover:underline">
-                        Women Entrepreneurship Fund <ArrowRight className="w-4 h-4 ml-1" />
-                      </Link>
-                    </li>
-                  </ul>
+                <div className="bg-blue-800 p-6 rounded-lg border border-blue-700">
+                  <h3 className="font-bold text-xl mb-2">Investment</h3>
+                  <p className="text-sm text-blue-200">Angels must invest min $75k. VCs must invest min $200k. Incubators accept you into their program.</p>
+                </div>
+                <div className="bg-blue-800 p-6 rounded-lg border border-blue-700">
+                  <h3 className="font-bold text-xl mb-2">Outcome</h3>
+                  <p className="text-sm text-blue-200">You get Permanent Residency (PR) for you and your co-founders (up to 5 families).</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Strong Single CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-800">
+        {/* Detailed FAQ Section */}
+        <section className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-4xl font-bold mb-6">
-                Navigate All 35+ Canadian Startup Programs with Expert Guidance
-              </h2>
-              <p className="text-xl text-blue-100 mb-8">
-                From federal programs to provincial incentives, business incubators to tax credits - the Canadian startup
-                funding landscape is complex. Our specialists have helped 500+ entrepreneurs secure over $22M across
-                multiple programs with an 89% success rate.
-              </p>
-              <div className="bg-white/10 rounded-lg p-6 mb-8">
-                <h4 className="font-semibold mb-4">Our Complete Startup Funding Success Package Includes:</h4>
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>All 35+ program eligibility analysis</span>
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-indigo-500 mr-3 mt-0.5 flex-shrink-0" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-600 pl-8">{faq.answer}</p>
                   </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Multi-program application coordination</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Incubator and accelerator connections</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Tax credit optimization strategies</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>89% success rate for startup funding</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Average $45K first funding secured</span>
-                  </div>
-                </div>
+                ))}
               </div>
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
-                <Link href="/contact?service=startup-grants-expert-help">
-                  Get Expert Help with All Startup Programs
-                </Link>
-              </Button>
-              <p className="text-blue-200 text-sm mt-4">
-                Free consultation • Startup funding specialists • Multi-program expertise
-              </p>
             </div>
           </div>
         </section>
+
+        {/* Final CTA */}
+        <section className="py-24 bg-gray-900 text-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-4xl font-bold mb-6">Need a Business Plan Assessment?</h2>
+              <p className="text-xl text-gray-300 mb-10">
+                Futurpreneur loans require a bulletproof financial model. Our experts can review your cash flow projections before you submit.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-lg px-8 py-4 h-auto" asChild>
+                  <Link href="/contact?service=startup-plan-review">
+                    <Rocket className="w-5 h-5 mr-2" />
+                    Review My Startup Plan
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white font-semibold text-lg px-8 py-4 h-auto" asChild>
+                  <Link href="/blog/canada-technology-adoption-grants-guide">
+                    See Tech Grants
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <Footer />
       </div>
-      <Footer />
     </>
   )
 }

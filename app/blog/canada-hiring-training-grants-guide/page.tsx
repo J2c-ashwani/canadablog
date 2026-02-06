@@ -3,37 +3,49 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Users, GraduationCap, Briefcase, TrendingUp, Award, UserCheck, BookOpen, HelpCircle, ExternalLink, ArrowRight, MousePointerClick, Building } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Users, BookOpen, GraduationCap, Briefcase, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, UserPlus, Map } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Hiring & Training Grants 2026 | $1.9B+ Workforce Development Across 28+ Programs",
-  description: "Complete guide to Canadian hiring and training grants. Access all 28+ workforce development programs including job creation incentives, skills training, wage subsidies, and employee development funding.",
-  keywords: "Canada hiring grants, training grants Canada, workforce development funding, job creation incentives, wage subsidies, employee training programs, skills development grants",
+  title: "Canada Hiring & Training Grants 2026 | SWPP & Canada Job Grant Guide",
+  description: "Complete 2026 guide to Canadian hiring grants. Get up to $7,000 per student hire (SWPP), $10,000 for employee training (CJG), and youth employment subsidies.",
+  keywords: "Canada hiring grants 2026, Student Work Placement Program SWPP, Canada Job Grant, employee training grants, hiring subsidies Canada, Canada Summer Jobs",
 }
 
 export default function CanadaHiringTrainingGrantsGuide() {
   const faqData = [
     {
-      question: "How much is the Canada Job Grant?",
-      answer: "It generally covers 2/3 (up to $10,000 per employee) of third-party training costs. If you hire a new unemployed Canadian, it may cover 100% up to $15,000. These amounts vary slightly by province (e.g., COJG in Ontario, CJG in Alberta)."
-    },
-    {
-      question: "Can I use the grant to train family members?",
-      answer: "No. Participants usually cannot be related to the owners or board members. It must be an arm's length relationship to prevent fraud."
-    },
-    {
-      question: "Does it cover trainee wages?",
-      answer: "The Canada Job Grant only covers the direct *training costs* (tuition, textbooks, exam fees). It does *not* cover the employee's wages while they are training. However, other programs like the Youth Employment Strategy DO cover wages."
-    },
-    {
       question: "What is the Student Work Placement Program (SWPP)?",
-      answer: "SWPP provides wage subsidies to employers who hire post-secondary students for co-op placements or internships. It typically covers 50-70% of wages up to $5,000-$7,000 per student."
+      answer: "SWPP is a federal wage subsidy that pays up to 70% (max $7,000) of a post-secondary student's wage for a work term (typically 4 months). It is designed to help students get real-world experience and helps employers reduce payroll costs."
     },
     {
-      question: "How fast is reimbursement?",
-      answer: "Training grants are reimbursement-based. You pay the trainer, submit the proof of payment and completion certificate, and the government sends you a check. This usually takes 30-60 days after submission."
+      question: "Can I receive the grant before I pay the student?",
+      answer: "No. SWPP is a reimbursement program. You must pay the student first (on standard payroll, with CPP/EI deductions) and then submit paystubs to get the cheque back from the government (usually 4-8 weeks later)."
+    },
+    {
+      question: "What is the 'Net New' rule?",
+      answer: "This is the most critical rule. You must increase the number of student placements compared to your 'baseline' year (usually the year before you first applied). You cannot just fire a full-time employee and hire a subsidized student."
+    },
+    {
+      question: "Can I hire the same student twice?",
+      answer: "Yes! You can hire the same student for multiple terms (e.g., Fall term and Winter term) and receive the $7,000 grant for EACH term, provided the student remains eligible."
+    },
+    {
+      question: "Does the Canada Job Grant (CJG) cover travel?",
+      answer: "Generally, no. CJG covers tuition, textbooks, and examination fees for third-party training. It rarely covers travel, accommodation, or the employee's wages *while* they are training."
+    },
+    {
+      question: "Can I train myself (the business owner)?",
+      answer: "Usually, no. The Canada Job Grant is for 'Arm's Length' employees. Owners with a significant stake (>10%) or their immediate family members are typically ineligible."
+    },
+    {
+      question: "What is the difference between Technation and Magnet?",
+      answer: "Technation and Magnet are both 'Delivery Partners' for SWPP. The money comes from the same pot (ESDC), but they have different portals and sometimes different niche focuses (e.g., Technation focuses on Tech roles, BioTalent on Bio-economy)."
+    },
+    {
+      question: "Are international students eligible for SWPP?",
+      answer: "No. For federal SWPP grants, the student must be a Canadian Citizen, Permanent Resident, or Refuguee. International students on study permits are NOT eligible."
     }
   ];
 
@@ -49,6 +61,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
       }
     }))
   };
+
   return (
     <>
       <Header />
@@ -58,651 +71,358 @@ export default function CanadaHiringTrainingGrantsGuide() {
       />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-20">
+        <section className="bg-gradient-to-br from-indigo-900 to-blue-900 text-white py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-6 bg-white/20 text-white border-white/30">
-                👥 Canadian Hiring & Training Funding
+              <Badge className="mb-6 bg-indigo-500/20 text-indigo-100 border-indigo-400/30 px-4 py-1.5 text-sm uppercase tracking-wide">
+                🧑‍💻 2026 Workforce Tactics
               </Badge>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Canada Hiring & Training Grants 2026
+              <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+                Canada Hiring Grants: <span className="text-indigo-400">Reduce Payroll by 70%</span>
               </h1>
-              <p className="text-xl text-purple-100 mb-8">
-                Access $1.9B+ in Canadian workforce development funding across 28+ specialized programs. From wage subsidies
-                to skills training grants - complete guide to building and training your Canadian workforce.
+              <p className="text-xl text-indigo-100 mb-10 leading-relaxed max-w-3xl mx-auto">
+                Payroll is your biggest expense. Smart companies use the <strong>Student Work Placement Program (SWPP)</strong> to hire top talent for 30 cents on the dollar, and the <strong>Canada Job Grant</strong> to upskill them for free.
               </p>
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
-                <Link href="/contact?service=hiring-training-grants-expert-help">
-                  Get Expert Help with Hiring & Training Grants
-                </Link>
-              </Button>
-              <p className="text-purple-200 text-sm mt-4">
-                Free consultation • 88% workforce funding success rate • Average funding: $38K per employee
-              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-white hover:bg-gray-100 text-indigo-900 font-bold text-lg px-10 py-6 shadow-xl" asChild>
+                  <Link href="#swpp-deep-dive">
+                    SWPP: Get $7,000/Hire
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-2 border-indigo-400/50 text-white hover:bg-indigo-900/50 font-semibold text-lg px-10 py-6" asChild>
+                  <Link href="#canada-job-grant">
+                    Canada Job Grant ($10k)
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Key Statistics */}
-        <section className="py-16 bg-white">
+        {/* The "Net New" Alert */}
+        <section className="py-12 bg-white -mt-8 relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">$1.9B+</div>
-                  <div className="text-gray-600">Workforce Development Funding</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-indigo-600 mb-2">28+</div>
-                  <div className="text-gray-600">Active Hiring & Training Programs</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">88%</div>
-                  <div className="text-gray-600">Expert Success Rate</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">$38K</div>
-                  <div className="text-gray-600">Average Per Employee Funding</div>
+            <div className="max-w-5xl mx-auto">
+              <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg shadow-sm">
+                <div className="flex items-start">
+                  <Lightbulb className="w-8 h-8 text-yellow-600 mr-4 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-xl font-bold text-yellow-900 mb-2">Critical Rule: "Net New" Placements</h3>
+                    <p className="text-yellow-800 mb-4">
+                      Most hiring grants require you to increase your headcount. You cannot fire an employee and replace them with a subsidized student.
+                    </p>
+                    <p className="text-yellow-800 font-medium">
+                      <strong>The Math:</strong> If you hired 2 students last year (your baseline), you usually need to hire 3 this year to get funding for the 3rd one. *Note: Some delivery partners relax this rule periodically, but always check first.*
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Major Federal Workforce Programs */}
-        <section className="py-20 bg-gray-50">
+        {/* Section 1: SWPP Deep Dive */}
+        <section id="swpp-deep-dive" className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-4">What Federal Hiring Grants are Available?</h2>
-              <p className="text-center text-gray-600 mb-12">
-                Federal government programs designed to support workforce development, job creation, and employee skills enhancement.
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-8 mb-16">
-                {/* Canada Job Grant */}
-                <Card className="border-2 border-purple-200">
-                  <CardHeader>
-                    <CardTitle className="text-purple-700">Canada Job Grant Program</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $15K per trainee</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <GraduationCap className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Skills Training</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Federal-provincial cost-shared program providing funding for employer-sponsored skills training.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Up to 2/3 training costs covered</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Third-party training provider required</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        <span>Existing and new employee eligible</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Skills-based and job-specific training</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Youth Employment Strategy */}
-                <Card className="border-2 border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-700">Youth Employment Strategy (YES)</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to 100% wages</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Ages 15-30</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Comprehensive youth hiring and training support including wage subsidies and skills development.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Youth Employment and Skills Strategy</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Student Work Placement Program</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Career Focus Program</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Green Jobs Program for youth</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Sustainable Jobs Training Fund */}
-                <Card className="border-2 border-green-200">
-                  <CardHeader>
-                    <CardTitle className="text-green-700">Sustainable Jobs Training Fund</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $8M per project</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <TrendingUp className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Clean Energy</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Major funding for training workers in sustainable and low-carbon industries and technologies.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Low-carbon workforce development</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Clean energy sector training</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Indigenous communities focus</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Remote and northern training delivery</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Canada Retraining and Opportunities Initiative */}
-                <Card className="border-2 border-orange-200">
-                  <CardHeader>
-                    <CardTitle className="text-orange-700">Canada Retraining and Opportunities Initiative</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>$30M over 2 years</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <UserCheck className="w-5 h-5 text-orange-600 mr-2" />
-                        <span><strong>Mass Layoffs</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Emergency workforce planning and skills training for communities significantly impacted by mass layoffs.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Community-based retraining projects</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Skills transition support</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Economic recovery workforce planning</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Continuous intake application process</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Provincial Workforce Development Programs */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Which Provinces Offer Training Grants?</h2>
-
-              <div className="grid md:grid-cols-3 gap-6 mb-12">
-                {/* Ontario Workforce Programs */}
-                <Card className="border-2 border-red-200">
-                  <CardHeader>
-                    <CardTitle className="text-red-700 text-lg">Ontario Workforce Development</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Canada-Ontario Job Grant</strong> - Up to $15K</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Skills Development Fund</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Ontario Youth Job Program</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Apprenticeship Training Tax Credit</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Second Career Program</strong></span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* Quebec Workforce Programs */}
-                <Card className="border-2 border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-700 text-lg">Quebec Workforce Support</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Formation en entreprise</strong> - Training grants</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Subvention salariale</strong> - Wage subsidies</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>PARAF</strong> - Foreign credentials recognition</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Programme d'apprentissage</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Mesures de formation</strong></span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                {/* BC Workforce Programs */}
-                <Card className="border-2 border-green-200">
-                  <CardHeader>
-                    <CardTitle className="text-green-700 text-lg">BC Skills & Training</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Canada-BC Job Grant</strong> - Up to $10K</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>StrongerBC Future Skills Grant</strong> - $3,500</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Indigenous Skills Training</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>Sectoral Training Programs</strong></span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span><strong>CleanBC Workforce Training</strong></span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
+              <div className="flex items-center mb-8">
+                <GraduationCap className="w-10 h-10 text-indigo-600 mr-4" />
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900">1. Student Work Placement Program (SWPP)</h2>
+                  <p className="text-gray-600">The "Bread and Butter" of Canadian Startup Hiring</p>
+                </div>
               </div>
 
-              {/* Additional Provincial Programs */}
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card className="border-2 border-yellow-200">
-                  <CardHeader>
-                    <CardTitle className="text-yellow-700">Prairie Provinces Workforce</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-12 mb-12">
+                <div>
+                  <p className="text-lg text-gray-700 mb-6">
+                    SWPP is not one single program; it is delivered by roughly 12 different "Industry Partners". You apply to the partner that matches the <strong>role</strong> of the student, not necessarily your industry.
+                  </p>
+                  <Card className="border-indigo-100 bg-indigo-50/50 mb-6">
+                    <CardHeader><CardTitle className="text-indigo-900">Funding Rates</CardTitle></CardHeader>
+                    <CardContent>
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-gray-700">Standard Student:</span>
+                        <span className="font-bold text-indigo-700">50% up to $5,000</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-700">Under-represented / 1st Year:</span>
+                        <span className="font-bold text-indigo-700">70% up to $7,000</span>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-2">*Includes Women in STEM, Indigenous, Persons with Disabilities, Recent Immigrants.</p>
+                    </CardContent>
+                  </Card>
+
+                  <h4 className="font-bold text-gray-900 mb-4">Top Delivery Partners</h4>
+                  <ul className="space-y-4">
+                    <li className="flex items-start bg-white p-3 rounded border border-gray-200 shadow-sm">
+                      <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5" />
                       <div>
-                        <h5 className="font-semibold text-sm mb-2">Alberta:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• Canada-Alberta Productivity Grant - $10K</li>
-                          <li>• Apprenticeship and Industry Training</li>
-                          <li>• Skills for Jobs Task Force</li>
-                          <li>• Indigenous Skills and Employment</li>
-                        </ul>
+                        <strong className="block text-gray-900">TECHNATION (Formerly ITAC)</strong>
+                        <span className="text-sm text-gray-600">Best for: Tech roles (Developers, UX Designers, Product Managers). High volume, good portal.</span>
                       </div>
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Saskatchewan:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• Canada-Saskatchewan Job Grant</li>
-                          <li>• Skills Training Benefit</li>
-                          <li>• Apprenticeship Job Creation Incentive</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Manitoba:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• Canada-Manitoba Job Grant</li>
-                          <li>• Skills Training Incentive Grant</li>
-                          <li>• Workplace Education Manitoba</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 border-indigo-200">
-                  <CardHeader>
-                    <CardTitle className="text-indigo-700">Atlantic & Territories Workforce</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Atlantic Canada:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• Nova Scotia Skills Development Program</li>
-                          <li>• New Brunswick Training Programs</li>
-                          <li>• PEI Workforce Development</li>
-                          <li>• Newfoundland Skills Training</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-sm mb-2">Territories:</h5>
-                        <ul className="text-xs space-y-1">
-                          <li>• NWT Skills 4 Success Program</li>
-                          <li>• Yukon Training Allowance</li>
-                          <li>• Nunavut Training Programs</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Industry-Specific Training Programs */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8">Are There Industry-Specific Training Grants?</h2>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="text-center">
-                  <CardHeader>
-                    <BookOpen className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Technology & Digital Skills</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Specialized training programs for digital transformation and technology skills development.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Career Ready Work Placement - Up to $7K</li>
-                      <li>• Digital Skills Training Programs</li>
-                      <li>• Coding Bootcamp Funding</li>
-                      <li>• AI & Machine Learning Training</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="text-center">
-                  <CardHeader>
-                    <GraduationCap className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Healthcare & Life Sciences</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Training funding for healthcare workers and life sciences professionals.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Healthcare Skills Training Fund</li>
-                      <li>• Personal Support Worker Programs</li>
-                      <li>• Medical Technology Training</li>
-                      <li>• Health System Capacity Building</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="text-center">
-                  <CardHeader>
-                    <Briefcase className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Skilled Trades & Manufacturing</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Apprenticeship and skilled trades training support programs.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Apprenticeship Training Tax Credits</li>
-                      <li>• Red River College Partnership</li>
-                      <li>• Pre-Apprenticeship Training</li>
-                      <li>• Manufacturing Skills Development</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Wage Subsidies & Employment Incentives */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8">What Wage Subsidies are Available?</h2>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="text-center">
-                  <CardHeader>
-                    <Award className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Youth Employment Subsidies</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Wage subsidies for hiring young workers and new graduates.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Up to 100% wage subsidies</li>
-                      <li>• 6-12 month placement periods</li>
-                      <li>• Student Work Placement Program</li>
-                      <li>• Co-op and internship support</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="text-center">
-                  <CardHeader>
-                    <Award className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Indigenous Employment Support</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Specialized hiring incentives for Indigenous workers and communities.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Indigenous Skills and Employment</li>
-                      <li>• Cultural competency training</li>
-                      <li>• Remote community placement</li>
-                      <li>• Traditional knowledge integration</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="text-center">
-                  <CardHeader>
-                    <Award className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                    <CardTitle className="text-lg">Persons with Disabilities</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Employment support and accommodations funding for inclusive hiring.
-                    </p>
-                    <ul className="text-xs space-y-1">
-                      <li>• Workplace accommodation funding</li>
-                      <li>• Assistive technology support</li>
-                      <li>• Job coaching and support</li>
-                      <li>• Inclusive employment programs</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Hiring & Training FAQs</h2>
-          <div className="space-y-6">
-            {faqData.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
-                  <HelpCircle className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0 mt-0.5" />
-                  {faq.question}
-                </h3>
-                <p className="text-gray-700 ml-9">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Official Resources Section */}
-        <section className="py-16 bg-gray-50 border-t border-gray-200">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Official Workforce Resources</h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-                    <Building className="w-5 h-5 mr-2 text-purple-600" />
-                    Government Programs
-                  </h3>
-                  <ul className="space-y-3">
-                    <li>
-                      <a href="https://www.canada.ca/en/services/jobs/training.html" target="_blank" rel="noopener noreferrer" className="flex items-center text-purple-600 hover:underline">
-                        Government of Canada Training Support <ExternalLink className="w-4 h-4 ml-1" />
-                      </a>
                     </li>
-                    <li>
-                      <a href="https://www.canada.ca/en/services/business/hire.html" target="_blank" rel="noopener noreferrer" className="flex items-center text-purple-600 hover:underline">
-                        Hiring & Wage Subsidies <ExternalLink className="w-4 h-4 ml-1" />
-                      </a>
+                    <li className="flex items-start bg-white p-3 rounded border border-gray-200 shadow-sm">
+                      <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5" />
+                      <div>
+                        <strong className="block text-gray-900">Magnet</strong>
+                        <span className="text-sm text-gray-600">Best for: General roles. Use Magnet if you don't fit perfectly into a specific niche.</span>
+                      </div>
                     </li>
-                    <li>
-                      <a href="https://www.canada.ca/en/employment-social-development/services/funding/canada-job-grant.html" target="_blank" rel="noopener noreferrer" className="flex items-center text-purple-600 hover:underline">
-                        Canada Job Grant Info <ExternalLink className="w-4 h-4 ml-1" />
-                      </a>
+                    <li className="flex items-start bg-white p-3 rounded border border-gray-200 shadow-sm">
+                      <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5" />
+                      <div>
+                        <strong className="block text-gray-900">BioTalent</strong>
+                        <span className="text-sm text-gray-600">Best for: Science, Lab techs, Healthcare roles.</span>
+                      </div>
+                    </li>
+                    <li className="flex items-start bg-white p-3 rounded border border-gray-200 shadow-sm">
+                      <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5" />
+                      <div>
+                        <strong className="block text-gray-900">Venture for Canada</strong>
+                        <span className="text-sm text-gray-600">Best for: Entrepreneurial students. Bonus: They provide training camps for the students.</span>
+                      </div>
                     </li>
                   </ul>
                 </div>
-                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-                    <MousePointerClick className="w-5 h-5 mr-2 text-purple-600" />
-                    Related Guides
-                  </h3>
-                  <ul className="space-y-3">
-                    <li>
-                      <Link href="/blog/canada-employment-workforce-training-grants-guide" className="flex items-center text-purple-600 hover:underline">
-                        Employment & Workforce Training Guide <ArrowRight className="w-4 h-4 ml-1" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/blog/youth-entrepreneurship-canada-funding" className="flex items-center text-purple-600 hover:underline">
-                        Youth Funding Opportunities <ArrowRight className="w-4 h-4 ml-1" />
-                      </Link>
-                    </li>
-                  </ul>
+
+                <div className="bg-gray-100 p-8 rounded-xl border border-gray-200">
+                  <h3 className="font-bold text-xl text-gray-900 mb-6">Step-by-Step: Getting the Cheque</h3>
+                  <div className="space-y-6 relative">
+                    <div className="flex gap-4">
+                      <div className="flex flex-col items-center">
+                        <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm">1</div>
+                        <div className="w-0.5 h-full bg-indigo-200 my-1"></div>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-900 text-sm">Post Job & Apply</h4>
+                        <p className="text-xs text-gray-600">Create account on partner portal (e.g., Technation). Submit job description. Get "Pre-approval".</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="flex flex-col items-center">
+                        <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm">2</div>
+                        <div className="w-0.5 h-full bg-indigo-200 my-1"></div>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-900 text-sm">Hire & Add Student</h4>
+                        <p className="text-xs text-gray-600">Interview and hire eligible student. Add their proof of citizenship and enrollment to portal.</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="flex flex-col items-center">
+                        <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm">3</div>
+                        <div className="w-0.5 h-full bg-indigo-200 my-1"></div>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-900 text-sm">Pay Wages</h4>
+                        <p className="text-xs text-gray-600">Run payroll as normal. Student gets full salary. Keep all paystubs.</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-4">
+                      <div className="flex flex-col items-center">
+                        <div className="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-sm">4</div>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-900 text-sm">Submit Claims</h4>
+                        <p className="text-xs text-gray-600">Upload paystubs at end of term (or mid-term). Receive direct deposit within 6 weeks.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 bg-white p-4 rounded border border-indigo-200">
+                    <p className="text-sm font-bold text-indigo-900 mb-1">💡 Insider Tip:</p>
+                    <p className="text-xs text-gray-600">
+                      Apply BEFORE the student starts. Many partners reject retroactive applications. The safest bet is to apply as soon as you post the job.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Strong Single CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-purple-600 to-indigo-800">
+        {/* Section 2: Canada Job Grant */}
+        <section id="canada-job-grant" className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-4xl font-bold mb-6">
-                Build Your Workforce with Expert Navigation of 28+ Training Programs
-              </h2>
-              <p className="text-xl text-purple-100 mb-8">
-                Canada's workforce development ecosystem spans federal job grants, provincial training programs, industry-specific
-                skills funding, and specialized employment incentives. Our workforce specialists have helped 400+ Canadian businesses
-                secure over $15M in hiring and training funding with an 88% success rate.
-              </p>
-              <div className="bg-white/10 rounded-lg p-6 mb-8">
-                <h4 className="font-semibold mb-4">Our Complete Workforce Development Success Package Includes:</h4>
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>All 28+ program eligibility assessment</span>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">2. The Canada Job Grant (CJG)</h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  Need to train your EXISTING staff? The CJG pays for third-party training. It is provincially administered, so names vary (COJG, CAJG, etc.).
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                <Card className="hover:shadow-lg transition-shadow border-blue-200 bg-white">
+                  <CardHeader>
+                    <BookOpen className="w-10 h-10 text-blue-600 mb-2" />
+                    <CardTitle className="text-xl text-gray-900">The Deal</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 text-sm mb-4">
+                      Government covers <strong>2/3rds</strong> of training costs. You cover 1/3rd.
+                    </p>
+                    <div className="bg-blue-50 p-3 rounded">
+                      <p className="text-sm font-bold text-blue-900">Example:</p>
+                      <p className="text-xs text-blue-800">$3,000 Course Cost</p>
+                      <p className="text-xs text-blue-800">Gov pays: $2,000</p>
+                      <p className="text-xs text-blue-800">You pay: $1,000</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow border-blue-200 bg-white">
+                  <CardHeader>
+                    <UserPlus className="w-10 h-10 text-blue-600 mb-2" />
+                    <CardTitle className="text-xl text-gray-900">Hiring Unemployed?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 text-sm mb-4">
+                      If you hire and train an unemployed person, the government covers <strong>100%</strong> of training costs (up to $15k).
+                    </p>
+                    <div className="bg-emerald-50 p-3 rounded">
+                      <p className="text-sm font-bold text-emerald-900">Total Cover:</p>
+                      <p className="text-xs text-emerald-800">$15,000 Training</p>
+                      <p className="text-xs text-emerald-800">You pay: $0</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow border-blue-200 bg-white">
+                  <CardHeader>
+                    <Map className="w-10 h-10 text-blue-600 mb-2" />
+                    <CardTitle className="text-xl text-gray-900">Provincial Names</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="text-sm space-y-2 text-gray-600">
+                      <li><strong>Ontario:</strong> COJG (Canada-Ontario Job Grant)</li>
+                      <li><strong>Alberta:</strong> CAJG (Canada-Alberta Job Grant)</li>
+                      <li><strong>BC:</strong> ETG (Employer Training Grant)</li>
+                      <li><strong>Quebec:</strong> Workforce Skills Development</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="mt-12 bg-white border border-gray-200 p-8 rounded-xl shadow-sm">
+                <h4 className="font-bold text-lg text-gray-900 mb-4">What Training Qualifies?</h4>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h5 className="font-bold text-emerald-700 mb-2">✅ Eligible</h5>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-center"><CheckCircle className="w-3 h-3 text-emerald-500 mr-2" /> Third-party trainer (College, Private Institute)</li>
+                      <li className="flex items-center"><CheckCircle className="w-3 h-3 text-emerald-500 mr-2" /> "Soft Skills" (Leadership, Sales Training)</li>
+                      <li className="flex items-center"><CheckCircle className="w-3 h-3 text-emerald-500 mr-2" /> Technical Certification (PMP, Agile, AWS)</li>
+                    </ul>
                   </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Canada Job Grant application optimization</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Multi-provincial program coordination</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Industry-specific training program access</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>88% success rate for workforce funding</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Average $38K per employee funding secured</span>
+                  <div>
+                    <h5 className="font-bold text-red-700 mb-2">❌ Ineligible</h5>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-center"><AlertTriangle className="w-3 h-3 text-red-500 mr-2" /> Internal training (You teaching your staff)</li>
+                      <li className="flex items-center"><AlertTriangle className="w-3 h-3 text-red-500 mr-2" /> Conferences (Unless there is a curriculum)</li>
+                      <li className="flex items-center"><AlertTriangle className="w-3 h-3 text-red-500 mr-2" /> Product usage training (e.g. standard onboarding)</li>
+                    </ul>
                   </div>
                 </div>
               </div>
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
-                <Link href="/contact?service=hiring-training-grants-expert-help">
-                  Get Expert Help with All Workforce Programs
-                </Link>
-              </Button>
-              <p className="text-purple-200 text-sm mt-4">
-                Free consultation • Workforce development specialists • Multi-program expertise
-              </p>
             </div>
           </div>
         </section>
+
+        {/* Section 3: The "Stack" Case Study */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-indigo-900 text-white rounded-3xl p-8 md:p-12 shadow-2xl">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                  <div>
+                    <Badge className="bg-indigo-500 text-white mb-6 border-none">Case Study</Badge>
+                    <h2 className="text-3xl font-bold mb-6">How "TechStart Inc" Saved $35,000</h2>
+                    <p className="text-indigo-100 text-lg mb-6 leading-relaxed">
+                      TechStart Inc need to build an MVP and train their Sales Lead. They didn't have $100k for payroll. Here is how they stacked the grants.
+                    </p>
+                    <div className="space-y-4">
+                      <div className="flex justify-between border-b border-indigo-700 pb-2">
+                        <span>3 Student Devs (SWPP):</span>
+                        <span className="text-emerald-400">+$21,000 Refund</span>
+                      </div>
+                      <div className="flex justify-between border-b border-indigo-700 pb-2">
+                        <span>Sales Training (COJG):</span>
+                        <span className="text-emerald-400">+$6,600 Refund</span>
+                      </div>
+                      <div className="flex justify-between border-b border-indigo-700 pb-2">
+                        <span>Summer Student (CSJ):</span>
+                        <span className="text-emerald-400">+$4,200 Refund</span>
+                      </div>
+                      <div className="flex justify-between text-2xl font-bold pt-4">
+                        <span>Total Savings:</span>
+                        <span className="text-emerald-400">$31,800</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-indigo-800 p-8 rounded-xl border border-indigo-700 text-center">
+                    <h4 className="font-bold text-xl mb-4 text-white">The "Paperwork" Reality</h4>
+                    <p className="text-indigo-200 text-sm mb-6">
+                      It took them about 10 hours of paperwork total. That's a return of <strong>$3,180 per hour</strong> of administrative work.
+                    </p>
+                    <p className="text-indigo-200 text-sm font-bold">
+                      Is 10 hours of paperwork worth $31,000 to you?
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Detailed FAQ Section */}
+        <section className="py-20 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-indigo-500 mr-3 mt-0.5 flex-shrink-0" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-600 pl-8">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="py-24 bg-gray-900 text-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-4xl font-bold mb-6">Start Hiring for Less</h2>
+              <p className="text-xl text-gray-300 mb-10">
+                You don't need to navigate the 12+ SWPP partners alone. Our guide helps you pick the right one.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-lg px-8 py-4 h-auto" asChild>
+                  <Link href="/contact?service=hiring-grants-setup">
+                    <UserPlus className="w-5 h-5 mr-2" />
+                    Get Help with SWPP
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white font-semibold text-lg px-8 py-4 h-auto" asChild>
+                  <Link href="/blog/canada-startup-funding-grants-guide">
+                    Explore Startup Funding
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <Footer />
       </div>
-      <Footer />
     </>
   )
 }
