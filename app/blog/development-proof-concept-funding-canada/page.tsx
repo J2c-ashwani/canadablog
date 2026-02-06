@@ -81,6 +81,47 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
           </div>
         </section>
 
+        {/* TRL Breakdown Section */}
+        <section className="py-12 bg-blue-50 border-y border-blue-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Understanding Technology Readiness Levels (TRL 4-6)</h2>
+              <p className="text-gray-700 text-center mb-10 max-w-2xl mx-auto">
+                Stage 2 takes you from "Lab Bench" to "Simulated Environment." This is the "Valley of Death" where most startups fail. IRAP is your primary bridge here.
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-start bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-500">
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl mr-4">4</div>
+                  <div>
+                    <h3 className="font-bold text-lg text-blue-900">TRL 4: Component Validation in Lab</h3>
+                    <p className="text-sm text-gray-600 mb-2">Basic technological components are integrated to establish that they will work together. This is "low fidelity" prototyping.</p>
+                    <Badge variant="outline" className="text-blue-600 bg-blue-50 border-blue-200">IRAP Eligible</Badge>
+                  </div>
+                </div>
+
+                <div className="flex items-start bg-white p-6 rounded-lg shadow-sm border-l-4 border-cyan-500">
+                  <div className="flex-shrink-0 w-12 h-12 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center font-bold text-xl mr-4">5</div>
+                  <div>
+                    <h3 className="font-bold text-lg text-cyan-900">TRL 5: Component Validation in Relevant Environment</h3>
+                    <p className="text-sm text-gray-600 mb-2">The basic technological components are integrated with reasonably realistic supporting elements so it can be tested in a simulated environment.</p>
+                    <Badge variant="outline" className="text-cyan-600 bg-cyan-50 border-cyan-200">SR&ED Eligible</Badge>
+                  </div>
+                </div>
+
+                <div className="flex items-start bg-white p-6 rounded-lg shadow-sm border-l-4 border-teal-500">
+                  <div className="flex-shrink-0 w-12 h-12 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center font-bold text-xl mr-4">6</div>
+                  <div>
+                    <h3 className="font-bold text-lg text-teal-900">TRL 6: System/Subsystem Model in Relevant Environment</h3>
+                    <p className="text-sm text-gray-600 mb-2">A representative model or prototype system is tested in a relevant environment. This is a critical step before moving to real operational environments.</p>
+                    <Badge variant="outline" className="text-teal-600 bg-teal-50 border-teal-200">Innovative Solutions Canada Eligible</Badge>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Major Stage 2 Programs */}
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -383,6 +424,104 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
           </div>
         </section>
 
+        {/* Technical Validation Roadmap */}
+        <section className="py-16 bg-white border-b border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">From Prototype to Pilot: Stage 2 Roadmap</h2>
+              <div className="grid md:grid-cols-4 gap-4">
+                <div className="bg-blue-50 p-6 rounded-lg border border-blue-100 relative">
+                  <div className="absolute -top-4 left-6 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                  <h3 className="font-bold text-blue-900 mt-2 mb-2">Alpha Prototype</h3>
+                  <p className="text-sm text-gray-600">Build a "works-like" prototype. Focus on function, not form.
+                    <br /><span className="text-blue-600 font-semibold text-xs">Goal: Functional Verification</span></p>
+                </div>
+                <div className="bg-cyan-50 p-6 rounded-lg border border-cyan-100 relative">
+                  <div className="absolute -top-4 left-6 w-8 h-8 bg-cyan-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                  <h3 className="font-bold text-cyan-900 mt-2 mb-2">Lab Testing</h3>
+                  <p className="text-sm text-gray-600">Stress test components in controlled conditions.
+                    <br /><span className="text-cyan-600 font-semibold text-xs">Goal: Performance Data</span></p>
+                </div>
+                <div className="bg-teal-50 p-6 rounded-lg border border-teal-100 relative">
+                  <div className="absolute -top-4 left-6 w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
+                  <h3 className="font-bold text-teal-900 mt-2 mb-2">Beta Prototype</h3>
+                  <p className="text-sm text-gray-600">Integrate into a "looks-like, works-like" system for user demos.
+                    <br /><span className="text-teal-600 font-semibold text-xs">Goal: UX Validation</span></p>
+                </div>
+                <div className="bg-slate-50 p-6 rounded-lg border border-slate-100 relative">
+                  <div className="absolute -top-4 left-6 w-8 h-8 bg-slate-600 text-white rounded-full flex items-center justify-center font-bold">4</div>
+                  <h3 className="font-bold text-slate-900 mt-2 mb-2">SR&ED Claim</h3>
+                  <p className="text-sm text-gray-600">Document technical obstacles and iterative testing processes.
+                    <br /><span className="text-slate-600 font-semibold text-xs">Goal: 65% Refund</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Real World Case Study */}
+        <section className="py-16 bg-slate-50 border-b border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Case Study: Scaling Up the Hardware</h2>
+              <div className="bg-white rounded-xl p-8 border border-slate-200 shadow-sm">
+                <div className="flex flex-col md:flex-row gap-6 mb-6">
+                  <div className="w-16 h-16 bg-cyan-600 rounded-lg flex items-center justify-center text-white font-bold text-2xl flex-shrink-0">
+                    A
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900">AgriSense Tech (Hypothetical)</h3>
+                    <p className="text-slate-600">Developing IoT sensors for real-time soil monitoring.</p>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                      <div className="h-full w-0.5 bg-gray-200 my-2"></div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-bold text-sm text-slate-900">Month 1-4 (TRL 4)</span>
+                        <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-100">IRAP YEP</Badge>
+                      </div>
+                      <p className="text-sm text-slate-600">Hired 2 junior engineers using IRAP Youth Employment Program ($30k subsidy) to build the first breadboard prototype.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 h-8 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                      <div className="h-full w-0.5 bg-gray-200 my-2"></div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-bold text-sm text-slate-900">Month 5-10 (TRL 5)</span>
+                        <Badge className="bg-cyan-100 text-cyan-700 hover:bg-cyan-100">SR&ED</Badge>
+                      </div>
+                      <p className="text-sm text-slate-600">Encountered signal interference issues. Spent $100k on R&D to develop custom shielding. Claimed $65k back via SR&ED.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 h-8 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-bold text-sm text-slate-900">Month 11-16 (TRL 6)</span>
+                        <Badge className="bg-teal-100 text-teal-700 hover:bg-teal-100">IRAP Main</Badge>
+                      </div>
+                      <p className="text-sm text-slate-600">Secured $150k IRAP contribution to build 50 beta units and test them in a greenhouse environment.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Success Tips */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -457,6 +596,29 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">Can I claim both IRAP and SR&ED?</h3>
+                  <p className="text-gray-600">Yes, but you cannot "double dip." The amount of IRAP funding you receive will reduce your eligible SR&ED expenditures. However, using both is a powerful strategy to maximize your non-dilutive funding stack.</p>
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">Does SR&ED cover failed projects?</h3>
+                  <p className="text-gray-600">Absolutely. In fact, failure often proves "technical uncertainty," which is a core requirement for SR&ED. As long as you followed a systematic investigation, failed attempts are fully eligible for tax credits.</p>
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">What is the difference between a prototype and a pilot?</h3>
+                  <p className="text-gray-600">A prototype (Stage 2) is a working model tested in a lab or simulated environment to prove it works. A pilot (Stage 3) is a full-scale version operating in real-world conditions with actual users.</p>
+                </div>
               </div>
             </div>
           </div>

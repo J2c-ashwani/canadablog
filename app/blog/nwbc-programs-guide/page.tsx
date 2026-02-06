@@ -204,6 +204,55 @@ export default function NWBCProgramsGuide() {
                 </div>
               </div>
 
+              {/* Resource Network Deep Dive */}
+              <div className="bg-white rounded-lg shadow-sm p-8 mb-8 border-t-4 border-cyan-500">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Decoding the Support Network: WBC vs. SBDC vs. SCORE</h2>
+                <p className="text-lg text-gray-700 mb-8">
+                  The NWBC works closely with three major support networks. Understanding which one you need can save you months of time.
+                </p>
+
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="bg-pink-50 p-6 rounded-xl border border-pink-100">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center font-bold mr-3">WBC</div>
+                      <h3 className="font-bold text-gray-900">Women's Business Centers</h3>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-4 h-20"><strong>Best For:</strong> Women-specific challenges, community, and long-term training.</p>
+                    <ul className="text-xs text-gray-700 space-y-2">
+                      <li className="flex items-start"><CheckCircle className="w-3 h-3 text-pink-500 mr-2 mt-0.5" /> <span>Mindset & confidence coaching</span></li>
+                      <li className="flex items-start"><CheckCircle className="w-3 h-3 text-pink-500 mr-2 mt-0.5" /> <span>Marketing to female demographics</span></li>
+                      <li className="flex items-start"><CheckCircle className="w-3 h-3 text-pink-500 mr-2 mt-0.5" /> <span>Work-life balance strategies</span></li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold mr-3">SBDC</div>
+                      <h3 className="font-bold text-gray-900">Small Business Dev Centers</h3>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-4 h-20"><strong>Best For:</strong> Technical business planning, financial projections, and loan packaging.</p>
+                    <ul className="text-xs text-gray-700 space-y-2">
+                      <li className="flex items-start"><CheckCircle className="w-3 h-3 text-blue-500 mr-2 mt-0.5" /> <span>Detailed business plans</span></li>
+                      <li className="flex items-start"><CheckCircle className="w-3 h-3 text-blue-500 mr-2 mt-0.5" /> <span>Export/Import regulations</span></li>
+                      <li className="flex items-start"><CheckCircle className="w-3 h-3 text-blue-500 mr-2 mt-0.5" /> <span>Manufacturing optimization</span></li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-orange-50 p-6 rounded-xl border border-orange-100">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center font-bold mr-3">SCORE</div>
+                      <h3 className="font-bold text-gray-900">Service Corps of Retired Execs</h3>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-4 h-20"><strong>Best For:</strong> 1-on-1 mentoring from someone who has "been there, done that."</p>
+                    <ul className="text-xs text-gray-700 space-y-2">
+                      <li className="flex items-start"><CheckCircle className="w-3 h-3 text-orange-500 mr-2 mt-0.5" /> <span>Industry-specific advice</span></li>
+                      <li className="flex items-start"><CheckCircle className="w-3 h-3 text-orange-500 mr-2 mt-0.5" /> <span>Crisis management</span></li>
+                      <li className="flex items-start"><CheckCircle className="w-3 h-3 text-orange-500 mr-2 mt-0.5" /> <span>Sounding board for ideas</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
               {/* NWBC Programs and Initiatives */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">NWBC Programs and Initiatives</h2>
@@ -384,6 +433,84 @@ export default function NWBCProgramsGuide() {
                       <li>• Policy briefs</li>
                       <li>• Meeting minutes</li>
                     </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Policy Advocacy Roadmap */}
+              <section className="py-16 bg-gray-50 border-y border-gray-200 -mx-4 sm:-mx-8 px-4 sm:px-8 mb-8">
+                <div className="max-w-4xl mx-auto">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Your Voice Matters: The "Policy Roadmap"</h2>
+                  <p className="text-lg text-gray-600 mb-10 text-center max-w-2xl mx-auto">
+                    Many business owners think federal policy is untouchable. The NWBC was designed to prove that wrong. Here is how a single voice becomes a federal recommendation.
+                  </p>
+
+                  <div className="relative">
+                    <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-300 to-cyan-300 hidden md:block"></div>
+
+                    <div className="space-y-12">
+                      <div className="relative flex flex-col md:flex-row items-center md:items-start md:justify-between">
+                        <div className="md:w-1/2 md:pr-8 md:text-right">
+                          <h4 className="text-xl font-bold text-blue-900">Step 1: The Local Roundtable</h4>
+                          <p className="text-gray-600 mt-2">You attend a local WBC or NWBC roundtable event. You mention a specific barrier (e.g., "The microloan cap is too low for my equipment needs").</p>
+                        </div>
+                        <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-500 rounded-full border-4 border-white z-10 hidden md:block"></div>
+                        <div className="md:w-1/2 md:pl-8 mt-4 md:mt-0">
+                          <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold">Input Phase</span>
+                        </div>
+                      </div>
+
+                      <div className="relative flex flex-col md:flex-row items-center md:items-start md:justify-between">
+                        <div className="md:w-1/2 md:pr-8 md:text-right order-2 md:order-1 mt-4 md:mt-0">
+                          <span className="inline-block px-3 py-1 bg-cyan-100 text-cyan-800 rounded-full text-xs font-bold">Processing Phase</span>
+                        </div>
+                        <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-cyan-500 rounded-full border-4 border-white z-10 hidden md:block"></div>
+                        <div className="md:w-1/2 md:pl-8 order-1 md:order-2">
+                          <h4 className="text-xl font-bold text-cyan-900">Step 2: Council Aggregation</h4>
+                          <p className="text-gray-600 mt-2">Council members review notes from roundtables nationwide. They see a pattern: "Women in 5 states are saying the microloan cap is too low."</p>
+                        </div>
+                      </div>
+
+                      <div className="relative flex flex-col md:flex-row items-center md:items-start md:justify-between">
+                        <div className="md:w-1/2 md:pr-8 md:text-right">
+                          <h4 className="text-xl font-bold text-green-900">Step 3: The Annual Report</h4>
+                          <p className="text-gray-600 mt-2">The NWBC publishes its Annual Report to the President and Congress. Recommendation #4 formally states: "Raise the microloan cap from $50k to $100k."</p>
+                        </div>
+                        <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-green-500 rounded-full border-4 border-white z-10 hidden md:block"></div>
+                        <div className="md:w-1/2 md:pl-8 mt-4 md:mt-0">
+                          <span className="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold">Action Phase</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Case Study: EcoClean Services */}
+              <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden mb-12">
+                <div className="bg-gradient-to-r from-teal-600 to-green-600 p-6 text-white">
+                  <h3 className="text-2xl font-bold">Case Study: Advocacy in Action</h3>
+                  <p className="text-teal-100">How one voice changed policy for thousands.</p>
+                </div>
+                <div className="p-8">
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <h4 className="font-bold text-gray-900 mb-2">The Entrepreneur</h4>
+                      <p className="text-sm text-gray-600 mb-4">Maria, owner of "EcoClean Services," a commercial green cleaning company. She wanted to bid on federal contracts but found the "past performance" requirement impossible for a new firm.</p>
+                      <h4 className="font-bold text-gray-900 mb-2">The Action</h4>
+                      <p className="text-sm text-gray-600">Maria attended an NWBC "Public Meeting" via Zoom. She submitted a written comment explaining how the 2-year past performance rule was a catch-22 for startups.</p>
+                    </div>
+                    <div>
+                      <div className="bg-green-50 p-4 rounded-lg border border-green-100 h-full">
+                        <h4 className="font-bold text-green-800 mb-2">The Outcome</h4>
+                        <p className="text-sm text-gray-700 mb-4">The NWBC included "Past Performance Barrier Reduction" in their next policy brief.</p>
+                        <div className="flex items-center text-green-700 font-bold">
+                          <CheckCircle className="w-5 h-5 mr-2" />
+                          <span>Policy Adjusted</span>
+                        </div>
+                        <p className="text-xs text-green-600 mt-1">SBA eventually released new guidance allowing potential teaming partners' experience to count.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

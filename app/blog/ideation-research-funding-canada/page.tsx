@@ -35,8 +35,8 @@ export default function IdeationResearchFundingCanadaPage() {
                 Stage 1: Ideation & Research Funding Canada 2026
               </h1>
               <p className="text-xl text-purple-100 mb-8">
-                Access up to $1M in early-stage research and concept development funding through NSERC Discovery Grants, 
-                university research programs, and basic R&D support. Fund your innovative ideas from initial concept 
+                Access up to $1M in early-stage research and concept development funding through NSERC Discovery Grants,
+                university research programs, and basic R&D support. Fund your innovative ideas from initial concept
                 through proof-of-concept validation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -81,12 +81,53 @@ export default function IdeationResearchFundingCanadaPage() {
           </div>
         </section>
 
+        {/* TRL Breakdown Section */}
+        <section className="py-12 bg-purple-50 border-y border-purple-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Understanding Technology Readiness Levels (TRL 1-3)</h2>
+              <p className="text-gray-700 text-center mb-10 max-w-2xl mx-auto">
+                Government grants are strictly categorized by TRL. Stage 1 focus is exclusively on the "Discovery" phase. Applying for the wrong stage is the #1 reason for rejection.
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-start bg-white p-6 rounded-lg shadow-sm border-l-4 border-purple-500">
+                  <div className="flex-shrink-0 w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold text-xl mr-4">1</div>
+                  <div>
+                    <h3 className="font-bold text-lg text-purple-900">TRL 1: Basic Principles Observed</h3>
+                    <p className="text-sm text-gray-600 mb-2">Scientific research begins to be translated into applied research and development. Examples include basic properties of materials or algorithms.</p>
+                    <Badge variant="outline" className="text-purple-600 bg-purple-50 border-purple-200">NSERC Discovery Eligible</Badge>
+                  </div>
+                </div>
+
+                <div className="flex items-start bg-white p-6 rounded-lg shadow-sm border-l-4 border-indigo-500">
+                  <div className="flex-shrink-0 w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold text-xl mr-4">2</div>
+                  <div>
+                    <h3 className="font-bold text-lg text-indigo-900">TRL 2: Technology Concept Formulated</h3>
+                    <p className="text-sm text-gray-600 mb-2">Practical applications can be invented. The application is speculative, and there may be no proof or detailed analysis to support the assumptions.</p>
+                    <Badge variant="outline" className="text-indigo-600 bg-indigo-50 border-indigo-200">Mitacs Accelerate Eligible</Badge>
+                  </div>
+                </div>
+
+                <div className="flex items-start bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-500">
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl mr-4">3</div>
+                  <div>
+                    <h3 className="font-bold text-lg text-blue-900">TRL 3: Analytical & Experimental Critical Function Proof</h3>
+                    <p className="text-sm text-gray-600 mb-2">Active R&D is initiated. This includes analytical studies and laboratory studies to physically validate the analytical predictions of separate elements of the technology.</p>
+                    <Badge variant="outline" className="text-blue-600 bg-blue-50 border-blue-200">NRC IRAP Eligible</Badge>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Major Stage 1 Programs */}
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Stage 1: Ideation & Research Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* NSERC Discovery Grants */}
                 <Card className="border-purple-200">
@@ -112,7 +153,7 @@ export default function IdeationResearchFundingCanadaPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Natural Sciences and Engineering Research Council's flagship program supporting ongoing basic research 
+                      Natural Sciences and Engineering Research Council's flagship program supporting ongoing basic research
                       programs with long-term goals, fostering innovation and discovery in natural sciences and engineering.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -162,7 +203,7 @@ export default function IdeationResearchFundingCanadaPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Social Sciences and Humanities Research Council support for research excellence in social sciences, 
+                      Social Sciences and Humanities Research Council support for research excellence in social sciences,
                       humanities, and arts, enabling researchers to pursue original investigations.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -212,7 +253,7 @@ export default function IdeationResearchFundingCanadaPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Research internship program connecting companies with graduate students and postdoctoral fellows 
+                      Research internship program connecting companies with graduate students and postdoctoral fellows
                       to work on innovation projects at early research stages.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -262,7 +303,7 @@ export default function IdeationResearchFundingCanadaPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Canadian Institutes of Health Research funding for health-related research projects spanning 
+                      Canadian Institutes of Health Research funding for health-related research projects spanning
                       biomedical, clinical, and health systems research at early stages.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -297,7 +338,7 @@ export default function IdeationResearchFundingCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Stage 1: Ideation & Research Covers</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-purple-200">
                   <CardHeader>
@@ -383,12 +424,110 @@ export default function IdeationResearchFundingCanadaPage() {
           </div>
         </section>
 
+        {/* Idea to Prototype Roadmap */}
+        <section className="py-16 bg-white border-b border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">From Idea to Prototype: Stage 1 Roadmap</h2>
+              <div className="grid md:grid-cols-4 gap-4">
+                <div className="bg-purple-50 p-6 rounded-lg border border-purple-100 relative">
+                  <div className="absolute -top-4 left-6 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                  <h3 className="font-bold text-purple-900 mt-2 mb-2">Literature Review</h3>
+                  <p className="text-sm text-gray-600">Deep dive into existing patents and papers.
+                    <br /><span className="text-purple-600 font-semibold text-xs">Goal: Confirm Novelty</span></p>
+                </div>
+                <div className="bg-indigo-50 p-6 rounded-lg border border-indigo-100 relative">
+                  <div className="absolute -top-4 left-6 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                  <h3 className="font-bold text-indigo-900 mt-2 mb-2">Hypothesis</h3>
+                  <p className="text-sm text-gray-600">Formulate clear research questions and methodology.
+                    <br /><span className="text-indigo-600 font-semibold text-xs">Goal: Experimental Design</span></p>
+                </div>
+                <div className="bg-blue-50 p-6 rounded-lg border border-blue-100 relative">
+                  <div className="absolute -top-4 left-6 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
+                  <h3 className="font-bold text-blue-900 mt-2 mb-2">Lab Testing</h3>
+                  <p className="text-sm text-gray-600">Conduct initial experiments to validate core concepts.
+                    <br /><span className="text-blue-600 font-semibold text-xs">Goal: Proof of Concept</span></p>
+                </div>
+                <div className="bg-slate-50 p-6 rounded-lg border border-slate-100 relative">
+                  <div className="absolute -top-4 left-6 w-8 h-8 bg-slate-600 text-white rounded-full flex items-center justify-center font-bold">4</div>
+                  <h3 className="font-bold text-slate-900 mt-2 mb-2">IP Protection</h3>
+                  <p className="text-sm text-gray-600">File provisional patent before public disclosure.
+                    <br /><span className="text-slate-600 font-semibold text-xs">Goal: Secure Rights</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Real World Case Study */}
+        <section className="py-16 bg-slate-50 border-b border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Case Study: From Lab Bench to Seed Round</h2>
+              <div className="bg-white rounded-xl p-8 border border-slate-200 shadow-sm">
+                <div className="flex flex-col md:flex-row gap-6 mb-6">
+                  <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-2xl flex-shrink-0">
+                    B
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900">BioPolymer Solutions (Hypothetical)</h3>
+                    <p className="text-slate-600">University spin-out developing biodegradable plastics from algae.</p>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                      <div className="h-full w-0.5 bg-gray-200 my-2"></div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-bold text-sm text-slate-900">Month 1-6 (TRL 1)</span>
+                        <Badge className="bg-purple-100 text-purple-700 hover:bg-purple-100">NSERC Discovery</Badge>
+                      </div>
+                      <p className="text-sm text-slate-600">Professor secured $40,000 NSERC grant to theorize algae strain modification formula.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                      <div className="h-full w-0.5 bg-gray-200 my-2"></div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-bold text-sm text-slate-900">Month 7-12 (TRL 2)</span>
+                        <Badge className="bg-indigo-100 text-indigo-700 hover:bg-indigo-100">Mitacs Accelerate</Badge>
+                      </div>
+                      <p className="text-sm text-slate-600">Partnered with local manufacturing firm to fund a PhD student internship ($30k) for formulation testing.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-bold text-sm text-slate-900">Month 13-18 (TRL 3)</span>
+                        <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-100">NRC IRAP</Badge>
+                      </div>
+                      <p className="text-sm text-slate-600">IRAP provided $50,000 to validate the degradation rate in a controlled lab environment. IP filed.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Success Tips */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Stage 1 Research Funding Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -462,6 +601,29 @@ export default function IdeationResearchFundingCanadaPage() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">Can I apply for NSERC if I am a pre-revenue startup?</h3>
+                  <p className="text-gray-600">No, NSERC Discovery Grants are primarily for academic researchers at eligible Canadian universities. However, startups can partner with these researchers through NSERC Alliance or Mitacs Accelerate to access this expertise and funding indirectly.</p>
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">Does "Ideation" funding cover my salary?</h3>
+                  <p className="text-gray-600">Most Stage 1 grants (like NSERC or Mitacs) cover student stipends, research materials, and university overhead. They typically do not cover the founder's salary. For salary support, look into wage subsidies or specific entrepreneurship fellowships.</p>
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">How long does the NSERC Discovery application process take?</h3>
+                  <p className="text-gray-600">It is a long cycle. Notices of Intent are usually due in August, full applications in November, and results are announced the following April. It requires long-term planning.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Next Stage CTA */}
         <section className="py-20 bg-gradient-to-r from-purple-600 to-indigo-700">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -470,10 +632,10 @@ export default function IdeationResearchFundingCanadaPage() {
                 Ready to Fund Your Early-Stage Research?
               </h2>
               <p className="text-xl text-purple-100 mb-8">
-                Get expert help navigating Stage 1 ideation and research funding programs. Our specialists have secured 
+                Get expert help navigating Stage 1 ideation and research funding programs. Our specialists have secured
                 $42M+ in NSERC Discovery Grants and early-stage research funding.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Button size="lg" className="bg-white text-purple-700 hover:bg-gray-100" asChild>
                   <Link href="/contact?service=ideation-research-funding-canada-expert-help">
@@ -486,7 +648,7 @@ export default function IdeationResearchFundingCanadaPage() {
                   </Link>
                 </Button>
               </div>
-              
+
               <p className="text-purple-200 text-sm mt-6">
                 78% success rate • $42M+ secured in NSERC and research grants • Expert guidance for all stages
               </p>

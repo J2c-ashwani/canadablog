@@ -307,6 +307,134 @@ export default function WBDCEquityMatchGrantGuidePage() {
           </div>
         </section>
 
+        {/* Video Pitch Guide - CRITICAL for WBDC */}
+        <section className="py-16 bg-white border-b border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">The 2-Minute Video Pitch: Your Secret Weapon</h2>
+              <p className="text-lg text-gray-600 mb-10 text-center max-w-2xl mx-auto">
+                The video pitch is often the <strong>most important part</strong> of your WBDC application. It allows judges to connect with you as a founder. It does not need to be professionally produced—a clear smartphone video is perfect.
+              </p>
+
+              <div className="bg-purple-50 rounded-xl p-8 border border-purple-100 mb-10">
+                <h3 className="text-xl font-bold text-purple-900 mb-6">Video Script Template (90-120 Seconds)</h3>
+                <div className="space-y-6">
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0 w-16 font-bold text-purple-600">0:00-0:20</div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">The Hook & Intro</h4>
+                      <p className="text-sm text-gray-600">"Hi, I'm [Name], founder of [Business]. We are a [City]-based company that [Core Service] for [Target Customer]."</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0 w-16 font-bold text-purple-600">0:20-0:50</div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">The Problem & Solution</h4>
+                      <p className="text-sm text-gray-600">"We solved the problem of [Pain Point] by creating [Solution]. Our current customers love us because [Unique Value Prop]."</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0 w-16 font-bold text-purple-600">0:50-1:30</div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">The Growth Project (The "Ask")</h4>
+                      <p className="text-sm text-gray-600">"We are applying for a $10,000 grant to purchase [Equipment/Service]. This will allow us to [Specific Outcome, e.g., double production capacity] and add [Number] new jobs."</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0 w-16 font-bold text-purple-600">1:30-2:00</div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">The Impact & Closing</h4>
+                      <p className="text-sm text-gray-600">"With this grant and our matching investment, we will grow our revenue by [X]% next year. Thank you for considering our application."</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                  <div className="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
+                    <Lightbulb className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-bold text-gray-900 mb-2">Lighting Matters</h4>
+                  <p className="text-sm text-gray-600">Face a window for natural light. Do not have a bright window behind you (you will be a silhouette).</p>
+                </div>
+                <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                  <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4">
+                    <Heart className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-bold text-gray-900 mb-2">Show Passion</h4>
+                  <p className="text-sm text-gray-600">Smile! Show your enthusiasm. Judges want to back founders who believe in their own vision.</p>
+                </div>
+                <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                  <div className="w-10 h-10 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-4">
+                    <Zap className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-bold text-gray-900 mb-2">Show the Product</h4>
+                  <p className="text-sm text-gray-600">Don't just talk. If you make cupcakes, hold a cupcake. If you have a machine, stand next to it.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Financial Projections Deep Dive */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Mastering the Financials</h2>
+              <p className="text-lg text-gray-600 mb-10 text-center max-w-2xl mx-auto">
+                WBDC requires clear financial history and projections. You don't need to be a CPA, but you need to know your numbers.
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <Card className="border-blue-200">
+                  <CardHeader>
+                    <CardTitle className="text-blue-800">1. Historical Financials (Past)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3 text-sm text-gray-700">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-0.5" />
+                        <span><strong>Profit & Loss (P&L):</strong> Last 2 full years + Year-to-Date (YTD). Must show profitability or a clear path to it.</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-0.5" />
+                        <span><strong>Balance Sheet:</strong> Shows your assets (what you own) and liabilities (what you owe). Proves solvency.</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-0.5" />
+                        <span><strong>Tax Returns:</strong> Last 2 years of business returns (Schedule C or 1120S). Must match your P&L.</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-green-200">
+                  <CardHeader>
+                    <CardTitle className="text-green-800">2. Projections (Future)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3 text-sm text-gray-700">
+                      <li className="flex items-start">
+                        <TrendingUp className="w-4 h-4 text-green-600 mr-2 mt-0.5" />
+                        <span><strong>12-Month Cash Flow:</strong> Must show how the grant money will be spent and how it increases revenue.</span>
+                      </li>
+                      <li className="flex items-start">
+                        <TrendingUp className="w-4 h-4 text-green-600 mr-2 mt-0.5" />
+                        <span><strong>Growth Assumptions:</strong> "We assume revenue will grow 20% because the new machine increases output by 50 units/day."</span>
+                      </li>
+                      <li className="flex items-start">
+                        <TrendingUp className="w-4 h-4 text-green-600 mr-2 mt-0.5" />
+                        <span><strong>The "Match" Source:</strong> Bank statement proving you have the 25% minimum cash match available NOW.</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Success Strategies */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -381,6 +509,100 @@ export default function WBDCEquityMatchGrantGuidePage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Case Study Section */}
+        <section className="py-16 bg-purple-50 border-y border-purple-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Case Study: Main Street Bakery Expansion</h2>
+
+              <div className="bg-white rounded-xl shadow-sm border border-purple-200 overflow-hidden">
+                <div className="bg-purple-600 p-6 text-white">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h3 className="text-xl font-bold">The Challenge</h3>
+                      <p className="text-purple-100">Stuck at capacity, turning away catering orders.</p>
+                    </div>
+                    <Badge className="bg-white text-purple-700">Grant Awarded: $10,000</Badge>
+                  </div>
+                </div>
+
+                <div className="p-8">
+                  <div className="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                      <h4 className="font-bold text-gray-900 mb-2">The Business</h4>
+                      <p className="text-sm text-gray-600">A customized cake shop in New Haven, CT. Operating for 3 years, $150k annual revenue. Owner-operated with 1 part-time assistant.</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 mb-2">The Bottleneck</h4>
+                      <p className="text-sm text-gray-600">Using a reliable but small home-style oven. Can only bake 4 cakes at a time. Must decline large weekend wedding orders.</p>
+                    </div>
+                  </div>
+
+                  <div className="border-t border-gray-100 pt-6">
+                    <h4 className="font-bold text-gray-900 mb-4">The Grant Proposal Strategy</h4>
+                    <div className="space-y-4">
+                      <div className="flex bg-purple-50 p-4 rounded-lg">
+                        <div className="flex-shrink-0 w-8 h-8 bg-purple-200 text-purple-700 rounded-full flex items-center justify-center font-bold mr-4">1</div>
+                        <div>
+                          <h5 className="font-bold text-purple-900">The Project</h5>
+                          <p className="text-sm text-gray-700">Purchase a double-stack commercial convection oven ($14,000) and electrical upgrade ($6,000).</p>
+                        </div>
+                      </div>
+
+                      <div className="flex bg-purple-50 p-4 rounded-lg">
+                        <div className="flex-shrink-0 w-8 h-8 bg-purple-200 text-purple-700 rounded-full flex items-center justify-center font-bold mr-4">2</div>
+                        <div>
+                          <h5 className="font-bold text-purple-900">The Match</h5>
+                          <p className="text-sm text-gray-700">Owner invested $5,000 cash savings + $5,000 line of credit draw. (Total $10k match for $10k grant).</p>
+                        </div>
+                      </div>
+
+                      <div className="flex bg-purple-50 p-4 rounded-lg">
+                        <div className="flex-shrink-0 w-8 h-8 bg-purple-200 text-purple-700 rounded-full flex items-center justify-center font-bold mr-4">3</div>
+                        <div>
+                          <h5 className="font-bold text-purple-900">The ROI (Return on Investment)</h5>
+                          <p className="text-sm text-gray-700">Projections showed capacity increasing from 20 cakes/week to 80 cakes/week. Revenue projected to grow by $75k in Year 1.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Final Checklist */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Your Pre-Submission Checklist</h2>
+              <div className="space-y-3">
+                <div className="flex items-center p-3 bg-gray-50 rounded border border-gray-200">
+                  <input type="checkbox" className="w-5 h-5 text-purple-600 mr-4" readOnly />
+                  <span className="text-gray-700">I have reviewed the specific "Guidance" document for this exact round (it changes!).</span>
+                </div>
+                <div className="flex items-center p-3 bg-gray-50 rounded border border-gray-200">
+                  <input type="checkbox" className="w-5 h-5 text-purple-600 mr-4" readOnly />
+                  <span className="text-gray-700">All my tax filings are up to date and I have my "Letter of Good Standing" from CT DRS.</span>
+                </div>
+                <div className="flex items-center p-3 bg-gray-50 rounded border border-gray-200">
+                  <input type="checkbox" className="w-5 h-5 text-purple-600 mr-4" readOnly />
+                  <span className="text-gray-700">I have the 25% cash match in my business bank account <strong>today</strong>.</span>
+                </div>
+                <div className="flex items-center p-3 bg-gray-50 rounded border border-gray-200">
+                  <input type="checkbox" className="w-5 h-5 text-purple-600 mr-4" readOnly />
+                  <span className="text-gray-700">My video pitch is recorded, verified for sound quality, and the link works.</span>
+                </div>
+                <div className="flex items-center p-3 bg-gray-50 rounded border border-gray-200">
+                  <input type="checkbox" className="w-5 h-5 text-purple-600 mr-4" readOnly />
+                  <span className="text-gray-700">I have obtained 2-3 quotes for the equipment/services I plan to buy.</span>
+                </div>
               </div>
             </div>
           </div>

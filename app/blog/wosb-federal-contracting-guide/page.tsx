@@ -78,16 +78,16 @@ export default function WOSBFederalContractingGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* What is WOSB */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">What is WOSB Certification?</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Women-Owned Small Business (WOSB) certification is a federal program that provides women entrepreneurs with greater 
-                  access to federal contracting opportunities. The program includes both WOSB and Economically Disadvantaged 
+                  Women-Owned Small Business (WOSB) certification is a federal program that provides women entrepreneurs with greater
+                  access to federal contracting opportunities. The program includes both WOSB and Economically Disadvantaged
                   Women-Owned Small Business (EDWOSB) certifications.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-purple-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-purple-800">WOSB Benefits</h4>
@@ -98,7 +98,7 @@ export default function WOSBFederalContractingGuide() {
                       <li>• Government buyer networking</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-indigo-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-indigo-800">Federal Goal</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -114,7 +114,7 @@ export default function WOSBFederalContractingGuide() {
               {/* WOSB vs EDWOSB */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">WOSB vs EDWOSB Certification</h2>
-                
+
                 <div className="space-y-8">
                   {/* WOSB Certification */}
                   <Card className="border-purple-200">
@@ -140,7 +140,7 @@ export default function WOSBFederalContractingGuide() {
                         </div>
                       </div>
                       <p className="text-gray-700 mb-4">
-                        Standard certification for women-owned businesses. Provides access to WOSB set-aside contracts 
+                        Standard certification for women-owned businesses. Provides access to WOSB set-aside contracts
                         in all industries where women are underrepresented.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -190,7 +190,7 @@ export default function WOSBFederalContractingGuide() {
                         </div>
                       </div>
                       <p className="text-gray-700 mb-4">
-                        Enhanced certification for economically disadvantaged women-owned businesses. Provides access to both 
+                        Enhanced certification for economically disadvantaged women-owned businesses. Provides access to both
                         WOSB and EDWOSB set-aside contracts with additional opportunities.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -218,10 +218,79 @@ export default function WOSBFederalContractingGuide() {
                 </div>
               </div>
 
+              {/* Sole Source vs Set-Aside Deep Dive */}
+              <div className="bg-white rounded-lg shadow-sm p-8 mb-8 border-l-4 border-indigo-500">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">The "Golden Ticket": Sole Source vs. Set-Asides</h2>
+                <p className="text-lg text-gray-700 mb-6">
+                  Understanding the difference between these two contract types is critical for your strategy.
+                  One requires you to compete; the other can be handed to you directly.
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-xl font-bold text-purple-700 mb-3">Competitive Set-Asides</h3>
+                    <p className="text-sm text-gray-600 mb-4">
+                      The government "sets aside" a contract so that <strong>only WOSBs can bid</strong>.
+                      You still have to write a proposal and compete, but you are only competing against other women-owned firms, not huge corporations.
+                    </p>
+                    <div className="bg-purple-50 p-4 rounded-lg">
+                      <h4 className="font-bold text-sm text-purple-900 mb-2">The "Rule of Two"</h4>
+                      <p className="text-xs text-gray-700">
+                        Contracting Officers (COs) will typically create a set-aside if they have a "reasonable expectation" that at least <strong>two</strong> capable WOSBs will submit offers at fair market prices.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-indigo-700 mb-3">Sole Source Awards (No Bid)</h3>
+                    <p className="text-sm text-gray-600 mb-4">
+                      The "Holy Grail" of contracting. A CO can award a contract <strong>directly to you</strong> without a competitive bidding process if certain conditions are met.
+                    </p>
+                    <div className="bg-indigo-50 p-4 rounded-lg">
+                      <h4 className="font-bold text-sm text-indigo-900 mb-2">Sole Source Conditions</h4>
+                      <ul className="text-xs text-gray-700 space-y-1">
+                        <li>• Value is under $4.5M ($7M for manufacturing).</li>
+                        <li>• Only <strong>ONE</strong> capable WOSB/EDWOSB can be identified.</li>
+                        <li>• Used often when you build a relationship with an agency first.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* The Certification Gauntlet: Step-by-Step */}
+              <section className="py-8">
+                <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">The "Gauntlet": Navigating certify.sba.gov</h2>
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                  <div className="grid md:grid-cols-4 border-b border-gray-100">
+                    <div className="p-6 border-r border-gray-100 hover:bg-gray-50 transition-colors">
+                      <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-600 mb-3">1</div>
+                      <h4 className="font-bold text-gray-900 mb-1">SAM.gov</h4>
+                      <p className="text-xs text-gray-500">You MUST be active in SAM.gov first. This takes 2+ weeks. Do not start SBA app until this is "Active".</p>
+                    </div>
+                    <div className="p-6 border-r border-gray-100 hover:bg-gray-50 transition-colors">
+                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600 mb-3">2</div>
+                      <h4 className="font-bold text-gray-900 mb-1">Claim WOSB</h4>
+                      <p className="text-xs text-gray-500">Log into certify.sba.gov. It will pull your data from SAM. You must "Claim" your business here.</p>
+                    </div>
+                    <div className="p-6 border-r border-gray-100 hover:bg-gray-50 transition-colors">
+                      <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center font-bold text-purple-600 mb-3">3</div>
+                      <h4 className="font-bold text-gray-900 mb-1">Upload Docs</h4>
+                      <p className="text-xs text-gray-500">Upload ownership proofs (LLC agreement, stock ledger). This is where 50% of applicants get rejected for incompleteness.</p>
+                    </div>
+                    <div className="p-6 hover:bg-gray-50 transition-colors">
+                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center font-bold text-green-600 mb-3">4</div>
+                      <h4 className="font-bold text-gray-900 mb-1">The Wait</h4>
+                      <p className="text-xs text-gray-500">SBA review takes 90 days. If they ask a question, answer within 2 days or they may close your file!</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               {/* Certification Process */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">WOSB Certification Process</h2>
-                
+
                 <div className="space-y-6">
                   <Card className="border-orange-200">
                     <CardHeader>
@@ -307,7 +376,7 @@ export default function WOSBFederalContractingGuide() {
               {/* Contract Opportunities */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Federal Contract Opportunities</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Types of WOSB Contracts:</h4>
@@ -330,7 +399,7 @@ export default function WOSBFederalContractingGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-blue-700">🎯 High-Opportunity Industries:</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -364,7 +433,7 @@ export default function WOSBFederalContractingGuide() {
                     <div>
                       <p className="text-blue-800 font-medium">Proven Approach:</p>
                       <p className="text-blue-700 text-sm">
-                        Successful WOSB contractors combine certification with strategic business development, 
+                        Successful WOSB contractors combine certification with strategic business development,
                         relationship building, and capability demonstration.
                       </p>
                     </div>
@@ -396,7 +465,7 @@ export default function WOSBFederalContractingGuide() {
                     <div>
                       <p className="text-red-800 font-medium">Important Warning:</p>
                       <p className="text-red-700 text-sm">
-                        False certification claims can result in criminal prosecution, civil penalties, 
+                        False certification claims can result in criminal prosecution, civil penalties,
                         and debarment from federal contracting.
                       </p>
                     </div>
@@ -435,11 +504,67 @@ export default function WOSBFederalContractingGuide() {
                 </div>
               </div>
 
+              {/* Case Study Section */}
+              <section className="py-16 bg-slate-50 border-y border-slate-200 my-8 -mx-4 sm:-mx-8 px-4 sm:px-8">
+                <div className="max-w-4xl mx-auto">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Case Study: TechSolutions Defense (Hypothetical)</h2>
+
+                  <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div className="flex flex-col md:flex-row">
+                      <div className="bg-slate-800 p-8 md:w-1/3 text-white flex flex-col justify-between">
+                        <div>
+                          <Badge className="bg-blue-500 mb-4">WOSB Certified</Badge>
+                          <h3 className="text-2xl font-bold mb-2">The Pivot</h3>
+                          <p className="text-slate-300 text-sm">From commercial IT support to Defense Contractor.</p>
+                        </div>
+                        <div className="mt-8">
+                          <div className="text-3xl font-bold text-green-400">$3.2M</div>
+                          <div className="text-sm text-slate-400">First Contract Value</div>
+                        </div>
+                      </div>
+
+                      <div className="p-8 md:w-2/3">
+                        <div className="space-y-6">
+                          <div>
+                            <h4 className="font-bold text-gray-900 mb-1">1. The Opportunity</h4>
+                            <p className="text-sm text-gray-600">Founder Sarah noticed a "Sources Sought" notice on SAM.gov for IT helpdesk services at a local Air Force base. The notice specifically asked if WOSBs were capable.</p>
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-gray-900 mb-1">2. The Strategy</h4>
+                            <p className="text-sm text-gray-600">Sarah replied to the notice with a "Capability Statement" (not a full proposal). She proved she had done similar work for banks. Because she and one other WOSB replied, the Contracting Officer set it aside as a <strong>WOSB Set-Aside</strong>.</p>
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-gray-900 mb-1">3. The Win</h4>
+                            <p className="text-sm text-gray-600">Competing against only 3 other women-owned firms (instead of IBM or Raytheon), Sarah's lean overhead allowed her to bid competitively. She won the 5-year, $3.2M contract.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* NAICS Code Strategy */}
+              <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg mb-12">
+                <h3 className="text-xl font-bold text-blue-900 mb-3">Strategic Tip: NAICS Codes Matter</h3>
+                <p className="text-gray-700 mb-4">
+                  Everything in federal contracting is driven by NAICS (North American Industry Classification System) codes.
+                  SBA designates specific NAICS codes as "underrepresented" for WOSB set-asides.
+                </p>
+                <div className="bg-white p-4 rounded border border-blue-100">
+                  <p className="text-sm text-gray-600">
+                    <strong>Action Item:</strong> Go to the SBA WOSB site and check if your primary NAICS code is on the eligible list.
+                    If your primary code isn't capable, look for secondary codes where you perform work that ARE eligible.
+                    You can have multiple NAICS codes in your SAM profile!
+                  </p>
+                </div>
+              </div>
+
               {/* Lead-Generating CTA Section */}
               <div className="bg-gradient-to-r from-purple-600 to-indigo-700 rounded-lg p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">Get Your FREE WOSB Certification Strategy Session</h3>
                 <p className="text-purple-100 mb-6 text-lg">
-                  Book a complimentary consultation with our WOSB experts. Get personalized guidance on certification, 
+                  Book a complimentary consultation with our WOSB experts. Get personalized guidance on certification,
                   contract opportunities, and federal contracting success strategies.
                 </p>
                 <div className="bg-white/10 rounded-lg p-4 mb-6">

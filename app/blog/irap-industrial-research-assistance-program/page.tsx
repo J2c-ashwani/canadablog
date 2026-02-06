@@ -858,11 +858,13 @@ export default function IRAPGuidePage() {
                   <h3 className="font-bold text-lg mb-3">Provincial R&amp;D Programs</h3>
                   <p className="text-gray-600 text-sm mb-3">
                     Many provinces offer additional R&amp;D funding that stacks with
-                    federal programs.
+                    federal programs like IRAP.
                   </p>
-                  <Link href="/canada/small-business-grants" className="text-green-700 hover:underline text-sm">
-                    Provincial Grants →
-                  </Link>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    <Link href="/blog/ontario-government-business-grants" className="text-green-700 hover:underline text-sm">Ontario →</Link>
+                    <Link href="/blog/british-columbia-government-business-grants" className="text-green-700 hover:underline text-sm">BC →</Link>
+                    <Link href="/blog/alberta-government-business-grants" className="text-green-700 hover:underline text-sm">Alberta →</Link>
+                  </div>
                 </div>
               </div>
             </div>
