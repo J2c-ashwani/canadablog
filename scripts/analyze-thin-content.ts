@@ -1,77 +1,85 @@
 
-import { blogPosts } from '../lib/data/blogPosts';
-import { guidesDatabase } from '../lib/data/guides';
-import { getAllStates } from '../lib/data/states';
-import { stateDetails } from '../lib/data/stateDetails';
+import fs from 'fs';
+import path from 'path';
 
-// Helper to count words
-function countWords(str: string): number {
-    return str.trim().split(/\s+/).length;
+const appDir = path.join(process.cwd(), 'app');
+
+function getWordCount(content: string): number {
+    // Remove imports
+    let cleaner = content.replace(/^import .*$/gm, ' ');
+    // Remove metadata
+    cleaner = cleaner.replace(/export const metadata[\s\S]*?};/, ' ');
+    // Remove tags
+    cleaner = cleaner.replace(/<[^>]*>/g, ' ');
+    // Remove special chars
+    cleaner = cleaner.replace(/[{}();"\'=]/g, ' ');
+
+    return cleaner.trim().split(/\s+/).filter(w => w.length > 2).length;
 }
 
-// Helper for State Simulation (Simplified version of simulate-render.ts)
-function simulateStateWordCount(stateDetail: any): number {
-    let text = "";
-    // Basic fields
-    text += JSON.stringify(stateDetail);
-    // This is a rough approx, for thin content detection we might want the specific logic
-    // But since we know they are > 2500, we can skip complex logic or just use the raw count
-    // actually raw count provided ~1000-2000 words. 
-    // Let's rely on the previous verification that states are SAFE.
-    // I will checking mostly blogs and guides.
-    return countWords(text);
-}
-
-async function analyze() {
-    console.log("Analyzing content length...\n");
-    const report = [];
-
-    // 1. Analyze Blog Posts
-    console.log(`Checking ${blogPosts.length} Blog Posts...`);
-    blogPosts.forEach(post => {
-        const wordCount = countWords(post.content || "") + countWords(post.excerpt || "");
-        // Blogs usually have content in 'content' field.
-        report.push({
-            type: 'Blog Post',
-            title: post.title,
-            slug: post.slug,
-            wordCount: wordCount,
-            status: wordCount < 800 ? 'THIN' : 'OK'
-        });
-    });
-
-    // 2. Analyze Guides
-    console.log(`Checking ${guidesDatabase.length} Guides...`);
-    guidesDatabase.forEach(guide => {
-        const wordCount = countWords(guide.content || "") + countWords(guide.excerpt || "");
-        report.push({
-            type: 'Guide',
-            title: guide.title,
-            slug: guide.slug,
-            wordCount: wordCount,
-            status: wordCount < 800 ? 'THIN' : 'OK'
-        });
-    });
-
-    // 3. States (We assume these are safe based on previous task, but let's double check raw chars at least)
-    // We don't have easy access to stateDetails for *all* 50 states unless we import them all.
-    // stateDetails.ts usually exports a map or big object.
-
-    // Print Results
-    console.log("\n--- THIN CONTENT REPORT (< 800 words) ---\n");
-
-    const thinPages = report.filter(p => p.wordCount < 800).sort((a, b) => a.wordCount - b.wordCount);
-
-    if (thinPages.length === 0) {
-        console.log("No thin pages found!");
-    } else {
-        console.log(`Found ${thinPages.length} thin pages:`);
-        thinPages.forEach(p => {
-            console.log(`[${p.type}] ${p.wordCount} words - /${p.type === 'Blog Post' ? 'blog' : 'guides'}/${p.slug}`);
-        });
+function hasPlaceholderText(content: string): string | null {
+    const placeholders = [
+        "Lorem Ipsum",
+        "Coming Soon",
+        "Under Construction",
+        "TODO:",
+        "Placeholder"
+    ];
+    for (const p of placeholders) {
+        if (content.toLowerCase().includes(p.toLowerCase())) {
+            return p;
+        }
     }
-
-    console.log(`\nTotal Checked: ${report.length}`);
+    return null;
 }
 
-analyze();
+function scanDirectory(dir: string, results: any[]) {
+    if (!fs.existsSync(dir)) return;
+
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+    for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+            scanDirectory(fullPath, results);
+        } else if (entry.name === 'page.tsx' || entry.name === 'page.js') {
+            const content = fs.readFileSync(fullPath, 'utf-8');
+            const words = getWordCount(content);
+            const placeholder = hasPlaceholderText(content);
+            const relativePath = path.relative(process.cwd(), fullPath);
+
+            results.push({
+                path: relativePath,
+                words,
+                placeholder
+            });
+        }
+    }
+}
+
+console.log("Deep searching for thin/placeholder content in app/...\n");
+const results: any[] = [];
+scanDirectory(appDir, results);
+
+// Sort by word count
+results.sort((a, b) => a.words - b.words);
+
+// Filter for suspicious pages
+const suspicious = results.filter(r => r.words < 200 || r.placeholder);
+
+if (suspicious.length > 0) {
+    console.log("⚠️ Potential Issues Found:\n");
+    suspicious.forEach(r => {
+        let warning = "";
+        if (r.placeholder) warning += `[CONTAINS "${r.placeholder}"] `;
+        if (r.words < 200) warning += `[THIN: ${r.words} words] `;
+        console.log(`${warning} ${r.path}`);
+    });
+} else {
+    console.log("✅ No obvious placeholder or empty pages found (min 200 words).");
+}
+
+console.log("\n--- Bottom 10 Word Counts ---");
+results.slice(0, 10).forEach(r => {
+    console.log(`${r.words} words | ${r.path}`);
+});
