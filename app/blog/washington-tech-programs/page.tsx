@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -57,7 +57,7 @@ export default function WashingtonTechProgramsPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Washington Technology Startup Grants by Region and Innovation Hub (2026-2027 Funding Programs Available Statewide)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Where are Washington's Top Technology Innovation Hubs?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-green-200 hover:shadow-lg transition-shadow">
@@ -224,7 +224,7 @@ export default function WashingtonTechProgramsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Washington Technology Startup Funding Ecosystem 2026-2027</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the Washington Tech Startup Funding Ecosystem?</h2>
                 <p className="text-lg text-gray-600 mb-4">
                   Washington provides comprehensive technology startup grants, university commercialization funding, innovation programs, clean energy support from Seattle tech corridor South Lake Union Amazon headquarters ecosystem, Bellevue Redmond Microsoft Azure cloud computing innovation hub, University of Washington UW Fred Hutchinson Cancer Research Center biotech corridor, Boeing aerospace manufacturing Everett Renton, Washington State University WSU Pullman Spokane, to regional innovation hubs Tacoma Olympia Vancouver Tri-Cities Bellingham throughout Washington State. State programs offer phased commercialization funding through WRF, innovation modernization grants through state agencies, clean energy programs supporting renewable technology, Innovation Partnership Zones tax incentives, SBIR Phase 0 federal proposal support complementing federal SBIR/STTR grants $100M+ annually Washington companies, venture capital investment $5B+ annual Seattle Bellevue ecosystem[web:247][web:248][web:245].
                 </p>
@@ -263,7 +263,7 @@ export default function WashingtonTechProgramsPage() {
         <section id="washington-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Washington Technology Startup Grant Programs and Innovation Incentives 2026-2027 Complete Details</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Which Washington Grant Programs Support Tech Startups?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete breakdown of WRF Technology Commercialization phased grants, Innovation Modernization Program details, Clean Energy Fund opportunities, Innovation Partnership Zones tax incentives, SBIR Phase 0 support with application strategies, eligibility requirements, success rates, funding timelines supporting Seattle Bellevue Redmond University of Washington WSU statewide Washington technology innovation ecosystem
               </p>
@@ -447,7 +447,7 @@ export default function WashingtonTechProgramsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Washington Technology Startup Grant Application Success Strategies 2026-2027</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">How to Win Washington Tech Startup Grants?</h2>
 
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-green-200">
@@ -530,6 +530,28 @@ export default function WashingtonTechProgramsPage() {
                   </CardContent>
                 </Card>
               </div>
+
+              <div className="mt-12 bg-gray-50 border border-gray-200 rounded-lg p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Official Washington Technology Funding Resources</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">State Grant Portals</h4>
+                    <ul className="space-y-2 text-blue-600">
+                      <li><a href="https://www.wrf.org/" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center">Washington Research Foundation (WRF) <ExternalLink className="w-4 h-4 ml-1" /></a></li>
+                      <li><a href="https://www.commerce.wa.gov/" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center">Washington Dept. of Commerce <ExternalLink className="w-4 h-4 ml-1" /></a></li>
+                      <li><a href="https://www.commerce.wa.gov/growing-the-economy/energy/clean-energy-fund/" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center">Clean Energy Fund (CEF) <ExternalLink className="w-4 h-4 ml-1" /></a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Related Funding Guides</h4>
+                    <ul className="space-y-2 text-blue-600">
+                      <li><Link href="/usa/federal-grants" className="hover:underline flex items-center">USA Federal Grants Guide <ArrowRight className="w-4 h-4 ml-1" /></Link></li>
+                      <li><Link href="/usa/technology-startup-grants" className="hover:underline flex items-center">Tech Startup Funding Guide <ArrowRight className="w-4 h-4 ml-1" /></Link></li>
+                      <li><Link href="/usa/small-business-grants" className="hover:underline flex items-center">Small Business Grants <ArrowRight className="w-4 h-4 ml-1" /></Link></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -577,6 +599,51 @@ export default function WashingtonTechProgramsPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema for Rich Results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the WRF Technology Commercialization Grant?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Washington Research Foundation (WRF) Technology Commercialization Fund provides early-stage funding to Washington State inventors and entrepreneurs commercializing technologies developed at Washington universities. Grants support proof-of-concept and prototype development."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much can I get from Washington Innovation Modernization?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Washington Innovation and Modernization Program offers grants for manufacturing technology adoption and workforce development. Amounts vary by program cycle but typically range from $50,000-$200,000 for qualifying Washington manufacturers."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What clean energy grants are available in Washington State?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Washington State offers clean energy technology funding through the Clean Energy Fund, supporting solar, wind, energy storage, and grid modernization projects. The Washington State Department of Commerce administers various incentive programs for clean technology companies."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are Seattle and Bellevue startups eligible for Washington grants?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Seattle, Bellevue, Tacoma, Redmond, and Puget Sound region technology startups can access all Washington state programs including WRF commercialization funding, clean energy grants, and manufacturing modernization programs. Eastern Washington communities are also eligible."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

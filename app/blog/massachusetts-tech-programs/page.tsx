@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -57,8 +57,8 @@ export default function MassachusettsTechProgramsPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Massachusetts Technology Startup Grants by Region and Innovation Hub (2026-2027 Funding Programs Available Statewide)</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Where are Massachusetts' Leading Technology Innovation Hubs?</h2>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-red-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -224,7 +224,7 @@ export default function MassachusettsTechProgramsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Massachusetts Technology Startup Funding Ecosystem 2026-2027</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the Massachusetts Tech Startup Funding Ecosystem?</h2>
                 <p className="text-lg text-gray-600 mb-4">
                   Massachusetts provides comprehensive technology startup grants, biotech funding, clean energy programs, and innovation incentives supporting Boston Seaport Innovation District biotech hub, Cambridge Kendall Square MIT Harvard ecosystem, Longwood Medical Area life sciences corridor, Worcester biomedical manufacturing, Route 128 technology corridor, and regional Massachusetts innovation hubs. State programs offer non-dilutive funding requiring no equity complementing federal SBIR/STTR grants, venture capital, angel investment. Massachusetts supports biotechnology, pharmaceuticals, medical devices, diagnostics, digital health, clean energy, software, hardware, AI/ML companies advancing state economic competitiveness, job creation, technology leadership[web:229][web:230][web:233][web:235].
                 </p>
@@ -263,11 +263,11 @@ export default function MassachusettsTechProgramsPage() {
         <section id="massachusetts-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Massachusetts Technology Startup Grant Programs and Innovation Incentives 2026-2027 Complete Details</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Which Massachusetts Grant Programs Are Available for Startups?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete breakdown of SBIR START tiered grants, MassCEC InnovateMass clean energy programs, Massachusetts Life Sciences Center biotech funding, with application strategies, eligibility requirements, success rates, funding timelines supporting Boston Cambridge Worcester statewide Massachusetts technology innovation ecosystem
               </p>
-              
+
               <div className="space-y-8">
                 {/* SBIR START Program - FULLY EXPANDED */}
                 <Card className="border-red-200">
@@ -307,7 +307,7 @@ export default function MassachusettsTechProgramsPage() {
                               </div>
                             </div>
                           </div>
-                          
+
                           <div className="space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
                             <p className="font-semibold text-gray-800 mb-2">SBIR START Program Objectives:</p>
                             <p>• <strong>Federal Enhancement:</strong> Complement federal SBIR Phase II awards from NSF DOE NIH DOD NASA USDA providing additional capital extending Massachusetts runway technology development commercialization</p>
@@ -528,8 +528,8 @@ export default function MassachusettsTechProgramsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Massachusetts Technology Startup Grant Application Success Strategies 2026-2027</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">How to Succeed with Massachusetts Tech Grant Applications?</h2>
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -611,6 +611,28 @@ export default function MassachusettsTechProgramsPage() {
                   </CardContent>
                 </Card>
               </div>
+
+              <div className="mt-12 bg-gray-50 border border-gray-200 rounded-lg p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Official Massachusetts Technology Funding Resources</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">State Grant Portals</h4>
+                    <ul className="space-y-2 text-blue-600">
+                      <li><a href="https://www.mass-ventures.com/start-program-info" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center">SBIR START Program (MassVentures) <ExternalLink className="w-4 h-4 ml-1" /></a></li>
+                      <li><a href="https://www.masslifesciences.com/" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center">Massachusetts Life Sciences Center <ExternalLink className="w-4 h-4 ml-1" /></a></li>
+                      <li><a href="https://www.masscec.com/" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center">MassCEC Clean Energy Center <ExternalLink className="w-4 h-4 ml-1" /></a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Related Funding Guides</h4>
+                    <ul className="space-y-2 text-blue-600">
+                      <li><Link href="/usa/federal-grants" className="hover:underline flex items-center">USA Federal Grants Guide <ArrowRight className="w-4 h-4 ml-1" /></Link></li>
+                      <li><Link href="/usa/technology-startup-grants" className="hover:underline flex items-center">Tech Startup Funding Guide <ArrowRight className="w-4 h-4 ml-1" /></Link></li>
+                      <li><Link href="/usa/small-business-grants" className="hover:underline flex items-center">Small Business Grants <ArrowRight className="w-4 h-4 ml-1" /></Link></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -625,7 +647,7 @@ export default function MassachusettsTechProgramsPage() {
               <p className="text-xl text-red-100 mb-8">
                 Get our complete Massachusetts technology grants guide with SBIR START application templates, MassCEC InnovateMass strategies, MLSC biotech funding frameworks or work with Massachusetts grant specialists for expert application support maximizing funding success
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2 text-lg">📥 Free Massachusetts Tech Grants Guide</h4>
@@ -658,25 +680,25 @@ export default function MassachusettsTechProgramsPage() {
                   <p className="text-xs text-yellow-200 mt-3">Free consultation • 70% success rate • Massachusetts expertise</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6">
                 <p className="text-red-200 text-sm mb-3">
                   <strong className="text-white">Why Choose Our Massachusetts Grant Services:</strong>
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 text-xs text-red-200">
                   <div>
-                    ✓ 150+ Massachusetts grants won<br/>
-                    ✓ $25M+ total Massachusetts funding<br/>
+                    ✓ 150+ Massachusetts grants won<br />
+                    ✓ $25M+ total Massachusetts funding<br />
                     ✓ 70% SBIR START approval rate
                   </div>
                   <div>
-                    ✓ All Massachusetts regions served<br/>
-                    ✓ Former MassVentures MLSC officers<br/>
+                    ✓ All Massachusetts regions served<br />
+                    ✓ Former MassVentures MLSC officers<br />
                     ✓ Boston Cambridge ecosystem expertise
                   </div>
                   <div>
-                    ✓ START tiered + MassCEC strategies<br/>
-                    ✓ Biotech life sciences specialization<br/>
+                    ✓ START tiered + MassCEC strategies<br />
+                    ✓ Biotech life sciences specialization<br />
                     ✓ MIT Harvard spinout network
                   </div>
                 </div>
@@ -690,6 +712,59 @@ export default function MassachusettsTechProgramsPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema for Rich Results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the Massachusetts SBIR START Grant?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "MassVentures SBIR START provides up to $500,000 in tiered funding to Massachusetts technology companies with federal SBIR/STTR awards. The program supports commercialization of federally-funded innovations through matching grants."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much can I get from MassCEC InnovateMass?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "MassCEC InnovateMass provides up to $350,000 in clean energy technology commercialization funding. The program supports Massachusetts companies developing innovative solutions in renewable energy, energy efficiency, grid modernization, and clean transportation."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the Massachusetts Life Sciences Center funding?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Massachusetts Life Sciences Center (MLSC) provides various grants and tax incentives for biotechnology, pharmaceutical, medical device, and diagnostics companies. Programs include up to $1 million in capital funding and significant R&D tax credits."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are Boston and Cambridge startups eligible for Massachusetts grants?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Boston, Cambridge, Kendall Square, Route 128, and Worcester technology startups can access all Massachusetts state programs including SBIR START, InnovateMass clean energy grants, and MLSC life sciences funding. The state supports technology innovation across all regions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What industries qualify for Massachusetts technology grants?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Massachusetts technology grants support biotechnology, pharmaceuticals, medical devices, diagnostics, clean energy, offshore wind, software, robotics, AI/ML, and advanced manufacturing. MIT and Harvard spinouts receive specialized support through university commercialization programs."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

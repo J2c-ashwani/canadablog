@@ -5,6 +5,7 @@ import { GrantComparisonTable } from "@/components/grant-comparison-table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
+import Link from "next/link"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
@@ -221,9 +222,9 @@ export default function NewYorkGrantsPage() {
                                         <a href="/grant-finder" className="block text-primary hover:underline">
                                             AI Grant Finder Tool
                                         </a>
-                                        <a href="/guides/new-york-tech-guide" className="block text-primary hover:underline">
-                                            NY Tech Guide
-                                        </a>
+                                        <Link href="/blog/new-york-tech-programs" className="block text-primary hover:underline">
+                                            START-UP NY & Tech Grants Details
+                                        </Link>
                                     </div>
                                 </CardContent>
                             </Card>

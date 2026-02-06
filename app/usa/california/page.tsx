@@ -5,6 +5,7 @@ import { GrantComparisonTable } from "@/components/grant-comparison-table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
+import Link from "next/link"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
@@ -221,7 +222,7 @@ export default function CaliforniaGrantsPage() {
                       <h4 className="font-semibold mb-2">Technology & Innovation</h4>
                       <ul className="text-sm space-y-1">
                         <li>• CalSEED Clean Energy Program</li>
-                        <li>• California Innovation Hub Program</li>
+                        <li>• <Link href="/blog/california-tech-programs" className="text-primary hover:underline">California Innovation Hub & Tech Grants (Guide)</Link></li>
                         <li>• Tech Startup Tax Credits</li>
                       </ul>
                     </div>

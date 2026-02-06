@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -57,8 +57,8 @@ export default function CaliforniaTechProgramsPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">California Technology Startup Grants by Region and Innovation Hub (2026-2027 Funding Programs Available Statewide)</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Where are California's Major Technology Innovation Hubs?</h2>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-blue-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -216,19 +216,19 @@ export default function CaliforniaTechProgramsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete California Technology Startup Funding Ecosystem 2026-2027</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the California Technology Startup Funding Ecosystem?</h2>
                 <p className="text-lg text-gray-600 mb-4">
-                  California provides comprehensive technology startup grants, tax incentives, and innovation programs supporting 
-                  Silicon Valley, Bay Area, Los Angeles, San Diego, and regional California technology companies. State programs 
-                  offer non-dilutive funding requiring no equity complementing federal SBIR/STTR grants, private venture capital, 
-                  and angel investment. California supports cleantech, agtech, biotech, software, hardware, AI/ML, and innovation 
+                  California provides comprehensive technology startup grants, tax incentives, and innovation programs supporting
+                  Silicon Valley, Bay Area, Los Angeles, San Diego, and regional California technology companies. State programs
+                  offer non-dilutive funding requiring no equity complementing federal SBIR/STTR grants, private venture capital,
+                  and angel investment. California supports cleantech, agtech, biotech, software, hardware, AI/ML, and innovation
                   startups advancing state economic competitiveness, job creation, and technology leadership[web:220][web:224].
                 </p>
                 <p className="text-lg text-gray-600">
-                  Technology startups access CalSEED clean energy grants ($50,000 non-dilutive), SBIR State Match Program 
-                  ($50,000 enhancing federal awards), California Competes Tax Credit (up to 25% income tax reduction), GO-Biz 
-                  incentives (coordinated state support), and Accelerate CA Innovation Hubs (regional ecosystem development). 
-                  Programs evaluate proposals on innovation, commercialization potential, job creation, California presence, and 
+                  Technology startups access CalSEED clean energy grants ($50,000 non-dilutive), SBIR State Match Program
+                  ($50,000 enhancing federal awards), California Competes Tax Credit (up to 25% income tax reduction), GO-Biz
+                  incentives (coordinated state support), and Accelerate CA Innovation Hubs (regional ecosystem development).
+                  Programs evaluate proposals on innovation, commercialization potential, job creation, California presence, and
                   competitive site selection strengthening California technology ecosystem global leadership position.
                 </p>
               </div>
@@ -259,17 +259,17 @@ export default function CaliforniaTechProgramsPage() {
           </div>
         </section>
 
-{/* Complete detailed program sections would continue here with CalSEED details, SBIR Match specifics, Tax Credit application process, GO-Biz programs, success stories for each region, application strategies, common mistakes, etc. - following exact same comprehensive structure as federal SBIR posts with 2000-2500 words total */}
+        {/* Complete detailed program sections would continue here with CalSEED details, SBIR Match specifics, Tax Credit application process, GO-Biz programs, success stories for each region, application strategies, common mistakes, etc. - following exact same comprehensive structure as federal SBIR posts with 2000-2500 words total */}
 
         {/* I'll add the main California programs section here */}
         <section id="california-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">California Technology Startup Grant Programs and Tax Incentives 2026-2027 Complete Details</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Which California Grant Programs Support Tech Startups?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete breakdown of CalSEED grants, SBIR State Match, California Competes Tax Credit, GO-Biz programs with application strategies, eligibility requirements, success rates, and funding timelines supporting Silicon Valley, Bay Area, and statewide California technology innovation ecosystem
               </p>
-              
+
               <div className="space-y-8">
                 {/* CalSEED Clean Energy Grants - DETAILED */}
                 <Card className="border-blue-200">
@@ -302,7 +302,7 @@ export default function CaliforniaTechProgramsPage() {
                               <span className="text-purple-700 font-bold">Clean tech, ZEV</span>
                             </div>
                           </div>
-                          
+
                           <div className="space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
                             <p className="font-semibold text-gray-800 mb-2">CalSEED Grant Objectives:</p>
                             <p>• <strong>Clean Energy Innovation:</strong> Funding renewable energy, energy storage, grid modernization, zero-emission vehicles, sustainable agriculture technologies addressing California climate goals</p>
@@ -477,10 +477,10 @@ export default function CaliforniaTechProgramsPage() {
                       <div>
                         <h4 className="font-bold text-xl mb-4 text-indigo-800">Tax Credit Program Details</h4>
                         <p className="text-sm text-gray-700 mb-4">
-                          California Competes Tax Credit offers competitive income tax credits to businesses locating or expanding 
-                          in California creating jobs and making capital investments. Technology startups compete for available tax 
-                          credits reducing California franchise or income tax liability based on job creation, capital investment, 
-                          California site selection versus competing states. Multi-year agreements up to 5 years provide tax certainty 
+                          California Competes Tax Credit offers competitive income tax credits to businesses locating or expanding
+                          in California creating jobs and making capital investments. Technology startups compete for available tax
+                          credits reducing California franchise or income tax liability based on job creation, capital investment,
+                          California site selection versus competing states. Multi-year agreements up to 5 years provide tax certainty
                           supporting long-term California growth plans[web:220].
                         </p>
                         <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
@@ -497,12 +497,12 @@ export default function CaliforniaTechProgramsPage() {
                       <div>
                         <h4 className="font-bold text-xl mb-4 text-gray-800">Application Process and Competitive Factors</h4>
                         <p className="text-sm text-gray-700 mb-4">
-                          Applications accepted during specific application periods announced by Governor's Office Business Economic 
-                          Development (GO-Biz). Technology startups submit proposals demonstrating California expansion plans, job 
-                          creation targets, capital investment commitments, competitive site selection analysis comparing California 
-                          versus Texas, Florida, Nevada, other competing states. California Competes Tax Credit Committee evaluates 
-                          applications scoring based on economic benefits, California competitiveness, job quality, environmental 
-                          factors, strategic industry importance awarding credits to highest-scoring applicants maximizing California 
+                          Applications accepted during specific application periods announced by Governor's Office Business Economic
+                          Development (GO-Biz). Technology startups submit proposals demonstrating California expansion plans, job
+                          creation targets, capital investment commitments, competitive site selection analysis comparing California
+                          versus Texas, Florida, Nevada, other competing states. California Competes Tax Credit Committee evaluates
+                          applications scoring based on economic benefits, California competitiveness, job quality, environmental
+                          factors, strategic industry importance awarding credits to highest-scoring applicants maximizing California
                           economic value.
                         </p>
 
@@ -530,8 +530,8 @@ export default function CaliforniaTechProgramsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">California Technology Startup Grant Application Success Strategies 2026-2027</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">How to Successfully Apply for California Tech Grants?</h2>
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-blue-200">
                   <CardHeader className="bg-gradient-to-br from-blue-50 to-indigo-50">
@@ -627,7 +627,7 @@ export default function CaliforniaTechProgramsPage() {
               <p className="text-xl text-blue-100 mb-8">
                 Get our complete California technology grants guide with CalSEED, SBIR Match, tax credit application templates or work with California grant specialists for expert application support maximizing funding success
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2 text-lg">📥 Free California Tech Grants Guide</h4>
@@ -660,25 +660,25 @@ export default function CaliforniaTechProgramsPage() {
                   <p className="text-xs text-yellow-200 mt-3">Free consultation • 70% success rate • California expertise</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6">
                 <p className="text-blue-200 text-sm mb-3">
                   <strong className="text-white">Why Choose Our California Grant Services:</strong>
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 text-xs text-blue-200">
                   <div>
-                    ✓ 200+ California grants won<br/>
-                    ✓ $30M+ total California funding<br/>
+                    ✓ 200+ California grants won<br />
+                    ✓ $30M+ total California funding<br />
                     ✓ 70% CalSEED approval rate
                   </div>
                   <div>
-                    ✓ All California regions served<br/>
-                    ✓ Former GO-Biz program officers<br/>
+                    ✓ All California regions served<br />
+                    ✓ Former GO-Biz program officers<br />
                     ✓ California ecosystem expertise
                   </div>
                   <div>
-                    ✓ CalSEED + SBIR Match strategies<br/>
-                    ✓ Tax credit application support<br/>
+                    ✓ CalSEED + SBIR Match strategies<br />
+                    ✓ Tax credit application support<br />
                     ✓ Silicon Valley Bay Area network
                   </div>
                 </div>
@@ -687,11 +687,86 @@ export default function CaliforniaTechProgramsPage() {
               <p className="text-blue-300 text-sm">
                 🌟 <strong>California Technology Startup Grant Assistance:</strong> CalSEED $50K cleantech • SBIR Match $50K federal enhancement • California Competes Tax Credit 25% • GO-Biz incentives • Accelerate CA Hubs • Silicon Valley Bay Area Los Angeles San Diego Sacramento • Clean energy agtech biotech software hardware AI/ML • Non-dilutive funding no equity • Supporting California innovation ecosystem global technology leadership economic competitiveness
               </p>
+
+              <div className="mt-12 bg-gray-50 border border-gray-200 rounded-lg p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Official California Technology Funding Resources</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">State Grant Portals</h4>
+                    <ul className="space-y-2 text-blue-600">
+                      <li><a href="https://calseed.fund/" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center">CalSEED Clean Energy Grants <ExternalLink className="w-4 h-4 ml-1" /></a></li>
+                      <li><a href="https://business.ca.gov/california-competes-tax-credit/" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center">California Competes Tax Credit <ExternalLink className="w-4 h-4 ml-1" /></a></li>
+                      <li><a href="https://business.ca.gov/" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center">GO-Biz Governor&apos;s Office <ExternalLink className="w-4 h-4 ml-1" /></a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Related Funding Guides</h4>
+                    <ul className="space-y-2 text-blue-600">
+                      <li><Link href="/usa/federal-grants" className="hover:underline flex items-center">USA Federal Grants Guide <ArrowRight className="w-4 h-4 ml-1" /></Link></li>
+                      <li><Link href="/usa/technology-startup-grants" className="hover:underline flex items-center">Tech Startup Funding Guide <ArrowRight className="w-4 h-4 ml-1" /></Link></li>
+                      <li><Link href="/usa/small-business-grants" className="hover:underline flex items-center">Small Business Grants <ArrowRight className="w-4 h-4 ml-1" /></Link></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema for Rich Results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the CalSEED Clean Energy Grant?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "CalSEED (California Sustainable Energy Entrepreneur Development) provides up to $50,000 in concept grants to early-stage clean energy technology entrepreneurs in California. The program specifically supports innovations in solar, wind, battery storage, electric vehicles, and energy efficiency technologies."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much is the California SBIR Match Grant?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The California SBIR Matching Grant Program provides up to $50,000 matching funds for California companies that have received federal SBIR Phase I awards. This is additional non-dilutive funding that does not require equity."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the California Competes Tax Credit?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "California Competes Tax Credit offers up to 25% tax credits for qualifying businesses making investments in California. Technology startups can receive significant tax benefits for job creation, capital investment, and expansion in California."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are Silicon Valley startups eligible for California grants?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Silicon Valley and Bay Area technology startups can access all California state programs including CalSEED for cleantech, SBIR Matching for federal enhancement, California Competes Tax Credit, and GO-Biz incentive programs. San Francisco, San Jose, Palo Alto, and surrounding areas are all eligible."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What industries qualify for California technology grants?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "California technology grants support clean energy, electric vehicles, battery storage, biotechnology, AI/ML, software, hardware, agtech, and advanced manufacturing. CalSEED focuses on clean energy while California Competes and SBIR Match support broader technology sectors."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

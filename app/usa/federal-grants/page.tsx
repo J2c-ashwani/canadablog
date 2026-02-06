@@ -103,7 +103,7 @@ export default function USAFederalGrantsPage() {
                     <li>• Phase II: Development ($750K-$1.7M)</li>
                     <li>• Phase III: Commercialization</li>
                   </ul>
-                  
+
                   {/* Learn More Button */}
                   <div className="pt-4">
                     <Button variant="outline" className="w-full" asChild>
@@ -270,6 +270,80 @@ export default function USAFederalGrantsPage() {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* State Matching Programs Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">State SBIR Matching & Tech Grants</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Many states offer "matching funds" to boost your federal grant. Explore these state-specific technology programs.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="hover:shadow-lg transition-shadow border-blue-200">
+              <CardHeader>
+                <CardTitle className="text-blue-700">California</CardTitle>
+                <CardDescription>CalSEED & SBIR Match</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Link href="/blog/california-tech-programs" className="text-blue-600 hover:underline flex items-center">
+                  View California Guide <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow border-indigo-200">
+              <CardHeader>
+                <CardTitle className="text-indigo-700">New York</CardTitle>
+                <CardDescription>START-UP NY & Pre-Seed</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Link href="/blog/new-york-tech-programs" className="text-blue-600 hover:underline flex items-center">
+                  View New York Guide <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow border-emerald-200">
+              <CardHeader>
+                <CardTitle className="text-emerald-700">Colorado</CardTitle>
+                <CardDescription>Advanced Industries</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Link href="/blog/colorado-tech-programs" className="text-blue-600 hover:underline flex items-center">
+                  View Colorado Guide <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow border-purple-200">
+              <CardHeader>
+                <CardTitle className="text-purple-700">Massachusetts</CardTitle>
+                <CardDescription>SBIR START & Life Sciences</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Link href="/blog/massachusetts-tech-programs" className="text-blue-600 hover:underline flex items-center">
+                  View Massachusetts Guide <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow border-teal-200">
+              <CardHeader>
+                <CardTitle className="text-teal-700">Washington</CardTitle>
+                <CardDescription>WRF & Clean Energy</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Link href="/blog/washington-tech-programs" className="text-blue-600 hover:underline flex items-center">
+                  View Washington Guide <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

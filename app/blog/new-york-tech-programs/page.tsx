@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -60,7 +60,7 @@ export default function NewYorkTechProgramsPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">New York Technology Startup Grants by Region and Innovation Hub (2026-2027 Funding Programs Available Statewide)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Where are New York's Top Technology Innovation Hubs?</h2>
               <p className="text-gray-600 text-center mb-8">Each region of New York State offers distinct advantages for technology startups, from Manhattan&apos;s financial services density to Buffalo&apos;s manufacturing expertise. Understanding regional strengths helps companies select optimal locations and access the most relevant programs for their industry and business model.</p>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -228,7 +228,7 @@ export default function NewYorkTechProgramsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete New York Technology Startup Funding Ecosystem 2026-2027</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the New York Technology Startup Funding Ecosystem?</h2>
                 <p className="text-lg text-gray-600 mb-4">
                   New York provides comprehensive technology startup grants, tax-free incentives, innovation programs, and economic development support from Manhattan Silicon Alley fintech hub, Brooklyn Tech Triangle DUMBO creative tech ecosystem, Queens Long Island City emerging innovation, Cornell Tech Ithaca university partnerships, Buffalo Niagara manufacturing innovation corridor, Rochester imaging technology cluster, Albany nanotechnology center, to regional New York innovation hubs statewide. State programs offer tax-free operation through START-UP NY, matching funds through Pre-Seed Seed program, clean energy grants through NYSERDA, comprehensive support through Empire State Development complementing federal SBIR/STTR grants, venture capital investment, angel funding[web:238][web:239][web:242].
                 </p>
@@ -273,7 +273,7 @@ export default function NewYorkTechProgramsPage() {
         <section id="newyork-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">New York Technology Startup Grant Programs 2026-2027 Complete Details</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Which New York Grant Programs Are Available for Tech Startups?</h2>
 
               {/* START-UP NY Program - FULLY DETAILED */}
               <Card className="border-blue-200 mb-8">
@@ -391,7 +391,7 @@ export default function NewYorkTechProgramsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">New York Technology Startup Grant Application Success Strategies 2026-2027</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">How to Win New York Technology Startup Grants?</h2>
               <p className="text-lg text-gray-600 mb-6 text-center max-w-4xl mx-auto">Successful New York grant applications share common characteristics that distinguish winning submissions from rejected ones. The most important factor is demonstrating genuine alignment between company activities and program objectives rather than forcing fit to access available funding. Reviewers quickly identify applicants who twist their business descriptions to match program criteria versus companies whose natural activities serve program goals. Time invested in selecting the right program for your specific situation pays dividends in application quality and success rates.</p>
               <p className="text-lg text-gray-600 mb-8 text-center max-w-4xl mx-auto">Application strength depends heavily on providing specific evidence rather than general claims. Concrete job creation numbers with timelines outperform vague employment growth promises. Detailed technology descriptions demonstrating innovation superiority beat generic advancement claims. Quantified economic impact projections with supporting methodology convince reviewers more effectively than unsupported assertions. Investment in developing compelling evidence before drafting applications significantly improves outcomes across all New York technology grant programs.</p>
 
@@ -475,6 +475,28 @@ export default function NewYorkTechProgramsPage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+
+              <div className="mt-12 bg-gray-50 border border-gray-200 rounded-lg p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Official New York Technology Funding Resources</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">State Grant Portals</h4>
+                    <ul className="space-y-2 text-blue-600">
+                      <li><a href="https://esd.ny.gov/" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center">Empire State Development (ESD) <ExternalLink className="w-4 h-4 ml-1" /></a></li>
+                      <li><a href="https://esd.ny.gov/startup-ny-program" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center">START-UP NY Program <ExternalLink className="w-4 h-4 ml-1" /></a></li>
+                      <li><a href="https://www.nyserda.ny.gov/" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center">NYSERDA Clean Energy Grants <ExternalLink className="w-4 h-4 ml-1" /></a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Related Funding Guides</h4>
+                    <ul className="space-y-2 text-blue-600">
+                      <li><Link href="/usa/federal-grants" className="hover:underline flex items-center">USA Federal Grants Guide <ArrowRight className="w-4 h-4 ml-1" /></Link></li>
+                      <li><Link href="/usa/technology-startup-grants" className="hover:underline flex items-center">Tech Startup Funding Guide <ArrowRight className="w-4 h-4 ml-1" /></Link></li>
+                      <li><Link href="/usa/small-business-grants" className="hover:underline flex items-center">Small Business Grants <ArrowRight className="w-4 h-4 ml-1" /></Link></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
