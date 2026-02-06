@@ -159,355 +159,355 @@ export default function WomensBusinessCentersGuidePage() {
               </div>
             </div>
           </div>
-
-          <section className="py-16 bg-gray-50">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-bold mb-6">Business Counseling Services</h2>
-                <p className="text-gray-700 mb-6">WBC counseling services provide personalized guidance from experienced business advisors who understand the specific challenges women entrepreneurs face. Counseling relationships typically begin with intake sessions that assess current business status, identify priority needs, and establish goals for the engagement. Ongoing sessions address specific challenges and opportunities as they arise, with counselors providing expertise, resources, and accountability to help clients make progress toward their objectives.</p>
-                <p className="text-gray-700 mb-6">Startup counseling helps aspiring entrepreneurs evaluate business concepts and prepare for launch. Counselors assist with market research to validate demand and competitive positioning. Business model development ensures viable economics before significant investment. Legal structure selection addresses liability protection and tax implications. Licensing and permit requirements are identified to ensure compliant operations from launch.</p>
-                <p className="text-gray-700 mb-6">Growth counseling helps established businesses overcome barriers to expansion. Strategic planning develops clear direction and priorities for growth investment. Hiring and team development addresses the people challenges of scaling operations. Systems and processes are evaluated and improved to handle increased volume. Financing strategies identify and prepare for capital needed to fund growth.</p>
-                <p className="text-gray-700 mb-6">Counselors at Women&apos;s Business Centers bring diverse backgrounds including entrepreneurship experience, corporate management, banking, marketing, and other relevant fields. Many centers employ counselors with specific industry expertise relevant to local economic conditions. Counselor matching considers both expertise alignment and relationship fit, recognizing that effective counseling relationships require trust and communication comfort.</p>
-              </div>
+        </section>
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Business Counseling Services</h2>
+              <p className="text-gray-700 mb-6">WBC counseling services provide personalized guidance from experienced business advisors who understand the specific challenges women entrepreneurs face. Counseling relationships typically begin with intake sessions that assess current business status, identify priority needs, and establish goals for the engagement. Ongoing sessions address specific challenges and opportunities as they arise, with counselors providing expertise, resources, and accountability to help clients make progress toward their objectives.</p>
+              <p className="text-gray-700 mb-6">Startup counseling helps aspiring entrepreneurs evaluate business concepts and prepare for launch. Counselors assist with market research to validate demand and competitive positioning. Business model development ensures viable economics before significant investment. Legal structure selection addresses liability protection and tax implications. Licensing and permit requirements are identified to ensure compliant operations from launch.</p>
+              <p className="text-gray-700 mb-6">Growth counseling helps established businesses overcome barriers to expansion. Strategic planning develops clear direction and priorities for growth investment. Hiring and team development addresses the people challenges of scaling operations. Systems and processes are evaluated and improved to handle increased volume. Financing strategies identify and prepare for capital needed to fund growth.</p>
+              <p className="text-gray-700 mb-6">Counselors at Women&apos;s Business Centers bring diverse backgrounds including entrepreneurship experience, corporate management, banking, marketing, and other relevant fields. Many centers employ counselors with specific industry expertise relevant to local economic conditions. Counselor matching considers both expertise alignment and relationship fit, recognizing that effective counseling relationships require trust and communication comfort.</p>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-bold mb-6">Financing Guidance</h2>
-                <p className="text-gray-700 mb-6">While Women&apos;s Business Centers do not directly provide capital, they play critical roles in helping women entrepreneurs access financing through preparation, education, and connection to funding sources. Access to capital remains one of the most significant barriers for women entrepreneurs, with research consistently showing lower approval rates and smaller loan amounts for women-owned businesses. WBCs help level this playing field through comprehensive financing support.</p>
-                <p className="text-gray-700 mb-6">Loan readiness preparation ensures women entrepreneurs present the strongest possible applications when approaching lenders. Business plan development creates compelling narratives supported by solid financial projections. Financial statement preparation ensures accurate, professional presentation of business financial condition. Credit profile assessment identifies issues that might affect approval and strategies for improvement.</p>
-                <p className="text-gray-700 mb-6">Education about financing options helps women entrepreneurs identify the most appropriate capital sources for their situations. SBA loan programs including the flagship 7(a) program, microloans, and Community Advantage loans serve different business profiles. Community Development Financial Institutions often provide more flexible terms for underserved populations. Grant programs may provide non-repayable funding for qualifying activities.</p>
-                <p className="text-gray-700 mb-6">Lender connections facilitate introductions to banks, credit unions, CDFIs, and other capital sources that actively serve women entrepreneurs. Many WBCs host lender events bringing multiple financing sources together with entrepreneurs seeking capital. Relationship building with local lenders enables counselors to make targeted referrals matching client profiles with lender appetites.</p>
-              </div>
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Financing Guidance</h2>
+              <p className="text-gray-700 mb-6">While Women&apos;s Business Centers do not directly provide capital, they play critical roles in helping women entrepreneurs access financing through preparation, education, and connection to funding sources. Access to capital remains one of the most significant barriers for women entrepreneurs, with research consistently showing lower approval rates and smaller loan amounts for women-owned businesses. WBCs help level this playing field through comprehensive financing support.</p>
+              <p className="text-gray-700 mb-6">Loan readiness preparation ensures women entrepreneurs present the strongest possible applications when approaching lenders. Business plan development creates compelling narratives supported by solid financial projections. Financial statement preparation ensures accurate, professional presentation of business financial condition. Credit profile assessment identifies issues that might affect approval and strategies for improvement.</p>
+              <p className="text-gray-700 mb-6">Education about financing options helps women entrepreneurs identify the most appropriate capital sources for their situations. SBA loan programs including the flagship 7(a) program, microloans, and Community Advantage loans serve different business profiles. Community Development Financial Institutions often provide more flexible terms for underserved populations. Grant programs may provide non-repayable funding for qualifying activities.</p>
+              <p className="text-gray-700 mb-6">Lender connections facilitate introductions to banks, credit unions, CDFIs, and other capital sources that actively serve women entrepreneurs. Many WBCs host lender events bringing multiple financing sources together with entrepreneurs seeking capital. Relationship building with local lenders enables counselors to make targeted referrals matching client profiles with lender appetites.</p>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-bold mb-6">Government Contracting: The WOSB Goldmine</h2>
-                <p className="text-gray-700 mb-6">Federal government contracting represents a massive opportunity. The federal government has a statutory goal to award <strong>5% of all contracting dollars</strong> to women-owned small businesses (WOSB). That equals roughly $30 billion annually. However, getting certified and winning your first contract is a rigorous process.</p>
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Government Contracting: The WOSB Goldmine</h2>
+              <p className="text-gray-700 mb-6">Federal government contracting represents a massive opportunity. The federal government has a statutory goal to award <strong>5% of all contracting dollars</strong> to women-owned small businesses (WOSB). That equals roughly $30 billion annually. However, getting certified and winning your first contract is a rigorous process.</p>
 
-                <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 my-8">
-                  <h3 className="font-bold text-xl mb-4 text-slate-800">Step-by-Step: WOSB Certification Path</h3>
-                  <div className="space-y-4">
-                    <div className="flex gap-4">
-                      <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-700 shrink-0">1</div>
-                      <div>
-                        <h4 className="font-bold text-slate-900">Eligibility Check</h4>
-                        <p className="text-sm text-slate-600">Must be 51% owned and controlled by women who are U.S. citizens. The woman owner must hold the highest officer position and manage daily operations.</p>
-                      </div>
+              <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 my-8">
+                <h3 className="font-bold text-xl mb-4 text-slate-800">Step-by-Step: WOSB Certification Path</h3>
+                <div className="space-y-4">
+                  <div className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-700 shrink-0">1</div>
+                    <div>
+                      <h4 className="font-bold text-slate-900">Eligibility Check</h4>
+                      <p className="text-sm text-slate-600">Must be 51% owned and controlled by women who are U.S. citizens. The woman owner must hold the highest officer position and manage daily operations.</p>
                     </div>
-                    <div className="flex gap-4">
-                      <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-700 shrink-0">2</div>
-                      <div>
-                        <h4 className="font-bold text-slate-900">SAM.gov Registration</h4>
-                        <p className="text-sm text-slate-600">You cannot do anything without a Unique Entity ID (UEI) from SAM.gov. It is free but takes 2-4 weeks to process.</p>
-                      </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-700 shrink-0">2</div>
+                    <div>
+                      <h4 className="font-bold text-slate-900">SAM.gov Registration</h4>
+                      <p className="text-sm text-slate-600">You cannot do anything without a Unique Entity ID (UEI) from SAM.gov. It is free but takes 2-4 weeks to process.</p>
                     </div>
-                    <div className="flex gap-4">
-                      <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-700 shrink-0">3</div>
-                      <div>
-                        <h4 className="font-bold text-slate-900">Choose Certification Method</h4>
-                        <p className="text-sm text-slate-600">
-                          <strong>Option A (Free):</strong> Self-certify through certify.sba.gov (Note: This rule is changing; third-party certification is becoming preferred).<br />
-                          <strong>Option B (Paid ~ $350):</strong> Use an approved third-party certifier like WBENC or US Women's Chamber of Commerce. This often processes faster and holds more weight with corporate buyers.
-                        </p>
-                      </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-700 shrink-0">3</div>
+                    <div>
+                      <h4 className="font-bold text-slate-900">Choose Certification Method</h4>
+                      <p className="text-sm text-slate-600">
+                        <strong>Option A (Free):</strong> Self-certify through certify.sba.gov (Note: This rule is changing; third-party certification is becoming preferred).<br />
+                        <strong>Option B (Paid ~ $350):</strong> Use an approved third-party certifier like WBENC or US Women's Chamber of Commerce. This often processes faster and holds more weight with corporate buyers.
+                      </p>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <p className="text-gray-700 mb-6">Opportunity identification helps women-owned businesses find and pursue appropriate contracts. WBCs connect entrepreneurs with Procurement Technical Assistance Centers providing specialized contracting support. Subcontracting opportunities with prime contractors offer market entry paths. Mentor-protégé relationships pair established contractors with developing women-owned businesses.</p>
+              <p className="text-gray-700 mb-6">Opportunity identification helps women-owned businesses find and pursue appropriate contracts. WBCs connect entrepreneurs with Procurement Technical Assistance Centers providing specialized contracting support. Subcontracting opportunities with prime contractors offer market entry paths. Mentor-protégé relationships pair established contractors with developing women-owned businesses.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-indigo-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">How to Prepare for Your First WBC Meeting</h2>
+              <div className="flex flex-col md:flex-row gap-8 items-center">
+                <div className="md:w-1/2">
+                  <p className="text-gray-700 mb-4">
+                    WBC advisors are in high demand. To get the most out of your free session, treat it like an investor pitch. showing up prepared signals that you are serious and "coachable," which often unlocks access to senior advisors and hidden resources.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center text-gray-700 bg-white p-3 rounded shadow-sm">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+                      <span>Bring your "Napkin Numbers" (rough revenue/expense estimates)</span>
+                    </li>
+                    <li className="flex items-center text-gray-700 bg-white p-3 rounded shadow-sm">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+                      <span>List your top 3 specific "Pain Points"</span>
+                    </li>
+                    <li className="flex items-center text-gray-700 bg-white p-3 rounded shadow-sm">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+                      <span>Bring any past loan denial letters (if applicable)</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="md:w-1/2 bg-white p-6 rounded-xl border border-indigo-100 shadow-md">
+                  <h4 className="font-bold text-indigo-900 mb-4 flex items-center">
+                    <Target className="w-5 h-5 mr-2" /> The "Ask" Formula
+                  </h4>
+                  <p className="text-sm text-gray-600 mb-4 italic">
+                    "Before you walk in, fill in this blank:"
+                  </p>
+                  <div className="bg-gray-100 p-4 rounded text-sm font-medium text-gray-800 border-l-4 border-indigo-500">
+                    "I am at stage [X]. My biggest barrier to growth is [Y]. I am looking for [Z] to help me get to the next level."
+                  </div>
+                </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className="py-16 bg-indigo-50">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-bold mb-6">How to Prepare for Your First WBC Meeting</h2>
-                <div className="flex flex-col md:flex-row gap-8 items-center">
-                  <div className="md:w-1/2">
-                    <p className="text-gray-700 mb-4">
-                      WBC advisors are in high demand. To get the most out of your free session, treat it like an investor pitch. showing up prepared signals that you are serious and "coachable," which often unlocks access to senior advisors and hidden resources.
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Getting Started with Your WBC</h2>
+              <div className="space-y-4">
+                <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">1</div><div><h3 className="font-bold">Locate Your Center</h3><p className="text-gray-600 text-sm">Use the SBA WBC directory to find centers serving your area. Review center websites to understand specific services and expertise. Consider both proximity and program fit when selecting.</p></div></div>
+                <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">2</div><div><h3 className="font-bold">Complete Intake</h3><p className="text-gray-600 text-sm">Register through the center website or by contacting the office. Complete intake forms providing background on your business situation and goals. Schedule an initial meeting.</p></div></div>
+                <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">3</div><div><h3 className="font-bold">Develop Action Plan</h3><p className="text-gray-600 text-sm">Work with your counselor to identify priority needs and create an engagement plan. Register for relevant training programs. Establish regular counseling meeting cadence.</p></div></div>
+                <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">4</div><div><h3 className="font-bold">Engage Actively</h3><p className="text-gray-600 text-sm">Participate fully in training programs and counseling sessions. Apply learning between sessions and report progress. Access networking events and mentorship programs.</p></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Eligibility Requirements</h2>
+              <p className="text-gray-700 mb-6">Women&apos;s Business Centers are designed to serve women entrepreneurs but maintain inclusive policies enabling service to all entrepreneurs who can benefit from their specialized programming. The primary focus remains women who own or plan to own businesses, but services extend to women executives, aspiring entrepreneurs exploring options, and in many cases entrepreneurs of any gender who seek WBC resources.</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card><CardHeader><CardTitle className="text-green-700 flex items-center"><CheckCircle className="w-5 h-5 mr-2" />Primary Audiences</CardTitle></CardHeader><CardContent><ul className="space-y-1 text-sm"><li>Women business owners at any stage</li><li>Aspiring women entrepreneurs</li><li>Women executives in leadership roles</li><li>Minority and underserved women entrepreneurs</li><li>Veterans and military spouse women</li></ul></CardContent></Card>
+                <Card><CardHeader><CardTitle className="text-blue-700 flex items-center"><Building className="w-5 h-5 mr-2" />Service Approach</CardTitle></CardHeader><CardContent><ul className="space-y-1 text-sm"><li>Free services with no income requirements</li><li>All business stages from concept to established</li><li>All industries and business types served</li><li>Long-term relationship support available</li><li>Inclusive service to all who can benefit</li></ul></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Maximizing WBC Value</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div><h3 className="font-bold mb-3 text-green-700">Best Practices</h3><ul className="space-y-2 text-sm"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Maintain regular counseling contact</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Complete homework between sessions</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Attend networking events</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Access training for skill building</span></li></ul></div>
+                <div><h3 className="font-bold mb-3 text-purple-700">Pro Tips</h3><ul className="space-y-2 text-sm"><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Explore multiple centers for resources</span></li><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Combine WBC with SCORE and SBDC</span></li><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Ask about advanced programming</span></li></ul></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold mb-12 text-center">Success Stories: From Idea to Empire</h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                {/* Story 1 */}
+                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold text-xl mr-3">JD</div>
+                    <div>
+                      <h3 className="font-bold text-lg">The Artisan Baker</h3>
+                      <div className="text-xs text-gray-500 uppercase tracking-wide">Asheville, NC</div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-4"><strong>The Challenge:</strong> Sarah had a killer sourdough recipe but zero business sense. She was selling out at farmers markets but losing money on every loaf due to poor pricing.</p>
+                  <p className="text-sm text-gray-600 mb-4"><strong>WBC Intervention:</strong> Her local WBC counselor helped her cost out ingredients down to the gram. They identified she was underpricing by 40%. They also helped her write a business plan to secure a $25k microloan for a commercial oven.</p>
+                  <div className="bg-purple-100 text-purple-800 text-xs font-bold px-2 py-1 rounded inline-block">Result: 3 Locations & Wholesale</div>
+                </div>
+
+                {/* Story 2 */}
+                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xl mr-3">TL</div>
+                    <div>
+                      <h3 className="font-bold text-lg">The GovCon Queen</h3>
+                      <div className="text-xs text-gray-500 uppercase tracking-wide">Huntsville, AL</div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-4"><strong>The Challenge:</strong> Tina ran a small IT staffing firm. She wanted federal contracts but found the 87-page RFPs unintelligible.</p>
+                  <p className="text-sm text-gray-600 mb-4"><strong>WBC Intervention:</strong> The WBC's government contracting specialist helped her attain <strong>WOSB Certification</strong>. They spent 4 weeks redlining her "Capability Statement" until it was perfect. They introduced her to a prime contractor looking for a protégé.</p>
+                  <div className="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded inline-block">Result: $4.2M Advisory Contract</div>
+                </div>
+
+                {/* Story 3 */}
+                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-xl mr-3">MR</div>
+                    <div>
+                      <h3 className="font-bold text-lg">The Daycare Director</h3>
+                      <div className="text-xs text-gray-500 uppercase tracking-wide">Phoenix, AZ</div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-4"><strong>The Challenge:</strong> Maria was operating an illegal daycare in her living room. She was terrified of getting shut down but couldn't afford a facility.</p>
+                  <p className="text-sm text-gray-600 mb-4"><strong>WBC Intervention:</strong> The WBC connected her with a pro-bono lawyer to navigate zoning laws. They helped her apply for a state childcare expansion grant ($50k) that covered the deposit on a leased space. </p>
+                  <div className="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded inline-block">Result: Licensed Center for 40 Kids</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Deep Dive: SBA Digital Learning Platforms</h2>
+              <p className="text-gray-700 mb-8">
+                Cannot make it to a physical center? The SBA and WBC network offer two powerful digital learning platforms designed specifically for women. These are completely free, self-paced, and certificate-bearing.
+              </p>
+
+              <div className="space-y-8">
+                {/* DreamBuilder */}
+                <div className="flex flex-col md:flex-row gap-6 items-start">
+                  <div className="md:w-1/4 bg-white p-4 rounded-xl border border-gray-200 text-center">
+                    <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Target className="w-8 h-8 text-orange-600" />
+                    </div>
+                    <h3 className="font-bold text-lg">DreamBuilder</h3>
+                  </div>
+                  <div className="md:w-3/4">
+                    <h4 className="font-bold text-xl mb-2">For the Aspiring Beginner</h4>
+                    <p className="text-gray-600 mb-3">
+                      Developed by Thunderbird School of Global Management, DreamBuilder is a step-by-step game-ified course. It assumes zero prior knowledge. By the end of the 12 modules, the system <strong>automatically generates a business plan</strong> for you based on your answers.
                     </p>
-                    <ul className="space-y-3">
-                      <li className="flex items-center text-gray-700 bg-white p-3 rounded shadow-sm">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                        <span>Bring your "Napkin Numbers" (rough revenue/expense estimates)</span>
-                      </li>
-                      <li className="flex items-center text-gray-700 bg-white p-3 rounded shadow-sm">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                        <span>List your top 3 specific "Pain Points"</span>
-                      </li>
-                      <li className="flex items-center text-gray-700 bg-white p-3 rounded shadow-sm">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                        <span>Bring any past loan denial letters (if applicable)</span>
-                      </li>
+                    <ul className="text-sm text-gray-500 list-disc pl-4">
+                      <li><strong>Best For:</strong> Women with an idea but no plan.</li>
+                      <li><strong>Time Commitment:</strong> 25-30 hours total.</li>
+                      <li><strong>Language:</strong> English & Spanish.</li>
                     </ul>
                   </div>
-                  <div className="md:w-1/2 bg-white p-6 rounded-xl border border-indigo-100 shadow-md">
-                    <h4 className="font-bold text-indigo-900 mb-4 flex items-center">
-                      <Target className="w-5 h-5 mr-2" /> The "Ask" Formula
-                    </h4>
-                    <p className="text-sm text-gray-600 mb-4 italic">
-                      "Before you walk in, fill in this blank:"
+                </div>
+
+                {/* Ascent */}
+                <div className="flex flex-col md:flex-row gap-6 items-start">
+                  <div className="md:w-1/4 bg-white p-4 rounded-xl border border-gray-200 text-center">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Users className="w-8 h-8 text-blue-600" />
+                    </div>
+                    <h3 className="font-bold text-lg">Ascent</h3>
+                  </div>
+                  <div className="md:w-3/4">
+                    <h4 className="font-bold text-xl mb-2">For the Growth-Focused Leader</h4>
+                    <p className="text-gray-600 mb-3">
+                      Ascent is not "Business 101". It is a learning platform for existing owners ready to scale. Modules cover advanced topics like "Strategic Marketing," "People Management," and "Access to Capital." It allows you to pick and choose specific "Journeys" rather than following a linear path.
                     </p>
-                    <div className="bg-gray-100 p-4 rounded text-sm font-medium text-gray-800 border-l-4 border-indigo-500">
-                      "I am at stage [X]. My biggest barrier to growth is [Y]. I am looking for [Z] to help me get to the next level."
-                    </div>
+                    <ul className="text-sm text-gray-500 list-disc pl-4">
+                      <li><strong>Best For:</strong> Women generating revenue who feel stuck.</li>
+                      <li><strong>Structure:</strong> "Snackable" 10-minute micro-lessons.</li>
+                      <li><strong>Key Feature:</strong> Fireside chats with million-dollar founders.</li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
+          </div>
 
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-bold mb-6">Getting Started with Your WBC</h2>
-                <div className="space-y-4">
-                  <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">1</div><div><h3 className="font-bold">Locate Your Center</h3><p className="text-gray-600 text-sm">Use the SBA WBC directory to find centers serving your area. Review center websites to understand specific services and expertise. Consider both proximity and program fit when selecting.</p></div></div>
-                  <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">2</div><div><h3 className="font-bold">Complete Intake</h3><p className="text-gray-600 text-sm">Register through the center website or by contacting the office. Complete intake forms providing background on your business situation and goals. Schedule an initial meeting.</p></div></div>
-                  <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">3</div><div><h3 className="font-bold">Develop Action Plan</h3><p className="text-gray-600 text-sm">Work with your counselor to identify priority needs and create an engagement plan. Register for relevant training programs. Establish regular counseling meeting cadence.</p></div></div>
-                  <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">4</div><div><h3 className="font-bold">Engage Actively</h3><p className="text-gray-600 text-sm">Participate fully in training programs and counseling sessions. Apply learning between sessions and report progress. Access networking events and mentorship programs.</p></div></div>
-                </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-center">Resource Smackdown: WBC vs. SBDC vs. SCORE</h2>
+              <p className="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+                The SBA funds three major resource partner networks. Which one is right for you?
+              </p>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left border-collapse">
+                  <thead>
+                    <tr className="bg-gray-100 border-b border-gray-200">
+                      <th className="p-4 font-bold text-gray-900 w-1/4">Feature</th>
+                      <th className="p-4 font-bold text-purple-800 w-1/4">Women's Business Center (WBC)</th>
+                      <th className="p-4 font-bold text-blue-800 w-1/4">Small Business Dev Center (SBDC)</th>
+                      <th className="p-4 font-bold text-orange-800 w-1/4">SCORE Mentors</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-4 font-semibold text-gray-900 bg-gray-50">Primary Focus</td>
+                      <td className="p-4 bg-purple-50 text-purple-900 border-x border-purple-100 font-medium">Women Entrepreneurs & Under-served Markets</td>
+                      <td className="p-4 text-gray-700">General Small Business Technical Assistance</td>
+                      <td className="p-4 text-gray-700">Mentorship & Basic Advice</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-4 font-semibold text-gray-900 bg-gray-50">Advisor Profile</td>
+                      <td className="p-4 bg-purple-50 text-purple-900 border-x border-purple-100">Staff Counselors (often former women business owners)</td>
+                      <td className="p-4 text-gray-700">Full-time Professional Consultants</td>
+                      <td className="p-4 text-gray-700">Retired Executives (Volunteers)</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-4 font-semibold text-gray-900 bg-gray-50">Best For...</td>
+                      <td className="p-4 bg-purple-50 text-purple-900 border-x border-purple-100">Long-term support, community, soft skills + hard skills.</td>
+                      <td className="p-4 text-gray-700">Financial projections, loan packaging, export data.</td>
+                      <td className="p-4 text-gray-700">Sounding board, industry-specific wisdom.</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-4 font-semibold text-gray-900 bg-gray-50">Vibe</td>
+                      <td className="p-4 bg-purple-50 text-purple-900 border-x border-purple-100">Supportive, holistic, empowerment-focused.</td>
+                      <td className="p-4 text-gray-700">Academic, data-driven, transactional.</td>
+                      <td className="p-4 text-gray-700">Informal, grandfatherly, experienced.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="mt-8 bg-yellow-50 p-4 rounded-lg border border-yellow-200 text-sm text-yellow-900 flex gap-3">
+                <div className="shrink-0 font-bold text-xl">💡</div>
+                <p><strong>Pro Tip:</strong> You can use all three! We recommend starting with WBC for your business plan, using SBDC for complex financial modeling, and finding a SCORE mentor for niche industry advice. This strategy maximizes free support and accelerates your timeline.</p>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className="py-16 bg-gray-50">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-bold mb-6">Eligibility Requirements</h2>
-                <p className="text-gray-700 mb-6">Women&apos;s Business Centers are designed to serve women entrepreneurs but maintain inclusive policies enabling service to all entrepreneurs who can benefit from their specialized programming. The primary focus remains women who own or plan to own businesses, but services extend to women executives, aspiring entrepreneurs exploring options, and in many cases entrepreneurs of any gender who seek WBC resources.</p>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card><CardHeader><CardTitle className="text-green-700 flex items-center"><CheckCircle className="w-5 h-5 mr-2" />Primary Audiences</CardTitle></CardHeader><CardContent><ul className="space-y-1 text-sm"><li>Women business owners at any stage</li><li>Aspiring women entrepreneurs</li><li>Women executives in leadership roles</li><li>Minority and underserved women entrepreneurs</li><li>Veterans and military spouse women</li></ul></CardContent></Card>
-                  <Card><CardHeader><CardTitle className="text-blue-700 flex items-center"><Building className="w-5 h-5 mr-2" />Service Approach</CardTitle></CardHeader><CardContent><ul className="space-y-1 text-sm"><li>Free services with no income requirements</li><li>All business stages from concept to established</li><li>All industries and business types served</li><li>Long-term relationship support available</li><li>Inclusive service to all who can benefit</li></ul></CardContent></Card>
-                </div>
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Are WBC services really free?</h3><p className="text-gray-700 mt-2 ml-7">Yes, core counseling and training services at Women&apos;s Business Centers are provided at no cost. Some centers may charge nominal fees for specialized programs (like intensive 6-week incubators), but standard 1-on-1 counseling is free to all clients regardless of income.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Do I need to be a woman to use WBC services?</h3><p className="text-gray-700 mt-2 ml-7">While WBCs focus on women entrepreneurs, most centers provide services to all entrepreneurs who can benefit from their specialized programming. The SBA mandate is inclusive, so men can typically access training and counseling, though some specific grants or cohorts may be restricted.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can WBCs provide funding for my business?</h3><p className="text-gray-700 mt-2 ml-7">WBCs do not directly provide financing (they are not banks). However, they are vital *conduits* to funding. They help you prepare your loan package, fix your credit, and introduce you to lenders who are actively looking for women-owned deals.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can I work with a WBC in a different state?</h3><p className="text-gray-700 mt-2 ml-7">Technically, yes, especially for virtual training webinars which are often open to the public nationwide. However for 1-on-1 counseling, centers prioritize local residents because their funding is tied to local economic impact. It is always best to start with your nearest center.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What if I don't have a business idea yet?</h3><p className="text-gray-700 mt-2 ml-7">That is completely fine! WBCs love "pre-venture" clients. They can help you brainstorm, validate your market, and decide if entrepreneurship is right for you *before* you quit your day job. Look for "Explorer" or "Startup 101" workshops on their calendars.</p></CardContent></Card>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-bold mb-6">Maximizing WBC Value</h2>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div><h3 className="font-bold mb-3 text-green-700">Best Practices</h3><ul className="space-y-2 text-sm"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Maintain regular counseling contact</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Complete homework between sessions</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Attend networking events</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Access training for skill building</span></li></ul></div>
-                  <div><h3 className="font-bold mb-3 text-purple-700">Pro Tips</h3><ul className="space-y-2 text-sm"><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Explore multiple centers for resources</span></li><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Combine WBC with SCORE and SBDC</span></li><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Ask about advanced programming</span></li></ul></div>
-                </div>
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/wosb-federal-contracting-guide" className="flex items-center p-4 bg-gray-50 rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>WOSB Federal Contracting Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/sba-loans-grants-guide" className="flex items-center p-4 bg-gray-50 rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA Loans Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/sba-microloans-complete-guide" className="flex items-center p-4 bg-gray-50 rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA Microloans Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/small-business-grants" className="flex items-center p-4 bg-gray-50 rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>All US Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-6xl mx-auto">
-                <h2 className="text-3xl font-bold mb-12 text-center">Success Stories: From Idea to Empire</h2>
-                <div className="grid md:grid-cols-3 gap-8">
-                  {/* Story 1 */}
-                  <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold text-xl mr-3">JD</div>
-                      <div>
-                        <h3 className="font-bold text-lg">The Artisan Baker</h3>
-                        <div className="text-xs text-gray-500 uppercase tracking-wide">Asheville, NC</div>
-                      </div>
-                    </div>
-                    <p className="text-sm text-gray-600 mb-4"><strong>The Challenge:</strong> Sarah had a killer sourdough recipe but zero business sense. She was selling out at farmers markets but losing money on every loaf due to poor pricing.</p>
-                    <p className="text-sm text-gray-600 mb-4"><strong>WBC Intervention:</strong> Her local WBC counselor helped her cost out ingredients down to the gram. They identified she was underpricing by 40%. They also helped her write a business plan to secure a $25k microloan for a commercial oven.</p>
-                    <div className="bg-purple-100 text-purple-800 text-xs font-bold px-2 py-1 rounded inline-block">Result: 3 Locations & Wholesale</div>
-                  </div>
-
-                  {/* Story 2 */}
-                  <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xl mr-3">TL</div>
-                      <div>
-                        <h3 className="font-bold text-lg">The GovCon Queen</h3>
-                        <div className="text-xs text-gray-500 uppercase tracking-wide">Huntsville, AL</div>
-                      </div>
-                    </div>
-                    <p className="text-sm text-gray-600 mb-4"><strong>The Challenge:</strong> Tina ran a small IT staffing firm. She wanted federal contracts but found the 87-page RFPs unintelligible.</p>
-                    <p className="text-sm text-gray-600 mb-4"><strong>WBC Intervention:</strong> The WBC's government contracting specialist helped her attain <strong>WOSB Certification</strong>. They spent 4 weeks redlining her "Capability Statement" until it was perfect. They introduced her to a prime contractor looking for a protégé.</p>
-                    <div className="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded inline-block">Result: $4.2M Advisory Contract</div>
-                  </div>
-
-                  {/* Story 3 */}
-                  <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-xl mr-3">MR</div>
-                      <div>
-                        <h3 className="font-bold text-lg">The Daycare Director</h3>
-                        <div className="text-xs text-gray-500 uppercase tracking-wide">Phoenix, AZ</div>
-                      </div>
-                    </div>
-                    <p className="text-sm text-gray-600 mb-4"><strong>The Challenge:</strong> Maria was operating an illegal daycare in her living room. She was terrified of getting shut down but couldn't afford a facility.</p>
-                    <p className="text-sm text-gray-600 mb-4"><strong>WBC Intervention:</strong> The WBC connected her with a pro-bono lawyer to navigate zoning laws. They helped her apply for a state childcare expansion grant ($50k) that covered the deposit on a leased space. </p>
-                    <div className="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded inline-block">Result: Licensed Center for 40 Kids</div>
-                  </div>
-                </div>
+        <section className="py-20 bg-gradient-to-r from-purple-600 to-purple-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center text-white">
+              <h2 className="text-4xl font-bold mb-6">Find Your Women&apos;s Business Center</h2>
+              <p className="text-xl text-purple-100 mb-8">Access free business counseling, training, and resources designed for women entrepreneurs. Connect with your local WBC.</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild><Link href="/usa/small-business-grants"><Handshake className="w-4 h-4 mr-2" /> Find Your WBC</Link></Button>
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild><Link href="/contact?program=wbc">Get Started</Link></Button>
               </div>
             </div>
-          </section>
-
-          <section className="py-16 bg-gray-50">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-bold mb-6">Deep Dive: SBA Digital Learning Platforms</h2>
-                <p className="text-gray-700 mb-8">
-                  Cannot make it to a physical center? The SBA and WBC network offer two powerful digital learning platforms designed specifically for women. These are completely free, self-paced, and certificate-bearing.
-                </p>
-
-                <div className="space-y-8">
-                  {/* DreamBuilder */}
-                  <div className="flex flex-col md:flex-row gap-6 items-start">
-                    <div className="md:w-1/4 bg-white p-4 rounded-xl border border-gray-200 text-center">
-                      <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <Target className="w-8 h-8 text-orange-600" />
-                      </div>
-                      <h3 className="font-bold text-lg">DreamBuilder</h3>
-                    </div>
-                    <div className="md:w-3/4">
-                      <h4 className="font-bold text-xl mb-2">For the Aspiring Beginner</h4>
-                      <p className="text-gray-600 mb-3">
-                        Developed by Thunderbird School of Global Management, DreamBuilder is a step-by-step game-ified course. It assumes zero prior knowledge. By the end of the 12 modules, the system <strong>automatically generates a business plan</strong> for you based on your answers.
-                      </p>
-                      <ul className="text-sm text-gray-500 list-disc pl-4">
-                        <li><strong>Best For:</strong> Women with an idea but no plan.</li>
-                        <li><strong>Time Commitment:</strong> 25-30 hours total.</li>
-                        <li><strong>Language:</strong> English & Spanish.</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* Ascent */}
-                  <div className="flex flex-col md:flex-row gap-6 items-start">
-                    <div className="md:w-1/4 bg-white p-4 rounded-xl border border-gray-200 text-center">
-                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <Users className="w-8 h-8 text-blue-600" />
-                      </div>
-                      <h3 className="font-bold text-lg">Ascent</h3>
-                    </div>
-                    <div className="md:w-3/4">
-                      <h4 className="font-bold text-xl mb-2">For the Growth-Focused Leader</h4>
-                      <p className="text-gray-600 mb-3">
-                        Ascent is not "Business 101". It is a learning platform for existing owners ready to scale. Modules cover advanced topics like "Strategic Marketing," "People Management," and "Access to Capital." It allows you to pick and choose specific "Journeys" rather than following a linear path.
-                      </p>
-                      <ul className="text-sm text-gray-500 list-disc pl-4">
-                        <li><strong>Best For:</strong> Women generating revenue who feel stuck.</li>
-                        <li><strong>Structure:</strong> "Snackable" 10-minute micro-lessons.</li>
-                        <li><strong>Key Feature:</strong> Fireside chats with million-dollar founders.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </section>
-
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-5xl mx-auto">
-                <h2 className="text-3xl font-bold mb-8 text-center">Resource Smackdown: WBC vs. SBDC vs. SCORE</h2>
-                <p className="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
-                  The SBA funds three major resource partner networks. Which one is right for you?
-                </p>
-
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm text-left border-collapse">
-                    <thead>
-                      <tr className="bg-gray-100 border-b border-gray-200">
-                        <th className="p-4 font-bold text-gray-900 w-1/4">Feature</th>
-                        <th className="p-4 font-bold text-purple-800 w-1/4">Women's Business Center (WBC)</th>
-                        <th className="p-4 font-bold text-blue-800 w-1/4">Small Business Dev Center (SBDC)</th>
-                        <th className="p-4 font-bold text-orange-800 w-1/4">SCORE Mentors</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-100">
-                      <tr className="hover:bg-gray-50">
-                        <td className="p-4 font-semibold text-gray-900 bg-gray-50">Primary Focus</td>
-                        <td className="p-4 bg-purple-50 text-purple-900 border-x border-purple-100 font-medium">Women Entrepreneurs & Under-served Markets</td>
-                        <td className="p-4 text-gray-700">General Small Business Technical Assistance</td>
-                        <td className="p-4 text-gray-700">Mentorship & Basic Advice</td>
-                      </tr>
-                      <tr className="hover:bg-gray-50">
-                        <td className="p-4 font-semibold text-gray-900 bg-gray-50">Advisor Profile</td>
-                        <td className="p-4 bg-purple-50 text-purple-900 border-x border-purple-100">Staff Counselors (often former women business owners)</td>
-                        <td className="p-4 text-gray-700">Full-time Professional Consultants</td>
-                        <td className="p-4 text-gray-700">Retired Executives (Volunteers)</td>
-                      </tr>
-                      <tr className="hover:bg-gray-50">
-                        <td className="p-4 font-semibold text-gray-900 bg-gray-50">Best For...</td>
-                        <td className="p-4 bg-purple-50 text-purple-900 border-x border-purple-100">Long-term support, community, soft skills + hard skills.</td>
-                        <td className="p-4 text-gray-700">Financial projections, loan packaging, export data.</td>
-                        <td className="p-4 text-gray-700">Sounding board, industry-specific wisdom.</td>
-                      </tr>
-                      <tr className="hover:bg-gray-50">
-                        <td className="p-4 font-semibold text-gray-900 bg-gray-50">Vibe</td>
-                        <td className="p-4 bg-purple-50 text-purple-900 border-x border-purple-100">Supportive, holistic, empowerment-focused.</td>
-                        <td className="p-4 text-gray-700">Academic, data-driven, transactional.</td>
-                        <td className="p-4 text-gray-700">Informal, grandfatherly, experienced.</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div className="mt-8 bg-yellow-50 p-4 rounded-lg border border-yellow-200 text-sm text-yellow-900 flex gap-3">
-                  <div className="shrink-0 font-bold text-xl">💡</div>
-                  <p><strong>Pro Tip:</strong> You can use all three! We recommend starting with WBC for your business plan, using SBDC for complex financial modeling, and finding a SCORE mentor for niche industry advice. This strategy maximizes free support and accelerates your timeline.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="py-16 bg-gray-50">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-                <div className="space-y-4">
-                  <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Are WBC services really free?</h3><p className="text-gray-700 mt-2 ml-7">Yes, core counseling and training services at Women&apos;s Business Centers are provided at no cost. Some centers may charge nominal fees for specialized programs (like intensive 6-week incubators), but standard 1-on-1 counseling is free to all clients regardless of income.</p></CardContent></Card>
-                  <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Do I need to be a woman to use WBC services?</h3><p className="text-gray-700 mt-2 ml-7">While WBCs focus on women entrepreneurs, most centers provide services to all entrepreneurs who can benefit from their specialized programming. The SBA mandate is inclusive, so men can typically access training and counseling, though some specific grants or cohorts may be restricted.</p></CardContent></Card>
-                  <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can WBCs provide funding for my business?</h3><p className="text-gray-700 mt-2 ml-7">WBCs do not directly provide financing (they are not banks). However, they are vital *conduits* to funding. They help you prepare your loan package, fix your credit, and introduce you to lenders who are actively looking for women-owned deals.</p></CardContent></Card>
-                  <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can I work with a WBC in a different state?</h3><p className="text-gray-700 mt-2 ml-7">Technically, yes, especially for virtual training webinars which are often open to the public nationwide. However for 1-on-1 counseling, centers prioritize local residents because their funding is tied to local economic impact. It is always best to start with your nearest center.</p></CardContent></Card>
-                  <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What if I don't have a business idea yet?</h3><p className="text-gray-700 mt-2 ml-7">That is completely fine! WBCs love "pre-venture" clients. They can help you brainstorm, validate your market, and decide if entrepreneurship is right for you *before* you quit your day job. Look for "Explorer" or "Startup 101" workshops on their calendars.</p></CardContent></Card>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <Link href="/blog/wosb-federal-contracting-guide" className="flex items-center p-4 bg-gray-50 rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>WOSB Federal Contracting Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                  <Link href="/blog/sba-loans-grants-guide" className="flex items-center p-4 bg-gray-50 rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA Loans Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                  <Link href="/blog/sba-microloans-complete-guide" className="flex items-center p-4 bg-gray-50 rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA Microloans Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                  <Link href="/usa/small-business-grants" className="flex items-center p-4 bg-gray-50 rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>All US Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="py-20 bg-gradient-to-r from-purple-600 to-purple-800">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto text-center text-white">
-                <h2 className="text-4xl font-bold mb-6">Find Your Women&apos;s Business Center</h2>
-                <p className="text-xl text-purple-100 mb-8">Access free business counseling, training, and resources designed for women entrepreneurs. Connect with your local WBC.</p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild><Link href="/usa/small-business-grants"><Handshake className="w-4 h-4 mr-2" /> Find Your WBC</Link></Button>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild><Link href="/contact?program=wbc">Get Started</Link></Button>
-                </div>
-              </div>
-            </div>
-          </section>
-      </div>
+          </div>
+        </section>
+      </div >
       <Footer />
     </>
   )

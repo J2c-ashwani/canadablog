@@ -1057,131 +1057,139 @@ export default function AlbertaSmallBusinessGrantsGuide() {
                     </p>
                   </CardContent>
                 </Card>
-                <p className="text-gray-700 mt-2 ml-7">
-                  Yes, several Alberta programs specifically target pre-revenue startups, particularly
-                  Alberta Innovates Voucher programs and accelerator-linked funding. However, you&apos;ll
-                  need to demonstrate technical capability, market opportunity, and a clear path to revenue.
-                </p>
-              </CardContent>
-            </Card>
+                <Card>
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-lg flex items-start">
+                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
+                      Are there grants for startups in Alberta?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      Yes, several Alberta programs specifically target pre-revenue startups, particularly
+                      Alberta Innovates Voucher programs and accelerator-linked funding. However, you&apos;ll
+                      need to demonstrate technical capability, market opportunity, and a clear path to revenue.
+                    </p>
+                  </CardContent>
+                </Card>
 
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="font-bold text-lg flex items-start">
-                  <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
-                  How competitive are Alberta business grants?
-                </h3>
-                <p className="text-gray-700 mt-2 ml-7">
-                  Competition varies by program. Voucher programs have 30-50% approval rates for
-                  well-prepared applications. Larger innovation grants are more competitive at
-                  15-25% approval rates. Energy diversification programs are highly competitive
-                  but offer larger awards.
-                </p>
-              </CardContent>
-            </Card>
+                <Card>
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-lg flex items-start">
+                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
+                      How competitive are Alberta business grants?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      Competition varies by program. Voucher programs have 30-50% approval rates for
+                      well-prepared applications. Larger innovation grants are more competitive at
+                      15-25% approval rates. Energy diversification programs are highly competitive
+                      but offer larger awards.
+                    </p>
+                  </CardContent>
+                </Card>
 
-            <Card>
-              <CardContent className="pt-6">
-                <h3 className="font-bold text-lg flex items-start">
-                  <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
-                  Can I apply for multiple Alberta grants simultaneously?
-                </h3>
-                <p className="text-gray-700 mt-2 ml-7">
-                  Yes, but you must disclose all applications and cannot receive duplicate funding
-                  for the same expense. Many businesses successfully combine multiple Alberta programs
-                  or stack provincial with federal funding (IRAP, SR&ED). Program officers can advise
-                  on complementary funding strategies.
-                </p>
-              </CardContent>
-            </Card>
+                <Card>
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-lg flex items-start">
+                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
+                      Can I apply for multiple Alberta grants simultaneously?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      Yes, but you must disclose all applications and cannot receive duplicate funding
+                      for the same expense. Many businesses successfully combine multiple Alberta programs
+                      or stack provincial with federal funding (IRAP, SR&ED). Program officers can advise
+                      on complementary funding strategies.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
           </div>
-      </div>
-    </div >
-        </section >
+        </section>
 
-    {/* Related Resources Section */ }
-    < section className = "py-16 bg-gray-50" >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">Related Resources</h2>
+        {/* Related Resources Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Related Resources</h2>
 
-          <div className="grid md:grid-cols-2 gap-4">
-            <Link href="/blog/canada-federal-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
-              <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
-              <span className="text-gray-700 group-hover:text-orange-600">Federal Grants for Canadian Businesses</span>
-              <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
-            </Link>
-            <Link href="/blog/sred-scientific-research-experimental-development" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
-              <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
-              <span className="text-gray-700 group-hover:text-orange-600">SR&ED Tax Credit Guide</span>
-              <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
-            </Link>
-            <Link href="/blog/irap-industrial-research-assistance-program" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
-              <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
-              <span className="text-gray-700 group-hover:text-orange-600">IRAP Program Overview</span>
-              <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
-            </Link>
-            <Link href="/guides" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
-              <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
-              <span className="text-gray-700 group-hover:text-orange-600">All Grant Application Guides</span>
-              <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
-            </Link>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/canada-federal-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
+                  <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
+                  <span className="text-gray-700 group-hover:text-orange-600">Federal Grants for Canadian Businesses</span>
+                  <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+                </Link>
+                <Link href="/blog/sred-scientific-research-experimental-development" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
+                  <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
+                  <span className="text-gray-700 group-hover:text-orange-600">SR&ED Tax Credit Guide</span>
+                  <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+                </Link>
+                <Link href="/blog/irap-industrial-research-assistance-program" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
+                  <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
+                  <span className="text-gray-700 group-hover:text-orange-600">IRAP Program Overview</span>
+                  <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+                </Link>
+                <Link href="/guides" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
+                  <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
+                  <span className="text-gray-700 group-hover:text-orange-600">All Grant Application Guides</span>
+                  <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Strong CTA Section */}
         <section className="py-20 bg-gradient-to-r from-orange-600 to-red-800">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-4xl font-bold mb-6">
-            Ready to Access Alberta's $980M+ in Business Funding?
-          </h2>
-          <p className="text-xl text-orange-100 mb-8">
-            Our Alberta specialists have secured over $7M for local businesses. Get expert guidance
-            on navigating Alberta Innovates, energy diversification programs, and rural development funding.
-          </p>
-          <div className="bg-white/10 rounded-lg p-6 mb-8">
-            <h4 className="font-semibold mb-4">Our Alberta Grant Success Package Includes:</h4>
-            <div className="grid md:grid-cols-2 gap-4 text-sm">
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2" />
-                <span>Free eligibility assessment</span>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center text-white">
+              <h2 className="text-4xl font-bold mb-6">
+                Ready to Access Alberta's $980M+ in Business Funding?
+              </h2>
+              <p className="text-xl text-orange-100 mb-8">
+                Our Alberta specialists have secured over $7M for local businesses. Get expert guidance
+                on navigating Alberta Innovates, energy diversification programs, and rural development funding.
+              </p>
+              <div className="bg-white/10 rounded-lg p-6 mb-8">
+                <h4 className="font-semibold mb-4">Our Alberta Grant Success Package Includes:</h4>
+                <div className="grid md:grid-cols-2 gap-4 text-sm">
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    <span>Free eligibility assessment</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    <span>Program matching service</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    <span>Application preparation support</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    <span>Energy sector expertise</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    <span>Calgary and Edmonton local teams</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    <span>85% success rate for Alberta businesses</span>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2" />
-                <span>Program matching service</span>
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2" />
-                <span>Application preparation support</span>
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2" />
-                <span>Energy sector expertise</span>
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2" />
-                <span>Calgary and Edmonton local teams</span>
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2" />
-                <span>85% success rate for Alberta businesses</span>
-              </div>
+              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
+                <Link href="/contact?service=alberta-grants-expert-help">
+                  Get Expert Help with Alberta Grants
+                </Link>
+              </Button>
+              <p className="text-orange-200 text-sm mt-4">
+                Free consultation • Energy sector specialists • Local Alberta expertise
+              </p>
             </div>
           </div>
-          <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
-            <Link href="/contact?service=alberta-grants-expert-help">
-              Get Expert Help with Alberta Grants
-            </Link>
-          </Button>
-          <p className="text-orange-200 text-sm mt-4">
-            Free consultation • Energy sector specialists • Local Alberta expertise
-          </p>
-        </div>
-      </div>
         </section >
       </div >
-    <Footer />
+      <Footer />
     </>
   )
 }
