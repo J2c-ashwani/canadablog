@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Leaf, Zap, Droplet, Wind, Sun } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Leaf, Zap, Droplet, Wind, Sun, ExternalLink, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -35,8 +35,8 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
                 Canada Clean Technology Innovation Grants 2026
               </h1>
               <p className="text-xl text-teal-100 mb-8">
-                Access $1.2B+ in clean technology innovation funding through 22+ federal and provincial programs. 
-                From SDTC grants up to $15M to Clean Technology Investment Tax Credits - accelerate your 
+                Access $1.2B+ in clean technology innovation funding through 22+ federal and provincial programs.
+                From SDTC grants up to $15M to Clean Technology Investment Tax Credits - accelerate your
                 environmental technology, renewable energy, and sustainability innovation projects.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -85,8 +85,8 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Clean Technology Programs</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are Major Clean Tech Grant Programs?</h2>
+
               <div className="space-y-8">
                 {/* SDTC - Sustainable Development Technology Canada */}
                 <Card className="border-teal-200">
@@ -112,7 +112,7 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      SDTC provides funding for demonstration and deployment of pre-commercial clean technologies 
+                      SDTC provides funding for demonstration and deployment of pre-commercial clean technologies
                       that address climate change, clean air, clean water, and clean soil challenges.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -162,7 +162,7 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Refundable investment tax credits for clean technology equipment including renewable energy, 
+                      Refundable investment tax credits for clean technology equipment including renewable energy,
                       energy storage, low-carbon heat equipment, and clean hydrogen production.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
@@ -218,7 +218,7 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Supports large-scale decarbonization projects and technology commercialization to help 
+                      Supports large-scale decarbonization projects and technology commercialization to help
                       Canada achieve net-zero emissions by 2050. Part of Strategic Innovation Fund.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -268,7 +268,7 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Natural Resources Canada program supporting late-stage demonstration and early commercialization 
+                      Natural Resources Canada program supporting late-stage demonstration and early commercialization
                       of clean technology solutions in energy, mining, and forestry sectors.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -302,8 +302,8 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Clean Technology Funding by Area</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Which Clean Tech Sectors are Eligible?</h2>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   {
@@ -382,8 +382,8 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Provincial Clean Technology Programs</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How Do Provincial Clean Tech Grants Compare?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-teal-700">🍁 Leading Provincial Programs:</h4>
@@ -406,7 +406,7 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">🎯 Priority Technology Areas:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -437,8 +437,8 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">CleanTech Funding Success Strategies</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How to Successfully Apply for Clean Tech Grants?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -512,6 +512,63 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Official Clean Tech Funding Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-teal-600" />
+                    Government Portals
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://www.sdtc.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-600 hover:underline">
+                        Sustainable Development Technology Canada <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.ic.gc.ca/eic/site/099.nsf/eng/home" target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-600 hover:underline">
+                        Clean Growth Hub <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://ised-isde.canada.ca/site/strategic-innovation-fund/en" target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-600 hover:underline">
+                        Strategic Innovation Fund <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <FileText className="w-5 h-5 mr-2 text-teal-600" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/canada-federal-grants" className="flex items-center text-teal-600 hover:underline">
+                        Canada Federal Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/sred-scientific-research-experimental-development" className="flex items-center text-teal-600 hover:underline">
+                        SR&ED Tax Credit Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/industry-specific-business-grants-guide" className="flex items-center text-teal-600 hover:underline">
+                        Industry Specific Grants <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA */}
         <section className="py-20 bg-gradient-to-r from-teal-600 to-green-700">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -520,10 +577,10 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
                 Ready to Access Clean Technology Funding?
               </h2>
               <p className="text-xl text-teal-100 mb-8">
-                Get our complete clean technology funding guide or work with specialists who have secured 
+                Get our complete clean technology funding guide or work with specialists who have secured
                 $75M+ in cleantech grants across SDTC, ITCs, and provincial programs.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Complete Application Guide</h4>
@@ -550,7 +607,7 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-teal-200 text-sm mt-6">
                 85% success rate • $75M+ secured • SDTC, ITC & Net Zero expertise
               </p>
@@ -559,6 +616,51 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the Clean Technology ITC in Canada?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Clean Technology Investment Tax Credit (ITC) is a refundable tax credit consisting of up to 30% of the capital cost of eligible clean technology property, such as zero-emission energy generation systems (solar, wind, water), stationary electricity storage, and low-carbon heat equipment."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much funding does SDTC provide?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sustainable Development Technology Canada (SDTC) typically funds approximately 33% to 40% of eligible project costs, with contributions often ranging from $2 million to $5 million, and potentially up to $15 million for large-scale demonstration projects."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I combine SR&ED with clean tech grants?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, but you must account for 'stacking rules'. Government grants typically reduce the pool of eligible expenditures for SR&ED tax credits. However, combining them is a common and effective strategy to maximize non-dilutive funding for clean technology innovation."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the Net Zero Accelerator?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Net Zero Accelerator (NZA) is an $8 billion initiative under the Strategic Innovation Fund (SIF) dedicated to supporting large-scale projects that reduce domestic greenhouse gas emissions and help Canada meet its net-zero goals by 2050."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

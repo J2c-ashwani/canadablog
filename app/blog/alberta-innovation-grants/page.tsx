@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Zap, Brain, Heart, Fuel, Wind, Factory } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Zap, Brain, Heart, Fuel, Wind, Factory, ExternalLink, ArrowRight, Building } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -35,8 +35,8 @@ export default function AlbertaInnovationGrantsPage() {
                 Alberta Innovation Grants & Funding Programs 2026
               </h1>
               <p className="text-xl text-orange-100 mb-8">
-                Access $950M+ in Alberta innovation funding through Alberta Innovates, Emissions Reduction Alberta (ERA), 
-                AI4Society, and sector-specific programs supporting energy transition leadership, AI & machine learning excellence, 
+                Access $950M+ in Alberta innovation funding through Alberta Innovates, Emissions Reduction Alberta (ERA),
+                AI4Society, and sector-specific programs supporting energy transition leadership, AI & machine learning excellence,
                 health innovation, and economic diversification across Canada's energy innovation capital.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -85,8 +85,8 @@ export default function AlbertaInnovationGrantsPage() {
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Alberta Innovation Programs</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the Top Innovation Grants in Alberta?</h2>
+
               <div className="space-y-8">
                 {/* Alberta Innovates */}
                 <Card className="border-orange-200">
@@ -112,7 +112,7 @@ export default function AlbertaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Alberta's primary innovation agency providing comprehensive funding, facilities access, and partnership support 
+                      Alberta's primary innovation agency providing comprehensive funding, facilities access, and partnership support
                       for technology development, applied research, and commercialization across all innovation stages.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -162,7 +162,7 @@ export default function AlbertaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Leading cleantech funding agency supporting technology development and deployment for emissions reduction, 
+                      Leading cleantech funding agency supporting technology development and deployment for emissions reduction,
                       clean energy, carbon capture, hydrogen, and environmental innovation projects.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -212,7 +212,7 @@ export default function AlbertaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      World-leading AI research institute providing funding, expertise, and partnership opportunities for companies 
+                      World-leading AI research institute providing funding, expertise, and partnership opportunities for companies
                       applying artificial intelligence and machine learning to real-world problems.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -262,7 +262,7 @@ export default function AlbertaInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Health innovation funding supporting medical devices, digital health, clinical technologies, and healthcare 
+                      Health innovation funding supporting medical devices, digital health, clinical technologies, and healthcare
                       solutions improving patient outcomes and healthcare system efficiency.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -296,8 +296,8 @@ export default function AlbertaInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Alberta Innovation Sector Excellence</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Which Sectors Receive Alberta Funding?</h2>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Energy Transition Leadership */}
                 <Card className="hover:shadow-lg transition-all border-orange-200">
@@ -310,7 +310,7 @@ export default function AlbertaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Global leader in energy innovation with world-class expertise in carbon capture, hydrogen, 
+                      Global leader in energy innovation with world-class expertise in carbon capture, hydrogen,
                       and clean energy technology development.
                     </p>
                     <div className="space-y-2">
@@ -345,7 +345,7 @@ export default function AlbertaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      World-leading AI research through Amii (Alberta Machine Intelligence Institute) with 
+                      World-leading AI research through Amii (Alberta Machine Intelligence Institute) with
                       pioneering reinforcement learning expertise.
                     </p>
                     <div className="space-y-2">
@@ -380,7 +380,7 @@ export default function AlbertaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Growing health technology sector with strengths in digital health, medical devices, 
+                      Growing health technology sector with strengths in digital health, medical devices,
                       and healthcare AI applications.
                     </p>
                     <div className="space-y-2">
@@ -415,7 +415,7 @@ export default function AlbertaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Strong agricultural technology base supporting precision agriculture, livestock tech, 
+                      Strong agricultural technology base supporting precision agriculture, livestock tech,
                       and food processing innovation.
                     </p>
                     <div className="space-y-2">
@@ -450,7 +450,7 @@ export default function AlbertaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Growing manufacturing sector with focus on automation, Industry 4.0, and advanced 
+                      Growing manufacturing sector with focus on automation, Industry 4.0, and advanced
                       materials for energy and resource sectors.
                     </p>
                     <div className="space-y-2">
@@ -485,7 +485,7 @@ export default function AlbertaInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Emerging technology sector with strengths in financial technology, software development, 
+                      Emerging technology sector with strengths in financial technology, software development,
                       and enterprise solutions.
                     </p>
                     <div className="space-y-2">
@@ -517,8 +517,8 @@ export default function AlbertaInnovationGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Alberta Regional Innovation Hubs</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Where are Alberta's Innovation Hubs?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-orange-200">
                   <CardHeader>
@@ -527,7 +527,7 @@ export default function AlbertaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Energy & Tech Hub:</strong> Alberta's largest innovation ecosystem with world-leading energy expertise, 
+                        <strong>Energy & Tech Hub:</strong> Alberta's largest innovation ecosystem with world-leading energy expertise,
                         growing tech sector, and strong entrepreneurial culture.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -547,7 +547,7 @@ export default function AlbertaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Research & Innovation:</strong> University of Alberta ecosystem with AI excellence (Amii), 
+                        <strong>Research & Innovation:</strong> University of Alberta ecosystem with AI excellence (Amii),
                         health innovation, and strong research commercialization.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -567,7 +567,7 @@ export default function AlbertaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>AgriFood Innovation:</strong> Agricultural technology focus with University of Lethbridge 
+                        <strong>AgriFood Innovation:</strong> Agricultural technology focus with University of Lethbridge
                         and strong agribusiness sector.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -587,7 +587,7 @@ export default function AlbertaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Industrial Innovation:</strong> Manufacturing and industrial technology development 
+                        <strong>Industrial Innovation:</strong> Manufacturing and industrial technology development
                         with Red Deer Polytechnic connections.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -608,8 +608,8 @@ export default function AlbertaInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Alberta Innovation Funding Success Strategies</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How to Win Alberta Innovation Grants?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -683,6 +683,58 @@ export default function AlbertaInnovationGrantsPage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Official Alberta Innovation Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-orange-600" />
+                    Government & Agencies
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://albertainnovates.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-orange-600 hover:underline">
+                        Alberta Innovates <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://eralberta.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-orange-600 hover:underline">
+                        Emissions Reduction Alberta (ERA) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.amii.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-orange-600 hover:underline">
+                        Amii (AI Institute) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Download className="w-5 h-5 mr-2 text-orange-600" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/alberta-government-business-grants" className="flex items-center text-orange-600 hover:underline">
+                        Alberta Business Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/alberta-small-business-grants-guide" className="flex items-center text-orange-600 hover:underline">
+                        Small Business Grants Alberta <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-orange-700 to-red-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -691,10 +743,10 @@ export default function AlbertaInnovationGrantsPage() {
                 Ready to Access Alberta Innovation Funding?
               </h2>
               <p className="text-xl text-orange-100 mb-8">
-                Get expert help navigating Alberta's innovation ecosystem and maximizing your Alberta Innovates, ERA, and AI4Society funding. 
+                Get expert help navigating Alberta's innovation ecosystem and maximizing your Alberta Innovates, ERA, and AI4Society funding.
                 Our Alberta specialists have secured $140M+ in provincial innovation funding.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Button size="lg" className="bg-white text-orange-700 hover:bg-gray-100" asChild>
                   <Link href="/contact?service=alberta-innovation-grants-expert-help">
@@ -707,7 +759,7 @@ export default function AlbertaInnovationGrantsPage() {
                   </Link>
                 </Button>
               </div>
-              
+
               <p className="text-orange-200 text-sm mt-6">
                 77% success rate • $140M+ secured • Energy, AI & CleanTech expertise
               </p>
@@ -716,6 +768,51 @@ export default function AlbertaInnovationGrantsPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What does Alberta Innovates fund?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Alberta Innovates funds applied research, technology development, and commercialization projects across sectors like digital health, clean energy, agriculture, and smart agriculture."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does Emissions Reduction Alberta (ERA) work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "ERA invests proceeds from the industrial carbon price to fund late-stage technologies that reduce GHG emissions, such as carbon capture, energy efficiency, and renewable power projects."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is there funding for AI in Alberta?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Alberta is a global AI hub. Funding and support are available through Amii (Alberta Machine Intelligence Institute) and specific Alberta Innovates digital technology calls."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the Alberta Innovation Employment Grant?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Innovation Employment Grant (IEG) provides a grant of up to 20% toward eligible R&D expenditures for small and medium-sized businesses in Alberta, replacing the former SR&ED tax credit top-up."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

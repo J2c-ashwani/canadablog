@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Target, Building, HelpCircle, BookOpen, ExternalLink, Leaf, TrendingUp, DollarSign, Factory } from "lucide-react"
+import { CheckCircle, Target, Building, HelpCircle, BookOpen, ExternalLink, Leaf, TrendingUp, DollarSign, Factory, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -43,7 +43,7 @@ export default function AgrifoodTechGrantsGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Agri-Food Technology Funding Overview</h2>
+              <h2 className="text-3xl font-bold mb-6">What is the State of Agri-Food Innovation in Canada?</h2>
               <p className="text-gray-700 leading-relaxed mb-6">Canada&apos;s agri-food sector represents a critical component of the national economy, contributing over one hundred forty billion dollars annually and employing more than two million Canadians across farming, food processing, and related industries. Recognizing the importance of innovation in maintaining global competitiveness, federal and provincial governments have established substantial funding programs supporting technology development, adoption, and commercialization throughout the agri-food value chain.</p>
               <p className="text-gray-700 leading-relaxed mb-6">The Sustainable Canadian Agricultural Partnership framework, known as SCAP, provides the foundation for most agri-food innovation funding through a five-year, three point five billion dollar federal-provincial-territorial agreement. SCAP prioritizes climate change adaptation, environmental sustainability, and technology-driven productivity improvements. Within this framework, Agriculture and Agri-Food Canada administers national programs while provincial partners deliver complementary programming tailored to regional agricultural priorities and industry structures.</p>
               <p className="text-gray-700 leading-relaxed mb-6">Innovation funding spans the full technology development spectrum from early-stage research through commercial deployment. Pre-commercialization support helps research institutions and companies translate discoveries into viable products and services. Technology adoption programs assist producers and processors in implementing new equipment, systems, and practices. Knowledge transfer initiatives ensure that innovations developed through funded research reach end-users who can apply them productively across the sector.</p>
@@ -59,7 +59,7 @@ export default function AgrifoodTechGrantsGuidePage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Federal Agri-Food Innovation Programs</h2>
+              <h2 className="text-3xl font-bold mb-6">What Federal Grants Support Agri-Tech?</h2>
               <p className="text-gray-700 mb-6">Agriculture and Agri-Food Canada delivers several major innovation funding programs under the SCAP framework. The AgriScience Program represents the largest investment, providing over three hundred forty million dollars over five years for applied research addressing sector-wide challenges. AgriScience supports research clusters bringing together industry organizations, researchers, and government to advance priority areas including plant and animal genetics, sustainable production systems, and food safety enhancement.</p>
               <p className="text-gray-700 mb-6">The AgriInnovate Program supports commercialization and adoption of innovative technologies through cost-shared contributions and repayable loans. Funding supports equipment acquisition, facility construction, and process implementation for producers, processors, and agri-businesses. AgriInnovate prioritizes projects demonstrating significant competitiveness improvements, environmental benefits, or market development potential. Maximum contributions reach several million dollars for qualifying projects with substantial economic impact projections.</p>
               <p className="text-gray-700 mb-6">The AgriAssurance Program supports food safety, plant health, and animal health systems that underpin market access and consumer confidence. Funding helps industry organizations develop and implement traceability systems, quality assurance programs, and biosecurity protocols. These systems increasingly incorporate technology solutions including blockchain-based tracking, digital certification, and automated quality monitoring that qualify for innovation-focused support within the program.</p>
@@ -71,7 +71,7 @@ export default function AgrifoodTechGrantsGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Provincial Technology Programs</h2>
+              <h2 className="text-3xl font-bold mb-6">Are there Provincial Grants for Agriculture?</h2>
               <p className="text-gray-700 mb-6">Provincial governments deliver cost-shared programming under SCAP that addresses regional agricultural priorities and industry structures. Ontario&apos;s Canadian Agricultural Partnership programs support technology adoption through competitive grants for equipment, software, and infrastructure investments. Focus areas include precision agriculture, controlled environment agriculture, and processing automation aligned with the province&apos;s diverse agricultural economy.</p>
               <p className="text-gray-700 mb-6">Saskatchewan and Alberta provide substantial technology support through their respective CAP programs, reflecting the Prairie provinces&apos; grain, oilseed, and livestock production focus. Precision agriculture equipment, water management systems, and livestock monitoring technologies receive priority funding. Saskatchewan&apos;s programs also emphasize pulse crop innovation and value-added processing development supporting the province&apos;s leadership in specialty crop production.</p>
               <p className="text-gray-700 mb-6">British Columbia&apos;s programs reflect the province&apos;s diverse agricultural sectors including greenhouse production, viticulture, and organic farming. Technology funding supports controlled environment systems, water conservation technologies, and organic production innovations. The province also emphasizes food processing innovation supporting value-added product development for local and export markets, with particular attention to Indigenous food systems development.</p>
@@ -83,7 +83,7 @@ export default function AgrifoodTechGrantsGuidePage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Precision Agriculture Innovation</h2>
+              <h2 className="text-3xl font-bold mb-6">Is there Funding for Precision Agriculture?</h2>
               <p className="text-gray-700 mb-6">Precision agriculture represents a major innovation priority across agri-food funding programs, supporting technology adoption that improves productivity while reducing environmental impacts. GPS guidance systems, variable rate application equipment, and aerial imaging technologies have become standard on larger operations, with funding programs supporting adoption by smaller producers and advancement of next-generation capabilities.</p>
               <p className="text-gray-700 mb-6">Data analytics and artificial intelligence applications are emerging priorities within precision agriculture funding. Farm management software integrating equipment data, weather information, and market signals improves decision-making across operations. Machine learning applications for pest detection, yield prediction, and optimization recommendations represent frontier research areas receiving growing investment through federal and provincial innovation programs.</p>
               <p className="text-gray-700 mb-6">Robotics and automation address labor challenges while improving operational precision. Automated guidance, robotic harvesting, and autonomous equipment operation receive substantial research and adoption funding. The Canadian AgriFood Automation and Intelligence Network coordinates national innovation efforts in this area, facilitating collaboration among researchers, technology developers, and agricultural producers to accelerate practical adoption.</p>
@@ -94,7 +94,7 @@ export default function AgrifoodTechGrantsGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Sustainability and Environmental Technology</h2>
+              <h2 className="text-3xl font-bold mb-6">What Grants Support Sustainable Farming?</h2>
               <p className="text-gray-700 mb-6">Environmental sustainability represents a cross-cutting priority influencing all agri-food innovation programming. Climate change adaptation and mitigation receive particular emphasis, with funding supporting technologies reducing greenhouse gas emissions, improving carbon sequestration, and building resilience to extreme weather events. The federal Agricultural Clean Technology Program provides targeted support for adoption of clean technologies by farmers and agri-food processors.</p>
               <p className="text-gray-700 mb-6">Water management technologies address both quality and quantity challenges facing Canadian agriculture. Irrigation efficiency improvements, drainage management systems, and water recycling technologies receive substantial adoption support. Nutrient management technologies reducing fertilizer inputs while maintaining productivity serve dual environmental and economic benefits that funding programs prioritize.</p>
               <p className="text-gray-700 mb-6">Renewable energy and bioeconomy applications transform agricultural waste streams into valuable products while reducing fossil fuel dependence. Anaerobic digestion, biochar production, and biofuel development receive research and commercialization support. These technologies also address food waste reduction, with funding supporting innovations that capture value from processing byproducts and extend product shelf life.</p>
@@ -105,7 +105,7 @@ export default function AgrifoodTechGrantsGuidePage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Application Strategies</h2>
+              <h2 className="text-3xl font-bold mb-6">How to Secure Agri-Food Grants?</h2>
               <div className="space-y-4">
                 <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">1</div><div><h3 className="font-bold">Identify Alignment</h3><p className="text-gray-600 text-sm">Review program priorities against your innovation focus. AgriScience supports collaborative research, AgriInnovate funds commercialization, and CAP programs assist technology adoption. Choose programs matching your development stage.</p></div></div>
                 <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">2</div><div><h3 className="font-bold">Build Partnerships</h3><p className="text-gray-600 text-sm">Many programs require or prefer industry partnerships, research collaborations, or producer engagement. Build relationships with potential partners before application deadlines to strengthen proposals.</p></div></div>
@@ -119,7 +119,7 @@ export default function AgrifoodTechGrantsGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Eligibility and Requirements</h2>
+              <h2 className="text-3xl font-bold mb-6">Who Qualifies for Agri-Food Funding?</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <Card><CardHeader><CardTitle className="text-green-700 flex items-center"><CheckCircle className="w-5 h-5 mr-2" />Eligible Applicants</CardTitle></CardHeader><CardContent><ul className="space-y-1 text-sm"><li>Farms and agricultural producers</li><li>Food processing companies</li><li>Agri-food technology developers</li><li>Industry associations and organizations</li><li>Research institutions with industry partners</li></ul></CardContent></Card>
                 <Card><CardHeader><CardTitle className="text-blue-700 flex items-center"><Building className="w-5 h-5 mr-2" />Typical Requirements</CardTitle></CardHeader><CardContent><ul className="space-y-1 text-sm"><li>Canadian business or organization</li><li>Financial capacity for cost-share</li><li>Clear innovation or technology focus</li><li>Measurable outcomes and impact</li><li>Industry relevance and scalability</li></ul></CardContent></Card>
@@ -141,6 +141,58 @@ export default function AgrifoodTechGrantsGuidePage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Official Agri-Food Innovation Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-green-600" />
+                    Government & Agencies
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://agriculture.canada.ca/en/programs/agriinnovate" target="_blank" rel="noopener noreferrer" className="flex items-center text-green-600 hover:underline">
+                        AgriInnovate Program <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://agriculture.canada.ca/en/department/sustainable-canadian-agricultural-partnership" target="_blank" rel="noopener noreferrer" className="flex items-center text-green-600 hover:underline">
+                        Sustainable CAP <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://caain.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-green-600 hover:underline">
+                        CAAIN (Agri-Food Automation) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <BookOpen className="w-5 h-5 mr-2 text-green-600" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/agriculture-agri-food-canada-government-grants" className="flex items-center text-green-600 hover:underline">
+                        AAFC Government Grants <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/canada-clean-technology-innovation-grants" className="flex items-center text-green-600 hover:underline">
+                        Clean Technology Grants <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -157,7 +209,7 @@ export default function AgrifoodTechGrantsGuidePage() {
 
         <section className="py-20 bg-gradient-to-r from-green-600 to-green-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div classtName="max-w-4xl mx-auto text-center text-white">
+            <div className="max-w-4xl mx-auto text-center text-white">
               <h2 className="text-4xl font-bold mb-6">Get Agri-Food Innovation Funding</h2>
               <p className="text-xl text-green-100 mb-8">Access five hundred million dollars in annual funding for agricultural technology development, sustainable farming innovation, and food processing advancement.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -169,6 +221,51 @@ export default function AgrifoodTechGrantsGuidePage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the Sustainable Canadian Agricultural Partnership (Sustainable CAP)?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sustainable CAP is a 5-year, $3.5 billion investment by federal, provincial, and territorial governments to strengthen the competitiveness, innovation, and resiliency of the agriculture, agri-food and agri-based products sector."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can small farms get grants for technology?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, many provincial programs under Sustainable CAP are designed specifically for producers to adopt new technologies, such as precision agriculture tools, efficient irrigation systems, and farm management software."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does AgriInnovate fund new equipment?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, AgriInnovate can support costs related to the adoption of innovative technologies, including equipment purchase and installation, particularly if it demonstrates commercialization of a new product or process."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is vertical farming eligible for funding?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, vertical farming and controlled environment agriculture projects are often eligible under innovation and technology adoption streams, especially those focusing on food security and sustainable production methods."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

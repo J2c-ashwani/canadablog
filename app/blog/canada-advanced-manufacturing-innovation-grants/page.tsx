@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, Download, Factory, Cog, Cpu, TrendingUp } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, Download, Factory, Cog, Cpu, TrendingUp, ExternalLink, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -85,7 +85,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Advanced Manufacturing Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the Top Grants for Advanced Manufacturing?</h2>
 
               <div className="space-y-8">
                 {/* NGen - Next Generation Manufacturing Canada */}
@@ -296,7 +296,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Manufacturing Funding by Technology</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Which Manufacturing Technologies Qualify for Funding?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
@@ -376,7 +376,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Provincial Manufacturing Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Are there Provincial Grants for Manufacturers?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
@@ -431,7 +431,7 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Manufacturing Funding Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How to Secure Funding for Manufacturing Projects?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
@@ -506,6 +506,63 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Official Manufacturing Funding Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-gray-700" />
+                    Government & Clusters
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://www.ngen.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-gray-700 hover:underline">
+                        NGen - Next Generation Manufacturing Canada <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://ised-isde.canada.ca/site/canada-digital-adoption-program/en" target="_blank" rel="noopener noreferrer" className="flex items-center text-gray-700 hover:underline">
+                        Canada Digital Adoption Program (CDAP) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://feddev-ontario.canada.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-gray-700 hover:underline">
+                        Regional Development Agencies (e.g., FedDev) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Factory className="w-5 h-5 mr-2 text-gray-700" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/canada-federal-grants" className="flex items-center text-gray-700 hover:underline">
+                        Canada Federal Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/sred-scientific-research-experimental-development" className="flex items-center text-gray-700 hover:underline">
+                        SR&ED Tax Credit Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/ontario-innovation-grants" className="flex items-center text-gray-700 hover:underline">
+                        Ontario Innovation Grants <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA */}
         <section className="py-20 bg-gradient-to-r from-gray-700 to-gray-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -553,6 +610,51 @@ export default function CanadaAdvancedManufacturingInnovationGrantsPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What does NGen fund?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Next Generation Manufacturing Canada (NGen) funds collaborative technology development and deployment projects aiming to build world-leading advanced manufacturing capabilities in Canada. They focus on Industry 4.0, automation, and scale-up."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are there grants for buying new machinery?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, several Regional Development Agency (RDA) programs (like FedDev Ontario's Business Scale-up and Productivity) provide repayable contributions (interest-free loans) for equipment purchase. Additionally, the Accelerated Investment Incentive allows for enhanced tax write-offs."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does SR&ED cover manufacturing innovation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, SR&ED is commonly used by manufacturers who are improving processes, developing new products, or overcoming technological uncertainties in production. It can cover labour, materials, and overheads related to experimental development."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is there funding for robotics integration?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, programs like NGen and local manufacturing streams specifically target the integration of robotics and automation to improve productivity and competitiveness."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

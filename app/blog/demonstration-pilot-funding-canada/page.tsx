@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Rocket, Factory, Settings, TrendingUp } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Rocket, Factory, Settings, TrendingUp, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +25,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "Is SDTC funding a grant or a loan?",
+    answer: "It is technically a 'non-repayable contribution' if you meet certain conditions, but often structured with repayment terms based on commercial success. Always check the specific terms of the current funding round, as they can evolve."
+  },
+  {
+    question: "Do I need a confirmed customer for a pilot project?",
+    answer: "For most Stage 3 grants (like Clean Growth or SDTC), yes. You need a 'host site' or a partner who is willing to test your technology. A letter of intent (LOI) is the minimum, but a signed pilot agreement is much stronger."
+  },
+  {
+    question: "How much equity do I give up?",
+    answer: "Zero. All programs listed here (SDTC, Clean Growth, SIF) are non-dilutive. The government does not take ownership shares in your company, keeping your cap table clean for future VC investment."
+  },
+  {
+    question: "What is the typical timeline for SDTC approval?",
+    answer: "From application to approval typically takes 6-9 months. SDTC has funding rounds, so you need to apply during an open intake and be prepared for a rigorous due diligence process."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function DemonstrationPilotFundingCanadaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -602,25 +644,62 @@ export default function DemonstrationPilotFundingCanadaPage() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-16 bg-white border-t border-gray-100">
+        {/* Official Resources */}
+        <section className="py-12 bg-white border-t border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">Is SDTC funding a grant or a loan?</h3>
-                  <p className="text-gray-600">It is technically a "non-repayable contribution" if you meet certain conditions, but often structured with repayment terms based on commercial success. Always check the specific terms of the current funding round, as they can evolve.</p>
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">Do I need a confirmed customer for a pilot project?</h3>
-                  <p className="text-gray-600">For most Stage 3 grants (like Clean Growth or SDTC), yes. You need a "host site" or a partner who is willing to test your technology. A letter of intent (LOI) is the minimum, but a signed pilot agreement is much stronger.</p>
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">How much equity do I give up?</h3>
-                  <p className="text-gray-600">Zero. All programs listed here (SDTC, Clean Growth, SIF) are non-dilutive. The government does not take ownership shares in your company, keeping your cap table clean for future VC investment.</p>
-                </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Official Government Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <a href="https://www.sdtc.ca/en/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-orange-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">SDTC</div>
+                    <div className="text-sm text-gray-600">Sustainable Development Technology Canada</div>
+                  </div>
+                </a>
+                <a href="https://www.nrcan.gc.ca/climate-change-adapting-impacts-and-reducing-emissions/green-infrastructure-programs/clean-growth-hub/20254" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-red-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Clean Growth Hub</div>
+                    <div className="text-sm text-gray-600">NRCan climate programs</div>
+                  </div>
+                </a>
+                <a href="https://ised-isde.canada.ca/site/strategic-innovation-fund/en" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-amber-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Strategic Innovation Fund</div>
+                    <div className="text-sm text-gray-600">Large-scale project funding</div>
+                  </div>
+                </a>
+                <a href="https://www.canada.ca/en/services/business/grants.html" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-rose-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Canada Business Grants</div>
+                    <div className="text-sm text-gray-600">Federal funding portal</div>
+                  </div>
+                </a>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <Accordion type="single" collapsible className="w-full">
+                {faqData.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="text-left font-semibold text-gray-900">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
           </div>
         </section>

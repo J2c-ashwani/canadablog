@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, Download, Heart, Pill, Microscope, Dna, Stethoscope, Syringe } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, Download, Heart, Pill, Microscope, Dna, Stethoscope, Syringe, ExternalLink, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -35,8 +35,8 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
                 Canada Life Sciences Innovation Grants 2026
               </h1>
               <p className="text-xl text-teal-100 mb-8">
-                Access $720M+ in life sciences and biotechnology funding through 18+ federal and provincial programs. 
-                From biomanufacturing support to medical device pathways - accelerate your drug development, 
+                Access $720M+ in life sciences and biotechnology funding through 18+ federal and provincial programs.
+                From biomanufacturing support to medical device pathways - accelerate your drug development,
                 clinical trials, health technology, and pharmaceutical innovation initiatives.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -85,8 +85,8 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Life Sciences & Biotechnology Programs</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the Top Grants for Biotech & Life Sciences?</h2>
+
               <div className="space-y-8">
                 {/* IRAP Life Sciences */}
                 <Card className="border-teal-200">
@@ -112,7 +112,7 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      IRAP funding specifically for life sciences SMEs developing innovative biotechnology solutions, 
+                      IRAP funding specifically for life sciences SMEs developing innovative biotechnology solutions,
                       medical devices, diagnostics, therapeutics, and health technology applications.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -162,7 +162,7 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Support for clinical trials through CIHR, provincial health research programs, and specialized 
+                      Support for clinical trials through CIHR, provincial health research programs, and specialized
                       funding for drug trials, medical device testing, and health technology validation studies.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -212,7 +212,7 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Specialized funding for medical device companies through design, prototyping, testing, 
+                      Specialized funding for medical device companies through design, prototyping, testing,
                       regulatory approval (Health Canada), and commercialization stages.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -262,7 +262,7 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Strategic support for biomanufacturing facilities, scale-up operations, GMP manufacturing, 
+                      Strategic support for biomanufacturing facilities, scale-up operations, GMP manufacturing,
                       and pharmaceutical production capacity through federal and provincial programs.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -296,8 +296,8 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Life Sciences Funding by Sector</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Which Life Science Sectors Get Funding?</h2>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   {
@@ -376,8 +376,8 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Provincial Life Sciences Programs</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How Do Provincial Life Science Grants Compare?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-teal-700">🍁 Leading Provincial Programs:</h4>
@@ -400,7 +400,7 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-cyan-700">🎯 Priority Life Sciences Areas:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -431,8 +431,8 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Life Sciences Funding Success Strategies</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How to Win Life Sciences Innovation Grants?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -506,6 +506,63 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Official Life Sciences Funding Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-teal-600" />
+                    Government Agencies
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://ised-isde.canada.ca/site/strategic-innovation-fund/en" target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-600 hover:underline">
+                        Strategic Innovation Fund (Biomanufacturing) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://cihr-irsc.gc.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-600 hover:underline">
+                        CIHR (Health Research) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.innovation.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-600 hover:underline">
+                        Canada Foundation for Innovation <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Microscope className="w-5 h-5 mr-2 text-teal-600" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/canada-federal-grants" className="flex items-center text-teal-600 hover:underline">
+                        Canada Federal Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/sred-scientific-research-experimental-development" className="flex items-center text-teal-600 hover:underline">
+                        SR&ED Tax Credit Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/canada-digital-ai-innovation-grants" className="flex items-center text-teal-600 hover:underline">
+                        Digital Health & AI Grants <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA */}
         <section className="py-20 bg-gradient-to-r from-teal-600 to-cyan-700">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -514,10 +571,10 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
                 Ready to Access Life Sciences Funding?
               </h2>
               <p className="text-xl text-teal-100 mb-8">
-                Get our complete life sciences funding guide or work with specialists who have secured 
+                Get our complete life sciences funding guide or work with specialists who have secured
                 $95M+ in biotechnology grants across IRAP, clinical trials, and medical device programs.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Complete Application Guide</h4>
@@ -544,7 +601,7 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-teal-200 text-sm mt-6">
                 76% success rate • $95M+ secured • IRAP, Clinical Trials & Medical Device expertise
               </p>
@@ -553,6 +610,51 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the Biomanufacturing and Life Sciences Strategy?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "This federal strategy includes a $2.2 billion fund to grow Canada's biomanufacturing and life sciences sector. It prioritizes projects that enhance domestic manufacturing capacity for vaccines, therapeutics, and specialized medicines."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Canada fund clinical trials?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, funding for clinical trials is available through the Canadian Institutes of Health Research (CIHR) and the Strategic Innovation Fund. Provinces particularly Ontario and Quebec also offer specialized support for clinical validation of health technologies."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I use SR&ED for medical device R&D?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolutely. Developing new medical devices often involves significant technological risk and experimentation, making it highly eligible for SR&ED tax credits. Costs for design, prototyping, and testing are typically claimable."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the timeline for Health Canada approval funding?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Regulatory approval processes can take 6-12 months or longer depending on device class or drug type. Grants supporting this phase often cover regulatory consultancy and submission costs to accelerate market access."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

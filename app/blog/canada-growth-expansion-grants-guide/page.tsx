@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, TrendingUp, Building, Users, Zap, Globe, Factory, Award, HelpCircle } from "lucide-react"
+import { CheckCircle, DollarSign, Target, TrendingUp, Building, Users, Zap, Globe, Factory, Award, HelpCircle, ExternalLink, ArrowRight, MousePointerClick } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -113,7 +113,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-4">Major Federal Growth & Expansion Programs</h2>
+              <h2 className="text-3xl font-bold text-center mb-4">What Federal Growth Programs Support Expansion?</h2>
               <p className="text-center text-gray-600 mb-12">
                 Large-scale federal programs designed to support significant business expansion and market growth.
               </p>
@@ -287,7 +287,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Provincial Jobs & Prosperity Funds</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">Which Provinces Offer Expansion Funding?</h2>
 
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {/* Ontario Growth Programs */}
@@ -456,7 +456,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8">Industry-Specific Growth Programs</h2>
+              <h2 className="text-3xl font-bold text-center mb-8">Are There Industry-Specific Growth Grants?</h2>
 
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="text-center">
@@ -521,7 +521,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8">Tax Credits & Growth Incentives</h2>
+              <h2 className="text-3xl font-bold text-center mb-8">What Tax Credits Support Business Growth?</h2>
 
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="text-center">
@@ -596,6 +596,58 @@ export default function CanadaGrowthExpansionGrantsGuide() {
             ))}
           </div>
         </div>
+
+        {/* Official Resources Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12">Official Growth Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-green-600" />
+                    Government Programs
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://ised-isde.canada.ca/site/strategic-innovation-fund/en" target="_blank" rel="noopener noreferrer" className="flex items-center text-green-600 hover:underline">
+                        Strategic Innovation Fund <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.bdc.ca/en/financing/business-expansion-loans" target="_blank" rel="noopener noreferrer" className="flex items-center text-green-600 hover:underline">
+                        BDC Expansion Financing <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.canada.ca/en/services/business/grants.html" target="_blank" rel="noopener noreferrer" className="flex items-center text-green-600 hover:underline">
+                        Government of Canada Business Grants <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <MousePointerClick className="w-5 h-5 mr-2 text-green-600" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/commercialization-scale-up-funding-canada" className="flex items-center text-green-600 hover:underline">
+                        Commercialization & Scale-Up Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/canada-manufacturing-industry-grants-guide" className="flex items-center text-green-600 hover:underline">
+                        Manufacturing Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Strong Single CTA Section */}
         <section className="py-20 bg-gradient-to-r from-green-600 to-emerald-800">

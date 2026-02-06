@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Zap, Star, TrendingUp } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Zap, Star, TrendingUp, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +25,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What is the age limit for Canadian youth entrepreneur programs?",
+    answer: "Most Canadian youth entrepreneur programs target individuals aged 18-39, though the most common range is 18-35. Futurpreneur Canada, for example, serves entrepreneurs aged 18-39 with loans up to $60,000. Always check specific program requirements as age limits vary."
+  },
+  {
+    question: "Can youth entrepreneurs get grants or only loans?",
+    answer: "Both are available. Programs like CYBF offer mentorship and loans, while the Youth Employment & Skills Strategy provides wage subsidies. Some provincial programs offer outright grants. The best strategy is often stacking multiple funding sources."
+  },
+  {
+    question: "Do I need business experience to apply?",
+    answer: "No. Many youth entrepreneur programs are specifically designed for first-time business owners. Futurpreneur and CYBF provide mandatory mentorship alongside funding to help inexperienced entrepreneurs succeed."
+  },
+  {
+    question: "What types of businesses are eligible?",
+    answer: "Most programs support a wide range of businesses including tech startups, retail, food service, professional services, and manufacturing. However, some sectors like real estate or passive investments are typically excluded. Check program guidelines for specific restrictions."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function YouthEntrepreneurshipBlogPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -478,6 +520,66 @@ export default function YouthEntrepreneurshipBlogPage() {
                   </ul>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Official Resources */}
+        <section className="py-12 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Official Government Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <a href="https://www.futurpreneur.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-indigo-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Futurpreneur Canada</div>
+                    <div className="text-sm text-gray-600">Youth startup loans & mentorship</div>
+                  </div>
+                </a>
+                <a href="https://www.canada.ca/en/employment-social-development/services/funding/youth-employment-strategy.html" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Youth Employment Strategy</div>
+                    <div className="text-sm text-gray-600">Federal youth skills programs</div>
+                  </div>
+                </a>
+                <a href="https://www.bdc.ca/en/about/young-entrepreneur" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-green-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">BDC Young Entrepreneur Fund</div>
+                    <div className="text-sm text-gray-600">Bank-backed youth financing</div>
+                  </div>
+                </a>
+                <a href="https://startupcan.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Startup Canada</div>
+                    <div className="text-sm text-gray-600">National entrepreneur network</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <Accordion type="single" collapsible className="w-full">
+                {faqData.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="text-left font-semibold text-gray-900">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
           </div>
         </section>

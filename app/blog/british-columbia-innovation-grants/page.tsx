@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Waves, Film, Leaf, Zap, Mountain, Sailboat } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Waves, Film, Leaf, Zap, Mountain, Sailboat, ExternalLink, ArrowRight, Building } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -85,7 +85,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major British Columbia Innovation Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the Top Innovation Grants in BC?</h2>
 
               <div className="space-y-8">
                 {/* BC Innovation Tax Credit */}
@@ -296,7 +296,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BC Innovation Sector Excellence</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Which Sectors Lead BC Innovation?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Clean Technology Leadership */}
@@ -517,7 +517,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BC Regional Innovation Hubs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Where are BC's Tech Hubs Located?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-teal-200">
@@ -608,7 +608,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">BC Innovation Funding Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How to Secure BC Innovation Grants?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
@@ -683,6 +683,58 @@ export default function BritishColumbiaInnovationGrantsPage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Official BC Innovation Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-teal-600" />
+                    Government & Agencies
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://www.innovatebc.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-600 hover:underline">
+                        Innovate BC <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://humanrights.ca/support/bc-innovation-tax-credit" target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-600 hover:underline">
+                        BC Innovation Tax Credit INFO <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.creativebc.com/" target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-600 hover:underline">
+                        Creative BC (Film & Media) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Download className="w-5 h-5 mr-2 text-teal-600" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/british-columbia-government-business-grants" className="flex items-center text-teal-600 hover:underline">
+                        BC Business Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/bc-small-business-grants-guide" className="flex items-center text-teal-600 hover:underline">
+                        Small Business Grants BC <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-teal-700 to-blue-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -716,6 +768,51 @@ export default function BritishColumbiaInnovationGrantsPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the BC Innovation Tax Credit?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The BCITC provides a 10% refundable tax credit to eligible corporations for qualified Scientific Research and Experimental Development (SR&ED) expenditures in British Columbia."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does Innovate BC support startups?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Innovate BC offers funding programs like the Ignite Program for R&D, as well as mentorship, hiring grants, and connection to expert advisors at regional accelerators."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What funding is available for BC CleanTech?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "BC offers significant cleantech support through the Centre for Innovation and Clean Energy (CICE), CleanBC Industry Fund, and specific calls for hydrogen and renewable energy projects."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are there grants for film production in BC?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Creative BC administers several tax credits including the Production Services Tax Credit and Film Incentive BC, plus grant programs for domestic motion picture and interactive digital media projects."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

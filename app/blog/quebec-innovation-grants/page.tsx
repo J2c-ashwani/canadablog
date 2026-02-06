@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Plane, Gamepad2, Microscope, Zap, Building2, TrendingUp } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Plane, Gamepad2, Microscope, Zap, Building2, TrendingUp, ExternalLink, ArrowRight, Building } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -35,8 +35,8 @@ export default function QuebecInnovationGrantsPage() {
                 Quebec Innovation Grants & Tax Credits 2026
               </h1>
               <p className="text-xl text-cyan-100 mb-8">
-                Access $2.5B+ in Quebec innovation funding through the 30% Quebec R&D Tax Credit (CRIC), 
-                Investissement Québec programs, PRIMA Quebec initiatives, and sector-specific support for 
+                Access $2.5B+ in Quebec innovation funding through the 30% Quebec R&D Tax Credit (CRIC),
+                Investissement Québec programs, PRIMA Quebec initiatives, and sector-specific support for
                 aerospace excellence, gaming & VFX leadership, and biotech clusters across Canada's premier francophone innovation ecosystem.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -85,8 +85,8 @@ export default function QuebecInnovationGrantsPage() {
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Quebec Innovation Programs</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the Top Innovation Grants in Quebec?</h2>
+
               <div className="space-y-8">
                 {/* Quebec R&D Tax Credit (CRIC) */}
                 <Card className="border-cyan-200">
@@ -112,7 +112,7 @@ export default function QuebecInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Quebec's premium R&D tax incentive offering up to 30% refundable tax credit on eligible Quebec research and 
+                      Quebec's premium R&D tax incentive offering up to 30% refundable tax credit on eligible Quebec research and
                       development expenditures - Canada's highest provincial R&D tax credit rate, stackable with federal SR&ED for up to 95% total support.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -162,7 +162,7 @@ export default function QuebecInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Quebec's economic development agency providing comprehensive financial support through loans, loan guarantees, 
+                      Quebec's economic development agency providing comprehensive financial support through loans, loan guarantees,
                       equity investments, and tax credits for innovation projects, business expansion, and technology commercialization.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -212,7 +212,7 @@ export default function QuebecInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Quebec's advanced manufacturing research consortium connecting industry, universities, and research centers 
+                      Quebec's advanced manufacturing research consortium connecting industry, universities, and research centers
                       for collaborative innovation projects in aerospace, transportation, and industrial manufacturing.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -262,7 +262,7 @@ export default function QuebecInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Network of sector-specific research consortia including CRIBIQ (biotech), CRITM (transportation), 
+                      Network of sector-specific research consortia including CRIBIQ (biotech), CRITM (transportation),
                       PROMPT (IT), and innovation centers supporting collaborative R&D across Quebec's key industries.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -296,8 +296,8 @@ export default function QuebecInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Quebec Innovation Sector Excellence</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Which Sectors Receive Quebec Innovation Funding?</h2>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Aerospace Excellence */}
                 <Card className="hover:shadow-lg transition-all border-cyan-200">
@@ -310,7 +310,7 @@ export default function QuebecInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      World-leading aerospace cluster centered in Montreal with Bombardier, Pratt & Whitney Canada, 
+                      World-leading aerospace cluster centered in Montreal with Bombardier, Pratt & Whitney Canada,
                       CAE, and extensive supply chain ecosystem.
                     </p>
                     <div className="space-y-2">
@@ -345,7 +345,7 @@ export default function QuebecInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Global gaming and visual effects capital with Ubisoft Montreal, Warner Bros., and extensive 
+                      Global gaming and visual effects capital with Ubisoft Montreal, Warner Bros., and extensive
                       multimedia tax credit support.
                     </p>
                     <div className="space-y-2">
@@ -380,7 +380,7 @@ export default function QuebecInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Strong pharmaceutical and biotechnology cluster with focus on drug discovery, 
+                      Strong pharmaceutical and biotechnology cluster with focus on drug discovery,
                       biomanufacturing, and personalized medicine.
                     </p>
                     <div className="space-y-2">
@@ -415,7 +415,7 @@ export default function QuebecInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Leading AI research center with Mila (Quebec AI Institute) and strong software 
+                      Leading AI research center with Mila (Quebec AI Institute) and strong software
                       development and IT services sector.
                     </p>
                     <div className="space-y-2">
@@ -450,7 +450,7 @@ export default function QuebecInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Clean energy expertise with Hydro-Québec leadership, battery technology, 
+                      Clean energy expertise with Hydro-Québec leadership, battery technology,
                       and sustainable technology development.
                     </p>
                     <div className="space-y-2">
@@ -485,7 +485,7 @@ export default function QuebecInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600 mb-4">
-                      Strong advanced manufacturing base with focus on aluminum transformation, 
+                      Strong advanced manufacturing base with focus on aluminum transformation,
                       composites, and Industry 4.0 technologies.
                     </p>
                     <div className="space-y-2">
@@ -517,8 +517,8 @@ export default function QuebecInnovationGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Quebec Regional Innovation Hubs</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Where are Quebec's Innovation Hubs Located?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-cyan-200">
                   <CardHeader>
@@ -527,7 +527,7 @@ export default function QuebecInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Montreal Innovation District:</strong> Quebec's largest innovation ecosystem with strengths 
+                        <strong>Montreal Innovation District:</strong> Quebec's largest innovation ecosystem with strengths
                         in AI, gaming, aerospace, and life sciences featuring Mila, Element AI, and extensive startup support.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -547,7 +547,7 @@ export default function QuebecInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Capital-Nationale Innovation:</strong> Government technology hub with strengths in 
+                        <strong>Capital-Nationale Innovation:</strong> Government technology hub with strengths in
                         software, insurance tech, and optics/photonics.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -567,7 +567,7 @@ export default function QuebecInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Life Sciences & Manufacturing:</strong> Biotech manufacturing hub with pharmaceutical 
+                        <strong>Life Sciences & Manufacturing:</strong> Biotech manufacturing hub with pharmaceutical
                         companies and advanced manufacturing facilities.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -587,7 +587,7 @@ export default function QuebecInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>University Innovation Hub:</strong> University of Sherbrooke ecosystem with focus on 
+                        <strong>University Innovation Hub:</strong> University of Sherbrooke ecosystem with focus on
                         health sciences, engineering, and entrepreneurship.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -608,8 +608,8 @@ export default function QuebecInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Quebec Innovation Funding Success Strategies</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How to Win Quebec Innovation Grants?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -683,6 +683,58 @@ export default function QuebecInnovationGrantsPage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Official Quebec Innovation Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-cyan-600" />
+                    Government & Agencies
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://www.investquebec.com/" target="_blank" rel="noopener noreferrer" className="flex items-center text-cyan-600 hover:underline">
+                        Investissement Québec <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.quebec.ca/gouvernement/ministeres/economie" target="_blank" rel="noopener noreferrer" className="flex items-center text-cyan-600 hover:underline">
+                        Ministère de l'Économie (MEIE) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.revenuquebec.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-cyan-600 hover:underline">
+                        Revenu Québec (Tax Credits) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Download className="w-5 h-5 mr-2 text-cyan-600" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/quebec-government-business-grants" className="flex items-center text-cyan-600 hover:underline">
+                        Quebec Business Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/quebec-small-business-grants-guide" className="flex items-center text-cyan-600 hover:underline">
+                        Small Business Grants Quebec <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-cyan-700 to-blue-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -691,10 +743,10 @@ export default function QuebecInnovationGrantsPage() {
                 Ready to Access Quebec Innovation Funding?
               </h2>
               <p className="text-xl text-cyan-100 mb-8">
-                Get expert help navigating Quebec's innovation ecosystem and maximizing your CRIC, Investissement Québec, 
+                Get expert help navigating Quebec's innovation ecosystem and maximizing your CRIC, Investissement Québec,
                 and sector-specific funding. Our bilingual Quebec specialists have secured $310M+ in provincial innovation funding.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Button size="lg" className="bg-white text-cyan-700 hover:bg-gray-100" asChild>
                   <Link href="/contact?service=quebec-innovation-grants-expert-help">
@@ -707,7 +759,7 @@ export default function QuebecInnovationGrantsPage() {
                   </Link>
                 </Button>
               </div>
-              
+
               <p className="text-cyan-200 text-sm mt-6">
                 81% success rate • $310M+ secured • CRIC, IQ & sector expertise • Bilingual support
               </p>
@@ -716,6 +768,51 @@ export default function QuebecInnovationGrantsPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the Quebec R&D Tax Credit (CRIC)?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The CRIC offers a refundable tax credit of up to 30% for eligible R&D expenditures (primarily salaries) incurred in Quebec, which can be combined with the federal SR&ED credit."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does Investissement Québec support innovation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Investissement Québec provides loans, loan guarantees, and equity investment for innovation projects, business expansion, and export growth, often acting as a key partner in large-scale initiatives."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is PRIMA Quebec?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "PRIMA Quebec is an advanced materials research consortium that funds collaborative R&D projects between companies and research institutions, focusing on new materials and applied technologies."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are there grants for the video game industry in Quebec?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Quebec offers a highly competitive tax credit for the production of multimedia titles, covering up to 37.5% of eligible labor costs, which has made Montreal a global gaming hub."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

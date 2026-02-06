@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, MapPin, Leaf, Mountain } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, MapPin, Leaf, Mountain, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +25,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "Do I need status to access Indigenous business funding?",
+    answer: "Not always. Some programs require verified status (First Nations, Métis, or Inuit), while others serve Indigenous-owned or Indigenous-controlled businesses. Aboriginal Financial Institutions (AFIs) serve all three Indigenous groups. Verify eligibility requirements for each specific program."
+  },
+  {
+    question: "Can non-Indigenous people access rural business funding?",
+    answer: "Yes. Rural development programs like Community Futures, the Rural and Northern Development Program, and FedNor's Northern Ontario Development Fund are available to all rural entrepreneurs regardless of Indigenous status, as long as the business operates in an eligible rural area."
+  },
+  {
+    question: "What is NACCA and how does it help?",
+    answer: "The National Aboriginal Capital Corporations Association (NACCA) is a network of over 50 Aboriginal Financial Institutions (AFIs) across Canada. They provide loans, business support, and financial literacy training to Indigenous entrepreneurs. AFIs often have more flexible lending criteria than traditional banks."
+  },
+  {
+    question: "How do I prove my business is in a rural area?",
+    answer: "Most programs use Statistics Canada definitions, typically communities with populations under 30,000 located outside commuting distance to larger urban centres. Your business address on registration documents usually suffices for eligibility verification."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function IndigenousRuralBusinessFundingBlogPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -539,6 +581,66 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                   </ul>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Official Resources */}
+        <section className="py-12 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Official Government Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <a href="https://nacca.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-amber-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">NACCA</div>
+                    <div className="text-sm text-gray-600">National Aboriginal Capital Corporations</div>
+                  </div>
+                </a>
+                <a href="https://www.sac-isc.gc.ca/eng/1582037564226/1610797399865" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-orange-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Aboriginal Entrepreneurship Program</div>
+                    <div className="text-sm text-gray-600">ISC business support</div>
+                  </div>
+                </a>
+                <a href="https://www.communityfuturescanada.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-green-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Community Futures Canada</div>
+                    <div className="text-sm text-gray-600">Rural business development</div>
+                  </div>
+                </a>
+                <a href="https://www.canada.ca/en/innovation-science-economic-development/programs/regional-industrial-expansion.html" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Regional Development Agencies</div>
+                    <div className="text-sm text-gray-600">FedNor, ACOA, WD, PacifiCan</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <Accordion type="single" collapsible className="w-full">
+                {faqData.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="text-left font-semibold text-gray-900">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
           </div>
         </section>

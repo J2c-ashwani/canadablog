@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Building, Factory, Microscope, Brain, Leaf, TrendingUp } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Building, Factory, Microscope, Brain, Leaf, TrendingUp, ExternalLink, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -85,7 +85,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Ontario Innovation Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the Top Innovation Grants in Ontario?</h2>
 
               <div className="space-y-8">
                 {/* Ontario Innovation Tax Credit */}
@@ -296,7 +296,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Ontario Innovation Sector Highlights</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Which Sectors Receive Ontario Innovation Funding?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Advanced Manufacturing */}
@@ -517,7 +517,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Ontario Regional Innovation Hubs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Where are Ontario's Innovation Hubs Located?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-blue-200">
@@ -608,7 +608,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Ontario Innovation Funding Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How to Win Ontario Innovation Grants?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
@@ -683,6 +683,58 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Official Ontario Innovation Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-blue-600" />
+                    Government & Agencies
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://www.ontario.ca/page/ontario-innovation-tax-credit" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                        Ontario Innovation Tax Credit (OITC) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.oc-innovation.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                        Ontario Centre of Innovation (OCI) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://feddevontario.gc.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                        FedDev Ontario <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Download className="w-5 h-5 mr-2 text-blue-600" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/ontario-government-business-grants" className="flex items-center text-blue-600 hover:underline">
+                        Ontario Business Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/ontario-small-business-grants-guide" className="flex items-center text-blue-600 hover:underline">
+                        Small Business Grants Ontario <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-700 to-indigo-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -716,6 +768,51 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the Ontario Innovation Tax Credit (OITC)?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The OITC is a 10% refundable tax credit for small to medium-sized corporations on eligible R&D expenditures in Ontario, which can be stacked with federal SR&ED credits."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What does the Ontario Centre of Innovation (OCI) fund?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "OCI supports collaborative R&D between industry and academia, technology commercialization, and automotive innovation through programs like the Vehicle Innovation Network."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is the Jobs and Prosperity Fund still active?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Jobs and Prosperity Fund has largely been superseded by newer programs like the Regional Development Program and Invest Ontario Fund, but it remains a key reference for large-scale projects."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can startups get funding from Regional Innovation Centres?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Ontario's 17 Regional Innovation Centres (like MaRS, Communitech, Invest Ottawa) provide free advisory services, market intelligence, and access to funding programs for startups."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

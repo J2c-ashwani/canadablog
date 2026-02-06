@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Beaker, Cog, TestTube, Zap } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Beaker, Cog, TestTube, Zap, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +25,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "Can I claim both IRAP and SR&ED?",
+    answer: "Yes, but you cannot 'double dip.' The amount of IRAP funding you receive will reduce your eligible SR&ED expenditures. However, using both is a powerful strategy to maximize your non-dilutive funding stack."
+  },
+  {
+    question: "Does SR&ED cover failed projects?",
+    answer: "Absolutely. In fact, failure often proves 'technical uncertainty,' which is a core requirement for SR&ED. As long as you followed a systematic investigation, failed attempts are fully eligible for tax credits."
+  },
+  {
+    question: "What is the difference between a prototype and a pilot?",
+    answer: "A prototype (Stage 2) is a working model tested in a lab or simulated environment to prove it works. A pilot (Stage 3) is a full-scale version operating in real-world conditions with actual users."
+  },
+  {
+    question: "How long does the IRAP application process take?",
+    answer: "From initial contact to approval typically takes 4-8 weeks. IRAP advisors work closely with applicants, so have your business plan, technical documentation, and financial projections ready."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function DevelopmentProofConceptFundingCanadaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -85,7 +127,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
         <section className="py-12 bg-blue-50 border-y border-blue-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Understanding Technology Readiness Levels (TRL 4-6)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">What are Technology Readiness Levels (TRL 4-6)?</h2>
               <p className="text-gray-700 text-center mb-10 max-w-2xl mx-auto">
                 Stage 2 takes you from "Lab Bench" to "Simulated Environment." This is the "Valley of Death" where most startups fail. IRAP is your primary bridge here.
               </p>
@@ -601,25 +643,62 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-16 bg-white border-t border-gray-100">
+        {/* Official Resources */}
+        <section className="py-12 bg-white border-t border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">Can I claim both IRAP and SR&ED?</h3>
-                  <p className="text-gray-600">Yes, but you cannot "double dip." The amount of IRAP funding you receive will reduce your eligible SR&ED expenditures. However, using both is a powerful strategy to maximize your non-dilutive funding stack.</p>
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">Does SR&ED cover failed projects?</h3>
-                  <p className="text-gray-600">Absolutely. In fact, failure often proves "technical uncertainty," which is a core requirement for SR&ED. As long as you followed a systematic investigation, failed attempts are fully eligible for tax credits.</p>
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">What is the difference between a prototype and a pilot?</h3>
-                  <p className="text-gray-600">A prototype (Stage 2) is a working model tested in a lab or simulated environment to prove it works. A pilot (Stage 3) is a full-scale version operating in real-world conditions with actual users.</p>
-                </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Official Government Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <a href="https://nrc.canada.ca/en/support-technology-innovation/nrc-irap" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">NRC IRAP</div>
+                    <div className="text-sm text-gray-600">Industrial Research Assistance Program</div>
+                  </div>
+                </a>
+                <a href="https://www.canada.ca/en/revenue-agency/services/scientific-research-experimental-development-tax-incentive-program.html" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">SR&ED Tax Credits</div>
+                    <div className="text-sm text-gray-600">CRA program guidelines</div>
+                  </div>
+                </a>
+                <a href="https://www.nserc-crsng.gc.ca/professors-professeurs/rpp-pp/crd-rdc_eng.asp" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-green-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">NSERC CRD</div>
+                    <div className="text-sm text-gray-600">Collaborative Research & Development</div>
+                  </div>
+                </a>
+                <a href="https://www.oc-innovation.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Ontario Centre of Excellence</div>
+                    <div className="text-sm text-gray-600">Regional innovation support</div>
+                  </div>
+                </a>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <Accordion type="single" collapsible className="w-full">
+                {faqData.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="text-left font-semibold text-gray-900">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
           </div>
         </section>

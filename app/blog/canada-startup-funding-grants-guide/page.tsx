@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Building, Users, Zap, Lightbulb, MapPin, Award, HelpCircle } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Building, Users, Zap, Lightbulb, MapPin, Award, HelpCircle, ExternalLink, ArrowRight, MousePointerClick } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -116,7 +116,7 @@ export default function CanadaStartupFundingGrantsGuide() {
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-4">Federal Startup Funding Programs</h2>
+              <h2 className="text-3xl font-bold text-center mb-4">What Federal Startup Funding is Available?</h2>
               <p className="text-center text-gray-600 mb-12">
                 Government of Canada programs specifically designed to support new business formation and early-stage growth.
               </p>
@@ -290,7 +290,7 @@ export default function CanadaStartupFundingGrantsGuide() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Provincial Startup & Seed Funding Programs</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">Which Provincial Governments Offer Startup Grants?</h2>
 
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {/* Ontario Startup Programs */}
@@ -461,7 +461,7 @@ export default function CanadaStartupFundingGrantsGuide() {
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Business Incubator & Accelerator Programs</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">Are There Incubators for Canadian Startups?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-2 border-purple-200">
@@ -540,7 +540,7 @@ export default function CanadaStartupFundingGrantsGuide() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8">Startup Tax Credits & Investment Incentives</h2>
+              <h2 className="text-3xl font-bold text-center mb-8">What Tax Credits Can Startups Claim?</h2>
 
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="text-center">
@@ -612,6 +612,58 @@ export default function CanadaStartupFundingGrantsGuide() {
             ))}
           </div>
         </div>
+
+        {/* Official Resources Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12">Official Startup Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-blue-600" />
+                    Government Programs
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://www.futurpreneur.ca/en/" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                        Futurpreneur Canada <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://nrc.canada.ca/en/support-technology-innovation/industrial-research-assistance-program" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                        NRC IRAP <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.bdc.ca/en/financing/startup-financing" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                        BDC Startup Financing <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <MousePointerClick className="w-5 h-5 mr-2 text-blue-600" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/small-business-grants-complete-guide" className="flex items-center text-blue-600 hover:underline">
+                        Complete Small Business Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/women-entrepreneurship-fund-canada" className="flex items-center text-blue-600 hover:underline">
+                        Women Entrepreneurship Fund <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Strong Single CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-800">

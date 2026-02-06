@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Wheat, Mountain, Wind, Zap, Factory, Sprout } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Wheat, Mountain, Wind, Zap, Factory, Sprout, ExternalLink, ArrowRight, Building } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -35,8 +35,8 @@ export default function PrairieProvincesInnovationGrantsPage() {
                 Prairie Provinces Innovation Grants & Funding 2026
               </h1>
               <p className="text-xl text-amber-100 mb-8">
-                Access $580M+ in Prairie provinces innovation funding through Saskatchewan Innovation Place, Manitoba Research Council, 
-                PrairiesCan regional development programs, and sector-specific support for agri-food innovation leadership, 
+                Access $580M+ in Prairie provinces innovation funding through Saskatchewan Innovation Place, Manitoba Research Council,
+                PrairiesCan regional development programs, and sector-specific support for agri-food innovation leadership,
                 mining technology excellence, and renewable energy development across Saskatchewan and Manitoba.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -85,8 +85,8 @@ export default function PrairieProvincesInnovationGrantsPage() {
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Prairie Provinces Innovation Programs</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the Top Innovation Grants in the Prairies?</h2>
+
               <div className="space-y-8">
                 {/* PrairiesCan Funding */}
                 <Card className="border-amber-200">
@@ -112,7 +112,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-900 mb-4">
-                      Federal regional development agency supporting innovation, business growth, and economic diversification 
+                      Federal regional development agency supporting innovation, business growth, and economic diversification
                       across Manitoba, Saskatchewan, Alberta, and parts of BC with comprehensive funding programs.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -162,7 +162,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-900 mb-4">
-                      Saskatchewan's innovation ecosystem including Innovation Place, Saskatchewan Polytechnic Applied Research, 
+                      Saskatchewan's innovation ecosystem including Innovation Place, Saskatchewan Polytechnic Applied Research,
                       and provincial funding supporting technology commercialization and applied research.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -212,7 +212,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-900 mb-4">
-                      Manitoba innovation support including Research Manitoba, Mitacs programs, university partnerships, 
+                      Manitoba innovation support including Research Manitoba, Mitacs programs, university partnerships,
                       and sector-specific funding for technology development and commercialization.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -262,7 +262,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-900 mb-4">
-                      Comprehensive agri-food technology support through federal Canadian Agricultural Partnership (CAP), 
+                      Comprehensive agri-food technology support through federal Canadian Agricultural Partnership (CAP),
                       provincial programs, and Prairie-specific initiatives for precision agriculture and food processing innovation.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -296,8 +296,8 @@ export default function PrairieProvincesInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Prairie Provinces Innovation Excellence</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Which Sectors Receive Prairie Innovation Funding?</h2>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Agri-Food Innovation Leadership */}
                 <Card className="hover:shadow-lg transition-all border-green-200">
@@ -310,7 +310,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-800 mb-4">
-                      Canada's breadbasket with world-leading agricultural technology, precision farming, 
+                      Canada's breadbasket with world-leading agricultural technology, precision farming,
                       crop genetics, and food processing innovation.
                     </p>
                     <div className="space-y-2">
@@ -345,7 +345,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-800 mb-4">
-                      World-class mining innovation with strengths in potash, uranium, critical minerals, 
+                      World-class mining innovation with strengths in potash, uranium, critical minerals,
                       and mining technology development.
                     </p>
                     <div className="space-y-2">
@@ -380,7 +380,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-800 mb-4">
-                      Growing renewable energy sector with wind power, solar, hydrogen, and grid 
+                      Growing renewable energy sector with wind power, solar, hydrogen, and grid
                       modernization expertise leveraging Prairie advantages.
                     </p>
                     <div className="space-y-2">
@@ -415,7 +415,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-800 mb-4">
-                      Manufacturing sector with focus on agricultural equipment, industrial machinery, 
+                      Manufacturing sector with focus on agricultural equipment, industrial machinery,
                       and advanced manufacturing technologies.
                     </p>
                     <div className="space-y-2">
@@ -450,7 +450,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-800 mb-4">
-                      Growing technology sector with software development, digital agriculture platforms, 
+                      Growing technology sector with software development, digital agriculture platforms,
                       and ICT services supporting regional industries.
                     </p>
                     <div className="space-y-2">
@@ -485,7 +485,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-800 mb-4">
-                      Environmental technology development with focus on water management, soil health, 
+                      Environmental technology development with focus on water management, soil health,
                       and sustainable resource management solutions.
                     </p>
                     <div className="space-y-2">
@@ -517,8 +517,8 @@ export default function PrairieProvincesInnovationGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Prairie Regional Innovation Hubs</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Where are the Prairie Innovation Hubs?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-amber-200">
                   <CardHeader>
@@ -527,7 +527,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-900">
-                        <strong>Innovation Place & AgTech Hub:</strong> Leading agricultural technology cluster with 
+                        <strong>Innovation Place & AgTech Hub:</strong> Leading agricultural technology cluster with
                         Innovation Place tech parks, University of Saskatchewan research, and strong mining sector.
                       </p>
                       <ul className="text-sm text-gray-800 space-y-1">
@@ -547,7 +547,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-900">
-                        <strong>Diversified Innovation:</strong> Balanced economy with strong agri-food, advanced manufacturing, 
+                        <strong>Diversified Innovation:</strong> Balanced economy with strong agri-food, advanced manufacturing,
                         clean technology, and growing ICT sector through university partnerships.
                       </p>
                       <ul className="text-sm text-gray-800 space-y-1">
@@ -568,8 +568,8 @@ export default function PrairieProvincesInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Prairie Innovation Funding Success Strategies</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How to Win Prairie Innovation Grants?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -643,6 +643,58 @@ export default function PrairieProvincesInnovationGrantsPage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Official Prairie Innovation Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-amber-600" />
+                    Government & Agencies
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://www.canada.ca/en/prairies-economic-development.html" target="_blank" rel="noopener noreferrer" className="flex items-center text-amber-600 hover:underline">
+                        PrairiesCan <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://innovationsask.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-amber-600 hover:underline">
+                        Innovation Saskatchewan <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://researchmanitoba.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-amber-600 hover:underline">
+                        Research Manitoba <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Download className="w-5 h-5 mr-2 text-amber-600" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/saskatchewan-government-business-grants" className="flex items-center text-amber-600 hover:underline">
+                        Saskatchewan Business Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/manitoba-government-business-grants" className="flex items-center text-amber-600 hover:underline">
+                        Manitoba Business Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-amber-700 to-yellow-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -651,10 +703,10 @@ export default function PrairieProvincesInnovationGrantsPage() {
                 Ready to Access Prairie Innovation Funding?
               </h2>
               <p className="text-xl text-amber-100 mb-8">
-                Get expert help navigating Prairie provinces innovation ecosystem and maximizing your PrairiesCan, Saskatchewan, 
+                Get expert help navigating Prairie provinces innovation ecosystem and maximizing your PrairiesCan, Saskatchewan,
                 and Manitoba funding. Our Prairie specialists have secured $65M+ in regional innovation funding.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Button size="lg" className="bg-white text-amber-800 hover:bg-gray-100" asChild>
                   <Link href="/contact?service=prairie-provinces-innovation-grants-expert-help">
@@ -667,7 +719,7 @@ export default function PrairieProvincesInnovationGrantsPage() {
                   </Link>
                 </Button>
               </div>
-              
+
               <p className="text-amber-200 text-sm mt-6">
                 74% success rate • $65M+ secured • AgriTech, Mining & Regional expertise
               </p>
@@ -676,6 +728,51 @@ export default function PrairieProvincesInnovationGrantsPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is PrairiesCan?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Prairies Economic Development Canada (PrairiesCan) is the federal department that supports economic growth in the Prairie provinces through programs like the Business Scale-up and Productivity stream."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What funding is available for AgriTech in the Prairies?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Significant funding is available through the Canadian Agricultural Partnership (CAP), with specific streams for AgriScience, AgriInnovate, and provincial adaptation programs focusing on precision agriculture and sustainable practices."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What does Innovation Saskatchewan fund?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Innovation Saskatchewan funds research institutes (like the Fedoruk Centre for nuclear innovation) and offers programs like the Saskatchewan Technology Startup Incentive (STSI) to attract investment."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is there support for mining innovation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, particularly in Saskatchewan, there is strong support for mining innovation (potash, uranium, rare earths) through IMII (International Minerals Innovation Institute) and targeted R&D tax incentives."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

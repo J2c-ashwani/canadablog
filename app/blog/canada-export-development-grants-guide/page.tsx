@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Globe, Plane, Building, Users, TrendingUp, FileText, Shield, Award, HelpCircle } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Globe, Plane, Building, Users, TrendingUp, FileText, Shield, Award, HelpCircle, ExternalLink, ArrowRight, MousePointerClick } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -113,7 +113,7 @@ export default function CanadaExportDevelopmentGrantsGuide() {
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-4">Major Federal Export Development Programs</h2>
+              <h2 className="text-3xl font-bold text-center mb-4">What Federal Export Grants are Available?</h2>
               <p className="text-center text-gray-600 mb-12">
                 Government of Canada flagship programs designed to help Canadian businesses expand internationally and develop new markets.
               </p>
@@ -287,7 +287,7 @@ export default function CanadaExportDevelopmentGrantsGuide() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Provincial Export Development Programs</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">Which Provinces Support Export Expansion?</h2>
 
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {/* Ontario Export Programs */}
@@ -444,7 +444,7 @@ export default function CanadaExportDevelopmentGrantsGuide() {
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8">Specialized Export Support Programs</h2>
+              <h2 className="text-3xl font-bold text-center mb-8">Are There Specialized Export Support Programs?</h2>
 
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="text-center">
@@ -509,7 +509,7 @@ export default function CanadaExportDevelopmentGrantsGuide() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8">Export Readiness & Support Services</h2>
+              <h2 className="text-3xl font-bold text-center mb-8">How Can I Get Export Readiness Support?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-2 border-teal-200">
@@ -582,6 +582,58 @@ export default function CanadaExportDevelopmentGrantsGuide() {
             ))}
           </div>
         </div>
+
+        {/* Official Resources Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12">Official Export Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-emerald-600" />
+                    Government Programs
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://www.tradecommissioner.gc.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-600 hover:underline">
+                        Trade Commissioner Service <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.edc.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-600 hover:underline">
+                        Export Development Canada (EDC) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.tradecommissioner.gc.ca/funding-financement/canexport/sme-pme/index.aspx?lang=eng" target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-600 hover:underline">
+                        CanExport SMEs Program <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <MousePointerClick className="w-5 h-5 mr-2 text-emerald-600" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/canexport-smes-funding-guide" className="flex items-center text-emerald-600 hover:underline">
+                        Detailed CanExport SMEs Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/edc-women-trade-export-financing" className="flex items-center text-emerald-600 hover:underline">
+                        Women in Trade Finance <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Strong Single CTA Section */}
         <section className="py-20 bg-gradient-to-r from-emerald-600 to-teal-800">

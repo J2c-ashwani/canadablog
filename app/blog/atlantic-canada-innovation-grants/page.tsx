@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Anchor, Waves, Wind, Plane, Ship, Zap } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Anchor, Waves, Wind, Plane, Ship, Zap, ExternalLink, ArrowRight, Building } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -85,7 +85,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Atlantic Canada Innovation Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the Top Innovation Grants in Atlantic Canada?</h2>
 
               <div className="space-y-8">
                 {/* Atlantic Innovation Fund */}
@@ -296,7 +296,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Atlantic Canada Innovation Sector Excellence</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Which Sectors Lead Atlantic Canada Innovation?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Ocean Technology Leadership */}
@@ -517,7 +517,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Atlantic Canada Regional Innovation Hubs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Where are Atlantic Canada's Innovation Hubs?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-blue-200">
@@ -608,7 +608,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Atlantic Canada Funding Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How to Secure Atlantic Canada Innovation Grants?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
@@ -683,6 +683,58 @@ export default function AtlanticCanadaInnovationGrantsPage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Official Atlantic Innovation Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-blue-600" />
+                    Government & Agencies
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://www.canada.ca/en/atlantic-canada-opportunities.html" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                        Atlantic Canada Opportunities Agency (ACOA) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://oceansupercluster.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                        Canada's Ocean Supercluster <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.canada.ca/en/atlantic-canada-opportunities/services/business-development-program/atlantic-innovation-fund.html" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                        Atlantic Innovation Fund Info <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Download className="w-5 h-5 mr-2 text-blue-600" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/nova-scotia-government-business-grants" className="flex items-center text-blue-600 hover:underline">
+                        Nova Scotia Business Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/new-brunswick-government-business-grants" className="flex items-center text-blue-600 hover:underline">
+                        New Brunswick Business Grants <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-800 to-cyan-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -716,6 +768,51 @@ export default function AtlanticCanadaInnovationGrantsPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the Atlantic Innovation Fund (AIF)?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The AIF is a major pan-Atlantic program administered by ACOA that provides repayable contributions of up to $15 million for large-scale R&D and commercialization projects."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does Canada's Ocean Supercluster work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Ocean Supercluster is an industry-led initiative that co-invests in collaborative technology projects across ocean sectors (fisheries, oil & gas, shipping, defence) to accelerate innovation."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the Atlantic Canada Innovation Tax Credit?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The ACITC is a 15% investment tax credit available to taxable Canadian corporations for qualified expenditures on tangible property (like machinery & equipment) used in Atlantic Canada."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does ACOA provide non-repayable grants?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "ACOA primarily provides interest-free repayable contributions for commercial projects, but may offer non-repayable contributions for non-profit organizations or specific community based initiatives."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }

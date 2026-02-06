@@ -3,6 +3,12 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { CheckCircle, Target, Building, HelpCircle, BookOpen, ExternalLink, Rocket, TrendingUp, DollarSign, Factory } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
@@ -13,9 +19,45 @@ export const metadata: Metadata = {
   keywords: "commercialization funding Canada, scale-up grants, technology commercialization, IRAP scale-up, market entry funding Canada",
 }
 
+const faqData = [
+  {
+    question: "When should companies pursue commercialization funding?",
+    answer: "Optimal timing is after technology development but before sustainable revenue. You should have validated product-market fit through customer pilots or early sales but need capital for market expansion, manufacturing scale-up, or team growth beyond bootstrapping capacity."
+  },
+  {
+    question: "How much funding is typically available?",
+    answer: "Commercialization grants typically range from one hundred thousand to five million dollars depending on program and project scope. Scale-up programs for larger investments can provide tens of millions. Most programs cover fifty to seventy-five percent of eligible costs."
+  },
+  {
+    question: "Are service companies eligible?",
+    answer: "Many commercialization programs focus on product companies with scalable manufacturing or technology assets. However, technology service companies can access funding through digital economy programs, and professional service companies may find support through export development programs."
+  },
+  {
+    question: "What is the difference between commercialization and scale-up funding?",
+    answer: "Commercialization funding focuses on transitioning technology from R&D to market-ready products. Scale-up funding supports established companies expanding production capacity, entering new markets, or growing their workforce significantly."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function CommercializationScaleUpGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-orange-600 to-red-700 text-white py-20">
@@ -117,15 +159,61 @@ export default function CommercializationScaleUpGuidePage() {
           </div>
         </section>
 
-        <section className="py-16 bg-gray-50">
+        {/* Official Resources */}
+        <section className="py-12 bg-white border-t border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-              <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />When should companies pursue commercialization funding?</h3><p className="text-gray-700 mt-2 ml-7">Optimal timing is after technology development but before sustainable revenue. You should have validated product-market fit through customer pilots or early sales but need capital for market expansion, manufacturing scale-up, or team growth beyond bootstrapping capacity.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How much funding is typically available?</h3><p className="text-gray-700 mt-2 ml-7">Commercialization grants typically range from one hundred thousand to five million dollars depending on program and project scope. Scale-up programs for larger investments can provide tens of millions. Most programs cover fifty to seventy-five percent of eligible costs.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Are service companies eligible?</h3><p className="text-gray-700 mt-2 ml-7">Many commercialization programs focus on product companies with scalable manufacturing or technology assets. However, technology service companies can access funding through digital economy programs, and professional service companies may find support through export development programs.</p></CardContent></Card>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Official Government Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <a href="https://nrc.canada.ca/en/support-technology-innovation/nrc-irap" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-orange-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">NRC IRAP</div>
+                    <div className="text-sm text-gray-600">Industrial Research Assistance Program</div>
+                  </div>
+                </a>
+                <a href="https://ised-isde.canada.ca/site/strategic-innovation-fund/en" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-red-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Strategic Innovation Fund</div>
+                    <div className="text-sm text-gray-600">Large-scale innovation projects</div>
+                  </div>
+                </a>
+                <a href="https://www.bdc.ca/en/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-green-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">BDC</div>
+                    <div className="text-sm text-gray-600">Business Development Bank of Canada</div>
+                  </div>
+                </a>
+                <a href="https://www.edc.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">EDC</div>
+                    <div className="text-sm text-gray-600">Export Development Canada</div>
+                  </div>
+                </a>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+              <Accordion type="single" collapsible className="w-full">
+                {faqData.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="text-left font-semibold text-gray-900">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
           </div>
         </section>

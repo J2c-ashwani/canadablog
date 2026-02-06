@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Lightbulb, BookOpen, FlaskConical, GraduationCap } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Lightbulb, BookOpen, FlaskConical, GraduationCap, ExternalLink, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +25,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "Can I apply for NSERC if I am a pre-revenue startup?",
+    answer: "No, NSERC Discovery Grants are primarily for academic researchers at eligible Canadian universities. However, startups can partner with these researchers through NSERC Alliance or Mitacs Accelerate to access this expertise and funding indirectly."
+  },
+  {
+    question: "Does 'Ideation' funding cover my salary?",
+    answer: "Most Stage 1 grants (like NSERC or Mitacs) cover student stipends, research materials, and university overhead. They typically do not cover the founder's salary. For salary support, look into wage subsidies or specific entrepreneurship fellowships."
+  },
+  {
+    question: "How long does the NSERC Discovery application process take?",
+    answer: "It is a long cycle. Notices of Intent are usually due in August, full applications in November, and results are announced the following April. It requires long-term planning."
+  },
+  {
+    question: "What is TRL 1-3 funding used for?",
+    answer: "TRL 1-3 funding is used for basic research, proof of concept, and validating scientific principles. It covers costs like lab equipment, graduate student researchers, and preliminary feasibility studies."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function IdeationResearchFundingCanadaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -85,7 +127,7 @@ export default function IdeationResearchFundingCanadaPage() {
         <section className="py-12 bg-purple-50 border-y border-purple-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Understanding Technology Readiness Levels (TRL 1-3)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">What are Technology Readiness Levels (TRL 1-3)?</h2>
               <p className="text-gray-700 text-center mb-10 max-w-2xl mx-auto">
                 Government grants are strictly categorized by TRL. Stage 1 focus is exclusively on the "Discovery" phase. Applying for the wrong stage is the #1 reason for rejection.
               </p>
@@ -126,7 +168,7 @@ export default function IdeationResearchFundingCanadaPage() {
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Stage 1: Ideation & Research Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Programs Support Early-Stage Ideation?</h2>
 
               <div className="space-y-8">
                 {/* NSERC Discovery Grants */}
@@ -337,7 +379,7 @@ export default function IdeationResearchFundingCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Stage 1: Ideation & Research Covers</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Activities are Eligible for Stage 1 Funding?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-purple-200">
@@ -428,7 +470,7 @@ export default function IdeationResearchFundingCanadaPage() {
         <section className="py-16 bg-white border-b border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">From Idea to Prototype: Stage 1 Roadmap</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How Do You Move from Idea to Prototype?</h2>
               <div className="grid md:grid-cols-4 gap-4">
                 <div className="bg-purple-50 p-6 rounded-lg border border-purple-100 relative">
                   <div className="absolute -top-4 left-6 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
@@ -463,7 +505,7 @@ export default function IdeationResearchFundingCanadaPage() {
         <section className="py-16 bg-slate-50 border-b border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Case Study: From Lab Bench to Seed Round</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Case Study: How Does Early-Stage Funding Work in Practice?</h2>
               <div className="bg-white rounded-xl p-8 border border-slate-200 shadow-sm">
                 <div className="flex flex-col md:flex-row gap-6 mb-6">
                   <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-2xl flex-shrink-0">
@@ -526,7 +568,7 @@ export default function IdeationResearchFundingCanadaPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Stage 1 Research Funding Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How Can You Win Stage 1 Research Grants?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
@@ -601,25 +643,62 @@ export default function IdeationResearchFundingCanadaPage() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-16 bg-white border-t border-gray-100">
+        {/* Official Resources */}
+        <section className="py-12 bg-white border-t border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">Can I apply for NSERC if I am a pre-revenue startup?</h3>
-                  <p className="text-gray-600">No, NSERC Discovery Grants are primarily for academic researchers at eligible Canadian universities. However, startups can partner with these researchers through NSERC Alliance or Mitacs Accelerate to access this expertise and funding indirectly.</p>
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">Does "Ideation" funding cover my salary?</h3>
-                  <p className="text-gray-600">Most Stage 1 grants (like NSERC or Mitacs) cover student stipends, research materials, and university overhead. They typically do not cover the founder's salary. For salary support, look into wage subsidies or specific entrepreneurship fellowships.</p>
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">How long does the NSERC Discovery application process take?</h3>
-                  <p className="text-gray-600">It is a long cycle. Notices of Intent are usually due in August, full applications in November, and results are announced the following April. It requires long-term planning.</p>
-                </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Official Government Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <a href="https://www.nserc-crsng.gc.ca/professors-professeurs/grants-subs/discovery-decouverte_eng.asp" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">NSERC Discovery Grants</div>
+                    <div className="text-sm text-gray-600">Official program guidelines</div>
+                  </div>
+                </a>
+                <a href="https://www.mitacs.ca/en/programs/accelerate" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-indigo-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Mitacs Accelerate</div>
+                    <div className="text-sm text-gray-600">Internship program details</div>
+                  </div>
+                </a>
+                <a href="https://nrc.canada.ca/en/support-technology-innovation/nrc-irap" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">NRC IRAP</div>
+                    <div className="text-sm text-gray-600">Industrial Research Assistance Program</div>
+                  </div>
+                </a>
+                <a href="https://www.sshrc-crsh.gc.ca/funding-financement/programs-programmes/insight_grants-subventions_savoir-eng.aspx" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-rose-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">SSHRC Insight Grants</div>
+                    <div className="text-sm text-gray-600">Social sciences funding</div>
+                  </div>
+                </a>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <Accordion type="single" collapsible className="w-full">
+                {faqData.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="text-left font-semibold text-gray-900">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
           </div>
         </section>

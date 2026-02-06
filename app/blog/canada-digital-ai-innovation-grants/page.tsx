@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, Download, Brain, Code, Database, Sparkles } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, Download, Brain, Code, Database, Sparkles, ExternalLink, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -35,8 +35,8 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
                 Canada Digital & AI Innovation Grants 2026
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Access $850M+ in digital and AI innovation funding through 25+ federal and provincial programs. 
-                From Scale AI supercluster to CDAP digital adoption - accelerate your artificial intelligence, 
+                Access $850M+ in digital and AI innovation funding through 25+ federal and provincial programs.
+                From Scale AI supercluster to CDAP digital adoption - accelerate your artificial intelligence,
                 digital transformation, and software innovation initiatives.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -85,8 +85,8 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Digital & AI Programs</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the Top Grants for AI and Digital Transformation?</h2>
+
               <div className="space-y-8">
                 {/* Scale AI */}
                 <Card className="border-blue-200">
@@ -112,7 +112,7 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Canada's AI Supercluster providing funding for projects applying AI to supply chains, logistics, 
+                      Canada's AI Supercluster providing funding for projects applying AI to supply chains, logistics,
                       manufacturing, and retail operations across industries.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -162,7 +162,7 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Support for SMEs adopting digital technologies including AI tools, cloud platforms, 
+                      Support for SMEs adopting digital technologies including AI tools, cloud platforms,
                       e-commerce systems, and digital marketing solutions.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -212,7 +212,7 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      IRAP funding for SMEs developing AI/ML solutions, algorithms, and intelligent systems 
+                      IRAP funding for SMEs developing AI/ML solutions, algorithms, and intelligent systems
                       with commercial applications across industries.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -262,7 +262,7 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Federal AI strategy supporting AI research institutes (Mila, Vector, Amii), talent development, 
+                      Federal AI strategy supporting AI research institutes (Mila, Vector, Amii), talent development,
                       and commercialization through industry partnerships.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -296,8 +296,8 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">AI Funding by Application</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Which AI Sectors Qualify for Funding?</h2>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   {
@@ -376,8 +376,8 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Provincial Digital & AI Programs</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Where can I Find Provincial AI Grants (Ontario, Quebec, BC)?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-blue-700">🍁 Leading Provincial Programs:</h4>
@@ -400,7 +400,7 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-purple-700">🎯 Priority AI Applications:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -431,8 +431,8 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">AI Funding Success Strategies</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How to Secure Funding for AI Projects?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -506,6 +506,63 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Official AI & Digital Funding Resources</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Building className="w-5 h-5 mr-2 text-blue-600" />
+                    Government & Agencies
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <a href="https://www.scaleai.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                        Scale AI Supercluster <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://ised-isde.canada.ca/site/canada-digital-adoption-program/en" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                        Canada Digital Adoption Program (CDAP) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://cifar.ca/ai/" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                        Pan-Canadian AI Strategy (CIFAR) <ExternalLink className="w-4 h-4 ml-1" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
+                    <Code className="w-5 h-5 mr-2 text-blue-600" />
+                    Related Guides
+                  </h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link href="/blog/canada-federal-grants" className="flex items-center text-blue-600 hover:underline">
+                        Canada Federal Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/sred-scientific-research-experimental-development" className="flex items-center text-blue-600 hover:underline">
+                        SR&ED Tax Credit Guide <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog/software-saas-startup-grants" className="flex items-center text-blue-600 hover:underline">
+                        Software & SaaS Grants <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-700">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -514,10 +571,10 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
                 Ready to Access Digital & AI Funding?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get our complete digital and AI funding guide or work with specialists who have secured 
+                Get our complete digital and AI funding guide or work with specialists who have secured
                 $85M+ in AI grants across Scale AI, CDAP, and research programs.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Complete Application Guide</h4>
@@ -544,7 +601,7 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-blue-200 text-sm mt-6">
                 79% success rate • $85M+ secured • Scale AI, CDAP & Research expertise
               </p>
@@ -553,6 +610,51 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
         </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the Scale AI Supercluster funding?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Scale AI offers funding for industry-led projects that accelerate the adoption of AI in supply chains. It typically covers up to 50% of eligible project costs for consortiums that include startups, SMEs, and research institutions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is CDAP grant still available?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The CDAP 'Boost Your Business Technology' grant is currently fully subscribed, but the 'Grow Your Business Online' grant remains available for smaller businesses. Additionally, businesses may still access zero-interest loans through BDC for digital transformation."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does IRAP fund AI startups?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, IRAP heavily supports AI and machine learning R&D. They provide non-repayable contributions covering 60-80% of technical labor and subcontractor costs for innovative software development projects."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are there grants for AI research in Canada?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, through the Pan-Canadian AI Strategy, funding is available for AI research institutes (Mila, Vector, Amii) and collaborative projects between academia and industry. NSERC also offers Alliance grants for university-industry AI partnerships."
+                }
+              }
+            ]
+          }),
+        }}
+      />
     </>
   )
 }
