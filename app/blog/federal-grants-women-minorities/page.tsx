@@ -3,470 +3,254 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Users, Heart, Shield } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Clock, ChevronRight, ExternalLink, BookOpen, HelpCircle, Users, Heart, Shield } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Federal Grants for Women, Minorities & Veterans 2026 | Specialized Business Funding",
-  description: "Complete guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. Find WOSB, 8(a), HUBZone, VOSB, and specialized funding programs.",
-  keywords: "women business grants, minority business grants, veteran business grants, WOSB, 8a program, HUBZone, VOSB, disadvantaged business",
-  openGraph: {
-    title: "Federal Grants for Women, Minorities & Veterans 2026",
-    description: "Complete guide to specialized federal grants for women, minority, and veteran entrepreneurs.",
-    url: "https://www.fsidigital.ca/blog/federal-grants-women-minorities",
-  },
+  title: "Federal Grants for Women, Minorities & Veterans 2026 | Complete Certification Guide",
+  description: "Comprehensive guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. WOSB, 8(a), HUBZone, VOSB programs explained.",
+  keywords: "women business grants, minority business grants, veteran business grants, WOSB, 8a program, HUBZone, VOSB, SDVOSB",
 }
 
-export default function FederalGrantsWomenMinorities() {
+export default function FederalGrantsWomenMinoritiesPage() {
   return (
     <>
       <Header />
       <div className="min-h-screen bg-gray-50">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-purple-600 to-pink-700 text-white py-16">
+        <section className="bg-gradient-to-br from-purple-700 to-pink-600 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🎯 Specialized Programs
-              </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Federal Grants for Women, Minorities & Veterans
-              </h1>
-              <p className="text-xl text-purple-100 mb-8">
-                Discover specialized federal funding programs designed to support women-owned, minority-owned, and veteran-owned businesses. Access targeted grants and contracting opportunities.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-white text-purple-700 hover:bg-gray-100">
-                  Explore Programs Below
-                </Button>
-                {/* FIXED: Added proper background styling for visibility */}
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild>
-                  <Link href="/guides/apply-minority-grants">
-                    Get Certification Guide
-                  </Link>
-                </Button>
-              </div>
+              <Badge className="mb-6 bg-white/20 text-white border-white/30"><Heart className="w-3 h-3 mr-1" /> Specialized Federal Programs</Badge>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">Federal Grants for Women, Minorities &amp; Veterans 2026</h1>
+              <p className="text-xl text-purple-100 mb-8">Access billions in federal contracts through specialized certification programs. Complete guide to WOSB, 8(a), HUBZone, and veteran programs.</p>
+              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild><Link href="/contact?service=certification-help">Get Certification Help</Link></Button>
             </div>
           </div>
         </section>
 
-        {/* Quick Stats */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold text-pink-600 mb-2">42%</div>
-                <div className="text-gray-600">Women-Owned Businesses</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-purple-600 mb-2">$133B</div>
-                <div className="text-gray-600">Federal Contracting Goal</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-blue-600 mb-2">2.5M</div>
-                <div className="text-gray-600">Veteran-Owned Businesses</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-green-600 mb-2">5%</div>
-                <div className="text-gray-600">Federal Contracts Goal for WOSBs</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Main Content */}
-        <section className="py-16">
+        <section className="py-8 bg-white border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
-              {/* Overview */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Specialized Federal Programs Exist</h2>
-                <p className="text-lg text-gray-700 mb-6">
-                  The federal government has established specific programs to promote diversity and inclusion in business ownership 
-                  and federal contracting. These programs help level the playing field for historically underrepresented groups.
-                </p>
-                
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="bg-pink-50 p-6 rounded-lg text-center">
-                    <Heart className="w-12 h-12 text-pink-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-lg mb-3 text-pink-800">Women-Owned Businesses</h4>
-                    <p className="text-gray-700 text-sm">Special programs and contracting set-asides for women entrepreneurs</p>
-                  </div>
-                  
-                  <div className="bg-purple-50 p-6 rounded-lg text-center">
-                    <Users className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-lg mb-3 text-purple-800">Minority-Owned Businesses</h4>
-                    <p className="text-gray-700 text-sm">8(a) program and minority business development initiatives</p>
-                  </div>
-                  
-                  <div className="bg-blue-50 p-6 rounded-lg text-center">
-                    <Shield className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-lg mb-3 text-blue-800">Veteran-Owned Businesses</h4>
-                    <p className="text-gray-700 text-sm">VOSB and SDVOSB programs for military veterans</p>
-                  </div>
-                </div>
+              <nav className="p-6 bg-gray-50 rounded-xl">
+                <h2 className="text-lg font-bold mb-4">In This Guide</h2>
+                <ul className="grid md:grid-cols-2 gap-2 text-sm">
+                  <li><a href="#overview" className="text-blue-700 hover:underline">1. Why These Programs Exist</a></li>
+                  <li><a href="#wosb" className="text-blue-700 hover:underline">2. WOSB &amp; EDWOSB Programs</a></li>
+                  <li><a href="#8a" className="text-blue-700 hover:underline">3. 8(a) Business Development</a></li>
+                  <li><a href="#hubzone" className="text-blue-700 hover:underline">4. HUBZone Program</a></li>
+                  <li><a href="#veteran" className="text-blue-700 hover:underline">5. VOSB &amp; SDVOSB Programs</a></li>
+                  <li><a href="#eligibility" className="text-blue-700 hover:underline">6. Eligibility Requirements</a></li>
+                  <li><a href="#certification" className="text-blue-700 hover:underline">7. Certification Process</a></li>
+                  <li><a href="#benefits" className="text-blue-700 hover:underline">8. Program Benefits</a></li>
+                  <li><a href="#contracts" className="text-blue-700 hover:underline">9. Winning Federal Contracts</a></li>
+                  <li><a href="#mistakes" className="text-blue-700 hover:underline">10. Common Mistakes</a></li>
+                  <li><a href="#success" className="text-blue-700 hover:underline">11. Success Strategies</a></li>
+                  <li><a href="#faqs" className="text-blue-700 hover:underline">12. FAQs</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto grid md:grid-cols-4 gap-8 text-center">
+              <div><div className="text-3xl font-bold text-pink-600 mb-2">5%</div><div className="text-gray-600">WOSB Contract Goal</div></div>
+              <div><div className="text-3xl font-bold text-purple-600 mb-2">5%</div><div className="text-gray-600">8(a) Contract Goal</div></div>
+              <div><div className="text-3xl font-bold text-blue-600 mb-2">3%</div><div className="text-gray-600">SDVOSB Contract Goal</div></div>
+              <div><div className="text-3xl font-bold text-green-600 mb-2">3%</div><div className="text-gray-600">HUBZone Contract Goal</div></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="overview" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Why These Federal Programs Exist</h2>
+              <p className="text-gray-700 leading-relaxed mb-6">The federal government has established targeted programs to increase diversity in federal contracting and support historically underrepresented business owners. These programs set aside a percentage of federal contracts specifically for certified businesses, creating opportunities worth billions annually. In fiscal year 2024, the government awarded over $163 billion to small businesses, with specific goals for women-owned (5%), disadvantaged businesses (5%), service-disabled veterans (3%), and HUBZone businesses (3%). Getting certified opens access to these set-aside opportunities that exclude general competition.</p>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="p-6 bg-pink-50 rounded-lg text-center"><Heart className="w-10 h-10 text-pink-600 mx-auto mb-3" /><h3 className="font-bold mb-2">Women-Owned</h3><p className="text-sm text-gray-600">WOSB and EDWOSB certification for federal contracting access</p></div>
+                <div className="p-6 bg-purple-50 rounded-lg text-center"><Users className="w-10 h-10 text-purple-600 mx-auto mb-3" /><h3 className="font-bold mb-2">Minority-Owned</h3><p className="text-sm text-gray-600">8(a) and disadvantaged business development programs</p></div>
+                <div className="p-6 bg-blue-50 rounded-lg text-center"><Shield className="w-10 h-10 text-blue-600 mx-auto mb-3" /><h3 className="font-bold mb-2">Veteran-Owned</h3><p className="text-sm text-gray-600">VOSB and SDVOSB federal priority contracting</p></div>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Women-Owned Small Business Programs */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Women-Owned Small Business (WOSB) Programs</h2>
-                
-                <div className="space-y-6">
-                  <Card className="border-pink-200">
-                    <CardHeader>
-                      <CardTitle className="text-pink-700">Women-Owned Small Business (WOSB) Certification</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-3 gap-4 mb-4">
-                        <div className="flex items-center">
-                          <Target className="w-5 h-5 text-green-600 mr-2" />
-                          <span><strong>Goal:</strong> 5% of federal contracts</span>
-                        </div>
-                        <div className="flex items-center">
-                          <DollarSign className="w-5 h-5 text-blue-600 mr-2" />
-                          <span><strong>Value:</strong> $25B+ annually</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Clock className="w-5 h-5 text-purple-600 mr-2" />
-                          <span><strong>Certification:</strong> Self-certification or 3rd party</span>
-                        </div>
-                      </div>
-                      
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3">Requirements:</h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• 51% owned by women</li>
-                            <li>• Women control day-to-day operations</li>
-                            <li>• Women make long-term decisions</li>
-                            <li>• Meet small business size standards</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3">Benefits:</h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• Access to set-aside contracts</li>
-                            <li>• Sole source awards up to $4M</li>
-                            <li>• Priority in certain industries</li>
-                            <li>• Business development support</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-red-200">
-                    <CardHeader>
-                      <CardTitle className="text-red-700">Economically Disadvantaged WOSB (EDWOSB)</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-700 mb-4">
-                        Enhanced program for women-owned businesses that meet economic disadvantage criteria.
-                      </p>
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3">Additional Requirements:</h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
-                            {/* FIXED: Escaped the < characters */}
-                            <li>• Personal net worth &lt; $750K</li>
-                            <li>• Adjusted gross income &lt; $350K (avg 3 years)</li>
-                            <li>• Assets &lt; $6M</li>
-                            <li>• Meet social disadvantage criteria</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3">Enhanced Benefits:</h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• Additional contract set-asides</li>
-                            <li>• Higher sole source thresholds</li>
-                            <li>• Price evaluation preferences</li>
-                            <li>• Mentorship opportunities</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
+        <section id="wosb" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">WOSB &amp; EDWOSB Programs</h2>
+              <p className="text-gray-700 mb-6">The Women-Owned Small Business (WOSB) program helps women entrepreneurs access federal contracts. The government aims to award 5% of all federal contracting dollars to women-owned businesses—worth over $25 billion annually. WOSB certification requires at least 51% ownership by women who control management and daily operations. The Economically Disadvantaged WOSB (EDWOSB) adds income and asset limits for enhanced benefits including additional contract set-asides in more industries.</p>
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <Card><CardHeader><CardTitle className="text-pink-700">WOSB Requirements</CardTitle></CardHeader><CardContent><ul className="space-y-2 text-sm"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>At least 51% owned by women</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Women control management and daily operations</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Women make long-term business decisions</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Meet SBA small business size standards</span></li></ul></CardContent></Card>
+                <Card><CardHeader><CardTitle className="text-red-700">EDWOSB (Enhanced)</CardTitle></CardHeader><CardContent><ul className="space-y-2 text-sm"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>All WOSB requirements plus economic criteria</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Personal net worth under $750K</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Adjusted gross income under $350K (3-yr avg)</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Total assets under $6M</span></li></ul></CardContent></Card>
               </div>
+              <div className="bg-pink-50 p-6 rounded-lg"><h3 className="font-bold mb-3">WOSB Benefits</h3><div className="grid md:grid-cols-2 gap-4 text-sm"><div><strong>Contract Access:</strong> Set-aside contracts in 83+ industries</div><div><strong>Sole Source:</strong> Up to $4M (services) / $7M (manufacturing)</div><div><strong>Goal:</strong> 5% of all federal contracts</div><div><strong>Competition:</strong> Compete only against other WOSBs</div></div></div>
+            </div>
+          </div>
+        </section>
 
-              {/* Minority Business Programs */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Minority Business Development Programs</h2>
-                
-                <div className="space-y-6">
-                  <Card className="border-purple-200">
-                    <CardHeader>
-                      <CardTitle className="text-purple-700">8(a) Business Development Program</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-3 gap-4 mb-4">
-                        <div className="flex items-center">
-                          <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                          <span><strong>Duration:</strong> 9-year program</span>
-                        </div>
-                        <div className="flex items-center">
-                          <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                          <span><strong>Sole Source:</strong> Up to $4M/$7M</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Target className="w-5 h-5 text-purple-600 mr-2" />
-                          <span><strong>Goal:</strong> 5% of federal contracts</span>
-                        </div>
-                      </div>
-                      
-                      <p className="text-gray-700 mb-4">
-                        Premier program for socially and economically disadvantaged small businesses, providing business 
-                        development assistance and access to federal contracting opportunities.
-                      </p>
-                      
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3">Eligibility:</h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• 51% owned by disadvantaged individuals</li>
-                            <li>• Social disadvantage (minority groups)</li>
-                            <li>• Economic disadvantage criteria</li>
-                            <li>• Good character and potential for success</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3">Program Benefits:</h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• Set-aside and sole-source contracts</li>
-                            <li>• Business development assistance</li>
-                            <li>• Mentor-protégé relationships</li>
-                            <li>• SBA loan programs access</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">HUBZone Program</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-700 mb-4">
-                        Historically Underutilized Business Zone program helps businesses in distressed communities 
-                        access federal contracting opportunities.
-                      </p>
-                      
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3">Requirements:</h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• Located in qualified HUBZone area</li>
-                            <li>• 35% of employees live in HUBZone</li>
-                            <li>• Principal office in HUBZone</li>
-                            <li>• 51% owned by US citizens</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3">Benefits:</h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• 3% federal contracting goal</li>
-                            <li>• Competitive and sole-source awards</li>
-                            <li>• Price evaluation preference (10%)</li>
-                            <li>• Subcontracting opportunities</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
+        <section id="8a" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">8(a) Business Development Program</h2>
+              <p className="text-gray-700 mb-6">The 8(a) program is the SBA&apos;s premier business development program for socially and economically disadvantaged entrepreneurs. It&apos;s a 9-year program that provides business training, counseling, marketing assistance, and access to federal contracting opportunities. Participants get exclusive access to sole-source and set-aside contracts, mentor-protégé partnerships, and intensive business development support. This is the most comprehensive federal small business program available.</p>
+              <div className="grid md:grid-cols-3 gap-4 mb-6">
+                <div className="bg-white p-4 rounded-lg border"><Clock className="w-6 h-6 text-purple-600 mb-2" /><div className="font-bold">9 Years</div><div className="text-sm text-gray-600">Program duration</div></div>
+                <div className="bg-white p-4 rounded-lg border"><DollarSign className="w-6 h-6 text-green-600 mb-2" /><div className="font-bold">$4M/$7M</div><div className="text-sm text-gray-600">Sole source threshold</div></div>
+                <div className="bg-white p-4 rounded-lg border"><Target className="w-6 h-6 text-blue-600 mb-2" /><div className="font-bold">5%</div><div className="text-sm text-gray-600">Federal contract goal</div></div>
               </div>
-
-              {/* Veteran-Owned Business Programs */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Veteran-Owned Small Business Programs</h2>
-                
-                <div className="space-y-6">
-                  <Card className="border-blue-200">
-                    <CardHeader>
-                      <CardTitle className="text-blue-700">Veteran-Owned Small Business (VOSB)</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3">Requirements:</h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• 51% owned by veterans</li>
-                            <li>• Veterans control management</li>
-                            <li>• Veterans control daily operations</li>
-                            <li>• Meet small business size standards</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3">Benefits:</h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• Access to set-aside contracts</li>
-                            <li>• VA contracting opportunities</li>
-                            <li>• Subcontracting preferences</li>
-                            <li>• Business development resources</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-indigo-200">
-                    <CardHeader>
-                      <CardTitle className="text-indigo-700">Service-Disabled Veteran-Owned Small Business (SDVOSB)</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-3 gap-4 mb-4">
-                        <div className="flex items-center">
-                          <Target className="w-5 h-5 text-green-600 mr-2" />
-                          <span><strong>Goal:</strong> 3% of federal contracts</span>
-                        </div>
-                        <div className="flex items-center">
-                          <DollarSign className="w-5 h-5 text-blue-600 mr-2" />
-                          <span><strong>Sole Source:</strong> Up to $4M/$7M</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Clock className="w-5 h-5 text-purple-600 mr-2" />
-                          <span><strong>Certification:</strong> VA verification required</span>
-                        </div>
-                      </div>
-                      
-                      <p className="text-gray-700 mb-4">
-                        Enhanced program for businesses owned by veterans with service-connected disabilities.
-                      </p>
-                      
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3">Additional Requirements:</h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• Service-connected disability rating</li>
-                            <li>• VA verification required</li>
-                            <li>• Veteran must have day-to-day control</li>
-                            <li>• Economic interest aligned with control</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3">Enhanced Benefits:</h5>
-                          <ul className="text-sm text-gray-600 space-y-1">
-                            <li>• Priority in federal contracting</li>
-                            <li>• Higher sole-source thresholds</li>
-                            <li>• VA vendor preference</li>
-                            <li>• Mentor-protégé opportunities</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 bg-purple-50 rounded-lg"><h3 className="font-bold mb-3 text-purple-700">Eligibility</h3><ul className="space-y-1 text-sm"><li>• 51% owned by socially disadvantaged individual</li><li>• Meet economic disadvantage criteria</li><li>• Good character and potential for success</li><li>• At least 2 years in business</li><li>• Primary industry with growth potential</li></ul></div>
+                <div className="p-6 bg-green-50 rounded-lg"><h3 className="font-bold mb-3 text-green-700">Program Benefits</h3><ul className="space-y-1 text-sm"><li>• Set-aside and sole-source contracts</li><li>• Business development assistance</li><li>• Mentor-protégé partnerships</li><li>• Management and technical training</li><li>• Federal contracting support</li></ul></div>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Certification Process */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Certification Process Overview</h2>
-                
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <span className="text-white font-bold text-xl">1</span>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-4">Determine Eligibility</h3>
-                    <p className="text-gray-600">
-                      Review program requirements and determine which certifications your business qualifies for.
-                    </p>
-                  </div>
-
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <span className="text-white font-bold text-xl">2</span>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-4">Gather Documents</h3>
-                    <p className="text-gray-600">Collect required documentation including financial records, ownership proof, and personal information.</p>
-                  </div>
-
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <span className="text-white font-bold text-xl">3</span>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-4">Submit Application</h3>
-                    <p className="text-gray-600">Complete online applications through appropriate portals (SAM.gov, certify.sba.gov, etc.)</p>
-                  </div>
-
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <span className="text-white font-bold text-xl">4</span>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-4">Maintain Certification</h3>
-                    <p className="text-gray-600">
-                      Keep certifications current through annual updates and compliance with program requirements.
-                    </p>
-                  </div>
-                </div>
+        <section id="hubzone" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">HUBZone Program</h2>
+              <p className="text-gray-700 mb-6">The Historically Underutilized Business Zone (HUBZone) program encourages economic development in distressed communities by providing preferential access to federal contracts for businesses located in and hiring from these areas. The program has a 3% federal contracting goal and offers a 10% price evaluation preference in competitive bids. Businesses must have their principal office in a qualified HUBZone and employ at least 35% of their workforce from HUBZone areas.</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card><CardHeader><CardTitle className="text-green-700">HUBZone Requirements</CardTitle></CardHeader><CardContent><ul className="space-y-2 text-sm"><li>• Principal office in HUBZone area</li><li>• At least 35% of employees live in HUBZone</li><li>• At least 51% owned by US citizens</li><li>• Meet SBA size standards</li></ul></CardContent></Card>
+                <Card><CardHeader><CardTitle className="text-blue-700">HUBZone Benefits</CardTitle></CardHeader><CardContent><ul className="space-y-2 text-sm"><li>• 3% federal contracting goal</li><li>• 10% price evaluation preference</li><li>• Set-aside and sole-source contracts</li><li>• Subcontracting opportunities</li></ul></CardContent></Card>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Common Mistakes */}
-              <div className="bg-yellow-50 rounded-lg p-8 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Common Certification Mistakes to Avoid</h2>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-red-700">❌ Avoid These Mistakes:</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Incomplete or inaccurate documentation</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Not meeting ownership control requirements</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Failing to maintain certification status</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Missing annual recertification deadlines</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-green-700">✅ Success Tips:</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Work with experienced consultants</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Maintain detailed financial records</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Document all operational control</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Set calendar reminders for renewals</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+        <section id="veteran" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">VOSB &amp; SDVOSB Programs</h2>
+              <p className="text-gray-700 mb-6">The federal government recognizes veterans&apos; service with preferential contracting programs. VOSB (Veteran-Owned Small Business) and SDVOSB (Service-Disabled Veteran-Owned Small Business) certifications provide significant advantages in federal contracting. SDVOSB has a 3% federal contracting goal and receives priority for VA contracts under the Vets First program. Veterans with service-connected disabilities receive additional benefits including higher sole-source thresholds.</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-blue-200"><CardHeader><CardTitle className="text-blue-700">VOSB</CardTitle></CardHeader><CardContent><p className="text-sm text-gray-600 mb-3">For businesses 51%+ owned by veterans who control management and daily operations.</p><ul className="space-y-1 text-sm"><li>• Access to set-aside contracts</li><li>• VA priority contracting</li><li>• Subcontracting opportunities</li></ul></CardContent></Card>
+                <Card className="border-indigo-200"><CardHeader><CardTitle className="text-indigo-700">SDVOSB</CardTitle></CardHeader><CardContent><p className="text-sm text-gray-600 mb-3">Enhanced program for veterans with service-connected disabilities.</p><ul className="space-y-1 text-sm"><li>• 3% federal contract goal</li><li>• Higher sole-source thresholds</li><li>• VA Vets First contracting priority</li></ul></CardContent></Card>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* FIXED: Single CTA Button - Removed external link */}
-              <div className="bg-gradient-to-r from-purple-600 to-pink-700 rounded-lg p-8 text-white text-center">
-                <h3 className="text-2xl font-bold mb-4">Ready to Get Certified?</h3>
-                <p className="text-purple-100 mb-6 text-lg">
-                  Get our comprehensive certification guide with step-by-step instructions, required documents checklist, 
-                  and application strategies for each program.
-                </p>
-                <Button size="lg" className="bg-white text-purple-700 hover:bg-gray-100" asChild>
-                  <Link href="/guides/apply-minority-grants">
-                    Get Certification Guide
-                  </Link>
-                </Button>
+        <section id="eligibility" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Eligibility Requirements Summary</h2>
+              <p className="text-gray-700 mb-6">Each certification program has specific ownership, control, and operational requirements. Understanding these requirements upfront helps you prepare complete documentation and avoid common rejection issues. Many businesses qualify for multiple certifications, which can be stacked for maximum contract access.</p>
+              <div className="overflow-x-auto"><table className="w-full border-collapse border border-gray-200"><thead><tr className="bg-purple-50"><th className="border px-4 py-3 text-left">Program</th><th className="border px-4 py-3 text-left">Ownership</th><th className="border px-4 py-3 text-left">Key Requirements</th></tr></thead><tbody>
+                <tr><td className="border px-4 py-3 font-semibold">WOSB</td><td className="border px-4 py-3">51%+ women</td><td className="border px-4 py-3">Women control operations</td></tr>
+                <tr className="bg-gray-50"><td className="border px-4 py-3 font-semibold">8(a)</td><td className="border px-4 py-3">51%+ disadvantaged</td><td className="border px-4 py-3">2+ years in business, economic need</td></tr>
+                <tr><td className="border px-4 py-3 font-semibold">HUBZone</td><td className="border px-4 py-3">51%+ US citizens</td><td className="border px-4 py-3">Located in HUBZone, 35% employees from area</td></tr>
+                <tr className="bg-gray-50"><td className="border px-4 py-3 font-semibold">SDVOSB</td><td className="border px-4 py-3">51%+ disabled veterans</td><td className="border px-4 py-3">VA disability rating, veteran controls business</td></tr>
+              </tbody></table></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="certification" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Certification Process</h2>
+              <p className="text-gray-700 mb-6">The certification process requires thorough documentation of ownership, control, and business operations. Most certifications are processed through certify.sba.gov, though veteran certifications go through the VA. Plan for 2-6 months depending on the program and your documentation readiness.</p>
+              <div className="space-y-4">
+                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">1</div><div><h3 className="font-bold">Determine Eligibility</h3><p className="text-gray-600 text-sm">Review program requirements carefully. Some programs have strict ownership and control criteria.</p></div></div>
+                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">2</div><div><h3 className="font-bold">Register in SAM.gov</h3><p className="text-gray-600 text-sm">All federal contractors must register in the System for Award Management (SAM).</p></div></div>
+                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">3</div><div><h3 className="font-bold">Gather Documentation</h3><p className="text-gray-600 text-sm">Collect ownership documents, tax returns, financial statements, resumes, and control evidence.</p></div></div>
+                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">4</div><div><h3 className="font-bold">Submit Application</h3><p className="text-gray-600 text-sm">Apply through appropriate portal (certify.sba.gov for most programs, VA for veteran programs).</p></div></div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="benefits" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Federal Certification Benefits</h2>
+              <p className="text-gray-700 mb-6">Certification opens doors to exclusive contracting opportunities not available to the general market. Benefits include set-aside competitions where only certified firms compete, sole-source awards for contracts under threshold amounts, and access to business development resources and mentor programs.</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 bg-green-50 rounded-lg"><h3 className="font-bold mb-3 text-green-700">Contract Access</h3><ul className="space-y-1 text-sm"><li>• Set-aside competitions (limited to certified firms)</li><li>• Sole-source awards up to $4M-$7M</li><li>• Subcontracting opportunities with large primes</li><li>• Agency-specific programs and preferences</li></ul></div>
+                <div className="p-6 bg-blue-50 rounded-lg"><h3 className="font-bold mb-3 text-blue-700">Business Development</h3><ul className="space-y-1 text-sm"><li>• Mentor-protégé programs</li><li>• Training and counseling resources</li><li>• Networking events and matchmaking</li><li>• Technical assistance centers</li></ul></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contracts" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Winning Federal Contracts</h2>
+              <p className="text-gray-700 mb-6">Certification alone does not guarantee contracts. Winning requires market research, capability development, relationship building with contracting officers, and competitive pricing. Many successful businesses start as subcontractors to build past performance before pursuing prime contracts.</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div><h3 className="font-bold mb-3 text-purple-700">Finding Opportunities</h3><ul className="space-y-2 text-sm"><li className="flex items-start"><ChevronRight className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>SAM.gov contract opportunities database</span></li><li className="flex items-start"><ChevronRight className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Agency-specific procurement portals</span></li><li className="flex items-start"><ChevronRight className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Industry matchmaking events</span></li><li className="flex items-start"><ChevronRight className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>PTAC (Procurement Technical Assistance Centers)</span></li></ul></div>
+                <div><h3 className="font-bold mb-3 text-blue-700">Success Strategies</h3><ul className="space-y-2 text-sm"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Build past performance through subcontracting</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Network with contracting officers</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Pursue joint ventures with experienced firms</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Respond to market research opportunities</span></li></ul></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="mistakes" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Common Certification Mistakes</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ Incomplete Documentation</h3><p className="text-sm text-gray-600">Missing ownership documents, outdated tax returns, or incomplete financial statements delay approval significantly.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ Control Issues</h3><p className="text-sm text-gray-600">Qualifying owner must demonstrate actual control over business decisions and daily operations, not just ownership.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ Missing Recertification</h3><p className="text-sm text-gray-600">Annual recertification is required. Missing deadlines results in immediate loss of certification.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ Pass-Through Arrangements</h3><p className="text-sm text-gray-600">Using certification only to win contracts then subcontracting most work is fraud and results in debarment.</p></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="success" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Success Strategies</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div><h3 className="font-bold mb-3 text-green-700">✅ Do This</h3><ul className="space-y-2 text-sm"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Get professional help with certification applications</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Pursue multiple certifications (stack them for access)</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Start building federal experience early through subcontracts</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Attend local PTAC training and events</span></li></ul></div>
+                <div><h3 className="font-bold mb-3 text-purple-700">🎯 Pro Tips</h3><ul className="space-y-2 text-sm"><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>8(a) can be combined with HUBZone for dual benefits</span></li><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Women veterans can get WOSB + SDVOSB certifications</span></li><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Join mentor-protégé programs immediately after certification</span></li><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>VA contracts prioritize SDVOSBs through Vets First</span></li></ul></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="faqs" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How long does certification take?</h3><p className="text-gray-700 mt-2 ml-7">WOSB: 2-4 weeks. 8(a): 90-180 days. HUBZone: 60-90 days. SDVOSB: 60-90 days. Processing depends on documentation completeness.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can I have multiple certifications?</h3><p className="text-gray-700 mt-2 ml-7">Yes! Many businesses are &quot;dual-certified&quot; (e.g., 8(a) + HUBZone or WOSB + SDVOSB), which expands contract access significantly.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Is certification free?</h3><p className="text-gray-700 mt-2 ml-7">SBA certifications are free. Some third-party certifications charge fees. Watch for scams offering &quot;guaranteed&quot; certification for a fee.</p></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/women-business-centers-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Women&apos;s Business Centers</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/sba-7a-loans-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA 7(a) Loans</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/small-business-grants-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>State-by-State Guides</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-gradient-to-r from-purple-700 to-pink-600">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center text-white">
+              <h2 className="text-4xl font-bold mb-6">Ready to Get Certified?</h2>
+              <p className="text-xl text-purple-100 mb-8">Our team helps businesses navigate the certification process, prepare documentation, and win federal contracts.</p>
+              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild><Link href="/contact?service=certification-help">Get Certification Help</Link></Button>
             </div>
           </div>
         </section>
