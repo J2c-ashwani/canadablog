@@ -103,7 +103,7 @@ export default function QuebecSmallBusinessGrantsGuide() {
         <section id="overview" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Quebec Business Funding Overview</h2>
+              <h2 className="text-3xl font-bold mb-6">How does Quebec business funding work?</h2>
 
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-4">
@@ -137,7 +137,7 @@ export default function QuebecSmallBusinessGrantsGuide() {
         <section id="programs" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Major Quebec Small Business Grant Programs</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">What are the major Quebec grant programs?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Investissement Quebec SME Fund */}
@@ -674,7 +674,7 @@ export default function QuebecSmallBusinessGrantsGuide() {
         <section id="industries" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Industry-Specific Grants in Quebec</h2>
+              <h2 className="text-3xl font-bold mb-6">Which industries get the most Quebec funding?</h2>
 
               <div className="grid md:grid-cols-3 gap-4">
                 <div className="p-4 bg-white rounded-lg shadow-sm">
@@ -716,7 +716,7 @@ export default function QuebecSmallBusinessGrantsGuide() {
         <section id="cities" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Montreal & Quebec City Business Programs</h2>
+              <h2 className="text-3xl font-bold mb-6">Are there local grants in Montreal and Quebec City?</h2>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <Card>
@@ -775,7 +775,7 @@ export default function QuebecSmallBusinessGrantsGuide() {
         <section id="alternatives" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Alternatives to Quebec Business Grants</h2>
+              <h2 className="text-3xl font-bold mb-6">What if I don't qualify for Quebec grants?</h2>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="p-6 bg-white rounded-lg border">

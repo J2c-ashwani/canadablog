@@ -932,6 +932,42 @@ export default function NASASBIRSpaceTechGrantsPage() {
           </div>
         </section>
 
+        {/* Related SBIR Programs */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Explore Other SBIR Programs</h2>
+              <p className="text-gray-700 mb-6">NASA is one of 11 agencies offering SBIR/STTR funding. Explore sector-specific guides:</p>
+              <div className="grid md:grid-cols-3 gap-4">
+                <Link href="/blog/sbir-sttr-complete-guide" className="p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all">
+                  <h3 className="font-bold mb-1">SBIR/STTR Overview</h3>
+                  <p className="text-sm text-gray-600">Full program guide →</p>
+                </Link>
+                <Link href="/blog/dod-sbir-defense-tech-grants" className="p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all">
+                  <h3 className="font-bold mb-1">DoD SBIR</h3>
+                  <p className="text-sm text-gray-600">Defense tech →</p>
+                </Link>
+                <Link href="/blog/doe-sbir-clean-energy-grants" className="p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all">
+                  <h3 className="font-bold mb-1">DOE SBIR</h3>
+                  <p className="text-sm text-gray-600">Clean energy →</p>
+                </Link>
+                <Link href="/blog/nih-sbir-biotech-grants" className="p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all">
+                  <h3 className="font-bold mb-1">NIH SBIR</h3>
+                  <p className="text-sm text-gray-600">Biotech &amp; health →</p>
+                </Link>
+                <Link href="/blog/nsf-sbir-grants-technology-startups" className="p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all">
+                  <h3 className="font-bold mb-1">NSF SBIR</h3>
+                  <p className="text-sm text-gray-600">Deep tech →</p>
+                </Link>
+                <Link href="/blog/usda-sbir-agtech-grants" className="p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all">
+                  <h3 className="font-bold mb-1">USDA SBIR</h3>
+                  <p className="text-sm text-gray-600">AgTech &amp; food →</p>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-indigo-700 to-purple-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
