@@ -20,9 +20,68 @@ export const metadata: Metadata = {
 }
 
 export default function USDASBIRAgTechGrantsPage() {
+  const faqData = [
+    {
+      question: "How strict is the 33% outsourcing limit?",
+      answer: "Extremely. For Phase I, the small business MUST perform at least 67% of the work (budget-wise). You can only pay consultants/universities/testing labs 33% of the total $125k. If you need more help, consider STTR (allows 60% outsourcing)."
+    },
+    {
+      question: "Can I buy equipment with the grant?",
+      answer: "Generally, no. USDA SBIR funds are for research (labor, materials, testing). They do not want you buying a tractor or a $50k drone. You can lease equipment or pay for 'machine time,' but capital purchases are usually disallowed."
+    },
+    {
+      question: "Do I need a PhD on the team?",
+      answer: "No, but you need 'credible expertise.' If you are building an AI crop sensor, you need a software engineer and an agronomist. If you lack credentials, partner with a University Extension specialist as a consultant to validate your approach."
+    },
+    {
+      question: "What if my 'farm' is indoors (Vertical Farming)?",
+      answer: "Totally fine. USDA funds Controlled Environment Agriculture (CEA), hydroponics, aquaponics, and vertical farming. Focus on Topic 8.13 (Plant Production/Engineering)."
+    },
+    {
+      question: "Is there an audit?",
+      answer: "Yes. If you win, you must track every hour worked and every dollar spent. You need a timesheet system compliant with federal regulations. USDA is grant-based, so you drawdown funds as you spend them."
+    },
+    {
+      question: "Can I apply if I am a sole proprietor?",
+      answer: "Yes, but you must be a registered business entity (LLC, S-Corp, etc.) by the time of award. The PI must be primarily employed (51%) by the small business at the time of award."
+    },
+    {
+      question: "Does USDA require 'Matching Funds'?",
+      answer: "No. USDA SBIR does not require you to bring your own cash. However, 'investor interest' (like a Letter of Intent from an angel investor) powerfully validates commercial potential."
+    },
+    {
+      question: "Can I use the grant to pay for patent lawyers?",
+      answer: "Only if you use the TABA funds ($6,500). You cannot use the main $125k research budget for legal fees. This is why requesting the TABA supplement is essentially mandatory."
+    },
+    {
+      question: "How long does it take to get paid?",
+      answer: "It is slow. If you apply in September, you won't know if you won until March/April. If you win, the first check won't arrive until June/July. Plan cash flow accordingly."
+    },
+    {
+      question: "Is there a 'Phase III'?",
+      answer: "Sort of. Phase III means 'Sales' or private investment. USDA generally doesn't give more grant money after Phase II. But Phase I/II status gives you sole-source contracting rights with the federal government."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-green-700 to-emerald-900 text-white py-16">
@@ -810,124 +869,16 @@ export default function USDASBIRAgTechGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">USDA SBIR Frequently Asked Questions</h2>
-
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
-                    <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
-                    How strict is the 33% outsourcing limit?
-                  </h3>
-                  <p className="text-gray-700 ml-8">
-                    Extremely. For Phase I, the small business <strong>must perform at least 67%</strong> of the work (budget-wise).
-                    You can only pay consultants/universities/testing labs 33% of the total $125k.
-                    If you need more help, consider STTR (allows 60% outsourcing) or ensure you hire the consultants as W-2 employees.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
-                    <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
-                    Can I buy equipment with the grant?
-                  </h3>
-                  <p className="text-gray-700 ml-8">
-                    Generally, no. USDA SBIR funds are for <em>research</em> (labor, materials, testing).
-                    They do not want you buying a tractor or a $50k drone.
-                    You can lease equipment for the duration of the project, or pay for "machine time," but capital purchases are usually disallowed.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
-                    <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
-                    Do I need a PhD on the team?
-                  </h3>
-                  <p className="text-gray-700 ml-8">
-                    No, but you need "credible expertise." If you are building an AI crop sensor, you need a software engineer and an agronomist.
-                    If you lack the academic credentials, partner with a University Extension specialist as a consultant.
-                    Their letter of support validates your scientific approach.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
-                    <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
-                    What if my "farm" is indoors (Vertical Farming)?
-                  </h3>
-                  <p className="text-gray-700 ml-8">
-                    Totally fine. USDA funds Controlled Environment Agriculture (CEA), hydroponics, aquaponics, and vertical farming.
-                    Focus on Topic 8.13 (Plant Production/Engineering).
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
-                    <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
-                    Is there an audit?
-                  </h3>
-                  <p className="text-gray-700 ml-8">
-                    Yes. If you win, you must track every hour worked and every dollar spent.
-                    You need a timesheet system (not just a spreadsheet) compliant with federal regulations.
-                    USDA is grant-based, so you drawdown funds as you spend them.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
-                    <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
-                    Can I apply if I am a sole proprietor?
-                  </h3>
-                  <p className="text-gray-700 ml-8">
-                    Yes, but you must be a registered business entity (LLC, S-Corp, etc.) by the time of award.
-                    The PI (Principal Investigator) must be primarily employed (51%) by the small business at the time of award.
-                    So, don't quit your day job until you win, but be ready to quit if you do win.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
-                    <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
-                    Does USDA require "Matching Funds"?
-                  </h3>
-                  <p className="text-gray-700 ml-8">
-                    No. Unlike some state grants, the USDA SBIR does not require you to bring your own cash to the table.
-                    However, "investor interest" helps. If you have a Letter of Intent from an angel investor saying "We will invest $50k if they win Phase I," that powerfully validates commercial potential.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
-                    <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
-                    Can I use the grant to pay for patent lawyers?
-                  </h3>
-                  <p className="text-gray-700 ml-8">
-                    Only if you use the <strong>TABA</strong> funds (see above). You cannot use the main $125k research budget for legal fees or patent filing.
-                    This is why requesting the extra $6,500 TABA supplement is essentially mandatory for smart applicants.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
-                    <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
-                    How long does it take to get paid?
-                  </h3>
-                  <p className="text-gray-700 ml-8">
-                    It is slow. If you apply in September, you won't know if you won until March/April.
-                    If you win, the first check won't arrive until June/July.
-                    Plan your cash flow accordingly; this is not "fast cash."
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
-                    <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
-                    Is there a "Phase III"?
-                  </h3>
-                  <p className="text-gray-700 ml-8">
-                    Sort of. "Phase III" just means "Sales." USDA does not give you more money.
-                    Phase III is when you sell your robot to John Deere or your sensor to 1,000 farmers.
-                    However, once you have Phase I/II status, you have special "sole-source" contracting rights with the federal government, meaning they can buy from you without a bidding war.
-                  </p>
-                </div>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                      <HelpCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-700 ml-9">{faq.answer}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
