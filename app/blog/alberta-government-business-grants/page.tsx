@@ -3,257 +3,250 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Zap, TrendingUp, BarChart3, MapPin } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Leaf, PieChart, TrendingUp, HelpCircle, Sprout, Tractor, BookOpen, ExternalLink, Beaker } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
-import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable"
-import { ExpertTipBox } from "@/components/blog/ExpertTipBox"
 
 export const metadata: Metadata = {
-  title: "Alberta Government Business Grants 2026 | Provincial Energy & Innovation Funding Guide",
-  description: "Detailed guide to Alberta's $15M+ business grants. Access Alberta Innovates, ERA emissions funding, and diversification programs. Strategies for Calgary & Edmonton startups.",
-  keywords: "Alberta business grants, Alberta Innovates, ERA funding, Calgary startup grants, Edmonton business funding, Alberta diversification program",
-  openGraph: {
-    title: "Alberta Business Grants 2026 | Insider Funding Guide",
-    description: "Expert analysis of Alberta's provincial funding landscape. How to secure Alberta Innovates and ERA grants.",
-    url: "https://www.fsidigital.ca/blog/alberta-government-business-grants",
-    images: ["/og-image.png"],
-  },
+  title: "Alberta Government Business Grants 2026 | Complete Provincial Funding Guide",
+  description: "Complete guide to Alberta government business grants. Access Alberta Innovates, AITC, CAGC, and provincial funding programs for startups, SMEs, and established businesses.",
+  keywords: "Alberta government grants, Alberta business funding, Alberta Innovates, AITC, CAGC, provincial grants Alberta, Edmonton grants, Calgary grants",
 }
 
-export default function AlbertaGovernmentBusinessGrantsBlogPage() {
+export default function AlbertaGovernmentBusinessGrantsPage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-white">
-        {/* Unique Hero Section - Breaking the 'Mad Lib' Template */}
-        <section className="relative overflow-hidden bg-slate-900 text-white py-20">
-          <div className="absolute inset-0 bg-[url('/images/alberta-pattern.svg')] opacity-10"></div>
-          <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <Badge className="mb-6 bg-blue-500/20 text-blue-200 border-blue-400/30 hover:bg-blue-500/30">
-                <MapPin className="w-3 h-3 mr-1" /> Alberta Provincial Funding
-              </Badge>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
-                Funding the Future of <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-                  Alberta Business
-                </span>
-              </h1>
-              <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl">
-                Alberta isn't just oil and gas anymore. The province is aggressively funding <strong>tech diversification, agricultural innovation, and clean energy transition</strong>.
-                Learn how to tap into the $2.8B provincial innovation ecosystem.
-              </p>
+      <div className="min-h-screen bg-gray-50">
+        <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <Badge className="mb-6 bg-white/20 text-white border-white/30"><Building className="w-3 h-3 mr-1" /> Provincial Programs</Badge>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">Alberta Government Business Grants 2026</h1>
+              <p className="text-xl text-blue-100 mb-8">Comprehensive guide to Alberta provincial funding programs. Access Alberta Innovates, technology commercialization grants, export development funding, and industry-specific programs.</p>
+              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild><Link href="/grant-finder?province=alberta">Find Alberta Grants</Link></Button>
+            </div>
+          </div>
+        </section>
 
-              <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white border-none shadow-lg shadow-blue-900/20" asChild>
-                  <Link href="#alberta-innovates">
-                    Explore Alberta Programs
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" className="text-white border-slate-600 hover:bg-slate-800" asChild>
-                  <Link href="/grant-finder">
-                    Check Your Eligibility
-                  </Link>
-                </Button>
+        <section className="py-8 bg-white border-b">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <nav className="p-6 bg-gray-50 rounded-xl">
+                <h2 className="text-lg font-bold mb-4">In This Guide</h2>
+                <ul className="grid md:grid-cols-2 gap-2 text-sm">
+                  <li><a href="#overview" className="text-blue-700 hover:underline">1. Alberta Funding Overview</a></li>
+                  <li><a href="#alberta-innovates" className="text-blue-700 hover:underline">2. Alberta Innovates Programs</a></li>
+                  <li><a href="#aitc" className="text-blue-700 hover:underline">3. Innovation Technology Programs</a></li>
+                  <li><a href="#export" className="text-blue-700 hover:underline">4. Export Development</a></li>
+                  <li><a href="#agriculture" className="text-blue-700 hover:underline">5. Agriculture Programs</a></li>
+                  <li><a href="#energy" className="text-blue-700 hover:underline">6. Energy &amp; Environment</a></li>
+                  <li><a href="#regional" className="text-blue-700 hover:underline">7. Regional Programs</a></li>
+                  <li><a href="#eligibility" className="text-blue-700 hover:underline">8. Eligibility Requirements</a></li>
+                  <li><a href="#application" className="text-blue-700 hover:underline">9. Application Process</a></li>
+                  <li><a href="#mistakes" className="text-blue-700 hover:underline">10. Common Mistakes</a></li>
+                  <li><a href="#success" className="text-blue-700 hover:underline">11. Success Strategies</a></li>
+                  <li><a href="#faqs" className="text-blue-700 hover:underline">12. FAQs</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto grid md:grid-cols-4 gap-8 text-center">
+              <div><div className="text-3xl font-bold text-blue-600 mb-2">$300M+</div><div className="text-gray-600">Annual Provincial Funding</div></div>
+              <div><div className="text-3xl font-bold text-green-600 mb-2">50+</div><div className="text-gray-600">Active Programs</div></div>
+              <div><div className="text-3xl font-bold text-purple-600 mb-2">$5M</div><div className="text-gray-600">Max Grant Size</div></div>
+              <div><div className="text-3xl font-bold text-orange-600 mb-2">4</div><div className="text-gray-600">Key Agencies</div></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="overview" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Alberta Government Funding Overview</h2>
+              <p className="text-gray-700 leading-relaxed mb-6">Alberta offers one of Canada&apos;s most robust business funding ecosystems, with over $300 million annually available through provincial programs. The province&apos;s focus on economic diversification means strong support for technology, clean energy, agriculture innovation, and export development.</p>
+              <p className="text-gray-700 leading-relaxed mb-6">Key funding agencies include Alberta Innovates (innovation and technology), Alberta Enterprise Corporation (venture investment), and Alberta Economic Development and Trade (export and business development). The province also offers sector-specific programs through Agriculture and Forestry, Environment and Parks, and Energy departments.</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-blue-200"><CardHeader><CardTitle className="text-blue-700">Key Agencies</CardTitle></CardHeader><CardContent><ul className="text-sm space-y-2"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Alberta Innovates</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Alberta Enterprise Corporation</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Alberta Economic Development</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Prairies Economic Development Canada</span></li></ul></CardContent></Card>
+                <Card className="border-green-200"><CardHeader><CardTitle className="text-green-700">Priority Sectors</CardTitle></CardHeader><CardContent><ul className="text-sm space-y-2"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Technology &amp; Innovation</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Clean Energy &amp; Environment</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Agriculture &amp; Agri-Food</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Life Sciences &amp; Health</span></li></ul></CardContent></Card>
               </div>
             </div>
           </div>
         </section>
 
-        {/* NEW: Grant Success Metrics Table */}
-        <section className="py-12 -mt-8 relative z-10">
+        <section id="alberta-innovates" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <GrantSuccessTable
-              title="Alberta Funding Ecosystem Snapshot (2025-2026)"
-              metrics={[
-                {
-                  label: "Max Grant Amount",
-                  value: "$15M",
-                  icon: <DollarSign className="w-6 h-6" />,
-                  description: "Via Emissions Reduction Alberta (ERA)",
-                  color: "text-green-600"
-                },
-                {
-                  label: "Provincial Budget",
-                  value: "$2.8B",
-                  icon: <BarChart3 className="w-6 h-6" />,
-                  description: "Total annual innovation investment",
-                  color: "text-blue-600"
-                },
-                {
-                  label: "Active Programs",
-                  value: "45+",
-                  icon: <FileText className="w-6 h-6" />,
-                  description: "Across Innovates, ERA, & CARES",
-                  color: "text-purple-600"
-                },
-                {
-                  label: "Approval Time",
-                  value: "8-12 Wks",
-                  icon: <Clock className="w-6 h-6" />,
-                  description: "Average processing for major streams",
-                  color: "text-orange-600"
-                }
-              ]}
-            />
-          </div>
-        </section>
-
-        {/* Content Section with Interleaved Expert Insights */}
-        <section className="py-12 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-3 gap-12">
-              <div className="lg:col-span-2 space-y-12">
-
-                {/* Introduction - Authentic Voice */}
-                <div className="prose prose-lg max-w-none text-slate-700">
-                  <h2 className="text-3xl font-bold text-slate-900">Why Alberta is Different</h2>
-                  <p>
-                    Unlike Ontario or BC where funding is broadly distributed across many sectors, Alberta's funding landscape is <strong>laser-focused on specific outcomes</strong>:
-                    reducing carbon emissions, digitizing traditional industries, and diversifying the economy away from reliance on raw crude export.
-                  </p>
-                  <p>
-                    If you are a startup in Calgary or Edmonton, you have a distinct advantage if you can position your business as a "diversification driver."
-                    Even a standard software company can win major grants if its software helps the energy or agriculture sectors become more efficient.
-                  </p>
-                </div>
-
-                {/* Alberta Innovates Deep Dive */}
-                <div id="alberta-innovates" className="scroll-mt-24">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
-                    <Shield className="w-6 h-6 text-blue-600 mr-3" />
-                    Alberta Innovates: The Crown Jewel
-                  </h3>
-
-                  <Card className="border-slate-200 shadow-sm mb-6">
-                    <CardContent className="p-6">
-                      <p className="mb-4 text-slate-700">
-                        Alberta Innovates is the primary engine for provincial funding. It's not just one grant; it's a massive umbrella of programs.
-                        The biggest mistake applicants make is applying to the wrong "stream" within the agency.
-                      </p>
-                      <div className="grid md:grid-cols-2 gap-4 mt-6">
-                        <div className="p-4 bg-slate-50 rounded-lg border border-slate-100">
-                          <h4 className="font-bold text-slate-900 mb-2">The Voucher Program</h4>
-                          <p className="text-sm text-slate-600 mb-2">Best for: Early-stage tech commercialization</p>
-                          <span className="text-green-600 font-bold text-lg">Up to $100,000</span>
-                        </div>
-                        <div className="p-4 bg-slate-50 rounded-lg border border-slate-100">
-                          <h4 className="font-bold text-slate-900 mb-2">Digital Traction</h4>
-                          <p className="text-sm text-slate-600 mb-2">Best for: SaaS companies scaling up</p>
-                          <span className="text-green-600 font-bold text-lg">Up to $50,000</span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <ExpertTipBox type="warning" title="Insider Tip: Validating Your Service Provider">
-                    <p>
-                      For the <strong>Alberta Innovates Voucher</strong> program, you can't just pay yourself or your co-founder.
-                      The grant money <em>must</em> go to an eligible third-party service provider (like a dev shop or marketing agency).
-                      Always get your service provider "pre-qualified" or ensure they have worked with AI grants before you apply.
-                      If they aren't recognized, your application will stall.
-                    </p>
-                  </ExpertTipBox>
-                </div>
-
-                {/* ERA Section */}
-                <div id="era" className="scroll-mt-24">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
-                    <Zap className="w-6 h-6 text-green-600 mr-3" />
-                    Emissions Reduction Alberta (ERA)
-                  </h3>
-                  <p className="text-slate-700 mb-4">
-                    If your business touches sustainability—even tangentially—ERA is where the "big money" lives.
-                    These grants are project-based and often range into the millions.
-                  </p>
-
-                  <div className="bg-green-50/50 rounded-xl p-6 border border-green-100 mb-6">
-                    <h4 className="font-bold text-green-900 mb-3">Is your business ERA-eligible?</h4>
-                    <ul className="space-y-3">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <span className="text-green-900">Does your tech reduce GHG emissions directly?</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <span className="text-green-900">Does it make an existing industrial process more efficient?</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <span className="text-green-900">Are you piloting a new clean technology in Alberta?</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <ExpertTipBox type="success" title="Success Strategy: The 'GHG Quantification' Report">
-                    <p>
-                      ERA applications live and die by the math. You cannot just say "we are green."
-                      You need a <strong>GHG Quantification Report</strong>—a calculation showing exactly how many tonnes of CO2e your project will offset.
-                      We strongly recommend hiring a consultant specifically for this calculation before you even open the grant portal.
-                    </p>
-                  </ExpertTipBox>
-                </div>
-
-                {/* CARES & Regional Development */}
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
-                    <Building className="w-6 h-6 text-purple-600 mr-3" />
-                    Regional & Rural Development (CARES)
-                  </h3>
-                  <p className="text-slate-700 mb-4">
-                    The Community and Regional Economic Support (CARES) program is often overlooked by city-based businesses, but if you are operating out of
-                    <strong>Red Deer, Lethbridge, or Grande Prairie</strong>, you have less competition here.
-                  </p>
-                </div>
-
-              </div>
-
-              {/* Sidebar - Sticky */}
-              <div className="lg:col-span-1">
-                <div className="sticky top-24 space-y-8">
-                  <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <h4 className="font-bold text-slate-900 mb-4">Alberta Application Checklist</h4>
-                    <ul className="space-y-4">
-                      <li className="flex items-center text-sm text-slate-700">
-                        <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold mr-3">1</div>
-                        Incorporated in Alberta
-                      </li>
-                      <li className="flex items-center text-sm text-slate-700">
-                        <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold mr-3">2</div>
-                        2 Years Financial Statements
-                      </li>
-                      <li className="flex items-center text-sm text-slate-700">
-                        <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold mr-3">3</div>
-                        Valid T2 Corporate Returns
-                      </li>
-                      <li className="flex items-center text-sm text-slate-700">
-                        <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold mr-3">4</div>
-                        Project Quote from Vendor
-                      </li>
-                    </ul>
-                    <Button className="w-full mt-6" asChild>
-                      <Link href="/grant-finder">Verify Eligibility</Link>
-                    </Button>
-                  </div>
-
-                  <div className="bg-blue-600 p-6 rounded-xl shadow-lg text-white">
-                    <h4 className="font-bold text-lg mb-2">Need Alberta Strategy?</h4>
-                    <p className="text-blue-100 text-sm mb-6">
-                      Our team includes former Alberta Innovates advisors who know exactly what the review board looks for.
-                    </p>
-                    <Button variant="secondary" className="w-full text-blue-900 font-bold" asChild>
-                      <Link href="/contact">Talk to an Expert</Link>
-                    </Button>
-                  </div>
-                </div>
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Alberta Innovates Programs</h2>
+              <p className="text-gray-700 mb-6">Alberta Innovates is the province&apos;s primary innovation agency, providing funding across the technology commercialization spectrum from early research to market-ready products. Programs support startups, SMEs, and research institutions.</p>
+              <div className="space-y-4">
+                <Card className="border-blue-200"><CardContent className="pt-6"><div className="flex items-center mb-3"><Beaker className="w-6 h-6 text-blue-600 mr-3" /><h3 className="font-bold text-lg">Voucher Programs</h3></div><p className="text-gray-700 mb-3">Quick-turnaround funding ($10K-$100K) for product development, market validation, and technology assessments.</p><ul className="text-sm grid md:grid-cols-2 gap-2"><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Product Development Voucher</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Market Intelligence Voucher</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Technology Assessment Voucher</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Industry Problem Solving</li></ul></CardContent></Card>
+                <Card className="border-green-200"><CardContent className="pt-6"><div className="flex items-center mb-3"><TrendingUp className="w-6 h-6 text-green-600 mr-3" /><h3 className="font-bold text-lg">Scale-Up Programs</h3></div><p className="text-gray-700 mb-3">Larger funding ($100K-$2M) for product commercialization, manufacturing scale-up, and market expansion.</p><ul className="text-sm grid md:grid-cols-2 gap-2"><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Product Commercialization</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Business Acceleration</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Clean Technology Development</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Digital Innovation</li></ul></CardContent></Card>
               </div>
             </div>
           </div>
         </section>
 
-        <Footer />
+        <section id="aitc" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Innovation &amp; Technology Commercialization</h2>
+              <p className="text-gray-700 mb-6">Alberta has invested heavily in building a tech ecosystem with dedicated programs for software, AI, fintech, and cybersecurity companies. These complement federal programs like IRAP and SR&amp;ED.</p>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="p-4 bg-white rounded-lg border"><h3 className="font-bold mb-2">Digital Innovation</h3><p className="text-sm text-gray-600">Software, AI/ML, IoT, cloud solutions</p></div>
+                <div className="p-4 bg-white rounded-lg border"><h3 className="font-bold mb-2">Fintech</h3><p className="text-sm text-gray-600">Banking, insurance, payment solutions</p></div>
+                <div className="p-4 bg-white rounded-lg border"><h3 className="font-bold mb-2">Cleantech</h3><p className="text-sm text-gray-600">Emissions reduction, clean energy</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="export" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Export Development Programs</h2>
+              <p className="text-gray-700 mb-6">Alberta provides strong support for companies looking to expand into international markets. Programs cover market research, trade missions, and export readiness activities.</p>
+              <div className="bg-blue-50 p-6 rounded-lg"><h3 className="font-bold mb-3">Export Support Activities</h3><ul className="grid md:grid-cols-2 gap-2 text-sm"><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Trade mission participation</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />International market research</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Trade show exhibition costs</li><li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Export strategy development</li></ul></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="agriculture" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Agriculture &amp; Agri-Food Programs</h2>
+              <p className="text-gray-700 mb-6">Alberta&apos;s agriculture sector benefits from both provincial and federal-provincial cost-shared programs through the Canadian Agricultural Partnership (CAP). Programs support everything from on-farm improvements to agri-tech innovation.</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card><CardContent className="pt-6"><h3 className="font-bold text-green-700 mb-2 flex items-center"><Tractor className="w-5 h-5 mr-2" />Farm Programs</h3><ul className="text-sm space-y-1"><li>• On-Farm Climate Action Fund</li><li>• Environmental Farm Plan</li><li>• Irrigation District Grants</li><li>• Farm Stewardship</li></ul></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold text-blue-700 mb-2 flex items-center"><Beaker className="w-5 h-5 mr-2" />Agri-Tech Programs</h3><ul className="text-sm space-y-1"><li>• Agriculture Research Funding</li><li>• Food Processing Innovation</li><li>• Precision Agriculture</li><li>• Value-Added Processing</li></ul></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="energy" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Energy &amp; Environment Programs</h2>
+              <p className="text-gray-700 mb-6">Alberta offers significant funding for clean energy, emissions reduction, and environmental technology. Programs support the province&apos;s transition away from traditional energy while maintaining economic competitiveness.</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="p-4 bg-green-50 rounded-lg border border-green-200"><h3 className="font-bold text-green-700 mb-2">Emissions Reduction Alberta</h3><p className="text-sm text-gray-600">Large-scale funding for industrial emissions reduction projects and clean technology deployment.</p></div>
+                <div className="p-4 bg-blue-50 rounded-lg border border-blue-200"><h3 className="font-bold text-blue-700 mb-2">Clean Technology</h3><p className="text-sm text-gray-600">Funding for development and commercialization of clean energy solutions.</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="regional" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Regional &amp; Municipal Programs</h2>
+              <p className="text-gray-700 mb-6">Edmonton, Calgary, and other municipalities offer complementary programs for local businesses. These often stack with provincial and federal funding.</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card><CardContent className="pt-6"><h3 className="font-bold mb-2">Edmonton Programs</h3><p className="text-sm text-gray-600 mb-2">Edmonton Global, economic development grants, innovation district incentives.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold mb-2">Calgary Programs</h3><p className="text-sm text-gray-600 mb-2">Calgary Economic Development, Platform Calgary, Innovate Calgary programs.</p></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="eligibility" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Eligibility Requirements</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card><CardHeader><CardTitle className="text-green-700 flex items-center"><CheckCircle className="w-5 h-5 mr-2" />General Requirements</CardTitle></CardHeader><CardContent><ul className="space-y-1 text-sm"><li>• Incorporated in Alberta or significant operations</li><li>• For-profit business entity</li><li>• Good financial standing</li><li>• Project benefits Alberta economy</li><li>• Matching funds often required</li></ul></CardContent></Card>
+                <Card><CardHeader><CardTitle className="text-red-700 flex items-center"><AlertCircle className="w-5 h-5 mr-2" />Common Restrictions</CardTitle></CardHeader><CardContent><ul className="space-y-1 text-sm"><li>• No basic/fundamental research (use federal programs)</li><li>• No retail/hospitality for innovation programs</li><li>• Limited coverage for working capital</li><li>• Retroactive funding rarely allowed</li><li>• Must maintain Alberta operations</li></ul></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="application" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Application Process</h2>
+              <div className="space-y-4">
+                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">1</div><div><h3 className="font-bold">Identify Right Program</h3><p className="text-gray-600 text-sm">Match your project stage and sector to available programs. Many have specific eligibility windows.</p></div></div>
+                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">2</div><div><h3 className="font-bold">Pre-Application Consultation</h3><p className="text-gray-600 text-sm">Many Alberta Innovates programs require or recommend pre-application calls to assess fit.</p></div></div>
+                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">3</div><div><h3 className="font-bold">Prepare Application</h3><p className="text-gray-600 text-sm">Complete application forms with project plan, budget, team qualifications, and expected outcomes.</p></div></div>
+                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">4</div><div><h3 className="font-bold">Review &amp; Approval</h3><p className="text-gray-600 text-sm">Applications reviewed on merit. Timeline varies from 4 weeks (vouchers) to 3+ months (large grants).</p></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="mistakes" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Common Mistakes to Avoid</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ Wrong Program Stage</h3><p className="text-sm text-gray-600">Applying to commercialization programs for R&amp;D projects or vice versa.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ Missing Pre-Consultation</h3><p className="text-sm text-gray-600">Skipping recommended pre-application calls that help position your project.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ Weak Alberta Impact</h3><p className="text-sm text-gray-600">Not clearly articulating benefits to Alberta economy and jobs.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ Insufficient Matching</h3><p className="text-sm text-gray-600">Not having secured matching funds before applying.</p></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="success" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Success Strategies</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div><h3 className="font-bold mb-3 text-green-700">✅ Winning Approaches</h3><ul className="space-y-2 text-sm"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Focus on Alberta economic impact (jobs, investment, diversification)</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Stack provincial with federal programs when allowed</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Start with smaller voucher programs to build track record</span></li></ul></div>
+                <div><h3 className="font-bold mb-3 text-purple-700">🎯 Pro Tips</h3><ul className="space-y-2 text-sm"><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Connect with Alberta Innovates advisors early in process</span></li><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Attend Alberta Tech Week and ecosystem events for visibility</span></li><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Combine with IRAP for comprehensive innovation funding</span></li></ul></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="faqs" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can out-of-province companies apply?</h3><p className="text-gray-700 mt-2 ml-7">Some programs require Alberta incorporation. Others accept companies with significant Alberta operations or commitment to expand to Alberta. Check specific program requirements.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How do Alberta programs work with federal funding?</h3><p className="text-gray-700 mt-2 ml-7">Many Alberta programs can stack with federal programs like IRAP, SR&amp;ED, and SBIR. Check stacking rules for each program—some cap total government funding at a percentage of project costs.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What&apos;s the fastest way to get Alberta funding?</h3><p className="text-gray-700 mt-2 ml-7">Alberta Innovates voucher programs have the fastest turnaround (4-6 weeks). Larger programs can take 3-6 months from application to funding.</p></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/alberta-small-business-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Alberta Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/irap-industrial-research-assistance-program" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>IRAP Program Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/government-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>All Government Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Canadian Funding</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center text-white">
+              <h2 className="text-4xl font-bold mb-6">Access Alberta Government Funding</h2>
+              <p className="text-xl text-blue-100 mb-8">Get expert help navigating Alberta&apos;s funding programs. We&apos;ve helped Alberta businesses secure millions in provincial and federal grants.</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild><Link href="/guides/apply-alberta-government-grants"><Download className="w-4 h-4 mr-2" /> Get Alberta Guide</Link></Button>
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild><Link href="/contact?province=alberta">Get Expert Help</Link></Button>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
+      <Footer />
     </>
   )
 }
