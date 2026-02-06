@@ -14,9 +14,48 @@ export const metadata: Metadata = {
 }
 
 export default function WomensBusinessCentersGuidePage() {
+  const faqData = [
+    {
+      question: "Are WBC services really free?",
+      answer: "Yes, core counseling and training services at Women's Business Centers are provided at no cost. Some centers may charge nominal fees for specialized programs (like intensive 6-week incubators), but standard 1-on-1 counseling is free to all clients regardless of income."
+    },
+    {
+      question: "Do I need to be a woman to use WBC services?",
+      answer: "While WBCs focus on women entrepreneurs, most centers provide services to all entrepreneurs who can benefit from their specialized programming. The SBA mandate is inclusive, so men can typically access training and counseling, though some specific grants or cohorts may be restricted."
+    },
+    {
+      question: "Can WBCs provide funding for my business?",
+      answer: "WBCs do not directly provide financing (they are not banks). However, they are vital conduits to funding. They help you prepare your loan package, fix your credit, and introduce you to lenders who are actively looking for women-owned deals."
+    },
+    {
+      question: "Can I work with a WBC in a different state?",
+      answer: "Technically, yes, especially for virtual training webinars which are often open to the public nationwide. However for 1-on-1 counseling, centers prioritize local residents because their funding is tied to local economic impact. It is always best to start with your nearest center."
+    },
+    {
+      question: "What if I don't have a business idea yet?",
+      answer: "That is completely fine! WBCs love 'pre-venture' clients. They can help you brainstorm, validate your market, and decide if entrepreneurship is right for you before you quit your day job. Look for 'Explorer' or 'Startup 101' workshops on their calendars."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -469,12 +508,16 @@ export default function WomensBusinessCentersGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-              <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Are WBC services really free?</h3><p className="text-gray-700 mt-2 ml-7">Yes, core counseling and training services at Women&apos;s Business Centers are provided at no cost. Some centers may charge nominal fees for specialized programs (like intensive 6-week incubators), but standard 1-on-1 counseling is free to all clients regardless of income.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Do I need to be a woman to use WBC services?</h3><p className="text-gray-700 mt-2 ml-7">While WBCs focus on women entrepreneurs, most centers provide services to all entrepreneurs who can benefit from their specialized programming. The SBA mandate is inclusive, so men can typically access training and counseling, though some specific grants or cohorts may be restricted.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can WBCs provide funding for my business?</h3><p className="text-gray-700 mt-2 ml-7">WBCs do not directly provide financing (they are not banks). However, they are vital *conduits* to funding. They help you prepare your loan package, fix your credit, and introduce you to lenders who are actively looking for women-owned deals.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can I work with a WBC in a different state?</h3><p className="text-gray-700 mt-2 ml-7">Technically, yes, especially for virtual training webinars which are often open to the public nationwide. However for 1-on-1 counseling, centers prioritize local residents because their funding is tied to local economic impact. It is always best to start with your nearest center.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What if I don't have a business idea yet?</h3><p className="text-gray-700 mt-2 ml-7">That is completely fine! WBCs love "pre-venture" clients. They can help you brainstorm, validate your market, and decide if entrepreneurship is right for you *before* you quit your day job. Look for "Explorer" or "Startup 101" workshops on their calendars.</p></CardContent></Card>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-white rounded-lg p-6 border border-gray-100 shadow-sm">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                      <HelpCircle className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0 mt-0.5" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-700 ml-9">{faq.answer}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Crown, Building, Shield } from "lucide-react"
+import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Crown, Building, Shield, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +19,48 @@ export const metadata: Metadata = {
 }
 
 export default function WOSBFederalContractingGuide() {
+  const faqData = [
+    {
+      question: "How much does WOSB certification cost?",
+      answer: "It is FREE if you self-certify through certify.sba.gov (though this process is changing). Third-party certification through organizations like WBENC or the US Women's Chamber of Commerce typically costs between $350 and $500 annually."
+    },
+    {
+      question: "What is the difference between WOSB and EDWOSB?",
+      answer: "WOSB is available to all eligible women-owned businesses. EDWOSB (Economically Disadvantaged) has additional personal net worth caps (<$850k). EDWOSB status unlocks additional sole-source contract opportunities in specific industries."
+    },
+    {
+      question: "How long does certification take?",
+      answer: "SBA processing can take up to 90 days. Third-party certifiers often process applications in 15-30 days. You cannot bid on WOSB set-asides until your certification is officially active."
+    },
+    {
+      question: "Do I need to renew my certification?",
+      answer: "Yes. You must attest to your eligibility annually and complete a full program examination every 3 years to maintain your status."
+    },
+    {
+      question: "Can I have a male partner?",
+      answer: "Yes, but the woman (or women) must own at least 51% of the business unconditionally and she must hold the highest officer position (CEO/President) and control daily operations. The male partner cannot have veto power."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-16">
@@ -557,6 +596,21 @@ export default function WOSBFederalContractingGuide() {
                     If your primary code isn't capable, look for secondary codes where you perform work that ARE eligible.
                     You can have multiple NAICS codes in your SAM profile!
                   </p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6 font-center text-center">Frequently Asked Questions</h2>
+                <div className="space-y-6">
+                  {faqData.map((faq, index) => (
+                    <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <HelpCircle className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0 mt-0.5" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 ml-9">{faq.answer}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
 

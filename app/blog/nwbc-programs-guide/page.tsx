@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Users, TrendingUp, BarChart } from "lucide-react"
+import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Users, TrendingUp, BarChart, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +19,48 @@ export const metadata: Metadata = {
 }
 
 export default function NWBCProgramsGuide() {
+  const faqData = [
+    {
+      question: "Does the NWBC provide grants directly?",
+      answer: "No. The NWBC is a federal advisory council, not a funding agency. They influence policy that creates funding programs (like WBCs and WOSB contracting), but they do not distribute money directly to businesses."
+    },
+    {
+      question: "How can I join the National Women's Business Council?",
+      answer: "Council members are appointed by the President, the SBA Administrator, and heads of Congressional small business committees. It is a prestigious appointment, typically reserved for accomplished business owners and leaders of major women's organizations."
+    },
+    {
+      question: "Can I attend NWBC meetings?",
+      answer: "Yes! Creating opportunities for public engagement is a key part of their mission. Public meetings are held quarterly (often virtually) and include periods for public comment where you can voice your concerns."
+    },
+    {
+      question: "What is the difference between NWBC and a WBC?",
+      answer: "The NWBC (Council) operates at the federal level to change laws and policy. A WBC (Center) operates at the local level to provide direct training and counseling to you. Think of NWBC as the 'architect' and WBCs as the 'builders'."
+    },
+    {
+      question: "Where can I find NWBC research reports?",
+      answer: "All research reports, annual reports, and policy recommendations are available for free on the official NWBC.gov website. They are excellent resources for understanding market trends and statistics."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-600 to-cyan-700 text-white py-16">
@@ -548,6 +587,21 @@ export default function NWBCProgramsGuide() {
                       <p className="text-sm text-gray-600">Influenced policies to improve women entrepreneurs' access to loans and investment</p>
                     </div>
                   </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Common Questions About NWBC</h2>
+                <div className="space-y-6">
+                  {faqData.map((faq, index) => (
+                    <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                        <HelpCircle className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 ml-9">{faq.answer}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
 

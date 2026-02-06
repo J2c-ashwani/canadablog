@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Calendar } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Calendar, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,48 @@ export const metadata: Metadata = {
 }
 
 export default function WBDCEquityMatchGrantGuidePage() {
+  const faqData = [
+    {
+      question: "What exactly is the 1:1 match requirement?",
+      answer: "The 1:1 match means for every dollar of grant money you receive, you must invest one dollar of your own money into the SAME project. If you request a $10,000 grant, you must show you have $10,000 of your own cash ready to spend, making the total project budget $20,000."
+    },
+    {
+      question: "Can I use the grant for payroll or rent?",
+      answer: "Generally, no. The WBDC Equity Match Grant is designed for 'growth projects' like buying equipment, funding a marketing campaign, or launching a new product line. It is not for operating expenses like ongoing payroll, rent, or utilities."
+    },
+    {
+      question: "Do I have to live in Connecticut?",
+      answer: "Yes. Your business must be registered in Connecticut, have its primary operations in Connecticut, and you must pay Connecticut taxes. Out-of-state businesses are not eligible."
+    },
+    {
+      question: "Is this grant taxable?",
+      answer: "Yes. Business grants are generally considered taxable income by the IRS. You should consult with your accountant to understand the tax implications for your specific business."
+    },
+    {
+      question: "Can startups apply?",
+      answer: "This program typically requires an operating history (usually 2+ years) and existing revenue. It is not intended for the 'idea phase' but for established businesses ready to scale."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-purple-700 to-indigo-900 text-white py-16">
@@ -603,6 +642,26 @@ export default function WBDCEquityMatchGrantGuidePage() {
                   <input type="checkbox" className="w-5 h-5 text-purple-600 mr-4" readOnly />
                   <span className="text-gray-700">I have obtained 2-3 quotes for the equipment/services I plan to buy.</span>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Common Questions About WBDC Grants</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                      <HelpCircle className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0 mt-0.5" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-700 ml-9">{faq.answer}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
