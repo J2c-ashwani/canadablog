@@ -201,6 +201,49 @@ export default function RBCWomenEntrepreneurAwards() {
               </Card>
             </div>
 
+
+            <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Winner Spotlight: What Does a Champion Look Like?</h2>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              To understand what it takes to win, let's look at the trajectory of past recipients. These aren't just success stories; they are blueprints for your application.
+            </p>
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <Card className="p-6 border-l-4 border-pink-500 bg-pink-50/30">
+                <div className="flex items-center mb-4">
+                  <div className="bg-pink-100 p-2 rounded-full mr-4">
+                    <TrendingUp className="w-6 h-6 text-pink-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900">Joanna Griffiths (Knix)</h3>
+                    <p className="text-sm text-pink-700 font-medium">Momentum Award Winner</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 text-sm mb-3">
+                  <strong>The Winning Factor:</strong> Joanna didn't just sell underwear; she sold a movement ("Leakproof"). Her application highlighted the <em>cultural shift</em> her brand created, backed by staggering year-over-year revenue growth.
+                </p>
+                <div className="bg-white p-3 rounded border border-pink-100 text-xs text-gray-600">
+                  <em>Lesson:</em> Don't just report numbers. Explain the *movement* behind the metrics.
+                </div>
+              </Card>
+
+              <Card className="p-6 border-l-4 border-blue-500 bg-blue-50/30">
+                <div className="flex items-center mb-4">
+                  <div className="bg-blue-100 p-2 rounded-full mr-4">
+                    <Lightbulb className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900">Katherine Homuth (Sheertex)</h3>
+                    <p className="text-sm text-blue-700 font-medium">Innovation Award Winner</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 text-sm mb-3">
+                  <strong>The Winning Factor:</strong> Unbreakable pantyhose sounds impossible. Katherine's application focused on the <em>scientific breakthrough</em> (using bulletproof vest material) and the proprietary IP that protected her invention.
+                </p>
+                <div className="bg-white p-3 rounded border border-blue-100 text-xs text-gray-600">
+                  <em>Lesson:</em> For innovation, proving "defensibility" (why competitors can't copy you) is key.
+                </div>
+              </Card>
+            </div>
+
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Eligibility Requirements: Do You Qualify?</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
               The RBC Canadian Women Entrepreneur Awards maintain rigorous eligibility criteria to ensure recognition goes to legitimate, successful women-led businesses. Review these requirements carefully before investing time in your application.
@@ -235,6 +278,98 @@ export default function RBCWomenEntrepreneurAwards() {
                 </li>
               </ul>
             </Card>
+
+            {/* NEW SECTION: The Judge's Scorecard */}
+            <section className="py-8 bg-white border-y border-gray-100 my-10">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">The Judge's Scorecard: How You Are Graded</h2>
+              <p className="text-gray-700 leading-relaxed mb-8">
+                The selection committee doesn't just "like" applications; they grade them against a scorecard.
+                While the exact weighting shifts by category, the core pillars remain constant.
+                Understanding this rubric is the secret to moving from "Applicant" to "Finalist."
+              </p>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="p-5 border-t-4 border-blue-500 shadow-sm">
+                  <div className="text-center mb-4">
+                    <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span className="text-xl font-bold text-blue-600">40%</span>
+                    </div>
+                    <h3 className="font-bold text-lg text-gray-900">Financial Health</h3>
+                  </div>
+                  <ul className="text-sm text-gray-600 space-y-2">
+                    <li>• 3-Year revenue growth trend</li>
+                    <li>• Profitability margins</li>
+                    <li>• Cash flow stability</li>
+                    <li>• Reinvestment in the business</li>
+                  </ul>
+                  <div className="mt-4 bg-blue-50 p-2 rounded text-xs text-blue-800 text-center">
+                    "Are you running a sustainable business or a hobby?"
+                  </div>
+                </Card>
+
+                <Card className="p-5 border-t-4 border-purple-500 shadow-sm">
+                  <div className="text-center mb-4">
+                    <div className="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span className="text-xl font-bold text-purple-600">30%</span>
+                    </div>
+                    <h3 className="font-bold text-lg text-gray-900">Impact & Innovation</h3>
+                  </div>
+                  <ul className="text-sm text-gray-600 space-y-2">
+                    <li>• Market disruption factor</li>
+                    <li>• Social/Environmental impact</li>
+                    <li>• Uniqueness of solution</li>
+                    <li>• Job creation quality</li>
+                  </ul>
+                  <div className="mt-4 bg-purple-50 p-2 rounded text-xs text-purple-800 text-center">
+                    "Does your business matter to the wider world?"
+                  </div>
+                </Card>
+
+                <Card className="p-5 border-t-4 border-orange-500 shadow-sm">
+                  <div className="text-center mb-4">
+                    <div className="bg-orange-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span className="text-xl font-bold text-orange-600">30%</span>
+                    </div>
+                    <h3 className="font-bold text-lg text-gray-900">Leadership Vision</h3>
+                  </div>
+                  <ul className="text-sm text-gray-600 space-y-2">
+                    <li>• Founder's personal story</li>
+                    <li>• Strategic roadmap</li>
+                    <li>• Mentorship of others</li>
+                    <li>• Resilience in crisis</li>
+                  </ul>
+                  <div className="mt-4 bg-orange-50 p-2 rounded text-xs text-orange-800 text-center">
+                    "Are you the leader who can take this to the next level?"
+                  </div>
+                </Card>
+              </div>
+            </section>
+
+
+            {/* NEW SECTION: Nomination Strategy */}
+            <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">The Art of the Nomination: How to Get Invited</h2>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              Before you can apply, you must be nominated. While self-nominations are accepted, a strategic third-party nomination sets a winning tone.
+            </p>
+            <div className="bg-slate-50 border-l-4 border-slate-600 p-6 mb-8">
+              <h3 className="font-bold text-slate-900 mb-3">Strategy: The "Champion" Method</h3>
+              <p className="text-gray-700 mb-4">
+                Don't just ask your mom or employee to nominate you. Ask a high-profile client, a bank manager, or an industry mentor.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="bg-white p-4 rounded shadow-sm">
+                  <span className="block text-xs font-bold text-red-500 uppercase mb-1">❌ Weak Nomination (Friend Zone)</span>
+                  <p className="text-sm text-gray-600">"Sarah works so hard and deserves this award. She is a great boss."</p>
+                </div>
+                <div className="bg-white p-4 rounded shadow-sm">
+                  <span className="block text-xs font-bold text-green-600 uppercase mb-1">✅ Strong Nomination (Business Case)</span>
+                  <p className="text-sm text-gray-600">"Sarah's company grew 200% this year while revolutionizing supply chain efficiency. She is redefining the logistics sector."</p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-500 mt-4 italic">
+                <strong>Tip:</strong> Draft the text for your nominator. Make it easy for them to say "yes" and paste your pre-written business case.
+              </p>
+            </div>
 
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Application Process: Step-by-Step Roadmap</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
@@ -418,6 +553,27 @@ export default function RBCWomenEntrepreneurAwards() {
                 <h3 className="text-lg font-bold text-gray-900 mb-3">🌟 Talent Attraction</h3>
                 <p className="text-gray-700 text-sm">Award recognition helps attract top-tier employees who want to work for recognized, successful, values-driven companies led by accomplished leaders.</p>
               </Card>
+            </div>
+
+            <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-8 my-10">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Pro Strategy: Monetizing the "Finalist" Badge</h3>
+              <p className="text-gray-700 mb-6">
+                You don't need to win to profit. The strict "Due Diligence" phase means that simply being named a Finalist validates your business legitmacy.
+              </p>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div>
+                  <h4 className="font-bold text-gray-900 mb-2">1. The "Trust" Stamp</h4>
+                  <p className="text-sm text-gray-600">Add the "RBC Awards Finalist" logo to your email signature and website immediately. Conversion rates often jump because independent auditors vouched for you.</p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 mb-2">2. The Talent Magnet</h4>
+                  <p className="text-sm text-gray-600">Post about it on LinkedIn. Top talent wants to work for winners. Use the announcement to launch a recruitment drive.</p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 mb-2">3. The Bank Meeting</h4>
+                  <p className="text-sm text-gray-600">Walk into your next loan negotiation with the finalist announcement. It's third-party proof that your financial health is top-tier.</p>
+                </div>
+              </div>
             </div>
 
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Alternative Women Entrepreneur Grants in Canada & USA</h2>

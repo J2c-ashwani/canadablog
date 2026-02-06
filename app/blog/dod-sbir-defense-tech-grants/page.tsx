@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, Lock, Scale, BarChart, Zap, FileCheck } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -35,12 +35,12 @@ export default function DODSBIRDefenseTechGrantsPage() {
                 DOD SBIR Grants: $256K Phase I, $1.7M Phase II Non-Dilutive Funding for Defense, Cybersecurity & Aerospace Innovation
               </h1>
               <p className="text-xl text-slate-100 mb-8">
-                Comprehensive 2026-2027 guide to Department of Defense SBIR/STTR grants providing up to $1,700,000 in 
-                non-dilutive funding for cybersecurity, aerospace, UAV technology, advanced materials, sensors, and military 
-                innovations. Complete application strategies, eligibility requirements, success rates, and funding timelines 
-                for Phase I ($256,000) and Phase II ($1,700,000) awards supporting defense tech startups across all 50 states. 
-                DOD SBIR is America's largest SBIR program taking no equity, requiring no repayment, funding transformative 
-                defense technology R&D advancing warfighter capabilities and national security through innovative small business 
+                Comprehensive 2026-2027 guide to Department of Defense SBIR/STTR grants providing up to $1,700,000 in
+                non-dilutive funding for cybersecurity, aerospace, UAV technology, advanced materials, sensors, and military
+                innovations. Complete application strategies, eligibility requirements, success rates, and funding timelines
+                for Phase I ($256,000) and Phase II ($1,700,000) awards supporting defense tech startups across all 50 states.
+                DOD SBIR is America's largest SBIR program taking no equity, requiring no repayment, funding transformative
+                defense technology R&D advancing warfighter capabilities and national security through innovative small business
                 solutions supporting Army, Navy, Air Force, Space Force, and Defense Agencies[web:195][web:197][web:199].
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -64,7 +64,7 @@ export default function DODSBIRDefenseTechGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">DOD SBIR Defense Tech Grants by Region and Military Hub (2026-2027 Funding Available)</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-slate-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -212,16 +212,16 @@ export default function DODSBIRDefenseTechGrantsPage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete DOD SBIR/STTR Funding Ecosystem for Defense Tech Startups</h2>
                 <p className="text-lg text-gray-600 mb-4">
-                  The Department of Defense SBIR/STTR program provides non-dilutive grants for research and development of 
-                  innovative defense technologies addressing critical military needs and national security challenges. DOD seeks 
-                  breakthrough innovations in cybersecurity, aerospace, autonomous systems, advanced materials, and dual-use 
+                  The Department of Defense SBIR/STTR program provides non-dilutive grants for research and development of
+                  innovative defense technologies addressing critical military needs and national security challenges. DOD seeks
+                  breakthrough innovations in cybersecurity, aerospace, autonomous systems, advanced materials, and dual-use
                   technologies with strong commercialization potential transitioning to defense acquisition programs[web:195][web:197][web:199].
                 </p>
                 <p className="text-lg text-gray-600">
-                  Defense tech startups can access Phase I funding (up to $256,000) to prove technical feasibility and military 
-                  relevance over 6-12 months, followed by Phase II awards (up to $1,700,000) for product development, military 
-                  testing, and transition planning over 24 months. DOD evaluates proposals on technical merit, military impact, 
-                  dual-use potential, and transition pathway across Army, Navy, Air Force, Space Force, Missile Defense Agency, 
+                  Defense tech startups can access Phase I funding (up to $256,000) to prove technical feasibility and military
+                  relevance over 6-12 months, followed by Phase II awards (up to $1,700,000) for product development, military
+                  testing, and transition planning over 24 months. DOD evaluates proposals on technical merit, military impact,
+                  dual-use potential, and transition pathway across Army, Navy, Air Force, Space Force, Missile Defense Agency,
                   Special Operations Command, Defense Health Agency, and DARPA focusing on warfighter capabilities[web:195][web:197][web:198].
                 </p>
               </div>
@@ -252,6 +252,155 @@ export default function DODSBIRDefenseTechGrantsPage() {
           </div>
         </section>
 
+        {/* NEW SECTION: The Open Topic Revolution (AFWERX/SpaceWERX) */}
+        <section className="py-16 bg-slate-900 text-white border-y border-slate-700 relative overflow-hidden">
+          {/* Background pattern */}
+          <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-400 via-slate-900 to-black"></div>
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-5xl mx-auto">
+              <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
+                <div className="flex-1">
+                  <Badge className="bg-blue-500 text-white mb-4 hover:bg-blue-600">🚀 Special Funding Opportunity</Badge>
+                  <h2 className="text-3xl font-bold mb-4">The Open Topic Revolution: AFWERX & SpaceWERX</h2>
+                  <p className="text-lg text-slate-300">
+                    Traditionally, you had to wait for the DOD to ask for your <em>specific</em> widget.
+                    Not anymore. The Air Force (AFWERX) and Space Force (SpaceWERX) "Open Topic" solicitations
+                    invite <strong>any</strong> technology that can demonstrate a clear defense adaptation.
+                  </p>
+                </div>
+                <div className="shrink-0 bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur">
+                  <div className="text-center">
+                    <span className="block text-4xl font-bold text-blue-400 mb-1">D2P2</span>
+                    <span className="text-sm text-slate-300">Direct to Phase II</span>
+                    <div className="h-px w-full bg-white/20 my-3"></div>
+                    <span className="block text-2xl font-bold text-white">Faster Awards</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <Card className="bg-slate-800 border-slate-600 text-slate-100">
+                  <CardHeader>
+                    <CardTitle className="flex items-center text-blue-300">
+                      <Zap className="w-5 h-5 mr-2" />
+                      What is an "Open Topic"?
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="mb-4 text-sm text-slate-300">
+                      Instead of a 20-page specification details, the solicitation simply asks:
+                      <em>"Do you have a commercial technology that could help the Airman or Guardian?"</em>
+                    </p>
+                    <ul className="space-y-2 text-sm text-slate-300">
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 mr-2 text-green-400 mt-0.5" /> <strong>Logic:</strong> DOD wants to leverage private sector R&D.</li>
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 mr-2 text-green-400 mt-0.5" /> <strong>Requirement:</strong> You must find a specific Air Force/Space Force "Customer" (end-user) willing to sign an MOU during Phase I.</li>
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 mr-2 text-green-400 mt-0.5" /> <strong>Speed:</strong> Contracts are awarded faster (often &lt;90 days).</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-slate-800 border-slate-600 text-slate-100">
+                  <CardHeader>
+                    <CardTitle className="flex items-center text-purple-300">
+                      <Rocket className="w-5 h-5 mr-2" />
+                      Who Should Apply?
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="mb-4 text-sm text-slate-300">
+                      This is ideal for dual-use startups who already have a commercial product (or beta)
+                      and want to adapt it for military use.
+                    </p>
+                    <div className="space-y-3">
+                      <div className="bg-white/5 p-2 rounded border border-white/5 text-xs">
+                        <strong className="text-blue-200">Example 1:</strong> An AR headset for gaming → Adapted for flight line maintenance training.
+                      </div>
+                      <div className="bg-white/5 p-2 rounded border border-white/5 text-xs">
+                        <strong className="text-blue-200">Example 2:</strong> A supply chain AI for retail → Adapted for spare parts logistics.
+                      </div>
+                      <div className="bg-white/5 p-2 rounded border border-white/5 text-xs">
+                        <strong className="text-blue-200">Example 3:</strong> A mental health app for civilians → Adapted for PTSD support.
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* NEW SECTION: TRL Decoder */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-10">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Speaking the Language: Technology Readiness Levels (TRL)</h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  The DOD does not fund "ideas." They fund <strong>Technology</strong>.
+                  You must accurately self-assess your TRL. Over-promising here is a fatal error.
+                </p>
+              </div>
+
+              <div className="relative">
+                {/* Connecting Line (Desktop) */}
+                <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-100 via-indigo-100 to-slate-100 -translate-x-1/2"></div>
+
+                <div className="space-y-8 relative">
+                  {/* TRL 1-3 */}
+                  <div className="flex flex-col md:flex-row items-center gap-6">
+                    <div className="flex-1 text-right md:pr-12 order-2 md:order-1">
+                      <h3 className="text-xl font-bold text-gray-900">TRL 1-3: Research & Concept</h3>
+                      <p className="text-gray-600 text-sm mt-2">
+                        Basic principles observed. Proof of concept.
+                        Usually funded by <strong>NSF</strong> or university grants,
+                        but DOD <strong>STTR</strong> is a good fit here.
+                      </p>
+                    </div>
+                    <div className="shrink-0 w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-600 z-10 border-4 border-white shadow-sm order-1 md:order-2">1-3</div>
+                    <div className="flex-1 md:pl-12 order-3 bg-gray-50 p-4 rounded-lg border border-gray-100">
+                      <span className="text-xs font-bold text-gray-500 uppercase">Focus</span>
+                      <p className="text-sm font-semibold text-gray-800">"We think this might work."</p>
+                    </div>
+                  </div>
+
+                  {/* TRL 4-6 */}
+                  <div className="flex flex-col md:flex-row items-center gap-6">
+                    <div className="flex-1 text-right md:pr-12 order-2 md:order-1 bg-blue-50 p-4 rounded-lg border border-blue-100">
+                      <span className="text-xs font-bold text-blue-500 uppercase">Focus</span>
+                      <p className="text-sm font-semibold text-blue-900">"We built a prototype and it works in the lab."</p>
+                    </div>
+                    <div className="shrink-0 w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center font-bold text-white z-10 border-4 border-white shadow-lg order-1 md:order-2">4-6</div>
+                    <div className="flex-1 md:pl-12 order-3">
+                      <h3 className="text-xl font-bold text-blue-700">TRL 4-6: Prototype & Demo</h3>
+                      <p className="text-gray-600 text-sm mt-2">
+                        Component validation. Prototype demonstration in a relevant environment.
+                        <br /><strong>This is the sweet spot for DOD SBIR Phase I.</strong>
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* TRL 7-9 */}
+                  <div className="flex flex-col md:flex-row items-center gap-6">
+                    <div className="flex-1 text-right md:pr-12 order-2 md:order-1">
+                      <h3 className="text-xl font-bold text-gray-900">TRL 7-9: Deployment</h3>
+                      <p className="text-gray-600 text-sm mt-2">
+                        System prototype in operational environment. Actual system proven in mission.
+                        <strong>Phase II & Phase III (Commercialization).</strong>
+                      </p>
+                    </div>
+                    <div className="shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center font-bold text-green-700 z-10 border-4 border-white shadow-sm order-1 md:order-2">7-9</div>
+                    <div className="flex-1 md:pl-12 order-3 bg-green-50 p-4 rounded-lg border border-green-100">
+                      <span className="text-xs font-bold text-green-600 uppercase">Focus</span>
+                      <p className="text-sm font-semibold text-green-900">"It works on the battlefield."</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* DOD SBIR/STTR Program Details */}
         <section id="dod-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -260,7 +409,7 @@ export default function DODSBIRDefenseTechGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete breakdown of Phase I, Phase II funding programs with defense tech topic areas and application timelines
               </p>
-              
+
               <div className="space-y-8">
                 {/* Phase I Program */}
                 <Card className="border-slate-200">
@@ -293,7 +442,7 @@ export default function DODSBIRDefenseTechGrantsPage() {
                               <span className="text-indigo-700 font-bold">4 quarterly</span>
                             </div>
                           </div>
-                          
+
                           <div className="space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
                             <p className="font-semibold text-gray-800 mb-2">Phase I Defense Tech Objectives:</p>
                             <p>• <strong>Technical Feasibility:</strong> Prove defense technology works at laboratory or prototype scale with military-relevant performance</p>
@@ -488,12 +637,95 @@ export default function DODSBIRDefenseTechGrantsPage() {
           </div>
         </section>
 
+
+        {/* NEW SECTION: Critical Compliance & Phase II Prep */}
+        <section className="py-16 bg-slate-50 border-y border-slate-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-10">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Critical Requirements: CMMC & The MOU</h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  Winning the grant is only half the battle. To keep the money, you must comply with
+                  strict cybersecurity rules and prove a customer wants your product.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* CMMC Card */}
+                <Card className="border-red-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader className="border-b border-gray-100 pb-4">
+                    <CardTitle className="text-red-700 font-bold flex items-center text-xl">
+                      <Lock className="w-6 h-6 mr-3" />
+                      Cybersecurity (CMMC)
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <p className="text-gray-700 mb-4">
+                      <strong>The Rule:</strong> If you handle Controlled Unclassified Information (CUI), you must be CMMC compliant.
+                      Most DOD SBIR contracts <em>will</em> involve CUI eventually.
+                    </p>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex items-start">
+                        <Scale className="w-5 h-5 text-red-500 mr-2 mt-0.5" />
+                        <div>
+                          <strong>NIST 800-171:</strong> The 110 controls you must implement (access control, incident response, etc.).
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <Scale className="w-5 h-5 text-red-500 mr-2 mt-0.5" />
+                        <div>
+                          <strong>SPRS Score:</strong> You must self-assess and upload your score to the Supplier Performance Risk System (SPRS) before receiving a contract.
+                        </div>
+                      </div>
+                      <div className="bg-red-50 p-3 rounded text-red-800 font-semibold mt-2">
+                        ⚠️ No SPRS Score = No Funding. Do this during Phase I.
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* MOU Card */}
+                <Card className="border-blue-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader className="border-b border-gray-100 pb-4">
+                    <CardTitle className="text-blue-700 font-bold flex items-center text-xl">
+                      <FileCheck className="w-6 h-6 mr-3" />
+                      The "MOU" (Memorandum of Understanding)
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <p className="text-gray-700 mb-4">
+                      <strong>The Golden Ticket:</strong> For Phase II, you need a signed MOU from a DOD program office (end-user).
+                    </p>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex items-start">
+                        <BarChart className="w-5 h-5 text-blue-500 mr-2 mt-0.5" />
+                        <div>
+                          <strong>What it says:</strong> "We (Air Force Unit X) have a need for this tech and will trial it if they win Phase II."
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <BarChart className="w-5 h-5 text-blue-500 mr-2 mt-0.5" />
+                        <div>
+                          <strong>Why you need it:</strong> It proves "Operational Necessity." Without it, your proposal is just R&D without a customer.
+                        </div>
+                      </div>
+                      <div className="bg-blue-50 p-3 rounded text-blue-800 font-semibold mt-2">
+                        💡 Spend Phase I cold-calling Air Force/Army units to find your champion.
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Success Strategies */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">DOD SBIR Application Success Strategies 2026-2027</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-slate-200">
                   <CardHeader className="bg-gradient-to-br from-slate-50 to-blue-50">
@@ -589,7 +821,7 @@ export default function DODSBIRDefenseTechGrantsPage() {
               <p className="text-xl text-slate-100 mb-8">
                 Get our complete DOD SBIR application guide with Phase I/II templates or work with defense tech specialists for expert proposal support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2 text-lg">📥 Free DOD SBIR Guide</h4>
@@ -622,34 +854,34 @@ export default function DODSBIRDefenseTechGrantsPage() {
                   <p className="text-xs text-yellow-200 mt-3">Free consultation • 80% success rate • Military expertise</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6">
                 <p className="text-slate-200 text-sm mb-3">
                   <strong className="text-white">Why Choose Our DOD SBIR Services:</strong>
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 text-xs text-slate-200">
                   <div>
-                    ✓ 300+ DOD SBIR awards won<br/>
-                    ✓ $250M+ total funding secured<br/>
+                    ✓ 300+ DOD SBIR awards won<br />
+                    ✓ $250M+ total funding secured<br />
                     ✓ 80% Phase I approval rate
                   </div>
                   <div>
-                    ✓ All defense tech sectors<br/>
-                    ✓ Former military program managers<br/>
+                    ✓ All defense tech sectors<br />
+                    ✓ Former military program managers<br />
                     ✓ Transition pathway expertise
                   </div>
                   <div>
-                    ✓ Phase I → Phase II continuity<br/>
-                    ✓ Military testing support<br/>
+                    ✓ Phase I → Phase II continuity<br />
+                    ✓ Military testing support<br />
                     ✓ Dual-use commercialization
                   </div>
                 </div>
               </div>
 
               <p className="text-slate-300 text-sm">
-                🛡️ <strong>DOD SBIR Grant Assistance:</strong> Phase I $256K • Phase II $1.7M • Cybersecurity encryption • 
-                Aerospace UAV technology • Advanced materials sensors • AI military applications • Autonomous systems • 
-                Defense transition • Army Navy Air Force Space Force • DARPA innovation • Dual-use commercialization 
+                🛡️ <strong>DOD SBIR Grant Assistance:</strong> Phase I $256K • Phase II $1.7M • Cybersecurity encryption •
+                Aerospace UAV technology • Advanced materials sensors • AI military applications • Autonomous systems •
+                Defense transition • Army Navy Air Force Space Force • DARPA innovation • Dual-use commercialization
                 supporting warfighter capabilities and national security across all DOD components
               </p>
             </div>
