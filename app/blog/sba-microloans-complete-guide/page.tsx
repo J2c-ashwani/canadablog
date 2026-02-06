@@ -3,445 +3,357 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Users, Heart } from "lucide-react"
+import {
+  CheckCircle, DollarSign, Target, AlertTriangle, FileText,
+  Clock, ChevronRight, ExternalLink, BookOpen, HelpCircle,
+  Heart, Users, MapPin, TrendingUp, Building2
+} from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "SBA Microloans 2026: Get Up to $50K + Free Mentoring | Complete Guide",
-  description: "How to get SBA microloans in 2026. Easier than 7(a), faster approval (2-4 weeks), 8-13% rates, and FREE business mentoring included. Step-by-step application.",
-  keywords: "SBA microloans, small business microloans, SBA microloan program, startup funding, small business loans",
-  openGraph: {
-    title: "SBA Microloans 2026: Get Up to $50K + Free Mentoring",
-    description: "Complete guide to SBA microloans with faster approval and mentoring benefits.",
-    url: "https://www.fsidigital.ca/blog/sba-microloans-complete-guide",
-  },
-  alternates: {
-    canonical: "https://www.fsidigital.ca/blog/sba-microloans-complete-guide",
-  },
+  description: "Complete guide to SBA microloans. Get up to $50K with faster approval (2-4 weeks), 8-13% rates, and FREE business mentoring. Step-by-step application process.",
+  keywords: "SBA microloans, small business microloans, SBA microloan program, startup funding, small business loans, CDFI loans",
 }
 
-export default function SBAMicroloansGuide() {
+export default function SBAMicroloansGuidePage() {
   return (
     <>
       <Header />
       <div className="min-h-screen bg-gray-50">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-purple-600 to-pink-700 text-white py-16">
+        {/* Hero */}
+        <section className="bg-gradient-to-br from-purple-700 to-pink-600 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                💜 SBA Microloans Guide
+              <Badge className="mb-6 bg-white/20 text-white border-white/30">
+                <Heart className="w-3 h-3 mr-1" /> Best for Startups &amp; Small Needs
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                SBA Microloans Complete Guide
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                SBA Microloans Complete Guide 2026
               </h1>
               <p className="text-xl text-purple-100 mb-8">
-                Everything you need to know about SBA microloans - perfect for startups and small businesses
-                needing smaller amounts. Get up to $50K plus free business mentoring.
+                Get up to $50,000 with easier approval than traditional SBA loans—plus FREE
+                business mentoring. Perfect for startups and small businesses.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-white text-purple-700 hover:bg-gray-100">
-                  Start Reading Guide
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild>
-                  <Link href="/guides/apply-sba-loans">
-                    Get Application Guide
-                  </Link>
-                </Button>
-              </div>
+              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
+                <Link href="/contact?service=sba-microloan-help">Get Microloan Application Help</Link>
+              </Button>
             </div>
           </div>
         </section>
 
-        {/* Quick Stats */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold text-purple-600 mb-2">$50K</div>
-                <div className="text-gray-600">Maximum Loan Amount</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-pink-600 mb-2">$13K</div>
-                <div className="text-gray-600">Average Loan Size</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-blue-600 mb-2">6</div>
-                <div className="text-gray-600">Years Maximum Term</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-green-600 mb-2">180+</div>
-                <div className="text-gray-600">Microloan Intermediaries</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Main Content */}
-        <section className="py-16">
+        {/* TOC */}
+        <section className="py-8 bg-white border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
+              <nav className="p-6 bg-gray-50 rounded-xl">
+                <h2 className="text-lg font-bold mb-4">In This Guide</h2>
+                <ul className="grid md:grid-cols-2 gap-2 text-sm">
+                  <li><a href="#overview" className="text-blue-700 hover:underline">1. What are SBA Microloans?</a></li>
+                  <li><a href="#eligibility" className="text-blue-700 hover:underline">2. Who is Eligible?</a></li>
+                  <li><a href="#funding" className="text-blue-700 hover:underline">3. How Much Can You Get?</a></li>
+                  <li><a href="#uses" className="text-blue-700 hover:underline">4. What Can Microloans Fund?</a></li>
+                  <li><a href="#intermediaries" className="text-blue-700 hover:underline">5. Finding Microloan Lenders</a></li>
+                  <li><a href="#mentoring" className="text-blue-700 hover:underline">6. Free Mentoring Benefit</a></li>
+                  <li><a href="#how-to-apply" className="text-blue-700 hover:underline">7. How to Apply</a></li>
+                  <li><a href="#documents" className="text-blue-700 hover:underline">8. Required Documents</a></li>
+                  <li><a href="#timeline" className="text-blue-700 hover:underline">9. Approval Timeline</a></li>
+                  <li><a href="#comparison" className="text-blue-700 hover:underline">10. Microloans vs 7(a) Loans</a></li>
+                  <li><a href="#alternatives" className="text-blue-700 hover:underline">11. Alternative Programs</a></li>
+                  <li><a href="#faqs" className="text-blue-700 hover:underline">12. FAQs</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </section>
 
-              {/* What are SBA Microloans */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">What are SBA Microloans?</h2>
+        {/* Stats */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto grid md:grid-cols-4 gap-8 text-center">
+              <div><div className="text-3xl font-bold text-purple-600 mb-2">$50K</div><div className="text-gray-600">Max Loan Amount</div></div>
+              <div><div className="text-3xl font-bold text-pink-600 mb-2">$13K</div><div className="text-gray-600">Average Loan</div></div>
+              <div><div className="text-3xl font-bold text-blue-600 mb-2">6 Years</div><div className="text-gray-600">Max Term</div></div>
+              <div><div className="text-3xl font-bold text-green-600 mb-2">180+</div><div className="text-gray-600">Lenders Nationwide</div></div>
+            </div>
+          </div>
+        </section>
 
-                <p className="text-lg text-gray-700 mb-6">
-                  SBA microloans are small, short-term loans provided through nonprofit community-based intermediary lenders.
-                  These loans are perfect for startups and small businesses that need smaller amounts of capital and can
-                  benefit from business mentoring and technical assistance.
-                </p>
+        {/* Overview */}
+        <section id="overview" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">What are SBA Microloans?</h2>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                SBA Microloans are small, short-term loans of up to $50,000 provided through nonprofit
+                community-based organizations called &quot;intermediary lenders.&quot; Unlike traditional SBA 7(a)
+                loans, microloans feature simplified applications, faster approval, and mandatory business
+                mentoring—making them ideal for startups and underserved entrepreneurs.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                The average microloan is approximately $13,000, though amounts range from as little as
+                $500 to the maximum $50,000. Many microloan intermediaries focus on serving women,
+                minorities, veterans, and rural entrepreneurs who might not qualify for traditional financing.
+              </p>
 
-                <div className="grid md:grid-cols-2 gap-8 mb-8">
-                  <Card className="border-purple-200">
-                    <CardHeader>
-                      <CardTitle className="text-purple-700">Key Benefits</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="text-sm text-gray-700 space-y-2">
-                        <li>• Smaller loan amounts (up to $50K)</li>
-                        <li>• Less paperwork than traditional SBA loans</li>
-                        <li>• Faster approval process (2-4 weeks)</li>
-                        <li>• Business mentoring included</li>
-                        <li>• Good for credit building</li>
-                        <li>• Community-based lenders</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-purple-200"><CardContent className="pt-6">
+                  <h3 className="font-bold mb-3 text-purple-700">Why Choose Microloans?</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Easier approval than 7(a) loans</span></li>
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Faster processing (2-4 weeks)</span></li>
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Lower documentation requirements</span></li>
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>FREE business mentoring included</span></li>
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Builds credit for future larger loans</span></li>
+                  </ul>
+                </CardContent></Card>
 
-                  <Card className="border-pink-200">
-                    <CardHeader>
-                      <CardTitle className="text-pink-700">Ideal For</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="text-sm text-gray-700 space-y-2">
-                        <li>• Startup businesses</li>
-                        <li>• Working capital needs</li>
-                        <li>• Inventory purchases</li>
-                        <li>• Equipment (not real estate)</li>
-                        <li>• Business expansion</li>
-                        <li>• Women & minority entrepreneurs</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
+                <Card className="border-pink-200"><CardContent className="pt-6">
+                  <h3 className="font-bold mb-3 text-pink-700">Ideal Candidates</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start"><ChevronRight className="w-4 h-4 text-pink-500 mr-2 mt-0.5" /><span>Startup businesses (less than 1 year)</span></li>
+                    <li className="flex items-start"><ChevronRight className="w-4 h-4 text-pink-500 mr-2 mt-0.5" /><span>Home-based and sole proprietors</span></li>
+                    <li className="flex items-start"><ChevronRight className="w-4 h-4 text-pink-500 mr-2 mt-0.5" /><span>Women and minority entrepreneurs</span></li>
+                    <li className="flex items-start"><ChevronRight className="w-4 h-4 text-pink-500 mr-2 mt-0.5" /><span>Veteran-owned businesses</span></li>
+                    <li className="flex items-start"><ChevronRight className="w-4 h-4 text-pink-500 mr-2 mt-0.5" /><span>Rural and underserved communities</span></li>
+                  </ul>
+                </CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Eligibility */}
+        <section id="eligibility" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Who is Eligible for SBA Microloans?</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card><CardHeader><CardTitle className="text-green-700 flex items-center"><CheckCircle className="w-5 h-5 mr-2" />Requirements</CardTitle></CardHeader><CardContent>
+                  <ul className="space-y-2 text-sm">
+                    <li>• For-profit small business or startup</li>
+                    <li>• Meet SBA size standards for your industry</li>
+                    <li>• Located in intermediary&apos;s service area</li>
+                    <li>• Demonstrate ability to repay</li>
+                    <li>• Complete required training/counseling</li>
+                    <li>• No major criminal history</li>
+                  </ul>
+                </CardContent></Card>
+                <Card><CardHeader><CardTitle className="text-red-700 flex items-center"><AlertTriangle className="w-5 h-5 mr-2" />Restrictions</CardTitle></CardHeader><CardContent>
+                  <ul className="space-y-2 text-sm">
+                    <li>• Cannot use for real estate purchase</li>
+                    <li>• Cannot refinance existing debt</li>
+                    <li>• Gambling/adult businesses excluded</li>
+                    <li>• Pyramid/MLM schemes excluded</li>
+                    <li>• Must not be delinquent on federal debt</li>
+                    <li>• Passive investment activities excluded</li>
+                  </ul>
+                </CardContent></Card>
               </div>
 
-              {/* Microloan Program Structure */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">SBA Microloan Program Structure</h2>
+              <div className="mt-6 bg-green-50 border-l-4 border-green-500 p-4">
+                <p className="text-gray-700"><strong>Credit Flexibility:</strong> Microloan intermediaries often accept borrowers with lower credit scores (550-620) who might not qualify for 7(a) loans. Requirements vary by intermediary.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-                <div className="space-y-6">
-                  <Card className="border-purple-200">
-                    <CardHeader>
-                      <div className="flex items-center mb-2">
-                        <Heart className="w-6 h-6 text-purple-600 mr-3" />
-                        <CardTitle className="text-purple-700">How Microloans Work</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-3 gap-4 mb-4">
-                        <div className="flex items-center">
-                          <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                          <span><strong>Amount:</strong> Up to $50K</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                          <span><strong>Terms:</strong> Up to 6 years</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Target className="w-5 h-5 text-purple-600 mr-2" />
-                          <span><strong>Average:</strong> $13,000</span>
-                        </div>
-                      </div>
-
-                      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
-                        <h4 className="font-bold mb-2 text-purple-800">Three-Party Structure:</h4>
-                        <p className="text-sm text-purple-700 mb-3">
-                          SBA provides funds to nonprofit intermediary lenders, who then make loans to small businesses.
-                        </p>
-                        <div className="grid md:grid-cols-3 gap-4 text-center">
-                          <div className="bg-white rounded p-3">
-                            <strong className="text-purple-700">SBA</strong>
-                            <p className="text-xs text-gray-600">Provides capital to intermediaries</p>
-                          </div>
-                          <div className="bg-white rounded p-3">
-                            <strong className="text-purple-700">Intermediary</strong>
-                            <p className="text-xs text-gray-600">Community-based lender</p>
-                          </div>
-                          <div className="bg-white rounded p-3">
-                            <strong className="text-purple-700">Small Business</strong>
-                            <p className="text-xs text-gray-600">Receives loan + mentoring</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3 text-purple-700">Loan Uses:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Working capital</li>
-                            <li>• Inventory & supplies</li>
-                            <li>• Equipment & machinery</li>
-                            <li>• Startup costs</li>
-                            <li>• Business expansion</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3 text-purple-700">Interest Rates (2026):</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Typically 8% - 13%</li>
-                            <li>• Set by intermediary lender</li>
-                            <li>• Fixed rate loans</li>
-                            <li>• No prepayment penalties</li>
-                            <li>• Competitive with market rates</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
+        {/* Funding */}
+        <section id="funding" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">How Much Funding Can You Get?</h2>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse border border-gray-200 mb-6">
+                  <thead><tr className="bg-purple-50"><th className="border px-4 py-3 text-left">Loan Amount</th><th className="border px-4 py-3 text-left">Terms</th><th className="border px-4 py-3 text-left">Interest Rate</th></tr></thead>
+                  <tbody>
+                    <tr><td className="border px-4 py-3 font-semibold">Maximum</td><td className="border px-4 py-3 text-green-600">$50,000</td><td className="border px-4 py-3">8-13%</td></tr>
+                    <tr className="bg-gray-50"><td className="border px-4 py-3 font-semibold">Average</td><td className="border px-4 py-3 text-green-600">$13,000</td><td className="border px-4 py-3">8-13%</td></tr>
+                    <tr><td className="border px-4 py-3 font-semibold">Minimum</td><td className="border px-4 py-3 text-green-600">$500</td><td className="border px-4 py-3">8-13%</td></tr>
+                  </tbody>
+                </table>
               </div>
 
-              {/* Business Mentoring Component */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Business Mentoring & Technical Assistance</h2>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="bg-white p-4 rounded-lg border"><Clock className="w-6 h-6 text-blue-600 mb-2" /><div className="font-bold">Max 6 Years</div><div className="text-sm text-gray-600">Repayment term</div></div>
+                <div className="bg-white p-4 rounded-lg border"><DollarSign className="w-6 h-6 text-green-600 mb-2" /><div className="font-bold">No Prepayment Penalty</div><div className="text-sm text-gray-600">Pay off early if you want</div></div>
+                <div className="bg-white p-4 rounded-lg border"><TrendingUp className="w-6 h-6 text-purple-600 mb-2" /><div className="font-bold">Fixed Rates</div><div className="text-sm text-gray-600">Predictable payments</div></div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-                <div className="bg-pink-50 border border-pink-200 rounded-lg p-6 mb-6">
-                  <div className="flex items-start">
-                    <Users className="w-8 h-8 text-pink-600 mr-4 mt-1" />
-                    <div>
-                      <h4 className="font-bold text-pink-800 mb-2">Unique Advantage of Microloans</h4>
-                      <p className="text-pink-700">
-                        Unlike other SBA loan programs, microloans come with mandatory business counseling and mentoring,
-                        providing invaluable support for new entrepreneurs and growing businesses.
-                      </p>
-                    </div>
-                  </div>
+        {/* Uses */}
+        <section id="uses" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">What Can Microloans Fund?</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 bg-green-50 rounded-lg"><h3 className="font-bold text-lg mb-3 text-green-700">✅ Eligible Uses</h3>
+                  <ul className="space-y-2 text-sm"><li>• Working capital</li><li>• Inventory and supplies</li><li>• Equipment and machinery</li><li>• Furniture and fixtures</li><li>• Startup costs</li><li>• Marketing and advertising</li></ul>
                 </div>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <Card className="border-pink-200">
-                    <CardHeader>
-                      <CardTitle className="text-pink-700">Pre-Loan Counseling</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="text-sm text-gray-700 space-y-2">
-                        <li>• Business plan development</li>
-                        <li>• Financial projections</li>
-                        <li>• Market research guidance</li>
-                        <li>• Loan application assistance</li>
-                        <li>• Industry-specific advice</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-purple-200">
-                    <CardHeader>
-                      <CardTitle className="text-purple-700">Post-Loan Support</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="text-sm text-gray-700 space-y-2">
-                        <li>• Ongoing business mentoring</li>
-                        <li>• Financial management training</li>
-                        <li>• Marketing & sales support</li>
-                        <li>• Networking opportunities</li>
-                        <li>• Growth planning assistance</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+                <div className="p-6 bg-red-50 rounded-lg"><h3 className="font-bold text-lg mb-3 text-red-700">❌ Not Eligible</h3>
+                  <ul className="space-y-2 text-sm"><li>• Real estate purchases</li><li>• Refinancing existing debt</li><li>• Personal expenses</li><li>• Owner draws/salaries</li><li>• Investment activities</li><li>• Gambling/adult businesses</li></ul>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Eligibility Requirements */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">SBA Microloan Eligibility Requirements</h2>
+        {/* Intermediaries */}
+        <section id="intermediaries" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Finding Microloan Lenders (Intermediaries)</h2>
+              <p className="text-gray-700 mb-6">SBA microloans are provided through 180+ nonprofit community-based intermediary lenders. Each intermediary has its own service area, lending criteria, and focus areas.</p>
 
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-green-700">✅ Basic Requirements:</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Small Business:</strong> Meet SBA size standards</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>For-Profit:</strong> Must be for-profit business</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Good Credit:</strong> Reasonable credit history</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Business Need:</strong> Demonstrate need for capital</span>
-                      </li>
-                    </ul>
-                  </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card><CardContent className="pt-6">
+                  <h3 className="font-bold mb-3 flex items-center"><Building2 className="w-5 h-5 text-blue-600 mr-2" />Types of Intermediaries</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li>• Community Development Financial Institutions (CDFIs)</li>
+                    <li>• Women&apos;s Business Centers (WBCs)</li>
+                    <li>• Minority Business Development Agencies</li>
+                    <li>• Veterans Business Outreach Centers</li>
+                    <li>• Rural development organizations</li>
+                  </ul>
+                </CardContent></Card>
 
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-red-700">❌ Restrictions:</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Real Estate:</strong> Cannot purchase real estate</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Debt Payment:</strong> Cannot pay existing debt</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Prohibited Industries:</strong> Same as other SBA loans</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Location:</strong> Must be in intermediary's service area</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                <Card><CardContent className="pt-6">
+                  <h3 className="font-bold mb-3 flex items-center"><MapPin className="w-5 h-5 text-purple-600 mr-2" />How to Find One</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li>• Visit SBA.gov Lender Match tool</li>
+                    <li>• Contact your local SBA district office</li>
+                    <li>• Search CDFI Fund directory</li>
+                    <li>• Check with local SCORE chapter</li>
+                    <li>• Ask at your local SBDC</li>
+                  </ul>
+                </CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Mentoring */}
+        <section id="mentoring" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Free Business Mentoring: A Major Benefit</h2>
+              <div className="bg-pink-50 border-l-4 border-pink-500 p-6 mb-6">
+                <div className="flex items-start"><Users className="w-6 h-6 text-pink-600 mr-3 flex-shrink-0" /><p className="text-gray-700"><strong>Unique Advantage:</strong> Unlike 7(a) loans, microloan borrowers must participate in business training and receive ongoing mentoring support—completely free.</p></div>
               </div>
 
-              {/* Application Process */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">SBA Microloan Application Process</h2>
-
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-white font-bold text-xl">1</span>
-                    </div>
-                    <h4 className="font-bold text-lg mb-3">Find Intermediary</h4>
-                    <p className="text-sm text-gray-600">
-                      Locate a microloan intermediary in your area using SBA directory
-                    </p>
-                  </div>
-
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-white font-bold text-xl">2</span>
-                    </div>
-                    <h4 className="font-bold text-lg mb-3">Get Counseling</h4>
-                    <p className="text-sm text-gray-600">
-                      Attend mandatory business counseling session
-                    </p>
-                  </div>
-
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-white font-bold text-xl">3</span>
-                    </div>
-                    <h4 className="font-bold text-lg mb-3">Apply</h4>
-                    <p className="text-sm text-gray-600">
-                      Complete simplified application with intermediary
-                    </p>
-                  </div>
-
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-white font-bold text-xl">4</span>
-                    </div>
-                    <h4 className="font-bold text-lg mb-3">Receive Support</h4>
-                    <p className="text-sm text-gray-600">
-                      Get funding plus ongoing business mentoring
-                    </p>
-                  </div>
-                </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card><CardContent className="pt-6"><h3 className="font-bold mb-3">Pre-Loan Training</h3><ul className="space-y-1 text-sm"><li>• Business plan development</li><li>• Financial projections</li><li>• Market research assistance</li><li>• Loan application prep</li></ul></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold mb-3">Post-Loan Support</h3><ul className="space-y-1 text-sm"><li>• Ongoing mentoring (1-2 years)</li><li>• Financial management coaching</li><li>• Marketing guidance</li><li>• Growth planning</li></ul></CardContent></Card>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Popular Microloan Intermediaries */}
-              <div className="bg-blue-50 rounded-lg p-8 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Popular Microloan Intermediary Types</h2>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-blue-700">🏢 Community Development Financial Institutions (CDFIs):</h4>
-                    <ul className="space-y-2 text-gray-700 text-sm">
-                      <li>• Opportunity Fund (nationwide)</li>
-                      <li>• Kiva Microfunds (nationwide)</li>
-                      <li>• Accion (multiple states)</li>
-                      <li>• Community development corporations</li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-blue-700">👥 Specialized Organizations:</h4>
-                    <ul className="space-y-2 text-gray-700 text-sm">
-                      <li>• Women's Business Centers</li>
-                      <li>• Minority business development agencies</li>
-                      <li>• Veteran entrepreneur programs</li>
-                      <li>• Rural development organizations</li>
-                    </ul>
-                  </div>
-                </div>
+        {/* How to Apply */}
+        <section id="how-to-apply" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">How to Apply for SBA Microloans</h2>
+              <div className="space-y-4">
+                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">1</div><div><h3 className="font-bold">Find a Local Intermediary</h3><p className="text-gray-600 text-sm">Use SBA Lender Match or contact your local SBA district office</p></div></div>
+                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">2</div><div><h3 className="font-bold">Complete Training Requirement</h3><p className="text-gray-600 text-sm">Attend mandatory business training or counseling sessions</p></div></div>
+                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">3</div><div><h3 className="font-bold">Submit Application</h3><p className="text-gray-600 text-sm">Complete simplified application with business docs and plan</p></div></div>
+                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">4</div><div><h3 className="font-bold">Approval &amp; Closing</h3><p className="text-gray-600 text-sm">Receive decision in 2-4 weeks; close and receive funds</p></div></div>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Success Tips */}
-              <div className="bg-green-50 rounded-lg p-8 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Microloan Success Strategies</h2>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-green-700">✅ Best Practices</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Build relationship with intermediary early</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Complete all required counseling</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Have clear business plan and budget</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Take advantage of ongoing mentoring</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-purple-700">🎯 Application Tips</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <Target className="w-5 h-5 text-purple-500 mr-3 mt-0.5" />
-                        <span>Start small - you can always get additional funding</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Target className="w-5 h-5 text-purple-500 mr-3 mt-0.5" />
-                        <span>Focus on immediate, specific needs</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Target className="w-5 h-5 text-purple-500 mr-3 mt-0.5" />
-                        <span>Show how you'll repay from cash flow</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Target className="w-5 h-5 text-purple-500 mr-3 mt-0.5" />
-                        <span>Be prepared to provide collateral</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+        {/* Documents */}
+        <section id="documents" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">What Documents Are Required?</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 bg-white rounded-lg border"><h3 className="font-bold mb-3 flex items-center"><FileText className="w-5 h-5 text-blue-600 mr-2" />Personal Documents</h3><ul className="space-y-1 text-sm"><li>• Personal tax returns (1-2 years)</li><li>• Government-issued ID</li><li>• Personal financial statement</li><li>• Resume or bio</li></ul></div>
+                <div className="p-6 bg-white rounded-lg border"><h3 className="font-bold mb-3 flex items-center"><FileText className="w-5 h-5 text-green-600 mr-2" />Business Documents</h3><ul className="space-y-1 text-sm"><li>• Business plan (simple is OK)</li><li>• Business bank statements (3-6 mo)</li><li>• Business tax returns (if existing)</li><li>• Proof of business registration</li></ul></div>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Call to Action */}
-              <div className="bg-gradient-to-r from-purple-600 to-pink-700 rounded-lg p-8 text-white text-center">
-                <h3 className="text-2xl font-bold mb-4">Ready to Apply for SBA Microloan?</h3>
-                <p className="text-purple-100 mb-6 text-lg">
-                  Get our comprehensive SBA loan application guide including microloan application tips,
-                  intermediary directory, and mentoring program details.
-                </p>
-                <Button size="lg" className="bg-white text-purple-700 hover:bg-gray-100" asChild>
-                  <Link href="/guides/apply-sba-loans">
-                    Get SBA Application Guide
-                  </Link>
-                </Button>
+        {/* Timeline */}
+        <section id="timeline" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">How Long Does Microloan Approval Take?</h2>
+              <div className="overflow-x-auto"><table className="w-full border-collapse border border-gray-200"><thead><tr className="bg-purple-50"><th className="border px-4 py-3 text-left">Phase</th><th className="border px-4 py-3 text-left">Timeline</th></tr></thead><tbody><tr><td className="border px-4 py-3">Training requirement</td><td className="border px-4 py-3">1-2 weeks</td></tr><tr className="bg-gray-50"><td className="border px-4 py-3">Application processing</td><td className="border px-4 py-3">2-4 weeks</td></tr><tr><td className="border px-4 py-3">Closing/funding</td><td className="border px-4 py-3">1-2 weeks</td></tr><tr className="bg-gray-50 font-bold"><td className="border px-4 py-3">Total</td><td className="border px-4 py-3 text-green-600">4-8 weeks</td></tr></tbody></table></div>
+              <p className="text-gray-600 text-sm mt-4">Much faster than 7(a) loans which take 30-90 days.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Comparison */}
+        <section id="comparison" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Microloans vs SBA 7(a) Loans</h2>
+              <div className="overflow-x-auto"><table className="w-full border-collapse border border-gray-200"><thead><tr className="bg-blue-50"><th className="border px-4 py-3 text-left">Factor</th><th className="border px-4 py-3 text-left">Microloans</th><th className="border px-4 py-3 text-left">7(a) Loans</th></tr></thead><tbody><tr><td className="border px-4 py-3 font-semibold">Max Amount</td><td className="border px-4 py-3">$50,000</td><td className="border px-4 py-3">$5,000,000</td></tr><tr className="bg-gray-50"><td className="border px-4 py-3 font-semibold">Approval Time</td><td className="border px-4 py-3 text-green-600">2-4 weeks</td><td className="border px-4 py-3">30-90 days</td></tr><tr><td className="border px-4 py-3 font-semibold">Documentation</td><td className="border px-4 py-3 text-green-600">Simple</td><td className="border px-4 py-3">Extensive</td></tr><tr className="bg-gray-50"><td className="border px-4 py-3 font-semibold">Mentoring</td><td className="border px-4 py-3 text-green-600">Included</td><td className="border px-4 py-3">Not included</td></tr><tr><td className="border px-4 py-3 font-semibold">Real Estate</td><td className="border px-4 py-3">Not allowed</td><td className="border px-4 py-3">Allowed</td></tr></tbody></table></div>
+            </div>
+          </div>
+        </section>
+
+        {/* Alternatives */}
+        <section id="alternatives" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Alternative Funding Programs</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Card><CardContent className="pt-6"><h3 className="font-bold mb-2">Kiva Microloans</h3><p className="text-sm text-gray-600">0% interest crowdfunded microloans up to $15K</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold mb-2">Community Advantage</h3><p className="text-sm text-gray-600">SBA 7(a) loans up to $350K for underserved</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold mb-2">Accion Loans</h3><p className="text-sm text-gray-600">CDFI loans from $5K to $100K</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold mb-2">SBA Express</h3><p className="text-sm text-gray-600">Faster 7(a) loans up to $500K</p></CardContent></Card>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQs */}
+        <section id="faqs" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can startups get microloans?</h3><p className="text-gray-700 mt-2 ml-7">Yes! Microloans are specifically designed for startups. Many intermediaries specialize in helping new businesses.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What credit score do I need?</h3><p className="text-gray-700 mt-2 ml-7">Typically 550-620+, though requirements vary by intermediary. Lower scores may require additional training or smaller amounts.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Is collateral required?</h3><p className="text-gray-700 mt-2 ml-7">Some intermediaries require collateral; others don&apos;t. Personal guarantees are typically required.</p></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/sba-loans-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA Loans Overview</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/sba-7a-loans-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA 7(a) Loans Deep Dive</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/small-business-grants-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/women-business-centers-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Women&apos;s Business Centers</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-20 bg-gradient-to-r from-purple-700 to-pink-600">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center text-white">
+              <h2 className="text-4xl font-bold mb-6">Ready to Get Your Microloan?</h2>
+              <p className="text-xl text-purple-100 mb-8">Our team helps startups and small businesses navigate the microloan application process, find the right intermediary, and prepare winning applications.</p>
+              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
+                <Link href="/contact?service=sba-microloan-help">Get Microloan Application Help</Link>
+              </Button>
             </div>
           </div>
         </section>
