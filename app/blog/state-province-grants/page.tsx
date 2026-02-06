@@ -23,9 +23,60 @@ export const metadata: Metadata = {
   },
 }
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I have to move my whole company to get state grants?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not necessarily. Most state grants require you to have a \"nexus\" or physical presence in that state, such as a branch office or R&D lab. You don't always have to move your HQ, but the employees associated with the grant must work in that jurisdiction."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I negotiate tax incentives with states?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. Unlike federal grants, state incentives are often negotiated deals. Everything is on the table: property tax rates, free land, utility rates, and training cash. The more jobs you create, the more leverage you have."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the \"But-For\" Clause?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many states require you to sign an affidavit stating that \"But for this incentive, the project would not occur in this state.\" If you announce a move before signing, you lose leverage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are Canadian or US grants better?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "US Grants (SBIR) offer larger upfront non-dilutive cash for R&D. Canadian Grants (SR&ED, IRAP) focus on tax credits and wage subsidies, offering lower engineering costs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a Site Selector?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Site Selector is a professional consultant who helps companies find the best location for new facilities and negotiates incentive packages anonymously on their behalf."
+      }
+    }
+  ]
+}
+
 export default function StateProvinceGrantsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50 dark:bg-neutral-900">
         {/* Hero Section */}
@@ -674,6 +725,30 @@ export default function StateProvinceGrantsPage() {
                 <p className="text-sm text-gray-600">Cash given to a company to reimburse the cost of training new employees. Often administered by local community colleges.</p>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Official Resources Section */}
+        <div className="mt-20 scroll-mt-32">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+            <Globe className="w-8 h-8 text-blue-600 mr-3" />
+            Official Investment Resources
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="https://www.trade.gov/selectusa" target="_blank" rel="noopener noreferrer" className="flex items-start p-6 bg-blue-50 rounded-xl border border-blue-100 hover:shadow-md transition-all">
+              <ExternalLink className="w-6 h-6 text-blue-600 mr-4 flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="font-bold text-blue-900 mb-2">SelectUSA (United States)</h3>
+                <p className="text-blue-800 text-sm">The official U.S. government program for attracting foreign direct investment (FDI) and helping companies expand into the USA.</p>
+              </div>
+            </Link>
+            <Link href="https://www.investcanada.ca/" target="_blank" rel="noopener noreferrer" className="flex items-start p-6 bg-red-50 rounded-xl border border-red-100 hover:shadow-md transition-all">
+              <ExternalLink className="w-6 h-6 text-red-600 mr-4 flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="font-bold text-red-900 mb-2">Invest in Canada</h3>
+                <p className="text-red-800 text-sm">Find global business opportunities and government incentives for expanding your operations into Canada.</p>
+              </div>
+            </Link>
           </div>
         </div>
 

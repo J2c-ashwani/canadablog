@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +19,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What is the maximum CanExport SME funding available?",
+    answer: "CanExport SME provides up to $75,000 per market and $150,000 total for export market development activities. The program reimburses up to 75% of eligible expenses for trade missions, market research, and international business development."
+  },
+  {
+    question: "How can the Trade Commissioner Service help women exporters?",
+    answer: "TCS provides free export advisory through 160+ offices in 100+ countries, including export readiness assessment, market intelligence, business matchmaking, and trade mission support for Canadian women entrepreneurs."
+  },
+  {
+    question: "What EDC services are available for women-owned export businesses?",
+    answer: "EDC Women in Trade offers export credit insurance, working capital financing, buyer financing, performance guarantees, and political risk insurance to help women exporters manage international trade risks."
+  },
+  {
+    question: "Can I get funding for e-commerce export activities?",
+    answer: "Yes, CanExport E-commerce provides up to $50,000 for online marketplace entry, digital marketing, and platform integration. Additional support through Digital Main Street and provincial e-commerce programs is also available."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function WomenExportTradeGrantsCanadaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -35,12 +71,12 @@ export default function WomenExportTradeGrantsCanadaPage() {
                 Women Export Trade Grants Canada: CanExport Funding, International Expansion & Global Market Development
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Comprehensive 2026-2027 guide to export grants and international trade funding for women-owned businesses 
-                expanding globally from Canada. Access up to $75,000 through CanExport SME program, Export Development 
-                Canada (EDC) financing, Trade Commissioner Service support, and provincial export assistance programs in 
-                Ontario (Toronto, Ottawa, Mississauga), Quebec (Montreal, Quebec City, Laval), British Columbia (Vancouver, 
-                Surrey, Richmond), and Alberta (Calgary, Edmonton). Complete funding guide for women exporters pursuing 
-                international market development, trade missions, export market research, digital trade, global e-commerce, 
+                Comprehensive 2026-2027 guide to export grants and international trade funding for women-owned businesses
+                expanding globally from Canada. Access up to $75,000 through CanExport SME program, Export Development
+                Canada (EDC) financing, Trade Commissioner Service support, and provincial export assistance programs in
+                Ontario (Toronto, Ottawa, Mississauga), Quebec (Montreal, Quebec City, Laval), British Columbia (Vancouver,
+                Surrey, Richmond), and Alberta (Calgary, Edmonton). Complete funding guide for women exporters pursuing
+                international market development, trade missions, export market research, digital trade, global e-commerce,
                 and cross-border expansion to USA, Europe, Asia-Pacific, Latin America, and emerging markets worldwide.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -64,7 +100,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Export Grants by Province (2026-2027 CanExport Funding Available)</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-blue-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -212,18 +248,18 @@ export default function WomenExportTradeGrantsCanadaPage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Export & International Trade Ecosystem for Women Entrepreneurs</h2>
                 <p className="text-lg text-gray-600 mb-4">
-                  Canadian women exporters have access to comprehensive support for international market expansion through 
-                  federal CanExport programs providing up to $75,000 per market for export development activities. Export 
-                  Development Canada (EDC) offers trade financing, export credit insurance, and international payment solutions 
+                  Canadian women exporters have access to comprehensive support for international market expansion through
+                  federal CanExport programs providing up to $75,000 per market for export development activities. Export
+                  Development Canada (EDC) offers trade financing, export credit insurance, and international payment solutions
                   specifically designed for women-owned businesses expanding globally.
                 </p>
                 <p className="text-lg text-gray-600">
-                  Women exporters can access Trade Commissioner Service support through 160+ offices in 100+ countries providing 
-                  free export advisory, market intelligence, business matchmaking, and trade mission participation. Provincial 
-                  export programs complement federal support with additional grants, trade missions, market research funding, 
-                  and international business development services helping women entrepreneurs succeed in USA, European Union, 
-                  United Kingdom, Asia-Pacific (China, Japan, India, South Korea, ASEAN), Latin America, Middle East, and 
-                  emerging markets worldwide across all sectors including manufacturing, technology, professional services, 
+                  Women exporters can access Trade Commissioner Service support through 160+ offices in 100+ countries providing
+                  free export advisory, market intelligence, business matchmaking, and trade mission participation. Provincial
+                  export programs complement federal support with additional grants, trade missions, market research funding,
+                  and international business development services helping women entrepreneurs succeed in USA, European Union,
+                  United Kingdom, Asia-Pacific (China, Japan, India, South Korea, ASEAN), Latin America, Middle East, and
+                  emerging markets worldwide across all sectors including manufacturing, technology, professional services,
                   agriculture, clean tech, and consumer goods.
                 </p>
               </div>
@@ -259,10 +295,10 @@ export default function WomenExportTradeGrantsCanadaPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Export Grants and Trade Financing for Women Entrepreneurs 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
-                Complete guide to federal export programs available to women-owned businesses expanding internationally 
+                Complete guide to federal export programs available to women-owned businesses expanding internationally
                 from all Canadian provinces through CanExport, EDC, and Trade Commissioner Service.
               </p>
-              
+
               <div className="space-y-8">
                 {/* CanExport SME Program */}
                 <Card className="border-blue-200">
@@ -291,7 +327,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
                               <span className="text-green-700 font-bold">Up to 75% reimbursement</span>
                             </div>
                           </div>
-                          
+
                           <div className="space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
                             <p className="font-semibold text-gray-800 mb-2">Eligible CanExport Activities Women Exporters:</p>
                             <p>• <strong>Market Research:</strong> International market studies, competitive analysis, export readiness assessments for target markets</p>
@@ -523,7 +559,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Provincial Export Grants for Women Entrepreneurs by Region</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
-                Complete guide to provincial export support programs complementing federal CanExport funding for 
+                Complete guide to provincial export support programs complementing federal CanExport funding for
                 women-owned businesses expanding internationally across Canada.
               </p>
 
@@ -657,7 +693,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Export Funding by Sector & Target Market - Women Entrepreneurs</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Technology & Software */}
                 <Card className="border-blue-200 hover:shadow-xl transition-shadow">
@@ -752,10 +788,10 @@ export default function WomenExportTradeGrantsCanadaPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Export Grant Application Success Strategies 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
-                Proven strategies for women entrepreneurs to maximize CanExport approval rates and international 
+                Proven strategies for women entrepreneurs to maximize CanExport approval rates and international
                 expansion funding success across all Canadian provinces.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -913,19 +949,19 @@ export default function WomenExportTradeGrantsCanadaPage() {
                 Ready to Access Export Funding and Expand Your Business Globally?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get our complete 2026-2027 women export grants guide with CanExport application strategies, Trade 
-                Commissioner Service navigator, EDC financing overview, target market selection framework covering 
-                USA, Europe, Asia-Pacific international expansion - or work with our export funding specialists for 
+                Get our complete 2026-2027 women export grants guide with CanExport application strategies, Trade
+                Commissioner Service navigator, EDC financing overview, target market selection framework covering
+                USA, Europe, Asia-Pacific international expansion - or work with our export funding specialists for
                 expert application support maximizing your grant approval success.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2 text-lg">📥 Free Export Grants Guide</h4>
                   <p className="text-blue-100 text-sm mb-4">
-                    Download our comprehensive women export grants guide with CanExport SME application templates, 
-                    Trade Commissioner Service directory, EDC financing options, provincial export programs, target 
-                    market selection framework, and international expansion checklist for women entrepreneurs across 
+                    Download our comprehensive women export grants guide with CanExport SME application templates,
+                    Trade Commissioner Service directory, EDC financing options, provincial export programs, target
+                    market selection framework, and international expansion checklist for women entrepreneurs across
                     all Canadian provinces.
                   </p>
                   <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100 font-semibold" asChild>
@@ -943,9 +979,9 @@ export default function WomenExportTradeGrantsCanadaPage() {
                   </div>
                   <h4 className="font-semibold text-white mb-2 text-lg">🎯 Expert Export Funding Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with export specialists who understand CanExport requirements, Trade Commissioner Service, 
-                    and international market entry. We help women entrepreneurs navigate CanExport applications ($75K), 
-                    EDC financing, provincial export programs, and optimize multiple funding sources maximizing total 
+                    Work with export specialists who understand CanExport requirements, Trade Commissioner Service,
+                    and international market entry. We help women entrepreneurs navigate CanExport applications ($75K),
+                    EDC financing, provincial export programs, and optimize multiple funding sources maximizing total
                     capital accessed for global expansion.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold shadow-lg" asChild>
@@ -957,35 +993,35 @@ export default function WomenExportTradeGrantsCanadaPage() {
                   <p className="text-xs text-yellow-200 mt-3">Free consultation • Export expertise • Global market knowledge</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6">
                 <p className="text-blue-200 text-sm mb-3">
                   <strong className="text-white">Why Choose Our Export Grant Services:</strong>
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 text-xs text-blue-200">
                   <div>
-                    ✓ 180+ women exporters funded<br/>
-                    ✓ $40M+ total export grants secured<br/>
+                    ✓ 180+ women exporters funded<br />
+                    ✓ $40M+ total export grants secured<br />
                     ✓ Average $85K CanExport per client
                   </div>
                   <div>
-                    ✓ All provinces/territories covered<br/>
-                    ✓ USA, Europe, Asia-Pacific expertise<br/>
+                    ✓ All provinces/territories covered<br />
+                    ✓ USA, Europe, Asia-Pacific expertise<br />
                     ✓ Trade Commissioner connections
                   </div>
                   <div>
-                    ✓ 85% CanExport approval success rate<br/>
-                    ✓ EDC financing facilitation<br/>
+                    ✓ 85% CanExport approval success rate<br />
+                    ✓ EDC financing facilitation<br />
                     ✓ International market entry support
                   </div>
                 </div>
               </div>
 
               <p className="text-blue-300 text-sm">
-                🌍 <strong>Women Export Grant Assistance:</strong> CanExport SME funding • EDC trade financing • Trade Commissioner 
-                Service • International market development • USA exports • European Union • Asia-Pacific • Latin America • 
-                Trade missions • Export market research • Global e-commerce • Cross-border expansion • Manufacturing exports • 
-                Technology software • Professional services • Food beverage • Fashion apparel • Clean technology across all 
+                🌍 <strong>Women Export Grant Assistance:</strong> CanExport SME funding • EDC trade financing • Trade Commissioner
+                Service • International market development • USA exports • European Union • Asia-Pacific • Latin America •
+                Trade missions • Export market research • Global e-commerce • Cross-border expansion • Manufacturing exports •
+                Technology software • Professional services • Food beverage • Fashion apparel • Clean technology across all
                 Canadian provinces and international markets worldwide
               </p>
             </div>

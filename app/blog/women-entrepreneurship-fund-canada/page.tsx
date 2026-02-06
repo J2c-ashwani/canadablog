@@ -17,9 +17,45 @@ export const metadata: Metadata = {
   keywords: "Women Entrepreneurship Fund, WEF Canada, women business grants, federal women funding, ISED women strategy, WES Ecosystem Fund, women entrepreneurs Canada, non-repayable grants women",
 }
 
+const faqData = [
+  {
+    question: "Is the Women Entrepreneurship Fund still open?",
+    answer: "WEF operates on intake windows, typically in spring and fall. Check the ISED website for current intake status. Between intakes, you can prepare your application for the next window."
+  },
+  {
+    question: "Can I apply if I'm 50/50 ownership with a male partner?",
+    answer: "No. WEF requires 51% or more women ownership. If you're 50/50, consider restructuring or exploring other programs like IRAP or SR&ED that don't have gender-based ownership requirements."
+  },
+  {
+    question: "Do I have to repay WEF funding?",
+    answer: "No. WEF is 100% non-repayable. Unlike BDC loans or Futurpreneur, approved WEF grants never need to be paid back—it's a contribution, not a loan."
+  },
+  {
+    question: "What is the WEF success rate?",
+    answer: "WEF is competitive with approximately 12-15% of applications approved. However, professionally prepared applications with strong export or innovation narratives see significantly higher success rates."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function WomenEntrepreneurshipFundGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -897,6 +933,45 @@ export default function WomenEntrepreneurshipFundGuidePage() {
                   <span className="text-gray-700 group-hover:text-purple-600">All Grant Application Guides</span>
                   <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
                 </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Official Government Resources */}
+        <section className="py-12 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Official Government Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <a href="https://ised-isde.canada.ca/site/women-entrepreneurship-strategy/en" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-purple-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Women Entrepreneurship Strategy</div>
+                    <div className="text-sm text-gray-600">Official ISED WES portal</div>
+                  </div>
+                </a>
+                <a href="https://www.bdc.ca/en/about/women-entrepreneurs" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-purple-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-pink-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">BDC Women Entrepreneurs</div>
+                    <div className="text-sm text-gray-600">Business Development Bank programs</div>
+                  </div>
+                </a>
+                <a href="https://weoc.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-purple-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-rose-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">WEOC</div>
+                    <div className="text-sm text-gray-600">Women's Enterprise Organizations of Canada</div>
+                  </div>
+                </a>
+                <a href="https://www.canada.ca/en/innovation-science-economic-development.html" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-purple-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">ISED Canada</div>
+                    <div className="text-sm text-gray-600">Innovation, Science and Economic Development</div>
+                  </div>
+                </a>
               </div>
             </div>
           </div>

@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Heart, Award, TrendingUp } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Heart, Award, TrendingUp, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +25,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What is Canada's Women Entrepreneurship Strategy (WES)?",
+    answer: "WES is a $6+ billion Government of Canada initiative launched to support women entrepreneurs. It includes grants through the Women Entrepreneurship Fund, microloans through the Women Entrepreneurship Loan Fund, and the BDC Women in Technology Venture Fund for tech startups."
+  },
+  {
+    question: "Who qualifies for women entrepreneur grants in Canada?",
+    answer: "To qualify, your business must be at least 51% owned by women. Some programs prioritize Indigenous women, women with disabilities, newcomer women, and LGBTQ2+ entrepreneurs. Both startups and established businesses can apply depending on the program."
+  },
+  {
+    question: "How much funding can I get through WES programs?",
+    answer: "Funding varies by program: Women Entrepreneurship Fund offers grants up to $100K, Women Entrepreneurship Loan Fund provides microloans up to $50K, and BDC Women in Technology Venture Fund makes equity investments typically ranging from $500K to several million."
+  },
+  {
+    question: "Are WES loans or grants repayable?",
+    answer: "Women Entrepreneurship Fund grants are non-repayable. Women Entrepreneurship Loan Fund offers low-interest loans with flexible repayment terms. BDC investments are equity-based, meaning you give up a percentage of ownership rather than repaying a loan."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function WESBlogPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -35,7 +77,7 @@ export default function WESBlogPage() {
                 Women Entrepreneurship Strategy Canada 2026
               </h1>
               <p className="text-xl text-pink-100 mb-8">
-                Access $6+ billion in Canadian government funding for women entrepreneurs. Complete guide to 
+                Access $6+ billion in Canadian government funding for women entrepreneurs. Complete guide to
                 female business grants, women-owned business loans, and WES support programs across all provinces.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -80,12 +122,12 @@ export default function WESBlogPage() {
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">What is Canada's Women Entrepreneurship Strategy?</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  The Women Entrepreneurship Strategy (WES) is the Government of Canada's comprehensive approach to supporting 
-                  female entrepreneurs and women-owned businesses. Launched to address the gender gap in entrepreneurship, 
-                  WES provides over $6.5 billion in funding, resources, and support programs specifically designed for 
+                  The Women Entrepreneurship Strategy (WES) is the Government of Canada's comprehensive approach to supporting
+                  female entrepreneurs and women-owned businesses. Launched to address the gender gap in entrepreneurship,
+                  WES provides over $6.5 billion in funding, resources, and support programs specifically designed for
                   Canadian women entrepreneurs across all provinces and territories.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-pink-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-pink-800">WES Program Benefits</h4>
@@ -96,7 +138,7 @@ export default function WESBlogPage() {
                       <li>• Women-owned business mentorship programs</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-purple-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-purple-800">Target Industries</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -117,7 +159,7 @@ export default function WESBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Women Entrepreneurship Strategy Funding Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Women Entrepreneurship Fund */}
                 <Card className="border-pink-200">
@@ -143,7 +185,7 @@ export default function WESBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Direct funding for women-owned businesses and organizations supporting female entrepreneurs 
+                      Direct funding for women-owned businesses and organizations supporting female entrepreneurs
                       across Canada. Focus on scaling women-led companies and building entrepreneurship ecosystems.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -193,7 +235,7 @@ export default function WESBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Accessible microloans for women entrepreneurs who face barriers accessing traditional financing. 
+                      Accessible microloans for women entrepreneurs who face barriers accessing traditional financing.
                       Delivered through community-based organizations across all Canadian provinces.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -243,7 +285,7 @@ export default function WESBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Canada's largest fund dedicated to women-led technology companies. Provides growth capital 
+                      Canada's largest fund dedicated to women-led technology companies. Provides growth capital
                       for female entrepreneurs in high-growth tech sectors.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -278,7 +320,7 @@ export default function WESBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Provincial Women Entrepreneur Support Programs</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-pink-700">✨ Major Provincial Programs:</h4>
@@ -301,7 +343,7 @@ export default function WESBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-purple-700">🌟 Specialized Support:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -333,7 +375,7 @@ export default function WESBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How to Apply for Women Entrepreneurship Strategy Funding</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <span className="bg-pink-500 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold mr-4 mt-0.5">1</span>
@@ -380,7 +422,7 @@ export default function WESBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Success Tips for Women Entrepreneurs in Canada</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">✅ Maximize Your Female Business Grant Success:</h4>
@@ -403,7 +445,7 @@ export default function WESBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Women Entrepreneur Funding Mistakes:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -430,6 +472,66 @@ export default function WESBlogPage() {
           </div>
         </section>
 
+        {/* Official Resources */}
+        <section className="py-12 bg-gray-50 border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Official Government Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <a href="https://ised-isde.canada.ca/site/women-entrepreneurship-strategy/en" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-white rounded-lg hover:bg-pink-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-pink-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Women Entrepreneurship Strategy</div>
+                    <div className="text-sm text-gray-600">Official ISED WES portal</div>
+                  </div>
+                </a>
+                <a href="https://www.bdc.ca/en/about/women-entrepreneurs" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-white rounded-lg hover:bg-pink-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">BDC Women Entrepreneurs</div>
+                    <div className="text-sm text-gray-600">Business Development Bank programs</div>
+                  </div>
+                </a>
+                <a href="https://weoc.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-white rounded-lg hover:bg-pink-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-rose-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Women's Enterprise Organizations of Canada</div>
+                    <div className="text-sm text-gray-600">National network of WEOs</div>
+                  </div>
+                </a>
+                <a href="https://www.edc.ca/en/women-in-trade.html" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-white rounded-lg hover:bg-pink-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">EDC Women in Trade</div>
+                    <div className="text-sm text-gray-600">Export support for women</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <Accordion type="single" collapsible className="w-full">
+                {faqData.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="text-left font-semibold text-gray-900">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+        </section>
+
         {/* 2 CTAs Section - High Converting Keywords */}
         <section className="py-16 bg-gradient-to-r from-pink-600 to-rose-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -438,10 +540,10 @@ export default function WESBlogPage() {
                 Ready to Access Women Entrepreneurship Strategy Funding?
               </h2>
               <p className="text-xl text-pink-100 mb-8">
-                Get the complete women entrepreneur application guide or work with our female business funding experts 
+                Get the complete women entrepreneur application guide or work with our female business funding experts
                 to maximize your WES grant and loan approvals across Canada.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 {/* Get Application Guide CTA */}
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
@@ -470,7 +572,7 @@ export default function WESBlogPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-pink-200 text-sm mt-6">
                 84% success rate for women entrepreneurs • Average funding secured: $42K • Female-focused expertise
               </p>

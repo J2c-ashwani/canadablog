@@ -3,14 +3,14 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, MapPin } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, MapPin, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Quebec Women Business Grants 2026 | $720M Francophone Entrepreneur Support Programs",
   description: "Complete guide to Quebec women entrepreneurship support with Réseau des Femmes d'Affaires, Investissement Québec, J. Armand Bombardier grants, and francophone women business funding.",
-  keywords: "Quebec women business grants, RFAQ grants, Investissement Quebec women, francophone women entrepreneurs, Quebec women leadership",
+  keywords: "Quebec women business grants, RFAQ grants, Investissement Quebec women, francophone women entrepreneurs, Quebec women leadership, women business loans Montreal, female entrepreneur grants Quebec City, subventions femmes entrepreneures Québec, financement entreprises féminines",
   openGraph: {
     title: "Quebec Women Business Grants 2026 | $720M Francophone Support",
     description: "Comprehensive guide to Quebec women business support with provincial grants, microfinancing, and francophone entrepreneur programs.",
@@ -19,9 +19,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "Do I need to be a member of RFAQ to access funding?",
+    answer: "While membership in RFAQ (Réseau des Femmes d'Affaires du Québec) is not mandatory for all government grants, it highly recommended. RFAQ opens doors to specific networking opportunities, mentorship, and helps navigate the Quebec funding ecosystem effectively."
+  },
+  {
+    question: "What is the J. Armand Bombardier Excellence Grant?",
+    answer: "This is a prestigious specific grant generally valued at $10,000 offered to Quebec women entrepreneurs active in manufacturing, technological innovation, or cultural sectors. It is designed to recognize and support excellence in business management."
+  },
+  {
+    question: "Are there grants for English-speaking women entrepreneurs in Quebec?",
+    answer: "Yes. While RFAQ and government services operate primarily in French, organizations like YES Employment + Entrepreneurship offer specific support, workshops, and grant guidance for the English-speaking business community in Quebec."
+  },
+  {
+    question: "Does Investissement Québec offer loans for small women-owned businesses?",
+    answer: "Yes, Investissement Québec has specific measures for women entrepreneurs, including easier access to loan guarantees and financing for working capital, often with more flexible conditions than traditional banks."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function QuebecWomenBusinessGrantsGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -35,8 +71,8 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
                 Quebec Women Business Grants & Entrepreneur Support
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Access $720M in Quebec women entrepreneurship support including Réseau des Femmes d'Affaires 
-                du Québec (RFAQ), Investissement Québec for Women, J. Armand Bombardier Excellence Grants, 
+                Access $720M in Quebec women entrepreneurship support including Réseau des Femmes d'Affaires
+                du Québec (RFAQ), Investissement Québec for Women, J. Armand Bombardier Excellence Grants,
                 and comprehensive francophone women business programs across the province.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -94,8 +130,8 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Leading Francophone Women Business Support Ecosystem</h2>
                 <p className="text-lg text-gray-600">
-                  Quebec provides comprehensive bilingual women entrepreneurship support with $720M in provincial 
-                  funding, federal grants, francophone business networks, and specialized programs designed to help 
+                  Quebec provides comprehensive bilingual women entrepreneurship support with $720M in provincial
+                  funding, federal grants, francophone business networks, and specialized programs designed to help
                   women entrepreneurs start, grow, and lead businesses across all Quebec regions.
                 </p>
               </div>
@@ -127,7 +163,7 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Quebec Women Business Support Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* J. Armand Bombardier Excellence Grants */}
                 <Card className="border-blue-200">
@@ -164,7 +200,7 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-blue-50 rounded-lg">
                       <h5 className="font-semibold mb-2">📋 Application Requirements:</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -244,8 +280,8 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
                             <span className="text-green-700 font-bold">Financing & Support</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Provincial Crown corporation providing financing solutions, business advisory services, 
-                            and market development support specifically for Quebec women-owned businesses across all sectors.</p>
+                            <p>Provincial Crown corporation providing financing solutions, business advisory services,
+                              and market development support specifically for Quebec women-owned businesses across all sectors.</p>
                           </div>
                         </div>
                       </div>
@@ -280,9 +316,9 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
                             <span className="text-purple-700 font-bold">$533,029</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Federal funding for CDEC de Québec to transform the entrepreneurial ecosystem, 
-                            addressing systemic barriers for women entrepreneurs through awareness, training, 
-                            and policy development across Quebec.</p>
+                            <p>Federal funding for CDEC de Québec to transform the entrepreneurial ecosystem,
+                              addressing systemic barriers for women entrepreneurs through awareness, training,
+                              and policy development across Quebec.</p>
                           </div>
                         </div>
                       </div>
@@ -356,9 +392,9 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
                             <span className="text-pink-700 font-bold">Leadership Skills</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Comprehensive programs for women entrepreneurs to develop leadership capabilities, 
-                            governance expertise, and strategic management skills through training, mentorship, 
-                            and board placement opportunities.</p>
+                            <p>Comprehensive programs for women entrepreneurs to develop leadership capabilities,
+                              governance expertise, and strategic management skills through training, mentorship,
+                              and board placement opportunities.</p>
                           </div>
                         </div>
                       </div>
@@ -384,7 +420,7 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Quebec Women Business Support Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -458,6 +494,63 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-center mb-8">
+                <div className="bg-blue-100 p-3 rounded-full mr-4">
+                  <ExternalLink className="w-8 h-8 text-blue-700" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900">Official Quebec Resources</h2>
+                  <p className="text-gray-600">Direct links to government and partner verification sources</p>
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-blue-100 hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-blue-700">Program Applications</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <Link href="https://www.rfaq.ca/" target="_blank" className="flex items-center text-gray-700 hover:text-blue-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-blue-500" />
+                      Réseau des Femmes d'Affaires du Québec (RFAQ)
+                    </Link>
+                    <Link href="https://www.investquebec.com/quebec/en/financial-products.html" target="_blank" className="flex items-center text-gray-700 hover:text-blue-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-blue-500" />
+                      Investissement Québec
+                    </Link>
+                    <Link href="https://www.fondationbombardier.ca/" target="_blank" className="flex items-center text-gray-700 hover:text-blue-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-blue-500" />
+                      Fondation J. Armand Bombardier
+                    </Link>
+                  </CardContent>
+                </Card>
+                <Card className="border-blue-100 hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-blue-700">Support Networks</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <Link href="https://evolut.ca/" target="_blank" className="flex items-center text-gray-700 hover:text-blue-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-blue-500" />
+                      Evol (Women Entrepreneur Financing)
+                    </Link>
+                    <Link href="https://www.quebec.ca/entreprises-et-travailleurs-autonomes" target="_blank" className="flex items-center text-gray-700 hover:text-blue-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-blue-500" />
+                      Quebec Government Business Services
+                    </Link>
+                    <Link href="https://yesmontreal.ca/" target="_blank" className="flex items-center text-gray-700 hover:text-blue-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-blue-500" />
+                      YES Employment + Entrepreneurship
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -466,15 +559,15 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
                 Ready to Access Quebec Women Business Support?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get our complete Quebec women business support guide with program comparison and bilingual application templates, 
+                Get our complete Quebec women business support guide with program comparison and bilingual application templates,
                 or work with our Quebec funding specialists for expert francophone application support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free Quebec Support Guide</h4>
                   <p className="text-blue-100 text-sm mb-4">
-                    Get our comprehensive Quebec women business support guide with RFAQ insights, 
+                    Get our comprehensive Quebec women business support guide with RFAQ insights,
                     Bombardier grant templates, and Investissement Québec strategies.
                   </p>
                   <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100" asChild>
@@ -488,7 +581,7 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
                 <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Expert Quebec Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with bilingual Quebec funding specialists who understand francophone programs 
+                    Work with bilingual Quebec funding specialists who understand francophone programs
                     and can help optimize your applications for provincial success.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
@@ -498,7 +591,7 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-blue-200 text-sm mt-6">
                 Expert guidance • Bilingual support • Provincial programs • Quebec women entrepreneur success
               </p>

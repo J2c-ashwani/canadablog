@@ -13,9 +13,45 @@ export const metadata: Metadata = {
   keywords: "Scotiabank Women Initiative, women entrepreneur funding Canada, Scotiabank women business loans, women business support Canada, women entrepreneur programs",
 }
 
+const faqData = [
+  {
+    question: "Do I need to be a majority business owner to participate in the Scotiabank Women Initiative?",
+    answer: "No, the program serves women with any ownership percentage as well as women executives and leaders in business roles without ownership. The focus is on supporting women in business leadership regardless of specific ownership structure."
+  },
+  {
+    question: "Are there fees for Scotiabank Women Initiative participation?",
+    answer: "Advisory services, core education programming, and networking events are available at no additional cost beyond standard banking product fees. Some partner programs may have separate costs, but the core initiative resources are included."
+  },
+  {
+    question: "Does the Scotiabank Women Initiative provide grants or only loans?",
+    answer: "The Scotiabank Women Initiative provides commercial banking products including loans and credit facilities rather than grants. The $3 billion capital commitment reflects lending availability. Grants are available through government programs which can complement this initiative."
+  },
+  {
+    question: "How do I get started with the Scotiabank Women Initiative?",
+    answer: "Contact Scotiabank small business banking through branch visit, phone, or online. Request information about the Women Initiative and connection to a program advisor. Existing customers can request transfer to program-specialized advisors."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function ScotiabankWomenInitiativePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-red-600 to-red-800 text-white py-20">

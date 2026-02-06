@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Award, DollarSign, Calendar, CheckCircle, ArrowRight, Users, TrendingUp, Target, Lightbulb } from "lucide-react"
+import { Award, DollarSign, Calendar, CheckCircle, ArrowRight, Users, TrendingUp, Target, Lightbulb, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import NewsletterBox from "@/components/blog/NewsletterBox"
 
@@ -17,9 +17,45 @@ export const metadata = {
   }
 }
 
+const faqData = [
+  {
+    question: "Can I apply if I'm not the sole owner?",
+    answer: "Yes, you don't need to be the sole owner, but you must own shares and hold the most senior leadership position. Many winners are co-founders or majority owners."
+  },
+  {
+    question: "Are social enterprises and non-profits eligible?",
+    answer: "Yes! Social enterprises and registered charities can apply, particularly for Social Change Award categories. You must demonstrate financial stability and impact measurement."
+  },
+  {
+    question: "Can I nominate myself or does someone else need to nominate me?",
+    answer: "Self-nominations are accepted and common. You know your business best and can present the strongest case for your achievements."
+  },
+  {
+    question: "How long should I spend on my application?",
+    answer: "Plan 10-15 hours for a comprehensive application. Start early, gather all required documents, and have trusted advisors review your submission before submitting."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function RBCWomenEntrepreneurAwards() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <article className="min-h-screen bg-gray-50 py-8 md:py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

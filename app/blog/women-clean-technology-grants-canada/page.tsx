@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +19,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What is the maximum SDTC funding available for women clean tech entrepreneurs?",
+    answer: "SDTC provides up to $10 million per project for clean technology commercialization. Typical project funding ranges from $1M to $5M with up to 40% cost share for technology development, pilot projects, and market entry."
+  },
+  {
+    question: "What clean technology sectors are eligible for women entrepreneur funding?",
+    answer: "Eligible sectors include renewable energy (solar, wind, hydro), energy storage, circular economy, water technology, sustainable transportation, green building, carbon capture, and environmental monitoring."
+  },
+  {
+    question: "How do I apply for NRCan clean energy programs?",
+    answer: "Contact NRCan's Office of Energy Research and Development or apply through specific programs like Energy Innovation Program, Smart Renewables, or Clean Fuels Program during open intake windows."
+  },
+  {
+    question: "Can I stack SDTC funding with provincial clean tech grants?",
+    answer: "Yes, many women entrepreneurs combine SDTC federal funding with provincial programs like Ontario Green Fund, Quebec Technoclimat, or Alberta Innovates to maximize support for clean technology projects."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function WomenCleanTechnologyGrantsCanadaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -35,13 +71,13 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
                 Women Clean Technology Grants Canada: Clean Energy Funding, Sustainability Innovation & Environmental Technology Support
               </h1>
               <p className="text-xl text-green-100 mb-8">
-                Comprehensive 2026-2027 guide to clean technology grants and sustainability funding for women-owned 
-                environmental businesses across Canada. Access up to $10,000,000 through Sustainable Development Technology 
-                Canada (SDTC), Natural Resources Canada (NRCan) clean energy programs, provincial green technology support in 
-                Ontario (Toronto, Ottawa, Waterloo, Mississauga), Quebec (Montreal, Quebec City, Laval), British Columbia 
-                (Vancouver, Victoria, Kelowna), and Alberta (Calgary, Edmonton, Red Deer). Complete funding guide for women 
-                clean tech entrepreneurs pursuing renewable energy, circular economy, waste reduction, water technology, 
-                environmental monitoring, sustainable transportation, green building, and climate change solutions creating 
+                Comprehensive 2026-2027 guide to clean technology grants and sustainability funding for women-owned
+                environmental businesses across Canada. Access up to $10,000,000 through Sustainable Development Technology
+                Canada (SDTC), Natural Resources Canada (NRCan) clean energy programs, provincial green technology support in
+                Ontario (Toronto, Ottawa, Waterloo, Mississauga), Quebec (Montreal, Quebec City, Laval), British Columbia
+                (Vancouver, Victoria, Kelowna), and Alberta (Calgary, Edmonton, Red Deer). Complete funding guide for women
+                clean tech entrepreneurs pursuing renewable energy, circular economy, waste reduction, water technology,
+                environmental monitoring, sustainable transportation, green building, and climate change solutions creating
                 environmental impact and economic growth across all Canadian provinces and territories.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -65,7 +101,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Clean Technology Grants by Province (2026-2027 SDTC & NRCan Funding Available)</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-green-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -213,18 +249,18 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Clean Technology Funding Ecosystem for Women Entrepreneurs</h2>
                 <p className="text-lg text-gray-600 mb-4">
-                  Canadian women clean tech entrepreneurs have access to comprehensive funding for environmental innovation 
-                  through federal programs like Sustainable Development Technology Canada (SDTC) providing up to $10 million 
-                  for large-scale commercialization projects. Natural Resources Canada (NRCan) offers clean energy innovation 
+                  Canadian women clean tech entrepreneurs have access to comprehensive funding for environmental innovation
+                  through federal programs like Sustainable Development Technology Canada (SDTC) providing up to $10 million
+                  for large-scale commercialization projects. Natural Resources Canada (NRCan) offers clean energy innovation
                   funding for renewable energy, energy efficiency, and sustainable technology development.
                 </p>
                 <p className="text-lg text-gray-600">
-                  Women-owned clean tech businesses can access support across multiple sectors including renewable energy 
-                  (solar, wind, hydro, geothermal, bioenergy), energy storage and grid modernization, circular economy and 
-                  waste reduction, water and wastewater technology, environmental monitoring and remediation, sustainable 
-                  transportation (electric vehicles, charging infrastructure, alternative fuels), green building and energy 
-                  efficiency, carbon capture and climate solutions, sustainable agriculture and food systems, and clean 
-                  manufacturing processes serving Canadian and global markets with environmental solutions addressing climate 
+                  Women-owned clean tech businesses can access support across multiple sectors including renewable energy
+                  (solar, wind, hydro, geothermal, bioenergy), energy storage and grid modernization, circular economy and
+                  waste reduction, water and wastewater technology, environmental monitoring and remediation, sustainable
+                  transportation (electric vehicles, charging infrastructure, alternative fuels), green building and energy
+                  efficiency, carbon capture and climate solutions, sustainable agriculture and food systems, and clean
+                  manufacturing processes serving Canadian and global markets with environmental solutions addressing climate
                   change, resource efficiency, and sustainable development goals.
                 </p>
               </div>
@@ -260,10 +296,10 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Clean Technology Grants for Women Entrepreneurs 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
-                Complete guide to federal clean tech funding programs available to women-owned environmental businesses 
+                Complete guide to federal clean tech funding programs available to women-owned environmental businesses
                 across all Canadian provinces through SDTC, NRCan, and innovation programs.
               </p>
-              
+
               <div className="space-y-8">
                 {/* SDTC Program */}
                 <Card className="border-green-200">
@@ -292,7 +328,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
                               <span className="text-blue-700 font-bold">Up to 40% project costs</span>
                             </div>
                           </div>
-                          
+
                           <div className="space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
                             <p className="font-semibold text-gray-800 mb-2">Eligible SDTC Activities Women Entrepreneurs:</p>
                             <p>• <strong>Technology Development:</strong> Pre-commercial demonstration, pilot projects, technology validation for clean tech innovations</p>
@@ -511,7 +547,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Provincial Clean Technology Grants for Women Entrepreneurs by Region</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
-                Complete guide to provincial clean tech support programs complementing federal SDTC and NRCan funding 
+                Complete guide to provincial clean tech support programs complementing federal SDTC and NRCan funding
                 for women-owned environmental businesses across Canada.
               </p>
 
@@ -647,7 +683,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Clean Technology Funding by Sector - Women Entrepreneurs</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Renewable Energy */}
                 <Card className="border-green-200 hover:shadow-xl transition-shadow">
@@ -742,10 +778,10 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Clean Technology Grant Application Success Strategies 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
-                Proven strategies for women clean tech entrepreneurs to maximize SDTC and NRCan funding approval rates 
+                Proven strategies for women clean tech entrepreneurs to maximize SDTC and NRCan funding approval rates
                 and environmental innovation grant success across all Canadian provinces.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -903,19 +939,19 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
                 Ready to Access Clean Technology Funding and Scale Your Environmental Innovation?
               </h2>
               <p className="text-xl text-green-100 mb-8">
-                Get our complete 2026-2027 women clean technology grants guide with SDTC application strategies, NRCan 
-                program navigator, provincial cleantech funding directory, environmental impact assessment frameworks 
-                covering renewable energy, circular economy, sustainable transportation, and climate solutions - or work 
+                Get our complete 2026-2027 women clean technology grants guide with SDTC application strategies, NRCan
+                program navigator, provincial cleantech funding directory, environmental impact assessment frameworks
+                covering renewable energy, circular economy, sustainable transportation, and climate solutions - or work
                 with our cleantech funding specialists for expert application support maximizing your grant approval success.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2 text-lg">📥 Free Clean Tech Grants Guide</h4>
                   <p className="text-green-100 text-sm mb-4">
-                    Download our comprehensive women clean technology grants guide with SDTC commercialization templates, 
-                    NRCan innovation funding overview, provincial green technology programs, environmental impact measurement 
-                    frameworks, and technology readiness level assessment tools for women cleantech entrepreneurs across 
+                    Download our comprehensive women clean technology grants guide with SDTC commercialization templates,
+                    NRCan innovation funding overview, provincial green technology programs, environmental impact measurement
+                    frameworks, and technology readiness level assessment tools for women cleantech entrepreneurs across
                     all Canadian provinces.
                   </p>
                   <Button size="lg" className="w-full bg-white text-green-700 hover:bg-gray-100 font-semibold" asChild>
@@ -933,9 +969,9 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
                   </div>
                   <h4 className="font-semibold text-white mb-2 text-lg">🎯 Expert Clean Tech Funding Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with cleantech specialists who understand SDTC requirements, environmental impact assessment, 
-                    and technology commercialization. We help women clean tech entrepreneurs navigate SDTC applications 
-                    ($10M), NRCan innovation programs, provincial grants, and optimize multiple funding sources maximizing 
+                    Work with cleantech specialists who understand SDTC requirements, environmental impact assessment,
+                    and technology commercialization. We help women clean tech entrepreneurs navigate SDTC applications
+                    ($10M), NRCan innovation programs, provincial grants, and optimize multiple funding sources maximizing
                     total capital accessed for environmental innovation scale-up.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold shadow-lg" asChild>
@@ -947,35 +983,35 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
                   <p className="text-xs text-yellow-200 mt-3">Free consultation • Cleantech expertise • Environmental impact focus</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6">
                 <p className="text-green-200 text-sm mb-3">
                   <strong className="text-white">Why Choose Our Clean Technology Grant Services:</strong>
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 text-xs text-green-200">
                   <div>
-                    ✓ 150+ women cleantech businesses funded<br/>
-                    ✓ $60M+ total cleantech grants secured<br/>
+                    ✓ 150+ women cleantech businesses funded<br />
+                    ✓ $60M+ total cleantech grants secured<br />
                     ✓ Average $2.5M SDTC funding per client
                   </div>
                   <div>
-                    ✓ All provinces/territories covered<br/>
-                    ✓ Every cleantech sector expertise<br/>
+                    ✓ All provinces/territories covered<br />
+                    ✓ Every cleantech sector expertise<br />
                     ✓ Federal + provincial program knowledge
                   </div>
                   <div>
-                    ✓ 80% SDTC application approval rate<br/>
-                    ✓ Environmental impact quantification<br/>
+                    ✓ 80% SDTC application approval rate<br />
+                    ✓ Environmental impact quantification<br />
                     ✓ Technology commercialization support
                   </div>
                 </div>
               </div>
 
               <p className="text-green-300 text-sm">
-                🌱 <strong>Women Clean Technology Grant Assistance:</strong> SDTC funding • NRCan clean energy programs • 
-                Renewable energy grants • Energy storage innovation • Circular economy funding • Water technology • 
-                Sustainable transportation • Green building • Carbon capture • Climate solutions • Environmental monitoring • 
-                Waste reduction • Net-zero technology • Industrial decarbonization • Clean manufacturing across all Canadian 
+                🌱 <strong>Women Clean Technology Grant Assistance:</strong> SDTC funding • NRCan clean energy programs •
+                Renewable energy grants • Energy storage innovation • Circular economy funding • Water technology •
+                Sustainable transportation • Green building • Carbon capture • Climate solutions • Environmental monitoring •
+                Waste reduction • Net-zero technology • Industrial decarbonization • Clean manufacturing across all Canadian
                 provinces supporting women environmental entrepreneurs creating sustainable future
               </p>
             </div>

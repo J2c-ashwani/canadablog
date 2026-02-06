@@ -3,14 +3,14 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, MapPin } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, MapPin, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "BC Women Business Grants 2026 | $650M Innovation & Tech Support Programs",
   description: "Complete guide to BC women entrepreneurship support with Women's Enterprise Centre loans up to $150K, Innovate BC programs, Indigenous women funding, and tech leadership initiatives.",
-  keywords: "BC women business grants, WeBC loans, Innovate BC women, British Columbia women entrepreneurs, women tech BC",
+  keywords: "BC women business grants, WeBC loans, Innovate BC women, British Columbia women entrepreneurs, women tech BC, women business funding Vancouver, female entrepreneur grants Victoria, Indigenous women business fund BC, Kelowna women business support",
   openGraph: {
     title: "BC Women Business Grants 2026 | $650M Innovation Support",
     description: "Comprehensive guide to BC women business support with WeBC financing, innovation programs, and technology leadership funding.",
@@ -19,9 +19,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "How much funding can I get from WeBC?",
+    answer: "WeBC (formerly Women's Enterprise Centre) offers business loans up to $150,000 for women-owned businesses in British Columbia. They also provide advisory services, mentorship, and training to help you succeed."
+  },
+  {
+    question: "What programs are available for Indigenous women entrepreneurs in BC?",
+    answer: "The Indigenous Women Entrepreneurship Fund (IWEF) provides micro-grants and support. Additionally, organizations like the Canadian Council for Aboriginal Business (CCAB) and Talk Services offer specific resources for Indigenous women in business."
+  },
+  {
+    question: "How does WeBC's loan differ from a bank loan?",
+    answer: "WeBC loans are specifically designed for women entrepreneurs who might not qualify for traditional bank financing. They offer more flexible terms, require a lower equity contribution (typically 25%), and bundle the loan with free ongoing business advisory support."
+  },
+  {
+    question: "Are there grants for women in tech in BC?",
+    answer: "Yes, Innovate BC and organizations like BC Tech Association run specific programs for women in technology, offering grants for hiring (tech co-op grants), market expansion, and R&D projects."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function BCWomenBusinessGrantsGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -35,8 +71,8 @@ export default function BCWomenBusinessGrantsGuidePage() {
                 BC Women Business Grants & Innovation Funding
               </h1>
               <p className="text-xl text-emerald-100 mb-8">
-                Access $650M in BC women entrepreneurship support including Women's Enterprise Centre 
-                loans up to $150,000, Innovate BC women programs, Indigenous Women Entrepreneurship Fund, 
+                Access $650M in BC women entrepreneurship support including Women's Enterprise Centre
+                loans up to $150,000, Innovate BC women programs, Indigenous Women Entrepreneurship Fund,
                 tech women leadership initiatives, and comprehensive innovation funding across British Columbia.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -94,8 +130,8 @@ export default function BCWomenBusinessGrantsGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada's Innovation Hub for Women Entrepreneurs</h2>
                 <p className="text-lg text-gray-600">
-                  British Columbia leads in women entrepreneurship innovation with $650M in provincial support, 
-                  WeBC financing up to $150,000, Innovate BC tech programs, and comprehensive resources designed 
+                  British Columbia leads in women entrepreneurship innovation with $650M in provincial support,
+                  WeBC financing up to $150,000, Innovate BC tech programs, and comprehensive resources designed
                   to help women start, innovate, and scale businesses across BC's dynamic economy.
                 </p>
               </div>
@@ -127,7 +163,7 @@ export default function BCWomenBusinessGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BC Women Business Support Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Women's Enterprise Centre BC */}
                 <Card className="border-emerald-200">
@@ -164,7 +200,7 @@ export default function BCWomenBusinessGrantsGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-emerald-50 rounded-lg">
                       <h5 className="font-semibold mb-2">📋 WeBC Loan Uses:</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -244,9 +280,9 @@ export default function BCWomenBusinessGrantsGuidePage() {
                             <span className="text-orange-700 font-bold">Annual Funding</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Annual grant program for Indigenous women-owned businesses (51%+ ownership) 
-                            in BC facing systemic barriers in accessing lending opportunities, providing 
-                            development resources and networking through CCIB's Tools for Indigenous Business program.</p>
+                            <p>Annual grant program for Indigenous women-owned businesses (51%+ ownership)
+                              in BC facing systemic barriers in accessing lending opportunities, providing
+                              development resources and networking through CCIB's Tools for Indigenous Business program.</p>
                           </div>
                         </div>
                       </div>
@@ -281,9 +317,9 @@ export default function BCWomenBusinessGrantsGuidePage() {
                             <span className="text-purple-700 font-bold">Technology</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Comprehensive programs supporting women in BC's technology sector through 
-                            leadership development, mentorship, funding access, networking, and career 
-                            advancement initiatives in software, AI, clean tech, and digital innovation.</p>
+                            <p>Comprehensive programs supporting women in BC's technology sector through
+                              leadership development, mentorship, funding access, networking, and career
+                              advancement initiatives in software, AI, clean tech, and digital innovation.</p>
                           </div>
                         </div>
                       </div>
@@ -318,9 +354,9 @@ export default function BCWomenBusinessGrantsGuidePage() {
                             <span className="text-blue-700 font-bold">Province-Wide</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Regional women business organizations across BC providing localized support, 
-                            networking, training, and funding guidance tailored to community needs in Vancouver, 
-                            Victoria, Kelowna, and other BC regions.</p>
+                            <p>Regional women business organizations across BC providing localized support,
+                              networking, training, and funding guidance tailored to community needs in Vancouver,
+                              Victoria, Kelowna, and other BC regions.</p>
                           </div>
                         </div>
                       </div>
@@ -355,9 +391,9 @@ export default function BCWomenBusinessGrantsGuidePage() {
                             <span className="text-pink-700 font-bold">Up to $50,000</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Access to federal WELF microloans up to $50,000 through WEOC network 
-                            delivered by WeBC in British Columbia with business advisory, training, 
-                            and comprehensive women entrepreneur support services.</p>
+                            <p>Access to federal WELF microloans up to $50,000 through WEOC network
+                              delivered by WeBC in British Columbia with business advisory, training,
+                              and comprehensive women entrepreneur support services.</p>
                           </div>
                         </div>
                       </div>
@@ -383,7 +419,7 @@ export default function BCWomenBusinessGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BC Women Business Support Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -457,6 +493,63 @@ export default function BCWomenBusinessGrantsGuidePage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-center mb-8">
+                <div className="bg-emerald-100 p-3 rounded-full mr-4">
+                  <ExternalLink className="w-8 h-8 text-emerald-700" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900">Official BC Resources</h2>
+                  <p className="text-gray-600">Direct links to government and partner verification sources</p>
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-emerald-100 hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-emerald-700">Program Applications</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <Link href="https://we-bc.ca/" target="_blank" className="flex items-center text-gray-700 hover:text-emerald-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-emerald-500" />
+                      WeBC (Strategic Lending & Advisory)
+                    </Link>
+                    <Link href="https://www.innovatebc.ca/" target="_blank" className="flex items-center text-gray-700 hover:text-emerald-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-emerald-500" />
+                      Innovate BC
+                    </Link>
+                    <Link href="https://www.ccab.com/" target="_blank" className="flex items-center text-gray-700 hover:text-emerald-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-emerald-500" />
+                      Canadian Council for Aboriginal Business
+                    </Link>
+                  </CardContent>
+                </Card>
+                <Card className="border-emerald-100 hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-emerald-700">Support Networks</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <Link href="https://www2.gov.bc.ca/gov/content/employment-business/business/starting-a-business" target="_blank" className="flex items-center text-gray-700 hover:text-emerald-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-emerald-500" />
+                      Small Business BC
+                    </Link>
+                    <Link href="https://weoc.ca/loan-program/" target="_blank" className="flex items-center text-gray-700 hover:text-emerald-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-emerald-500" />
+                      Women Entrepreneurship Loan Fund
+                    </Link>
+                    <Link href="https://we-bc.ca/mentoring/" target="_blank" className="flex items-center text-gray-700 hover:text-emerald-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-emerald-500" />
+                      WeBC Mentoring Program
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-emerald-600 to-teal-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -465,15 +558,15 @@ export default function BCWomenBusinessGrantsGuidePage() {
                 Ready to Access BC Women Business Support?
               </h2>
               <p className="text-xl text-emerald-100 mb-8">
-                Get our complete BC women business support guide with program comparison and application templates, 
+                Get our complete BC women business support guide with program comparison and application templates,
                 or work with our BC funding specialists for expert application support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free BC Support Guide</h4>
                   <p className="text-emerald-100 text-sm mb-4">
-                    Get our comprehensive BC women business support guide with WeBC loan templates, 
+                    Get our comprehensive BC women business support guide with WeBC loan templates,
                     Innovate BC insights, and indigenous program information.
                   </p>
                   <Button size="lg" className="w-full bg-white text-emerald-700 hover:bg-gray-100" asChild>
@@ -487,7 +580,7 @@ export default function BCWomenBusinessGrantsGuidePage() {
                 <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Expert BC Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with BC funding specialists who understand provincial programs and can help 
+                    Work with BC funding specialists who understand provincial programs and can help
                     optimize your applications for WeBC and innovation funding success.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
@@ -497,7 +590,7 @@ export default function BCWomenBusinessGrantsGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-emerald-200 text-sm mt-6">
                 Expert guidance • Provincial programs • Innovation support • BC women entrepreneur success
               </p>

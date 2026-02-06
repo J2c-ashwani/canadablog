@@ -371,6 +371,31 @@ export default function SmallBusinessGrantsGuidePage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Official Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="https://www.grants.gov" target="_blank" rel="noopener noreferrer" className="flex items-start p-6 bg-blue-50 rounded-lg border border-blue-100 hover:shadow-md transition-all">
+                  <ExternalLink className="w-6 h-6 text-blue-600 mr-4 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-blue-900 mb-2">Grants.gov</h3>
+                    <p className="text-blue-800 text-sm">The centralized database for all federal grant opportunities. Search and apply for government grants.</p>
+                  </div>
+                </Link>
+                <Link href="https://www.sba.gov/funding-programs/grants" target="_blank" rel="noopener noreferrer" className="flex items-start p-6 bg-green-50 rounded-lg border border-green-100 hover:shadow-md transition-all">
+                  <ExternalLink className="w-6 h-6 text-green-600 mr-4 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-green-900 mb-2">SBA Grants Overview</h3>
+                    <p className="text-green-800 text-sm">Official guidance on SBA grant programs like STEP and SBDC funding.</p>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Related Guides */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

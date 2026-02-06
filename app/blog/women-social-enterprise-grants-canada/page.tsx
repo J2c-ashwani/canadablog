@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +19,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What is the Investment Readiness Program (IRP) for women social enterprises?",
+    answer: "The IRP provides up to $300,000 in non-repayable grants through ecosystem partners to help women-led social enterprises prepare for impact investment. Funding supports business planning, financial modeling, impact measurement, governance development, and investment readiness activities."
+  },
+  {
+    question: "How do I qualify as a social enterprise in Canada?",
+    answer: "Canadian social enterprises are businesses that create social, environmental, or community benefit alongside revenue. You can be structured as non-profit, co-operative, community contribution company (BC), or for-profit with social mission. Key requirements include measurable social impact and sustainable revenue model."
+  },
+  {
+    question: "Can for-profit businesses access social enterprise grants?",
+    answer: "Yes, many programs support for-profit social purpose businesses. Programs like IRP, Social Finance Fund, and provincial social innovation funds welcome for-profit entities with demonstrated social mission, impact measurement, and community benefit focus."
+  },
+  {
+    question: "What community development grants are available for women in Toronto?",
+    answer: "Toronto women social entrepreneurs can access Ontario Trillium Foundation grants ($75K-$500K), City of Toronto community development funds, United Way grants, and regional community foundations supporting affordable housing, employment training, food security, and social services."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function WomenSocialEnterpriseGrantsCanadaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section with Geographic Keywords */}
@@ -35,13 +71,13 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                 Women Social Enterprise Grants Canada: Social Impact Funding, Community Development & Purpose-Driven Business Support for Ontario, Quebec, BC, Alberta Women Entrepreneurs
               </h1>
               <p className="text-xl text-purple-100 mb-8">
-                Comprehensive 2026-2027 guide to social enterprise grants, impact investment, and community development 
-                funding for women-led purpose-driven businesses across Canada. Access $10,000 to $1,000,000+ in federal 
-                social innovation funding through Investment Readiness Program, Social Finance Fund, community development 
-                corporations, provincial social enterprise support in Ontario (Toronto, Ottawa, Hamilton, Mississauga), 
-                Quebec (Montreal, Quebec City, Laval), British Columbia (Vancouver, Surrey, Burnaby, Victoria), and 
-                Alberta (Calgary, Edmonton, Red Deer). Complete regional funding guide for women social entrepreneurs 
-                creating positive social impact in Greater Toronto Area (GTA), Metro Vancouver, Greater Montreal, 
+                Comprehensive 2026-2027 guide to social enterprise grants, impact investment, and community development
+                funding for women-led purpose-driven businesses across Canada. Access $10,000 to $1,000,000+ in federal
+                social innovation funding through Investment Readiness Program, Social Finance Fund, community development
+                corporations, provincial social enterprise support in Ontario (Toronto, Ottawa, Hamilton, Mississauga),
+                Quebec (Montreal, Quebec City, Laval), British Columbia (Vancouver, Surrey, Burnaby, Victoria), and
+                Alberta (Calgary, Edmonton, Red Deer). Complete regional funding guide for women social entrepreneurs
+                creating positive social impact in Greater Toronto Area (GTA), Metro Vancouver, Greater Montreal,
                 Calgary Region, and all Canadian communities.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -65,7 +101,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Social Enterprise Grants by Province and Major City (2026-2027 Impact Funding Available)</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-purple-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -212,16 +248,16 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Social Enterprise Ecosystem for Women Entrepreneurs Across Canada</h2>
                 <p className="text-lg text-gray-600 mb-4">
-                  Canadian women social entrepreneurs have access to comprehensive funding for businesses that create 
-                  measurable social impact alongside financial sustainability. Federal programs like Investment Readiness 
-                  Program (IRP) provide up to $300,000 for social enterprises preparing for impact investment, while Social 
+                  Canadian women social entrepreneurs have access to comprehensive funding for businesses that create
+                  measurable social impact alongside financial sustainability. Federal programs like Investment Readiness
+                  Program (IRP) provide up to $300,000 for social enterprises preparing for impact investment, while Social
                   Finance Fund supports ecosystem development with grants, loans, and investment capital.
                 </p>
                 <p className="text-lg text-gray-600">
-                  Women-led social enterprises can access support addressing diverse social issues: affordable housing development, 
-                  employment training for marginalized populations, environmental sustainability, healthcare access, education 
-                  and literacy, food security, arts and culture, Indigenous reconciliation, newcomer integration, poverty 
-                  reduction, disability employment, mental health services, youth development, elder care, and community 
+                  Women-led social enterprises can access support addressing diverse social issues: affordable housing development,
+                  employment training for marginalized populations, environmental sustainability, healthcare access, education
+                  and literacy, food security, arts and culture, Indigenous reconciliation, newcomer integration, poverty
+                  reduction, disability employment, mental health services, youth development, elder care, and community
                   revitalization across all Canadian provinces and territories.
                 </p>
               </div>
@@ -258,10 +294,10 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Social Enterprise Grants and Impact Investment for Women Entrepreneurs Canada 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
-                Complete guide to federal social innovation funding programs available to women-led social enterprises 
+                Complete guide to federal social innovation funding programs available to women-led social enterprises
                 across all Canadian provinces including Ontario, Quebec, BC, Alberta women social entrepreneurs.
               </p>
-              
+
               <div className="space-y-8">
                 {/* Investment Readiness Program */}
                 <Card className="border-purple-200">
@@ -290,7 +326,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                               <span className="text-blue-700 font-bold">Through Ecosystem Partners</span>
                             </div>
                           </div>
-                          
+
                           <div className="space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
                             <p className="font-semibold text-gray-800 mb-2">Eligible Investment Readiness Activities:</p>
                             <p>• <strong>Business Planning:</strong> Strategic planning, business model refinement, growth strategy for impact investment</p>
@@ -492,7 +528,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Ontario Social Enterprise Grants for Women Entrepreneurs - Community Development Funding</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
-                Complete guide to Ontario provincial and municipal social innovation support for women-led community 
+                Complete guide to Ontario provincial and municipal social innovation support for women-led community
                 businesses in Toronto, Ottawa, Hamilton, and all Ontario communities.
               </p>
 
@@ -581,7 +617,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Quebec Économie Sociale Grants - Financement Femmes Entrepreneures</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
-                Guide complet au financement économie sociale pour femmes entrepreneures québécoises. Complete guide 
+                Guide complet au financement économie sociale pour femmes entrepreneures québécoises. Complete guide
                 to Quebec social economy funding for women entrepreneurs.
               </p>
 
@@ -635,7 +671,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Social Enterprise Funding by Impact Sector - Women Entrepreneurs Canada</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Affordable Housing */}
                 <Card className="border-green-200 hover:shadow-xl transition-shadow">
@@ -730,10 +766,10 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Social Enterprise Grant Application Success Strategies 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
-                Proven strategies and insights for women social entrepreneurs to maximize grant approval rates and 
+                Proven strategies and insights for women social entrepreneurs to maximize grant approval rates and
                 impact investment readiness across all Canadian provinces.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -883,6 +919,71 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
           </div>
         </section>
 
+
+        {/* Official Resources Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center border-b-2 border-indigo-500 pb-4 inline-block">
+                Official Government & Partner Resources
+              </h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-indigo-600">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-lg mb-3 flex items-center">
+                      <ExternalLink className="w-5 h-5 text-indigo-600 mr-2" />
+                      Federal Programs
+                    </h3>
+                    <ul className="space-y-3">
+                      <li>
+                        <a href="https://www.canada.ca/en/employment-social-development/programs/social-innovation-social-finance.html" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                          <span className="mr-2">🏛️</span> Investment Readiness Program (IRP) Official Page
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://sff-fms.ca/" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                          <span className="mr-2">💰</span> Social Finance Fund (SFF) Wholesalers
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://nmc-mic.ca/" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                          <span className="mr-2">📈</span> National Impact Investment Practitioners Table
+                        </a>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-purple-600">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-lg mb-3 flex items-center">
+                      <ExternalLink className="w-5 h-5 text-purple-600 mr-2" />
+                      Regional Support
+                    </h3>
+                    <ul className="space-y-3">
+                      <li>
+                        <a href="https://chantier.qc.ca/" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                          <span className="mr-2">⚜️</span> Chantier de l'économie sociale (Québec)
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://ontariosocialenterprise.com/" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                          <span className="mr-2">🏙️</span> Ontario Social Enterprise Network
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/grants/community-grants" className="text-blue-600 hover:underline flex items-start">
+                          <span className="mr-2">🏘️</span> Community Foundation Grants Directory
+                        </a>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-purple-700 to-indigo-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -891,18 +992,18 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                 Ready to Access Social Enterprise Funding and Create Measurable Social Impact Across Canada?
               </h2>
               <p className="text-xl text-purple-100 mb-8">
-                Get our complete 2026-2027 women social enterprise grants guide with program navigator, impact 
-                measurement frameworks, application templates covering Toronto, Vancouver, Montreal, Calgary, Ottawa, 
-                and all Canadian regions - or work with our social enterprise funding specialists for expert 
+                Get our complete 2026-2027 women social enterprise grants guide with program navigator, impact
+                measurement frameworks, application templates covering Toronto, Vancouver, Montreal, Calgary, Ottawa,
+                and all Canadian regions - or work with our social enterprise funding specialists for expert
                 application support maximizing your grant approval success.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2 text-lg">📥 Free Social Enterprise Guide</h4>
                   <p className="text-purple-100 text-sm mb-4">
-                    Download our comprehensive women social enterprise funding guide with Investment Readiness Program 
-                    strategies, Social Finance Fund navigator, provincial économie sociale programs, community development 
+                    Download our comprehensive women social enterprise funding guide with Investment Readiness Program
+                    strategies, Social Finance Fund navigator, provincial économie sociale programs, community development
                     corporations, impact measurement frameworks for Ontario, Quebec, BC, Alberta women social entrepreneurs.
                   </p>
                   <Button size="lg" className="w-full bg-white text-purple-700 hover:bg-gray-100 font-semibold" asChild>
@@ -920,9 +1021,9 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                   </div>
                   <h4 className="font-semibold text-white mb-2 text-lg">🎯 Expert Social Enterprise Funding Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with social enterprise specialists who understand Canadian social innovation ecosystem, 
-                    impact measurement, and funding landscape. We help women social entrepreneurs navigate Investment 
-                    Readiness Program applications ($300K), Social Finance Fund opportunities, provincial programs, 
+                    Work with social enterprise specialists who understand Canadian social innovation ecosystem,
+                    impact measurement, and funding landscape. We help women social entrepreneurs navigate Investment
+                    Readiness Program applications ($300K), Social Finance Fund opportunities, provincial programs,
                     and optimize stacking multiple funding sources.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold shadow-lg" asChild>
@@ -934,35 +1035,35 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                   <p className="text-xs text-yellow-200 mt-3">Free consultation • Impact-focused support • Regional expertise</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6">
                 <p className="text-purple-200 text-sm mb-3">
                   <strong className="text-white">Why Choose Our Social Enterprise Grant Services:</strong>
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 text-xs text-purple-200">
                   <div>
-                    ✓ 150+ women social enterprises funded<br/>
-                    ✓ $35M+ total social impact funding secured<br/>
+                    ✓ 150+ women social enterprises funded<br />
+                    ✓ $35M+ total social impact funding secured<br />
                     ✓ Average $185K funding per social enterprise
                   </div>
                   <div>
-                    ✓ All provinces covered (ON, QC, BC, AB)<br/>
-                    ✓ Every social impact sector supported<br/>
+                    ✓ All provinces covered (ON, QC, BC, AB)<br />
+                    ✓ Every social impact sector supported<br />
                     ✓ Federal + provincial + municipal expertise
                   </div>
                   <div>
-                    ✓ 82% application approval success rate<br/>
-                    ✓ Impact measurement framework development<br/>
+                    ✓ 82% application approval success rate<br />
+                    ✓ Impact measurement framework development<br />
                     ✓ Investment readiness preparation support
                   </div>
                 </div>
               </div>
 
               <p className="text-purple-300 text-sm">
-                ❤️ <strong>Women Social Enterprise Grant Assistance:</strong> Social impact funding • Community development • 
-                Purpose-driven business • Investment readiness • Impact measurement • Affordable housing • Employment training • 
-                Environmental sustainability • Food security • Healthcare access • Arts & culture • Indigenous reconciliation • 
-                Social innovation • Économie sociale Québec • Community businesses • Social purpose corporations • Cooperative 
+                ❤️ <strong>Women Social Enterprise Grant Assistance:</strong> Social impact funding • Community development •
+                Purpose-driven business • Investment readiness • Impact measurement • Affordable housing • Employment training •
+                Environmental sustainability • Food security • Healthcare access • Arts & culture • Indigenous reconciliation •
+                Social innovation • Économie sociale Québec • Community businesses • Social purpose corporations • Cooperative
                 development across all Canadian provinces and territories
               </p>
             </div>

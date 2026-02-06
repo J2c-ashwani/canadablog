@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +19,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What is NACCA and how does it help Indigenous women entrepreneurs?",
+    answer: "The National Aboriginal Capital Corporations Association (NACCA) coordinates a network of 50+ Indigenous Financial Institutions (IFIs) across Canada. They deliver the Aboriginal Entrepreneurship Program providing up to $100K for individual businesses and $250K for community businesses, plus advisory services and business training."
+  },
+  {
+    question: "What is the Women Entrepreneurship Loan Fund (WELF) for Indigenous women?",
+    answer: "WELF provides microloans up to $50,000 specifically for First Nations, Métis, and Inuit women entrepreneurs. These loans offer favorable interest rates, flexible repayment terms, and include free business advisory services through local Indigenous Financial Institutions."
+  },
+  {
+    question: "Do I need to live on reserve to access Indigenous business funding?",
+    answer: "No, NACCA programs serve Indigenous women entrepreneurs both on-reserve and off-reserve, including urban Indigenous women in cities like Toronto, Vancouver, Winnipeg, and Calgary. You need to demonstrate Indigenous status (Status card, Métis citizenship, or Inuit enrollment)."
+  },
+  {
+    question: "What cultural enterprise funding is available for Indigenous women artists?",
+    answer: "Indigenous women artists can access $5K-$100K through Aboriginal Entrepreneurship Program for cultural businesses including beadwork, carving, weaving, regalia, traditional art, and cultural tourism. Many IFIs prioritize cultural preservation enterprises."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function IndigenousWomenBusinessGrantsCanadaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -35,13 +71,13 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
                 Indigenous Women Business Grants Canada: NACCA Funding, First Nations Support & Cultural Enterprise Grants
               </h1>
               <p className="text-xl text-orange-100 mb-8">
-                Comprehensive 2026-2027 guide to Indigenous women business grants and loans across Canada. Access up to 
-                $50,000 through NACCA Women Entrepreneurship Loan Fund (WELF), $100,000 Aboriginal Entrepreneurship Program, 
-                and $250,000 community business funding for First Nations, Métis, and Inuit women entrepreneurs. Complete 
-                funding guide through Indigenous Financial Institutions (IFIs) serving all provinces including Ontario 
-                (Toronto, Ottawa, Thunder Bay, Sudbury), British Columbia (Vancouver, Victoria, Prince George), Alberta 
-                (Calgary, Edmonton), Manitoba (Winnipeg, Brandon), Saskatchewan (Regina, Saskatoon), Quebec, Atlantic Canada, 
-                and Northern territories supporting cultural enterprises, traditional businesses, and modern Indigenous 
+                Comprehensive 2026-2027 guide to Indigenous women business grants and loans across Canada. Access up to
+                $50,000 through NACCA Women Entrepreneurship Loan Fund (WELF), $100,000 Aboriginal Entrepreneurship Program,
+                and $250,000 community business funding for First Nations, Métis, and Inuit women entrepreneurs. Complete
+                funding guide through Indigenous Financial Institutions (IFIs) serving all provinces including Ontario
+                (Toronto, Ottawa, Thunder Bay, Sudbury), British Columbia (Vancouver, Victoria, Prince George), Alberta
+                (Calgary, Edmonton), Manitoba (Winnipeg, Brandon), Saskatchewan (Regina, Saskatoon), Quebec, Atlantic Canada,
+                and Northern territories supporting cultural enterprises, traditional businesses, and modern Indigenous
                 entrepreneurship creating economic reconciliation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -65,7 +101,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Indigenous Women Business Grants by Province and Territory (2026-2027 NACCA Funding Available)</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-orange-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -213,18 +249,18 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Indigenous Women Business Funding Ecosystem Across Canada</h2>
                 <p className="text-lg text-gray-600 mb-4">
-                  Indigenous women entrepreneurs across Canada have access to comprehensive business funding through the National 
-                  Aboriginal Capital Corporations Association (NACCA) network of over 50 Indigenous Financial Institutions (IFIs). 
-                  The historic 10-year, $830 million funding agreement with Indigenous Services Canada signed in May 2026 represents 
+                  Indigenous women entrepreneurs across Canada have access to comprehensive business funding through the National
+                  Aboriginal Capital Corporations Association (NACCA) network of over 50 Indigenous Financial Institutions (IFIs).
+                  The historic 10-year, $830 million funding agreement with Indigenous Services Canada signed in May 2026 represents
                   unprecedented support for First Nations, Métis, and Inuit women business owners from startup through growth stages.
                 </p>
                 <p className="text-lg text-gray-600">
-                  Indigenous women can access up to $50,000 through Women Entrepreneurship Loan Fund (WELF) microloans, up to $100,000 
-                  through Aboriginal Entrepreneurship Program individual grants, and up to $250,000 for community-owned businesses. 
-                  Funding supports diverse Indigenous enterprises including cultural businesses (arts, crafts, traditional knowledge), 
-                  tourism and hospitality, retail and e-commerce, professional services, construction and trades, manufacturing and 
-                  production, agriculture and food systems, technology and innovation, healthcare and wellness, education and training, 
-                  and natural resource development across all Canadian provinces, territories, and Indigenous communities both on-reserve 
+                  Indigenous women can access up to $50,000 through Women Entrepreneurship Loan Fund (WELF) microloans, up to $100,000
+                  through Aboriginal Entrepreneurship Program individual grants, and up to $250,000 for community-owned businesses.
+                  Funding supports diverse Indigenous enterprises including cultural businesses (arts, crafts, traditional knowledge),
+                  tourism and hospitality, retail and e-commerce, professional services, construction and trades, manufacturing and
+                  production, agriculture and food systems, technology and innovation, healthcare and wellness, education and training,
+                  and natural resource development across all Canadian provinces, territories, and Indigenous communities both on-reserve
                   and off-reserve serving First Nations, Métis, and Inuit women entrepreneurs nationwide.
                 </p>
               </div>
@@ -260,10 +296,10 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Indigenous Women Business Grants and Loans Canada 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
-                Complete guide to federal Indigenous business funding programs available to First Nations, Métis, and 
+                Complete guide to federal Indigenous business funding programs available to First Nations, Métis, and
                 Inuit women entrepreneurs across all Canadian provinces and territories through NACCA network.
               </p>
-              
+
               <div className="space-y-8">
                 {/* NACCA Aboriginal Entrepreneurship Program */}
                 <Card className="border-orange-200">
@@ -292,7 +328,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
                               <span className="text-green-700 font-bold">Grants + Loans</span>
                             </div>
                           </div>
-                          
+
                           <div className="space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
                             <p className="font-semibold text-gray-800 mb-2">Eligible Activities Indigenous Women Entrepreneurs:</p>
                             <p>• <strong>Business Startup:</strong> Launch new enterprises with startup capital for equipment, inventory, working capital</p>
@@ -518,7 +554,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Provincial Indigenous Women Business Grants by Region</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
-                Complete guide to provincial and territorial Indigenous business support programs for First Nations, 
+                Complete guide to provincial and territorial Indigenous business support programs for First Nations,
                 Métis, and Inuit women entrepreneurs across Canada.
               </p>
 
@@ -651,7 +687,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Indigenous Women Business Funding by Sector</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Cultural Arts & Crafts */}
                 <Card className="border-orange-200 hover:shadow-xl transition-shadow">
@@ -746,10 +782,10 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Indigenous Women Business Grant Application Success Strategies 2026-2027</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
-                Proven strategies for First Nations, Métis, and Inuit women entrepreneurs to maximize NACCA funding 
+                Proven strategies for First Nations, Métis, and Inuit women entrepreneurs to maximize NACCA funding
                 approval rates and Indigenous business grant success across Canada.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -899,6 +935,71 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
           </div>
         </section>
 
+
+        {/* Official Resources Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center border-b-2 border-indigo-500 pb-4 inline-block">
+                Official Government & Indigenous Resources
+              </h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-orange-600">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-lg mb-3 flex items-center">
+                      <ExternalLink className="w-5 h-5 text-orange-600 mr-2" />
+                      NACCA & Government
+                    </h3>
+                    <ul className="space-y-3">
+                      <li>
+                        <a href="https://nacca.ca/" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                          <span className="mr-2">🪶</span> NACCA Official Website
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://nacca.ca/ifi-directory/" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                          <span className="mr-2">📍</span> Find Your Local IFI (Directory)
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.sac-isc.gc.ca/eng/1100100032796/1611589691490" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                          <span className="mr-2">🏛️</span> Indigenous Services Canada - Business Support
+                        </a>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-red-600">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-lg mb-3 flex items-center">
+                      <ExternalLink className="w-5 h-5 text-red-600 mr-2" />
+                      Business Support
+                    </h3>
+                    <ul className="space-y-3">
+                      <li>
+                        <a href="https://www.ccab.com/" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                          <span className="mr-2">🤝</span> Canadian Council for Aboriginal Business (CCAB)
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.nwac.ca/" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                          <span className="mr-2">👩</span> Native Women's Association of Canada (Business)
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/grants/small-business-grants" className="text-blue-600 hover:underline flex items-start">
+                          <span className="mr-2">📋</span> Small Business Grants Guide
+                        </a>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-orange-700 to-red-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -907,19 +1008,19 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
                 Ready to Access Indigenous Women Business Funding and Start Your Entrepreneurship Journey Across Canada?
               </h2>
               <p className="text-xl text-orange-100 mb-8">
-                Get our complete 2026-2027 Indigenous women business grants guide with NACCA program navigator, IFI directory, 
-                application templates covering First Nations, Métis, Inuit women entrepreneurs in Ontario, BC, Alberta, 
-                Manitoba, Saskatchewan, Quebec, Atlantic Canada, and Northern territories - or work with our Indigenous 
+                Get our complete 2026-2027 Indigenous women business grants guide with NACCA program navigator, IFI directory,
+                application templates covering First Nations, Métis, Inuit women entrepreneurs in Ontario, BC, Alberta,
+                Manitoba, Saskatchewan, Quebec, Atlantic Canada, and Northern territories - or work with our Indigenous
                 business funding specialists for expert application support maximizing your NACCA loan and grant approval success.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2 text-lg">📥 Free Indigenous Business Grants Guide</h4>
                   <p className="text-orange-100 text-sm mb-4">
-                    Download our comprehensive Indigenous women business funding guide with NACCA Aboriginal Entrepreneurship 
-                    Program strategies, Women Entrepreneurship Loan Fund application templates, IFI network directory, cultural 
-                    enterprise development resources, and regional program navigator for First Nations, Métis, Inuit women 
+                    Download our comprehensive Indigenous women business funding guide with NACCA Aboriginal Entrepreneurship
+                    Program strategies, Women Entrepreneurship Loan Fund application templates, IFI network directory, cultural
+                    enterprise development resources, and regional program navigator for First Nations, Métis, Inuit women
                     entrepreneurs across all Canadian provinces and territories.
                   </p>
                   <Button size="lg" className="w-full bg-white text-orange-700 hover:bg-gray-100 font-semibold" asChild>
@@ -937,9 +1038,9 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
                   </div>
                   <h4 className="font-semibold text-white mb-2 text-lg">🎯 Expert Indigenous Business Funding Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with Indigenous business specialists who understand NACCA network, Aboriginal Entrepreneurship 
-                    Program requirements, and cultural business development. We help First Nations, Métis, Inuit women 
-                    entrepreneurs navigate IFI applications, Women Entrepreneurship Loan Fund ($50K), AEP grants ($100K+), 
+                    Work with Indigenous business specialists who understand NACCA network, Aboriginal Entrepreneurship
+                    Program requirements, and cultural business development. We help First Nations, Métis, Inuit women
+                    entrepreneurs navigate IFI applications, Women Entrepreneurship Loan Fund ($50K), AEP grants ($100K+),
                     and optimize multiple funding sources maximizing total capital accessed for Indigenous businesses.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold shadow-lg" asChild>
@@ -951,35 +1052,35 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
                   <p className="text-xs text-yellow-200 mt-3">Free consultation • Cultural competency • Regional expertise</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6">
                 <p className="text-orange-200 text-sm mb-3">
                   <strong className="text-white">Why Choose Our Indigenous Business Grant Services:</strong>
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 text-xs text-orange-200">
                   <div>
-                    ✓ 200+ Indigenous women entrepreneurs funded<br/>
-                    ✓ $25M+ total NACCA funding secured<br/>
+                    ✓ 200+ Indigenous women entrepreneurs funded<br />
+                    ✓ $25M+ total NACCA funding secured<br />
                     ✓ Average $75K per Indigenous business
                   </div>
                   <div>
-                    ✓ All provinces/territories covered<br/>
-                    ✓ First Nations, Métis, Inuit expertise<br/>
+                    ✓ All provinces/territories covered<br />
+                    ✓ First Nations, Métis, Inuit expertise<br />
                     ✓ Cultural competency and understanding
                   </div>
                   <div>
-                    ✓ 88% NACCA application approval rate<br/>
-                    ✓ IFI network relationships nationwide<br/>
+                    ✓ 88% NACCA application approval rate<br />
+                    ✓ IFI network relationships nationwide<br />
                     ✓ On-reserve and off-reserve support
                   </div>
                 </div>
               </div>
 
               <p className="text-orange-300 text-sm">
-                🪶 <strong>Indigenous Women Business Grant Assistance:</strong> NACCA funding • Aboriginal Entrepreneurship Program • 
-                Women Entrepreneurship Loan Fund • Indigenous Financial Institutions • Cultural enterprise development • Tourism grants • 
-                Arts and crafts funding • Traditional knowledge businesses • First Nations Métis Inuit women entrepreneurs • 
-                On-reserve off-reserve support • Urban Indigenous businesses • Treaty territories • Community economic development • 
+                🪶 <strong>Indigenous Women Business Grant Assistance:</strong> NACCA funding • Aboriginal Entrepreneurship Program •
+                Women Entrepreneurship Loan Fund • Indigenous Financial Institutions • Cultural enterprise development • Tourism grants •
+                Arts and crafts funding • Traditional knowledge businesses • First Nations Métis Inuit women entrepreneurs •
+                On-reserve off-reserve support • Urban Indigenous businesses • Treaty territories • Community economic development •
                 Cultural preservation enterprises across all Canadian provinces, territories, and Indigenous communities nationwide
               </p>
             </div>

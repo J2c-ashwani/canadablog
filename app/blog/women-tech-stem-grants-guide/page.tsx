@@ -57,6 +57,10 @@ export default function WomenTechSTEMGrantsGuide() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <script
         type="application/ld+json"
@@ -527,6 +531,71 @@ export default function WomenTechSTEMGrantsGuide() {
                       </CardContent>
                     </Card>
                   ))}
+                </div>
+              </section>
+
+
+              {/* Official Resources Section */}
+              <section className="py-16 bg-white">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-4xl mx-auto">
+                    <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center border-b-2 border-indigo-500 pb-4 inline-block">
+                      Official Government & Tech Resources
+                    </h2>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-blue-600">
+                        <CardContent className="p-6">
+                          <h3 className="font-bold text-lg mb-3 flex items-center">
+                            <ExternalLink className="w-5 h-5 text-blue-600 mr-2" />
+                            Federal Innovation Programs
+                          </h3>
+                          <ul className="space-y-3">
+                            <li>
+                              <a href="https://ised-isde.canada.ca/site/innovative-solutions-canada/en" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                                <span className="mr-2">🚀</span> Innovative Solutions Canada (ISC)
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://nserc-crsng.gc.ca/index_eng.asp" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                                <span className="mr-2">🔬</span> NSERC - Science & Engineering Funding
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://ised-isde.canada.ca/site/canada-digital-adoption-program/en" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                                <span className="mr-2">💻</span> Canada Digital Adoption Program (CDAP)
+                              </a>
+                            </li>
+                          </ul>
+                        </CardContent>
+                      </Card>
+
+                      <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-purple-600">
+                        <CardContent className="p-6">
+                          <h3 className="font-bold text-lg mb-3 flex items-center">
+                            <ExternalLink className="w-5 h-5 text-purple-600 mr-2" />
+                            Women in Tech Support
+                          </h3>
+                          <ul className="space-y-3">
+                            <li>
+                              <a href="https://www.bdc.ca/en/financing/women-technology-fund" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                                <span className="mr-2">👩‍💻</span> BDC Women in Technology Venture Fund
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://www.marsdd.com/" className="text-blue-600 hover:underline flex items-start" target="_blank" rel="noopener noreferrer">
+                                <span className="mr-2">🏢</span> MaRS Discovery District (Tech Hub)
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/grants/startup-grants" className="text-blue-600 hover:underline flex items-start">
+                                <span className="mr-2">💡</span> Startup Grants Directory
+                              </a>
+                            </li>
+                          </ul>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
                 </div>
               </section>
 

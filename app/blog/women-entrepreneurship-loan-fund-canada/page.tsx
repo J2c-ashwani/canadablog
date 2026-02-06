@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +19,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What is the Women Entrepreneurship Loan Fund (WELF)?",
+    answer: "WELF is a $55 million federal initiative providing microloans up to $50,000 for women entrepreneurs, delivered through five national organizations: WEOC, NACCA, Nventure, Coralus, and Evol."
+  },
+  {
+    question: "Who delivers WELF loans?",
+    answer: "WELF is delivered through five national partners: Women's Enterprise Organizations of Canada (WEOC), National Aboriginal Capital Corporations Association (NACCA), Nventure (formerly Futurpreneur), Coralus (formerly SheEO), and Evol (Quebec-based)."
+  },
+  {
+    question: "What can I use WELF loan funds for?",
+    answer: "WELF loans can be used for working capital, equipment purchases, inventory, marketing, leasehold improvements, and professional services. They cannot be used for personal expenses, real estate purchases, or debt refinancing."
+  },
+  {
+    question: "What are the typical WELF loan terms?",
+    answer: "WELF loans offer up to $50,000 with repayment periods up to 5 years, interest rates from prime + 2% to prime + 4%, minimal collateral requirements, and flexible payment options. Some partners like Coralus offer 0% interest."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function WomenEntrepreneurshipLoanFundGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -35,8 +71,8 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
                 Women Entrepreneurship Loan Fund (WELF)
               </h1>
               <p className="text-xl text-pink-100 mb-8">
-                National microloan program providing up to $50,000 in financing for women entrepreneurs, 
-                particularly startups, underrepresented groups, and sole proprietorships through five dedicated 
+                National microloan program providing up to $50,000 in financing for women entrepreneurs,
+                particularly startups, underrepresented groups, and sole proprietorships through five dedicated
                 delivery organizations across Canada.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -94,8 +130,8 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Addressing Capital Barriers for Women Entrepreneurs</h2>
                 <p className="text-lg text-gray-600">
-                  WELF tackles a critical gap in Canadian business financing by providing accessible microloans 
-                  specifically for women entrepreneurs who face difficulty accessing traditional capital, particularly 
+                  WELF tackles a critical gap in Canadian business financing by providing accessible microloans
+                  specifically for women entrepreneurs who face difficulty accessing traditional capital, particularly
                   in smaller amounts needed for startup and early-stage growth.
                 </p>
               </div>
@@ -127,7 +163,7 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">WELF Delivery Organizations & Loan Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* WEOC */}
                 <Card className="border-pink-200">
@@ -166,7 +202,7 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-pink-50 rounded-lg">
                       <h5 className="font-semibold mb-2">📋 WEOC Provincial Network:</h5>
                       <div className="grid md:grid-cols-3 gap-4 text-sm">
@@ -353,7 +389,7 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">WELF Women Entrepreneur Eligibility Requirements</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Business Eligibility */}
                 <Card className="border-green-200">
@@ -373,7 +409,7 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
                           <li>• Demonstrated need for capital access</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-blue-700 mb-2">🎯 Priority Groups</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -407,7 +443,7 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
                           <li>• Professional services and training</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-purple-700 mb-2">🚫 Non-Eligible Uses</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -431,7 +467,7 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">WELF Loan Terms & Repayment Conditions</h2>
-              
+
               <div className="space-y-6">
                 <Card className="border-pink-200">
                   <CardHeader>
@@ -512,7 +548,7 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">WELF Microloan Application Process</h2>
-              
+
               <div className="space-y-6">
                 <div className="grid md:grid-cols-4 gap-6">
                   {[
@@ -524,7 +560,7 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
                       color: "pink"
                     },
                     {
-                      step: "2", 
+                      step: "2",
                       title: "Initial Application",
                       description: "Submit online application with business plan and financial information",
                       icon: <Send className="w-6 h-6" />,
@@ -547,11 +583,11 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
                   ].map((item, index) => {
                     const colors = {
                       pink: "bg-pink-500 text-white",
-                      green: "bg-green-500 text-white", 
+                      green: "bg-green-500 text-white",
                       purple: "bg-purple-500 text-white",
                       orange: "bg-orange-500 text-white"
                     }
-                    
+
                     return (
                       <Card key={index} className="text-center">
                         <CardHeader>
@@ -604,7 +640,7 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">WELF Application Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -678,6 +714,45 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
           </div>
         </section>
 
+        {/* Official Government Resources */}
+        <section className="py-12 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Official WELF Delivery Partners</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <a href="https://weoc.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-pink-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-pink-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">WEOC</div>
+                    <div className="text-sm text-gray-600">Women's Enterprise Organizations of Canada</div>
+                  </div>
+                </a>
+                <a href="https://nacca.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-pink-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">NACCA</div>
+                    <div className="text-sm text-gray-600">National Aboriginal Capital Corporations</div>
+                  </div>
+                </a>
+                <a href="https://www.nventure.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-pink-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Nventure</div>
+                    <div className="text-sm text-gray-600">Young Entrepreneurs (18-39)</div>
+                  </div>
+                </a>
+                <a href="https://coralus.world/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-pink-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-green-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Coralus</div>
+                    <div className="text-sm text-gray-600">Women-led social ventures</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-pink-600 to-purple-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -686,15 +761,15 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
                 Ready to Access WELF's $50K Women Entrepreneur Funding?
               </h2>
               <p className="text-xl text-pink-100 mb-8">
-                Get our complete WELF application guide with delivery organization comparison, eligibility checklist, 
+                Get our complete WELF application guide with delivery organization comparison, eligibility checklist,
                 and application templates, or work with our women entrepreneur funding specialists for expert support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free WELF Application Guide</h4>
                   <p className="text-pink-100 text-sm mb-4">
-                    Get our comprehensive WELF guide with delivery organization comparison, business plan templates, 
+                    Get our comprehensive WELF guide with delivery organization comparison, business plan templates,
                     and step-by-step application instructions.
                   </p>
                   <Button size="lg" className="w-full bg-white text-pink-700 hover:bg-gray-100" asChild>
@@ -708,7 +783,7 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
                 <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Expert WELF Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with women entrepreneur funding specialists who can help you choose the right delivery partner 
+                    Work with women entrepreneur funding specialists who can help you choose the right delivery partner
                     and optimize your WELF application for maximum success.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
@@ -718,7 +793,7 @@ export default function WomenEntrepreneurshipLoanFundGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-pink-200 text-sm mt-6">
                 Expert guidance • Delivery partner selection • Application optimization • Women entrepreneur success support
               </p>

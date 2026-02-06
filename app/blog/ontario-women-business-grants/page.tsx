@@ -3,14 +3,14 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, MapPin } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, MapPin, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Ontario Women Business Grants 2026 | $850M Support Programs & Non-Repayable Funding",
   description: "Complete guide to Ontario women entrepreneurship support with FedDev Ontario RE3 grants up to $5,000, PARO microfinancing, Women's Enterprise Organizations, and technology funding.",
-  keywords: "Ontario women business grants, FedDev Ontario RE3, PARO Centre women, Ontario women entrepreneurship, women in technology Ontario",
+  keywords: "Ontario women business grants, FedDev Ontario RE3, PARO Centre women, Ontario women entrepreneurship, women in technology Ontario, women business loans Toronto, female founder funding Ottawa, women entrepreneur grants Hamilton, women business support London Ontario",
   openGraph: {
     title: "Ontario Women Business Grants 2026 | $850M Provincial Support",
     description: "Comprehensive guide to Ontario women business support with non-repayable grants, microfinancing, and technology funding programs.",
@@ -19,9 +19,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "How do I apply for the FedDev Ontario RE3 grant for women?",
+    answer: "The RE3 (Rebuild, Reopen, Revive) grant provides up to $5,000 in non-repayable funding. Applications are typically processed through regional partners like Women's Enterprise Organizations or participating CFDCs. You'll need to demonstrate how funds will support business recovery or growth."
+  },
+  {
+    question: "What is the maximum loan amount from PARO Centre?",
+    answer: "PARO Centre for Women's Enterprise offers microfinancing loans in stages. Peer lending circles can access smaller amounts typically starting at $1,000-$5,000, growing as credit is established. They also help facilitate access to larger loans through partners."
+  },
+  {
+    question: "Are there grants for women in technology in Ontario?",
+    answer: "Yes, specialized support is available through programs like the BDC Women in Technology Venture Fund, and accelerators like MaRS and Communitech often have dedicated cohorts or grant access for women-led tech startups in AI, health tech, and clean tech."
+  },
+  {
+    question: "Can I access the Women Entrepreneurship Loan Fund (WELF) in Ontario?",
+    answer: "Yes, Ontario women entrepreneurs can apply for WELF loans of up to $50,000. In Ontario, these differ from PARO's peer loans and are often administered through designated WELF delivery partners like cellular microfinance organizations or WEOC affiliates."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function OntarioWomenBusinessGrantsGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -35,8 +71,8 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
                 Ontario Women Business Grants & Support Programs
               </h1>
               <p className="text-xl text-indigo-100 mb-8">
-                Access $850M in provincial women entrepreneurship support including FedDev Ontario RE3 
-                non-repayable grants up to $5,000, PARO microfinancing, Women's Enterprise Organizations 
+                Access $850M in provincial women entrepreneurship support including FedDev Ontario RE3
+                non-repayable grants up to $5,000, PARO microfinancing, Women's Enterprise Organizations
                 funding, and specialized Women in Technology programs across Ontario.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -94,8 +130,8 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada's Largest Provincial Women Business Support Ecosystem</h2>
                 <p className="text-lg text-gray-600">
-                  Ontario offers the most comprehensive women entrepreneurship support in Canada with $850M 
-                  in provincial funding, federal grants, microfinancing programs, and specialized technology 
+                  Ontario offers the most comprehensive women entrepreneurship support in Canada with $850M
+                  in provincial funding, federal grants, microfinancing programs, and specialized technology
                   initiatives designed to help women start, grow, and scale businesses across the province.
                 </p>
               </div>
@@ -127,7 +163,7 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Ontario Women Business Support Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* FedDev Ontario RE3 Initiative */}
                 <Card className="border-indigo-200">
@@ -164,7 +200,7 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-indigo-50 rounded-lg">
                       <h5 className="font-semibold mb-2">📋 RE3 Grant Coverage:</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -244,9 +280,9 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
                             <span className="text-blue-700 font-bold">Provincial Access</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Access to national WELF microloans up to $50,000 through WEOC 
-                            network with Ontario-specific delivery partners providing business 
-                            advisory, training, and women entrepreneur support services.</p>
+                            <p>Access to national WELF microloans up to $50,000 through WEOC
+                              network with Ontario-specific delivery partners providing business
+                              advisory, training, and women entrepreneur support services.</p>
                           </div>
                         </div>
                       </div>
@@ -281,9 +317,9 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
                             <span className="text-purple-700 font-bold">Tech Sector</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Specialized funding and support for women in technology sectors 
-                            including software, AI, clean tech, and digital innovation with grants, 
-                            accelerators, and mentorship programs.</p>
+                            <p>Specialized funding and support for women in technology sectors
+                              including software, AI, clean tech, and digital innovation with grants,
+                              accelerators, and mentorship programs.</p>
                           </div>
                         </div>
                       </div>
@@ -318,9 +354,9 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
                             <span className="text-orange-700 font-bold">Southern Ontario</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Comprehensive business support including mentorship, peer networking, 
-                            capital access guidance, and marketing support for women-led for-profit 
-                            businesses and social enterprises in Southern Ontario.</p>
+                            <p>Comprehensive business support including mentorship, peer networking,
+                              capital access guidance, and marketing support for women-led for-profit
+                              businesses and social enterprises in Southern Ontario.</p>
                           </div>
                         </div>
                       </div>
@@ -355,9 +391,9 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
                             <span className="text-pink-700 font-bold">Online Resources</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Online platform helping women develop leadership skills and connect 
-                            with local business women through career development, mentorship, workplace 
-                            diversity programs, and networking events.</p>
+                            <p>Online platform helping women develop leadership skills and connect
+                              with local business women through career development, mentorship, workplace
+                              diversity programs, and networking events.</p>
                           </div>
                         </div>
                       </div>
@@ -383,7 +419,7 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Ontario Women Business Support Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -457,6 +493,63 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-center mb-8">
+                <div className="bg-indigo-100 p-3 rounded-full mr-4">
+                  <ExternalLink className="w-8 h-8 text-indigo-700" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900">Official Ontario Resources</h2>
+                  <p className="text-gray-600">Direct links to government and partner verification sources</p>
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-indigo-100 hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-indigo-700">Program Applications</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <Link href="https://feddev-ontario.canada.ca/" target="_blank" className="flex items-center text-gray-700 hover:text-indigo-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-indigo-500" />
+                      FedDev Ontario (RE3 & Regional Support)
+                    </Link>
+                    <Link href="https://paro.ca/" target="_blank" className="flex items-center text-gray-700 hover:text-indigo-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-indigo-500" />
+                      PARO Centre for Women's Enterprise
+                    </Link>
+                    <Link href="https://weoc.ca/" target="_blank" className="flex items-center text-gray-700 hover:text-indigo-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-indigo-500" />
+                      Women's Enterprise Organizations of Canada
+                    </Link>
+                  </CardContent>
+                </Card>
+                <Card className="border-indigo-100 hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-indigo-700">Support Networks</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <Link href="https://www.ontario.ca/page/business-services" target="_blank" className="flex items-center text-gray-700 hover:text-indigo-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-indigo-500" />
+                      ServiceOntario Business Services
+                    </Link>
+                    <Link href="https://womeninleadership.ca/" target="_blank" className="flex items-center text-gray-700 hover:text-indigo-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-indigo-500" />
+                      Women in Leadership Foundation
+                    </Link>
+                    <Link href="https://www.bdc.ca/en/women-entrepreneur" target="_blank" className="flex items-center text-gray-700 hover:text-indigo-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-indigo-500" />
+                      BDC Women Entrepreneurship
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-indigo-600 to-blue-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -465,15 +558,15 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
                 Ready to Access Ontario Women Business Support?
               </h2>
               <p className="text-xl text-indigo-100 mb-8">
-                Get our complete Ontario women business support guide with program comparison and application templates, 
+                Get our complete Ontario women business support guide with program comparison and application templates,
                 or work with our Ontario funding specialists for expert application support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free Ontario Support Guide</h4>
                   <p className="text-indigo-100 text-sm mb-4">
-                    Get our comprehensive Ontario women business support guide with RE3 grant templates, 
+                    Get our comprehensive Ontario women business support guide with RE3 grant templates,
                     PARO application insights, and program comparison.
                   </p>
                   <Button size="lg" className="w-full bg-white text-indigo-700 hover:bg-gray-100" asChild>
@@ -487,7 +580,7 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
                 <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Expert Ontario Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with Ontario funding specialists who understand provincial programs and can help 
+                    Work with Ontario funding specialists who understand provincial programs and can help
                     optimize your applications for maximum success.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
@@ -497,7 +590,7 @@ export default function OntarioWomenBusinessGrantsGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-indigo-200 text-sm mt-6">
                 Expert guidance • Provincial programs • Application optimization • Ontario women entrepreneur success
               </p>

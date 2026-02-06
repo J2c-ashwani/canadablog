@@ -275,6 +275,31 @@ export default function SBADisasterReliefLoansGuidePage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Official Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="https://www.sba.gov/funding-programs/disaster-assistance" target="_blank" rel="noopener noreferrer" className="flex items-start p-6 bg-red-50 rounded-lg border border-red-100 hover:shadow-md transition-all">
+                  <ExternalLink className="w-6 h-6 text-red-600 mr-4 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-red-900 mb-2">SBA Disaster Assistance</h3>
+                    <p className="text-red-800 text-sm">Apply specifically for disaster loans, check declaration status, and manage applications.</p>
+                  </div>
+                </Link>
+                <Link href="https://www.fema.gov/disaster" target="_blank" rel="noopener noreferrer" className="flex items-start p-6 bg-blue-50 rounded-lg border border-blue-100 hover:shadow-md transition-all">
+                  <ExternalLink className="w-6 h-6 text-blue-600 mr-4 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-blue-900 mb-2">FEMA Disaster Declarations</h3>
+                    <p className="text-blue-800 text-sm">Check strictly for declared disasters in your area eligible for federal assistance.</p>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">

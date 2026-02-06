@@ -278,6 +278,31 @@ export default function FederalGrantsWomenMinoritiesPage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Official Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="https://wosb.certify.sba.gov/" target="_blank" rel="noopener noreferrer" className="flex items-start p-6 bg-pink-50 rounded-lg border border-pink-100 hover:shadow-md transition-all">
+                  <ExternalLink className="w-6 h-6 text-pink-600 mr-4 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-pink-900 mb-2">SBA WOSB Certification</h3>
+                    <p className="text-pink-800 text-sm">Official portal to apply for Women-Owned Small Business (WOSB) certification.</p>
+                  </div>
+                </Link>
+                <Link href="https://assist.sba.gov/" target="_blank" rel="noopener noreferrer" className="flex items-start p-6 bg-purple-50 rounded-lg border border-purple-100 hover:shadow-md transition-all">
+                  <ExternalLink className="w-6 h-6 text-purple-600 mr-4 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-purple-900 mb-2">SBA 8(a) Application</h3>
+                    <p className="text-purple-800 text-sm">Access the 8(a) Business Development Program application and management system.</p>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">

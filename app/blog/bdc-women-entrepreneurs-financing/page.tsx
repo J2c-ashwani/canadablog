@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, TrendingUp as Growth } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, TrendingUp as Growth, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +19,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What are the eligibility requirements for BDC Women Entrepreneurs financing?",
+    answer: "BDC requires women-led businesses (ownership or leadership) that are Canadian incorporated, operating or with viable startup plans, demonstrating growth potential, and with clear financing use cases."
+  },
+  {
+    question: "What is the BDC Thrive ETA Fund?",
+    answer: "The Thrive ETA Fund is a $50 million initiative supporting 60+ women acquiring and operating businesses through direct investments, accelerator programs, and mentorship."
+  },
+  {
+    question: "How long does the BDC financing application process take?",
+    answer: "Initial consultation takes 1-2 weeks, application preparation 2-4 weeks, credit review 4-6 weeks, and funding disbursement 1-2 weeks after approval."
+  },
+  {
+    question: "Does BDC offer advisory services along with financing?",
+    answer: "Yes, BDC provides strategic advisory services including growth strategy, operations, financial planning, and leadership development from dedicated business advisors with women entrepreneur expertise."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function BDCWomenEntrepreneursGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -545,6 +581,45 @@ export default function BDCWomenEntrepreneursGuidePage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Official Government Resources */}
+        <section className="py-12 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Official BDC Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <a href="https://www.bdc.ca/en/about/women-entrepreneurs" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">BDC Women Entrepreneurs</div>
+                    <div className="text-sm text-gray-600">Official BDC women's programs portal</div>
+                  </div>
+                </a>
+                <a href="https://www.bdc.ca/en/articles-tools/entrepreneur-toolkit/templates-business-guides/glossary/thrive-lab" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">Thrive Lab</div>
+                    <div className="text-sm text-gray-600">Women entrepreneur resources and tools</div>
+                  </div>
+                </a>
+                <a href="https://www.bdc.ca/en/financing" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-green-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">BDC Financing</div>
+                    <div className="text-sm text-gray-600">Business financing solutions</div>
+                  </div>
+                </a>
+                <a href="https://www.bdc.ca/en/consulting" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">BDC Advisory Services</div>
+                    <div className="text-sm text-gray-600">Strategic business consulting</div>
+                  </div>
+                </a>
               </div>
             </div>
           </div>

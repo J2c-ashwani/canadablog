@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Globe, TrendingUp as Growth } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Globe, TrendingUp as Growth, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +19,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What is the EDC Inclusive Trade Investments Program?",
+    answer: "The Inclusive Trade Investments Program is a $50 million fund providing direct equity investments in women-owned export businesses and investments in VC funds committed to gender diversity."
+  },
+  {
+    question: "Who is eligible for EDC Women in Trade financing?",
+    answer: "EDC targets women-owned or women-led Canadian incorporated companies that are export-ready or actively exporting, with significant export growth potential and strong commercial viability."
+  },
+  {
+    question: "What is the BWIT program?",
+    answer: "Business Women in International Trade (BWIT) is part of the Trade Commissioner Service providing women-focused trade missions, CanExport funding access, export training, and international business networks."
+  },
+  {
+    question: "What types of export financing does EDC provide?",
+    answer: "EDC provides working capital for export contracts, pre-shipment and post-shipment financing, export credit insurance, foreign exchange risk management, and supply chain financing solutions."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function EDCWomenInTradeGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -35,8 +71,8 @@ export default function EDCWomenInTradeGuidePage() {
                 EDC Women in Trade Export Financing
               </h1>
               <p className="text-xl text-teal-100 mb-8">
-                Export financing and equity capital investments for women-owned businesses targeting 
-                international markets and global expansion. Access the Inclusive Trade Investments Program, 
+                Export financing and equity capital investments for women-owned businesses targeting
+                international markets and global expansion. Access the Inclusive Trade Investments Program,
                 export market development support, and equity funding from Export Development Canada.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -94,8 +130,8 @@ export default function EDCWomenInTradeGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada's Export Finance Partner for Women Entrepreneurs</h2>
                 <p className="text-lg text-gray-600">
-                  EDC Women in Trade addresses the critical gap in export financing for women-owned businesses. 
-                  With only 11% of women-owned SMEs active in international markets, EDC provides equity capital, 
+                  EDC Women in Trade addresses the critical gap in export financing for women-owned businesses.
+                  With only 11% of women-owned SMEs active in international markets, EDC provides equity capital,
                   export financing, and market development support to help women entrepreneurs go global.
                 </p>
               </div>
@@ -127,7 +163,7 @@ export default function EDCWomenInTradeGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">EDC Women in Trade Financing Solutions</h2>
-              
+
               <div className="space-y-8">
                 {/* Inclusive Trade Investments Program */}
                 <Card className="border-teal-200">
@@ -164,7 +200,7 @@ export default function EDCWomenInTradeGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-teal-50 rounded-lg">
                       <h5 className="font-semibold mb-2">📋 Investment Coverage:</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -244,8 +280,8 @@ export default function EDCWomenInTradeGuidePage() {
                             <span className="text-blue-700 font-bold">Market Development</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Comprehensive support for women entrepreneurs entering international markets, 
-                            including market research, trade missions, buyer connections, and export strategy development.</p>
+                            <p>Comprehensive support for women entrepreneurs entering international markets,
+                              including market research, trade missions, buyer connections, and export strategy development.</p>
                           </div>
                         </div>
                       </div>
@@ -280,8 +316,8 @@ export default function EDCWomenInTradeGuidePage() {
                             <span className="text-purple-700 font-bold">Women Exporters</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Part of Trade Commissioner Service providing women-focused trade missions, 
-                            CanExport funding access, export training, and international business networks.</p>
+                            <p>Part of Trade Commissioner Service providing women-focused trade missions,
+                              CanExport funding access, export training, and international business networks.</p>
                           </div>
                         </div>
                       </div>
@@ -307,7 +343,7 @@ export default function EDCWomenInTradeGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">EDC Women in Trade Eligibility</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Business Eligibility */}
                 <Card className="border-green-200">
@@ -327,7 +363,7 @@ export default function EDCWomenInTradeGuidePage() {
                           <li>• Competitive product/service in global markets</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-blue-700 mb-2">🎯 Priority Groups</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -360,7 +396,7 @@ export default function EDCWomenInTradeGuidePage() {
                           <li>• Export product development</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-purple-700 mb-2">💡 Strategic Priorities</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -384,7 +420,7 @@ export default function EDCWomenInTradeGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">EDC Application Process</h2>
-              
+
               <div className="space-y-6">
                 <div className="grid md:grid-cols-4 gap-6">
                   {[
@@ -396,7 +432,7 @@ export default function EDCWomenInTradeGuidePage() {
                       color: "teal"
                     },
                     {
-                      step: "2", 
+                      step: "2",
                       title: "Connect with EDC",
                       description: "Contact EDC Women in Trade team for consultation",
                       icon: <Users className="w-6 h-6" />,
@@ -419,11 +455,11 @@ export default function EDCWomenInTradeGuidePage() {
                   ].map((item, index) => {
                     const colors = {
                       teal: "bg-teal-500 text-white",
-                      green: "bg-green-500 text-white", 
+                      green: "bg-green-500 text-white",
                       blue: "bg-blue-500 text-white",
                       purple: "bg-purple-500 text-white"
                     }
-                    
+
                     return (
                       <Card key={index} className="text-center">
                         <CardHeader>
@@ -476,7 +512,7 @@ export default function EDCWomenInTradeGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">EDC Application Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -550,6 +586,45 @@ export default function EDCWomenInTradeGuidePage() {
           </div>
         </section>
 
+        {/* Official Government Resources */}
+        <section className="py-12 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Official EDC Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <a href="https://www.edc.ca/en/solutions/women-in-trade.html" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-teal-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">EDC Women in Trade</div>
+                    <div className="text-sm text-gray-600">Official EDC women exporters program</div>
+                  </div>
+                </a>
+                <a href="https://www.tradecommissioner.gc.ca/businesswomen-femmesdaffaires/index.aspx" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-teal-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-green-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">BWIT Program</div>
+                    <div className="text-sm text-gray-600">Business Women in International Trade</div>
+                  </div>
+                </a>
+                <a href="https://www.edc.ca/en/financing.html" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-teal-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">EDC Export Financing</div>
+                    <div className="text-sm text-gray-600">Export financing solutions</div>
+                  </div>
+                </a>
+                <a href="https://www.tradecommissioner.gc.ca/funding-financement/canexport/index.aspx" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-teal-50 transition-colors border border-gray-200">
+                  <ExternalLink className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0" />
+                  <div>
+                    <div className="font-semibold text-gray-900">CanExport</div>
+                    <div className="text-sm text-gray-600">Export market development funding</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-teal-600 to-green-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -558,15 +633,15 @@ export default function EDCWomenInTradeGuidePage() {
                 Ready to Access EDC Women in Trade Financing?
               </h2>
               <p className="text-xl text-teal-100 mb-8">
-                Get our complete EDC export financing guide with market entry strategies and equity investment frameworks, 
+                Get our complete EDC export financing guide with market entry strategies and equity investment frameworks,
                 or work with our export financing specialists for expert application support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free EDC Export Guide</h4>
                   <p className="text-teal-100 text-sm mb-4">
-                    Get our comprehensive EDC Women in Trade guide with export financing options, 
+                    Get our comprehensive EDC Women in Trade guide with export financing options,
                     market entry templates, and equity investment insights.
                   </p>
                   <Button size="lg" className="w-full bg-white text-teal-700 hover:bg-gray-100" asChild>
@@ -580,7 +655,7 @@ export default function EDCWomenInTradeGuidePage() {
                 <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Expert EDC Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with export financing specialists who understand EDC and can help optimize 
+                    Work with export financing specialists who understand EDC and can help optimize
                     your export strategy and financing applications.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
@@ -590,7 +665,7 @@ export default function EDCWomenInTradeGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-teal-200 text-sm mt-6">
                 Expert guidance • Export strategy • International market access • Equity capital success
               </p>

@@ -271,6 +271,31 @@ export default function StateLocalBusinessGrantsGuide() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Official Resources</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="https://www.sba.gov/local-assistance" target="_blank" rel="noopener noreferrer" className="flex items-start p-6 bg-orange-50 rounded-lg border border-orange-100 hover:shadow-md transition-all">
+                  <ExternalLink className="w-6 h-6 text-orange-600 mr-4 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-orange-900 mb-2">SBA Local Assistance</h3>
+                    <p className="text-orange-800 text-sm">Find local SBA offices, SBDCs, and SCORE mentors in your state.</p>
+                  </div>
+                </Link>
+                <Link href="https://www.eda.gov/" target="_blank" rel="noopener noreferrer" className="flex items-start p-6 bg-blue-50 rounded-lg border border-blue-100 hover:shadow-md transition-all">
+                  <ExternalLink className="w-6 h-6 text-blue-600 mr-4 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-blue-900 mb-2">U.S. Economic Development Admin</h3>
+                    <p className="text-blue-800 text-sm">Federal agency offering regional economic development grants and resources.</p>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">

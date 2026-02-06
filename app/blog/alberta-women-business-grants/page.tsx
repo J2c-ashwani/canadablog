@@ -3,14 +3,14 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, MapPin } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, MapPin, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Alberta Women Business Grants 2026 | $580M Energy & Tech Support Programs",
   description: "Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovation funding.",
-  keywords: "Alberta women business grants, AWE loans, Women Building Futures, Alberta women entrepreneurs, energy sector women",
+  keywords: "Alberta women business grants, AWE loans, Women Building Futures, Alberta women entrepreneurs, energy sector women, women business loans Calgary, female founder grants Edmonton, rural Alberta women business support, Alberta tech grants women",
   openGraph: {
     title: "Alberta Women Business Grants 2026 | $580M Provincial Support",
     description: "Comprehensive guide to Alberta women business support with AWE financing, energy sector programs, and technology funding.",
@@ -19,9 +19,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "Who is eligible for Alberta Women Entrepreneurs (AWE) loans?",
+    answer: "AWE loans are available to businesses in Alberta that are at least 50% + 1 share owned by women. The business must be registered in Alberta, and the owner must be a Canadian citizen or permanent resident."
+  },
+  {
+    question: "How much funding does Women Building Futures provide?",
+    answer: "Women Building Futures is primarily a training organization that provides fully funded or subsidized pre-employment training for women in trades. They connect graduates directly with employers in the construction, maintenance, and energy sectors, which leads to high-paying careers."
+  },
+  {
+    question: "Do rural Alberta women entrepreneurs have specific funding options?",
+    answer: "Yes, the Community Futures Network of Alberta typically serves rural entrepreneurs. They offer loans up to $150,000 and have specific initiatives and advisory support for women entrepreneurs outside of major urban centers."
+  },
+  {
+    question: "Are there grants for women in Alberta's energy sector?",
+    answer: "Yes, specific support exists through Alberta Innovates and Emissions Reduction Alberta for clean tech and energy innovation. While not always women-exclusive, there are often streams or priority points for diverse-led leadership teams."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function AlbertaWomenBusinessGrantsGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -35,8 +71,8 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
                 Alberta Women Business Grants & Growth Programs
               </h1>
               <p className="text-xl text-amber-100 mb-8">
-                Access $580M in Alberta women entrepreneurship support including Alberta Women Entrepreneurs 
-                (AWE) loans up to $150,000, Women Building Futures trades programs, energy sector women 
+                Access $580M in Alberta women entrepreneurship support including Alberta Women Entrepreneurs
+                (AWE) loans up to $150,000, Women Building Futures trades programs, energy sector women
                 initiatives, tech innovation funding, and comprehensive business growth resources across Alberta.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -94,8 +130,8 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Energy and Innovation Capital for Women Entrepreneurs</h2>
                 <p className="text-lg text-gray-600">
-                  Alberta provides unique women entrepreneurship support combining $580M in provincial funding, 
-                  energy sector opportunities, AWE financing up to $150,000, Women Building Futures trades access, 
+                  Alberta provides unique women entrepreneurship support combining $580M in provincial funding,
+                  energy sector opportunities, AWE financing up to $150,000, Women Building Futures trades access,
                   and tech innovation programs designed to help women succeed in Alberta's diverse economy.
                 </p>
               </div>
@@ -127,7 +163,7 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Alberta Women Business Support Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Alberta Women Entrepreneurs (AWE) */}
                 <Card className="border-amber-200">
@@ -164,7 +200,7 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-amber-50 rounded-lg">
                       <h5 className="font-semibold mb-2">📋 AWE Loan Uses:</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -244,9 +280,9 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
                             <span className="text-green-700 font-bold">$10,000 - $75,000</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Network of 27 Community Futures locations providing unsecured conditionally 
-                            repayable loans for rural Alberta women entrepreneurs with local business 
-                            advisory support and skills development.</p>
+                            <p>Network of 27 Community Futures locations providing unsecured conditionally
+                              repayable loans for rural Alberta women entrepreneurs with local business
+                              advisory support and skills development.</p>
                           </div>
                         </div>
                       </div>
@@ -320,9 +356,9 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
                             <span className="text-purple-700 font-bold">Energy</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Specialized programs supporting women entrepreneurs in Alberta's energy sector 
-                            including oil & gas services, renewable energy, clean tech, and energy transition 
-                            ventures with funding, mentorship, and industry connections.</p>
+                            <p>Specialized programs supporting women entrepreneurs in Alberta's energy sector
+                              including oil & gas services, renewable energy, clean tech, and energy transition
+                              ventures with funding, mentorship, and industry connections.</p>
                           </div>
                         </div>
                       </div>
@@ -357,9 +393,9 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
                             <span className="text-pink-700 font-bold">Up to $50,000</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Access to federal WELF microloans through WEOC network with Alberta Women 
-                            Entrepreneurs delivery, providing flexible financing, business advisory, and 
-                            training for women entrepreneurs across Alberta.</p>
+                            <p>Access to federal WELF microloans through WEOC network with Alberta Women
+                              Entrepreneurs delivery, providing flexible financing, business advisory, and
+                              training for women entrepreneurs across Alberta.</p>
                           </div>
                         </div>
                       </div>
@@ -385,7 +421,7 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Alberta Women Business Support Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -459,6 +495,63 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
           </div>
         </section>
 
+        {/* Official Resources Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-center mb-8">
+                <div className="bg-amber-100 p-3 rounded-full mr-4">
+                  <ExternalLink className="w-8 h-8 text-amber-700" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900">Official Alberta Resources</h2>
+                  <p className="text-gray-600">Direct links to government and partner verification sources</p>
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-amber-100 hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-amber-700">Program Applications</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <Link href="https://www.awebusiness.com/" target="_blank" className="flex items-center text-gray-700 hover:text-amber-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-amber-500" />
+                      Alberta Women Entrepreneurs (AWE)
+                    </Link>
+                    <Link href="https://womenbuildingfutures.ca/" target="_blank" className="flex items-center text-gray-700 hover:text-amber-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-amber-500" />
+                      Women Building Futures
+                    </Link>
+                    <Link href="https://albertacf.com/" target="_blank" className="flex items-center text-gray-700 hover:text-amber-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-amber-500" />
+                      Community Futures Alberta
+                    </Link>
+                  </CardContent>
+                </Card>
+                <Card className="border-amber-100 hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-amber-700">Support Networks</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <Link href="https://albertainnovates.ca/" target="_blank" className="flex items-center text-gray-700 hover:text-amber-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-amber-500" />
+                      Alberta Innovates
+                    </Link>
+                    <Link href="https://www.alberta.ca/small-business-resources.aspx" target="_blank" className="flex items-center text-gray-700 hover:text-amber-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-amber-500" />
+                      Alberta Small Business Resources
+                    </Link>
+                    <Link href="https://businesslink.ca/" target="_blank" className="flex items-center text-gray-700 hover:text-amber-600 group">
+                      <ExternalLink className="w-4 h-4 mr-2 text-gray-400 group-hover:text-amber-500" />
+                      Business Link Alberta
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-amber-600 to-orange-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -467,15 +560,15 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
                 Ready to Access Alberta Women Business Support?
               </h2>
               <p className="text-xl text-amber-100 mb-8">
-                Get our complete Alberta women business support guide with program comparison and application templates, 
+                Get our complete Alberta women business support guide with program comparison and application templates,
                 or work with our Alberta funding specialists for expert application support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free Alberta Support Guide</h4>
                   <p className="text-amber-100 text-sm mb-4">
-                    Get our comprehensive Alberta women business support guide with AWE loan templates, 
+                    Get our comprehensive Alberta women business support guide with AWE loan templates,
                     Community Futures insights, and energy sector opportunities.
                   </p>
                   <Button size="lg" className="w-full bg-white text-amber-700 hover:bg-gray-100" asChild>
@@ -489,7 +582,7 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
                 <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Expert Alberta Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with Alberta funding specialists who understand provincial programs and can help 
+                    Work with Alberta funding specialists who understand provincial programs and can help
                     optimize your applications for AWE and innovation funding success.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
@@ -499,7 +592,7 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-amber-200 text-sm mt-6">
                 Expert guidance • Provincial programs • Energy & tech support • Alberta women entrepreneur success
               </p>

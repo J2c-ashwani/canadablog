@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Code } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Code, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +19,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What is the maximum NRC IRAP funding for women tech entrepreneurs?",
+    answer: "NRC IRAP provides up to $10M for industrial R&D and technology commercialization projects. Women-led tech startups can access non-repayable contributions, advisory services, and networking support."
+  },
+  {
+    question: "Are there women-specific tech accelerators in Canada?",
+    answer: "Yes, programs like L-SPARK (Ottawa SaaS), Alate Partners (BC), MaRS Discovery (Toronto), and Highline Beta (Montreal) offer women-focused tech acceleration with funding, mentorship, and investor connections."
+  },
+  {
+    question: "How can women access AI and machine learning funding?",
+    answer: "SR&ED tax credits (up to 35% refundable), MITACS research partnerships, collaboration with AI institutes (Vector, Mila, Amii), and NRC IRAP AI project support are key funding sources for women AI entrepreneurs."
+  },
+  {
+    question: "What provincial tech innovation programs support women entrepreneurs?",
+    answer: "Key programs include Innovate BC (Vancouver), Alberta Innovates (Calgary/Edmonton), Ontario Creates (digital media), and Quebec's SODEC for creative tech with grants, acceleration, and commercialization support."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function WomenTechnologyGrantsCanadaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
