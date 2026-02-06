@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, MapPin } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, MapPin, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,48 @@ export const metadata: Metadata = {
 }
 
 export default function RDAGovernmentGrantsBlogPage() {
+  const faqData = [
+    {
+      question: "Which Regional Development Agency (RDA) should I apply to?",
+      answer: "You must apply to the RDA responsible for the region where your project will take place. For example, if your business is in Toronto, you apply to FedDev Ontario. If it's in Halifax, you apply to ACOA. You cannot pick and choose based on which program looks better."
+    },
+    {
+      question: "Is RDA funding a grant or a loan?",
+      answer: "It is usually a 'repayable contribution' (an interest-free loan). Grants (non-repayable) are generally reserved for non-profit organizations or very specific small business initiatives (like the old RRRF during COVID)."
+    },
+    {
+      question: "What is the difference between RDA and IRAP?",
+      answer: "IRAP focuses on R&D and technical innovation. RDAs focus on economic growth, job creation, and scaling up. You can often use both: IRAP to develop the technology, and RDA funding to buy the factory equipment to mass-produce it."
+    },
+    {
+      question: "Can I stack RDA funding with other grants?",
+      answer: "Yes. The government stacking limit is usually 75% to 90%. You can combine RDA funding with provincial grants or BDC loans, as long as you have some 'skin in the game' (your own equity)."
+    },
+    {
+      question: "What is the minimum revenue requirement?",
+      answer: "Most RDA scale-up programs require you to be an incorporated business with at least $500k in revenue, or significant investment. They are not typically for early-stage idea startups (look to Futurpreneur or IRAP for that)."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-16">
@@ -35,8 +74,8 @@ export default function RDAGovernmentGrantsBlogPage() {
                 Regional Development Agencies (RDA) Federal Funding
               </h1>
               <p className="text-xl text-purple-100 mb-8">
-                Canada's comprehensive network of 7 Regional Development Agencies providing targeted federal funding 
-                from $125K to $10M for regional economic development, innovation, and job creation. Complete guide to 
+                Canada's comprehensive network of 7 Regional Development Agencies providing targeted federal funding
+                from $125K to $10M for regional economic development, innovation, and job creation. Complete guide to
                 RDA programs across Atlantic Canada, Quebec, Ontario, Prairies, BC, and Northern Canada.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -81,13 +120,13 @@ export default function RDAGovernmentGrantsBlogPage() {
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">RDA Network as Federal Regional Policy Tool</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Canada's Regional Development Agencies (RDAs) represent the federal government's primary mechanism 
-                  for delivering tailored economic development support across diverse regional economies. Operating 
-                  under Innovation, Science & Economic Development Canada (ISED), the seven RDAs provide region-specific 
-                  federal funding and expertise to address unique economic challenges, leverage regional strengths, 
+                  Canada's Regional Development Agencies (RDAs) represent the federal government's primary mechanism
+                  for delivering tailored economic development support across diverse regional economies. Operating
+                  under Innovation, Science & Economic Development Canada (ISED), the seven RDAs provide region-specific
+                  federal funding and expertise to address unique economic challenges, leverage regional strengths,
                   and ensure balanced national economic growth.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-purple-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-purple-800">Federal Regional Policy Objectives</h4>
@@ -98,7 +137,7 @@ export default function RDAGovernmentGrantsBlogPage() {
                       <li>• Enable competitive regional business environments</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">Strategic Federal Coordination</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -119,7 +158,7 @@ export default function RDAGovernmentGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Canada's 7 Regional Development Agencies</h2>
-              
+
               <div className="space-y-8">
                 {/* Atlantic Canada - ACOA */}
                 <Card className="border-blue-200">
@@ -149,7 +188,7 @@ export default function RDAGovernmentGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      ACOA supports business competitiveness, innovation, and productivity across Atlantic Canada's 
+                      ACOA supports business competitiveness, innovation, and productivity across Atlantic Canada's
                       four provinces, with specialized focus on ocean technologies, clean technology, and tourism.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
@@ -212,7 +251,7 @@ export default function RDAGovernmentGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      CED guides Quebec businesses and regions toward tomorrow's economy, supporting innovation, 
+                      CED guides Quebec businesses and regions toward tomorrow's economy, supporting innovation,
                       entrepreneurship, and regional economic development across all Quebec regions.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
@@ -275,7 +314,7 @@ export default function RDAGovernmentGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      FedDev Ontario supports innovation and economic growth in Southern Ontario, while FedNor focuses 
+                      FedDev Ontario supports innovation and economic growth in Southern Ontario, while FedNor focuses
                       on Northern Ontario's unique economic challenges and opportunities.
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
@@ -331,7 +370,7 @@ export default function RDAGovernmentGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      PrairiesCan supports economic diversification, innovation, and community development unique 
+                      PrairiesCan supports economic diversification, innovation, and community development unique
                       to Alberta, Saskatchewan, and Manitoba's prairie economy.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
@@ -394,7 +433,7 @@ export default function RDAGovernmentGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      PacifiCan leverages BC's strategic position as Canada's Asia-Pacific gateway, supporting 
+                      PacifiCan leverages BC's strategic position as Canada's Asia-Pacific gateway, supporting
                       innovation, clean technology, and international trade development.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
@@ -457,7 +496,7 @@ export default function RDAGovernmentGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      CanNor develops diversified, sustainable economies across Canada's three territories, with 
+                      CanNor develops diversified, sustainable economies across Canada's three territories, with
                       emphasis on Indigenous economic development and northern-specific opportunities.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
@@ -501,7 +540,7 @@ export default function RDAGovernmentGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Federal RDA Program Integration</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-purple-700">🏛️ National Federal Coordination:</h4>
@@ -524,7 +563,7 @@ export default function RDAGovernmentGrantsBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-blue-700">🔗 Federal Program Synergies:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -556,7 +595,7 @@ export default function RDAGovernmentGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">RDA Federal Application Process</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <span className="bg-purple-500 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold mr-4 mt-0.5">1</span>
@@ -603,7 +642,7 @@ export default function RDAGovernmentGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">RDA Federal Application Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">✅ Regional Federal Program Success Factors:</h4>
@@ -626,7 +665,7 @@ export default function RDAGovernmentGrantsBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common RDA Federal Application Mistakes:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -653,6 +692,21 @@ export default function RDAGovernmentGrantsBlogPage() {
           </div>
         </section>
 
+        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">RDA Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                  <HelpCircle className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0 mt-0.5" />
+                  {faq.question}
+                </h3>
+                <p className="text-gray-700 ml-9">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Dual CTA Section */}
         <section className="py-16 bg-gradient-to-r from-purple-600 to-purple-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -661,10 +715,10 @@ export default function RDAGovernmentGrantsBlogPage() {
                 Ready to Access RDA Federal Regional Funding?
               </h2>
               <p className="text-xl text-purple-100 mb-8">
-                Get the complete RDA federal application guide or work with our regional development specialists 
+                Get the complete RDA federal application guide or work with our regional development specialists
                 who have secured $45M+ in RDA approvals across all seven regional agencies.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 {/* Get Application Guide CTA */}
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
@@ -693,7 +747,7 @@ export default function RDAGovernmentGrantsBlogPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-purple-200 text-sm mt-6">
                 88% success rate for RDA applications • Average funding secured: $485K • All 7 regional agencies expertise
               </p>

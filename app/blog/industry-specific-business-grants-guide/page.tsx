@@ -14,9 +14,41 @@ export const metadata: Metadata = {
 }
 
 export default function IndustrySpecificBusinessGrantsGuide() {
+  const faqData = [
+    {
+      question: "How do I find grants for my specific industry?",
+      answer: "Start with SBIR.gov and filter by your technology area. Check with your industry association and relevant federal agencies. Our industry-specific guides list major programs."
+    },
+    {
+      question: "Do I need industry experience to apply?",
+      answer: "Yes—reviewers evaluate your team's qualifications. Having industry-experienced personnel or advisors significantly improves your credibility and success rate."
+    },
+    {
+      question: "Can startups apply for industry grants?",
+      answer: "Yes! SBIR/STTR is designed for small companies including startups. However, you need a credible team, feasible technology, and commercialization plan."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-teal-600 to-cyan-700 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -219,9 +251,17 @@ export default function IndustrySpecificBusinessGrantsGuide() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How do I find grants for my specific industry?</h3><p className="text-gray-700 mt-2 ml-7">Start with SBIR.gov and filter by your technology area. Check with your industry association and relevant federal agencies. Our industry-specific guides list major programs.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Do I need industry experience to apply?</h3><p className="text-gray-700 mt-2 ml-7">Yes—reviewers evaluate your team&apos;s qualifications. Having industry-experienced personnel or advisors significantly improves your credibility and success rate.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can startups apply for industry grants?</h3><p className="text-gray-700 mt-2 ml-7">Yes! SBIR/STTR is designed for small companies including startups. However, you need a credible team, feasible technology, and commercialization plan.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

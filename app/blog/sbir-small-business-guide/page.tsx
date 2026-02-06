@@ -14,9 +14,41 @@ export const metadata: Metadata = {
 }
 
 export default function SBIRSmallBusinessGuide() {
+  const faqData = [
+    {
+      question: "Can startups with no employees win SBIR awards?",
+      answer: "Yes, very small companies including those with only founders can win SBIR awards. The principal investigator employment requirement means founders must work for the company, but large employee counts are not required. Many SBIR winners are small teams or even individual founders."
+    },
+    {
+      question: "How long does the SBIR application process take?",
+      answer: "Timelines vary by agency from several months to over a year from proposal submission to award. Some agencies have rolling submissions with faster turnarounds while others have annual cycles with longer review periods. Defense SBIR topics often have sixty to ninety day award timelines."
+    },
+    {
+      question: "Does venture capital funding affect SBIR eligibility?",
+      answer: "Venture capital ownership can affect eligibility through affiliation rules if portfolio company connections aggregate employee counts. Some agencies have waiver provisions for majority VC-owned companies meeting specific criteria. Check current SBA affiliation guidance for your situation."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-blue-600 to-purple-700 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -215,9 +247,17 @@ export default function SBIRSmallBusinessGuide() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can startups with no employees win SBIR awards?</h3><p className="text-gray-700 mt-2 ml-7">Yes, very small companies including those with only founders can win SBIR awards. The principal investigator employment requirement means founders must work for the company, but large employee counts are not required. Many SBIR winners are small teams or even individual founders.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How long does the SBIR application process take?</h3><p className="text-gray-700 mt-2 ml-7">Timelines vary by agency from several months to over a year from proposal submission to award. Some agencies have rolling submissions with faster turnarounds while others have annual cycles with longer review periods. Defense SBIR topics often have sixty to ninety day award timelines.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Does venture capital funding affect SBIR eligibility?</h3><p className="text-gray-700 mt-2 ml-7">Venture capital ownership can affect eligibility through affiliation rules if portfolio company connections aggregate employee counts. Some agencies have waiver provisions for majority VC-owned companies meeting specific criteria. Check current SBA affiliation guidance for your situation.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

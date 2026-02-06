@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Zap, Lightbulb, Beaker } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Zap, Lightbulb, Beaker, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,48 @@ export const metadata: Metadata = {
 }
 
 export default function CanadaInnovationRDGrantsGuidePage() {
+  const faqData = [
+    {
+      question: "What is the difference between IRAP and SR&ED?",
+      answer: "IRAP is an upfront 'grant' (non-repayable contribution) that you apply for before starting the project to help with cash flow. SR&ED is a tax credit you claim after the year is done to get a refund on money you already spent. Strategies often use both."
+    },
+    {
+      question: "Can I claim both IRAP and SR&ED?",
+      answer: "Yes, but you cannot 'double dip'. You must deduct the IRAP funding from your SR&ED expense pool. Basically, the government won't give you a tax credit on money they already gave you for free. But stacking them effectively is a standard way to maximize funding."
+    },
+    {
+      question: "Is software development eligible?",
+      answer: "Yes, if there is 'technological uncertainty' (you don't know if it's possible) and 'technological advancement' (you learn something new). Routine bug fixing or using standard libraries is not eligible. Building a new algorithm or architecture often is."
+    },
+    {
+      question: "How long does SIF take to approve?",
+      answer: "The Strategic Innovation Fund (SIF) is for large/complex projects and the process is lengthy, often taking 6-12 months or more. It involves multiple stages of due diligence and negotiation."
+    },
+    {
+      question: "What is TRL?",
+      answer: "Technology Readiness Level (TRL) is a scale from 1 (Basic Principle) to 9 (Proven in Operation). Grants usually target specific TRLs. For example, research grants might be TRL 1-4, while commercialization grants might be TRL 7-9."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
@@ -511,6 +550,21 @@ export default function CanadaInnovationRDGrantsGuidePage() {
             </div>
           </div>
         </section>
+
+        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Innovation Funding FAQs</h2>
+          <div className="space-y-6">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                  <HelpCircle className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
+                  {faq.question}
+                </h3>
+                <p className="text-gray-700 ml-9">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Dual CTA Section */}
         <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800">

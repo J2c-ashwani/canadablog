@@ -18,9 +18,48 @@ export const metadata: Metadata = {
 }
 
 export default function SmallBusinessGrantsGuidePage() {
+  const faqData = [
+    {
+      question: "Are there truly 'free money' grants?",
+      answer: "Yes, but they're competitive. SBIR/STTR ($4B+ annually) and some state programs don't require repayment. Most business 'grants' are actually low-interest loans."
+    },
+    {
+      question: "Can startups get funding?",
+      answer: "Yes. SBA Microloans are designed for startups. Some grant programs specifically target new businesses. Having less history means more documentation may be needed."
+    },
+    {
+      question: "How long does approval take?",
+      answer: "SBA loans: 2-8 weeks. Federal grants (SBIR): 3-9 months. State grants: 4-12 weeks. Microloans: 2-4 weeks."
+    },
+    {
+      question: "Do I have to pay taxes on grants?",
+      answer: "Generally, yes. Business grants are considered taxable income by the IRS. You must report them on your tax return. Loans (like SBA 7a) are not taxable income."
+    },
+    {
+      question: "Can I use a grant for anything?",
+      answer: "No. Grants usually have specific restrictions (e.g., buying equipment, hiring staff, R&D). You must use the funds exactly as proposed in your application."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero */}
         <section className="bg-gradient-to-br from-green-700 to-blue-600 text-white py-20">
@@ -316,9 +355,17 @@ export default function SmallBusinessGrantsGuidePage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Are there truly &quot;free money&quot; grants?</h3><p className="text-gray-700 mt-2 ml-7">Yes, but they&apos;re competitive. SBIR/STTR ($4B+ annually) and some state programs don&apos;t require repayment. Most business &quot;grants&quot; are actually low-interest loans.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can startups get funding?</h3><p className="text-gray-700 mt-2 ml-7">Yes. SBA Microloans are designed for startups. Some grant programs specifically target new businesses. Having less history means more documentation may be needed.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How long does approval take?</h3><p className="text-gray-700 mt-2 ml-7">SBA loans: 2-8 weeks. Federal grants (SBIR): 3-9 months. State grants: 4-12 weeks. Microloans: 2-4 weeks.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

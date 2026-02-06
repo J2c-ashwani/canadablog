@@ -14,9 +14,48 @@ export const metadata: Metadata = {
 }
 
 export default function CSBFPBlogPage() {
+  const faqData = [
+    {
+      question: "What's the difference between CSBFP and BDC loans?",
+      answer: "CSBFP is a government guarantee program offered through private lenders (banks/credit unions), while BDC is a Crown corporation that lends directly. BDC may approve riskier applications but often at higher rates. CSBFP rates are capped at Prime + 3%."
+    },
+    {
+      question: "Can startups apply for CSBFP?",
+      answer: "Yes! CSBFP is popular with startups because the government guarantee makes lenders more willing to finance new businesses. Strong business plan and owner equity are important."
+    },
+    {
+      question: "Do I need collateral for CSBFP?",
+      answer: "The financed asset (equipment or property) serves as primary collateral. You cannot be required to pledge personal real estate, but personal guarantees are required (usually 25% of the loan amount)."
+    },
+    {
+      question: "What are the interest rates?",
+      answer: "The maximum interest rate is Prime + 3% (floating) or Prime + 3% (fixed) at the time of loan registration. Lenders cannot charge more than this cap."
+    },
+    {
+      question: "Can I use CSBFP to buy a franchise?",
+      answer: "Yes. Franchise fees are not eligible, but the costs to fit up the location, buy equipment, and leasehold improvements are eligible. It is very common for franchise financing."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -226,9 +265,17 @@ export default function CSBFPBlogPage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What&apos;s the difference between CSBFP and BDC loans?</h3><p className="text-gray-700 mt-2 ml-7">CSBFP is a government guarantee program offered through private lenders, while BDC is a Crown corporation that lends directly. BDC may approve riskier applications but often at higher rates.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can startups apply for CSBFP?</h3><p className="text-gray-700 mt-2 ml-7">Yes! CSBFP is popular with startups because the government guarantee makes lenders more willing to finance new businesses. Strong business plan and owner equity are important.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Do I need collateral for CSBFP?</h3><p className="text-gray-700 mt-2 ml-7">The financed asset (equipment or property) serves as primary collateral. You cannot be required to pledge personal real estate, but personal guarantees are required.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

@@ -18,9 +18,41 @@ export const metadata: Metadata = {
 }
 
 export default function BCSmallBusinessGrantsGuide() {
+  const faqData = [
+    {
+      question: "Are BC business grants taxable?",
+      answer: "Yes, most grants are taxable income. Consult with a tax professional familiar with BC business incentives."
+    },
+    {
+      question: "Can startups apply for BC grants?",
+      answer: "Yes, Innovate BC and accelerator programs specifically target early-stage companies. Pre-revenue companies need to demonstrate technical capability and market opportunity."
+    },
+    {
+      question: "How competitive are BC business grants?",
+      answer: "BC is competitive due to its strong tech ecosystem. Approval rates average 15-25%, but well-prepared applications in priority sectors (clean tech, Indigenous business) often see higher success rates."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-green-600 to-teal-700 text-white py-20">
@@ -812,48 +844,18 @@ export default function BCSmallBusinessGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-
               <div className="space-y-4">
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-green-600 mr-2 mt-1 flex-shrink-0" />
-                      Are BC business grants taxable?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes, most grants are taxable income. Consult with a tax professional
-                      familiar with BC business incentives.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-green-600 mr-2 mt-1 flex-shrink-0" />
-                      Can startups apply for BC grants?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes, Innovate BC and accelerator programs specifically target early-stage
-                      companies. Pre-revenue companies need to demonstrate technical capability
-                      and market opportunity.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-green-600 mr-2 mt-1 flex-shrink-0" />
-                      How competitive are BC business grants?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      BC is competitive due to its strong tech ecosystem. Approval rates
-                      average 15-25%, but well-prepared applications in priority sectors
-                      (clean tech, Indigenous business) often see higher success rates.
-                    </p>
-                  </CardContent>
-                </Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold text-lg flex items-start">
+                        <HelpCircle className="w-5 h-5 text-green-600 mr-2 mt-1 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

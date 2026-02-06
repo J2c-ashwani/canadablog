@@ -20,9 +20,49 @@ export const metadata: Metadata = {
 }
 
 export default function CleanTechEnergyGrantsPage() {
+  const faqData = [
+    {
+      question: "Does my project need to be 100% renewable?",
+      answer: "Not necessarily. DOE funds efficiency improvements, carbon capture, and grid modernization. However, net-zero goals are a major priority."
+    },
+    {
+      question: "Can I partner with a National Lab?",
+      answer: "Yes! DOE highly encourages partnerships with National Labs (like NREL, Argonne). The Phase I option often includes TABA funding to facilitate these collaborations."
+    },
+    {
+      question: "What is ARPA-E?",
+      answer: "ARPA-E funds high-potential, high-impact energy technologies that are too early for private investment. It's a separate, prestigious program for breakthrough innovations."
+    },
+    {
+      question: "Are these grants taxable?",
+      answer: "Generally, yes. SBIR/STTR grants are considered income for business tax purposes. Consult a tax professional for R&D tax credit eligibility."
+    },
+    {
+      question: "Does nuclear energy qualify?",
+      answer: "Yes. The Office of Nuclear Energy funds advanced reactor concepts, fuel cycle R&D, and nuclear-renewable hybrid systems."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Clean Hero Section */}
         <section className="bg-gradient-to-br from-green-900 via-emerald-800 to-teal-900 text-white py-20 md:py-28">
@@ -93,7 +133,7 @@ export default function CleanTechEnergyGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
                 Federal and state funding for renewable energy, battery technology, climate solutions, and environmental innovation.
               </p>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 {/* DOE SBIR */}
                 <Card className="border-2 border-green-200 hover:shadow-xl transition-all hover:-translate-y-1">
@@ -227,7 +267,7 @@ export default function CleanTechEnergyGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 DOE and EPA grants support a wide range of clean energy and environmental innovations.
               </p>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <Card className="border-l-4 border-l-green-500 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
@@ -322,7 +362,7 @@ export default function CleanTechEnergyGrantsPage() {
                     <p className="text-gray-700">Recent DOE and EPA investments for clean tech entrepreneurs</p>
                   </div>
                 </div>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white rounded-lg p-5 border border-green-100">
                     <div className="flex items-center mb-2">
@@ -371,7 +411,7 @@ export default function CleanTechEnergyGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Everything you need to know about DOE SBIR, EPA environmental tech, and state clean energy programs.
               </p>
-              
+
               <div className="space-y-8">
                 {/* DOE SBIR Phase I */}
                 <Card id="doe-sbir-details" className="border-2 border-green-200">
@@ -405,7 +445,7 @@ export default function CleanTechEnergyGrantsPage() {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="bg-white p-4 rounded-lg border border-gray-200">
                           <h5 className="font-semibold text-gray-800 mb-3">DOE Technology Focus Areas (FY2026):</h5>
                           <ul className="space-y-2 text-sm text-gray-700">
@@ -428,7 +468,7 @@ export default function CleanTechEnergyGrantsPage() {
                           </ul>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-bold text-xl mb-4 text-gray-800">Clean Tech Success Stories</h4>
                         <div className="space-y-4">
@@ -630,7 +670,7 @@ export default function CleanTechEnergyGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 Proven tactics to increase your chances of winning DOE and EPA clean energy funding.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-2 border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -740,6 +780,32 @@ export default function CleanTechEnergyGrantsPage() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="py-16 bg-green-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="grid gap-6">
+                {faqData.map((faq, index) => (
+                  <Card key={index} className="border-l-4 border-l-green-600">
+                    <CardHeader>
+                      <CardTitle className="text-xl text-green-800 flex items-start">
+                        <div className="bg-green-100 p-2 rounded-full mr-3 mt-0.5">
+                          <Sun className="w-5 h-5 text-green-600" />
+                        </div>
+                        {faq.question}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-green-900 via-emerald-800 to-teal-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -750,7 +816,7 @@ export default function CleanTechEnergyGrantsPage() {
               <p className="text-xl text-green-100 mb-10 max-w-2xl mx-auto">
                 Download our free clean tech grants guide or get personalized help from specialists experienced in DOE and EPA funding.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 <Card className="bg-white/10 backdrop-blur border-2 border-white/20 hover:bg-white/15 transition-all">
                   <CardContent className="pt-6 text-center">

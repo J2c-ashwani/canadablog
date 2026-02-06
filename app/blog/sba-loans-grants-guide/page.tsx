@@ -18,9 +18,48 @@ export const metadata: Metadata = {
 }
 
 export default function SBALoansGrantsGuidePage() {
+  const faqData = [
+    {
+      question: "How long does SBA loan approval take?",
+      answer: "Typically 30-90 days for standard 7(a) loans. SBA Express can be approved in 36 hours. Microloans often take 2-4 weeks."
+    },
+    {
+      question: "What credit score do I need?",
+      answer: "Most lenders require 650+ personal credit score for 7(a) and 504 loans. Higher scores improve approval odds and rates. Microloans may accept scores down to 575 or 600."
+    },
+    {
+      question: "Can startups get SBA loans?",
+      answer: "Yes, though approval is harder without business history. Microloans are often better for startups. For 7(a) loans, startups may need a higher down payment (20-30%) and strong personal credit."
+    },
+    {
+      question: "Why was my SBA loan denied?",
+      answer: "Common reasons include lack of collateral, poor personal credit, insufficient cash flow to repay debt, or belonging to an ineligible industry (like gambling or lending)."
+    },
+    {
+      question: "Do SBA loans have prepayment penalties?",
+      answer: "SBA 7(a) loans with terms under 15 years have no prepayment penalty. Longer terms (15+ years) have a declining penalty for the first 3 years (5%, 3%, 1%)."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero */}
         <section className="bg-gradient-to-br from-green-700 to-blue-600 text-white py-20">
@@ -321,9 +360,17 @@ export default function SBALoansGrantsGuidePage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How long does SBA loan approval take?</h3><p className="text-gray-700 mt-2 ml-7">Typically 30-90 days for standard 7(a) loans. SBA Express can be approved in 36 hours.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What credit score do I need?</h3><p className="text-gray-700 mt-2 ml-7">Most lenders require 650+ personal credit score. Higher scores improve approval odds and rates.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can startups get SBA loans?</h3><p className="text-gray-700 mt-2 ml-7">Yes, though approval is harder without business history. Microloans are often better for startups.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

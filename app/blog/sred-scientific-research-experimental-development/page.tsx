@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,48 @@ export const metadata: Metadata = {
 }
 
 export default function SREDTaxCreditsGuidePage() {
+  const faqData = [
+    {
+      question: "What is the filing deadline for SR&ED?",
+      answer: "For corporations, the deadline is 18 months after your tax year-end. If you miss this date, you lose the credits for that year forever. There are no extensions."
+    },
+    {
+      question: "Can I claim founder salaries?",
+      answer: "Yes, but only if you are paid T4 income. You cannot claim SR&ED on dividends. If you pay yourself $100k in dividends, your SR&ED eligible salary is $0. This is a common mistake."
+    },
+    {
+      question: "What happens if I get audited (Review)?",
+      answer: "The CRA selects claims for review randomly or based on risk. They will send a technical reviewer to interview your team. You must show 'contemporaneous documentation' (dated logs, git commits, emails) to prove the work happened."
+    },
+    {
+      question: "Is the SR&ED refund taxable?",
+      answer: "It's complicated. The federal ITC reduces your 'pool' of deductible expenses for the next year (so you have less to deduct). Provincial credits are often considered taxable income in the year received. Always check with a CPA."
+    },
+    {
+      question: "Can I finance my SR&ED claim?",
+      answer: "Yes. Many specialized lenders will lend you up to 75% of your accrued SR&ED refund before you even file. This is useful for cash flow while waiting for the CRA processing delay (60-180 days)."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-16">
@@ -92,7 +131,7 @@ export default function SREDTaxCreditsGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada's Premier R&D Tax Incentive Program</h2>
                 <p className="text-lg text-gray-600">
-                  The SR&ED program provides tax incentives to Canadian businesses that conduct research and development in Canada, 
+                  The SR&ED program provides tax incentives to Canadian businesses that conduct research and development in Canada,
                   supporting innovation across all industries with up to 65% combined federal and provincial tax credits.
                 </p>
               </div>
@@ -124,7 +163,7 @@ export default function SREDTaxCreditsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">2026 SR&ED Tax Credit Rates & Eligibility</h2>
-              
+
               <div className="space-y-8">
                 {/* Canadian-Controlled Private Corporations */}
                 <Card className="border-green-200">
@@ -176,7 +215,7 @@ export default function SREDTaxCreditsGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-yellow-50 rounded-lg">
                       <h5 className="font-semibold mb-2">📋 CCPC Eligibility Requirements:</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -229,7 +268,7 @@ export default function SREDTaxCreditsGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-purple-50 rounded-lg">
                       <h5 className="font-semibold mb-2">📋 ECPC Eligibility Requirements (2026):</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -310,7 +349,7 @@ export default function SREDTaxCreditsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Qualifies for SR&ED Tax Credits?</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Eligible Activities */}
                 <Card className="border-blue-200">
@@ -327,7 +366,7 @@ export default function SREDTaxCreditsGuidePage() {
                           <li>• Improving existing technology beyond current capabilities</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-green-700 mb-2">✅ Applied Research</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -336,7 +375,7 @@ export default function SREDTaxCreditsGuidePage() {
                           <li>• Studies to understand phenomena for technological advancement</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-green-700 mb-2">✅ Basic Research</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -345,7 +384,7 @@ export default function SREDTaxCreditsGuidePage() {
                           <li>• Research contributing to general knowledge base</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-green-700 mb-2">✅ Support Work</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -374,7 +413,7 @@ export default function SREDTaxCreditsGuidePage() {
                           <li>• <strong>Overhead:</strong> Specified percentage of salaries (65% traditional, 55% proxy)</li>
                         </ul>
                       </div>
-                      
+
                       <div className="bg-yellow-50 p-4 rounded-lg">
                         <h4 className="font-semibold text-orange-700 mb-2">🔧 Capital Expenditures (Restored 2026)</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -384,7 +423,7 @@ export default function SREDTaxCreditsGuidePage() {
                           <li>• Must be new to the taxpayer (not previously used)</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-purple-700 mb-2">🏢 Lease Expenses (Restored 2026)</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -393,7 +432,7 @@ export default function SREDTaxCreditsGuidePage() {
                           <li>• Equipment used primarily for SR&ED activities</li>
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-gray-700 mb-2">❌ Non-Eligible Expenses</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -441,7 +480,7 @@ export default function SREDTaxCreditsGuidePage() {
                           <option>Individual/Trust</option>
                         </select>
                       </div>
-                      
+
                       <div>
                         <label className="block text-sm font-semibold mb-2">Province</label>
                         <select className="w-full p-3 border border-gray-300 rounded-lg">
@@ -452,26 +491,26 @@ export default function SREDTaxCreditsGuidePage() {
                           <option>Other Province</option>
                         </select>
                       </div>
-                      
+
                       <div>
                         <label className="block text-sm font-semibold mb-2">Annual SR&ED Expenditures</label>
-                        <input 
-                          type="number" 
+                        <input
+                          type="number"
                           placeholder="$500,000"
                           className="w-full p-3 border border-gray-300 rounded-lg"
                         />
                       </div>
-                      
+
                       <div>
                         <label className="block text-sm font-semibold mb-2">Taxable Capital (Previous Year)</label>
-                        <input 
-                          type="number" 
+                        <input
+                          type="number"
                           placeholder="$5,000,000"
                           className="w-full p-3 border border-gray-300 rounded-lg"
                         />
                       </div>
                     </div>
-                    
+
                     <div className="bg-green-50 p-6 rounded-lg">
                       <h4 className="font-bold text-lg mb-4 text-green-800">Estimated Tax Credits</h4>
                       <div className="space-y-3">
@@ -493,7 +532,7 @@ export default function SREDTaxCreditsGuidePage() {
                           Effective Rate: 45% of eligible expenditures
                         </div>
                       </div>
-                      
+
                       <Button className="w-full mt-6 bg-green-600 hover:bg-green-700" asChild>
                         <Link href="/contact?service=sred-assessment">
                           Get Professional SR&ED Assessment
@@ -512,7 +551,7 @@ export default function SREDTaxCreditsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">SR&ED Application Process & Timeline</h2>
-              
+
               <div className="space-y-6">
                 <div className="grid md:grid-cols-4 gap-6">
                   {[
@@ -524,7 +563,7 @@ export default function SREDTaxCreditsGuidePage() {
                       color: "blue"
                     },
                     {
-                      step: "2", 
+                      step: "2",
                       title: "Preparation",
                       description: "Prepare technical and financial documentation",
                       icon: <Building className="w-6 h-6" />,
@@ -547,11 +586,11 @@ export default function SREDTaxCreditsGuidePage() {
                   ].map((item, index) => {
                     const colors = {
                       blue: "bg-blue-500 text-white",
-                      green: "bg-green-500 text-white", 
+                      green: "bg-green-500 text-white",
                       purple: "bg-purple-500 text-white",
                       orange: "bg-orange-500 text-white"
                     }
-                    
+
                     return (
                       <Card key={index} className="text-center">
                         <CardHeader>
@@ -604,7 +643,7 @@ export default function SREDTaxCreditsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">SR&ED Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -683,7 +722,7 @@ export default function SREDTaxCreditsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Provincial SR&ED Tax Credits</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   {
@@ -695,7 +734,7 @@ export default function SREDTaxCreditsGuidePage() {
                     details: ["30% refundable on eligible expenses", "Highest provincial rate in Canada", "Can be combined with federal 35%"]
                   },
                   {
-                    province: "Ontario", 
+                    province: "Ontario",
                     credit: "10%",
                     program: "Ontario Innovation Tax Credit (OITC)",
                     total: "45%",
@@ -743,7 +782,7 @@ export default function SREDTaxCreditsGuidePage() {
                     yellow: "border-yellow-200 bg-yellow-50",
                     teal: "border-teal-200 bg-teal-50"
                   }
-                  
+
                   return (
                     <Card key={index} className={colorClasses[region.color as keyof typeof colorClasses]}>
                       <CardHeader>
@@ -776,6 +815,21 @@ export default function SREDTaxCreditsGuidePage() {
           </div>
         </section>
 
+        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">SR&ED Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                  <HelpCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                  {faq.question}
+                </h3>
+                <p className="text-gray-700 ml-9">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-green-600 to-green-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -786,7 +840,7 @@ export default function SREDTaxCreditsGuidePage() {
               <p className="text-xl text-green-100 mb-8">
                 Get our complete SR&ED application guide or work with our R&D tax specialists who have secured over $45M in SR&ED credits with 96% success rate.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free SR&ED Guide</h4>
@@ -813,7 +867,7 @@ export default function SREDTaxCreditsGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-green-200 text-sm mt-6">
                 96% success rate • Average credits secured: $285K • Expert CRA audit support
               </p>

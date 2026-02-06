@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ArrowRight } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ArrowRight, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,49 @@ export const metadata: Metadata = {
 }
 
 export default function SoftwareSaaSStartupGrantsPage() {
+  const faqData = [
+    {
+      question: "Can I get funding for a mobile app?",
+      answer: "It depends. If the app is just a standard e-commerce or social app, likely no. But if your app involves novel technical innovation (e.g., new algorithms, AI integration, complex data processing), it may qualify for SBIR funding."
+    },
+    {
+      question: "Do I need a PhD to apply?",
+      answer: "No. While many Principal Investigators (PIs) have advanced degrees, it is not a requirement. What matters is that the team has the technical expertise to execute the proposed R&D."
+    },
+    {
+      question: "What is the Fast-Track option?",
+      answer: "Fast-Track allows companies with prior NSF lineage to submit Phase I and Phase II proposals simultaneously. This accelerates the process and can unlock up to $1.555M in funding faster."
+    },
+    {
+      question: "Can I use funding for marketing?",
+      answer: "Generally, no. SBIR/STTR funds are restricted to Research & Development (R&D). However, Phase II awards often include a small commercialization budget, and TABA funds can support market research."
+    },
+    {
+      question: "Is software patentable for these grants?",
+      answer: "IP strategy is critical. While software patents can be complex, you must demonstrate a plan to protect your innovation, whether through trade secrets, copyright, or patents."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* REDESIGNED Hero Section - Clean & Focused */}
         <section className="bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-700 text-white py-20 md:py-28">
@@ -93,7 +133,7 @@ export default function SoftwareSaaSStartupGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
                 Federal and state funding opportunities for enterprise software, cloud platforms, developer tools, AI/ML, cybersecurity, and automation.
               </p>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="border-2 border-indigo-200 hover:shadow-xl transition-all hover:-translate-y-1">
                   <CardHeader className="bg-gradient-to-br from-indigo-50 to-purple-50">
@@ -224,7 +264,7 @@ export default function SoftwareSaaSStartupGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 NSF SBIR and DOD grants support a wide range of software innovations across these categories.
               </p>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <Card className="border-l-4 border-l-indigo-500 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
@@ -280,7 +320,7 @@ export default function SoftwareSaaSStartupGrantsPage() {
                     <p className="text-gray-700">Recent NSF SBIR updates that benefit software startups</p>
                   </div>
                 </div>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white rounded-lg p-5 border border-indigo-100">
                     <div className="flex items-center mb-2">
@@ -327,7 +367,7 @@ export default function SoftwareSaaSStartupGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Everything you need to know about NSF SBIR Phase I, Phase II, Fast-Track, DOD, and state programs for software startups.
               </p>
-              
+
               <div className="space-y-8">
                 {/* NSF SBIR Phase I */}
                 <Card id="phase-1-details" className="border-2 border-indigo-200">
@@ -361,7 +401,7 @@ export default function SoftwareSaaSStartupGrantsPage() {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="bg-white p-4 rounded-lg border border-gray-200">
                           <h5 className="font-semibold text-gray-800 mb-3">Phase I Objectives:</h5>
                           <ul className="space-y-2 text-sm text-gray-700">
@@ -384,7 +424,7 @@ export default function SoftwareSaaSStartupGrantsPage() {
                           </ul>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-bold text-xl mb-4 text-gray-800">Success Stories</h4>
                         <div className="space-y-4">
@@ -593,6 +633,32 @@ export default function SoftwareSaaSStartupGrantsPage() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="py-16 bg-indigo-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="grid gap-6">
+                {faqData.map((faq, index) => (
+                  <Card key={index} className="border-l-4 border-l-indigo-600">
+                    <CardHeader>
+                      <CardTitle className="text-xl text-indigo-800 flex items-start">
+                        <div className="bg-indigo-100 p-2 rounded-full mr-3 mt-0.5">
+                          <HelpCircle className="w-5 h-5 text-indigo-600" />
+                        </div>
+                        {faq.question}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Success Strategies - Cleaner Layout */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -601,7 +667,7 @@ export default function SoftwareSaaSStartupGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 Proven tactics to increase your chances of winning NSF SBIR funding for your software startup.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-2 border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -721,7 +787,7 @@ export default function SoftwareSaaSStartupGrantsPage() {
               <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
                 Download our free guide with NSF SBIR templates or get personalized help from grant specialists.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 <Card className="bg-white/10 backdrop-blur border-2 border-white/20 hover:bg-white/15 transition-all">
                   <CardContent className="pt-6 text-center">

@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Users, GraduationCap, Briefcase, TrendingUp, Award, UserCheck, BookOpen } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Users, GraduationCap, Briefcase, TrendingUp, Award, UserCheck, BookOpen, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -14,9 +14,48 @@ export const metadata: Metadata = {
 }
 
 export default function CanadaHiringTrainingGrantsGuide() {
+  const faqData = [
+    {
+      question: "How much is the Canada Job Grant?",
+      answer: "It generally covers 2/3 (up to $10,000 per employee) of third-party training costs. If you hire a new unemployed Canadian, it may cover 100% up to $15,000. These amounts vary slightly by province (e.g., COJG in Ontario, CJG in Alberta)."
+    },
+    {
+      question: "Can I use the grant to train family members?",
+      answer: "No. Participants usually cannot be related to the owners or board members. It must be an arm's length relationship to prevent fraud."
+    },
+    {
+      question: "Does it cover trainee wages?",
+      answer: "The Canada Job Grant only covers the direct *training costs* (tuition, textbooks, exam fees). It does *not* cover the employee's wages while they are training. However, other programs like the Youth Employment Strategy DO cover wages."
+    },
+    {
+      question: "What is the Student Work Placement Program (SWPP)?",
+      answer: "SWPP provides wage subsidies to employers who hire post-secondary students for co-op placements or internships. It typically covers 50-70% of wages up to $5,000-$7,000 per student."
+    },
+    {
+      question: "How fast is reimbursement?",
+      answer: "Training grants are reimbursement-based. You pay the trainer, submit the proof of payment and completion certificate, and the government sends you a check. This usually takes 30-60 days after submission."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-20">
@@ -29,7 +68,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
                 Canada Hiring & Training Grants 2026
               </h1>
               <p className="text-xl text-purple-100 mb-8">
-                Access $1.9B+ in Canadian workforce development funding across 28+ specialized programs. From wage subsidies 
+                Access $1.9B+ in Canadian workforce development funding across 28+ specialized programs. From wage subsidies
                 to skills training grants - complete guide to building and training your Canadian workforce.
               </p>
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
@@ -78,7 +117,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
               <p className="text-center text-gray-600 mb-12">
                 Federal government programs designed to support workforce development, job creation, and employee skills enhancement.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-16">
                 {/* Canada Job Grant */}
                 <Card className="border-2 border-purple-200">
@@ -249,7 +288,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">Provincial Hiring & Training Programs</h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {/* Ontario Workforce Programs */}
                 <Card className="border-2 border-red-200">
@@ -418,7 +457,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8">Industry-Specific Training Programs</h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="text-center">
                   <CardHeader>
@@ -437,7 +476,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <GraduationCap className="w-12 h-12 text-green-600 mx-auto mb-4" />
@@ -455,7 +494,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Briefcase className="w-12 h-12 text-purple-600 mx-auto mb-4" />
@@ -483,7 +522,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8">Wage Subsidies & Employment Incentives</h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="text-center">
                   <CardHeader>
@@ -502,7 +541,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Award className="w-12 h-12 text-blue-600 mx-auto mb-4" />
@@ -520,7 +559,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Award className="w-12 h-12 text-purple-600 mx-auto mb-4" />
@@ -543,6 +582,21 @@ export default function CanadaHiringTrainingGrantsGuide() {
           </div>
         </section>
 
+        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Hiring & Training FAQs</h2>
+          <div className="space-y-6">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                  <HelpCircle className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0 mt-0.5" />
+                  {faq.question}
+                </h3>
+                <p className="text-gray-700 ml-9">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Strong Single CTA Section */}
         <section className="py-20 bg-gradient-to-r from-purple-600 to-indigo-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -551,8 +605,8 @@ export default function CanadaHiringTrainingGrantsGuide() {
                 Build Your Workforce with Expert Navigation of 28+ Training Programs
               </h2>
               <p className="text-xl text-purple-100 mb-8">
-                Canada's workforce development ecosystem spans federal job grants, provincial training programs, industry-specific 
-                skills funding, and specialized employment incentives. Our workforce specialists have helped 400+ Canadian businesses 
+                Canada's workforce development ecosystem spans federal job grants, provincial training programs, industry-specific
+                skills funding, and specialized employment incentives. Our workforce specialists have helped 400+ Canadian businesses
                 secure over $15M in hiring and training funding with an 88% success rate.
               </p>
               <div className="bg-white/10 rounded-lg p-6 mb-8">

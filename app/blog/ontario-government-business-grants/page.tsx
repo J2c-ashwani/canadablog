@@ -14,9 +14,45 @@ export const metadata: Metadata = {
 }
 
 export default function OntarioGovernmentBusinessGrantsPage() {
+  const faqData = [
+    {
+      question: "What is the difference between provincial and federal funding?",
+      answer: "Provincial funds (like NOHFC) focus on local job creation and economic development within Ontario. Federal funds (like FedDev Ontario or ISED) focus on broader national goals like productivity, innovation, and export scale-up."
+    },
+    {
+      question: "Are Ontario Creates tax credits better than grants?",
+      answer: "Often yes for digital media and film. Tax credits of 35-45% on labour costs are entitlement-based (if you qualify, you get it), whereas grants are competitive and uncertain."
+    },
+    {
+      question: "How many jobs do I need to create to get funding?",
+      answer: "Regional development funds typically require creating 5-10 permanent full-time jobs for larger grants ($500k+). Smaller programs like Starter Company Plus do not have strict job creation quotas but require self-employment."
+    },
+    {
+      question: "Can I apply for both provincial and federal grants?",
+      answer: "Yes, this is called \"stacking.\" However, you generally cannot cover more than 75% of total project costs with government funds. You must disclose all funding sources in your application."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-red-600 to-red-800 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -205,10 +241,17 @@ export default function OntarioGovernmentBusinessGrantsPage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions about Ontario Grants</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What is the difference between provincial and federal funding?</h3><p className="text-gray-700 mt-2 ml-7">Provincial funds (like NOHFC) focus on local job creation and economic development within Ontario. Federal funds (like FedDev Ontario or ISED) focus on broader national goals like productivity, innovation, and export scale-up.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Are Ontario Creates tax credits better than grants?</h3><p className="text-gray-700 mt-2 ml-7">Often yes for digital media and film. Tax credits of 35-45% on labour costs are entitlement-based (if you qualify, you get it), whereas grants are competitive and uncertain.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How many jobs do I need to create to get funding?</h3><p className="text-gray-700 mt-2 ml-7">Regional development funds typically require creating 5-10 permanent full-time jobs for larger grants ($500k+). Smaller programs like Starter Company Plus do not have strict job creation quotas but require self-employment.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can I apply for both provincial and federal grants?</h3><p className="text-gray-700 mt-2 ml-7">Yes, this is called "stacking." However, you generally cannot cover more than 75% of total project costs with government funds. You must disclose all funding sources in your application.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

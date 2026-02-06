@@ -14,9 +14,48 @@ export const metadata: Metadata = {
 }
 
 export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
+  const faqData = [
+    {
+      question: "What is the difference between AgriInnovate and AgriScience?",
+      answer: "AgriScience funds pre-commercial research and development (TRL 1-7) while AgriInnovate funds commercialization of proven technologies (TRL 8-9). AgriScience provides non-repayable grants while AgriInnovate provides repayable contributions."
+    },
+    {
+      question: "Can technology companies access AAFC funding?",
+      answer: "Yes, agricultural technology companies (AgTech) building solutions for the sector can access AgriInnovate for commercialization and AgriScience for research. The technology must have clear application and benefit to agriculture."
+    },
+    {
+      question: "How long do AAFC applications take to process?",
+      answer: "Review timelines vary but typically range from 4 to 6 months from complete application to funding decision. Complex AgriInnovate applications involving large repayable contributions may take longer for due diligence."
+    },
+    {
+      question: "What is Sustainable CAP?",
+      answer: "Sustainable CAP (Canadian Agricultural Partnership) is the 5-year, $3.5 billion framework that replaced the previous CAP. It governs almost all federal and provincial agriculture funding from 2023 to 2028."
+    },
+    {
+      question: "Do I need to be a farmer to apply?",
+      answer: "Not distinctively. While many programs are for producers, AAFC also funds food processors, industry associations, and technology providers. You must be a legal entity capable of entering into a legal agreement."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -374,10 +413,17 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What is the difference between AgriInnovate and AgriScience?</h3><p className="text-gray-700 mt-2 ml-7">AgriScience funds pre-commercial research and development while AgriInnovate funds commercialization of proven technologies. AgriScience provides non-repayable grants while AgriInnovate provides repayable contributions.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can technology companies access AAFC funding?</h3><p className="text-gray-700 mt-2 ml-7">Yes, agricultural technology companies building solutions for the sector can access AgriInnovate for commercialization and some AgriScience initiatives. The technology must have clear application and benefit to agriculture and agri-food.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How long do AAFC applications take to process?</h3><p className="text-gray-700 mt-2 ml-7">Review timelines vary by program complexity and application volume but typically range from three to six months from complete application to funding decision. Complex AgriInnovate applications may take longer.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How do I contact AAFC program officers?</h3><p className="text-gray-700 mt-2 ml-7">AAFC has regional offices across Canada. The most effective way to reach a program officer is to email the specific program inbox listed in the Applicant Guide. You can also call the AAFC toll-free number at 1-877-246-4682. Be prepared with a one-page summary of your project to help them direct you to the correct team.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

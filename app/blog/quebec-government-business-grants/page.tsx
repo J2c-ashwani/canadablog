@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Globe } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Globe, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -23,9 +23,45 @@ export const metadata: Metadata = {
 }
 
 export default function QuebecGovernmentBusinessGrantsBlogPage() {
+  const faqData = [
+    {
+      question: "What is the maximum Quebec business grant amount available?",
+      answer: "Quebec offers grants up to $15M through the ESSOR program via Investissement Québec. Smaller programs like PSCE offer up to $250K for commercialization, and NovaScience provides up to $75K for innovation management."
+    },
+    {
+      question: "What is the Quebec R&D tax credit rate?",
+      answer: "Quebec offers up to 30% refundable R&D tax credits for eligible small and medium businesses, making it one of the most generous R&D support jurisdictions in North America. The basic credit is 14%, with enhanced rates for SMBs and university partnerships."
+    },
+    {
+      question: "What is the ESSOR program in Quebec?",
+      answer: "ESSOR is Quebec's flagship productivity program delivered through Investissement Québec. It supports manufacturing and wholesale/retail businesses with grants up to $15M for productivity improvements, environmental impact reduction, and internationalization strategies."
+    },
+    {
+      question: "Can English businesses apply for Quebec grants?",
+      answer: "Yes, Quebec government grants are available to businesses operating in Quebec regardless of language. Applications can be submitted in both French and English, though some programs may have French-language requirements for documentation."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-800 to-blue-900 text-white py-16">
@@ -560,49 +596,27 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
       <Footer />
 
       {/* FAQ Schema for Rich Results */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the maximum Quebec business grant amount available?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Quebec offers grants up to $15M through the ESSOR program via Investissement Québec. Smaller programs like PSCE offer up to $250K for commercialization, and NovaScience provides up to $75K for innovation management."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What is the Quebec R&D tax credit rate?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Quebec offers up to 30% refundable R&D tax credits for eligible small and medium businesses, making it one of the most generous R&D support jurisdictions in North America. The basic credit is 14%, with enhanced rates for SMBs and university partnerships."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What is the ESSOR program in Quebec?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "ESSOR is Quebec's flagship productivity program delivered through Investissement Québec. It supports manufacturing and wholesale/retail businesses with grants up to $15M for productivity improvements, environmental impact reduction, and internationalization strategies."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Can English businesses apply for Quebec grants?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, Quebec government grants are available to businesses operating in Quebec regardless of language. Applications can be submitted in both French and English, though some programs may have French-language requirements for documentation."
-                }
-              }
-            ]
-          }),
-        }}
-      />
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions about Quebec Grants</h2>
+            <div className="space-y-4">
+              {faqData.map((faq, index) => (
+                <Card key={index}>
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold flex items-start">
+                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

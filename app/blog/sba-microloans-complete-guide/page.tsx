@@ -18,9 +18,48 @@ export const metadata: Metadata = {
 }
 
 export default function SBAMicroloansGuidePage() {
+  const faqData = [
+    {
+      question: "Can startups get microloans?",
+      answer: "Yes! Microloans are specifically designed for startups. Many intermediaries specialize in helping new businesses with little to no revenue history."
+    },
+    {
+      question: "What credit score do I need?",
+      answer: "Typically 550-620+, though requirements vary by intermediary. Lower scores may require additional training or smaller initial loan amounts. This is much more flexible than bank financing."
+    },
+    {
+      question: "Is collateral required?",
+      answer: "Some intermediaries require collateral; others don't. Personal guarantees are typically required from all owners with >20% stake."
+    },
+    {
+      question: "How does the training requirement work?",
+      answer: "Most intermediaries require you to attend a business planning workshop or meet with a mentor before your application is considered. This ensures you are ready to manage the funds."
+    },
+    {
+      question: "Can I get a second microloan?",
+      answer: "Yes. Once you repay your first loan successfully, you can apply for another. The total outstanding balance across all SBA microloans cannot exceed $50,000."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero */}
         <section className="bg-gradient-to-br from-purple-700 to-pink-600 text-white py-20">
@@ -322,9 +361,17 @@ export default function SBAMicroloansGuidePage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can startups get microloans?</h3><p className="text-gray-700 mt-2 ml-7">Yes! Microloans are specifically designed for startups. Many intermediaries specialize in helping new businesses.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What credit score do I need?</h3><p className="text-gray-700 mt-2 ml-7">Typically 550-620+, though requirements vary by intermediary. Lower scores may require additional training or smaller amounts.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Is collateral required?</h3><p className="text-gray-700 mt-2 ml-7">Some intermediaries require collateral; others don&apos;t. Personal guarantees are typically required.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

@@ -20,9 +20,49 @@ export const metadata: Metadata = {
 }
 
 export default function BiotechLifeSciencesGrantsPage() {
+  const faqData = [
+    {
+      question: "Do I need a PhD to apply for NIH SBIR?",
+      answer: "No, but the Principal Investigator (PI) must have appropriate expertise to lead the project. Ideally, the team should include key personnel with scientific/technical backgrounds relevant to the innovation."
+    },
+    {
+      question: "Can I use funding for clinical trials?",
+      answer: "Yes. Phase I is for feasibility, but Phase II awards ($2M+) support clinical trials, FDA regulatory submissions (IND/IDE), and manufacturing scale-up."
+    },
+    {
+      question: "What is the 'Seed Fund'?",
+      answer: "The NIH Seed Fund is the congressionally mandated SBIR/STTR program, providing over $1.2 billion annually to small businesses for biomedical research and development."
+    },
+    {
+      question: "What qualifies as an 'Orphan Drug'?",
+      answer: "Drugs treating rare diseases affecting fewer than 200,000 people in the US. Designation offers 7-year exclusivity, tax credits, and fee waivers."
+    },
+    {
+      question: "How long is the review process?",
+      answer: "Typically 4-6 months from submission to funding decision. Applications are reviewed 3 times per year (Jan, Apr, Sep)."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Clean Hero Section */}
         <section className="bg-gradient-to-br from-teal-600 via-cyan-600 to-blue-700 text-white py-20 md:py-28">
@@ -741,6 +781,32 @@ export default function BiotechLifeSciencesGrantsPage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-teal-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="grid gap-6">
+                {faqData.map((faq, index) => (
+                  <Card key={index} className="border-l-4 border-l-teal-600">
+                    <CardHeader>
+                      <CardTitle className="text-xl text-teal-800 flex items-start">
+                        <div className="bg-teal-100 p-2 rounded-full mr-3 mt-0.5">
+                          <Microscope className="w-5 h-5 text-teal-600" />
+                        </div>
+                        {faq.question}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

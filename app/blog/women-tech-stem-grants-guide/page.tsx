@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Zap, Cpu, Rocket } from "lucide-react"
+import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Zap, Cpu, Rocket, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +19,49 @@ export const metadata: Metadata = {
 }
 
 export default function WomenTechSTEMGrantsGuide() {
+  const faqData = [
+    {
+      question: "Are these grants only for women?",
+      answer: "Most federal grants (like SBIR) are open to all, but agencies often have specific initiatives to encourage women-owned businesses. Private grants and accelerators listed here are specifically for women entrepreneurs."
+    },
+    {
+      question: "What is WOSB certification?",
+      answer: "Women-Owned Small Business (WOSB) certification allows you to compete for federal contracts set aside for women-owned companies. It is valuable for government contracting but not strictly required for SBIR grants."
+    },
+    {
+      question: "Do I compete against existing tech giants?",
+      answer: "No. SBIR/STTR grants are exclusively for small businesses (under 500 employees). You compete against other startups and small firms, not Google or Microsoft."
+    },
+    {
+      question: "Can I apply for multiple grants?",
+      answer: "Yes. You can apply to multiple agencies (e.g., NSF and NIH) for different projects. However, you cannot receive duplicate funding for the exact same work."
+    },
+    {
+      question: "Is mentorship available?",
+      answer: "Yes. Many of the private grant programs and accelerators (like Women's Health Tech Accelerator) include intensive mentorship, networking, and investor introductions as part of the award package."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-16">
@@ -78,16 +118,16 @@ export default function WomenTechSTEMGrantsGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* What are Women Tech & STEM Grants */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">What are Women in Technology & STEM Grants?</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Women in Technology and STEM grants are specialized funding opportunities designed to support female 
-                  entrepreneurs and innovators in science, technology, engineering, and mathematics fields. These grants 
+                  Women in Technology and STEM grants are specialized funding opportunities designed to support female
+                  entrepreneurs and innovators in science, technology, engineering, and mathematics fields. These grants
                   address the gender gap in STEM and provide resources for women-led innovation.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-indigo-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-indigo-800">Why Women-Focused STEM Grants?</h4>
@@ -98,7 +138,7 @@ export default function WomenTechSTEMGrantsGuide() {
                       <li>• Provide mentorship and networking opportunities</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-purple-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-purple-800">Key Focus Areas</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -114,7 +154,7 @@ export default function WomenTechSTEMGrantsGuide() {
               {/* Major STEM Grant Categories */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Major STEM Grant Categories</h2>
-                
+
                 <div className="space-y-8">
                   {/* SBIR/STTR Grants */}
                   <Card className="border-indigo-200">
@@ -140,7 +180,7 @@ export default function WomenTechSTEMGrantsGuide() {
                         </div>
                       </div>
                       <p className="text-gray-700 mb-4">
-                        Small Business Innovation Research (SBIR) and Small Business Technology Transfer (STTR) programs 
+                        Small Business Innovation Research (SBIR) and Small Business Technology Transfer (STTR) programs
                         provide federal R&D funding to small businesses developing innovative technologies.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -190,7 +230,7 @@ export default function WomenTechSTEMGrantsGuide() {
                         </div>
                       </div>
                       <p className="text-gray-700 mb-4">
-                        National Science Foundation grants support fundamental research across all STEM disciplines, 
+                        National Science Foundation grants support fundamental research across all STEM disciplines,
                         with specific programs encouraging women's participation in science and engineering.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -240,7 +280,7 @@ export default function WomenTechSTEMGrantsGuide() {
                         </div>
                       </div>
                       <p className="text-gray-700 mb-4">
-                        Private foundations, corporations, and accelerators offer grants specifically for women-led 
+                        Private foundations, corporations, and accelerators offer grants specifically for women-led
                         technology companies, often combined with mentorship and investor access.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -271,7 +311,7 @@ export default function WomenTechSTEMGrantsGuide() {
               {/* Top Women Tech Grant Programs */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Top Women Tech Grant Programs</h2>
-                
+
                 <div className="space-y-6">
                   <Card className="border-orange-200">
                     <CardHeader>
@@ -344,7 +384,7 @@ export default function WomenTechSTEMGrantsGuide() {
               {/* Application Strategies for STEM Grants */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">STEM Grant Application Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Technical Success Factors:</h4>
@@ -367,7 +407,7 @@ export default function WomenTechSTEMGrantsGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Technical Pitfalls:</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -401,7 +441,7 @@ export default function WomenTechSTEMGrantsGuide() {
                     <div>
                       <p className="text-indigo-800 font-medium">Three-Phase Program:</p>
                       <p className="text-indigo-700 text-sm">
-                        SBIR follows a structured approach from proof of concept through commercialization, 
+                        SBIR follows a structured approach from proof of concept through commercialization,
                         providing increasing levels of funding and support.
                       </p>
                     </div>
@@ -435,7 +475,7 @@ export default function WomenTechSTEMGrantsGuide() {
               {/* Building Technical Credibility */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Building Technical Credibility</h2>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <span className="bg-indigo-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-0.5">1</span>
@@ -468,11 +508,33 @@ export default function WomenTechSTEMGrantsGuide() {
                 </div>
               </div>
 
+              {/* FAQ Section */}
+              <section className="bg-white rounded-lg shadow-sm p-8 mb-8">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+                <div className="grid gap-6">
+                  {faqData.map((faq, index) => (
+                    <Card key={index} className="border-l-4 border-l-indigo-600">
+                      <CardHeader>
+                        <CardTitle className="text-xl text-indigo-800 flex items-start">
+                          <div className="bg-indigo-100 p-2 rounded-full mr-3 mt-0.5">
+                            <HelpCircle className="w-5 h-5 text-indigo-600" />
+                          </div>
+                          {faq.question}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </section>
+
               {/* Lead-Generating CTA Section */}
               <div className="bg-gradient-to-r from-indigo-600 to-purple-700 rounded-lg p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">Get Your FREE Women's Tech Grant Strategy Session</h3>
                 <p className="text-indigo-100 mb-6 text-lg">
-                  Book a complimentary consultation with our STEM grant experts. Get personalized guidance on SBIR applications, 
+                  Book a complimentary consultation with our STEM grant experts. Get personalized guidance on SBIR applications,
                   NSF programs, and private tech funding opportunities for women innovators.
                 </p>
                 <div className="bg-white/10 rounded-lg p-4 mb-6">

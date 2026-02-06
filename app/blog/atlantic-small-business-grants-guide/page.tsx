@@ -18,9 +18,41 @@ export const metadata: Metadata = {
 }
 
 export default function AtlanticSmallBusinessGrantsGuide() {
+  const faqData = [
+    {
+      question: "Are ACOA loans truly interest-free?",
+      answer: "Yes, ACOA repayable contributions are typically interest-free, making them very attractive financing options for eligible projects."
+    },
+    {
+      question: "Can I apply to ACOA and provincial programs simultaneously?",
+      answer: "Yes, stacking is commonly done. Coordinate applications to ensure total government funding stays within acceptable limits."
+    },
+    {
+      question: "How competitive are Atlantic Canada grants?",
+      answer: "Atlantic Canada has higher approval rates than major urban centers. Well-prepared applications in priority sectors see 30-40% success rates."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-indigo-600 to-blue-700 text-white py-20">
@@ -871,51 +903,22 @@ export default function AtlanticSmallBusinessGrantsGuide() {
           </div>
         </section>
 
-        {/* FAQ Section */}
         <section id="faqs" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-
               <div className="space-y-4">
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-indigo-600 mr-2 mt-1 flex-shrink-0" />
-                      Are ACOA loans truly interest-free?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes, ACOA repayable contributions are typically interest-free, making them
-                      very attractive financing options for eligible projects.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-indigo-600 mr-2 mt-1 flex-shrink-0" />
-                      Can I apply to ACOA and provincial programs simultaneously?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes, stacking is commonly done. Coordinate applications to ensure
-                      total government funding stays within acceptable limits.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-indigo-600 mr-2 mt-1 flex-shrink-0" />
-                      How competitive are Atlantic Canada grants?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Atlantic Canada has higher approval rates than major urban centers.
-                      Well-prepared applications in priority sectors see 30-40% success rates.
-                    </p>
-                  </CardContent>
-                </Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold text-lg flex items-start">
+                        <HelpCircle className="w-5 h-5 text-indigo-600 mr-2 mt-1 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

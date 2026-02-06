@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Globe, Plane, Building, Users, TrendingUp, FileText, Shield, Award } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Globe, Plane, Building, Users, TrendingUp, FileText, Shield, Award, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -14,9 +14,48 @@ export const metadata: Metadata = {
 }
 
 export default function CanadaExportDevelopmentGrantsGuide() {
+  const faqData = [
+    {
+      question: "What expenses does CanExport cover?",
+      answer: "CanExport SMEs covers up to 50% of costs for travel (economy airfare, per diems), trade show registration, translation of marketing materials, search engine optimization for foreign markets, and expert legal/business advice aimed at a new market."
+    },
+    {
+      question: "Who pays upfront?",
+      answer: "You do. CanExport is a reimbursement program. You pay the bills, submit the claims, and the government reimburses you 50% later. You need the cash flow to handle the upfront costs."
+    },
+    {
+      question: "Can I apply for the US market?",
+      answer: "Yes, but it must be a 'new' market for you. If you already export to New York, you can't apply for New York. But you could apply for California or Texas if you have no sales there. The US is treated as key regions, not just one country."
+    },
+    {
+      question: "Do I need a Minimum Viable Product (MVP)?",
+      answer: "You need more than an MVP. You typically need a market-ready product that is already generating revenue in Canada ($100k+ to $100M). CanExport is for selling existing products, not developing new ones."
+    },
+    {
+      question: "How long is the approval process?",
+      answer: "The service standard is 60 business days (about 3 months), but it can be faster. Do not book travel or spend money before approval—costs incurred before the start date are not eligible."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-20">
@@ -29,7 +68,7 @@ export default function CanadaExportDevelopmentGrantsGuide() {
                 Canada Export Development Grants 2026
               </h1>
               <p className="text-xl text-emerald-100 mb-8">
-                Access $680M+ in Canadian international market expansion funding across 18+ specialized programs. From CanExport SMEs 
+                Access $680M+ in Canadian international market expansion funding across 18+ specialized programs. From CanExport SMEs
                 to trade mission support - complete guide to taking your business global.
               </p>
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
@@ -78,7 +117,7 @@ export default function CanadaExportDevelopmentGrantsGuide() {
               <p className="text-center text-gray-600 mb-12">
                 Government of Canada flagship programs designed to help Canadian businesses expand internationally and develop new markets.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-16">
                 {/* CanExport SMEs */}
                 <Card className="border-2 border-emerald-200">
@@ -249,7 +288,7 @@ export default function CanadaExportDevelopmentGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">Provincial Export Development Programs</h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {/* Ontario Export Programs */}
                 <Card className="border-2 border-red-200">
@@ -406,7 +445,7 @@ export default function CanadaExportDevelopmentGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8">Specialized Export Support Programs</h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="text-center">
                   <CardHeader>
@@ -425,7 +464,7 @@ export default function CanadaExportDevelopmentGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <FileText className="w-12 h-12 text-green-600 mx-auto mb-4" />
@@ -443,7 +482,7 @@ export default function CanadaExportDevelopmentGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Building className="w-12 h-12 text-purple-600 mx-auto mb-4" />
@@ -471,7 +510,7 @@ export default function CanadaExportDevelopmentGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8">Export Readiness & Support Services</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-2 border-teal-200">
                   <CardHeader>
@@ -529,6 +568,21 @@ export default function CanadaExportDevelopmentGrantsGuide() {
           </div>
         </section>
 
+        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Export Funding FAQs</h2>
+          <div className="space-y-6">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                  <HelpCircle className="w-6 h-6 text-emerald-600 mr-3 flex-shrink-0 mt-0.5" />
+                  {faq.question}
+                </h3>
+                <p className="text-gray-700 ml-9">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Strong Single CTA Section */}
         <section className="py-20 bg-gradient-to-r from-emerald-600 to-teal-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -537,8 +591,8 @@ export default function CanadaExportDevelopmentGrantsGuide() {
                 Expand Globally with Expert Navigation of 18+ Export Programs
               </h2>
               <p className="text-xl text-emerald-100 mb-8">
-                Canada's export development ecosystem spans flagship CanExport programs, EDC trade financing, provincial export support, 
-                and specialized industry initiatives. Our international trade specialists have helped 250+ Canadian businesses secure 
+                Canada's export development ecosystem spans flagship CanExport programs, EDC trade financing, provincial export support,
+                and specialized industry initiatives. Our international trade specialists have helped 250+ Canadian businesses secure
                 over $9M in export funding with an 89% success rate.
               </p>
               <div className="bg-white/10 rounded-lg p-6 mb-8">

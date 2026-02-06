@@ -18,9 +18,41 @@ export const metadata: Metadata = {
 }
 
 export default function OntarioSmallBusinessGrantsGuide() {
+  const faqData = [
+    {
+      question: "Is the Ontario Small Business Support Grant still available?",
+      answer: "The original pandemic-era program has ended, but Ontario continues to offer various small business support programs. Check Ontario.ca for current offerings and eligibility requirements."
+    },
+    {
+      question: "Can Toronto startups access provincial grants?",
+      answer: "Yes. Toronto-based businesses can access both provincial programs and Toronto-specific initiatives. MaRS, Toronto Global, and local development centres offer additional support."
+    },
+    {
+      question: "How competitive are Ontario business grants?",
+      answer: "Ontario receives significantly more applications than available funding. Strong applications with clear job creation projections, defined economic impact, and professional preparation tend to succeed."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-red-600 to-orange-700 text-white py-20">
@@ -814,49 +846,18 @@ export default function OntarioSmallBusinessGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-
               <div className="space-y-4">
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-red-600 mr-2 mt-1 flex-shrink-0" />
-                      Is the Ontario Small Business Support Grant still available?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      The original pandemic-era program has ended, but Ontario continues
-                      to offer various small business support programs. Check Ontario.ca
-                      for current offerings and eligibility requirements.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-red-600 mr-2 mt-1 flex-shrink-0" />
-                      Can Toronto startups access provincial grants?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes. Toronto-based businesses can access both provincial programs
-                      and Toronto-specific initiatives. MaRS, Toronto Global, and local
-                      development centres offer additional support.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-red-600 mr-2 mt-1 flex-shrink-0" />
-                      How competitive are Ontario business grants?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Ontario receives significantly more applications than available
-                      funding. Strong applications with clear job creation projections,
-                      defined economic impact, and professional preparation tend to succeed.
-                    </p>
-                  </CardContent>
-                </Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold text-lg flex items-start">
+                        <HelpCircle className="w-5 h-5 text-red-600 mr-2 mt-1 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

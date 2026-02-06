@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, GraduationCap } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, GraduationCap, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,48 @@ export const metadata: Metadata = {
 }
 
 export default function NSERCResearchGrantsGuidePage() {
+  const faqData = [
+    {
+      question: "Who owns the Intellectual Property (IP) in NSERC projects?",
+      answer: "Typically, the university researchers own the IP, unless a specific agreement states otherwise. Industry partners often negotiate an exclusive license to use the IP in exchange for their cash/in-kind contribution."
+    },
+    {
+      question: "Do I qualify if I don't have a university partner?",
+      answer: "No. NSERC grants are primarily for academic researchers or partnerships between academia and industry. If you are a company wanting to do internal R&D without a university, look at IRAP instead."
+    },
+    {
+      question: "Can NSERC funds be used to pay my company's staff?",
+      answer: "Generally, no. NSERC funds pay for the university students, professors, and lab equipment. Your company's 'contribution' covers your own internal costs. The benefit to you is the research output, not cash for payroll."
+    },
+    {
+      question: "What is the success rate for Alliance Grants?",
+      answer: "Alliance grants have a relatively high success rate (often >50%) compared to discovery grants, provided the industry partner has 'skin in the game' (cash contribution) and the research goals are clear."
+    },
+    {
+      question: "Can I use NSERC for software development?",
+      answer: "Yes, if there is a research component (e.g., developing new algorithms or AI models). Standard software engineering (building an app) is not eligible."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white py-16">
@@ -530,6 +569,21 @@ export default function NSERCResearchGrantsGuidePage() {
             </div>
           </div>
         </section>
+
+        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">NSERC Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                  <HelpCircle className="w-6 h-6 text-indigo-600 mr-3 flex-shrink-0 mt-0.5" />
+                  {faq.question}
+                </h3>
+                <p className="text-gray-700 ml-9">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-indigo-600 to-indigo-800">

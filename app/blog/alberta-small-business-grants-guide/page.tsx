@@ -18,9 +18,61 @@ export const metadata: Metadata = {
 }
 
 export default function AlbertaSmallBusinessGrantsGuide() {
+  const faqData = [
+    {
+      question: "Are Alberta business grants taxable?",
+      answer: "Yes, most Alberta business grants are considered taxable income by the CRA. However, if grant funds are used for depreciable assets or deductible expenses, the net tax impact may be minimal. Consult with a tax professional familiar with Alberta business incentives."
+    },
+    {
+      question: "Can startups with no revenue apply for Alberta grants?",
+      answer: "Yes, but usually only for \"Innovation\" grants (Alberta Innovates). If you are a standard retail or service startup, grants are almost non-existent. You are expected to use loans or personal equity. However, hiring grants (Alberta Jobs Now) ARE available to startups once you are ready to put someone on payroll."
+    },
+    {
+      question: "Do I need to live in Alberta to apply?",
+      answer: "Critically, yes. Your company must be registered in Alberta and the *benefits* of the project (jobs, economic growth) must accrue to the province. You cannot accept an Alberta grant and then spend the money hiring developers in Ontario or the US."
+    },
+    {
+      question: "What is the \"CARES\" program?",
+      answer: "The Community and Regional Economic Support (CARES) program funds projects that improve the local economy. While businesses can partner on them, the primary applicant is usually a municipality or non-profit. It is not a direct cash grant for your private business expenses."
+    },
+    {
+      question: "Is there a grant for women entrepreneurs in Alberta?",
+      answer: "While there is no specific \"Alberta Women's Grant,\" the Women Entrepreneurship Knowledge Hub (WEKH) has a strong Alberta chapter (at Mount Royal University) that connects women to funding. Additionally, the federal \"Women Entrepreneurship Loan Fund\" is active in Alberta."
+    },
+    {
+      question: "Are there grants for startups in Alberta?",
+      answer: "Yes, several Alberta programs specifically target pre-revenue startups, particularly Alberta Innovates Voucher programs and accelerator-linked funding. However, you'll need to demonstrate technical capability, market opportunity, and a clear path to revenue."
+    },
+    {
+      question: "How competitive are Alberta business grants?",
+      answer: "Competition varies by program. Voucher programs have 30-50% approval rates for well-prepared applications. Larger innovation grants are more competitive at 15-25% approval rates. Energy diversification programs are highly competitive but offer larger awards."
+    },
+    {
+      question: "Can I apply for multiple Alberta grants simultaneously?",
+      answer: "Yes, but you must disclose all applications and cannot receive duplicate funding for the same expense. Many businesses successfully combine multiple Alberta programs or stack provincial with federal funding (IRAP, SR&ED). Program officers can advise on complementary funding strategies."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-orange-600 to-red-700 text-white py-20">
@@ -995,111 +1047,17 @@ export default function AlbertaSmallBusinessGrantsGuide() {
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
 
               <div className="space-y-4">
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
-                      Are Alberta business grants taxable?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes, most Alberta business grants are considered taxable income by the CRA. However,
-                      if grant funds are used for depreciable assets or deductible expenses, the net tax
-                      impact may be minimal. Consult with a tax professional familiar with Alberta
-                      business incentives.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
-                      Can startups with no revenue apply for Alberta grants?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes, but usually only for "Innovation" grants (Alberta Innovates). If you are a standard retail or service startup, grants are almost non-existent. You are expected to use loans or personal equity. However, hiring grants (Alberta Jobs Now) ARE available to startups once you are ready to put someone on payroll.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
-                      Do I need to live in Alberta to apply?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Critically, yes. Your company must be registered in Alberta and the *benefits* of the project (jobs, economic growth) must accrue to the province. You cannot accept an Alberta grant and then spend the money hiring developers in Ontario or the US.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
-                      What is the "CARES" program?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      The Community and Regional Economic Support (CARES) program funds projects that improve the local economy. While businesses can partner on them, the primary applicant is usually a municipality or non-profit. It is not a direct cash grant for your private business expenses.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
-                      Is there a grant for women entrepreneurs in Alberta?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      While there is no specific "Alberta Women's Grant," the <strong>Women Entrepreneurship Knowledge Hub (WEKH)</strong> has a strong Alberta chapter (at Mount Royal University) that connects women to funding. Additionally, the federal "Women Entrepreneurship Loan Fund" is active in Alberta.
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
-                      Are there grants for startups in Alberta?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes, several Alberta programs specifically target pre-revenue startups, particularly
-                      Alberta Innovates Voucher programs and accelerator-linked funding. However, you&apos;ll
-                      need to demonstrate technical capability, market opportunity, and a clear path to revenue.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
-                      How competitive are Alberta business grants?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Competition varies by program. Voucher programs have 30-50% approval rates for
-                      well-prepared applications. Larger innovation grants are more competitive at
-                      15-25% approval rates. Energy diversification programs are highly competitive
-                      but offer larger awards.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
-                      Can I apply for multiple Alberta grants simultaneously?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes, but you must disclose all applications and cannot receive duplicate funding
-                      for the same expense. Many businesses successfully combine multiple Alberta programs
-                      or stack provincial with federal funding (IRAP, SR&ED). Program officers can advise
-                      on complementary funding strategies.
-                    </p>
-                  </CardContent>
-                </Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold text-lg flex items-start">
+                        <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

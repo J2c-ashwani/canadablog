@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, MapPin, Zap, Factory, Lightbulb } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, MapPin, Zap, Factory, Lightbulb, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,48 @@ export const metadata: Metadata = {
 }
 
 export default function StrategicInnovationFundBlogPage() {
+  const faqData = [
+    {
+      question: "What is the minimum project size for SIF?",
+      answer: "SIF is for large-scale projects. You generally need to request at least $10M in contribution, which implies a total project size of $20M+ (since SIF covers up to 50%). If your project is smaller, look at RDAs or IRAP."
+    },
+    {
+      question: "Is SIF a grant or a loan?",
+      answer: "It is usually a hybrid. Most SIF agreements are 'repayable contributions' (0% interest loans), sometimes with a non-repayable portion (grant) if you hit specific milestones like job creation targets."
+    },
+    {
+      question: "How long does the SIF process take?",
+      answer: "It is slow. Expect 6 to 12 months from your initial Statement of Interest (SOI to final Contribution Agreement. This is not for emergency cash flow."
+    },
+    {
+      question: "Can I stack SIF with provincial funding?",
+      answer: "Yes. You can stack SIF with provincial grants (like Investissement Québec or Ontario funds), usually up to a 75% total government stacking limit."
+    },
+    {
+      question: "Do I need to be profitable to apply?",
+      answer: "Not necessarily, but you must be financially stable. You need to prove you have the 'other 50%' of the funding secured (bank certification or equity) before SIF will sign."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-red-600 to-red-800 text-white py-16">
@@ -530,6 +569,21 @@ export default function StrategicInnovationFundBlogPage() {
             </div>
           </div>
         </section>
+
+        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">SIF Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                  <HelpCircle className="w-6 h-6 text-red-600 mr-3 flex-shrink-0 mt-0.5" />
+                  {faq.question}
+                </h3>
+                <p className="text-gray-700 ml-9">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* 2 CTAs Section - High Converting Keywords */}
         <section className="py-16 bg-gradient-to-r from-red-600 to-red-800">

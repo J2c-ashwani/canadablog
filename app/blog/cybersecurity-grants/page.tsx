@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ArrowRight, Lock, Eye, Server, Database, Zap, AlertTriangle } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ArrowRight, Lock, Eye, Server, Database, Zap, AlertTriangle, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,49 @@ export const metadata: Metadata = {
 }
 
 export default function CybersecurityGrantsPage() {
+  const faqData = [
+    {
+      question: "What cybersecurity topics does DOD fund?",
+      answer: "DOD funds high-priority defense areas including zero-trust architecture, automated threat detection, quantum-resistant cryptography, and secure 5G/NextG communications."
+    },
+    {
+      question: "How much funding can I get?",
+      answer: "Phase I awards are typically $200K-$400K for 6-12 months. Successful projects can compete for Phase II awards up to $1.8M, with potential for $30M+ in Phase III contracts."
+    },
+    {
+      question: "Is a security clearance required?",
+      answer: "Not usually for Phase I. However, you must be a US-owned small business. Phase II or III work involving classified data will require appropriate facility and personnel clearances."
+    },
+    {
+      question: "Can I use funding for CMMC compliance?",
+      answer: "Yes. SBIR/STTR funds can often be used for TABA (Technical and Business Assistance) to cover costs related to cybersecurity compliance like CMMC and FedRAMP readiness."
+    },
+    {
+      question: "Does DHS fund commercial startups?",
+      answer: "Yes. DHS S&T SBIR seeks 'dual-use' technologies—innovations that serve homeland security needs (like airport security or disaster response) but also have viable commercial markets."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Clean Hero Section */}
         <section className="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white py-20 md:py-28">
@@ -93,7 +133,7 @@ export default function CybersecurityGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
                 Federal funding for security software, encryption, threat detection, zero-trust architecture, and defense cyber innovations.
               </p>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 {/* DOD SBIR Cyber */}
                 <Card className="border-2 border-blue-200 hover:shadow-xl transition-all hover:-translate-y-1">
@@ -227,7 +267,7 @@ export default function CybersecurityGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 DOD, DHS, and NSA grants support a wide range of security and encryption innovations.
               </p>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <Card className="border-l-4 border-l-blue-500 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
@@ -322,7 +362,7 @@ export default function CybersecurityGrantsPage() {
                     <p className="text-gray-700">Recent DOD and DHS investments for cybersecurity entrepreneurs</p>
                   </div>
                 </div>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white rounded-lg p-5 border border-blue-100">
                     <div className="flex items-center mb-2">
@@ -369,7 +409,7 @@ export default function CybersecurityGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Everything you need to know about DOD SBIR cyber programs, DHS homeland security funding, and NSA research partnerships.
               </p>
-              
+
               <div className="space-y-8">
                 {/* DOD SBIR Cyber */}
                 <Card id="dod-cyber-details" className="border-2 border-blue-200">
@@ -403,7 +443,7 @@ export default function CybersecurityGrantsPage() {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="bg-white p-4 rounded-lg border border-gray-200">
                           <h5 className="font-semibold text-gray-800 mb-3">DOD Cyber Focus Areas:</h5>
                           <ul className="space-y-2 text-sm text-gray-700">
@@ -426,7 +466,7 @@ export default function CybersecurityGrantsPage() {
                           </ul>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-bold text-xl mb-4 text-gray-800">Cyber Success Stories</h4>
                         <div className="space-y-4">
@@ -620,6 +660,32 @@ export default function CybersecurityGrantsPage() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="py-16 bg-blue-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="grid gap-6">
+                {faqData.map((faq, index) => (
+                  <Card key={index} className="border-l-4 border-l-blue-600">
+                    <CardHeader>
+                      <CardTitle className="text-xl text-blue-800 flex items-start">
+                        <div className="bg-blue-100 p-2 rounded-full mr-3 mt-0.5">
+                          <HelpCircle className="w-5 h-5 text-blue-600" />
+                        </div>
+                        {faq.question}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Success Strategies */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -628,7 +694,7 @@ export default function CybersecurityGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 Proven tactics to increase your chances of winning DOD and DHS cybersecurity funding.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-2 border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -748,7 +814,7 @@ export default function CybersecurityGrantsPage() {
               <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
                 Download our free cybersecurity grants guide or get personalized help from specialists experienced in DOD and DHS cyber funding.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 <Card className="bg-white/10 backdrop-blur border-2 border-white/20 hover:bg-white/15 transition-all">
                   <CardContent className="pt-6 text-center">

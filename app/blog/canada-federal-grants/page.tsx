@@ -24,9 +24,44 @@ export const metadata: Metadata = {
 }
 
 export default function CanadaFederalGrantsPage() {
+  const faqData = [
+    {
+      question: "Are federal grants taxable?",
+      answer: "Yes. Government grants are considered taxable income in the year they are received. However, they are usually offset by the expenses they cover, which you can deduct from taxable income, creating a neutral tax effect in most situations."
+    },
+    {
+      question: "Do I have to pay back the 'contribution'?",
+      answer: "If it is a 'Non-Repayable Contribution', no. If it is a 'Repayable Contribution', yes, but usually on very favorable terms (0% interest, payments start 2-3 years later). Defaulting on a federal contribution is very serious."
+    },
+    {
+      question: "How long does approval take?",
+      answer: "Be realistic. Small micro-grants (CDAP) can take 2-4 weeks. Major ISED or RDA projects ($100k+) typically take 4-8 months from application to first cheque. Do not bank on this money to pay next month's payroll."
+    },
+    {
+      question: "Can I apply for multiple grants?",
+      answer: "Yes, this is called 'Stacking'. You can stack federal, provincial, and municipal grants up to a certain limit (usually 75% of total project costs). You cannot get 100% funding from a single source usually."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50 bg-slate-50 dark:bg-neutral-900">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-red-700 to-red-900 text-white py-24 relative overflow-hidden">
@@ -588,23 +623,16 @@ export default function CanadaFederalGrantsPage() {
                 {/* FAQ Section */}
                 <div className="mt-20 pt-10 border-t border-gray-200">
                   <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions</h2>
-                  <div className="space-y-8">
-                    <div>
-                      <h4 className="font-bold text-xl text-gray-900 mb-2">Are federal grants taxable?</h4>
-                      <p className="text-gray-600">Yes. Government grants are considered taxable income in the year they are received. However, they are usually offset by the expenses they cover, which you can deduct from taxable income, creating a neutral tax effect in most situations. For repayable contributions, the tax treatment differs since repayable amounts are generally not considered income until the repayment obligation is forgiven. Always consult your accountant to understand the specific tax implications for your grant type.</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-xl text-gray-900 mb-2">Do I have to pay back the "contribution"?</h4>
-                      <p className="text-gray-600">If it is a "Non-Repayable Contribution", no. If it is a "Repayable Contribution", yes, but usually on very favorable terms (0% interest, payments start 2-3 years later). Defaulting on a federal contribution is very serious and will blacklist you from future funding.</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-xl text-gray-900 mb-2">How long does approval take?</h4>
-                      <p className="text-gray-600">Be realistic. Small micro-grants (CDAP) can take 2-4 weeks. Major ISED or RDA projects ($100k+) typically take 4-8 months from application to first cheque. Do not bank on this money to pay next month's payroll.</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-xl text-gray-900 mb-2">Can I apply for multiple grants?</h4>
-                      <p className="text-gray-600">Yes, this is called "Stacking". You can stack federal, provincial, and municipal grants up to a certain limit (usually 75% or 100% of project costs). You cannot get 100% funding from a single source usually.</p>
-                    </div>
+                  <div className="space-y-6">
+                    {faqData.map((faq, index) => (
+                      <div key={index} className="bg-slate-50 p-6 rounded-lg border border-slate-100">
+                        <h4 className="font-bold text-xl text-gray-900 mb-2 flex items-start">
+                          <HelpCircle className="w-5 h-5 text-red-600 mr-3 mt-1 flex-shrink-0" />
+                          {faq.question}
+                        </h4>
+                        <p className="text-gray-600 ml-8">{faq.answer}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
 

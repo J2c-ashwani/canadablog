@@ -14,9 +14,48 @@ export const metadata: Metadata = {
 }
 
 export default function FederalGrantsWomenMinoritiesPage() {
+  const faqData = [
+    {
+      question: "How long does certification take?",
+      answer: "WOSB: 2-4 weeks using the new SBA portal. 8(a): 90-180 days (more complex). HUBZone: 60-90 days. SDVOSB: 60-90 days. Processing times depend heavily on documentation completeness."
+    },
+    {
+      question: "Can I have multiple certifications?",
+      answer: "Yes! Many businesses are 'dual-certified' (e.g., 8(a) + HUBZone or WOSB + SDVOSB). This expands your contract access significantly as you can bid on multiple types of set-asides."
+    },
+    {
+      question: "Is certification free?",
+      answer: "SBA certifications (WOSB, 8(a), HUBZone) are free when applied for directly through certify.sba.gov. Third-party certifiers (like WBENC) charge fees but may offer private sector benefits."
+    },
+    {
+      question: "Do certificates expire?",
+      answer: "Yes. WOSB requires annual attestation and full recertification every 3 years. 8(a) is a one-time 9-year term. HUBZone requires annual recertification to ensure you still meet residency/employee targets."
+    },
+    {
+      question: "Can I self-certify?",
+      answer: "No. Self-certification for WOSB and SDVOSB federal contracts ended in 2020/2023. You must now go through the formal SBA or VA application process to be eligible for set-aside contracts."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-purple-700 to-pink-600 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -223,9 +262,17 @@ export default function FederalGrantsWomenMinoritiesPage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How long does certification take?</h3><p className="text-gray-700 mt-2 ml-7">WOSB: 2-4 weeks. 8(a): 90-180 days. HUBZone: 60-90 days. SDVOSB: 60-90 days. Processing depends on documentation completeness.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can I have multiple certifications?</h3><p className="text-gray-700 mt-2 ml-7">Yes! Many businesses are &quot;dual-certified&quot; (e.g., 8(a) + HUBZone or WOSB + SDVOSB), which expands contract access significantly.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Is certification free?</h3><p className="text-gray-700 mt-2 ml-7">SBA certifications are free. Some third-party certifications charge fees. Watch for scams offering &quot;guaranteed&quot; certification for a fee.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

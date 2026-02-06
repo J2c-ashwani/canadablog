@@ -18,9 +18,41 @@ export const metadata: Metadata = {
 }
 
 export default function QuebecSmallBusinessGrantsGuide() {
+  const faqData = [
+    {
+      question: "Do I need to apply in French?",
+      answer: "No. Quebec government programs accept applications in both French and English. However, some regional programs may have French preferences. Bilingual support is widely available."
+    },
+    {
+      question: "How do Quebec R&D credits compare to other provinces?",
+      answer: "Quebec offers some of Canada's highest R&D incentives. The 37.5% provincial credit combines with federal SR&ED for returns exceeding 55%—significantly higher than most provinces."
+    },
+    {
+      question: "Can startups from outside Quebec access these programs?",
+      answer: "Most programs require Quebec incorporation or significant operations. Relocating or establishing a Quebec presence can unlock these incentives—consult with advisors about optimal structuring."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-20">
@@ -806,49 +838,18 @@ export default function QuebecSmallBusinessGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-
               <div className="space-y-4">
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />
-                      Do I need to apply in French?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      No. Quebec government programs accept applications in both French and
-                      English. However, some regional programs may have French preferences.
-                      Bilingual support is widely available.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />
-                      How do Quebec R&D credits compare to other provinces?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Quebec offers some of Canada&apos;s highest R&D incentives. The 37.5%
-                      provincial credit combines with federal SR&ED for returns exceeding
-                      55%—significantly higher than most provinces.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />
-                      Can startups from outside Quebec access these programs?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Most programs require Quebec incorporation or significant operations.
-                      Relocating or establishing a Quebec presence can unlock these
-                      incentives—consult with advisors about optimal structuring.
-                    </p>
-                  </CardContent>
-                </Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold text-lg flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

@@ -18,9 +18,41 @@ export const metadata: Metadata = {
 }
 
 export default function ManitobaSmallBusinessGrantsGuide() {
+  const faqData = [
+    {
+      question: "Are Manitoba business grants taxable?",
+      answer: "Yes, most Manitoba business grants are considered taxable income. Consult with a tax professional for your specific situation."
+    },
+    {
+      question: "Can startups apply for Manitoba grants?",
+      answer: "Yes, several Manitoba programs target startups, particularly the Innovation Growth Program and venture capital initiatives. Pre-revenue companies need to demonstrate technical capability and market opportunity."
+    },
+    {
+      question: "How competitive are Manitoba business grants?",
+      answer: "Manitoba has relatively less competition than larger provinces. Well-prepared applications typically see 25-35% approval rates, higher than national averages."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-teal-600 to-cyan-700 text-white py-20">
@@ -804,52 +836,22 @@ export default function ManitobaSmallBusinessGrantsGuide() {
           </div>
         </section>
 
-        {/* FAQ Section */}
         <section id="faqs" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-
               <div className="space-y-4">
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-teal-600 mr-2 mt-1 flex-shrink-0" />
-                      Are Manitoba business grants taxable?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes, most Manitoba business grants are considered taxable income. Consult
-                      with a tax professional for your specific situation.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-teal-600 mr-2 mt-1 flex-shrink-0" />
-                      Can startups apply for Manitoba grants?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes, several Manitoba programs target startups, particularly the Innovation
-                      Growth Program and venture capital initiatives. Pre-revenue companies need
-                      to demonstrate technical capability and market opportunity.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-teal-600 mr-2 mt-1 flex-shrink-0" />
-                      How competitive are Manitoba business grants?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Manitoba has relatively less competition than larger provinces. Well-prepared
-                      applications typically see 25-35% approval rates, higher than national averages.
-                    </p>
-                  </CardContent>
-                </Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold text-lg flex items-start">
+                        <HelpCircle className="w-5 h-5 text-teal-600 mr-2 mt-1 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

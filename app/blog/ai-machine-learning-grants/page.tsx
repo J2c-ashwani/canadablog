@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ArrowRight, Brain, Zap, Eye, Cpu } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ArrowRight, Brain, Zap, Eye, Cpu, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,50 @@ export const metadata: Metadata = {
 }
 
 export default function AIMachineLearningGrantsPage() {
+  const faqData = [
+    {
+      question: "What AI projects does NSF fund?",
+      answer: "NSF funds high-risk, high-impact AI innovations in computer vision, NLP, robotics, and machine learning. Priority areas include healthcare, materials science, education, and trustworthy AI."
+    },
+    {
+      question: "Is equity required for these grants?",
+      answer: "No. NSF SBIR/STTR and government research grants are 100% non-dilutive. You keep full ownership of your company and intellectual property."
+    },
+    {
+      question: "Can I use funding for GPU compute?",
+      answer: "Yes. Grant funds can cover cloud computing costs, hardware purchasing (special restrictions apply), and personnel salaries for AI development."
+    },
+    {
+      question: "What is the success rate?",
+      answer: "NSF SBIR Phase I success rates average 15-20%. However, certain subtopics like Healthcare AI often see higher acceptance rates (up to 40%) due to strong demand."
+    },
+    {
+      question: "How does NAIRR help startups?",
+      answer: "NAIRR provides access to high-performance computing (HPC), datasets, and testbeds that would otherwise be cost-prohibitive for startups, leveling the playing field with big tech.",
+      isNew: true
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Clean Hero Section */}
         <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 text-white py-20 md:py-28">
@@ -682,6 +723,35 @@ export default function AIMachineLearningGrantsPage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-blue-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="grid gap-6">
+                {faqData.map((faq, index) => (
+                  <Card key={index} className="border-l-4 border-l-blue-600">
+                    <CardHeader>
+                      <CardTitle className="text-xl text-blue-800 flex items-start">
+                        <div className="bg-blue-100 p-2 rounded-full mr-3 mt-0.5">
+                          <HelpCircle className="w-5 h-5 text-blue-600" />
+                        </div>
+                        {faq.question}
+                        {faq.isNew && (
+                          <Badge className="ml-2 bg-yellow-100 text-yellow-800 border-yellow-200">New</Badge>
+                        )}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ArrowRight, Cpu, Zap, Radio, Layers, Wifi, Cog } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ArrowRight, Cpu, Zap, Radio, Layers, Wifi, Cog, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,70 +20,110 @@ export const metadata: Metadata = {
 }
 
 export default function HardwareIoTStartupGrantsPage() {
+  const faqData = [
+    {
+      question: "Does NSF fund hardware prototypes?",
+      answer: "Yes. NSF SBIR specifically encourages high-risk technical R&D. Phase I ($305K) is designed to fund the development and testing of a proof-of-concept prototype."
+    },
+    {
+      question: "What is the '0% equity' requirement?",
+      answer: "SBIR/STTR grants are non-dilutive government funding. The agency takes zero equity, zero board seats, and zero IP rights. You retain full ownership of your company."
+    },
+    {
+      question: "Can I use grant money for manufacturing?",
+      answer: "Yes, in Phase II. While Phase I is for R&D/prototyping, Phase II awards ($1.25M) can support manufacturing scale-up, Design for Manufacturing (DFM), and pilot production runs."
+    },
+    {
+      question: "Is my IoT device eligible?",
+      answer: "It depends. To qualify, your device must involve novel technical innovation (e.g., new sensor capabilities, unique mesh networking, edge AI) rather than just integrating off-the-shelf components."
+    },
+    {
+      question: "How long does the review take?",
+      answer: "NSF and DOD reviews typically take 4-6 months. It is a competitive process, but the payoff of non-dilutive capital is substantial for hardware startups."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
-       {/* Clean Hero Section - FIXED CONTRAST */}
-<section className="bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 text-white py-20 md:py-28">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="max-w-5xl mx-auto">
-      {/* Badge */}
-      <div className="flex justify-center mb-6">
-        <Badge className="bg-orange-500 text-white border-orange-600 px-4 py-2 text-sm font-medium">
-          ⚡ Hardware & IoT Grants 2026-2027
-        </Badge>
-      </div>
+        {/* Clean Hero Section - FIXED CONTRAST */}
+        <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 text-white py-20 md:py-28">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-5xl mx-auto">
+              {/* Badge */}
+              <div className="flex justify-center mb-6">
+                <Badge className="bg-orange-500 text-white border-orange-600 px-4 py-2 text-sm font-medium">
+                  ⚡ Hardware & IoT Grants 2026-2027
+                </Badge>
+              </div>
 
-      {/* Main Headline */}
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center leading-tight">
-        Get Up to $1.555M in<br />Hardware Innovation Funding
-      </h1>
+              {/* Main Headline */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center leading-tight">
+                Get Up to $1.555M in<br />Hardware Innovation Funding
+              </h1>
 
-      {/* Subheadline */}
-      <p className="text-xl md:text-2xl text-gray-300 mb-8 text-center max-w-3xl mx-auto font-light">
-        NSF SBIR grants for hardware and IoT startups. Zero equity required for connected devices, sensors, robotics, semiconductors, and edge computing innovations.
-      </p>
+              {/* Subheadline */}
+              <p className="text-xl md:text-2xl text-gray-300 mb-8 text-center max-w-3xl mx-auto font-light">
+                NSF SBIR grants for hardware and IoT startups. Zero equity required for connected devices, sensors, robotics, semiconductors, and edge computing innovations.
+              </p>
 
-      {/* Key Stats */}
-      <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto mb-10">
-        <div className="text-center">
-          <div className="text-3xl md:text-4xl font-bold mb-1 text-orange-400">$305K</div>
-          <div className="text-sm md:text-base text-gray-400">Phase I Grants</div>
-        </div>
-        <div className="text-center">
-          <div className="text-3xl md:text-4xl font-bold mb-1 text-orange-400">$1.25M</div>
-          <div className="text-sm md:text-base text-gray-400">Phase II Grants</div>
-        </div>
-        <div className="text-center">
-          <div className="text-3xl md:text-4xl font-bold mb-1 text-orange-400">0%</div>
-          <div className="text-sm md:text-base text-gray-400">Equity Required</div>
-        </div>
-      </div>
+              {/* Key Stats */}
+              <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto mb-10">
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold mb-1 text-orange-400">$305K</div>
+                  <div className="text-sm md:text-base text-gray-400">Phase I Grants</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold mb-1 text-orange-400">$1.25M</div>
+                  <div className="text-sm md:text-base text-gray-400">Phase II Grants</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold mb-1 text-orange-400">0%</div>
+                  <div className="text-sm md:text-base text-gray-400">Equity Required</div>
+                </div>
+              </div>
 
-      {/* CTAs */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <Button size="lg" className="bg-orange-500 text-white hover:bg-orange-600 font-semibold px-8 py-6 text-lg w-full sm:w-auto shadow-xl" asChild>
-          <Link href="#hardware-grants">
-            View Hardware Programs
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Link>
-        </Button>
-        <Button size="lg" variant="outline" className="border-2 border-orange-500 bg-transparent text-orange-400 hover:bg-orange-500 hover:text-white font-semibold px-8 py-6 text-lg w-full sm:w-auto" asChild>
-          <Link href="/download/hardware-iot-grants-guide">
-            <Download className="mr-2 w-5 h-5" />
-            Free Hardware Guide
-          </Link>
-        </Button>
-      </div>
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button size="lg" className="bg-orange-500 text-white hover:bg-orange-600 font-semibold px-8 py-6 text-lg w-full sm:w-auto shadow-xl" asChild>
+                  <Link href="#hardware-grants">
+                    View Hardware Programs
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-2 border-orange-500 bg-transparent text-orange-400 hover:bg-orange-500 hover:text-white font-semibold px-8 py-6 text-lg w-full sm:w-auto" asChild>
+                  <Link href="/download/hardware-iot-grants-guide">
+                    <Download className="mr-2 w-5 h-5" />
+                    Free Hardware Guide
+                  </Link>
+                </Button>
+              </div>
 
-      {/* Trust Indicator */}
-      <p className="text-center text-gray-400 mt-8 text-sm">
-        ✓ IoT-focused funding • ✓ Manufacturing support • ✓ Non-dilutive capital
-      </p>
-    </div>
-  </div>
-</section>
+              {/* Trust Indicator */}
+              <p className="text-center text-gray-400 mt-8 text-sm">
+                ✓ IoT-focused funding • ✓ Manufacturing support • ✓ Non-dilutive capital
+              </p>
+            </div>
+          </div>
+        </section>
 
 
         {/* Quick Overview - Main Programs */}
@@ -94,7 +134,7 @@ export default function HardwareIoTStartupGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
                 Federal funding for connected devices, electronics, sensors, robotics, and advanced manufacturing innovations.
               </p>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 {/* NSF SBIR IoT */}
                 <Card className="border-2 border-orange-200 hover:shadow-xl transition-all hover:-translate-y-1">
@@ -228,7 +268,7 @@ export default function HardwareIoTStartupGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 NSF and DOD grants support a wide range of hardware and IoT innovations.
               </p>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <Card className="border-l-4 border-l-orange-500 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
@@ -323,7 +363,7 @@ export default function HardwareIoTStartupGrantsPage() {
                     <p className="text-gray-700">Recent NSF and DOD investments for hardware and IoT startups</p>
                   </div>
                 </div>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white rounded-lg p-5 border border-orange-100">
                     <div className="flex items-center mb-2">
@@ -370,7 +410,7 @@ export default function HardwareIoTStartupGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Everything you need to know about NSF SBIR for hardware/IoT, DOD electronics programs, and manufacturing grants.
               </p>
-              
+
               <div className="space-y-8">
                 {/* NSF SBIR IoT */}
                 <Card id="iot-details" className="border-2 border-orange-200">
@@ -404,7 +444,7 @@ export default function HardwareIoTStartupGrantsPage() {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="bg-white p-4 rounded-lg border border-gray-200">
                           <h5 className="font-semibold text-gray-800 mb-3">IoT Subtopics:</h5>
                           <ul className="space-y-2 text-sm text-gray-700">
@@ -427,7 +467,7 @@ export default function HardwareIoTStartupGrantsPage() {
                           </ul>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-bold text-xl mb-4 text-gray-800">Hardware Success Stories</h4>
                         <div className="space-y-4">
@@ -617,6 +657,32 @@ export default function HardwareIoTStartupGrantsPage() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="py-16 bg-orange-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="grid gap-6">
+                {faqData.map((faq, index) => (
+                  <Card key={index} className="border-l-4 border-l-orange-500">
+                    <CardHeader>
+                      <CardTitle className="text-xl text-orange-800 flex items-start">
+                        <div className="bg-orange-100 p-2 rounded-full mr-3 mt-0.5">
+                          <HelpCircle className="w-5 h-5 text-orange-600" />
+                        </div>
+                        {faq.question}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Success Strategies */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -625,7 +691,7 @@ export default function HardwareIoTStartupGrantsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 Proven tactics to increase your chances of winning NSF and DOD hardware funding.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-2 border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -745,7 +811,7 @@ export default function HardwareIoTStartupGrantsPage() {
               <p className="text-xl text-orange-100 mb-10 max-w-2xl mx-auto">
                 Download our free hardware grants guide or get personalized help from specialists experienced in IoT and electronics funding.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 <Card className="bg-white/10 backdrop-blur border-2 border-white/20 hover:bg-white/15 transition-all">
                   <CardContent className="pt-6 text-center">

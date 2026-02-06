@@ -14,9 +14,41 @@ export const metadata: Metadata = {
 }
 
 export default function AlbertaGovernmentBusinessGrantsPage() {
+  const faqData = [
+    {
+      question: "Can out-of-province companies apply for Alberta grants?",
+      answer: "Some programs require Alberta incorporation. Others accept companies with significant Alberta operations or a firm commitment to expand to Alberta. Check specific program requirements."
+    },
+    {
+      question: "How do Alberta programs work with federal funding?",
+      answer: "Many Alberta programs can \"stack\" with federal programs like IRAP, SR&ED, and SBIR. Check stacking rules for each program—some cap total government funding at 75% of project costs."
+    },
+    {
+      question: "What is the fastest way to get Alberta funding?",
+      answer: "Alberta Innovates voucher programs typically have the fastest turnaround (4-6 weeks). Larger programs can take 3-6 months from application to funding approval."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -211,9 +243,17 @@ export default function AlbertaGovernmentBusinessGrantsPage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions about Alberta Grants</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can out-of-province companies apply for Alberta grants?</h3><p className="text-gray-700 mt-2 ml-7">Some programs require Alberta incorporation. Others accept companies with significant Alberta operations or a firm commitment to expand to Alberta. Check specific program requirements.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How do Alberta programs work with federal funding?</h3><p className="text-gray-700 mt-2 ml-7">Many Alberta programs can "stack" with federal programs like IRAP, SR&amp;ED, and SBIR. Check stacking rules for each program—some cap total government funding at 75% of project costs.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What is the fastest way to get Alberta funding?</h3><p className="text-gray-700 mt-2 ml-7">Alberta Innovates voucher programs typically have the fastest turnaround (4-6 weeks). Larger programs can take 3-6 months from application to funding approval.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

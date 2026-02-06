@@ -18,9 +18,48 @@ export const metadata: Metadata = {
 }
 
 export default function SBA7aLoansGuidePage() {
+  const faqData = [
+    {
+      question: "Is collateral required for SBA 7(a) loans?",
+      answer: "For loans over $25,000, lenders must take available collateral (like equipment or real estate). For loans over $350,000, lenders must collateralize the loan to the maximum extent possible, which may include a lien on personal real estate if business assets are insufficient."
+    },
+    {
+      question: "Can I use 7(a) funds to buy a business?",
+      answer: "Yes, business acquisition is a common use. You typically need to provide 10% equity injection designated for the purchase, and the business must be evaluated by a qualified appraiser."
+    },
+    {
+      question: "What is the Personal Guarantee requirement?",
+      answer: "Any individual owning 20% or more of the business must provide an unlimited personal guarantee. This means you are personally liable for repayment if the business defaults."
+    },
+    {
+      question: "How does the interest rate work?",
+      answer: "SBA sets a maximum spread lenders can charge over the Base Rate (Wall Street Journal Prime or SBA Peg Rate). Most loans are variable rate, meaning your payment can change if the Prime rate changes."
+    },
+    {
+      question: "Can I refinance existing debt?",
+      answer: "Yes, but there are strict rules. The debt must be on unreasonable terms (e.g., high interest, short balloon payment) and the refinancing must provide a substantial benefit (at least 10% reduction in payments) to the business."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-700 to-green-600 text-white py-20">
@@ -868,67 +907,23 @@ export default function SBA7aLoansGuidePage() {
         </section>
 
         {/* FAQ Section */}
+        {/* FAQ Section */}
         <section id="faqs" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-
               <div className="space-y-4">
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />
-                      What credit score do I need for SBA 7(a)?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      There&apos;s no official SBA minimum, but most lenders prefer 680+.
-                      Some SBA Express lenders work with scores as low as 620. Higher
-                      scores typically mean better terms.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />
-                      Can startups get SBA 7(a) loans?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes, but it&apos;s harder. Startups typically need stronger collateral,
-                      larger down payments (20-30%), and owners with relevant industry
-                      experience. A solid business plan is essential.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />
-                      How much collateral is required?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      SBA doesn&apos;t require 100% collateral—they look at available
-                      collateral but won&apos;t deny a loan solely for insufficient
-                      collateral if other factors are strong. Personal guarantees
-                      from all 20%+ owners are required.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />
-                      Are SBA 7(a) loans forgivable?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      No. Unlike PPP loans during COVID, standard SBA 7(a) loans must
-                      be repaid in full with interest. They are loans, not grants.
-                    </p>
-                  </CardContent>
-                </Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

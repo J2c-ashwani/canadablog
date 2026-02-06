@@ -14,9 +14,48 @@ export const metadata: Metadata = {
 }
 
 export default function SBADisasterReliefLoansGuidePage() {
+  const faqData = [
+    {
+      question: "Do I need insurance to apply?",
+      answer: "No, but insurance proceeds reduce your loan amount. Apply before insurance settles—SBA will adjust the loan when your claim is resolved."
+    },
+    {
+      question: "What if my credit is poor?",
+      answer: "The SBA considers credit history but has more flexibility than commercial lenders. Explain any credit issues in your application. The SBA wants to help you recover."
+    },
+    {
+      question: "Can I get both Physical and EIDL?",
+      answer: "Yes, but the combined maximum is $2M. Physical covers property damage while EIDL covers working capital—they serve different purposes."
+    },
+    {
+      question: "How quickly are funds disbursed?",
+      answer: "Initial disbursement ($25,000) can happen within 5 days of loan closing. The remaining funds are disbursed in installments as you complete repairs and submit receipts."
+    },
+    {
+      question: "Is there a prepayment penalty?",
+      answer: "No. There are no prepayment penalties for SBA disaster loans. You can pay off the loan early at any time without extra cost."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-red-700 to-orange-600 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -220,9 +259,17 @@ export default function SBADisasterReliefLoansGuidePage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Do I need insurance to apply?</h3><p className="text-gray-700 mt-2 ml-7">No, but insurance proceeds reduce your loan amount. Apply before insurance settles—SBA will adjust the loan when your claim is resolved.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What if my credit is poor?</h3><p className="text-gray-700 mt-2 ml-7">The SBA considers credit history but has more flexibility than commercial lenders. Explain any credit issues in your application. The SBA wants to help you recover.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can I get both Physical and EIDL?</h3><p className="text-gray-700 mt-2 ml-7">Yes, but the combined maximum is $2M. Physical covers property damage while EIDL covers working capital—they serve different purposes.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

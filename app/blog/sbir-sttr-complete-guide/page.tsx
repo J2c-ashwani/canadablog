@@ -18,9 +18,45 @@ export const metadata: Metadata = {
 }
 
 export default function SBIRSTTRGuidePage() {
+  const faqData = [
+    {
+      question: "Do I need to repay SBIR/STTR funding?",
+      answer: "No. SBIR/STTR awards are grants, not loans. They are 100% non-dilutive—no repayment and no equity required."
+    },
+    {
+      question: "Can I apply to multiple agencies at once?",
+      answer: "Yes, but not with the same proposal. Each proposal must be tailored to the specific agency's topic. Identical proposals are rejected."
+    },
+    {
+      question: "What's the success rate?",
+      answer: "Phase I success rates range from 15-25% depending on agency. Phase II rates are higher (35-50%) since the pool is smaller."
+    },
+    {
+      question: "Who owns the IP?",
+      answer: "You do. SBIR/STTR awardees retain IP rights to their innovations. The government gets only limited use rights for government purposes."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-700 to-purple-600 text-white py-20">
@@ -567,27 +603,18 @@ export default function SBIRSTTRGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-
               <div className="space-y-4">
-                <Card><CardContent className="pt-6">
-                  <h3 className="font-bold text-lg flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />Do I need to repay SBIR/STTR funding?</h3>
-                  <p className="text-gray-700 mt-2 ml-7">No. SBIR/STTR awards are grants, not loans. They are 100% non-dilutive—no repayment and no equity required.</p>
-                </CardContent></Card>
-
-                <Card><CardContent className="pt-6">
-                  <h3 className="font-bold text-lg flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />Can I apply to multiple agencies at once?</h3>
-                  <p className="text-gray-700 mt-2 ml-7">Yes, but not with the same proposal. Each proposal must be tailored to the specific agency&apos;s topic. Identical proposals are rejected.</p>
-                </CardContent></Card>
-
-                <Card><CardContent className="pt-6">
-                  <h3 className="font-bold text-lg flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />What&apos;s the success rate?</h3>
-                  <p className="text-gray-700 mt-2 ml-7">Phase I success rates range from 15-25% depending on agency. Phase II rates are higher (35-50%) since the pool is smaller.</p>
-                </CardContent></Card>
-
-                <Card><CardContent className="pt-6">
-                  <h3 className="font-bold text-lg flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />Who owns the IP?</h3>
-                  <p className="text-gray-700 mt-2 ml-7">You do. SBIR/STTR awardees retain IP rights to their innovations. The government gets only limited use rights for government purposes.</p>
-                </CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold text-lg flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

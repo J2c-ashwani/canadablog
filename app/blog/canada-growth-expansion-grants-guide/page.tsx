@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, TrendingUp, Building, Users, Zap, Globe, Factory, Award } from "lucide-react"
+import { CheckCircle, DollarSign, Target, TrendingUp, Building, Users, Zap, Globe, Factory, Award, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -14,9 +14,48 @@ export const metadata: Metadata = {
 }
 
 export default function CanadaGrowthExpansionGrantsGuide() {
+  const faqData = [
+    {
+      question: "What can expansion grants be used for?",
+      answer: "They are typically restricted to 'capital expenditures' (CapEx) like buying new machinery, expanding a facility, or implementing new software systems. They almost never cover general operating costs, rent, or existing staff salaries."
+    },
+    {
+      question: "Do I need to be profitable?",
+      answer: "For growth funding, yes, usually. Unlike startup grants, expansion programs (especially loans/financing) want to see a track record of revenue and often profitability to ensure you can manage the growth and repay any repayable portions."
+    },
+    {
+      question: "Are these grants taxable?",
+      answer: "Yes. Government grants are considered taxable income. However, if you use the grant to buy equipment, you can't depreciate (CCA) the portion of the cost covered by the grant, which effectively neutralizes the tax."
+    },
+    {
+      question: "Can I use grants to buy a building?",
+      answer: "Direct grants for buying real estate are very rare. However, BDC provides commercial real estate financing, and sometimes regional development agencies can support facility expansion/renovation costs if it leads to job creation."
+    },
+    {
+      question: "What is the stacking limit?",
+      answer: "Government rules usually limit total government assistance (federal + provincial + municipal) to 75% or 90% of the project cost. You must almost always provide the remaining 10-25% from your own equity or private financing."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-green-600 to-emerald-700 text-white py-20">
@@ -29,7 +68,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
                 Canada Growth & Expansion Grants 2026
               </h1>
               <p className="text-xl text-green-100 mb-8">
-                Access $2.8B+ in Canadian scale-up funding across 42+ specialized programs. From Strategic Innovation Fund 
+                Access $2.8B+ in Canadian scale-up funding across 42+ specialized programs. From Strategic Innovation Fund
                 to provincial expansion grants - complete guide to scaling your established business nationwide.
               </p>
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
@@ -78,7 +117,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
               <p className="text-center text-gray-600 mb-12">
                 Large-scale federal programs designed to support significant business expansion and market growth.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-16">
                 {/* Strategic Innovation Fund */}
                 <Card className="border-2 border-green-200">
@@ -249,7 +288,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">Provincial Jobs & Prosperity Funds</h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {/* Ontario Growth Programs */}
                 <Card className="border-2 border-red-200">
@@ -418,7 +457,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8">Industry-Specific Growth Programs</h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="text-center">
                   <CardHeader>
@@ -437,7 +476,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Zap className="w-12 h-12 text-green-600 mx-auto mb-4" />
@@ -455,7 +494,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Building className="w-12 h-12 text-purple-600 mx-auto mb-4" />
@@ -483,7 +522,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8">Tax Credits & Growth Incentives</h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="text-center">
                   <CardHeader>
@@ -502,7 +541,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Award className="w-12 h-12 text-blue-600 mx-auto mb-4" />
@@ -520,7 +559,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Award className="w-12 h-12 text-purple-600 mx-auto mb-4" />
@@ -543,6 +582,21 @@ export default function CanadaGrowthExpansionGrantsGuide() {
           </div>
         </section>
 
+        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Business Expansion FAQs</h2>
+          <div className="space-y-6">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                  <HelpCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                  {faq.question}
+                </h3>
+                <p className="text-gray-700 ml-9">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Strong Single CTA Section */}
         <section className="py-20 bg-gradient-to-r from-green-600 to-emerald-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -551,8 +605,8 @@ export default function CanadaGrowthExpansionGrantsGuide() {
                 Scale Your Business with Expert Navigation of 42+ Growth Programs
               </h2>
               <p className="text-xl text-green-100 mb-8">
-                Ready to scale? The Canadian growth funding landscape spans federal mega-programs, provincial expansion funds, 
-                export development grants, and industry-specific incentives. Our growth specialists have helped 300+ Canadian 
+                Ready to scale? The Canadian growth funding landscape spans federal mega-programs, provincial expansion funds,
+                export development grants, and industry-specific incentives. Our growth specialists have helped 300+ Canadian
                 businesses secure over $38M in expansion funding with a 91% success rate.
               </p>
               <div className="bg-white/10 rounded-lg p-6 mb-8">

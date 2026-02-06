@@ -18,9 +18,41 @@ export const metadata: Metadata = {
 }
 
 export default function TerritoriesSmallBusinessGrantsGuide() {
+  const faqData = [
+    {
+      question: "Do I need to be a territorial resident?",
+      answer: "Most territorial programs require residency (often 6-12 months minimum) or substantial territorial operations. CanNor has more flexible requirements for businesses creating northern employment."
+    },
+    {
+      question: "Are programs available in remote communities?",
+      answer: "Yes. Northern programs are specifically designed for remote communities. Many offer higher support levels for businesses serving fly-in communities or particularly remote areas."
+    },
+    {
+      question: "Can non-Indigenous businesses access funding?",
+      answer: "Yes. General territorial business programs are available to all residents. However, Indigenous entrepreneurs often have access to additional funding streams and may receive priority consideration."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-20">
@@ -797,54 +829,22 @@ export default function TerritoriesSmallBusinessGrantsGuide() {
           </div>
         </section>
 
-        {/* FAQ Section */}
         <section id="faqs" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-
               <div className="space-y-4">
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-purple-600 mr-2 mt-1 flex-shrink-0" />
-                      Do I need to be a territorial resident?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Most territorial programs require residency (often 6-12 months minimum)
-                      or substantial territorial operations. CanNor has more flexible
-                      requirements for businesses creating northern employment.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-purple-600 mr-2 mt-1 flex-shrink-0" />
-                      Are programs available in remote communities?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes. Northern programs are specifically designed for remote
-                      communities. Many offer higher support levels for businesses
-                      serving fly-in communities or particularly remote areas.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-purple-600 mr-2 mt-1 flex-shrink-0" />
-                      Can non-Indigenous businesses access funding?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes. General territorial business programs are available to all
-                      residents. However, Indigenous entrepreneurs often have access to
-                      additional funding streams and may receive priority consideration.
-                    </p>
-                  </CardContent>
-                </Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold text-lg flex items-start">
+                        <HelpCircle className="w-5 h-5 text-purple-600 mr-2 mt-1 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

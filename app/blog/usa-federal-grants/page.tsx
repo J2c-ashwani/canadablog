@@ -14,9 +14,48 @@ export const metadata: Metadata = {
 }
 
 export default function USAFederalGrantsPage() {
+  const faqData = [
+    {
+      question: "Do I have to repay federal grants?",
+      answer: "True grants don't require repayment. However, you must use funds as specified and may have reporting requirements. Loans (like SBA 7a) must be repaid."
+    },
+    {
+      question: "Can startups apply for federal grants?",
+      answer: "Yes! SBIR Phase I is specifically designed for early-stage companies. You need a viable concept and qualified team, but don't need revenue or significant track record."
+    },
+    {
+      question: "How competitive are federal grants?",
+      answer: "SBIR acceptance rates vary from 10-25% depending on agency and topic. Strong technical proposals with clear commercialization plans have the best success."
+    },
+    {
+      question: "What is the difference between a grant and a contract?",
+      answer: "A grant is assistance to support a public purpose (you get money to do research). A contract is when the government buys goods or services from you (you get money to deliver a product)."
+    },
+    {
+      question: "Do I need a grant writer?",
+      answer: "It is not required, but highly recommended for complex programs like SBIR/STTR. The documentation is extensive and strict. Many professional grant writers specialize in specific agencies like NIH or DoD."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-blue-800 to-indigo-900 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -219,9 +258,17 @@ export default function USAFederalGrantsPage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Do I have to repay federal grants?</h3><p className="text-gray-700 mt-2 ml-7">True grants don&apos;t require repayment. However, you must use funds as specified and may have reporting requirements. Loans (like SBA 7a) must be repaid.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can startups apply for federal grants?</h3><p className="text-gray-700 mt-2 ml-7">Yes! SBIR Phase I is specifically designed for early-stage companies. You need a viable concept and qualified team, but don&apos;t need revenue or significant track record.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How competitive are federal grants?</h3><p className="text-gray-700 mt-2 ml-7">SBIR acceptance rates vary from 10-25% depending on agency and topic. Strong technical proposals with clear commercialization plans have the best success.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

@@ -14,9 +14,48 @@ export const metadata: Metadata = {
 }
 
 export default function StateLocalBusinessGrantsGuide() {
+  const faqData = [
+    {
+      question: "How do I find my state's programs?",
+      answer: "Search for '[Your State] economic development' or contact your state's Department of Commerce. Our state-by-state guides also list major programs and contacts."
+    },
+    {
+      question: "Can I combine state and federal programs?",
+      answer: "Yes! Most state programs can be combined with federal programs like SBA loans, SBIR grants, and tax credits. This 'stacking' is often the best approach for maximizing funding."
+    },
+    {
+      question: "What if I'm a small local business?",
+      answer: "Focus on local and municipal programs designed for small main street businesses. State programs often have high job creation thresholds (e.g., 50+ jobs) that favor larger projects."
+    },
+    {
+      question: "Are state grants taxable?",
+      answer: "Yes, generally. State grants are usually considered taxable income at the federal level, though some states may exempt them from state taxes. Tax credits, however, reduce your tax bill directly."
+    },
+    {
+      question: "Do I have to pay back state grants?",
+      answer: "No, grants do not need to be repaid as long as you meet the conditions (e.g., create the promised number of jobs). If you fail to meet the targets, 'clawback' provisions may require you to repay part or all of the funding."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-orange-600 to-red-700 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -216,9 +255,17 @@ export default function StateLocalBusinessGrantsGuide() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How do I find my state&apos;s programs?</h3><p className="text-gray-700 mt-2 ml-7">Search for &quot;[Your State] economic development&quot; or contact your state&apos;s Department of Commerce. Our state-by-state guides also list major programs.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can I combine state and federal programs?</h3><p className="text-gray-700 mt-2 ml-7">Yes! Most state programs can be combined with federal programs like SBA loans, SBIR grants, and tax credits. This is often the best approach for maximizing funding.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What if I&apos;m a small business?</h3><p className="text-gray-700 mt-2 ml-7">Focus on local and municipal programs designed for small businesses. State programs often have high job creation thresholds that favor larger projects.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold flex items-start">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Building, Users, Zap, Lightbulb, MapPin, Award } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Building, Users, Zap, Lightbulb, MapPin, Award, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -17,9 +17,48 @@ export const metadata: Metadata = {
 }
 
 export default function CanadaStartupFundingGrantsGuide() {
+  const faqData = [
+    {
+      question: "Is there 'free money' to start a business in Canada?",
+      answer: "Rarely. Most 'grants' for startups are actually cost-sharing programs (where you pay 50% and they pay 50%) or wage subsidies. The 'free money' usually comes in the form of services, mentorship, or tax credits (like SR&ED) rather than upfront cash checks."
+    },
+    {
+      question: "Does the government take equity in my company?",
+      answer: "No. Federal and provincial government funding is 'non-dilutive,' meaning you keep 100% of your shares. This is the biggest advantage over venture capital."
+    },
+    {
+      question: "Do I have to pay back CYBF / Futurpreneur loans?",
+      answer: "Yes. Futurpreneur and BDC startup loans must be repaid with interest. However, they are easier to qualify for than bank loans because they don't always require 2 years of financial history."
+    },
+    {
+      question: "Do I need a business plan?",
+      answer: "Absolutely. You cannot access any startup funding—grant or loan—without a solid business plan and 2-year cash flow projection. Lenders need to see how they will get their money back."
+    },
+    {
+      question: "What is the easiest grant to get?",
+      answer: "Hiring grants and wage subsidies (like the Student Work Placement Program or Canada Summer Jobs) are generally the most accessible and have the highest approval rates for startups."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-20">
@@ -558,6 +597,21 @@ export default function CanadaStartupFundingGrantsGuide() {
             </div>
           </div>
         </section>
+
+        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Startup Funding FAQs</h2>
+          <div className="space-y-6">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                  <HelpCircle className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
+                  {faq.question}
+                </h3>
+                <p className="text-gray-700 ml-9">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Strong Single CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-800">
