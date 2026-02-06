@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -442,222 +442,573 @@ export default function USDASBIRAgTechGrantsPage() {
                 </Card>
 
                 {/* USDA Priority Areas */}
-                <Card className="border-lime-200">
-                  <CardHeader className="bg-gradient-to-r from-lime-100 to-green-100">
-                    <div className="flex items-center mb-2">
-                      <Building className="w-6 h-6 text-lime-600 mr-3" />
-                      <CardTitle className="text-lime-700 text-2xl">USDA SBIR Priority Topic Areas 2026-2027</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-6">
-                    <div className="grid md:grid-cols-3 gap-4 text-sm">
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-2">Precision Agriculture:</h4>
-                        <ul className="space-y-1 text-gray-700">
-                          <li>• Crop sensors and monitoring systems</li>
-                          <li>• Precision irrigation water management</li>
-                          <li>• Variable rate application technology</li>
-                          <li>• Farm automation robotics</li>
-                          <li>• Decision support AI machine learning</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-2">Food Safety & Processing:</h4>
-                        <ul className="space-y-1 text-gray-700">
-                          <li>• Pathogen detection rapid testing</li>
-                          <li>• Food traceability blockchain</li>
-                          <li>• Post-harvest handling technology</li>
-                          <li>• Food processing innovation</li>
-                          <li>• Supply chain optimization logistics</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-2">Sustainable Agriculture:</h4>
-                        <ul className="space-y-1 text-gray-700">
-                          <li>• Soil health monitoring carbon sequestration</li>
-                          <li>• Integrated pest management biological</li>
-                          <li>• Livestock health monitoring welfare</li>
-                          <li>• Climate adaptation resilience technology</li>
-                          <li>• Rural broadband connectivity solutions</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
+              </section>
 
-        {/* Success Strategies Section */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">USDA SBIR Application Success Strategies 2026-2027</h2>
+              {/* USDA Deep Dive: The 10 Topic Areas */}
+              <section className="py-16 bg-white border-t border-gray-100">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-6xl mx-auto">
+                    <h2 className="text-3xl font-bold mb-6 text-gray-900 text-center">Which Topic Fits Your Startup? (The "8.X" Codes)</h2>
+                    <p className="text-gray-700 mb-12 text-center max-w-3xl mx-auto">
+                      USDA organizes funding into specific "Topic Areas." You must apply to the correct one.
+                      Choosing the wrong topic is an automatic rejection. Here is the cheat sheet.
+                    </p>
 
-              <div className="grid md:grid-cols-2 gap-8 mb-12">
-                <Card className="border-green-200">
-                  <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
-                    <CardTitle className="text-green-700 text-xl flex items-center">
-                      <CheckCircle className="w-6 h-6 mr-3" />
-                      ✅ Winning USDA SBIR Application Strategies
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="pt-6">
-                    <div className="space-y-4">
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
-                        <div>
-                          <strong className="text-gray-800">Strong Farmer Benefit Demonstration:</strong>
-                          <p className="text-sm text-gray-600 mt-1">Clearly articulate how technology improves farmer productivity, profitability, sustainability with quantified benefits: yield increases, cost reductions, labor savings validated through farmer testimonials</p>
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div className="bg-lime-50 rounded-xl p-6 border border-lime-200">
+                        <h3 className="text-xl font-bold text-lime-900 mb-3">8.1: Forests & Related Resources</h3>
+                        <p className="text-sm text-gray-700 mb-2"><strong>Focus:</strong> Wood utilization, forest health, wildfire manaagement.</p>
+                        <div className="bg-white p-3 rounded text-xs text-gray-600">
+                          <em>Example:</em> Drone reforestation technology or biodegradable packaging made from wood pulp.
                         </div>
                       </div>
 
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
-                        <div>
-                          <strong className="text-gray-800">On-Farm Testing and Validation:</strong>
-                          <p className="text-sm text-gray-600 mt-1">Provide field trial data proving technology works on actual farms in agricultural environments with farmer cooperator letters demonstrating adoption interest reducing USDA technical risk</p>
+                      <div className="bg-green-50 rounded-xl p-6 border border-green-200">
+                        <h3 className="text-xl font-bold text-green-900 mb-3">8.2: Plant Production & Protection (Biology)</h3>
+                        <p className="text-sm text-gray-700 mb-2"><strong>Focus:</strong> Crop breeding, genetics, biological pest control, pollination.</p>
+                        <div className="bg-white p-3 rounded text-xs text-gray-600">
+                          <em>Example:</em> CRISPR gene editing for drought-resistant wheat or pheromone traps for invasive beetles.
                         </div>
                       </div>
 
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
-                        <div>
-                          <strong className="text-gray-800">Clear Distribution Strategy:</strong>
-                          <p className="text-sm text-gray-600 mt-1">Identify farmer distribution channels: farm equipment dealers, cooperatives, ag retailers with partnership letters demonstrating market access for commercial launch</p>
+                      <div className="bg-emerald-50 rounded-xl p-6 border border-emerald-200">
+                        <h3 className="text-xl font-bold text-emerald-900 mb-3">8.3: Animal Production & Protection</h3>
+                        <p className="text-sm text-gray-700 mb-2"><strong>Focus:</strong> Livestock health, breeding, disease prevents, aquaculture.</p>
+                        <div className="bg-white p-3 rounded text-xs text-gray-600">
+                          <em>Example:</em> Wearable health monitors for dairy cows or oral vaccines for salmon farming.
                         </div>
                       </div>
 
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
-                        <div>
-                          <strong className="text-gray-800">Addressing USDA Priority Areas:</strong>
-                          <p className="text-sm text-gray-600 mt-1">Align innovation with USDA strategic priorities: American farmer competitiveness, food security, national security, healthy food production, domestic markets supporting rural prosperity</p>
+                      <div className="bg-teal-50 rounded-xl p-6 border border-teal-200">
+                        <h3 className="text-xl font-bold text-teal-900 mb-3">8.4: Conservation of Natural Resources</h3>
+                        <p className="text-sm text-gray-700 mb-2"><strong>Focus:</strong> Water quality, soil erosion, air pollution, climate adaptation.</p>
+                        <div className="bg-white p-3 rounded text-xs text-gray-600">
+                          <em>Example:</em> AI-driven irrigation to reduce water waste or biochar production systems.
+                        </div>
+                      </div>
+
+                      <div className="bg-cyan-50 rounded-xl p-6 border border-cyan-200">
+                        <h3 className="text-xl font-bold text-cyan-900 mb-3">8.5: Food Science & Nutrition</h3>
+                        <p className="text-sm text-gray-700 mb-2"><strong>Focus:</strong> Food safety, processing, packaging, allergy reduction.</p>
+                        <div className="bg-white p-3 rounded text-xs text-gray-600">
+                          <em>Example:</em> Rapid salmonella detection for poultry plants or extending shelf-life of berries without chemicals.
+                        </div>
+                      </div>
+
+                      <div className="bg-sky-50 rounded-xl p-6 border border-sky-200">
+                        <h3 className="text-xl font-bold text-sky-900 mb-3">8.6: Rural Development</h3>
+                        <p className="text-sm text-gray-700 mb-2"><strong>Focus:</strong> Any technology that improves life in rural communities (Broadband, energy, health).</p>
+                        <div className="bg-white p-3 rounded text-xs text-gray-600">
+                          <em>Example:</em> Telemedicine platforms for remote clinics or micro-grid energy systems for isolated farms.
+                        </div>
+                      </div>
+
+                      <div className="bg-indigo-50 rounded-xl p-6 border border-indigo-200">
+                        <h3 className="text-xl font-bold text-indigo-900 mb-3">8.12: Small & Mid-Sized Farms</h3>
+                        <p className="text-sm text-gray-700 mb-2"><strong>Focus:</strong> Tools specifically for smaller operations (under $250k revenue).</p>
+                        <div className="bg-white p-3 rounded text-xs text-gray-600">
+                          <em>Example:</em> Affordable harvesting robots (Tech typically costs $100k, you make it for $10k) or direct-to-consumer sales platforms.
+                        </div>
+                      </div>
+
+                      <div className="bg-purple-50 rounded-xl p-6 border border-purple-200">
+                        <h3 className="text-xl font-bold text-purple-900 mb-3">8.13: Plant Production (Engineering)</h3>
+                        <p className="text-sm text-gray-700 mb-2"><strong>Focus:</strong> Hardware, robotics, software, sensors for crops.</p>
+                        <div className="bg-white p-3 rounded text-xs text-gray-600">
+                          <em>Example:</em> Autonomous weeding robots, drone imagery analytics, or vertical farming (CEA) automation.
                         </div>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-red-200">
-                  <CardHeader className="bg-gradient-to-br from-red-50 to-orange-50">
-                    <CardTitle className="text-red-700 text-xl flex items-center">
-                      <AlertCircle className="w-6 h-6 mr-3" />
-                      ❌ Common USDA SBIR Application Mistakes
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="pt-6">
-                    <div className="space-y-4">
-                      <div className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5 flex-shrink-0" />
-                        <div>
-                          <strong className="text-gray-800">Weak Farmer Benefit:</strong>
-                          <p className="text-sm text-gray-600 mt-1">Technology solving academic problem without clear farmer benefit or adoption pathway. Must demonstrate how innovation helps farmers improve operations profitability competitiveness</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5 flex-shrink-0" />
-                        <div>
-                          <strong className="text-gray-800">No On-Farm Validation:</strong>
-                          <p className="text-sm text-gray-600 mt-1">Laboratory-only testing without field trials. USDA needs proof technology works on actual farms in agricultural conditions with farmer feedback before funding commercialization</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5 flex-shrink-0" />
-                        <div>
-                          <strong className="text-gray-800">Vague Commercialization Plan:</strong>
-                          <p className="text-sm text-gray-600 mt-1">No identified distribution channel or go-to-market strategy. Need specific partnerships with farm equipment dealers cooperatives ag retailers demonstrating farmer access and adoption pathway</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Dual CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-green-700 to-emerald-900">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Ready to Access USDA SBIR Funding and Win AgTech Grants?
-              </h2>
-              <p className="text-xl text-green-100 mb-8">
-                Get our complete USDA SBIR application guide with Phase I/II templates or work with AgTech specialists for expert proposal support.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
-                <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
-                  <h4 className="font-semibold text-white mb-2 text-lg">📥 Free USDA SBIR Guide</h4>
-                  <p className="text-green-100 text-sm mb-4">
-                    Download comprehensive guide with AgTech templates and farmer benefit strategies.
-                  </p>
-                  <Button size="lg" className="w-full bg-white text-green-700 hover:bg-gray-100 font-semibold" asChild>
-                    <Link href="/download/usda-sbir-agtech-guide">
-                      <Download className="w-5 h-5 mr-2" />
-                      Download Free USDA SBIR Guide
-                    </Link>
-                  </Button>
-                  <p className="text-xs text-green-200 mt-3">Instant PDF • No credit card • 100% free</p>
-                </div>
-
-                <div className="bg-yellow-500/20 backdrop-blur border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
-                  <div className="bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">
-                    ⭐ RECOMMENDED FOR AGTECH STARTUPS
-                  </div>
-                  <h4 className="font-semibold text-white mb-2 text-lg">🎯 Expert SBIR Proposal Support</h4>
-                  <p className="text-yellow-100 text-sm mb-4">
-                    Work with USDA SBIR specialists understanding farmer needs and agricultural markets. We help startups develop winning proposals with 75%+ approval rates.
-                  </p>
-                  <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold shadow-lg" asChild>
-                    <Link href="/contact?service=usda-sbir-proposal-help">
-                      <Users className="w-5 h-5 mr-2" />
-                      Get Expert Proposal Help
-                    </Link>
-                  </Button>
-                  <p className="text-xs text-yellow-200 mt-3">Free consultation • 75% success rate • AgTech expertise</p>
-                </div>
-              </div>
-
-              <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6">
-                <p className="text-green-200 text-sm mb-3">
-                  <strong className="text-white">Why Choose Our USDA SBIR Services:</strong>
-                </p>
-                <div className="grid md:grid-cols-3 gap-4 text-xs text-green-200">
-                  <div>
-                    ✓ 75+ USDA SBIR awards won<br />
-                    ✓ $40M+ total funding secured<br />
-                    ✓ 75% Phase I approval rate
-                  </div>
-                  <div>
-                    ✓ All AgTech sectors<br />
-                    ✓ Former USDA program officers<br />
-                    ✓ Farmer network expertise
-                  </div>
-                  <div>
-                    ✓ Phase I → Phase II continuity<br />
-                    ✓ On-farm testing support<br />
-                    ✓ Distribution partnerships
                   </div>
                 </div>
-              </div>
+              </section>
 
-              <p className="text-green-300 text-sm">
-                🌾 <strong>USDA SBIR Grant Assistance:</strong> Phase I $125K • Phase II $575K • Precision farming •
-                Food safety technology • Sustainable agriculture • Farm automation • Crop sensors • Livestock monitoring •
-                Rural broadband • Farmer benefit • Distribution strategy • NIFA grants supporting American farmers
-                ranchers rural communities enhancing productivity profitability sustainability competitiveness
-              </p>
+
+              {/* Step-by-Step Application Guide */}
+              <section className="py-16 bg-green-50 border-y border-gray-200">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-4xl mx-auto">
+                    <h2 className="text-3xl font-bold mb-10 text-center text-green-900">How to Apply: The USDA 5-Step Gauntlet</h2>
+                    <p className="text-center text-gray-700 mb-12">
+                      The application process is bureaucracy-heavy. Start at least 6 weeks before the deadline.
+                    </p>
+
+                    <div className="space-y-12">
+                      <div className="flex gap-6">
+                        <div className="shrink-0 w-16 h-16 rounded-full bg-green-600 text-white flex items-center justify-center text-2xl font-bold shadow-lg">1</div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-gray-900 mb-2">Get Your Numbers (Weeks 1-2)</h3>
+                          <p className="text-gray-700 mb-3">
+                            You cannot simply "submit." You need a digital identity. This process can take 4 weeks due to government backlogs.
+                          </p>
+                          <ul className="list-disc pl-5 space-y-2 text-gray-600">
+                            <li><strong>UEI (Unique Entity ID):</strong> Replaces the old DUNS number. Get this at SAM.gov.</li>
+                            <li><strong>SAM.gov Registration:</strong> The hardest part. Requires tax ID (EIN) and bank info. <em>Free</em> (do not pay scammers).</li>
+                            <li><strong>Grants.gov Account:</strong> This is where you actually upload the PDF proposal.</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-6">
+                        <div className="shrink-0 w-16 h-16 rounded-full bg-green-600 text-white flex items-center justify-center text-2xl font-bold shadow-lg">2</div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-gray-900 mb-2">Contact the Program Leader (Week 3)</h3>
+                          <p className="text-gray-700 mb-3">
+                            USDA is unique: You <em>can</em> and <em>should</em> email the National Program Leader (NPL) for your topic area before applying.
+                          </p>
+                          <div className="bg-white p-4 rounded-lg border border-green-200 text-sm italic text-gray-600">
+                            "Dear Dr. [Name], I am planning a proposal for Topic 8.12 regarding a robotic harvester. Attached is a 1-page executive summary. Does this fit your topic's goals?"
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-6">
+                        <div className="shrink-0 w-16 h-16 rounded-full bg-green-600 text-white flex items-center justify-center text-2xl font-bold shadow-lg">3</div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-gray-900 mb-2">Secure Letters of Support (Week 4)</h3>
+                          <p className="text-gray-700">
+                            USDA reviewers want to see that <em>farmers</em> want this. Get 3 letters:
+                          </p>
+                          <ul className="list-disc pl-5 space-y-1 text-gray-600 mt-2">
+                            <li>One from a potential customer (Farmer/Grower).</li>
+                            <li>One from a distribution partner (Co-op/Retailer).</li>
+                            <li>One from a technical advisor (University Extension Agent).</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-6">
+                        <div className="shrink-0 w-16 h-16 rounded-full bg-green-600 text-white flex items-center justify-center text-2xl font-bold shadow-lg">4</div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-gray-900 mb-2">Write the 17-Page Narrative (Weeks 4-6)</h3>
+                          <p className="text-gray-700">
+                            Strict format involved. 12-point font. 1-inch margins.
+                          </p>
+                          <ul className="list-disc pl-5 space-y-1 text-gray-600 mt-2">
+                            <li><strong>Pages 1-5:</strong> The Problem & Opportunity (Why do farmers need this?).</li>
+                            <li><strong>Pages 6-12:</strong> Technical Objectives & Work Plan (What will you build?).</li>
+                            <li><strong>Pages 13-17:</strong> Commercialization Strategy (How will you sell it?).</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* TABA Section */}
+              <section className="py-16 bg-white">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-4xl mx-auto text-center">
+                    <h2 className="text-3xl font-bold mb-6 text-gray-900">Don't Leave Money on the Table (TABA)</h2>
+                    <p className="text-xl text-gray-600 mb-8">
+                      Request "Technical and Business Assistance" (TABA) funding on top of your grant.
+                    </p>
+
+                    <div className="grid md:grid-cols-2 gap-6 text-left">
+                      <Card className="border-green-200 bg-green-50">
+                        <CardHeader>
+                          <CardTitle className="text-green-800">Phase I TABA: $6,500</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-gray-700 mb-4">
+                            Use this for:
+                          </p>
+                          <ul className="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Market research reports.</li>
+                            <li>Consulting fees for commercialization plans.</li>
+                            <li>IP strategy initial review.</li>
+                          </ul>
+                          <p className="mt-4 text-sm font-bold text-green-700">Does not reduce your $125k research budget!</p>
+                        </CardContent>
+                      </Card>
+
+                      <Card className="border-emerald-200 bg-emerald-50">
+                        <CardHeader>
+                          <CardTitle className="text-emerald-800">Phase II TABA: $50,000</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-gray-700 mb-4">
+                            Use this for:
+                          </p>
+                          <ul className="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Patent filing costs (Legal).</li>
+                            <li>Marketing materials & website dev.</li>
+                            <li>Travel to trade shows.</li>
+                          </ul>
+                          <p className="mt-4 text-sm font-bold text-emerald-700">Crucial for "Post-Award" success.</p>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Comparison Table: USDA vs NSF vs DOE */}
+              <section className="py-16 bg-gray-50 border-y border-gray-200">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-6xl mx-auto">
+                    <div className="text-center mb-10">
+                      <h2 className="text-3xl font-bold text-gray-900 mb-4">AgTech Funding Smackdown: USDA vs. NSF vs. DOE</h2>
+                      <p className="text-lg text-gray-600">
+                        You can apply to multiple agencies for the same idea (but can only accept one award).
+                        Which agency is your best bet?
+                      </p>
+                    </div>
+
+                    <div className="overflow-x-auto">
+                      <table className="w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <thead>
+                          <tr className="bg-gray-100 border-b border-gray-200 text-left">
+                            <th className="p-4 text-gray-900 font-bold">Feature</th>
+                            <th className="p-4 text-green-700 font-bold border-l border-green-100 bg-green-50">USDA (NIFA)</th>
+                            <th className="p-4 text-gray-700 font-bold border-l">NSF (Science)</th>
+                            <th className="p-4 text-gray-700 font-bold border-l">DOE (Energy)</th>
+                          </tr>
+                        </thead>
+                        <tbody className="text-sm">
+                          <tr className="border-b border-gray-100">
+                            <td className="p-4 font-semibold text-gray-900">Best For...</td>
+                            <td className="p-4 border-l border-green-50 bg-green-50/30 font-semibold text-green-800">Direct Farmer Benefit</td>
+                            <td className="p-4 border-l">High-Risk Science / Platform Tech</td>
+                            <td className="p-4 border-l">Biofuels / Clean Energy</td>
+                          </tr>
+                          <tr className="border-b border-gray-100">
+                            <td className="p-4 font-semibold text-gray-900">Specific vs. Open</td>
+                            <td className="p-4 border-l border-green-50 bg-green-50/30">VERY Specific Topics</td>
+                            <td className="p-4 border-l">Topic Agnostic (Open)</td>
+                            <td className="p-4 border-l">Specific Topics</td>
+                          </tr>
+                          <tr className="border-b border-gray-100">
+                            <td className="p-4 font-semibold text-gray-900">Phase I Award</td>
+                            <td className="p-4 border-l border-green-50 bg-green-50/30">$125,000</td>
+                            <td className="p-4 border-l">$275,000</td>
+                            <td className="p-4 border-l">$200,000 - $250,000</td>
+                          </tr>
+                          <tr className="border-b border-gray-100">
+                            <td className="p-4 font-semibold text-gray-900">Phase I Duration</td>
+                            <td className="p-4 border-l border-green-50 bg-green-50/30">8 Months</td>
+                            <td className="p-4 border-l">6-12 Months</td>
+                            <td className="p-4 border-l">6-12 Months</td>
+                          </tr>
+                          <tr className="border-b border-gray-100">
+                            <td className="p-4 font-semibold text-gray-900">Program Officer</td>
+                            <td className="p-4 border-l border-green-50 bg-green-50/30">Highly Accessible (Email them!)</td>
+                            <td className="p-4 border-l">Less Accessible</td>
+                            <td className="p-4 border-l">Variable</td>
+                          </tr>
+                          <tr>
+                            <td className="p-4 font-semibold text-gray-900">Outsourcing Cap</td>
+                            <td className="p-4 border-l border-green-50 bg-green-50/30 text-green-700 font-bold">33% (Strict)</td>
+                            <td className="p-4 border-l">33% (Strict)</td>
+                            <td className="p-4 border-l">Flexible</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+
+              {/* Success Strategies Section */}
+              <section className="py-16 bg-white">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-6xl mx-auto">
+                    <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">USDA SBIR Application Success Strategies 2026-2027</h2>
+
+                    <div className="grid md:grid-cols-2 gap-8 mb-12">
+                      <Card className="border-green-200">
+                        <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
+                          <CardTitle className="text-green-700 text-xl flex items-center">
+                            <CheckCircle className="w-6 h-6 mr-3" />
+                            ✅ Winning USDA SBIR Application Strategies
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent className="pt-6">
+                          <div className="space-y-4">
+                            <div className="flex items-start">
+                              <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                              <div>
+                                <strong className="text-gray-800">Strong Farmer Benefit Demonstration:</strong>
+                                <p className="text-sm text-gray-600 mt-1">Clearly articulate how technology improves farmer productivity, profitability, sustainability with quantified benefits: yield increases, cost reductions, labor savings validated through farmer testimonials</p>
+                              </div>
+                            </div>
+
+                            <div className="flex items-start">
+                              <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                              <div>
+                                <strong className="text-gray-800">On-Farm Testing and Validation:</strong>
+                                <p className="text-sm text-gray-600 mt-1">Provide field trial data proving technology works on actual farms in agricultural environments with farmer cooperator letters demonstrating adoption interest reducing USDA technical risk</p>
+                              </div>
+                            </div>
+
+                            <div className="flex items-start">
+                              <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                              <div>
+                                <strong className="text-gray-800">Clear Distribution Strategy:</strong>
+                                <p className="text-sm text-gray-600 mt-1">Identify farmer distribution channels: farm equipment dealers, cooperatives, ag retailers with partnership letters demonstrating market access for commercial launch</p>
+                              </div>
+                            </div>
+
+                            <div className="flex items-start">
+                              <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                              <div>
+                                <strong className="text-gray-800">Addressing USDA Priority Areas:</strong>
+                                <p className="text-sm text-gray-600 mt-1">Align innovation with USDA strategic priorities: American farmer competitiveness, food security, national security, healthy food production, domestic markets supporting rural prosperity</p>
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      <Card className="border-red-200">
+                        <CardHeader className="bg-gradient-to-br from-red-50 to-orange-50">
+                          <CardTitle className="text-red-700 text-xl flex items-center">
+                            <AlertCircle className="w-6 h-6 mr-3" />
+                            ❌ Common USDA SBIR Application Mistakes
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent className="pt-6">
+                          <div className="space-y-4">
+                            <div className="flex items-start">
+                              <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5 flex-shrink-0" />
+                              <div>
+                                <strong className="text-gray-800">Weak Farmer Benefit:</strong>
+                                <p className="text-sm text-gray-600 mt-1">Technology solving academic problem without clear farmer benefit or adoption pathway. Must demonstrate how innovation helps farmers improve operations profitability competitiveness</p>
+                              </div>
+                            </div>
+
+                            <div className="flex items-start">
+                              <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5 flex-shrink-0" />
+                              <div>
+                                <strong className="text-gray-800">No On-Farm Validation:</strong>
+                                <p className="text-sm text-gray-600 mt-1">Laboratory-only testing without field trials. USDA needs proof technology works on actual farms in agricultural conditions with farmer feedback before funding commercialization</p>
+                              </div>
+                            </div>
+
+                            <div className="flex items-start">
+                              <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5 flex-shrink-0" />
+                              <div>
+                                <strong className="text-gray-800">Vague Commercialization Plan:</strong>
+                                <p className="text-sm text-gray-600 mt-1">No identified distribution channel or go-to-market strategy. Need specific partnerships with farm equipment dealers cooperatives ag retailers demonstrating farmer access and adoption pathway</p>
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* FAQ Section */}
+              <section className="py-16 bg-white border-t border-gray-200">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-4xl mx-auto">
+                    <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">USDA SBIR Frequently Asked Questions</h2>
+
+                    <div className="space-y-8">
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                          <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
+                          How strict is the 33% outsourcing limit?
+                        </h3>
+                        <p className="text-gray-700 ml-8">
+                          Extremely. For Phase I, the small business <strong>must perform at least 67%</strong> of the work (budget-wise).
+                          You can only pay consultants/universities/testing labs 33% of the total $125k.
+                          If you need more help, consider STTR (allows 60% outsourcing) or ensure you hire the consultants as W-2 employees.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                          <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
+                          Can I buy equipment with the grant?
+                        </h3>
+                        <p className="text-gray-700 ml-8">
+                          Generally, no. USDA SBIR funds are for <em>research</em> (labor, materials, testing).
+                          They do not want you buying a tractor or a $50k drone.
+                          You can lease equipment for the duration of the project, or pay for "machine time," but capital purchases are usually disallowed.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                          <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
+                          Do I need a PhD on the team?
+                        </h3>
+                        <p className="text-gray-700 ml-8">
+                          No, but you need "credible expertise." If you are building an AI crop sensor, you need a software engineer and an agronomist.
+                          If you lack the academic credentials, partner with a University Extension specialist as a consultant.
+                          Their letter of support validates your scientific approach.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                          <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
+                          What if my "farm" is indoors (Vertical Farming)?
+                        </h3>
+                        <p className="text-gray-700 ml-8">
+                          Totally fine. USDA funds Controlled Environment Agriculture (CEA), hydroponics, aquaponics, and vertical farming.
+                          Focus on Topic 8.13 (Plant Production/Engineering).
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                          <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
+                          Is there an audit?
+                        </h3>
+                        <p className="text-gray-700 ml-8">
+                          Yes. If you win, you must track every hour worked and every dollar spent.
+                          You need a timesheet system (not just a spreadsheet) compliant with federal regulations.
+                          USDA is grant-based, so you drawdown funds as you spend them.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                          <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
+                          Can I apply if I am a sole proprietor?
+                        </h3>
+                        <p className="text-gray-700 ml-8">
+                          Yes, but you must be a registered business entity (LLC, S-Corp, etc.) by the time of award.
+                          The PI (Principal Investigator) must be primarily employed (51%) by the small business at the time of award.
+                          So, don't quit your day job until you win, but be ready to quit if you do win.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                          <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
+                          Does USDA require "Matching Funds"?
+                        </h3>
+                        <p className="text-gray-700 ml-8">
+                          No. Unlike some state grants, the USDA SBIR does not require you to bring your own cash to the table.
+                          However, "investor interest" helps. If you have a Letter of Intent from an angel investor saying "We will invest $50k if they win Phase I," that powerfully validates commercial potential.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                          <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
+                          Can I use the grant to pay for patent lawyers?
+                        </h3>
+                        <p className="text-gray-700 ml-8">
+                          Only if you use the <strong>TABA</strong> funds (see above). You cannot use the main $125k research budget for legal fees or patent filing.
+                          This is why requesting the extra $6,500 TABA supplement is essentially mandatory for smart applicants.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                          <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
+                          How long does it take to get paid?
+                        </h3>
+                        <p className="text-gray-700 ml-8">
+                          It is slow. If you apply in September, you won't know if you won until March/April.
+                          If you win, the first check won't arrive until June/July.
+                          Plan your cash flow accordingly; this is not "fast cash."
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                          <HelpCircle className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" />
+                          Is there a "Phase III"?
+                        </h3>
+                        <p className="text-gray-700 ml-8">
+                          Sort of. "Phase III" just means "Sales." USDA does not give you more money.
+                          Phase III is when you sell your robot to John Deere or your sensor to 1,000 farmers.
+                          However, once you have Phase I/II status, you have special "sole-source" contracting rights with the federal government, meaning they can buy from you without a bidding war.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Dual CTA Section */}
+              <section className="py-20 bg-gradient-to-r from-green-700 to-emerald-900">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-4xl mx-auto text-center text-white">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                      Ready to Access USDA SBIR Funding and Win AgTech Grants?
+                    </h2>
+                    <p className="text-xl text-green-100 mb-8">
+                      Get our complete USDA SBIR application guide with Phase I/II templates or work with AgTech specialists for expert proposal support.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+                      <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
+                        <h4 className="font-semibold text-white mb-2 text-lg">📥 Free USDA SBIR Guide</h4>
+                        <p className="text-green-100 text-sm mb-4">
+                          Download comprehensive guide with AgTech templates and farmer benefit strategies.
+                        </p>
+                        <Button size="lg" className="w-full bg-white text-green-700 hover:bg-gray-100 font-semibold" asChild>
+                          <Link href="/download/usda-sbir-agtech-guide">
+                            <Download className="w-5 h-5 mr-2" />
+                            Download Free USDA SBIR Guide
+                          </Link>
+                        </Button>
+                        <p className="text-xs text-green-200 mt-3">Instant PDF • No credit card • 100% free</p>
+                      </div>
+
+                      <div className="bg-yellow-500/20 backdrop-blur border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
+                        <div className="bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">
+                          ⭐ RECOMMENDED FOR AGTECH STARTUPS
+                        </div>
+                        <h4 className="font-semibold text-white mb-2 text-lg">🎯 Expert SBIR Proposal Support</h4>
+                        <p className="text-yellow-100 text-sm mb-4">
+                          Work with USDA SBIR specialists understanding farmer needs and agricultural markets. We help startups develop winning proposals with 75%+ approval rates.
+                        </p>
+                        <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold shadow-lg" asChild>
+                          <Link href="/contact?service=usda-sbir-proposal-help">
+                            <Users className="w-5 h-5 mr-2" />
+                            Get Expert Proposal Help
+                          </Link>
+                        </Button>
+                        <p className="text-xs text-yellow-200 mt-3">Free consultation • 75% success rate • AgTech expertise</p>
+                      </div>
+                    </div>
+
+                    <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6">
+                      <p className="text-green-200 text-sm mb-3">
+                        <strong className="text-white">Why Choose Our USDA SBIR Services:</strong>
+                      </p>
+                      <div className="grid md:grid-cols-3 gap-4 text-xs text-green-200">
+                        <div>
+                          ✓ 75+ USDA SBIR awards won<br />
+                          ✓ $40M+ total funding secured<br />
+                          ✓ 75% Phase I approval rate
+                        </div>
+                        <div>
+                          ✓ All AgTech sectors<br />
+                          ✓ Former USDA program officers<br />
+                          ✓ Farmer network expertise
+                        </div>
+                        <div>
+                          ✓ Phase I → Phase II continuity<br />
+                          ✓ On-farm testing support<br />
+                          ✓ Distribution partnerships
+                        </div>
+                      </div>
+                    </div>
+
+                    <p className="text-green-300 text-sm">
+                      🌾 <strong>USDA SBIR Grant Assistance:</strong> Phase I $125K • Phase II $575K • Precision farming •
+                      Food safety technology • Sustainable agriculture • Farm automation • Crop sensors • Livestock monitoring •
+                      Rural broadband • Farmer benefit • Distribution strategy • NIFA grants supporting American farmers
+                      ranchers rural communities enhancing productivity profitability sustainability competitiveness
+                    </p>
+                  </div>
+                </div>
+              </section>
+
             </div>
-          </div>
-        </section>
-      </div>
-      <Footer />
-    </>
-  )
+            <Footer />
+          </>
+          )
 }
