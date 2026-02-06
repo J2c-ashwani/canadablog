@@ -351,6 +351,73 @@ export default function CanadaGrowthExpansionGrantsGuide() {
           </div>
         </section>
 
+        {/* Deep Dive Text Content - SEO & Authority */}
+        <section className="py-20 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto prose prose-lg prose-emerald text-gray-700">
+              <h2>The Regional Playbook: How to Win "Scale-Up" Funding</h2>
+              <p>
+                While federal programs like <strong>SR&ED</strong> or <strong>IRAP</strong> have the same rules across the country, Expansion Funding is different. It is administered by <strong>Regional Development Agencies (RDAs)</strong>.
+              </p>
+              <p>
+                This means a manufacturing plant in <strong>Guelph, Ontario</strong> operates under completely different rules than a software firm in <strong>Kelowna, BC</strong>.
+              </p>
+
+              <h3>1. FedDev Ontario: The "Jobs" Focus</h3>
+              <p>
+                <strong>FedDev</strong> is the largest RDA. Their mandate is heavily skewed toward job creation in Southern Ontario (the manufacturing heartland).
+              </p>
+              <ul>
+                <li><strong>The Metric:</strong> They rarely fund projects that do not create net new jobs. Efficiency is good, but "Employment" is better.</li>
+                <li><strong>The Strategy:</strong> In your BSP application to FedDev, explicitly calculate the "Cost Per Job." If you are asking for $1M and creating 10 jobs, that is $100k/job. This is a reasonable metric. If you are asking for $1M and creating 1 job, you will be rejected.</li>
+              </ul>
+
+              <h3>2. PrairiesCan: The "Diversification" Focus</h3>
+              <p>
+                For Alberta, Saskatchewan, and Manitoba, the mandate is different. The economy is historically over-reliant on Oil & Gas and Agriculture.
+              </p>
+              <ul>
+                <li><strong>The Metric:</strong> "Economic Diversification." PrairiesCan loves projects that build <em>new</em> industries (e.g., a Video Game studio in Calgary or a Plant-Protein facility in Winnipeg).</li>
+                <li><strong>The Strategy:</strong> Highlight how your expansion insulates the local economy from commodity price shocks.</li>
+              </ul>
+
+              <h3>3. PacifiCan: The "Green & Tech" Focus</h3>
+              <p>
+                British Columbia's agency, <strong>PacifiCan</strong>, prioritizes Clean Technology and Digital Adoption.
+              </p>
+              <ul>
+                <li><strong>The Metric:</strong> "Environmental Impact" and "Export Capabilities." Because BC is Canada's gateway to Asia, showing export potential to Japan/Korea/China is a major winning factor.</li>
+              </ul>
+
+              <h3>4. ACOA: The "Community" Focus</h3>
+              <p>
+                In Atlantic Canada, <strong>ACOA</strong> is arguably the most flexible and aggressive lender. Because the population is smaller, they fund a wider range of "Main Street" businesses that might be considered too small in Ontario.
+              </p>
+              <p>
+                <strong>Expert Tip:</strong> ACOA officers are very hands-on. Always call them before submitting. They will often guide you on exactly how to structure the project.
+              </p>
+
+              <h2>Structuring Your "Stack"</h2>
+              <p>
+                The secret to successfully funding a $5M expansion is "Stacking." You never ask one source for 100% of the money.
+              </p>
+              <h3>The "Gold Standard" Expansion Stack:</h3>
+              <ol>
+                <li><strong>35% - RDA (BSP Program):</strong> Interest-free loan. This is your "equity replacement."</li>
+                <li><strong>40% - BDC (Commercial Loan):</strong> Interest-bearing, but long amortization (up to 25 years for real estate). BDC loves seeing RDA involvement because it de-risks the deal.</li>
+                <li><strong>15% - EDC (Export Guarantee):</strong> If you are buying equipment to produce goods for export, EDC guarantees the bank loan.</li>
+                <li><strong>10% - Your Cash:</strong> You must have some skin in the game. But with this stack, you drive a $5M project with only $500k of your own cash.</li>
+              </ol>
+
+              <h3>Common Pitfalls to Avoid</h3>
+              <ul>
+                <li><strong>The "Refinancing" Trap:</strong> You cannot use government grants to pay off existing debt. The money must be used for <em>new</em> costs (buying a new machine, not paying off the old one).</li>
+                <li><strong>The "Timing" Trap:</strong> RDA funding is retroactive. You cannot buy the machine today and apply tomorrow. You must apply, get approval (or at least an "acknowledgement of receipt"), and <em>then</em> spend the money. Any cost incurred before the application date is ineligible.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {/* Detailed FAQ Section */}
         <section className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

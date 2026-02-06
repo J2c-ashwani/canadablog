@@ -347,6 +347,84 @@ export default function CanadaInnovationGrantsGuide() {
           </div>
         </section>
 
+        {/* Deep Dive Text Content - SEO & Authority */}
+        <section className="py-20 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto prose prose-lg prose-indigo text-gray-700">
+              <h2>The T661 Masterclass: How to Write a Winning Narrative</h2>
+              <p>
+                The <strong>T661 Form</strong> is the heart of your SR&ED claim. Specifically, "Part 2: Project Information". This is where you must write a technical essay (approx. 1400 words) answering three questions.
+              </p>
+              <p>
+                <strong>Warning:</strong> Most founders fail here because they write about "Business Success" ("We increased sales by 20%"). The CRA does not care about sales. They care about <em>Technical Failure</em>.
+              </p>
+
+              <h3>Question 1: Scientific or Technological Uncertainty</h3>
+              <p>
+                You must describe the technical problems you faced that could not be solved by standard practice.
+              </p>
+              <ul>
+                <li><strong>Bad:</strong> "We needed to build a faster database." (This is a goal, not an uncertainty).</li>
+                <li><strong>Good:</strong> "We attempted to shard our PostgreSQL database, but standard horizontal partitioning failed due to cross-shard join latency exceeding 200ms. We were uncertain if a custom middleware layer could route queries efficiently enough to meet our SLA."</li>
+              </ul>
+
+              <h3>Question 2: Work Performed</h3>
+              <p>
+                Describe the experiments, testing, and analysis you did to overcome the uncertainty.
+              </p>
+              <ul>
+                <li><strong>Focus on the Iterations:</strong> "In Experiment A, we tried X, and it failed (System crashed). In Experiment B, we modified the cache coherence protocol, and latency dropped by 10% (Partial Success). In Experiment C...."</li>
+                <li><strong>Logs & Git Commits:</strong> Your technical narrative should be backed by time-stamped logs (Git commit history, Jira tickets, Lab notebooks). If you are audited, the CRA will ask for these.</li>
+              </ul>
+
+              <h3>Question 3: Technological Advancement</h3>
+              <p>
+                What new knowledge did you gain? This does not mean you "Succeeded". It means you <em>learned</em>.
+              </p>
+              <p>
+                "We discovered that using a bloom filter in the routing layer reduced load by 40%, a technique not documented in standard PostgreSQL manuals for this specific use case."
+              </p>
+
+              <h2>Sector Specific Examples</h2>
+
+              <h3>1. The Software "CRUD" Trap</h3>
+              <p>
+                <strong>The Trap:</strong> Building a standard tailored software application (e.g., a CRM for dentists) is almost never SR&ED. Using existing APIs to glue together features is "Standard Practice."
+              </p>
+              <p>
+                <strong>The Exception:</strong> If you are building a CRM that uses a novel AI algorithm to predict patient cancellations, and existing AI models failed to handle the sparse data, <em>that algorithm integration</em> is SR&ED.
+              </p>
+
+              <h3>2. Manufacturing: The "Trial Run"</h3>
+              <p>
+                <strong>The Scenario:</strong> You are a plastics manufacturer. You buy a new injection molding machine.
+              </p>
+              <p>
+                <strong>Is it SR&ED?</strong> NO. Buying the machine is capital expeniture (CapEx).
+              </p>
+              <p>
+                <strong>The Twist:</strong> You try to use a new biodegradable polymer in the machine. It clogs. You spend 6 months modifying the screw design and heating profile to make the new material flow. <strong>All that time (and the wasted material) is SR&ED.</strong>
+              </p>
+
+              <h3>3. Agriculture (AgTech)</h3>
+              <p>
+                <strong>The Scenario:</strong> A farmer tests a new fertilizer.
+              </p>
+              <p>
+                <strong>Is it SR&ED?</strong> Maybe. If it is just "A vs B" testing, probably not. But if you are developing a new robotic harvesting arm and you have to write custom vision code to distinguish between a green tomato and a red one in variable lighting conditions, that IS SR&ED.
+              </p>
+
+              <h2>The "Patent Box" (Future Outlook)</h2>
+              <p>
+                The Canadian government is currently consulting on a "Patent Box" regime. This would lower the corporate tax rate on income derived from Intellectual Property (IP) developed in Canada.
+              </p>
+              <p>
+                <strong>Why this matters:</strong> Currently, SR&ED helps you <em>build</em> the IP (Cost side). A Patent Box would help you <em>profit</em> from the IP (Revenue side). For 2026, keep a close eye on the federal budget for this announcement.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Detailed FAQ Section */}
         <section className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

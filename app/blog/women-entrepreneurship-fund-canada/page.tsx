@@ -212,6 +212,87 @@ export default function WomenEntrepreneurshipFundGuide() {
           </div>
         </section>
 
+        {/* Deep Dive Text Content - SEO & Authority */}
+        <section className="py-20 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto prose prose-lg prose-red text-gray-700">
+              <h2>The "Fake Grant" Epidemic</h2>
+              <p>
+                Because the <strong>Women Entrepreneurship Fund</strong> was so popular, it has become a magnet for scams. At <em>Canada Grants Guide</em>, we receive emails weekly from founders asking if an "Approval Email" they received is real.
+              </p>
+
+              <div className="bg-red-50 p-6 rounded-lg border-l-4 border-red-500 not-prose my-8">
+                <h4 className="font-bold text-red-900 mb-4 text-xl">How to Spot a WEF Scam</h4>
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <AlertTriangle className="w-6 h-6 text-red-600 mr-3 flex-shrink-0" />
+                    <div>
+                      <strong className="text-red-900">The "Processing Fee":</strong>
+                      <p className="text-sm text-red-800">Real government grants NEVER charge a fee to apply. If a website asks for $29, $49, or $99 to "Process your Application," it is a scam.</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <AlertTriangle className="w-6 h-6 text-red-600 mr-3 flex-shrink-0" />
+                    <div>
+                      <strong className="text-red-900">The "Guaranteed" Approval:</strong>
+                      <p className="text-sm text-red-800">No grant is guaranteed. The original WEF had a success rate of less than 10%. Anyone promising you money is lying.</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <AlertTriangle className="w-6 h-6 text-red-600 mr-3 flex-shrink-0" />
+                    <div>
+                      <strong className="text-red-900">The "Facebook Agent":</strong>
+                      <p className="text-sm text-red-800">Government officials do not message you on Facebook or Instagram. Official communication comes from an <code>@canada.ca</code> email address.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <h2>Lessons from the "Winners" (2018/2019)</h2>
+              <p>
+                Although the fund is closed, looking at who won helps you understand what the government funds <em>today</em> in other programs.
+              </p>
+              <p>
+                When we analyzed the ~300 winning companies from the original cohort, two patterns emerged:
+              </p>
+
+              <h3>1. The "Export" Pivot</h3>
+              <p>
+                Companies that won didn't just ask for money to "sustain" operations. they asked for money to <strong>Export</strong>.
+                <br />
+                <em>Example:</em> A female-led organic skincare brand in Vancouver didn't ask for rent money. They asked for money to certify their products for the EU market. Result: <strong>Funded</strong>.
+              </p>
+              <p>
+                <strong>Lesson for 2026:</strong> If you want funding today (from CanExport or BDC), frame your request around "Entering New Markets".
+              </p>
+
+              <h3>2. The "IP" Pivot</h3>
+              <p>
+                Winners often owned their own Intellectual Property.
+                <br />
+                <em>Example:</em> A software consultancy didn't get funded. But a consultancy that was <em>building a proprietary data platform</em> DID get funded.
+              </p>
+              <p>
+                <strong>Lesson for 2026:</strong> Service businesses are hard to fund. Product businesses (SaaS, CPG, Hardware) are easier. Try to productize your service.
+              </p>
+
+              <h2>The "Ecosystem" Map</h2>
+              <p>
+                The government realized that giving cash to 300 women left 3,000 angry. So they created the <strong>Women Entrepreneurship Knowledge Hub (WEKH)</strong> and the <strong>Ecosystem Fund</strong>.
+              </p>
+              <p>
+                This funding goes to non-profits who then offer YOU free services. You should use them—you already paid for them with your taxes!
+              </p>
+
+              <ul>
+                <li><strong>The Forum (formerly Forum for Women Entrepreneurs):</strong> Uses government funds to run the "Pitch for the Purse" and massive mentorship programs.</li>
+                <li><strong>Coralus (SheEO):</strong> Subsidized by the Ecosystem Fund to expand their loan reach.</li>
+                <li><strong>Women's Enterprise Organizations of Canada (WEOC):</strong> The national body that certifies "Women Owned" businesses (WBE Certification). Getting certified often costs money, but Ecosystem funding often subsidizes it.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {/* Detailed FAQ Section */}
         <section className="py-20 bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
