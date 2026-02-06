@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, Lock, Scale, BarChart, Zap, FileCheck } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, Lock, Scale, BarChart, Zap, FileCheck, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,52 @@ export const metadata: Metadata = {
 }
 
 export default function DODSBIRDefenseTechGrantsPage() {
+  const faqData = [
+    {
+      question: "What is the DoD SBIR Phase I funding amount?",
+      answer: "The Department of Defense (DoD) SBIR Phase I awards typically range up to $256,000 for a 6-12 month period. This covers technical feasibility and proof-of-concept work."
+    },
+    {
+      question: "What is a 'Direct to Phase II' (D2P2) application?",
+      answer: "D2P2 allows companies with mature technologies (TRL 4+) to skip Phase I and apply directly for a Phase II award (up to $1.7M), provided they have feasible data and commercial potential."
+    },
+    {
+      question: "Does DoD require CMMC compliance for SBIR grants?",
+      answer: "Yes, eventually. While Phase I may not always require full certification, moving to Phase II and handling Controlled Unclassified Information (CUI) requires NIST 800-171 compliance and a score in the SPRS system."
+    },
+    {
+      question: "Can I communicate with the Technical Point of Contact (TPOC)?",
+      answer: "You may only speak directly with the TPOC during the 'Pre-Release' period. Once the solicitation officially opens, all questions must go through the DSIP public Q&A forum to ensure fairness."
+    },
+    {
+      question: "What is the 'Open Topic' solicitation?",
+      answer: "Popularized by AFWERX (Air Force), the Open Topic invites commercial solutions that don't fit a specific military need but could be adapted for defense use. It requires finding a military customer (MOU) during Phase I."
+    },
+    {
+      question: "What is TABA funding?",
+      answer: "Technical and Business Assistance (TABA) provides supplemental funding (up to $6,500 in Phase I, $50,000 in Phase II) to hire vendors for market research, IP protection, or financial management."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-slate-700 to-blue-900 text-white py-16">
@@ -842,6 +885,26 @@ export default function DODSBIRDefenseTechGrantsPage() {
                   <h3 className="font-bold mb-1">USDA SBIR</h3>
                   <p className="text-sm text-gray-600">AgTech &amp; food →</p>
                 </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Common Questions About DoD SBIR Grants</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                      <HelpCircle className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-700 ml-9">{faq.answer}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

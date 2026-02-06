@@ -20,9 +20,52 @@ export const metadata: Metadata = {
 }
 
 export default function NASASBIRSpaceTechGrantsPage() {
+  const faqData = [
+    {
+      question: "What is the NASA SBIR Phase I funding amount?",
+      answer: "NASA SBIR Phase I awards typically provide up to $150,000 for a 6-month period to establish the technical merit, feasibility, and commercial potential of the proposed innovation."
+    },
+    {
+      question: "What is NASA SBIR Ignite?",
+      answer: "SBIR Ignite is a newer solicitation funded by STMD designed for early-stage companies with active commercial potential. It focuses on reduced documentation and faster potential award times."
+    },
+    {
+      question: "Does Technology Readiness Level (TRL) matter?",
+      answer: "Yes, critically. NASA expects Phase I proposals to start at TRL 2-3 (concept/proof) and exit at TRL 4-5 (component validation). Overstating your TRL is a common cause of rejection."
+    },
+    {
+      question: "Can I use Phase I funds for marketing?",
+      answer: "No. SBIR funds are for R&D. However, you can use TABA (Technical and Business Assistance) funds (up to $6,500) to hire a consultant for market studies or IP strategy."
+    },
+    {
+      question: "Does NASA regulate subcontracting?",
+      answer: "Yes. For SBIR Phase I, the small business must perform at least 67% of the work. For Phase II, it's 50%. STTR allows more subcontracting (up to 60%) to a research institution."
+    },
+    {
+      question: "Is the I-Corps program available?",
+      answer: "Yes, Phase I awardees are heavily encouraged to apply for the NASA I-Corps program, which provides an additional $10,000 to conduct intense customer discovery training."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-indigo-700 to-purple-900 text-white py-16">
@@ -963,6 +1006,26 @@ export default function NASASBIRSpaceTechGrantsPage() {
                   <h3 className="font-bold mb-1">USDA SBIR</h3>
                   <p className="text-sm text-gray-600">AgTech &amp; food →</p>
                 </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Common Questions About NASA SBIR Grants</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                      <HelpCircle className="w-6 h-6 text-indigo-600 mr-3 flex-shrink-0 mt-0.5" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-700 ml-9">{faq.answer}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

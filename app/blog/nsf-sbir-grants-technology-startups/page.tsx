@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Zap } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -21,9 +21,52 @@ export const metadata: Metadata = {
 }
 
 export default function NSFSBIRGrantsTechnologyStartupsPage() {
+  const faqData = [
+    {
+      question: "What is the NSF SBIR Phase I funding amount?",
+      answer: "NSF SBIR Phase I awards provide a flat amount of up to $275,000 for a 6-12 month period. This funding focuses on proving technical feasibility and reducing risk."
+    },
+    {
+      question: "What is the 'Project Pitch'?",
+      answer: "The Project Pitch is a mandatory 3-page web submission outlining your team, technology, and market problem. You MUST submit this and receive an official invitation before you can submit a full Phase I proposal."
+    },
+    {
+      question: "Is my technology eligible for NSF funding?",
+      answer: "Likely yes. NSF is 'technology agnostic.' They fund almost any area of deep tech (AI, manufacturing, biology, chemical, etc.) as long as it is an unproven, high-impact innovation seeking commercial success."
+    },
+    {
+      question: "How important is commercialization?",
+      answer: "Crucial. Unlike purely academic grants, NSF funds startups. You must demonstrate a clear path to revenue, customers, and business scale. The 'Commercial Potential' review criteria is weighted heavily."
+    },
+    {
+      question: "What is the Phase II funding amount?",
+      answer: "NSF Phase II awards provide up to $1,000,000 in base funding over 24 months, with potential for significant supplements (Phase IIB) and matching funds totaling up to $2M+."
+    },
+    {
+      question: "Can university professors be the Principal Investigator (PI)?",
+      answer: "Generally no. The PI must be primarily employed (51%+ time) by the small business at the time of the award. Professors often serve as consultants or sub-contractors."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-700 to-indigo-900 text-white py-16">
@@ -969,6 +1012,26 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
                   <h3 className="font-bold mb-1">USDA SBIR</h3>
                   <p className="text-sm text-gray-600">AgTech &amp; food →</p>
                 </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Common Questions About NSF SBIR Grants</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                      <HelpCircle className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-700 ml-9">{faq.answer}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

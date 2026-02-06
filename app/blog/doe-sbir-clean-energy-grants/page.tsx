@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, Zap } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, Zap, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,52 @@ export const metadata: Metadata = {
 }
 
 export default function DOESBIRCleanEnergyGrantsPage() {
+  const faqData = [
+    {
+      question: "What is the DOE SBIR Phase I funding amount?",
+      answer: "For FY 2026, DOE SBIR Phase I grants are typically up to $200,000 for a duration of 6-12 months. This funding covers technical feasibility studies and proof-of-concept work."
+    },
+    {
+      question: "How do I submit a Letter of Intent (LOI) to DOE?",
+      answer: "LOIs must be submitted via the PAMS (Portfolio Analysis and Management System) portal by the specified deadline for each release. Failure to submit an LOI disqualifies you from submitting a full application."
+    },
+    {
+      question: "Does DOE SBIR require cost sharing or matching funds?",
+      answer: "No. DOE SBIR/STTR grants are non-dilutive funding and generally do not require cost matching for Phase I or Phase II base awards."
+    },
+    {
+      question: "Can I apply for Fast-Track (Phase I + II combined)?",
+      answer: "Yes, eligible applicants can submit a Fast-Track proposal combining Phase I and Phase II. This requires a higher level of technical maturity and a strong commercialization plan upfront."
+    },
+    {
+      question: "What are the key clean energy topics for 2026?",
+      answer: "Priorities include renewable energy integration (solar, wind), grid modernization, energy storage (batteries), carbon capture (FECM), and fusion energy technologies."
+    },
+    {
+      question: "What is the difference between SBIR and STTR?",
+      answer: "SBIR requires the small business to perform at least 67% of the work in Phase I. STTR requires partnership with a research institution (university/lab) performing at least 30% of the work."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-green-700 to-teal-900 text-white py-16">
@@ -915,6 +958,26 @@ export default function DOESBIRCleanEnergyGrantsPage() {
             </div>
           </div>
         </section>
+        {/* FAQ Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Common Questions About DOE SBIR Grants</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                      <HelpCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-700 ml-9">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-green-700 to-teal-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
