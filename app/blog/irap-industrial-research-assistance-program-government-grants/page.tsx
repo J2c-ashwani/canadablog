@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,48 @@ export const metadata: Metadata = {
 }
 
 export default function IRAPGovernmentGrantsBlogPage() {
+  const faqData = [
+    {
+      question: "Is IRAP funding considered taxable income?",
+      answer: "Yes. Like most government grants, IRAP contributions are generally considered taxable income. However, since the funding covers expenses you would otherwise deduct, the net tax impact is often neutral. Always consult your accountant."
+    },
+    {
+      question: "How does IRAP differ from a business loan?",
+      answer: "IRAP is a 'non-repayable contribution,' meaning you do not pay it back and you give up zero equity. Loans (like BDC or CSBFL) must be repaid with interest."
+    },
+    {
+      question: "What are the monthly reporting requirements?",
+      answer: "You must submit a monthly 'claim' detailing the hours worked by your funded employees and any other eligible costs. This ensures you are reimbursed promptly (usually within 30 days)."
+    },
+    {
+      question: "Can I stack IRAP with provincial grants?",
+      answer: "Yes, in most cases. The government 'stacking limit' is typically 75% of total project costs. You can combine federal IRAP with provincial funds (like OCI or Innovate BC) up to that limit."
+    },
+    {
+      question: "Does the National Research Council (NRC) take ownership of my IP?",
+      answer: "No. You retain 100% ownership of all Intellectual Property developed during an IRAP project. The government's goal is to help you grow, not to own your technology."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-16">
@@ -35,8 +74,8 @@ export default function IRAPGovernmentGrantsBlogPage() {
                 IRAP Industrial Research Assistance Program
               </h1>
               <p className="text-xl text-green-100 mb-8">
-                Canada's flagship federal R&D funding program providing up to $1M in non-repayable 
-                contributions for innovative technology development. Complete guide to IRAP government 
+                Canada's flagship federal R&D funding program providing up to $1M in non-repayable
+                contributions for innovative technology development. Complete guide to IRAP government
                 funding, compliance requirements, and strategic integration with federal innovation programs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -81,12 +120,12 @@ export default function IRAPGovernmentGrantsBlogPage() {
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">IRAP as Canada's Strategic Innovation Policy Tool</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  The Industrial Research Assistance Program (IRAP) serves as the National Research Council of Canada's 
-                  primary mechanism for delivering federal innovation policy objectives. As part of Canada's comprehensive 
-                  innovation ecosystem, IRAP provides risk-sharing partnerships with businesses to advance technological 
+                  The Industrial Research Assistance Program (IRAP) serves as the National Research Council of Canada's
+                  primary mechanism for delivering federal innovation policy objectives. As part of Canada's comprehensive
+                  innovation ecosystem, IRAP provides risk-sharing partnerships with businesses to advance technological
                   capabilities, enhance competitiveness, and drive economic growth through innovation.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-green-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-green-800">Federal Policy Alignment</h4>
@@ -97,7 +136,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
                       <li>• Advanced manufacturing and Industry 4.0</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">Government Program Integration</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -118,7 +157,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Federal Program Structure</h2>
-              
+
               <div className="space-y-8">
                 {/* Contribution-Based Funding */}
                 <Card className="border-green-200">
@@ -144,7 +183,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      IRAP operates as a federal contribution program under the Financial Administration Act, 
+                      IRAP operates as a federal contribution program under the Financial Administration Act,
                       providing risk-sharing partnerships with eligible businesses for qualifying R&D activities.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -194,7 +233,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      IRAP's Industrial Technology Advisors (ITAs) represent the federal government's on-ground 
+                      IRAP's Industrial Technology Advisors (ITAs) represent the federal government's on-ground
                       innovation support network, providing technical and business advisory services nationwide.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -244,7 +283,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      IRAP's Youth Employment Initiative aligns with federal skills development and innovation 
+                      IRAP's Youth Employment Initiative aligns with federal skills development and innovation
                       workforce strategies, providing wage subsidies for hiring recent STEM graduates.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -279,7 +318,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Federal Compliance Framework</h2>
-              
+
               <div className="space-y-6">
                 <Card className="border-red-200">
                   <CardHeader>
@@ -357,7 +396,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Strategic Integration with Federal Innovation Programs</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">🏛️ Federal Program Synergies:</h4>
@@ -380,7 +419,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-blue-700">🌐 Regional & International Alignment:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -412,7 +451,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Federal Application Process</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <span className="bg-green-500 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold mr-4 mt-0.5">1</span>
@@ -459,7 +498,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">IRAP Federal Application Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">✅ Government Program Success Factors:</h4>
@@ -482,7 +521,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Federal Application Mistakes:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -509,6 +548,21 @@ export default function IRAPGovernmentGrantsBlogPage() {
           </div>
         </section>
 
+        <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Government Funding FAQs</h2>
+          <div className="space-y-6">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                  <HelpCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                  {faq.question}
+                </h3>
+                <p className="text-gray-700 ml-9">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Dual CTA Section */}
         <section className="py-16 bg-gradient-to-r from-green-600 to-green-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -517,10 +571,10 @@ export default function IRAPGovernmentGrantsBlogPage() {
                 Ready to Access IRAP Government Funding?
               </h2>
               <p className="text-xl text-green-100 mb-8">
-                Get the complete IRAP federal application guide or work with our government funding specialists 
+                Get the complete IRAP federal application guide or work with our government funding specialists
                 who have secured $12M+ in IRAP approvals with deep federal compliance expertise.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 {/* Get Application Guide CTA */}
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
@@ -549,7 +603,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-green-200 text-sm mt-6">
                 85% success rate for IRAP applications • Average funding secured: $94K • Federal compliance expertise
               </p>

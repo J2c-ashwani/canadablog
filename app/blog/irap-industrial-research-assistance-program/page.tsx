@@ -18,9 +18,44 @@ export const metadata: Metadata = {
 }
 
 export default function IRAPGuidePage() {
+  const faqData = [
+    {
+      question: "Does IRAP funding need to be repaid?",
+      answer: "No. IRAP provides non-repayable contributions (grants). Once approved and claimed, the funding is yours to keep—no repayment required."
+    },
+    {
+      question: "Can startups apply for IRAP?",
+      answer: "Yes. IRAP funds companies at all stages, from early-stage startups to established SMEs. The key requirements are incorporated in Canada, under 500 employees, and pursuing technology innovation."
+    },
+    {
+      question: "Can I combine IRAP with SR&ED?",
+      answer: "Absolutely. IRAP and SR&ED can be stacked. IRAP funding reduces your SR&ED eligible expenditures, but you still claim credits on the remaining costs you paid out of pocket."
+    },
+    {
+      question: "What is the IRAP success rate?",
+      answer: "IRAP has a high approval rate—approximately 70-80% of applications that reach the proposal stage are approved. The key is working with your ITA to develop a strong project before formal submission."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-green-700 to-emerald-600 text-white py-20">
@@ -876,62 +911,18 @@ export default function IRAPGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-
               <div className="space-y-4">
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-green-600 mr-2 mt-1 flex-shrink-0" />
-                      Does IRAP funding need to be repaid?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      No. IRAP provides non-repayable contributions (grants). Once approved
-                      and claimed, the funding is yours to keep—no repayment required.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-green-600 mr-2 mt-1 flex-shrink-0" />
-                      Can startups apply for IRAP?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Yes. IRAP funds companies at all stages, from early-stage startups
-                      to established SMEs. The key requirements are incorporated in Canada,
-                      under 500 employees, and pursuing technology innovation.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-green-600 mr-2 mt-1 flex-shrink-0" />
-                      Can I combine IRAP with SR&amp;ED?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      Absolutely. IRAP and SR&amp;ED can be stacked. IRAP funding reduces
-                      your SR&amp;ED eligible expenditures, but you still claim credits
-                      on the remaining costs you paid out of pocket.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg flex items-start">
-                      <HelpCircle className="w-5 h-5 text-green-600 mr-2 mt-1 flex-shrink-0" />
-                      What is the IRAP success rate?
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">
-                      IRAP has a high approval rate—approximately 70-80% of applications
-                      that reach the proposal stage are approved. The key is working with
-                      your ITA to develop a strong project before formal submission.
-                    </p>
-                  </CardContent>
-                </Card>
+                {faqData.map((faq, index) => (
+                  <Card key={index}>
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold text-lg flex items-start">
+                        <HelpCircle className="w-5 h-5 text-green-600 mr-2 mt-1 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>

@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,48 @@ export const metadata: Metadata = {
 }
 
 export default function IRAPInnovationFundingGuidePage() {
+  const faqData = [
+    {
+      question: "Does software development qualify for innovation funding?",
+      answer: "Yes, software projects are highly successful in IRAP, provided they solve a 'technical uncertainty.' Building a standard website or CRUD app usually fails; developing new algorithms, AI models, or complex backend architectures usually succeeds."
+    },
+    {
+      question: "What exactly is 'Technical Uncertainty'?",
+      answer: "It means you don't know *if* the solution is possible or *how* to achieve it when you start. If you can hire a standard contractor to build it without risk of failure, it likely lacks technical uncertainty."
+    },
+    {
+      question: "Can I use IRAP to hire a contractor?",
+      answer: "Yes. While IRAP prefers funding internal payroll (80%), it can cover up to 50% of North American contractor costs if that expertise is not available internally."
+    },
+    {
+      question: "Do I need a patent to apply?",
+      answer: "No. You do not need a patent. However, you must demonstrate a strategy for protecting your Intellectual Property (IP), which could include trade secrets, copyright, or future patents."
+    },
+    {
+      question: "Is there an age limit for the Youth Employment program?",
+      answer: "Yes. The candidate must be between 15 and 30 years old (inclusive) at the start of the internship and must be a graduate of a post-secondary institution."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
@@ -558,6 +597,21 @@ export default function IRAPInnovationFundingGuidePage() {
             </div>
           </div>
         </section>
+
+        <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Innovation Funding FAQs</h2>
+          <div className="space-y-6">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                  <HelpCircle className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
+                  {faq.question}
+                </h3>
+                <p className="text-gray-700 ml-9">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
