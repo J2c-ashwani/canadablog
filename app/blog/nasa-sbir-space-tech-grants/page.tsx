@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -440,49 +440,304 @@ export default function NASASBIRSpaceTechGrantsPage() {
                   </CardContent>
                 </Card>
 
-                {/* NASA Technology Areas */}
-                <Card className="border-blue-200">
-                  <CardHeader className="bg-gradient-to-r from-blue-100 to-cyan-100">
-                    <div className="flex items-center mb-2">
-                      <Building className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle className="text-blue-700 text-2xl">NASA SBIR Technology Topic Areas 2026-2027</CardTitle>
-                    </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Deep Dive: Anatomy of a Winning Proposal */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-gray-900 text-center">Anatomy of a Winning Proposal</h2>
+              <p className="text-gray-700 mb-10 text-center">
+                A NASA SBIR proposal is a strict 19-page technical document.
+                Evaluators score these specific sections. Here is how to structure for maximum points.
+              </p>
+
+              <div className="space-y-8">
+                <div className="flex gap-4">
+                  <div className="shrink-0 w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center font-bold text-indigo-700 border border-indigo-200">1</div>
+                  <div>
+                    <h3 className="font-bold text-xl text-gray-900">Technical Objectives (1 Page)</h3>
+                    <p className="text-gray-600 text-sm mt-1">
+                      <strong>The Hook:</strong> State clearly: "We will demonstrate X performance by Y metric."
+                      Do not explain <em>why</em> space is important; explain <em>what</em> you are building.
+                      Map specific TRL movement (e.g., "From TRL 3 to TRL 5").
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="shrink-0 w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center font-bold text-indigo-700 border border-indigo-200">2</div>
+                  <div>
+                    <h3 className="font-bold text-xl text-gray-900">Work Plan (Part 3)</h3>
+                    <p className="text-gray-600 text-sm mt-1">
+                      <strong>The Meat:</strong> Break down the 6-month project into strictly defined tasks.
+                      Bad: "We will study the problem."
+                      Good: "Task 1: Design Vacuum Chamber Mount (Weeks 1-2). Task 2: Conduct Thermal Cycling -40C to +120C (Weeks 3-6)."
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="shrink-0 w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center font-bold text-indigo-700 border border-indigo-200">3</div>
+                  <div>
+                    <h3 className="font-bold text-xl text-gray-900">Related R&D + Key Personnel</h3>
+                    <p className="text-gray-600 text-sm mt-1">
+                      <strong>Credibility:</strong> Why you? Highlight the Principal Investigator's (PI) specific experience with this exact technology.
+                      Mention past NASA work or relevant academic publications. prove you have the "chops."
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="shrink-0 w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center font-bold text-yellow-700 border border-yellow-200">4</div>
+                  <div>
+                    <h3 className="font-bold text-xl text-gray-900">Commercialization Plan (Critical)</h3>
+                    <p className="text-gray-600 text-sm mt-1">
+                      <strong>The Payoff:</strong> NASA wants to buy the product, but they also want <em>others</em> to buy it.
+                      List 3 potential non-NASA customers (e.g., "SpaceX, Blue Origin, Planet Labs").
+                      Quantify the market size. "Dual-use" (military/commercial) is the golden ticket.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Deep Dive: Technology Readiness Levels (TRL) */}
+        <section className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">Speaking NASA's Language: TRLs Explained</h2>
+              <p className="text-gray-700 mb-8">
+                Unlike other agencies, NASA lives and dies by <strong>Technology Readiness Levels (TRL)</strong>.
+                Your proposal <em>must</em> explicitly state your current TRL (Start TRL) and where you expect to be after Phase I (End TRL).
+                Misunderstanding this scale is the #1 reason for rejection.
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="bg-indigo-50 border-indigo-200">
+                  <CardHeader>
+                    <CardTitle className="text-indigo-800 text-lg">TRL 1-3: The "Bench" Phase</CardTitle>
                   </CardHeader>
-                  <CardContent className="pt-6">
-                    <div className="grid md:grid-cols-3 gap-4 text-sm">
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-2">Space Exploration:</h4>
-                        <ul className="space-y-1 text-gray-700">
-                          <li>• Lunar surface systems Artemis program</li>
-                          <li>• Mars exploration technology rovers</li>
-                          <li>• In-space manufacturing and assembly</li>
-                          <li>• Life support systems habitats</li>
-                          <li>• Advanced propulsion systems</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-2">Satellites & Sensing:</h4>
-                        <ul className="space-y-1 text-gray-700">
-                          <li>• Satellite systems CubeSat technology</li>
-                          <li>• Remote sensing Earth observation</li>
-                          <li>• Hyperspectral imaging sensors</li>
-                          <li>• Communications systems optical</li>
-                          <li>• Autonomous guidance navigation</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-2">Aeronautics:</h4>
-                        <ul className="space-y-1 text-gray-700">
-                          <li>• Electric propulsion sustainable aviation</li>
-                          <li>• Advanced materials composites</li>
-                          <li>• Autonomous flight systems UAV</li>
-                          <li>• Air traffic management UTM</li>
-                          <li>• Supersonic low-boom technology</li>
-                        </ul>
-                      </div>
-                    </div>
+                  <CardContent>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li><strong>TRL 1:</strong> Basic principles observed (Idea on a napkin).</li>
+                      <li><strong>TRL 2:</strong> Tech concept formulated (Physics suggest it works).</li>
+                      <li><strong>TRL 3:</strong> Experimental proof of concept (Lab bench toggle switch works).</li>
+                      <li className="mt-2 text-indigo-700 font-semibold">🎯 Target for Phase I Entry</li>
+                    </ul>
                   </CardContent>
                 </Card>
+
+                <Card className="bg-purple-50 border-purple-200">
+                  <CardHeader>
+                    <CardTitle className="text-purple-800 text-lg">TRL 4-6: The "Valley of Death"</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li><strong>TRL 4:</strong> Component validation in lab environment.</li>
+                      <li><strong>TRL 5:</strong> Component validation in relevant environment (Vacuum chamber).</li>
+                      <li><strong>TRL 6:</strong> System prototype in relevant environment (Ground test).</li>
+                      <li className="mt-2 text-purple-700 font-semibold">🎯 Target for Phase II Exit</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-blue-50 border-blue-200">
+                  <CardHeader>
+                    <CardTitle className="text-blue-800 text-lg">TRL 7-9: The "Flight" Phase</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li><strong>TRL 7:</strong> System prototype space application (Flight test).</li>
+                      <li><strong>TRL 8:</strong> Actual system flight proven (Mission success).</li>
+                      <li><strong>TRL 9:</strong> Mission proven on repeated flights.</li>
+                      <li className="mt-2 text-blue-700 font-semibold">🚀 Phase III / Commercialization</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200 flex flex-col justify-center">
+                  <h4 className="font-bold text-yellow-900 mb-2 flex items-center"><Lightbulb className="w-5 h-5 mr-2" /> NASA Reviewer Tip</h4>
+                  <p className="text-sm text-yellow-800">
+                    "Don't inflate your TRL. If you claim TRL 4 but haven't tested in a vacuum chamber, we will know.
+                    Honest self-assessment wins points. Phase I is specifically designed to move you from TRL 2/3 to TRL 4/5."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Deep Dive: 2026 Focus Areas */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold mb-4 text-center text-gray-900">2026 Strategic Application Topics</h2>
+              <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+                NASA solicits proposals in specific "Focus Areas." Aligning your innovation with one of these
+                priorities exponentially increases your funding odds.
+              </p>
+
+              <div className="space-y-8">
+                {/* Focus Area 1 */}
+                <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row">
+                  <div className="md:w-1/3 bg-slate-900 text-white p-6 flex flex-col justify-center">
+                    <Globe className="w-12 h-12 text-blue-400 mb-4" />
+                    <h3 className="text-2xl font-bold mb-2">Focus Area 1: Commercial LEO Economy</h3>
+                    <p className="text-blue-200 text-sm">Low Earth Orbit is open for business. NASA needs tech to support private space stations.</p>
+                  </div>
+                  <div className="md:w-2/3 p-6">
+                    <h4 className="font-bold text-gray-900 mb-3">Priority Technologies:</h4>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="bg-blue-50 p-3 rounded border border-blue-100">
+                        <span className="font-semibold text-blue-800 block mb-1">In-Space Manufacturing</span>
+                        <p className="text-xs text-gray-600">3D printing of medical tissues, fiber optics, or large structures in microgravity.</p>
+                      </div>
+                      <div className="bg-blue-50 p-3 rounded border border-blue-100">
+                        <span className="font-semibold text-blue-800 block mb-1">Debris Mitigation</span>
+                        <p className="text-xs text-gray-600">Sensors for tracking &lt; 10cm debris and active removal systems (nets, lasers, tugs).</p>
+                      </div>
+                      <div className="bg-blue-50 p-3 rounded border border-blue-100">
+                        <span className="font-semibold text-blue-800 block mb-1">Logistics & Supply</span>
+                        <p className="text-xs text-gray-600">Autonomous docking systems and "smart containers" for cargo transfer between vehicles.</p>
+                      </div>
+                      <div className="bg-blue-50 p-3 rounded border border-blue-100">
+                        <span className="font-semibold text-blue-800 block mb-1">Regenerative Life Support</span>
+                        <p className="text-xs text-gray-600">Closed-loop air/water recycling with &gt;98% efficiency for long-duration orbital stays.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Focus Area 2 */}
+                <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row">
+                  <div className="md:w-1/3 bg-orange-900 text-white p-6 flex flex-col justify-center">
+                    <MapPin className="w-12 h-12 text-orange-400 mb-4" />
+                    <h3 className="text-2xl font-bold mb-2">Focus Area 2: Moon to Mars (Artemis)</h3>
+                    <p className="text-orange-200 text-sm">Technology to sustain human presence on the Lunar surface and eventually Mars.</p>
+                  </div>
+                  <div className="md:w-2/3 p-6">
+                    <h4 className="font-bold text-gray-900 mb-3">Priority Technologies:</h4>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="bg-orange-50 p-3 rounded border border-orange-100">
+                        <span className="font-semibold text-orange-800 block mb-1">ISRU (In-Situ Resources)</span>
+                        <p className="text-xs text-gray-600">Extracting water ice from lunar regolith and converting it to rocket fuel (Hydrogen/Oxygen).</p>
+                      </div>
+                      <div className="bg-orange-50 p-3 rounded border border-orange-100">
+                        <span className="font-semibold text-orange-800 block mb-1">Dust Mitigation</span>
+                        <p className="text-xs text-gray-600">Coatings and electrodynamic shields to keep abrasive lunar dust off spacesuits and solar panels.</p>
+                      </div>
+                      <div className="bg-orange-50 p-3 rounded border border-orange-100">
+                        <span className="font-semibold text-orange-800 block mb-1">Power Systems</span>
+                        <p className="text-xs text-gray-600">Fission surface power and vertical solar array technology for the lunar south pole (eternal light/dark).</p>
+                      </div>
+                      <div className="bg-orange-50 p-3 rounded border border-orange-100">
+                        <span className="font-semibold text-orange-800 block mb-1">Deep Space Comms</span>
+                        <p className="text-xs text-gray-600">High-bandwidth optical (laser) communications to transmit HD video from Mars to Earth.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Focus Area 3 */}
+                <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row">
+                  <div className="md:w-1/3 bg-emerald-900 text-white p-6 flex flex-col justify-center">
+                    <TrendingUp className="w-12 h-12 text-emerald-400 mb-4" />
+                    <h3 className="text-2xl font-bold mb-2">Focus Area 3: Earth Science & Data</h3>
+                    <p className="text-emerald-200 text-sm">Monitoring our changing planet with unprecedented precision.</p>
+                  </div>
+                  <div className="md:w-2/3 p-6">
+                    <h4 className="font-bold text-gray-900 mb-3">Priority Technologies:</h4>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="bg-emerald-50 p-3 rounded border border-emerald-100">
+                        <span className="font-semibold text-emerald-800 block mb-1">Hyperspectral Sensors</span>
+                        <p className="text-xs text-gray-600">Compact sensors detecting methane leaks, crop health, or phytoplankton from orbit.</p>
+                      </div>
+                      <div className="bg-emerald-50 p-3 rounded border border-emerald-100">
+                        <span className="font-semibold text-emerald-800 block mb-1">On-Board Computing</span>
+                        <p className="text-xs text-gray-600">Edge AI chips to process terabytes of raw data in orbit and downlink only relevant insights.</p>
+                      </div>
+                      <div className="bg-emerald-50 p-3 rounded border border-emerald-100">
+                        <span className="font-semibold text-emerald-800 block mb-1">UAV/Drones</span>
+                        <p className="text-xs text-gray-600">High-altitude, long-endurance autonomous aircraft for atmospheric sampling.</p>
+                      </div>
+                      <div className="bg-emerald-50 p-3 rounded border border-emerald-100">
+                        <span className="font-semibold text-emerald-800 block mb-1">Small Launchers</span>
+                        <p className="text-xs text-gray-600">Dedicated micro-launch vehicles to place specific science payloads into precise orbits.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Resource Smackdown Section */}
+        <section className="py-16 bg-gray-50 border-y border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-10">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Resource Smackdown: NASA vs. DoD vs. NSF</h2>
+                <p className="text-lg text-gray-600">
+                  Not all SBIR money is created equal. Here is how NASA stacks up against the other big funders.
+                </p>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <thead>
+                    <tr className="bg-gray-100 border-b border-gray-200 text-left">
+                      <th className="p-4 text-gray-900 font-bold">Feature</th>
+                      <th className="p-4 text-indigo-700 font-bold border-l border-indigo-100 bg-indigo-50">NASA (Space)</th>
+                      <th className="p-4 text-gray-700 font-bold border-l">DoD (Defense)</th>
+                      <th className="p-4 text-gray-700 font-bold border-l">NSF (Science)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    <tr className="border-b border-gray-100">
+                      <td className="p-4 font-semibold text-gray-900">Topic Focus</td>
+                      <td className="p-4 border-l border-indigo-50 bg-indigo-50/30">Niche Tech (Mission Specific)</td>
+                      <td className="p-4 border-l">Warfighting Needs (Very Specific)</td>
+                      <td className="p-4 border-l">Broad Science (Tech Agnostic)</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="p-4 font-semibold text-gray-900">Commercialization</td>
+                      <td className="p-4 border-l border-indigo-50 bg-indigo-50/30 text-indigo-700 font-semibold">Priority (NASA + Commercial)</td>
+                      <td className="p-4 border-l">Sole Customer (DoD)</td>
+                      <td className="p-4 border-l">Mass Market (Commercial Only)</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="p-4 font-semibold text-gray-900">Phase I Amount</td>
+                      <td className="p-4 border-l border-indigo-50 bg-indigo-50/30">$150,000</td>
+                      <td className="p-4 border-l">$140,000 - $180,000</td>
+                      <td className="p-4 border-l">$275,000</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="p-4 font-semibold text-gray-900">Phase II Amount</td>
+                      <td className="p-4 border-l border-indigo-50 bg-indigo-50/30">$850,000</td>
+                      <td className="p-4 border-l">$1.2M - $1.8M</td>
+                      <td className="p-4 border-l">$1,000,000</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="p-4 font-semibold text-gray-900">Contracting Officer</td>
+                      <td className="p-4 border-l border-indigo-50 bg-indigo-50/30">Helpful / Collaborative</td>
+                      <td className="p-4 border-l">Strict / Bureaucratic</td>
+                      <td className="p-4 border-l">Hands-off / Grant-like</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-semibold text-gray-900">Verdict</td>
+                      <td className="p-4 border-l border-indigo-50 bg-indigo-50/30 font-bold text-indigo-800">Best for "Deep Tech" Space Startups</td>
+                      <td className="p-4 border-l">Best for Military Tech</td>
+                      <td className="p-4 border-l">Best for Platform Tech</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -574,6 +829,104 @@ export default function NASASBIRSpaceTechGrantsPage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Frequently Asked Questions */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">NASA SBIR/STTR Frequently Asked Questions</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                    <HelpCircle className="w-6 h-6 text-indigo-600 mr-2 flex-shrink-0" />
+                    Can a single-person company apply for NASA SBIR?
+                  </h3>
+                  <p className="text-gray-700 ml-8">
+                    Yes. You do not need a team, an office, or even a formed company at the time of <em>writing</em> the proposal.
+                    However, you must be a legally formed US small business (LLC, C-Corp, etc.) by the time the award is granted (usually 4–6 months after submission).
+                    Many winners are solo founders who hire contractors or employees after receiving the Phase I funds.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                    <HelpCircle className="w-6 h-6 text-indigo-600 mr-2 flex-shrink-0" />
+                    What is the difference between SBIR and STTR?
+                  </h3>
+                  <p className="text-gray-700 ml-8">
+                    <strong>SBIR (Small Business Innovation Research)</strong> permits you to partner with a research institution (like a university) but doesn't require it.
+                    The small business must perform at least 66% of the work in Phase I.
+                    <br /><br />
+                    <strong>STTR (Small Business Technology Transfer)</strong> <em>requires</em> you to partner with a non-profit research institution (University, FFRDC).
+                    The small business performs 40% minimum, and the research partner performs 30% minimum. STTR is less competitive but more complex to manage IP rights.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                    <HelpCircle className="w-6 h-6 text-indigo-600 mr-2 flex-shrink-0" />
+                    Does NASA take any equity or ownership?
+                  </h3>
+                  <p className="text-gray-700 ml-8">
+                    Zero. NASA SBIR grants are <strong>non-dilutive</strong>. You retain 100% ownership of your company and, crucially,
+                    <strong>you retain the Intellectual Property (IP) data rights</strong> for 20 years.
+                    NASA gets a royalty-free license to use the tech for government purposes, but they cannot share your trade secrets.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                    <HelpCircle className="w-6 h-6 text-indigo-600 mr-2 flex-shrink-0" />
+                    What is TABA and should I ask for it?
+                  </h3>
+                  <p className="text-gray-700 ml-8">
+                    <strong>Technical and Business Assistance (TABA)</strong> is <em>extra</em> money on top of your grant for commercialization help.
+                    You can request up to <strong>$6,500 in Phase I</strong> and <strong>$50,000 in Phase II</strong>.
+                    ALWAYS ask for TABA. It pays for market research, IP lawyers, or financial strategy, and does not reduce your R&D budget.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                    <HelpCircle className="w-6 h-6 text-indigo-600 mr-2 flex-shrink-0" />
+                    Can I submit the same proposal to NASA and the Air Force (DoD)?
+                  </h3>
+                  <p className="text-gray-700 ml-8">
+                    Yes, and you should! You can submit identical or similar proposals to multiple agencies (NASA, DoD, NSF, DOE).
+                    However, you <strong>cannot accept funding twice</strong> for the exact same work.
+                    If both say "Yes," you must choose one or de-scope one project to remove the overlapping tasks.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                    <HelpCircle className="w-6 h-6 text-indigo-600 mr-2 flex-shrink-0" />
+                    What happens if my Phase I prototype fails?
+                  </h3>
+                  <p className="text-gray-700 ml-8">
+                    SBIR is "high risk, high reward." NASA expects some failure.
+                    If Phase I fails to prove feasibility, you simply won't win Phase II.
+                    You do not pay back the money. You still own the data/research produced.
+                    Many companies pivot and win with a different idea next year.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-start">
+                    <HelpCircle className="w-6 h-6 text-indigo-600 mr-2 flex-shrink-0" />
+                    What is "Phase III"?
+                  </h3>
+                  <p className="text-gray-700 ml-8">
+                    Phase III is the "holy grail." It refers to any funding that comes from <em>non-SBIR</em> budgets to continue the work.
+                    This could be a $10M contract from a NASA program office, funding from the Air Force, or private investment.
+                    Crucially, Phase III contracts can be awarded as <strong>Sole Source</strong> (no competitive bidding required) because you already won the competition in Phase I/II.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
