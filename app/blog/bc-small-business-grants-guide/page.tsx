@@ -271,7 +271,7 @@ export default function BCSmallBusinessGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="flex items-center mb-8">
-                <TreeCone className="w-10 h-10 text-emerald-600 mr-4" />
+                <Trees className="w-10 h-10 text-emerald-600 mr-4" />
                 <div>
                   <h2 className="text-3xl font-bold text-gray-900">2. The "Regional Trusts"</h2>
                   <p className="text-gray-600">The Secret Weapon for Rural BC</p>

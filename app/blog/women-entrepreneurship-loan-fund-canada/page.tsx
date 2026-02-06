@@ -151,7 +151,7 @@ export default function WomenUserLoanFundGuide() {
                     <Badge className="mb-2 bg-pink-200 text-pink-800">Ontario / National Reach</Badge>
                     <p className="text-sm text-gray-600 mb-4">Famous for "Peer Lending Circles". You form a group of 4-7 women who co-vouch for loans.</p>
                     <ul className="text-sm space-y-2">
-                      <li className="flex items-center"><CheckCircle className="w-3 h-3 text-pink-600 mr-2" /> Tiered borrowing ($1k -> $5k)</li>
+                      <li className="flex items-center"><CheckCircle className="w-3 h-3 text-pink-600 mr-2" /> Tiered borrowing ($1k -&gt; $5k)</li>
                       <li className="flex items-center"><CheckCircle className="w-3 h-3 text-pink-600 mr-2" /> No collateral needed</li>
                     </ul>
                   </CardContent>

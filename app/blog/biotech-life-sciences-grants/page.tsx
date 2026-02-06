@@ -287,7 +287,7 @@ export default function BiotechLifeSciencesGrantsGuide() {
                 <li><strong>Supply Chain:</strong> Companies making the glass vials, lipids, or bioreactors needed by the big players.</li>
               </ul>
               <p>
-                <strong>How to Apply:</strong> You don't apply to the "Strategy". You apply to the <strong>Strategic Innovation Fund (SIF) - Stream 4</strong>. This is for projects >$10 Million. If you are smaller, you apply to the Regional Development Agencies (RDAs) like FedDev or PrairiesCan, which have received "carve-outs" from this fund to support smaller biotech scale-ups.
+                <strong>How to Apply:</strong> You don't apply to the "Strategy". You apply to the <strong>Strategic Innovation Fund (SIF) - Stream 4</strong>. This is for projects &gt;$10 Million. If you are smaller, you apply to the Regional Development Agencies (RDAs) like FedDev or PrairiesCan, which have received "carve-outs" from this fund to support smaller biotech scale-ups.
               </p>
 
               <h3>Surviving the "Valley of Death": Clinical Trials</h3>

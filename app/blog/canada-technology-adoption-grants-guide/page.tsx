@@ -236,7 +236,7 @@ export default function CanadaTechnologyAdoptionGrantsGuide() {
                             </div>
                             <div>
                               <h4 className="font-bold text-gray-900 text-sm">Submit Plan</h4>
-                              <p className="text-xs text-gray-500">Upload a quote from your vendor showing costs > $2,400.</p>
+                              <p className="text-xs text-gray-500">Upload a quote from your vendor showing costs &gt; $2,400.</p>
                             </div>
                           </div>
                           {/* Step 3 */}

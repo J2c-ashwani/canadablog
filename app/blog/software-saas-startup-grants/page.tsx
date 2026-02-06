@@ -331,7 +331,7 @@ export default function SoftwareSaaSGrantsGuide() {
                 <strong>The "Exigible Assets" Model:</strong> BDC will typically lend up to 4x your Monthly Recurring Revenue (MRR). If you have $50k MRR ($600k ARR), you might qualify for a $200k loan.
               </p>
               <p>
-                <strong>The Catch:</strong> The interest rates are higher than a mortgage (often Prime + 2% or more), and they almost always require a <strong>Personal Guarantee</strong> from the founders for smaller loans (<$250k). However, they are often the only source of "debt" capital for a company with no physical assets.
+                <strong>The Catch:</strong> The interest rates are higher than a mortgage (often Prime + 2% or more), and they almost always require a <strong>Personal Guarantee</strong> from the founders for smaller loans (&lt;$250k). However, they are often the only source of "debt" capital for a company with no physical assets.
               </p>
 
               <h3>Stacking: The Ultimate Strategy</h3>
