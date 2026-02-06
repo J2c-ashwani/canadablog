@@ -3,537 +3,167 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Sprout, Wheat, Tractor, Leaf } from "lucide-react"
+import { CheckCircle, Target, Building, HelpCircle, BookOpen, ExternalLink, Leaf, TrendingUp, DollarSign, Factory } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Agri-Food Technology Grants 2026 | $2.3B+ AgriInnovate & Precision Agriculture Funding",
-  description: "Complete guide to Canadian agri-food technology innovation grants. Access $2.3B+ funding through AgriInnovate, precision agriculture programs, food processing technology, and 32+ agritech grants.",
-  keywords: "Canada agriculture grants, AgriInnovate funding, precision agriculture grants Canada, food technology funding, agritech innovation grants, farm technology grants, food processing grants Canada, sustainable agriculture funding",
-  openGraph: {
-    title: "Canada Agri-Food Technology Grants 2026 | $2.3B+ AgriTech Funding",
-    description: "Access $2.3B+ in agri-food technology funding. Complete guide to AgriInnovate, precision agriculture, and food processing grants.",
-    url: "https://www.fsidigital.ca/blog/canada-agri-food-technology-innovation-grants",
-    images: ["/og-image.png"],
-  },
+  title: "Canada Agri-Food Technology Innovation Grants 2026 | Complete Funding Guide",
+  description: "Complete guide to Canadian agri-food technology and innovation grants. Access federal and provincial funding for agricultural technology, food processing innovation, and sustainability projects.",
+  keywords: "agri-food technology grants Canada, agricultural innovation funding, food processing grants, sustainable agriculture grants, AgriScience funding",
 }
 
-export default function CanadaAgriFoodTechnologyInnovationGrantsPage() {
+export default function AgrifoodTechGrantsGuidePage() {
   return (
     <>
       <Header />
       <div className="min-h-screen bg-gray-50">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-green-700 to-emerald-800 text-white py-16">
+        <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🌾 Agri-Food Technology Innovation Grants
-              </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Canada Agri-Food Technology Innovation Grants 2026
-              </h1>
-              <p className="text-xl text-green-100 mb-8">
-                Access $2.3B+ in agricultural technology and food innovation funding through 32+ federal and provincial programs. 
-                From AgriInnovate commercialization to precision agriculture initiatives - accelerate your farm technology, 
-                food processing innovation, sustainable agriculture, and agritech solutions.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>
-                  <Link href="#programs">
-                    Explore AgriTech Programs
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild>
-                  <Link href="/canada/innovation-grants">
-                    Back to Innovation Grants
-                  </Link>
-                </Button>
-              </div>
+              <Badge className="mb-6 bg-white/20 text-white border-white/30"><Leaf className="w-3 h-3 mr-1" /> Innovation Funding</Badge>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">Canada Agri-Food Technology Innovation Grants 2026</h1>
+              <p className="text-xl text-green-100 mb-8">Comprehensive guide to federal and provincial funding programs supporting agricultural technology development, food processing innovation, and sustainable farming practices. Access over five hundred million dollars in annual funding for transforming Canada&apos;s agri-food sector through technology innovation.</p>
+              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild><Link href="/contact?program=agri-food-tech">Get Funding Guidance</Link></Button>
             </div>
           </div>
         </section>
 
-        {/* Agri-Food Statistics */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center mb-12">
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">$2.3B+</div>
-                  <div className="text-gray-600">AgriTech Funding Available</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-emerald-600 mb-2">32+</div>
-                  <div className="text-gray-600">Active Agriculture Programs</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">$10M</div>
-                  <div className="text-gray-600">Max AgriInnovate Funding</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-amber-600 mb-2">50%</div>
-                  <div className="text-gray-600">Typical Cost Coverage</div>
-                </div>
-              </div>
+            <div className="max-w-4xl mx-auto grid md:grid-cols-4 gap-8 text-center">
+              <div><div className="text-3xl font-bold text-green-600 mb-2">$500M+</div><div className="text-gray-600">Annual Funding</div></div>
+              <div><div className="text-3xl font-bold text-blue-600 mb-2">50%</div><div className="text-gray-600">Cost Share Rates</div></div>
+              <div><div className="text-3xl font-bold text-purple-600 mb-2">15+</div><div className="text-gray-600">Active Programs</div></div>
+              <div><div className="text-3xl font-bold text-orange-600 mb-2">5 Yrs</div><div className="text-gray-600">CAP Framework</div></div>
             </div>
           </div>
         </section>
 
-        {/* Major AgriFood Programs */}
-        <section id="programs" className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Agri-Food Technology Programs</h2>
-              
-              <div className="space-y-8">
-                {/* AgriInnovate */}
-                <Card className="border-green-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Sprout className="w-6 h-6 text-green-600 mr-3" />
-                      <CardTitle className="text-green-700">AgriInnovate Program</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $10M</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Commercialization</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Repayable</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Agriculture and Agri-Food Canada's flagship program for accelerating commercialization and adoption 
-                      of innovative agricultural products, technologies, and processes.
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">AgriTech Focus Areas:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Precision agriculture technology</li>
-                          <li>• Food processing innovation</li>
-                          <li>• Agricultural biotechnology</li>
-                          <li>• Sustainable farming solutions</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Funding Support:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Up to 50% of eligible project costs</li>
-                          <li>• Repayable contributions (interest-free)</li>
-                          <li>• Technology commercialization focus</li>
-                          <li>• Market development support</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* AgriScience */}
-                <Card className="border-emerald-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Wheat className="w-6 h-6 text-emerald-600 mr-3" />
-                      <CardTitle className="text-emerald-700">AgriScience Program - Clusters Component</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $3M</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>R&D Projects</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Collaborative</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Support for pre-commercial science research and innovation through industry-led research networks 
-                      addressing agriculture and agri-food sector priorities.
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Research Priorities:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Crop genetics and breeding</li>
-                          <li>• Soil health and sustainability</li>
-                          <li>• Livestock health and productivity</li>
-                          <li>• Climate change adaptation</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Program Features:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Industry-led research clusters</li>
-                          <li>• Collaborative projects required</li>
-                          <li>• Up to 75% cost-share available</li>
-                          <li>• Pre-commercial research focus</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Canadian Agricultural Partnership */}
-                <Card className="border-blue-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Tractor className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle className="text-blue-700">Canadian Agricultural Partnership (CAP)</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Varies by Province</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>On-Farm Innovation</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Cost-Share</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Federal-provincial-territorial framework providing cost-share funding for on-farm technology adoption, 
-                      innovation, and market development initiatives.
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Farm Technology:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Precision farming equipment</li>
-                          <li>• Smart irrigation systems</li>
-                          <li>• Automated feeding systems</li>
-                          <li>• Environmental monitoring</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Cost-Share Support:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Varies by province (typically 25-50%)</li>
-                          <li>• On-farm adoption projects</li>
-                          <li>• Energy efficiency upgrades</li>
-                          <li>• Environmental sustainability</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* AgriAssurance */}
-                <Card className="border-amber-200">
-                  <CardHeader>
-                    <div className="flex items-center mb-2">
-                      <Leaf className="w-6 h-6 text-amber-600 mr-3" />
-                      <CardTitle className="text-amber-700">AgriAssurance - Food Safety & Traceability</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $2M</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Food Safety</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Systems Development</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Funding for development and implementation of food safety systems, traceability solutions, 
-                      and assurance programs for agricultural products.
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Eligible Systems:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Food safety certification systems</li>
-                          <li>• Traceability technology platforms</li>
-                          <li>• Quality assurance programs</li>
-                          <li>• Blockchain for food supply chain</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Program Benefits:</h5>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Up to 70% cost-share available</li>
-                          <li>• Industry-wide systems</li>
-                          <li>• Market access enhancement</li>
-                          <li>• Export competitiveness</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* AgriTech by Technology */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Agri-Food Funding by Technology</h2>
-              
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  {
-                    icon: <Tractor className="w-8 h-8 text-green-600" />,
-                    title: "Precision Agriculture",
-                    funding: "$850M+",
-                    programs: "15+ Programs",
-                    features: ["GPS-guided equipment", "Sensor technology", "Variable rate application"]
-                  },
-                  {
-                    icon: <Sprout className="w-8 h-8 text-emerald-600" />,
-                    title: "Vertical Farming",
-                    funding: "$420M+",
-                    programs: "8+ Programs",
-                    features: ["Indoor agriculture", "Controlled environment", "Urban farming systems"]
-                  },
-                  {
-                    icon: <Wheat className="w-8 h-8 text-amber-600" />,
-                    title: "Food Processing Tech",
-                    funding: "$680M+",
-                    programs: "12+ Programs",
-                    features: ["Automation systems", "Food safety technology", "Packaging innovation"]
-                  },
-                  {
-                    icon: <Leaf className="w-8 h-8 text-lime-600" />,
-                    title: "Sustainable Agriculture",
-                    funding: "$520M+",
-                    programs: "10+ Programs",
-                    features: ["Organic farming", "Carbon sequestration", "Water conservation"]
-                  }
-                ].map((tech, index) => (
-                  <Card key={index} className="hover:shadow-lg transition-all border-gray-200">
-                    <CardHeader>
-                      <div className="flex items-center justify-between mb-2">
-                        {tech.icon}
-                        <Badge variant="outline" className="text-xs">
-                          {tech.programs}
-                        </Badge>
-                      </div>
-                      <CardTitle className="text-lg">{tech.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold text-gray-900 mb-2">{tech.funding}</div>
-                      <div className="text-sm text-gray-500 mb-4">Available Funding</div>
-                      <div className="space-y-2">
-                        {tech.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center text-xs text-gray-600">
-                            <CheckCircle className="w-3 h-3 mr-2 text-green-500" />
-                            <span>{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Provincial AgriFood Support */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Provincial Agri-Food Programs</h2>
-              
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-bold text-lg mb-4 text-green-700">🍁 Leading Provincial Programs:</h4>
-                  <ul className="space-y-3 text-gray-700">
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Ontario AgriFood:</strong> $850M for farm technology and food processing</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Quebec AgriInnovation:</strong> $620M for precision agriculture</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Prairie Agricultural Innovation:</strong> $540M for farm technology</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>BC AgriTech:</strong> $380M for sustainable agriculture</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="font-bold text-lg mb-4 text-emerald-700">🎯 Priority AgriTech Areas:</h4>
-                  <ul className="space-y-3 text-gray-700">
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Smart Farming:</strong> IoT sensors and data analytics</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Alternative Proteins:</strong> Plant-based and cellular agriculture</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Climate Resilience:</strong> Drought-resistant crops</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <span><strong>Automation:</strong> Robotic harvesting and processing</span>
-                    </li>
-                  </ul>
-                </div>
+              <h2 className="text-3xl font-bold mb-6">Agri-Food Technology Funding Overview</h2>
+              <p className="text-gray-700 leading-relaxed mb-6">Canada&apos;s agri-food sector represents a critical component of the national economy, contributing over one hundred forty billion dollars annually and employing more than two million Canadians across farming, food processing, and related industries. Recognizing the importance of innovation in maintaining global competitiveness, federal and provincial governments have established substantial funding programs supporting technology development, adoption, and commercialization throughout the agri-food value chain.</p>
+              <p className="text-gray-700 leading-relaxed mb-6">The Sustainable Canadian Agricultural Partnership framework, known as SCAP, provides the foundation for most agri-food innovation funding through a five-year, three point five billion dollar federal-provincial-territorial agreement. SCAP prioritizes climate change adaptation, environmental sustainability, and technology-driven productivity improvements. Within this framework, Agriculture and Agri-Food Canada administers national programs while provincial partners deliver complementary programming tailored to regional agricultural priorities and industry structures.</p>
+              <p className="text-gray-700 leading-relaxed mb-6">Innovation funding spans the full technology development spectrum from early-stage research through commercial deployment. Pre-commercialization support helps research institutions and companies translate discoveries into viable products and services. Technology adoption programs assist producers and processors in implementing new equipment, systems, and practices. Knowledge transfer initiatives ensure that innovations developed through funded research reach end-users who can apply them productively across the sector.</p>
+              <p className="text-gray-700 leading-relaxed mb-6">Eligible innovation areas reflect both traditional agricultural challenges and emerging opportunities. Precision agriculture technologies including sensors, automation, and data analytics improve productivity while reducing input costs and environmental impacts. Sustainable production systems address water management, soil health, and biodiversity conservation. Food processing innovation improves efficiency, food safety, and product development. Emerging areas like cellular agriculture, vertical farming, and alternative proteins represent growing investment priorities as the sector evolves.</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-green-200"><CardHeader><CardTitle className="text-green-700">Priority Areas</CardTitle></CardHeader><CardContent><ul className="text-sm space-y-2"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Precision agriculture and digital farming tools</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Climate change adaptation and sustainability</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Food processing efficiency and safety</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Emerging proteins and alternative foods</span></li></ul></CardContent></Card>
+                <Card className="border-blue-200"><CardHeader><CardTitle className="text-blue-700">Eligible Activities</CardTitle></CardHeader><CardContent><ul className="text-sm space-y-2"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Applied research and technology development</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Pilot projects and field demonstrations</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Equipment and technology acquisition</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Knowledge transfer and training programs</span></li></ul></CardContent></Card>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Success Tips */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">AgriTech Funding Success Strategies</h2>
-              
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card className="border-green-200">
-                  <CardHeader>
-                    <CardTitle className="text-green-700">✅ Best Practices</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Measurable Impact:</strong> Quantify yield improvements, cost savings, and sustainability gains
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Farm-Level Testing:</strong> Demonstrate technology validation on real farms
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Industry Partnerships:</strong> Collaborate with farmers, processors, and retailers
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Market Adoption Path:</strong> Clear strategy for farmer adoption and scaling
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              <h2 className="text-3xl font-bold mb-6">Federal Agri-Food Innovation Programs</h2>
+              <p className="text-gray-700 mb-6">Agriculture and Agri-Food Canada delivers several major innovation funding programs under the SCAP framework. The AgriScience Program represents the largest investment, providing over three hundred forty million dollars over five years for applied research addressing sector-wide challenges. AgriScience supports research clusters bringing together industry organizations, researchers, and government to advance priority areas including plant and animal genetics, sustainable production systems, and food safety enhancement.</p>
+              <p className="text-gray-700 mb-6">The AgriInnovate Program supports commercialization and adoption of innovative technologies through cost-shared contributions and repayable loans. Funding supports equipment acquisition, facility construction, and process implementation for producers, processors, and agri-businesses. AgriInnovate prioritizes projects demonstrating significant competitiveness improvements, environmental benefits, or market development potential. Maximum contributions reach several million dollars for qualifying projects with substantial economic impact projections.</p>
+              <p className="text-gray-700 mb-6">The AgriAssurance Program supports food safety, plant health, and animal health systems that underpin market access and consumer confidence. Funding helps industry organizations develop and implement traceability systems, quality assurance programs, and biosecurity protocols. These systems increasingly incorporate technology solutions including blockchain-based tracking, digital certification, and automated quality monitoring that qualify for innovation-focused support within the program.</p>
+              <p className="text-gray-700 mb-6">The AgriMarketing Program supports market development activities including technology-enabled marketing platforms, e-commerce development, and digital customer engagement tools. While primarily focused on market access, AgriMarketing recognizes that innovative approaches to customer connection and supply chain coordination require technology investments that qualify for program support alongside traditional promotion and relationship-building activities.</p>
+            </div>
+          </div>
+        </section>
 
-                <Card className="border-red-200">
-                  <CardHeader>
-                    <CardTitle className="text-red-700">❌ Common Mistakes</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>No Farm Validation:</strong> Insufficient real-world testing in agricultural settings
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Weak Economic Case:</strong> Unclear ROI or payback period for farmers
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Ignoring Farmer Needs:</strong> Technology without farmer input or usability
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <AlertCircle className="w-5 h-5 text-red-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Limited Market Understanding:</strong> No clear distribution or adoption strategy
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Provincial Technology Programs</h2>
+              <p className="text-gray-700 mb-6">Provincial governments deliver cost-shared programming under SCAP that addresses regional agricultural priorities and industry structures. Ontario&apos;s Canadian Agricultural Partnership programs support technology adoption through competitive grants for equipment, software, and infrastructure investments. Focus areas include precision agriculture, controlled environment agriculture, and processing automation aligned with the province&apos;s diverse agricultural economy.</p>
+              <p className="text-gray-700 mb-6">Saskatchewan and Alberta provide substantial technology support through their respective CAP programs, reflecting the Prairie provinces&apos; grain, oilseed, and livestock production focus. Precision agriculture equipment, water management systems, and livestock monitoring technologies receive priority funding. Saskatchewan&apos;s programs also emphasize pulse crop innovation and value-added processing development supporting the province&apos;s leadership in specialty crop production.</p>
+              <p className="text-gray-700 mb-6">British Columbia&apos;s programs reflect the province&apos;s diverse agricultural sectors including greenhouse production, viticulture, and organic farming. Technology funding supports controlled environment systems, water conservation technologies, and organic production innovations. The province also emphasizes food processing innovation supporting value-added product development for local and export markets, with particular attention to Indigenous food systems development.</p>
+              <p className="text-gray-700 mb-6">Atlantic provinces coordinate technology programming addressing regional challenges including shorter growing seasons, remote farm locations, and specialized production systems. Innovation funding supports season extension technologies, remote monitoring capabilities, and processing innovations for regional specialty products including seafood, berries, and maple products. Collaborative approaches across Atlantic provinces maximize impact of limited regional research capacity.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Precision Agriculture Innovation</h2>
+              <p className="text-gray-700 mb-6">Precision agriculture represents a major innovation priority across agri-food funding programs, supporting technology adoption that improves productivity while reducing environmental impacts. GPS guidance systems, variable rate application equipment, and aerial imaging technologies have become standard on larger operations, with funding programs supporting adoption by smaller producers and advancement of next-generation capabilities.</p>
+              <p className="text-gray-700 mb-6">Data analytics and artificial intelligence applications are emerging priorities within precision agriculture funding. Farm management software integrating equipment data, weather information, and market signals improves decision-making across operations. Machine learning applications for pest detection, yield prediction, and optimization recommendations represent frontier research areas receiving growing investment through federal and provincial innovation programs.</p>
+              <p className="text-gray-700 mb-6">Robotics and automation address labor challenges while improving operational precision. Automated guidance, robotic harvesting, and autonomous equipment operation receive substantial research and adoption funding. The Canadian AgriFood Automation and Intelligence Network coordinates national innovation efforts in this area, facilitating collaboration among researchers, technology developers, and agricultural producers to accelerate practical adoption.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Sustainability and Environmental Technology</h2>
+              <p className="text-gray-700 mb-6">Environmental sustainability represents a cross-cutting priority influencing all agri-food innovation programming. Climate change adaptation and mitigation receive particular emphasis, with funding supporting technologies reducing greenhouse gas emissions, improving carbon sequestration, and building resilience to extreme weather events. The federal Agricultural Clean Technology Program provides targeted support for adoption of clean technologies by farmers and agri-food processors.</p>
+              <p className="text-gray-700 mb-6">Water management technologies address both quality and quantity challenges facing Canadian agriculture. Irrigation efficiency improvements, drainage management systems, and water recycling technologies receive substantial adoption support. Nutrient management technologies reducing fertilizer inputs while maintaining productivity serve dual environmental and economic benefits that funding programs prioritize.</p>
+              <p className="text-gray-700 mb-6">Renewable energy and bioeconomy applications transform agricultural waste streams into valuable products while reducing fossil fuel dependence. Anaerobic digestion, biochar production, and biofuel development receive research and commercialization support. These technologies also address food waste reduction, with funding supporting innovations that capture value from processing byproducts and extend product shelf life.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Application Strategies</h2>
+              <div className="space-y-4">
+                <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">1</div><div><h3 className="font-bold">Identify Alignment</h3><p className="text-gray-600 text-sm">Review program priorities against your innovation focus. AgriScience supports collaborative research, AgriInnovate funds commercialization, and CAP programs assist technology adoption. Choose programs matching your development stage.</p></div></div>
+                <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">2</div><div><h3 className="font-bold">Build Partnerships</h3><p className="text-gray-600 text-sm">Many programs require or prefer industry partnerships, research collaborations, or producer engagement. Build relationships with potential partners before application deadlines to strengthen proposals.</p></div></div>
+                <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">3</div><div><h3 className="font-bold">Demonstrate Impact</h3><p className="text-gray-600 text-sm">Quantify expected benefits including productivity improvements, environmental outcomes, and economic impacts. Use industry benchmarks and research evidence to support projections.</p></div></div>
+                <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">4</div><div><h3 className="font-bold">Stack Programs</h3><p className="text-gray-600 text-sm">Combine federal and provincial programs, tax incentives, and private financing for comprehensive project funding. Coordinate applications across programs with different contribution limits and eligible costs.</p></div></div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Dual CTA */}
-        <section className="py-20 bg-gradient-to-r from-green-700 to-emerald-800">
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-3xl font-bold mb-6">
-                Ready to Access Agri-Food Technology Funding?
-              </h2>
-              <p className="text-xl text-green-100 mb-8">
-                Get our complete agri-food funding guide or work with specialists who have secured 
-                $78M+ in agriculture grants across AgriInnovate, CAP, and precision farming programs.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
-                  <h4 className="font-semibold text-white mb-2">Complete Application Guide</h4>
-                  <p className="text-green-100 text-sm mb-4">
-                    Get our step-by-step agri-food funding guide with AgriInnovate templates, CAP tools, and farm technology grant strategies.
-                  </p>
-                  <Button size="lg" className="w-full bg-white text-green-700 hover:bg-gray-100" asChild>
-                    <Link href="/guides/canada-agri-food-funding-guide">
-                      <Download className="w-4 h-4 mr-2" />
-                      View Application Guide
-                    </Link>
-                  </Button>
-                </div>
-
-                <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
-                  <h4 className="font-semibold text-white mb-2">Expert AgriTech Support</h4>
-                  <p className="text-yellow-100 text-sm mb-4">
-                    Work with agri-food funding specialists who have secured $78M+ with 72% success rate across AgriInnovate and precision agriculture programs.
-                  </p>
-                  <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
-                    <Link href="/contact?service=agritech-expert-help">
-                      Get Expert Help
-                    </Link>
-                  </Button>
-                </div>
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Eligibility and Requirements</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card><CardHeader><CardTitle className="text-green-700 flex items-center"><CheckCircle className="w-5 h-5 mr-2" />Eligible Applicants</CardTitle></CardHeader><CardContent><ul className="space-y-1 text-sm"><li>Farms and agricultural producers</li><li>Food processing companies</li><li>Agri-food technology developers</li><li>Industry associations and organizations</li><li>Research institutions with industry partners</li></ul></CardContent></Card>
+                <Card><CardHeader><CardTitle className="text-blue-700 flex items-center"><Building className="w-5 h-5 mr-2" />Typical Requirements</CardTitle></CardHeader><CardContent><ul className="space-y-1 text-sm"><li>Canadian business or organization</li><li>Financial capacity for cost-share</li><li>Clear innovation or technology focus</li><li>Measurable outcomes and impact</li><li>Industry relevance and scalability</li></ul></CardContent></Card>
               </div>
-              
-              <p className="text-green-200 text-sm mt-6">
-                72% success rate • $78M+ secured • AgriInnovate, CAP & Precision Agriculture expertise
-              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What funding levels are available?</h3><p className="text-gray-700 mt-2 ml-7">Funding varies by program and project scope. Technology adoption grants may provide fifty percent of eligible costs up to one hundred thousand dollars. AgriInnovate commercialization projects can receive several million dollars in repayable contributions. Research clusters receive multi-million dollar allocations over five-year periods.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can small farms access innovation funding?</h3><p className="text-gray-700 mt-2 ml-7">Yes, provincial CAP programs specifically target technology adoption by producers of all sizes. Many programs have lower contribution limits and simplified application processes for smaller operations. Farm-level precision agriculture and sustainability investments are priority areas across provinces.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Are technology companies eligible?</h3><p className="text-gray-700 mt-2 ml-7">Agri-food technology developers are eligible for innovation and commercialization programs. Companies benefit from partnerships with agricultural producers who can demonstrate practical application and adoption potential. Industry association membership may strengthen applications.</p></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/agriculture-agri-food-canada-government-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>AAFC Government Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/canada-agriculture-agrifood-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Complete Agriculture Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/canada-clean-technology-innovation-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Clean Technology Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>All Canadian Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-gradient-to-r from-green-600 to-green-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div classtName="max-w-4xl mx-auto text-center text-white">
+              <h2 className="text-4xl font-bold mb-6">Get Agri-Food Innovation Funding</h2>
+              <p className="text-xl text-green-100 mb-8">Access five hundred million dollars in annual funding for agricultural technology development, sustainable farming innovation, and food processing advancement.</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild><Link href="/contact?program=agri-food-tech"><Factory className="w-4 h-4 mr-2" /> Get Funding Guidance</Link></Button>
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild><Link href="/canada/business-grants">Explore All Programs</Link></Button>
+              </div>
             </div>
           </div>
         </section>

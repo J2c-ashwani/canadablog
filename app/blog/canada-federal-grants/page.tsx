@@ -77,6 +77,12 @@ export default function CanadaFederalGrantsPage() {
                   <p>
                     To win, you must stop viewing yourself as a "needy business" and start positioning yourself as a "strategic partner" who can help the government achieve its policy goals. This guide is your map to that partnership, covering the nuances that the official government websites often omit.
                   </p>
+                  <p>
+                    The federal funding landscape operates through a complex ecosystem of agencies, each with distinct mandates, target beneficiaries, and evaluation criteria. Understanding this ecosystem is the difference between wasting months on applications destined for rejection and strategically targeting programs where your company aligns with government priorities. The most successful applicants research programs extensively before writing a single word, ensuring they understand not just the official eligibility criteria but the unofficial preferences, current budget availability, and political context shaping funding decisions.
+                  </p>
+                  <p>
+                    Timing matters enormously in federal grant applications. Government fiscal years run April to March, with new budgets often allocated in the spring and spending pressure intensifying toward year-end. Many programs have continuous intake but process applications in batches. Others open specific windows that may last only weeks. Building relationships with program officers before windows open gives you advance notice and feedback that dramatically improves application quality. The most successful companies treat grant applications as an ongoing strategic function rather than one-off efforts.
+                  </p>
 
                   <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 my-10">
                     <h3 className="mt-0 text-slate-900 dark:text-white">The 3 Types of Federal "Free Money"</h3>
@@ -106,9 +112,11 @@ export default function CanadaFederalGrantsPage() {
                     <Building className="w-10 h-10 text-red-600 mr-4" />
                     The "Big Three" Federal Agencies
                   </h2>
-                  <p className="text-gray-600 dark:text-gray-400 mb-10 text-xl">
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 text-xl">
                     90% of federal business funding flows through three primary channels. Understanding the mandate of each agency is the first step to successful funding.
                   </p>
+                  <p className="text-gray-700 mb-6">Each of the three major federal funding agencies operates with distinct evaluation philosophies shaped by their institutional mandates. Innovation, Science and Economic Development Canada prioritizes large-scale investments that create substantial employment and position Canada competitively in global industries. The National Research Council's Industrial Research Assistance Program focuses on technical innovation and helping small and medium enterprises overcome technological challenges. Agriculture and Agri-Food Canada concentrates on food security, sustainability, and value-added processing. Successful applicants study these differences carefully and tailor their applications to emphasize outcomes each specific agency values most highly.</p>
+                  <p className="text-gray-700 mb-10">The relationship between these agencies also matters strategically. Companies often progress through agencies as they grow, starting with IRAP support for early-stage technical development, graduating to regional development agency support for commercialization, and eventually accessing Strategic Innovation Fund investment for major facility expansions. Understanding this progression helps companies plan multi-year funding strategies rather than opportunistically chasing individual grants.</p>
 
                   <div className="space-y-10">
                     {/* ISED */}
@@ -583,7 +591,7 @@ export default function CanadaFederalGrantsPage() {
                   <div className="space-y-8">
                     <div>
                       <h4 className="font-bold text-xl text-gray-900 mb-2">Are federal grants taxable?</h4>
-                      <p className="text-gray-600">Yes. Government grants are considered taxable income in the year they are received. However, they are usually offset by the expenses they cover (which you deduct), creating a neutral tax effect. Always consult your accountant.</p>
+                      <p className="text-gray-600">Yes. Government grants are considered taxable income in the year they are received. However, they are usually offset by the expenses they cover, which you can deduct from taxable income, creating a neutral tax effect in most situations. For repayable contributions, the tax treatment differs since repayable amounts are generally not considered income until the repayment obligation is forgiven. Always consult your accountant to understand the specific tax implications for your grant type.</p>
                     </div>
                     <div>
                       <h4 className="font-bold text-xl text-gray-900 mb-2">Do I have to pay back the "contribution"?</h4>

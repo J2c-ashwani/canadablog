@@ -139,158 +139,126 @@ export default function AlbertaSmallBusinessGrantsGuide() {
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">Major Alberta Small Business Grant Programs</h2>
 
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-12">
                 {/* Alberta Innovates */}
-                <Card className="border-2 border-orange-200">
-                  <CardHeader>
-                    <CardTitle className="text-orange-700">Alberta Innovates Programs</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>$5K - $2M</strong></span>
+                <div className="bg-white rounded-xl shadow-lg border border-orange-100 overflow-hidden">
+                  <div className="bg-orange-600 text-white p-6">
+                    <h3 className="text-2xl font-bold flex items-center">
+                      <Zap className="w-6 h-6 mr-3" />
+                      1. Alberta Innovates
+                    </h3>
+                  </div>
+                  <div className="p-8">
+                    <div className="grid md:grid-cols-2 gap-8 mb-6">
+                      <div>
+                        <h4 className="font-bold text-lg mb-2">Program Overview</h4>
+                        <p className="text-gray-700 mb-4">
+                          Alberta Innovates is the province's innovation engine, managing a portfolio of high-impact funding programs designed to accelerate technology development. Unlike generic business grants, these funds are strictly for "innovation" – meaning your project must involve developing a new product, process, or service that has technical risk.
+                        </p>
+                        <p className="text-gray-700">
+                          <strong>Best for:</strong> Tech startups, researchers, and SMEs developing novel solutions in health, energy, agriculture, or digital technology.
+                        </p>
                       </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Innovation Focus</strong></span>
+                      <div className="bg-orange-50 p-6 rounded-lg">
+                        <h4 className="font-bold text-lg mb-2 text-orange-800">Key Funding Streams</h4>
+                        <ul className="space-y-3 text-sm">
+                          <li className="flex items-start">
+                            <span className="font-bold text-orange-600 mr-2">•</span>
+                            <span><strong>Alberta Innovation Voucher ($10K - $100K):</strong> Pays for 75% of eligible costs to hire a service provider (e.g., software developer, IP lawyer, testing lab) to help you advance your idea.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="font-bold text-orange-600 mr-2">•</span>
+                            <span><strong>Product Demonstration Program ($50K - $500K):</strong> Funding to build and test a prototype in a real-world operational setting. Requires a partner/customer.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="font-bold text-orange-600 mr-2">•</span>
+                            <span><strong>Commercialization Associates ($120K):</strong> Subsidy to hire a business pro to help take your product to market.</span>
+                          </li>
+                        </ul>
                       </div>
                     </div>
-                    <p className="text-gray-700 mb-4">
-                      Alberta Innovates is the province&apos;s primary innovation agency, offering multiple funding streams
-                      from early-stage R&D to commercialization. Programs include Innovate Canada partnerships, Voucher
-                      Programs for SMEs, and specialized sector-specific initiatives.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Voucher Program: $10K-$100K for SME innovation projects</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Product Development: $50K-$500K for prototypes</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Commercialization: Up to $2M for market-ready products</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
 
-                {/* Technology Innovation Fund */}
-                <Card className="border-2 border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-700">Technology Innovation Fund</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $2M</strong></span>
+                {/* Technology Innovation and Emissions Reduction (TIER) */}
+                <div className="bg-white rounded-xl shadow-lg border border-green-100 overflow-hidden">
+                  <div className="bg-green-700 text-white p-6">
+                    <h3 className="text-2xl font-bold flex items-center">
+                      <Leaf className="w-6 h-6 mr-3" />
+                      2. Emissions Reduction Alberta (ERA)
+                    </h3>
+                  </div>
+                  <div className="p-8">
+                    <div className="grid md:grid-cols-2 gap-8 mb-6">
+                      <div>
+                        <h4 className="font-bold text-lg mb-2">Program Overview</h4>
+                        <p className="text-gray-700 mb-4">
+                          Funded by the TIER carbon pricing system, ERA invests millions of dollars into technologies that reduce greenhouse gas emissions. These are typically large-scale capital projects but are open to SMEs partnering with large industry players.
+                        </p>
+                        <p className="text-gray-700">
+                          <strong>Best for:</strong> Clean tech companies, energy services, and manufacturing facilities implementing efficiency upgrades.
+                        </p>
                       </div>
-                      <div className="flex items-center">
-                        <Zap className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Tech Scale-up</strong></span>
+                      <div className="bg-green-50 p-6 rounded-lg">
+                        <h4 className="font-bold text-lg mb-2 text-green-800">Key Funding Streams</h4>
+                        <ul className="space-y-3 text-sm">
+                          <li className="flex items-start">
+                            <span className="font-bold text-green-600 mr-2">•</span>
+                            <span><strong>Partnership Intake Program:</strong> Accepts applications on a rolling basis for pilot projects that have significant GHG reduction potential.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="font-bold text-green-600 mr-2">•</span>
+                            <span><strong>Energy Savings for Business (ESB):</strong> Rebates for high-efficiency equipment upgrades (HVAC, lighting, motors) for any Alberta business.</span>
+                          </li>
+                        </ul>
                       </div>
                     </div>
-                    <p className="text-gray-700 mb-4">
-                      Designed for Alberta technology companies ready to scale, this fund supports commercialization
-                      activities including product development, market expansion, and IP protection. The fund favors
-                      businesses with demonstrated market traction.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Technology development and R&D enhancement</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Market commercialization support</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Intellectual property development</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
 
-                {/* Rural Economic Development */}
-                <Card className="border-2 border-green-200">
-                  <CardHeader>
-                    <CardTitle className="text-green-700">Rural Economic Development Program</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $500K</strong></span>
+                {/* Jobs Now */}
+                <div className="bg-white rounded-xl shadow-lg border border-blue-100 overflow-hidden">
+                  <div className="bg-blue-600 text-white p-6">
+                    <h3 className="text-2xl font-bold flex items-center">
+                      <Users className="w-6 h-6 mr-3" />
+                      3. Alberta Jobs Now Grant
+                    </h3>
+                  </div>
+                  <div className="p-8">
+                    <p className="text-gray-700 mb-6">
+                      While technically a hiring subsidy rather than a "project grant," this is the most accessible funding for general small businesses. It covers 25% of a new employee's salary (up to $25,000) or 37.5% if hiring from underrepresented groups.
+                    </p>
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div className="border p-4 rounded text-center">
+                        <div className="font-bold text-2xl text-blue-600 mb-1">Up to $25K</div>
+                        <div className="text-sm text-gray-600">Per New Hire</div>
                       </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Rural Focus</strong></span>
+                      <div className="border p-4 rounded text-center">
+                        <div className="font-bold text-2xl text-blue-600 mb-1">52 Weeks</div>
+                        <div className="text-sm text-gray-600">Employment Duration</div>
+                      </div>
+                      <div className="border p-4 rounded text-center">
+                        <div className="font-bold text-2xl text-blue-600 mb-1">2 Intakes</div>
+                        <div className="text-sm text-gray-600">Per Year (Typically)</div>
                       </div>
                     </div>
-                    <p className="text-gray-700 mb-4">
-                      This program supports businesses in Alberta communities outside Calgary and Edmonton. Eligible
-                      projects include agricultural value-added processing, tourism development, and community
-                      economic diversification initiatives.
-                    </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Rural community business expansion</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Agricultural processing facilities</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Tourism and hospitality development</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
 
-                {/* Energy Diversification */}
-                <Card className="border-2 border-red-200">
-                  <CardHeader>
-                    <CardTitle className="text-red-700">Energy Diversification Program</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Up to $10M</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Leaf className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Energy Transition</strong></span>
-                      </div>
-                    </div>
+                {/* CARES */}
+                <div className="bg-white rounded-xl shadow-lg border border-purple-100 overflow-hidden">
+                  <div className="bg-purple-600 text-white p-6">
+                    <h3 className="text-2xl font-bold flex items-center">
+                      <MapPin className="w-6 h-6 mr-3" />
+                      4. Community and Regional Economic Support (CARES)
+                    </h3>
+                  </div>
+                  <div className="p-8">
                     <p className="text-gray-700 mb-4">
-                      Major funding for projects that diversify Alberta&apos;s energy sector. Priority given to clean
-                      technology, hydrogen development, carbon capture, and petrochemical value-added projects.
-                      This is one of Canada&apos;s largest provincial clean energy funds.
+                      CARES funds projects that improve local economic conditions. While grants are often awarded to municipalities or non-profits, private businesses can partner on these applications for shared initiatives like tourism marketing strategies or regional branding.
                     </p>
-                    <ul className="space-y-2 mb-4 text-sm">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Clean energy technology commercialization</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Hydrogen and carbon capture projects</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Petrochemical diversification</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -632,8 +600,53 @@ export default function AlbertaSmallBusinessGrantsGuide() {
           </div>
         </section>
 
-        {/* Common Mistakes Section */}
-        <section id="mistakes" className="py-16 bg-white">
+        {/* Success Stories Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold mb-12 text-center">Alberta Success Stories: How They Got Funded</h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                  <div className="flex items-center mb-4">
+                    <Leaf className="w-10 h-10 text-green-600 bg-green-100 rounded-full p-2 mr-3" />
+                    <div>
+                      <h3 className="font-bold text-lg">The Ag-Tech Pivot</h3>
+                      <div className="text-xs text-gray-500 uppercase tracking-wide">Lethbridge, AB</div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-4"><strong>The Business:</strong> A family-owned seed cleaning plant wanted to install optical sorting technology to separate wheat grades.</p>
+                  <p className="text-sm text-gray-600 mb-4"><strong>The Strategy:</strong> They positioned the upgrade not as "buying equipment" (ineligible) but as "adoption of new technology" (eligible). They stacked a <strong>Sustainable CAP</strong> grant ($250,000) with a <strong>PrairiesCan</strong> loan.</p>
+                  <div className="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded inline-block">Result: $450K Funding</div>
+                </div>
+
+                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                  <div className="flex items-center mb-4">
+                    <Zap className="w-10 h-10 text-blue-600 bg-blue-100 rounded-full p-2 mr-3" />
+                    <div>
+                      <h3 className="font-bold text-lg">The Methane Fix</h3>
+                      <div className="text-xs text-gray-500 uppercase tracking-wide">Grande Prairie, AB</div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-4"><strong>The Business:</strong> An oilfield services company developed a new valve to prevent gas leaks but lacked cash to build 10 pilot units.</p>
+                  <p className="text-sm text-gray-600 mb-4"><strong>The Strategy:</strong> They applied to <strong>Alberta Innovates</strong> for a Product Demonstration voucher. They partnered with a mid-size producer who agreed to be the test site.</p>
+                  <div className="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded inline-block">Result: $150K Non-Repayable</div>
+                </div>
+
+                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                  <div className="flex items-center mb-4">
+                    <Users className="w-10 h-10 text-purple-600 bg-purple-100 rounded-full p-2 mr-3" />
+                    <div>
+                      <h3 className="font-bold text-lg">The Digital Shift</h3>
+                      <div className="text-xs text-gray-500 uppercase tracking-wide">Red Deer, AB</div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-4"><strong>The Business:</strong> A manufacturing firm was using spreadsheets to track inventory, causing massive delays.</p>
+                  <p className="text-sm text-gray-600 mb-4"><strong>The Strategy:</strong> They used the <strong>Canada Digital Adoption Program (CDAP)</strong> to hire a consultant to write a digital plan ($15K grant) and then accessed the BDC 0% loan ($100K) to buy an ERP system.</p>
+                  <div className="bg-purple-100 text-purple-800 text-xs font-bold px-2 py-1 rounded inline-block">Result: $115K Value</div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Common Mistakes to Avoid with Alberta Grant Applications</h2>
@@ -717,44 +730,78 @@ export default function AlbertaSmallBusinessGrantsGuide() {
         {/* Industry Focus Section */}
         <section id="industries" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Industry-Specific Grants in Alberta</h2>
-
-              <p className="text-gray-700 mb-6">
-                Alberta offers specialized funding streams for priority sectors. These industry-specific
-                programs often have higher approval rates because they attract fewer, more targeted applicants.
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold mb-12 text-center">Sector Deep Dive: Where the Money Is</h2>
+              <p className="text-center text-gray-700 max-w-3xl mx-auto mb-12">
+                Alberta's funding strategy is sector-driven. General "small business grants" are rare; "Agriculture grants" or "Energy grants" are abundant. Here is the breakdown of the three hottest sectors for 2026.
               </p>
 
-              <div className="grid md:grid-cols-3 gap-4">
-                <div className="p-4 bg-white rounded-lg shadow-sm">
-                  <Leaf className="w-8 h-8 text-green-600 mb-3" />
-                  <h3 className="font-bold mb-2">Clean Technology</h3>
-                  <p className="text-sm text-gray-600">$200M+ annual funding for clean energy, carbon capture, and hydrogen projects</p>
+              <div className="space-y-12">
+                {/* Sector 1: Agriculture & Agri-Food */}
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  <div className="md:w-1/3 bg-orange-100 p-6 rounded-xl">
+                    <Leaf className="w-12 h-12 text-orange-600 mb-4" />
+                    <h3 className="text-2xl font-bold text-orange-900 mb-2">Agriculture & Agri-Food</h3>
+                    <p className="text-sm text-orange-800">
+                      <strong>Priority:</strong> Value-added processing (turning raw potatoes into chips, or canola into protein isolate).
+                    </p>
+                  </div>
+                  <div className="md:w-2/3">
+                    <h4 className="font-bold text-lg mb-3">Key Program: Sustainable CAP</h4>
+                    <p className="text-gray-700 mb-4">
+                      The Sustainable Canadian Agricultural Partnership (Sustainable CAP) is a massive federal-provincial framework. In Alberta, it funds 25-50% of costs for projects that improve efficiency, water use, or product duality.
+                    </p>
+                    <ul className="space-y-2 text-sm text-gray-600">
+                      <li><strong className="text-gray-900">Emerging Opportunities Program:</strong> Funding for transformative processing equipment that doesn't exist yet in Alberta.</li>
+                      <li><strong className="text-gray-900">Efficient Grain Handling:</strong> Grants for grain drying efficiency upgrades (reducing propane/natural gas usage).</li>
+                    </ul>
+                  </div>
                 </div>
-                <div className="p-4 bg-white rounded-lg shadow-sm">
-                  <Building className="w-8 h-8 text-blue-600 mb-3" />
-                  <h3 className="font-bold mb-2">Advanced Manufacturing</h3>
-                  <p className="text-sm text-gray-600">Automation, Industry 4.0, and petrochemical value-add projects</p>
+
+                <hr className="border-gray-200" />
+
+                {/* Sector 2: Energy & Clean Tech */}
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  <div className="md:w-1/3 bg-blue-100 p-6 rounded-xl">
+                    <Zap className="w-12 h-12 text-blue-600 mb-4" />
+                    <h3 className="text-2xl font-bold text-blue-900 mb-2">Energy & Clean Tech</h3>
+                    <p className="text-sm text-blue-800">
+                      <strong>Priority:</strong> Hydrogen, Carbon Capture (CCUS), and Methane Reduction.
+                    </p>
+                  </div>
+                  <div className="md:w-2/3">
+                    <h4 className="font-bold text-lg mb-3">Key Program: TIER Economic Recovery</h4>
+                    <p className="text-gray-700 mb-4">
+                      Large industrial emitters pay into the TIER fund, which is then redistributed as grants to companies solving the emissions problem. If you have a technology that can measure, monitor, or reduce methane leaks, you are in high demand.
+                    </p>
+                    <ul className="space-y-2 text-sm text-gray-600">
+                      <li><strong className="text-gray-900">Digital Energy:</strong> Funding for software startups optimizing oilfield logistics to reduce truck rolls and emissions.</li>
+                      <li><strong className="text-gray-900">Hydrogen Centre of Excellence:</strong> Specific funding for hydrogen production, storage, and retrofitting heavy-duty vehicles.</li>
+                    </ul>
+                  </div>
                 </div>
-                <div className="p-4 bg-white rounded-lg shadow-sm">
-                  <TrendingUp className="w-8 h-8 text-purple-600 mb-3" />
-                  <h3 className="font-bold mb-2">Digital Technology</h3>
-                  <p className="text-sm text-gray-600">AI, fintech, and digital transformation initiatives</p>
-                </div>
-                <div className="p-4 bg-white rounded-lg shadow-sm">
-                  <Users className="w-8 h-8 text-orange-600 mb-3" />
-                  <h3 className="font-bold mb-2">Agriculture & Agri-Food</h3>
-                  <p className="text-sm text-gray-600">Value-added processing, precision agriculture, food innovation</p>
-                </div>
-                <div className="p-4 bg-white rounded-lg shadow-sm">
-                  <Zap className="w-8 h-8 text-red-600 mb-3" />
-                  <h3 className="font-bold mb-2">Life Sciences</h3>
-                  <p className="text-sm text-gray-600">Biotech, medical devices, and health innovation</p>
-                </div>
-                <div className="p-4 bg-white rounded-lg shadow-sm">
-                  <MapPin className="w-8 h-8 text-cyan-600 mb-3" />
-                  <h3 className="font-bold mb-2">Tourism & Hospitality</h3>
-                  <p className="text-sm text-gray-600">Rural tourism development and experience economy</p>
+
+                <hr className="border-gray-200" />
+
+                {/* Sector 3: Digital & Creative */}
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  <div className="md:w-1/3 bg-purple-100 p-6 rounded-xl">
+                    <Briefcase className="w-12 h-12 text-purple-600 mb-4" />
+                    <h3 className="text-2xl font-bold text-purple-900 mb-2">Digital & Creative</h3>
+                    <p className="text-sm text-purple-800">
+                      <strong>Priority:</strong> AI adoption, Interactive Digital Media (Games/VR).
+                    </p>
+                  </div>
+                  <div className="md:w-2/3">
+                    <h4 className="font-bold text-lg mb-3">Key Program: Alberta Media Fund</h4>
+                    <p className="text-gray-700 mb-4">
+                      Often overlooked, this fund supports video game developers, post-production houses, and digital content creators. It offers a 25% grant on eligible labour costs.
+                    </p>
+                    <ul className="space-y-2 text-sm text-gray-600">
+                      <li><strong className="text-gray-900">Interactive Digital Media Grant:</strong> Up to $200,000 for game development studios.</li>
+                      <li><strong className="text-gray-900">Post-Production Grant:</strong> For companies specializing in VFX and editing for film/TV.</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -824,56 +871,118 @@ export default function AlbertaSmallBusinessGrantsGuide() {
           </div>
         </section>
 
+        {/* Stacking Strategy Section */}
+        <section className="py-16 bg-blue-900 text-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-center mb-6">
+                <Zap className="w-8 h-8 text-yellow-400 mr-3" />
+                <h2 className="text-3xl font-bold">Pro Tip: The "Alberta Stack" Strategy</h2>
+              </div>
+              <p className="text-blue-100 text-lg mb-8 leading-relaxed">
+                Smart founders don't just apply for one grant; they layer them. Because Alberta has strong alignment with federal priorities, you can often fund 75% of your project by stacking sources.
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-blue-800 p-6 rounded-xl border border-blue-700">
+                  <h3 className="font-bold text-xl mb-4 text-white">Step 1: The Federal Foundation</h3>
+                  <p className="text-blue-200 mb-4">
+                    Always start with <strong>PrairiesCan</strong> (formerly Western Economic Diversification). Their "Business Scale-up and Productivity" (BSP) program offers interest-free loans that count as "industry contribution" for some other grants.
+                  </p>
+                  <div className="bg-blue-900 p-3 rounded text-sm text-yellow-300 font-mono">
+                    Result: 50% Funding (Interest-Free Loan)
+                  </div>
+                </div>
+
+                <div className="bg-blue-800 p-6 rounded-xl border border-blue-700">
+                  <h3 className="font-bold text-xl mb-4 text-white">Step 2: The Provincial Top-Up</h3>
+                  <p className="text-blue-200 mb-4">
+                    Layer an <strong>Alberta Innovates</strong> voucher on top of your federal funding. Since AI grants are non-repayable cash, they reduce your actual debt load significantly.
+                  </p>
+                  <div className="bg-blue-900 p-3 rounded text-sm text-yellow-300 font-mono">
+                    Result: +25% Funding (Non-Dilutive Grant)
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 bg-black/20 p-4 rounded-lg flex items-start">
+                <AlertTriangle className="w-6 h-6 text-yellow-500 mr-3 shrink-0 mt-1" />
+                <p className="text-sm text-blue-200">
+                  <strong>Stacking Limit Warning:</strong> Government stacking rules typically cap total public funding at 75% of project costs (or 90% for some research projects). Always check the "Stacking Limit" clause in your contribution agreement.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Alternatives Section */}
         <section id="alternatives" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Alternatives to Alberta Business Grants</h2>
+              <h2 className="text-3xl font-bold mb-8 text-center">Plan B: Funding When Grants Fail</h2>
 
-              <p className="text-gray-700 mb-6">
-                If grant programs don&apos;t align with your business needs or timeline, Alberta offers
-                several alternative funding mechanisms that may be more appropriate.
+              <p className="text-gray-700 mb-12 text-center max-w-2xl mx-auto">
+                Grants are competitive and slow. If you need cash *now* or didn't qualify, these Alberta-specific alternatives are your safety net.
               </p>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-6 bg-white rounded-lg border">
-                  <h3 className="font-bold text-lg mb-3">SR&ED Tax Credits</h3>
-                  <p className="text-gray-600 text-sm mb-3">
-                    Federal Scientific Research and Experimental Development credits provide 35-64%
-                    return on R&D expenditures. Alberta has no provincial SR&ED match, but federal
-                    credits are substantial.
-                  </p>
-                  <Link href="/blog/sred-scientific-research-experimental-development" className="text-orange-600 hover:underline text-sm">
-                    Learn about SR&ED →
-                  </Link>
+              <div className="space-y-6">
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col md:flex-row gap-6">
+                  <div className="shrink-0 bg-yellow-100 p-4 rounded-full h-16 w-16 flex items-center justify-center">
+                    <DollarSign className="w-8 h-8 text-yellow-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-xl mb-2">1. ATB Financial "Boost" Loans</h3>
+                    <p className="text-gray-600 mb-2">
+                      Unlike the Big 5 banks, ATB is an Alberta crown corporation with a mandate to support local business. They often have higher risk tolerance for Alberta-based entrepreneurs.
+                    </p>
+                    <ul className="text-sm text-gray-500 list-disc pl-4">
+                      <li><strong>Best For:</strong> Buying equipment, inventory, or operating lines of credit.</li>
+                      <li><strong>Speed:</strong> Approval in days, not months.</li>
+                    </ul>
+                  </div>
                 </div>
 
-                <div className="p-6 bg-white rounded-lg border">
-                  <h3 className="font-bold text-lg mb-3">Federal IRAP Program</h3>
-                  <p className="text-gray-600 text-sm mb-3">
-                    NRC-IRAP provides non-repayable contributions for R&D, technical advisory services,
-                    and connections to innovation partners. Often stackable with provincial funding.
-                  </p>
-                  <Link href="/blog/irap-industrial-research-assistance-program" className="text-orange-600 hover:underline text-sm">
-                    Learn about IRAP →
-                  </Link>
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col md:flex-row gap-6">
+                  <div className="shrink-0 bg-green-100 p-4 rounded-full h-16 w-16 flex items-center justify-center">
+                    <Users className="w-8 h-8 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-xl mb-2">2. Community Futures (Rural)</h3>
+                    <p className="text-gray-600 mb-2">
+                      If a bank says no, go here. Community Futures has offices in 27 rural Alberta regions. They provide loans up to $150,000 specifically for businesses that can't get traditional financing.
+                    </p>
+                    <ul className="text-sm text-gray-500 list-disc pl-4">
+                      <li><strong>Best For:</strong> Rural startups, succession planning (buying a business).</li>
+                      <li><strong>Bonus:</strong> Includes free business coaching.</li>
+                    </ul>
+                  </div>
                 </div>
 
-                <div className="p-6 bg-white rounded-lg border">
-                  <h3 className="font-bold text-lg mb-3">Alberta Enterprise Corporation</h3>
-                  <p className="text-gray-600 text-sm mb-3">
-                    AEC invests in venture capital funds that support Alberta technology companies.
-                    Less direct than grants but provides access to patient capital.
-                  </p>
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col md:flex-row gap-6">
+                  <div className="shrink-0 bg-blue-100 p-4 rounded-full h-16 w-16 flex items-center justify-center">
+                    <Briefcase className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-xl mb-2">3. The VCAP Model (Venture Capital)</h3>
+                    <p className="text-gray-600 mb-2">
+                      Alberta Enterprise Corporation invests in VC funds that invest in YOU. If you have a high-growth tech startup, look for funds backed by AEC, such as <strong>Accelerate Fund III</strong>.
+                    </p>
+                    <ul className="text-sm text-gray-500 list-disc pl-4">
+                      <li><strong>Best For:</strong> Tech companies needing $500K+ to scale globally.</li>
+                      <li><strong>Trade-off:</strong> You give up equity (ownership) in exchange for cash.</li>
+                    </ul>
+                  </div>
                 </div>
+              </div>
 
-                <div className="p-6 bg-white rounded-lg border">
-                  <h3 className="font-bold text-lg mb-3">Community Futures Loans</h3>
-                  <p className="text-gray-600 text-sm mb-3">
-                    Low-interest loans for rural Alberta businesses, often with flexible terms.
-                    More accessible than grants with faster approval timelines.
-                  </p>
-                </div>
+              <div className="mt-8 text-center bg-white p-4 rounded-lg border border-gray-200">
+                <h4 className="font-bold text-gray-900 mb-2">What about SR&ED?</h4>
+                <p className="text-gray-600 text-sm mb-3">
+                  While not an "upfront" grant, the Federal Scientific Research and Experimental Development (SR&ED) credit is the single biggest source of R&D funding. Alberta has no provincial top-up, but the federal portion (35% refundable) is essentially guaranteed cash if you qualify.
+                </p>
+                <Link href="/blog/sred-scientific-research-experimental-development" className="inline-flex items-center text-orange-600 font-bold hover:underline">
+                  Read our full SR&ED Guide <ExternalLink className="w-4 h-4 ml-2" />
+                </Link>
               </div>
             </div>
           </div>
@@ -908,9 +1017,7 @@ export default function AlbertaSmallBusinessGrantsGuide() {
                       Can startups with no revenue apply for Alberta grants?
                     </h3>
                     <p className="text-gray-700 mt-2 ml-7">
-                      Yes, several Alberta programs specifically target pre-revenue startups, particularly
-                      Alberta Innovates Voucher programs and accelerator-linked funding. However, you&apos;ll
-                      need to demonstrate technical capability, market opportunity, and a clear path to revenue.
+                      Yes, but usually only for "Innovation" grants (Alberta Innovates). If you are a standard retail or service startup, grants are almost non-existent. You are expected to use loans or personal equity. However, hiring grants (Alberta Jobs Now) ARE available to startups once you are ready to put someone on payroll.
                     </p>
                   </CardContent>
                 </Card>
@@ -919,13 +1026,10 @@ export default function AlbertaSmallBusinessGrantsGuide() {
                   <CardContent className="pt-6">
                     <h3 className="font-bold text-lg flex items-start">
                       <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
-                      How competitive are Alberta business grants?
+                      Do I need to live in Alberta to apply?
                     </h3>
                     <p className="text-gray-700 mt-2 ml-7">
-                      Competition varies by program. Voucher programs have 30-50% approval rates for
-                      well-prepared applications. Larger innovation grants are more competitive at
-                      15-25% approval rates. Energy diversification programs are highly competitive
-                      but offer larger awards.
+                      Critically, yes. Your company must be registered in Alberta and the *benefits* of the project (jobs, economic growth) must accrue to the province. You cannot accept an Alberta grant and then spend the money hiring developers in Ontario or the US.
                     </p>
                   </CardContent>
                 </Card>
@@ -934,106 +1038,150 @@ export default function AlbertaSmallBusinessGrantsGuide() {
                   <CardContent className="pt-6">
                     <h3 className="font-bold text-lg flex items-start">
                       <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
-                      Can I apply for multiple Alberta grants simultaneously?
+                      What is the "CARES" program?
                     </h3>
                     <p className="text-gray-700 mt-2 ml-7">
-                      Yes, but you must disclose all applications and cannot receive duplicate funding
-                      for the same expense. Many businesses successfully combine multiple Alberta programs
-                      or stack provincial with federal funding (IRAP, SR&ED). Program officers can advise
-                      on complementary funding strategies.
+                      The Community and Regional Economic Support (CARES) program funds projects that improve the local economy. While businesses can partner on them, the primary applicant is usually a municipality or non-profit. It is not a direct cash grant for your private business expenses.
                     </p>
                   </CardContent>
                 </Card>
-              </div>
-            </div>
+
+                <Card>
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-lg flex items-start">
+                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
+                      Is there a grant for women entrepreneurs in Alberta?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      While there is no specific "Alberta Women's Grant," the <strong>Women Entrepreneurship Knowledge Hub (WEKH)</strong> has a strong Alberta chapter (at Mount Royal University) that connects women to funding. Additionally, the federal "Women Entrepreneurship Loan Fund" is active in Alberta.
+                    </p>
+                  </CardContent>
+                </Card>
+                <p className="text-gray-700 mt-2 ml-7">
+                  Yes, several Alberta programs specifically target pre-revenue startups, particularly
+                  Alberta Innovates Voucher programs and accelerator-linked funding. However, you&apos;ll
+                  need to demonstrate technical capability, market opportunity, and a clear path to revenue.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="pt-6">
+                <h3 className="font-bold text-lg flex items-start">
+                  <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
+                  How competitive are Alberta business grants?
+                </h3>
+                <p className="text-gray-700 mt-2 ml-7">
+                  Competition varies by program. Voucher programs have 30-50% approval rates for
+                  well-prepared applications. Larger innovation grants are more competitive at
+                  15-25% approval rates. Energy diversification programs are highly competitive
+                  but offer larger awards.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="pt-6">
+                <h3 className="font-bold text-lg flex items-start">
+                  <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-1 flex-shrink-0" />
+                  Can I apply for multiple Alberta grants simultaneously?
+                </h3>
+                <p className="text-gray-700 mt-2 ml-7">
+                  Yes, but you must disclose all applications and cannot receive duplicate funding
+                  for the same expense. Many businesses successfully combine multiple Alberta programs
+                  or stack provincial with federal funding (IRAP, SR&ED). Program officers can advise
+                  on complementary funding strategies.
+                </p>
+              </CardContent>
+            </Card>
           </div>
-        </section>
+      </div>
+    </div >
+        </section >
 
-        {/* Related Resources Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Related Resources</h2>
+    {/* Related Resources Section */ }
+    < section className = "py-16 bg-gray-50" >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6">Related Resources</h2>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/blog/canada-federal-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
-                  <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
-                  <span className="text-gray-700 group-hover:text-orange-600">Federal Grants for Canadian Businesses</span>
-                  <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
-                </Link>
-                <Link href="/blog/sred-scientific-research-experimental-development" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
-                  <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
-                  <span className="text-gray-700 group-hover:text-orange-600">SR&ED Tax Credit Guide</span>
-                  <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
-                </Link>
-                <Link href="/blog/irap-industrial-research-assistance-program" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
-                  <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
-                  <span className="text-gray-700 group-hover:text-orange-600">IRAP Program Overview</span>
-                  <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
-                </Link>
-                <Link href="/guides" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
-                  <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
-                  <span className="text-gray-700 group-hover:text-orange-600">All Grant Application Guides</span>
-                  <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
-                </Link>
-              </div>
-            </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <Link href="/blog/canada-federal-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
+              <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
+              <span className="text-gray-700 group-hover:text-orange-600">Federal Grants for Canadian Businesses</span>
+              <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+            </Link>
+            <Link href="/blog/sred-scientific-research-experimental-development" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
+              <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
+              <span className="text-gray-700 group-hover:text-orange-600">SR&ED Tax Credit Guide</span>
+              <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+            </Link>
+            <Link href="/blog/irap-industrial-research-assistance-program" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
+              <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
+              <span className="text-gray-700 group-hover:text-orange-600">IRAP Program Overview</span>
+              <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+            </Link>
+            <Link href="/guides" className="flex items-center p-4 bg-white rounded-lg border hover:border-orange-500 hover:shadow-md transition-all group">
+              <BookOpen className="w-5 h-5 text-orange-600 mr-3" />
+              <span className="text-gray-700 group-hover:text-orange-600">All Grant Application Guides</span>
+              <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+            </Link>
           </div>
         </section>
 
         {/* Strong CTA Section */}
         <section className="py-20 bg-gradient-to-r from-orange-600 to-red-800">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-4xl font-bold mb-6">
-                Ready to Access Alberta's $980M+ in Business Funding?
-              </h2>
-              <p className="text-xl text-orange-100 mb-8">
-                Our Alberta specialists have secured over $7M for local businesses. Get expert guidance
-                on navigating Alberta Innovates, energy diversification programs, and rural development funding.
-              </p>
-              <div className="bg-white/10 rounded-lg p-6 mb-8">
-                <h4 className="font-semibold mb-4">Our Alberta Grant Success Package Includes:</h4>
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Free eligibility assessment</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Program matching service</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Application preparation support</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Energy sector expertise</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Calgary and Edmonton local teams</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>85% success rate for Alberta businesses</span>
-                  </div>
-                </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center text-white">
+          <h2 className="text-4xl font-bold mb-6">
+            Ready to Access Alberta's $980M+ in Business Funding?
+          </h2>
+          <p className="text-xl text-orange-100 mb-8">
+            Our Alberta specialists have secured over $7M for local businesses. Get expert guidance
+            on navigating Alberta Innovates, energy diversification programs, and rural development funding.
+          </p>
+          <div className="bg-white/10 rounded-lg p-6 mb-8">
+            <h4 className="font-semibold mb-4">Our Alberta Grant Success Package Includes:</h4>
+            <div className="grid md:grid-cols-2 gap-4 text-sm">
+              <div className="flex items-center">
+                <CheckCircle className="w-4 h-4 mr-2" />
+                <span>Free eligibility assessment</span>
               </div>
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
-                <Link href="/contact?service=alberta-grants-expert-help">
-                  Get Expert Help with Alberta Grants
-                </Link>
-              </Button>
-              <p className="text-orange-200 text-sm mt-4">
-                Free consultation • Energy sector specialists • Local Alberta expertise
-              </p>
+              <div className="flex items-center">
+                <CheckCircle className="w-4 h-4 mr-2" />
+                <span>Program matching service</span>
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="w-4 h-4 mr-2" />
+                <span>Application preparation support</span>
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="w-4 h-4 mr-2" />
+                <span>Energy sector expertise</span>
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="w-4 h-4 mr-2" />
+                <span>Calgary and Edmonton local teams</span>
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="w-4 h-4 mr-2" />
+                <span>85% success rate for Alberta businesses</span>
+              </div>
             </div>
           </div>
-        </section>
+          <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
+            <Link href="/contact?service=alberta-grants-expert-help">
+              Get Expert Help with Alberta Grants
+            </Link>
+          </Button>
+          <p className="text-orange-200 text-sm mt-4">
+            Free consultation • Energy sector specialists • Local Alberta expertise
+          </p>
+        </div>
       </div>
-      <Footer />
+        </section >
+      </div >
+    <Footer />
     </>
   )
 }

@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, MapPin, TrendingUp, Sun, ShoppingCart, Zap, Anchor, Truck, Home, Briefcase, GraduationCap, Gavel, Globe, Landmark, Flag, Star, Key, Navigation, Map , Microscope, Wheat, BookOpen, HelpCircle } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, MapPin, TrendingUp, Sun, ShoppingCart, Zap, Anchor, Truck, Home, Briefcase, GraduationCap, Gavel, Globe, Landmark, Flag, Star, Key, Navigation, Map, Microscope, Wheat, BookOpen, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable"
@@ -74,6 +74,12 @@ export default function StateProvinceGrantsPage() {
                   <p>
                     Economic Development Organizations (EDOs) are in a bidding war for your business. They want your tax revenue and your employment numbers. If you are willing to move your HQ, build a new factory, or hire 50 people, these agencies will roll out the red carpet with cash, tax abatements, and free land.
                   </p>
+                  <p>
+                    The fundamental difference between federal and local grants lies in their core objectives and evaluation criteria. Federal programs like the Strategic Innovation Fund or IRAP focus primarily on technological innovation, intellectual property creation, and national economic impact metrics. In contrast, state and provincial programs care deeply about job creation in their specific jurisdiction, local tax revenue generation, supply chain development within their borders, and keeping businesses from relocating elsewhere. This means the same company with the same project might receive no federal funding but qualify for substantial state support if they frame their application around job creation rather than technical innovation.
+                  </p>
+                  <p>
+                    Understanding the site selection process is crucial for maximizing your incentive package. Major corporations regularly play states and provinces against each other to extract maximum value. When Toyota or Amazon announce they are considering multiple locations for a new facility, economic development agencies compete aggressively with customized packages worth tens or hundreds of millions of dollars. While small businesses cannot command the same attention, they can still leverage competition between jurisdictions by indicating they are evaluating multiple locations. Even moving from one city to a neighboring city within the same state can unlock different municipal incentive programs.
+                  </p>
 
                   <div className="bg-emerald-50 dark:bg-emerald-900/20 p-8 rounded-2xl border-l-8 border-emerald-600 my-10 shadow-sm">
                     <h4 className="text-emerald-900 dark:text-emerald-100 font-bold text-2xl mb-4">The "2-Hour Rule"</h4>
@@ -85,6 +91,7 @@ export default function StateProvinceGrantsPage() {
 
                 <div id="why-local" className="scroll-mt-32">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Why "Boring" Grants Are Better</h2>
+                  <p className="text-gray-700 mb-6">The most successful grant strategies often focus on programs that other businesses overlook. While everyone chases the headline-grabbing federal programs with hundreds of millions in total funding, the mathematically optimal approach targets smaller regional programs where you face less competition and higher approval rates. A twenty thousand dollar grant with a forty percent approval rate is worth more than a one hundred thousand dollar grant with a five percent approval rate when you factor in the time and resources invested in each application.</p>
                   <div className="grid md:grid-cols-2 gap-8">
                     <Card className="hover:shadow-lg transition border-emerald-100 bg-emerald-50/50">
                       <CardHeader><CardTitle className="text-emerald-800">Less Competition</CardTitle></CardHeader>
@@ -490,7 +497,7 @@ export default function StateProvinceGrantsPage() {
                   <div className="space-y-8">
                     <div>
                       <h4 className="font-bold text-xl text-gray-900 mb-2">Can I apply if I haven't incorporated yet?</h4>
-                      <p className="text-gray-600">For most state/provincial grants: <strong>No.</strong> They want to see a registered business with a bank account. For "Startups" funds (like Futurpreneur or SBDC competitions), sole proprietorships might be eligible.</p>
+                      <p className="text-gray-600">For most state/provincial grants: <strong>No.</strong> They want to see a registered business with a bank account in the jurisdiction. The reasoning is simple: unincorporated businesses cannot be legally bound to job creation commitments, and tracking compliance becomes nearly impossible. For "Startups" funds like Futurpreneur or SBDC competitions, sole proprietorships might be eligible, but the amounts are typically smaller and focused on business plan development.</p>
                     </div>
                     <div>
                       <h4 className="font-bold text-xl text-gray-900 mb-2">Do these grants apply to remote companies?</h4>

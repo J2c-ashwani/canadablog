@@ -116,56 +116,88 @@ export default function RBCWomenEntrepreneurAwards() {
                 <h3 className="text-xl font-bold text-gray-900 mb-3">1. Ones to Watch Award</h3>
                 <p className="text-gray-700 mb-2"><strong>Best for:</strong> Emerging entrepreneurs and early-stage businesses</p>
                 <p className="text-gray-700 mb-2"><strong>Focus:</strong> High-growth potential, innovative business models, and promising market traction</p>
-                <p className="text-gray-700"><strong>Ideal candidate:</strong> Women entrepreneurs in their first 3 years of operation showing exceptional promise and scalability</p>
+                <p className="text-gray-700 mb-4"><strong>Ideal candidate:</strong> Women entrepreneurs in their first 3 years of operation showing exceptional promise and scalability</p>
+                <div className="bg-blue-50 p-4 rounded-md">
+                  <p className="text-sm font-semibold text-blue-900 mb-1">Judges' Perspective:</p>
+                  <p className="text-sm text-blue-800">For this category, judges look beyond current revenue figures to evaluate the foundational strength of the business. They examine the clarity of the value proposition, the size of the addressable market, and the strategic roadmap for capturing that market. Successful applicants demonstrate a deep understanding of their customer pain points and articulate exactly how their solution provides superior value compared to existing alternatives.</p>
+                </div>
               </Card>
 
               <Card className="p-6 border-l-4 border-green-500 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">2. Micro-Business Award</h3>
                 <p className="text-gray-700 mb-2"><strong>Best for:</strong> Solo entrepreneurs and businesses with 1-5 employees</p>
                 <p className="text-gray-700 mb-2"><strong>Focus:</strong> Sustainable profitability, community impact, and business resilience</p>
-                <p className="text-gray-700"><strong>Ideal candidate:</strong> Women running lean, profitable businesses with strong local presence and customer loyalty</p>
+                <p className="text-gray-700 mb-4"><strong>Ideal candidate:</strong> Women running lean, profitable businesses with strong local presence and customer loyalty</p>
+                <div className="bg-green-50 p-4 rounded-md">
+                  <p className="text-sm font-semibold text-green-900 mb-1">Judges' Perspective:</p>
+                  <p className="text-sm text-green-800">Judges in this category value operational efficiency and profitability over sheer scale. They look for evidence of strong customer retention, smart financial management, and the ability to punch above weight class. Applications that highlight personal customer relationships, niche market dominance, and the owner's ability to maximize limited resources typically score highest.</p>
+                </div>
               </Card>
 
               <Card className="p-6 border-l-4 border-purple-500 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">3. Start-Up Award</h3>
                 <p className="text-gray-700 mb-2"><strong>Best for:</strong> Businesses 3-5 years old in growth phase</p>
                 <p className="text-gray-700 mb-2"><strong>Focus:</strong> Revenue growth, market penetration, and team expansion</p>
-                <p className="text-gray-700"><strong>Ideal candidate:</strong> Women entrepreneurs successfully transitioning from startup to scale-up phase</p>
+                <p className="text-gray-700 mb-4"><strong>Ideal candidate:</strong> Women entrepreneurs successfully transitioning from startup to scale-up phase</p>
+                <div className="bg-purple-50 p-4 rounded-md">
+                  <p className="text-sm font-semibold text-purple-900 mb-1">Judges' Perspective:</p>
+                  <p className="text-sm text-purple-800">The transition from survival to growth is the key metric here. Judges want to see year-over-year revenue increases, successful team building, and systems implementation. They look for proof that the business has moved beyond founder-dependency and is building the infrastructure necessary for sustained long-term expansion. Case studies of overcoming initial scaling challenges are particularly persuasive.</p>
+                </div>
               </Card>
 
               <Card className="p-6 border-l-4 border-red-500 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">4. RBC Momentum Award</h3>
                 <p className="text-gray-700 mb-2"><strong>Best for:</strong> Established businesses demonstrating rapid acceleration</p>
                 <p className="text-gray-700 mb-2"><strong>Focus:</strong> Significant year-over-year growth in revenue, employees, and market share</p>
-                <p className="text-gray-700"><strong>Ideal candidate:</strong> Women-led businesses with proven track record showing exponential growth trajectory</p>
+                <p className="text-gray-700 mb-4"><strong>Ideal candidate:</strong> Women-led businesses with proven track record showing exponential growth trajectory</p>
+                <div className="bg-red-50 p-4 rounded-md">
+                  <p className="text-sm font-semibold text-red-900 mb-1">Judges' Perspective:</p>
+                  <p className="text-sm text-red-800">For the Momentum Award, numbers tell the story. Judges expect to see double or triple-digit growth percentages. However, they also scrutinize whether this growth is managed sustainably. Winning applications demonstrate how rapid expansion is being supported by robust operational processes, financial controls, and talent management strategies to ensure the momentum can be maintained without breaking the business.</p>
+                </div>
               </Card>
 
               <Card className="p-6 border-l-4 border-orange-500 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">5. Social Change Award: Regional Impact</h3>
                 <p className="text-gray-700 mb-2"><strong>Best for:</strong> Businesses creating positive change at regional/provincial level</p>
                 <p className="text-gray-700 mb-2"><strong>Focus:</strong> Community development, environmental sustainability, and social equity</p>
-                <p className="text-gray-700"><strong>Ideal candidate:</strong> Social enterprises and mission-driven businesses with measurable local impact</p>
+                <p className="text-gray-700 mb-4"><strong>Ideal candidate:</strong> Social enterprises and mission-driven businesses with measurable local impact</p>
+                <div className="bg-orange-50 p-4 rounded-md">
+                  <p className="text-sm font-semibold text-orange-900 mb-1">Judges' Perspective:</p>
+                  <p className="text-sm text-orange-800">Impact measurement is the differentiator here. Judges look for data that proves the social or environmental claim—tonnes of waste diverted, number of at-risk youth employed, or dollars reinvested in the community. They also evaluate the business model's sustainability; the most successful applicants demonstrate how financial success and social impact reinforce each other rather than competing for resources.</p>
+                </div>
               </Card>
 
               <Card className="p-6 border-l-4 border-teal-500 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">6. Social Change Award: National Impact</h3>
                 <p className="text-gray-700 mb-2"><strong>Best for:</strong> Businesses driving systemic change across Canada</p>
                 <p className="text-gray-700 mb-2"><strong>Focus:</strong> Scalable social impact, policy influence, and nationwide reach</p>
-                <p className="text-gray-700"><strong>Ideal candidate:</strong> Women entrepreneurs solving major societal challenges with innovative, scalable solutions</p>
+                <p className="text-gray-700 mb-4"><strong>Ideal candidate:</strong> Women entrepreneurs solving major societal challenges with innovative, scalable solutions</p>
+                <div className="bg-teal-50 p-4 rounded-md">
+                  <p className="text-sm font-semibold text-teal-900 mb-1">Judges' Perspective:</p>
+                  <p className="text-sm text-teal-800">For the National Impact award, judges look for systemic reach and replicability. They want to see how a solution developed locally has been successfully scaled across provinces or terrritories. Leadership in industry-wide change or policy advocacy often distinguishes winners in this category. The narrative should convincingly argue that the business is not just solving a problem, but changing how the country approaches that problem.</p>
+                </div>
               </Card>
 
               <Card className="p-6 border-l-4 border-indigo-500 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">7. Innovation Award</h3>
                 <p className="text-gray-700 mb-2"><strong>Best for:</strong> Businesses disrupting industries through innovation</p>
                 <p className="text-gray-700 mb-2"><strong>Focus:</strong> Technological advancement, process innovation, and market disruption</p>
-                <p className="text-gray-700"><strong>Ideal candidate:</strong> Women entrepreneurs developing cutting-edge products, services, or business models</p>
+                <p className="text-gray-700 mb-4"><strong>Ideal candidate:</strong> Women entrepreneurs developing cutting-edge products, services, or business models</p>
+                <div className="bg-indigo-50 p-4 rounded-md">
+                  <p className="text-sm font-semibold text-indigo-900 mb-1">Judges' Perspective:</p>
+                  <p className="text-sm text-indigo-800">Innovation isn't just about new technology; it's about solving problems in better ways. Judges look for clear evidence of market disruption—how the innovation renders competitors obsolete or creates entirely new value chains. Intellectual property strategy, R&D investment, and barriers to entry are key evaluation points. They want to know: "Why is this solution 10x better than the status quo?"</p>
+                </div>
               </Card>
 
               <Card className="p-6 border-l-4 border-pink-500 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">8. Excellence Award</h3>
                 <p className="text-gray-700 mb-2"><strong>Best for:</strong> Established leaders with sustained business excellence</p>
                 <p className="text-gray-700 mb-2"><strong>Focus:</strong> Long-term profitability, industry leadership, and mentorship contributions</p>
-                <p className="text-gray-700"><strong>Ideal candidate:</strong> Veteran women entrepreneurs with 10+ years of sustained success and industry influence</p>
+                <p className="text-gray-700 mb-4"><strong>Ideal candidate:</strong> Veteran women entrepreneurs with 10+ years of sustained success and industry influence</p>
+                <div className="bg-pink-50 p-4 rounded-md">
+                  <p className="text-sm font-semibold text-pink-900 mb-1">Judges' Perspective:</p>
+                  <p className="text-sm text-pink-800">This is a lifetime achievement-style recognition. Judges evaluate the candidate's total contribution to the Canadian business landscape over a decade or more. They look for resilience through economic cycles, consistent financial performance, and a legacy of leadership that extends beyond the company walls—training future leaders, influencing industry standards, and paving the way for other women entrepreneurs.</p>
+                </div>
               </Card>
             </div>
 
@@ -212,55 +244,86 @@ export default function RBCWomenEntrepreneurAwards() {
             <div className="space-y-6 mb-8">
               <div className="border-l-4 border-blue-500 pl-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 1: Nomination Period (February - March 21, 2026)</h3>
-                <p className="text-gray-700 mb-3">Nominations open in early February and close on <strong>March 21, 2026</strong>. During this period:</p>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Complete the online nomination form at womenofinfluence.ca</li>
-                  <li>• Choose the most appropriate award category for your business</li>
-                  <li>• Provide detailed business information, financial metrics, and impact data</li>
-                  <li>• Upload required documentation (financial statements, business registration, etc.)</li>
-                  <li>• Submit compelling narrative responses demonstrating your achievements</li>
+                <p className="text-gray-700 mb-3">The journey begins with a nomination. Nominations open in early February and close strictly on <strong>March 21, 2026</strong>. Unlike many other awards, self-nominations are not only accepted but encouraged, ensuring that deserving entrepreneurs don't miss out simply because no one else submitted their name. The nomination form itself is relatively brief, acting as the initial gateway to the program. Its primary purpose is to verify basic eligibility and categorize the business correctly.</p>
+                <p className="text-gray-700 mb-2 font-semibold">Key Activites:</p>
+                <ul className="space-y-1 text-gray-700 list-disc list-inside ml-2">
+                  <li>Complete the online nomination form at womenofinfluence.ca</li>
+                  <li>Choose the most appropriate award category for your business</li>
+                  <li>Provide detailed business information, financial metrics, and impact data</li>
+                  <li>Upload required documentation (financial statements, business registration, etc.)</li>
+                  <li>Submit compelling narrative responses demonstrating your achievements</li>
                 </ul>
               </div>
 
               <div className="border-l-4 border-green-500 pl-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 2: Initial Review (April - May 2026)</h3>
-                <p className="text-gray-700 mb-3">Program committee evaluates all nominations based on:</p>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Business performance metrics (revenue, profitability, growth rate)</li>
-                  <li>• Innovation and competitive differentiation</li>
-                  <li>• Leadership quality and vision</li>
-                  <li>• Social and economic impact</li>
-                  <li>• Scalability and sustainability potential</li>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 2: Initial Review & Application Submission (April - May 2026)</h3>
+                <p className="text-gray-700 mb-3">Once nominated, candidates are invited to submit a full application. This is the heavy lifting phase where you tell your comprehensive story. You will need to provide detailed financial statements, organizational charts, and long-form answers to specific questions about your business strategies, challenges, and triumphs. This phase separates the casual entrants from the serious contenders, as it requires a significant time investment to gather data and craft a compelling narrative.</p>
+                <p className="text-gray-700 mb-2 font-semibold">Evaluation Criteria:</p>
+                <ul className="space-y-1 text-gray-700 list-disc list-inside ml-2">
+                  <li>Business performance metrics (revenue, profitability, growth rate)</li>
+                  <li>Innovation and competitive differentiation</li>
+                  <li>Leadership quality and vision</li>
+                  <li>Social and economic impact</li>
+                  <li>Scalability and sustainability potential</li>
                 </ul>
               </div>
 
               <div className="border-l-4 border-purple-500 pl-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 3: Finalist Selection (June 2026)</h3>
-                <p className="text-gray-700 mb-3">Top candidates in each category advance to finalist status and undergo:</p>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• In-depth interviews with selection committee</li>
-                  <li>• Additional documentation review and verification</li>
-                  <li>• Reference checks and business validation</li>
-                  <li>• Public announcement of finalists (valuable PR opportunity)</li>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 3: Finalist Selection & Due Diligence (June 2026)</h3>
+                <p className="text-gray-700 mb-3">Top candidates in each category are shortlisted as Finalists. This is a major achievement in itself and comes with its own PR benefits. Finalists undergo a rigorous due diligence process to verify all claims made in the application. This often involves interviews with the selection committee, reference checks, and a deeper dive into financial health. Transparency is crucial here; any discrepancies between the application and the audit can lead to disqualification.</p>
+                <p className="text-gray-700 mb-2 font-semibold">What to Expect:</p>
+                <ul className="space-y-1 text-gray-700 list-disc list-inside ml-2">
+                  <li>In-depth interviews with selection committee</li>
+                  <li>Additional documentation review and verification</li>
+                  <li>Reference checks and business validation</li>
+                  <li>Public announcement of finalists (valuable PR opportunity)</li>
                 </ul>
               </div>
 
               <div className="border-l-4 border-red-500 pl-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 4: Final Judging (Summer/Fall 2026)</h3>
-                <p className="text-gray-700 mb-3">Distinguished judging panel evaluates finalists and selects winners based on comprehensive criteria. Judges include successful entrepreneurs, corporate executives, and industry experts.</p>
+                <p className="text-gray-700 mb-3">A distinguished panel of judges, comprising successful entrepreneurs, corporate executives, and industry icons, reviews the verified finalist profiles. They debate the merits of each candidate, looking for the "total package"—strong financials, clear vision, and inspiring leadership. They select one winner per category who best exemplifies the spirit of the award.</p>
               </div>
 
               <div className="border-l-4 border-orange-500 pl-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Phase 5: Awards Gala (November 14, 2026)</h3>
-                <p className="text-gray-700 mb-3">Winners announced live at The Ritz-Carlton, Toronto during black-tie gala event featuring:</p>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Cocktail reception and networking with 500+ business leaders</li>
-                  <li>• Three-course gourmet dinner</li>
-                  <li>• Live entertainment and awards ceremony</li>
-                  <li>• Extensive media coverage and photo opportunities</li>
-                  <li>• Post-event networking and celebration</li>
+                <p className="text-gray-700 mb-3">The process culminates in the black-tie Awards Gala at The Ritz-Carlton, Toronto. Winners are announced live on stage, creating a moment of high drama and celebration. It is one of the premier networking events of the year for Canadian business women, offering unparalleled access to the country's business elite.</p>
+                <p className="text-gray-700 mb-2 font-semibold">Event Highlights:</p>
+                <ul className="space-y-1 text-gray-700 list-disc list-inside ml-2">
+                  <li>Cocktail reception and networking with 500+ business leaders</li>
+                  <li>Three-course gourmet dinner</li>
+                  <li>Live entertainment and awards ceremony</li>
+                  <li>Extensive media coverage and photo opportunities</li>
+                  <li>Post-event networking and celebration</li>
                 </ul>
               </div>
+            </div>
+
+            <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Top 5 Application Mistakes to Avoid</h2>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              Even highly successful businesses often fail to reach the finalist stage due to avoidable application errors. Based on feedback from past judges, here are the most common pitfalls to watch out for:
+            </p>
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              <Card className="p-5 border-l-4 border-red-400 bg-red-50">
+                <h4 className="font-bold text-red-900 mb-2">1. Vague Impact Statements</h4>
+                <p className="text-sm text-red-800">Don't just say "we improved customer satisfaction." Say "we increased our Net Promoter Score from 42 to 78 in 12 months." Judges cannot award points for generalities; they need concrete evidence of success.</p>
+              </Card>
+              <Card className="p-5 border-l-4 border-red-400 bg-red-50">
+                <h4 className="font-bold text-red-900 mb-2">2. Misaligned Category Selection</h4>
+                <p className="text-sm text-red-800">Applying for the "Innovation Award" with a standard consulting model, or the "Micro-Business Award" when you have 50 employees, results in automatic disqualification. Read the criteria carefully and choose the category where your specific strengths shine brightest.</p>
+              </Card>
+              <Card className="p-5 border-l-4 border-red-400 bg-red-50">
+                <h4 className="font-bold text-red-900 mb-2">3. Ignoring the "Why"</h4>
+                <p className="text-sm text-red-800">Many applications explain <em>what</em> the business does, but fail to explain <em>why</em> it matters. Why is your solution necessary? Why is now the right time? Connecting your business success to larger trends or societal needs makes for a much more compelling narrative.</p>
+              </Card>
+              <Card className="p-5 border-l-4 border-red-400 bg-red-50">
+                <h4 className="font-bold text-red-900 mb-2">4. Inconsistent Financials</h4>
+                <p className="text-sm text-red-800">Ensure your narrative matches your numbers. If you claim "explosive growth" but your financial statements show flat revenue, you lose credibility. Explain any anomalies or dips in your financial history proactively rather than hoping judges won't notice.</p>
+              </Card>
+              <Card className="p-5 border-l-4 border-red-400 bg-red-50 md:col-span-2">
+                <h4 className="font-bold text-red-900 mb-2">5. Leaving It to the Last Minute</h4>
+                <p className="text-sm text-red-800">A rushed application shows. Typographical errors, missing documents, and shallow answers are tell-tale signs of procrastination. Start early to allow time for review and refinement. Treat the application process with the same professional rigor you apply to client proposals.</p>
+              </Card>
             </div>
 
             <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Winning Application Strategies: Insider Tips from Past Winners</h2>
