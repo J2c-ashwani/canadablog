@@ -103,7 +103,7 @@ export default function BCSmallBusinessGrantsGuide() {
         <section id="overview" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">BC Business Funding Overview</h2>
+              <h2 className="text-3xl font-bold mb-6">How does BC business funding work?</h2>
 
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-4">
@@ -137,7 +137,7 @@ export default function BCSmallBusinessGrantsGuide() {
         <section id="programs" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Major BC Small Business Grant Programs</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">What are the major BC grant programs?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* CleanBC Industry Fund */}
@@ -684,7 +684,7 @@ export default function BCSmallBusinessGrantsGuide() {
         <section id="industries" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Industry-Specific Grants in BC</h2>
+              <h2 className="text-3xl font-bold mb-6">Which industries get the most BC funding?</h2>
 
               <div className="grid md:grid-cols-3 gap-4">
                 <div className="p-4 bg-white rounded-lg shadow-sm">
@@ -726,7 +726,7 @@ export default function BCSmallBusinessGrantsGuide() {
         <section id="cities" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Vancouver & Victoria Business Programs</h2>
+              <h2 className="text-3xl font-bold mb-6">Are there local grants in Vancouver and Victoria?</h2>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <Card>
@@ -781,7 +781,7 @@ export default function BCSmallBusinessGrantsGuide() {
         <section id="alternatives" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Alternatives to BC Business Grants</h2>
+              <h2 className="text-3xl font-bold mb-6">What if I don't qualify for BC grants?</h2>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="p-6 bg-white rounded-lg border">

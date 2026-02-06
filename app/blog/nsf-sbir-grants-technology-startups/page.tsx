@@ -36,11 +36,11 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
                 NSF SBIR Grants: $275K Phase I, $2M Phase II Non-Dilutive Funding for Technology Startups
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Comprehensive 2026-2027 guide to National Science Foundation SBIR/STTR grants providing up to $2,000,000 
-                in non-dilutive funding for deep tech, AI, software, hardware, biotech, and advanced technology innovation. 
-                Complete application strategies, eligibility requirements, success rates, and funding timelines for Phase I 
-                ($275,000) and Phase II ($2,000,000) awards supporting technology startups across all 50 states. America's 
-                Seed Fund powered by NSF takes no equity, requires no repayment, and funds transformative technology research 
+                Comprehensive 2026-2027 guide to National Science Foundation SBIR/STTR grants providing up to $2,000,000
+                in non-dilutive funding for deep tech, AI, software, hardware, biotech, and advanced technology innovation.
+                Complete application strategies, eligibility requirements, success rates, and funding timelines for Phase I
+                ($275,000) and Phase II ($2,000,000) awards supporting technology startups across all 50 states. America's
+                Seed Fund powered by NSF takes no equity, requires no repayment, and funds transformative technology research
                 and development with commercial potential.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -64,7 +64,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">NSF SBIR Grants by Tech Hub and State (2026-2027 Funding Available)</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-blue-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
@@ -212,17 +212,17 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete NSF SBIR/STTR Funding Ecosystem for Technology Startups</h2>
                 <p className="text-lg text-gray-600 mb-4">
-                  The National Science Foundation SBIR/STTR program (America's Seed Fund) provides non-dilutive grants for 
-                  use-inspired research and development of unproven, leading-edge technology innovations addressing societal 
-                  challenges. NSF seeks transformative innovations underpinned by new scientific discoveries or meaningful 
+                  The National Science Foundation SBIR/STTR program (America's Seed Fund) provides non-dilutive grants for
+                  use-inspired research and development of unproven, leading-edge technology innovations addressing societal
+                  challenges. NSF seeks transformative innovations underpinned by new scientific discoveries or meaningful
                   engineering breakthroughs requiring intensive technical R&D to embed in reliable products or services[web:151][web:153].
                 </p>
                 <p className="text-lg text-gray-600">
-                  Technology startups can access Phase I funding ($275,000) to prove technical feasibility over 6-12 months, 
-                  followed by Phase II awards (up to $2,000,000) for product development and commercialization over 24 months. 
-                  NSF evaluates proposals on three merit review criteria: Intellectual Merit (technical innovation), Broader 
-                  Impacts (societal benefit), and Commercialization Potential (market viability). The program funds nearly all 
-                  areas of science and engineering including AI/ML, quantum computing, advanced manufacturing, biotech, clean 
+                  Technology startups can access Phase I funding ($275,000) to prove technical feasibility over 6-12 months,
+                  followed by Phase II awards (up to $2,000,000) for product development and commercialization over 24 months.
+                  NSF evaluates proposals on three merit review criteria: Intellectual Merit (technical innovation), Broader
+                  Impacts (societal benefit), and Commercialization Potential (market viability). The program funds nearly all
+                  areas of science and engineering including AI/ML, quantum computing, advanced manufacturing, biotech, clean
                   tech, software, hardware, and deep tech innovations with strong competitive advantages not easily replicable[web:153][web:155].
                 </p>
               </div>
@@ -260,7 +260,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete breakdown of Phase I, Phase II, and Fast-Track funding programs with eligibility, timelines, and award amounts
               </p>
-              
+
               <div className="space-y-8">
                 {/* Phase I Program */}
                 <Card className="border-blue-200">
@@ -293,7 +293,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
                               <span className="text-purple-700 font-bold">~400 Phase I</span>
                             </div>
                           </div>
-                          
+
                           <div className="space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200">
                             <p className="font-semibold text-gray-800 mb-2">Phase I Objectives & Activities:</p>
                             <p>• <strong>Technical Feasibility:</strong> Prove scientific and technical merit of proposed innovation through R&D activities</p>
@@ -518,7 +518,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">NSF SBIR Funding by Technology Sector</h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* AI & Machine Learning */}
                 <Card className="border-blue-200 hover:shadow-xl transition-shadow">
@@ -613,7 +613,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">NSF SBIR Eligibility Requirements & Application Process</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 {/* Eligibility Requirements */}
                 <Card className="border-blue-200">
@@ -700,7 +700,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
                     <div className="space-y-4">
                       <div className="relative">
                         <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-green-300"></div>
-                        
+
                         <div className="relative pl-10 pb-8">
                           <div className="absolute left-0 top-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
                           <h4 className="font-semibold text-gray-800 mb-2">Pre-Application (2-3 months before)</h4>
@@ -788,7 +788,7 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Proven strategies for technology startups to maximize NSF SBIR approval rates and win Phase I, Phase II funding
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-green-200">
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
@@ -938,6 +938,42 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
           </div>
         </section>
 
+        {/* Related SBIR Programs */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Explore Other SBIR Programs</h2>
+              <p className="text-gray-700 mb-6">NSF is one of 11 agencies offering SBIR/STTR funding. Explore sector-specific guides:</p>
+              <div className="grid md:grid-cols-3 gap-4">
+                <Link href="/blog/sbir-sttr-complete-guide" className="p-4 bg-white rounded-lg border hover:border-blue-500 transition-all">
+                  <h3 className="font-bold mb-1">SBIR/STTR Overview</h3>
+                  <p className="text-sm text-gray-600">Full program guide →</p>
+                </Link>
+                <Link href="/blog/dod-sbir-defense-tech-grants" className="p-4 bg-white rounded-lg border hover:border-blue-500 transition-all">
+                  <h3 className="font-bold mb-1">DoD SBIR</h3>
+                  <p className="text-sm text-gray-600">Defense tech →</p>
+                </Link>
+                <Link href="/blog/doe-sbir-clean-energy-grants" className="p-4 bg-white rounded-lg border hover:border-blue-500 transition-all">
+                  <h3 className="font-bold mb-1">DOE SBIR</h3>
+                  <p className="text-sm text-gray-600">Clean energy →</p>
+                </Link>
+                <Link href="/blog/nasa-sbir-space-tech-grants" className="p-4 bg-white rounded-lg border hover:border-blue-500 transition-all">
+                  <h3 className="font-bold mb-1">NASA SBIR</h3>
+                  <p className="text-sm text-gray-600">Space technology →</p>
+                </Link>
+                <Link href="/blog/nih-sbir-biotech-grants" className="p-4 bg-white rounded-lg border hover:border-blue-500 transition-all">
+                  <h3 className="font-bold mb-1">NIH SBIR</h3>
+                  <p className="text-sm text-gray-600">Biotech &amp; health →</p>
+                </Link>
+                <Link href="/blog/usda-sbir-agtech-grants" className="p-4 bg-white rounded-lg border hover:border-blue-500 transition-all">
+                  <h3 className="font-bold mb-1">USDA SBIR</h3>
+                  <p className="text-sm text-gray-600">AgTech &amp; food →</p>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-700 to-indigo-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -946,17 +982,17 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
                 Ready to Access NSF SBIR Funding and Win Federal Technology Grants?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get our complete 2026-2027 NSF SBIR application guide with Phase I/II proposal templates, technical 
-                writing strategies, commercialization frameworks, and reviewer evaluation criteria - or work with our 
+                Get our complete 2026-2027 NSF SBIR application guide with Phase I/II proposal templates, technical
+                writing strategies, commercialization frameworks, and reviewer evaluation criteria - or work with our
                 SBIR specialists for expert proposal development maximizing your grant approval success.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
                 <div className="bg-white/10 backdrop-blur rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2 text-lg">📥 Free NSF SBIR Guide</h4>
                   <p className="text-blue-100 text-sm mb-4">
-                    Download our comprehensive NSF SBIR/STTR application guide with Phase I/II proposal templates, 
-                    technical merit frameworks, commercialization strategies, budget development, and reviewer evaluation 
+                    Download our comprehensive NSF SBIR/STTR application guide with Phase I/II proposal templates,
+                    technical merit frameworks, commercialization strategies, budget development, and reviewer evaluation
                     rubrics for technology startups across all innovation sectors.
                   </p>
                   <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100 font-semibold" asChild>
@@ -974,8 +1010,8 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
                   </div>
                   <h4 className="font-semibold text-white mb-2 text-lg">🎯 Expert SBIR Proposal Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with SBIR specialists who understand NSF review process, technical merit requirements, and 
-                    commercialization evaluation. We help tech startups develop winning Phase I ($275K) and Phase II 
+                    Work with SBIR specialists who understand NSF review process, technical merit requirements, and
+                    commercialization evaluation. We help tech startups develop winning Phase I ($275K) and Phase II
                     ($2M) proposals with 3x higher approval rates than national average.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold shadow-lg" asChild>
@@ -987,35 +1023,35 @@ export default function NSFSBIRGrantsTechnologyStartupsPage() {
                   <p className="text-xs text-yellow-200 mt-3">Free consultation • 85% success rate • Technical expertise</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6">
                 <p className="text-blue-200 text-sm mb-3">
                   <strong className="text-white">Why Choose Our NSF SBIR Services:</strong>
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 text-xs text-blue-200">
                   <div>
-                    ✓ 200+ NSF SBIR awards won<br/>
-                    ✓ $150M+ total funding secured<br/>
+                    ✓ 200+ NSF SBIR awards won<br />
+                    ✓ $150M+ total funding secured<br />
                     ✓ 85% Phase I approval rate
                   </div>
                   <div>
-                    ✓ All technology sectors covered<br/>
-                    ✓ PhD-level technical writers<br/>
+                    ✓ All technology sectors covered<br />
+                    ✓ PhD-level technical writers<br />
                     ✓ Former NSF panel reviewers
                   </div>
                   <div>
-                    ✓ Phase I → Phase II continuity<br/>
-                    ✓ Commercialization expertise<br/>
+                    ✓ Phase I → Phase II continuity<br />
+                    ✓ Commercialization expertise<br />
                     ✓ Customer discovery support
                   </div>
                 </div>
               </div>
 
               <p className="text-blue-300 text-sm">
-                🚀 <strong>NSF SBIR Grant Assistance:</strong> Phase I $275K funding • Phase II $2M commercialization • 
-                Fast-Track pilot applications • AI machine learning • Quantum computing • Biotech life sciences • 
-                Advanced manufacturing • Clean energy • Software SaaS • Hardware IoT • Deep tech innovation • 
-                Technical proposal writing • Merit review optimization • Commercialization planning • Customer discovery • 
+                🚀 <strong>NSF SBIR Grant Assistance:</strong> Phase I $275K funding • Phase II $2M commercialization •
+                Fast-Track pilot applications • AI machine learning • Quantum computing • Biotech life sciences •
+                Advanced manufacturing • Clean energy • Software SaaS • Hardware IoT • Deep tech innovation •
+                Technical proposal writing • Merit review optimization • Commercialization planning • Customer discovery •
                 All technology sectors across USA supporting transformative scientific innovations with commercial potential
               </p>
             </div>

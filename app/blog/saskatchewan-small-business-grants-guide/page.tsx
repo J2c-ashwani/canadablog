@@ -103,7 +103,7 @@ export default function SaskatchewanSmallBusinessGrantsGuide() {
         <section id="overview" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Saskatchewan Business Funding Overview</h2>
+              <h2 className="text-3xl font-bold mb-6">How does Saskatchewan business funding work?</h2>
 
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-4">
@@ -138,7 +138,7 @@ export default function SaskatchewanSmallBusinessGrantsGuide() {
         <section id="programs" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Major Saskatchewan Small Business Grant Programs</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">What are the major Saskatchewan grant programs?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Innovation Saskatchewan */}
@@ -686,7 +686,7 @@ export default function SaskatchewanSmallBusinessGrantsGuide() {
         <section id="industries" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Industry-Specific Grants in Saskatchewan</h2>
+              <h2 className="text-3xl font-bold mb-6">Which industries get the most Saskatchewan funding?</h2>
 
               <div className="grid md:grid-cols-3 gap-4">
                 <div className="p-4 bg-white rounded-lg shadow-sm">
@@ -728,7 +728,7 @@ export default function SaskatchewanSmallBusinessGrantsGuide() {
         <section id="cities" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Saskatoon & Regina Business Programs</h2>
+              <h2 className="text-3xl font-bold mb-6">Are there local grants in Saskatoon and Regina?</h2>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <Card>
@@ -783,7 +783,7 @@ export default function SaskatchewanSmallBusinessGrantsGuide() {
         <section id="alternatives" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Alternatives to Saskatchewan Business Grants</h2>
+              <h2 className="text-3xl font-bold mb-6">What if I don't qualify for Saskatchewan grants?</h2>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="p-6 bg-white rounded-lg border">

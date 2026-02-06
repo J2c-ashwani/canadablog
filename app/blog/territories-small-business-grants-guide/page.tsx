@@ -104,7 +104,7 @@ export default function TerritoriesSmallBusinessGrantsGuide() {
         <section id="overview" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Northern Territories Business Funding Overview</h2>
+              <h2 className="text-3xl font-bold mb-6">How does Northern Territories business funding work?</h2>
 
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-4">
@@ -139,7 +139,7 @@ export default function TerritoriesSmallBusinessGrantsGuide() {
         <section id="programs" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Major Grant Programs by Territory</h2>
+              <h2 className="text-3xl font-bold text-center mb-12">What grants are available in each territory?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* NWT Business Development */}
@@ -668,7 +668,7 @@ export default function TerritoriesSmallBusinessGrantsGuide() {
         <section id="indigenous" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Indigenous Business Programs</h2>
+              <h2 className="text-3xl font-bold mb-6">What Indigenous business programs are available?</h2>
 
               <p className="text-gray-700 mb-6">
                 Indigenous entrepreneurs in the territories have access to additional funding
@@ -729,7 +729,7 @@ export default function TerritoriesSmallBusinessGrantsGuide() {
         <section id="industries" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Key Industries in the Territories</h2>
+              <h2 className="text-3xl font-bold mb-6">Which industries get funding in the Territories?</h2>
 
               <div className="grid md:grid-cols-3 gap-4">
                 <div className="p-4 bg-gray-50 rounded-lg">
@@ -771,7 +771,7 @@ export default function TerritoriesSmallBusinessGrantsGuide() {
         <section id="alternatives" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Alternatives to Territories Grants</h2>
+              <h2 className="text-3xl font-bold mb-6">What if I don't qualify for Territories grants?</h2>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="p-6 bg-white rounded-lg border">
