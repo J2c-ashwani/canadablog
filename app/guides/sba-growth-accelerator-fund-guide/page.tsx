@@ -3,64 +3,141 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Rocket, Target, DollarSign, AlertTriangle, TrendingUp } from "lucide-react"
+import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Rocket, Target, DollarSign, AlertTriangle, TrendingUp, HelpCircle, ArrowRight, BookOpen } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "How to Apply for SBA Growth Accelerator Fund 2025 | Small Business Accelerator Grants",
-  description: "Step-by-step guide to applying for SBA Growth Accelerator Fund. Learn eligibility, application process, and strategies to get $10K-$500K for accelerator programs.",
-  keywords: "SBA growth accelerator fund, small business accelerator grants, SBA accelerator application, business incubator funding",
-  openGraph: {
-    title: "How to Apply for SBA Growth Accelerator Fund 2025",
-    description: "Complete guide to SBA Growth Accelerator Fund applications with step-by-step process and winning strategies.",
-    url: "https://grantfinder.pro/guides/sba-growth-accelerator-fund-guide",
+  title: "SBA Growth Accelerator Fund 2025 | $200K Prizes",
+  description: "Guide to the SBA Growth Accelerator Fund Competition (GAFC). Funding for incubators, accelerators, and ecosystem builders supporting STEM/R&D startups.",
+  keywords: "SBA growth accelerator fund, GAFC 2025, incubator grants, accelerator funding, ecosystem builder grants, STEM startup support",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/guides/sba-growth-accelerator-fund-guide",
   },
+  openGraph: {
+    title: "SBA Growth Accelerator Fund Competition 2025",
+    description: "Win up to $200,000 to built your startup ecosystem. Application guide for accelerators and incubators.",
+    url: "https://www.fsidigital.ca/guides/sba-growth-accelerator-fund-guide",
+    images: ["/og-image.png"],
+  },
+}
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who is eligible for the Growth Accelerator Fund?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Accelerators, incubators, co-working spaces, and non-profits that support STEM/R&D entrepreneurs. You must focus on underserved communities or specific tech themes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this a grant for my startup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This funding is for the ORGANIZATIONS (accelerators) that help startups, not the startups themselves. If you are a startup, look for SBIR grants instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much funding is available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Prizes typically range from $50,000 to $200,000 depending on the stage (Stage 1 vs Stage 2) and the specific theme of the competition year."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What can the funds be used for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Operating costs, program recruitment, mentor compensation, and prize money for your cohort. Funds cannot be used for direct investing in startups (equity purchases)."
+      }
+    }
+  ]
 }
 
 export default function SBAGrowthAcceleratorFundGuide() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-green-600 to-teal-700 text-white py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-gradient-to-br from-teal-700 to-emerald-900 text-white py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🚀 SBA Growth Accelerator Application Guide
+              <Badge className="mb-6 bg-teal-500/20 text-teal-100 border-teal-400/30 backdrop-blur-sm">
+                🏆 Ecosystem Builder Guide
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                How to Apply for SBA Growth Accelerator Fund
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
+                SBA Growth Accelerator <br className="hidden md:block" /> Fund (2025)
               </h1>
-              <p className="text-xl text-green-100 mb-8">
-                Complete step-by-step guide to applying for SBA Growth Accelerator Fund. Learn how to secure
-                $10K-$500K in funding to support small business accelerators and incubators.
+              <p className="text-xl md:text-2xl mb-8 text-teal-100 leading-relaxed text-pretty">
+                Win up to <strong>$200,000</strong> to empower your startup community. <br className="hidden md:block" /> The complete guide to the GAFC.
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-white text-teal-900 hover:bg-teal-50 font-bold shadow-lg" asChild>
+                  <Link href="#eligibility">
+                    Check Eligibility
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="bg-teal-800/50 border-teal-400/30 text-teal-100 hover:bg-teal-800/80 backdrop-blur-sm" asChild>
+                  <Link href="/blog/gafc-application-template">
+                    Download Template
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Quick Overview */}
-        <section className="py-16 bg-white">
+        {/* QUERY HOOK: Common Questions */}
+        <div className="bg-white border-b border-teal-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
+          <div className="container mx-auto px-4 py-3">
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-teal-900 gap-4">
+              <span className="font-semibold text-teal-900 flex items-center shrink-0">
+                <Rocket className="w-4 h-4 mr-2 text-teal-600" />
+                Topic:
+              </span>
+              <div className="flex gap-6 overflow-x-auto no-scrollbar whitespace-nowrap mask-linear-fade">
+                <Link href="#structure" className="hover:text-teal-700 transition-colors flex items-center gap-1"><TrendingUp className="w-3 h-3" /> Prizes</Link>
+                <Link href="#eligibility" className="hover:text-teal-700 transition-colors flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Who Can Apply</Link>
+                <Link href="#process" className="hover:text-teal-700 transition-colors flex items-center gap-1"><Clock className="w-3 h-3" /> Timeline</Link>
+                <Link href="#faq" className="hover:text-teal-700 transition-colors flex items-center gap-1"><HelpCircle className="w-3 h-3" /> FAQs</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Reference Stats */}
+        <section className="py-12 bg-white border-b border-teal-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center mb-12">
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">$500K</div>
-                  <div className="text-gray-600">Maximum Award Amount</div>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-4 gap-8 text-center divide-x divide-teal-50">
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-teal-600 mb-2">$50K+</div>
+                  <div className="text-teal-800 text-sm font-medium uppercase tracking-wide">Base Prize</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-teal-600 mb-2">3-5</div>
-                  <div className="text-gray-600">Year Program Duration</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-purple-600 mb-2">$3M</div>
+                  <div className="text-teal-800 text-sm font-medium uppercase tracking-wide">Total Pool</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">50+</div>
-                  <div className="text-gray-600">Startups Served (typical)</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-green-600 mb-2">2 Stages</div>
+                  <div className="text-teal-800 text-sm font-medium uppercase tracking-wide">Competition Format</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">March</div>
-                  <div className="text-gray-600">Annual Application Deadline</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-orange-600 mb-2">Annual</div>
+                  <div className="text-teal-800 text-sm font-medium uppercase tracking-wide">Frequency</div>
                 </div>
               </div>
             </div>
@@ -68,525 +145,198 @@ export default function SBAGrowthAcceleratorFundGuide() {
         </section>
 
         {/* Main Content */}
-        <section className="py-16">
+        <section id="structure" className="py-16 bg-teal-50/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
 
-              {/* Program Overview */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">SBA Growth Accelerator Fund Overview</h2>
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Competition Structure</h2>
 
-                <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
-                  <div className="flex items-start">
-                    <Rocket className="w-8 h-8 text-green-600 mr-4 mt-1" />
-                    <div>
-                      <h4 className="font-bold text-green-800 mb-2">Supporting the Entrepreneurial Ecosystem</h4>
-                      <p className="text-green-700">
-                        The SBA Growth Accelerator Fund Competition provides funding to accelerators and incubators
-                        that help entrepreneurs start and grow businesses, with focus on underserved communities.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">Program Goals</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="text-sm text-gray-700 space-y-2">
-                        <li>• Support high-quality accelerators and incubators</li>
-                        <li>• Increase access to capital for startups</li>
-                        <li>• Foster job creation and economic development</li>
-                        <li>• Serve underrepresented entrepreneurs</li>
-                        <li>• Build stronger entrepreneurial ecosystems</li>
-                        <li>• Connect startups with mentorship and resources</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-teal-200">
-                    <CardHeader>
-                      <CardTitle className="text-teal-700">Funding Uses</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="text-sm text-gray-700 space-y-2">
-                        <li>• Program development and delivery</li>
-                        <li>• Mentor network expansion</li>
-                        <li>• Educational workshops and training</li>
-                        <li>• Marketing and outreach activities</li>
-                        <li>• Technology platform improvements</li>
-                        <li>• Staff salaries and program costs</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Application Process */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Growth Accelerator Fund Application Process</h2>
-
-                <div className="space-y-6">
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">1</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Review Guidelines</h4>
-                      <p className="text-sm text-gray-600">
-                        Study annual competition guidelines and eligibility requirements
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">2</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Prepare Application</h4>
-                      <p className="text-sm text-gray-600">
-                        Develop comprehensive program proposal and budget
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">3</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Submit by Deadline</h4>
-                      <p className="text-sm text-gray-600">
-                        Complete online submission before annual deadline
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">4</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Award & Execute</h4>
-                      <p className="text-sm text-gray-600">
-                        Receive funding and implement accelerator program
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Eligibility Requirements */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Eligibility Requirements</h2>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-green-700">✅ Eligible Organizations:</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Accelerators:</strong> Organizations that run structured programs</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Incubators:</strong> Business incubation organizations</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Nonprofits:</strong> 501(c)(3) organizations</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Educational Institutions:</strong> Universities and colleges</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-red-700">❌ Program Requirements:</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <Target className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Track Record:</strong> Demonstrated accelerator experience</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Target className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Startup Focus:</strong> Must serve small businesses/startups</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Target className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Underserved Communities:</strong> Priority for disadvantaged areas</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Target className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Performance Metrics:</strong> Must agree to SBA reporting</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Application Components */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Application Components</h2>
-
-                <Card className="border-teal-200">
+              <div className="space-y-8">
+                {/* Stage 1 */}
+                <Card className="border-l-4 border-l-purple-600 shadow-lg">
                   <CardHeader>
-                    <CardTitle className="text-teal-700 flex items-center">
-                      <FileText className="w-5 h-5 mr-2" />
-                      Required Application Elements
-                    </CardTitle>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Target className="w-8 h-8 text-purple-600" />
+                        <CardTitle className="text-xl">Stage 1: The Catalyst</CardTitle>
+                      </div>
+                      <Badge variant="secondary" className="bg-purple-100 text-purple-800">$50,000 Prize</Badge>
+                    </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Award:</strong> $10K - $500K</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Duration:</strong> 1-3 years</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Match:</strong> May require cost sharing</span>
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-3 text-teal-700">Program Description:</h5>
-                        <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• Accelerator program structure</li>
-                          <li>• Target market and demographics</li>
-                          <li>• Selection criteria for startups</li>
-                          <li>• Program curriculum and timeline</li>
-                          <li>• Mentor network and partnerships</li>
-                          <li>• Expected outcomes and metrics</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-3 text-teal-700">Organizational Capacity:</h5>
-                        <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• Organization background and history</li>
-                          <li>• Management team qualifications</li>
-                          <li>• Previous accelerator experience</li>
-                          <li>• Financial capacity and sustainability</li>
-                          <li>• Community partnerships</li>
-                          <li>• Success stories and alumni outcomes</li>
-                        </ul>
+                    <p className="text-slate-600 mb-4">
+                      Focuses on your <strong>strategy</strong>. You win this by submitting a killer video pitch and slide deck showing how you will foster connections for STEM entrepreneurs.
+                    </p>
+                    <div className="bg-white border border-purple-100 p-4 rounded-lg">
+                      <strong className="text-purple-800 block mb-2">Deliverables:</strong>
+                      <div className="grid grid-cols-2 gap-4 text-sm text-slate-600">
+                        <div className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-500 mr-2" /> 90-Second Video</div>
+                        <div className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-500 mr-2" /> 10-Slide Deck</div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
 
-              {/* Budget and Financial Requirements */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Budget and Financial Requirements</h2>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="border-blue-200">
-                    <CardHeader>
-                      <CardTitle className="text-blue-700">Allowable Expenses</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="text-sm text-gray-700 space-y-2">
-                        <li>• Personnel costs (salaries and benefits)</li>
-                        <li>• Program delivery expenses</li>
-                        <li>• Training and workshop costs</li>
-                        <li>• Technology and equipment</li>
-                        <li>• Marketing and outreach activities</li>
-                        <li>• Administrative costs (limited %)</li>
-                        <li>• Travel for program activities</li>
-                        <li>• Evaluation and reporting</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-orange-200">
-                    <CardHeader>
-                      <CardTitle className="text-orange-700">Cost Sharing Requirements</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
-                        <h4 className="font-bold mb-2 text-orange-800">Matching Funds</h4>
-                        <p className="text-sm text-orange-700">
-                          Some competitions may require cost sharing or matching funds from the organization.
-                        </p>
+                {/* Stage 2 */}
+                <Card className="border-l-4 border-l-teal-600 shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <TrendingUp className="w-8 h-8 text-teal-600" />
+                        <CardTitle className="text-xl">Stage 2: The Accelerator</CardTitle>
                       </div>
-                      <ul className="text-sm text-gray-700 space-y-2">
-                        <li>• Cash contributions from organization</li>
-                        <li>• In-kind contributions (valued services)</li>
-                        <li>• Partner organization contributions</li>
-                        <li>• Volunteer time (at fair market value)</li>
-                        <li>• Facility usage and overhead</li>
-                        <li>• Equipment and technology resources</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
+                      <Badge variant="secondary" className="bg-teal-100 text-teal-800">$50k - $150k Bonus</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      Focuses on <strong>execution</strong>. Only Stage 1 winners can apply. You win this by proving you built the partnerships you promised in Stage 1.
+                    </p>
+                    <div className="text-sm bg-teal-50 p-3 rounded text-teal-800">
+                      <strong>Goal:</strong> Foster R&D innovation (SBIR/STTR) readiness in your cohort.
+                    </div>
+                  </CardContent>
+                </Card>
 
-              {/* Evaluation Criteria */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Application Evaluation Criteria</h2>
-
-                <div className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <Card className="border-green-200">
-                      <CardHeader>
-                        <CardTitle className="text-green-700">Technical Merit (40 points)</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <ul className="text-sm text-gray-700 space-y-2">
-                          <li>• Program design and innovation</li>
-                          <li>• Quality of curriculum and approach</li>
-                          <li>• Mentor network strength</li>
-                          <li>• Selection process for startups</li>
-                          <li>• Expected program outcomes</li>
-                        </ul>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="border-blue-200">
-                      <CardHeader>
-                        <CardTitle className="text-blue-700">Impact Potential (30 points)</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <ul className="text-sm text-gray-700 space-y-2">
-                          <li>• Economic development impact</li>
-                          <li>• Job creation potential</li>
-                          <li>• Service to underserved communities</li>
-                          <li>• Scalability of model</li>
-                          <li>• Long-term sustainability</li>
-                        </ul>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="border-purple-200">
-                      <CardHeader>
-                        <CardTitle className="text-purple-700">Organizational Capacity (20 points)</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <ul className="text-sm text-gray-700 space-y-2">
-                          <li>• Management team qualifications</li>
-                          <li>• Track record of success</li>
-                          <li>• Financial capacity</li>
-                          <li>• Partnership network</li>
-                          <li>• Operational infrastructure</li>
-                        </ul>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="border-orange-200">
-                      <CardHeader>
-                        <CardTitle className="text-orange-700">Budget Reasonableness (10 points)</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <ul className="text-sm text-gray-700 space-y-2">
-                          <li>• Cost-effectiveness of approach</li>
-                          <li>• Budget detail and justification</li>
-                          <li>• Appropriate allocation of resources</li>
-                          <li>• Value for federal investment</li>
-                          <li>• Matching fund commitments</li>
-                        </ul>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </div>
-              </div>
-
-              {/* Success Strategies */}
-              <div className="bg-teal-50 rounded-lg p-8 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Application Success Strategies</h2>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-green-700">✅ Winning Strategies</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Demonstrate proven track record with metrics</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Show strong focus on underserved communities</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Include impressive mentor network</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Present clear, measurable outcomes</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Mistakes</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Vague program description</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Lack of performance metrics</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Unrealistic budget projections</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Missing sustainability plan</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Performance Requirements */}
-              <div className="bg-blue-50 rounded-lg p-8 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Performance and Reporting Requirements</h2>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-blue-700">📊 Required Metrics:</h4>
-                    <ul className="space-y-2 text-gray-700 text-sm">
-                      <li>• Number of startups served</li>
-                      <li>• Jobs created by portfolio companies</li>
-                      <li>• Capital raised by participants</li>
-                      <li>• Revenue generated by startups</li>
-                      <li>• Business survival rates</li>
-                      <li>• Demographic data on entrepreneurs</li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-blue-700">📋 Reporting Schedule:</h4>
-                    <ul className="space-y-2 text-gray-700 text-sm">
-                      <li>• Quarterly progress reports</li>
-                      <li>• Annual performance reports</li>
-                      <li>• Financial expenditure tracking</li>
-                      <li>• Success story documentation</li>
-                      <li>• Program evaluation surveys</li>
-                      <li>• Final program assessment</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Official Resources */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Official SBA Resources</h2>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">SBA Resources</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">SBA.gov</h5>
-                          <p className="text-sm text-gray-600">Official SBA website</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.sba.gov/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Growth Accelerator Fund</h5>
-                          <p className="text-sm text-gray-600">Competition guidelines and updates</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.sba.gov/funding-programs/investment-capital/growth-accelerator-fund-competition" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Grants.gov</h5>
-                          <p className="text-sm text-gray-600">Application submission portal</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.grants.gov/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-teal-200">
-                    <CardHeader>
-                      <CardTitle className="text-teal-700">Support Resources</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-teal-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">SBDC</h5>
-                          <p className="text-sm text-gray-600">Small Business Development Centers</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.sba.gov/local-assistance" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-teal-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">SCORE</h5>
-                          <p className="text-sm text-gray-600">Free business mentoring</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.score.org/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-teal-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">SAM.gov</h5>
-                          <p className="text-sm text-gray-600">System for Award Management</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://sam.gov/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Contact CTA */}
-              <div className="bg-gradient-to-r from-green-600 to-teal-700 rounded-lg p-8 text-white text-center">
-                <Users className="w-16 h-16 mx-auto mb-4 text-green-100" />
-                <h3 className="text-2xl font-bold mb-4">Ready to Apply for SBA Growth Accelerator Fund?</h3>
-                <p className="text-green-100 mb-6 text-lg">
-                  Need expert guidance on your accelerator fund application? Our specialists can help you develop
-                  a winning proposal, structure your program, and navigate the competitive application process.
-                </p>
-                <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>
-                  <Link href="/contact">
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Get Expert Help
-                  </Link>
-                </Button>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Eligibility Section */}
+        <section id="eligibility" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Are You Eligible?</h2>
+              <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
+                This is NOT for individual startups. This is for the "Ecosystem Builders" who help startups succeed.
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <Card className="border-green-200">
+                  <CardHeader>
+                    <CardTitle className="text-green-700">Eligible Entities</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
+                        <span className="text-sm text-slate-700"><strong>Accelerators & Incubators:</strong> Established programs.</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
+                        <span className="text-sm text-slate-700"><strong>Universities:</strong> Education entrepreneurship centers.</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
+                        <span className="text-sm text-slate-700"><strong>Non-Profits:</strong> 501(c)(3) serving founders.</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
+                        <span className="text-sm text-slate-700"><strong>Co-Working Spaces:</strong> With structured programming.</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+                <Card className="border-red-200">
+                  <CardHeader>
+                    <CardTitle className="text-red-700">Focus Areas (Must Have)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <Target className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
+                        <span className="text-sm text-slate-700"><strong>STEM/R&D focus:</strong> You must help startups that are relevant to national security, manufacturing, climate, etc.</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Target className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
+                        <span className="text-sm text-slate-700"><strong>Underserved:</strong> Priority strategies supporting women, minority, or rural founders.</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Neural Network: Related Guides */}
+        <section className="py-16 bg-slate-50 border-t border-slate-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-bold text-slate-900 mb-6">Explore More Funding</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/apply-sbir-grants" className="group block h-full">
+                  <div className="bg-white border hover:border-blue-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-blue-600 font-semibold mb-2">Startup Grants</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-blue-700 mb-2">SBIR Guide</h4>
+                    <p className="text-sm text-slate-500 flex-grow">The grants your cohort needs.</p>
+                    <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/regional-development-agencies" className="group block h-full">
+                  <div className="bg-white border hover:border-purple-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-purple-600 font-semibold mb-2">Ecosystem</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-purple-700 mb-2">Regional Development</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Canadian ecosystem funding.</p>
+                    <div className="mt-3 text-xs text-purple-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/apply-sba-loans" className="group block h-full">
+                  <div className="bg-white border hover:border-green-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-green-600 font-semibold mb-2">Loans</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-green-700 mb-2">SBA Loans</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Capital for your graduates.</p>
+                    <div className="mt-3 text-xs text-green-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-left">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <HelpCircle className="w-6 h-6 text-teal-600 mr-2" />
+                GAFC FAQs
+              </h2>
+              <div className="divide-y divide-teal-100">
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">When do applications open?</h3>
+                  <p className="text-slate-600 text-sm">Historically, the competition opens in <strong>January</strong> with Stage 1 submissions due in late February or March.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Is the video pitch public?</h3>
+                  <p className="text-slate-600 text-sm">Typically, no. It is submitted for judge review. However, winning organizations often have their profiles shared publicly by the SBA.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Can I apply if I won before?</h3>
+                  <p className="text-slate-600 text-sm">Yes! Past winners are eligible to apply again, provided they have met the reporting requirements of their previous award.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* CTA */}
+        <section className="py-20 bg-gradient-to-r from-teal-900 to-emerald-900 text-white text-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Build Your Ecosystem</h2>
+            <p className="text-lg text-teal-200 mb-8 max-w-2xl mx-auto">
+              Ready to submit your Stage 1 deck? We help incubators craft winning narratives.
+            </p>
+            <Button size="lg" className="bg-white text-teal-900 hover:bg-teal-50 font-semibold shadow-lg" asChild>
+              <Link href="/contact?service=accelerator-grant-writing">
+                Get Proposal Help
+              </Link>
+            </Button>
+          </div>
+        </section>
+
       </div>
       <Footer />
     </>

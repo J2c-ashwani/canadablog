@@ -3,609 +3,358 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Lightbulb, Target, DollarSign, AlertTriangle, Download, Shield, Globe, TrendingUp, Zap, Award, Rocket } from "lucide-react"
+import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Lightbulb, Target, DollarSign, AlertTriangle, Download, Shield, Globe, TrendingUp, Zap, Award, Rocket, HelpCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "How to Apply for EDC Women in Trade Export Financing 2025 | Complete Application Guide",
-  description: "Step-by-step guide to applying for EDC Women in Trade export financing and equity capital. Learn eligibility, application process, and winning strategies for international markets.",
-  keywords: "EDC Women in Trade application guide, export financing application, equity capital women exporters, international trade financing guide",
-  openGraph: {
-    title: "How to Apply for EDC Women in Trade Export Financing 2025",
-    description: "Complete guide to EDC export financing applications with step-by-step process and international market strategies.",
-    url: "https://grantfinder.pro/guides/edc-women-trade-export-financing-guide",
+  title: "EDC Women in Trade 2025 | $50M Export Funding",
+  description: "Complete guide to EDC's Women in Trade financing. Apply for the $50M Inclusive Trade Investment Fund, export credit insurance, and global market access.",
+  keywords: "EDC Women in Trade, export financing Canada, Inclusive Trade Investments, women exporter grants, EDC equity fund",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/guides/edc-women-trade-export-financing-guide",
   },
+  openGraph: {
+    title: "EDC Women in Trade Financing 2025 | Export Capital",
+    description: "Step-by-step guide to securing up to $50M in equity and export financing for women-led businesses.",
+    url: "https://www.fsidigital.ca/guides/edc-women-trade-export-financing-guide",
+    images: ["/og-image.png"],
+  },
+}
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the Inclusive Trade Investments Program?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is a $50 million equity investment program designed for women-owned and diverse-owned businesses that are exporting or planning to export. EDC takes an equity stake to help you scale."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can EDC help if I'm not exporting yet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but your business must be 'export-ready'. This means you have a product or service that is sellable internationally and a clear plan to enter foreign markets within the next 12 months."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Export Credit Insurance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It protects your business against the risk of non-payment by foreign buyers. If your international customer goes bankrupt or refuses to pay, EDC covers up to 90% of your losses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a grant for women exporters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EDC primarily offers financing and insurance. However, they partner with the Trade Commissioner Service for the 'CanExport' program, which IS a grant covering up to 50% of marketing costs for new markets."
+      }
+    }
+  ]
 }
 
 export default function EDCWomenInTradeApplicationGuide() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-teal-600 to-green-800 text-white py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-gradient-to-br from-teal-600 to-green-800 text-white py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🌍 EDC Export Financing Application Guide
+              <Badge className="mb-6 bg-teal-500/20 text-teal-100 border-teal-400/30 backdrop-blur-sm">
+                🌍 Export Financing Guide
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                How to Apply for EDC Women in Trade Export Financing
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
+                EDC Women in Trade <br className="hidden md:block" /> Financing
               </h1>
-              <p className="text-xl text-teal-100 mb-8">
-                Complete step-by-step guide to applying for EDC Women in Trade export financing and equity capital. 
-                Learn the application process, export readiness strategies, and how to secure international market 
-                financing and equity investments from Export Development Canada.
+              <p className="text-xl md:text-2xl mb-8 text-teal-100 leading-relaxed text-pretty">
+                The complete handbook for going global. Secure equity from the <br className="hidden md:block" /> $50M Inclusive Trade Fund and protect your receivables.
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-white text-teal-800 hover:bg-teal-50 font-bold shadow-lg" asChild>
+                  <Link href="#programs">
+                    View Programs
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="bg-teal-800/50 border-teal-400/30 text-teal-100 hover:bg-teal-800/80 backdrop-blur-sm" asChild>
+                  <Link href="/blog/export-readiness-checklist">
+                    Am I Export Ready?
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Quick Overview */}
-        <section className="py-16 bg-white">
+        {/* QUERY HOOK: Common Questions */}
+        <div className="bg-white border-b border-teal-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
+          <div className="container mx-auto px-4 py-3">
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-teal-900 gap-4">
+              <span className="font-semibold text-teal-900 flex items-center shrink-0">
+                <Globe className="w-4 h-4 mr-2 text-teal-600" />
+                Topic:
+              </span>
+              <div className="flex gap-6 overflow-x-auto no-scrollbar whitespace-nowrap mask-linear-fade">
+                <Link href="#programs" className="hover:text-teal-700 transition-colors flex items-center gap-1"><DollarSign className="w-3 h-3" /> Equity Fund</Link>
+                <Link href="#credit" className="hover:text-teal-700 transition-colors flex items-center gap-1"><Shield className="w-3 h-3" /> Insurance</Link>
+                <Link href="#process" className="hover:text-teal-700 transition-colors flex items-center gap-1"><Clock className="w-3 h-3" /> Timeline</Link>
+                <Link href="#canexport" className="hover:text-teal-700 transition-colors flex items-center gap-1"><Rocket className="w-3 h-3" /> CanExport</Link>
+                <Link href="#faq" className="hover:text-teal-700 transition-colors flex items-center gap-1"><HelpCircle className="w-3 h-3" /> FAQs</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Reference Stats */}
+        <section className="py-12 bg-white border-b border-teal-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center mb-12">
-                <div>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-4 gap-8 text-center divide-x divide-teal-50">
+                <div className="p-4">
                   <div className="text-3xl font-bold text-teal-600 mb-2">$50M</div>
-                  <div className="text-gray-600">Equity Capital Fund</div>
+                  <div className="text-teal-800 text-sm font-medium uppercase tracking-wide">Investment Fund</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">Export</div>
-                  <div className="text-gray-600">International Focus</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-green-600 mb-2">90%</div>
+                  <div className="text-teal-800 text-sm font-medium uppercase tracking-wide">Insured value</div>
                 </div>
-                <div>
+                <div className="p-4">
                   <div className="text-3xl font-bold text-blue-600 mb-2">Equity</div>
-                  <div className="text-gray-600">Capital Investments</div>
+                  <div className="text-teal-800 text-sm font-medium uppercase tracking-wide">Direct Investment</div>
                 </div>
-                <div>
+                <div className="p-4">
                   <div className="text-3xl font-bold text-purple-600 mb-2">Global</div>
-                  <div className="text-gray-600">Market Access</div>
+                  <div className="text-teal-800 text-sm font-medium uppercase tracking-wide">Market Access</div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Main Content */}
-        <section className="py-16">
+        {/* Main Programs Section */}
+        <section id="programs" className="py-16 bg-teal-50/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
-              {/* EDC Application Overview */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">EDC Women in Trade Application Process</h2>
-                
-                <div className="bg-teal-50 border border-teal-200 rounded-lg p-6 mb-6">
-                  <div className="flex items-start">
-                    <Globe className="w-8 h-8 text-teal-600 mr-4 mt-1" />
-                    <div>
-                      <h4 className="font-bold text-teal-800 mb-2">Export Finance Partner</h4>
-                      <p className="text-teal-700">
-                        EDC Women in Trade addresses the critical gap in export financing for women entrepreneurs. 
-                        With only 11% of women-owned SMEs active in international markets, EDC provides equity capital, 
-                        export financing, and comprehensive market development support to help women go global.
-                      </p>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="space-y-6">
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">1</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Export Readiness</h4>
-                      <p className="text-sm text-gray-600">
-                        Assess international market potential and export capability
-                      </p>
-                    </div>
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">EDC Women in Trade Programs</h2>
 
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">2</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Connect with EDC</h4>
-                      <p className="text-sm text-gray-600">
-                        Contact EDC Women in Trade team for consultation
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">3</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Submit Application</h4>
-                      <p className="text-sm text-gray-600">
-                        Apply for export financing or equity investment
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">4</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Receive Support</h4>
-                      <p className="text-sm text-gray-600">
-                        Financing approval and market development assistance
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Eligibility Requirements */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">EDC Women in Trade Eligibility Requirements</h2>
-                
-                <Card className="border-green-200">
+              {/* Programs */}
+              <div className="space-y-8">
+                {/* Inclusive Trade Investments */}
+                <Card className="border-l-4 border-l-teal-600 shadow-lg">
                   <CardHeader>
-                    <CardTitle className="text-green-700 flex items-center">
-                      <Target className="w-5 h-5 mr-2" />
-                      Business Owner & Export Eligibility
-                    </CardTitle>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Globe className="w-8 h-8 text-teal-600" />
+                        <CardTitle className="text-xl">Inclusive Trade Investments (ITI)</CardTitle>
+                      </div>
+                      <Badge variant="secondary" className="bg-teal-100 text-teal-800">Equity Capital</Badge>
+                    </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Fund:</strong> $50M Equity</span>
+                    <p className="text-slate-600 mb-4">
+                      EDC invests directly into your company to fuel global growth. This is equity (ownership), not a loan, meaning no monthly repayments but you give up some shares.
+                    </p>
+                    <div className="grid md:grid-cols-2 gap-4 text-sm bg-white border border-teal-100 p-4 rounded-lg">
+                      <ul className="space-y-2">
+                        <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" /> Growth capital for scaling</li>
+                        <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" /> Patient capital (long-term)</li>
+                      </ul>
+                      <ul className="space-y-2">
+                        <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" /> For high-growth exporters</li>
+                        <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" /> Must be 51% diverse-owned</li>
+                      </ul>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Credit Insurance */}
+                <Card id="credit" className="border-l-4 border-l-blue-600 shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Shield className="w-8 h-8 text-blue-600" />
+                        <CardTitle className="text-xl">Export Credit Insurance</CardTitle>
                       </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Focus:</strong> Export Markets</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-teal-600 mr-2" />
-                        <span><strong>Type:</strong> Equity Capital</span>
+                      <Badge variant="outline" className="border-blue-300 text-blue-700">Risk Protection</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      The biggest fear in exporting is not getting paid. EDC insures your receivables so you can sleep at night.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <Badge className="bg-blue-100 text-blue-800">Covers 90% of Loss</Badge>
+                      <Badge className="bg-blue-100 text-blue-800">Unlock Bank Loans</Badge>
+                      <Badge className="bg-blue-100 text-blue-800">Offer Better Terms to Buyers</Badge>
+                    </div>
+                    <div className="text-xs text-slate-500 italic">
+                      *Banks love this. Since your foreign invoices are insured, banks will often lend you money against them (margining).
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* CanExport */}
+                <Card id="canexport" className="border-l-4 border-l-purple-600 shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Rocket className="w-8 h-8 text-purple-600" />
+                        <CardTitle className="text-xl">CanExport Cost-Sharing (Grant)</CardTitle>
                       </div>
                     </div>
-                    
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-3 text-green-700">Business Requirements:</h5>
-                        <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• Women-owned or women-led business</li>
-                          <li>• Canadian incorporated company</li>
-                          <li>• Export-ready or actively exporting</li>
-                          <li>• Significant export growth potential</li>
-                          <li>• Strong commercial viability</li>
-                          <li>• Competitive in global markets</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-3 text-green-700">Priority Groups:</h5>
-                        <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• Diverse women entrepreneurs</li>
-                          <li>• Commercialization-stage businesses</li>
-                          <li>• Growth-stage export companies</li>
-                          <li>• New export market entrants</li>
-                          <li>• Women-led innovative exporters</li>
-                          <li>• International expansion focus</li>
-                        </ul>
-                      </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      While EDC runs financing, they partner with the Trade Commissioner Service for this grant. It pays for 50% of your marketing costs to enter a NEW country.
+                    </p>
+                    <div className="bg-purple-50 p-3 rounded text-sm text-purple-800">
+                      <strong>Eligible Costs:</strong> Trade show booths, translating your website, SEO for foreign markets, and patent filings.
                     </div>
                   </CardContent>
                 </Card>
               </div>
 
-              {/* EDC Financing Programs */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">EDC Women in Trade Financing Programs</h2>
-                
-                <div className="space-y-6">
-                  {[
-                    {
-                      title: "Inclusive Trade Investments Program",
-                      icon: <Globe className="w-6 h-6 text-teal-600" />,
-                      color: "teal",
-                      description: "$50M equity fund for women-owned export businesses with direct investments and VC fund participation",
-                      features: ["Direct equity investments", "$50M total allocation", "VC fund investments", "Export-ready companies"]
-                    },
-                    {
-                      title: "Export Financing Solutions",
-                      icon: <Rocket className="w-6 h-6 text-green-600" />,
-                      color: "green",
-                      description: "Comprehensive export working capital, trade credit insurance, and international payment solutions",
-                      features: ["Export working capital", "Trade credit insurance", "Foreign exchange management", "Supply chain financing"]
-                    },
-                    {
-                      title: "Export Market Development",
-                      icon: <Target className="w-6 h-6 text-blue-600" />,
-                      color: "blue",
-                      description: "International market research, buyer connections, trade missions, and export strategy support",
-                      features: ["Market research", "Buyer matching", "Trade missions", "Export strategy"]
-                    },
-                    {
-                      title: "BWIT Network Resources",
-                      icon: <Users className="w-6 h-6 text-purple-600" />,
-                      color: "purple",
-                      description: "Business Women in International Trade network providing training, missions, and CanExport funding access",
-                      features: ["Women trade missions", "CanExport funding", "Export training", "Global networks"]
-                    }
-                  ].map((program, index) => (
-                    <Card key={index} className={`border-${program.color}-200`}>
-                      <CardHeader>
-                        <CardTitle className={`text-${program.color}-700 flex items-center`}>
-                          {program.icon}
-                          <span className="ml-2">{program.title}</span>
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-700 mb-4">{program.description}</p>
-                        <div className="grid md:grid-cols-2 gap-2 text-sm text-gray-600">
-                          {program.features.map((feature, i) => (
-                            <div key={i} className="flex items-center">
-                              <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                              <span>{feature}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-
-              {/* Export Readiness Assessment */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Export Readiness Assessment</h2>
-                
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="border-teal-200">
-                    <CardHeader>
-                      <CardTitle className="text-teal-700">Export Readiness Factors</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-center p-3 bg-teal-50 rounded">
-                          <div>
-                            <strong>Product/Service Fit</strong>
-                            <p className="text-sm text-gray-600">Competitive in international markets</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex justify-between items-center p-3 bg-teal-50 rounded">
-                          <div>
-                            <strong>Market Research</strong>
-                            <p className="text-sm text-gray-600">Target market analysis and validation</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex justify-between items-center p-3 bg-teal-50 rounded">
-                          <div>
-                            <strong>Export Capacity</strong>
-                            <p className="text-sm text-gray-600">Ability to fulfill international orders</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex justify-between items-center p-3 bg-teal-50 rounded">
-                          <div>
-                            <strong>Financial Readiness</strong>
-                            <p className="text-sm text-gray-600">Cash flow and working capital capacity</p>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">Export Strategy Tips</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Target Markets</strong>
-                            <p className="text-sm text-gray-600">Focus on specific countries with demand validation</p>
-                          </div>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Distribution Strategy</strong>
-                            <p className="text-sm text-gray-600">Clear plan for international sales channels</p>
-                          </div>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Risk Mitigation</strong>
-                            <p className="text-sm text-gray-600">Understanding of trade and payment risks</p>
-                          </div>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Growth Plan</strong>
-                            <p className="text-sm text-gray-600">Scalable model for international expansion</p>
-                          </div>
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Application Components */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">EDC Application Components</h2>
-                
-                <div className="grid md:grid-cols-2 gap-8">
-                  <Card className="border-teal-200">
-                    <CardHeader>
-                      <CardTitle className="text-teal-700">📊 Export Business Components</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-teal-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Export Strategy</strong>
-                            <p className="text-sm text-gray-600">Target markets and entry approach</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-teal-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Market Analysis</strong>
-                            <p className="text-sm text-gray-600">International demand and competition research</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-teal-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Export Financials</strong>
-                            <p className="text-sm text-gray-600">Export revenue projections and cash flow</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-teal-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Risk Assessment</strong>
-                            <p className="text-sm text-gray-600">Trade risks and mitigation strategies</p>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">📋 Company Components</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Company Profile</strong>
-                            <p className="text-sm text-gray-600">Business history, capabilities, and track record</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Financial Statements</strong>
-                            <p className="text-sm text-gray-600">Historical financials and current position</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Management Team</strong>
-                            <p className="text-sm text-gray-600">Leadership experience and export expertise</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Export Contracts</strong>
-                            <p className="text-sm text-gray-600">International agreements and buyer commitments</p>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Success Strategies */}
-              <div className="bg-green-50 rounded-lg p-8 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">EDC Application Success Strategies</h2>
-                
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-green-700">✅ Winning Strategies</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Strong export strategy with validated international market demand</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Demonstrated export readiness and capability to compete globally</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Detailed market research with country-specific analysis and entry plans</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Clear growth potential with scalable international business model</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Pitfalls</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Weak export plan without sufficient international market research</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Limited export experience with no track record or readiness demonstration</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Unrealistic export projections without market validation or buyer commitments</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Poor risk assessment without understanding international trade complexities</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Official Resources */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Official EDC Resources</h2>
-                
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="border-teal-200">
-                    <CardHeader>
-                      <CardTitle className="text-teal-700">EDC Resources</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-teal-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">EDC Women in Trade</h5>
-                          <p className="text-sm text-gray-600">Official program website</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.edc.ca/en/campaign/women-in-trade.html" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                      
-                      <div className="flex items-center justify-between p-3 bg-teal-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">BWIT Network</h5>
-                          <p className="text-sm text-gray-600">Business Women in International Trade</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.tradecommissioner.gc.ca/en/our-solutions/exporters-diverse-backgrounds.html" target="_blank" rel="noopener noreferrer">
-                            Learn More <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-teal-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Contact EDC</h5>
-                          <p className="text-sm text-gray-600">Connect with EDC team</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.edc.ca/en/contact-us.html" target="_blank" rel="noopener noreferrer">
-                            Contact <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">Professional Support</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">EDC Assessment</h5>
-                          <p className="text-sm text-gray-600">Free export readiness review</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="/contact?service=edc-assessment">
-                            Get Assessment <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                      
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Export Strategy</h5>
-                          <p className="text-sm text-gray-600">International market entry planning</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="/contact?service=export-strategy-help">
-                            Get Help <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Application Support</h5>
-                          <p className="text-sm text-gray-600">Professional EDC application help</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="/contact?service=edc-women-trade-export-financing-help">
-                            Get Support <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Lead Magnet CTA */}
-              <div className="bg-gradient-to-r from-teal-600 to-green-800 rounded-lg p-8 text-white text-center mb-8">
-                <Download className="w-16 h-16 mx-auto mb-4 text-teal-100" />
-                <h3 className="text-2xl font-bold mb-4">Get Your Free EDC Export Financing Kit</h3>
-                <p className="text-teal-100 mb-6 text-lg">
-                  Download our comprehensive EDC Women in Trade guide with export market entry templates, 
-                  financing comparison, and international expansion strategies.
-                </p>
-                <Button size="lg" className="bg-white text-teal-700 hover:bg-gray-100" asChild>
-                  <Link href="/contact?service=edc-women-trade-export-financing-help">
-                    <Download className="w-5 h-5 mr-2" />
-                    Request Export Guide
-                  </Link>
-                </Button>
-              </div>
-
-              {/* Contact CTA */}
-              <div className="bg-gradient-to-r from-green-600 to-green-800 rounded-lg p-8 text-white text-center">
-                <Users className="w-16 h-16 mx-auto mb-4 text-green-100" />
-                <h3 className="text-2xl font-bold mb-4">Ready to Apply for EDC Export Financing?</h3>
-                <p className="text-green-100 mb-6 text-lg">
-                  Our export financing specialists understand EDC Women in Trade and can help assess 
-                  export readiness, develop international strategies, and optimize financing applications.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-white text-green-700 hover:bg-green-50 font-semibold shadow-lg" asChild>
-                    <Link href="/contact?service=edc-women-trade-export-financing-help">
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      Get Expert Help
-                    </Link>
-                  </Button>
-                  <Button size="lg" className="bg-green-700 text-white hover:bg-green-800 font-semibold shadow-lg border-2 border-white" asChild>
-                    <Link href="/contact?service=edc-assessment">
-                      Free Export Assessment
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-
             </div>
           </div>
         </section>
+
+        {/* Application Timeline */}
+        <section id="process" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Export Application Timeline</h2>
+
+              <div className="relative border-l-2 border-slate-200 pl-8 space-y-12 ml-4 md:ml-0">
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-teal-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Export Readiness Check</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    Before applying, you must show "Export Readiness". Do you have capacity to fill orders? Is your IP protected?
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-teal-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Engage Trade Commissioner</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    Contact the TCS (Trade Commissioner Service). They are free consultants who can validate your international plan – a crucial step for EDC approval.
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-teal-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Apply for Financing</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    For equity (ITI), pitch directly to EDC. For working capital guarantees, you often start with your own bank, and they bring EDC in to "guarantee" the loan.
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Expansion</h3>
+                  <p className="text-slate-600 text-sm">
+                    Use CanExport grants to fund the marketing travel, and EDC insurance to secure the deals.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Neural Network: Related Guides */}
+        <section className="py-16 bg-slate-50 border-t border-slate-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-bold text-slate-900 mb-6">Related Funding Pathways</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/bdc-women-entrepreneurs-financing-guide" className="group block h-full">
+                  <div className="bg-white border hover:border-blue-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-blue-600 font-semibold mb-2">Domestic Loans</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-blue-700 mb-2">BDC Women Loans</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Domestic working capital loans.</p>
+                    <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/women-entrepreneurship-fund-guide" className="group block h-full">
+                  <div className="bg-white border hover:border-purple-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-purple-600 font-semibold mb-2">Domestic Grants</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-purple-700 mb-2">Women Grant Fund</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Non-repayable domestic funding.</p>
+                    <div className="mt-3 text-xs text-purple-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/canada-manufacturing-funding-guide" className="group block h-full">
+                  <div className="bg-white border hover:border-green-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-green-600 font-semibold mb-2">Sector</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-green-700 mb-2">Manufacturing Grants</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Scaling production for export.</p>
+                    <div className="mt-3 text-xs text-green-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-left">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <HelpCircle className="w-6 h-6 text-teal-600 mr-2" />
+                Export Export FAQs
+              </h2>
+              <div className="divide-y divide-teal-100">
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Is EDC government owned?</h3>
+                  <p className="text-slate-600 text-sm">Yes, Export Development Canada is a Crown corporation. Their mandate is to support Canadian trade, but they operate commercially (they charge for insurance).</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Can I use CanExport for the USA?</h3>
+                  <p className="text-slate-600 text-sm">Partially. CanExport is for <em>new</em> markets. If you already export to New York but want to expand to California, that generally doesn't count. But if you've never sold to the US, then yes.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Does EDC invest in startups?</h3>
+                  <p className="text-slate-600 text-sm">Typically no. EDC seeks established companies ready to scale. For early-stage tech, BDC's Thrive Venture Fund is a better fit.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* CTA */}
+        <section className="py-20 bg-gradient-to-r from-teal-900 to-green-900 text-white text-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Go Global with Confidence</h2>
+            <p className="text-lg text-teal-200 mb-8 max-w-2xl mx-auto">
+              Don't let financing hold you back from international markets. Our experts help you navigate EDC and CanExport.
+            </p>
+            <Button size="lg" className="bg-white text-teal-900 hover:bg-teal-50 font-semibold shadow-lg" asChild>
+              <Link href="/contact?service=export-financing-help">
+                Get Export Funding Help
+              </Link>
+            </Button>
+          </div>
+        </section>
+
       </div>
       <Footer />
     </>

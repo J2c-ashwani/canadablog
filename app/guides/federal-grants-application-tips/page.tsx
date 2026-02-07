@@ -3,478 +3,351 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle } from "lucide-react"
+import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, AlertCircle, HelpCircle, ArrowRight, Lightbulb, Target, Shield } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Federal Grants Application Tips & Guide 2025 | Step-by-Step Process",
-  description: "Complete guide to applying for federal grants. Learn application process, required documents, common mistakes, and winning strategies for government funding.",
-  keywords: "federal grants application, grants.gov application, federal funding guide, grant application tips, government grants process",
+  title: "Federal Grants Application Tips 2025 | Expert Acceptance Strategies",
+  description: "Master the federal grant application process. Expert tips on writing narratives, budget justification, SAM.gov registration, and avoiding rejection.",
+  keywords: "federal grant application tips, grants.gov strategies, write winning grant proposal, federal funding guide, SAM.gov registration tips",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/guides/federal-grants-application-tips",
+  },
   openGraph: {
-    title: "Federal Grants Application Tips & Guide 2025",
-    description: "Step-by-step guide to applying for federal grants with tips and strategies.",
+    title: "Federal Grants Application Tips 2025 | Expert Strategies",
+    description: "Stop getting rejected. Learn the insider tips to writing winning federal grant applications.",
     url: "https://www.fsidigital.ca/guides/federal-grants-application-tips",
+    images: ["/og-image.png"],
   },
 }
 
-export default function FederalGrantsApplicationGuide() {
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the most common reason for grant rejection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The #1 reason is 'Technical Non-Compliance'—meaning you missed a form, used the wrong font size, or went over the page limit. It is rejected before anyone even reads your idea."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a professional grant writer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For large federal grants ($500k+), it is highly recommended. The complexity of the narrative and budget justification often requires specialist expertise."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does the review process take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Federal grants typically take 3-6 months from submission to award notification. Peer review panels meet periodically, not abundantly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is match funding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many federal grants require 'cost-sharing' or 'matching funds' (e.g., 50%). You must prove you have cash or in-kind contributions to cover your share of the project."
+      }
+    }
+  ]
+}
+
+export default function FederalGrantsApplicationTipsGuide() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-600 to-green-600 text-white py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-gradient-to-br from-slate-800 to-gray-900 text-white py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                📋 Application Guide
+              <Badge className="mb-6 bg-blue-500/20 text-blue-100 border-blue-400/30 backdrop-blur-sm">
+                💡 Expert Strategy Guide
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Federal Grants Application Guide
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
+                Federal Grants <br className="hidden md:block" /> Application Tips
               </h1>
-              <p className="text-xl text-blue-100 mb-8">
-                Step-by-step guide to successfully applying for federal grants. Learn the complete process, avoid common mistakes, and maximize your chances of winning government funding.
+              <p className="text-xl md:text-2xl mb-8 text-gray-300 leading-relaxed text-pretty">
+                Don't let a formatting error kill your million-dollar idea. <br className="hidden md:block" /> Master the <strong>narrative</strong>, <strong>budget</strong>, and <strong>compliance</strong>.
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Main Content */}
-        <section className="py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-
-              {/* Pre-Application Preparation */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Pre-Application Preparation</h2>
-
-                <div className="space-y-6">
-                  <Card className="border-blue-200">
-                    <CardHeader>
-                      <CardTitle className="text-blue-700">1. Business Registration Requirements</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-4">
-                        <div>
-                          <h5 className="font-semibold mb-2">Required Registrations:</h5>
-                          <ul className="space-y-2 text-gray-700">
-                            <li className="flex items-start">
-                              <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                              <span><strong>DUNS Number:</strong> Unique 9-digit identifier (now UEI - Unique Entity Identifier)</span>
-                            </li>
-                            <li className="flex items-start">
-                              <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                              <span><strong>SAM.gov Registration:</strong> System for Award Management (required for all federal contracts)</span>
-                            </li>
-                            <li className="flex items-start">
-                              <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                              <span><strong>Grants.gov Username:</strong> Required for submitting applications</span>
-                            </li>
-                            <li className="flex items-start">
-                              <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                              <span><strong>EIN (Employer ID Number):</strong> From the IRS for tax purposes</span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="bg-yellow-50 p-4 rounded-lg">
-                          <p className="text-sm text-yellow-800">
-                            <strong>Important:</strong> SAM.gov registration can take 7-10 business days. Start this process early!
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">2. Essential Documents Checklist</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3">Financial Documents:</h5>
-                          <ul className="space-y-1 text-sm text-gray-700">
-                            <li>• Audited financial statements (last 3 years)</li>
-                            <li>• Tax returns (business and personal)</li>
-                            <li>• Bank statements</li>
-                            <li>• Profit & loss statements</li>
-                            <li>• Balance sheets</li>
-                            <li>• Cash flow projections</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3">Legal Documents:</h5>
-                          <ul className="space-y-1 text-sm text-gray-700">
-                            <li>• Articles of incorporation</li>
-                            <li>• Operating agreements</li>
-                            <li>• Business licenses</li>
-                            <li>• Insurance certificates</li>
-                            <li>• Organizational chart</li>
-                            <li>• Board resolutions</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Application Process Steps */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Federal Grant Application Process</h2>
-
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-white font-bold text-xl">1</span>
-                    </div>
-                    <h4 className="font-bold text-lg mb-3">Find Opportunities</h4>
-                    <ul className="text-sm text-gray-600 space-y-1">
-                      <li>• Search grants.gov</li>
-                      <li>• Agency websites</li>
-                      <li>• Federal Register</li>
-                      <li>• Industry publications</li>
-                    </ul>
-                  </div>
-
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-white font-bold text-xl">2</span>
-                    </div>
-                    <h4 className="font-bold text-lg mb-3">Review Requirements</h4>
-                    <ul className="text-sm text-gray-600 space-y-1">
-                      <li>• Eligibility criteria</li>
-                      <li>• Funding amounts</li>
-                      <li>• Deadlines</li>
-                      <li>• Matching funds</li>
-                    </ul>
-                  </div>
-
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-white font-bold text-xl">3</span>
-                    </div>
-                    <h4 className="font-bold text-lg mb-3">Prepare Application</h4>
-                    <ul className="text-sm text-gray-600 space-y-1">
-                      <li>• Write proposals</li>
-                      <li>• Create budgets</li>
-                      <li>• Gather documents</li>
-                      <li>• Internal review</li>
-                    </ul>
-                  </div>
-
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-white font-bold text-xl">4</span>
-                    </div>
-                    <h4 className="font-bold text-lg mb-3">Submit & Track</h4>
-                    <ul className="text-sm text-gray-600 space-y-1">
-                      <li>• Submit via grants.gov</li>
-                      <li>• Confirm receipt</li>
-                      <li>• Track status</li>
-                      <li>• Respond to queries</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Key Application Components */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Key Application Components</h2>
-
-                <div className="space-y-6">
-                  <Card className="border-purple-200">
-                    <CardHeader>
-                      <CardTitle className="text-purple-700 flex items-center">
-                        <FileText className="w-5 h-5 mr-2" />
-                        Project Narrative
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3">Essential Elements:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Clear problem statement</li>
-                            <li>• Specific objectives</li>
-                            <li>• Detailed methodology</li>
-                            <li>• Timeline with milestones</li>
-                            <li>• Expected outcomes</li>
-                            <li>• Evaluation plan</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3">Writing Tips:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Use active voice</li>
-                            <li>• Be specific and quantifiable</li>
-                            <li>• Follow page/word limits</li>
-                            <li>• Include compelling data</li>
-                            <li>• Address evaluation criteria</li>
-                            <li>• Proofread thoroughly</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700 flex items-center">
-                        <Clock className="w-5 h-5 mr-2" />
-                        Budget & Financial Planning
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3">Budget Categories:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Personnel (salaries, benefits)</li>
-                            <li>• Equipment and supplies</li>
-                            <li>• Travel expenses</li>
-                            <li>• Contractual services</li>
-                            <li>• Indirect costs</li>
-                            <li>• Cost sharing (if required)</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3">Budget Best Practices:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Align with project activities</li>
-                            <li>• Be realistic and detailed</li>
-                            <li>• Include budget narrative</li>
-                            <li>• Follow agency guidelines</li>
-                            <li>• Plan for inflation</li>
-                            <li>• Account for contingencies</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Common Mistakes */}
-              <div className="bg-red-50 rounded-lg p-8 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Common Application Mistakes to Avoid</h2>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-red-700">❌ Fatal Mistakes:</h4>
-                    <ul className="space-y-2 text-gray-700">
-                      <li>• Missing application deadlines</li>
-                      <li>• Not meeting eligibility requirements</li>
-                      <li>• Incomplete applications</li>
-                      <li>• Exceeding page/word limits</li>
-                      <li>• Math errors in budgets</li>
-                      <li>• Missing required forms</li>
-                      <li>• Inadequate cost sharing documentation</li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-orange-700">⚠️ Quality Issues:</h4>
-                    <ul className="space-y-2 text-gray-700">
-                      <li>• Vague or unclear objectives</li>
-                      <li>• Unrealistic timelines</li>
-                      <li>• Weak evaluation plans</li>
-                      <li>• Poor writing quality</li>
-                      <li>• Inconsistent information</li>
-                      <li>• Lack of supporting data</li>
-                      <li>• Inadequate team qualifications</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Success Tips */}
-              <div className="bg-green-50 rounded-lg p-8 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Winning Application Strategies</h2>
-
-                <div className="grid md:grid-cols-3 gap-6">
-                  <Card className="border-green-200 bg-white">
-                    <CardHeader>
-                      <CardTitle className="text-green-700 text-lg">Before Writing</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="text-sm text-gray-700 space-y-1">
-                        <li>• Contact program officers</li>
-                        <li>• Attend webinars</li>
-                        <li>• Review funded projects</li>
-                        <li>• Build partnerships</li>
-                        <li>• Gather preliminary data</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-green-200 bg-white">
-                    <CardHeader>
-                      <CardTitle className="text-green-700 text-lg">During Writing</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="text-sm text-gray-700 space-y-1">
-                        <li>• Address all evaluation criteria</li>
-                        <li>• Use clear, compelling language</li>
-                        <li>• Include strong supporting data</li>
-                        <li>• Demonstrate innovation</li>
-                        <li>• Show measurable outcomes</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-green-200 bg-white">
-                    <CardHeader>
-                      <CardTitle className="text-green-700 text-lg">Before Submission</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="text-sm text-gray-700 space-y-1">
-                        <li>• Multiple internal reviews</li>
-                        <li>• External expert review</li>
-                        <li>• Check all requirements</li>
-                        <li>• Test technical submission</li>
-                        <li>• Submit early</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Timeline Planning */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Application Timeline Planning</h2>
-
-                <div className="space-y-4">
-                  <div className="flex items-center p-4 bg-blue-50 rounded-lg">
-                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                      90
-                    </div>
-                    <div>
-                      <h4 className="font-bold">90 Days Before Deadline</h4>
-                      <p className="text-sm text-gray-600">Begin research, team building, and initial planning</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center p-4 bg-green-50 rounded-lg">
-                    <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                      60
-                    </div>
-                    <div>
-                      <h4 className="font-bold">60 Days Before Deadline</h4>
-                      <p className="text-sm text-gray-600">Start writing, gather documents, develop partnerships</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center p-4 bg-yellow-50 rounded-lg">
-                    <div className="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                      30
-                    </div>
-                    <div>
-                      <h4 className="font-bold">30 Days Before Deadline</h4>
-                      <p className="text-sm text-gray-600">Complete first draft, begin internal reviews</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center p-4 bg-red-50 rounded-lg">
-                    <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                      7
-                    </div>
-                    <div>
-                      <h4 className="font-bold">7 Days Before Deadline</h4>
-                      <p className="text-sm text-gray-600">Final reviews, technical checks, early submission</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Government Resources */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Official Government Resources</h2>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="border-blue-200">
-                    <CardHeader>
-                      <CardTitle className="text-blue-700">Primary Resources</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Grants.gov</h5>
-                          <p className="text-sm text-gray-600">Main portal for federal grant opportunities</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.grants.gov/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">SAM.gov</h5>
-                          <p className="text-sm text-gray-600">System for Award Management registration</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://sam.gov/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">Additional Resources</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Federal Register</h5>
-                          <p className="text-sm text-gray-600">Official journal of federal government</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.federalregister.gov/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Assistance Listings</h5>
-                          <p className="text-sm text-gray-600">Formerly CFDA - Federal Assistance Listings</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://sam.gov/content/assistance-listings" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Contact CTA */}
-              <div className="bg-gradient-to-r from-blue-600 to-green-600 rounded-lg p-8 text-white text-center">
-                <Users className="w-16 h-16 mx-auto mb-4 text-blue-100" />
-                <h3 className="text-2xl font-bold mb-4">Need Personalized Help?</h3>
-                <p className="text-blue-100 mb-6 text-lg">
-                  Still have questions about federal grant applications? Our experts are here to help guide you through
-                  the process and maximize your chances of success.
-                </p>
-                <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>
-                  <Link href="/contact">
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Get Expert Help
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-bold shadow-lg" asChild>
+                  <Link href="#checklist">
+                    View Checklist
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="bg-slate-700/50 border-white/30 text-white hover:bg-slate-700/80 backdrop-blur-sm" asChild>
+                  <Link href="/blog/grant-proposal-template">
+                    Download Template
                   </Link>
                 </Button>
               </div>
             </div>
           </div>
         </section>
+
+        {/* QUERY HOOK: Common Questions */}
+        <div className="bg-white border-b border-gray-200 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
+          <div className="container mx-auto px-4 py-3">
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-gray-700 gap-4">
+              <span className="font-semibold text-slate-900 flex items-center shrink-0">
+                <Lightbulb className="w-4 h-4 mr-2 text-blue-600" />
+                Jump to:
+              </span>
+              <div className="flex gap-6 overflow-x-auto no-scrollbar whitespace-nowrap mask-linear-fade">
+                <Link href="#checklist" className="hover:text-blue-700 transition-colors flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Readiness Checklist</Link>
+                <Link href="#mistakes" className="hover:text-blue-700 transition-colors flex items-center gap-1"><AlertCircle className="w-3 h-3" /> Fatal Mistakes</Link>
+                <Link href="#narrative" className="hover:text-blue-700 transition-colors flex items-center gap-1"><FileText className="w-3 h-3" /> Writing Tips</Link>
+                <Link href="#faq" className="hover:text-blue-700 transition-colors flex items-center gap-1"><HelpCircle className="w-3 h-3" /> FAQs</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Tips High-Level */}
+        <section className="py-12 bg-white border-b border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-4 gap-8 text-center divide-x divide-gray-100">
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-blue-600 mb-2">Start Early</div>
+                  <div className="text-gray-600 text-sm font-medium uppercase tracking-wide">60+ Days Out</div>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-green-600 mb-2">Be Exact</div>
+                  <div className="text-gray-600 text-sm font-medium uppercase tracking-wide">Follow Formatting</div>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-purple-600 mb-2">Show Data</div>
+                  <div className="text-gray-600 text-sm font-medium uppercase tracking-wide">Quantify Impact</div>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-red-600 mb-2">No Fluff</div>
+                  <div className="text-gray-600 text-sm font-medium uppercase tracking-wide">Concise Writing</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Main Content */}
+
+        {/* 1. Readiness Checklist */}
+        <section id="checklist" className="py-16 bg-slate-50/50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+                <CheckCircle className="w-8 h-8 text-blue-600 mr-3" />
+                Pre-Application Readiness
+              </h2>
+
+              <div className="space-y-6">
+                <Card className="border-blue-200">
+                  <CardHeader>
+                    <CardTitle className="text-blue-800">1. Administrative Must-Haves</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <ul className="space-y-3">
+                        <li className="flex items-start">
+                          <Shield className="w-5 h-5 text-blue-500 mr-2 mt-0.5" />
+                          <div>
+                            <strong>UEI (Unique Entity ID):</strong>
+                            <p className="text-sm text-gray-600">Replaced the DUNS number. You cannot apply without it.</p>
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <Shield className="w-5 h-5 text-blue-500 mr-2 mt-0.5" />
+                          <div>
+                            <strong>SAM.gov Active Status:</strong>
+                            <p className="text-sm text-gray-600">Registration takes 2+ weeks. If it expires during review, you are disqualified.</p>
+                          </div>
+                        </li>
+                      </ul>
+                      <ul className="space-y-3">
+                        <li className="flex items-start">
+                          <Shield className="w-5 h-5 text-blue-500 mr-2 mt-0.5" />
+                          <div>
+                            <strong>Grants.gov Account:</strong>
+                            <p className="text-sm text-gray-600">Ensure your AOR (Authorized Org Rep) role is approved.</p>
+                          </div>
+                        </li>
+                        <li className="flex items-start">
+                          <Shield className="w-5 h-5 text-blue-500 mr-2 mt-0.5" />
+                          <div>
+                            <strong>Financial Audit:</strong>
+                            <p className="text-sm text-gray-600">Most federal grants require 2 years of audited or reviewed financials.</p>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 2. Common Mistakes */}
+        <section id="mistakes" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+                <AlertCircle className="w-8 h-8 text-red-600 mr-3" />
+                Why Grants Get Rejected
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-red-50 p-6 rounded-lg border border-red-100">
+                  <h3 className="text-xl font-bold text-red-800 mb-4">❌ Technical Disqualification</h3>
+                  <p className="mb-4 text-sm text-red-700">These result in an immediate "Return Without Review".</p>
+                  <ul className="space-y-2 text-red-900 text-sm">
+                    <li className="flex items-start"><span className="mr-2">•</span> Late submission (even by 1 minute).</li>
+                    <li className="flex items-start"><span className="mr-2">•</span> Wrong font size or margins (they measure this!).</li>
+                    <li className="flex items-start"><span className="mr-2">•</span> Exceeding page limits.</li>
+                    <li className="flex items-start"><span className="mr-2">•</span> Missing a mandatory attachment.</li>
+                  </ul>
+                </div>
+
+                <div className="bg-orange-50 p-6 rounded-lg border border-orange-100">
+                  <h3 className="text-xl font-bold text-orange-800 mb-4">⚠️ Narrative Failure</h3>
+                  <p className="mb-4 text-sm text-orange-700">These result in a low score from reviewers.</p>
+                  <ul className="space-y-2 text-orange-900 text-sm">
+                    <li className="flex items-start"><span className="mr-2">•</span> "Wall of text" with no headers or graphics.</li>
+                    <li className="flex items-start"><span className="mr-2">•</span> Focusing on "your need" instead of "public benefit".</li>
+                    <li className="flex items-start"><span className="mr-2">•</span> Vague budget justification ("$50k for supplies").</li>
+                    <li className="flex items-start"><span className="mr-2">•</span> Lack of quantifiable outcome metrics.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. Writing Tips (Narrative) */}
+        <section id="narrative" className="py-16 bg-slate-50/50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+                <FileText className="w-8 h-8 text-purple-600 mr-3" />
+                Writing the Perfect Narrative
+              </h2>
+
+              <div className="space-y-6">
+                <Card className="border-purple-200">
+                  <CardContent className="p-6">
+                    <div className="grid md:grid-cols-3 gap-6">
+                      <div>
+                        <h4 className="font-bold text-purple-800 mb-2">The "So What?" Test</h4>
+                        <p className="text-sm text-gray-600">Don't just say what you will do. Explain why it matters. Who benefits? How does this solve a national problem?</p>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-purple-800 mb-2">Use Their Keywords</h4>
+                        <p className="text-sm text-gray-600">Read the NOFO (Notice of Funding Opportunity) carefully. Mirror their exact terminology in your headings.</p>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-purple-800 mb-2">Visuals Matter</h4>
+                        <p className="text-sm text-gray-600">Reviewers are tired. Use charts, logic models, and bullet points to break up the text. Make it skimmable.</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Neural Network: Related Guides */}
+        <section className="py-16 bg-white border-t border-slate-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-bold text-slate-900 mb-6">Explore Funding Opportunities</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/apply-federal-grants" className="group block h-full">
+                  <div className="bg-slate-50 border hover:border-blue-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-blue-600 font-semibold mb-2">Federal</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-blue-700 mb-2">Apply for Federal Grants</h4>
+                    <p className="text-sm text-slate-500 flex-grow">The core "How-To" guide.</p>
+                    <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/sba-application-process" className="group block h-full">
+                  <div className="bg-slate-50 border hover:border-blue-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-blue-600 font-semibold mb-2">Loans</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-blue-700 mb-2">SBA Application Process</h4>
+                    <p className="text-sm text-slate-500 flex-grow">For loans instead of grants.</p>
+                    <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/apply-small-business-grants" className="group block h-full">
+                  <div className="bg-slate-50 border hover:border-green-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-green-600 font-semibold mb-2">General</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-green-700 mb-2">Small Business Grants</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Private & Public mix.</p>
+                    <div className="mt-3 text-xs text-green-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-slate-50/50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-left">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <HelpCircle className="w-6 h-6 text-slate-600 mr-2" />
+                Grant Writing FAQs
+              </h2>
+              <div className="divide-y divide-slate-200">
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Can I include my salary in the budget?</h3>
+                  <p className="text-slate-600 text-sm">Yes, if you are directly working on the project. You can charge a percentage of your time (FTE) to the grant.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">What is "Indirect Cost Rate"?</h3>
+                  <p className="text-slate-600 text-sm">It covers overhead (rent, utilities, admin). You usually need a negotiated rate agreement (NICRA), or you can use the "de minimis" 10% rate.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Does the government take equity?</h3>
+                  <p className="text-slate-600 text-sm">No. Grants are non-dilutive. They do not take ownership. However, they may own the rights to data or IP developed with the funds (Bayh-Dole Act).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-20 bg-gradient-to-r from-slate-900 to-gray-800 text-white text-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Stop Writing in the Dark</h2>
+            <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+              Our grant review service checks your proposal for "fatal errors" before you hit submit.
+            </p>
+            <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold shadow-lg" asChild>
+              <Link href="/contact?service=grant-review">
+                Review My Proposal
+              </Link>
+            </Button>
+          </div>
+        </section>
+
       </div>
       <Footer />
     </>

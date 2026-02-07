@@ -3,621 +3,409 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Target, DollarSign, AlertTriangle, Download, Brain, Code, Database, Sparkles } from "lucide-react"
+import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Target, DollarSign, AlertTriangle, Download, Brain, Code, Database, Sparkles, HelpCircle, ArrowRight, Laptop } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "How to Apply for AI Grants Canada 2025 | Scale AI Application Guide | $850M+ Funding",
-  description: "Step-by-step guide to applying for artificial intelligence grants in Canada. Learn Scale AI application process, CDAP digital adoption, machine learning funding strategies for $850M+ in AI innovation grants.",
-  keywords: "how to apply for AI grants Canada, Scale AI application guide, artificial intelligence funding Canada, machine learning grants, deep learning research funding, AI startup grants Canada, computer vision funding",
-  openGraph: {
-    title: "How to Apply for AI Grants Canada 2025 | Scale AI & Machine Learning Funding",
-    description: "Complete application guide for Canadian AI grants with Scale AI, CDAP, and research funding strategies.",
-    url: "https://www.fsidigital.ca/guides/canada-digital-ai-funding-guide",
+  title: "AI Funding Canada 2025 | Scale AI & CDAP Grants",
+  description: "Complete guide to AI and digital adoption funding. Apply for Scale AI supercluster projects, CDAP digital transformation grants, and IRAP machine learning funding.",
+  keywords: "AI funding Canada, Scale AI grants, CDAP application, machine learning grants, artificial intelligence funding, digital adoption grants",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/guides/canada-digital-ai-funding-guide",
   },
+  openGraph: {
+    title: "AI Funding Canada 2025 | Scale AI & CDAP",
+    description: "Step-by-step guide to securing up to $5M in AI funding and digital adoption grants.",
+    url: "https://www.fsidigital.ca/guides/canada-digital-ai-funding-guide",
+    images: ["/og-image.png"],
+  },
+}
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the Canada Digital Adoption Program (CDAP)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CDAP provides a $15,000 grant to hire a digital advisor to create a Digital Adoption Plan, followed by an interest-free loan of up to $100,000 to implement new technologies, including AI tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Scale AI funding work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Scale AI reimburses up to 50% of eligible costs for collaborative AI projects focused on supply chains. Projects typically range from $1M to $5M+ and require a consortium of partners."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I get funding for ChatGPT integration?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if it involves developing a proprietary business application (e.g., customer service automation) as part of a digital transformation plan (CDAP) or technical R&D (IRAP)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is AI software considered an eligible expense?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Licensing fees, subscription costs for AI platforms, and developer salaries are often eligible expenses under programs like CDAP and IRAP."
+      }
+    }
+  ]
 }
 
 export default function CanadaDigitalAIFundingGuide() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-600 to-purple-700 text-white py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-gradient-to-br from-indigo-800 to-purple-900 text-white py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🤖 AI Funding Application Guide
+              <Badge className="mb-6 bg-indigo-500/20 text-indigo-100 border-indigo-400/30 backdrop-blur-sm">
+                🤖 AI & Digital Adoption
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                How to Apply for AI Grants in Canada 2025
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
+                Canada AI Grants Guide
               </h1>
-              <p className="text-xl text-blue-100 mb-8">
-                Complete step-by-step guide to applying for artificial intelligence and machine learning grants in Canada.
-                Learn the Scale AI application process, CDAP digital adoption strategies, and how to secure up to $5M+ in AI
-                innovation funding across 25+ programs for deep learning, computer vision, and NLP projects.
+              <p className="text-xl md:text-2xl mb-8 text-indigo-100 leading-relaxed text-pretty">
+                The comprehensive handbook for AI innovation.
+                Secure Scale AI funding, CDAP digital grants, and IRAP R&D support.
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Quick Overview */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center mb-12">
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">$850M+</div>
-                  <div className="text-gray-600">AI Grants Available</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">$5M+</div>
-                  <div className="text-gray-600">Maximum Scale AI Funding</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">79%</div>
-                  <div className="text-gray-600">AI Application Success Rate</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-orange-600 mb-2">25+</div>
-                  <div className="text-gray-600">Active AI Programs</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Main Content */}
-        <section className="py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-
-              {/* AI Funding Overview */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada AI Grant Application Overview</h2>
-
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-                  <div className="flex items-start">
-                    <Brain className="w-8 h-8 text-blue-600 mr-4 mt-1" />
-                    <div>
-                      <h4 className="font-bold text-blue-800 mb-2">Artificial Intelligence Funding Focus</h4>
-                      <p className="text-blue-700">
-                        Canada provides $850M+ annually in AI and machine learning funding through federal programs supporting
-                        deep learning research, computer vision applications, natural language processing, predictive analytics,
-                        and AI-powered business solutions across all industries.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-6">
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">1</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Define AI Use Case</h4>
-                      <p className="text-sm text-gray-600">
-                        Identify specific business problem AI solves with measurable KPIs
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">2</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Select AI Programs</h4>
-                      <p className="text-sm text-gray-600">
-                        Match AI project stage with appropriate funding programs
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">3</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Build Data Strategy</h4>
-                      <p className="text-sm text-gray-600">
-                        Demonstrate access to quality training datasets
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">4</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Apply & Deploy AI</h4>
-                      <p className="text-sm text-gray-600">
-                        Submit applications and implement machine learning models
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Scale AI Application */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Scale AI Grant Application Process (Up to $5M+)</h2>
-
-                <Card className="border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-700 flex items-center">
-                      <Target className="w-5 h-5 mr-2" />
-                      Scale AI - AI-Powered Supply Chains Supercluster
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Funding:</strong> Up to $5M+</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Coverage:</strong> Up to 50%</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Type:</strong> AI Supply Chain</span>
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-3 text-blue-700">Scale AI Eligibility:</h5>
-                        <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• Canadian company with AI capability</li>
-                          <li>• Supply chain or logistics application</li>
-                          <li>• Consortium of 2+ partners required</li>
-                          <li>• Demonstrated AI/ML technical expertise</li>
-                          <li>• Clear commercialization pathway</li>
-                          <li>• Industry adoption potential</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-3 text-purple-700">Application Components:</h5>
-                        <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• AI solution description and innovation</li>
-                          <li>• Supply chain impact quantification</li>
-                          <li>• Machine learning model architecture</li>
-                          <li>• Data strategy and training datasets</li>
-                          <li>• Commercialization and adoption plan</li>
-                          <li>• AI talent and team capabilities</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* CDAP AI Tools */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">CDAP AI Tools & Digital Adoption Funding</h2>
-
-                <Card className="border-purple-200">
-                  <CardHeader>
-                    <CardTitle className="text-purple-700 flex items-center">
-                      <Code className="w-5 h-5 mr-2" />
-                      Canada Digital Adoption Program for AI
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Grant:</strong> $15K + $100K Loan</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Type:</strong> Digital Tools</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Focus:</strong> AI Adoption</span>
-                      </div>
-                    </div>
-
-                    <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
-                      <h4 className="font-bold mb-2 text-purple-800">AI Tools Eligible for CDAP Funding:</h4>
-                      <div className="grid md:grid-cols-2 gap-4 text-sm text-purple-700">
-                        <div>
-                          <p><strong>AI-Powered Business Tools:</strong></p>
-                          <ul className="ml-4 space-y-1">
-                            <li>• AI chatbots and customer service automation</li>
-                            <li>• Predictive analytics platforms</li>
-                            <li>• AI-powered CRM systems</li>
-                            <li>• Computer vision quality control</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <p><strong>Machine Learning Platforms:</strong></p>
-                          <ul className="ml-4 space-y-1">
-                            <li>• Cloud-based ML development tools</li>
-                            <li>• AI model deployment platforms</li>
-                            <li>• Natural language processing APIs</li>
-                            <li>• Recommendation engine systems</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-3 text-purple-700">CDAP Application Steps:</h5>
-                        <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• Apply online through CDAP portal</li>
-                          <li>• Work with approved digital advisor</li>
-                          <li>• Develop digital adoption plan ($15K)</li>
-                          <li>• Apply for implementation loan ($100K)</li>
-                          <li>• Deploy AI tools and track ROI</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-3 text-green-700">AI Adoption Benefits:</h5>
-                        <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• Fast application approval (2-4 weeks)</li>
-                          <li>• Interest-free loan for AI tools</li>
-                          <li>• Expert digital advisor support</li>
-                          <li>• Youth talent hiring funding available</li>
-                          <li>• No equity dilution required</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* IRAP AI Projects */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">IRAP Machine Learning & AI Development Funding</h2>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">AI R&D Projects</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-center p-3 bg-green-50 rounded">
-                          <div>
-                            <strong>Funding Amount</strong>
-                            <p className="text-sm text-gray-600">Up to $500K non-repayable</p>
-                          </div>
-                        </div>
-
-                        <div className="flex justify-between items-center p-3 bg-green-50 rounded">
-                          <div>
-                            <strong>Coverage Rate</strong>
-                            <p className="text-sm text-gray-600">60-80% of AI development costs</p>
-                          </div>
-                        </div>
-
-                        <div className="flex justify-between items-center p-3 bg-green-50 rounded">
-                          <div>
-                            <strong>Project Types</strong>
-                            <p className="text-sm text-gray-600">Deep learning, NLP, computer vision</p>
-                          </div>
-                        </div>
-
-                        <div className="flex justify-between items-center p-3 bg-green-50 rounded">
-                          <div>
-                            <strong>Advisor Support</strong>
-                            <p className="text-sm text-gray-600">Industrial Technology Advisor included</p>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-blue-200">
-                    <CardHeader>
-                      <CardTitle className="text-blue-700">Eligible AI Applications</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Machine Learning Algorithms</strong>
-                            <p className="text-sm text-gray-600">Custom ML model development</p>
-                          </div>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Computer Vision Systems</strong>
-                            <p className="text-sm text-gray-600">Image recognition and object detection</p>
-                          </div>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Natural Language Processing</strong>
-                            <p className="text-sm text-gray-600">Text analysis and conversational AI</p>
-                          </div>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Predictive Analytics</strong>
-                            <p className="text-sm text-gray-600">Forecasting and optimization models</p>
-                          </div>
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Program Selection Matrix */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">AI Funding Program Selection by Project Stage</h2>
-
-                <div className="overflow-x-auto">
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr className="bg-blue-50">
-                        <th className="border border-blue-200 p-3 text-left">AI Project Stage</th>
-                        <th className="border border-blue-200 p-3 text-left">Recommended Programs</th>
-                        <th className="border border-blue-200 p-3 text-left">Funding Range</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="border border-gray-200 p-3">
-                          <strong>AI Research & Development</strong>
-                          <p className="text-sm text-gray-600">Algorithm development, proof-of-concept</p>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <ul className="text-sm space-y-1">
-                            <li>• IRAP AI Innovation</li>
-                            <li>• Mitacs AI partnerships</li>
-                            <li>• SR&ED Tax Credits</li>
-                          </ul>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <strong>$50K - $500K</strong>
-                        </td>
-                      </tr>
-                      <tr className="bg-gray-50">
-                        <td className="border border-gray-200 p-3">
-                          <strong>AI Tool Adoption</strong>
-                          <p className="text-sm text-gray-600">Implementing existing AI platforms</p>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <ul className="text-sm space-y-1">
-                            <li>• CDAP Digital Adoption ($15K + $100K)</li>
-                            <li>• Provincial digital grants</li>
-                            <li>• Industry-specific AI programs</li>
-                          </ul>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <strong>$15K - $115K</strong>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="border border-gray-200 p-3">
-                          <strong>AI Commercialization</strong>
-                          <p className="text-sm text-gray-600">Pilot projects and market deployment</p>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <ul className="text-sm space-y-1">
-                            <li>• Scale AI collaborative projects</li>
-                            <li>• AI institute partnerships (Mila, Vector, Amii)</li>
-                            <li>• Regional AI development funds</li>
-                          </ul>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <strong>$500K - $5M</strong>
-                        </td>
-                      </tr>
-                      <tr className="bg-gray-50">
-                        <td className="border border-gray-200 p-3">
-                          <strong>Large-Scale AI Deployment</strong>
-                          <p className="text-sm text-gray-600">Enterprise AI transformation</p>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <ul className="text-sm space-y-1">
-                            <li>• Scale AI major initiatives</li>
-                            <li>• Strategic Innovation Fund</li>
-                            <li>• Provincial AI strategy programs</li>
-                          </ul>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <strong>$5M - $20M+</strong>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              {/* Success Strategies */}
-              <div className="bg-green-50 rounded-lg p-8 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">AI Grant Application Success Strategies</h2>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-green-700">✅ Best Practices</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Clear AI Use Case:</strong> Define specific problem AI solves with quantifiable business impact and ROI metrics</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Robust Data Strategy:</strong> Demonstrate access to quality training data, data governance, and ethical AI practices</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Technical AI Expertise:</strong> Show team has machine learning capabilities, ML engineers, and data scientists</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Commercialization Plan:</strong> Clear path to market with AI product-market fit and scaling strategy</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Mistakes</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Vague AI Application:</strong> Not clearly defining what AI technology does or specific problem it solves</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Poor Data Foundation:</strong> Insufficient training data quality, volume, or lack of data access strategy</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Overpromising AI Capabilities:</strong> Unrealistic expectations about AI performance or timeline</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>No Business Model:</strong> AI technology without clear revenue model or customer acquisition strategy</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Official Resources */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Official AI Funding Resources</h2>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="border-blue-200">
-                    <CardHeader>
-                      <CardTitle className="text-blue-700">Government AI Programs</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Scale AI</h5>
-                          <p className="text-sm text-gray-600">AI-Powered Supply Chains Supercluster</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.scaleai.ca" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">CDAP</h5>
-                          <p className="text-sm text-gray-600">Canada Digital Adoption Program</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://ised-isde.canada.ca/site/canada-digital-adoption-program/en" target="_blank" rel="noopener noreferrer">
-                            Apply <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">CIFAR Pan-Canadian AI</h5>
-                          <p className="text-sm text-gray-600">National AI research strategy</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.cifar.ca/ai" target="_blank" rel="noopener noreferrer">
-                            Learn More <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-purple-200">
-                    <CardHeader>
-                      <CardTitle className="text-purple-700">Professional AI Support</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">AI Project Assessment</h5>
-                          <p className="text-sm text-gray-600">Free eligibility and program review</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="/contact?service=ai-assessment">
-                            Get Assessment
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">AI ROI Calculator</h5>
-                          <p className="text-sm text-gray-600">Calculate machine learning ROI</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="/contact">
-                            Calculate ROI
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Expert AI Help</h5>
-                          <p className="text-sm text-gray-600">Professional AI funding support</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="/contact?service=ai-expert-help">
-                            Get Help
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Lead Magnet CTA */}
-              <div className="bg-gradient-to-r from-blue-600 to-purple-700 rounded-lg p-8 text-white text-center mb-8">
-                <Download className="w-16 h-16 mx-auto mb-4 text-blue-100" />
-                <h3 className="text-2xl font-bold mb-4">Get Your Free AI Funding Application Kit</h3>
-                <p className="text-blue-100 mb-6 text-lg">
-                  Download our comprehensive AI grants guide with Scale AI templates, CDAP tools, machine learning
-                  project frameworks, and successful AI application examples.
-                </p>
-                <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>
-                  <Link href="/download/canada-digital-ai-funding-guide">
-                    <Download className="w-5 h-5 mr-2" />
-                    Download Free AI Guide
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold shadow-lg shadow-indigo-900/50" asChild>
+                  <Link href="#programs">
+                    View Programs
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="bg-indigo-800/50 border-indigo-400/30 text-indigo-100 hover:bg-indigo-800/80 backdrop-blur-sm" asChild>
+                  <Link href="/blog/ai-funding-canada-strategy">
+                    AI Strategy
                   </Link>
                 </Button>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Contact CTA */}
-              <div className="bg-gradient-to-r from-purple-600 to-purple-800 rounded-lg p-8 text-white text-center">
-                <Users className="w-16 h-16 mx-auto mb-4 text-purple-100" />
-                <h3 className="text-2xl font-bold mb-4">Ready to Apply for AI Grants?</h3>
-                <p className="text-purple-100 mb-6 text-lg">
-                  Our AI funding specialists understand Scale AI, CDAP, and machine learning programs.
-                  We've secured $85M+ in artificial intelligence funding with 79% success rate.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-white text-purple-700 hover:bg-gray-100" asChild>
-                    <Link href="/contact?service=ai-expert-help">
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      Get Expert AI Help
-                    </Link>
-                  </Button>
-                  <Button size="lg" className="bg-purple-500 hover:bg-purple-600 text-white border-0" asChild>
-                    <Link href="/contact?service=ai-assessment">
-                      Free AI Project Assessment
-                    </Link>
-                  </Button>
+        {/* QUERY HOOK: Common Questions */}
+        <div className="bg-white border-b border-indigo-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
+          <div className="container mx-auto px-4 py-3">
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-indigo-900 gap-4">
+              <span className="font-semibold text-indigo-900 flex items-center shrink-0">
+                <Brain className="w-4 h-4 mr-2 text-indigo-600" />
+                Innovation Track:
+              </span>
+              <div className="flex gap-6 overflow-x-auto no-scrollbar whitespace-nowrap mask-linear-fade">
+                <Link href="#programs" className="hover:text-indigo-700 transition-colors flex items-center gap-1"><Target className="w-3 h-3" /> Top Grants</Link>
+                <Link href="#scale-ai" className="hover:text-indigo-700 transition-colors flex items-center gap-1"><Database className="w-3 h-3" /> Scale AI</Link>
+                <Link href="#cdap" className="hover:text-indigo-700 transition-colors flex items-center gap-1"><Laptop className="w-3 h-3" /> CDAP</Link>
+                <Link href="#process" className="hover:text-indigo-700 transition-colors flex items-center gap-1"><Clock className="w-3 h-3" /> Timeline</Link>
+                <Link href="#faq" className="hover:text-indigo-700 transition-colors flex items-center gap-1"><HelpCircle className="w-3 h-3" /> FAQs</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Reference Stats */}
+        <section className="py-12 bg-white border-b border-indigo-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-4 gap-8 text-center divide-x divide-indigo-50">
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-indigo-600 mb-2">$5M+</div>
+                  <div className="text-indigo-800 text-sm font-medium uppercase tracking-wide">Scale AI Max</div>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-purple-600 mb-2">$100K</div>
+                  <div className="text-indigo-800 text-sm font-medium uppercase tracking-wide">CDAP Loan (0%)</div>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-blue-600 mb-2">50%</div>
+                  <div className="text-indigo-800 text-sm font-medium uppercase tracking-wide">Cost Reimbursement</div>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-violet-700 mb-2">25+</div>
+                  <div className="text-indigo-800 text-sm font-medium uppercase tracking-wide">AI Streams</div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Main Programs Section */}
+        <section id="programs" className="py-20 bg-indigo-50/50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Top AI & Digital Funding Streams</h2>
+
+              <div className="space-y-8">
+                {/* Scale AI */}
+                <Card id="scale-ai" className="border-l-4 border-l-indigo-600 shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Brain className="w-8 h-8 text-indigo-600" />
+                        <CardTitle className="text-xl">Scale AI Supercluster</CardTitle>
+                      </div>
+                      <Badge variant="outline" className="border-indigo-300 text-indigo-700">Supply Chain AI</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      Canada's dedicated AI Supercluster. Funds collaborative projects that apply AI to <strong>supply chains, logistics, and operations</strong>.
+                    </p>
+                    <div className="grid md:grid-cols-2 gap-4 bg-white border border-indigo-100 p-4 rounded-lg text-sm">
+                      <div>
+                        <strong className="block text-indigo-900 mb-2">The Offer:</strong>
+                        <ul className="list-disc list-inside text-slate-600 space-y-1">
+                          <li>Reimburse up to 50% eligible costs</li>
+                          <li>Projects must be collaborative (multiple partners)</li>
+                          <li>Focus on commercialization & scale</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <strong className="block text-indigo-900 mb-2">Requirements:</strong>
+                        <ul className="list-disc list-inside text-slate-600 space-y-1">
+                          <li>Adopter + Solution Provider partnership</li>
+                          <li>Incremental IP generated</li>
+                          <li>Data sharing component</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* CDAP */}
+                <Card id="cdap" className="border-l-4 border-l-purple-600 shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Laptop className="w-8 h-8 text-purple-600" />
+                        <CardTitle className="text-xl">CDAP (Digital Adoption)</CardTitle>
+                      </div>
+                      <Badge variant="outline" className="border-purple-300 text-purple-700">SME Adoption</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      For SMEs looking to modernize. Get a grant to plan your AI/Digital strategy, then an interest-free loan to buy the tech.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <Badge className="bg-purple-100 text-purple-800">$15K Advisor Grant</Badge>
+                      <Badge className="bg-purple-100 text-purple-800">$100K 0% Interest Loan</Badge>
+                      <Badge className="bg-purple-100 text-purple-800">$7,300 Hiring Subsidy</Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* IRAP */}
+                <Card className="border-l-4 border-l-green-600 shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Code className="w-8 h-8 text-green-600" />
+                        <CardTitle className="text-xl">NRC IRAP (AI R&D)</CardTitle>
+                      </div>
+                      <Badge variant="outline" className="border-green-300 text-green-700">Technical Risk</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      For solving technical hurdles in AI development (e.g., training a new novel model structure).
+                    </p>
+                    <div className="bg-green-50 p-4 rounded-lg border border-green-100 text-xs text-green-800">
+                      <strong>Key Difference:</strong> Unlike Scale AI (which funds deployment), IRAP funds the <em>development</em> of the technology itself.
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Application Timeline */}
+        <section id="process" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">AI Project Lifecycle</h2>
+
+              <div className="relative border-l-2 border-slate-200 pl-8 space-y-12 ml-4 md:ml-0">
+
+                {/* Step 1 */}
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Data Readiness Assessment</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    Before applying for funding, you must prove you have the data. "We will collect data later" is a red flag. You need a data governance plan and sample datasets.
+                  </p>
+                  <div className="bg-indigo-50 p-4 rounded border border-indigo-200">
+                    <span className="text-xs font-mono text-indigo-600 bg-indigo-100 px-2 py-1 rounded">TIP</span>
+                    <span className="text-sm text-indigo-800 ml-2">For Scale AI, you need to show how multiple partners contribute/share data.</span>
+                  </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Partner MOU</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    For superclusters, sign a Memorandum of Understanding (MOU) with your consortium partners (e.g., the factory implementing your AI).
+                  </p>
+                </div>
+
+                {/* Step 3 */}
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Project Submission</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    Submit detailed technical architecture (Model types, infrastructure) and ROI calculations.
+                  </p>
+                </div>
+
+                {/* Step 4 */}
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Model Training & Deployment</h3>
+                  <p className="text-slate-600 text-sm">
+                    Funding is released against milestones (e.g., "Model Training Complete", "Pilot Deployment", "Final Rollout").
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Success Strategies */}
+        <section className="py-16 bg-indigo-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">AI Winning Strategies</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+
+                <Card className="bg-white">
+                  <CardHeader>
+                    <div className="flex items-center gap-3">
+                      <Users className="w-6 h-6 text-indigo-600" />
+                      <CardTitle className="text-lg">The "Adopter" Lead</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-slate-600">
+                      Don't lead with the tech company. Lead with the <strong>industrial adopter</strong> (the customer). Funding agencies want to see demand pull, not technology push.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white">
+                  <CardHeader>
+                    <div className="flex items-center gap-3">
+                      <Sparkles className="w-6 h-6 text-purple-600" />
+                      <CardTitle className="text-lg">IP Strategy</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-slate-600">
+                      Be clear on who owns the model vs who owns the weights vs who owns the data. Ambiguous IP agreements kill consortium deals.
+                    </p>
+                  </CardContent>
+                </Card>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-left">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <HelpCircle className="w-6 h-6 text-indigo-600 mr-2" />
+                AI Funding FAQs
+              </h2>
+              <div className="divide-y divide-indigo-100">
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Can I hire foreign AI talent?</h3>
+                  <p className="text-slate-600 text-sm">Generally, federal grants (IRAP, Scale AI) require the employees to be on Canadian payroll and often physically present in Canada.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Does CDAP pay for Microsoft Copilot fees?</h3>
+                  <p className="text-slate-600 text-sm">The 0% loan can cover software subscriptions for the first 12 months as part of the implementation. The grant covers the <em>advisor</em> to tell you to buy it.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">What about SR&ED for AI?</h3>
+                  <p className="text-slate-600 text-sm">AI SR&ED is tricky. You must prove "technological uncertainty." Using standard libraries (PyTorch) isn't enough; you need to be improving the architecture or applying it in a novel, unproven way.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Neural Network: Related Guides */}
+        <section className="py-16 bg-slate-50 border-t border-slate-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-bold text-slate-900 mb-6">Related Funding Pathways</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/apply-irap-grants" className="group block h-full">
+                  <div className="bg-white border hover:border-green-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-green-600 font-semibold mb-2">R&D</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-green-700 mb-2">NRC IRAP</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Essential regarding technical AI risk funding.</p>
+                    <div className="mt-3 text-xs text-green-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/sred-application-guide" className="group block h-full">
+                  <div className="bg-white border hover:border-blue-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-blue-600 font-semibold mb-2">Tax Credits</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-blue-700 mb-2">SR&ED Guide</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Recover 35% of your AI developer salaries.</p>
+                    <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/canada-cleantech-funding-guide" className="group block h-full">
+                  <div className="bg-white border hover:border-teal-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-teal-600 font-semibold mb-2">Green AI</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-teal-700 mb-2">CleanTech Guide</h4>
+                    <p className="text-sm text-slate-500 flex-grow">If your AI reduces energy usage, check this.</p>
+                    <div className="mt-3 text-xs text-teal-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-20 bg-gradient-to-r from-indigo-900 to-purple-900 text-white text-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Accelerate Your AI Roadmap</h2>
+            <p className="text-lg text-indigo-100 mb-8 max-w-2xl mx-auto">
+              Our team includes CDAP advisors and Scale AI grant writers. We help you structure the consortium and the data plan.
+            </p>
+            <Button size="lg" className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold shadow-lg shadow-indigo-900/50" asChild>
+              <Link href="/contact?service=ai-expert-help">
+                Get AI Expert Help
+              </Link>
+            </Button>
+          </div>
+        </section>
+
       </div>
       <Footer />
     </>

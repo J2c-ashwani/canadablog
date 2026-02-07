@@ -3,671 +3,341 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, FileText, DollarSign, Target, AlertCircle, Download, Building, Users, Mountain, Leaf, MapPin } from "lucide-react"
+import { CheckCircle, Clock, FileText, DollarSign, Target, AlertCircle, Download, Building, Users, Mountain, Leaf, MapPin, HelpCircle, ArrowRight, MessageCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Indigenous & Rural Business Funding Application Guide 2025 | Step-by-Step Aboriginal & Remote Business Grants",
-  description: "Complete step-by-step guide to applying for Indigenous business grants and rural business funding in Canada. Get Aboriginal Entrepreneurship Program templates, NACCA application strategies, and culturally appropriate business plans.",
-  keywords: "Indigenous business application guide, how to apply Aboriginal business funding, NACCA loan application process, rural business grant application Canada, First Nations business funding guide, Aboriginal Entrepreneurship Program application, Indigenous business plan templates",
+  title: "Indigenous & Rural Business Funding Guide 2025 | Grants & Loans",
+  description: "Complete guide to Aboriginal Entrepreneurship Program (AEP), NACCA loans, and rural business grants. Get templates and strategies for approval.",
+  keywords: "Indigenous business grants, Aboriginal Entrepreneurship Program, NACCA loans, rural business funding Canada, First Nations business loans, Metis entrepreneur funding",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/guides/apply-indigenous-rural-business-funding",
+  },
   openGraph: {
-    title: "Indigenous & Rural Business Funding Application Guide 2025 | Aboriginal & Remote Business Grants",
-    description: "Step-by-step guide with culturally appropriate templates and strategies for successful Indigenous and rural business funding applications.",
+    title: "Indigenous & Rural Business Funding Guide 2025",
+    description: "Unlock funding for Indigenous and rural businesses. Step-by-step guide to NACCA, AEP, and Community Futures.",
     url: "https://www.fsidigital.ca/guides/apply-indigenous-rural-business-funding",
+    images: ["/og-image.png"],
   },
 }
 
-export default function IndigenousRuralBusinessFundingApplicationGuide() {
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who is eligible for Indigenous business funding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typically, you must be of First Nations, Métis, or Inuit heritage and hold at least 51% ownership and control of the business. You will need to provide proof of heritage (Status Card, Métis Card, or Inuit Beneficiary Card)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Aboriginal Entrepreneurship Program (AEP)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The AEP provides equity capital (non-repayable contributions) to Indigenous entrepreneurs. It is usually administered through a network of Aboriginal Financial Institutions (AFIs)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are there grants for rural businesses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Community Futures Program (CFP) specifically targets rural communities, offering loans and some advisory grants. Regional Development Agencies (like FedNor or PrairiesCan) also have rural-specific streams."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I apply if I live off-reserve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Most programs, including NACCA and AEP, support Indigenous entrepreneurs regardless of whether they live on-reserve, off-reserve, or in urban centers."
+      }
+    }
+  ]
+}
+
+export default function IndigenousRuralBusinessFundingGuide() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-orange-600 to-amber-700 text-white py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-gradient-to-br from-orange-700 to-amber-800 text-white py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-6 bg-white/20 text-white border-white/30">
-                🏛️ Indigenous & Rural Funding Guide
+              <Badge className="mb-6 bg-orange-500/20 text-orange-100 border-orange-400/30 backdrop-blur-sm">
+                🦅 Indigenous & Rural Commerce
               </Badge>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
-                Indigenous & Rural Business Funding Application Guide
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
+                Indigenous & Rural <br className="hidden md:block" /> Business Funding
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-orange-100 leading-relaxed text-pretty">
-                Step-by-step guide to successfully applying for Indigenous business grants and rural business funding. 
-                Complete with culturally appropriate templates, Aboriginal Entrepreneurship Program strategies, and community-focused approaches.
+                Empowering communities with capital. <br className="hidden md:block" /> Guide to <strong>NACCA</strong>, <strong>AEP</strong>, and <strong>Community Futures</strong>.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
-                  <Link href="/download/indigenous-rural-funding-kit">
-                    <Download className="w-5 h-5 mr-2" />
-                    Download Indigenous/Rural Kit
+                <Button size="lg" className="bg-white text-orange-900 hover:bg-orange-50 font-bold shadow-lg" asChild>
+                  <Link href="#programs">
+                    View Programs
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="bg-orange-700/30 border-white/30 text-white hover:bg-white/20" asChild>
-                  <Link href="/blog/indigenous-rural-business-funding-canada">
-                    Back to Indigenous/Rural Guide
+                <Button size="lg" variant="outline" className="bg-orange-800/50 border-orange-400/30 text-orange-100 hover:bg-orange-800/80 backdrop-blur-sm" asChild>
+                  <Link href="/blog/indigenous-business-plan-template">
+                    Download Template
                   </Link>
                 </Button>
               </div>
             </div>
           </div>
         </section>
+
+        {/* QUERY HOOK: Common Questions */}
+        <div className="bg-white border-b border-orange-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
+          <div className="container mx-auto px-4 py-3">
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-orange-900 gap-4">
+              <span className="font-semibold text-orange-900 flex items-center shrink-0">
+                <Mountain className="w-4 h-4 mr-2 text-orange-600" />
+                Topic:
+              </span>
+              <div className="flex gap-6 overflow-x-auto no-scrollbar whitespace-nowrap mask-linear-fade">
+                <Link href="#programs" className="hover:text-orange-700 transition-colors flex items-center gap-1"><DollarSign className="w-3 h-3" /> Funding Programs</Link>
+                <Link href="#process" className="hover:text-orange-700 transition-colors flex items-center gap-1"><Clock className="w-3 h-3" /> Process</Link>
+                <Link href="#eligibility" className="hover:text-orange-700 transition-colors flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Eligibility</Link>
+                <Link href="#faq" className="hover:text-orange-700 transition-colors flex items-center gap-1"><HelpCircle className="w-3 h-3" /> FAQs</Link>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Quick Reference Stats */}
-        <section className="py-16 bg-white">
+        <section className="py-12 bg-white border-b border-orange-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-orange-600 mb-2">10-16 Weeks</div>
-                  <div className="text-gray-600">Average Review Time</div>
+              <div className="grid md:grid-cols-4 gap-8 text-center divide-x divide-orange-50">
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-orange-600 mb-2">$99K</div>
+                  <div className="text-orange-900 text-sm font-medium uppercase tracking-wide">AEP Grant Max</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-amber-600 mb-2">20+ Documents</div>
-                  <div className="text-gray-600">Cultural Application Requirements</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-amber-600 mb-2">59</div>
+                  <div className="text-orange-900 text-sm font-medium uppercase tracking-wide">AFI Locations</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-red-600 mb-2">82%</div>
-                  <div className="text-gray-600">Success Rate (Cultural Prep)</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-green-600 mb-2">51%</div>
+                  <div className="text-orange-900 text-sm font-medium uppercase tracking-wide">Ownership Required</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">No Fee</div>
-                  <div className="text-gray-600">Application Cost</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-blue-600 mb-2">260+</div>
+                  <div className="text-orange-900 text-sm font-medium uppercase tracking-wide">Community Futures</div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Indigenous & Rural Application Timeline */}
-        <section className="py-16 bg-gray-50">
+        {/* Main Content */}
+        <section id="programs" className="py-16 bg-orange-50/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Indigenous & Rural Business Funding Application Timeline</h2>
+
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Core Funding Programs</h2>
 
               <div className="space-y-8">
-                {/* Phase 1: Cultural & Geographic Verification */}
-                <Card className="border-orange-200">
+                {/* AEP */}
+                <Card className="border-l-4 border-l-orange-600 shadow-lg">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-orange-700">Phase 1: Cultural & Geographic Eligibility Verification</CardTitle>
-                      <Badge className="bg-orange-100 text-orange-800">Weeks 1-2</Badge>
+                      <div className="flex items-center gap-3">
+                        <Target className="w-8 h-8 text-orange-600" />
+                        <CardTitle className="text-xl">Aboriginal Entrepreneurship Program (AEP)</CardTitle>
+                      </div>
+                      <Badge variant="secondary" className="bg-orange-100 text-orange-800">Most Popular</Badge>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-3">Indigenous Status Verification:</h5>
-                        <ul className="text-sm space-y-2">
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
-                            <span><strong>First Nations:</strong> Band membership or Indian status card</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
-                            <span><strong>Métis:</strong> Métis Nation citizenship or heritage documentation</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
-                            <span><strong>Inuit:</strong> Inuit Nunangat regional corporation membership</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
-                            <span><strong>Business Ownership:</strong> 51%+ Indigenous ownership verification</span>
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-3">Rural Community Eligibility:</h5>
-                        <ul className="text-sm space-y-2">
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
-                            <span>Population under 50,000 (Community Futures)</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
-                            <span>Remote or northern community designation</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
-                            <span>Agricultural or resource-based economy</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
-                            <span>Economic transition community status</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="mt-6 bg-orange-50 border border-orange-200 rounded-lg p-4">
-                      <div className="flex items-start">
-                        <Mountain className="w-5 h-5 text-orange-600 mr-3 mt-0.5" />
-                        <div>
-                          <p className="text-orange-800 font-medium">Cultural Protocol Consideration:</p>
-                          <p className="text-orange-700 text-sm">
-                            Consult with community elders, traditional leaders, or local Indigenous business 
-                            organizations before proceeding with funding applications.
-                          </p>
-                        </div>
+                    <p className="text-slate-600 mb-4">
+                      Provides non-repayable equity contributions (grants) of up to $99,999 for individuals and community-owned businesses. Note: You usually must combine this with a loan.
+                    </p>
+                    <div className="bg-white border border-orange-100 p-4 rounded-lg">
+                      <div className="grid md:grid-cols-2 gap-4 text-sm text-slate-700">
+                        <div className="font-semibold text-center bg-orange-50 p-2 rounded">Uses: Capital, Marketing, Equipment</div>
+                        <div className="font-semibold text-center bg-orange-50 p-2 rounded">Applied via local AFI</div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                {/* Phase 2: Community Consultation & Planning */}
-                <Card className="border-amber-200">
+                {/* Community Futures */}
+                <Card className="border-l-4 border-l-green-500 shadow-sm hover:shadow-md transition-shadow">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-amber-700">Phase 2: Community Consultation & Culturally Appropriate Business Planning</CardTitle>
-                      <Badge className="bg-amber-100 text-amber-800">Weeks 3-6</Badge>
+                      <div className="flex items-center gap-3">
+                        <Leaf className="w-8 h-8 text-green-500" />
+                        <CardTitle className="text-xl">Community Futures (Rural)</CardTitle>
+                      </div>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-3">Community Engagement Process:</h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div className="bg-amber-50 p-4 rounded">
-                            <strong>Indigenous Community Consultation:</strong>
-                            <ul className="text-sm mt-2 space-y-1">
-                              <li>• Elder and traditional knowledge keeper input</li>
-                              <li>• Band council or Métis local consultation</li>
-                              <li>• Community impact assessment</li>
-                              <li>• Cultural protocol adherence</li>
-                            </ul>
-                          </div>
-                          <div className="bg-amber-50 p-4 rounded">
-                            <strong>Rural Community Integration:</strong>
-                            <ul className="text-sm mt-2 space-y-1">
-                              <li>• Local chamber of commerce engagement</li>
-                              <li>• Community economic development committee</li>
-                              <li>• Regional development officer consultation</li>
-                              <li>• Local supply chain and partnership identification</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h5 className="font-semibold mb-3">Culturally Appropriate Business Plan Development:</h5>
-                        <div className="grid md:grid-cols-3 gap-4 text-sm">
-                          <div>
-                            <strong>Traditional Knowledge Integration:</strong>
-                            <ul className="mt-1 space-y-1">
-                              <li>• Traditional practices and methods</li>
-                              <li>• Cultural products and services</li>
-                              <li>• Sustainable resource use</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <strong>Community Benefit Focus:</strong>
-                            <ul className="mt-1 space-y-1">
-                              <li>• Local employment opportunities</li>
-                              <li>• Skills development and training</li>
-                              <li>• Community economic multiplier effects</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <strong>Cultural Values Alignment:</strong>
-                            <ul className="mt-1 space-y-1">
-                              <li>• Seven generations thinking</li>
-                              <li>• Environmental stewardship</li>
-                              <li>• Community collaboration and sharing</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <p className="text-slate-600 mb-4">
+                      For rural businesses (Indigenous or non-Indigenous). They offer flexible loans up to $150,000 when traditional banks say no. They look at "character" and community impact, not just credit scores.
+                    </p>
                   </CardContent>
                 </Card>
 
-                {/* Phase 3: Aboriginal Financial Institution Engagement */}
-                <Card className="border-red-200">
+                {/* NACCA */}
+                <Card className="border-l-4 border-l-blue-600 shadow-sm hover:shadow-md transition-shadow">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-red-700">Phase 3: AFI & Community Futures Engagement</CardTitle>
-                      <Badge className="bg-red-100 text-red-800">Weeks 7-9</Badge>
+                      <div className="flex items-center gap-3">
+                        <Building className="w-8 h-8 text-blue-600" />
+                        <CardTitle className="text-xl">NACCA & AFIs</CardTitle>
+                      </div>
+                      <Badge variant="secondary" className="bg-blue-100 text-blue-800">Network</Badge>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-3">Aboriginal Financial Institution (AFI) Process:</h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div>
-                            <h6 className="font-medium mb-2">AFI Selection & Approach:</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Identify regional AFI serving your area</li>
-                              <li>• Schedule initial consultation meeting</li>
-                              <li>• Present business concept and community support</li>
-                              <li>• Discuss culturally appropriate financing options</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h6 className="font-medium mb-2">Required Documentation:</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Indigenous status verification documents</li>
-                              <li>• Community consultation records</li>
-                              <li>• Traditional knowledge documentation</li>
-                              <li>• Cultural impact assessment</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h5 className="font-semibold mb-3">Community Futures Rural Application:</h5>
-                        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                          <div className="grid md:grid-cols-2 gap-4 text-sm">
-                            <div>
-                              <strong>Rural Community Integration:</strong>
-                              <ul className="mt-1 space-y-1">
-                                <li>• Local Community Futures office contact</li>
-                                <li>• Rural economic development alignment</li>
-                                <li>• Regional supply chain integration</li>
-                                <li>• Geographic challenge addressing</li>
-                              </ul>
-                            </div>
-                            <div>
-                              <strong>Rural Business Considerations:</strong>
-                              <ul className="mt-1 space-y-1">
-                                <li>• Transportation and logistics planning</li>
-                                <li>• Seasonal business cycle accommodation</li>
-                                <li>• Limited local market size planning</li>
-                                <li>• Technology and connectivity solutions</li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <p className="text-slate-600 mb-4">
+                      The National Aboriginal Capital Corporations Association (NACCA) supports a network of 59 Aboriginal Financial Institutions (AFIs). These are the actual places you go to get money.
+                    </p>
                   </CardContent>
                 </Card>
 
-                {/* Phase 4: Federal Program Application */}
-                <Card className="border-green-200">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-green-700">Phase 4: Aboriginal Entrepreneurship Program Application</CardTitle>
-                      <Badge className="bg-green-100 text-green-800">Weeks 10-12</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-3">AEP Application Requirements:</h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div>
-                            <h6 className="font-medium mb-2 text-green-700">Cultural Documentation (35%):</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Indigenous heritage verification</li>
-                              <li>• Cultural practices integration plan</li>
-                              <li>• Traditional knowledge utilization</li>
-                              <li>• Community elder endorsements</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h6 className="font-medium mb-2 text-green-700">Business Viability (40%):</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Market opportunity analysis</li>
-                              <li>• Financial projections and sustainability</li>
-                              <li>• Competitive advantage assessment</li>
-                              <li>• Management capabilities demonstration</li>
-                            </ul>
-                          </div>
-                        </div>
-                        <div className="mt-4">
-                          <h6 className="font-medium mb-2 text-green-700">Community Impact (25%):</h6>
-                          <div className="grid md:grid-cols-2 gap-4">
-                            <ul className="text-sm space-y-1">
-                              <li>• Local employment creation</li>
-                              <li>• Community economic development</li>
-                            </ul>
-                            <ul className="text-sm space-y-1">
-                              <li>• Cultural preservation and promotion</li>
-                              <li>• Youth engagement and skills transfer</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                        <h5 className="font-semibold text-green-800 mb-2">Upon Indigenous/Rural Funding Approval:</h5>
-                        <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
-                          <ul className="space-y-1">
-                            <li>• Funding agreement with cultural provisions</li>
-                            <li>• Community reporting and engagement requirements</li>
-                            <li>• Indigenous business network access</li>
-                          </ul>
-                          <ul className="space-y-1">
-                            <li>• Cultural business development support</li>
-                            <li>• Traditional knowledge protection protocols</li>
-                            <li>• Community impact measurement systems</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Regional Application Processes */}
-        <section className="py-16 bg-white">
+        {/* Process Section */}
+        <section id="process" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Regional Indigenous & Rural Application Processes</h2>
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Indigenous Funding Path</h2>
 
-              <div className="space-y-6">
-                {/* NACCA Network */}
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center">
-                      <Building className="w-6 h-6 text-amber-600 mr-3" />
-                      <CardTitle>NACCA Aboriginal Financial Institution Network</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div>
-                        <h6 className="font-semibold mb-2">Network Coverage:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• 59 Aboriginal Financial Institutions</li>
-                          <li>• Coast-to-coast-to-coast coverage</li>
-                          <li>• Urban, rural, and remote services</li>
-                          <li>• Culturally appropriate delivery</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-semibold mb-2">Application Process:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Local AFI initial assessment</li>
-                          <li>• Cultural business plan review</li>
-                          <li>• Community impact evaluation</li>
-                          <li>• Flexible collateral arrangements</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-semibold mb-2">Support Services:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Business development advisory</li>
-                          <li>• Financial literacy training</li>
-                          <li>• Mentorship and coaching</li>
-                          <li>• Cultural business practices guidance</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              <div className="relative border-l-2 border-orange-200 pl-8 space-y-12 ml-4 md:ml-0">
 
-                {/* Provincial Programs */}
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center">
-                      <MapPin className="w-6 h-6 text-green-600 mr-3" />
-                      <CardTitle>Provincial Indigenous & Rural Business Programs</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h6 className="font-semibold mb-2 text-amber-700">Indigenous Programs by Province:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li><strong>Ontario:</strong> Indigenous Economic Development Fund</li>
-                          <li><strong>British Columbia:</strong> Aboriginal Business Development Program</li>
-                          <li><strong>Alberta:</strong> Indigenous Economic Development Program</li>
-                          <li><strong>Saskatchewan:</strong> First Nations and Métis Business Development</li>
-                          <li><strong>Manitoba:</strong> Indigenous Economic Development Initiative</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-semibold mb-2 text-green-700">Rural Development by Region:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li><strong>Atlantic:</strong> ACOA Rural Development Programs</li>
-                          <li><strong>Quebec:</strong> Rural Economic Development Support</li>
-                          <li><strong>Prairies:</strong> Western Economic Diversification</li>
-                          <li><strong>North:</strong> Canadian Northern Economic Development</li>
-                          <li><strong>Territories:</strong> Territorial economic development agencies</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-orange-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Verify Heritage & Ownership</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    Ensure you have your Status Card, Métis citizenship, or Beneficiary card ready. Business must be 51% Indigenous-controlled.
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-orange-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Find Your AFI</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    Do not apply to "Ottawa." Locate your nearest Aboriginal Financial Institution (AFI). They are autonomous and make the decisions locally.
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-orange-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">The "Three-Box" Plan</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    Your funding will likely look like this: Box 1 (Your 10% cash equity) + Box 2 (AEP Grant up to 40%) + Box 3 (AFI Loan for the rest).
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Community Impact</h3>
+                  <p className="text-slate-600 text-sm">
+                    Unlike standard banks, AFIs want to see how your business helps the community (jobs, services, youth training). Highlight this.
+                  </p>
+                </div>
+
               </div>
             </div>
           </div>
         </section>
 
-        {/* Cultural Business Planning Framework */}
-        <section className="py-16 bg-gray-50">
+        {/* Neural Network: Related Guides */}
+        <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Cultural Business Planning Framework</h2>
-
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-bold text-lg mb-4 text-amber-700">🏛️ Indigenous Business Planning Elements:</h4>
-                  <ul className="space-y-4">
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Traditional Knowledge Integration:</strong>
-                        <p className="text-sm text-gray-600">Incorporate ancestral practices, traditional methods, and cultural wisdom into business operations</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Seven Generations Principle:</strong>
-                        <p className="text-sm text-gray-600">Plan business impacts considering effects on seven generations into the future</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Community Collaboration:</strong>
-                        <p className="text-sm text-gray-600">Emphasize collective benefit, community ownership, and shared economic development</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-bold text-lg mb-4 text-green-700">🌾 Rural Business Planning Considerations:</h4>
-                  <ul className="space-y-4">
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Geographic Challenges:</strong>
-                        <p className="text-sm text-gray-600">Address transportation costs, limited local markets, and seasonal accessibility issues</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Technology Integration:</strong>
-                        <p className="text-sm text-gray-600">Plan for internet connectivity, digital marketing, and e-commerce capabilities</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Resource Sustainability:</strong>
-                        <p className="text-sm text-gray-600">Ensure sustainable use of natural resources and environmental stewardship</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Success Strategies */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Indigenous & Rural Business Success Strategies</h2>
-
-              <div className="space-y-6">
-                <Card className="border-orange-200">
-                  <CardHeader>
-                    <CardTitle className="text-orange-700">Cultural Authenticity & Market Positioning</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Cultural Asset Leveraging:</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• Highlight authentic Indigenous products and services</li>
-                          <li>• Emphasize traditional knowledge and practices</li>
-                          <li>• Showcase cultural storytelling and heritage</li>
-                          <li>• Demonstrate environmental stewardship values</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Market Differentiation:</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• Position as authentic cultural experience</li>
-                          <li>• Target conscious consumers seeking Indigenous products</li>
-                          <li>• Develop niche markets for traditional goods</li>
-                          <li>• Create educational and cultural tourism offerings</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-green-200">
-                  <CardHeader>
-                    <CardTitle className="text-green-700">Community Engagement & Partnership Development</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Strategic Partnership Building:</h5>
-                        <div className="grid md:grid-cols-3 gap-4 text-sm">
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• Partner with other Indigenous businesses</li>
-                              <li>• Collaborate with cultural organizations</li>
-                              <li>• Engage with educational institutions</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• Connect with tourism associations</li>
-                              <li>• Work with environmental groups</li>
-                              <li>• Partner with government procurement</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• Develop supply chain relationships</li>
-                              <li>• Create community benefit agreements</li>
-                              <li>• Establish mentorship networks</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-amber-200">
-                  <CardHeader>
-                    <CardTitle className="text-amber-700">Sustainable Business Model Development</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-amber-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Diversified Revenue Streams:</strong> Combine traditional products, cultural services, and modern business applications
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-amber-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Seasonal Business Planning:</strong> Develop strategies for year-round revenue in seasonal environments
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-amber-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Technology Integration:</strong> Use digital tools to reach broader markets while maintaining cultural authenticity
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-amber-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Capacity Building Focus:</strong> Invest in community skills development and knowledge transfer
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Get Expert Help CTA */}
-        <section className="py-20 bg-gradient-to-r from-orange-600 to-amber-800">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-4xl font-bold mb-6">
-                Need Expert Help with Your Indigenous or Rural Business Application?
-              </h2>
-              <p className="text-xl text-orange-100 mb-8">
-                Maximize your success with culturally sensitive and geographically aware funding specialists. 
-                Our experts understand Indigenous protocols and rural challenges, having secured over $12M 
-                in funding with an 82% approval rate for Aboriginal and rural entrepreneurs.
-              </p>
-              <div className="bg-white/10 rounded-lg p-6 mb-8">
-                <h4 className="font-semibold text-white mb-4">Specialized Expert Services Include:</h4>
-                <div className="grid md:grid-cols-2 gap-4 text-sm text-orange-100">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Culturally appropriate business plan development</span>
+              <h3 className="text-xl font-bold text-slate-900 mb-6">Explore More Funding</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/apply-women-entrepreneurship-strategy" className="group block h-full">
+                  <div className="bg-white border hover:border-pink-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-pink-600 font-semibold mb-2">Women</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-pink-700 mb-2">Women Entrepreneurship</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Specific resources for women.</p>
+                    <div className="mt-3 text-xs text-pink-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
                   </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Traditional knowledge integration strategies</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Aboriginal Financial Institution introductions</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Community consultation facilitation</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Rural market analysis and planning</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Geographic challenge mitigation strategies</span>
-                  </div>
-                </div>
-              </div>
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
-                <Link href="/contact?service=indigenous-rural-business-expert-help">
-                  Get Indigenous/Rural Funding Expert Help
                 </Link>
-              </Button>
-              <p className="text-orange-200 text-sm mt-4">
-                82% success rate for Indigenous & rural businesses • Average funding secured: $87K • Cultural expertise
-              </p>
+                <Link href="/guides/apply-regional-development-agencies" className="group block h-full">
+                  <div className="bg-white border hover:border-blue-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-blue-600 font-semibold mb-2">Regional</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-blue-700 mb-2">Regional Agencies</h4>
+                    <p className="text-sm text-slate-500 flex-grow">FedNor, PrairiesCan, etc.</p>
+                    <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/apply-small-business-grants" className="group block h-full">
+                  <div className="bg-white border hover:border-green-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-green-600 font-semibold mb-2">General</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-green-700 mb-2">Small Business Grants</h4>
+                    <p className="text-sm text-slate-500 flex-grow">General funding options.</p>
+                    <div className="mt-3 text-xs text-green-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-left">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <HelpCircle className="w-6 h-6 text-orange-600 mr-2" />
+                Funding FAQs
+              </h2>
+              <div className="divide-y divide-orange-100">
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Do I need good credit for an AEP grant?</h3>
+                  <p className="text-slate-600 text-sm">The grant itself is non-repayable, but because it is usually paired with a loan from an AFI, the AFI will check your credit. However, AFIs are more flexible than big banks.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Can I apply for AEP if I am a startup?</h3>
+                  <p className="text-slate-600 text-sm">Yes, AEP supports startups, acquisitions, and expansions. You will need a solid business plan.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">How long does approval take?</h3>
+                  <p className="text-slate-600 text-sm">It varies by AFI, but typically 6-12 weeks. Community Futures can sometimes be faster, around 4-8 weeks.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* CTA */}
+        <section className="py-20 bg-gradient-to-r from-orange-900 to-amber-900 text-white text-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Build Your Community</h2>
+            <p className="text-lg text-orange-200 mb-8 max-w-2xl mx-auto">
+              We help you draft a business plan that speaks the language of AFIs—balancing profit with community impact.
+            </p>
+            <Button size="lg" className="bg-white text-orange-900 hover:bg-orange-50 font-semibold shadow-lg" asChild>
+              <Link href="/contact?service=indigenous-funding">
+                Get Funding Help
+              </Link>
+            </Button>
+          </div>
+        </section>
+
       </div>
       <Footer />
     </>

@@ -3,24 +3,79 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, FileText, DollarSign, Target, AlertCircle, Download, Building, Users, Lightbulb, Code, Zap } from "lucide-react"
+import { CheckCircle, Clock, FileText, DollarSign, Target, AlertCircle, Download, Building, Users, Lightbulb, Code, Zap, MessageCircle, HelpCircle, ArrowRight, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Complete IRAP Application Guide 2025 | Step-by-Step R&D Grant Process",
-  description: "Step-by-step guide to applying for IRAP grants from NRC. Get templates, strategies, and expert tips for successful R&D funding applications.",
-  keywords: "IRAP application guide, how to apply IRAP, NRC IRAP process, R&D grant application, industrial research funding",
+  description: "Step-by-step guide to applying for NRC IRAP grants. Get templates, R&D project frameworks, and expert tips for successful innovation funding.",
+  keywords: "IRAP application guide, how to apply IRAP, NRC IRAP process, R&D grant application, industrial research funding, Canada innovation grants",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/guides/apply-irap-grants",
+  },
   openGraph: {
     title: "Complete IRAP Application Guide 2025 | Step-by-Step R&D Grant Process",
-    description: "Step-by-step guide with templates and strategies for successful IRAP grant applications.",
+    description: "Step-by-step guide to applying for NRC IRAP grants. Get templates, R&D project frameworks, and expert tips for successful innovation funding.",
     url: "https://www.fsidigital.ca/guides/apply-irap-grants",
+    images: ["/og-image.png"],
   },
+}
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What qualifies for IRAP funding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IRAP funds technical R&D projects that involve uncertainty and risk. The project must aim to develop a new or significantly improved product, process, or service. Routine engineering or maintenance does not qualify."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does IRAP pay?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IRAP typically covers up to 80% of internal technical salary costs and up to 50% of contractor costs for the project duration. Total contribution amounts vary but often range from $50,000 to $500,000+ for larger projects."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is IRAP funding repayable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, standard IRAP contributions are non-repayable grants. They are not loans. However, you must meet the project milestones and reporting requirements to receive the reimbursements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does approval take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The process is relatively fast compared to other government programs. Once a full proposal is invited, approval can take 4-8 weeks. The initial engagement with an ITA can add 1-2 months prior to that."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I claim SR&ED and IRAP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but you cannot 'double dip'. You must deduct the IRAP grant amount from your SR&ED eligible expenditures. Essentially, you can't get a tax credit on the portion of salary that the government already paid for."
+      }
+    }
+  ]
 }
 
 export default function IRAPApplicationGuide() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -34,19 +89,18 @@ export default function IRAPApplicationGuide() {
                 IRAP Grant Application Guide
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-emerald-100 leading-relaxed text-pretty">
-                Step-by-step guide to successfully applying for Industrial Research Assistance Program grants. 
+                Step-by-step guide to successfully applying for Industrial Research Assistance Program (NRC IRAP) grants.
                 Complete with templates, project frameworks, and proven R&D strategies.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
-                  <Link href="/download/irap-application-kit">
-                    <Download className="w-5 h-5 mr-2" />
-                    Download Application Kit
+                  <Link href="#process">
+                    View Process
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-emerald-700/30 border-white/30 text-white hover:bg-white/20" asChild>
                   <Link href="/blog/irap-industrial-research-assistance-program">
-                    Back to IRAP Guide
+                    Back to IRAP Overview
                   </Link>
                 </Button>
               </div>
@@ -54,26 +108,45 @@ export default function IRAPApplicationGuide() {
           </div>
         </section>
 
+        {/* QUERY HOOK: Common Questions */}
+        <div className="bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm/50">
+          <div className="container mx-auto px-4 py-4">
+            <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-gray-600 gap-4">
+              <span className="font-semibold text-gray-900 flex items-center">
+                <MessageCircle className="w-4 h-4 mr-2 text-emerald-600" />
+                Quick Links:
+              </span>
+              <div className="flex gap-4 overflow-x-auto no-scrollbar whitespace-nowrap">
+                <Link href="#process" className="hover:text-emerald-600 transition-colors">Process</Link>
+                <Link href="#categories" className="hover:text-emerald-600 transition-colors">Project Types</Link>
+                <Link href="#mistakes" className="hover:text-emerald-600 transition-colors">Common Mistakes</Link>
+                <Link href="#strategies" className="hover:text-emerald-600 transition-colors">Success Strategies</Link>
+                <Link href="#faq" className="hover:text-emerald-600 transition-colors">FAQs</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Quick Reference */}
-        <section className="py-16 bg-white">
+        <section className="py-12 bg-white border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="grid md:grid-cols-4 gap-8 text-center">
                 <div>
-                  <div className="text-3xl font-bold text-emerald-600 mb-2">8-12 Weeks</div>
-                  <div className="text-gray-600">Average Review Time</div>
+                  <div className="text-3xl font-bold text-emerald-600 mb-2">6-12 Weeks</div>
+                  <div className="text-gray-600">Average Approval Timeline</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">15+ Documents</div>
-                  <div className="text-gray-600">Technical Submission</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-2">80%</div>
+                  <div className="text-gray-600">Coverage of Salary Costs</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">89%</div>
-                  <div className="text-gray-600">Approval Rate (Expert Prep)</div>
+                  <div className="text-3xl font-bold text-purple-600 mb-2">Non-Repayable</div>
+                  <div className="text-gray-600">Grant (Not a Loan)</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-orange-600 mb-2">No Fee</div>
-                  <div className="text-gray-600">Application Cost</div>
+                  <div className="text-3xl font-bold text-orange-600 mb-2">$50k - $500k</div>
+                  <div className="text-gray-600">Typical Funding Range</div>
                 </div>
               </div>
             </div>
@@ -81,75 +154,60 @@ export default function IRAPApplicationGuide() {
         </section>
 
         {/* Application Process Timeline */}
-        <section className="py-16 bg-gray-50">
+        <section id="process" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Application Process</h2>
-              
+
               <div className="space-y-8">
                 {/* Phase 1: Pre-Application */}
                 <Card className="border-emerald-200">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-emerald-700">Phase 1: Pre-Application Consultation</CardTitle>
-                      <Badge className="bg-emerald-100 text-emerald-800">Weeks 1-2</Badge>
+                      <CardTitle className="text-emerald-700">Phase 1: The "ITA" Engagement</CardTitle>
+                      <Badge className="bg-emerald-100 text-emerald-800">Critical First Step</Badge>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h5 className="font-semibold mb-3">ITA Engagement:</h5>
+                        <h5 className="font-semibold mb-3">Who is the ITA?</h5>
+                        <p className="text-sm text-gray-600 mb-4">
+                          The Industrial Technology Advisor (ITA) is your gateway to IRAP. You cannot apply online without an ITA invitation. They act as a consultant, coach, and gatekeeper.
+                        </p>
+                        <h5 className="font-semibold mb-3">Engagement Steps:</h5>
                         <ul className="text-sm space-y-2">
                           <li className="flex items-center">
                             <CheckCircle className="w-4 h-4 text-emerald-500 mr-2" />
-                            <span>Find your local Industrial Technology Advisor</span>
+                            <span>Call 1-877-994-4727 or register online to request an ITA.</span>
                           </li>
                           <li className="flex items-center">
                             <CheckCircle className="w-4 h-4 text-emerald-500 mr-2" />
-                            <span>Schedule initial consultation meeting</span>
+                            <span>Prepare a "One-Pager" describing your tech and market.</span>
                           </li>
                           <li className="flex items-center">
                             <CheckCircle className="w-4 h-4 text-emerald-500 mr-2" />
-                            <span>Present technology concept and goals</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-emerald-500 mr-2" />
-                            <span>Discuss eligibility and funding options</span>
+                            <span>Pitch your project to the ITA in an initial meeting.</span>
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <h5 className="font-semibold mb-3">Project Scoping:</h5>
-                        <ul className="text-sm space-y-2">
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-emerald-500 mr-2" />
-                            <span>Define technical objectives and scope</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-emerald-500 mr-2" />
-                            <span>Identify key milestones and deliverables</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-emerald-500 mr-2" />
-                            <span>Assess technical feasibility and risks</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-emerald-500 mr-2" />
-                            <span>Develop preliminary budget estimates</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-6 bg-emerald-50 border border-emerald-200 rounded-lg p-4">
-                      <div className="flex items-start">
-                        <Lightbulb className="w-5 h-5 text-emerald-600 mr-3 mt-0.5" />
-                        <div>
-                          <p className="text-emerald-800 font-medium">Key Success Factor:</p>
-                          <p className="text-emerald-700 text-sm">
-                            Early ITA engagement is critical. They provide invaluable guidance on project positioning 
-                            and help align your proposal with IRAP priorities.
-                          </p>
+                        <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 h-full">
+                          <h5 className="font-bold text-emerald-800 mb-2">What the ITA Looks For:</h5>
+                          <ul className="space-y-3 text-sm text-emerald-700">
+                            <li className="flex items-start">
+                              <Target className="w-4 h-4 mr-2 mt-1" />
+                              <span><strong>Technical Risk:</strong> Is it hard to do? If it's easy, they define it as "routine engineering" (not eligible).</span>
+                            </li>
+                            <li className="flex items-start">
+                              <DollarSign className="w-4 h-4 mr-2 mt-1" />
+                              <span><strong>Commercial Impact:</strong> Will this generate revenue and profits for Canada?</span>
+                            </li>
+                            <li className="flex items-start">
+                              <Users className="w-4 h-4 mr-2 mt-1" />
+                              <span><strong>Team Capacity:</strong> Can you actually pull this off?</span>
+                            </li>
+                          </ul>
                         </div>
                       </div>
                     </div>
@@ -160,199 +218,61 @@ export default function IRAPApplicationGuide() {
                 <Card className="border-blue-200">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-blue-700">Phase 2: Project Development & Planning</CardTitle>
-                      <Badge className="bg-blue-100 text-blue-800">Weeks 3-6</Badge>
+                      <CardTitle className="text-blue-700">Phase 2: Proposal Development</CardTitle>
+                      <Badge className="bg-blue-100 text-blue-800">Upon Invitation</Badge>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-3">Technical Work Plan:</h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div className="bg-blue-50 p-4 rounded">
-                            <strong>Research Activities:</strong>
-                            <ul className="text-sm mt-2 space-y-1">
-                              <li>• Define research methodology</li>
-                              <li>• Identify required resources and expertise</li>
-                              <li>• Plan experimental design and validation</li>
-                              <li>• Establish success criteria and metrics</li>
-                            </ul>
-                          </div>
-                          <div className="bg-blue-50 p-4 rounded">
-                            <strong>Project Management:</strong>
-                            <ul className="text-sm mt-2 space-y-1">
-                              <li>• Create detailed project timeline</li>
-                              <li>• Define work packages and tasks</li>
-                              <li>• Assign team roles and responsibilities</li>
-                              <li>• Plan risk mitigation strategies</li>
-                            </ul>
-                          </div>
+                      <p className="text-sm text-gray-600">
+                        Once the ITA invites you to apply, you will gain access to the IRAP portal. You will need to submit a comprehensive proposal.
+                      </p>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-blue-50 p-4 rounded">
+                          <strong>Technical Proposal:</strong>
+                          <ul className="text-sm mt-2 space-y-1">
+                            <li>• Technical uncertainties & risks</li>
+                            <li>• Objectives & Methodology</li>
+                            <li>• Work Plan (Gantt Chart)</li>
+                            <li>• Team bios & capabilities</li>
+                          </ul>
                         </div>
-                      </div>
-                      
-                      <div>
-                        <h5 className="font-semibold mb-3">Commercialization Strategy:</h5>
-                        <div className="grid md:grid-cols-3 gap-4 text-sm">
-                          <div>
-                            <strong>Market Analysis:</strong>
-                            <ul className="mt-2 space-y-1">
-                              <li>• Target market identification</li>
-                              <li>• Competitive landscape analysis</li>
-                              <li>• Market size and growth potential</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <strong>Business Model:</strong>
-                            <ul className="mt-2 space-y-1">
-                              <li>• Revenue model development</li>
-                              <li>• Pricing strategy framework</li>
-                              <li>• Partnership and distribution plans</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <strong>IP Strategy:</strong>
-                            <ul className="mt-2 space-y-1">
-                              <li>• Patent landscape analysis</li>
-                              <li>• IP protection strategy</li>
-                              <li>• Freedom-to-operate assessment</li>
-                            </ul>
-                          </div>
+                        <div className="bg-blue-50 p-4 rounded">
+                          <strong>Business Proposal:</strong>
+                          <ul className="text-sm mt-2 space-y-1">
+                            <li>• Market validation & size</li>
+                            <li>• Competitor analysis</li>
+                            <li>• Commercialization path</li>
+                            <li>• Financial statements (2 years)</li>
+                          </ul>
                         </div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                {/* Phase 3: Proposal Preparation */}
+                {/* Phase 3: Review & Claims */}
                 <Card className="border-purple-200">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-purple-700">Phase 3: Proposal Preparation</CardTitle>
-                      <Badge className="bg-purple-100 text-purple-800">Weeks 7-8</Badge>
+                      <CardTitle className="text-purple-700">Phase 3: Monthly Claims (Post-Approval)</CardTitle>
+                      <Badge className="bg-purple-100 text-purple-800">Execution</Badge>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-3">Required Documentation:</h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div>
-                            <h6 className="font-medium mb-2">Technical Documents:</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Project description and objectives</li>
-                              <li>• Technical approach and methodology</li>
-                              <li>• Work plan and timeline</li>
-                              <li>• Risk assessment and mitigation</li>
-                              <li>• Expected outcomes and deliverables</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h6 className="font-medium mb-2">Business Documents:</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Company profile and capabilities</li>
-                              <li>• Management team qualifications</li>
-                              <li>• Financial statements and projections</li>
-                              <li>• Market analysis and commercialization plan</li>
-                              <li>• Intellectual property strategy</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                        <h5 className="font-semibold text-purple-800 mb-2">Budget Development:</h5>
-                        <div className="grid md:grid-cols-3 gap-4 text-sm">
-                          <div>
-                            <strong>Eligible Costs:</strong>
-                            <ul className="mt-1 space-y-1 text-purple-700">
-                              <li>• Salaries and benefits (67%)</li>
-                              <li>• Contract research (67%)</li>
-                              <li>• Materials and supplies (67%)</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <strong>Limited Funding:</strong>
-                            <ul className="mt-1 space-y-1 text-purple-700">
-                              <li>• Equipment (case-by-case)</li>
-                              <li>• Travel (project-related only)</li>
-                              <li>• Training (R&D specific)</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <strong>Ineligible Costs:</strong>
-                            <ul className="mt-1 space-y-1 text-purple-700">
-                              <li>• General overhead</li>
-                              <li>• Marketing expenses</li>
-                              <li>• Routine operations</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                      <p className="text-sm text-gray-600">
+                        Unlike some grants that pay upfront or in lump sums, IRAP operates on a <strong>monthly reimbursement model</strong>.
+                      </p>
 
-                {/* Phase 4: Review Process */}
-                <Card className="border-orange-200">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-orange-700">Phase 4: Technical Review & Decision</CardTitle>
-                      <Badge className="bg-orange-100 text-orange-800">Weeks 9-12</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-3">Review Criteria:</h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div>
-                            <h6 className="font-medium mb-2 text-orange-700">Technical Merit (40%):</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Innovation and technical advancement</li>
-                              <li>• Scientific and technical feasibility</li>
-                              <li>• Quality of technical approach</li>
-                              <li>• Team expertise and capabilities</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h6 className="font-medium mb-2 text-orange-700">Commercial Potential (40%):</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Market opportunity and size</li>
-                              <li>• Competitive advantage</li>
-                              <li>• Business model viability</li>
-                              <li>• Commercialization timeline</li>
-                            </ul>
-                          </div>
-                        </div>
-                        <div className="mt-4">
-                          <h6 className="font-medium mb-2 text-orange-700">Management & Resources (20%):</h6>
-                          <div className="grid md:grid-cols-2 gap-4">
-                            <ul className="text-sm space-y-1">
-                              <li>• Project management capabilities</li>
-                              <li>• Financial resources and stability</li>
-                            </ul>
-                            <ul className="text-sm space-y-1">
-                              <li>• Previous R&D track record</li>
-                              <li>• Partnership and collaboration strategy</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                        <h5 className="font-semibold text-green-800 mb-2">Upon Approval:</h5>
-                        <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
-                          <ul className="space-y-1">
-                            <li>• Receive contribution agreement</li>
-                            <li>• Complete project setup and reporting</li>
-                            <li>• Begin quarterly milestone reviews</li>
-                          </ul>
-                          <ul className="space-y-1">
-                            <li>• Access ongoing ITA advisory support</li>
-                            <li>• Connect with NRC technical experts</li>
-                            <li>• Participate in commercialization programs</li>
-                          </ul>
-                        </div>
+                      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                        <h5 className="font-semibold text-purple-800 mb-2">The Monthly Cycle:</h5>
+                        <ul className="space-y-2 text-sm text-purple-700">
+                          <li>1. Pay your employees and contractors for the month.</li>
+                          <li>2. Submit a claim form to NRC by the 5th of the following month.</li>
+                          <li>3. Provide proof of payment (payroll registers, bank statements).</li>
+                          <li>4. Receive reimbursement via Direct Deposit (usually within 14-30 days).</li>
+                        </ul>
                       </div>
                     </div>
                   </CardContent>
@@ -362,93 +282,56 @@ export default function IRAPApplicationGuide() {
           </div>
         </section>
 
-        {/* Project Categories & Requirements */}
-        <section className="py-16 bg-white">
+        {/* Project Categories */}
+        <section id="categories" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">IRAP Project Categories</h2>
-              
+
               <div className="space-y-6">
-                {/* Innovation Projects */}
                 <Card>
                   <CardHeader>
                     <div className="flex items-center">
                       <Lightbulb className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle>Innovation Projects</CardTitle>
+                      <CardTitle>Technology Innovation Projects (Core)</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4">
+                    <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <h6 className="font-semibold mb-2">Eligible Activities:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• New product development</li>
-                          <li>• Process innovation</li>
-                          <li>• Technology adaptation</li>
-                          <li>• Prototype development</li>
-                          <li>• Proof-of-concept studies</li>
+                        <ul className="text-sm space-y-1 text-gray-600">
+                          <li>• <strong>Focus:</strong> Developing new products or significantly improving existing ones.</li>
+                          <li>• <strong>Size:</strong>Typically $50k to $500k+.</li>
+                          <li>• <strong>Duration:</strong> 6 to 24 months.</li>
+                          <li>• <strong>Support:</strong> Up to 80% salary, 50% contractors.</li>
                         </ul>
                       </div>
-                      <div>
-                        <h6 className="font-semibold mb-2">Funding Details:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Up to $1M per project</li>
-                          <li>• Up to 67% cost-sharing</li>
-                          <li>• 6-24 month duration</li>
-                          <li>• Non-repayable contributions</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-semibold mb-2">Success Factors:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Clear technical innovation</li>
-                          <li>• Strong commercial potential</li>
-                          <li>• Experienced R&D team</li>
-                          <li>• Well-defined milestones</li>
-                        </ul>
+                      <div className="bg-blue-50 p-3 rounded text-sm text-blue-700">
+                        <span className="font-bold">Best For:</span> Startups and SMEs with a dedicated technical team building proprietary technology.
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                {/* Youth Employment */}
                 <Card>
                   <CardHeader>
                     <div className="flex items-center">
                       <Users className="w-6 h-6 text-green-600 mr-3" />
-                      <CardTitle>Youth Employment Initiative</CardTitle>
+                      <CardTitle>Youth Employment Program (YEP)</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4">
+                    <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <h6 className="font-semibold mb-2">Program Features:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• 75% salary contribution</li>
-                          <li>• Up to $40K annually</li>
-                          <li>• 12-24 month placements</li>
-                          <li>• Recent STEM graduates</li>
-                          <li>• Skills development focus</li>
+                        <ul className="text-sm space-y-1 text-gray-600">
+                          <li>• <strong>Focus:</strong> Hiring recent STEM graduates (15-30 years old).</li>
+                          <li>• <strong>Size:</strong> Up to $30k-$40k (contributes to salary).</li>
+                          <li>• <strong>Duration:</strong> 6 to 12 months.</li>
+                          <li>• <strong>Support:</strong> Covers ~75% minimum wage or portion of salary.</li>
                         </ul>
                       </div>
-                      <div>
-                        <h6 className="font-semibold mb-2">Candidate Requirements:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Age 15-30 years</li>
-                          <li>• Post-secondary graduate</li>
-                          <li>• STEM field background</li>
-                          <li>• Canadian citizen/PR</li>
-                          <li>• Graduated within 3 years</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-semibold mb-2">Project Alignment:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Must support innovation project</li>
-                          <li>• Technical skill development</li>
-                          <li>• Meaningful R&D contribution</li>
-                          <li>• Clear learning objectives</li>
-                        </ul>
+                      <div className="bg-green-50 p-3 rounded text-sm text-green-700">
+                        <span className="font-bold">Best For:</span> Expanding your team with junior talent. Can be stacked with other IRAP projects.
                       </div>
                     </div>
                   </CardContent>
@@ -459,61 +342,47 @@ export default function IRAPApplicationGuide() {
         </section>
 
         {/* Common Mistakes */}
-        <section className="py-16 bg-gray-50">
+        <section id="mistakes" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Avoid These Common IRAP Mistakes</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Avoid These IRAP Deal-Breakers</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h4 className="font-bold text-lg mb-4 text-red-700">❌ Application Killers:</h4>
+                  <h4 className="font-bold text-lg mb-4 text-red-700">❌ Technical Failures:</h4>
                   <ul className="space-y-4">
                     <li className="flex items-start">
                       <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
                       <div>
-                        <strong>Weak Technical Innovation:</strong>
-                        <p className="text-sm text-gray-600">Proposing incremental improvements rather than significant technological advancement</p>
+                        <strong>"Routine Engineering":</strong>
+                        <p className="text-sm text-gray-600">Using off-the-shelf tools to build a standard website or app is not R&D. You must solve a technical uncertainty.</p>
                       </div>
                     </li>
                     <li className="flex items-start">
                       <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
                       <div>
-                        <strong>Poor Market Validation:</strong>
-                        <p className="text-sm text-gray-600">Failing to demonstrate clear market need and commercial viability</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Inadequate R&D Capability:</strong>
-                        <p className="text-sm text-gray-600">Lacking necessary technical expertise or research infrastructure</p>
+                        <strong>Lack of Technical Team:</strong>
+                        <p className="text-sm text-gray-600">IRAP funds *people*. If you outsource 100% of the work, you rarely qualify. You need internal technical capacity.</p>
                       </div>
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
-                  <h4 className="font-bold text-lg mb-4 text-orange-700">⚠️ Process Mistakes:</h4>
+                  <h4 className="font-bold text-lg mb-4 text-orange-700">⚠️ Business Failures:</h4>
                   <ul className="space-y-4">
                     <li className="flex items-start">
                       <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
                       <div>
-                        <strong>Late ITA Engagement:</strong>
-                        <p className="text-sm text-gray-600">Not involving Industrial Technology Advisor early in project development</p>
+                        <strong>Financial Instability:</strong>
+                        <p className="text-sm text-gray-600">IRAP reimburses you. You need 2-3 months of operating cash flow in the bank to start.</p>
                       </div>
                     </li>
                     <li className="flex items-start">
                       <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
                       <div>
-                        <strong>Unrealistic Timelines:</strong>
-                        <p className="text-sm text-gray-600">Setting overly aggressive schedules without proper risk assessment</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Weak Commercialization Plan:</strong>
-                        <p className="text-sm text-gray-600">Vague or unrealistic path from R&D to market implementation</p>
+                        <strong>Ignoring the ITA:</strong>
+                        <p className="text-sm text-gray-600">Your ITA is your champion. If you are unresponsive, argumentative, or hide info, your file will stall.</p>
                       </div>
                     </li>
                   </ul>
@@ -524,109 +393,105 @@ export default function IRAPApplicationGuide() {
         </section>
 
         {/* Success Strategies */}
-        <section className="py-16 bg-white">
+        <section id="strategies" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">IRAP Success Strategies</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Proven Success Strategies</h2>
+
               <div className="space-y-6">
                 <Card className="border-emerald-200">
                   <CardHeader>
-                    <CardTitle className="text-emerald-700">Technical Excellence Framework</CardTitle>
+                    <CardTitle className="text-emerald-700">The "Technical Obstacle" Strategy</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Innovation Positioning:</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• Clearly articulate technological breakthrough</li>
-                          <li>• Demonstrate significant advancement over prior art</li>
-                          <li>• Show measurable performance improvements</li>
-                          <li>• Address real technical challenges</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Research Methodology:</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• Use rigorous scientific approaches</li>
-                          <li>• Plan comprehensive validation studies</li>
-                          <li>• Include appropriate control experiments</li>
-                          <li>• Define clear success criteria</li>
-                        </ul>
-                      </div>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Frame your proposal around <strong>OBSTACLES</strong>, not features. Don't say "We will build a fast database."
+                    </p>
+                    <div className="bg-gray-100 p-4 rounded text-sm font-medium border-l-4 border-emerald-500">
+                      Say: "We are attempting to reduce query latency by 50% in a distributed ledger environment, but current consensus algorithms introduce O(n^2) message overhead. We will investigate a novel sharding protocol to overcome this..."
                     </div>
+                    <p className="text-sm text-gray-600 mt-2">
+                      This language proves you are doing R&D, not just development.
+                    </p>
                   </CardContent>
                 </Card>
 
                 <Card className="border-blue-200">
                   <CardHeader>
-                    <CardTitle className="text-blue-700">Market-Driven Approach</CardTitle>
+                    <CardTitle className="text-blue-700">The "Wealth Creation" Strategy</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Commercial Validation:</h5>
-                        <div className="grid md:grid-cols-3 gap-4 text-sm">
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• Customer discovery and validation</li>
-                              <li>• Market size quantification</li>
-                              <li>• Competitive analysis depth</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• Value proposition clarity</li>
-                              <li>• Pricing model development</li>
-                              <li>• Go-to-market strategy</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• Partnership opportunities</li>
-                              <li>• Regulatory pathway planning</li>
-                              <li>• Revenue projections</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <p className="text-sm text-gray-600 mb-2">
+                      NRC's mandate is to create wealth for Canada. Connect dots clearly:
+                    </p>
+                    <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                      <li>Project success = New Product X</li>
+                      <li>New Product X = $5M in estimated sales by Year 3</li>
+                      <li>$5M sales = Hiring 10 more Canadian engineers</li>
+                    </ul>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
 
-                <Card className="border-purple-200">
-                  <CardHeader>
-                    <CardTitle className="text-purple-700">Team & Resource Optimization</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-purple-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Assemble Strong R&D Team:</strong> Include technical leaders with relevant experience and track record
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-purple-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Leverage External Expertise:</strong> Partner with universities, research institutes, or consultants
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-purple-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Plan Resource Allocation:</strong> Ensure adequate facilities, equipment, and materials access
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-purple-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Manage Project Risks:</strong> Identify technical and commercial risks with mitigation plans
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-left">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <HelpCircle className="w-6 h-6 text-emerald-600 mr-2" />
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-4">
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">Who owns the Intellectual Property (IP)?</h3>
+                  <p className="text-gray-600">You do. The Government of Canada claims NO equity and NO intellectual property rights in IRAP projects.</p>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">Can I stack IRAP with SR&ED?</h3>
+                  <p className="text-gray-600">Yes. IRAP pays for the work *now*. SR&ED is a tax credit for the work *later*. You just subtract the IRAP portion from your SR&ED claim so you don't get paid twice for the same dollar.</p>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">Is there a deadline?</h3>
+                  <p className="text-gray-600">IRAP accepts applications on a rolling basis year-round. However, funding budgets reset April 1st. It's often easier to secure funding early in the fiscal year (April-June).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Neural Network: Related Guides */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Explore Related Funding Guides</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/sred-application-guide" className="group block h-full">
+                  <div className="bg-gray-50 border hover:border-emerald-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-emerald-600 font-semibold mb-2">Tax Credits</div>
+                    <h4 className="font-bold text-gray-900 group-hover:text-emerald-700 mb-2">SR&ED Guide</h4>
+                    <p className="text-sm text-gray-500 flex-grow">Recover up to 64% of R&D costs at tax time. Complements IRAP perfectly.</p>
+                    <div className="mt-3 text-xs text-emerald-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/apply-strategic-innovation-fund" className="group block h-full">
+                  <div className="bg-gray-50 border hover:border-red-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-red-600 font-semibold mb-2">Large Scale</div>
+                    <h4 className="font-bold text-gray-900 group-hover:text-red-700 mb-2">SIF Application Guide</h4>
+                    <p className="text-sm text-gray-500 flex-grow">For major industrial R&D projects over $10M.</p>
+                    <div className="mt-3 text-xs text-red-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/startup-funding-canada" className="group block h-full">
+                  <div className="bg-gray-50 border hover:border-purple-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-purple-600 font-semibold mb-2">Venture Capital</div>
+                    <h4 className="font-bold text-gray-900 group-hover:text-purple-700 mb-2">Startup Funding</h4>
+                    <p className="text-sm text-gray-500 flex-grow">Guide to VC, Angel, and private equity landscape in Canada.</p>
+                    <div className="mt-3 text-xs text-purple-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -637,49 +502,16 @@ export default function IRAPApplicationGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center text-white">
               <h2 className="text-4xl font-bold mb-6">
-                Need Expert Help with Your IRAP Application?
+                Need an R&D Funding Specialist?
               </h2>
               <p className="text-xl text-emerald-100 mb-8">
-                Maximize your R&D funding success. Our IRAP specialists have secured over $25M 
-                in grants and maintain an 89% approval rate for Canadian tech companies.
+                Navigating the technical requirements of IRAP and SR&ED is complex. Our team of PhDs and engineers can handle the writing for you.
               </p>
-              <div className="bg-white/10 rounded-lg p-6 mb-8">
-                <h4 className="font-semibold text-white mb-4">Expert Services Include:</h4>
-                <div className="grid md:grid-cols-2 gap-4 text-sm text-emerald-100">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Technical proposal development</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Market analysis and validation</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Commercialization strategy</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>ITA relationship management</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Project planning and budgeting</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Application review and optimization</span>
-                  </div>
-                </div>
-              </div>
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
                 <Link href="/contact?service=irap-expert-help">
-                  Get Expert Help Now
+                  Book a Free Assessment
                 </Link>
               </Button>
-              <p className="text-emerald-200 text-sm mt-4">
-                89% approval rate • Average funding: $320K • Tech-focused expertise
-              </p>
             </div>
           </div>
         </section>

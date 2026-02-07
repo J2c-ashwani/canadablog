@@ -117,31 +117,31 @@ export const guidesDatabase: Guide[] = [
   },
   {
     id: 'sbir-research-grants-guide',
-    title: 'SBIR Research Grants Application Guide',
+    title: 'How to Apply for SBIR Research Grants',
     slug: 'sbir-research-grants-guide',
-    description: 'Comprehensive guide to applying for Small Business Innovation Research grants for tech companies.',
+    description: 'Complete guide to applying for Small Business Innovation Research (SBIR) Phase I & II grants.',
     category: 'USA',
+    lastUpdated: '2025-01-20',
+    readTime: '15 min read',
     tags: ['SBIR', 'Research', 'Innovation', 'Technology'],
-    readTime: '18 min',
     difficulty: 'Advanced',
     featured: true,
+    metrics: [
+      { label: 'Funding', value: '$50K - $1.7M', description: 'Phase I & II Combined', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Success Rate', value: '15-50%', description: 'Per Phase', color: 'text-blue-600', iconName: 'TrendingUp' },
+      { label: 'Timeline', value: '6-9 Months', description: 'Application to Award', color: 'text-orange-600', iconName: 'Clock' },
+      { label: 'Equity', value: '0%', description: 'Non-dilutive', color: 'text-purple-600', iconName: 'PieChart' }
+    ],
+    expertTip: {
+      title: "Don't Miss the SAM.gov Deadline",
+      type: 'warning',
+      content: "Register on SAM.gov at least 4 weeks before you plan to submit. It's free, but processing times can be slow, and it is the #1 reason startups miss the submission window."
+    },
     highlights: [
       'SBIR Phase I & II process',
       'Technical proposal writing',
       'Commercialization planning'
-    ],
-    lastUpdated: '2025-09-25',
-    metrics: [
-      { label: 'Phase I', value: '$150k - $250k', description: 'Feasibility Study', color: 'text-blue-600', iconName: 'Zap' },
-      { label: 'Phase II', value: '$1M - $1.5M', description: 'Prototype Dev', color: 'text-green-600', iconName: 'Rocket' },
-      { label: 'Equity', value: '0%', description: 'Non-dilutive funding', color: 'text-purple-600', iconName: 'PieChart' },
-      { label: 'Competition', value: 'High', description: '<15% Success Rate', color: 'text-orange-600', iconName: 'Target' }
-    ],
-    expertTip: {
-      title: "Talk to the Program Manager",
-      type: 'tip',
-      content: "Before writing the 50-page proposal, <strong>email the Program Manager</strong> with a 1-page summary. If they say it's not a fit, you just saved 100 hours of work."
-    }
+    ]
   },
   {
     id: 'apply-sbir-grants',
@@ -481,6 +481,8 @@ export const guidesDatabase: Guide[] = [
       content: "SR&ED is not for 'standard engineering' or 'bug fixing'. To qualify, you must prove you faced a technological uncertainty that standard practice could not resolve. Document your failures—they are your proof!"
     }
   },
+
+
   {
     id: 'apply-women-entrepreneurship-strategy',
     title: 'Women Entrepreneurship Strategy Application Guide',
@@ -510,34 +512,6 @@ export const guidesDatabase: Guide[] = [
     }
   },
   {
-    id: 'apply-women-entrepreneurship-strateg',
-    title: 'Women Entrepreneurship Strategy Guide',
-    slug: 'apply-women-entrepreneurship-strateg',
-    description: 'Alternative guide for women entrepreneurs accessing federal support programs.',
-    category: 'Canada',
-    tags: ['Women', 'Entrepreneurship', 'Federal'],
-    readTime: '11 min',
-    difficulty: 'Beginner',
-    featured: false,
-    highlights: [
-      'Program access',
-      'Funding options',
-      'Resource centers'
-    ],
-    lastUpdated: '2025-09-28',
-    metrics: [
-      { label: 'Total', value: '$6B', description: 'WES Investment', color: 'text-pink-600', iconName: 'DollarSign' },
-      { label: 'Access', value: 'Multi', description: 'Various pathways', color: 'text-blue-600', iconName: 'Award' },
-      { label: 'Gender', value: 'Women', description: 'Female owned 51%+', color: 'text-pink-600', iconName: 'Users' },
-      { label: 'Support', value: 'Holistic', description: 'Full ecosystem', color: 'text-green-600', iconName: 'Heart' }
-    ],
-    expertTip: {
-      title: "Alternative WES Entry Points",
-      type: 'tip',
-      content: "Can't access WES grants directly? Use <strong>WES ecosystem partners</strong> like Women's Enterprise Organizations for mentorship, then leverage that relationship for funding introductions."
-    }
-  },
-  {
     id: 'women-entrepreneurship-fund-guide',
     title: 'Women Entrepreneurship Fund Application Guide',
     slug: 'women-entrepreneurship-fund-guide',
@@ -552,7 +526,18 @@ export const guidesDatabase: Guide[] = [
       'Application requirements',
       'Funding amounts'
     ],
-    lastUpdated: '2025-09-22'
+    lastUpdated: '2025-09-22',
+    metrics: [
+      { label: 'Funding', value: '$100K', description: 'Non-repayable Grant', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Success Rate', value: '20-30%', description: 'Highly Competitive', color: 'text-blue-600', iconName: 'TrendingUp' },
+      { label: 'Timeline', value: '4-6 Months', description: 'Review Period', color: 'text-orange-600', iconName: 'Clock' },
+      { label: 'Equity', value: '0%', description: 'Non-dilutive', color: 'text-purple-600', iconName: 'PieChart' }
+    ],
+    expertTip: {
+      title: "Focus on Economic Impact",
+      type: 'tip',
+      content: "The government prioritizes applications that demonstrate clear **job creation** and economic benefit. Don't just explain how the money helps *you*; explain how it helps the *economy*."
+    }
   },
   {
     id: 'women-entrepreneurship-loan-fund-guide',

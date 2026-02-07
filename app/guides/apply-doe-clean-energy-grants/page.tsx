@@ -3,64 +3,141 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Zap, Leaf, Sun, Wind } from "lucide-react"
+import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Zap, Leaf, Sun, Wind, HelpCircle, ArrowRight, Lightbulb, DollarSign } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Department of Energy Clean Energy Grants 2025 | DOE Funding Guide",
-  description: "Complete guide to DOE clean energy grants. Learn renewable energy funding, energy efficiency programs, and innovative clean tech grant opportunities from Department of Energy.",
-  keywords: "DOE clean energy grants, Department of Energy funding, renewable energy grants, energy efficiency funding, clean tech grants",
-  openGraph: {
-    title: "Department of Energy Clean Energy Grants 2025",
-    description: "Complete guide to securing DOE clean energy grants and renewable energy funding.",
-    url: "https://www.fsidigital.ca/guides/apply-doe-clean-energy-grants",
+  title: "DOE Clean Energy Grants 2025 | $62B Funding Guide",
+  description: "Official guide to Department of Energy (DOE) grants. Funding for solar, wind, and clean tech startups. Learn how to apply for ARPA-E and EERE grants.",
+  keywords: "DOE clean energy grants, solar energy funding, wind energy grants, ARPA-E application, EERE funding opportunities, clean tech startup grants",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/guides/apply-doe-clean-energy-grants",
   },
+  openGraph: {
+    title: "DOE Clean Energy Grant Guide 2025 | $62B Available",
+    description: "Access billions in federal funding for renewable energy and clean tech. Step-by-step application guide.",
+    url: "https://www.fsidigital.ca/guides/apply-doe-clean-energy-grants",
+    images: ["/og-image.png"],
+  },
+}
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is ARPA-E?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ARPA-E (Advanced Research Projects Agency-Energy) funds high-risk, high-reward clean energy technologies that are too early for private investment. Think 'moonshot' projects."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can startups apply for DOE grants?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! The DOE has specific SBIR/STTR programs for small businesses. Additionally, many FOAs (Funding Opportunity Announcements) encourage startup participation, often requiring a cost-share."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is EERE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EERE (Office of Energy Efficiency and Renewable Energy) is the largest DOE office for clean tech. It funds solar (SETO), wind (WETO), innovative buildings, and manufacturing efficiency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to match the funds?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually, yes. Most DOE grants require a 'cost share' (typically 20% for R&D projects and up to 50% for demonstration projects). SBIR grants are an exception and strictly do not require cost share."
+      }
+    }
+  ]
 }
 
 export default function DOECleanEnergyGrantsGuide() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-green-600 to-blue-700 text-white py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-gradient-to-br from-emerald-600 to-teal-800 text-white py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                ⚡ DOE Clean Energy Grants
+              <Badge className="mb-6 bg-emerald-500/20 text-emerald-100 border-emerald-400/30 backdrop-blur-sm">
+                ⚡ Federal Energy Grants
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Department of Energy Clean Energy Grants
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
+                DOE Clean Energy <br className="hidden md:block" /> Grants (2025)
               </h1>
-              <p className="text-xl text-green-100 mb-8">
-                Complete guide to securing Department of Energy clean energy grants. Access billions in funding
-                for renewable energy, energy efficiency, and innovative clean technology projects.
+              <p className="text-xl md:text-2xl mb-8 text-emerald-100 leading-relaxed text-pretty">
+                Tap into the <strong>$62 Billion</strong> clean energy revolution. <br className="hidden md:block" /> Funding for Solar, Wind, and Deep Tech.
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-white text-emerald-900 hover:bg-emerald-50 font-bold shadow-lg" asChild>
+                  <Link href="#programs">
+                    View Programs
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="bg-emerald-800/50 border-emerald-400/30 text-emerald-100 hover:bg-emerald-800/80 backdrop-blur-sm" asChild>
+                  <Link href="/blog/doe-grant-application-checklist">
+                    Download Checklist
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Quick Overview */}
-        <section className="py-16 bg-white">
+        {/* QUERY HOOK: Common Questions */}
+        <div className="bg-white border-b border-emerald-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
+          <div className="container mx-auto px-4 py-3">
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-emerald-900 gap-4">
+              <span className="font-semibold text-emerald-900 flex items-center shrink-0">
+                <Zap className="w-4 h-4 mr-2 text-emerald-600" />
+                Sector:
+              </span>
+              <div className="flex gap-6 overflow-x-auto no-scrollbar whitespace-nowrap mask-linear-fade">
+                <Link href="#programs" className="hover:text-emerald-700 transition-colors flex items-center gap-1"><Sun className="w-3 h-3" /> Solar & Wind</Link>
+                <Link href="#arpa-e" className="hover:text-emerald-700 transition-colors flex items-center gap-1"><Lightbulb className="w-3 h-3" /> ARPA-E (Moonshots)</Link>
+                <Link href="#process" className="hover:text-emerald-700 transition-colors flex items-center gap-1"><Clock className="w-3 h-3" /> Timeline</Link>
+                <Link href="#faq" className="hover:text-emerald-700 transition-colors flex items-center gap-1"><HelpCircle className="w-3 h-3" /> FAQs</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Reference Stats */}
+        <section className="py-12 bg-white border-b border-emerald-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center mb-12">
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">$7.5B</div>
-                  <div className="text-gray-600">Annual DOE R&D Budget</div>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-4 gap-8 text-center divide-x divide-emerald-50">
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-emerald-600 mb-2">$62B</div>
+                  <div className="text-emerald-900 text-sm font-medium uppercase tracking-wide">Investment Pool</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">$62B</div>
-                  <div className="text-gray-600">Clean Energy Investments</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-blue-600 mb-2">50+</div>
+                  <div className="text-emerald-900 text-sm font-medium uppercase tracking-wide">Active Programs</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">50+</div>
-                  <div className="text-gray-600">Clean Energy Programs</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-purple-600 mb-2">$5M</div>
+                  <div className="text-emerald-900 text-sm font-medium uppercase tracking-wide">Typical Max Grant</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-orange-600 mb-2">25%</div>
-                  <div className="text-gray-600">Average Success Rate</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-orange-600 mb-2">20%</div>
+                  <div className="text-emerald-900 text-sm font-medium uppercase tracking-wide">Typical Cost Share</div>
                 </div>
               </div>
             </div>
@@ -68,439 +145,206 @@ export default function DOECleanEnergyGrantsGuide() {
         </section>
 
         {/* Main Content */}
-        <section className="py-16">
+        <section id="programs" className="py-16 bg-emerald-50/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
 
-              {/* DOE Clean Energy Programs */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Major DOE Clean Energy Grant Programs</h2>
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Funding by Technology</h2>
 
-                <div className="space-y-6">
-                  <Card className="border-green-200">
+              <div className="space-y-8">
+                {/* Solar (SETO) */}
+                <Card className="border-l-4 border-l-yellow-500 shadow-lg">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Sun className="w-8 h-8 text-yellow-500" />
+                        <CardTitle className="text-xl">Solar Energy (SETO)</CardTitle>
+                      </div>
+                      <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">Most Popular</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      The Solar Energy Technologies Office funds everything from new PV materials to grid integration software.
+                    </p>
+                    <div className="bg-white border border-yellow-100 p-4 rounded-lg">
+                      <div className="grid md:grid-cols-3 gap-4 text-sm text-slate-700">
+                        <div className="font-semibold text-center bg-yellow-50 p-2 rounded">Hardware R&D</div>
+                        <div className="font-semibold text-center bg-yellow-50 p-2 rounded">Soft Costs</div>
+                        <div className="font-semibold text-center bg-yellow-50 p-2 rounded">Manufacturing</div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Wind (WETO) */}
+                <Card className="border-l-4 border-l-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Wind className="w-8 h-8 text-blue-500" />
+                        <CardTitle className="text-xl">Wind Energy (WETO)</CardTitle>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      Focuses heavily on offshore wind technology, distributed wind (small turbines), and environmental coexistence.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                {/* ARPA-E */}
+                <div id="arpa-e">
+                  <Card className="border-l-4 border-l-purple-600 shadow-sm hover:shadow-md transition-shadow">
                     <CardHeader>
-                      <CardTitle className="text-green-700 flex items-center">
-                        <Sun className="w-5 h-5 mr-2" />
-                        Solar Energy Technologies Office (SETO)
-                      </CardTitle>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <Zap className="w-8 h-8 text-purple-600" />
+                          <CardTitle className="text-xl">ARPA-E (The Moonshots)</CardTitle>
+                        </div>
+                        <Badge variant="secondary" className="bg-purple-100 text-purple-800">High Risk/Reward</Badge>
+                      </div>
                     </CardHeader>
                     <CardContent>
-                      <div className="grid md:grid-cols-3 gap-4 mb-4">
-                        <div className="flex items-center">
-                          <FileText className="w-5 h-5 text-green-600 mr-2" />
-                          <span><strong>Focus:</strong> Solar PV, CSP, Systems</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                          <span><strong>Duration:</strong> 1-4 years</span>
-                        </div>
-                        <div className="flex items-center">
-                          <CheckCircle className="w-5 h-5 text-purple-600 mr-2" />
-                          <span><strong>Funding:</strong> $50K - $7M</span>
-                        </div>
-                      </div>
-
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3 text-green-700">Research Areas:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Advanced photovoltaic technologies</li>
-                            <li>• Concentrating solar power</li>
-                            <li>• Solar manufacturing R&D</li>
-                            <li>• Grid integration & storage</li>
-                            <li>• Solar workforce development</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3 text-green-700">Eligible Applicants:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Universities & research institutions</li>
-                            <li>• Private companies & startups</li>
-                            <li>• National laboratories</li>
-                            <li>• State & local governments</li>
-                            <li>• Nonprofit organizations</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-blue-200">
-                    <CardHeader>
-                      <CardTitle className="text-blue-700 flex items-center">
-                        <Wind className="w-5 h-5 mr-2" />
-                        Wind Energy Technologies Office (WETO)
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-3 gap-4 mb-4">
-                        <div className="flex items-center">
-                          <FileText className="w-5 h-5 text-green-600 mr-2" />
-                          <span><strong>Focus:</strong> Wind power systems</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                          <span><strong>Duration:</strong> 2-5 years</span>
-                        </div>
-                        <div className="flex items-center">
-                          <CheckCircle className="w-5 h-5 text-purple-600 mr-2" />
-                          <span><strong>Funding:</strong> $100K - $10M</span>
-                        </div>
-                      </div>
-
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3 text-blue-700">Program Areas:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Offshore wind technologies</li>
-                            <li>• Advanced wind turbine designs</li>
-                            <li>• Wind plant optimization</li>
-                            <li>• Grid integration solutions</li>
-                            <li>• Wind resource assessment</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3 text-blue-700">Key Initiatives:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Offshore Wind Research & Development</li>
-                            <li>• Wind Energy Manufacturing</li>
-                            <li>• Atmosphere to Electrons (A2e)</li>
-                            <li>• Small Wind Technology</li>
-                            <li>• Wind-Solar Hybrid Systems</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-purple-200">
-                    <CardHeader>
-                      <CardTitle className="text-purple-700 flex items-center">
-                        <Zap className="w-5 h-5 mr-2" />
-                        Advanced Research Projects Agency-Energy (ARPA-E)
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-3 gap-4 mb-4">
-                        <div className="flex items-center">
-                          <FileText className="w-5 h-5 text-green-600 mr-2" />
-                          <span><strong>Focus:</strong> Transformational R&D</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                          <span><strong>Duration:</strong> 1-3 years</span>
-                        </div>
-                        <div className="flex items-center">
-                          <CheckCircle className="w-5 h-5 text-purple-600 mr-2" />
-                          <span><strong>Funding:</strong> $500K - $10M</span>
-                        </div>
-                      </div>
-
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3 text-purple-700">Technology Areas:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Energy storage breakthroughs</li>
-                            <li>• Carbon capture & utilization</li>
-                            <li>• Advanced materials</li>
-                            <li>• Smart grid technologies</li>
-                            <li>• Transportation energy</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3 text-purple-700">Program Structure:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• High-risk, high-reward research</li>
-                            <li>• Transformational potential required</li>
-                            <li>• Focused technical programs</li>
-                            <li>• Open solicitations</li>
-                            <li>• Fast-track funding decisions</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-orange-200">
-                    <CardHeader>
-                      <CardTitle className="text-orange-700 flex items-center">
-                        <Leaf className="w-5 h-5 mr-2" />
-                        Building Technologies Office (BTO)
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3 text-orange-700">Energy Efficiency Focus:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Building envelope technologies</li>
-                            <li>• HVAC system improvements</li>
-                            <li>• Smart building systems</li>
-                            <li>• Lighting & electrical systems</li>
-                            <li>• Building-to-grid integration</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3 text-orange-700">Funding Opportunities:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Small Business Innovation Research</li>
-                            <li>• Building America Program</li>
-                            <li>• Better Buildings Initiative</li>
-                            <li>• Commercial Building Partnerships</li>
-                            <li>• Residential Building Integration</li>
-                          </ul>
-                        </div>
+                      <p className="text-slate-600 mb-4">
+                        <strong>Advanced Research Projects Agency-Energy.</strong> They fund technologies that are "too early" for private VC. Think cold fusion, advanced batteries, or carbon eating concrete.
+                      </p>
+                      <div className="bg-purple-50 text-purple-900 p-3 rounded text-sm italic border border-purple-100">
+                        "If it works, will it matter?" - The ARPA-E Mantra.
                       </div>
                     </CardContent>
                   </Card>
                 </div>
-              </div>
 
-              {/* Application Process */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">DOE Grant Application Process</h2>
-
-                <div className="space-y-6">
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">1</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Monitor FOAs</h4>
-                      <p className="text-sm text-gray-600">
-                        Track Funding Opportunity Announcements on EERE Exchange and grants.gov
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">2</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Prepare Concept</h4>
-                      <p className="text-sm text-gray-600">
-                        Develop innovative concept papers and preliminary proposals
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">3</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Submit Full Proposal</h4>
-                      <p className="text-sm text-gray-600">
-                        Complete detailed technical and business proposals
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">4</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Merit Review</h4>
-                      <p className="text-sm text-gray-600">
-                        Technical and business reviews by expert panels
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                    <h4 className="font-bold text-lg mb-3 text-blue-800">💡 DOE Application Success Tips</h4>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <ul className="text-sm text-blue-700 space-y-1">
-                        <li>• Align with DOE strategic priorities</li>
-                        <li>• Demonstrate transformational potential</li>
-                        <li>• Show clear commercialization pathway</li>
-                        <li>• Include strong technical team</li>
-                      </ul>
-                      <ul className="text-sm text-blue-700 space-y-1">
-                        <li>• Provide detailed budget justification</li>
-                        <li>• Address market barriers & solutions</li>
-                        <li>• Include industry partnerships</li>
-                        <li>• Plan for technology transfer</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Eligibility & Requirements */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Eligibility Requirements</h2>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">✅ Eligible Organizations</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                          <span><strong>Universities:</strong> Public & private higher education institutions</span>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                          <span><strong>Private Companies:</strong> For-profit businesses of all sizes</span>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                          <span><strong>Research Institutes:</strong> Non-profit research organizations</span>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                          <span><strong>Government Entities:</strong> State, local, and tribal governments</span>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                          <span><strong>Consortiums:</strong> Multi-organizational partnerships</span>
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-blue-200">
-                    <CardHeader>
-                      <CardTitle className="text-blue-700">📋 Key Requirements</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
-                          <span><strong>Technical Merit:</strong> Innovative, high-impact research</span>
-                        </li>
-                        <li className="flex items-start">
-                          <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
-                          <span><strong>Team Qualifications:</strong> Experienced research team</span>
-                        </li>
-                        <li className="flex items-start">
-                          <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
-                          <span><strong>Cost Share:</strong> May require matching funds</span>
-                        </li>
-                        <li className="flex items-start">
-                          <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
-                          <span><strong>Milestones:</strong> Clear technical milestones</span>
-                        </li>
-                        <li className="flex items-start">
-                          <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
-                          <span><strong>Impact:</strong> Energy & economic benefits</span>
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Official DOE Resources */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Official DOE Clean Energy Resources</h2>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">Primary DOE Portals</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">EERE Exchange</h5>
-                          <p className="text-sm text-gray-600">Energy Efficiency & Renewable Energy funding</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://eere-exchange.energy.gov/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">ARPA-E FOAs</h5>
-                          <p className="text-sm text-gray-600">Advanced research funding opportunities</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://arpa-e.energy.gov/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">DOE Office of Science</h5>
-                          <p className="text-sm text-gray-600">Basic energy sciences funding</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://science.osti.gov/Funding-Opportunities" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-blue-200">
-                    <CardHeader>
-                      <CardTitle className="text-blue-700">Technology-Specific Resources</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Solar Energy Technologies</h5>
-                          <p className="text-sm text-gray-600">SETO funding opportunities</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.energy.gov/eere/solar/solar-energy-technologies-office" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Wind Energy Technologies</h5>
-                          <p className="text-sm text-gray-600">WETO research programs</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.energy.gov/eere/wind/wind-energy-technologies-office" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Building Technologies</h5>
-                          <p className="text-sm text-gray-600">Energy efficiency programs</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.energy.gov/eere/buildings/building-technologies-office" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Contact CTA */}
-              <div className="bg-gradient-to-r from-green-600 to-blue-700 rounded-lg p-8 text-white text-center">
-                <Users className="w-16 h-16 mx-auto mb-4 text-green-100" />
-                <h3 className="text-2xl font-bold mb-4">Ready to Apply for DOE Clean Energy Grants?</h3>
-                <p className="text-green-100 mb-6 text-lg">
-                  Need expert guidance on DOE clean energy grant applications? Our specialists can help you navigate
-                  the process and develop winning proposals for renewable energy and efficiency projects.
-                </p>
-                <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>
-                  <Link href="/contact">
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Get Expert Help
-                  </Link>
-                </Button>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Application Process Timeline */}
+        <section id="process" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">The DOE Application Flow</h2>
+
+              <div className="relative border-l-2 border-emerald-200 pl-8 space-y-12 ml-4 md:ml-0">
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Identify the FOA</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    DOE releases <strong>Funding Opportunity Announcements (FOAs)</strong> on the EERE Exchange. You must subscribe to get alerts.
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Concept Paper (Go / No-Go)</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    Before the full application, you usually submit a 5-page Concept Paper. The DOE will encourage or discourage you from proceeding. This saves you time.
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Full Application</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    Extensive technical volume, management plan, and budget justification.
+                    <span className="text-red-600 font-semibold ml-1">*This is where many fail due to compliant budget formatting.*</span>
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Selection & Negotiation</h3>
+                  <p className="text-slate-600 text-sm">
+                    If selected, you enter months of negotiation to finalize milestones and the "Statement of Project Objectives" (SOPO).
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Neural Network: Related Guides */}
+        <section className="py-16 bg-slate-50 border-t border-slate-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-bold text-slate-900 mb-6">Explore More Funding</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/apply-sbir-grants" className="group block h-full">
+                  <div className="bg-white border hover:border-blue-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-blue-600 font-semibold mb-2">R&D</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-blue-700 mb-2">SBIR Guide</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Small business specific R&D.</p>
+                    <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/canada-cleantech-funding-guide" className="group block h-full">
+                  <div className="bg-white border hover:border-purple-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-purple-600 font-semibold mb-2">Canada</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-purple-700 mb-2">Canada CleanTech</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Canadian energy funding.</p>
+                    <div className="mt-3 text-xs text-purple-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/sba-growth-accelerator-fund-guide" className="group block h-full">
+                  <div className="bg-white border hover:border-green-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-green-600 font-semibold mb-2">Accelerators</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-green-700 mb-2">Growth Accelerator</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Funding for support orgs.</p>
+                    <div className="mt-3 text-xs text-green-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-left">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <HelpCircle className="w-6 h-6 text-emerald-600 mr-2" />
+                DOE FAQs
+              </h2>
+              <div className="divide-y divide-emerald-100">
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">What is TRL?</h3>
+                  <p className="text-slate-600 text-sm">Technology Readiness Level. DOE grants range from TRL 1 (Basic Principles) to TRL 9 (Commercial). You must know your TRL to apply to the right FOA.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Can I partner with a National Lab?</h3>
+                  <p className="text-slate-600 text-sm">Yes, and it is highly encouraged. Partnering with NREL, Oak Ridge, or Argonne gives you access to world-class equipment and credibility.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Are pre-revenue companies eligible?</h3>
+                  <p className="text-slate-600 text-sm">Yes. Most DOE grants are designed specifically for pre-revenue technology development.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* CTA */}
+        <section className="py-20 bg-gradient-to-r from-emerald-900 to-teal-900 text-white text-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Power Your Innovation</h2>
+            <p className="text-lg text-emerald-200 mb-8 max-w-2xl mx-auto">
+              DOE applications are rigorously technical. We help you align your technology with the specific FOA requirements.
+            </p>
+            <Button size="lg" className="bg-white text-emerald-900 hover:bg-emerald-50 font-semibold shadow-lg" asChild>
+              <Link href="/contact?service=energy-grant-writing">
+                Get Proposal Help
+              </Link>
+            </Button>
+          </div>
+        </section>
+
       </div>
       <Footer />
     </>

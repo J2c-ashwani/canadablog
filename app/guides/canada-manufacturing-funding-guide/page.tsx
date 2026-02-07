@@ -3,620 +3,411 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Target, DollarSign, AlertTriangle, Download, Factory, Cog, Cpu, TrendingUp } from "lucide-react"
+import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Target, DollarSign, AlertTriangle, Download, Factory, Cog, Cpu, TrendingUp, HelpCircle, ArrowRight, CircuitBoard } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "How to Apply for Canada Manufacturing Funding 2025 | NGen, IRAP & CDAP Guide",
-  description: "Step-by-step guide to applying for advanced manufacturing funding in Canada. Learn NGen application process, IRAP manufacturing funding, and strategies for $3.1B+ in Industry 4.0 grants.",
-  keywords: "manufacturing funding application guide, NGen application process, IRAP manufacturing guide, CDAP manufacturing, Industry 4.0 funding Canada",
-  openGraph: {
-    title: "How to Apply for Canada Manufacturing Funding 2025",
-    description: "Complete guide to advanced manufacturing funding applications with NGen, IRAP, and CDAP program strategies.",
-    url: "https://grantfinder.pro/guides/canada-manufacturing-funding-guide",
+  title: "Manufacturing Grants Canada 2025 | NGen & Industry 4.0 Funding",
+  description: "Complete guide to advanced manufacturing funding. Apply for NGen supercluster projects, IRAP manufacturing grants, and CDAP digital adoption loans.",
+  keywords: "manufacturing grants Canada, NGen funding, advanced manufacturing, Industry 4.0 grants, robotics funding, automation grants Canada",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/guides/canada-manufacturing-funding-guide",
   },
+  openGraph: {
+    title: "Manufacturing Grants Canada 2025 | NGen & Automation",
+    description: "Step-by-step guide to securing up to $10M for factory modernization and Industry 4.0 adoption.",
+    url: "https://www.fsidigital.ca/guides/canada-manufacturing-funding-guide",
+    images: ["/og-image.png"],
+  },
+}
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What qualifies as 'Advanced Manufacturing' for NGen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Projects must involve the development or adoption of cutting-edge technologies like IoT, AI, robotics, or additive manufacturing that significantly improve productivity or create new products."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use IRAP for buying new machinery?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Generally, no. IRAP funds the technical labor to *integrate* or *develop* new systems, but not the capital asset (machine) itself. For equipment, look to regional development agencies (FedDev, PrairiesCan) or CDAP loans."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there funding for green manufacturing retrofit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Programs like the Strategic Innovation Fund - Net Zero Accelerator and various Clean Technology Investment Tax Credits cover costs for reducing carbon footprint in factories."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the minimum project size for NGen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NGen projects typically range from $500k to $20M. Smaller projects are often redirected to different streams or cluster readiness programs."
+      }
+    }
+  ]
 }
 
 export default function CanadaManufacturingFundingGuide() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-gray-700 to-gray-900 text-white py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-gradient-to-br from-slate-800 to-gray-900 text-white py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🏭 Manufacturing Funding Application Guide
+              <Badge className="mb-6 bg-slate-500/20 text-slate-100 border-slate-400/30 backdrop-blur-sm">
+                🏭 Advanced Manufacturing
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                How to Apply for Canada Manufacturing Funding
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
+                Canada Manufacturing Funding
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
-                Complete step-by-step guide to applying for advanced manufacturing funding in Canada. Learn the NGen application
-                process, IRAP manufacturing support, CDAP digital adoption, and how to secure up to $10M in Industry 4.0
-                funding across 38+ programs.
+              <p className="text-xl md:text-2xl mb-8 text-slate-100 leading-relaxed text-pretty">
+                The comprehensive handbook for Industry 4.0.
+                Secure NGen collaborative grants, IRAP automation support, and CDAP digital loans.
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Quick Overview */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center mb-12">
-                <div>
-                  <div className="text-3xl font-bold text-gray-700 mb-2">$3.1B+</div>
-                  <div className="text-gray-600">Manufacturing Funding Available</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">$10M</div>
-                  <div className="text-gray-600">Maximum NGen Funding</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">50%</div>
-                  <div className="text-gray-600">Typical Cost Coverage</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">38+</div>
-                  <div className="text-gray-600">Active Programs</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Main Content */}
-        <section className="py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-
-              {/* Manufacturing Funding Overview */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada Advanced Manufacturing Funding Overview</h2>
-
-                <div className="bg-gray-100 border border-gray-300 rounded-lg p-6 mb-6">
-                  <div className="flex items-start">
-                    <Factory className="w-8 h-8 text-gray-700 mr-4 mt-1" />
-                    <div>
-                      <h4 className="font-bold text-gray-800 mb-2">Industry 4.0 Focus</h4>
-                      <p className="text-gray-700">
-                        Canada provides $3.1B+ annually in advanced manufacturing funding through federal and provincial programs
-                        supporting automation, robotics, AI integration, smart manufacturing, and productivity enhancement.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-6">
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">1</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Assess Needs</h4>
-                      <p className="text-sm text-gray-600">
-                        Identify automation gaps and productivity improvement opportunities
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">2</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Select Programs</h4>
-                      <p className="text-sm text-gray-600">
-                        Match manufacturing needs with appropriate funding programs
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">3</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Build Business Case</h4>
-                      <p className="text-sm text-gray-600">
-                        Develop ROI analysis and productivity metrics
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">4</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Apply & Implement</h4>
-                      <p className="text-sm text-gray-600">
-                        Submit applications and execute technology deployment
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* NGen Application Process */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">NGen Application Process (Up to $10M)</h2>
-
-                <Card className="border-gray-300">
-                  <CardHeader>
-                    <CardTitle className="text-gray-800 flex items-center">
-                      <Target className="w-5 h-5 mr-2" />
-                      Next Generation Manufacturing Canada
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Funding:</strong> Up to $10M</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Coverage:</strong> Up to 50%</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Type:</strong> Collaborative</span>
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-3 text-gray-700">Eligibility Requirements:</h5>
-                        <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• Canadian manufacturing operations</li>
-                          <li>• Consortium of 2+ partners required</li>
-                          <li>• Industry 4.0 technology focus</li>
-                          <li>• Commercialization pathway clear</li>
-                          <li>• Scale-up and adoption potential</li>
-                          <li>• Skills development component</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-3 text-blue-700">Application Components:</h5>
-                        <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• Project description and innovation</li>
-                          <li>• Productivity and efficiency gains</li>
-                          <li>• Consortium partnership details</li>
-                          <li>• Budget and financial projections</li>
-                          <li>• Market adoption strategy</li>
-                          <li>• Workforce development plan</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* IRAP Manufacturing */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">IRAP Manufacturing Innovation Funding</h2>
-
-                <Card className="border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-700 flex items-center">
-                      <Cog className="w-5 h-5 mr-2" />
-                      IRAP for Manufacturing SMEs
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span><strong>Funding:</strong> Up to $500K</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                        <span><strong>Coverage:</strong> 60-80%</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-purple-600 mr-2" />
-                        <span><strong>Type:</strong> Non-Repayable</span>
-                      </div>
-                    </div>
-
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                      <h4 className="font-bold mb-2 text-blue-800">Manufacturing Innovation Projects:</h4>
-                      <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700">
-                        <div>
-                          <p><strong>Technology Development:</strong></p>
-                          <ul className="ml-4 space-y-1">
-                            <li>• Process automation systems</li>
-                            <li>• Quality control technologies</li>
-                            <li>• Production optimization tools</li>
-                            <li>• Custom manufacturing equipment</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <p><strong>Digital Integration:</strong></p>
-                          <ul className="ml-4 space-y-1">
-                            <li>• IoT sensor networks</li>
-                            <li>• AI-powered systems</li>
-                            <li>• Predictive maintenance tools</li>
-                            <li>• Supply chain digitization</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-3 text-blue-700">Application Process:</h5>
-                        <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• Contact local Industrial Technology Advisor</li>
-                          <li>• Prepare technical project proposal</li>
-                          <li>• Demonstrate innovation and feasibility</li>
-                          <li>• Submit budget and timeline</li>
-                          <li>• Receive advisor support throughout</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-3 text-green-700">Support Included:</h5>
-                        <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• Dedicated Industrial Technology Advisor</li>
-                          <li>• Access to research networks</li>
-                          <li>• Youth employment funding available</li>
-                          <li>• Business scale-up support</li>
-                          <li>• Export market development assistance</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* CDAP Digital Adoption */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">CDAP Manufacturing Digital Adoption</h2>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="border-purple-200">
-                    <CardHeader>
-                      <CardTitle className="text-purple-700">Digital Adoption Program</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                          <div>
-                            <strong>Grant Component</strong>
-                            <p className="text-sm text-gray-600">$15K for digital adoption plan</p>
-                          </div>
-                        </div>
-
-                        <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                          <div>
-                            <strong>Loan Component</strong>
-                            <p className="text-sm text-gray-600">Up to $100K interest-free</p>
-                          </div>
-                        </div>
-
-                        <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                          <div>
-                            <strong>Advisor Support</strong>
-                            <p className="text-sm text-gray-600">Digital advisor included</p>
-                          </div>
-                        </div>
-
-                        <div className="flex justify-between items-center p-3 bg-purple-50 rounded">
-                          <div>
-                            <strong>Technology Focus</strong>
-                            <p className="text-sm text-gray-600">ERP, MES, IoT, cloud platforms</p>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">Manufacturing Technologies</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Manufacturing Execution Systems (MES)</strong>
-                            <p className="text-sm text-gray-600">Real-time production tracking</p>
-                          </div>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Enterprise Resource Planning (ERP)</strong>
-                            <p className="text-sm text-gray-600">Integrated business management</p>
-                          </div>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>IoT & Sensors</strong>
-                            <p className="text-sm text-gray-600">Connected equipment monitoring</p>
-                          </div>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Cloud Platforms</strong>
-                            <p className="text-sm text-gray-600">Data analytics and collaboration</p>
-                          </div>
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Program Selection Matrix */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Manufacturing Program Selection by Need</h2>
-
-                <div className="overflow-x-auto">
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr className="bg-gray-100">
-                        <th className="border border-gray-300 p-3 text-left">Manufacturing Need</th>
-                        <th className="border border-gray-300 p-3 text-left">Recommended Programs</th>
-                        <th className="border border-gray-300 p-3 text-left">Funding Range</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="border border-gray-200 p-3">
-                          <strong>Digital Adoption</strong>
-                          <p className="text-sm text-gray-600">ERP, MES, cloud systems</p>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <ul className="text-sm space-y-1">
-                            <li>• CDAP ($15K + $100K loan)</li>
-                            <li>• Provincial digital grants</li>
-                            <li>• Technology adoption programs</li>
-                          </ul>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <strong>$15K - $115K</strong>
-                        </td>
-                      </tr>
-                      <tr className="bg-gray-50">
-                        <td className="border border-gray-200 p-3">
-                          <strong>Process Innovation</strong>
-                          <p className="text-sm text-gray-600">New production methods</p>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <ul className="text-sm space-y-1">
-                            <li>• IRAP Innovation Funding</li>
-                            <li>• SR&ED Tax Credits</li>
-                            <li>• Provincial R&D programs</li>
-                          </ul>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <strong>$100K - $500K</strong>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="border border-gray-200 p-3">
-                          <strong>Automation & Robotics</strong>
-                          <p className="text-sm text-gray-600">Equipment and systems</p>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <ul className="text-sm space-y-1">
-                            <li>• NGen collaborative projects</li>
-                            <li>• Regional development funding</li>
-                            <li>• Automation-specific programs</li>
-                          </ul>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <strong>$500K - $5M</strong>
-                        </td>
-                      </tr>
-                      <tr className="bg-gray-50">
-                        <td className="border border-gray-200 p-3">
-                          <strong>Large-Scale Transformation</strong>
-                          <p className="text-sm text-gray-600">Facility-wide Industry 4.0</p>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <ul className="text-sm space-y-1">
-                            <li>• NGen major projects</li>
-                            <li>• Strategic Innovation Fund</li>
-                            <li>• Provincial transformation programs</li>
-                          </ul>
-                        </td>
-                        <td className="border border-gray-200 p-3">
-                          <strong>$5M - $10M+</strong>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              {/* Success Strategies */}
-              <div className="bg-blue-50 rounded-lg p-8 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Manufacturing Funding Success Strategies</h2>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-green-700">✅ Best Practices</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Quantify ROI:</strong> Show clear productivity gains, cost savings, and efficiency improvements with metrics</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Technology Integration Plan:</strong> Demonstrate how new technology integrates with existing systems</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Workforce Development:</strong> Include comprehensive training and upskilling strategies</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span><strong>Build Partnerships:</strong> Collaborate with technology providers, research institutions, and industry partners</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Mistakes</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Weak Business Case:</strong> Insufficient ROI analysis and productivity improvement metrics</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Technology Without Strategy:</strong> Adopting technology without clear implementation roadmap</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Ignoring Change Management:</strong> Not addressing workforce training and organizational change</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span><strong>Poor Financial Planning:</strong> Inadequate matching funds or financial capacity demonstration</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Official Resources */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Official Manufacturing Resources</h2>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="border-gray-300">
-                    <CardHeader>
-                      <CardTitle className="text-gray-800">Government Resources</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">NGen</h5>
-                          <p className="text-sm text-gray-600">Next Generation Manufacturing Canada</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.ngen.ca" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">IRAP</h5>
-                          <p className="text-sm text-gray-600">Industrial Research Assistance Program</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://nrc.canada.ca/en/support-technology-innovation/nrc-irap" target="_blank" rel="noopener noreferrer">
-                            Learn More <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">CDAP</h5>
-                          <p className="text-sm text-gray-600">Canada Digital Adoption Program</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://ised-isde.canada.ca/site/canada-digital-adoption-program/en" target="_blank" rel="noopener noreferrer">
-                            Explore <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-blue-200">
-                    <CardHeader>
-                      <CardTitle className="text-blue-700">Professional Support</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Manufacturing Assessment</h5>
-                          <p className="text-sm text-gray-600">Free eligibility and program review</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="/contact?service=manufacturing-assessment">
-                            Get Assessment
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">ROI Calculator</h5>
-                          <p className="text-sm text-gray-600">Calculate automation ROI</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="/contact">
-                            Calculate ROI
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Expert Help</h5>
-                          <p className="text-sm text-gray-600">Professional manufacturing funding support</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="/contact?service=manufacturing-expert-help">
-                            Get Help
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Lead Magnet CTA */}
-              <div className="bg-gradient-to-r from-gray-700 to-gray-900 rounded-lg p-8 text-white text-center mb-8">
-                <Download className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-                <h3 className="text-2xl font-bold mb-4">Get Your Free Manufacturing Funding Application Kit</h3>
-                <p className="text-gray-300 mb-6 text-lg">
-                  Download our comprehensive manufacturing funding guide with NGen templates, IRAP application tools,
-                  ROI calculators, and successful project examples.
-                </p>
-                <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100" asChild>
-                  <Link href="/download/canada-manufacturing-funding-guide">
-                    <Download className="w-5 h-5 mr-2" />
-                    Download Free Guide
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-slate-500 hover:bg-slate-600 text-white font-semibold shadow-lg shadow-slate-900/50" asChild>
+                  <Link href="#programs">
+                    View Programs
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="bg-slate-800/50 border-slate-400/30 text-slate-100 hover:bg-slate-800/80 backdrop-blur-sm" asChild>
+                  <Link href="/blog/manufacturing-funding-strategy">
+                    Modernization Strategy
                   </Link>
                 </Button>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Contact CTA */}
-              <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg p-8 text-white text-center">
-                <Users className="w-16 h-16 mx-auto mb-4 text-blue-100" />
-                <h3 className="text-2xl font-bold mb-4">Ready to Apply for Manufacturing Funding?</h3>
-                <p className="text-blue-100 mb-6 text-lg">
-                  Our manufacturing funding specialists understand NGen, IRAP, and CDAP programs.
-                  We've secured $120M+ in advanced manufacturing funding with 82% success rate.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>
-                    <Link href="/contact?service=manufacturing-expert-help">
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      Get Expert Help
-                    </Link>
-                  </Button>
-                  <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white border-0" asChild>
-                    <Link href="/contact?service=manufacturing-assessment">
-                      Free Manufacturing Assessment
-                    </Link>
-                  </Button>
+        {/* QUERY HOOK: Common Questions */}
+        <div className="bg-white border-b border-gray-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
+          <div className="container mx-auto px-4 py-3">
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-gray-900 gap-4">
+              <span className="font-semibold text-gray-900 flex items-center shrink-0">
+                <Factory className="w-4 h-4 mr-2 text-gray-600" />
+                Topic:
+              </span>
+              <div className="flex gap-6 overflow-x-auto no-scrollbar whitespace-nowrap mask-linear-fade">
+                <Link href="#programs" className="hover:text-blue-700 transition-colors flex items-center gap-1"><Target className="w-3 h-3" /> Top Grants</Link>
+                <Link href="#ngen" className="hover:text-blue-700 transition-colors flex items-center gap-1"><Cpu className="w-3 h-3" /> NGen</Link>
+                <Link href="#automation" className="hover:text-blue-700 transition-colors flex items-center gap-1"><Cog className="w-3 h-3" /> Automation</Link>
+                <Link href="#process" className="hover:text-blue-700 transition-colors flex items-center gap-1"><Clock className="w-3 h-3" /> Timeline</Link>
+                <Link href="#faq" className="hover:text-blue-700 transition-colors flex items-center gap-1"><HelpCircle className="w-3 h-3" /> FAQs</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Reference Stats */}
+        <section className="py-12 bg-white border-b border-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-4 gap-8 text-center divide-x divide-gray-50">
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-slate-700 mb-2">$3.1B+</div>
+                  <div className="text-slate-800 text-sm font-medium uppercase tracking-wide">Total Funding</div>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-blue-600 mb-2">$10M</div>
+                  <div className="text-slate-800 text-sm font-medium uppercase tracking-wide">Max Grant (NGen)</div>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-green-600 mb-2">50%</div>
+                  <div className="text-slate-800 text-sm font-medium uppercase tracking-wide">Cost Shared</div>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-purple-700 mb-2">38+</div>
+                  <div className="text-slate-800 text-sm font-medium uppercase tracking-wide">Active Programs</div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Main Programs Section */}
+        <section id="programs" className="py-20 bg-gray-50/50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Top Manufacturing Funding Programs</h2>
+
+              <div className="space-y-8">
+                {/* NGen */}
+                <Card id="ngen" className="border-l-4 border-l-red-600 shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Cpu className="w-8 h-8 text-red-600" />
+                        <CardTitle className="text-xl">NGen: Next Gen Manufacturing</CardTitle>
+                      </div>
+                      <Badge variant="outline" className="border-red-300 text-red-700">Collaborative</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      Canada's Advanced Manufacturing Supercluster. Funds transformative projects involving at least 2 partners (e.g., Manufacturer + Tech Provider).
+                    </p>
+                    <div className="grid md:grid-cols-2 gap-4 bg-white border border-gray-100 p-4 rounded-lg text-sm">
+                      <div>
+                        <strong className="block text-slate-900 mb-2">The Offer:</strong>
+                        <ul className="list-disc list-inside text-slate-600 space-y-1">
+                          <li>Reimburse 44% of eligible project costs</li>
+                          <li>Projects typically $1M - $20M</li>
+                          <li>Focus on scaling manufacturing capabilities</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <strong className="block text-slate-900 mb-2">Requirements:</strong>
+                        <ul className="list-disc list-inside text-slate-600 space-y-1">
+                          <li>Must be NGen member</li>
+                          <li>Must start within 6 months</li>
+                          <li>Must create IP or commercial advantage</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* IRAP */}
+                <Card id="automation" className="border-l-4 border-l-orange-600 shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Cog className="w-8 h-8 text-orange-600" />
+                        <CardTitle className="text-xl">NRC IRAP (Process Innovation)</CardTitle>
+                      </div>
+                      <Badge variant="outline" className="border-orange-300 text-orange-700">R&D & Improvement</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      For SMEs solving technical challenges on the factory floor. E.g., integrating a custom robotic arm that doesn't exist off-the-shelf.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <Badge className="bg-orange-100 text-orange-800">Support for Salaries</Badge>
+                      <Badge className="bg-orange-100 text-orange-800">Technical Advisory</Badge>
+                      <Badge className="bg-orange-100 text-orange-800">Internal R&D</Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* CDAP */}
+                <Card className="border-l-4 border-l-blue-600 shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <CircuitBoard className="w-8 h-8 text-blue-600" />
+                        <CardTitle className="text-xl">CDAP Digital Adoption</CardTitle>
+                      </div>
+                      <Badge variant="outline" className="border-blue-300 text-blue-700">Digitization</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      Crucial for manufacturers moving from paper/excel to ERP/MES systems.
+                    </p>
+                    <ul className="text-sm text-slate-600 list-disc list-inside space-y-1">
+                      <li><strong>$15,000 Grant:</strong> Hire an expert to plan your ERP/MRP implementation.</li>
+                      <li><strong>$100,000 Loan:</strong> Interest-free loan to buy the software and hardware.</li>
+                      <li><strong>$7,300 Subsidy:</strong> Hire a student to help with data entry/setup.</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Manufacturing Maturity Roadmap */}
+        <section id="process" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Manufacturing Modernization Roadmap</h2>
+
+              <div className="relative border-l-2 border-slate-200 pl-8 space-y-12 ml-4 md:ml-0">
+
+                {/* Step 1 */}
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-slate-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Assessment & Planning</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    <strong>Funding Sources:</strong> CDAP ($15k), Regional Assessments.
+                    <br />Identify bottlenecks. Are you implementing an ERP? Do you need a new robotic cell?
+                  </p>
+                </div>
+
+                {/* Step 2 */}
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-slate-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Prototype & Pilot</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    <strong>Funding Sources:</strong> IRAP, NGen (Feasibility).
+                    <br />Test the new process on a small scale. Solve integration issues (e.g., getting the legacy CNC to talk to the new cloud dashboard).
+                  </p>
+                </div>
+
+                {/* Step 3 */}
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-slate-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Capital Expenditure (CAPEX)</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    <strong>Funding Sources:</strong> Regional Agencies (FedDev), BDC, CDAP Loan.
+                    <br />Purchase the full fleet of equipment. Note: Grants rarely cover 100% of equipment; usually they cover 15-50%.
+                  </p>
+                </div>
+
+                {/* Step 4 */}
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Training & Upskilling</h3>
+                  <p className="text-slate-600 text-sm">
+                    <strong>Funding Sources:</strong> Canada Job Grant, Yves Landry Foundation.
+                    <br />Train staff on the new systems. This is often a separate grant application but crucial for success.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Success Strategies */}
+        <section className="py-16 bg-slate-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Industry 4.0 Winning Strategies</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+
+                <Card className="bg-white">
+                  <CardHeader>
+                    <div className="flex items-center gap-3">
+                      <TrendingUp className="w-6 h-6 text-slate-600" />
+                      <CardTitle className="text-lg">Productivity Metrics</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-slate-600">
+                      Vague promises don't win grants. State specific goals: "Reduce cycle time by 15%", "Decrease scrap rate by 8%", "Reduce energy consumption by 20%."
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white">
+                  <CardHeader>
+                    <div className="flex items-center gap-3">
+                      <Users className="w-6 h-6 text-slate-600" />
+                      <CardTitle className="text-lg">The Consortium Approach</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-slate-600">
+                      Collaborative applications (NGen) perform better. Bring in a university for testing or a local startup for the software layer to strengthen your bid.
+                    </p>
+                  </CardContent>
+                </Card>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-left">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <HelpCircle className="w-6 h-6 text-slate-600 mr-2" />
+                Manufacturing FAQs
+              </h2>
+              <div className="divide-y divide-gray-100">
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Can I stack grants?</h3>
+                  <p className="text-slate-600 text-sm">Yes, typically up to 75% of total project costs. Common stack: IRAP (Labor) + Regional Fund (Equipment) + Job Grant (Training).</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Does SR&ED apply to manufacturing?</h3>
+                  <p className="text-slate-600 text-sm">Absolutely. "Shop floor R&D" is very common. If you have to stop the line to run a trial, the wasted materials, labor, and overhead are often claimable.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">How long does NGen approval take?</h3>
+                  <p className="text-slate-600 text-sm">NGen has specific intake rounds. From submission to approval can take 3-5 months. It is a competitive process.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Neural Network: Related Guides */}
+        <section className="py-16 bg-slate-50 border-t border-slate-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-bold text-slate-900 mb-6">Related Funding Pathways</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/sred-application-guide" className="group block h-full">
+                  <div className="bg-white border hover:border-blue-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-blue-600 font-semibold mb-2">Tax Credits</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-blue-700 mb-2">SR&ED Guide</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Recover costs for shop-floor experiments.</p>
+                    <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/canada-digital-ai-funding-guide" className="group block h-full">
+                  <div className="bg-white border hover:border-purple-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-purple-600 font-semibold mb-2">Digital</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-purple-700 mb-2">AI Funding Guide</h4>
+                    <p className="text-sm text-slate-500 flex-grow">For AI-driven quality control funding.</p>
+                    <div className="mt-3 text-xs text-purple-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/canada-cleantech-funding-guide" className="group block h-full">
+                  <div className="bg-white border hover:border-green-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-green-600 font-semibold mb-2">Net Zero</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-green-700 mb-2">CleanTech Guide</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Funding for energy efficiency retrofits.</p>
+                    <div className="mt-3 text-xs text-green-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-20 bg-gradient-to-r from-slate-900 to-gray-900 text-white text-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Modernize Your Factory</h2>
+            <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+              Don't leave money on the table. Our experts help you identify and apply for the right mix of equipment and innovation grants.
+            </p>
+            <Button size="lg" className="bg-slate-500 hover:bg-slate-600 text-white font-semibold shadow-lg shadow-slate-900/50" asChild>
+              <Link href="/contact?service=manufacturing-expert-help">
+                Get Manufacturing Funding Help
+              </Link>
+            </Button>
+          </div>
+        </section>
+
       </div>
       <Footer />
     </>

@@ -3,50 +3,104 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, FileText, DollarSign, Target, AlertCircle, Download, Building, Users, Shield, Award, TrendingUp, Leaf } from "lucide-react"
+import { CheckCircle, Clock, FileText, DollarSign, Target, AlertCircle, Download, Building, Users, Shield, Award, TrendingUp, Leaf, MessageCircle, HelpCircle, ArrowRight, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Agriculture & Agri-Food Canada Application Guide 2025 | Step-by-Step AAFC Federal Funding Process",
-  description: "Complete step-by-step guide to applying for Agriculture & Agri-Food Canada federal funding. Get AAFC application templates, agricultural strategies, and proven frameworks for AgriInnovate, AgriScience, and CAP programs.",
-  keywords: "Agriculture Agri-Food Canada application guide, AAFC funding application process, AgriInnovate application guide, AgriScience funding application, how to apply AAFC funding, agricultural grants application Canada",
-  openGraph: {
-    title: "Agriculture & Agri-Food Canada Application Guide 2025 | AAFC Federal Funding Process",
-    description: "Step-by-step guide with templates and strategies for successful AAFC federal funding applications across all agricultural programs.",
-    url: "https://www.fsidigital.ca/guides/apply-agriculture-agri-food-canada",
+  title: "Agriculture & Agri-Food Canada Application Guide 2025 | Federal Funding",
+  description: "Step-by-step guide to applying for AAFC federal funding. Get application templates, AgriInnovate strategies, and compliance checklists.",
+  keywords: "Agriculture Agri-Food Canada application, AAFC funding guide, AgriInnovate application, AgriScience program, farm grants Canada, agricultural funding process",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/guides/apply-agriculture-agri-food-canada",
   },
+  openGraph: {
+    title: "Agriculture & Agri-Food Canada Application Guide 2025 | Federal Funding",
+    description: "Step-by-step guide with templates and strategies for successful AAFC federal funding applications.",
+    url: "https://www.fsidigital.ca/guides/apply-agriculture-agri-food-canada",
+    images: ["/og-image.png"],
+  },
+}
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who is eligible for AAFC funding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Eligibility varies by program but generally includes for-profit companies, cooperatives, and non-profit organizations operating in the agriculture, agri-food, and agri-based products sectors. Applicants must be legal entities capable of entering into legally binding agreements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between AgriInnovate and AgriScience?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AgriScience focuses on pre-commercial research and development (science-based). AgriInnovate focuses on the commercialization and adoption of innovative technologies that are already developed but need help reaching the market."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is AAFC funding repayable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends. AgriInnovate contributions are typically repayable (interest-free loans), while AgriScience contributions are often non-repayable (grants). Review the specific terms of the stream you are applying to."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does the application process take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The process can take 4-6 months or longer. It typically involves a pre-screening form, followed by a full application invitation. Due diligence and final approval add to the timeline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I stack AAFC funding with other grants?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, stacking is generally permitted up to a certain limit (often 75% or 90% of total project costs). You must disclose all other funding sources in your application."
+      }
+    }
+  ]
 }
 
 export default function AgricultureAgriFoodGuide() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-20">
+        <section className="bg-gradient-to-br from-green-700 to-emerald-900 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-white/20 text-white border-white/30">
-                🌾 Federal Agricultural Funding Application Guide
+                🌾 Federal Agricultural Funding Guide
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
                 Agriculture & Agri-Food Canada Application Guide
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-green-100 leading-relaxed text-pretty">
-                Step-by-step guide to successfully applying for AAFC federal funding across all agricultural programs. 
-                Complete with sector-specific templates, federal compliance strategies, and proven application frameworks.
+                The complete guide to securing AAFC federal funding. Master the application process for AgriInnovate,
+                AgriScience, and other key agricultural programs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
-                  <Link href="/download/agriculture-agri-food-application-kit">
-                    <Download className="w-5 h-5 mr-2" />
-                    Download AAFC Agricultural Kit
+                  <Link href="#programs">
+                    View Programs
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-green-700/30 border-white/30 text-white hover:bg-white/20" asChild>
                   <Link href="/blog/agriculture-agri-food-canada-government-grants">
-                    Back to AAFC Government Guide
+                    Back to Overview
                   </Link>
                 </Button>
               </div>
@@ -54,518 +108,79 @@ export default function AgricultureAgriFoodGuide() {
           </div>
         </section>
 
+        {/* QUERY HOOK: Common Questions */}
+        <div className="bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm/50">
+          <div className="container mx-auto px-4 py-4">
+            <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-gray-600 gap-4">
+              <span className="font-semibold text-gray-900 flex items-center">
+                <MessageCircle className="w-4 h-4 mr-2 text-green-700" />
+                Quick Links:
+              </span>
+              <div className="flex gap-4 overflow-x-auto no-scrollbar whitespace-nowrap">
+                <Link href="#programs" className="hover:text-green-700 transition-colors">Programs</Link>
+                <Link href="#process" className="hover:text-green-700 transition-colors">timeline</Link>
+                <Link href="#strategies" className="hover:text-green-700 transition-colors">Strategies</Link>
+                <Link href="#mistakes" className="hover:text-green-700 transition-colors">Mistakes</Link>
+                <Link href="#faq" className="hover:text-green-700 transition-colors">FAQs</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Quick Reference Stats */}
-        <section className="py-16 bg-white">
+        <section className="py-12 bg-white border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="grid md:grid-cols-4 gap-8 text-center">
                 <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">10-20 Weeks</div>
-                  <div className="text-gray-600">Average Application Process</div>
+                  <div className="text-3xl font-bold text-green-700 mb-2">Multi-Year</div>
+                  <div className="text-gray-600">Funding Agreements</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">12+ Programs</div>
-                  <div className="text-gray-600">AAFC Federal Streams</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-2">$10M+</div>
+                  <div className="text-gray-600">Max Project Value</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-orange-600 mb-2">91%</div>
-                  <div className="text-gray-600">Success Rate (Expert Prep)</div>
+                  <div className="text-3xl font-bold text-purple-600 mb-2">Repayable</div>
+                  <div className="text-gray-600">For Commercial Projects</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">$15M</div>
-                  <div className="text-gray-600">Maximum AAFC Funding</div>
+                  <div className="text-3xl font-bold text-orange-600 mb-2">Sector</div>
+                  <div className="text-gray-600">Must be Agri-Focused</div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* AAFC Application Timeline */}
-        <section className="py-16 bg-gray-50">
+        {/* Program Selection */}
+        <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">AAFC Federal Application Timeline</h2>
-              
-              <div className="space-y-8">
-                {/* Phase 1: Program Selection & Agricultural Alignment */}
-                <Card className="border-green-200">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-green-700">Phase 1: Program Selection & Agricultural Sector Alignment</CardTitle>
-                      <Badge className="bg-green-100 text-green-800">Weeks 1-3</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-3">AAFC Program Stream Selection:</h5>
-                        <ul className="text-sm space-y-2">
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                            <span><strong>AgriInnovate:</strong> Pre-commercial innovation and technology development</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                            <span><strong>AgriScience:</strong> Industry-led research partnerships and clusters</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                            <span><strong>AgriCompetitiveness:</strong> Market development and competitiveness</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                            <span><strong>AgriDiversity:</strong> Underrepresented groups in agriculture</span>
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-3">Federal Agricultural Focus Areas:</h5>
-                        <ul className="text-sm space-y-2">
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                            <span>Sustainable agriculture and climate resilience</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                            <span>Digital agriculture and precision farming</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                            <span>Alternative proteins and food innovation</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                            <span>Agricultural biotechnology and genomics</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-6 bg-green-50 border border-green-200 rounded-lg p-4">
-                      <div className="flex items-start">
-                        <Leaf className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
-                        <div>
-                          <p className="text-green-800 font-medium">Agricultural Sector Verification:</p>
-                          <p className="text-green-700 text-sm">
-                            Ensure your project has clear connection to agriculture, agri-food, or agri-based products sectors. 
-                            AAFC requires direct agricultural benefit and sector relevance for all funding programs.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Choose Your AAFC Program Stream</h2>
 
-                {/* Phase 2: Project Development & Federal Priority Alignment */}
-                <Card className="border-blue-200">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-blue-700">Phase 2: Project Development & Federal Priority Alignment</CardTitle>
-                      <Badge className="bg-blue-100 text-blue-800">Weeks 3-8</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-3">Agricultural Innovation Project Framework:</h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div className="bg-blue-50 p-4 rounded">
-                            <strong>Technical Innovation Component:</strong>
-                            <ul className="text-sm mt-2 space-y-1">
-                              <li>• Novel agricultural technologies or processes</li>
-                              <li>• Scientific advancement and research methodology</li>
-                              <li>• Technology readiness level progression</li>
-                              <li>• Intellectual property development potential</li>
-                            </ul>
-                          </div>
-                          <div className="bg-blue-50 p-4 rounded">
-                            <strong>Agricultural Market Application:</strong>
-                            <ul className="text-sm mt-2 space-y-1">
-                              <li>• Clear commercialization pathway and timeline</li>
-                              <li>• Market demand validation and sizing</li>
-                              <li>• Competitive advantage and differentiation</li>
-                              <li>• Scalability and adoption potential</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <h5 className="font-semibold mb-3">Federal Agricultural Policy Integration:</h5>
-                        <div className="grid md:grid-cols-3 gap-4 text-sm">
-                          <div>
-                            <strong>Sustainability Goals:</strong>
-                            <ul className="mt-1 space-y-1">
-                              <li>• Environmental impact reduction</li>
-                              <li>• Climate change adaptation and mitigation</li>
-                              <li>• Sustainable resource management</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <strong>Competitiveness Enhancement:</strong>
-                            <ul className="mt-1 space-y-1">
-                              <li>• Productivity improvements and efficiency gains</li>
-                              <li>• Export market development opportunities</li>
-                              <li>• Value-added product development</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <strong>Innovation Excellence:</strong>
-                            <ul className="mt-1 space-y-1">
-                              <li>• Research collaboration and partnerships</li>
-                              <li>• Knowledge transfer and commercialization</li>
-                              <li>• Sector capacity building and development</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Phase 3: Comprehensive Federal Application Development */}
-                <Card className="border-purple-200">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-purple-700">Phase 3: Comprehensive Federal Application Development</CardTitle>
-                      <Badge className="bg-purple-100 text-purple-800">Weeks 8-15</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-3">AAFC Federal Application Components:</h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div>
-                            <h6 className="font-medium mb-2">Agricultural Business Case:</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Comprehensive agricultural business plan</li>
-                              <li>• Detailed project technical specifications</li>
-                              <li>• Financial projections and funding requirements</li>
-                              <li>• Risk assessment and mitigation strategies</li>
-                              <li>• Performance measurement and evaluation plan</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h6 className="font-medium mb-2">Federal Compliance Documentation:</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Federal incorporation and agricultural focus verification</li>
-                              <li>• Management team qualifications and experience</li>
-                              <li>• Partnership agreements and collaboration frameworks</li>
-                              <li>• Environmental and regulatory compliance</li>
-                              <li>• Intellectual property and commercialization strategy</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <h5 className="font-semibold mb-3">Program-Specific Application Requirements:</h5>
-                        <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                          <div className="grid md:grid-cols-2 gap-4 text-sm">
-                            <div>
-                              <strong>AgriInnovate Specific:</strong>
-                              <ul className="mt-1 space-y-1">
-                                <li>• Pre-commercial innovation focus documentation</li>
-                                <li>• Technology development timeline and milestones</li>
-                                <li>• Commercialization pathway and market strategy</li>
-                                <li>• Innovation partnership and collaboration plan</li>
-                              </ul>
-                            </div>
-                            <div>
-                              <strong>AgriScience Specific:</strong>
-                              <ul className="mt-1 space-y-1">
-                                <li>• Research partnership agreements and roles</li>
-                                <li>• Scientific methodology and research approach</li>
-                                <li>• Knowledge mobilization and transfer strategy</li>
-                                <li>• Research cluster coordination (if applicable)</li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Phase 4: Federal Review & Agricultural Assessment */}
-                <Card className="border-orange-200">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-orange-700">Phase 4: Federal Review & Agricultural Merit Assessment</CardTitle>
-                      <Badge className="bg-orange-100 text-orange-800">Weeks 15-20</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-3">AAFC Multi-Level Review Process:</h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div>
-                            <h6 className="font-medium mb-2 text-orange-700">Technical Assessment:</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Agricultural science and technical merit evaluation</li>
-                              <li>• Innovation potential and technological advancement</li>
-                              <li>• Research methodology and scientific rigor</li>
-                              <li>• Technical feasibility and implementation risk</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h6 className="font-medium mb-2 text-orange-700">Policy and Strategic Review:</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Federal agricultural priority alignment</li>
-                              <li>• Sustainable CAP strategic objective contribution</li>
-                              <li>• Economic impact and sector competitiveness</li>
-                              <li>• Environmental and sustainability benefits</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                        <h5 className="font-semibold text-green-800 mb-2">Upon AAFC Federal Approval:</h5>
-                        <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
-                          <ul className="space-y-1">
-                            <li>• Federal contribution agreement negotiation and execution</li>
-                            <li>• Agricultural milestone and deliverable establishment</li>
-                            <li>• Performance measurement framework implementation</li>
-                          </ul>
-                          <ul className="space-y-1">
-                            <li>• Ongoing AAFC program management support</li>
-                            <li>• Agricultural sector network and partnership access</li>
-                            <li>• Federal program integration opportunities</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Agricultural Sector-Specific Strategies */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Agricultural Sector-Specific Application Strategies</h2>
-              
               <div className="space-y-6">
-                {/* Primary Production Agriculture */}
-                <Card>
+                <Card className="border-green-200">
                   <CardHeader>
                     <div className="flex items-center">
                       <Leaf className="w-6 h-6 text-green-600 mr-3" />
-                      <CardTitle>Primary Production Agriculture Strategy</CardTitle>
+                      <CardTitle>AgriInnovate Program</CardTitle>
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div>
-                        <h6 className="font-semibold mb-2">Crop Production Innovation:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Precision agriculture and digital farming</li>
-                          <li>• Sustainable crop management practices</li>
-                          <li>• Climate-resilient varieties and genetics</li>
-                          <li>• Integrated pest and disease management</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-semibold mb-2">Livestock Advancement:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Animal health and welfare technologies</li>
-                          <li>• Feed efficiency and nutrition optimization</li>
-                          <li>• Breeding and genetics innovation</li>
-                          <li>• Sustainable livestock production systems</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-semibold mb-2">Resource Management:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Water use efficiency and conservation</li>
-                          <li>• Soil health and carbon sequestration</li>
-                          <li>• Renewable energy adoption</li>
-                          <li>• Waste reduction and circular economy</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Agri-Food Processing */}
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center">
-                      <Building className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle>Agri-Food Processing & Value-Added Strategy</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h6 className="font-semibold mb-2 text-blue-700">Food Innovation Focus:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Alternative protein development and scaling</li>
-                          <li>• Functional foods and nutraceuticals</li>
-                          <li>• Novel food processing technologies</li>
-                          <li>• Food safety and quality assurance systems</li>
-                          <li>• Packaging innovation and sustainability</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-semibold mb-2 text-orange-700">Market Development:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Export market penetration and development</li>
-                          <li>• Brand development and consumer engagement</li>
-                          <li>• Supply chain optimization and traceability</li>
-                          <li>• Local food systems and short supply chains</li>
-                          <li>• E-commerce and direct-to-consumer platforms</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Agri-Based Products */}
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center">
-                      <Shield className="w-6 h-6 text-purple-600 mr-3" />
-                      <CardTitle>Agri-Based Products & Bio-Economy Strategy</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div>
-                        <h6 className="font-semibold mb-2">Bio-Based Materials:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Bio-plastics and biodegradable materials</li>
-                          <li>• Agricultural fiber and composite development</li>
-                          <li>• Bio-based chemicals and pharmaceuticals</li>
-                          <li>• Renewable material substitution</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-semibold mb-2">Energy Applications:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Bioenergy and biofuel production</li>
-                          <li>• Agricultural waste valorization</li>
-                          <li>• Renewable energy integration</li>
-                          <li>• Carbon capture and utilization</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-semibold mb-2">Industrial Applications:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Agricultural biomass processing</li>
-                          <li>• Bio-refinery development</li>
-                          <li>• Specialty chemical production</li>
-                          <li>• Circular economy integration</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Common AAFC Application Mistakes */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Common AAFC Federal Application Mistakes</h2>
-              
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-bold text-lg mb-4 text-red-700">❌ Agricultural Federal Application Killers:</h4>
-                  <ul className="space-y-4">
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Weak Agricultural Connection:</strong>
-                        <p className="text-sm text-gray-600">Insufficient demonstration of direct benefit to agriculture, agri-food, or agri-based sectors</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Limited Innovation Component:</strong>
-                        <p className="text-sm text-gray-600">Failing to clearly articulate innovative aspects and technological advancement potential</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Poor Commercialization Strategy:</strong>
-                        <p className="text-sm text-gray-600">Inadequate market analysis and pathway to commercialization development</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="font-bold text-lg mb-4 text-orange-700">⚠️ Federal Agricultural Process Errors:</h4>
-                  <ul className="space-y-4">
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Wrong Program Selection:</strong>
-                        <p className="text-sm text-gray-600">Not matching project type and stage with appropriate AAFC program stream</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Limited Partnership Strategy:</strong>
-                        <p className="text-sm text-gray-600">Not leveraging agricultural industry partnerships and research collaborations</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Insufficient Federal Alignment:</strong>
-                        <p className="text-sm text-gray-600">Not demonstrating clear connection to federal agricultural priorities and policies</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* AAFC Federal Success Strategies */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">AAFC Federal Application Success Strategies</h2>
-              
-              <div className="space-y-6">
-                <Card className="border-green-200">
-                  <CardHeader>
-                    <CardTitle className="text-green-700">Agricultural Federal Excellence Framework</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <h5 className="font-semibold mb-2">Agricultural Sector Optimization:</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• Clearly define agricultural sector connection and benefits</li>
-                          <li>• Demonstrate understanding of sector challenges and opportunities</li>
-                          <li>• Position project within agricultural value chain context</li>
-                          <li>• Show measurable impact on agricultural productivity or sustainability</li>
-                        </ul>
+                        <h6 className="font-semibold mb-2">Purpose:</h6>
+                        <p className="text-sm text-gray-600">
+                          To accelerate the commercialization, adoption, and demonstration of innovative products, technologies, processes, or services.
+                        </p>
                       </div>
                       <div>
-                        <h5 className="font-semibold mb-2">Federal Priority Integration:</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• Align project with Sustainable CAP strategic priorities</li>
-                          <li>• Connect to federal climate and environmental objectives</li>
-                          <li>• Demonstrate contribution to Canadian competitiveness</li>
-                          <li>• Show integration potential with broader federal initiatives</li>
+                        <h6 className="font-semibold mb-2">Key Features:</h6>
+                        <ul className="text-sm space-y-1 text-gray-600">
+                          <li>• Repayable contributions (interest-free loans)</li>
+                          <li>• Upcoming technology adoption focus</li>
+                          <li>• Must be "new to Canada" or "new to world"</li>
                         </ul>
                       </div>
                     </div>
@@ -574,126 +189,301 @@ export default function AgricultureAgriFoodGuide() {
 
                 <Card className="border-blue-200">
                   <CardHeader>
-                    <CardTitle className="text-blue-700">Strategic Agricultural Partnership Development</CardTitle>
+                    <div className="flex items-center">
+                      <Target className="w-6 h-6 text-blue-600 mr-3" />
+                      <CardTitle>AgriScience Program</CardTitle>
+                    </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
+                    <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <h5 className="font-semibold mb-2">Maximizing Agricultural Ecosystem Value:</h5>
-                        <div className="grid md:grid-cols-3 gap-4 text-sm">
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• Partner with agricultural research institutions</li>
-                              <li>• Engage commodity organizations and industry associations</li>
-                              <li>• Connect with agricultural technology companies</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• Collaborate with agricultural producers and processors</li>
-                              <li>• Leverage provincial agricultural departments</li>
-                              <li>• Engage agricultural extension and advisory services</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• Build relationships with agricultural innovation hubs</li>
-                              <li>• Connect with international agricultural partners</li>
-                              <li>• Engage agricultural finance and investment partners</li>
-                            </ul>
-                          </div>
+                        <h6 className="font-semibold mb-2">Purpose:</h6>
+                        <p className="text-sm text-gray-600">
+                          To support pre-commercial science and research. Often organized into "Clusters" (industry-led) or "Projects" (single recipient).
+                        </p>
+                      </div>
+                      <div>
+                        <h6 className="font-semibold mb-2">Key Features:</h6>
+                        <ul className="text-sm space-y-1 text-gray-600">
+                          <li>• Non-repayable contributions (grants)</li>
+                          <li>• Research center collaboration required</li>
+                          <li>• Long-term scientific study focus</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Application Process Timeline */}
+        <section id="process" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">The Application Timeline</h2>
+              <div className="space-y-8">
+
+                {/* Phase 1 */}
+                <Card className="border-green-200">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-green-700">Phase 1: Pre-Screening</CardTitle>
+                      <Badge className="bg-green-100 text-green-800">Month 1</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3 text-sm text-gray-600">
+                      <li className="flex items-start">
+                        <FileText className="w-5 h-5 text-green-500 mr-2" />
+                        <div>
+                          <strong>Applicant Guide Review:</strong> Carefully read the specific Applicant Guide for your stream. AAFC guides are very detailed.
                         </div>
+                      </li>
+                      <li className="flex items-start">
+                        <Target className="w-5 h-5 text-green-500 mr-2" />
+                        <div>
+                          <strong>Pre-Screening Form:</strong> Most programs require a short Project Summary Form to determine eligibility before you can submit a full application.
+                        </div>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                {/* Phase 2 */}
+                <Card className="border-blue-200">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-blue-700">Phase 2: Full Application</CardTitle>
+                      <Badge className="bg-blue-100 text-blue-800">Months 2-3</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <h6 className="font-semibold mb-2">Required Docs:</h6>
+                        <ul className="text-sm space-y-1 text-gray-600">
+                          <li>• Full Project Proposal</li>
+                          <li>• Detailed Budget (Cost Breakdown)</li>
+                          <li>• Work Plan (Gantt Chart)</li>
+                          <li>• Financial Statements (2-3 years)</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h6 className="font-semibold mb-2">Strategic Focus:</h6>
+                        <p className="text-sm text-gray-600">
+                          Focus on the "Benefits to Canada." How will this project increase agricultural exports, reduce carbon footprint, or create rural jobs?
+                        </p>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
+                {/* Phase 3 */}
                 <Card className="border-purple-200">
                   <CardHeader>
-                    <CardTitle className="text-purple-700">Long-term Agricultural Federal Strategy</CardTitle>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-purple-700">Phase 3: Approval & Reporting</CardTitle>
+                      <Badge className="bg-purple-100 text-purple-800">Months 4+</Badge>
+                    </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-3">
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-purple-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Multi-Program Agricultural Development:</strong> Use AAFC success to access Strategic Innovation Fund and other large-scale federal programs
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-purple-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Agricultural Innovation Leadership:</strong> Establish your organization as a leader in agricultural innovation and sustainability
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-purple-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Agricultural Sector Integration:</strong> Build comprehensive agricultural value chain partnerships and collaborations
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-purple-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Sustainable Impact Demonstration:</strong> Track and showcase measurable contributions to agricultural sustainability and competitiveness
-                        </div>
-                      </div>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Once approved, you will sign a Contribution Agreement.
+                    </p>
+                    <div className="bg-purple-50 p-4 rounded-lg">
+                      <h5 className="font-bold text-purple-900 mb-2">Reporting Obligations:</h5>
+                      <ul className="space-y-2 text-sm text-purple-800">
+                        <li>• <strong>Financial Claims:</strong> Submitted quarterly or monthly.</li>
+                        <li>• <strong>Performance Reports:</strong> Annual updates on project metrics.</li>
+                        <li>• <strong>Final Report:</strong> Comprehensive summary at project end.</li>
+                      </ul>
                     </div>
                   </CardContent>
                 </Card>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Success Strategies */}
+        <section id="strategies" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Sector-Specific Application Strategies</h2>
+
+              <div className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <div className="flex items-center">
+                      <Leaf className="w-6 h-6 text-green-600 mr-3" />
+                      <CardTitle>Primary Production (Farms)</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 mb-3">
+                      <strong>Focus:</strong> Efficiency and Sustainability.
+                    </p>
+                    <ul className="list-disc list-inside text-sm text-gray-600 space-y-2">
+                      <li>Emphasize "Precision Agriculture" technologies.</li>
+                      <li>Highlight reductions in fertilizer/water use (environmental benefit).</li>
+                      <li>Calculate labor savings due to automation.</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <div className="flex items-center">
+                      <Building className="w-6 h-6 text-blue-600 mr-3" />
+                      <CardTitle>Food Processing</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 mb-3">
+                      <strong>Focus:</strong> Product Innovation and Export.
+                    </p>
+                    <ul className="list-disc list-inside text-sm text-gray-600 space-y-2">
+                      <li>Are you making a product that replaces an import? (Import Substitution)</li>
+                      <li>Are you extending shelf-life to reach new export markets?</li>
+                      <li>Are you using waste streams to create new value (Circular Economy)?</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Mistakes */}
+        <section id="mistakes" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Common Application Mistakes</h2>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="font-bold text-lg mb-4 text-red-700">❌ Eligibility Failures:</h4>
+                  <ul className="space-y-4">
+                    <li className="flex items-start">
+                      <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
+                      <div>
+                        <strong>Not Innovative Enough:</strong>
+                        <p className="text-sm text-gray-600">Buying standard production equipment usually doesn't qualify for AgriInnovate. It must be novel.</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
+                      <div>
+                        <strong>Wrong Sector:</strong>
+                        <p className="text-sm text-gray-600">Project must clearly fall under agriculture or agri-food. Forestry or aquaculture may have separate programs or limitations.</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-lg mb-4 text-orange-700">⚠️ Process Failures:</h4>
+                  <ul className="space-y-4">
+                    <li className="flex items-start">
+                      <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
+                      <div>
+                        <strong>Incomplete Financials:</strong>
+                        <p className="text-sm text-gray-600">AAFC requires robust financial proof (pro-forma statements) to ensure you can pay back the loan.</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
+                      <div>
+                        <strong>Missed Environmental Goals:</strong>
+                        <p className="text-sm text-gray-600">Failing to quantify environmental benefits (e.g., "reduced GHG by X tonnes") weakens your case.</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-left">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <HelpCircle className="w-6 h-6 text-green-700 mr-2" />
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-4">
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">Can farm businesses apply?</h3>
+                  <p className="text-gray-600">Yes, primary producers are eligible for many AAFC programs, provided the project involves innovation or adoption of new technology, not just routine expansion.</p>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">Are there grants for startups?</h3>
+                  <p className="text-gray-600">It is difficult for early-stage startups without revenue to qualify for AgriInnovate (repayable). Startups may look at AgriScience (if R&D focused) or partner with established firms.</p>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">What qualifies as "Innovative"?</h3>
+                  <p className="text-gray-600">"Innovative" generally means the technology or process is new to Canada or newly adapted for the agricultural sector. Off-the-shelf solutions are rarely funded.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Neural Network: Related Guides */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Explore Related Funding</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/apply-regional-development-agencies" className="group block h-full">
+                  <div className="bg-gray-50 border hover:border-blue-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-blue-600 font-semibold mb-2">Regional</div>
+                    <h4 className="font-bold text-gray-900 group-hover:text-blue-700 mb-2">RDA Funding Guide</h4>
+                    <p className="text-sm text-gray-500 flex-grow">Regional agencies often fund food processing and rural businesses.</p>
+                    <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/apply-small-business-grants" className="group block h-full">
+                  <div className="bg-gray-50 border hover:border-green-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-green-600 font-semibold mb-2">Small Business</div>
+                    <h4 className="font-bold text-gray-900 group-hover:text-green-700 mb-2">Small Business Grants</h4>
+                    <p className="text-sm text-gray-500 flex-grow">General grants for hiring and digital adoption.</p>
+                    <div className="mt-3 text-xs text-green-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/apply-sba-loans" className="group block h-full">
+                  <div className="bg-gray-50 border hover:border-purple-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-purple-600 font-semibold mb-2">Loans</div>
+                    <h4 className="font-bold text-gray-900 group-hover:text-purple-700 mb-2">CSBFP Loans</h4>
+                    <p className="text-sm text-gray-500 flex-grow">Government-backed loans for equipment and land (often used by farms).</p>
+                    <div className="mt-3 text-xs text-purple-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
         </section>
 
         {/* Get Expert Help CTA */}
-        <section className="py-20 bg-gradient-to-r from-green-600 to-green-800">
+        <section className="py-20 bg-gradient-to-r from-green-700 to-emerald-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center text-white">
               <h2 className="text-4xl font-bold mb-6">
-                Need Expert Help with Your AAFC Agricultural Application?
+                Need Help Branding or Applying?
               </h2>
               <p className="text-xl text-green-100 mb-8">
-                Maximize your success with agricultural funding specialists. Our experts have secured 
-                over $18M in AAFC federal funding with a 91% success rate and deep agricultural sector expertise.
+                AAFC applications can be complex. Our team of agricultural funding experts can help you navigate AgriInnovate and AgriScience.
               </p>
-              <div className="bg-white/10 rounded-lg p-6 mb-8">
-                <h4 className="font-semibold text-white mb-4">AAFC Agricultural Expert Services Include:</h4>
-                <div className="grid md:grid-cols-2 gap-4 text-sm text-green-100">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>AAFC agricultural application preparation</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Agricultural sector alignment strategy</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Federal agricultural priority alignment</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Agricultural partnership development</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Multi-program agricultural funding optimization</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Agricultural innovation commercialization strategy</span>
-                  </div>
-                </div>
-              </div>
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
-                <Link href="/contact?service=agriculture-agri-food-expert-help">
-                  Get AAFC Agricultural Expert Help
+                <Link href="/contact?service=agriculture-expert-help">
+                  Book a Consultation
                 </Link>
               </Button>
-              <p className="text-green-200 text-sm mt-4">
-                91% success rate for AAFC applications • Average funding secured: $625K • All agricultural programs expertise
-              </p>
             </div>
           </div>
         </section>

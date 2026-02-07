@@ -3,668 +3,339 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, FileText, DollarSign, Target, AlertCircle, Download, Building, Users, Zap, Star, TrendingUp } from "lucide-react"
+import { CheckCircle, Clock, FileText, DollarSign, Target, AlertCircle, Download, Building, Users, Zap, Star, TrendingUp, HelpCircle, ArrowRight, MessageCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Youth Entrepreneurship Funding Application Guide 2025 | Step-by-Step CYBF & Young Entrepreneur Grants",
-  description: "Complete step-by-step guide to applying for Canadian youth entrepreneurship funding. Get CYBF application templates, Futurpreneur strategies, and young entrepreneur funding guides for ages 18-35.",
-  keywords: "youth entrepreneurship application guide, how to apply CYBF funding, young entrepreneur grant application Canada, Futurpreneur application process, Canadian youth business funding guide, CYBF application templates, youth business loan application",
+  title: "Youth Entrepreneurship Funding Guide 2025 | Futurpreneur & Grants",
+  description: "Complete guide to Futurpreneur Canada loans, youth business grants, and startup funding for ages 18-39. Get application templates and mentor matching tips.",
+  keywords: "Futurpreneur Canada, youth business grants, young entrepreneur loans, CYBF application, under 40 business funding, student business grants Ontario",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/guides/apply-youth-entrepreneurship-funding",
+  },
   openGraph: {
-    title: "Youth Entrepreneurship Funding Application Guide 2025 | CYBF & Young Entrepreneur Grants",
-    description: "Step-by-step guide with templates and strategies for successful youth entrepreneurship funding applications in Canada.",
+    title: "Youth Entrepreneurship Funding Guide 2025",
+    description: "Launch your business with Futurpreneur and youth grants. Step-by-step guide for Canadian founders aged 18-39.",
     url: "https://www.fsidigital.ca/guides/apply-youth-entrepreneurship-funding",
+    images: ["/og-image.png"],
   },
 }
 
-export default function YouthEntrepreneurshipApplicationGuide() {
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the age limit for Futurpreneur?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Futurpreneur is open to Canadian citizens or permanent residents aged 18 to 39."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Futurpreneur a grant or a loan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is primarily a low-interest loan (up to $60,000) combined with mandatory mentorship. It is not a non-repayable grant, though some partnered programs may offer small grant components."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a business plan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. A complete business plan and cash flow projection are required. Futurpreneur provides a 'Business Plan Writer' tool to help."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I apply if I have bad credit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Futurpreneur is more flexible than banks, but you generally need a clean credit history (no recent bankruptcies or R9s). Your character and business viability matter more than a perfect score."
+      }
+    }
+  ]
+}
+
+export default function YouthEntrepreneurshipFundingGuide() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-6 bg-white/20 text-white border-white/30">
-                🧑‍💼 Youth Funding Application Guide
+              <Badge className="mb-6 bg-blue-500/20 text-blue-100 border-blue-400/30 backdrop-blur-sm">
+                🚀 Youth Founder Series
               </Badge>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
-                Youth Entrepreneurship Funding Application Guide
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
+                Youth Entrepreneurship <br className="hidden md:block" /> Funding Guide
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed text-pretty">
-                Step-by-step guide to successfully applying for Canadian youth entrepreneurship funding. 
-                Complete with CYBF templates, Futurpreneur strategies, and young entrepreneur application frameworks.
+                Turn your side hustle into a startup. <br className="hidden md:block" /> Guide to <strong>Futurpreneur</strong>, <strong>Summer Company</strong>, and <strong>Youth Grants</strong>.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
-                  <Link href="/download/youth-entrepreneurship-kit">
-                    <Download className="w-5 h-5 mr-2" />
-                    Download Youth Funding Kit
+                <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50 font-bold shadow-lg" asChild>
+                  <Link href="#programs">
+                    View Programs
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="bg-blue-700/30 border-white/30 text-white hover:bg-white/20" asChild>
-                  <Link href="/blog/youth-entrepreneurship-canada-funding">
-                    Back to Youth Funding Guide
+                <Button size="lg" variant="outline" className="bg-blue-800/50 border-blue-400/30 text-blue-100 hover:bg-blue-800/80 backdrop-blur-sm" asChild>
+                  <Link href="/blog/youth-business-plan-template">
+                    Download Template
                   </Link>
                 </Button>
               </div>
             </div>
           </div>
         </section>
+
+        {/* QUERY HOOK: Common Questions */}
+        <div className="bg-white border-b border-blue-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
+          <div className="container mx-auto px-4 py-3">
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-blue-900 gap-4">
+              <span className="font-semibold text-blue-900 flex items-center shrink-0">
+                <Zap className="w-4 h-4 mr-2 text-blue-600" />
+                Topic:
+              </span>
+              <div className="flex gap-6 overflow-x-auto no-scrollbar whitespace-nowrap mask-linear-fade">
+                <Link href="#programs" className="hover:text-blue-700 transition-colors flex items-center gap-1"><DollarSign className="w-3 h-3" /> Funding Programs</Link>
+                <Link href="#process" className="hover:text-blue-700 transition-colors flex items-center gap-1"><Clock className="w-3 h-3" /> Process</Link>
+                <Link href="#mistakes" className="hover:text-blue-700 transition-colors flex items-center gap-1"><AlertCircle className="w-3 h-3" /> Killer Mistakes</Link>
+                <Link href="#faq" className="hover:text-blue-700 transition-colors flex items-center gap-1"><HelpCircle className="w-3 h-3" /> FAQs</Link>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Quick Reference Stats */}
-        <section className="py-16 bg-white">
+        <section className="py-12 bg-white border-b border-blue-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">6-10 Weeks</div>
-                  <div className="text-gray-600">Average CYBF Review Time</div>
+              <div className="grid md:grid-cols-4 gap-8 text-center divide-x divide-blue-50">
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-blue-600 mb-2">$60K</div>
+                  <div className="text-blue-900 text-sm font-medium uppercase tracking-wide">Max Startup Loan</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-indigo-600 mb-2">15+ Documents</div>
-                  <div className="text-gray-600">Youth Application Requirements</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-indigo-600 mb-2">18-39</div>
+                  <div className="text-blue-900 text-sm font-medium uppercase tracking-wide">Age Eligibility</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">78%</div>
-                  <div className="text-gray-600">Success Rate (Expert Prep)</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-purple-600 mb-2">2 Yrs</div>
+                  <div className="text-blue-900 text-sm font-medium uppercase tracking-wide">Free Mentorship</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-orange-600 mb-2">No Fee</div>
-                  <div className="text-gray-600">Application Cost</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-orange-600 mb-2">Local</div>
+                  <div className="text-blue-900 text-sm font-medium uppercase tracking-wide">Community Partners</div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Youth Funding Application Timeline */}
-        <section className="py-16 bg-gray-50">
+        {/* Main Content */}
+        <section id="programs" className="py-16 bg-blue-50/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Youth Entrepreneurship Application Timeline</h2>
-              
+
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Top Youth Funding Programs</h2>
+
               <div className="space-y-8">
-                {/* Phase 1: Program Selection & Eligibility */}
-                <Card className="border-blue-200">
+                {/* Futurpreneur */}
+                <Card className="border-l-4 border-l-blue-600 shadow-lg">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-blue-700">Phase 1: Youth Program Selection & Age Verification</CardTitle>
-                      <Badge className="bg-blue-100 text-blue-800">Weeks 1-2</Badge>
+                      <div className="flex items-center gap-3">
+                        <Target className="w-8 h-8 text-blue-600" />
+                        <CardTitle className="text-xl">Futurpreneur Canada</CardTitle>
+                      </div>
+                      <Badge variant="secondary" className="bg-blue-100 text-blue-800">Must Have</Badge>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-semibold mb-3">Choose Your Youth Funding Program:</h5>
-                        <ul className="text-sm space-y-2">
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-blue-500 mr-2" />
-                            <span><strong>CYBF (Ages 18-39):</strong> Up to $60K startup loans</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-blue-500 mr-2" />
-                            <span><strong>Futurpreneur (Ages 18-39):</strong> Loans + mentorship</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-blue-500 mr-2" />
-                            <span><strong>Provincial Youth Programs:</strong> Regional support</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-blue-500 mr-2" />
-                            <span><strong>YESS Programs (Ages 15-30):</strong> Employment support</span>
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-3">Young Entrepreneur Eligibility Check:</h5>
-                        <ul className="text-sm space-y-2">
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-blue-500 mr-2" />
-                            <span>Age verification (18-39 for most programs)</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-blue-500 mr-2" />
-                            <span>Canadian citizenship or permanent residency</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-blue-500 mr-2" />
-                            <span>Business age (new or under 1 year)</span>
-                          </li>
-                          <li className="flex items-center">
-                            <CheckCircle className="w-4 h-4 text-blue-500 mr-2" />
-                            <span>Character and commitment assessment</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
-                      <div className="flex items-start">
-                        <Zap className="w-5 h-5 text-blue-600 mr-3 mt-0.5" />
-                        <div>
-                          <p className="text-blue-800 font-medium">Young Entrepreneur Advantage:</p>
-                          <p className="text-blue-700 text-sm">
-                            Youth programs prioritize first-time entrepreneurs with innovative ideas and strong 
-                            learning potential over extensive business experience.
-                          </p>
-                        </div>
+                    <p className="text-slate-600 mb-4">
+                      The gold standard for Canadian youth startups. Offers up to $60,000 in financing (collateral-free) + a hand-picked mentor for 2 years.
+                    </p>
+                    <div className="bg-white border border-blue-100 p-4 rounded-lg">
+                      <div className="grid md:grid-cols-2 gap-4 text-sm text-slate-700">
+                        <div className="font-semibold text-center bg-blue-50 p-2 rounded">Includes: $20K from Futurpreneur</div>
+                        <div className="font-semibold text-center bg-blue-50 p-2 rounded">Includes: $40K from BDC</div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                {/* Phase 2: Business Plan Development */}
-                <Card className="border-indigo-200">
+                {/* Summer Company */}
+                <Card className="border-l-4 border-l-red-500 shadow-sm hover:shadow-md transition-shadow">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-indigo-700">Phase 2: Young Entrepreneur Business Plan Development</CardTitle>
-                      <Badge className="bg-indigo-100 text-indigo-800">Weeks 3-5</Badge>
+                      <div className="flex items-center gap-3">
+                        <Star className="w-8 h-8 text-red-500" />
+                        <CardTitle className="text-xl">Summer Company (Ontario)</CardTitle>
+                      </div>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-3">Youth-Focused Business Plan Components:</h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div className="bg-indigo-50 p-4 rounded">
-                            <strong>Innovation & Technology Focus:</strong>
-                            <ul className="text-sm mt-2 space-y-1">
-                              <li>• Digital-first business models</li>
-                              <li>• Tech-savvy customer approaches</li>
-                              <li>• Social media and online marketing</li>
-                              <li>• Sustainable and ethical practices</li>
-                            </ul>
-                          </div>
-                          <div className="bg-indigo-50 p-4 rounded">
-                            <strong>Young Entrepreneur Strengths:</strong>
-                            <ul className="text-sm mt-2 space-y-1">
-                              <li>• Adaptability and learning agility</li>
-                              <li>• Fresh perspectives on market needs</li>
-                              <li>• Energy and commitment to growth</li>
-                              <li>• Willingness to embrace mentorship</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <h5 className="font-semibold mb-3">Financial Planning for Young Entrepreneurs:</h5>
-                        <div className="grid md:grid-cols-3 gap-4 text-sm">
-                          <div>
-                            <strong>Startup Costs:</strong>
-                            <ul className="mt-1 space-y-1">
-                              <li>• Conservative equipment estimates</li>
-                              <li>• Digital-first operational costs</li>
-                              <li>• Lean startup methodology</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <strong>Revenue Projections:</strong>
-                            <ul className="mt-1 space-y-1">
-                              <li>• Realistic market penetration</li>
-                              <li>• Scalable business model</li>
-                              <li>• Multiple revenue streams</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <strong>Growth Strategy:</strong>
-                            <ul className="mt-1 space-y-1">
-                              <li>• Reinvestment priorities</li>
-                              <li>• Team expansion plans</li>
-                              <li>• Technology scaling</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <p className="text-slate-600 mb-4">
+                      For students aged 15-29 returning to school in the fall. Provides up to $3,000 in grants (non-repayable) to run a summer business. Includes hands-on coaching.
+                    </p>
                   </CardContent>
                 </Card>
 
-                {/* Phase 3: CYBF Application Process */}
-                <Card className="border-purple-200">
+                {/* Starter Company Plus */}
+                <Card className="border-l-4 border-l-green-600 shadow-sm hover:shadow-md transition-shadow">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-purple-700">Phase 3: CYBF Application Submission</CardTitle>
-                      <Badge className="bg-purple-100 text-purple-800">Weeks 6-7</Badge>
+                      <div className="flex items-center gap-3">
+                        <Building className="w-8 h-8 text-green-600" />
+                        <CardTitle className="text-xl">Starter Company Plus</CardTitle>
+                      </div>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-3">CYBF Application Requirements:</h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div>
-                            <h6 className="font-medium mb-2">Core Documents:</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Completed CYBF application form</li>
-                              <li>• Comprehensive business plan</li>
-                              <li>• Personal and business financial statements</li>
-                              <li>• Market research and analysis</li>
-                              <li>• Character reference letters (3-5)</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h6 className="font-medium mb-2">Supporting Materials:</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Resume and educational background</li>
-                              <li>• Industry experience documentation</li>
-                              <li>• Proof of Canadian citizenship/PR</li>
-                              <li>• Credit report authorization</li>
-                              <li>• Collateral and security details</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                        <h5 className="font-semibold text-purple-800 mb-2">CYBF Character Assessment Process:</h5>
-                        <div className="grid md:grid-cols-2 gap-4 text-sm">
-                          <div>
-                            <strong>What They Evaluate:</strong>
-                            <ul className="mt-1 space-y-1 text-purple-700">
-                              <li>• Personal integrity and commitment</li>
-                              <li>• Business knowledge and preparation</li>
-                              <li>• Financial responsibility and planning</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <strong>Young Entrepreneur Advantages:</strong>
-                            <ul className="mt-1 space-y-1 text-purple-700">
-                              <li>• Enthusiasm and energy</li>
-                              <li>• Openness to learning and guidance</li>
-                              <li>• Innovation and fresh thinking</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <p className="text-slate-600 mb-4">
+                      Not strictly "youth" but very youth-friendly. Administered by local Small Business Enterprise Centres (SBECs). Offers training and a potential grant of up to $5,000.
+                    </p>
                   </CardContent>
                 </Card>
 
-                {/* Phase 4: Review & Decision */}
-                <Card className="border-orange-200">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-orange-700">Phase 4: Application Review & Mentorship Matching</CardTitle>
-                      <Badge className="bg-orange-100 text-orange-800">Weeks 8-10</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-3">Youth Program Evaluation Criteria:</h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div>
-                            <h6 className="font-medium mb-2 text-orange-700">Business Viability (35%):</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Market opportunity and demand validation</li>
-                              <li>• Financial projections reasonableness</li>
-                              <li>• Competitive advantage and differentiation</li>
-                              <li>• Scalability and growth potential</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h6 className="font-medium mb-2 text-orange-700">Entrepreneur Character (40%):</h6>
-                            <ul className="text-sm space-y-1">
-                              <li>• Commitment and determination</li>
-                              <li>• Learning attitude and coachability</li>
-                              <li>• Leadership potential and vision</li>
-                              <li>• Integrity and trustworthiness</li>
-                            </ul>
-                          </div>
-                        </div>
-                        <div className="mt-4">
-                          <h6 className="font-medium mb-2 text-orange-700">Youth-Specific Factors (25%):</h6>
-                          <div className="grid md:grid-cols-2 gap-4">
-                            <ul className="text-sm space-y-1">
-                              <li>• Innovation and creative thinking</li>
-                              <li>• Technology adoption and digital savvy</li>
-                            </ul>
-                            <ul className="text-sm space-y-1">
-                              <li>• Social impact and sustainability focus</li>
-                              <li>• Adaptability to market changes</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                        <h5 className="font-semibold text-green-800 mb-2">Upon Youth Funding Approval:</h5>
-                        <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
-                          <ul className="space-y-1">
-                            <li>• Loan agreement and funding disbursement</li>
-                            <li>• Mentor matching and introduction</li>
-                            <li>• Ongoing business coaching access</li>
-                          </ul>
-                          <ul className="space-y-1">
-                            <li>• Young entrepreneur network access</li>
-                            <li>• Skills development workshops</li>
-                            <li>• Regular progress monitoring</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Provincial Youth Application Processes */}
-        <section className="py-16 bg-white">
+        {/* Process Section */}
+        <section id="process" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Provincial Youth Entrepreneur Application Processes</h2>
-              
-              <div className="space-y-6">
-                {/* Ontario Summer Company */}
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center">
-                      <Star className="w-6 h-6 text-red-600 mr-3" />
-                      <CardTitle>Ontario Summer Company Program</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div>
-                        <h6 className="font-semibold mb-2">Program Details:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Up to $3,000 grants for students</li>
-                          <li>• Summer business startup support</li>
-                          <li>• Ages 15-29 years eligible</li>
-                          <li>• Mentorship and training included</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-semibold mb-2">Application Requirements:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Ontario resident and student status</li>
-                          <li>• Detailed business proposal</li>
-                          <li>• Financial projections and budgets</li>
-                          <li>• Letter of commitment</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-semibold mb-2">Application Timeline:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Applications open February-March</li>
-                          <li>• Review process: 4-6 weeks</li>
-                          <li>• Program runs May-August</li>
-                          <li>• Final reporting in September</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">The Futurpreneur Path</h2>
 
-                {/* Quebec & BC Programs */}
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center">
-                      <TrendingUp className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle>Quebec & BC Young Entrepreneur Programs</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h6 className="font-semibold mb-2 text-blue-700">Quebec Youth Business Support:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Jeunes Entreprises du Québec funding</li>
-                          <li>• Québec youth entrepreneur tax credits</li>
-                          <li>• Regional development support</li>
-                          <li>• Francophone business networks</li>
-                          <li>• Montreal startup ecosystem access</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-semibold mb-2 text-green-700">BC Young Entrepreneur Initiative:</h6>
-                        <ul className="text-sm space-y-1">
-                          <li>• Small Business Venture Capital funding</li>
-                          <li>• BC youth business development programs</li>
-                          <li>• Vancouver startup community access</li>
-                          <li>• Rural BC young entrepreneur support</li>
-                          <li>• Technology sector youth programs</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              <div className="relative border-l-2 border-blue-200 pl-8 space-y-12 ml-4 md:ml-0">
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Register & Eligibility</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    Sign up on the Futurpreneur portal. Confirm you are 18-39 and a Canadian citizen/PR.
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Draft Your Plan</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    Use their "Business Plan Writer" tool. You *must* demonstrate how you will generate cash flow to repay the loan.
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Mentor Matching</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    This is unique. You must agree to work with a mentor for 2 years. They will match you, or you can bring your own.
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Funding Disbursement</h3>
+                  <p className="text-slate-600 text-sm">
+                    Once approved, BDC and Futurpreneur disburse the funds. It usually takes 4-8 weeks total.
+                  </p>
+                </div>
+
               </div>
             </div>
           </div>
         </section>
 
-        {/* Common Mistakes for Young Entrepreneurs */}
-        <section className="py-16 bg-gray-50">
+        {/* Neural Network: Related Guides */}
+        <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Common Youth Entrepreneurship Funding Mistakes</h2>
-              
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-bold text-lg mb-4 text-red-700">❌ Youth Application Killers:</h4>
-                  <ul className="space-y-4">
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Overconfident Market Projections:</strong>
-                        <p className="text-sm text-gray-600">Young entrepreneurs often overestimate market penetration and customer adoption rates</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Insufficient Industry Research:</strong>
-                        <p className="text-sm text-gray-600">Not demonstrating deep understanding of industry dynamics and competition</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Weak Financial Planning:</strong>
-                        <p className="text-sm text-gray-600">Underestimating startup costs and not planning for cash flow challenges</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="font-bold text-lg mb-4 text-orange-700">⚠️ Young Entrepreneur Process Errors:</h4>
-                  <ul className="space-y-4">
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Poor Character References:</strong>
-                        <p className="text-sm text-gray-600">Choosing references who don't know your business capabilities well</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Ignoring Mentorship Requirements:</strong>
-                        <p className="text-sm text-gray-600">Not showing genuine commitment to learning and receiving guidance</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5" />
-                      <div>
-                        <strong>Limited Network Engagement:</strong>
-                        <p className="text-sm text-gray-600">Not actively participating in young entrepreneur communities and events</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Success Strategies for Young Entrepreneurs */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Young Entrepreneur Success Strategies</h2>
-              
-              <div className="space-y-6">
-                <Card className="border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-blue-700">Youth Entrepreneurship Positioning Framework</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Leverage Your Youth Advantages:</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• Highlight digital nativity and tech-savvy approaches</li>
-                          <li>• Emphasize fresh perspectives on market problems</li>
-                          <li>• Show adaptability and learning agility</li>
-                          <li>• Demonstrate sustainability and social impact focus</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-2">Address Age-Related Concerns:</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• Show maturity in business planning and execution</li>
-                          <li>• Demonstrate commitment beyond just passion</li>
-                          <li>• Provide evidence of reliability and follow-through</li>
-                          <li>• Show openness to mentorship and guidance</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-indigo-200">
-                  <CardHeader>
-                    <CardTitle className="text-indigo-700">Young Entrepreneur Network Building</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="font-semibold mb-2">Strategic Networking for Young Entrepreneurs:</h5>
-                        <div className="grid md:grid-cols-3 gap-4 text-sm">
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• Join CYBF and Futurpreneur alumni networks</li>
-                              <li>• Participate in young entrepreneur meetups</li>
-                              <li>• Attend startup and innovation events</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• Connect with university entrepreneurship centers</li>
-                              <li>• Join industry-specific young professional groups</li>
-                              <li>• Engage with local business incubators</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <ul className="space-y-1">
-                              <li>• Build relationships with potential mentors</li>
-                              <li>• Create peer support networks</li>
-                              <li>• Engage with investors focused on youth</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-purple-200">
-                  <CardHeader>
-                    <CardTitle className="text-purple-700">Financial Strategy for Young Entrepreneurs</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-purple-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Start Lean and Scale Smart:</strong> Begin with minimal viable product and reinvest profits for sustainable growth
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-purple-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Combine Multiple Funding Sources:</strong> Layer CYBF loans with provincial grants and angel investment
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-purple-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Plan for Learning Curves:</strong> Build buffer time and resources for the inevitable learning process
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-purple-600 mr-3 mt-0.5" />
-                        <div>
-                          <strong>Measure and Iterate:</strong> Use data-driven approaches to validate assumptions and pivot when needed
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Get Expert Help CTA */}
-        <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-800">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-4xl font-bold mb-6">
-                Need Expert Help with Your Youth Entrepreneurship Application?
-              </h2>
-              <p className="text-xl text-blue-100 mb-8">
-                Maximize your success with young entrepreneur funding specialists. Our experts have secured 
-                over $8M in CYBF and youth funding with a 78% approval rate for Canadian entrepreneurs aged 18-35.
-              </p>
-              <div className="bg-white/10 rounded-lg p-6 mb-8">
-                <h4 className="font-semibold text-white mb-4">Youth-Focused Expert Services Include:</h4>
-                <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-100">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>CYBF application preparation and optimization</span>
+              <h3 className="text-xl font-bold text-slate-900 mb-6">Explore Related Opportunities</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/apply-small-business-grants" className="group block h-full">
+                  <div className="bg-white border hover:border-green-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-green-600 font-semibold mb-2">Grants</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-green-700 mb-2">Small Business Grants</h4>
+                    <p className="text-sm text-slate-500 flex-grow">General grant programs for all ages.</p>
+                    <div className="mt-3 text-xs text-green-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
                   </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Young entrepreneur positioning strategy</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Character assessment coaching</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Mentor network introductions</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Provincial youth program guidance</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Young entrepreneur network connections</span>
-                  </div>
-                </div>
-              </div>
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
-                <Link href="/contact?service=youth-entrepreneurship-expert-help">
-                  Get Youth Funding Expert Help
                 </Link>
-              </Button>
-              <p className="text-blue-200 text-sm mt-4">
-                78% success rate for young entrepreneurs • Average funding secured: $28K • Youth-focused expertise
-              </p>
+                <Link href="/guides/apply-women-entrepreneurship-strategy" className="group block h-full">
+                  <div className="bg-white border hover:border-pink-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-pink-600 font-semibold mb-2">Women</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-pink-700 mb-2">Female Founders</h4>
+                    <p className="text-sm text-slate-500 flex-grow">WELF and other women-led funding.</p>
+                    <div className="mt-3 text-xs text-pink-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/apply-regional-development-agencies" className="group block h-full">
+                  <div className="bg-white border hover:border-blue-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-blue-600 font-semibold mb-2">Regional</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-blue-700 mb-2">Local Agencies</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Funding specific to your province.</p>
+                    <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-left">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <HelpCircle className="w-6 h-6 text-blue-600 mr-2" />
+                Youth Funding FAQs
+              </h2>
+              <div className="divide-y divide-blue-100">
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Can I apply if I'm a student?</h3>
+                  <p className="text-slate-600 text-sm">For Futurpreneur, generally no, unless you are in your final year or operating a full-time business. For Summer Company, yes, you must be a student.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Is the money taxable?</h3>
+                  <p className="text-slate-600 text-sm">Loans are not taxable income. Grants (like Summer Company) are taxable income for your business.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Can I use the money for anything?</h3>
+                  <p className="text-slate-600 text-sm">Mostly yes, for operating costs, marketing, equipment, etc. You cannot use it to refinance existing debt or pay yourself a salary as the very first expense.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-20 bg-gradient-to-r from-blue-900 to-indigo-900 text-white text-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Launch Your Future</h2>
+            <p className="text-lg text-blue-200 mb-8 max-w-2xl mx-auto">
+              We help young entrepreneurs build credible business plans that get approved by Futurpreneur and BDC.
+            </p>
+            <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50 font-semibold shadow-lg" asChild>
+              <Link href="/contact?service=youth-funding">
+                Get Application Help
+              </Link>
+            </Button>
+          </div>
+        </section>
+
       </div>
       <Footer />
     </>

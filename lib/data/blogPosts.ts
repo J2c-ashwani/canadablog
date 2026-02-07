@@ -1445,6 +1445,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Federal", "Grants", "for", "Women,", "Minorities"]
+    },
+    metrics: [
+      { label: 'WOSB', value: '5%', description: 'Set-aside goal', color: 'text-pink-600', iconName: 'Users' },
+      { label: '8(a)', value: '9 Years', description: 'Program duration', color: 'text-blue-600', iconName: 'Clock' },
+      { label: 'HUBZone', value: '3%', description: 'Set-aside goal', color: 'text-green-600', iconName: 'MapPin' },
+      { label: 'VOSB', value: '3%', description: 'Veteran goal', color: 'text-purple-600', iconName: 'Award' }
+    ],
+    expertTip: {
+      title: "Certification is Required",
+      type: 'warning',
+      content: "You MUST be certified to access set-aside contracts. <strong>WOSB certification is free through SBA</strong>. Don't pay third parties for what the government offers at no cost."
     }
   },
   {
@@ -1579,6 +1590,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Industry-Specific", "Business", "Grants", "Guide", "2026"]
+    },
+    metrics: [
+      { label: 'Sectors', value: '12+', description: 'Industry categories', color: 'text-blue-600', iconName: 'Layers' },
+      { label: 'Tech', value: '$1M+', description: 'SBIR/STTR avg.', color: 'text-green-600', iconName: 'Cpu' },
+      { label: 'Agri', value: '$500K', description: 'USDA typical', color: 'text-orange-600', iconName: 'Leaf' },
+      { label: 'Health', value: '$2M+', description: 'NIH Phase II', color: 'text-purple-600', iconName: 'Heart' }
+    ],
+    expertTip: {
+      title: "Match Your Sector",
+      type: 'tip',
+      content: "Don't apply for generic grants. <strong>Sector-specific programs have less competition</strong> and prefer applicants who deeply understand their industry."
     }
   },
   {
@@ -1713,6 +1735,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Massachusetts", "Tech", "Startup", "Grants", "2026-2027"]
+    },
+    metrics: [
+      { label: 'START', value: '$500K', description: 'MassVentures', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Clean', value: '$350K', description: 'MassCEC', color: 'text-blue-600', iconName: 'Leaf' },
+      { label: 'Life Sci', value: '$100M+', description: 'MLSC Fund', color: 'text-purple-600', iconName: 'Heart' },
+      { label: 'Hub', value: 'Boston', description: 'Cambridge', color: 'text-orange-600', iconName: 'MapPin' }
+    ],
+    expertTip: {
+      title: "SBIR START Program",
+      type: 'success',
+      content: "MassVentures SBIR START matches your federal SBIR with <strong>up to $500K in additional state funding</strong>. Apply immediately after federal award notification."
     }
   },
   {
@@ -1731,6 +1764,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["NASA", "SBIR", "Space", "Tech", "Grants"]
+    },
+    metrics: [
+      { label: 'Phase I', value: '$150K', description: 'Feasibility', color: 'text-green-600', iconName: 'Rocket' },
+      { label: 'Phase II', value: '$850K', description: 'Development', color: 'text-blue-600', iconName: 'DollarSign' },
+      { label: 'Equity', value: '0%', description: 'Non-dilutive', color: 'text-purple-600', iconName: 'Shield' },
+      { label: 'Focus', value: 'Space', description: 'Satellites/Aero', color: 'text-orange-600', iconName: 'Globe' }
+    ],
+    expertTip: {
+      title: "NASA Subtopics",
+      type: 'warning',
+      content: "NASA SBIR has very specific subtopics. Your proposal <strong>MUST align precisely</strong> with an open subtopic—generic 'space tech' proposals will be rejected."
     }
   },
   {
@@ -1749,6 +1793,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["New", "York", "Tech", "Startup", "Grants"]
+    },
+    metrics: [
+      { label: 'Tax-Free', value: '10 Years', description: 'START-UP NY', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Seed', value: '$250K', description: 'Matching Fund', color: 'text-blue-600', iconName: 'TrendingUp' },
+      { label: 'Clean', value: 'NYSERDA', description: 'Energy grants', color: 'text-purple-600', iconName: 'Leaf' },
+      { label: 'Hub', value: 'NYC', description: 'Manhattan/BK', color: 'text-orange-600', iconName: 'MapPin' }
+    ],
+    expertTip: {
+      title: "START-UP NY Campus",
+      type: 'success',
+      content: "START-UP NY requires locating on or near a <strong>SUNY or private college campus</strong>. The 10-year tax exemption makes this worth exploring for NYC-area startups."
     }
   },
   {
@@ -1767,6 +1822,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["NIH", "SBIR", "Biotech", "Grants", "2026-2027"]
+    },
+    metrics: [
+      { label: 'Phase I', value: '$285K', description: 'Feasibility', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Phase II', value: '$2M', description: 'Development', color: 'text-blue-600', iconName: 'TrendingUp' },
+      { label: 'Focus', value: 'Health', description: 'Biotech/Med', color: 'text-purple-600', iconName: 'Heart' },
+      { label: 'Equity', value: '0%', description: 'Non-dilutive', color: 'text-orange-600', iconName: 'Shield' }
+    ],
+    expertTip: {
+      title: "Scientific Rigor",
+      type: 'warning',
+      content: "NIH reviewers are PhD scientists. Your proposal must demonstrate <strong>rigorous scientific methodology</strong>—not just business potential."
     }
   },
   {
@@ -1785,6 +1851,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["NSERC", "Research", "Grants", "Canada", "2026"]
+    },
+    metrics: [
+      { label: 'I2I', value: '$350K', description: 'Tech Transfer', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Discovery', value: '$40K/yr', description: 'Basic Research', color: 'text-blue-600', iconName: 'Search' },
+      { label: 'Alliance', value: '$1M+', description: 'Industry collab', color: 'text-purple-600', iconName: 'Handshake' },
+      { label: 'Duration', value: '1-5 yr', description: 'Multi-year', color: 'text-orange-600', iconName: 'Clock' }
+    ],
+    expertTip: {
+      title: "University Affiliation Required",
+      type: 'warning',
+      content: "NSERC grants require a <strong>principal investigator at a Canadian university</strong>. If you're a startup, partner with a professor who can be your PI."
     }
   },
   {
@@ -1832,6 +1909,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["National", "Women"]
+    },
+    metrics: [
+      { label: 'Role', value: 'Advisory', description: 'Federal council', color: 'text-pink-600', iconName: 'Users' },
+      { label: 'Focus', value: 'Policy', description: 'Advocacy', color: 'text-blue-600', iconName: 'FileText' },
+      { label: 'Programs', value: 'WOSBs', description: 'Certification', color: 'text-green-600', iconName: 'Award' },
+      { label: 'Access', value: '5%', description: 'Set-aside goal', color: 'text-purple-600', iconName: 'Target' }
+    ],
+    expertTip: {
+      title: "NWBC is Advisory",
+      type: 'tip',
+      content: "NWBC doesn't give grants directly. They <strong>advise on policy and certifications</strong>. Use their resources to understand WOSB certification and federal contracting."
     }
   },
   {
@@ -1995,6 +2083,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Private", "Women", "Grants", "Guide", "2026"]
+    },
+    metrics: [
+      { label: 'Amber', value: '$10K', description: 'Monthly grant', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'IFundWomen', value: '$25K', description: 'Growth capital', color: 'text-blue-600', iconName: 'TrendingUp' },
+      { label: 'Cartier', value: '$100K', description: 'Top prize', color: 'text-purple-600', iconName: 'Award' },
+      { label: 'Total', value: '50+', description: 'Foundations', color: 'text-pink-600', iconName: 'Heart' }
+    ],
+    expertTip: {
+      title: "Tell Your Story",
+      type: 'tip',
+      content: "Private foundation grants favor <strong>compelling personal narratives</strong> over financial projections. Focus on your journey, mission, and community impact."
     }
   },
   {
@@ -2013,6 +2112,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Quebec", "Government", "Business", "Grants", "2026"]
+    },
+    metrics: [
+      { label: 'IQ', value: '$500K+', description: 'Investissement QC', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'ESSOR', value: '$50K+', description: 'SME program', color: 'text-blue-600', iconName: 'Briefcase' },
+      { label: 'R&D', value: '30%', description: 'Tax credit', color: 'text-purple-600', iconName: 'TrendingUp' },
+      { label: 'Language', value: 'FR', description: 'French forms', color: 'text-orange-600', iconName: 'FileText' }
+    ],
+    expertTip: {
+      title: "French is Required",
+      type: 'warning',
+      content: "Most Quebec programs require <strong>French-language applications</strong>. Hire a professional translator or use certified translation services for official submissions."
     }
   },
   {
@@ -2205,6 +2315,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["SBA", "7(a)", "Loans", "Complete", "Guide"]
+    },
+    metrics: [
+      { label: 'Max', value: '$5M', description: 'Loan limit', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Rate', value: 'Prime+2.75%', description: 'Max rate', color: 'text-blue-600', iconName: 'TrendingUp' },
+      { label: 'Term', value: '25 Years', description: 'Real estate', color: 'text-purple-600', iconName: 'Clock' },
+      { label: 'Guarantee', value: '85%', description: 'SBA backed', color: 'text-orange-600', iconName: 'Shield' }
+    ],
+    expertTip: {
+      title: "Use an SBA Lender",
+      type: 'tip',
+      content: "Apply through an <strong>SBA Preferred Lender</strong> for faster processing. They can approve loans without SBA review, cutting weeks off approval time."
     }
   },
   {
@@ -2223,6 +2344,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["SBA", "Disaster", "Relief", "Loans", "Guide"]
+    },
+    metrics: [
+      { label: 'Physical', value: '$2M', description: 'Damage loan', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'EIDL', value: '$2M', description: 'Economic injury', color: 'text-blue-600', iconName: 'TrendingUp' },
+      { label: 'Rate', value: '4%', description: 'Fixed rate', color: 'text-purple-600', iconName: 'Percent' },
+      { label: 'Term', value: '30 Years', description: 'Repayment', color: 'text-orange-600', iconName: 'Clock' }
+    ],
+    expertTip: {
+      title: "Apply Immediately",
+      type: 'warning',
+      content: "Disaster loan deadlines are <strong>strict and non-negotiable</strong>. Apply within 60 days of declaration for physical damage, 9 months for economic injury."
     }
   },
   {
@@ -2241,6 +2373,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["SBA", "Loans", "&", "Grants", "Complete"]
+    },
+    metrics: [
+      { label: '7(a)', value: '$5M', description: 'General loans', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: '504', value: '$5.5M', description: 'Real estate', color: 'text-blue-600', iconName: 'Building' },
+      { label: 'Micro', value: '$50K', description: 'Small loans', color: 'text-purple-600', iconName: 'Coins' },
+      { label: 'SBIR', value: '$1.7M', description: 'R&D grants', color: 'text-orange-600', iconName: 'Zap' }
+    ],
+    expertTip: {
+      title: "SBA Doesn't Give Grants",
+      type: 'warning',
+      content: "Despite common belief, <strong>SBA offers loans, not grants</strong>. The only SBA 'grants' are SBIR/STTR R&D funding, which have strict technical requirements."
     }
   },
   {
@@ -2259,6 +2402,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["SBA", "Microloans", "Complete", "Guide", "2026"]
+    },
+    metrics: [
+      { label: 'Max', value: '$50K', description: 'Loan limit', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Term', value: '6 Years', description: 'Repayment', color: 'text-blue-600', iconName: 'Clock' },
+      { label: 'Rate', value: '8-13%', description: 'Interest range', color: 'text-purple-600', iconName: 'Percent' },
+      { label: 'Bonus', value: 'Mentoring', description: 'TA included', color: 'text-orange-600', iconName: 'Users' }
+    ],
+    expertTip: {
+      title: "Intermediary Lenders",
+      type: 'tip',
+      content: "SBA microloans come through <strong>nonprofit intermediary lenders</strong>. Find your local microlender at SBA.gov for personalized support and faster processing."
     }
   },
   {
@@ -2277,6 +2431,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["SBIR", "Small", "Business", "Innovation", "Research"]
+    },
+    metrics: [
+      { label: 'Phase I', value: '$275K', description: 'Feasibility', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Phase II', value: '$1.7M', description: 'Development', color: 'text-blue-600', iconName: 'TrendingUp' },
+      { label: 'Equity', value: '0%', description: 'Non-dilutive', color: 'text-purple-600', iconName: 'Shield' },
+      { label: 'Agencies', value: '11', description: 'Federal sources', color: 'text-orange-600', iconName: 'Target' }
+    ],
+    expertTip: {
+      title: "Agency Match",
+      type: 'tip',
+      content: "Each agency has different priorities. <strong>Match your tech area to the right agency</strong>—NIH for health, DOE for energy, DOD for defense, etc."
     }
   },
   {
@@ -2295,6 +2460,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["SBIR", "&", "STTR", "Grants", "Complete"]
+    },
+    metrics: [
+      { label: 'SBIR', value: '$1.7M', description: 'Max award', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'STTR', value: '$1.7M', description: 'University req', color: 'text-blue-600', iconName: 'School' },
+      { label: 'Rate', value: '20%', description: 'Approval rate', color: 'text-purple-600', iconName: 'TrendingUp' },
+      { label: 'Type', value: 'Grant', description: 'Non-repayable', color: 'text-orange-600', iconName: 'Gift' }
+    ],
+    expertTip: {
+      title: "STTR Requires Partnership",
+      type: 'warning',
+      content: "STTR (Small Business Technology Transfer) <strong>requires a formal university partnership</strong>. SBIR does not. Choose the right program for your situation."
     }
   },
   {
@@ -2429,6 +2605,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["State", "&", "Local", "Business", "Grants"]
+    },
+    metrics: [
+      { label: 'Pool', value: '$500K', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'States', value: '50', description: 'All Covered', color: 'text-blue-600', iconName: 'MapPin' },
+      { label: 'Focus', value: 'Jobs', description: 'Job Creation', color: 'text-purple-600', iconName: 'Users' },
+      { label: 'Type', value: 'Local', description: 'Regional Dev', color: 'text-orange-600', iconName: 'Building' }
+    ],
+    expertTip: {
+      title: "Regional Advantage",
+      type: 'tip',
+      content: "State and local grants often have <strong>less competition</strong> than federal programs. Focus on regions with active economic development zones for higher approval rates."
     }
   },
   {
@@ -2563,6 +2750,17 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Usa", "Federal", "Grants"]
+    },
+    metrics: [
+      { label: 'Pool', value: '$100B+', description: 'Annual Budget', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Agencies', value: '26', description: 'Federal Depts', color: 'text-blue-600', iconName: 'Building' },
+      { label: 'Programs', value: '1000+', description: 'Available', color: 'text-purple-600', iconName: 'FileText' },
+      { label: 'Type', value: 'Varied', description: 'All Sectors', color: 'text-orange-600', iconName: 'Award' }
+    ],
+    expertTip: {
+      title: "Grants.gov Portal",
+      type: 'tip',
+      content: "All federal grants are listed on <strong>Grants.gov</strong>—create an account and set up custom alerts for your industry to catch new opportunities early."
     }
   },
   {

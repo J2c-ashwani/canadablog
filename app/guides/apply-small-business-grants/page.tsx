@@ -3,64 +3,141 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Building, Target, DollarSign, AlertTriangle } from "lucide-react"
+import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Building, Target, DollarSign, AlertTriangle, HelpCircle, ArrowRight, BookOpen } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "How to Apply for Small Business Grants 2025 | Complete Application Guide",
-  description: "Step-by-step guide to applying for small business grants. Learn SBA loan process, federal grant applications, eligibility requirements, and winning strategies.",
-  keywords: "how to apply small business grants, SBA loan application, small business funding guide, grant application process",
-  openGraph: {
-    title: "How to Apply for Small Business Grants 2025",
-    description: "Complete guide to applying for small business grants with step-by-step instructions and winning strategies.",
-    url: "https://www.fsidigital.ca/guides/apply-small-business-grants",
+  title: "Small Business Grants 2025 | SBA & Federal Funding Guide",
+  description: "Stop searching for 'free money' scams. Learn the real way to get small business funding through SBA 7(a) loans, microloans, and federal grants.",
+  keywords: "small business grants, SBA 7a loan requirements, apply for business grants, federal small business funding, startup grants",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/guides/apply-small-business-grants",
   },
+  openGraph: {
+    title: "Small Business Grants & Loans Guide 2025",
+    description: "The definitive guide to SBA loans and federal grants. Learn the difference between 7(a) loans and SBIR grants.",
+    url: "https://www.fsidigital.ca/guides/apply-small-business-grants",
+    images: ["/og-image.png"],
+  },
+}
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are there grants for starting a business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rarely. Federal grants are typically for 'non-commercial' activities like research (SBIR) or non-profits. For a standard business (restaurant, retail, consulting), you typically need an SBA loan, not a grant."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is an SBA 7(a) loan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is the SBA's primary program for providing financial assistance to small businesses. The SBA guarantees a portion of the loan, which makes it easier for banks to lend to you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a business plan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every lender and grant agency will require a detailed business plan that outlines your revenue model, market analysis, and financial projections."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What credit score do I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For SBA loans, most lenders look for a personal credit score of 680 or higher, though some microloans may accept lower scores."
+      }
+    }
+  ]
 }
 
 export default function ApplySmallBusinessGrantsGuide() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-green-600 to-blue-700 text-white py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-gradient-to-br from-blue-900 to-indigo-900 text-white py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                🏢 Small Business Grant Application Guide
+              <Badge className="mb-6 bg-blue-500/20 text-blue-100 border-blue-400/30 backdrop-blur-sm">
+                🏢 SMB Funding Masterclass
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                How to Apply for Small Business Grants
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
+                Small Business Grants <br className="hidden md:block" /> & Funding Guide
               </h1>
-              <p className="text-xl text-green-100 mb-8">
-                Complete step-by-step guide to applying for small business grants and funding. Learn the application process, 
-                requirements, and strategies to secure funding up to $5M for your business.
+              <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed text-pretty">
+                Navigate the <strong>$500 Billion</strong> world of federal funding. <br className="hidden md:block" /> Loans, Grants, and Micro-financing explained.
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50 font-bold shadow-lg" asChild>
+                  <Link href="#programs">
+                    View Programs
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="bg-blue-800/50 border-blue-400/30 text-blue-100 hover:bg-blue-800/80 backdrop-blur-sm" asChild>
+                  <Link href="/blog/sba-loan-checklist">
+                    Download Checklist
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Quick Overview */}
-        <section className="py-16 bg-white">
+        {/* QUERY HOOK: Common Questions */}
+        <div className="bg-white border-b border-blue-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
+          <div className="container mx-auto px-4 py-3">
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-blue-900 gap-4">
+              <span className="font-semibold text-blue-900 flex items-center shrink-0">
+                <Target className="w-4 h-4 mr-2 text-blue-600" />
+                Topic:
+              </span>
+              <div className="flex gap-6 overflow-x-auto no-scrollbar whitespace-nowrap mask-linear-fade">
+                <Link href="#programs" className="hover:text-blue-700 transition-colors flex items-center gap-1"><DollarSign className="w-3 h-3" /> Funding Types</Link>
+                <Link href="#sba-process" className="hover:text-blue-700 transition-colors flex items-center gap-1"><Clock className="w-3 h-3" /> Process</Link>
+                <Link href="#documentation" className="hover:text-blue-700 transition-colors flex items-center gap-1"><FileText className="w-3 h-3" /> Documents</Link>
+                <Link href="#faq" className="hover:text-blue-700 transition-colors flex items-center gap-1"><HelpCircle className="w-3 h-3" /> FAQs</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Reference Stats */}
+        <section className="py-12 bg-white border-b border-blue-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center mb-12">
-                <div>
-                  <div className="text-3xl font-bold text-green-600 mb-2">7-10</div>
-                  <div className="text-gray-600">Business Days Registration</div>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-4 gap-8 text-center divide-x divide-blue-50">
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-blue-600 mb-2">$5M</div>
+                  <div className="text-blue-900 text-sm font-medium uppercase tracking-wide">Max SBA Loan</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">30-90</div>
-                  <div className="text-gray-600">Days Application Process</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-green-600 mb-2">9-11%</div>
+                  <div className="text-blue-900 text-sm font-medium uppercase tracking-wide">Typical Interest (7a)</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">65%</div>
-                  <div className="text-gray-600">SBA Loan Approval Rate</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-purple-600 mb-2">10 Years</div>
+                  <div className="text-blue-900 text-sm font-medium uppercase tracking-wide">Working Capital Term</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-orange-600 mb-2">$5M</div>
-                  <div className="text-gray-600">Maximum SBA Loan Amount</div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-orange-600 mb-2">30 Days</div>
+                  <div className="text-blue-900 text-sm font-medium uppercase tracking-wide">Avg Approval Time</div>
                 </div>
               </div>
             </div>
@@ -68,480 +145,199 @@ export default function ApplySmallBusinessGrantsGuide() {
         </section>
 
         {/* Main Content */}
-        <section className="py-16">
+        <section id="programs" className="py-16 bg-blue-50/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
-              {/* Application Process Overview */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Small Business Grant Application Process</h2>
-                
-                <div className="space-y-6">
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">1</span>
+
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Funding Options Explained</h2>
+
+              <div className="space-y-8">
+                {/* SBA 7(a) */}
+                <Card className="border-l-4 border-l-blue-600 shadow-lg">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Building className="w-8 h-8 text-blue-600" />
+                        <CardTitle className="text-xl">SBA 7(a) Loan</CardTitle>
                       </div>
-                      <h4 className="font-bold text-lg mb-3">Business Setup</h4>
-                      <p className="text-sm text-gray-600">
-                        Register business entity, obtain EIN, and complete legal requirements
-                      </p>
+                      <Badge variant="secondary" className="bg-blue-100 text-blue-800">Most Popular</Badge>
                     </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">2</span>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      The "Standard" small business loan. Can be used for almost anything: real estate, inventory, or buying another business.
+                    </p>
+                    <div className="bg-white border border-blue-100 p-4 rounded-lg">
+                      <div className="grid md:grid-cols-2 gap-4 text-sm text-slate-700">
+                        <div className="font-semibold text-center bg-blue-50 p-2 rounded">Guaranteed up to 85%</div>
+                        <div className="font-semibold text-center bg-blue-50 p-2 rounded">Amortized (Monthly Payments)</div>
                       </div>
-                      <h4 className="font-bold text-lg mb-3">Financial Preparation</h4>
-                      <p className="text-sm text-gray-600">
-                        Prepare financial statements, tax returns, and business plan
-                      </p>
                     </div>
+                  </CardContent>
+                </Card>
 
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">3</span>
+                {/* Microloans */}
+                <Card className="border-l-4 border-l-green-500 shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Target className="w-8 h-8 text-green-500" />
+                        <CardTitle className="text-xl">SBA Microloans</CardTitle>
                       </div>
-                      <h4 className="font-bold text-lg mb-3">Registration</h4>
-                      <p className="text-sm text-gray-600">
-                        Complete SAM.gov registration and set up grant application portals
-                      </p>
                     </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      Smaller loans up to $50,000 for startups and minorities who might not qualify for a big bank loan. Often includes free mentoring.
+                    </p>
+                  </CardContent>
+                </Card>
 
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">4</span>
+                {/* Grants (SBIR) */}
+                <Card className="border-l-4 border-l-purple-600 shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Clock className="w-8 h-8 text-purple-600" />
+                        <CardTitle className="text-xl">Grants (SBIR/STTR)</CardTitle>
                       </div>
-                      <h4 className="font-bold text-lg mb-3">Apply & Follow Up</h4>
-                      <p className="text-sm text-gray-600">
-                        Submit applications and maintain communication with lenders
-                      </p>
+                      <Badge variant="secondary" className="bg-purple-100 text-purple-800">No Repayment</Badge>
                     </div>
-                  </div>
-                </div>
-              </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 mb-4">
+                      <strong>Warning:</strong> Generally only for high-tech R&D (biotech, AI, energy). NOT for opening a coffee shop or buying a truck.
+                    </p>
+                  </CardContent>
+                </Card>
 
-              {/* SBA Loan Application Process */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">SBA Loan Application Guide</h2>
-                
-                <div className="space-y-6">
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700 flex items-center">
-                        <Building className="w-5 h-5 mr-2" />
-                        SBA 7(a) Loan Application
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-3 gap-4 mb-4">
-                        <div className="flex items-center">
-                          <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                          <span><strong>Amount:</strong> Up to $5M</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                          <span><strong>Processing:</strong> 30-90 days</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Target className="w-5 h-5 text-purple-600 mr-2" />
-                          <span><strong>Guarantee:</strong> 75-85%</span>
-                        </div>
-                      </div>
-                      
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3 text-green-700">Step-by-Step Process:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Find an SBA preferred lender</li>
-                            <li>• Complete SBA Form 1919</li>
-                            <li>• Submit financial documentation</li>
-                            <li>• Provide business plan & projections</li>
-                            <li>• Wait for lender decision</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3 text-green-700">Required Documents:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Personal financial statement (SBA Form 413)</li>
-                            <li>• Business financial statements</li>
-                            <li>• Tax returns (3 years)</li>
-                            <li>• Business plan with projections</li>
-                            <li>• Legal documents & licenses</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-purple-200">
-                    <CardHeader>
-                      <CardTitle className="text-purple-700 flex items-center">
-                        <Target className="w-5 h-5 mr-2" />
-                        SBA Microloan Application
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-3 gap-4 mb-4">
-                        <div className="flex items-center">
-                          <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                          <span><strong>Amount:</strong> Up to $50K</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Clock className="w-5 h-5 text-blue-600 mr-2" />
-                          <span><strong>Processing:</strong> 2-4 weeks</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Target className="w-5 h-5 text-purple-600 mr-2" />
-                          <span><strong>Average:</strong> $13K</span>
-                        </div>
-                      </div>
-                      
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-semibold mb-3 text-purple-700">Application Process:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Find microloan intermediary lender</li>
-                            <li>• Attend business counseling session</li>
-                            <li>• Complete simplified application</li>
-                            <li>• Provide basic financial information</li>
-                            <li>• Receive mentoring support</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="font-semibold mb-3 text-purple-700">Ideal For:</h5>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Startup businesses</li>
-                            <li>• Working capital needs</li>
-                            <li>• Equipment purchases</li>
-                            <li>• Inventory financing</li>
-                            <li>• Credit building</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Required Documentation */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Required Documentation Checklist</h2>
-                
-                <div className="grid md:grid-cols-2 gap-8">
-                  <Card className="border-blue-200">
-                    <CardHeader>
-                      <CardTitle className="text-blue-700">📊 Financial Documents</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Business Financial Statements</strong>
-                            <p className="text-sm text-gray-600">Profit & loss, balance sheet, cash flow (3 years)</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Personal Financial Statements</strong>
-                            <p className="text-sm text-gray-600">SBA Form 413 for owners with 20%+ ownership</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Tax Returns</strong>
-                            <p className="text-sm text-gray-600">Business and personal returns (3 years)</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-blue-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Bank Statements</strong>
-                            <p className="text-sm text-gray-600">Business and personal (3 months recent)</p>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">📋 Business Documents</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Business Plan</strong>
-                            <p className="text-sm text-gray-600">Comprehensive plan with financial projections</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Legal Documents</strong>
-                            <p className="text-sm text-gray-600">Articles of incorporation, operating agreements</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Licenses & Permits</strong>
-                            <p className="text-sm text-gray-600">Business license, professional licenses</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start">
-                          <FileText className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                          <div>
-                            <strong>Lease Agreements</strong>
-                            <p className="text-sm text-gray-600">Commercial property lease or purchase agreement</p>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Federal Grant Applications */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Federal Grant Application Process</h2>
-                
-                <div className="space-y-6">
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">1</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Find Opportunities</h4>
-                      <p className="text-sm text-gray-600">
-                        Search grants.gov and agency websites for relevant funding
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">2</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Register Systems</h4>
-                      <p className="text-sm text-gray-600">
-                        Complete SAM.gov and grants.gov workspace registration
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">3</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Develop Proposal</h4>
-                      <p className="text-sm text-gray-600">
-                        Write detailed technical and business proposals
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-xl">4</span>
-                      </div>
-                      <h4 className="font-bold text-lg mb-3">Submit & Track</h4>
-                      <p className="text-sm text-gray-600">
-                        Submit through grants.gov and track application status
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                    <h4 className="font-bold text-lg mb-3 text-blue-800">💡 SBIR Grant Application Tips</h4>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <ul className="text-sm text-blue-700 space-y-1">
-                        <li>• Focus on innovation and commercialization</li>
-                        <li>• Demonstrate market need and opportunity</li>
-                        <li>• Show strong technical team qualifications</li>
-                        <li>• Include detailed budget justification</li>
-                      </ul>
-                      <ul className="text-sm text-blue-700 space-y-1">
-                        <li>• Address all evaluation criteria</li>
-                        <li>• Submit Phase I before Phase II</li>
-                        <li>• Work with experienced consultants</li>
-                        <li>• Allow time for multiple revisions</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Success Strategies */}
-              <div className="bg-green-50 rounded-lg p-8 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Small Business Grant Success Strategies</h2>
-                
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-green-700">✅ Best Practices</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Start with a strong business credit profile</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Maintain organized financial records</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Build relationships with lenders early</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                        <span>Apply to multiple funding sources</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Mistakes</h4>
-                    <ul className="space-y-3 text-gray-700">
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Waiting until you need money to apply</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Incomplete or inaccurate applications</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Not understanding repayment terms</span>
-                      </li>
-                      <li className="flex items-start">
-                        <AlertTriangle className="w-5 h-5 text-red-500 mr-3 mt-0.5" />
-                        <span>Applying to wrong programs for your business</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Official Resources */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Official Small Business Resources</h2>
-                
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="border-green-200">
-                    <CardHeader>
-                      <CardTitle className="text-green-700">SBA Resources</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">SBA.gov</h5>
-                          <p className="text-sm text-gray-600">Official SBA loans and programs</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.sba.gov/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                      
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">SBA Lender Match</h5>
-                          <p className="text-sm text-gray-600">Find approved SBA lenders</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.sba.gov/funding-programs/loans/lender-match" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">SCORE</h5>
-                          <p className="text-sm text-gray-600">Free business mentoring</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.score.org/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-blue-200">
-                    <CardHeader>
-                      <CardTitle className="text-blue-700">Federal Grant Resources</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">Grants.gov</h5>
-                          <p className="text-sm text-gray-600">Federal grant opportunities</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.grants.gov/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                      
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">SBIR.gov</h5>
-                          <p className="text-sm text-gray-600">Small Business Innovation Research</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://www.sbir.gov/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                        <div>
-                          <h5 className="font-semibold">SAM.gov</h5>
-                          <p className="text-sm text-gray-600">System for Award Management</p>
-                        </div>
-                        <Button size="sm" asChild>
-                          <Link href="https://sam.gov/" target="_blank" rel="noopener noreferrer">
-                            Visit <ExternalLink className="w-3 h-3 ml-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Contact CTA */}
-              <div className="bg-gradient-to-r from-green-600 to-blue-700 rounded-lg p-8 text-white text-center">
-                <Users className="w-16 h-16 mx-auto mb-4 text-green-100" />
-                <h3 className="text-2xl font-bold mb-4">Ready to Apply for Small Business Grants?</h3>
-                <p className="text-green-100 mb-6 text-lg">
-                  Need expert guidance on small business grant applications? Our specialists can help you navigate 
-                  the process and develop winning applications for SBA loans and federal grants.
-                </p>
-                <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>
-                  <Link href="/contact">
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Get Expert Help
-                  </Link>
-                </Button>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Application Process Timeline */}
+        <section id="sba-process" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">The Application Flow</h2>
+
+              <div className="relative border-l-2 border-blue-200 pl-8 space-y-12 ml-4 md:ml-0">
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Prepare Financials</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    You need 3 years of tax returns (Personal & Business), a P&L statement, and a Balance Sheet. No messy shoeboxes of receipts.
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Find a Lender</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    Use the <strong>SBA Lender Match</strong> tool. Do not just walk into a random bank; find one that specializes in 7(a) lending.
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Submit Application</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    This will include SBA Form 1919 and Form 413 (Personal Financial Statement).
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-[41px] bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Underwriting & Closing</h3>
+                  <p className="text-slate-600 text-sm">
+                    The bank vets you. If approved, you sign papers, pay closing costs, and funds are wired.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Neural Network: Related Guides */}
+        <section className="py-16 bg-slate-50 border-t border-slate-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-bold text-slate-900 mb-6">Explore More Funding</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/apply-sba-loans" className="group block h-full">
+                  <div className="bg-white border hover:border-blue-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-blue-600 font-semibold mb-2">Deep Dive</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-blue-700 mb-2">SBA Loans (7a)</h4>
+                    <p className="text-sm text-slate-500 flex-grow">Detailed guide on 7(a).</p>
+                    <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/apply-minority-grants" className="group block h-full">
+                  <div className="bg-white border hover:border-purple-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-purple-600 font-semibold mb-2">Minority</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-purple-700 mb-2">Minority Grants</h4>
+                    <p className="text-sm text-slate-500 flex-grow">8(a) and WOSB details.</p>
+                    <div className="mt-3 text-xs text-purple-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+                <Link href="/guides/sba-growth-accelerator-fund-guide" className="group block h-full">
+                  <div className="bg-white border hover:border-green-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
+                    <div className="text-sm text-green-600 font-semibold mb-2">Ecosystem</div>
+                    <h4 className="font-bold text-slate-900 group-hover:text-green-700 mb-2">Accelerator Fund</h4>
+                    <p className="text-sm text-slate-500 flex-grow">For incubators & accelerators.</p>
+                    <div className="mt-3 text-xs text-green-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-left">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                <HelpCircle className="w-6 h-6 text-blue-600 mr-2" />
+                Funding FAQs
+              </h2>
+              <div className="divide-y divide-blue-100">
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Is there really "free money"?</h3>
+                  <p className="text-slate-600 text-sm">Generally, no. Most "grants" are scams. Legitimate grants are highly competitive and specific (research, non-profit, clean energy). Loans are the standard way to grow.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">Can I use the money to pay myself?</h3>
+                  <p className="text-slate-600 text-sm">With an SBA loan, yes, you can include working capital for salaries, including your own, provided it is reasonable and documented.</p>
+                </div>
+                <div className="py-4">
+                  <h3 className="font-bold text-slate-900 mb-2">What if I have bad credit?</h3>
+                  <p className="text-slate-600 text-sm">Consider a Microloan or a CDFI (Community Development Financial Institution). They are non-profits that lend to "unbankable" businesses.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* CTA */}
+        <section className="py-20 bg-gradient-to-r from-blue-900 to-indigo-900 text-white text-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Fund Your Dream</h2>
+            <p className="text-lg text-blue-200 mb-8 max-w-2xl mx-auto">
+              Ready to apply? We help you prepare your financial package so lenders say "Yes."
+            </p>
+            <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50 font-semibold shadow-lg" asChild>
+              <Link href="/contact?service=funding-prep">
+                Get Funding Help
+              </Link>
+            </Button>
+          </div>
+        </section>
+
       </div>
       <Footer />
     </>
