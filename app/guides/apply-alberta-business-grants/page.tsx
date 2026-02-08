@@ -559,24 +559,28 @@ export default function AlbertaBusinessGrantsGuide() {
                 </h2>
                 <div className="space-y-4">
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">What makes Alberta funding different?</h3>
-                    <p className="text-gray-600">Alberta uniquely emphasizes energy sector transformation and has ERA—the world's largest single investor in clean technology. Projects reducing emissions in oil & gas or heavy industry have strong advantages.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">1. What makes Alberta funding different?</h3>
+                    <p className="text-gray-600 text-sm">Alberta uniquely emphasizes energy sector transformation and has ERA—the world's largest single investor in clean technology. Projects reducing emissions in oil & gas or heavy industry have strong advantages.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">How competitive are ERA challenges?</h3>
-                    <p className="text-gray-600">Very competitive. ERA typically funds 10-20% of applications. Success depends heavily on credible emission reduction quantification and strong cost-effectiveness metrics ($/tonne).</p>
+                    <h3 className="font-bold text-gray-900 mb-2">2. How competitive are ERA challenges?</h3>
+                    <p className="text-gray-600 text-sm">Very competitive. ERA typically funds 10-20% of applications. Success depends heavily on credible emission reduction quantification and strong cost-effectiveness metrics ($/tonne).</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Can non-energy companies apply?</h3>
-                    <p className="text-gray-600">Yes! Alberta Innovates supports health, ag-tech, digital, and advanced manufacturing. ERA also funds projects in agriculture, transportation, and buildings—not just oil & gas.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">3. Can non-energy companies apply?</h3>
+                    <p className="text-gray-600 text-sm">Yes! Alberta Innovates supports health, ag-tech, digital, and advanced manufacturing. ERA also funds projects in agriculture, transportation, and buildings—not just oil & gas.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Are Alberta grants taxable?</h3>
-                    <p className="text-gray-600">Yes, business grants are generally taxable income. Consult an accountant to understand the implications and plan accordingly.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">4. Are Alberta grants taxable?</h3>
+                    <p className="text-gray-600 text-sm">Yes, business grants are generally taxable income. Consult an accountant to understand the implications and plan accordingly.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">How do I find open ERA challenges?</h3>
-                    <p className="text-gray-600">ERA publishes challenges on their website eralberta.ca. Subscribe to their newsletter for announcements. Challenges typically open 2-4 times per year.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">5. How do I find open ERA challenges?</h3>
+                    <p className="text-gray-600 text-sm">ERA publishes challenges on their website eralberta.ca. Subscribe to their newsletter for announcements. Challenges typically open 2-4 times per year.</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2">6. Can I stack Alberta Innovates with federal grants?</h3>
+                    <p className="text-gray-600 text-sm">Yes. You can often stack Alberta Innovates funding with federal programs like NRC-IRAP or PrairiesCan, provided you don't exceed 75-100% of total project costs (stacking limits vary by program).</p>
                   </div>
                 </div>
               </div>

@@ -446,16 +446,28 @@ export default function IRAPApplicationGuide() {
               </h2>
               <div className="space-y-4">
                 <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-gray-900 mb-2">Who owns the Intellectual Property (IP)?</h3>
-                  <p className="text-gray-600">You do. The Government of Canada claims NO equity and NO intellectual property rights in IRAP projects.</p>
+                  <h3 className="font-bold text-gray-900 mb-2">1. Who owns the Intellectual Property (IP)?</h3>
+                  <p className="text-gray-600 text-sm">You do. The Government of Canada claims NO equity and NO intellectual property rights in IRAP projects. Your company retains full ownership of all developed technology.</p>
                 </div>
                 <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-gray-900 mb-2">Can I stack IRAP with SR&ED?</h3>
-                  <p className="text-gray-600">Yes. IRAP pays for the work *now*. SR&ED is a tax credit for the work *later*. You just subtract the IRAP portion from your SR&ED claim so you don't get paid twice for the same dollar.</p>
+                  <h3 className="font-bold text-gray-900 mb-2">2. Can I stack IRAP with SR&ED?</h3>
+                  <p className="text-gray-600 text-sm">Yes. IRAP pays for the work *now*. <Link href="https://www.canada.ca/en/revenue-agency/services/scientific-research-experimental-development-tax-incentive-program.html" className="text-emerald-600 hover:underline" target="_blank" rel="noopener noreferrer">SR&ED</Link> is a tax credit for the work *later*. You just subtract the IRAP portion from your SR&ED claim so you don't get paid twice for the same dollar.</p>
                 </div>
                 <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-gray-900 mb-2">Is there a deadline?</h3>
-                  <p className="text-gray-600">IRAP accepts applications on a rolling basis year-round. However, funding budgets reset April 1st. It's often easier to secure funding early in the fiscal year (April-June).</p>
+                  <h3 className="font-bold text-gray-900 mb-2">3. Is there a deadline for IRAP?</h3>
+                  <p className="text-gray-600 text-sm">IRAP accepts applications on a rolling basis year-round. However, funding budgets reset April 1st. It's often easier to secure funding early in the fiscal year (April-June) before budgets are exhausted.</p>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">4. How is IRAP different from the Strategic Innovation Fund (SIF)?</h3>
+                  <p className="text-gray-600 text-sm">IRAP is designed for small to medium-sized enterprises (SMEs) with projects typically under $10M. <Link href="https://ised-isde.canada.ca/site/strategic-innovation-fund/en" className="text-emerald-600 hover:underline" target="_blank" rel="noopener noreferrer">SIF</Link> is for large-scale industrial projects often exceeding $10M in total costs.</p>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">5. Can pre-revenue startups apply?</h3>
+                  <p className="text-gray-600 text-sm">Yes, but you must demonstrate financial stability. You need enough cash flow to pay your employees first, as IRAP is a reimbursement program, not an upfront grant.</p>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">6. How do I request an ITA?</h3>
+                  <p className="text-gray-600 text-sm">You can call the NRC-IRAP toll-free number at 1-877-994-4727 or complete the form on the <Link href="https://nrc.canada.ca/en/support-technology-innovation/nrc-irap" className="text-emerald-600 hover:underline" target="_blank" rel="noopener noreferrer">NRC website</Link>. Be prepared to discuss your technology and business case.</p>
                 </div>
               </div>
             </div>

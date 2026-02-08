@@ -268,6 +268,59 @@ export default function DOECleanEnergyGrantsGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About DOE Funding</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. What is Technology Readiness Level (TRL)?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    The DOE uses a 1-9 scale to rate how mature your tech is. <strong>TRL 1</strong> is a basic idea; <strong>TRL 9</strong> is fully commercial. Most <a href="https://arpa-e.energy.gov/" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">ARPA-E</a> grants target TRL 1-3, while EERE demonstration grants often look for TRL 6-8. You MUST apply to the right bucket.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Do I really need 20% cost share?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    For most standard FOAs, yes. If the grant is $1M, you must provide $250k (20% of the *total* $1.25M project cost). This can sometimes be "in-kind" (lab equipment, staff time), but often requires cash. SBIR grants are a notable exception with 0% cost share.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. How do I find open grants?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Most clean energy grants are posted on the <a href="https://eere-exchange.energy.gov/" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">EERE Exchange</a>. This is distinct from Grants.gov. You should check it weekly or sign up for their email list.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Can I apply if I am a foreign company?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Generally, the prime recipient must be a US entity. However, foreign entities can often be sub-recipients (partners) or can form a US subsidiary to apply. The work usually must be performed in the US.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. What is a "Concept Paper"?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    It is a short (5-page) summary of your idea submitted before the full application. The DOE reviews it and issues a "Discourage" or "Encourage" notification. If discouraged, you can still apply, but your chances are statistically very low.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. Are there grants for installing solar panels?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Typically, no. The DOE funds <strong>innovation</strong> (new tech), not adoption. If you want to install solar on your roof, you should look for the <a href="https://www.energy.gov/eere/solar/homeowners-guide-federal-tax-credit-solar-photovoltaics" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Investment Tax Credit (ITC)</a> or REAP grants (for rural businesses), not R&D grants.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

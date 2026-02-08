@@ -311,6 +311,59 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About WELF</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Is it a grant or a loan?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    It is a <strong>loan</strong>. You must pay it back. However, the terms are often more generous than a bank loan, with some partners offering lower interest rates or flexible repayment schedules.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Can I apply if I have bad credit?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    The program is designed to be more inclusive than traditional banking. While they will check your credit, they often weigh your character and business plan more heavily than just a credit score.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. How do I choose a partner?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    If you are Indigenous, <a href="https://nacca.ca/" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:underline">NACCA</a> allows you to access additional non-repayable contributions. If you are in Quebec, Evol is your best bet. For most others, <a href="https://weoc.ca/" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:underline">WEOC</a> is the standard path.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. How long does it take to get funds?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Typically 4-6 weeks from submission to funding. It is faster than a large commercial loan but slower than a fintech lender.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. Can I use it for my salary?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Usually, no. The funds are for <em>business growth</em> (inventory, marketing, equipment), not owner draws. Check with your specific loan officer for exceptions.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. What if I am a startup with $0 revenue?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    You are eligible! The program is explicitly designed for startups. However, your business plan must show a clear path to revenue within a reasonable timeframe.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

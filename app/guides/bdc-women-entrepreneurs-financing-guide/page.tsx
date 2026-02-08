@@ -311,7 +311,60 @@ export default function BDCWomenEntrepreneursApplicationGuide() {
           </div>
         </section>
 
-        {/* FAQ Section */}
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About BDC Financing</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Is my credit score impacted?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes. BDC will perform a hard credit check on all major shareholders. A score above <strong>650</strong> is generally required for the online loan. If your score is lower, they may ask for a co-signer or additional collateral.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Do I need to sign a Personal Guarantee?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    For the $100k Online Loan, yes. All beneficial owners must sign a personal guarantee. This means if the business defaults, you are personally liable for the debt.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. Can I use the loan to buy real estate?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    The Online Loan is for working capital. If you want to buy commercial real estate, you should apply for a <a href="https://www.bdc.ca/en/commercial-real-estate-loan" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Commercial Real Estate Loan</a> which has longer terms (up to 25 years) and different rates.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. What is "Principal Postponement"?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    This is a key feature of BDC loans. You can often delay paying the principal for the first 6-12 months, paying only interest. This helps cash flow significantly during the startup or expansion phase.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. Is BDC cheaper than a bank?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Usually, no. BDC takes on higher risk than traditional banks (TD, RBC, etc.), so their rates are slightly higher. However, they offer more flexible terms and are more willing to lend based on cash flow rather than just assets.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. How helps me on the Advisory side?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    BDC has a network of 500+ consultants. They can help with operational efficiency, sales strategies, and digital transformation. You can verify their programs on the <a href="https://www.bdc.ca/en/consulting" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">BDC Advisory</a> page.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Neural Network: Related Guides */}
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

@@ -358,6 +358,59 @@ export default function CanadaManufacturingFundingGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About Manufacturing Grants</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Can I stack NGen with SR&ED?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes. NGen reimbursements reduce your "cost base" for SR&ED, but you can claim the tax credit on the <em>remaining</em> portion of your expenses. This "stacking" effect can cover up to 75% of total project costs.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Does CDAP cover software subscriptions?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    The <a href="https://ised-isde.canada.ca/site/canada-digital-adoption-program/en" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">CDAP (Canada Digital Adoption Program)</a> loan can be used to pay for the first 12 months of a software subscription (like an ERP) as part of the implementation cost.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. What if I just need a new CNC machine?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    If there is no innovation/R&D involved, you likely won't get IRAP or NGen. Instead, look at Regional Development Agencies (like FedDev Ontario or PacifiCan) which often have interest-free loans for "productivity scaling" capable of funding standard equipment.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Is there funding for green retrofits?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes. The "Clean Technology Investment Tax Credit" (30% refundable) applies to new machinery that generates clean energy or significantly reduces emissions.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. How does NGen collaboration work?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    You must partner with at least one other company (e.g., a tech vendor or another manufacturer). Check the <a href="https://www.ngen.ca/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">NGen Project Guide</a> for specific partnership rules. Collaborative projects score much higher.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. What is the typical grant size?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    For equipment/adoption, usually $50k-$100k. For large-scale NGen innovation projects, grants often range from $1M to $5M.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -385,6 +385,60 @@ export default function IRAPGovernmentGrantsGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About IRAP</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. How is IRAP different from SR&ED?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    <strong>Timing:</strong> IRAP pays <em>monthly</em> (cash flow), while SR&ED pays <em>annually</em> (tax return). <br />
+                    <strong>Certainty:</strong> IRAP is competitive (you must be approved <em>before</em> spending). SR&ED is an entitlement (you claim <em>after</em> spending).
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Can I stack them?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes, but you can't double-dip. IRAP grants reduce your pool of eligible expenses for SR&ED. Effectivley, you get the grant cash now, and a smaller tax credit later.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. What qualifies as "Technical Uncertainty"?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    You must be trying to solve a problem where the solution is not obvious to a standard professional in the field. Routine development (e.g., building a standard website) does not qualify.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Does IRAP cover marketing salaries?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    No. IRAP strictly covers <strong>R&D technical salaries</strong> and contractor fees. It does not cover sales, marketing, or administrative staff.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. Can I hire foreign contractors?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    IRAP prefers Canadian specialized contractors. However, if you can prove the expertise does not exist in Canada, they may approve a foreign contractor.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. What is the youth employment program?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    The <a href="https://nrc.canada.ca/en/support-technology-innovation/nrc-irap-funding-programs" target="_blank" rel="noopener noreferrer" className="text-green-700 hover:underline">Youth Employment Program (YEP)</a> under IRAP pays up to $30k to hire a young graduate (under 31) for 6-12 months. It's the easiest IRAP grant to get.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

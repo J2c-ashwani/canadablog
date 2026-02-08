@@ -362,6 +362,59 @@ export default function WESApplicationGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About WES Funding</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Is the $100,000 fund a grant?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Usually no. The main WES instrument for individual businesses (like the Women Entrepreneurship Loan Fund) offers <strong>loans</strong>. Grants are typically reserved for the non-profit organizations that <em>support</em> the ecosystem (e.g., mentorship programs), not direct cash to businesses.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Do I need 100% women ownership?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Most programs require <strong>51% ownership and control</strong> by women. This is the standard for WBE certification. Some BDC programs may be more flexible if there is a woman in a C-suite leadership role.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. Can startups apply?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes. The <a href="https://weoc.ca/loan-fund/" target="_blank" rel="noopener noreferrer" className="text-rose-600 hover:underline">WEOC National Loan Program</a> accepts startups, provided you have a solid business plan. Traditional banks often reject startups, which is why this fund exists.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. What is the interest rate?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    It varies by partner, but WES loans are typically commercial loans (Prime + variance). They are not interest-free, but they often have more lenient collateral requirements than banks.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. How do I get certified?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    You can get certified as a "Women-Owned Business" through organizations like <a href="https://wbecanada.ca/" target="_blank" rel="noopener noreferrer" className="text-rose-600 hover:underline">WBE Canada</a> or WEConnect International. This opens doors to corporate supply chains (supplier diversity) but is not strictly required for the government loan.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. Can I use the money for salary?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Working capital loans (like the WES loan) can usually be used for operating costs, including salary, rent, and inventory.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

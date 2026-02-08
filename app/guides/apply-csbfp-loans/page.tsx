@@ -514,20 +514,28 @@ export default function CSBFPApplicationGuide() {
               </h2>
               <div className="space-y-4">
                 <div className="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-gray-900 mb-2">Do I need a lawyer for a CSBFP loan?</h3>
-                  <p className="text-gray-600">Usually, yes. While not strictly mandatory for the application, a lawyer is often required for closing, especially for security registration (GSA) and real property transactions. Legal costs are an eligible expense.</p>
+                  <h3 className="font-bold text-gray-900 mb-2">1. Do I need a lawyer?</h3>
+                  <p className="text-gray-600 text-sm">Usually, yes. While not strictly mandatory for the application, a lawyer is often required for closing, especially for security registration (GSA) and real property transactions. Legal costs are an eligible expense under the <a href="https://ised-isde.canada.ca/site/canada-small-business-financing-program/en" target="_blank" rel="noopener noreferrer" className="text-green-700 hover:underline">CSBFP guidelines</a>.</p>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-gray-900 mb-2">Can I pay off the loan early?</h3>
-                  <p className="text-gray-600">Yes, CSBFP loans can be prepaid at any time without penalty. This is a significant advantage over many commercial loans which have breakage fees.</p>
+                  <h3 className="font-bold text-gray-900 mb-2">2. Can I pay off the loan early?</h3>
+                  <p className="text-gray-600 text-sm">Yes, CSBFP loans can be prepaid at any time without penalty. This is a significant advantage over many commercial loans which have breakage fees.</p>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-gray-900 mb-2">What happens if I default?</h3>
-                  <p className="text-gray-600">The bank will attempt to recover funds from business assets first. If insufficient, they may call on the personal guarantee (limited to 25% of the original loan). The government covers 85% of the bank's remaining loss.</p>
+                  <h3 className="font-bold text-gray-900 mb-2">3. What happens if I default?</h3>
+                  <p className="text-gray-600 text-sm">The bank will attempt to recover funds from business assets first. If insufficient, they may call on the personal guarantee (limited to 25% of the original loan amount). The government covers 85% of the bank's remaining loss.</p>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-gray-900 mb-2">Is the interest rate fixed or floating?</h3>
-                  <p className="text-gray-600">It can be either. Floating rates are capped at Prime + 3%. Fixed rates are capped at the Residential Mortgage Rate + 3%. Discuss with your lender what makes sense for your cash flow.</p>
+                  <h3 className="font-bold text-gray-900 mb-2">4. Is the interest rate fixed or floating?</h3>
+                  <p className="text-gray-600 text-sm">It can be either. Floating rates are capped at Prime + 3%. Fixed rates are capped at the Residential Mortgage Rate + 3%. Discuss with your lender what makes sense for your cash flow.</p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">5. What is the 2% registration fee?</h3>
+                  <p className="text-gray-600 text-sm">Every CSBFP loan requires a 2% registration fee paid to the government. This fee can be financed as part of the loan, so you don't need to pay it out of pocket upfront.</p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">6. Can I use it for working capital?</h3>
+                  <p className="text-gray-600 text-sm">Yes, up to $150,000 can be used for working capital (like inventory and marketing) and intangible assets. This was a major improvement introduced in the 2022 program update.</p>
                 </div>
               </div>
             </div>

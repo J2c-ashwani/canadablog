@@ -356,6 +356,59 @@ export default function CanadaDigitalAIFundingGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About AI Funding</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Is the CDAP loan still available?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes. The <a href="https://ised-isde.canada.ca/site/canada-digital-adoption-program/en" target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">CDAP (Canada Digital Adoption Program)</a> "Boost Your Business Technology" stream is active. It offers a 0% interest loan of up to $100,000 with a 5-year repayment term.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Can I use ChatGPT for my project?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Simply using ChatGPT prompts is not considered "R&D" for IRAP or SR&ED. However, building a <strong>proprietary application</strong> that integrates LLMs via API to solve a unique business problem <em>is</em> eligible for CDAP digital adoption funding.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. What is the minimum project size?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    For Scale AI, projects typically need to be over $1M to be worth the administrative effort. For CDAP, you need to have at least $500k in annual revenue to qualify for the loan.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Do I need to be profitable?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    No, but you must be <strong>solvent</strong>. Lenders (BDC for CDAP) will check that you aren't bankrupt, but pre-profit startups can often qualify if they have investor backing.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. Can I use funds for hardware?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    CDAP loans <strong>can</strong> be used for hardware (sensors, servers) if it's essential to the digital plan. IRAP generally covers <strong>labour</strong>, not capital equipment.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. How long does the approval take?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    CDAP grant approval is fast (2-4 weeks). The BDC loan portion takes another 4-6 weeks. Scale AI projects can take 3-6 months to negotiate.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -239,6 +239,59 @@ export default function CaliforniaLoanGuaranteeGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About the State Guarantee</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Is the guarantee a direct loan from the state?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    No. The state (via IBank) does not lend you money directly. You still borrow from a commercial bank or credit union. The state simply signs a contract with the bank promising to repay up to 95% of the loan if you fail to do so. This typically lowers the interest rate you are offered.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. How long does the approval process take?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    The FDC approval is surprisingly fast—often <strong>2-3 weeks</strong> once a complete package is submitted. However, the participating lender (your bank) has their own underwriting process which can take 30-60 days. Working with an experienced FDC can speed this up significantly.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. What happens if I default on the loan?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    If you default, the bank will first attempt to collect from your business assets. If a balance remains, they file a claim with the state. The state pays the bank the guaranteed portion. <strong>Crucially:</strong> You are still liable for the debt. The state may pursue you for repayment of the amount they paid to the bank. A loan guarantee is not loan forgiveness.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Can I use this for refinancing existing debt?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Generally, yes, but with restrictions. The refinancing must provide a "substantial benefit" to your business, such as significantly lowering your monthly payments or freeing up cash flow for expansion. You cannot use it to pay off owners or investors.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. Does my personal credit score matter?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes. While the guarantee mitigates collateral risk, most lenders still require a personal guarantee from any owner with &gt;20% equity. A credit score below 640 may be challenging, though some mission-driven lenders (CDFIs) have more flexible requirements than big commercial banks.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. Is there a minimum loan amount?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    There is no strict statutory minimum, but practically, most lenders won't process a guarantee for loans under $25,000 due to the paperwork involved. For smaller amounts, microloans (which often don't require the state guarantee) might be a better fit.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

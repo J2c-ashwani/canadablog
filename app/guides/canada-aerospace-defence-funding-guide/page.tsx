@@ -3,7 +3,6 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { SectionTitle } from "@/components/SectionTitle"
 import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Target, DollarSign, AlertTriangle, Download, Rocket, Plane, Satellite, Shield, HelpCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
@@ -403,20 +402,32 @@ export default function CanadaAerospaceDefenceFundingGuide() {
             <div className="max-w-3xl mx-auto text-left">
               <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
                 <HelpCircle className="w-6 h-6 text-blue-600 mr-2" />
-                Aerospace Grant FAQs
+                Frequently Asked Questions
               </h2>
-              <div className="divide-y divide-slate-200">
-                <div className="py-4">
-                  <h3 className="font-bold text-slate-900 mb-2">Do I need a security clearance?</h3>
-                  <p className="text-slate-600 text-sm">For IDEaS and DND work, yes. Your company needs a Designated Organization Screening (DOS) or Facility Security Clearance (FSC). This can take months, so start early.</p>
+              <div className="space-y-4">
+                <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <h3 className="font-bold text-slate-900 mb-2">1. Do I need a security clearance?</h3>
+                  <p className="text-slate-600 text-sm">For IDEaS and DND work, yes. Your company needs a Designated Organization Screening (DOS) or Facility Security Clearance (FSC). This can take months, so start early. Visit <Link href="https://www.tpsgc-pwgsc.gc.ca/esc-src/index-eng.html" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">PSPC Security</Link> for details.</p>
                 </div>
-                <div className="py-4">
-                  <h3 className="font-bold text-slate-900 mb-2">Can universities apply?</h3>
-                  <p className="text-slate-600 text-sm">Yes, especially for CSA STDP and IDEaS. However, industry-led projects often have a clearer path to commercialization. University-only projects are often lower TRL.</p>
+                <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <h3 className="font-bold text-slate-900 mb-2">2. Can universities apply?</h3>
+                  <p className="text-slate-600 text-sm">Yes, especially for CSA STDP and IDEaS. However, industry-led projects often have a clearer path to commercialization. University-only projects are typically lower TRL research.</p>
                 </div>
-                <div className="py-4">
-                  <h3 className="font-bold text-slate-900 mb-2">Are satellites considered "manufacturing"?</h3>
-                  <p className="text-slate-600 text-sm">Yes. Satellite constellation production can qualify for manufacturing grants (SIF, CME) as well as space grants.</p>
+                <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <h3 className="font-bold text-slate-900 mb-2">3. Are satellites considered "manufacturing"?</h3>
+                  <p className="text-slate-600 text-sm">Yes. Satellite constellation production can qualify for manufacturing grants (SIF, CME) as well as space grants. Check the <Link href="/guides/canada-manufacturing-funding-guide" className="text-blue-600 hover:underline">Manufacturing Guide</Link> for more info.</p>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <h3 className="font-bold text-slate-900 mb-2">4. What is the IDEaS program?</h3>
+                  <p className="text-slate-600 text-sm">IDEaS (Innovation for Defence Excellence and Security) is a DND program that funds solutions to specific defence challenges. It offers competitive projects (up to $200k for Phase 1, $1M+ for Phase 2) and Test Drives.</p>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <h3 className="font-bold text-slate-900 mb-2">5. How much funding can I get from the CSA?</h3>
+                  <p className="text-slate-600 text-sm">Canadian Space Agency (CSA) funding varies. Space Technology Development Program (STDP) contribution agreements typically range from $200,000 to $5 million depending on the TRL advancement.</p>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <h3 className="font-bold text-slate-900 mb-2">6. Is aerospace funding repayable?</h3>
+                  <p className="text-slate-600 text-sm">It depends. SIF aerospace streams are often repayable loans. CSA STDP contributions are often non-repayable if they support lower TRL research but may be repayable for near-commercial projects.</p>
                 </div>
               </div>
             </div>

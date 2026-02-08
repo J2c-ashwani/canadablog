@@ -492,24 +492,28 @@ export default function CSBFPGovernmentFinancingGuide() {
                 </h2>
                 <div className="space-y-4">
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Can I use CSBFP to refinance existing debt?</h3>
-                    <p className="text-gray-600">No. CSBFP loans cannot be used to refinance existing debt. Funds must be used for new asset acquisitions, leasehold improvements, or working capital needs. However, you can use conventional financing to refinance and free up capacity for CSBFP.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">1. Can I use CSBFP to refinance existing debt?</h3>
+                    <p className="text-gray-600 text-sm">No. CSBFP loans cannot be used to refinance existing debt. Funds must be used for new asset acquisitions, leasehold improvements, or working capital needs. However, you can use conventional financing to refinance and free up capacity for CSBFP.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">What interest rate can I expect?</h3>
-                    <p className="text-gray-600">CSBFP loans are capped at prime + 3% for floating rate loans or the single-family residential mortgage rate + 3% for fixed rate loans. Your actual rate depends on the lender and your creditworthiness.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">2. What interest rate can I expect?</h3>
+                    <p className="text-gray-600 text-sm">CSBFP loans are capped at prime + 3% for floating rate loans or the single-family residential mortgage rate + 3% for fixed rate loans. Your actual rate depends on the lender and your creditworthiness.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Can startups with no revenue apply?</h3>
-                    <p className="text-gray-600">Yes! CSBFP is specifically designed to help startups access financing. You'll need a strong business plan, personal credit history, and potentially additional security, but no minimum revenue is required.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">3. Can startups with no revenue apply?</h3>
+                    <p className="text-gray-600 text-sm">Yes! CSBFP is specifically designed to help startups access financing. You'll need a strong business plan, personal credit history, and potentially additional security, but no minimum revenue is required.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">How is the 2% registration fee paid?</h3>
-                    <p className="text-gray-600">The 2% registration fee can be added to your loan amount or paid upfront at disbursement. Most borrowers choose to finance it, spreading the cost over the loan term.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">4. How is the 2% registration fee paid?</h3>
+                    <p className="text-gray-600 text-sm">The 2% registration fee can be added to your loan amount or paid upfront at disbursement. Most borrowers choose to finance it, spreading the cost over the loan term.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Can I have multiple CSBFP loans?</h3>
-                    <p className="text-gray-600">Yes, you can have multiple CSBFP loans as long as total outstanding balances don't exceed program maximums. This is useful for financing different asset categories at different times.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">5. Can I have multiple CSBFP loans?</h3>
+                    <p className="text-gray-600 text-sm">Yes, you can have multiple CSBFP loans as long as total outstanding balances don't exceed program maximums ($1.15M total). This is useful for financing different asset categories at different times.</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2">6. What happens if I default on the loan?</h3>
+                    <p className="text-gray-600 text-sm">The lender will seize the secured assets. If that doesn't cover the balance, they may pursue your personal guarantee. However, your personal liability is capped at 25% of the original loan amount, protecting your other personal assets.</p>
                   </div>
                 </div>
               </div>

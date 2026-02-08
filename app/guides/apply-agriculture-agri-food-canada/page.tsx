@@ -416,18 +416,30 @@ export default function AgricultureAgriFoodGuide() {
                 <HelpCircle className="w-6 h-6 text-green-700 mr-2" />
                 Frequently Asked Questions
               </h2>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-gray-900 mb-2">Can farm businesses apply?</h3>
-                  <p className="text-gray-600">Yes, primary producers are eligible for many AAFC programs, provided the project involves innovation or adoption of new technology, not just routine expansion.</p>
+                  <h3 className="font-bold text-gray-900 mb-2">1. Can farm businesses apply?</h3>
+                  <p className="text-gray-600 text-sm">Yes, primary producers are eligible for many AAFC programs (like <a href="https://agriculture.canada.ca/en/programs/agriscience" target="_blank" rel="noopener noreferrer" className="text-green-700 hover:underline">AgriScience</a>), provided the project involves innovation or adoption of new technology, not just routine expansion.</p>
                 </div>
                 <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-gray-900 mb-2">Are there grants for startups?</h3>
-                  <p className="text-gray-600">It is difficult for early-stage startups without revenue to qualify for AgriInnovate (repayable). Startups may look at AgriScience (if R&D focused) or partner with established firms.</p>
+                  <h3 className="font-bold text-gray-900 mb-2">2. Are there grants for startups?</h3>
+                  <p className="text-gray-600 text-sm">It is difficult for early-stage startups without revenue to qualify for AgriInnovate (repayable). Startups may look at AgriScience (if R&D focused) or partner with established firms.</p>
                 </div>
                 <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-                  <h3 className="font-bold text-gray-900 mb-2">What qualifies as "Innovative"?</h3>
-                  <p className="text-gray-600">"Innovative" generally means the technology or process is new to Canada or newly adapted for the agricultural sector. Off-the-shelf solutions are rarely funded.</p>
+                  <h3 className="font-bold text-gray-900 mb-2">3. What qualifies as "Innovative"?</h3>
+                  <p className="text-gray-600 text-sm">"Innovative" generally means the technology or process is new to Canada or newly adapted for the agricultural sector. Off-the-shelf solutions are rarely funded.</p>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">4. Can I stack funding?</h3>
+                  <p className="text-gray-600 text-sm">Yes. You can usually stack AAFC funding with provincial grants (like CAP/Sustainable CAP) up to a <strong>75% government funding limit</strong>. You must disclose all sources.</p>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">5. Do I need environmental benefits?</h3>
+                  <p className="text-gray-600 text-sm">Increasingly, yes. Projects that reduce GHG emissions, water usage, or waste are prioritized under the new Sustainable CAP framework.</p>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-2">6. Is the funding taxable?</h3>
+                  <p className="text-gray-600 text-sm">Yes. Government grants and non-repayable contributions are considered taxable income. Repayable contributions (loans) are generally not income, but you cannot deduct the repayment as an expense.</p>
                 </div>
               </div>
             </div>

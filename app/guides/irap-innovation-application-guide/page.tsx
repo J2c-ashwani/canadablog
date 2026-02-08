@@ -287,6 +287,59 @@ export default function IRAPInnovationApplicationGuide() {
                 </div>
               </div>
 
+              {/* Common Questions Section */}
+              <section className="py-16 bg-white">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-4xl mx-auto">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About IRAP</h2>
+
+                    <div className="space-y-8">
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">1. Can I stack this with SR&ED?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          Yes, but you cannot "double dip." If IRAP pays 80% of a salary, you can only claim SR&ED credits on the remaining 20% (plus overhead). Most tech companies use both programs to maximize their <a href="https://nrc.canada.ca/en/support-technology-innovation" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">non-dilutive funding</a>.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">2. Do I have to pay it back?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          No. IRAP is a <strong>contribution</strong>, not a loan. As long as you spend the money on the approved project activities and submit your monthly claims, it is yours to keep.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">3. How fast can I get approved?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          It depends on your ITA (Industrial Technology Advisor). If they like your project, approval can happen in as little as 4 weeks. However, the initial engagement to find an ITA can sometimes take months due to high demand.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">4. Does it cover marketing costs?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          Generally, no. IRAP is strictly for <strong>technical R&D</strong>. It covers salaries of engineers and developers, not sales staff or ad spend. For marketing support, look at the <a href="https://ised-isde.canada.ca/site/canada-digital-adoption-program/en" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Canada Digital Adoption Program (CDAP)</a>.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">5. Can I hire foreign contractors?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          IRAP prefers to fund Canadian costs. However, if you can prove that the specific expertise does not exist in Canada, they may approve a foreign contractor. You need a strong justification.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">6. What happens if the project fails?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          IRAP funds the <em>activity</em> of research, not the guarantee of success. If you do the work but technical challenges prevent comprehensive success, you still get paid.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               {/* 4. NEURAL NETWORK: Related Guides */}
               <div className="border-t border-gray-200 pt-12 mb-12">
                 <h3 className="text-xl font-bold text-gray-900 mb-6">Explore Related Funding</h3>

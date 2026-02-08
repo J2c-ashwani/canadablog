@@ -12,9 +12,10 @@ import CategorySidebar from '@/components/blog/CategorySidebar';
 import NewsletterBox from '@/components/blog/NewsletterBox';
 import { getBlogPostBySlug, blogCategories } from '@/lib/data/blogPosts';
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
-import { generateBlogPostSchema, generateBreadcrumbSchema } from '@/lib/schema';
+import { generateBlogPostSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/schema';
 import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable";
 import { ExpertTipBox } from "@/components/blog/ExpertTipBox";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // Icon mapping for dynamic rendering from data
 const iconMap: Record<string, any> = {
@@ -56,9 +57,24 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   const category = blogCategories.find((cat) => cat.id === post.category);
   const blogPostSchema = generateBlogPostSchema(fullPost);
   const breadcrumbSchema = generateBreadcrumbSchema(fullPost);
+  const faqSchema = fullPost.faq ? generateFAQSchema(fullPost.faq) : null;
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot="1234567890" adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
@@ -152,6 +168,25 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700"
                 dangerouslySetInnerHTML={{ __html: content }}
               />
+
+              {/* DYNAMIC ENRICHMENT: FAQ Schema UI */}
+              {post.faq && (
+                <div className="mt-12 mb-8 not-prose">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h3>
+                  <Accordion type="single" collapsible className="w-full">
+                    {post.faq.map((item, index) => (
+                      <AccordionItem key={index} value={`item-${index}`}>
+                        <AccordionTrigger className="text-left font-semibold text-gray-900 dark:text-white">
+                          {item.question}
+                        </AccordionTrigger>
+                        <AccordionContent className="text-gray-600 dark:text-gray-300">
+                          <div dangerouslySetInnerHTML={{ __html: item.answer }} />
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
+              )}
 
               <div className="my-12">
                 <AdSlot adSlot="2345678901" adFormat="rectangle" style={{ minHeight: 250 }} />

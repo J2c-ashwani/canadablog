@@ -360,6 +360,59 @@ export default function CanadaLifeSciencesFundingGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About Life Sciences Funding</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Do I need Health Canada approval first?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Not for early R&D funding (like IRAP). However, for clinical trial funding, you typically need your "No Objection Letter" (NOL) or Clinical Trial Application (CTA) approval from <a href="https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/applications-submissions/guidance-documents/clinical-trials-human-subjects.html" target="_blank" rel="noopener noreferrer" className="text-cyan-600 hover:underline">Health Canada</a> before funds are released.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. What is the Clinical Trials Fund (CTF)?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    The CTF is part of Canada's Biomanufacturing and Life Sciences Strategy. It is administered by CIHR and funds the "clinical" portion of development, which is often the most expensive gap in the pipeline.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. Can I use money for IP legal fees?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Generally, no. Technical grants cover <strong>science</strong>, not lawyers. However, export-focused grants (like CanExport Innovation) may cover IP protection costs if they are required to enter a foreign market.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Does SR&ED apply to failed trials?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes! SR&ED rewards <strong>technological uncertainty</strong>, not commercial success. A failed clinical trial often proves that a hypothesis was incorrect, which is valid scientific knowledge and fully claimable.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. Is there funding for digital health apps?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes, if there is a technical hurdle (e.g., AI algorithms, encryption, hardware integration). If it is just a standard app content wrapper, it might not qualify for R&D grants but could qualify for the CDAP digital adoption grant.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. What about biomanufacturing?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    The <a href="https://ised-isde.canada.ca/site/strategic-innovation-fund/en" target="_blank" rel="noopener noreferrer" className="text-cyan-600 hover:underline">Strategic Innovation Fund (SIF)</a> has a specific stream for biomanufacturing to increase domestic capacity for vaccine and therapeutic production.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

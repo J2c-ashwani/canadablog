@@ -407,24 +407,28 @@ export default function SBIRResearchGrantsGuide() {
                 <h2 className="text-3xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
                 <div className="space-y-6">
                   <div className="border-b border-gray-100 pb-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">What is the difference between SBIR Phase I and Phase II?</h3>
-                    <p className="text-gray-600">Phase I is for "Proof of Concept" funding ($50K-$250K) covering 6-12 months. Phase II is for "Prototype Development" ($750K-$1.7M) covering 24 months and is only available to Phase I awardees.</p>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">1. What is the difference between SBIR Phase I and Phase II?</h3>
+                    <p className="text-gray-600 text-sm">Phase I is for "Proof of Concept" funding ($50K-$250K) covering 6-12 months. Phase II is for "Prototype Development" ($750K-$1.7M) covering 24 months and is only available to Phase I awardees.</p>
                   </div>
                   <div className="border-b border-gray-100 pb-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">Do I have to pay back SBIR grants?</h3>
-                    <p className="text-gray-600">No. SBIR grants are non-dilutive funding. You do not repay the money, and the government takes 0% equity in your company.</p>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">2. Do I have to pay back SBIR grants?</h3>
+                    <p className="text-gray-600 text-sm">No. SBIR grants are non-dilutive funding. You do not repay the money, and the government takes 0% equity in your company. Visit <Link href="https://www.sbir.gov/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">SBIR.gov</Link> for official policy.</p>
                   </div>
                   <div className="border-b border-gray-100 pb-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">Can I apply for SBIR if I am a solo founder?</h3>
-                    <p className="text-gray-600">Yes, but the Principal Investigator (PI) must be primarily employed by the small business (51% of their time) at the time of award. You can hire others as contractors.</p>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">3. Can I apply for SBIR if I am a solo founder?</h3>
+                    <p className="text-gray-600 text-sm">Yes, but the Principal Investigator (PI) must be primarily employed by the small business (51% of their time) at the time of award. You can hire others as contractors.</p>
                   </div>
                   <div className="border-b border-gray-100 pb-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">What is the success rate for SBIR applications?</h3>
-                    <p className="text-gray-600">The average success rate for Phase I is approximately 15-17%. For Phase II, it rises to about 45-50% since the applicant pool is pre-screened.</p>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">4. What is the success rate for SBIR applications?</h3>
+                    <p className="text-gray-600 text-sm">The average success rate for Phase I is approximately 15-17%. For Phase II, it rises to about 45-50% since the applicant pool is pre-screened.</p>
+                  </div>
+                  <div className="border-b border-gray-100 pb-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">5. How long does it take to get SBIR funding?</h3>
+                    <p className="text-gray-600 text-sm">The process is slow. It typically takes 6-9 months from submission to receiving the first check. Plan your runway accordingly.</p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">How long does it take to get SBIR funding?</h3>
-                    <p className="text-gray-600">The process is slow. It typically takes 6-9 months from submission to receiving the first check. Plan your runway accordingly.</p>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">6. Can I use SBIR funds for marketing?</h3>
+                    <p className="text-gray-600 text-sm">Typically, no. SBIR funds are restricted to Research and Development (R&D) activities. Sales, marketing, and general business development costs are usually unallowable overhead.</p>
                   </div>
                 </div>
               </div>

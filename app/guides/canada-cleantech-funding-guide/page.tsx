@@ -365,6 +365,59 @@ export default function CanadaCleanTechFundingGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About CleanTech Funding</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Is the Clean Technology ITC refundable?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes. The 30% Investment Tax Credit (ITC) is <strong>fully refundable</strong>. This means if you have no tax payable, the CRA will send you a cheque for the credit amount.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Does SDTC take equity?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    No. SDTC contributions are non-repayable grants. They do not take equity, IP rights, or require repayment (unless you default on the contract terms).
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. What equipment qualifies for the ITC?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Eligible property includes solar, wind, and water energy systems, stationary electricity storage (batteries), and low-carbon heat equipment. Consult the <a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/corporations/business-tax-credits/clean-technology-investment-tax-credit.html" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">CRA Class 43.1/43.2 guide</a> for details.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Can I stack SDTC with the ITC?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes, but the "capital cost" used to calculate your ITC will be reduced by the amount of the SDTC grant. You cannot get funded for more than 100% of the asset's cost.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. What TRL does SDTC fund?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    SDTC focuses on TRL 5-8 (Technology Readiness Level). This means you have a working prototype and are now testing it in a real operational environment (demonstration). They do not fund early stage R&D (TRL 1-4).
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. Is there funding for EV charging?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes. The ZEVIP (Zero Emission Vehicle Infrastructure Program) offers up to 50% funding for installing EV chargers at workplaces or public sites.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

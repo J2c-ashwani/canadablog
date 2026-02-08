@@ -272,6 +272,59 @@ export default function FederalGrantsApplicationTipsGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About Federal Grants</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Can I submit a day late?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Absolutely not. Federal grants are automated. If the deadline is 11:59 PM EST and you submit at 12:00 AM EST, the system (Grants.gov) will reject it. Aim to submit <strong>48 hours early</strong> to account for technical glitches.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. How long does SAM.gov registration take?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    It used to take days; now it can take weeks or even months due to new fraud validation steps. Start your renewal at least 60 days before expiration. You cannot receive a grant with an expired <a href="https://sam.gov/content/home" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">SAM.gov</a> entity.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. What is a "Single Audit"?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    If you spend more than $750,000 in federal funds in a single year, you are legally required to undergo a specific financial audit (Single Audit). This is an extra cost you should be aware of.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Are there page limits?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes. Each NOFO (Notice of Funding Opportunity) specifies them. If the limit is 25 pages and you submit 26, the reviewer will simply discard page 26 (or the whole application).
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. Can I use ChatGTP/AI to write my grant?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    You can use it for brainstorming or outlining, but be careful. AI often generates generic "fluff" that scores poorly on specific technical criteria. Also, never input sensitive proprietary data into public AI models.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. What is the difference between an Authorizing Official and a Point of Contact?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    The <strong>Authorizing Official (AOR)</strong> is the only person who can illegally sign the grant submission. The Point of Contact is just who they email. Ensure your AOR has the right roles in <a href="https://www.grants.gov/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Grants.gov</a>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-white border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

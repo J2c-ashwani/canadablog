@@ -582,24 +582,28 @@ export default function OntarioBusinessGrantsGuide() {
                 </h2>
                 <div className="space-y-4">
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Is Starter Company Plus available everywhere in Ontario?</h3>
-                    <p className="text-gray-600">Yes, the program is delivered through 47 Small Business Enterprise Centres across Ontario. Find your nearest SBEC through the Ontario.ca business portal.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">1. Is Starter Company Plus available everywhere in Ontario?</h3>
+                    <p className="text-gray-600 text-sm">Yes, the program is delivered through 47 Small Business Enterprise Centres across Ontario. Find your nearest <Link href="https://www.ontario.ca/page/small-business-enterprise-centre-locations" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">SBEC location</Link> through the Ontario.ca business portal.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Can I apply to multiple Ontario programs simultaneously?</h3>
-                    <p className="text-gray-600">Generally yes, but you cannot "double-dip" on the same expenses. Different programs can fund different project components. Disclose all funding sources.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">2. Can I apply to multiple Ontario programs simultaneously?</h3>
+                    <p className="text-gray-600 text-sm">Generally yes, but you cannot "double-dip" on the same expenses. Different programs can fund different project components. Always disclose all funding sources in your applications.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Are Ontario grants taxable income?</h3>
-                    <p className="text-gray-600">Yes, business grants are generally considered taxable income. Consult with an accountant to understand the tax implications and plan accordingly.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">3. Are Ontario grants taxable income?</h3>
+                    <p className="text-gray-600 text-sm">Yes, business grants are generally considered taxable income. Consult with an accountant or review <Link href="https://www.canada.ca/en/revenue-agency.html" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">CRA guidelines</Link> to understand the tax implications.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">What if my business operates in multiple provinces?</h3>
-                    <p className="text-gray-600">You can still apply if you have significant Ontario operations. Focus your application on the Ontario-specific aspects of your project and job creation.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">4. What if my business operates in multiple provinces?</h3>
+                    <p className="text-gray-600 text-sm">You can still apply if you have significant Ontario operations. Focus your application on the Ontario-specific aspects of your project and job creation within the province.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">How do Ontario provincial programs work with federal funding?</h3>
-                    <p className="text-gray-600">They stack well! Many Ontario businesses combine provincial grants with federal programs like IRAP, SR&ED, and FedDev Ontario. This is encouraged and can maximize your total funding.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">5. How do Ontario provincial programs work with federal funding?</h3>
+                    <p className="text-gray-600 text-sm">They stack well! Many Ontario businesses combine provincial grants with federal programs like <Link href="/guides/apply-irap-government-grants" className="text-red-600 hover:underline">IRAP</Link>, SR&ED, and FedDev Ontario. This is encouraged and can maximize your total funding.</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2">6. Is there funding for hiring?</h3>
+                    <p className="text-gray-600 text-sm">Yes. In addition to Starter Company Plus, Ontario offers hiring grants through <Link href="https://www.ontario.ca/page/employment-ontario" className="text-red-600 hover:underline" target="_blank" rel="noopener noreferrer">Employment Ontario</Link> for training and hiring young workers or those with disabilities.</p>
                   </div>
                 </div>
               </div>

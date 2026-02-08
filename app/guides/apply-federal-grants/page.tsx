@@ -462,24 +462,28 @@ export default function ApplyFederalGrantsGuide() {
                 </h2>
                 <div className="space-y-4">
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Can I apply for multiple federal grants simultaneously?</h3>
-                    <p className="text-gray-600">Yes, you can apply to multiple grants. However, you must disclose all funding sources and cannot receive duplicate funding for the same activities. Some agencies limit concurrent applications.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">1. Can I apply for multiple federal grants?</h3>
+                    <p className="text-gray-600 text-sm">Yes, you can apply to multiple grants. However, you must disclose all funding sources and cannot receive duplicate funding for the same activities. Some agencies limit concurrent applications.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">What happens if my application is rejected?</h3>
-                    <p className="text-gray-600">Request reviewer feedback (usually available within 30-60 days). Use this to strengthen your next application. Many successful grantees were rejected on their first attempt.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">2. What happens if my application is rejected?</h3>
+                    <p className="text-gray-600 text-sm">Request reviewer feedback (usually available within 30-60 days). Use this to strengthen your next application. Many successful grantees from agencies like <a href="https://www.nsf.gov/funding/" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">NSF</a> or NIH were rejected on their first attempt.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Are grant funds taxable?</h3>
-                    <p className="text-gray-600">Generally yes, for businesses. However, treatment varies by entity type and use of funds. Consult a tax professional familiar with federal grants.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">3. Are grant funds taxable?</h3>
+                    <p className="text-gray-600 text-sm">Generally yes, for businesses. However, treatment varies by entity type and use of funds. Consult a tax professional familiar with federal grants.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Can international companies apply?</h3>
-                    <p className="text-gray-600">Most federal grants require U.S. presence. Some programs allow foreign participation, but typically require a U.S. subsidiary or partner entity.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">4. Can international companies apply?</h3>
+                    <p className="text-gray-600 text-sm">Most federal grants require U.S. presence. Some programs allow foreign participation, but typically require a U.S. subsidiary or partner entity.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">What is cost share/matching?</h3>
-                    <p className="text-gray-600">Many grants require recipients to contribute a portion of project costs. This can be cash or in-kind contributions. SBIR Phase I typically has no match requirement.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">5. What is cost share/matching?</h3>
+                    <p className="text-gray-600 text-sm">Many grants require recipients to contribute a portion of project costs. This can be cash or in-kind contributions. SBIR Phase I typically has no match requirement.</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2">6. Are there grants for debt relief?</h3>
+                    <p className="text-gray-600 text-sm">No. Federal grants are strictly for future projects with public benefit or economic impact (like R&D or export growth). They cannot be used to pay off existing business debt.</p>
                   </div>
                 </div>
               </div>

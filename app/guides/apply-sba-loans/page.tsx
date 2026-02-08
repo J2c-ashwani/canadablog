@@ -367,20 +367,44 @@ export default function ApplySBALoansGuide() {
             <div className="max-w-3xl mx-auto text-left">
               <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
                 <HelpCircle className="w-6 h-6 text-blue-600 mr-2" />
-                SBA FAQs
+                Common Questions About SBA Loans
               </h2>
-              <div className="divide-y divide-blue-100">
-                <div className="py-4">
-                  <h3 className="font-bold text-slate-900 mb-2">Do I need collateral?</h3>
-                  <p className="text-slate-600 text-sm">For loans under $25,000, typically no. But for loans over $350,000, the SBA requires the lender to collateralize the loan to the maximum extent possible (including personal real estate).</p>
+              <div className="space-y-6">
+                <div className="py-4 border-b border-blue-50">
+                  <h3 className="font-bold text-slate-900 mb-2">1. Do I need collateral?</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    For loans under $25,000, typically no. But for loans over $350,000, the <a href="https://www.sba.gov/funding-programs/loans/7a-loans" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">SBA rules</a> require the lender to collateralize the loan to the maximum extent possible (which often includes a lien on your personal real estate).
+                  </p>
+                </div>
+                <div className="py-4 border-b border-blue-50">
+                  <h3 className="font-bold text-slate-900 mb-2">2. Is there a prepayment penalty?</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    For loans with terms under 15 years, usually no. For loans 15 years or longer (like 504 real estate loans), there is a substantial prepayment penalty during the first 3 years of the term (often 5% declining).
+                  </p>
+                </div>
+                <div className="py-4 border-b border-blue-50">
+                  <h3 className="font-bold text-slate-900 mb-2">3. Can I refinance existing debt?</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    Yes, but only if the new payment is at least 10% lower than the current payment (Debt Refinance with Expansion). You cannot just refinance to move debt from one bank to another without a tangible benefit.
+                  </p>
+                </div>
+                <div className="py-4 border-b border-blue-50">
+                  <h3 className="font-bold text-slate-900 mb-2">4. Can I buy a franchise?</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    Yes! SBA loans are the #1 way to fund franchise acquisitions. However, the franchise brand must be listed in the <a href="https://www.sba.gov/sba-franchise-directory" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">SBA Franchise Directory</a> to be eligible.
+                  </p>
+                </div>
+                <div className="py-4 border-b border-blue-50">
+                  <h3 className="font-bold text-slate-900 mb-2">5. What if I have bad credit?</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    If your FICO is below 650, traditional 7(a) loans are tough. You might look at the <strong>SBA Microloan program</strong> or a Community Advantage loan, which are designed for underserved borrowers with lower credit scores.
+                  </p>
                 </div>
                 <div className="py-4">
-                  <h3 className="font-bold text-slate-900 mb-2">Is there a prepayment penalty?</h3>
-                  <p className="text-slate-600 text-sm">For loans under 15 years, usually no. For loans 15 years or longer (like real estate), there is a prepayment penalty during the first 3 years.</p>
-                </div>
-                <div className="py-4">
-                  <h3 className="font-bold text-slate-900 mb-2">Can I refinance existing debt?</h3>
-                  <p className="text-slate-600 text-sm">Yes, but only if the new payment is at least 10% lower than the current payment (Debt Refinance with Expansion).</p>
+                  <h3 className="font-bold text-slate-900 mb-2">6. How much do I need to put down?</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    Expect to put down <strong>10% to 20%</strong>. For a business acquisition, the seller can sometimes carry a note on "standby" to count towards your equity injection, reducing your cash out of pocket.
+                  </p>
                 </div>
               </div>
             </div>

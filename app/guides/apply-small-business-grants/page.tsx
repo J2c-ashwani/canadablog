@@ -261,6 +261,59 @@ export default function ApplySmallBusinessGrantsGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About Small Business Grants</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. How do I find "free money" for my business?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    True "free money" (unrestricted grants) is exceptionally rare for for-profit businesses. Most legitimate grants are for very specific activities like scientific research (<a href="https://www.sbir.gov/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">SBIR</a>) or export expansion. Be very skeptical of any site promising easy grants for a fee.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Does the SBA lend money directly?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    No. The Small Business Administration is primarily a <strong>guarantor</strong>. You borrow working capital from a commercial bank (like Chase, Wells Fargo, or a local credit union), and the SBA promises to pay them back if you default. This is why you apply at a bank, not at an SBA office.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. Can I use a grant for payroll?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Generally, no. Grants are usually project-based (e.g., "Build a prototype" or "audit your energy usage"). They are rarely for operational expenses like rent or payroll. Loans, however, are specifically designed for these working capital needs.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Do I need to hire a grant writer?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    For federal grants like SBIR, yes, professional help is often needed due to the complexity. For smaller corporate grants ($5k-$10k), you can usually write them yourself. <strong>Never</strong> pay a "grant finder" just to see a list of grants; that information is free on <a href="https://www.grants.gov/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Grants.gov</a>.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. What is the difference between a grant and a loan?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    A <strong>Grant</strong> does not need to be repaid (unless you misuse the funds). A <strong>Loan</strong> must be repaid with interest. A <strong>Forgivable Loan</strong> turns into a grant if you meet certain conditions (like the PPP loans during COVID), but these are currently rare.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. Where can I get free advice?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    You should utilize <a href="https://www.score.org/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">SCORE</a>. They are an SBA partner that provides free, volunteer business mentors who can help you review your business plan and financing application before you go to the bank.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

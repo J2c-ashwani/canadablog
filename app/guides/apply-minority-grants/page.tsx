@@ -227,7 +227,7 @@ export default function ApplyMinorityGrantsGuide() {
                   <div className="absolute -left-[41px] bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">Register in SAM.gov</h3>
                   <p className="text-slate-600 text-sm mb-4">
-                    You cannot do anything without a UEI (Unique Entity ID) from SAM.gov. Do this first. It is free.
+                    You cannot do anything without a UEI (Unique Entity ID) from <a href="https://sam.gov/content/home" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:underline">SAM.gov</a>. Do this first. It is free.
                   </p>
                 </div>
 
@@ -243,7 +243,7 @@ export default function ApplyMinorityGrantsGuide() {
                   <div className="absolute -left-[41px] bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">Submit at certify.sba.gov</h3>
                   <p className="text-slate-600 text-sm mb-4">
-                    This is the central portal for all SBA certifications. Upload your documents and wait for the analyst review (90+ days).
+                    This is the central portal for all SBA certifications. Upload your documents at <a href="https://certify.sba.gov/" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:underline">certify.sba.gov</a> and wait for the analyst review (90+ days).
                   </p>
                 </div>
 
@@ -255,6 +255,59 @@ export default function ApplyMinorityGrantsGuide() {
                   </p>
                 </div>
 
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About Minority Certification</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Do I need to be a US Citizen?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes. For the primary federal certifications (8(a), WOSB, SDVOSB), unconditional ownership by one or more U.S. citizens is required. Permanent residents (Green Card holders) are generally not eligible for the 8(a) program, though norms vary for private sector diversity programs.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Can I self-certify for WOSB?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    No. The SBA ended self-certification for Women-Owned Small Businesses (WOSB) in 2020. You must now upload documents to <a href="https://wosb.certify.sba.gov/" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">wosb.certify.sba.gov</a> or obtain certification from an approved third-party certifier like the WBENC.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. What is the net worth cap?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    For economically disadvantaged programs (8(a) and EDWOSB), the personal net worth of the owner(s) cannot exceed <strong>$850,000</strong>. However, this calculation excludes the value of your primary residence and the value of your equity in the business itself.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Does this certification help with state contracts?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Sometimes, but states often use a different certification called the <strong>DBE (Disadvantaged Business Enterprise)</strong> program, primarily for transportation projects. Federal certification (8a/WOSB) does not automatically grant you state DBE status; you typically have to apply separately.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. Can I get a grant for startup costs just for being certified?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Generally, no. Certification is a marketing tool to win <strong>contracts</strong> (work for hire), not a ticket to free grant money. While some private foundations offer small grants ($5k-$10k) to minority founders, the real money is in the federal supply chain contracts that certification unlocks.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. What if my spouse makes a lot of money?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Spousal income is not directly counted toward <em>your</em> net worth cap, but the SBA will look at your "access to capital." If a spouse's assets are used to support the business or if you have joint assets that push you over the threshold, it could impact your economic disadvantage status.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

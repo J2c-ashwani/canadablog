@@ -236,6 +236,59 @@ export default function SBAApplicationProcessGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About SBA Applications</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. How long does it really take?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Realistically, plan for <strong>60 to 90 days</strong>. While some "Express" loans close in 30 days, most standard 7(a) deals involve back-and-forth negotiation with the underwriter. It is not a quick fix for next week's payroll.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. What is "Equity Injection"?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    This is your down payment. You typically need to put in 10-20% of the total project cost. Importantly, you must <strong>source</strong> this money—meaning you must show 3 months of bank statements proving it isn't borrowed from another credit card.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. Do I need life insurance?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Almost always, yes. If you are key to the business, the lender will require a life insurance policy assigned to the bank for the amount of the loan. This ensures the loan is paid off if something happens to you.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Can I buy a business with an SBA loan?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes! This is one of the most popular uses of the 7(a) program. You generally need 10% equity, and the seller can sometimes carry a "standby note" to help cover part of the equity requirement.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. What collateral is required?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    The SBA requires banks to take "all available collateral" until the loan is fully secured. This often includes business assets (machinery, inventory) and personal assets (your home).
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. Who approves the loan, the SBA or the Bank?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    The Bank approves it, based on SBA rules. If you use a <a href="https://www.sba.gov/partners/lenders/7a-loan-program/types-7a-loans" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Preferred Lender (PLP)</a>, they make the final decision. If not, they have to send your file to the SBA for a second review.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -575,24 +575,28 @@ export default function BritishColumbiaBusinessGrantsGuide() {
                 </h2>
                 <div className="space-y-4">
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">What makes BC funding different from other provinces?</h3>
-                    <p className="text-gray-600">BC uniquely emphasizes CleanBC alignment (sustainability), Asia-Pacific market access, and technology innovation. These three themes appear across most program requirements.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">1. What makes BC funding different from other provinces?</h3>
+                    <p className="text-gray-600 text-sm">BC uniquely emphasizes CleanBC alignment (sustainability), Asia-Pacific market access, and technology innovation. These three themes appear across most program requirements.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Can I apply to multiple BC programs simultaneously?</h3>
-                    <p className="text-gray-600">Yes, but you cannot fund the same expenses twice. Different programs can fund different project components. Always disclose all funding sources in applications.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">2. Can I apply to multiple BC programs simultaneously?</h3>
+                    <p className="text-gray-600 text-sm">Yes, but you cannot fund the same expenses twice. Different programs can fund different project components. Always disclose all funding sources in applications.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">What is PacifiCan and how does it relate to BC programs?</h3>
-                    <p className="text-gray-600">PacifiCan is the federal regional development agency for BC. Their programs can be stacked with provincial funding for larger total packages. They focus on innovation, clean growth, and community economic development.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">3. What is PacifiCan and how does it relate to BC programs?</h3>
+                    <p className="text-gray-600 text-sm">PacifiCan is the federal regional development agency for BC. Their programs can be stacked with provincial funding for larger total packages. They focus on innovation, clean growth, and community economic development.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Are BC grants taxable income?</h3>
-                    <p className="text-gray-600">Yes, business grants are generally taxable. Consult with an accountant to understand tax implications and plan accordingly.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">4. Are BC grants taxable income?</h3>
+                    <p className="text-gray-600 text-sm">Yes, business grants are generally taxable. Consult with an accountant to understand tax implications and plan accordingly.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">How important is Asia-Pacific market potential?</h3>
-                    <p className="text-gray-600">Very important for many Innovate BC programs. BC positions itself as the Pacific Gateway, so demonstrating export potential to Asian markets strengthens applications significantly.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">5. How important is Asia-Pacific market potential?</h3>
+                    <p className="text-gray-600 text-sm">Very important for many Innovate BC programs. BC positions itself as the Pacific Gateway, so demonstrating export potential to Asian markets strengthens applications significantly.</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2">6. Does BC support digital adoption?</h3>
+                    <p className="text-gray-600 text-sm">Yes. In addition to the federal CDAP, BC organizations like Innovate BC often have specific streams or partnerships to support digital transformation and technology adoption for traditional industries.</p>
                   </div>
                 </div>
               </div>

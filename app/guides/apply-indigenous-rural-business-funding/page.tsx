@@ -261,6 +261,59 @@ export default function IndigenousRuralBusinessFundingGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About Indigenous Funding</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Is the funding tax-free?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    It depends. If your business is located on a reserve and you are a Status Indian, income (including some grants) <em>may</em> be tax-exempt under Section 87 of the Indian Act. However, for most off-reserve businesses, grants are considered taxable income. Always consult an accountant familiar with Indigenous taxation.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Can I apply if I have a non-Indigenous partner?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes, as long as the business is majority-owned (51%+) and controlled by Indigenous individuals. This is common in "Joint Ventures" for major construction or resource projects.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. Where do I find my local AFI?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    You can use the <a href="https://nacca.ca/afi-directory/" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:underline">NACCA AFI Directory</a>. There are over 50 institutions across Canada, and you generally must apply to the one serving your specific region or nation.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Does Community Futures only help farmers?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    No! <a href="https://communityfutures.ca/" target="_blank" rel="noopener noreferrer" className="text-orange-600 hover:underline">Community Futures</a> helps *any* rural business, from tech startups to retail stores. Their main criterion is that you add economic value to a rural community.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. Can I get a grant for a truck?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Maybe. Unlike general banks, AFIs and AEP often allow capital costs (equipment, vehicles) to be covered if they are essential to the business operations (e.g., a logging truck or delivery van).
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. What if I don't have a Status Card?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    You need proof of heritage. If you are Métis, a card from your provincial Métis council is accepted. In some cases, a letter from your Band/Community leadership confirming your membership may suffice for specific AFIs.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

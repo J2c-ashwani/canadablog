@@ -278,6 +278,59 @@ export default function EDCWomenInTradeApplicationGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About EDC Funding</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Is EDC only for big companies?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    No. EDC serves thousands of small businesses. If you have a contract with a US buyer for $50k, EDC can insure it. You don't need to be a multinational corporation.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. How much does Export Insurance cost?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    It varies by country and customer risk, but typically costs between <strong>0.5% and 1.5%</strong> of the invoice value. For the peace of mind (and bankability) it provides, this is very cheap.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. Can I use CanExport for the USA?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Only if it is a NEW market for you. If you already export to New York but want to expand to California, that usually doesn't count. But if you have zero US sales, yes. Check the <a href="https://www.tradecommissioner.gc.ca/funding-financement/canexport/sme-pme/index.aspx?lang=eng" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">Applicant Guide</a> for specifics.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Does EDC give grants?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    EDC itself does not give grants; they do lending and insurance. However, they are a key partner in the disbursement of the Inclusive Trade Investment Program (equity).
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. What counts as "Diverse-Owned"?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    For the Inclusive Trade provisions, the business must be 51%+ owned/managed by women, Indigenous peoples, Black Canadians, or other equity-deserving groups.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. How helps me find foreign buyers?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    We recommend starting with the <a href="https://www.tradecommissioner.gc.ca/" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">Trade Commissioner Service (TCS)</a>. They have offices in 160+ cities worldwide and can introduce you to vetted potential partners for free.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

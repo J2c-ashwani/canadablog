@@ -283,6 +283,59 @@ export default function SREDApplicationGuide() {
                 </div>
               </div>
 
+              {/* Common Questions Section */}
+              <section className="py-16 bg-white">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-4xl mx-auto">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About SR&ED</h2>
+
+                    <div className="space-y-8">
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">1. Is there a deadline?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          Yes: <strong>18 months</strong> after your fiscal year end. This is a hard deadline. If you miss it, the credits for that year are lost forever.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">2. How much do SR&ED consultants charge?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          Most firms work on a contingency fee model, charging between <strong>15% and 25%</strong> of the refund amount. You generally should not pay upfront fees for SR&ED preparation.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">3. What if I fail?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          Failure is good! In the eyes of the CRA, technical failure proves there was "technological uncertainty," which is a core requirement. You can claim the costs of failed experiments.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">4. Do I need timesheets?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          The CRA <strong>strongly</strong> prefers them. If you are audited, "estimated" time allocations are often rejected. Implement a simple time-tracking code for "R&D" in your payroll system.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">5. Can I claim the CEO's salary?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          Only for the time they spent <em>directly</em> engaged in the technical work or directly supervising it. You cannot claim time spent on sales, marketing, or general administration.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">6. What is the Proxy Method?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          The Proxy Method simplifies overhead calculations. Instead of itemizing every pen and paper, you claim a flat <strong>55%</strong> of eligible salaries as overhead. This is the method chosen by 90% of claimants.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               {/* 4. NEURAL NETWORK: Related Guides */}
               <div className="border-t border-gray-200 pt-12 mb-12">
                 <h3 className="text-xl font-bold text-gray-900 mb-6">Explore Related Funding</h3>

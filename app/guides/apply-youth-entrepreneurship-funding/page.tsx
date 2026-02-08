@@ -260,6 +260,59 @@ export default function YouthEntrepreneurshipFundingGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About Youth Funding</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Do I have to pay back the money?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    For Futurpreneur and BDC financing: <strong>Yes</strong>. These are loans, not grants. You must repay them with interest (typically over 5 years). However, programs like <a href="https://www.ontario.ca/page/summer-company-program-guidelines" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Summer Company</a> offer non-repayable grants.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. What if I am 40 years old?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    You are ineligible for the specific Futurpreneur program. However, you can still apply for standard small business loans through the <a href="https://www.bdc.ca/en/financing" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Business Development Bank of Canada (BDC)</a> or your local credit union, though the collateral requirements may be stricter.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. Can I apply if I am a full-time student?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Generally, no. Futurpreneur requires you to be working full-time on your business. If you are a student, you should look at the Summer Company program or student venture funds offered by your university.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Do I need collateral (e.g., a house)?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    No! That is the primary benefit of <a href="https://www.futurpreneur.ca/en/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Futurpreneur</a>. It is an "unsecured" loan, meaning you do not need to pledge assets like a house or car to get approved.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. How long does the process take?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    From submitting your application to receiving funds, it typically takes <strong>4 to 8 weeks</strong>. The longest part is usually refining the business plan to meet their standards.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. Is the mentor mandatory?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes. You cannot get the money without the mentor. This is a feature, not a bug—statistically, businesses with mentors are twice as likely to survive past year 5.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

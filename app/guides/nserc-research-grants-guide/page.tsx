@@ -301,6 +301,59 @@ export default function NSERCResearchGrantsGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About NSERC</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Can I stack NSERC with SR&ED?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes, but carefully. The industry partner can claim SR&ED tax credits on their <em>portion</em> of the contribution. You cannot claim SR&ED on the amount NSERC reimburses. Always consult a tax pro.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Who owns the IP?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    NSERC does not claim intellectual property. Ownership is negotiated between the university and the industry partner. Usually, the university owns it but grants the partner a license to use it commercially.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. What is the success rate?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Alliance grants have a relatively high success rate (often &gt;60%) because they are non-competitive (judged against a standard, not against other applicants). If you meet the criteria, you likely get funded.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Can I use it for equipment?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    NSERC grants are primarily for <strong>research costs</strong> (students, materials, travel). They are not for large capital equipment purchases. For that, look at the <a href="https://www.innovation.ca/" target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">CFI (Canada Foundation for Innovation)</a>.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. Do I need a PhD?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    The Principal Investigator must hold an eligible academic appointment. However, the industry partner does not need a PhD—they just need the capacity to use the research.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. How long does the process take?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Plan for 3-6 months from submission to funding. It is faster than many academic grants but slower than commercial loans.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-white border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

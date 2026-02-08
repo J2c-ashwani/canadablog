@@ -388,6 +388,59 @@ export default function CanadaAgriFoodFundingGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About Agri-Food Funding</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Is this for primary farming?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Generally, no. Programs like <a href="https://agriculture.canada.ca/en/programs/agriinnovate" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline">AgriInnovate</a> target <strong>processors and manufacturers</strong> who are adding value to agricultural products (e.g., turning berries into jam, or automating a meat plant). Primary farming has different grant streams (like CAP).
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Can I buy standard equipment?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    AgriInnovate requires the technology to be <strong>innovative</strong> (new to Canada or the sector). If you are just buying a standard oven that your competitors already use, you won't qualify. However, SMPIF (Supply Management Processing Investment Fund) is more flexible for automation upgrades.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. What is the funding limit?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    AgriInnovate offers up to <strong>$10 million</strong> per project, repayable over 10 years at 0% interest. SMPIF offers up to $5 million as a non-repayable grant (contribution) for supply-managed sectors (dairy, poultry, eggs).
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Can I use it for building construction?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    It depends. Expansion of a facility to install new line equipment is often eligible, but general real estate purchases are not.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. Do I need to pay it back?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    AgriInnovate is a <strong>repayable contribution</strong> (0% loan). SMPIF is a <strong>non-repayable grant</strong>. Always check if the program says "repayable" or "non-repayable".
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. What is the deadline?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    AgriInnovate accepts applications on a continuous basis until funding runs out. SMPIF has specific intake windows, so check the AAFC website for the next opening.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -460,20 +460,28 @@ export default function RDARegionalGuide() {
                 </h2>
                 <div className="space-y-4">
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Can I stack RDA funding with other grants?</h3>
-                    <p className="text-gray-600">Yes, "stacking" is allowed, but there is usually a cap (often 75% or 90% of total project costs depending on the program). You must declare all other funding sources.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">1. Can I stack RDA funding with other grants?</h3>
+                    <p className="text-gray-600 text-sm">Yes, "stacking" is allowed, but there is usually a cap (often 75% or 90% of total project costs depending on the program). You must declare all other funding sources, such as <Link href="/guides/apply-irap-grants" className="text-purple-600 hover:underline">IRAP</Link> or provincial grants.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">What costs are eligible?</h3>
-                    <p className="text-gray-600">Eligible costs typically include capital equipment, technology adoption, marketing/export development, and specialized labour. General operating costs and land purchase are usually ineligible.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">2. What costs are eligible?</h3>
+                    <p className="text-gray-600 text-sm">Eligible costs typically include capital equipment, technology adoption, marketing/export development, and specialized labour. General operating costs and land purchase are usually ineligible.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">How does repayment work?</h3>
-                    <p className="text-gray-600">Repayment usually begins 1 year after the project is completed. It is typically a monthly payment schedule over 3-5 years, interest-free.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">3. How does repayment work?</h3>
+                    <p className="text-gray-600 text-sm">Repayment usually begins 1 year after the project is completed. It is typically a monthly payment schedule over 3-5 years, interest-free. See specific <Link href="https://bwl-lsf.isc-isde.gc.ca/s/en" className="text-purple-600 hover:underline" target="_blank" rel="noopener noreferrer">RDA guidelines</Link> for details.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Do RDAs take equity?</h3>
-                    <p className="text-gray-600">No, RDAs do not take equity in your company. They provide non-dilutive financing.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">4. Do RDAs take equity?</h3>
+                    <p className="text-gray-600 text-sm">No, RDAs do not take equity in your company. They provide non-dilutive financing, meaning you retain full ownership and control.</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2">5. What is the difference between a grant and a contribution?</h3>
+                    <p className="text-gray-600 text-sm">A <strong>grant</strong> is unconditional funding aimed at support. A <strong>contribution</strong> (repayable or non-repayable) comes with a contract specifying performance conditions and reporting requirements.</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2">6. How long does the approval process take?</h3>
+                    <p className="text-gray-600 text-sm">RDA approval times vary, but typically range from 3 to 6 months. Engaging with a program officer early can help streamline the process.</p>
                   </div>
                 </div>
               </div>

@@ -496,29 +496,28 @@ export default function QuebecBusinessGrantsGuide() {
                 </h2>
                 <div className="space-y-4">
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Are Quebec government grants taxable?</h3>
-                    <p className="text-gray-600">Yes. Unless specifically exempted (rare), government grants are considered taxable
-                      income at both federal and provincial levels. Budget for the tax impact when planning how to deploy funds.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">1. Are Quebec government grants taxable?</h3>
+                    <p className="text-gray-600 text-sm">Yes. Unless specifically exempted (rare), government grants are considered taxable income at both federal and provincial levels. Consult <Link href="https://www.revenuquebec.ca/en/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Revenu Québec</Link> for details.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Can I apply in English initially?</h3>
-                    <p className="text-gray-600">You can often find English information online and may speak with bilingual advisors initially.
-                      However, your formal application submission and all official documentation will need to be in French.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">2. Can I apply in English initially?</h3>
+                    <p className="text-gray-600 text-sm">You can often find English information online and may speak with bilingual advisors initially. However, per <Link href="https://www.quebec.ca/en/government/policies-orientations/french-language" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Bill 96</Link>, your formal application submission and all official documentation will need to be in French.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">What if I'm not incorporated in Quebec?</h3>
-                    <p className="text-gray-600">Most programs require Quebec-based operations, but not necessarily Quebec incorporation.
-                      An extra-provincial registration with significant Quebec operations may qualify. IQ evaluates the economic impact on Quebec.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">3. What if I'm not incorporated in Quebec?</h3>
+                    <p className="text-gray-600 text-sm">Most programs require Quebec-based operations. An extra-provincial registration with significant Quebec operations may qualify if you can demonstrate substantial economic benefits for the province.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Can I stack Quebec and federal programs?</h3>
-                    <p className="text-gray-600">Absolutely. Quebec explicitly encourages stacking. For example, R&D tax credits (provincial + federal
-                      SR&ED) and CED-Quebec grants (federal) can often be combined with IQ financing for a comprehensive package.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">4. Can I stack Quebec and federal programs?</h3>
+                    <p className="text-gray-600 text-sm">Absolutely. Quebec explicitly encourages stacking. For example, R&D tax credits and <Link href="https://ced.canada.ca/en" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">CED-Quebec</Link> grants can often be combined with IQ financing for a comprehensive package.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Is the Montreal AI ecosystem relevant?</h3>
-                    <p className="text-gray-600">Yes. Montreal is a global AI hub with dedicated programs. Mila, IVADO Labs, and Scale AI offer
-                      additional support channels specifically for AI/ML companies beyond standard IQ programs.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">5. Is the Montreal AI ecosystem relevant?</h3>
+                    <p className="text-gray-600 text-sm">Yes. Montreal is a global AI hub. <Link href="https://mila.quebec/en/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Mila</Link> and <Link href="https://www.scaleai.ca/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Scale AI</Link> offer specialized support beyond standard IQ programs.</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2">6. How does Investissement Québec (IQ) differ from banks?</h3>
+                    <p className="text-gray-600 text-sm">IQ is risk-tolerant and policy-driven. While sustainable, they will often finance projects that commercial banks view as too risky, provided there is strong economic development potential for Quebec.</p>
                   </div>
                 </div>
               </div>

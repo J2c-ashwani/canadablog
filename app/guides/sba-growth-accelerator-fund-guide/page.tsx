@@ -260,6 +260,59 @@ export default function SBAGrowthAcceleratorFundGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About the Growth Accelerator Fund</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. What is the difference between Stage 1 and Stage 2 prizes?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Stage 1 (The Catalyst) is awarded based on your <strong>proposal</strong> and ability to articulate a strategy for connecting STEM entrepreneurs. It is typically a $50,000 cash prize. Stage 2 (The Accelerator) is a follow-on prize awarded only to Stage 1 winners who successfully execute their proposed activities and demonstrate impact. Stage 2 prizes range from $50,000 to $150,000.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Can I use GAFC funds to invest in startups?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    No. This is a critical distinction. The funds are for <strong>operating costs</strong> of your accelerator organization (e.g., staff salaries, mentor fees, marketing, venue rental). You cannot use the prize money to take equity in startups or provide direct capital investment into the portfolio companies.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. Do I need to be a non-profit to apply?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    No. Both for-profit and non-profit entities are eligible. This includes private accelerators, university-backed incubators, co-working spaces, and economic development organizations. The key requirement is that you serve entrepreneurs in STEM/R&D.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. What counts as a STEM/R&D focus?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Your program should support entrepreneurs working in Science, Technology, Engineering, or Math. This is broadly defined but often aligns with SBIR/STTR topic areas such as biotechnology, advanced manufacturing, artificial intelligence, clean energy, or national security technologies.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. How competitive is the GAFC?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    It is moderately competitive. In recent years, the SBA has awarded roughly 40-60 Stage 1 prizes annually. Success depends heavily on your ability to reach specific underserved communities (rural, women, minority) or address specific geography gaps identified by the <a href="https://www.sba.gov/partners/incubators-accelerators-growth-accelerator-fund-competition" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">SBA's verified list</a>.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. Can I apply if I am a new accelerator?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Yes, but you must demonstrate an existing capacity to serve. While you don't need a 10-year track record, you generally need more than just an idea. You should have a legal entity formed and a clear plan for recruitment and programming.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

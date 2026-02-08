@@ -303,6 +303,59 @@ export default function ApplySBIRGrantsGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About SBIR</h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Can I use SBIR funds for marketing?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    No. SBIR/STTR funds are strictly for <strong>Technical R&D</strong>. You cannot use them for sales, marketing, or general business operations. However, you can use the "profit fee" (usually 7%) for any purpose you want.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Do I have to pay it back?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    No. SBIR awards are grants (or contracts), not loans. They are non-dilutive, meaning the government takes <strong>zero equity</strong> in your company.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. What is TABA?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    TABA (Technical and Business Assistance) is extra funding (up to $6,500 in Phase I) you can request to hire a vendor for market research, IP strategy, or financial management. <em>Always request TABA.</em>
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">4. Can a VC-backed company apply?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    Generally, no. If your company is majority-owned (&gt;50%) by Venture Capital firms or Hedge Funds, you are ineligible. There are some specific exceptions for NIH awards, but check the rules carefully.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">5. Can I outsource the work?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    In Phase I, you can outsource up to 33% of the work. The remaining 67% must be done by your employees. In Phase II, you can outsource up to 50%.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">6. How long does approval take?</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    It is slow. From submission to award typically takes <strong>4 to 6 months</strong>. Plan your cash flow accordingly.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Neural Network: Related Guides */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -453,24 +453,28 @@ export default function SIFApplicationGuide() {
                 </h2>
                 <div className="space-y-4">
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Is SIF funding repayable?</h3>
-                    <p className="text-gray-600">SIF provides a mix of repayable and non-repayable contributions. The repayable portion typically comes from royalty on revenues or repayment based on project success. The exact terms are negotiated case-by-case.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">1. Is SIF funding repayable?</h3>
+                    <p className="text-gray-600 text-sm">SIF provides a mix of repayable and non-repayable contributions. The repayable portion typically comes from royalty on revenues or repayment based on project success. The exact terms are negotiated case-by-case.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Can I apply for multiple SIF streams?</h3>
-                    <p className="text-gray-600">Yes, but each project should target the most appropriate stream. Different phases of a large initiative could potentially apply to different streams, but this requires strategic coordination with ISED.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">2. Can I apply for multiple SIF streams?</h3>
+                    <p className="text-gray-600 text-sm">Yes, but each project should target the most appropriate stream. Different phases of a large initiative could potentially apply to different streams, but this requires strategic coordination with ISED.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">What evaluation criteria does SIF use?</h3>
-                    <p className="text-gray-600">SIF evaluates: Innovation Merit (35%), Economic Impact (40%), and Organizational Capability (25%). Strong applications excel across all three dimensions with quantifiable evidence.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">3. What is the Net Zero Accelerator?</h3>
+                    <p className="text-gray-600 text-sm">The <a href="https://ised-isde.canada.ca/site/strategic-innovation-fund/en/net-zero-accelerator" target="_blank" rel="noopener noreferrer" className="text-red-700 hover:underline">Net Zero Accelerator (NZA)</a> is a special SIF initiative with $8 billion to fund decarbonization projects. If your project reduces GHG emissions significantly, apply through NZA.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">How do I engage ISED early?</h3>
-                    <p className="text-gray-600">Contact ISED's SIF team with a preliminary project concept before formal application. They can provide guidance on stream selection and eligibility. Regional offices can also provide support.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">4. What evaluation criteria does SIF use?</h3>
+                    <p className="text-gray-600 text-sm">SIF evaluates: Innovation Merit (35%), Economic Impact (40%), and Organizational Capability (25%). Strong applications excel across all three dimensions with quantifiable evidence.</p>
                   </div>
                   <div className="bg-white rounded-lg p-6 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2">Can foreign companies apply?</h3>
-                    <p className="text-gray-600">Yes, but the project must be in Canada with significant Canadian benefits. Foreign companies often apply under Stream 3 (Investment Attraction) when establishing or expanding Canadian operations.</p>
+                    <h3 className="font-bold text-gray-900 mb-2">5. How do I engage ISED early?</h3>
+                    <p className="text-gray-600 text-sm">Contact ISED's SIF team with a preliminary project concept before formal application. They can provide guidance on stream selection and eligibility. Regional offices can also provide support.</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2">6. Can foreign companies apply?</h3>
+                    <p className="text-gray-600 text-sm">Yes, but the project must be in Canada with significant Canadian benefits. Foreign companies often apply under Stream 3 (Investment Attraction) when establishing or expanding Canadian operations.</p>
                   </div>
                 </div>
               </div>

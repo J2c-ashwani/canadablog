@@ -259,6 +259,55 @@ export default function WomenEntrepreneurshipFundApplicationGuide() {
               </div>
 
               {/* FAQ Section */}
+              {/* Common Questions Section */}
+              <div className="bg-white rounded-xl shadow-sm border border-purple-100 p-8 mb-8">
+                <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About WEF</h2>
+
+                <div className="space-y-8">
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">1. Is the grant taxable?</h3>
+                    <p className="text-slate-600 leading-relaxed">
+                      Yes. In Canada, almost all government grants for business are considered taxable income. You must report it in the tax year you receive it. Plan ahead so you aren't surprised by the tax bill.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">2. Can I stack this with a BDC loan?</h3>
+                    <p className="text-slate-600 leading-relaxed">
+                      Yes! Financing a project often involves a "Capital Stack": 20% your cash, 30% grant (WEF), and 50% loan (BDC). This is a very standard and effective way to fund large expansions.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">3. What if I get denied?</h3>
+                    <p className="text-slate-600 leading-relaxed">
+                      Don't give up. Ask for a debrief. Often, applications are rejected because they didn't clearly align with the "Priority Areas" (like export or clean tech). You can fix this and re-apply or apply to a Regional Development Agency instead.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">4. Does it cover my own salary?</h3>
+                    <p className="text-slate-600 leading-relaxed">
+                      No. The <a href="https://ised-isde.canada.ca/site/women-entrepreneurship-strategy/en/women-entrepreneurship-fund" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:underline">Women Entrepreneurship Fund</a> is strictly for project costs (equipment, marketing, renovations). It is not for paying the founder's existing salary.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">5. Is there an age limit?</h3>
+                    <p className="text-slate-600 leading-relaxed">
+                      No. Whether you are 18 or 80, if you own and control the business, you are eligible. There are separate "Youth" programs for those under 29, but WEF is open to all ages.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">6. How helps me write the grant?</h3>
+                    <p className="text-slate-600 leading-relaxed">
+                      You can hire a grant writer, but many successful applicants write it themselves. The key is to be specific: "We will buy Machine X to increase production by 20%," rather than "We want to grow."
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               <div id="faq" className="bg-gray-50 rounded-xl p-8 mb-12">
                 <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center">
                   <HelpCircle className="w-6 h-6 text-purple-600 mr-2" />
@@ -279,6 +328,59 @@ export default function WomenEntrepreneurshipFundApplicationGuide() {
                   </div>
                 </div>
               </div>
+
+              {/* Common Questions Section */}
+              <section className="py-16 bg-white">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-4xl mx-auto">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-8">Common Questions About WEF</h2>
+
+                    <div className="space-y-8">
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">1. Is the grant taxable?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          Yes. In Canada, almost all government grants for business are considered taxable income. You must report it in the tax year you receive it. Plan ahead so you aren't surprised by the tax bill.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">2. Can I stack this with a BDC loan?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          Yes! Financing a project often involves a "Capital Stack": 20% your cash, 30% grant (WEF), and 50% loan (BDC). This is a very standard and effective way to fund large expansions.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">3. What if I get denied?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          Don't give up. Ask for a debrief. Often, applications are rejected because they didn't clearly align with the "Priority Areas" (like export or clean tech). You can fix this and re-apply or apply to a Regional Development Agency instead.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">4. Does it cover my own salary?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          No. The <a href="https://ised-isde.canada.ca/site/women-entrepreneurship-strategy/en/women-entrepreneurship-fund" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:underline">Women Entrepreneurship Fund</a> is strictly for project costs (equipment, marketing, renovations). It is not for paying the founder's existing salary.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">5. Is there an age limit?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          No. Whether you are 18 or 80, if you own and control the business, you are eligible. There are separate "Youth" programs for those under 29, but WEF is open to all ages.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">6. How helps me write the grant?</h3>
+                        <p className="text-slate-600 leading-relaxed">
+                          You can hire a grant writer, but many successful applicants write it themselves. The key is to be specific: "We will buy Machine X to increase production by 20%," rather than "We want to grow."
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
 
               {/* Neural Network: Related Guides */}
               <section className="py-16 bg-slate-50 border-t border-slate-200">
