@@ -33,10 +33,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     ...generateSEOMetadata({ ...post, content: '' }),
     robots: {
-      index: isEnriched,
+      index: true,
       follow: true,
       googleBot: {
-        index: isEnriched,
+        index: true,
         follow: true,
       },
     },

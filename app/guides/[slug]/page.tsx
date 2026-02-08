@@ -34,10 +34,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     title: guide.title,
     description: guide.description,
     robots: {
-      index: isEnriched,
+      index: true,
       follow: true,
       googleBot: {
-        index: isEnriched,
+        index: true,
         follow: true,
       },
     },

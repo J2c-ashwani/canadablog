@@ -2,10 +2,15 @@ import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
 import { getAllStates } from '@/lib/data/states'
+import { getAllBlogPosts } from '@/lib/data/blogPosts'
+import { guidesDatabase } from '@/lib/data/guides'
+import { getAllStateDetails } from '@/lib/data/stateDetails'
 
 // Recursively find all page.tsx files and convert to routes
 function getAllRoutes(dir: string, baseDir: string = 'app'): string[] {
   const routes: string[] = []
+  if (!fs.existsSync(dir)) return []
+
   const items = fs.readdirSync(dir, { withFileTypes: true })
 
   for (const item of items) {
@@ -34,36 +39,73 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.fsidigital.ca'
   const appDir = path.join(process.cwd(), 'app')
 
-  // Get ALL routes by recursively scanning the app directory
-  const allRoutes = getAllRoutes(appDir)
+  // 1. Get ALL static routes by recursively scanning the app directory
+  const staticRoutes = getAllRoutes(appDir)
 
-  // Add USA state dynamic routes (50 states)
+  // 2. Add Dynamic Blog Posts (from data)
+  const allPosts = getAllBlogPosts()
+  const dynamicBlogRoutes = allPosts
+    .map(post => `/blog/${post.slug}`)
+    .filter(route => !staticRoutes.includes(route))
+
+  // 3. Add Dynamic Guides (from data)
+  const dynamicGuideRoutes = guidesDatabase
+    .map(guide => `/guides/${guide.slug}`)
+    .filter(route => !staticRoutes.includes(route))
+
+  // 4. Add USA State Pages (Programmatic SEO)
   const stateRoutes = getAllStates().map(state => `/usa/${state.slug}`)
-  const combinedRoutes = [...allRoutes, ...stateRoutes]
+
+  // 5. Add USA City Pages (Programmatic SEO - Level 2)
+  const cityRoutes: string[] = []
+  const statesDetails = getAllStateDetails()
+
+  statesDetails.forEach(state => {
+    if (state.cityGuides) {
+      state.cityGuides.forEach(city => {
+        const citySlug = city.city.toLowerCase()
+          .replace(/[^\w\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-')
+        cityRoutes.push(`/usa/${state.slug}/${citySlug}`)
+      })
+    }
+  })
+
+  // Combine all routes
+  const allRoutes = Array.from(new Set([
+    ...staticRoutes,
+    ...dynamicBlogRoutes,
+    ...dynamicGuideRoutes,
+    ...stateRoutes,
+    ...cityRoutes
+  ]))
 
   // Convert to sitemap format
-  const sitemapEntries = combinedRoutes.map(route => ({
+  const sitemapEntries = allRoutes.map(route => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: route.includes('/blog/') || route.includes('/guides/')
       ? 'weekly' as const
       : 'monthly' as const,
-    priority: route === '/' ? 1.0 : 0.7,
+    priority: route === '/' ? 1.0 : route.startsWith('/usa/') ? 0.8 : 0.7,
   }))
 
-  // Count by category for logging
-  const blogCount = combinedRoutes.filter(r => r.startsWith('/blog/')).length
-  const guideCount = combinedRoutes.filter(r => r.startsWith('/guides/')).length
-  const canadaCount = combinedRoutes.filter(r => r.startsWith('/canada/')).length
-  const usaCount = combinedRoutes.filter(r => r.startsWith('/usa/')).length
-  const downloadCount = combinedRoutes.filter(r => r.startsWith('/download/')).length
-  const otherCount = combinedRoutes.length - blogCount - guideCount - canadaCount - usaCount - downloadCount
+  // Logging for verification
+  const blogCount = allRoutes.filter(r => r.startsWith('/blog/')).length
+  const guideCount = allRoutes.filter(r => r.startsWith('/guides/')).length
+  const canadaCount = allRoutes.filter(r => r.startsWith('/canada/')).length
+  const usaStateCount = allRoutes.filter(r => r.startsWith('/usa/') && r.split('/').length === 3).length
+  const usaCityCount = allRoutes.filter(r => r.startsWith('/usa/') && r.split('/').length === 4).length
+  const downloadCount = allRoutes.filter(r => r.startsWith('/download/')).length
+  const otherCount = allRoutes.length - blogCount - guideCount - canadaCount - usaStateCount - usaCityCount - downloadCount
 
-  console.log(`\n✅ Sitemap generated with ${combinedRoutes.length} URLs`)
+  console.log(`\n✅ Sitemap generated with ${allRoutes.length} URLs`)
   console.log(`   📝 ${blogCount} Blog Posts`)
   console.log(`   📚 ${guideCount} Guides`)
   console.log(`   🍁 ${canadaCount} Canada Pages`)
-  console.log(`   🇺🇸 ${usaCount} USA Pages (includes ${stateRoutes.length} states)`)
+  console.log(`   🇺🇸 ${usaStateCount} USA State Pages`)
+  console.log(`   🏙️ ${usaCityCount} USA City Pages`)
   console.log(`   📥 ${downloadCount} Download Pages`)
   console.log(`   🏠 ${otherCount} Other Pages\n`)
 

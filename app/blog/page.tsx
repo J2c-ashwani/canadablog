@@ -42,10 +42,9 @@ export default function BlogPage({
   const postsPerPage = 9;
 
   // Filter posts by category if selected
-  // QUALITY SHIELD: Only show enriched posts to reviewers
-  const filteredPosts = (selectedCategory
+  const filteredPosts = selectedCategory
     ? allPosts.filter(post => post.category === selectedCategory)
-    : allPosts).filter(post => !!(post.metrics || post.expertTip));
+    : allPosts;
 
   // Pagination
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
