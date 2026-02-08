@@ -1,100 +1,71 @@
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
-import { guidesDatabase as guides } from '@/lib/data/guides'
 import { getAllStates } from '@/lib/data/states'
+
+// Recursively find all page.tsx files and convert to routes
+function getAllRoutes(dir: string, baseDir: string = 'app'): string[] {
+  const routes: string[] = []
+  const items = fs.readdirSync(dir, { withFileTypes: true })
+
+  for (const item of items) {
+    const fullPath = path.join(dir, item.name)
+
+    if (item.isDirectory()) {
+      // Skip dynamic routes, node_modules, and hidden directories
+      if (!item.name.startsWith('[') && !item.name.startsWith('.') && item.name !== 'api') {
+        routes.push(...getAllRoutes(fullPath, baseDir))
+      }
+    } else if (item.name === 'page.tsx' || item.name === 'page.ts') {
+      // Convert file path to route
+      const route = fullPath
+        .replace(path.join(process.cwd(), baseDir), '')
+        .replace('/page.tsx', '')
+        .replace('/page.ts', '')
+        .replace(/\\/g, '/')  // Normalize Windows paths
+      routes.push(route || '/')
+    }
+  }
+
+  return routes
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.fsidigital.ca'
+  const appDir = path.join(process.cwd(), 'app')
 
-  // Core static pages
-  const coreRoutes = [
-    '',
-    '/about',
-    '/contact',
-    '/privacy',
-    '/terms',
-    '/disclaimer',
-    '/grant-finder',
-    '/resources',
-    '/editorial-policy',
-    '/about/author',
-    '/usa',
-    '/canada'
-  ].map(route => ({
+  // Get ALL routes by recursively scanning the app directory
+  const allRoutes = getAllRoutes(appDir)
+
+  // Add USA state dynamic routes (50 states)
+  const stateRoutes = getAllStates().map(state => `/usa/${state.slug}`)
+  const combinedRoutes = [...allRoutes, ...stateRoutes]
+
+  // Convert to sitemap format
+  const sitemapEntries = combinedRoutes.map(route => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: route === '' ? 1.0 : 0.8,
+    changeFrequency: route.includes('/blog/') || route.includes('/guides/')
+      ? 'weekly' as const
+      : 'monthly' as const,
+    priority: route === '/' ? 1.0 : 0.7,
   }))
 
-  // Blog Posts (Dynamic) - Scan actual blog directory to include ALL pages
-  const blogDir = path.join(process.cwd(), 'app', 'blog')
-  const blogFolders = fs.readdirSync(blogDir, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory() && dirent.name !== '[slug]' && !dirent.name.startsWith('.'))
-    .map(dirent => dirent.name)
+  // Count by category for logging
+  const blogCount = combinedRoutes.filter(r => r.startsWith('/blog/')).length
+  const guideCount = combinedRoutes.filter(r => r.startsWith('/guides/')).length
+  const canadaCount = combinedRoutes.filter(r => r.startsWith('/canada/')).length
+  const usaCount = combinedRoutes.filter(r => r.startsWith('/usa/')).length
+  const downloadCount = combinedRoutes.filter(r => r.startsWith('/download/')).length
+  const otherCount = combinedRoutes.length - blogCount - guideCount - canadaCount - usaCount - downloadCount
 
-  const blogRoutes = blogFolders.map(slug => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }))
+  console.log(`\n✅ Sitemap generated with ${combinedRoutes.length} URLs`)
+  console.log(`   📝 ${blogCount} Blog Posts`)
+  console.log(`   📚 ${guideCount} Guides`)
+  console.log(`   🍁 ${canadaCount} Canada Pages`)
+  console.log(`   🇺🇸 ${usaCount} USA Pages (includes ${stateRoutes.length} states)`)
+  console.log(`   📥 ${downloadCount} Download Pages`)
+  console.log(`   🏠 ${otherCount} Other Pages\n`)
 
-  // Guides (Dynamic)
-  const guideRoutes = guides.map(guide => ({
-    url: `${baseUrl}/guides/${guide.slug}`,
-    lastModified: new Date(guide.lastUpdated || new Date()),
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }))
-
-  // Canada Provincial Pages (Dynamic)
-  const canadaDir = path.join(process.cwd(), 'app', 'canada')
-  const canadaFolders = fs.readdirSync(canadaDir, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory() && !dirent.name.startsWith('[') && !dirent.name.startsWith('.'))
-    .map(dirent => dirent.name)
-
-  const canadaRoutes = canadaFolders.map(slug => ({
-    url: `${baseUrl}/canada/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
-
-  // Download Pages (Dynamic)
-  const downloadDir = path.join(process.cwd(), 'app', 'download')
-  const downloadFolders = fs.existsSync(downloadDir)
-    ? fs.readdirSync(downloadDir, { withFileTypes: true })
-      .filter(dirent => dirent.isDirectory() && !dirent.name.startsWith('.'))
-      .map(dirent => dirent.name)
-    : []
-
-  const downloadRoutes = downloadFolders.map(slug => ({
-    url: `${baseUrl}/download/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.5,
-  }))
-
-  // US State Pages (Programmatic SEO)
-  const stateRoutes = getAllStates().map(state => ({
-    url: `${baseUrl}/usa/${state.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
-
-  const allRoutes = [...coreRoutes, ...blogRoutes, ...guideRoutes, ...canadaRoutes, ...downloadRoutes, ...stateRoutes]
-  const totalUrls = allRoutes.length
-
-  console.log(`\n✅ Sitemap generated with ${totalUrls} URLs`)
-  console.log(`   📝 ${blogRoutes.length} Blog Posts`)
-  console.log(`   📚 ${guideRoutes.length} Guides`)
-  console.log(`   🍁 ${canadaRoutes.length} Canada Pages`)
-  console.log(`   📥 ${downloadRoutes.length} Download Pages`)
-  console.log(`   🇺🇸 ${stateRoutes.length} USA State Pages`)
-  console.log(`   🏠 ${coreRoutes.length} Core Pages\n`)
-
-  return allRoutes
+  return sitemapEntries
 }
