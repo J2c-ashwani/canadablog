@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
-import { blogPosts } from '@/lib/data/blogPosts'
 import { guidesDatabase as guides } from '@/lib/data/guides'
 import { getAllStates } from '@/lib/data/states'
 
@@ -29,12 +28,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1.0 : 0.8,
   }))
 
-  // Blog Posts (Dynamic)
-  // We include ALL posts. The "Quality Firewall" is now handled by the noindex tag 
-  // inside the page template, not by excluding them from the sitemap.
-  const blogRoutes = blogPosts.map(post => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+  // Blog Posts (Dynamic) - Scan actual blog directory to include ALL pages
+  const blogDir = path.join(process.cwd(), 'app', 'blog')
+  const blogFolders = fs.readdirSync(blogDir, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory() && dirent.name !== '[slug]' && !dirent.name.startsWith('.'))
+    .map(dirent => dirent.name)
+
+  const blogRoutes = blogFolders.map(slug => ({
+    url: `${baseUrl}/blog/${slug}`,
+    lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.7,
   }))
@@ -47,6 +49,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
+  // Canada Provincial Pages (Dynamic)
+  const canadaDir = path.join(process.cwd(), 'app', 'canada')
+  const canadaFolders = fs.readdirSync(canadaDir, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory() && !dirent.name.startsWith('[') && !dirent.name.startsWith('.'))
+    .map(dirent => dirent.name)
+
+  const canadaRoutes = canadaFolders.map(slug => ({
+    url: `${baseUrl}/canada/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  // Download Pages (Dynamic)
+  const downloadDir = path.join(process.cwd(), 'app', 'download')
+  const downloadFolders = fs.existsSync(downloadDir)
+    ? fs.readdirSync(downloadDir, { withFileTypes: true })
+      .filter(dirent => dirent.isDirectory() && !dirent.name.startsWith('.'))
+      .map(dirent => dirent.name)
+    : []
+
+  const downloadRoutes = downloadFolders.map(slug => ({
+    url: `${baseUrl}/download/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.5,
+  }))
+
   // US State Pages (Programmatic SEO)
   const stateRoutes = getAllStates().map(state => ({
     url: `${baseUrl}/usa/${state.slug}`,
@@ -55,9 +85,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  const totalUrls = coreRoutes.length + blogRoutes.length + guideRoutes.length + stateRoutes.length
-  console.log(`\n✅ Sitemap generated with ${totalUrls} URLs (Full Site + ${stateRoutes.length} State Pages)\n`)
+  const allRoutes = [...coreRoutes, ...blogRoutes, ...guideRoutes, ...canadaRoutes, ...downloadRoutes, ...stateRoutes]
+  const totalUrls = allRoutes.length
 
-  return [...coreRoutes, ...blogRoutes, ...guideRoutes, ...stateRoutes]
+  console.log(`\n✅ Sitemap generated with ${totalUrls} URLs`)
+  console.log(`   📝 ${blogRoutes.length} Blog Posts`)
+  console.log(`   📚 ${guideRoutes.length} Guides`)
+  console.log(`   🍁 ${canadaRoutes.length} Canada Pages`)
+  console.log(`   📥 ${downloadRoutes.length} Download Pages`)
+  console.log(`   🇺🇸 ${stateRoutes.length} USA State Pages`)
+  console.log(`   🏠 ${coreRoutes.length} Core Pages\n`)
+
+  return allRoutes
 }
-
