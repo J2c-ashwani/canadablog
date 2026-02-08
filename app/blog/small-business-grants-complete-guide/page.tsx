@@ -8,6 +8,12 @@ import {
   Clock, ChevronRight, ExternalLink, BookOpen, HelpCircle,
   Building, Users, TrendingUp, MapPin, Building2
 } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -38,6 +44,18 @@ export default function SmallBusinessGrantsGuidePage() {
     {
       question: "Can I use a grant for anything?",
       answer: "No. Grants usually have specific restrictions (e.g., buying equipment, hiring staff, R&D). You must use the funds exactly as proposed in your application."
+    },
+    {
+      question: "What credit score do I need for SBA loans?",
+      answer: "For most SBA 7(a) loans, lenders look for a personal credit score of 650+. However, some micro lenders and CDFIs may work with scores in the 575-600 range if you have strong cash flow or collateral."
+    },
+    {
+      question: "Are there grants for veterans?",
+      answer: "Yes. The 'Boots to Business' program (SBA) offers training, and specific grants like the 'Hivers and Strivers' angel fund cater to veteran-owned startups. Vets also get reduced fees on SBA loans."
+    },
+    {
+      question: "How do I find local grants?",
+      answer: "Check your local Chamber of Commerce and Economic Development Corporation. They often have smaller ($2k-$10k) grants for facade improvements, digital adoption, or local hiring that aren't advertised nationally."
     }
   ];
 
@@ -78,6 +96,33 @@ export default function SmallBusinessGrantsGuidePage() {
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
                 <Link href="/contact?service=grant-application-help">Get Grant Application Help</Link>
               </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Small Business Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#grants-vs-loans" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Are grants really free?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, but they are competitive and rare compared to loans.</p>
+                </a>
+                <a href="#sba-programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">What is the best funding source?</h3>
+                  <p className="text-sm text-gray-600 mt-1">SBA 7(a) loans are the most common and accessible source.</p>
+                </a>
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Do I need good credit?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Generally 650+ for SBA, but some programs accept lower scores.</p>
+                </a>
+                <a href="#how-to-apply" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">How do I apply?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Prepare documents and apply through official portals like Grants.gov.</p>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -349,6 +394,64 @@ export default function SmallBusinessGrantsGuidePage() {
           </div>
         </section>
 
+        <section id="hidden-grants" className="py-16 bg-blue-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-blue-900">3 "Hidden" Grant Categories</h2>
+              <p className="text-blue-800 mb-8">
+                Most people only look for "Small Business Grants". Try searching for these specific terms instead.
+              </p>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="border-blue-200">
+                  <CardHeader><CardTitle className="text-lg text-blue-900">1. Façade Improvement</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 mb-2"><strong>Who:</strong> Local BIA (Business Improvement Areas) or City Council.</p>
+                    <p className="text-sm text-gray-600"><strong>What:</strong> $2k-$10k to fix your sign, paint your front, or add lighting.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-blue-200">
+                  <CardHeader><CardTitle className="text-lg text-blue-900">2. Digital Adoption</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 mb-2"><strong>Who:</strong> State/Provincial Economic Development.</p>
+                    <p className="text-sm text-gray-600"><strong>What:</strong> $2k-$5k to build a website, set up e-commerce, or buy SEO services.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-blue-200">
+                  <CardHeader><CardTitle className="text-lg text-blue-900">3. Job Training</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 mb-2"><strong>Who:</strong> Department of Labor / Workforce Boards.</p>
+                    <p className="text-sm text-gray-600"><strong>What:</strong> Pays for 50-80% of training courses for your employees.</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Success Strategies */}
+        <section id="success-stories" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">Real Success Stories</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-2">The "Bakery" pivot</h4>
+                  <p className="text-sm text-gray-600 mb-4"><strong>Challenge:</strong> A local bakery needed a new oven ($15k) but had poor credit.</p>
+                  <p className="text-sm text-gray-600"><strong>Strategy:</strong> They applied for a $50k SBA Microloan. They used $15k for the oven and $10k for marketing.</p>
+                  <p className="text-sm text-green-700 font-bold mt-2">Result: Approved in 3 weeks. Revenue up 30%.</p>
+                </div>
+                <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-2">The AI Startup</h4>
+                  <p className="text-sm text-gray-600 mb-4"><strong>Challenge:</strong> Needed capital for R&D but didn't want to give up equity.</p>
+                  <p className="text-sm text-gray-600"><strong>Strategy:</strong> Applied for an NSF SBIR Phase I grant ($275k).</p>
+                  <p className="text-sm text-green-700 font-bold mt-2">Result: Won the grant. Built the prototype. Later raised Series A at $20M valuation.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FAQs */}
         <section id="faqs" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -356,15 +459,16 @@ export default function SmallBusinessGrantsGuidePage() {
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <Card key={index}>
-                    <CardContent className="pt-6">
-                      <h3 className="font-bold flex items-start">
-                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                        {faq.question}
-                      </h3>
-                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
-                    </CardContent>
-                  </Card>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-900">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
               </div>
             </div>

@@ -105,6 +105,41 @@ export default function AtlanticSmallBusinessGrantsGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-indigo-50 border-b border-indigo-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Atlantic Business Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-indigo-700">Who is eligible for ACOA grants?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Check eligibility for Atlantic Canada Opportunities Agency.</p>
+                </a>
+                <a href="#provincial" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-indigo-700">What funding is in Nova Scotia & NB?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Explore provincial grants for Atlantic businesses.</p>
+                </a>
+                <a href="#how-much" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-indigo-700">How much funding can I get?</h3>
+                  <p className="text-sm text-gray-600 mt-1">View funding limits for ACOA and provincial streams.</p>
+                </a>
+                <a href="#acoa" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-indigo-700">Is ACOA funding repayable?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Understand interest-free loans vs. non-repayable grants.</p>
+                </a>
+                <a href="#cities" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-indigo-700">Are there grants for Halifax startups?</h3>
+                  <p className="text-sm text-gray-600 mt-1">See city-specific programs for urban centers.</p>
+                </a>
+                <a href="#industries" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-indigo-700">Which industries are prioritized?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Ocean tech, clean energy, and manufacturing focus.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Key Statistics */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

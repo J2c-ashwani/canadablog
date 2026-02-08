@@ -126,11 +126,46 @@ export default function AIMachineLearningGrantsPage() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gradient-to-r from-blue-50 to-indigo-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About AI & ML Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#sbir-ai-details" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-blue-500">
+                  <h3 className="font-semibold text-blue-700">How much funding can AI startups get?</h3>
+                  <p className="text-sm text-gray-600">$305K Phase I, up to $1.25M Phase II from NSF SBIR</p>
+                </a>
+                <a href="#ai-institutes-details" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-purple-500">
+                  <h3 className="font-semibold text-purple-700">What are NSF AI Research Institutes?</h3>
+                  <p className="text-sm text-gray-600">$100M investment in 5 national AI institutes</p>
+                </a>
+                <a href="#nairr-details" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-cyan-500">
+                  <h3 className="font-semibold text-cyan-700">How can I access NAIRR computing resources?</h3>
+                  <p className="text-sm text-gray-600">GPU clusters, datasets, and AI models for researchers</p>
+                </a>
+                <a href="#ai-grants" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-green-500">
+                  <h3 className="font-semibold text-green-700">Do I give up equity for AI grants?</h3>
+                  <p className="text-sm text-gray-600">No, NSF SBIR is 100% non-dilutive funding</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-orange-500">
+                  <h3 className="font-semibold text-orange-700">What AI technologies qualify for NSF funding?</h3>
+                  <p className="text-sm text-gray-600">CV, NLP, generative AI, ML platforms, robotics</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-pink-500">
+                  <h3 className="font-semibold text-pink-700">What's the success rate for AI grants?</h3>
+                  <p className="text-sm text-gray-600">15-20% overall, 40% for healthcare AI</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Quick Overview - Main Programs */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">AI & Machine Learning Grant Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">What AI & Machine Learning Grant Programs are Available?</h2>
               <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
                 Federal funding opportunities for artificial intelligence, machine learning platforms, computer vision, NLP, and generative AI innovations.
               </p>
@@ -264,7 +299,7 @@ export default function AIMachineLearningGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">AI Technologies That Qualify for Funding</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Which AI Technologies Qualify for Government Funding?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 NSF and DOD grants support a wide range of artificial intelligence and machine learning innovations.
               </p>
@@ -406,7 +441,7 @@ export default function AIMachineLearningGrantsPage() {
         <section id="ai-grants" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Complete AI Grant Program Details</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Specific Details of AI Grant Programs?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Everything you need to know about NSF SBIR for AI, AI Research Institutes, NAIRR, DOD programs, and state initiatives.
               </p>
@@ -761,7 +796,7 @@ export default function AIMachineLearningGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">AI Grant Application Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">How to Successfully Apply for AI Grants?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 Proven tactics to increase your chances of winning NSF and DOD AI funding.
               </p>
@@ -870,6 +905,39 @@ export default function AIMachineLearningGrantsPage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">📚 Related Technology Grant Guides</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/sbir-sttr-complete-guide" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-blue-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">SBIR/STTR Complete Guide</h3>
+                  <p className="text-sm text-gray-600">Everything you need to know about NSF, DOD, DOE SBIR grants</p>
+                </Link>
+                <Link href="/blog/software-saas-startup-grants" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-purple-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">Software & SaaS Startup Grants</h3>
+                  <p className="text-sm text-gray-600">Funding for software development and SaaS platforms</p>
+                </Link>
+                <Link href="/blog/cybersecurity-grants" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-green-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">Cybersecurity Grants</h3>
+                  <p className="text-sm text-gray-600">DOD and NSF funding for security technologies</p>
+                </Link>
+              </div>
+              <div className="mt-6 grid md:grid-cols-2 gap-6">
+                <Link href="/usa/california" className="block p-4 bg-white rounded-lg shadow hover:shadow-md transition">
+                  <h3 className="font-semibold text-gray-900">California Tech Grants →</h3>
+                  <p className="text-sm text-gray-600">State programs for AI and tech startups in Silicon Valley</p>
+                </Link>
+                <Link href="/usa/massachusetts" className="block p-4 bg-white rounded-lg shadow hover:shadow-md transition">
+                  <h3 className="font-semibold text-gray-900">Massachusetts Tech Grants →</h3>
+                  <p className="text-sm text-gray-600">Boston area AI and biotech funding programs</p>
+                </Link>
               </div>
             </div>
           </div>

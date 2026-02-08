@@ -125,11 +125,46 @@ export default function CybersecurityGrantsPage() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gradient-to-r from-slate-50 to-blue-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Cybersecurity Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#dod-cyber-details" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-blue-500">
+                  <h3 className="font-semibold text-blue-700">How much funding can cybersecurity startups get?</h3>
+                  <p className="text-sm text-gray-600">$400K Phase I, up to $1.8M Phase II from DOD SBIR</p>
+                </a>
+                <a href="#phase-2-details" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-indigo-500">
+                  <h3 className="font-semibold text-indigo-700">What are DOD Phase III contracts worth?</h3>
+                  <p className="text-sm text-gray-600">Up to $30M for defense deployment after Phase II success</p>
+                </a>
+                <a href="#dhs-nsa-details" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-purple-500">
+                  <h3 className="font-semibold text-purple-700">Does DHS fund cybersecurity startups?</h3>
+                  <p className="text-sm text-gray-600">Yes, DHS SBIR focuses on critical infrastructure protection</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-green-500">
+                  <h3 className="font-semibold text-green-700">Do I need a security clearance?</h3>
+                  <p className="text-sm text-gray-600">Not usually for Phase I, may be required for Phase II/III</p>
+                </a>
+                <a href="#cybersecurity-grants" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-orange-500">
+                  <h3 className="font-semibold text-orange-700">What cybersecurity topics qualify?</h3>
+                  <p className="text-sm text-gray-600">Zero-trust, threat detection, encryption, cloud security</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-red-500">
+                  <h3 className="font-semibold text-red-700">Can grants cover CMMC compliance?</h3>
+                  <p className="text-sm text-gray-600">Yes, through TABA assistance for compliance preparation</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Quick Overview - Main Programs */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Cybersecurity Grant Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">What Cybersecurity Grant Programs are Available?</h2>
               <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
                 Federal funding for security software, encryption, threat detection, zero-trust architecture, and defense cyber innovations.
               </p>
@@ -263,7 +298,7 @@ export default function CybersecurityGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Cybersecurity Technologies That Qualify</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Which Cybersecurity Technologies Qualify for Funding?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 DOD, DHS, and NSA grants support a wide range of security and encryption innovations.
               </p>
@@ -405,7 +440,7 @@ export default function CybersecurityGrantsPage() {
         <section id="cybersecurity-grants" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Complete Cybersecurity Grant Program Details</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Specific Details of Cybersecurity Grants?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Everything you need to know about DOD SBIR cyber programs, DHS homeland security funding, and NSA research partnerships.
               </p>
@@ -690,7 +725,7 @@ export default function CybersecurityGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Cybersecurity Grant Application Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">How to Win Cybersecurity Grants?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 Proven tactics to increase your chances of winning DOD and DHS cybersecurity funding.
               </p>
@@ -799,6 +834,39 @@ export default function CybersecurityGrantsPage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">📚 Related Technology Grant Guides</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/blog/dod-sbir-defense-tech-grants" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-blue-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">DOD SBIR Defense Tech Grants</h3>
+                  <p className="text-sm text-gray-600">Complete guide to DOD SBIR across all defense branches</p>
+                </Link>
+                <Link href="/blog/ai-machine-learning-grants" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-purple-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">AI & Machine Learning Grants</h3>
+                  <p className="text-sm text-gray-600">NSF and DOD funding for AI security applications</p>
+                </Link>
+                <Link href="/guides/sbir-sttr-complete-guide" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-green-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">SBIR/STTR Complete Guide</h3>
+                  <p className="text-sm text-gray-600">Everything about federal SBIR programs for startups</p>
+                </Link>
+              </div>
+              <div className="mt-6 grid md:grid-cols-2 gap-6">
+                <Link href="/usa/virginia" className="block p-4 bg-white rounded-lg shadow hover:shadow-md transition">
+                  <h3 className="font-semibold text-gray-900">Virginia Defense Contractor Grants →</h3>
+                  <p className="text-sm text-gray-600">State programs near DOD headquarters and contractors</p>
+                </Link>
+                <Link href="/usa/maryland" className="block p-4 bg-white rounded-lg shadow hover:shadow-md transition">
+                  <h3 className="font-semibold text-gray-900">Maryland Cybersecurity Grants →</h3>
+                  <p className="text-sm text-gray-600">NSA and Fort Meade area funding opportunities</p>
+                </Link>
               </div>
             </div>
           </div>

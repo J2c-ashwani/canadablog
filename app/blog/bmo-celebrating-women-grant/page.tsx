@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Calendar } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Calendar, HelpCircle } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +26,52 @@ export const metadata: Metadata = {
 }
 
 export default function BMOCelebratingWomenGrantGuidePage() {
+  const faqData = [
+    {
+      question: "How competitive is the BMO Celebrating Women Grant?",
+      answer: "Very competitive. Only 15 grants are awarded annually across all of Canada and 24 US states. Focus on clearly demonstrating women advancement impact and specific growth plans."
+    },
+    {
+      question: "Can I apply if my business is less than 2 years old?",
+      answer: "No. Your business must have been selling products or services for at least 2 years by August 5, 2026 to be eligible."
+    },
+    {
+      question: "What if I missed the application window?",
+      answer: "The program runs annually in August. If you miss the 2026 window (August 5-19), prepare for the 2027 program. Sign up for notifications at bmoforwomen.com."
+    },
+    {
+      question: "Do I need to have a specific women advancement program?",
+      answer: "Not necessarily a formal program, but you must demonstrate commitment to women advancement - through products, services, hiring, mentorship, or community impact."
+    },
+    {
+      question: "What US states are eligible for BMO grant?",
+      answer: "24 states in BMO footprint including: Arizona, California, Colorado, Florida, Illinois, Indiana, Kansas, Minnesota, Missouri, Wisconsin, and others. Check bmoforwomen.com for the full list."
+    },
+    {
+      question: "Is the $10,000 grant taxable?",
+      answer: "Grant funds are typically considered taxable business income. Consult with your accountant for specific tax implications in your jurisdiction."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-800 to-cyan-900 text-white py-16">
@@ -35,9 +84,9 @@ export default function BMOCelebratingWomenGrantGuidePage() {
                 BMO Celebrating Women Grant Program
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Annual grant program from BMO Bank of Montreal and Deloitte providing $10,000 grants to 
-                women-owned small businesses in Canada and the United States. Includes BMO business advisor 
-                support, workshops, seminars, and comprehensive resources to help businesses make real financial 
+                Annual grant program from BMO Bank of Montreal and Deloitte providing $10,000 grants to
+                women-owned small businesses in Canada and the United States. Includes BMO business advisor
+                support, workshops, seminars, and comprehensive resources to help businesses make real financial
                 progress. Applications open August 5-19, 2026 for the 2026 program.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -88,6 +137,41 @@ export default function BMOCelebratingWomenGrantGuidePage() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gradient-to-r from-blue-50 to-cyan-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About BMO Celebrating Women Grant</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-blue-500">
+                  <h3 className="font-semibold text-blue-700">Who is eligible for BMO Celebrating Women Grant?</h3>
+                  <p className="text-sm text-gray-600">51%+ women-owned, 2+ years operating, under $5M revenue</p>
+                </a>
+                <a href="#grant-details" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-green-500">
+                  <h3 className="font-semibold text-green-700">How much funding does BMO provide?</h3>
+                  <p className="text-sm text-gray-600">$10,000 grant plus business advisory support</p>
+                </a>
+                <a href="#application" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-cyan-500">
+                  <h3 className="font-semibold text-cyan-700">When does the BMO grant application open?</h3>
+                  <p className="text-sm text-gray-600">August 5-19, 2026 (2-week window only)</p>
+                </a>
+                <a href="#us-eligibility" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-orange-500">
+                  <h3 className="font-semibold text-orange-700">Can US businesses apply for BMO grant?</h3>
+                  <p className="text-sm text-gray-600">Yes, 24 US states in BMO footprint are eligible</p>
+                </a>
+                <a href="#requirements" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-purple-500">
+                  <h3 className="font-semibold text-purple-700">Do I need a BMO account to apply?</h3>
+                  <p className="text-sm text-gray-600">No, BMO account is not required for eligibility</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-pink-500">
+                  <h3 className="font-semibold text-pink-700">What do past winners use grant money for?</h3>
+                  <p className="text-sm text-gray-600">Business growth, women advancement programs, expansion</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Program Overview */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,9 +179,9 @@ export default function BMOCelebratingWomenGrantGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Boldly Growing the Good in Business and Life</h2>
                 <p className="text-lg text-gray-600">
-                  BMO, in collaboration with Deloitte, created the BMO Celebrating Women Grant Program as part 
-                  of its commitment to supporting the advancement of women. Since launching in Canada in 2020 
-                  and the U.S. in 2021, the program has awarded over $750,000 to women-owned businesses, 
+                  BMO, in collaboration with Deloitte, created the BMO Celebrating Women Grant Program as part
+                  of its commitment to supporting the advancement of women. Since launching in Canada in 2020
+                  and the U.S. in 2021, the program has awarded over $750,000 to women-owned businesses,
                   providing not just financial support but comprehensive business advisory and resources.
                 </p>
               </div>
@@ -129,7 +213,7 @@ export default function BMOCelebratingWomenGrantGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BMO Celebrating Women Grant Package</h2>
-              
+
               <div className="space-y-8">
                 {/* Grant Funding */}
                 <Card className="border-blue-200">
@@ -225,9 +309,9 @@ export default function BMOCelebratingWomenGrantGuidePage() {
                             <span className="text-cyan-700 font-bold">BMO Events & Resources</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Grant recipients receive access to BMO-hosted workshops, business seminars, 
-                            networking events, and educational resources designed to accelerate business growth 
-                            and financial progress.</p>
+                            <p>Grant recipients receive access to BMO-hosted workshops, business seminars,
+                              networking events, and educational resources designed to accelerate business growth
+                              and financial progress.</p>
                           </div>
                         </div>
                       </div>
@@ -252,8 +336,8 @@ export default function BMOCelebratingWomenGrantGuidePage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Eligibility Requirements</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the BMO Grant Eligibility Requirements?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -370,8 +454,8 @@ export default function BMOCelebratingWomenGrantGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Application Process</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How to Apply for the BMO Celebrating Women Grant?</h2>
+
               <div className="space-y-6">
                 <div className="grid md:grid-cols-3 gap-6">
                   {[
@@ -383,7 +467,7 @@ export default function BMOCelebratingWomenGrantGuidePage() {
                       color: "blue"
                     },
                     {
-                      step: "2", 
+                      step: "2",
                       title: "Semi-Finalist Video",
                       description: "If selected, create short video about business (notified September 2026)",
                       icon: <Sparkles className="w-6 h-6" />,
@@ -399,10 +483,10 @@ export default function BMOCelebratingWomenGrantGuidePage() {
                   ].map((item, index) => {
                     const colors = {
                       blue: "bg-blue-500 text-white",
-                      green: "bg-green-500 text-white", 
+                      green: "bg-green-500 text-white",
                       cyan: "bg-cyan-500 text-white"
                     }
-                    
+
                     return (
                       <Card key={index} className="text-center">
                         <CardHeader>
@@ -454,8 +538,8 @@ export default function BMOCelebratingWomenGrantGuidePage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Application Components</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Information is Required for the Application?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -533,8 +617,8 @@ export default function BMOCelebratingWomenGrantGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Application Success Strategies</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How to Win the BMO Celebrating Women Grant?</h2>
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -608,6 +692,62 @@ export default function BMOCelebratingWomenGrantGuidePage() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">❓ Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-900">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">📚 Related Women Business Grant Guides</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/women-entrepreneurship-fund-guide" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-pink-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">Women Entrepreneurship Fund Guide</h3>
+                  <p className="text-sm text-gray-600">$5M+ in Canadian government funding for women-owned businesses</p>
+                </Link>
+                <Link href="/guides/bdc-women-entrepreneurs-financing-guide" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-blue-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">BDC Women Entrepreneurs Financing</h3>
+                  <p className="text-sm text-gray-600">Up to $100K loans with flexible terms for women business owners</p>
+                </Link>
+                <Link href="/blog/scotiabank-women-initiative" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-red-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">Scotiabank Women Initiative</h3>
+                  <p className="text-sm text-gray-600">$3B in capital, mentorship, and advisory for women businesses</p>
+                </Link>
+              </div>
+              <div className="mt-6 grid md:grid-cols-2 gap-6">
+                <Link href="/usa/california" className="block p-4 bg-white rounded-lg shadow hover:shadow-md transition">
+                  <h3 className="font-semibold text-gray-900">California Women Business Grants →</h3>
+                  <p className="text-sm text-gray-600">State-specific programs for California women entrepreneurs</p>
+                </Link>
+                <Link href="/usa/new-york" className="block p-4 bg-white rounded-lg shadow hover:shadow-md transition">
+                  <h3 className="font-semibold text-gray-900">New York Women Business Grants →</h3>
+                  <p className="text-sm text-gray-600">Empire State funding opportunities for women business owners</p>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-800 to-cyan-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -616,15 +756,15 @@ export default function BMOCelebratingWomenGrantGuidePage() {
                 Ready to Apply for BMO Celebrating Women Grant?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get our complete application guide with women advancement frameworks and growth planning templates, 
+                Get our complete application guide with women advancement frameworks and growth planning templates,
                 or work with our grant specialists for expert application support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free Application Guide</h4>
                   <p className="text-blue-100 text-sm mb-4">
-                    Get our comprehensive BMO Celebrating Women application guide with eligibility checklist, 
+                    Get our comprehensive BMO Celebrating Women application guide with eligibility checklist,
                     essay templates, and women advancement demonstration frameworks.
                   </p>
                   <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100" asChild>
@@ -638,7 +778,7 @@ export default function BMOCelebratingWomenGrantGuidePage() {
                 <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Expert Application Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with grant specialists who understand BMO criteria and can help optimize 
+                    Work with grant specialists who understand BMO criteria and can help optimize
                     your application for women advancement demonstration and growth planning.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
@@ -648,7 +788,7 @@ export default function BMOCelebratingWomenGrantGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-blue-200 text-sm mt-6">
                 Expert guidance • Growth planning • Women advancement frameworks • BMO grant success
               </p>

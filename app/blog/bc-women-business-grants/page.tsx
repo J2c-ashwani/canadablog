@@ -126,9 +126,9 @@ export default function BCWomenBusinessGrants() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">Masterclass: The WeBC Loan</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">How do WeBC Loans Work?</h2>
                 <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  This is the standard for women-owned businesses in BC. It offers better flexibility than a bank and includes advisory services.
+                  WeBC loans are the standard for women-owned businesses in BC. They offer better flexibility than a bank and include advisory services.
                 </p>
               </div>
 
@@ -203,7 +203,7 @@ export default function BCWomenBusinessGrants() {
               <div className="flex items-center mb-8">
                 <Flower2 className="w-10 h-10 text-rose-600 mr-4" />
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900">2. Indigenous Women's Funding</h2>
+                  <h2 className="text-3xl font-bold text-gray-900">Is there Funding for Indigenous Women?</h2>
                   <p className="text-gray-600">Reconciliation in Action: Targeted Grants</p>
                 </div>
               </div>
@@ -258,7 +258,7 @@ export default function BCWomenBusinessGrants() {
         <section className="py-20 bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto prose prose-lg prose-teal text-gray-700">
-              <h2>The "West Coast Model": How BC Funds Differ</h2>
+              <h2>How is the BC Funding Model Different?</h2>
               <p>
                 British Columbia is unique. Unlike Ontario (focused on manufacturing) or Alberta (energy), BC's economy is dominated by <strong>Smalls Business</strong> (98% of all businesses) and a massive Service Sector.
               </p>
@@ -305,11 +305,67 @@ export default function BCWomenBusinessGrants() {
           </div>
         </section>
 
+        <section id="export-navigator" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">How does Export Navigator Help?</h2>
+              <p className="text-gray-700 mb-6">In BC, if you are a woman-owned business looking to sell outside your community (even to Alberta), you qualify for a free <strong>Export Advisor</strong>.</p>
+
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+                <h3 className="font-bold text-slate-900 mb-4 flex items-center"><Mountain className="w-5 h-5 mr-2" /> How it works</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 mb-1">1. Designated Advisor</p>
+                    <p className="text-xs text-gray-600">You get a human being who knows the grants. They are not a chatbot. They review your business plan.</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 mb-1">2. Women's Stream</p>
+                    <p className="text-xs text-gray-600">They have advisors specifically trained to support women and Indigenous founders.</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 mb-1">3. Grant Referrals</p>
+                    <p className="text-xs text-gray-600">If a new grant opens (like the elusive "Launch Online"), your advisor emails you before it goes public.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="niche-grants" className="py-16 bg-teal-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-start">
+                <Target className="w-10 h-10 text-teal-600 mr-4 flex-shrink-0" />
+                <div>
+                  <h2 className="text-3xl font-bold mb-4 text-teal-900">What Niche Grants are Available for Women?</h2>
+                  <p className="text-teal-800 mb-4">Beyond WeBC, there are hyper-specific funds for BC women.</p>
+
+                  <div className="grid md:grid-cols-2 gap-4 text-slate-900">
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-teal-100">
+                      <h4 className="font-bold mb-2">The Waring Chapman Grant</h4>
+                      <p className="text-xs">A small, lesser-known grant for women entrepreneurs in BC making a positive social impact.</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-teal-100">
+                      <h4 className="font-bold mb-2">Alacrity Foundation</h4>
+                      <p className="text-xs">Not a grant, but a funded "Entrepreneurship" program in Victoria. They pay you to come build a tech company.</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-teal-100">
+                      <h4 className="font-bold mb-2">Small Business BC (SBBC) Awards</h4>
+                      <p className="text-xs">Winning a category gets you $10,000 cash. It is a contest, but the odds are decent for rural women-owned businesses.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Section 3: Women in Tech (WinT) */}
         <section className="py-20 bg-gray-900 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-10">Women in Tech (WinT)</h2>
+              <h2 className="text-3xl font-bold text-center mb-10">Is there Funding for Women in Tech?</h2>
               <p className="text-lg text-gray-300 text-center mb-12">
                 BC is a tech hub (Vancouver/Victoria/Kelowna). If you are building software or hardware, tap into Innovate BC's specific streams.
               </p>
@@ -343,6 +399,53 @@ export default function BCWomenBusinessGrants() {
                     <p className="text-gray-600 pl-8">{faq.answer}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="common-mistakes" className="py-16 bg-red-50 border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-red-900">Why are Applications Rejected?</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">1. The "Hobby" Trap</h3>
+                  <p className="text-sm text-gray-700">WeBC will not lend to a hobby. You need to show that this business pays your mortgage. If your projections show $500/month profit for 3 years, it's a "lifestyle" business, not a "growth" business.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">2. Ignoring Rural Points</h3>
+                  <p className="text-sm text-gray-700">Many BC grants give bonus points for being outside Vancouver/Victoria. If you are in Prince George or Nanaimo, <em>highlight</em> that fact. It is your competitive advantage.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">3. Missing the "Green" Angle</h3>
+                  <p className="text-sm text-gray-700">BC is obsessed with sustainability. Even if you run a hair salon, mention your eco-friendly products. It aligns with provincial goals.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">4. Underestimating Living Costs</h3>
+                  <p className="text-sm text-gray-700">Adjudicators know how much it costs to live in BC. If your "Owner's Draw" in the budget is $20k/year, they know you will starve. Be realistic.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Women's Business Programs Across Canada</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Users className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Women's Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Award className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Women Funding</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Entrepreneurship</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Mountain className="w-5 h-5 text-emerald-600 mr-3" /><span>All BC Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/women-entrepreneurship-fund-canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Lightbulb className="w-5 h-5 text-blue-600 mr-3" /><span>Federal Women's Funding</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/indigenous-business-grants-canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Flower2 className="w-5 h-5 text-rose-600 mr-3" /><span>Indigenous Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

@@ -406,7 +406,7 @@ export default function IRAPGuidePage() {
         <section id="funding-streams" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">IRAP Funding Streams</h2>
+              <h2 className="text-3xl font-bold mb-6">What are the IRAP Funding Streams?</h2>
 
               <div className="space-y-6">
                 <Card className="border-green-200">
@@ -504,7 +504,7 @@ export default function IRAPGuidePage() {
         <section id="how-to-apply" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">How to Apply for IRAP Funding</h2>
+              <h2 className="text-3xl font-bold mb-6">How Do You Apply for IRAP Funding?</h2>
 
               <div className="space-y-6">
                 <div className="flex items-start p-4 bg-gray-50 rounded-lg shadow-sm">
@@ -712,7 +712,7 @@ export default function IRAPGuidePage() {
         <section id="mistakes" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Common Mistakes That Get IRAP Applications Rejected</h2>
+              <h2 className="text-3xl font-bold mb-6">What Common Mistakes Get IRAP Applications Rejected?</h2>
 
               <div className="space-y-4">
                 <Card>
@@ -954,6 +954,59 @@ export default function IRAPGuidePage() {
                   <BookOpen className="w-5 h-5 text-green-600 mr-3" />
                   <span className="text-gray-700 group-hover:text-green-600">All Grant Application Guides</span>
                   <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions About IRAP</h2>
+              <div className="space-y-4">
+                <a href="#overview" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">What is IRAP and how does it work?</span>
+                </a>
+                <a href="#eligibility" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">Who is eligible for IRAP funding?</span>
+                </a>
+                <a href="#how-much" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">How much IRAP funding can I receive?</span>
+                </a>
+                <a href="#how-to-apply" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">How do I apply for IRAP?</span>
+                </a>
+                <a href="#timeline" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">How long does IRAP approval take?</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Government Funding Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/sred-scientific-research-experimental-development" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-green-700 mb-2">SR&ED Tax Credits Guide</h3>
+                  <p className="text-gray-600 text-sm">Up to 65% refundable R&D tax credits for Canadian businesses</p>
+                </Link>
+                <Link href="/blog/canada-innovation-research-development-grants-guide" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-green-700 mb-2">Canada R&D Grants Guide</h3>
+                  <p className="text-gray-600 text-sm">Complete overview of Canadian innovation funding programs</p>
+                </Link>
+                <Link href="/blog/strategic-innovation-fund-canada-guide" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-green-700 mb-2">Strategic Innovation Fund</h3>
+                  <p className="text-gray-600 text-sm">Large-scale innovation funding for major projects</p>
+                </Link>
+                <Link href="/blog/canada-federal-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-green-700 mb-2">Federal Grants Overview</h3>
+                  <p className="text-gray-600 text-sm">Complete guide to Canadian federal business grants</p>
                 </Link>
               </div>
             </div>

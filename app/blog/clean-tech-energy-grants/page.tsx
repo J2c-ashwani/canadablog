@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, DollarSign, Target, Leaf, Zap, Wind, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Factory, Briefcase } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -265,6 +271,125 @@ export default function CleanTechEnergyGrantsGuide() {
           </div>
         </section>
 
+        <section id="cib-retrofits" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">The Deep Pockets: Canada Infrastructure Bank (CIB)</h2>
+              <p className="text-gray-700 mb-6">If your project is huge ($25M+), grants won't cut it. You need the CIB. Their <strong>Building Retrofits Initiative</strong> offers low-interest loans where repayment is tied to energy savings.</p>
+
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+                <h3 className="font-bold text-slate-900 mb-4 flex items-center"><Factory className="w-5 h-5 mr-2" /> Commercial Building Retrofits</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-sm text-gray-700 mb-2"><strong>The Problem:</strong> Retrofitting an office tower costs $50M. Banks think it's risky.</p>
+                    <p className="text-sm text-gray-700"><strong>The CIB Solution:</strong> They lend you up to 80% of the cost at <span className="text-green-600 font-bold">1% - 2% interest</span>.</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-700 mb-2"><strong>The Aggregator Model:</strong></p>
+                    <p className="text-sm text-gray-700">Don't have $25M in retrofits? Aggregators (like SOFIAC) bundle 50 small projects together to hit the CIB minimum.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="clean-electricity-itc" className="py-16 bg-yellow-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-start">
+                <Zap className="w-10 h-10 text-yellow-600 mr-4 flex-shrink-0" />
+                <div>
+                  <h2 className="text-3xl font-bold mb-4 text-gray-900">Wait, there's another ITC? (Clean Electricity)</h2>
+                  <p className="text-gray-700 mb-4">Don't confuse the <strong>Clean Technology ITC</strong> (30%) with the <strong>Clean Electricity ITC</strong> (15%).</p>
+
+                  <div className="bg-white p-6 rounded-lg shadow-sm border border-yellow-100">
+                    <table className="w-full text-sm text-left">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="py-2">Feature</th>
+                          <th className="py-2">Clean Tech ITC (30%)</th>
+                          <th className="py-2">Clean Electricity ITC (15%)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b">
+                          <td className="py-2 font-bold">Who applies?</td>
+                          <td className="py-2">Taxable Businesses</td>
+                          <td className="py-2">Non-Taxable (Utilities, Indigenous)</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="py-2 font-bold">What it funds?</td>
+                          <td className="py-2">Solar, Wind, Storage</td>
+                          <td className="py-2">Power Generation & Transmission</td>
+                        </tr>
+                        <tr>
+                          <td className="py-2 font-bold">Refundable?</td>
+                          <td className="py-2 text-green-600 font-bold">Yes</td>
+                          <td className="py-2 text-green-600 font-bold">Yes</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="sreps" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Smart Renewables (SREPs)</h2>
+              <p className="text-gray-700 mb-6">The <strong>Smart Renewables and Electrification Pathways Program (SREPs)</strong> is NRCan's big grant bucket. It funds grid modernization.</p>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="border-green-100 bg-green-50/50">
+                  <CardHeader><CardTitle className="text-green-900 text-lg">Capacity Building</CardTitle></CardHeader>
+                  <CardContent><p className="text-xs text-gray-600">Funding for Indigenous communities to just <em>study</em> renewable options.</p></CardContent>
+                </Card>
+                <Card className="border-green-100 bg-green-50/50">
+                  <CardHeader><CardTitle className="text-green-900 text-lg">Grid Modernization</CardTitle></CardHeader>
+                  <CardContent><p className="text-xs text-gray-600">Funding for utilities to add sensors/batteries to handle more solar.</p></CardContent>
+                </Card>
+                <Card className="border-green-100 bg-green-50/50">
+                  <CardHeader><CardTitle className="text-green-900 text-lg">Established Renewables</CardTitle></CardHeader>
+                  <CardContent><p className="text-xs text-gray-600">Funding to deploy proven tech (Solar/Wind) in regions where it's not yet common.</p></CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="ccfd" className="py-16 bg-gray-900 text-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-4">The "Carbon Guarantee" (CCFDs)</h2>
+              <p className="text-gray-300 mb-8">What if a future government cancels the carbon tax? Your project fails. The <strong>Canada Growth Fund</strong> solves this with <strong>Carbon Contracts for Difference (CCFDs)</strong>.</p>
+
+              <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
+                <h3 className="font-bold text-white mb-4">How it works:</h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <Shield className="w-6 h-6 text-green-400 mr-3 flex-shrink-0" />
+                    <div>
+                      <strong className="text-white">The Strike Price:</strong>
+                      <p className="text-sm text-gray-400">The government guarantees you a carbon price of (e.g.) $100/tonne for 15 years.</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <Shield className="w-6 h-6 text-green-400 mr-3 flex-shrink-0" />
+                    <div>
+                      <strong className="text-white">The Insurance:</strong>
+                      <p className="text-sm text-gray-400">If the market price drops to $50/tonne (or is cancelled), the government pays you the difference ($50). If it rises to $150, you stick with the market price.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Deep Dive Text Content - SEO & Authority */}
         <section className="py-20 bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -332,16 +457,40 @@ export default function CleanTechEnergyGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
-                      <HelpCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
-                      {faq.question}
-                    </h3>
-                    <p className="text-gray-600 pl-8">{faq.answer}</p>
-                  </div>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-emerald-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Provincial Clean Tech Programs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Leaf className="w-5 h-5 text-emerald-600 mr-3" /><span>BC CleanBC Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Zap className="w-5 h-5 text-yellow-600 mr-3" /><span>Ontario Green Tech</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Wind className="w-5 h-5 text-blue-600 mr-3" /><span>Alberta Energy Transition</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Leaf className="w-5 h-5 text-green-600 mr-3" /><span>Quebec Hydro Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Shield className="w-5 h-5 text-purple-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/canada-innovation-research-development-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Lightbulb className="w-5 h-5 text-blue-600 mr-3" /><span>R&D Innovation Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/agriculture-agri-food-canada-government-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Factory className="w-5 h-5 text-orange-600 mr-3" /><span>Agricultural Clean Tech</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

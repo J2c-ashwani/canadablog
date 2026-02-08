@@ -407,7 +407,7 @@ export default function RBCWomenEntrepreneurAwards() {
               </p>
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Application Process: Step-by-Step Roadmap</h2>
+            <h2 id="application-process" className="text-3xl font-bold text-gray-900 mt-12 mb-6">What is the Application Process?</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
               The nomination and selection process for the RBC Canadian Women Entrepreneur Awards is comprehensive and competitive. Success requires careful preparation, compelling storytelling, and strategic positioning. Here's your complete roadmap:
             </p>
@@ -470,7 +470,7 @@ export default function RBCWomenEntrepreneurAwards() {
               </div>
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Top 5 Application Mistakes to Avoid</h2>
+            <h2 id="application-mistakes" className="text-3xl font-bold text-gray-900 mt-12 mb-6">What are the Top 5 Application Mistakes?</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
               Even highly successful businesses often fail to reach the finalist stage due to avoidable application errors. Based on feedback from past judges, here are the most common pitfalls to watch out for:
             </p>
@@ -497,7 +497,7 @@ export default function RBCWomenEntrepreneurAwards() {
               </Card>
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Winning Application Strategies: Insider Tips from Past Winners</h2>
+            <h2 id="winning-strategies" className="text-3xl font-bold text-gray-900 mt-12 mb-6">What are the Winning Application Strategies?</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
               After analyzing hundreds of winning applications over 34 years, certain patterns emerge. Here are the strategies that consistently lead to success:
             </p>
@@ -554,7 +554,7 @@ export default function RBCWomenEntrepreneurAwards() {
               </Card>
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Beyond Prize Money: The Real Value of Winning</h2>
+            <h2 id="value-of-winning" className="text-3xl font-bold text-gray-900 mt-12 mb-6">What is the Value of Winning?</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
               While monetary awards are significant, past winners consistently cite non-financial benefits as equally or more valuable:
             </p>
@@ -612,7 +612,7 @@ export default function RBCWomenEntrepreneurAwards() {
               </div>
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Alternative Women Entrepreneur Grants in Canada & USA</h2>
+            <h2 id="alternative-grants" className="text-3xl font-bold text-gray-900 mt-12 mb-6">What are Alternative Women Entrepreneur Grants?</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
               If RBC CWEA isn't the right fit, or you want to maximize your funding opportunities, consider these additional programs for women entrepreneurs:
             </p>
@@ -701,7 +701,7 @@ export default function RBCWomenEntrepreneurAwards() {
               </div>
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Important Dates & Application Timeline</h2>
+            <h2 id="timeline" className="text-3xl font-bold text-gray-900 mt-12 mb-6">What are the Important Dates & Timeline?</h2>
             <Card className="p-6 bg-gradient-to-r from-blue-50 to-purple-50 mb-8">
               <div className="space-y-4">
                 <div className="flex items-start border-b pb-3">
@@ -747,6 +747,44 @@ export default function RBCWomenEntrepreneurAwards() {
             </p>
 
           </div>
+
+          {/* Common Questions Section */}
+          <section className="py-12 bg-gray-50">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">Common Questions</h2>
+            <div className="grid gap-6 md:grid-cols-2">
+              {faqData.map((faq, index) => (
+                <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
+                  <h3 className="font-semibold text-gray-900 mb-2">{faq.question}</h3>
+                  <p className="text-gray-600">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Related Guides Section */}
+          <section className="py-16 bg-gray-50">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Women Entrepreneur Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/bmo-celebrating-women-grant" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">BMO Observing Women Grant</h3>
+                  <p className="text-gray-600 text-sm">$100K grant program for women-owned businesses</p>
+                </Link>
+                <Link href="/blog/scotiabank-women-initiative" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">Scotiabank Women Initiative</h3>
+                  <p className="text-gray-600 text-sm">Capital and mentorship for women entrepreneurs</p>
+                </Link>
+                <Link href="/blog/cartier-womens-initiative-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">Cartier Women's Initiative</h3>
+                  <p className="text-gray-600 text-sm">International awards program for impact entrepreneurs</p>
+                </Link>
+                <Link href="/blog/women-business-grants-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">Women Business Grants</h3>
+                  <p className="text-gray-600 text-sm">Complete directory of funding opportunities</p>
+                </Link>
+              </div>
+            </div>
+          </section>
 
           {/* CTA Section */}
           <Card className="p-8 bg-gradient-to-br from-red-50 via-purple-50 to-blue-50 border-2 border-red-200 mt-12">

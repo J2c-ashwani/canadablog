@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Heart } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Heart, HelpCircle, MapPin, Briefcase } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +19,49 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What is the Women Entrepreneurship Strategy (WES)?",
+    answer: "WES is a $6 billion federal investment by the Government of Canada to help women-owned businesses grow. It includes the WES Ecosystem Fund, the Women Entrepreneurship Loan Fund, and the Knowledge Hub."
+  },
+  {
+    question: "Who is eligible for the Women Entrepreneurship Loan Fund?",
+    answer: "To be eligible, your business must be majority owned (50%+) by women. Loans up to $50,000 are available through partner organizations like WEOC, designated primarily for startup and expansion activities."
+  },
+  {
+    question: "Is the WES Ecosystem Fund a direct grant to my business?",
+    answer: "Generally, no. The Ecosystem Fund supports non-profit organizations that provide training, mentorship, and resources to women entrepreneurs. However, your business benefits directly from these subsidized services."
+  },
+  {
+    question: "Can I apply for WES funding if I am a sole proprietor?",
+    answer: "Yes. Many WES programs, especially the Loan Fund and advisory services through Ecosystem Fund partners, are open to sole proprietors, partnerships, and incorporated businesses."
+  },
+  {
+    question: "How do I find a WES delivery organization near me?",
+    answer: "WES partners operate across Canada. You can use the Business Benefits Finder on the government website or consult our guide to find regional partners like WBE Canada, Coralus, or provincial women's enterprise organizations."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -35,8 +75,8 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                 Women Entrepreneurship Strategy (WES) Federal Funding
               </h1>
               <p className="text-xl text-pink-100 mb-8">
-                Canada's comprehensive $6B federal investment in women entrepreneurship through the Women Entrepreneurship Strategy. 
-                Access financing, mentorship, networks, and business development support designed specifically for women-led businesses 
+                Canada's comprehensive $6B federal investment in women entrepreneurship through the Women Entrepreneurship Strategy.
+                Access financing, mentorship, networks, and business development support designed specifically for women-led businesses
                 across all stages of growth and development.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -81,13 +121,13 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">WES as Federal Gender Equality Policy Tool</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  The Women Entrepreneurship Strategy represents Canada's first comprehensive federal strategy dedicated to 
-                  advancing women's entrepreneurship. Launched by Innovation, Science & Economic Development Canada (ISED) 
-                  as a $6 billion investment, WES addresses systemic barriers that prevent women from starting, growing, 
-                  and scaling businesses. The strategy integrates financing, ecosystem support, and policy initiatives 
+                  The Women Entrepreneurship Strategy represents Canada's first comprehensive federal strategy dedicated to
+                  advancing women's entrepreneurship. Launched by Innovation, Science & Economic Development Canada (ISED)
+                  as a $6 billion investment, WES addresses systemic barriers that prevent women from starting, growing,
+                  and scaling businesses. The strategy integrates financing, ecosystem support, and policy initiatives
                   to double the number of women-owned businesses by 2026.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-pink-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-pink-800">Federal Policy Objectives</h4>
@@ -98,7 +138,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                       <li>• Comprehensive ecosystem development and support</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">Strategic Federal Integration</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -119,7 +159,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major WES Federal Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* WES Ecosystem Fund */}
                 <Card className="border-pink-200">
@@ -149,7 +189,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Federal support for not-for-profit organizations to strengthen capacity within the women entrepreneurship 
+                      Federal support for not-for-profit organizations to strengthen capacity within the women entrepreneurship
                       ecosystem and close gaps in service for women entrepreneurs across Canada.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
@@ -212,7 +252,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Direct federal funding to women-owned and women-led businesses to help them grow and reach 
+                      Direct federal funding to women-owned and women-led businesses to help them grow and reach
                       export markets, supporting business expansion and international competitiveness.
                     </p>
                     <div className="grid md:grid-cols-2 gap-6">
@@ -268,7 +308,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Federal initiative to strengthen and build a more inclusive risk and growth capital ecosystem 
+                      Federal initiative to strengthen and build a more inclusive risk and growth capital ecosystem
                       for women entrepreneurs by supporting diverse fund managers and investment strategies.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -322,7 +362,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Federal research initiative providing data, insights, and evidence-based research to inform 
+                      Federal research initiative providing data, insights, and evidence-based research to inform
                       policy development and support the growth of women's entrepreneurship ecosystem in Canada.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
@@ -398,7 +438,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">WES Federal Policy Integration</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-pink-700">🏛️ Federal Gender Equality Integration:</h4>
@@ -421,7 +461,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-blue-700">🔗 Federal Program Synergies:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -453,7 +493,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">WES Federal Application Process</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <span className="bg-pink-500 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold mr-4 mt-0.5">1</span>
@@ -500,7 +540,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">WES Federal Application Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">✅ Women Entrepreneurship Federal Success Factors:</h4>
@@ -523,7 +563,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common WES Federal Application Mistakes:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -562,6 +602,92 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
           </div>
         </section>
 
+        {/* FAQ Section and Related Guides */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              {/* FAQ Section */}
+              <div className="mb-20">
+                <h2 className="text-3xl font-bold text-center mb-12">WES Program FAQs</h2>
+                <div className="grid gap-6">
+                  {faqData.map((faq, index) => (
+                    <Card key={index} className="border-0 shadow-md hover:shadow-lg transition-shadow">
+                      <CardHeader className="flex flex-row items-start gap-4 pb-2">
+                        <HelpCircle className="w-6 h-6 text-pink-600 mt-1 shrink-0" />
+                        <CardTitle className="text-lg font-semibold text-gray-900 leading-snug">
+                          {faq.question}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-gray-600 ml-10">
+                          {faq.answer}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+
+              {/* Related Guides Section */}
+              <div className="mb-20">
+                <h2 className="text-3xl font-bold text-center mb-12">Additional Support Resources</h2>
+                <div className="grid md:grid-cols-3 gap-8">
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-pink-100">
+                    <CardHeader>
+                      <Briefcase className="w-8 h-8 text-pink-600 mb-4" />
+                      <CardTitle className="text-xl mb-2">Private Grants</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-6">
+                        Explore private grant opportunities like the Cartier Women's Initiative.
+                      </p>
+                      <Button variant="outline" className="w-full text-pink-700 border-pink-200 hover:bg-pink-50" asChild>
+                        <Link href="/blog/cartier-womens-initiative-canada">
+                          View Cartier Grants
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-pink-100">
+                    <CardHeader>
+                      <MapPin className="w-8 h-8 text-pink-600 mb-4" />
+                      <CardTitle className="text-xl mb-2">Provincial Support</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-6">
+                        Find regional support for women entrepreneurs in your specific province.
+                      </p>
+                      <Button variant="outline" className="w-full text-pink-700 border-pink-200 hover:bg-pink-50" asChild>
+                        <Link href="/blog/ontario-business-grants-guide">
+                          View Ontario Grants
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-pink-100">
+                    <CardHeader>
+                      <Target className="w-8 h-8 text-pink-600 mb-4" />
+                      <CardTitle className="text-xl mb-2">Startup Grants</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-6">
+                        Looking to launch? Check our complete guide to Canadian startup grants.
+                      </p>
+                      <Button variant="outline" className="w-full text-pink-700 border-pink-200 hover:bg-pink-50" asChild>
+                        <Link href="/blog/startup-business-grants-canada-guide">
+                          View Startup Guide
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-16 bg-gradient-to-r from-pink-600 to-pink-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -570,10 +696,10 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                 Ready to Access WES Federal Women Entrepreneurship Support?
               </h2>
               <p className="text-xl text-pink-100 mb-8">
-                Get the complete WES federal application guide or work with our women entrepreneurship specialists 
+                Get the complete WES federal application guide or work with our women entrepreneurship specialists
                 who have secured $8M+ in WES approvals with deep understanding of federal gender equality priorities.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 {/* Get Application Guide CTA */}
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
@@ -602,7 +728,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-pink-200 text-sm mt-6">
                 89% success rate for WES applications • Average funding secured: $185K • Women entrepreneurship ecosystem expertise
               </p>

@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Heart, Award, TrendingUp, ExternalLink } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Heart, Award, TrendingUp, ExternalLink, MapPin, Briefcase } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -528,6 +528,53 @@ export default function WESBlogPage() {
                   </AccordionItem>
                 ))}
               </Accordion>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Related Government Grant Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/private-women-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-pink-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Private Women Grants</h3>
+                      <p className="text-sm text-gray-500">Non-government funding for women</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/women-technology-grants-canada" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Briefcase className="w-8 h-8 text-blue-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Women Tech Grants</h3>
+                      <p className="text-sm text-gray-500">Funding for female tech founders</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/state-women-business-programs-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-purple-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">State Women Programs</h3>
+                      <p className="text-sm text-gray-500">US state-level women's funding</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/women-minority-business-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Briefcase className="w-8 h-8 text-green-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Minority Women Grants</h3>
+                      <p className="text-sm text-gray-500">Support for diverse entrepreneurs</p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

@@ -99,7 +99,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Export Grants by Province (2026-2027 CanExport Funding Available)</h2>
+              <h2 id="provincial-grants" className="text-3xl font-bold text-gray-900 mb-8 text-center">What are the Export Grants by Province?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-blue-200 hover:shadow-lg transition-shadow">
@@ -218,7 +218,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-blue-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-blue-800 mb-2">🚀 2026-2027 Women Export Funding Highlights</h3>
+                      <h3 className="text-lg font-bold text-blue-800 mb-2">🚀 What are the 2026-2027 Funding Highlights?</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700">
                         <div>
                           <strong>CanExport SME:</strong> Up to $75,000 per market (maximum $150,000 total) for export market development activities women-owned Canadian businesses
@@ -246,7 +246,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Export & International Trade Ecosystem for Women Entrepreneurs</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the Export & International Trade Ecosystem?</h2>
                 <p className="text-lg text-gray-600 mb-4">
                   Canadian women exporters have access to comprehensive support for international market expansion through
                   federal CanExport programs providing up to $75,000 per market for export development activities. Export
@@ -293,7 +293,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
         <section id="export-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Export Grants and Trade Financing for Women Entrepreneurs 2026-2027</h2>
+              <h2 id="federal-grants" className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Federal Export Grants and Trade Financing?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete guide to federal export programs available to women-owned businesses expanding internationally
                 from all Canadian provinces through CanExport, EDC, and Trade Commissioner Service.
@@ -557,7 +557,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Provincial Export Grants for Women Entrepreneurs by Region</h2>
+              <h2 id="provincial-grants-region" className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Provincial Export Grants for Women Entrepreneurs?</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
                 Complete guide to provincial export support programs complementing federal CanExport funding for
                 women-owned businesses expanding internationally across Canada.
@@ -692,7 +692,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
         <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Export Funding by Sector & Target Market - Women Entrepreneurs</h2>
+              <h2 id="funding-by-sector" className="text-3xl font-bold text-gray-900 mb-8 text-center">What is the Export Funding by Sector & Target Market?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Technology & Software */}
@@ -786,7 +786,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Export Grant Application Success Strategies 2026-2027</h2>
+              <h2 id="success-strategies" className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Application Success Strategies?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Proven strategies for women entrepreneurs to maximize CanExport approval rates and international
                 expansion funding success across all Canadian provinces.
@@ -936,6 +936,50 @@ export default function WomenExportTradeGrantsCanadaPage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions</h2>
+              <div className="grid gap-6 md:grid-cols-2">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 className="font-semibold text-gray-900 mb-2">{faq.question}</h3>
+                    <p className="text-gray-600">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">What are Related Export & Business Guides?</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/edc-women-trade-export-financing" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">EDC Women in Trade</h3>
+                  <p className="text-gray-600 text-sm">Financing and insurance for women exporters</p>
+                </Link>
+                <Link href="/blog/women-manufacturing-grants-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">Manufacturing Grants</h3>
+                  <p className="text-gray-600 text-sm">Funding for equipment and productivity</p>
+                </Link>
+                <Link href="/blog/women-business-grants-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">Women Business Grants</h3>
+                  <p className="text-gray-600 text-sm">Complete directory of funding for women</p>
+                </Link>
+                <Link href="/blog/canada-federal-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">Federal Gov Grants</h3>
+                  <p className="text-gray-600 text-sm">Overview of all federal business funding</p>
+                </Link>
               </div>
             </div>
           </div>

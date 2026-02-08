@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, Download, Shield, Award, Leaf, TrendingUp, HelpCircle, Sprout, BookOpen, ExternalLink } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -34,6 +40,18 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
     {
       question: "Do I need to be a farmer to apply?",
       answer: "Not distinctively. While many programs are for producers, AAFC also funds food processors, industry associations, and technology providers. You must be a legal entity capable of entering into a legal agreement."
+    },
+    {
+      question: "Are these grants taxable?",
+      answer: "Generally, yes. Government grants and non-repayable contributions are considered taxable income. However, repayable contributions (loans) are not income. Always consult your accountant."
+    },
+    {
+      question: "Can I stack AAFC funding with provincial grants?",
+      answer: "Yes, but there are limits. The 'stacking limit' is usually 75% to 90% of total project costs. You must disclose all other funding sources to ensure you don't exceed this cap."
+    },
+    {
+      question: "What is the 'Step' program?",
+      answer: "Step is not a federal AAFC program; it's a Saskatchewan-specific trade program. However, many provinces have similar 'Market Access' or 'Export' streams funded under the Sustainable CAP framework."
     }
   ];
 
@@ -88,6 +106,33 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
                   <li><a href="#faqs" className="text-blue-700 hover:underline">12. FAQs</a></li>
                 </ul>
               </nav>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About AAFC Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">AgriInnovate vs AgriScience?</h3>
+                  <p className="text-sm text-gray-600 mt-1">AgriScience funds research (TRL 1-7), AgriInnovate funds commercialization (TRL 8-9).</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Can tech companies apply?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, if your technology benefits Canadian agriculture.</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">How long for approval?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Typically 4-6 months from complete application.</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Can I stack with provincial?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, but respect 75-90% total stacking limits.</p>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -396,6 +441,34 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
           </div>
         </section>
 
+        <section id="real-stories" className="py-16 bg-green-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-green-900">Real World Impact</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-white p-6 rounded-lg border border-green-100 shadow-sm">
+                  <h4 className="font-bold text-green-900 mb-2">The Sustainable Greenhouse</h4>
+                  <p className="text-sm text-gray-600 mb-4"><strong>Project:</strong> Installing energy curtains and a biomass boiler to reduce natural gas reliance.</p>
+                  <p className="text-sm text-gray-600"><strong>Funding:</strong> $500,000 from AgriInnovate (Repayable) + $100,000 from Provincial Cost-Share (Grant).</p>
+                  <p className="text-sm text-green-700 font-bold mt-2">Outcome: Reduced energy bill by 35% and carbon footprint by 400 tonnes.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-green-100 shadow-sm">
+                  <h4 className="font-bold text-green-900 mb-2">The Pulse Processor</h4>
+                  <p className="text-sm text-gray-600 mb-4"><strong>Project:</strong> Building a new pea protein fractionation facility to export to Asia.</p>
+                  <p className="text-sm text-gray-600"><strong>Funding:</strong> $2.5M from AgriInnovate + $1M from Regional Development Agency.</p>
+                  <p className="text-sm text-green-700 font-bold mt-2">Outcome: Created 25 full-time jobs and $10M in annual export sales.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-green-100 shadow-sm">
+                  <h4 className="font-bold text-green-900 mb-2">The AgTech Startup</h4>
+                  <p className="text-sm text-gray-600 mb-4"><strong>Project:</strong> AI-powered drone software for precision herbicide application.</p>
+                  <p className="text-sm text-gray-600"><strong>Funding:</strong> $200k AgriScience + $50k IRAP Grant.</p>
+                  <p className="text-sm text-green-700 font-bold mt-2">Outcome: Commercial technology now used on 500k acres.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="success" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -414,15 +487,16 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <Card key={index}>
-                    <CardContent className="pt-6">
-                      <h3 className="font-bold flex items-start">
-                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                        {faq.question}
-                      </h3>
-                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
-                    </CardContent>
-                  </Card>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-900">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
               </div>
             </div>
@@ -455,7 +529,7 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
             </div>
           </div>
         </section>
-      </div>
+      </div >
       <Footer />
     </>
   )

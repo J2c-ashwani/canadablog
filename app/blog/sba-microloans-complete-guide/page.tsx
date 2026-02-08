@@ -8,6 +8,12 @@ import {
   Clock, ChevronRight, ExternalLink, BookOpen, HelpCircle,
   Heart, Users, MapPin, TrendingUp, Building2
 } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -38,6 +44,18 @@ export default function SBAMicroloansGuidePage() {
     {
       question: "Can I get a second microloan?",
       answer: "Yes. Once you repay your first loan successfully, you can apply for another. The total outstanding balance across all SBA microloans cannot exceed $50,000."
+    },
+    {
+      question: "What can microloan funds generally NOT be used for?",
+      answer: "You cannot use microloans to purchase real estate or pay existing debts. They are strictly for working capital, inventory, supplies, furniture, fixtures, machinery, and equipment."
+    },
+    {
+      question: "Do I need a business plan?",
+      answer: "Yes. Intermediary lenders will want to see a business plan to understand how you intend to use the funds and your strategy for repayment. Don't worry if it's not perfect; mentors can help you refine it."
+    },
+    {
+      question: "Is the interest rate fixed or variable?",
+      answer: "Microloan interest rates are typically fixed. This allows for predictable monthly payments, which is crucial for startups managing tight cash flow."
     }
   ];
 
@@ -78,6 +96,33 @@ export default function SBAMicroloansGuidePage() {
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
                 <Link href="/contact?service=sba-microloan-help">Get Microloan Application Help</Link>
               </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About SBA Microloans</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#overview" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-purple-900">What is a microloan?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Small loans up to $50,000 for startups and small businesses.</p>
+                </a>
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-purple-900">Do I need collateral?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Requirements vary, but personal guarantees are usually required.</p>
+                </a>
+                <a href="#mentoring" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-purple-900">Is mentoring required?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, free business training/mentoring is a mandatory benefit.</p>
+                </a>
+                <a href="#funding" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-purple-900">What are the interest rates?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Typically between 8% and 13%, fixed rates.</p>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -355,6 +400,70 @@ export default function SBAMicroloansGuidePage() {
           </div>
         </section>
 
+        <section id="use-cases" className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-purple-900">Creative Ways to Use Microloans</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-purple-50 p-6 rounded-lg border border-purple-100">
+                  <h3 className="font-bold text-purple-800 mb-2">1. The "Inventory" Bump</h3>
+                  <p className="text-sm text-gray-700"><strong>Scenario:</strong> It's October. You need $15,000 to buy holiday inventory to sell in December.</p>
+                  <p className="text-sm text-gray-700 mt-2"><strong>Microloan Fix:</strong> Get a $15k loan. Sell the goods. Repay the loan in January. Profit the difference.</p>
+                </div>
+                <div className="bg-purple-50 p-6 rounded-lg border border-purple-100">
+                  <h3 className="font-bold text-purple-800 mb-2">2. The Equipment Upgrade</h3>
+                  <p className="text-sm text-gray-700"><strong>Scenario:</strong> A coffee shop needs a new $8,000 espresso machine to speed up service.</p>
+                  <p className="text-sm text-gray-700 mt-2"><strong>Microloan Fix:</strong> The machine increases revenue by $50/day. The loan payment is only $150/month. It pays for itself.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="credit-strategy" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-start">
+                <TrendingUp className="w-10 h-10 text-green-600 mr-4 mt-1" />
+                <div>
+                  <h2 className="text-3xl font-bold mb-4 text-gray-900">The "Credit Builder" Strategy</h2>
+                  <p className="text-gray-700 mb-4">
+                    Microloans are the best stepping stone to millions in funding.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center text-gray-700"><CheckCircle className="w-4 h-4 text-green-500 mr-2" /> <strong>Step 1:</strong> Take a small $5,000 Microloan.</li>
+                    <li className="flex items-center text-gray-700"><CheckCircle className="w-4 h-4 text-green-500 mr-2" /> <strong>Step 2:</strong> Repay it perfectly for 12 months. This reports to business credit bureaus.</li>
+                    <li className="flex items-center text-gray-700"><CheckCircle className="w-4 h-4 text-green-500 mr-2" /> <strong>Step 3:</strong> You now have a "Track Record." Apply for a $250k SBA 7(a) loan.</li>
+                  </ul>
+                  <p className="text-sm text-gray-500 italic mt-4">Banks love borrowers who have successfully repaid government debt.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="common-mistakes" className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-red-900">Why Applications Get Denied</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-red-100">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-red-700 mb-2">1. Skipping the Mentoring</h3>
+                    <p className="text-sm text-gray-600">Intermediaries require training. If you skip the "Business Plan 101" class, they will not process your loan.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-red-100">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-red-700 mb-2">2. No "Skin in the Game"</h3>
+                    <p className="text-sm text-gray-600">Lenders want to see you invested. If you ask for $50k but have put $0 of your own money in, it signals high risk.</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FAQs */}
         <section id="faqs" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -362,15 +471,16 @@ export default function SBAMicroloansGuidePage() {
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <Card key={index}>
-                    <CardContent className="pt-6">
-                      <h3 className="font-bold flex items-start">
-                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                        {faq.question}
-                      </h3>
-                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
-                    </CardContent>
-                  </Card>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-900">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
               </div>
             </div>

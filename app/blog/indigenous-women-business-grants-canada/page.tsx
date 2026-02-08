@@ -100,7 +100,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Indigenous Women Business Grants by Province and Territory (2026-2027 NACCA Funding Available)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">What Indigenous Women Business Grants are Available by Province?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-orange-200 hover:shadow-lg transition-shadow">
@@ -247,7 +247,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Indigenous Women Business Funding Ecosystem Across Canada</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the Indigenous Women Business Funding Ecosystem?</h2>
                 <p className="text-lg text-gray-600 mb-4">
                   Indigenous women entrepreneurs across Canada have access to comprehensive business funding through the National
                   Aboriginal Capital Corporations Association (NACCA) network of over 50 Indigenous Financial Institutions (IFIs).
@@ -294,7 +294,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
         <section id="indigenous-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Indigenous Women Business Grants and Loans Canada 2026-2027</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Which Federal Indigenous Women Business Grants are Available?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete guide to federal Indigenous business funding programs available to First Nations, Métis, and
                 Inuit women entrepreneurs across all Canadian provinces and territories through NACCA network.
@@ -552,7 +552,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Provincial Indigenous Women Business Grants by Region</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Which Provincial Indigenous Women Business Grants are Available?</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
                 Complete guide to provincial and territorial Indigenous business support programs for First Nations,
                 Métis, and Inuit women entrepreneurs across Canada.
@@ -686,7 +686,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
         <section className="py-16 bg-gradient-to-br from-orange-50 to-red-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Indigenous Women Business Funding by Sector</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How is Indigenous Women Business Funding Categorized by Sector?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Cultural Arts & Crafts */}
@@ -780,7 +780,7 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Indigenous Women Business Grant Application Success Strategies 2026-2027</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Strategies for Indigenous Women Business Grant Application Success?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Proven strategies for First Nations, Métis, and Inuit women entrepreneurs to maximize NACCA funding
                 approval rates and Indigenous business grant success across Canada.
@@ -995,6 +995,65 @@ export default function IndigenousWomenBusinessGrantsCanadaPage() {
                     </ul>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-gradient-to-r from-orange-50 to-amber-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">❓ Common Questions About Indigenous Women Business Grants</h2>
+              <p className="text-lg text-gray-600 text-center mb-8">Quick answers to the most frequently asked questions about NACCA funding and Indigenous women entrepreneurship programs.</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-orange-100">
+                  <h3 className="font-semibold text-orange-700">Who is eligible for NACCA funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">First Nations, Métis, and Inuit women entrepreneurs with 51%+ Indigenous ownership</p>
+                </a>
+                <a href="#funding-amounts" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-orange-100">
+                  <h3 className="font-semibold text-orange-700">How much funding can I receive?</h3>
+                  <p className="text-sm text-gray-600 mt-1">$10K to $250K depending on program and business stage</p>
+                </a>
+                <a href="#welf" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-orange-100">
+                  <h3 className="font-semibold text-orange-700">What is the Women Entrepreneurship Loan Fund?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Low-interest loans up to $50K specifically for Indigenous women</p>
+                </a>
+                <a href="#ifi" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-orange-100">
+                  <h3 className="font-semibold text-orange-700">What are Indigenous Financial Institutions (IFIs)?</h3>
+                  <p className="text-sm text-gray-600 mt-1">58 community-based lenders delivering culturally appropriate business support</p>
+                </a>
+                <a href="#documentation" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-orange-100">
+                  <h3 className="font-semibold text-orange-700">What documentation do I need?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Status card or Métis membership, business plan, and financial projections</p>
+                </a>
+                <a href="#timeline" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-orange-100">
+                  <h3 className="font-semibold text-orange-700">How long does approval take?</h3>
+                  <p className="text-sm text-gray-600 mt-1">4-8 weeks through your local Indigenous Financial Institution</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">📚 Related Guides</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/blog/indigenous-rural-business-funding-canada" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">Indigenous & Rural Business Funding</h3>
+                  <p className="text-sm text-gray-600">Comprehensive guide to all Indigenous business programs across Canada</p>
+                </Link>
+                <Link href="/blog/women-entrepreneurship-fund-canada" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">Women Entrepreneurship Fund</h3>
+                  <p className="text-sm text-gray-600">Federal funding programs for Canadian women entrepreneurs</p>
+                </Link>
+                <Link href="/blog/canada-federal-grants" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">Canada Federal Grants Guide</h3>
+                  <p className="text-sm text-gray-600">Master guide to all federal business funding programs</p>
+                </Link>
               </div>
             </div>
           </div>

@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, GraduationCap, HelpCircle } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Lightbulb, Users, Globe, BookOpen, GraduationCap, Microscope, Award, ArrowRight, HelpCircle, FileText, AlertCircle, Building, Shield, Clock, Send, Download } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -572,15 +578,18 @@ export default function NSERCResearchGrantsGuidePage() {
 
         <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">NSERC Frequently Asked Questions</h2>
-          <div className="space-y-6">
+          <div className="space-y-4">
             {faqData.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
-                  <HelpCircle className="w-6 h-6 text-indigo-600 mr-3 flex-shrink-0 mt-0.5" />
-                  {faq.question}
-                </h3>
-                <p className="text-gray-700 ml-9">{faq.answer}</p>
-              </div>
+              <Accordion type="single" collapsible key={index}>
+                <AccordionItem value={`item-${index}`}>
+                  <AccordionTrigger className="text-left">
+                    <span className="font-medium text-indigo-700">{faq.question}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-600">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             ))}
           </div>
         </div>
@@ -627,6 +636,45 @@ export default function NSERCResearchGrantsGuidePage() {
               <p className="text-indigo-200 text-sm mt-6">
                 Expert guidance • University connections • Industry partnerships • Successful track record
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Innovation & Research Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      IRAP Innovation Funding
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Complete guide to the Industrial Research Assistance Program (IRAP) for Canadian SMEs.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/blog/irap-industrial-research-assistance-program-government-grants">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      Canada Innovation Grants
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Overview of major R&D and innovation funding programs available across Canada.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/blog/canada-innovation-research-development-grants-guide">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </section>

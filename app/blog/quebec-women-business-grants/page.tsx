@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, MapPin, ExternalLink } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, MapPin, ExternalLink, HelpCircle, Briefcase } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -119,6 +125,33 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
                   </div>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Quebec Women Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-800">Do I need RFAQ membership?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Not mandatory, but highly recommended.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-800">How much is the Bombardier grant?</h3>
+                  <p className="text-sm text-gray-600 mt-1">$10,000 for excellence in various sectors.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-800">Is English support available?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, via YES Employment & Entrepreneurship.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-800">Does Investissement Québec help?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, with loans and advisory services.</p>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -546,6 +579,89 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
                     </Link>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section and Related Guides */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              {/* FAQ Section */}
+              <div className="mb-20">
+                <h2 className="text-3xl font-bold text-center mb-12">Quebec Women Business Grants FAQs</h2>
+                <div className="space-y-4">
+                  {faqData.map((faq, index) => (
+                    <Accordion type="single" collapsible key={index}>
+                      <AccordionItem value={`item-${index}`}>
+                        <AccordionTrigger className="text-left">
+                          <span className="font-medium text-blue-800">{faq.question}</span>
+                        </AccordionTrigger>
+                        <AccordionContent className="text-gray-600">
+                          {faq.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  ))}
+                </div>
+              </div>
+
+              {/* Related Guides Section */}
+              <div className="mb-20">
+                <h2 className="text-3xl font-bold text-center mb-12">More Funding Resources for Quebec</h2>
+                <div className="grid md:grid-cols-3 gap-8">
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-blue-100">
+                    <CardHeader>
+                      <Briefcase className="w-8 h-8 text-blue-600 mb-4" />
+                      <CardTitle className="text-xl mb-2">Quebec Business Grants</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-6">
+                        Complete guide to provincial business grants and loans available in Quebec.
+                      </p>
+                      <Button variant="outline" className="w-full text-blue-700 border-blue-200 hover:bg-blue-50" asChild>
+                        <Link href="/blog/quebec-business-grants-loans-guide">
+                          View Quebec Grants
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-blue-100">
+                    <CardHeader>
+                      <MapPin className="w-8 h-8 text-blue-600 mb-4" />
+                      <CardTitle className="text-xl mb-2">Startup Funding</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-6">
+                        Find startup funding, loans, and investment for new businesses across Canada.
+                      </p>
+                      <Button variant="outline" className="w-full text-blue-700 border-blue-200 hover:bg-blue-50" asChild>
+                        <Link href="/blog/startup-business-grants-canada-guide">
+                          View Startup Funding
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-blue-100">
+                    <CardHeader>
+                      <Target className="w-8 h-8 text-blue-600 mb-4" />
+                      <CardTitle className="text-xl mb-2">Federal Women Stats</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-6">
+                        Learn about the federal Women Entrepreneurship Strategy (WES) funding nationwide.
+                      </p>
+                      <Button variant="outline" className="w-full text-blue-700 border-blue-200 hover:bg-blue-50" asChild>
+                        <Link href="/blog/women-entrepreneurship-strategy-canada-government-grants">
+                          View WES Programs
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
           </div>

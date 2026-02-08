@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, MapPin, Building2, Flag } from "lucide-react"
+import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, MapPin, Building2, Flag, Briefcase, Shield, Award, HelpCircle, Users, Heart } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,7 +25,32 @@ export const metadata: Metadata = {
 }
 
 export default function StateWomenBusinessProgramsGuide() {
+  const faqData = [
+    {
+      question: "Are state grants easier to get than federal ones?",
+      answer: "Generally, yes. There is less competition for state-level funding compared to national federal grants. However, funding pools are also smaller."
+    },
+    {
+      question: "Do I need to be certified as a WBE?",
+      answer: "Often, yes. Many state procurement programs and specific set-aside grants require official Women Business Enterprise (WBE) certification to qualify."
+    },
+    {
+      question: "Can I apply for grants in other states?",
+      answer: "No. You usually must have your primary business address or significant operations in the state where you are applying for funding."
+    },
+    {
+      question: "What is a 'set-aside' contract?",
+      answer: "A set-aside is a government contract specifically reserved for small businesses or minority/women-owned businesses to ensure fair competition."
+    },
+    {
+      question: "How do I find local programs?",
+      answer: "Start with your local Small Business Development Center (SBDC) or your state's economic development agency website."
+    }
+  ];
+
   return (
+
+
     <>
       <Header />
       <div className="min-h-screen bg-gray-50">
@@ -74,20 +105,47 @@ export default function StateWomenBusinessProgramsGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About State Women Business Programs</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Do I need WBE certification?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Often yes, especially for procurement programs and set-aside contracts.</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Where do I start?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Contact your state's economic development agency or local SBDC.</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Can I apply to other states?</h3>
+                  <p className="text-sm text-gray-600 mt-1">No, you must have primary operations in that state.</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Are state grants easier?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Generally yes, less competition than federal programs.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Main Content */}
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* What are State Women Business Programs */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">What are State Women Business Programs?</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  State and local women business programs are government initiatives designed to support female entrepreneurs 
-                  through grants, loans, tax incentives, procurement opportunities, and business development services. 
+                  State and local women business programs are government initiatives designed to support female entrepreneurs
+                  through grants, loans, tax incentives, procurement opportunities, and business development services.
                   These programs complement federal initiatives with region-specific support.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-orange-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-orange-800">State-Level Advantages</h4>
@@ -98,7 +156,7 @@ export default function StateWomenBusinessProgramsGuide() {
                       <li>• Direct access to state officials</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-red-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-red-800">Local Program Benefits</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -114,7 +172,7 @@ export default function StateWomenBusinessProgramsGuide() {
               {/* Types of State & Local Programs */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Types of State & Local Programs</h2>
-                
+
                 <div className="space-y-8">
                   {/* Direct Grant Programs */}
                   <Card className="border-orange-200">
@@ -140,7 +198,7 @@ export default function StateWomenBusinessProgramsGuide() {
                         </div>
                       </div>
                       <p className="text-gray-700 mb-4">
-                        Direct funding from state and local governments for women-owned business startup, expansion, 
+                        Direct funding from state and local governments for women-owned business startup, expansion,
                         and development activities. Often tied to job creation and economic development goals.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -190,7 +248,7 @@ export default function StateWomenBusinessProgramsGuide() {
                         </div>
                       </div>
                       <p className="text-gray-700 mb-4">
-                        Tax incentives designed to encourage women's business development, including property tax 
+                        Tax incentives designed to encourage women's business development, including property tax
                         abatements, income tax credits, and sales tax exemptions for qualifying activities.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -240,7 +298,7 @@ export default function StateWomenBusinessProgramsGuide() {
                         </div>
                       </div>
                       <p className="text-gray-700 mb-4">
-                        State and local procurement programs that set aside contracts or provide preference points 
+                        State and local procurement programs that set aside contracts or provide preference points
                         for women-owned businesses in government purchasing and construction projects.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -271,7 +329,7 @@ export default function StateWomenBusinessProgramsGuide() {
               {/* Leading State Programs */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Leading State Women Business Programs</h2>
-                
+
                 <div className="space-y-6">
                   <Card className="border-blue-200">
                     <CardHeader>
@@ -344,7 +402,7 @@ export default function StateWomenBusinessProgramsGuide() {
               {/* Regional Program Examples */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Regional Program Highlights by Industry</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-orange-700">🏗️ Construction & Infrastructure:</h4>
@@ -367,7 +425,7 @@ export default function StateWomenBusinessProgramsGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-blue-700">💼 Professional Services:</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -395,7 +453,7 @@ export default function StateWomenBusinessProgramsGuide() {
               {/* Local Program Success Strategies */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Local Program Success Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ State Program Success Factors:</h4>
@@ -418,7 +476,7 @@ export default function StateWomenBusinessProgramsGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Mistakes:</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -452,7 +510,7 @@ export default function StateWomenBusinessProgramsGuide() {
                     <div>
                       <p className="text-orange-800 font-medium">Research Strategy:</p>
                       <p className="text-orange-700 text-sm">
-                        Each state has unique programs and requirements. A systematic approach to research will 
+                        Each state has unique programs and requirements. A systematic approach to research will
                         uncover the most relevant opportunities for your business.
                       </p>
                     </div>
@@ -491,11 +549,47 @@ export default function StateWomenBusinessProgramsGuide() {
                 </div>
               </div>
 
+              {/* FAQ Section */}
+              <div className="mb-16" id="faqs">
+                <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+                <div className="space-y-4">
+                  {faqData.map((faq, index) => (
+                    <Accordion type="single" collapsible key={index}>
+                      <AccordionItem value={`item-${index}`}>
+                        <AccordionTrigger className="text-left">
+                          <span className="font-medium text-blue-900">{faq.question}</span>
+                        </AccordionTrigger>
+                        <AccordionContent className="text-gray-600">
+                          {faq.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  ))}
+                </div>
+              </div>
+
+              {/* Related Guides Section */}
+              <div className="mb-16 bg-blue-50 p-8 rounded-xl border border-blue-100">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">More Funding for Women</h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                  <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><MapPin className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                  <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Target className="w-5 h-5 text-emerald-600 mr-3" /><span>BC Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                  <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Award className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                  <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                  <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Related Funding Guides</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <Link href="/blog/women-entrepreneurship-fund-canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Users className="w-5 h-5 text-pink-600 mr-3" /><span>Federal Women's Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                  <Link href="/blog/ontario-women-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Heart className="w-5 h-5 text-pink-600 mr-3" /><span>Ontario Women Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                </div>
+              </div>
+
               {/* Lead-Generating CTA Section */}
               <div className="bg-gradient-to-r from-orange-600 to-red-700 rounded-lg p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">Get Your FREE State & Local Programs Strategy Session</h3>
                 <p className="text-orange-100 mb-6 text-lg">
-                  Book a complimentary consultation with our state program experts. Get personalized guidance on finding and 
+                  Book a complimentary consultation with our state program experts. Get personalized guidance on finding and
                   accessing state and local women business programs in your area.
                 </p>
                 <div className="bg-white/10 rounded-lg p-4 mb-6">

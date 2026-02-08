@@ -413,7 +413,7 @@ export default function TerritoriesSmallBusinessGrantsGuide() {
         <section id="how-much" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">How Much Grant Funding Can Territories Businesses Get?</h2>
+              <h2 className="text-3xl font-bold mb-6">How Much Funding Can You Get in the Territories?</h2>
 
               <p className="text-gray-700 mb-6">
                 Northern funding levels are often generous relative to project size, reflecting the
@@ -470,7 +470,7 @@ export default function TerritoriesSmallBusinessGrantsGuide() {
         <section id="how-to-apply" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">How to Apply for Territories Business Grants - Step by Step</h2>
+              <h2 className="text-3xl font-bold mb-6">How Do You Apply for Territories Business Grants?</h2>
 
               <div className="space-y-6">
                 <div className="flex items-start p-4 bg-white rounded-lg shadow-sm">
@@ -635,7 +635,7 @@ export default function TerritoriesSmallBusinessGrantsGuide() {
         <section id="mistakes" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Common Mistakes to Avoid</h2>
+              <h2 className="text-3xl font-bold mb-6">What Are Common Mistakes to Avoid?</h2>
 
               <div className="space-y-4">
                 <Card>
@@ -845,6 +845,32 @@ export default function TerritoriesSmallBusinessGrantsGuide() {
                     </CardContent>
                   </Card>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions About Territories Grants</h2>
+              <div className="space-y-4">
+                <a href="#programs" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-purple-700">What grants are available in each territory?</span>
+                </a>
+                <a href="#eligibility" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-purple-700">Who is eligible for territories business grants?</span>
+                </a>
+                <a href="#indigenous" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-purple-700">What Indigenous business programs are available?</span>
+                </a>
+                <a href="#how-much" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-purple-700">How much grant funding can territories businesses get?</span>
+                </a>
+                <a href="#faqs" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-purple-700">Can I get territorial and federal funding together?</span>
+                </a>
               </div>
             </div>
           </div>

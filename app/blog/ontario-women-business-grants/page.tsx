@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Heart, Users, Megaphone, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Star, Briefcase } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Heart, Users, Megaphone, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Star, Briefcase, MapPin } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -116,6 +122,33 @@ export default function OntarioWomenBusinessGrants() {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Women's Funding</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#paro-circles" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-pink-700">How do PARO Peer Circles work?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Understanding the 'Social Collateral' model.</p>
+                </a>
+                <a href="#welf-loan" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-pink-700">What is the $50k WELF Loan?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Details on the Women Entrepreneurship Loan Fund.</p>
+                </a>
+                <a href="#private-grants" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-pink-700">Are there private grants available?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Visa, Amex, and Telus grant opportunities.</p>
+                </a>
+                <a href="#wes-ecosystem" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-pink-700">Who offers mentorship?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Coralus, The Forum, and other ecosystem partners.</p>
+                </a>
               </div>
             </div>
           </div>
@@ -299,7 +332,7 @@ export default function OntarioWomenBusinessGrants() {
         </section>
 
         {/* Section 3: Private Sector Grants */}
-        <section className="py-20 bg-white">
+        <section id="private-grants" className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
@@ -351,7 +384,7 @@ export default function OntarioWomenBusinessGrants() {
         </section>
 
         {/* Section 4: Investment Readiness (WES Ecosystem) */}
-        <section className="py-20 bg-gray-900 text-white">
+        <section id="wes-ecosystem" className="py-20 bg-gray-900 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-10">The WES Ecosystem</h2>
@@ -386,16 +419,110 @@ export default function OntarioWomenBusinessGrants() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
-                      <HelpCircle className="w-5 h-5 text-pink-500 mr-3 mt-0.5 flex-shrink-0" />
-                      {faq.question}
-                    </h3>
-                    <p className="text-gray-600 pl-8">{faq.answer}</p>
-                  </div>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-pink-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">More for Women Entrepreneurs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><MapPin className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Target className="w-5 h-5 text-emerald-600 mr-3" /><span>BC Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Award className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/women-entrepreneurship-fund-canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Users className="w-5 h-5 text-pink-600 mr-3" /><span>Federal Women&apos;s Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/bc-women-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Heart className="w-5 h-5 text-pink-600 mr-3" /><span>BC Women Entrepreneurs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="common-mistakes" className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-red-900">3 Mistakes That Kill Applications</h2>
+
+              <div className="space-y-6">
+                <div className="flex gap-4">
+                  <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-gray-900">1. The "Hobby" Trap</h3>
+                    <p className="text-sm text-gray-600">
+                      <strong>Mistake:</strong> Describing your business as a "passion project" to seem relatable.
+                      <br />
+                      <strong>Reality:</strong> Lenders fund businesses, not hobbies. Use words like "Scale," "Revenue," and "Operations."
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-gray-900">2. Ignoring the "Ecosystem"</h3>
+                    <p className="text-sm text-gray-600">
+                      <strong>Mistake:</strong> Applying for a loan without ever attending a PARO or Coralus event.
+                      <br />
+                      <strong>Reality:</strong> These organizations value community participation. Being a known face increases your approval odds significantly.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-gray-900">3. Under-Asking</h3>
+                    <p className="text-sm text-gray-600">
+                      <strong>Mistake:</strong> Asking for $10k when you need $50k because you think it's "safer."
+                      <br />
+                      <strong>Reality:</strong> Under-capitalization is a major risk flag. If your business plan says you need $50k, ask for $50k.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="success-stories" className="py-16 bg-pink-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-pink-900">Real Success Stories</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white p-6 rounded-lg border border-pink-100">
+                  <h4 className="font-bold text-pink-900 mb-2">The Northern Bakery</h4>
+                  <p className="text-sm text-gray-600 mb-4"><strong>Challenge:</strong> A Sudbury bakery wanted to package their gluten-free mix but banks said "No".</p>
+                  <p className="text-sm text-gray-600"><strong>Strategy:</strong> Joined a PARO Circle. Borrowed $5k for packaging design (step 1). Then applied for WELF ($50k) for inventory.</p>
+                  <p className="text-sm text-pink-700 font-bold mt-2">Result: Now sold in 40 stores across Ontario.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-pink-100">
+                  <h4 className="font-bold text-pink-900 mb-2">The Tech Consultancy</h4>
+                  <p className="text-sm text-gray-600 mb-4"><strong>Challenge:</strong> Needed cash flow to hire staff before a big government contract paid out.</p>
+                  <p className="text-sm text-gray-600"><strong>Strategy:</strong> Used Coralus (SheEO) interest-free loan. The "Activator" network also introduced her to 3 new corporate clients.</p>
+                  <p className="text-sm text-pink-700 font-bold mt-2">Result: Doubled revenue in 12 months with $0 interest cost.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -427,7 +554,7 @@ export default function OntarioWomenBusinessGrants() {
         </section>
 
         <Footer />
-      </div>
+      </div >
     </>
   )
 }

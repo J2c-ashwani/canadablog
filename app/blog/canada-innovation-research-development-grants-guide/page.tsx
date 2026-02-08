@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Microscope, Cpu, FlaskConical, Building, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, FileText, Users, Calculator, Scale } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Microscope, Cpu, FlaskConical, Building, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, FileText, Users, Calculator, Scale, MapPin, Briefcase } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -116,6 +116,37 @@ export default function CanadaInnovationGrantsGuide() {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About R&D Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#sred-masterclass" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-violet-700">What is the new SR&ED limit?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Doubled to $6M for 2026.</p>
+                </a>
+                <a href="#irap-grants" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-violet-700">What is the difference between IRAP and SR&ED?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Upfront grant vs. retroactive tax credit.</p>
+                </a>
+                <a href="#stack" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-violet-700">Can I stack IRAP and SR&ED?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, optimizing for ~88% coverage.</p>
+                </a>
+                <a href="#timeline" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-violet-700">How long does the refund take?</h3>
+                  <p className="text-sm text-gray-600 mt-1">2 weeks to 6 months depending on program.</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-violet-700">Does software count as R&D?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Only if there is technical uncertainty.</p>
+                </a>
               </div>
             </div>
           </div>
@@ -254,7 +285,7 @@ export default function CanadaInnovationGrantsGuide() {
         </section>
 
         {/* Section 3: The Stack Strategy */}
-        <section className="py-20 bg-white border-t border-gray-200">
+        <section id="stack" className="py-20 bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">The "Double Dip" Strategy (Stacking)</h2>
@@ -317,7 +348,7 @@ export default function CanadaInnovationGrantsGuide() {
         </section>
 
         {/* Section 4: Refund Flow Chart */}
-        <section className="py-20 bg-white">
+        <section id="timeline" className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">The Refund Timeline</h2>
@@ -426,7 +457,7 @@ export default function CanadaInnovationGrantsGuide() {
         </section>
 
         {/* Detailed FAQ Section */}
-        <section className="py-20 bg-gray-50 border-t border-gray-200">
+        <section id="faq" className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
@@ -440,6 +471,34 @@ export default function CanadaInnovationGrantsGuide() {
                     <p className="text-gray-600 pl-8">{faq.answer}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-12 bg-red-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-red-900 mb-6">SR&ED Claim Killers</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Card className="border-l-4 border-red-500"><CardContent className="pt-4"><h3 className="font-bold text-red-700">No Contemporaneous Docs</h3><p className="text-sm text-gray-600">Git logs and Jira tickets must exist FROM THE TIME of the work. Backfilled docs get rejected in audit.</p></CardContent></Card>
+                <Card className="border-l-4 border-red-500"><CardContent className="pt-4"><h3 className="font-bold text-red-700">Claiming US Contractor Fees</h3><p className="text-sm text-gray-600">Only Canadian-resident subcontractors are eligible. Offshore developers are 100% excluded.</p></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Explore More Funding Options</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><MapPin className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Target className="w-5 h-5 text-emerald-600 mr-3" /><span>BC Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Award className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>
@@ -473,7 +532,7 @@ export default function CanadaInnovationGrantsGuide() {
         </section>
 
         <Footer />
-      </div>
+      </div >
     </>
   )
 }

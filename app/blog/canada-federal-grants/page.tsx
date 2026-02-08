@@ -120,7 +120,7 @@ export default function CanadaFederalGrantsPage() {
                   </p>
 
                   <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 my-10">
-                    <h3 className="mt-0 text-slate-900 dark:text-white">The 3 Types of Federal "Free Money"</h3>
+                    <h3 className="mt-0 text-slate-900 dark:text-white">What are the 3 Types of Federal "Free Money"?</h3>
                     <p className="mb-4">Before diving into specific programs, it is critical to understand the three distinct instruments the government uses to deploy capital. Confusing these will kill your application.</p>
                     <ul className="space-y-4">
                       <li>
@@ -145,7 +145,7 @@ export default function CanadaFederalGrantsPage() {
                 <div id="big-three" className="scroll-mt-32">
                   <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
                     <Building className="w-10 h-10 text-red-600 mr-4" />
-                    The "Big Three" Federal Agencies
+                    What are the "Big Three" Federal Agencies?
                   </h2>
                   <p className="text-gray-600 dark:text-gray-400 mb-6 text-xl">
                     90% of federal business funding flows through three primary channels. Understanding the mandate of each agency is the first step to successful funding.
@@ -238,7 +238,7 @@ export default function CanadaFederalGrantsPage() {
                     <div className="relative z-10">
                       <div className="flex items-center mb-6">
                         <Badge className="bg-blue-600 hover:bg-blue-500 text-white text-md px-4 py-1 mr-4">Tax Credit</Badge>
-                        <h2 className="text-3xl font-bold text-white">SR&ED: The Backbone of Canadian Innovation</h2>
+                        <h2 className="text-3xl font-bold text-white">What is SR&ED in Canadian Innovation?</h2>
                       </div>
 
                       <p className="text-gray-300 mb-8 text-lg max-w-3xl leading-relaxed">
@@ -280,7 +280,7 @@ export default function CanadaFederalGrantsPage() {
                 <div id="rdas" className="scroll-mt-32 mt-20">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                     <MapIcon className="w-8 h-8 text-red-600 mr-3" />
-                    The Hidden 4th Pillar: Regional Development Agencies (RDAs)
+                    What are the Regional Development Agencies (RDAs)?
                   </h2>
                   <p className="text-lg text-gray-600 mb-8">
                     Most businesses apply to the big national programs and get rejected due to volume. Smart businesses apply to their local <strong>Regional Development Agency (RDA)</strong>. These agencies have specific mandates to help businesses in <em>your specific postal code</em>.
@@ -318,7 +318,7 @@ export default function CanadaFederalGrantsPage() {
                 <div id="itb-policy" className="scroll-mt-32 mt-20">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                     <Scale className="w-8 h-8 text-neutral-600 mr-3" />
-                    The "Industrial Technology Benefits" (ITB) Policy
+                    What is the "Industrial Technology Benefits" (ITB) Policy?
                   </h2>
                   <p className="text-lg text-gray-600 mb-6">
                     This is the best kept secret in Canadian manufacturing. When Canada buys defense equipment (like F-35 jets or ships), the foreign contractor (e.g., Lockheed Martin) is <strong>legally required</strong> to invest an amount equal to the contract value back into the Canadian economy. This is called the ITB Value Proposition.
@@ -335,7 +335,7 @@ export default function CanadaFederalGrantsPage() {
                 <div id="lifecycle-funding" className="scroll-mt-32 mt-20">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                     <TrendingUp className="w-8 h-8 text-red-600 mr-3" />
-                    Funding by Business Lifecycle
+                    How Does Funding Work by Business Lifecycle?
                   </h2>
                   <p className="text-gray-600 mb-8 text-lg">
                     The most common mistake is applying for the wrong stage. A pre-revenue startup applying for a "Scale-up" grant will be rejected immediately.
@@ -412,7 +412,7 @@ export default function CanadaFederalGrantsPage() {
                 <div id="application-playbook" className="scroll-mt-32 mt-20">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                     <FileText className="w-8 h-8 text-red-600 mr-3" />
-                    The 2026 Application Playbook
+                    What is the 2026 Application Playbook?
                   </h2>
                   <p className="text-gray-600 mb-8 text-lg">
                     Successful applications follow a pattern known as the <em>Treasury Board Standard</em>. This is how federal officers are trained to evaluate files. To win, you must write in their language.
@@ -467,7 +467,7 @@ export default function CanadaFederalGrantsPage() {
 
                 {/* Section 4: Sector-Specific Strategic Guides */}
                 <div className="mt-20">
-                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Sector-Specific Funding Strategies</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">What are the Sector-Specific Funding Strategies?</h2>
                   <p className="mb-8 text-lg text-gray-600">Funding is not generic. An Agri-Tech company applies to completely different pools than a FinTech startup. Find your sector below:</p>
 
                   <div className="grid md:grid-cols-2 gap-8">
@@ -525,7 +525,7 @@ export default function CanadaFederalGrantsPage() {
                 <div className="mt-20 border-t border-gray-200 pt-16">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
                     <Book className="w-8 h-8 text-slate-600 mr-3" />
-                    The Federal Funding Glossary (A-Z)
+                    What is the Federal Funding Glossary (A-Z)?
                   </h2>
                   <p className="text-lg text-gray-600 mb-8">
                     Government officers speak a different language. If you use the wrong terminology in your application, you will be flagged as an amateur. Here are the 20 terms you must know.
@@ -570,7 +570,7 @@ export default function CanadaFederalGrantsPage() {
                 <div className="mt-20 bg-slate-50 p-10 rounded-2xl border border-slate-200">
                   <h2 className="text-3xl font-bold text-slate-900 mb-6 flex items-center">
                     <List className="w-8 h-8 text-slate-600 mr-3" />
-                    Priority Industry Scored List
+                    What is the Priority Industry Scored List?
                   </h2>
                   <p className="text-lg text-slate-600 mb-8">
                     The government favors some industries over others. Based on current mandates, here is the "Fundability Score" for 2026.
@@ -700,6 +700,65 @@ export default function CanadaFederalGrantsPage() {
                 <AdSlot adSlot="5544332211" adFormat="vertical" style={{ minHeight: '600px' }} />
               </aside>
 
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-gradient-to-r from-red-50 to-orange-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">❓ What are Common Questions About Canadian Federal Grants?</h2>
+              <p className="text-lg text-gray-600 text-center mb-8">Quick answers to the most frequently asked questions about federal business funding programs.</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#irap" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-red-100">
+                  <h3 className="font-semibold text-red-700">What is NRC-IRAP?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Canada's premier R&D funding program, covering up to 80% of eligible project costs</p>
+                </a>
+                <a href="#sred" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-red-100">
+                  <h3 className="font-semibold text-red-700">How does SR&ED work?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Tax credits up to 65% on R&D wages, refundable for CCPCs</p>
+                </a>
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-red-100">
+                  <h3 className="font-semibold text-red-700">Do I qualify for federal grants?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Most Canadian-incorporated businesses with innovation projects qualify</p>
+                </a>
+                <a href="#stacking" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-red-100">
+                  <h3 className="font-semibold text-red-700">Can I stack federal with provincial programs?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, up to 75% of project costs with proper program coordination</p>
+                </a>
+                <a href="#timeline" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-red-100">
+                  <h3 className="font-semibold text-red-700">How long does approval take?</h3>
+                  <p className="text-sm text-gray-600 mt-1">4-8 weeks for IRAP, 4-8 months for larger Strategic Innovation Fund projects</p>
+                </a>
+                <a href="#repayable" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-red-100">
+                  <h3 className="font-semibold text-red-700">Are federal grants repayable?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Many are non-repayable, but larger programs may require partial repayment on success</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">📚 Related Guides</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/blog/ideation-research-funding-canada" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">Stage 1: Ideation & Research</h3>
+                  <p className="text-sm text-gray-600">NSERC Discovery Grants and early-stage research funding</p>
+                </Link>
+                <Link href="/blog/development-proof-concept-funding-canada" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">Stage 2: Development & Proof-of-Concept</h3>
+                  <p className="text-sm text-gray-600">IRAP, SR&ED, and prototype development funding</p>
+                </Link>
+                <Link href="/blog/demonstration-pilot-funding-canada" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">Stage 3: Demonstration & Pilot</h3>
+                  <p className="text-sm text-gray-600">SDTC, Clean Growth, and pre-commercial demonstration</p>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Code, Cpu, Cloud, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Terminal, Briefcase } from "lucide-react"
+import { CheckCircle, DollarSign, Target, AlertTriangle, FileText, Clock, ChevronRight, ExternalLink, BookOpen, HelpCircle, Building, Users, TrendingUp, Lightbulb, Code, Rocket, Shield, Award, Terminal, Briefcase, Heart } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -116,6 +122,33 @@ export default function SoftwareSaaSGrantsGuide() {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About SaaS Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#hiring-grants" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-purple-900">Are there grants for software?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, mostly for R&D (SBIR) or specific sectors (AgTech, HealthTech).</p>
+                </a>
+                <a href="#technical-uncertainty" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-purple-900">What is SBIR funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Federal R&D grants up to $2M+ for innovative technology.</p>
+                </a>
+                <a href="#technical-uncertainty" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-purple-900">Do I need revenue?</h3>
+                  <p className="text-sm text-gray-600 mt-1">For R&D grants, no. For lending/financing, usually yes.</p>
+                </a>
+                <a href="#bootstrap-vs-vc" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-purple-900">Is it equity-free?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, grants like SBIR are non-dilutive (you keep 100% equity).</p>
+                </a>
               </div>
             </div>
           </div>
@@ -353,21 +386,138 @@ export default function SoftwareSaaSGrantsGuide() {
           </div>
         </section>
 
-        {/* Detailed FAQ Section */}
-        <section className="py-20 bg-gray-50 border-t border-gray-200">
+        <section id="bootstrap-vs-vc" className="py-16 bg-gray-900 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
+              <h2 className="text-3xl font-bold mb-8 text-indigo-400">Bootstrapping vs. Venture Capital</h2>
+              <p className="text-xl text-gray-300 mb-8">
+                Grants allow you to delay (or avoid) the VC "Series A" crunch.
+              </p>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="border-b border-gray-700">
+                      <th className="p-4 text-indigo-300">Metric</th>
+                      <th className="p-4 text-white">Grant Funded (Bootstrapped)</th>
+                      <th className="p-4 text-gray-400">VC Funded</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    <tr className="border-b border-gray-800">
+                      <td className="p-4 font-bold text-indigo-200">Equity Retained</td>
+                      <td className="p-4 text-white">80-100%</td>
+                      <td className="p-4 text-gray-400">40-60% (Post Series A)</td>
+                    </tr>
+                    <tr className="border-b border-gray-800">
+                      <td className="p-4 font-bold text-indigo-200">Speed</td>
+                      <td className="p-4 text-white">Slow (Must wait for reimbursements)</td>
+                      <td className="p-4 text-gray-400">Fast (Millions in bank day 1)</td>
+                    </tr>
+                    <tr className="border-b border-gray-800">
+                      <td className="p-4 font-bold text-indigo-200">Control</td>
+                      <td className="p-4 text-white">Absolute (You are the boss)</td>
+                      <td className="p-4 text-gray-400">Shared (Board seats, reporting)</td>
+                    </tr>
+                    <tr className="border-b border-gray-800">
+                      <td className="p-4 font-bold text-indigo-200">Focus</td>
+                      <td className="p-4 text-white">Profitability & R&D</td>
+                      <td className="p-4 text-gray-400">Growth at all costs</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="common-mistakes" className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-red-900">3 Deadly SaaS Grant Mistakes</h2>
+
               <div className="space-y-6">
-                {faqData.map((faq, index) => (
-                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
-                      <HelpCircle className="w-5 h-5 text-indigo-500 mr-3 mt-0.5 flex-shrink-0" />
-                      {faq.question}
-                    </h3>
-                    <p className="text-gray-600 pl-8">{faq.answer}</p>
+                <div className="flex gap-4">
+                  <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-gray-900">1. Treating Grants as "Revenue"</h3>
+                    <p className="text-sm text-gray-600">
+                      <strong>Mistake:</strong> Booking IRAP money as "Sales" in your P&L to impress investors.
+                      <br />
+                      <strong>Reality:</strong> Investors deduct it. It is "Other Income". Focus on MRR.
+                    </p>
                   </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-gray-900">2. The "Retroactive" Trap</h3>
+                    <p className="text-sm text-gray-600">
+                      <strong>Mistake:</strong> Hiring an engineer in January and applying for IRAP in March.
+                      <br />
+                      <strong>Reality:</strong> You cannot get paid for work already done (except SR&ED). Grant contracts must be signed BEFORE the work starts.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-bold text-gray-900">3. Failing to Track Time</h3>
+                    <p className="text-sm text-gray-600">
+                      <strong>Mistake:</strong> "My devs work on everything."
+                      <br />
+                      <strong>Reality:</strong> If you get audited for SR&ED, you need timesheets showing "Dev A spent 40 hours on the compression algorithm (Eligible) and 20 hours on the UI (Ineligible)." Without logs, you lose the money.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Detailed FAQ Section */}
+        <section id="faqs" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-900">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Explore More Funding Options</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all"><Users className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all"><Target className="w-5 h-5 text-emerald-600 mr-3" /><span>BC Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all"><Award className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/canada-hiring-training-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Users className="w-5 h-5 text-blue-600 mr-3" /><span>Hiring & Training Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/women-entrepreneurship-fund-canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Heart className="w-5 h-5 text-pink-600 mr-3" /><span>Women Entrepreneur Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>
@@ -399,7 +549,7 @@ export default function SoftwareSaaSGrantsGuide() {
         </section>
 
         <Footer />
-      </div>
+      </div >
     </>
   )
 }

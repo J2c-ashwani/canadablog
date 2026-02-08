@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,6 +26,42 @@ export const metadata: Metadata = {
 }
 
 export default function MassachusettsTechProgramsPage() {
+  const faqData = [
+    {
+      question: "What is the Massachusetts SBIR START Grant?",
+      answer: "MassVentures SBIR START provides up to $500,000 in tiered funding to Massachusetts technology companies with federal SBIR/STTR awards. The program supports commercialization of federally-funded innovations through matching grants."
+    },
+    {
+      question: "How much can I get from MassCEC InnovateMass?",
+      answer: "MassCEC InnovateMass provides up to $350,000 in clean energy technology commercialization funding. The program supports Massachusetts companies developing innovative solutions in renewable energy, energy efficiency, grid modernization, and clean transportation."
+    },
+    {
+      question: "What is the Massachusetts Life Sciences Center funding?",
+      answer: "The Massachusetts Life Sciences Center (MLSC) provides various grants and tax incentives for biotechnology, pharmaceutical, medical device, and diagnostics companies. Programs include up to $1 million in capital funding and significant R&D tax credits."
+    },
+    {
+      question: "Are Boston and Cambridge startups eligible for Massachusetts grants?",
+      answer: "Yes, Boston, Cambridge, Kendall Square, Route 128, and Worcester technology startups can access all Massachusetts state programs including SBIR START, InnovateMass clean energy grants, and MLSC life sciences funding. The state supports technology innovation across all regions."
+    },
+    {
+      question: "What industries qualify for Massachusetts technology grants?",
+      answer: "Massachusetts technology grants support biotechnology, pharmaceuticals, medical devices, diagnostics, clean energy, offshore wind, software, robotics, AI/ML, and advanced manufacturing. MIT and Harvard spinouts receive specialized support through university commercialization programs."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
     <>
       <Header />
@@ -637,6 +679,29 @@ export default function MassachusettsTechProgramsPage() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Enhanced Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-red-700 to-blue-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -716,54 +781,7 @@ export default function MassachusettsTechProgramsPage() {
       {/* FAQ Schema for Rich Results */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the Massachusetts SBIR START Grant?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "MassVentures SBIR START provides up to $500,000 in tiered funding to Massachusetts technology companies with federal SBIR/STTR awards. The program supports commercialization of federally-funded innovations through matching grants."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How much can I get from MassCEC InnovateMass?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "MassCEC InnovateMass provides up to $350,000 in clean energy technology commercialization funding. The program supports Massachusetts companies developing innovative solutions in renewable energy, energy efficiency, grid modernization, and clean transportation."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What is the Massachusetts Life Sciences Center funding?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The Massachusetts Life Sciences Center (MLSC) provides various grants and tax incentives for biotechnology, pharmaceutical, medical device, and diagnostics companies. Programs include up to $1 million in capital funding and significant R&D tax credits."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Are Boston and Cambridge startups eligible for Massachusetts grants?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, Boston, Cambridge, Kendall Square, Route 128, and Worcester technology startups can access all Massachusetts state programs including SBIR START, InnovateMass clean energy grants, and MLSC life sciences funding. The state supports technology innovation across all regions."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What industries qualify for Massachusetts technology grants?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Massachusetts technology grants support biotechnology, pharmaceuticals, medical devices, diagnostics, clean energy, offshore wind, software, robotics, AI/ML, and advanced manufacturing. MIT and Harvard spinouts receive specialized support through university commercialization programs."
-                }
-              }
-            ]
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </>
   )

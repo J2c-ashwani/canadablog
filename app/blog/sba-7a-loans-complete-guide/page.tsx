@@ -269,7 +269,7 @@ export default function SBA7aLoansGuidePage() {
         <section id="loan-amounts" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">SBA 7(a) Loan Amounts &amp; Terms</h2>
+              <h2 className="text-3xl font-bold mb-6">What are SBA 7(a) Loan Amounts & Terms?</h2>
 
               <p className="text-gray-700 mb-6">
                 SBA 7(a) loans offer flexible terms based on the intended use of funds.
@@ -423,7 +423,7 @@ export default function SBA7aLoansGuidePage() {
         <section id="loan-types" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Types of SBA 7(a) Loans</h2>
+              <h2 className="text-3xl font-bold mb-6">What are the Types of SBA 7(a) Loans?</h2>
 
               <div className="space-y-6">
                 <Card className="border-blue-200">
@@ -521,7 +521,7 @@ export default function SBA7aLoansGuidePage() {
         <section id="how-to-apply" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">How to Apply for an SBA 7(a) Loan</h2>
+              <h2 className="text-3xl font-bold mb-6">How Do You Apply for an SBA 7(a) Loan?</h2>
 
               <div className="space-y-6">
                 <div className="flex items-start p-4 bg-gray-50 rounded-lg shadow-sm">
@@ -717,7 +717,7 @@ export default function SBA7aLoansGuidePage() {
         <section id="mistakes" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Common Mistakes That Delay or Deny SBA Loans</h2>
+              <h2 className="text-3xl font-bold mb-6">What Common Mistakes Delay or Deny SBA Loans?</h2>
 
               <div className="space-y-4">
                 <Card>
@@ -980,6 +980,59 @@ export default function SBA7aLoansGuidePage() {
                   <BookOpen className="w-5 h-5 text-blue-600 mr-3" />
                   <span className="text-gray-700 group-hover:text-blue-600">All Grant Application Guides</span>
                   <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions About SBA 7(a) Loans</h2>
+              <div className="space-y-4">
+                <a href="#overview" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">What is an SBA 7(a) loan?</span>
+                </a>
+                <a href="#eligibility" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">Who qualifies for SBA 7(a) loans?</span>
+                </a>
+                <a href="#loan-amounts" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">How much can I borrow with SBA 7(a)?</span>
+                </a>
+                <a href="#how-to-apply" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">How do I apply for an SBA 7(a) loan?</span>
+                </a>
+                <a href="#timeline" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">How long does SBA loan approval take?</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Small Business Financing Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/sbir-sttr-complete-guide" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">SBIR/STTR Grants Guide</h3>
+                  <p className="text-gray-600 text-sm">Up to $1.7M in non-dilutive federal R&D grants</p>
+                </Link>
+                <Link href="/blog/usda-sbir-agtech-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">USDA SBIR AgTech Grants</h3>
+                  <p className="text-gray-600 text-sm">Agriculture and food technology R&D funding</p>
+                </Link>
+                <Link href="/blog/state-province-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">State & Province Grants</h3>
+                  <p className="text-gray-600 text-sm">Regional business funding opportunities</p>
+                </Link>
+                <Link href="/blog/small-business-grants-complete-guide" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">Small Business Grants Guide</h3>
+                  <p className="text-gray-600 text-sm">Complete overview of grant opportunities</p>
                 </Link>
               </div>
             </div>

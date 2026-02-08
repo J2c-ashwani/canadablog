@@ -127,7 +127,7 @@ export default function DemonstrationPilotFundingCanadaPage() {
         <section className="py-12 bg-orange-50 border-y border-orange-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Understanding Technology Readiness Levels (TRL 7-9)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">What are Technology Readiness Levels (TRL 7-9) in Demonstration?</h2>
               <p className="text-gray-700 text-center mb-10 max-w-2xl mx-auto">
                 Stage 3 is about "Real-World Operation." You must move out of the lab and into an operational environment. This is where capital intensity spikes.
               </p>
@@ -168,7 +168,7 @@ export default function DemonstrationPilotFundingCanadaPage() {
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Stage 3: Demonstration & Pilot Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the Major Stage 3 Demonstration & Pilot Programs?</h2>
 
               <div className="space-y-8">
                 {/* SDTC Demonstration */}
@@ -379,7 +379,7 @@ export default function DemonstrationPilotFundingCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Stage 3: Demonstration & Pilot Covers</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Does Stage 3 Demonstration & Pilot Funding Cover?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-orange-200">
@@ -471,7 +471,7 @@ export default function DemonstrationPilotFundingCanadaPage() {
         <section className="py-16 bg-white border-b border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">From Pilot to Commercial: Stage 3 Roadmap</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How Do You Move From Pilot to Commercial in Stage 3?</h2>
               <div className="grid md:grid-cols-4 gap-4">
                 <div className="bg-orange-50 p-6 rounded-lg border border-orange-100 relative">
                   <div className="absolute -top-4 left-6 w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
@@ -506,7 +506,7 @@ export default function DemonstrationPilotFundingCanadaPage() {
         <section className="py-16 bg-slate-50 border-b border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Case Study: The CleanTech Pivot</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Case Study: How Does a CleanTech Pivot Work?</h2>
               <div className="bg-white rounded-xl p-8 border border-slate-200 shadow-sm">
                 <div className="flex flex-col md:flex-row gap-6 mb-6">
                   <div className="w-16 h-16 bg-amber-600 rounded-lg flex items-center justify-center text-white font-bold text-2xl flex-shrink-0">
@@ -569,7 +569,7 @@ export default function DemonstrationPilotFundingCanadaPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Stage 3 Demonstration Funding Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">What are the Strategies for Stage 3 Demonstration Funding Success?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
@@ -700,6 +700,65 @@ export default function DemonstrationPilotFundingCanadaPage() {
                   </AccordionItem>
                 ))}
               </Accordion>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-gradient-to-r from-orange-50 to-red-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">What are Common Questions About Demonstration & Pilot Funding?</h2>
+              <p className="text-lg text-gray-600 text-center mb-8">Quick answers to the most frequently asked questions about SDTC, Clean Growth, and pilot project funding.</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#sdtc" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-orange-100">
+                  <h3 className="font-semibold text-orange-700">How much SDTC funding is available?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Up to $15M covering 33% of eligible project costs</p>
+                </a>
+                <a href="#customer" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-orange-100">
+                  <h3 className="font-semibold text-orange-700">Do I need a pilot customer?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, a letter of intent or pilot agreement is typically required</p>
+                </a>
+                <a href="#repayment" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-orange-100">
+                  <h3 className="font-semibold text-orange-700">Is SDTC funding repayable?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Structured as non-repayable contributions with success-based conditions</p>
+                </a>
+                <a href="#trl" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-orange-100">
+                  <h3 className="font-semibold text-orange-700">What does TRL 7-9 mean?</h3>
+                  <p className="text-sm text-gray-600 mt-1">System prototype in real-world operation through commercial deployment</p>
+                </a>
+                <a href="#timeline" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-orange-100">
+                  <h3 className="font-semibold text-orange-700">How long does SDTC approval take?</h3>
+                  <p className="text-sm text-gray-600 mt-1">6-9 months from application to approval during funding rounds</p>
+                </a>
+                <a href="#equity" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-orange-100">
+                  <h3 className="font-semibold text-orange-700">Do I give up equity?</h3>
+                  <p className="text-sm text-gray-600 mt-1">No, all Stage 3 programs are non-dilutive government funding</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">📚 Related Guides</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/blog/development-proof-concept-funding-canada" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">Stage 2: Development & Proof-of-Concept</h3>
+                  <p className="text-sm text-gray-600">Build prototypes and validate technology with IRAP and SR&ED</p>
+                </Link>
+                <Link href="/blog/commercialization-scale-up-funding-canada" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">Stage 4: Commercialization & Scale-Up</h3>
+                  <p className="text-sm text-gray-600">Market launch funding through SIF and export programs</p>
+                </Link>
+                <Link href="/blog/clean-tech-energy-grants" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">Clean Tech & Energy Grants</h3>
+                  <p className="text-sm text-gray-600">Complete guide to Canadian clean technology funding programs</p>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

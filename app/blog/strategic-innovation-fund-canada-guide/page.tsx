@@ -1,9 +1,16 @@
+
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, MapPin, Zap, Factory, Lightbulb, HelpCircle } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Lightbulb, Users, Factory, Globe, Rocket, Shield, Award, ArrowRight, HelpCircle, FileText, Clock, Building, Zap, AlertCircle, Download } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -89,6 +96,33 @@ export default function StrategicInnovationFundBlogPage() {
                     Back to Innovation Grants
                   </Link>
                 </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About SIF</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">What's the minimum project size?</h3>
+                  <p className="text-sm text-gray-600 mt-1">You need at least $10M in SIF contribution ($20M total project).</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Is it a grant or loan?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Usually a hybrid - repayable contributions with potential grant portions.</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">How long does it take?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Expect 6-12 months from SOI to final approval.</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Can I stack with provincial funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, up to 75% total government stacking limit.</p>
+                </a>
               </div>
             </div>
           </div>
@@ -570,17 +604,20 @@ export default function StrategicInnovationFundBlogPage() {
           </div>
         </section>
 
-        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-4xl mx-auto">
+        <div className="bg-white rounded-lg shadow-sm p-8 mb-8 mt-16 max-w-4xl mx-auto" id="faqs">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">SIF Frequently Asked Questions</h2>
-          <div className="space-y-6">
+          <div className="space-y-4">
             {faqData.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
-                  <HelpCircle className="w-6 h-6 text-red-600 mr-3 flex-shrink-0 mt-0.5" />
-                  {faq.question}
-                </h3>
-                <p className="text-gray-700 ml-9">{faq.answer}</p>
-              </div>
+              <Accordion type="single" collapsible key={index}>
+                <AccordionItem value={`item-${index}`}>
+                  <AccordionTrigger className="text-left">
+                    <span className="font-medium text-blue-900">{faq.question}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-600">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             ))}
           </div>
         </div>
@@ -629,6 +666,45 @@ export default function StrategicInnovationFundBlogPage() {
               <p className="text-red-200 text-sm mt-6">
                 78% success rate for SIF applications • Average funding secured: $35M • Large-scale project expertise
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Major Funding Programs</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      Clean Tech Grants
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Funding for large-scale environmental and clean technology projects.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/blog/canada-clean-technology-environment-grants-guide">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      Manufacturing Innovation
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Grants for advanced manufacturing, automation, and industrial modernization.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/blog/canada-manufacturing-industry-grants-guide">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </section>

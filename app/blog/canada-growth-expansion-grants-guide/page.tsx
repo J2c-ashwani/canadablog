@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, TrendingUp, Building, Globe, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Factory, Scale, Briefcase } from "lucide-react"
+import { CheckCircle, DollarSign, Target, TrendingUp, Building, Globe, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Factory, Scale, Briefcase, MapPin } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -418,21 +424,81 @@ export default function CanadaGrowthExpansionGrantsGuide() {
           </div>
         </section>
 
+        <section className="py-20 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Why 60% of Applications Fail</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-l-4 border-red-500 shadow-md">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-red-700 mb-2">1. The "Working Capital" Mistake</h3>
+                    <p className="text-sm text-gray-600">You cannot use expansion loans to pay salaries or rent. It must be for <strong>Project Costs</strong> (Equipment, Software, Leaseholds).</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-l-4 border-red-500 shadow-md">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-red-700 mb-2">2. The "Retroactivity" Trap</h3>
+                    <p className="text-sm text-gray-600">If you sign a PO for the equipment <em>before</em> you get the RDA acknowledgement letter, that cost is 100% ineligible.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-l-4 border-red-500 shadow-md">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-red-700 mb-2">3. No "Skin in the Game"</h3>
+                    <p className="text-sm text-gray-600">You need to show proof of funds for your 50% share. A "Letter of Intent" from a bank is rarely enough; you need a term sheet.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-l-4 border-red-500 shadow-md">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-red-700 mb-2">4. Vague Benefits</h3>
+                    <p className="text-sm text-gray-600">"We will grow" is weak. "We will add $2M in export sales to Germany and hire 5 engineers" is strong.</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Detailed FAQ Section */}
         <section className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
-                      <HelpCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
-                      {faq.question}
-                    </h3>
-                    <p className="text-gray-600 pl-8">{faq.answer}</p>
-                  </div>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Explore More Funding Options</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><MapPin className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Target className="w-5 h-5 text-emerald-600 mr-3" /><span>BC Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Award className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/canada-innovation-research-development-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Lightbulb className="w-5 h-5 text-blue-600 mr-3" /><span>R&D Grants (SR&ED/IRAP)</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/canada-export-development-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Globe className="w-5 h-5 text-blue-600 mr-3" /><span>Export Grants (CanExport)</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>
@@ -464,7 +530,7 @@ export default function CanadaGrowthExpansionGrantsGuide() {
         </section>
 
         <Footer />
-      </div>
+      </div >
     </>
   )
 }

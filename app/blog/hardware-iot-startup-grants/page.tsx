@@ -125,12 +125,47 @@ export default function HardwareIoTStartupGrantsPage() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gradient-to-r from-orange-50 to-amber-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Hardware & IoT Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#iot-details" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-orange-500">
+                  <h3 className="font-semibold text-orange-700">How much funding can hardware startups get?</h3>
+                  <p className="text-sm text-gray-600">$305K Phase I, up to $1.25M Phase II from NSF SBIR</p>
+                </a>
+                <a href="#phase-2-details" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-amber-500">
+                  <h3 className="font-semibold text-amber-700">Can I use grants for manufacturing?</h3>
+                  <p className="text-sm text-gray-600">Yes, Phase II covers manufacturing scale-up and DFM</p>
+                </a>
+                <a href="#dod-details" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-blue-500">
+                  <h3 className="font-semibold text-blue-700">Does DOD fund electronics startups?</h3>
+                  <p className="text-sm text-gray-600">Yes, up to $1.8M for defense-related hardware</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-green-500">
+                  <h3 className="font-semibold text-green-700">Do I give up equity for hardware grants?</h3>
+                  <p className="text-sm text-gray-600">No, NSF SBIR is 100% non-dilutive funding</p>
+                </a>
+                <a href="#hardware-grants" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-purple-500">
+                  <h3 className="font-semibold text-purple-700">What IoT devices qualify for NSF funding?</h3>
+                  <p className="text-sm text-gray-600">Novel sensors, edge computing, robotic</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-indigo-500">
+                  <h3 className="font-semibold text-indigo-700">How long does review take?</h3>
+                  <p className="text-sm text-gray-600">NSF and DOD reviews typically take 4-6 months</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
 
         {/* Quick Overview - Main Programs */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Hardware & IoT Grant Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">What Hardware & IoT Grant Programs are Available?</h2>
               <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
                 Federal funding for connected devices, electronics, sensors, robotics, and advanced manufacturing innovations.
               </p>
@@ -264,7 +299,7 @@ export default function HardwareIoTStartupGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Hardware Technologies That Qualify</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Which Hardware Technologies Qualify for Funding?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 NSF and DOD grants support a wide range of hardware and IoT innovations.
               </p>
@@ -406,7 +441,7 @@ export default function HardwareIoTStartupGrantsPage() {
         <section id="hardware-grants" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Complete Hardware Grant Program Details</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Specific Details of Hardware Grant Programs?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Everything you need to know about NSF SBIR for hardware/IoT, DOD electronics programs, and manufacturing grants.
               </p>
@@ -687,7 +722,7 @@ export default function HardwareIoTStartupGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Hardware Grant Application Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">How to Win Hardware Grants?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
                 Proven tactics to increase your chances of winning NSF and DOD hardware funding.
               </p>
@@ -796,6 +831,39 @@ export default function HardwareIoTStartupGrantsPage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">📚 Related Technology Grant Guides</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/guides/sbir-sttr-complete-guide" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-blue-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">SBIR/STTR Complete Guide</h3>
+                  <p className="text-sm text-gray-600">Everything about federal SBIR programs for startups</p>
+                </Link>
+                <Link href="/blog/ai-machine-learning-grants" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-purple-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">AI & Machine Learning Grants</h3>
+                  <p className="text-sm text-gray-600">NSF funding for AI-powered hardware applications</p>
+                </Link>
+                <Link href="/blog/clean-tech-energy-grants" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-green-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">Clean Tech & Energy Grants</h3>
+                  <p className="text-sm text-gray-600">DOE funding for energy hardware innovations</p>
+                </Link>
+              </div>
+              <div className="mt-6 grid md:grid-cols-2 gap-6">
+                <Link href="/usa/california" className="block p-4 bg-white rounded-lg shadow hover:shadow-md transition">
+                  <h3 className="font-semibold text-gray-900">California Hardware Grants →</h3>
+                  <p className="text-sm text-gray-600">Silicon Valley hardware incubator programs</p>
+                </Link>
+                <Link href="/usa/texas" className="block p-4 bg-white rounded-lg shadow hover:shadow-md transition">
+                  <h3 className="font-semibold text-gray-900">Texas Manufacturing Grants →</h3>
+                  <p className="text-sm text-gray-600">State programs for electronics manufacturing</p>
+                </Link>
               </div>
             </div>
           </div>

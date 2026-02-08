@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Zap, Cpu, Rocket, HelpCircle } from "lucide-react"
+import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Zap, Cpu, Rocket, HelpCircle, Lightbulb, Users, Globe, Code, Microscope, Laptop, Award, ArrowRight, FileText } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -627,6 +627,45 @@ export default function WomenTechSTEMGrantsGuide() {
                 </p>
               </div>
 
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">More Resources for Women in Tech</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      Women Entrepreneur Strategy
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Federal strategy investing $7B+ to support women entrepreneurs across all sectors.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/blog/women-entrepreneurship-strategy-canada-government-grants">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      Tech Adoption Grants
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Programs like CDAP offering up to $15K for digital transformation and technology adoption.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/blog/canada-technology-adoption-grants-guide">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </section>

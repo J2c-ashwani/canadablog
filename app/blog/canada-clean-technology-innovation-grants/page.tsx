@@ -19,6 +19,38 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What is the Clean Technology ITC in Canada?",
+    answer: "The Clean Technology Investment Tax Credit (ITC) is a refundable tax credit consisting of up to 30% of the capital cost of eligible clean technology property, such as zero-emission energy generation systems (solar, wind, water), stationary electricity storage, and low-carbon heat equipment."
+  },
+  {
+    question: "How much funding does SDTC provide?",
+    answer: "Sustainable Development Technology Canada (SDTC) typically funds approximately 33% to 40% of eligible project costs, with contributions often ranging from $2 million to $5 million, and potentially up to $15 million for large-scale demonstration projects."
+  },
+  {
+    question: "Can I combine SR&ED with clean tech grants?",
+    answer: "Yes, but you must account for 'stacking rules'. Government grants typically reduce the pool of eligible expenditures for SR&ED tax credits. However, combining them is a common and effective strategy to maximize non-dilutive funding for clean technology innovation."
+  },
+  {
+    question: "What is the Net Zero Accelerator?",
+    answer: "The Net Zero Accelerator (NZA) is an $8 billion initiative under the Strategic Innovation Fund (SIF) dedicated to supporting large-scale projects that reduce domestic greenhouse gas emissions and help Canada meet its net-zero goals by 2050."
+  },
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function CanadaCleanTechnologyInnovationGrantsPage() {
   return (
     <>
@@ -50,6 +82,41 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
                     Back to Innovation Grants
                   </Link>
                 </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-teal-50 border-b border-teal-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About CleanTech Innovation</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">How do I get clean tech funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Start with SDTC and ITCs.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">What is the SDTC grant limit?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Usually up to $5M, max $15M.</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">Can I stack ITCs with grants?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, but watch stacking limits.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">Is my startup eligible?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Pre-commercial innovation focus.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">What projects qualify?</h3>
+                  <p className="text-sm text-gray-600 mt-1">GHG reduction, clean energy, etc.</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">What is Net Zero Accelerator?</h3>
+                  <p className="text-sm text-gray-600 mt-1">$8B for large-scale decarbonization.</p>
+                </a>
               </div>
             </div>
           </div>
@@ -615,51 +682,33 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
           </div>
         </section>
       </div>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-white" id="faq">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+            <div className="grid gap-6">
+              {faqData.map((faq, index) => (
+                <Card key={index} className="border-teal-100">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-teal-800">{faq.question}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">{faq.answer}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
       <Footer />
 
       {/* FAQ Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the Clean Technology ITC in Canada?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The Clean Technology Investment Tax Credit (ITC) is a refundable tax credit consisting of up to 30% of the capital cost of eligible clean technology property, such as zero-emission energy generation systems (solar, wind, water), stationary electricity storage, and low-carbon heat equipment."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How much funding does SDTC provide?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Sustainable Development Technology Canada (SDTC) typically funds approximately 33% to 40% of eligible project costs, with contributions often ranging from $2 million to $5 million, and potentially up to $15 million for large-scale demonstration projects."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Can I combine SR&ED with clean tech grants?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, but you must account for 'stacking rules'. Government grants typically reduce the pool of eligible expenditures for SR&ED tax credits. However, combining them is a common and effective strategy to maximize non-dilutive funding for clean technology innovation."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What is the Net Zero Accelerator?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The Net Zero Accelerator (NZA) is an $8 billion initiative under the Strategic Innovation Fund (SIF) dedicated to supporting large-scale projects that reduce domestic greenhouse gas emissions and help Canada meet its net-zero goals by 2050."
-                }
-              }
-            ]
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </>
   )

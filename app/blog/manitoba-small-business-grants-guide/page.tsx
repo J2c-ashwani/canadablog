@@ -105,6 +105,41 @@ export default function ManitobaSmallBusinessGrantsGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-teal-50 border-b border-teal-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Manitoba Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">Who is eligible for Manitoba grants?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Check criteria for provincial business funding.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">What funding is available for start-ups?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Explore Innovation Growth Program and venture capital.</p>
+                </a>
+                <a href="#how-much" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">How much money can I get?</h3>
+                  <p className="text-sm text-gray-600 mt-1">View funding limits for major Manitoba programs.</p>
+                </a>
+                <a href="#winnipeg" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">Are there grants for Winnipeg businesses?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Programs specific to Winnipeg and rural regions.</p>
+                </a>
+                <a href="#alternatives" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">What if I don't qualify for a grant?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Learn about tax credits and federal alternatives.</p>
+                </a>
+                <a href="#industries" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">Which industries get the most funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Manufacturing, agriculture, and tech sectors.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Key Statistics */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

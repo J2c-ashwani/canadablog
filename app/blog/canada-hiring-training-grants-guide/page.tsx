@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Users, BookOpen, GraduationCap, Briefcase, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, UserPlus, Map } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Users, BookOpen, GraduationCap, Briefcase, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, UserPlus, MapPin } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -128,7 +128,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
               <div className="flex items-center mb-8">
                 <GraduationCap className="w-10 h-10 text-indigo-600 mr-4" />
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900">1. Student Work Placement Program (SWPP)</h2>
+                  <h2 className="text-3xl font-bold text-gray-900">What is the Student Work Placement Program (SWPP)?</h2>
                   <p className="text-gray-600">The "Bread and Butter" of Canadian Startup Hiring</p>
                 </div>
               </div>
@@ -247,7 +247,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">2. The Canada Job Grant (CJG)</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">What is the Canada Job Grant (CJG)?</h2>
                 <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                   Need to train your EXISTING staff? The CJG pays for third-party training. It is provincially administered, so names vary (COJG, CAJG, etc.).
                 </p>
@@ -291,7 +291,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
 
                 <Card className="hover:shadow-lg transition-shadow border-blue-200 bg-white">
                   <CardHeader>
-                    <Map className="w-10 h-10 text-blue-600 mb-2" />
+                    <MapPin className="w-10 h-10 text-blue-600 mb-2" />
                     <CardTitle className="text-xl text-gray-900">Provincial Names</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -338,7 +338,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div>
                     <Badge className="bg-indigo-500 text-white mb-6 border-none">Case Study</Badge>
-                    <h2 className="text-3xl font-bold mb-6">How "TechStart Inc" Saved $35,000</h2>
+                    <h2 className="text-3xl font-bold mb-6">How Did "TechStart Inc" Save $35,000?</h2>
                     <p className="text-indigo-100 text-lg mb-6 leading-relaxed">
                       TechStart Inc need to build an MVP and train their Sales Lead. They didn't have $100k for payroll. Here is how they stacked the grants.
                     </p>
@@ -376,6 +376,56 @@ export default function CanadaHiringTrainingGrantsGuide() {
           </div>
         </section>
 
+        <section id="hiring-strategy" className="py-16 bg-blue-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+              <div className="md:w-1/3">
+                <div className="bg-blue-100 rounded-full p-8 inline-block">
+                  <UserPlus className="w-16 h-16 text-blue-600" />
+                </div>
+              </div>
+              <div className="md:w-2/3">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">What is the "Forever Intern" Loop?</h2>
+                <p className="text-blue-800 mb-4">
+                  You can legally chain grants to keep a student for a full year at 70% off.
+                </p>
+                <ul className="space-y-2 text-sm text-blue-900">
+                  <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-1" /> <strong>Summer (May-Aug):</strong> Hire via SWPP ($7,000 subsidy).</li>
+                  <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-1" /> <strong>Fall (Sep-Dec):</strong> Keep them part-time. use SWPP again (it allows part-time).</li>
+                  <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-1" /> <strong>Graduation (Jan):</strong> Hire them full-time using DS4Y ($15,000 subsidy).</li>
+                </ul>
+                <p className="text-xs text-blue-700 mt-4 italic">Result: You get a fully trained junior employee for ~$15k total cost for the first year.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="common-mistakes" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-red-900">Why Do Hiring Grants Get Denied?</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">1. The "Contractor" Trap</h3>
+                  <p className="text-sm text-gray-700">You cannot use SWPP or CJG for contractors (1099/T4A). They MUST be on payroll (T4) with CPP/EI deductions. No exceptions.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">2. Nepotism</h3>
+                  <p className="text-sm text-gray-700">You cannot hire your daughter, son, or spouse. The government checks surnames and addresses.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">3. The "Double Dip"</h3>
+                  <p className="text-sm text-gray-700">You cannot use two federal grants for the same salary dollar. You CAN stack Provincial + Federal (sometimes), but never Federal + Federal.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">4. Paying in Cash</h3>
+                  <p className="text-sm text-gray-700">You need an electronic paper trail (Direct Deposit or Cheque images). Cash payments are instantly rejected during the claim audit.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Detailed FAQ Section */}
         <section className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -391,6 +441,29 @@ export default function CanadaHiringTrainingGrantsGuide() {
                     <p className="text-gray-600 pl-8">{faq.answer}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Explore More Funding Options</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all"><Users className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all"><Target className="w-5 h-5 text-emerald-600 mr-3" /><span>BC Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all"><Award className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-indigo-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/software-saas-startup-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Award className="w-5 h-5 text-blue-600 mr-3" /><span>SaaS & Software Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/small-business-grants-ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><MapPin className="w-5 h-5 text-red-600 mr-3" /><span>Ontario Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>
@@ -422,7 +495,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
         </section>
 
         <Footer />
-      </div>
+      </div >
     </>
   )
 }

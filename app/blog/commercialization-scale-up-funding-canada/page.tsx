@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, DollarSign, Target, Rocket, ShoppingCart, Globe, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Gavel, Briefcase } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -252,6 +258,90 @@ export default function CommercializationFundingGuide() {
           </div>
         </section>
 
+        <section id="vc-vs-grants" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Grants vs. Venture Capital: Which is Better?</h2>
+              <p className="text-gray-700 mb-6">Scale-ups often debate between raising equity (VC) or pursuing government funding. The best strategy is <strong>"Non-Dilutive Stacking."</strong></p>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-slate-50 border border-slate-200 p-6 rounded-xl">
+                  <h3 className="font-bold text-slate-800 mb-2">Venture Capital (VC)</h3>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li className="flex items-center"><Target className="w-4 h-4 text-red-500 mr-2" /> <strong>Cost:</strong> Expensive (You give up 20-30% ownership).</li>
+                    <li className="flex items-center"><Target className="w-4 h-4 text-green-500 mr-2" /> <strong>Speed:</strong> Fast cash (3-6 months).</li>
+                    <li className="flex items-center"><Target className="w-4 h-4 text-slate-500 mr-2" /> <strong>Use:</strong> Hiring sales teams, marketing blitz.</li>
+                  </ul>
+                </div>
+                <div className="bg-emerald-50 border border-emerald-200 p-6 rounded-xl">
+                  <h3 className="font-bold text-emerald-800 mb-2">Government Funding</h3>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li className="flex items-center"><CheckCircle className="w-4 h-4 text-emerald-600 mr-2" /> <strong>Cost:</strong> Free (0% equity given up).</li>
+                    <li className="flex items-center"><AlertTriangle className="w-4 h-4 text-orange-500 mr-2" /> <strong>Speed:</strong> Slow (6-12 months).</li>
+                    <li className="flex items-center"><CheckCircle className="w-4 h-4 text-emerald-600 mr-2" /> <strong>Use:</strong> R&D, IP protection, Capital equipment.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="edc-deep-dive" className="py-16 bg-blue-900 text-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-start">
+                <Globe className="w-10 h-10 text-blue-400 mr-4 flex-shrink-0" />
+                <div>
+                  <h2 className="text-3xl font-bold mb-4 text-white">Export Development Canada (EDC): The Hidden Giant</h2>
+                  <p className="text-blue-100 mb-6">Most founders ignore EDC because they think it's for "big oil companies." Wrong. EDC has two products that every software/hardware scale-up needs:</p>
+
+                  <div className="grid md:grid-cols-2 gap-6 text-slate-900">
+                    <div className="bg-white p-5 rounded-lg">
+                      <h3 className="font-bold text-blue-900 mb-2">1. Credit Insurance</h3>
+                      <p className="text-sm">If your US customer goes bankrupt and doesn't pay your $100k invoice, EDC pays you 90% of it. This lets you sleep at night.</p>
+                    </div>
+                    <div className="bg-white p-5 rounded-lg">
+                      <h3 className="font-bold text-blue-900 mb-2">2. Export Guarantee Program</h3>
+                      <p className="text-sm">Your bank won't lend you money because you have no assets? EDC will "guarantee" the loan to your bank, unlocking millions in working capital.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="clusters" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Global Innovation Clusters</h2>
+              <p className="text-gray-700 mb-6">The government poured $950M into these 5 "Superclusters". If you are in these industries, you must join them to access their exclusive funding pots.</p>
+              <div className="grid md:grid-cols-3 gap-4">
+                <Link href="https://www.scaleai.ca/" className="p-4 border rounded hover:shadow-md block">
+                  <div className="font-bold text-slate-900">Scale AI</div>
+                  <div className="text-xs text-gray-600">Artificial Intelligence (Montreal)</div>
+                </Link>
+                <Link href="https://www.ngen.ca/" className="p-4 border rounded hover:shadow-md block">
+                  <div className="font-bold text-slate-900">NGen</div>
+                  <div className="text-xs text-gray-600">Advanced Manufacturing (Ontario)</div>
+                </Link>
+                <Link href="https://digitalcluster.ca/" className="p-4 border rounded hover:shadow-md block">
+                  <div className="font-bold text-slate-900">Digital</div>
+                  <div className="text-xs text-gray-600">Data & Health Tech (BC)</div>
+                </Link>
+                <Link href="https://proteinindustriescanada.ca/" className="p-4 border rounded hover:shadow-md block">
+                  <div className="font-bold text-slate-900">Protein Industries</div>
+                  <div className="text-xs text-gray-600">Plant-based Food (Prairies)</div>
+                </Link>
+                <Link href="https://oceansupercluster.ca/" className="p-4 border rounded hover:shadow-md block">
+                  <div className="font-bold text-slate-900">Ocean</div>
+                  <div className="text-xs text-gray-600">Blue Economy (Atlantic)</div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Deep Dive Text Content - SEO & Authority */}
         <section className="py-20 bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -313,21 +403,79 @@ export default function CommercializationFundingGuide() {
           </div>
         </section>
 
+        <section id="common-mistakes" className="py-16 bg-gray-50 border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Why Commercialization Grants are Rejected</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-red-100">
+                  <CardHeader><CardTitle className="text-red-800 text-lg">1. TRL Confusion</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-700">Applying to ISC with a "concept" (TRL 3) instead of a "prototype" (TRL 7). They will not fund R&D; they fund testing.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-red-100">
+                  <CardHeader><CardTitle className="text-red-800 text-lg">2. "Push" vs "Pull"</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-700">For ISC, you need a Department to <em>want</em> your tech. Sending a cold application without finding a champion inside the government rarely works.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-red-100">
+                  <CardHeader><CardTitle className="text-red-800 text-lg">3. Ignoring Export</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-700">CanExport applicants often fail to show <em>how</em> the trade show will lead to sales. You need a dedicated export plan, not just a travel itinerary.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-red-100">
+                  <CardHeader><CardTitle className="text-red-800 text-lg">4. IP Strategy Gap</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-700">Applying for significant funding without owning your IP (or having a license to it) is a dealbreaker. Use IP Assist first.</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Detailed FAQ Section */}
         <section className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
-                      <HelpCircle className="w-5 h-5 text-slate-500 mr-3 mt-0.5 flex-shrink-0" />
-                      {faq.question}
-                    </h3>
-                    <p className="text-gray-600 pl-8">{faq.answer}</p>
-                  </div>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-slate-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Provincial Commercialization Programs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-slate-500 transition-all"><Rocket className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Scale-Up Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-slate-500 transition-all"><Globe className="w-5 h-5 text-emerald-600 mr-3" /><span>BC Export Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-slate-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Tech Growth</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-slate-500 transition-all"><Target className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Innovation</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-slate-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/irap-industrial-research-assistance-program" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Lightbulb className="w-5 h-5 text-blue-600 mr-3" /><span>IRAP Funding Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/canexport-export-development-canada-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Globe className="w-5 h-5 text-green-600 mr-3" /><span>CanExport Grants Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

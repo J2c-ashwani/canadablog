@@ -99,6 +99,41 @@ export default function BiotechLifeSciencesGrantsGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gradient-to-r from-cyan-50 to-blue-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Biotech Funding in Canada</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#biomanufacturing" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-cyan-500">
+                  <h3 className="font-semibold text-cyan-700">What is the Biomanufacturing Strategy?</h3>
+                  <p className="text-sm text-gray-600">$2.2B post-COVID investment for vaccine/therapeutic manufacturing</p>
+                </a>
+                <a href="#genome-canada" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-blue-500">
+                  <h3 className="font-semibold text-blue-700">Does Genome Canada fund startups?</h3>
+                  <p className="text-sm text-gray-600">Yes, through industry-academia partnerships (LSARP)</p>
+                </a>
+                <a href="#clinical-trials" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-green-500">
+                  <h3 className="font-semibold text-green-700">Are there grants for clinical trials?</h3>
+                  <p className="text-sm text-gray-600">Yes, CIHR Clinical Trials Fund supports Phase 1/2</p>
+                </a>
+                <a href="#medical-devices" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-purple-500">
+                  <h3 className="font-semibold text-purple-700">What about medical devices?</h3>
+                  <p className="text-sm text-gray-600">IRAP and RDA scaling funds are better fits</p>
+                </a>
+                <a href="#sred" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-orange-500">
+                  <h3 className="font-semibold text-orange-700">Can I use SR&ED for clinical trials?</h3>
+                  <p className="text-sm text-gray-600">Yes, clinical trials qualify as scientific R&D</p>
+                </a>
+                <a href="#admare" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-pink-500">
+                  <h3 className="font-semibold text-pink-700">What is AdMare BioInnovations?</h3>
+                  <p className="text-sm text-gray-600">Accelerator with expertise and infrastructure</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* The "Regulatory" Alert */}
         <section className="py-12 bg-white -mt-8 relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -126,7 +161,7 @@ export default function BiotechLifeSciencesGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">1. The Biomanufacturing Strategy</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">What is the Biomanufacturing Strategy?</h2>
                 <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                   Canada never wants to be short on vaccines again. This is "Strategic" funding, meaning huge amounts ($10M+) for fewer companies.
                 </p>
@@ -172,7 +207,7 @@ export default function BiotechLifeSciencesGrantsGuide() {
               <div className="flex items-center mb-8">
                 <Dna className="w-10 h-10 text-pink-600 mr-4" />
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900">2. Genome Canada</h2>
+                  <h2 className="text-3xl font-bold text-gray-900">How does Genome Canada Funding Work?</h2>
                   <p className="text-gray-600">The Power of Genomics</p>
                 </div>
               </div>
@@ -229,7 +264,7 @@ export default function BiotechLifeSciencesGrantsGuide() {
             <div className="max-w-6xl mx-auto">
               <div className="flex items-center mb-8">
                 <FlaskConical className="w-10 h-10 text-purple-600 mr-4" />
-                <h2 className="text-3xl font-bold text-gray-900">3. The Niche Funds</h2>
+                <h2 className="text-3xl font-bold text-gray-900">What Niche Funds are Available?</h2>
               </div>
               <p className="text-lg text-gray-600 mb-10 max-w-3xl">
                 For highly specific science, look to the Networks of Centres of Excellence (NCE) successors.
@@ -256,6 +291,77 @@ export default function BiotechLifeSciencesGrantsGuide() {
                     <p className="font-bold text-purple-700 text-lg mb-2">Biopharma</p>
                     <p className="text-sm text-gray-600">Quebec-based consortium that funds collaborative drug research.</p>
                   </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="sred-clinical-trials" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Can SR&ED be used for Clinical Trials?</h2>
+              <p className="text-gray-700 mb-6">Did you know that failed clinical trials are the <em>perfect</em> SR&ED claim? The government rewards "technological uncertainty," and nothing is more uncertain than Phase 2 trials.</p>
+
+              <div className="bg-cyan-50 border border-cyan-200 rounded-xl p-6">
+                <h3 className="font-bold text-cyan-900 mb-4 flex items-center"><DollarSign className="w-5 h-5 mr-2" /> What You Can Claim (The 35% Refund)</h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 mb-1">1. CRO Costs</p>
+                    <p className="text-xs text-gray-600">The millions you pay to contract research orgs? You can claim 80% of that cost.</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 mb-1">2. Materials</p>
+                    <p className="text-xs text-gray-600">Every vial, syringe, and test kit used in the study is an eligible material cost.</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 mb-1">3. Salaries</p>
+                    <p className="text-xs text-gray-600">Your Chief Medical Officer and the data scientists analyzing the results.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="admare" className="py-16 bg-purple-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-start">
+                <FlaskConical className="w-10 h-10 text-purple-600 mr-4 flex-shrink-0" />
+                <div>
+                  <h2 className="text-3xl font-bold mb-4 text-purple-900">How does adMare BioInnovations Help?</h2>
+                  <p className="text-purple-800 mb-4">You cannot build a biotech company in a garage. You need wet labs. <strong>adMare</strong> provides the infrastructure.</p>
+
+                  <div className="grid md:grid-cols-2 gap-4 text-slate-900">
+                    <div className="bg-white p-4 rounded-lg shadow-sm">
+                      <h4 className="font-bold mb-2">The Fellowship</h4>
+                      <p className="text-xs">Training for scientists to become CEOs. They teach you how to raise Series A.</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-sm">
+                      <h4 className="font-bold mb-2">The Capital</h4>
+                      <p className="text-xs">They invest directly into early-stage companies that reside in their innovation centres (Vancouver/Montreal).</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="stem-cell" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Is there Funding for Stem Cell Research?</h2>
+              <p className="text-gray-700 mb-6">If you are in regenerative medicine, the SCN is your primary funder before you hit the VC stage.</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader><CardTitle className="text-lg">Accelerating Clinical Translation</CardTitle></CardHeader>
+                  <CardContent><p className="text-sm text-gray-600">Up to $500,000 to move a therapy from Pre-Clinical to Phase 1.</p></CardContent>
+                </Card>
+                <Card>
+                  <CardHeader><CardTitle className="text-lg">Fueling Biotechnology</CardTitle></CardHeader>
+                  <CardContent><p className="text-sm text-gray-600">Up to $400,000 for academic-industry partnerships to validate a tech.</p></CardContent>
                 </Card>
               </div>
             </div>
@@ -362,6 +468,53 @@ export default function BiotechLifeSciencesGrantsGuide() {
                     <p className="text-gray-600 pl-8">{faq.answer}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="common-mistakes" className="py-16 bg-red-50 border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-red-900">Why are Biotech Grant Applications Rejected?</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">1. No Commercial Partner</h3>
+                  <p className="text-sm text-gray-700">Genome Canada and SIF require an "industry pull." If your project is just academic research without a path to a product, it will fail.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">2. IP Leaks</h3>
+                  <p className="text-sm text-gray-700">Disclosing your invention in a scientific paper <em>before</em> filing a patent application creates a "Public Disclosure" that ruins your patentability. Secure IP first, publish second.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">3. Ignoring Regulatory Path</h3>
+                  <p className="text-sm text-gray-700">You can have great science, but if you don't have a plan for Health Canada/FDA approval, investors and grant agencies know you will get stuck in regulatory purgatory.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">4. Solo Founders</h3>
+                  <p className="text-sm text-gray-700">Biotech is too hard for one person. Committees want to see a "balanced team" (Science + Business). If you are a scientist, hire a CEO.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Provincial Life Sciences Hubs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-cyan-500 transition-all"><Dna className="w-5 h-5 text-pink-600 mr-3" /><span>Ontario MaRS / JLABS</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-cyan-500 transition-all"><Microscope className="w-5 h-5 text-cyan-600 mr-3" /><span>BC AdMare Hub</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-cyan-500 transition-all"><FlaskConical className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec CQDM / Medteq</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-cyan-500 transition-all"><Stethoscope className="w-5 h-5 text-blue-600 mr-3" /><span>Alberta BioTech Hub</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-cyan-500 transition-all"><Shield className="w-5 h-5 text-green-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/canada-innovation-research-development-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Lightbulb className="w-5 h-5 text-blue-600 mr-3" /><span>R&D Innovation Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/irap-industrial-research-assistance-program" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Briefcase className="w-5 h-5 text-green-600 mr-3" /><span>IRAP Program Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

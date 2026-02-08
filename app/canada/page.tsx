@@ -306,6 +306,44 @@ export default function CanadaGrantsPage() {
         </div>
       </section>
 
+      {/* Popular Guides Section */}
+      <section className="py-16 bg-white border-t">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Popular Business Funding Guides</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              In-depth guides to help you navigate Canadian business funding programs.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link href="/blog/ontario-government-business-grants" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
+              <h3 className="font-bold text-lg mb-2 group-hover:text-primary">Ontario Government Business Grants</h3>
+              <p className="text-gray-600 text-sm">Complete guide to Starter Company Plus, OCASE, and manufacturing grants in Ontario.</p>
+            </Link>
+            <Link href="/blog/alberta-government-business-grants" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
+              <h3 className="font-bold text-lg mb-2 group-hover:text-primary">Alberta Government Business Grants</h3>
+              <p className="text-gray-600 text-sm">Alberta Innovates, cleantech grants, and energy sector funding programs.</p>
+            </Link>
+            <Link href="/blog/british-columbia-government-business-grants" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
+              <h3 className="font-bold text-lg mb-2 group-hover:text-primary">BC Government Business Grants</h3>
+              <p className="text-gray-600 text-sm">Innovate BC, CleanBC, Creative BC, and PacifiCan funding opportunities.</p>
+            </Link>
+            <Link href="/blog/csbfp-canada-small-business-financing-program" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
+              <h3 className="font-bold text-lg mb-2 group-hover:text-primary">CSBFP Financing Guide</h3>
+              <p className="text-gray-600 text-sm">How to secure up to $1.15M in government-guaranteed loans for your business.</p>
+            </Link>
+            <Link href="/blog/scotiabank-women-initiative" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
+              <h3 className="font-bold text-lg mb-2 group-hover:text-primary">Scotiabank Women Initiative</h3>
+              <p className="text-gray-600 text-sm">Access capital, advisory services, and education for women entrepreneurs.</p>
+            </Link>
+            <Link href="/blog/canada-agri-food-technology-innovation-grants" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
+              <h3 className="font-bold text-lg mb-2 group-hover:text-primary">Agri-Food Innovation Grants</h3>
+              <p className="text-gray-600 text-sm">AgriScience, AgriInnovate, and CAP framework funding for agriculture tech.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   )

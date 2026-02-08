@@ -102,7 +102,7 @@ export default function IRAPInnovationFundingGuidePage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 IRAP 2026 Innovation Program Enhancements</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 What are the IRAP 2026 Innovation Program Enhancements?</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>Increased Innovation Budget:</strong> $400M annual budget (2024-25) with $100M/year commitment through 2026
@@ -130,7 +130,7 @@ export default function IRAPInnovationFundingGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada's Leading SME Innovation Program</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Why is IRAP Canada's Leading SME Innovation Program?</h2>
                 <p className="text-lg text-gray-600">
                   IRAP combines generous non-repayable funding with dedicated advisory support to help Canadian SMEs
                   develop and commercialize innovative technologies with strong market potential.
@@ -163,7 +163,7 @@ export default function IRAPInnovationFundingGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Innovation Funding Streams & Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the IRAP Innovation Funding Streams & Programs?</h2>
 
               <div className="space-y-8">
                 {/* R&D Project Funding */}
@@ -273,7 +273,7 @@ export default function IRAPInnovationFundingGuidePage() {
         <section id="eligibility" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Innovation Eligibility Requirements</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the IRAP Innovation Eligibility Requirements?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Company Eligibility */}
@@ -350,7 +350,7 @@ export default function IRAPInnovationFundingGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Industrial Technology Advisors (ITAs)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Who are Industrial Technology Advisors (ITAs)?</h2>
 
               <div className="space-y-6">
                 <Card className="border-orange-200">
@@ -431,7 +431,7 @@ export default function IRAPInnovationFundingGuidePage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Innovation Application Process</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What is the IRAP Innovation Application Process?</h2>
 
               <div className="space-y-6">
                 <div className="grid md:grid-cols-4 gap-6">
@@ -523,7 +523,7 @@ export default function IRAPInnovationFundingGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">IRAP Innovation Application Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How Can You Ensure IRAP Innovation Application Success?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
@@ -612,6 +612,59 @@ export default function IRAPInnovationFundingGuidePage() {
             ))}
           </div>
         </div>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions About IRAP Innovation Funding</h2>
+              <div className="space-y-4">
+                <a href="#eligibility" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">Who is eligible for IRAP innovation funding?</span>
+                </a>
+                <a href="#" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">What is an Industrial Technology Advisor (ITA)?</span>
+                </a>
+                <a href="#" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">Can IRAP be stacked with SR&ED tax credits?</span>
+                </a>
+                <a href="#" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">What is the Youth Employment Strategy program?</span>
+                </a>
+                <a href="#" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">How long does the IRAP application process take?</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related R&D Funding Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/irap-industrial-research-assistance-program" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">IRAP Complete Guide</h3>
+                  <p className="text-gray-600 text-sm">The comprehensive guide to NRC-IRAP funding</p>
+                </Link>
+                <Link href="/blog/sred-scientific-research-experimental-development" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">SR&ED Tax Credits</h3>
+                  <p className="text-gray-600 text-sm">Up to 65% refundable R&D tax credits</p>
+                </Link>
+                <Link href="/blog/ideation-research-funding-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">Ideation & Research Funding</h3>
+                  <p className="text-gray-600 text-sm">Early-stage R&D grants for Canadian startups</p>
+                </Link>
+                <Link href="/blog/ai-machine-learning-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">AI & Machine Learning Grants</h3>
+                  <p className="text-gray-600 text-sm">Innovation funding for AI/ML technology development</p>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">

@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Wheat, Mountain, Wind, Zap, Factory, Sprout, ExternalLink, ArrowRight, Building } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Wheat, Mountain, Wind, Zap, Factory, Sprout, ExternalLink, ArrowRight, Building, HelpCircle } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,6 +26,42 @@ export const metadata: Metadata = {
 }
 
 export default function PrairieProvincesInnovationGrantsPage() {
+  const faqData = [
+    {
+      question: "What is PrairiesCan?",
+      answer: "Prairies Economic Development Canada (PrairiesCan) is the federal department that supports economic growth in the Prairie provinces through programs like the Business Scale-up and Productivity stream."
+    },
+    {
+      question: "What funding is available for AgriTech in the Prairies?",
+      answer: "Significant funding is available through the Canadian Agricultural Partnership (CAP), with specific streams for AgriScience, AgriInnovate, and provincial adaptation programs focusing on precision agriculture and sustainable practices."
+    },
+    {
+      question: "What does Innovation Saskatchewan fund?",
+      answer: "Innovation Saskatchewan funds research institutes (like the Fedoruk Centre for nuclear innovation) and offers programs like the Saskatchewan Technology Startup Incentive (STSI) to attract investment."
+    },
+    {
+      question: "Is there support for mining innovation?",
+      answer: "Yes, particularly in Saskatchewan, there is strong support for mining innovation (potash, uranium, rare earths) through IMII (International Minerals Innovation Institute) and targeted R&D tax incentives."
+    },
+    {
+      question: "How does the Manitoba Research Council help?",
+      answer: "Manitoba Research Council (now Research Manitoba) provides funding for health, natural sciences, and engineering research, fostering innovation in the province."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <>
       <Header />
@@ -50,6 +92,35 @@ export default function PrairieProvincesInnovationGrantsPage() {
                     View All Provincial Support
                   </Link>
                 </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Prairie Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-amber-800">What is PrairiesCan funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Federal support for Prairie businesses.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-amber-800">Is there mining tech funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Support for uranium, potash, and minerals.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-amber-800">How to get AgriTech grants?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Funding for precision agriculture.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-amber-800">What research credits exist?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Manitoba and Saskatchewan R&D tax credits.</p>
+                </a>
               </div>
             </div>
           </div>
@@ -643,6 +714,31 @@ export default function PrairieProvincesInnovationGrantsPage() {
           </div>
         </section>
 
+
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-amber-800">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Official Resources Section */}
         <section className="py-16 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -726,52 +822,12 @@ export default function PrairieProvincesInnovationGrantsPage() {
             </div>
           </div>
         </section>
-      </div>
+      </div >
       <Footer />
 
-      {/* FAQ Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is PrairiesCan?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Prairies Economic Development Canada (PrairiesCan) is the federal department that supports economic growth in the Prairie provinces through programs like the Business Scale-up and Productivity stream."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What funding is available for AgriTech in the Prairies?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Significant funding is available through the Canadian Agricultural Partnership (CAP), with specific streams for AgriScience, AgriInnovate, and provincial adaptation programs focusing on precision agriculture and sustainable practices."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What does Innovation Saskatchewan fund?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Innovation Saskatchewan funds research institutes (like the Fedoruk Centre for nuclear innovation) and offers programs like the Saskatchewan Technology Startup Incentive (STSI) to attract investment."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Is there support for mining innovation?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, particularly in Saskatchewan, there is strong support for mining innovation (potash, uranium, rare earths) through IMII (International Minerals Innovation Institute) and targeted R&D tax incentives."
-                }
-              }
-            ]
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </>
   )

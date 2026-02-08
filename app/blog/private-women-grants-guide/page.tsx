@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Sparkles, Gift, Award } from "lucide-react"
+import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Sparkles, Gift, Award, HelpCircle, MapPin, Briefcase, Shield, Users, Heart } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,6 +25,42 @@ export const metadata: Metadata = {
 }
 
 export default function PrivateWomenGrantsGuide() {
+  const faqData = [
+    {
+      question: "Are private grants taxable?",
+      answer: "Yes, in most cases. Private grants are considered business income and must be reported. However, they are not loans, so you don't repay the capital."
+    },
+    {
+      question: "Do foundations fund for-profit startups?",
+      answer: "It is rarer than for non-profits, but yes. Many corporate foundations (like Visa, Cartier, FedEx) specifically target for-profit women entrepreneurs to close the funding gap."
+    },
+    {
+      question: "Can I use the money for anything?",
+      answer: "Usually, no. Most private grants are project-specific (e.g., 'digital transformation' or 'hiring'). However, some 'pitch competition' prizes are unrestricted cash."
+    },
+    {
+      question: "How competitive are these grants?",
+      answer: "Extremely. National grants like the Cartier Initiative receive thousands of applicants. Focusing on smaller, local community foundation grants can increase your odds."
+    },
+    {
+      question: "Do I need a registered business?",
+      answer: "Yes. Most private grantors require you to be a registered business entity (Sole Proprietorship or Incorporation) and often require 1+ years of operation."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <>
       <Header />
@@ -45,6 +87,35 @@ export default function PrivateWomenGrantsGuide() {
                     Back to Women's Grants
                   </Link>
                 </Button>
+              </div>
+            </div>
+          </div>
+
+
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Private Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#application-strategies" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-green-800">Do private grants need repayment?</h3>
+                  <p className="text-sm text-gray-600 mt-1">No, they are non-repayable funding.</p>
+                </a>
+                <a href="#major-categories" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-green-800">Are startups eligible?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, many welcome early-stage businesses.</p>
+                </a>
+                <a href="#application-process" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-green-800">How long does it take?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Timelines vary from 6 weeks to 6 months.</p>
+                </a>
+                <a href="#application-strategies" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-green-800">Is a business plan required?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Usually yes, along with financial projections.</p>
+                </a>
               </div>
             </div>
           </div>
@@ -78,16 +149,16 @@ export default function PrivateWomenGrantsGuide() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              
+
               {/* What are Private Women Grants */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">What are Private Women Grants?</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Private women grants are funding opportunities provided by private foundations, corporations, and 
-                  non-profit organizations specifically to support women entrepreneurs and female business owners. 
+                  Private women grants are funding opportunities provided by private foundations, corporations, and
+                  non-profit organizations specifically to support women entrepreneurs and female business owners.
                   Unlike government grants, these are funded by private entities with their own application processes and criteria.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-green-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-green-800">Advantages</h4>
@@ -98,7 +169,7 @@ export default function PrivateWomenGrantsGuide() {
                       <li>• Additional mentorship and support</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-teal-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-teal-800">Key Characteristics</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -112,9 +183,9 @@ export default function PrivateWomenGrantsGuide() {
               </div>
 
               {/* Major Private Grant Categories */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
+              <div id="major-categories" className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Major Private Grant Categories</h2>
-                
+
                 <div className="space-y-8">
                   {/* Monthly/Small Grants */}
                   <Card className="border-green-200">
@@ -140,7 +211,7 @@ export default function PrivateWomenGrantsGuide() {
                         </div>
                       </div>
                       <p className="text-gray-700 mb-4">
-                        Quick-turnaround grants perfect for startup costs, equipment purchases, or immediate business needs. 
+                        Quick-turnaround grants perfect for startup costs, equipment purchases, or immediate business needs.
                         These grants often have simple application processes and faster decision timelines.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -190,7 +261,7 @@ export default function PrivateWomenGrantsGuide() {
                         </div>
                       </div>
                       <p className="text-gray-700 mb-4">
-                        Competitive grants that typically involve pitch presentations, business plan competitions, 
+                        Competitive grants that typically involve pitch presentations, business plan competitions,
                         or innovation challenges. Winners receive substantial funding plus mentorship and networking opportunities.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -240,7 +311,7 @@ export default function PrivateWomenGrantsGuide() {
                         </div>
                       </div>
                       <p className="text-gray-700 mb-4">
-                        Substantial grants from established foundations and corporations with specific missions to support 
+                        Substantial grants from established foundations and corporations with specific missions to support
                         women entrepreneurship, often including mentorship, networking, and ongoing support.
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -271,7 +342,7 @@ export default function PrivateWomenGrantsGuide() {
               {/* Top Private Women Grant Programs */}
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Top Private Women Grant Programs</h2>
-                
+
                 <div className="space-y-6">
                   <Card className="border-orange-200">
                     <CardHeader>
@@ -342,9 +413,9 @@ export default function PrivateWomenGrantsGuide() {
               </div>
 
               {/* Application Strategies */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
+              <div id="application-strategies" className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Private Grant Application Strategies</h2>
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-green-700">✅ Success Factors:</h4>
@@ -367,7 +438,7 @@ export default function PrivateWomenGrantsGuide() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Mistakes:</h4>
                     <ul className="space-y-3 text-gray-700">
@@ -393,7 +464,7 @@ export default function PrivateWomenGrantsGuide() {
               </div>
 
               {/* Application Process */}
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
+              <div id="application-process" className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Private Grant Application Process</h2>
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
                   <div className="flex items-start">
@@ -401,7 +472,7 @@ export default function PrivateWomenGrantsGuide() {
                     <div>
                       <p className="text-blue-800 font-medium">Strategic Approach:</p>
                       <p className="text-blue-700 text-sm">
-                        Successful private grant applications require research, customization, and relationship building 
+                        Successful private grant applications require research, customization, and relationship building
                         with funders to maximize your chances of success.
                       </p>
                     </div>
@@ -440,11 +511,47 @@ export default function PrivateWomenGrantsGuide() {
                 </div>
               </div>
 
+              {/* FAQ Section */}
+              <div className="mb-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+                <div className="space-y-4">
+                  {faqData.map((faq, index) => (
+                    <Accordion type="single" collapsible key={index}>
+                      <AccordionItem value={`item-${index}`}>
+                        <AccordionTrigger className="text-left">
+                          <span className="font-medium text-green-800">{faq.question}</span>
+                        </AccordionTrigger>
+                        <AccordionContent className="text-gray-600">
+                          {faq.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  ))}
+                </div>
+              </div>
+
+              {/* Related Guides Section */}
+              <div className="mb-16 bg-blue-50 p-8 rounded-xl border border-blue-100">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">More Funding for Women</h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                  <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><MapPin className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                  <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Target className="w-5 h-5 text-emerald-600 mr-3" /><span>BC Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                  <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Award className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                  <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                  <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Related Funding Guides</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <Link href="/blog/women-entrepreneurship-fund-canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Users className="w-5 h-5 text-pink-600 mr-3" /><span>Federal Women's Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                  <Link href="/blog/ontario-women-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Heart className="w-5 h-5 text-pink-600 mr-3" /><span>Ontario Women Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                </div>
+              </div>
+
               {/* Lead-Generating CTA Section */}
               <div className="bg-gradient-to-r from-green-600 to-teal-700 rounded-lg p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">Get Your FREE Private Grant Strategy Session</h3>
                 <p className="text-green-100 mb-6 text-lg">
-                  Book a complimentary consultation with our private grant experts. Get personalized guidance on foundation research, 
+                  Book a complimentary consultation with our private grant experts. Get personalized guidance on foundation research,
                   application strategies, and maximizing your funding success.
                 </p>
                 <div className="bg-white/10 rounded-lg p-4 mb-6">
@@ -471,8 +578,12 @@ export default function PrivateWomenGrantsGuide() {
             </div>
           </div>
         </section>
-      </div>
+      </div >
       <Footer />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     </>
   )
 }

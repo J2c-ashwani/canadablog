@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Globe, HelpCircle } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Globe, HelpCircle, MapPin, Wallet, Lightbulb, Building2, TrendingUp } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -94,6 +100,33 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Quebec Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#major-programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-800">What is the max grant amount?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Up to $15M via ESSOR program.</p>
+                </a>
+                <a href="#major-programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-800">What is the R&D credit rate?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Up to 30% refundable tax credits.</p>
+                </a>
+                <a href="#major-programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-800">Can English firms apply?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, funding is available to all Quebec businesses.</p>
+                </a>
+                <a href="#major-programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-800">What is PSCE?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Commercialization support up to $250K.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Program Statistics */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -154,7 +187,7 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
         </section>
 
         {/* Major Quebec Provincial Programs */}
-        <section className="py-16 bg-gray-50">
+        <section id="major-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Quebec Provincial Programs</h2>
@@ -547,6 +580,29 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-800">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-16 bg-gradient-to-r from-blue-800 to-blue-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -592,31 +648,49 @@ export default function QuebecGovernmentBusinessGrantsBlogPage() {
             </div>
           </div>
         </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Explore More Quebec & Canadian Funding Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      Quebec Women's Grants
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Comprehensive guide to funding programs specifically for women entrepreneurs in Quebec.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/blog/quebec-women-business-grants">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      Canada Small Business Grants
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Complete overview of federal government grants available to small businesses across Canada.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/blog/small-business-grants-complete-guide">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
       <Footer />
 
-      {/* FAQ Schema for Rich Results */}
-      {/* FAQ Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions about Quebec Grants</h2>
-            <div className="space-y-4">
-              {faqData.map((faq, index) => (
-                <Card key={index}>
-                  <CardContent className="pt-6">
-                    <h3 className="font-bold flex items-start">
-                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
-                      {faq.question}
-                    </h3>
-                    <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+
     </>
   )
 }

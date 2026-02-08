@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, HelpCircle } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, HelpCircle, MapPin, Briefcase } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -548,20 +554,89 @@ export default function IRAPGovernmentGrantsBlogPage() {
           </div>
         </section>
 
-        <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Government Funding FAQs</h2>
-          <div className="space-y-6">
-            {faqData.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
-                  <HelpCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
-                  {faq.question}
-                </h3>
-                <p className="text-gray-700 ml-9">{faq.answer}</p>
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12">More R&D and Innovation Funding</h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                <Card className="h-full hover:shadow-xl transition-all duration-300 border-green-100">
+                  <CardHeader>
+                    <Briefcase className="w-8 h-8 text-green-600 mb-4" />
+                    <CardTitle className="text-xl mb-2">Clean Tech Grants</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-6">
+                      Explore funding for environmental and clean technology innovation projects.
+                    </p>
+                    <Button variant="outline" className="w-full text-green-700 border-green-200 hover:bg-green-50" asChild>
+                      <Link href="/blog/canada-clean-technology-environment-grants-guide">
+                        View Clean Tech
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                <Card className="h-full hover:shadow-xl transition-all duration-300 border-green-100">
+                  <CardHeader>
+                    <MapPin className="w-8 h-8 text-green-600 mb-4" />
+                    <CardTitle className="text-xl mb-2">Tech Funding</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-6">
+                      Discover specialized funding programs for Canadian technology startups.
+                    </p>
+                    <Button variant="outline" className="w-full text-green-700 border-green-200 hover:bg-green-50" asChild>
+                      <Link href="/blog/canadian-government-grants-tech-startups">
+                        View Tech Funding
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                <Card className="h-full hover:shadow-xl transition-all duration-300 border-green-100">
+                  <CardHeader>
+                    <Target className="w-8 h-8 text-green-600 mb-4" />
+                    <CardTitle className="text-xl mb-2">Hiring Grants</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-6">
+                      Find grants to subsidize hiring new talent for your R&D projects.
+                    </p>
+                    <Button variant="outline" className="w-full text-green-700 border-green-200 hover:bg-green-50" asChild>
+                      <Link href="/blog/canada-employment-workforce-training-grants-guide">
+                        View Hiring Grants
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Dual CTA Section */}
         <section className="py-16 bg-gradient-to-r from-green-600 to-green-800">

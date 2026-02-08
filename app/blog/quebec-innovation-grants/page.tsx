@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Plane, Gamepad2, Microscope, Zap, Building2, TrendingUp, ExternalLink, ArrowRight, Building } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,6 +26,38 @@ export const metadata: Metadata = {
 }
 
 export default function QuebecInnovationGrantsPage() {
+  const faqData = [
+    {
+      question: "What is the Quebec R&D Tax Credit (CRIC)?",
+      answer: "The CRIC offers a refundable tax credit of up to 30% for eligible R&D expenditures (primarily salaries) incurred in Quebec, which can be combined with the federal SR&ED credit."
+    },
+    {
+      question: "How does Investissement Québec support innovation?",
+      answer: "Investissement Québec provides loans, loan guarantees, and equity investment for innovation projects, business expansion, and export growth, often acting as a key partner in large-scale initiatives."
+    },
+    {
+      question: "What is PRIMA Quebec?",
+      answer: "PRIMA Quebec is an advanced manufacturing research consortium that supports collaborative R&D projects between companies and research centers in aerospace, transportation, and industrial sectors."
+    },
+    {
+      question: "Are these grants available for startups?",
+      answer: "Yes, many programs including the R&D tax credits and Investissement Québec's startup support are designed to help early-stage innovative companies scale."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
     <>
       <Header />
@@ -50,6 +88,33 @@ export default function QuebecInnovationGrantsPage() {
                     View All Provincial Support
                   </Link>
                 </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Quebec Innovation</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-cyan-800">What is the CRIC rate?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Up to 30% refundable tax credit.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-cyan-800">Can I stack with SR&ED?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, combined rates can reach 95%.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-cyan-800">Is PRIMA funding available?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, for advanced manufacturing R&D.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-cyan-800">Who qualifies for IQ?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Most innovative Quebec businesses.</p>
+                </a>
               </div>
             </div>
           </div>
@@ -683,7 +748,32 @@ export default function QuebecInnovationGrantsPage() {
           </div>
         </section>
 
-        {/* Official Resources Section */}
+
+
+        {/* FAQ Section*/}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-cyan-800">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Official Resources Section*/}
         <section className="py-16 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -735,7 +825,7 @@ export default function QuebecInnovationGrantsPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* CTA Section*/}
         <section className="py-20 bg-gradient-to-r from-cyan-700 to-blue-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center text-white">
@@ -769,7 +859,7 @@ export default function QuebecInnovationGrantsPage() {
       </div>
       <Footer />
 
-      {/* FAQ Schema */}
+      {/* FAQ Schema*/}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

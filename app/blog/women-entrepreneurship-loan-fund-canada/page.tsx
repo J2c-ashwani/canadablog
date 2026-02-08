@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Heart, Users, Megaphone, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Map, Briefcase } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Heart, Users, Megaphone, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Map, Briefcase, Mountain } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -358,6 +358,55 @@ export default function WomenUserLoanFundGuide() {
           </div>
         </section>
 
+        <section id="common-mistakes" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-red-900">Why 50% of WELF Applications are Rejected</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">1. "Zombie Business" Syndrome</h3>
+                  <p className="text-sm text-gray-700">WELF is not for saving a dying business. If your revenue has been declining for 3 years, they will not lend to you. You must show a clear path to turnaround or growth.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">2. The "Solo Founder" Risk</h3>
+                  <p className="text-sm text-gray-700">Lenders hate seeing a business that collapses if you get sick. Show them you have a team, a contractor, or at least a documented manual of operations.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">3. Ignoring the "Impact" Question</h3>
+                  <p className="text-sm text-gray-700">Especially for Coralus/SheEO, they want to know how your business makes the world better. "I sell widgets" is not enough. "I sell widgets made of recycled plastic" is better.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">4. Carpet Bombing</h3>
+                  <p className="text-sm text-gray-700">Applying to NACCA (Indigenous) when you are not Indigenous will get you blacklisted. Applying to PARO (Ontario) when you live in BC will get you ignored. <strong>Read the eligibility.</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="success-strategy" className="py-16 bg-blue-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+              <div className="md:w-1/3">
+                <div className="bg-blue-100 rounded-full p-8 inline-block">
+                  <Lightbulb className="w-16 h-16 text-blue-600" />
+                </div>
+              </div>
+              <div className="md:w-2/3">
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">Pro Tip: Stack Your Funding</h2>
+                <p className="text-blue-800 mb-4">
+                  The smartest acceptance strategy is to use WELF as "Junior Debt".
+                </p>
+                <ul className="space-y-2 text-sm text-blue-900">
+                  <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-1" /> <strong>Step 1:</strong> Get a $50k WELF loan (easier approval).</li>
+                  <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-1" /> <strong>Step 2:</strong> Go to BDC or a Bank. Show them you have $50k in the bank.</li>
+                  <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-1" /> <strong>Step 3:</strong> They treat that $50k as "Equity" or "Cash Injection", unlocking a $100k line of credit.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Detailed FAQ Section */}
         <section className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -373,6 +422,49 @@ export default function WomenUserLoanFundGuide() {
                     <p className="text-gray-600 pl-8">{faq.answer}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Provincial Women&apos;s Funding Programs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-purple-500 transition-all"><Users className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-purple-500 transition-all"><Mountain className="w-5 h-5 text-emerald-600 mr-3" /><span>BC Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-purple-500 transition-all"><Award className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-purple-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-purple-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/women-entrepreneurship-fund-canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Lightbulb className="w-5 h-5 text-blue-600 mr-3" /><span>Federal Women&apos;s Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/bc-women-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Heart className="w-5 h-5 text-pink-600 mr-3" /><span>BC Women Entrepreneurs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">WELF in Action: Real Scenarios</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h4 className="font-bold text-gray-900 mb-2">Scenario A: The Manufacturer</h4>
+                  <p className="text-sm text-gray-600 mb-2"><strong>Sarah</strong> runs a gluten-free bakery. She needs a new $40k oven.</p>
+                  <p className="text-sm text-gray-600"><strong>Bank:</strong> Rejected. "Restaurant industry too risky."</p>
+                  <p className="text-sm text-gray-600"><strong>WELF (Coralus):</strong> Approved. The community voted for her because she sources local ingredients. She pays 0% interest.</p>
+                </div>
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h4 className="font-bold text-gray-900 mb-2">Scenario B: The Service Biz</h4>
+                  <p className="text-sm text-gray-600 mb-2"><strong>Elena</strong> runs a marketing agency. She needs $30k to hire a junior dev.</p>
+                  <p className="text-sm text-gray-600"><strong>Bank:</strong> Rejected. "No assets to collateralize."</p>
+                  <p className="text-sm text-gray-600"><strong>WELF (PARO):</strong> Approved. She joined a peer circle, attended 4 meetings, and her circle vouched for her character.</p>
+                </div>
               </div>
             </div>
           </div>

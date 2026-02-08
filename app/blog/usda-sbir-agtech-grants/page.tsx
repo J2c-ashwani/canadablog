@@ -122,7 +122,7 @@ export default function USDASBIRAgTechGrantsPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">USDA SBIR AgTech Grants by Region and Agricultural Hub (2026-2027 Funding Available)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Where are the USDA SBIR AgTech Hubs?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-green-200 hover:shadow-lg transition-shadow">
@@ -269,7 +269,7 @@ export default function USDASBIRAgTechGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete USDA SBIR/STTR Funding Ecosystem for AgTech Startups</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the USDA SBIR/STTR Funding Ecosystem?</h2>
                 <p className="text-lg text-gray-600 mb-4">
                   The USDA SBIR/STTR program through National Institute of Food and Agriculture (NIFA) provides non-dilutive
                   grants for research and development of innovative agricultural technologies addressing challenges facing
@@ -316,7 +316,7 @@ export default function USDASBIRAgTechGrantsPage() {
         <section id="usda-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">USDA SBIR and STTR Program Details 2026-2027</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the USDA SBIR and STTR Program Details?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete breakdown of Phase I, Phase II funding programs with AgTech topic areas and application timelines
               </p>
@@ -510,7 +510,7 @@ export default function USDASBIRAgTechGrantsPage() {
         <section className="py-16 bg-white border-t border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 text-center">Which Topic Fits Your Startup? (The "8.X" Codes)</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-900 text-center">Which USDA Topic Fits Your Startup?</h2>
               <p className="text-gray-700 mb-12 text-center max-w-3xl mx-auto">
                 USDA organizes funding into specific "Topic Areas." You must apply to the correct one.
                 Choosing the wrong topic is an automatic rejection. Here is the cheat sheet.
@@ -590,7 +590,7 @@ export default function USDASBIRAgTechGrantsPage() {
         <section className="py-16 bg-green-50 border-y border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-10 text-center text-green-900">How to Apply: The USDA 5-Step Gauntlet</h2>
+              <h2 className="text-3xl font-bold mb-10 text-center text-green-900">How Do You Apply for USDA SBIR Grants?</h2>
               <p className="text-center text-gray-700 mb-12">
                 The application process is bureaucracy-heavy. Start at least 6 weeks before the deadline.
               </p>
@@ -662,7 +662,7 @@ export default function USDASBIRAgTechGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900">Don't Leave Money on the Table (TABA)</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">What is TABA Funding (And Why Should You Take It)?</h2>
               <p className="text-xl text-gray-600 mb-8">
                 Request "Technical and Business Assistance" (TABA) funding on top of your grant.
               </p>
@@ -711,7 +711,7 @@ export default function USDASBIRAgTechGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-10">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">AgTech Funding Smackdown: USDA vs. NSF vs. DOE</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">USDA vs. NSF vs. DOE: Which Grant is Best for AgTech?</h2>
                 <p className="text-lg text-gray-600">
                   You can apply to multiple agencies for the same idea (but can only accept one award).
                   Which agency is your best bet?
@@ -777,7 +777,7 @@ export default function USDASBIRAgTechGrantsPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">USDA SBIR Application Success Strategies 2026-2027</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">How Can You Win a USDA SBIR Grant?</h2>
 
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <Card className="border-green-200">
@@ -879,6 +879,32 @@ export default function USDASBIRAgTechGrantsPage() {
                     <p className="text-gray-700 ml-9">{faq.answer}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions About USDA SBIR Grants</h2>
+              <div className="space-y-4">
+                <a href="#usda-programs" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">What funding amounts are available for Phase I and Phase II?</span>
+                </a>
+                <a href="#overview" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">Who is eligible for USDA SBIR grants?</span>
+                </a>
+                <a href="#faq" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">What are the USDA SBIR topic areas?</span>
+                </a>
+                <a href="#faq" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">What is TABA funding?</span>
+                </a>
+                <a href="#application" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">How do I apply for USDA SBIR?</span>
+                </a>
               </div>
             </div>
           </div>

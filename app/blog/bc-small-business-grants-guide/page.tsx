@@ -226,6 +226,43 @@ export default function BCSmallBusinessGrantsGuide() {
           </div>
         </section>
 
+
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-emerald-50 border-b border-emerald-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About BC Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#innovate-bc" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-emerald-100">
+                  <h3 className="font-semibold text-emerald-700">What funding is available for tech startups?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Innovate BC programs for hiring and digital skills.</p>
+                </a>
+                <a href="#regional-trusts" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-emerald-100">
+                  <h3 className="font-semibold text-emerald-700">Can I get grants in Rural BC?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Guide to Northern Development and Island Coastal Trusts.</p>
+                </a>
+                <a href="#innovate-bc" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-emerald-100">
+                  <h3 className="font-semibold text-emerald-700">Is there a grant for hiring students?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Innovator Skills Initiative and youth employment funding.</p>
+                </a>
+                <a href="#stacking-strategy" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-emerald-100">
+                  <h3 className="font-semibold text-emerald-700">How do I stack CleanBC rebates?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Maximize funding for energy efficiency upgrades.</p>
+                </a>
+                <a href="#common-mistakes" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-emerald-100">
+                  <h3 className="font-semibold text-emerald-700">Why do applications get rejected?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Avoid common mistakes like retroactive spending.</p>
+                </a>
+                <a href="#regional-trusts" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-emerald-100">
+                  <h3 className="font-semibold text-emerald-700">What is the "Buy BC" program?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Funding for marketing and packaging for local products.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Section 1: Innovate BC */}
         <section id="innovate-bc" className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -360,6 +397,67 @@ export default function BCSmallBusinessGrantsGuide() {
           </div>
         </section>
 
+        <section id="stacking-strategy" className="py-16 bg-blue-50 border-t border-blue-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-blue-900">The "BC Stack": How to Get $50k+</h2>
+              <p className="text-blue-800 mb-6">
+                In Ontario, you usually get one big grant. In BC, you win by "Stacking" 3-4 smaller ones. Here is the perfect playbook for a manufacturing or tourism business.
+              </p>
+
+              <div className="space-y-4">
+                <div className="bg-white p-4 rounded-lg border border-blue-200 flex items-start">
+                  <div className="bg-blue-600 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">1</div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">Hire a Student ($10k)</h4>
+                    <p className="text-sm text-gray-600">Use <strong>Innovator Skills Initiative</strong> to hire a marketing intern. They will write your grant applications for step 2.</p>
+                  </div>
+                </div>
+                <div className="bg-white p-4 rounded-lg border border-blue-200 flex items-start">
+                  <div className="bg-blue-600 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">2</div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">Get the Plan ($15k)</h4>
+                    <p className="text-sm text-gray-600">Apply to <strong>Buy BC</strong> to pay for 50% of a marketing plan, OR apply to <strong>NDIT Competitiveness Rebate</strong> for an operational audit.</p>
+                  </div>
+                </div>
+                <div className="bg-white p-4 rounded-lg border border-blue-200 flex items-start">
+                  <div className="bg-blue-600 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">3</div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">Buy the Gear ($50k+)</h4>
+                    <p className="text-sm text-gray-600">Use the audit from step 2 to justify a <strong>CleanBC</strong> rebate for new efficient equipment.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="common-mistakes" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-red-900">Why BC Grant Applications Fail</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">1. The "Vancouver" Bias</h3>
+                  <p className="text-sm text-gray-700">If you are in Vancouver, do NOT apply for Regional Trusts (NDIT, ICET). You will be rejected immediately. Focus on Innovate BC and Federal grants.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">2. Missing the Quarterly Intake</h3>
+                  <p className="text-sm text-gray-700">NDIT and ICET operate on quarterly intakes (e.g., Feb, May, Aug, Nov). If you apply in June, you wait 3 months. Check the calendar.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">3. "Retroactive" Spending</h3>
+                  <p className="text-sm text-gray-700">BC grants are strict. You cannot spend a dime until you get the "Approval Letter". If you buy the machine today and apply tomorrow, you get $0.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">4. Ignoring Indigenous Partnership</h3>
+                  <p className="text-sm text-gray-700">For resource/land projects, having a letter of support from the local First Nation is often the "Golden Ticket" that pushes your application to the top of the pile.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Detailed FAQ Section */}
         <section className="py-20 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -375,6 +473,47 @@ export default function BCSmallBusinessGrantsGuide() {
                     <p className="text-gray-600 pl-8">{faq.answer}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Other Provincial Business Grants</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Users className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Award className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Mountain className="w-5 h-5 text-emerald-600 mr-3" /><span>All BC Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/bc-women-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Lightbulb className="w-5 h-5 text-pink-600 mr-3" /><span>BC Women Entrepreneurs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/clean-tech-energy-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Leaf className="w-5 h-5 text-green-600 mr-3" /><span>CleanBC Energy Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">BC Success Stories</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h4 className="font-bold text-gray-900 mb-2">The Prince George Brewery</h4>
+                  <p className="text-sm text-gray-600 mb-2"><strong>Challenge:</strong> Wanted to expand but bank loan rates were too high.</p>
+                  <p className="text-sm text-gray-600"><strong>Solution:</strong> Used <strong>NDIT Competitiveness Rebate</strong> to pay for a marketing plan, then used that plan to get a BDC loan. Result: 20% growth.</p>
+                </div>
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h4 className="font-bold text-gray-900 mb-2">The Victoria Tech Startup</h4>
+                  <p className="text-sm text-gray-600 mb-2"><strong>Challenge:</strong> Needed to hire a developer but had no revenue.</p>
+                  <p className="text-sm text-gray-600"><strong>Solution:</strong> Used <strong>Innovator Skills Initiative (ISI)</strong> to get $10k subsidy for a student hire. The student built the MVP.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -406,7 +545,7 @@ export default function BCSmallBusinessGrantsGuide() {
         </section>
 
         <Footer />
-      </div>
+      </div >
     </>
   )
 }

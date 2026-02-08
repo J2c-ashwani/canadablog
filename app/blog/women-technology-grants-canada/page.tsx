@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Code, ExternalLink } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Code, ExternalLink, MapPin, Briefcase, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,39 +19,43 @@ export const metadata: Metadata = {
   },
 }
 
-const faqData = [
-  {
-    question: "What is the maximum NRC IRAP funding for women tech entrepreneurs?",
-    answer: "NRC IRAP provides up to $10M for industrial R&D and technology commercialization projects. Women-led tech startups can access non-repayable contributions, advisory services, and networking support."
-  },
-  {
-    question: "Are there women-specific tech accelerators in Canada?",
-    answer: "Yes, programs like L-SPARK (Ottawa SaaS), Alate Partners (BC), MaRS Discovery (Toronto), and Highline Beta (Montreal) offer women-focused tech acceleration with funding, mentorship, and investor connections."
-  },
-  {
-    question: "How can women access AI and machine learning funding?",
-    answer: "SR&ED tax credits (up to 35% refundable), MITACS research partnerships, collaboration with AI institutes (Vector, Mila, Amii), and NRC IRAP AI project support are key funding sources for women AI entrepreneurs."
-  },
-  {
-    question: "What provincial tech innovation programs support women entrepreneurs?",
-    answer: "Key programs include Innovate BC (Vancouver), Alberta Innovates (Calgary/Edmonton), Ontario Creates (digital media), and Quebec's SODEC for creative tech with grants, acceleration, and commercialization support."
-  }
-]
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqData.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
+export default function WomenTechnologyGrantsCanada() {
+  const faqData = [
+    {
+      question: "Are there specific grants for women in tech?",
+      answer: "Yes. Programs like the Women Entrepreneurship Strategy (WES) ecosystem fund and specialized streams within IRAP often target women-led technology firms."
+    },
+    {
+      question: "Does IRAP fund software development?",
+      answer: "Yes, but only if there is 'technical uncertainty'. Building a standard app isn't enough; you must be solving a difficult technical problem (e.g., new algorithm, complex integration)."
+    },
+    {
+      question: "What is the 'Women in Technology' venture fund?",
+      answer: "Applying via BDC, this is a venture capital fund (equity, not grant) specifically for Canadian women-led technology companies scaling up."
+    },
+    {
+      question: "Can I stack multiple grants?",
+      answer: "Yes. You can often combine federal grants (like IRAP) with provincial ones (like Innovate BC), provided they don't cover the same eligible cost twice."
+    },
+    {
+      question: "Is SR&ED a grant?",
+      answer: "No, it's a tax credit. However, it is a crucial source of non-dilutive funding for tech companies, refunding up to 35% of eligible R&D salaries."
     }
-  }))
-}
+  ];
 
-export default function WomenTechnologyGrantsCanadaPage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+
   return (
     <>
       <script
@@ -470,6 +474,47 @@ export default function WomenTechnologyGrantsCanadaPage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-indigo-500 mr-3 mt-0.5 flex-shrink-0" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-600 pl-8">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Explore More Funding Options</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><MapPin className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Target className="w-5 h-5 text-emerald-600 mr-3" /><span>BC Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Award className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/software-saas-startup-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Rocket className="w-5 h-5 text-blue-600 mr-3" /><span>SaaS & Startup Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/canada-innovation-research-development-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Lightbulb className="w-5 h-5 text-blue-600 mr-3" /><span>R&D & Innovation Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

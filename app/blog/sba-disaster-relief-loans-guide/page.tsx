@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, DollarSign, Target, AlertTriangle, FileText, Clock, ChevronRight, ExternalLink, BookOpen, HelpCircle, Shield, Home, AlertCircle } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -15,6 +21,14 @@ export const metadata: Metadata = {
 
 export default function SBADisasterReliefLoansGuidePage() {
   const faqData = [
+    {
+      question: "How do I apply for SBA disaster relief loans in 2026?",
+      answer: "Apply online at disasterloanassistance.sba.gov within 60 days of the disaster declaration for physical damage or 9 months for economic injury. You'll need tax returns, financial statements, and damage documentation. Consider visiting a local disaster recovery center for in-person assistance."
+    },
+    {
+      question: "What is the maximum SBA disaster loan amount?",
+      answer: "The maximum is $2 million combined for physical damage and economic injury (EIDL). Physical damage loans cover property repair up to $2M, and EIDL covers working capital up to $2M, but the combined total cannot exceed $2M."
+    },
     {
       question: "Do I need insurance to apply?",
       answer: "No, but insurance proceeds reduce your loan amount. Apply before insurance settles—SBA will adjust the loan when your claim is resolved."
@@ -99,6 +113,33 @@ export default function SBADisasterReliefLoansGuidePage() {
               <div><div className="text-3xl font-bold text-orange-600 mb-2">4%</div><div className="text-gray-600">Interest Rate (as low as)</div></div>
               <div><div className="text-3xl font-bold text-blue-600 mb-2">30 yrs</div><div className="text-gray-600">Max Repayment Term</div></div>
               <div><div className="text-3xl font-bold text-green-600 mb-2">60 days</div><div className="text-gray-600">Application Deadline</div></div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About SBA Disaster Loans</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#overview" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-red-900">How much can I borrow?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Up to $2 Million specifically for disaster recovery.</p>
+                </a>
+                <a href="#terms" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-red-900">What is the interest rate?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Rates are fixed by law, typically around 4% or less.</p>
+                </a>
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-red-900">Do I need insurance?</h3>
+                  <p className="text-sm text-gray-600 mt-1">No, but insurance payouts will reduce your loan amount.</p>
+                </a>
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-red-900">What if I have bad credit?</h3>
+                  <p className="text-sm text-gray-600 mt-1">SBA is more flexible than banks, but some credit history is reviewed.</p>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -199,6 +240,26 @@ export default function SBADisasterReliefLoansGuidePage() {
           </div>
         </section>
 
+        <section id="preparedness" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Emergency Preparedness Checklist</h2>
+              <p className="text-gray-700 mb-6">The best time to prepare for a disaster loan application is <em>before</em> the disaster. Keep these documents in a secure, cloud-accessible location.</p>
+
+              <div className="bg-orange-50 border border-orange-200 rounded-xl p-6">
+                <ul className="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-orange-600 mr-2" />Digital copies of tax returns</li>
+                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-orange-600 mr-2" />Insurance policy numbers</li>
+                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-orange-600 mr-2" />Deed or lease agreements</li>
+                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-orange-600 mr-2" />Inventory photos/video</li>
+                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-orange-600 mr-2" />Payroll records</li>
+                  <li className="flex items-center"><CheckCircle className="w-4 h-4 text-orange-600 mr-2" />Vendor list & account numbers</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="timeline" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -242,7 +303,85 @@ export default function SBADisasterReliefLoansGuidePage() {
           </div>
         </section>
 
-        <section id="success" className="py-16 bg-gray-50">
+        <section id="fema-vs-sba" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">FEMA vs. SBA: What's the difference?</h2>
+              <p className="text-gray-700 mb-8">Confusion between FEMA grants and SBA loans is common. FEMA grants are small, non-repayable funds for immediate needs. SBA loans are large, low-interest loans for full long-term recovery. You often need to apply to SBA to unlock further FEMA assistance.</p>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center"><Shield className="w-5 h-5 mr-2" /> FEMA Grants</h3>
+                  <ul className="space-y-3 text-sm text-gray-700">
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-0.5" /><strong>Purpose:</strong> Safe, sanitary, and functional living conditions.</li>
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-0.5" /><strong>Amount:</strong> Typically capped around $40,000 (often much less).</li>
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-0.5" /><strong>Repayment:</strong> None (It's a grant).</li>
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-0.5" /><strong>Eligibility:</strong> Primary residences only (not businesses).</li>
+                  </ul>
+                </div>
+
+                <div className="bg-red-50 border border-red-200 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-red-800 mb-4 flex items-center"><DollarSign className="w-5 h-5 mr-2" /> SBA Disaster Loans</h3>
+                  <ul className="space-y-3 text-sm text-gray-700">
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-red-600 mr-2 mt-0.5" /><strong>Purpose:</strong> Full repair/replacement of damaged property.</li>
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-red-600 mr-2 mt-0.5" /><strong>Amount:</strong> Up to $2,000,000 for businesses.</li>
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-red-600 mr-2 mt-0.5" /><strong>Repayment:</strong> Low interest loan (up to 30 years).</li>
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-red-600 mr-2 mt-0.5" /><strong>Eligibility:</strong> Businesses, Nonprofits, Homeowners, Renters.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="mitigation" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Get 20% Extra for Mitigation</h2>
+              <p className="text-gray-700 mb-6">Did you know the SBA will increase your loan by up to <strong>20% of your verified physical damage</strong> to pay for improvements that prevent future damage? This "mitigation" money is part of the loan but can be a game-changer for resilience.</p>
+
+              <div className="bg-white rounded-xl shadow-sm border p-6">
+                <h3 className="font-bold text-lg mb-4">Eligible Mitigation Projects</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-bold text-sm text-gray-900 mb-2">Wildfire Areas</h4>
+                    <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                      <li>Installing fire-rated roofing</li>
+                      <li>Replacing wood siding with fiber cement</li>
+                      <li>Creating defensible space</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-gray-900 mb-2">Flood Zones</h4>
+                    <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                      <li>Elevating mechanicals (HVAC/Electrical)</li>
+                      <li>Installing flood vents or sump pumps</li>
+                      <li>Dry floodproofing (sealing walls)</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-gray-900 mb-2">Wind/Hurricane</h4>
+                    <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                      <li>Installing hurricane shutters</li>
+                      <li>Adding hurricane clips to roof</li>
+                      <li>Reinforcing garage doors</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-gray-900 mb-2">Earthquake</h4>
+                    <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                      <li>Seismic retrofitting</li>
+                      <li>Anchoring tall shelving units</li>
+                      <li>Reinforcing masonry walls</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="success" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Success Strategies</h2>
@@ -260,15 +399,16 @@ export default function SBADisasterReliefLoansGuidePage() {
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <Card key={index}>
-                    <CardContent className="pt-6">
-                      <h3 className="font-bold flex items-start">
-                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                        {faq.question}
-                      </h3>
-                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
-                    </CardContent>
-                  </Card>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-900">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
               </div>
             </div>
@@ -276,6 +416,75 @@ export default function SBADisasterReliefLoansGuidePage() {
         </section>
 
         {/* Official Resources Section */}
+        <section id="appeals" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Denied? How to Appeal an SBA Decision</h2>
+              <p className="text-gray-700 mb-8">Rejection isn't the end. Many SBA disaster loans are initially denied due to missing information or credit issues. You have the right to request reconsideration within 6 months.</p>
+
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <div className="bg-red-100 p-3 rounded-full mr-4">
+                    <AlertCircle className="w-6 h-6 text-red-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Step 1: Understand the Reason</h3>
+                    <p className="text-gray-600 text-sm">Read the decline letter carefully. Common reasons include "Lack of Repayment Ability" or "Unsatisfactory Credit." Addressing the <em>specific</em> reason is the only way to win.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="bg-orange-100 p-3 rounded-full mr-4">
+                    <FileText className="w-6 h-6 text-orange-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Step 2: Written Request for Reconsideration</h3>
+                    <p className="text-gray-600 text-sm">Prepare a formal letter. State clearly: "I am requesting reconsideration for Application #[Number]." Include new information that overcomes the decline reason (e.g., a co-signer with good credit, or corrected tax returns).</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="bg-green-100 p-3 rounded-full mr-4">
+                    <CheckCircle className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Step 3: Submit Documentation</h3>
+                    <p className="text-gray-600 text-sm">Upload your letter and supporting docs to the SBA Disaster Loan Portal. If denied again, you have one final appeal to the Restore Director.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="declarations" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Understanding Declaration Types</h2>
+              <p className="text-gray-700 mb-6">Not all disasters trigger the same funding. The type of declaration determines if you get individual assistance (FEMA) or just SBA loans.</p>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <Card className="border-red-200">
+                  <CardHeader className="bg-red-50">
+                    <CardTitle className="text-red-900 text-lg">Presidential Declaration</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-4">
+                    <p className="text-sm text-gray-700">The "Big One." Triggers FEMA grants for individuals AND SBA loans. Usually for major hurricanes or widespread flooding.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-blue-200">
+                  <CardHeader className="bg-blue-50">
+                    <CardTitle className="text-blue-900 text-lg">SBA Agency Declaration</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-4">
+                    <p className="text-sm text-gray-700">Triggers SBA loans ONLY. No FEMA grants. Occurs when damages are significant but don't meet the threshold for a Presidential declaration.</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-16 bg-white border-t">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -303,12 +512,18 @@ export default function SBADisasterReliefLoansGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
+              <h2 className="text-3xl font-bold mb-6">State Emergency Programs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/usa/california" className="flex items-center p-4 bg-white rounded-lg border hover:border-red-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>California Disaster Assistance</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/texas" className="flex items-center p-4 bg-white rounded-lg border hover:border-red-500 transition-all"><Shield className="w-5 h-5 text-orange-600 mr-3" /><span>Texas Storm Relief</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/florida" className="flex items-center p-4 bg-white rounded-lg border hover:border-red-500 transition-all"><Shield className="w-5 h-5 text-blue-600 mr-3" /><span>Florida Hurricane Relief</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/new-york" className="flex items-center p-4 bg-white rounded-lg border hover:border-red-500 transition-all"><Shield className="w-5 h-5 text-purple-600 mr-3" /><span>New York Emergency Funding</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/small-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-red-500 transition-all"><Shield className="w-5 h-5 text-green-600 mr-3" /><span>All State Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold mb-4">Related Funding Guides</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/blog/sba-7a-loans-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA 7(a) Loans</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/sba-microloans-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA Microloans</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/small-business-grants-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/usa" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>State-by-State Guides</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/sba-7a-loans-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA 7(a) Loans Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/usa-federal-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>USA Federal Grants Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

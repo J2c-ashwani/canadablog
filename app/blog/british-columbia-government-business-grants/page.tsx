@@ -1,9 +1,9 @@
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Mountain, PieChart, TrendingUp, HelpCircle, Lightbulb, Zap, BookOpen, ExternalLink, Leaf, Film } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CheckCircle, ArrowRight, DollarSign, BarChart, Target, AlertTriangle, BookOpen, Users, Lightbulb, Download, Shield, Award, Mountain, PieChart, TrendingUp, HelpCircle, Zap, ExternalLink, Leaf, Film, Building, FileText, Clock } from "lucide-react";
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -16,6 +16,14 @@ export const metadata: Metadata = {
 export default function BritishColumbiaGovernmentBusinessGrantsPage() {
   const faqData = [
     {
+      question: "What grants are available for BC tech startups in 2026?",
+      answer: "Innovate BC offers the Ignite Program (up to $300K for R&D), Digital Skills Internship (wage subsidies), and Venture Acceleration Program (free mentorship). PacifiCan provides interest-free loans up to $5M for scale-up. CleanBC offers grants for clean technology development."
+    },
+    {
+      question: "How do I apply for Innovate BC grants?",
+      answer: "Start by contacting Innovate BC advisors for a pre-consultation. Prepare your application with a detailed project plan, budget, team qualifications, and IP strategy. Most programs require matching investment (often 1:3 ratio). Processing takes 4-8 weeks for most programs."
+    },
+    {
       question: "What is the difference between Innovate BC and PacifiCan?",
       answer: "Innovate BC is a provincial agency focusing on grants for early-stage R&D and tech commercialization. PacifiCan is a federal agency focusing on interest-free loans for companies ready to scale up and export."
     },
@@ -24,8 +32,44 @@ export default function BritishColumbiaGovernmentBusinessGrantsPage() {
       answer: "Yes! In fact, many programs like the Regional Innovation Ecosystems (RIE) prioritize businesses in regions like the Okanagan, Kootenays, and Northern BC to promote balanced economic growth."
     },
     {
-      question: "Are there grants for film production in BC?",
-      answer: "BC offers some of North America's most competitive film tax credits (28-35%+ of labour costs). These are crucial for the industry, but they are tax credits (paid after filing taxes), not upfront cash grants."
+      question: "What are the BC film and TV tax credits for 2026?",
+      answer: "BC offers some of North America's most competitive film tax credits: BC Production Services Tax Credit (28%), BC Film & TV Tax Credit (35%), plus regional and distant location bonuses. These are refundable tax credits (paid after filing taxes), not upfront grants."
+    },
+    {
+      question: "How does CleanBC funding work for businesses?",
+      answer: "CleanBC offers Go Electric rebates for commercial vehicles and chargers, industrial emissions reduction grants through the CleanBC Industry Fund, and building efficiency incentives. Programs can often be stacked with federal iZEV and other incentives."
+    },
+    {
+      question: "What is the fastest way to get business funding in BC?",
+      answer: "Innovate BC's voucher programs and Digital Skills Internship have 4-8 week turnarounds. CleanBC Go Electric rebates process quickly. Larger PacifiCan BSP loans take 3-6 months. Film tax credits are claimed annually with tax returns."
+    },
+    {
+      question: "Are there grants for buying a business in BC?",
+      answer: "Generally no. Grants fund 'growth' (marketing, R&D, hiring), not 'acquisitions.' However, financing programs like Community Futures or BDC provide loans specifically for buying existing businesses, especially in rural areas."
+    },
+    {
+      question: "What is the Alacrity Canada Cleantech Program?",
+      answer: "Alacrity is a specialized program in BC that helps cleantech companies scale. They provide funding, but more importantly, they open doors to international markets and customer pilots, which is often more valuable than cash."
+    },
+    {
+      question: "Can I get funding for a cannabis business in BC?",
+      answer: "It is difficult but possible. Innovate BC and federal agricultural programs may fund the 'agri-tech' or 'processing' side of cannabis (e.g., energy-efficient grow lights), but will not fund general retail operations."
+    },
+    {
+      question: "Does BC have a 'Digital Main Street' equivalent?",
+      answer: "Yes, the 'Launch Online' grant was a similar popular program. Currently, the 'Canada Digital Adoption Program' (CDAP) serves this role, offering up to $2,400 for e-commerce and $15,000 for digital strategy, administered via Alacrity Canada and Small Business BC."
+    },
+    {
+      question: "What is the difference between a grant and a tax credit?",
+      answer: "A grant is money given upfront (or reimbursed) to pay for a project. A tax credit (like SR&ED or Film) is a reduction in taxes aimed to reduce your tax bill, or a refund check sent after you file your corporate taxes. Tax credits are slower but more reliable."
+    },
+    {
+      question: "Are there specific grants for Indigenous entrepreneurs in BC?",
+      answer: "Yes. The Indigenous Business & Investment Council (IBIC) lists many resources. The New Relationship Trust provides funding for Indigenous community economic development and entrepreneurship projects in BC."
+    },
+    {
+      question: "How do export grants work in BC?",
+      answer: "CanExport (federal) matches 50% of marketing costs for international expansion. BC Trade & Invest provides on-the-ground support via trade offices in Asia, Europe, and the US to help you find customers."
     }
   ]
 
@@ -92,6 +136,43 @@ export default function BritishColumbiaGovernmentBusinessGrantsPage() {
               <div><div className="text-3xl font-bold text-green-600 mb-2">$280M</div><div className="text-gray-600">CleanBC Fund</div></div>
               <div><div className="text-3xl font-bold text-purple-600 mb-2">$300K</div><div className="text-gray-600">Max Ignite Grant</div></div>
               <div><div className="text-3xl font-bold text-teal-600 mb-2">$5M</div><div className="text-gray-600">PacifiCan Cap</div></div>
+            </div>
+          </div>
+        </section>
+
+
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-blue-50 border-b border-blue-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About BC Govt Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#innovate-bc" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-blue-100">
+                  <h3 className="font-semibold text-blue-700">How do I apply for Innovate BC?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Tech grants for R&D and hiring.</p>
+                </a>
+                <a href="#cleanbc" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-blue-100">
+                  <h3 className="font-semibold text-blue-700">What does CleanBC fund?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Rebates for EVs, chargers, and emissions reduction.</p>
+                </a>
+                <a href="#creative" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-blue-100">
+                  <h3 className="font-semibold text-blue-700">How do film tax credits work?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Refundable credits for production and labor.</p>
+                </a>
+                <a href="#pacifican" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-blue-100">
+                  <h3 className="font-semibold text-blue-700">What is PacifiCan?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Federal interest-free loans for scaling businesses.</p>
+                </a>
+                <a href="#success" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-blue-100">
+                  <h3 className="font-semibold text-blue-700">Is there funding for startups?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, specifically for tech innovation and export.</p>
+                </a>
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-blue-100">
+                  <h3 className="font-semibold text-blue-700">Am I eligible for grants?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Check requirements for key provincial programs.</p>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -200,9 +281,56 @@ export default function BritishColumbiaGovernmentBusinessGrantsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Am I eligible for BC Business Grants?</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card><CardHeader><CardTitle className="text-green-700 flex items-center"><CheckCircle className="w-5 h-5 mr-2" />General Requirements</CardTitle></CardHeader><CardContent><ul className="space-y-1 text-sm"><li>• Incorporated in BC or significant operations</li><li>• For-profit business entity</li><li>• Project benefits BC economy</li><li>• Matching funds often required</li><li>• Good standing with government</li></ul></CardContent></Card>
-                <Card><CardHeader><CardTitle className="text-red-700 flex items-center"><AlertCircle className="w-5 h-5 mr-2" />Common Restrictions</CardTitle></CardHeader><CardContent><ul className="space-y-1 text-sm"><li>• No retail/hospitality for innovation programs</li><li>• IP ownership requirements (Innovate BC)</li><li>• Retroactive funding rarely allowed</li><li>• Must maintain BC operations</li><li>• Some exclude Metro Vancouver priority</li></ul></CardContent></Card>
+              <p className="text-gray-700 mb-8">British Columbia has distinct eligibility criteria for its different major agencies. Innovate BC focuses on IP-owning tech companies, while CleanBC targets emissions reductions.</p>
+
+              <div className="grid md:grid-cols-2 gap-8 mb-12">
+                <Card className="border-blue-200 shadow-sm">
+                  <CardHeader className="bg-blue-50 border-b border-blue-100">
+                    <CardTitle className="text-blue-800 flex items-center"><CheckCircle className="w-5 h-5 mr-2" /> Innovate BC Criteria</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <ul className="space-y-3">
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" /><span className="text-sm"><strong>BC Incorporation:</strong> Must be a BC-based company.</span></li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" /><span className="text-sm"><strong>IP Ownership:</strong> Must own or control the Intellectual Property being developed.</span></li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" /><span className="text-sm"><strong>Scalability:</strong> Must show potential for high growth and export.</span></li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-teal-200 shadow-sm">
+                  <CardHeader className="bg-teal-50 border-b border-teal-100">
+                    <CardTitle className="text-teal-800 flex items-center"><Mountain className="w-5 h-5 mr-2" /> PacifiCan Criteria</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <ul className="space-y-3">
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-teal-600 mr-3 mt-0.5 flex-shrink-0" /><span className="text-sm"><strong>High Growth:</strong> For "Business Scale-Up", must have 20%+ year-over-year growth potential.</span></li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-teal-600 mr-3 mt-0.5 flex-shrink-0" /><span className="text-sm"><strong>Market Ready:</strong> Technology must be proven (TRL 7-9).</span></li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-teal-600 mr-3 mt-0.5 flex-shrink-0" /><span className="text-sm"><strong>Financial Health:</strong> Must be profitable or show clear path to profitability to repay the loan.</span></li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <h3 className="text-2xl font-bold mb-6">What Documents do I need?</h3>
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-8">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-bold mb-4 flex items-center text-blue-700"><FileText className="w-5 h-5 mr-2" /> Corporate Documents</h4>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-center"><div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>Certificate of Incorporation</li>
+                      <li className="flex items-center"><div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>Central Securities Register</li>
+                      <li className="flex items-center"><div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>Financial Statements (2 years)</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-bold mb-4 flex items-center text-blue-700"><Target className="w-5 h-5 mr-2" /> Project Documents</h4>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-center"><div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>Project Charter / Plan</li>
+                      <li className="flex items-center"><div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>IP Strategy Document</li>
+                      <li className="flex items-center"><div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>Market Validation Evidence</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -211,12 +339,46 @@ export default function BritishColumbiaGovernmentBusinessGrantsPage() {
         <section id="application" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">How do I apply for BC Funding?</h2>
-              <div className="space-y-4">
-                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">1</div><div><h3 className="font-bold">Identify Right Program</h3><p className="text-gray-600 text-sm">Match your sector and stage to available programs. Innovate BC for tech, CleanBC for emissions, Creative BC for film.</p></div></div>
-                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">2</div><div><h3 className="font-bold">Pre-Application (If Required)</h3><p className="text-gray-600 text-sm">Many programs require or recommend pre-application calls. PacifiCan and Innovate BC both have intake processes.</p></div></div>
-                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">3</div><div><h3 className="font-bold">Prepare Application</h3><p className="text-gray-600 text-sm">Complete application with project plan, budget, team qualifications, and expected outcomes. Emphasize BC economic impact.</p></div></div>
-                <div className="flex items-start p-4 bg-white rounded-lg border"><div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">4</div><div><h3 className="font-bold">Review &amp; Approval</h3><p className="text-gray-600 text-sm">Timeline varies from 4-8 weeks for smaller programs to 3-6 months for PacifiCan BSP.</p></div></div>
+              <h2 className="text-3xl font-bold mb-6">How do I Apply?</h2>
+              <p className="text-gray-700 mb-10">Application processes differ significantly between small Innovate BC grants (fast) and large PacifiCan loans (slow). This guide covers the general flow.</p>
+
+              <div className="relative border-l-4 border-blue-200 ml-4 space-y-12">
+                <div className="relative pl-8">
+                  <div className="absolute -left-[22px] top-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold border-4 border-white">1</div>
+                  <h3 className="text-xl font-bold mb-2">Expression of Interest (EOI)</h3>
+                  <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <p className="text-gray-700 mb-3">Many BC programs use an EOI stage to filter applicants. This is a short proposal (5-10 pages) outlining the project concept and eligibility.</p>
+                    <p className="text-sm text-gray-600 italic"><strong>PacifiCan:</strong> Opening dates for EOIs are specific and competitive (usually Spring/Fall).</p>
+                  </div>
+                </div>
+
+                <div className="relative pl-8">
+                  <div className="absolute -left-[22px] top-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold border-4 border-white">2</div>
+                  <h3 className="text-xl font-bold mb-2">Detailed Application</h3>
+                  <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <p className="text-gray-700 mb-3">If shortlisted, you will submit the full application. For Innovate BC, this focuses on technical merit. For PacifiCan, it focuses on financial viability and repayment capacity.</p>
+                    <div className="flex items-center gap-4 text-sm bg-blue-50 p-3 rounded">
+                      <Clock className="w-4 h-4 text-blue-600" />
+                      <span><strong>Effort:</strong> Expect to spend 40-80 hours preparing this.</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative pl-8">
+                  <div className="absolute -left-[22px] top-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold border-4 border-white">3</div>
+                  <h3 className="text-xl font-bold mb-2">Evaluation</h3>
+                  <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <p className="text-gray-700 mb-3">Applications are scored on: Innovation, Market Potential, Management Team, and Economic Benefits to BC (jobs, revenue).</p>
+                  </div>
+                </div>
+
+                <div className="relative pl-8">
+                  <div className="absolute -left-[22px] top-0 w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold border-4 border-white">4</div>
+                  <h3 className="text-xl font-bold mb-2">Agreement & Reporting</h3>
+                  <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <p className="text-gray-700 mb-3">Successful applicants sign a Contribution Agreement. You must report on metrics like "Jobs maintained" and "Revenue growth" annually for 3-5 years.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -236,6 +398,144 @@ export default function BritishColumbiaGovernmentBusinessGrantsPage() {
           </div>
         </section>
 
+        <section id="export-navigator" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">How does Export Navigator Help?</h2>
+              <p className="text-gray-700 mb-6">While not a direct cash grant, <strong>Export Navigator</strong> is arguably the most valuable program for BC businesses looking to grow. It offers free, personalized guidance from an export specialist.</p>
+
+              <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-xl mb-8">
+                <h3 className="text-xl font-bold text-blue-900 mb-2">Why apply?</h3>
+                <p className="text-gray-700">Your advisor helps you find <strong>hidden international grants</strong> (like CanExport), connects you with foreign buyers, and reviews your export plan for free. It is a "gateway" program that drastically increases your success rate with other funding.</p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <div className="p-4 border rounded-lg bg-gray-50">
+                  <div className="text-2xl font-bold text-blue-600 mb-1">FREE</div>
+                  <div className="text-sm text-gray-600">Cost to Join</div>
+                </div>
+                <div className="p-4 border rounded-lg bg-gray-50">
+                  <div className="text-2xl font-bold text-blue-600 mb-1">1-on-1</div>
+                  <div className="text-sm text-gray-600">Advisor Support</div>
+                </div>
+                <div className="p-4 border rounded-lg bg-gray-50">
+                  <div className="text-2xl font-bold text-blue-600 mb-1">Global</div>
+                  <div className="text-sm text-gray-600">Market Access</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="indigenous-support" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Is there Funding for Indigenous Businesses?</h2>
+              <p className="text-gray-700 mb-6">British Columbia has a robust ecosystem of support for Indigenous entrepreneurs, with dedicated capital pools and grant programs that are often less competitive than general streams.</p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-teal-200">
+                  <CardHeader>
+                    <CardTitle className="text-teal-800">New Relationship Trust (NRT)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-700 mb-4">Offers non-repayable grants for Indigenous community-owned businesses and entrepreneurs.</p>
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 text-teal-600 mr-2 mt-0.5" /><strong>Equity Match:</strong> Up to $50,000 for business startup/expansion.</li>
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 text-teal-600 mr-2 mt-0.5" /><strong>Cold Storage:</strong> Specific grants for food sovereignty projects.</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-purple-200">
+                  <CardHeader>
+                    <CardTitle className="text-purple-800">IBIC Resources</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-700 mb-4">The Indigenous Business & Investment Council connects businesses with:</p>
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 text-purple-600 mr-2 mt-0.5" /><strong>Capital:</strong> Lists of Aboriginal Financial Institutions (AFIs).</li>
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 text-purple-600 mr-2 mt-0.5" /><strong>Procurement:</strong> BC government set-asides for Indigenous vendors.</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="sector-comparison" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">What is the difference between Tech and Resource Sector Funding?</h2>
+              <p className="text-gray-700 mb-8">BC&apos;s economy is a "dual engine"—traditional resources (Forestry, Mining) and modern tech. Funding sources are completely distinct.</p>
+
+              <div className="overflow-hidden rounded-xl border border-gray-200">
+                <table className="w-full text-sm text-left">
+                  <thead className="bg-gray-100 text-gray-700">
+                    <tr>
+                      <th className="p-4">Feature</th>
+                      <th className="p-4 text-blue-700">Technology Focus</th>
+                      <th className="p-4 text-green-700">Resource Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr className="bg-white">
+                      <td className="p-4 font-semibold">Primary Agency</td>
+                      <td className="p-4">Innovate BC</td>
+                      <td className="p-4">CleanBC / Forestry Innovation</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="p-4 font-semibold">Goal</td>
+                      <td className="p-4">IP creation, Export scale-up</td>
+                      <td className="p-4">Efficiency, Emissions reduction</td>
+                    </tr>
+                    <tr className="bg-white">
+                      <td className="p-4 font-semibold">Typical Grant</td>
+                      <td className="p-4"><strong>Ignite:</strong> $300k (R&D)</td>
+                      <td className="p-4"><strong>BC Mass Timber:</strong> $500k+ (Construction)</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="p-4 font-semibold">Key Requirement</td>
+                      <td className="p-4">Must own the IP</td>
+                      <td className="p-4">Must reduce carbon footprint</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="case-study" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Real World Example: How a Cleantech Company Scaled?</h2>
+              <Card className="bg-teal-50 border-teal-200">
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-teal-100 p-3 rounded-full">
+                      <Lightbulb className="w-6 h-6 text-teal-700" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-lg text-teal-900 mb-2">From Prototype to Export</h3>
+                      <p className="text-gray-700 mb-4">
+                        A Vancouver-based water treatment company used <strong>Innovate BC's</strong> "Ignite" program ($300k) to finalize their commercial unit. To market it, they didn't spend their own cash.
+                      </p>
+                      <p className="text-gray-700 mb-4">
+                        They utilized the federal <strong>CanExport</strong> program to cover 50% of travel costs to trade shows in California and Europe. Simultaneously, they hired 2 UBC grad students using the <strong>Mitacs Accelerate</strong> program to optimize their filtration data.
+                      </p>
+                      <p className="text-gray-700">
+                        <strong>Key Takeaway:</strong> They separated their needs: R&D funded by Innovate BC, Marketing funded by CanExport, and Hiring funded by Mitacs. This "stacking" approach reduced their burn rate by 40%.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
         <section id="success" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -243,6 +543,54 @@ export default function BritishColumbiaGovernmentBusinessGrantsPage() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div><h3 className="font-bold mb-3 text-green-700">✅ Winning Approaches</h3><ul className="space-y-2 text-sm"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Show clear BC economic impact (jobs, exports, IP)</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Stack CleanBC with federal programs when allowed</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Consider regional expansion for priority scoring as suggested in our <Link href="/blog/bc-small-business-grants-guide" className="text-blue-700 hover:underline">Small Business Guide</Link></span></li></ul></div>
                 <div><h3 className="font-bold mb-3 text-purple-700">🎯 Pro Tips</h3><ul className="space-y-2 text-sm"><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Connect with Innovate BC advisors before applying</span></li><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Attend BC Tech Summit and ecosystem events</span></li><li className="flex items-start"><Target className="w-4 h-4 text-purple-500 mr-2 mt-0.5" /><span>Film projects should consult Creative BC first</span></li></ul></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="glossary" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">What Key Terms should I know?</h2>
+              <p className="text-gray-700 mb-8">Navigating the BC ecosystem requires knowing the language. These key terms appear frequently in Innovate BC and CleanBC guides.</p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="bg-slate-50 border-slate-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-slate-900 mb-2">Refundable Tax Credit</h3>
+                    <p className="text-sm text-gray-600">A tax credit (like for Film or IDM) that pays you cash if the credit amount is typically higher than your tax bill. This is effectively a "backend grant."</p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-slate-50 border-slate-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-slate-900 mb-2">Conditionally Repayable</h3>
+                    <p className="text-sm text-gray-600">PacifiCan loans are often "conditionally repayable," meaning you only start paying back once the project generates revenue, or after a grace period.</p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-slate-50 border-slate-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-slate-900 mb-2">CleanBC Industry Fund</h3>
+                    <p className="text-sm text-gray-600">A specific fund using carbon tax revenue to pay for industrial emission reduction projects. It's a "recycling" of carbon tax dollars back to industry.</p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-slate-50 border-slate-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-slate-900 mb-2">IP Strategy</h3>
+                    <p className="text-sm text-gray-600">A formal document outlining how you will protect your innovations (patents, trade secrets). Innovate BC <strong>requires</strong> this for most R&D grants.</p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-slate-50 border-slate-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-slate-900 mb-2">Regional Index</h3>
+                    <p className="text-sm text-gray-600">Some grants give "bonus points" if you are located outside Metro Vancouver (e.g., Prince George, Kelowna) to spur regional development.</p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-slate-50 border-slate-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-slate-900 mb-2">Contribution</h3>
+                    <p className="text-sm text-gray-600">Federal/Provincial term for "Grant" or "Funding." A "Non-repayable Contribution" is a grant. A "Repayable Contribution" is a loan.</p>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
@@ -272,12 +620,18 @@ export default function BritishColumbiaGovernmentBusinessGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
+              <h2 className="text-3xl font-bold mb-6">Compare Other Provincial Grant Programs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/blog/ontario-government-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Building className="w-5 h-5 text-red-600 mr-3" /><span>Ontario Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/alberta-government-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Building className="w-5 h-5 text-blue-600 mr-3" /><span>Alberta Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/quebec-government-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Building className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/saskatchewan-small-business-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Building className="w-5 h-5 text-green-600 mr-3" /><span>Saskatchewan Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/manitoba-small-business-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Building className="w-5 h-5 text-yellow-600 mr-3" /><span>Manitoba Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold mb-4">Related Funding Guides</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/blog/bc-small-business-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>BC Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/irap-industrial-research-assistance-program" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>IRAP Program Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/canada/government-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>All Government Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Canadian Funding</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/irap-industrial-research-assistance-program" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><BookOpen className="w-5 h-5 text-green-600 mr-3" /><span>IRAP Program Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/canada-federal-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><BookOpen className="w-5 h-5 text-green-600 mr-3" /><span>Federal Grants Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>
@@ -295,7 +649,7 @@ export default function BritishColumbiaGovernmentBusinessGrantsPage() {
             </div>
           </div>
         </section>
-      </div>
+      </div >
       <Footer />
     </>
   )

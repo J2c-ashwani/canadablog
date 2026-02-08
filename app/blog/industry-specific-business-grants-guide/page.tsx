@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Factory, Stethoscope, Cpu, Wheat, Beaker, BookOpen, HelpCircle, ChevronRight, Building2 } from "lucide-react"
+import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, Factory, Stethoscope, Cpu, Wheat, Beaker, BookOpen, HelpCircle, ChevronRight, Building2, FileText } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -16,16 +22,32 @@ export const metadata: Metadata = {
 export default function IndustrySpecificBusinessGrantsGuide() {
   const faqData = [
     {
+      question: "What industries have the most grant funding available?",
+      answer: "Healthcare/life sciences (NIH ~$900M/year), defense/aerospace (DOD ~$1.8B/year), clean energy (DOE ~$350M/year), and agriculture (USDA ~$150M/year) have the largest SBIR allocations. Manufacturing, technology, and environmental sectors also receive substantial funding through multiple agencies."
+    },
+    {
       question: "How do I find grants for my specific industry?",
       answer: "Start with SBIR.gov and filter by your technology area. Check with your industry association and relevant federal agencies. Our industry-specific guides list major programs."
     },
     {
-      question: "Do I need industry experience to apply?",
+      question: "Do I need industry experience to apply for sector-specific grants?",
       answer: "Yes—reviewers evaluate your team's qualifications. Having industry-experienced personnel or advisors significantly improves your credibility and success rate."
     },
     {
       question: "Can startups apply for industry grants?",
       answer: "Yes! SBIR/STTR is designed for small companies including startups. However, you need a credible team, feasible technology, and commercialization plan."
+    },
+    {
+      question: "What are the biggest industry-specific grant programs in 2026?",
+      answer: "NIH SBIR for healthcare/biotech, DOD SBIR for defense technology, NSF SBIR for general technology innovation, DOE SBIR for energy, and USDA SBIR for agriculture. Each agency has multiple topic areas within their SBIR programs targeting specific industry challenges."
+    },
+    {
+      question: "Are there grants for manufacturing businesses?",
+      answer: "Yes. Manufacturing grants include DOD ManTech programs, NIST Manufacturing Extension Partnership funding, state manufacturing incentives, and SBIR topics focused on advanced manufacturing, automation, and Industry 4.0 technologies."
+    },
+    {
+      question: "How do I apply for healthcare and biotech grants?",
+      answer: "NIH SBIR is the primary source. Start at grants.nih.gov to find relevant Funding Opportunity Announcements (FOAs). NIH uses rigorous peer review, so ensure your scientific approach is sound and your team has relevant credentials. FDA also offers Orphan Products Development grants for rare diseases."
     }
   ]
 
@@ -193,6 +215,55 @@ export default function IndustrySpecificBusinessGrantsGuide() {
           </div>
         </section>
 
+        <section id="hospitality" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Hospitality &amp; Tourism Grants</h2>
+              <p className="text-gray-700 mb-6">While federal R&D grants rarely target hotels or restaurants, state and local economic development agencies heavily invest in tourism. Grants often focus on facade improvements, workforce training, and tourism marketing.</p>
+              <Card className="border-rose-200"><CardContent className="pt-6"><div className="grid md:grid-cols-3 gap-4 mb-4"><div className="flex items-center"><Building2 className="w-5 h-5 text-rose-600 mr-2" /><span><strong>Range:</strong> $5K - $50K</span></div><div className="flex items-center"><Clock className="w-5 h-5 text-blue-600 mr-2" /><span><strong>Duration:</strong> One-time</span></div><div className="flex items-center"><Target className="w-5 h-5 text-purple-600 mr-2" /><span><strong>Focus:</strong> Growth</span></div></div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div><h3 className="font-bold mb-2 text-rose-700">Common Programs</h3><ul className="text-sm space-y-1"><li>• Destination Marketing Grants</li><li>• Facade Improvement Programs</li><li>• Workforce Training Grants</li><li>• Energy Efficiency Rebates</li><li>• Digital Adoption Grants</li></ul></div>
+                  <div><h3 className="font-bold mb-2 text-rose-700">Eligible Businesses</h3><ul className="text-sm space-y-1"><li>• Hotels &amp; Motels</li><li>• Restaurants &amp; Cafes</li><li>• Tour Operators</li><li>• Event Venues</li><li>• Cultural Attractions</li></ul></div>
+                </div></CardContent></Card>
+            </div>
+          </div>
+        </section>
+
+        <section id="construction" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Construction &amp; Trades Grants</h2>
+              <p className="text-gray-700 mb-6">Funding in the construction sector typically targets workforce development (apprenticeships), green building technologies, and affordable housing development. Federal and state agencies incentivize training new tradespeople and adopting sustainable materials.</p>
+              <Card className="border-yellow-200"><CardContent className="pt-6"><div className="grid md:grid-cols-3 gap-4 mb-4"><div className="flex items-center"><Factory className="w-5 h-5 text-yellow-600 mr-2" /><span><strong>Range:</strong> $10K - $250K</span></div><div className="flex items-center"><Clock className="w-5 h-5 text-blue-600 mr-2" /><span><strong>Duration:</strong> 1-3 years</span></div><div className="flex items-center"><Target className="w-5 h-5 text-purple-600 mr-2" /><span><strong>Focus:</strong> Training</span></div></div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div><h3 className="font-bold mb-2 text-yellow-700">Funding Types</h3><ul className="text-sm space-y-1"><li>• Apprenticeship Incentives</li><li>• Green Building Grants</li><li>• Brownfield Remediation</li><li>• Rural Housing Development</li><li>• Equipment Upgrades (Clean Diesel)</li></ul></div>
+                  <div><h3 className="font-bold mb-2 text-yellow-700">Key Agencies</h3><ul className="text-sm space-y-1"><li>• Dept. of Labor (Apprenticeships)</li><li>• EPA (Brownfields/Diesel)</li><li>• USDA (Rural Housing)</li><li>• HUD (Affordable Housing)</li><li>• State Energy Offices</li></ul></div>
+                </div></CardContent></Card>
+            </div>
+          </div>
+        </section>
+
+        <section id="retail" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Retail &amp; E-commerce Grants</h2>
+              <p className="text-gray-700 mb-6">Retail grants are almost exclusively found at the local (city/county) level or through corporate programs. Main Street programs support physical storefronts, while digital adoption grants help brick-and-mortar stores move online.</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 bg-cyan-50 rounded-lg border border-cyan-100">
+                  <h3 className="font-bold text-cyan-800 mb-3">Main Street Grants</h3>
+                  <p className="text-sm text-gray-600 mb-4">Local grants to revitalize downtowns. Funds can be used for signage, painting, awnings, and interior renovations.</p>
+                  <p className="text-xs font-bold text-cyan-600 uppercase">Avg: $5,000 - $25,000</p>
+                </div>
+                <div className="p-6 bg-blue-50 rounded-lg border border-blue-100">
+                  <h3 className="font-bold text-blue-800 mb-3">Digital Transformation</h3>
+                  <p className="text-sm text-gray-600 mb-4">Programs like Canada's CDAP or local US equivalents help retailers build e-commerce websites and improve SEO.</p>
+                  <p className="text-xs font-bold text-blue-600 uppercase">Avg: $2,400 - $15,000</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="eligibility" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -209,12 +280,122 @@ export default function IndustrySpecificBusinessGrantsGuide() {
         <section id="finding" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">How to Find Industry-Specific Grants</h2>
+              <h2 className="text-3xl font-bold mb-6">How to Find Hidden Industry Grants</h2>
+              <p className="text-gray-700 mb-8">Most "general" grant searches fail because they are too broad. Expert grant writers use <strong>Boolean Search Strings</strong> to find buried industry-specific Opportunities. Here is how to do it on Google and Grants.gov:</p>
+
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-12">
+                <div className="bg-teal-900 text-white p-6">
+                  <h3 className="text-xl font-bold flex items-center"><Target className="w-6 h-6 mr-3" /> The "Secret" Search Formulas</h3>
+                  <p className="text-teal-100 mt-2">Copy-paste these strings into Google to find programs others miss.</p>
+                </div>
+                <div className="p-6 space-y-6">
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-2">For Manufacturing:</h4>
+                    <div className="bg-gray-100 p-3 rounded font-mono text-sm text-blue-800">
+                      (grant OR "funding opportunity") AND (manufacturing OR "supply chain" OR automation) AND (site:.gov OR site:.org) -scholarship
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-2">For Tech/SaaS:</h4>
+                    <div className="bg-gray-100 p-3 rounded font-mono text-sm text-blue-800">
+                      "request for proposals" AND (software OR "artificial intelligence" OR SaaS) AND ("economic development" OR accelerator) AND 2026
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-2">For Healthcare:</h4>
+                    <div className="bg-gray-100 p-3 rounded font-mono text-sm text-blue-800">
+                      (grant OR cooperative agreement) AND ("rural health" OR telemedicine OR "medical device") AND eligibility "small business"
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="text-center"><div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4"><span className="text-white font-bold text-xl">1</span></div><h4 className="font-bold text-lg mb-3">Trade Associations</h4><p className="text-sm text-gray-600">Check professional and trade associations in your industry for grant listings.</p></div>
-                <div className="text-center"><div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4"><span className="text-white font-bold text-xl">2</span></div><h4 className="font-bold text-lg mb-3">Federal Agencies</h4><p className="text-sm text-gray-600">Research agencies that regulate or support your industry (NIH, DOE, USDA).</p></div>
-                <div className="text-center"><div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4"><span className="text-white font-bold text-xl">3</span></div><h4 className="font-bold text-lg mb-3">SBIR.gov</h4><p className="text-sm text-gray-600">Search federal SBIR/STTR opportunities by topic area and agency.</p></div>
-                <div className="text-center"><div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4"><span className="text-white font-bold text-xl">4</span></div><h4 className="font-bold text-lg mb-3">Industry Events</h4><p className="text-sm text-gray-600">Attend conferences and networking events to learn about sector opportunities.</p></div>
+                <div className="text-center"><div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4"><span className="text-white font-bold text-xl">1</span></div><h4 className="font-bold text-lg mb-3">Trade Associations</h4><p className="text-sm text-gray-600">Check professional and trade associations like NAM (Manufacturing) or HIMSS (Healthcare).</p></div>
+                <div className="text-center"><div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4"><span className="text-white font-bold text-xl">2</span></div><h4 className="font-bold text-lg mb-3">Federal Agencies</h4><p className="text-sm text-gray-600">Don't just look at SBA. Look at DOE, USDA, DOT, and EPA specific pages.</p></div>
+                <div className="text-center"><div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4"><span className="text-white font-bold text-xl">3</span></div><h4 className="font-bold text-lg mb-3">SBIR.gov</h4><p className="text-sm text-gray-600">The "Topic Search" feature is powerful. Filter by your specific niche keyword.</p></div>
+                <div className="text-center"><div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4"><span className="text-white font-bold text-xl">4</span></div><h4 className="font-bold text-lg mb-3">Suppliers</h4><p className="text-sm text-gray-600">Big corporate suppliers (e.g., Cisco, John Deere) often have grant programs for their ecosystem.</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="naics" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">The NAICS Code Cheat Sheet</h2>
+              <p className="text-gray-700 mb-8">
+                Government grants often use North American Industry Classification System (NAICS) codes to determine eligibility. If you don't know your code, you might be excluded from the search results.
+              </p>
+
+              <div className="overflow-x-auto">
+                <table className="w-full bg-white shadow-lg rounded-xl overflow-hidden border">
+                  <thead className="bg-teal-900 text-white">
+                    <tr>
+                      <th className="p-4 text-left">Industry</th>
+                      <th className="p-4 text-left">Common NAICS Codes</th>
+                      <th className="p-4 text-left">Why It Matters</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr className="hover:bg-teal-50 transition-colors">
+                      <td className="p-4 font-bold">Software &amp; IT</td>
+                      <td className="p-4 font-mono text-sm text-blue-600">541511 (Custom Programming)<br />511210 (Software Publishers)<br />541512 (Systems Design)</td>
+                      <td className="p-4 text-sm">Required for many NSF and DOD SBIR topics.</td>
+                    </tr>
+                    <tr className="hover:bg-teal-50 transition-colors">
+                      <td className="p-4 font-bold">R&amp;D Services</td>
+                      <td className="p-4 font-mono text-sm text-blue-600">541715 (Phys/Eng/Life Sciences)<br />541714 (Biotech R&amp;D)<br />541713 (Nanotech R&amp;D)</td>
+                      <td className="p-4 text-sm">Crucial for claiming R&amp;D Tax Credits and NIH grants.</td>
+                    </tr>
+                    <tr className="hover:bg-teal-50 transition-colors">
+                      <td className="p-4 font-bold">Manufacturing</td>
+                      <td className="p-4 font-mono text-sm text-blue-600">31-33 (General Mfg)<br />334413 (Semiconductors)<br />336411 (Aircraft Mfg)</td>
+                      <td className="p-4 text-sm">Needed for MEP funding and supply chain grants.</td>
+                    </tr>
+                    <tr className="hover:bg-teal-50 transition-colors">
+                      <td className="p-4 font-bold">Agriculture</td>
+                      <td className="p-4 font-mono text-sm text-blue-600">111 (Crop Production)<br />112 (Animal Production)<br />115114 (Post-Harvest)</td>
+                      <td className="p-4 text-sm">Essential for USDA and Rural Development grants.</td>
+                    </tr>
+                    <tr className="hover:bg-teal-50 transition-colors">
+                      <td className="p-4 font-bold">Construction</td>
+                      <td className="p-4 font-mono text-sm text-blue-600">236 (Building)<br />237 (Heavy/Civil)<br />238 (Specialty Trade)</td>
+                      <td className="p-4 text-sm">Used for infrastructure act bidding and training grants.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="resources" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Industry Resource Hub</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader><CardTitle className="text-lg">Technology</CardTitle></CardHeader>
+                  <CardContent className="text-sm space-y-2">
+                    <p><a href="https://seedfund.nsf.gov/" target="_blank" className="text-blue-600 hover:underline flex items-center">NSF Seed Fund <ExternalLink className="w-3 h-3 ml-1" /></a></p>
+                    <p><a href="https://www.sbir.gov/" target="_blank" className="text-blue-600 hover:underline flex items-center">SBIR.gov <ExternalLink className="w-3 h-3 ml-1" /></a></p>
+                  </CardContent>
+                </Card>
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader><CardTitle className="text-lg">Healthcare</CardTitle></CardHeader>
+                  <CardContent className="text-sm space-y-2">
+                    <p><a href="https://seed.nih.gov/" target="_blank" className="text-blue-600 hover:underline flex items-center">NIH SEED <ExternalLink className="w-3 h-3 ml-1" /></a></p>
+                    <p><a href="https://www.bio.org/" target="_blank" className="text-blue-600 hover:underline flex items-center">BIO Association <ExternalLink className="w-3 h-3 ml-1" /></a></p>
+                  </CardContent>
+                </Card>
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader><CardTitle className="text-lg">Manufacturing</CardTitle></CardHeader>
+                  <CardContent className="text-sm space-y-2">
+                    <p><a href="https://www.nist.gov/mep" target="_blank" className="text-blue-600 hover:underline flex items-center">NIST MEP <ExternalLink className="w-3 h-3 ml-1" /></a></p>
+                    <p><a href="https://www.nam.org/" target="_blank" className="text-blue-600 hover:underline flex items-center">NAM <ExternalLink className="w-3 h-3 ml-1" /></a></p>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
@@ -229,6 +410,40 @@ export default function IndustrySpecificBusinessGrantsGuide() {
                 <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ Missing Regulations</h3><p className="text-sm text-gray-600">Ignoring industry-specific regulations and compliance requirements dooms applications.</p></CardContent></Card>
                 <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ No Market Knowledge</h3><p className="text-sm text-gray-600">Failing to demonstrate understanding of your industry&apos;s market dynamics and trends.</p></CardContent></Card>
                 <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ Generic Approach</h3><p className="text-sm text-gray-600">One-size-fits-all applications don&apos;t work. Tailor each application to the specific agency and topic.</p></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="readiness" className="py-16 bg-blue-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Are You "Grant Ready"?</h2>
+              <p className="text-gray-700 mb-6">
+                Most applications fail not because the idea is bad, but because the business paperwork is disorganized. Reviewers look for these red flags immediately.
+              </p>
+
+              <div className="bg-white p-8 rounded-xl shadow-sm border border-blue-100">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="font-bold text-lg mb-4 flex items-center"><FileText className="w-5 h-5 text-blue-600 mr-2" /> Essential Documents</h3>
+                    <ul className="space-y-3 text-sm text-gray-700">
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" /> <strong>Capability Statement:</strong> A 1-page resume for your business. Crucial for government contracts.</li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" /> <strong>3 Years of Financials:</strong> Balance sheets and P&amp;L statements. They prove you are solvent.</li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" /> <strong>Resumes/Bios:</strong> For all Key Personnel. Show you have the team to execute.</li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" /> <strong>Letter of Support:</strong> From a potential customer or industry partner saying they want your product.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-4 flex items-center"><Building2 className="w-5 h-5 text-blue-600 mr-2" /> System Registrations</h3>
+                    <ul className="space-y-3 text-sm text-gray-700">
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" /> <strong>SAM.gov (UEI):</strong> Active registration is mandatory for federal funds.</li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" /> <strong>Grants.gov Workspace:</strong> Where you actually submit the forms.</li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" /> <strong>SBA Dynamic Small Business Search:</strong> Ensure your profile is updated so agencies can find you.</li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" /> <strong>State Vendor Portal:</strong> Register with your state&apos;s procurement system.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -252,15 +467,16 @@ export default function IndustrySpecificBusinessGrantsGuide() {
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <Card key={index}>
-                    <CardContent className="pt-6">
-                      <h3 className="font-bold flex items-start">
-                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
-                        {faq.question}
-                      </h3>
-                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
-                    </CardContent>
-                  </Card>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
               </div>
             </div>
@@ -270,12 +486,18 @@ export default function IndustrySpecificBusinessGrantsGuide() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
+              <h2 className="text-3xl font-bold mb-6">State Grant Programs by Region</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/usa/california" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Building2 className="w-5 h-5 text-blue-600 mr-3" /><span>California Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/texas" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Building2 className="w-5 h-5 text-red-600 mr-3" /><span>Texas Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/new-york" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Building2 className="w-5 h-5 text-purple-600 mr-3" /><span>New York Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/ontario-government-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Building2 className="w-5 h-5 text-red-500 mr-3" /><span>Ontario Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/alberta-government-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><Building2 className="w-5 h-5 text-blue-500 mr-3" /><span>Alberta Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold mb-4">Related Funding Guides</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/blog/sbir-sttr-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBIR/STTR Complete Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/small-business-grants-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/state-local-business-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>State &amp; Local Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/usa" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>State-by-State Guides</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/sbir-sttr-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><BookOpen className="w-5 h-5 text-green-600 mr-3" /><span>SBIR/STTR Complete Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/small-business-grants-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-teal-500 transition-all"><BookOpen className="w-5 h-5 text-green-600 mr-3" /><span>Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

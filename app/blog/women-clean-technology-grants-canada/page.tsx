@@ -100,7 +100,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Clean Technology Grants by Province (2026-2027 SDTC & NRCan Funding Available)</h2>
+              <h2 id="provincial-grants" className="text-3xl font-bold text-gray-900 mb-8 text-center">What are the Clean Technology Grants by Province?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-green-200 hover:shadow-lg transition-shadow">
@@ -219,7 +219,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 2026-2027 Women Clean Technology Funding Highlights</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 What are the 2026-2027 Funding Highlights?</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>SDTC Funding:</strong> Sustainable Development Technology Canada provides up to $10M for large-scale clean tech commercialization projects women entrepreneurs
@@ -247,7 +247,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Clean Technology Funding Ecosystem for Women Entrepreneurs</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the Clean Technology Funding Ecosystem?</h2>
                 <p className="text-lg text-gray-600 mb-4">
                   Canadian women clean tech entrepreneurs have access to comprehensive funding for environmental innovation
                   through federal programs like Sustainable Development Technology Canada (SDTC) providing up to $10 million
@@ -294,7 +294,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
         <section id="cleantech-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Clean Technology Grants for Women Entrepreneurs 2026-2027</h2>
+              <h2 id="federal-grants" className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Federal Clean Technology Grants?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete guide to federal clean tech funding programs available to women-owned environmental businesses
                 across all Canadian provinces through SDTC, NRCan, and innovation programs.
@@ -545,7 +545,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Provincial Clean Technology Grants for Women Entrepreneurs by Region</h2>
+              <h2 id="provincial-grants-region" className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Provincial Clean Technology Grants?</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
                 Complete guide to provincial clean tech support programs complementing federal SDTC and NRCan funding
                 for women-owned environmental businesses across Canada.
@@ -682,7 +682,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
         <section className="py-16 bg-gradient-to-br from-green-50 to-teal-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Clean Technology Funding by Sector - Women Entrepreneurs</h2>
+              <h2 id="funding-by-sector" className="text-3xl font-bold text-gray-900 mb-8 text-center">What is the Funding by Sector?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Renewable Energy */}
@@ -776,7 +776,7 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Clean Technology Grant Application Success Strategies 2026-2027</h2>
+              <h2 id="success-strategies" className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Application Success Strategies?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Proven strategies for women clean tech entrepreneurs to maximize SDTC and NRCan funding approval rates
                 and environmental innovation grant success across all Canadian provinces.
@@ -926,6 +926,50 @@ export default function WomenCleanTechnologyGrantsCanadaPage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions</h2>
+              <div className="grid gap-6 md:grid-cols-2">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 className="font-semibold text-gray-900 mb-2">{faq.question}</h3>
+                    <p className="text-gray-600">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">What are Related Clean Tech & Innovation Guides?</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/canada-clean-technology-environment-grants-guide" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-green-700 mb-2">Clean Tech Funding Guide</h3>
+                  <p className="text-gray-600 text-sm">Comprehensive guide to Canadian clean technology grants</p>
+                </Link>
+                <Link href="/blog/sustainable-development-technology-canada-guide" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-green-700 mb-2">SDTC Complete Guide</h3>
+                  <p className="text-gray-600 text-sm">Deep dive into Sustainable Development Technology Canada funding</p>
+                </Link>
+                <Link href="/blog/women-tech-stem-grants-guide" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-green-700 mb-2">Women in STEM Grants</h3>
+                  <p className="text-gray-600 text-sm">Funding for women in science and technology</p>
+                </Link>
+                <Link href="/blog/women-business-grants-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-green-700 mb-2">Women Business Grants</h3>
+                  <p className="text-gray-600 text-sm">Directory of funding for Canadian women entrepreneurs</p>
+                </Link>
               </div>
             </div>
           </div>

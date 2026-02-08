@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Zap, Brain, Heart, Fuel, Wind, Factory, ExternalLink, ArrowRight, Building } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Zap, Brain, Heart, Fuel, Wind, Factory, ExternalLink, ArrowRight, Building, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -517,7 +517,7 @@ export default function AlbertaInnovationGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Where are Alberta's Innovation Hubs?</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Where are Alberta&apos;s Innovation Hubs?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-orange-200">
@@ -527,7 +527,7 @@ export default function AlbertaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Energy & Tech Hub:</strong> Alberta's largest innovation ecosystem with world-leading energy expertise,
+                        <strong>Energy & Tech Hub:</strong> Alberta&apos;s largest innovation ecosystem with world-leading energy expertise,
                         growing tech sector, and strong entrepreneurial culture.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -676,6 +676,83 @@ export default function AlbertaInnovationGrantsPage() {
                         </div>
                       </div>
                     </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                <Card className="border-gray-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-gray-900 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-0.5" />
+                      What does Alberta Innovates fund?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      Alberta Innovates funds applied research, technology development, and commercialization projects across sectors like digital health, clean energy, agriculture, and smart agriculture. They support projects from TRL 3-9.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-gray-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-gray-900 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-0.5" />
+                      How does Emissions Reduction Alberta (ERA) work?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      ERA invests proceeds from the industrial carbon price to fund late-stage technologies that reduce GHG emissions, such as carbon capture, energy efficiency, and renewable power projects.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-gray-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-gray-900 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-0.5" />
+                      Is there funding for AI in Alberta?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      Yes, Alberta is a global leader in AI. Amii (Alberta Machine Intelligence Institute) provides expertise and partnership support, while Alberta Innovates offers funding for digital and AI-enabled projects.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-gray-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-gray-900 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-0.5" />
+                      Can startups get funding in Calgary?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      Absolutely. Calgary has a vibrant startup ecosystem. In addition to Alberta Innovates, startups can access funding through Opportunity Calgary Investment Fund (OCIF) and various accelerator programs like Creative Destruction Lab - Rockies.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-gray-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-gray-900 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-0.5" />
+                      What is the Alberta Innovation Vouchers program?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      The Voucher program provides funding for SMEs to hire third-party service providers for business and technology development support, such as IP assessment, market research, or product testing.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-gray-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-gray-900 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-orange-600 mr-2 mt-0.5" />
+                      Are there grants for oil and gas innovation?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      Yes. Instead of traditional extraction, funding focuses on &quot;clean resource&quot; innovation—technologies that improve efficiency, reduce emissions (like methane), or clean up environmental liabilities.
+                    </p>
                   </CardContent>
                 </Card>
               </div>

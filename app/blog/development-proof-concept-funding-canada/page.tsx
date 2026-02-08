@@ -168,7 +168,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Stage 2: Development & Proof-of-Concept Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the Major Stage 2 Development & Proof-of-Concept Programs?</h2>
 
               <div className="space-y-8">
                 {/* IRAP Technology Development */}
@@ -379,7 +379,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Stage 2: Development & Proof-of-Concept Covers</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Does Stage 2 Development & Proof-of-Concept Cover?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-blue-200">
@@ -470,7 +470,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
         <section className="py-16 bg-white border-b border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">From Prototype to Pilot: Stage 2 Roadmap</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How Do You Move From Prototype to Pilot in Stage 2?</h2>
               <div className="grid md:grid-cols-4 gap-4">
                 <div className="bg-blue-50 p-6 rounded-lg border border-blue-100 relative">
                   <div className="absolute -top-4 left-6 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
@@ -505,7 +505,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
         <section className="py-16 bg-slate-50 border-b border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Case Study: Scaling Up the Hardware</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Case Study: How Does Scaling Up Hardware Work?</h2>
               <div className="bg-white rounded-xl p-8 border border-slate-200 shadow-sm">
                 <div className="flex flex-col md:flex-row gap-6 mb-6">
                   <div className="w-16 h-16 bg-cyan-600 rounded-lg flex items-center justify-center text-white font-bold text-2xl flex-shrink-0">
@@ -568,7 +568,7 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Stage 2 Development Funding Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">What are the Strategies for Stage 2 Development Funding Success?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
@@ -699,6 +699,65 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
                   </AccordionItem>
                 ))}
               </Accordion>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-gradient-to-r from-blue-50 to-cyan-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">What are Common Questions About Development & Proof-of-Concept Funding?</h2>
+              <p className="text-lg text-gray-600 text-center mb-8">Quick answers to the most frequently asked questions about IRAP, SR&ED, and prototype development funding.</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#irap" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-blue-100">
+                  <h3 className="font-semibold text-blue-700">How much IRAP funding can I receive?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Up to $500K covering 60-80% of eligible project costs</p>
+                </a>
+                <a href="#sred" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-blue-100">
+                  <h3 className="font-semibold text-blue-700">What is the SR&ED tax credit rate?</h3>
+                  <p className="text-sm text-gray-600 mt-1">35-65% refundable credits on R&D salaries and materials</p>
+                </a>
+                <a href="#stacking" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-blue-100">
+                  <h3 className="font-semibold text-blue-700">Can I claim both IRAP and SR&ED?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, but IRAP funding reduces eligible SR&ED expenditures</p>
+                </a>
+                <a href="#trl" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-blue-100">
+                  <h3 className="font-semibold text-blue-700">What does TRL 4-6 mean?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Component validation, prototype testing, and simulated environment demonstration</p>
+                </a>
+                <a href="#timeline" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-blue-100">
+                  <h3 className="font-semibold text-blue-700">How long does IRAP approval take?</h3>
+                  <p className="text-sm text-gray-600 mt-1">4-8 weeks from initial contact to funding approval</p>
+                </a>
+                <a href="#documentation" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-blue-100">
+                  <h3 className="font-semibold text-blue-700">What documentation do I need for SR&ED?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Technical logs, git commits, test records, and detailed timesheets</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">📚 Related Guides</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/blog/ideation-research-funding-canada" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">Stage 1: Ideation & Research</h3>
+                  <p className="text-sm text-gray-600">Early-stage research funding through NSERC and Mitacs programs</p>
+                </Link>
+                <Link href="/blog/demonstration-pilot-funding-canada" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">Stage 3: Demonstration & Pilot</h3>
+                  <p className="text-sm text-gray-600">Scale to pre-commercial demonstration with SDTC and Clean Growth</p>
+                </Link>
+                <Link href="/blog/sred-scientific-research-experimental-development" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">SR&ED Tax Credits Guide</h3>
+                  <p className="text-sm text-gray-600">Complete guide to Canada's Scientific Research tax incentive program</p>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

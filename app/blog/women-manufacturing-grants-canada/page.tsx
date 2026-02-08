@@ -3,6 +3,12 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Settings, MapPin, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
@@ -100,7 +106,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Manufacturing Equipment Grants by Province and Major City (2026-2027 Funding Available)</h2>
+              <h2 id="provincial-grants" className="text-3xl font-bold text-gray-900 mb-8 text-center">What are the Women Manufacturing Grants by Province?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-green-200 hover:shadow-lg transition-shadow">
@@ -219,7 +225,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-green-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 2026-2027 Women Manufacturing Funding Highlights (High-Value Equipment Grants & Business Loans)</h3>
+                      <h3 className="text-lg font-bold text-green-800 mb-2">🚀 What are the 2026-2027 Funding Highlights?</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700">
                         <div>
                           <strong>NRC IRAP Manufacturing R&D:</strong> Up to $10,000,000 non-repayable contributions for women-owned industrial research, process innovation, automation projects, quality improvement initiatives across all Canadian provinces
@@ -247,7 +253,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Manufacturing Innovation Ecosystem for Women Entrepreneurs Across Canada: Toronto to Vancouver Manufacturing Equipment Financing 2026-2027</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the Manufacturing Innovation Ecosystem?</h2>
                 <p className="text-lg text-gray-600 mb-4">
                   Canadian women manufacturing entrepreneurs have access to comprehensive funding for equipment purchases,
                   productivity improvements, automation, advanced manufacturing technology, and digital transformation across
@@ -360,7 +366,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section id="manufacturing-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Manufacturing Grants and Equipment Financing for Women Entrepreneurs Canada 2026-2027</h2>
+              <h2 id="federal-grants" className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Federal Manufacturing Grants and Equipment Financing?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete guide to federal manufacturing funding programs available to women-owned production businesses
                 across all Canadian provinces including Ontario women manufacturers Toronto Ottawa Hamilton, Quebec women
@@ -779,7 +785,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Ontario Manufacturing Grants for Women Entrepreneurs - Equipment Funding, Productivity Loans, Automation Financing Toronto Ottawa Hamilton 2026-2027</h2>
+              <h2 id="ontario-grants" className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Ontario Manufacturing Grants?</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
                 Complete guide to Ontario provincial manufacturing support programs for women-owned production businesses
                 in Greater Toronto Area (Toronto, Mississauga, Brampton, Markham, Vaughan, Richmond Hill, Oakville,
@@ -799,7 +805,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                   <CardContent className="pt-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-green-800">OMITC Program Details for Women-Owned Manufacturing Businesses</h4>
+                        <h4 className="font-bold text-xl mb-4 text-green-800">What are the OMITC Program Details?</h4>
                         <div className="space-y-3">
                           <div className="bg-green-50 p-4 rounded-lg border border-green-200">
                             <div className="space-y-2 text-sm text-gray-700">
@@ -827,7 +833,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">Ontario Regional OMITC Examples - Women Manufacturing Businesses</h4>
+                        <h4 className="font-bold text-xl mb-4 text-gray-800">What are the Ontario Regional OMITC Examples?</h4>
                         <div className="space-y-4 text-sm">
                           <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                             <p className="font-bold text-blue-800 mb-2">💰 Markham Electronics Manufacturer - $85,000 OMITC Refund</p>
@@ -863,13 +869,13 @@ export default function WomenManufacturingGrantsCanadaPage() {
                   <CardHeader className="bg-gradient-to-r from-blue-100 to-cyan-100">
                     <div className="flex items-center mb-2">
                       <MapPin className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle className="text-blue-700 text-2xl">Ontario Regional Economic Development Corporations - Manufacturing Equipment Grants Women Entrepreneurs by Region</CardTitle>
+                      <CardTitle className="text-blue-700 text-2xl">What are the Ontario Regional Economic Development Corporations?</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-blue-800">Greater Toronto Area (GTA) Manufacturing Support Women Businesses</h4>
+                        <h4 className="font-bold text-xl mb-4 text-blue-800">What is the GTA Manufacturing Support?</h4>
                         <div className="space-y-4">
                           <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                             <p className="font-bold text-blue-800 mb-2">Toronto Manufacturing Innovation Centre - Women Equipment Grants</p>
@@ -913,7 +919,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">Ottawa & Eastern Ontario Manufacturing Support Women</h4>
+                        <h4 className="font-bold text-xl mb-4 text-gray-800">What is the Ottawa & Eastern Ontario Manufacturing Support?</h4>
                         <div className="space-y-4">
                           <div className="bg-green-50 p-4 rounded-lg border border-green-200">
                             <p className="font-bold text-green-800 mb-2">Ottawa Economic Development - Women Manufacturing Grants</p>
@@ -936,7 +942,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                           </div>
                         </div>
 
-                        <h4 className="font-bold text-xl mb-4 mt-6 text-gray-800">Southwest Ontario Manufacturing - Windsor London KW Women</h4>
+                        <h4 className="font-bold text-xl mb-4 mt-6 text-gray-800">What is the Southwest Ontario Manufacturing Support?</h4>
                         <div className="space-y-4">
                           <div className="bg-red-50 p-4 rounded-lg border border-red-200">
                             <p className="font-bold text-red-800 mb-2">Windsor-Essex Economic Development - Automotive Women Manufacturers</p>
@@ -976,7 +982,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                 {/* Hamilton-Niagara Manufacturing */}
                 <Card className="border-slate-200">
                   <CardHeader>
-                    <CardTitle className="text-slate-700 text-xl">Hamilton-Niagara Industrial Corridor - Manufacturing Equipment Grants Women Entrepreneurs</CardTitle>
+                    <CardTitle className="text-slate-700 text-xl">What is the Hamilton-Niagara Industrial Corridor Support?</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="grid md:grid-cols-3 gap-4 text-sm">
@@ -1006,7 +1012,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Quebec Manufacturing Grants for Women Entrepreneurs - Financement Équipement Fabrication Femmes Montréal Québec Laval 2026-2027</h2>
+              <h2 id="quebec-grants" className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Quebec Manufacturing Grants?</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
                 Guide complet des programmes de financement manufacturier provincial pour les femmes entrepreneures québécoises
                 dans la région du Grand Montréal (Montréal, Laval, Longueuil, Terrebonne, Repentigny), région de Québec
@@ -1020,13 +1026,13 @@ export default function WomenManufacturingGrantsCanadaPage() {
                   <CardHeader className="bg-gradient-to-r from-blue-100 to-indigo-100">
                     <div className="flex items-center mb-2">
                       <Building className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle className="text-blue-700 text-2xl">Investissement Québec - Financement Manufacturier Femmes Entrepreneures / Manufacturing Financing Women Entrepreneurs Quebec</CardTitle>
+                      <CardTitle className="text-blue-700 text-2xl">What is Investissement Québec Financing?</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-blue-800">Programmes de Financement Manufacturier Investissement Québec</h4>
+                        <h4 className="font-bold text-xl mb-4 text-blue-800">What are the Investissement Québec Financing Programs?</h4>
                         <div className="space-y-3">
                           <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                             <p className="font-semibold text-gray-800 mb-3">Financement d'équipement manufacturier femmes Québec:</p>
@@ -1050,7 +1056,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">Exemples Régionaux Investissement Québec - Femmes Manufacturières</h4>
+                        <h4 className="font-bold text-xl mb-4 text-gray-800">What are the Investissement Québec Regional Examples?</h4>
                         <div className="space-y-4 text-sm">
                           <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
                             <p className="font-bold text-purple-800 mb-2">🏭 Laval Transformation Alimentaire - $1.2M Financement IQ</p>
@@ -1120,7 +1126,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                 {/* Quebec Tax Credits Manufacturing */}
                 <Card className="border-purple-200">
                   <CardHeader>
-                    <CardTitle className="text-purple-700 text-xl">Crédits d'Impôt Manufacturiers Québec - Quebec Manufacturing Tax Credits Women Entrepreneurs</CardTitle>
+                    <CardTitle className="text-purple-700 text-xl">What are the Quebec Manufacturing Tax Credits?</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="grid md:grid-cols-2 gap-6 text-sm">
@@ -1155,7 +1161,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">British Columbia Manufacturing Grants for Women Entrepreneurs - Equipment Funding Vancouver Surrey Burnaby Richmond Victoria 2026-2027</h2>
+              <h2 id="bc-grants" className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the British Columbia Manufacturing Grants?</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
                 Complete guide to BC provincial manufacturing support programs for women-owned production businesses
                 in Metro Vancouver (Vancouver, Surrey, Burnaby, Richmond, Coquitlam, New Westminster, North Vancouver,
@@ -1170,13 +1176,13 @@ export default function WomenManufacturingGrantsCanadaPage() {
                   <CardHeader className="bg-gradient-to-r from-emerald-100 to-teal-100">
                     <div className="flex items-center mb-2">
                       <DollarSign className="w-6 h-6 text-emerald-600 mr-3" />
-                      <CardTitle className="text-emerald-700 text-2xl">Women's Enterprise Centre BC (WeBC) - Manufacturing Equipment Loans Up to $150,000 Women Entrepreneurs</CardTitle>
+                      <CardTitle className="text-emerald-700 text-2xl">What are the WeBC Manufacturing Loans?</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-emerald-800">WeBC Manufacturing Business Loan Programs</h4>
+                        <h4 className="font-bold text-xl mb-4 text-emerald-800">What are the WeBC Loan Programs?</h4>
                         <div className="space-y-3">
                           <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
                             <p className="font-semibold text-gray-800 mb-3">WeBC Equipment Financing for Women Manufacturing Businesses BC:</p>
@@ -1205,7 +1211,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">BC Regional WeBC Manufacturing Loan Examples - Women Entrepreneurs</h4>
+                        <h4 className="font-bold text-xl mb-4 text-gray-800">What are the WeBC Regional Loan Examples?</h4>
                         <div className="space-y-4 text-sm">
                           <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                             <p className="font-bold text-blue-800 mb-2">🏭 Surrey Food Manufacturing - $120,000 WeBC Loan</p>
@@ -1290,13 +1296,13 @@ export default function WomenManufacturingGrantsCanadaPage() {
                   <CardHeader className="bg-gradient-to-r from-blue-100 to-cyan-100">
                     <div className="flex items-center mb-2">
                       <Zap className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle className="text-blue-700 text-2xl">Innovate BC - Advanced Manufacturing Innovation Funding Women Entrepreneurs British Columbia</CardTitle>
+                      <CardTitle className="text-blue-700 text-2xl">What is Innovate BC Funding?</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-blue-800">Innovate BC Manufacturing Innovation Programs</h4>
+                        <h4 className="font-bold text-xl mb-4 text-blue-800">What are the Innovate BC Innovation Programs?</h4>
                         <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                           <p className="font-semibold text-gray-800 mb-3">Advanced Manufacturing Support Women BC:</p>
                           <ul className="space-y-2 text-sm text-gray-700">
@@ -1309,7 +1315,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">BC Sectors Supported - Women Manufacturing Innovation</h4>
+                        <h4 className="font-bold text-xl mb-4 text-gray-800">What are the BC Sectors Supported?</h4>
                         <div className="space-y-3 text-sm">
                           <div className="bg-teal-50 p-3 rounded-lg border border-teal-200">
                             <p className="font-bold text-teal-800">Clean Technology Manufacturing</p>
@@ -1341,7 +1347,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section className="py-16 bg-gradient-to-br from-red-50 to-orange-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Alberta Manufacturing Grants for Women Entrepreneurs - Equipment Funding Calgary Edmonton Red Deer Lethbridge 2026-2027</h2>
+              <h2 id="alberta-grants" className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Alberta Manufacturing Grants?</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
                 Complete guide to Alberta provincial manufacturing support programs for women-owned production businesses
                 in Calgary Region (Calgary, Airdrie, Okotoks, Cochrane, Chestermere), Edmonton Metropolitan (Edmonton,
@@ -1355,13 +1361,13 @@ export default function WomenManufacturingGrantsCanadaPage() {
                   <CardHeader className="bg-gradient-to-r from-red-100 to-orange-100">
                     <div className="flex items-center mb-2">
                       <Building className="w-6 h-6 text-red-600 mr-3" />
-                      <CardTitle className="text-red-700 text-2xl">Alberta Women Entrepreneurs (AWE) - Manufacturing Equipment Loans Up to $150,000 Women Business Owners</CardTitle>
+                      <CardTitle className="text-red-700 text-2xl">What are the AWE Manufacturing Loans?</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-red-800">AWE Manufacturing Business Loan Programs Alberta</h4>
+                        <h4 className="font-bold text-xl mb-4 text-red-800">What are the AWE Loan Programs?</h4>
                         <div className="space-y-3">
                           <div className="bg-red-50 p-4 rounded-lg border border-red-200">
                             <p className="font-semibold text-gray-800 mb-3">AWE Equipment Financing for Women Manufacturing Businesses Alberta:</p>
@@ -1389,7 +1395,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">Alberta Regional AWE Manufacturing Loan Examples - Women Entrepreneurs</h4>
+                        <h4 className="font-bold text-xl mb-4 text-gray-800">What are the AWE Regional Loan Examples?</h4>
                         <div className="space-y-4 text-sm">
                           <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                             <p className="font-bold text-blue-800 mb-2">🏭 Calgary Energy Manufacturing - $145,000 AWE Loan</p>
@@ -1466,7 +1472,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                   <CardHeader>
                     <div className="flex items-center mb-2">
                       <Rocket className="w-6 h-6 text-orange-600 mr-3" />
-                      <CardTitle className="text-orange-700 text-2xl">Alberta Innovates - Advanced Manufacturing Innovation Funding Women Entrepreneurs</CardTitle>
+                      <CardTitle className="text-orange-700 text-2xl">What is Alberta Innovates Funding?</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
@@ -1499,7 +1505,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Manufacturing Sector-Specific Equipment Grants for Women Entrepreneurs Canada - Industry-Focused Funding Programs 2026-2027</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">What are the Sector-Specific Equipment Grants?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Food & Beverage Manufacturing */}
@@ -1902,6 +1908,56 @@ export default function WomenManufacturingGrantsCanadaPage() {
                     </ul>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions About Manufacturing Grants</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-indigo-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Manufacturing & Tech Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/women-clean-technology-grants-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-indigo-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-indigo-700 mb-2">Clean Tech Grants</h3>
+                  <p className="text-gray-600 text-sm">Funding for sustainable manufacturing</p>
+                </Link>
+                <Link href="/blog/women-export-trade-grants-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-indigo-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-indigo-700 mb-2">Export Trade Grants</h3>
+                  <p className="text-gray-600 text-sm">Funding to export your products globally</p>
+                </Link>
+                <Link href="/blog/women-tech-stem-grants-guide" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-indigo-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-indigo-700 mb-2">Women in STEM Grants</h3>
+                  <p className="text-gray-600 text-sm">Support for women in science and tech</p>
+                </Link>
+                <Link href="/blog/women-business-grants-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-indigo-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-indigo-700 mb-2">Women Business Grants</h3>
+                  <p className="text-gray-600 text-sm">Comprehensive directory of all funding</p>
+                </Link>
               </div>
             </div>
           </div>

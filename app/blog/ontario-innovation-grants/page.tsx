@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Building, Factory, Microscope, Brain, Leaf, TrendingUp, ExternalLink, ArrowRight } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Building, Factory, Microscope, Brain, Leaf, TrendingUp, ExternalLink, ArrowRight, HelpCircle } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,6 +26,42 @@ export const metadata: Metadata = {
 }
 
 export default function OntarioInnovationGrantsTaxCreditsPage() {
+  const faqData = [
+    {
+      question: "What is the Ontario Innovation Tax Credit (OITC)?",
+      answer: "The OITC is a 10% refundable tax credit for small to medium-sized corporations on eligible R&D expenditures in Ontario, which can be stacked with federal SR&ED credits."
+    },
+    {
+      question: "What does the Ontario Centre of Innovation (OCI) fund?",
+      answer: "OCI supports collaborative R&D between industry and academia, technology commercialization, and automotive innovation through programs like the Vehicle Innovation Network."
+    },
+    {
+      question: "Is the Jobs and Prosperity Fund still active?",
+      answer: "Yes, the Jobs and Prosperity Fund continues to support large-scale business expansion and innovation projects in Ontario, typically requiring minimum investments of $10 million."
+    },
+    {
+      question: "Can I combine provincial and federal innovation grants?",
+      answer: "Yes, 'stacking' is encouraged. You can often combine the Ontario Innovation Tax Credit (OITC) with the federal SR&ED tax credit, and provincial grants with federal programs like IRAP."
+    },
+    {
+      question: "Who is eligible for the Ontario Interactive Digital Media Tax Credit?",
+      answer: "The OIDMTC offers a 35-40% refundable tax credit for eligible labour, marketing, and distribution costs for qualifying digital media products developed in Ontario."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <>
       <Header />
@@ -683,6 +725,29 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Official Resources Section */}
         <section className="py-16 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -772,46 +837,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
       {/* FAQ Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the Ontario Innovation Tax Credit (OITC)?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The OITC is a 10% refundable tax credit for small to medium-sized corporations on eligible R&D expenditures in Ontario, which can be stacked with federal SR&ED credits."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What does the Ontario Centre of Innovation (OCI) fund?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "OCI supports collaborative R&D between industry and academia, technology commercialization, and automotive innovation through programs like the Vehicle Innovation Network."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Is the Jobs and Prosperity Fund still active?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The Jobs and Prosperity Fund has largely been superseded by newer programs like the Regional Development Program and Invest Ontario Fund, but it remains a key reference for large-scale projects."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Can startups get funding from Regional Innovation Centres?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, Ontario's 17 Regional Innovation Centres (like MaRS, Communitech, Invest Ottawa) provide free advisory services, market intelligence, and access to funding programs for startups."
-                }
-              }
-            ]
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </>
   )

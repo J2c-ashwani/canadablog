@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Percent } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Percent, MapPin, Briefcase, HelpCircle } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,8 +26,44 @@ export const metadata: Metadata = {
 }
 
 export default function CSBFPGovernmentGrantsBlogPage() {
+  const faqData = [
+    {
+      question: "What can CSBFP loans be used for?",
+      answer: "CSBFP loans can finance up to 100% of the cost of purchasing land or buildings, making leasehold improvements, and buying or improving equipment. They cannot be used for goodwill, working capital, inventory, or franchise fees."
+    },
+    {
+      question: "What is the maximum loan amount under CSBFP?",
+      answer: "A borrower can access up to $1.15 million in total financing, which includes a maximum of $1,000,000 for term loans (real property and equipment) and up to $150,000 for a line of credit."
+    },
+    {
+      question: "Who is eligible for the CSBFP program?",
+      answer: "Small businesses or startups operating in Canada for profit with gross annual revenues of $10 million or less are eligible. Farming businesses and charitable/religious organizations are excluded."
+    },
+    {
+      question: "Is the CSBFP a grant or a loan?",
+      answer: "It is a government-guaranteed loan, not a grant. The government shares the risk with the lender (financial institution), often making it easier for you to get approved, but the money must be repaid with interest."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -35,8 +77,8 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                 Canada Small Business Financing Program (CSBFP)
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Canada's flagship government-guaranteed lending program providing up to $1M in federally-backed 
-                financing for small business equipment and real property. Complete guide to CSBFP federal loan guarantees, 
+                Canada's flagship government-guaranteed lending program providing up to $1M in federally-backed
+                financing for small business equipment and real property. Complete guide to CSBFP federal loan guarantees,
                 government compliance requirements, and strategic integration with other federal SME programs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -81,13 +123,13 @@ export default function CSBFPGovernmentGrantsBlogPage() {
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">CSBFP as Federal Risk-Sharing Policy Tool</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  The Canada Small Business Financing Program represents the federal government's primary mechanism 
-                  for addressing market failures in small business lending. Administered by Innovation, Science & 
-                  Economic Development Canada (ISED), CSBFP operates as a risk-sharing partnership between the 
-                  Government of Canada and approved financial institutions, providing loan guarantees that enable 
+                  The Canada Small Business Financing Program represents the federal government's primary mechanism
+                  for addressing market failures in small business lending. Administered by Innovation, Science &
+                  Economic Development Canada (ISED), CSBFP operates as a risk-sharing partnership between the
+                  Government of Canada and approved financial institutions, providing loan guarantees that enable
                   access to capital for businesses that might otherwise be declined.
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-blue-800">Federal Policy Objectives</h4>
@@ -98,7 +140,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                       <li>• Facilitate business expansion and job creation</li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-green-50 p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-3 text-green-800">Government Risk Management</h4>
                     <ul className="text-gray-700 space-y-2">
@@ -119,7 +161,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">CSBFP Federal Program Structure</h2>
-              
+
               <div className="space-y-8">
                 {/* Federal Loan Guarantee Framework */}
                 <Card className="border-blue-200">
@@ -145,7 +187,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      CSBFP operates under the Canada Small Business Financing Act, providing federal loan guarantees 
+                      CSBFP operates under the Canada Small Business Financing Act, providing federal loan guarantees
                       to approved financial institutions for qualifying small business loans.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -195,7 +237,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Federal eligibility requirements ensure CSBFP serves its intended policy objectives of 
+                      Federal eligibility requirements ensure CSBFP serves its intended policy objectives of
                       supporting qualifying Canadian small businesses.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -245,7 +287,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      CSBFP operates through a network of government-approved lenders who are authorized to 
+                      CSBFP operates through a network of government-approved lenders who are authorized to
                       make loans under the federal guarantee program.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -295,7 +337,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Federal regulations require comprehensive security documentation to protect government 
+                      Federal regulations require comprehensive security documentation to protect government
                       guarantee interests and ensure loan recoverability.
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -330,7 +372,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">CSBFP Federal Policy Integration</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-blue-700">🏛️ Federal SME Policy Alignment:</h4>
@@ -353,7 +395,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">🔗 Complementary Federal Programs:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -385,7 +427,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">CSBFP Federal Application Process</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <span className="bg-blue-500 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold mr-4 mt-0.5">1</span>
@@ -432,7 +474,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">CSBFP Federal Application Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-green-700">✅ Government Program Success Factors:</h4>
@@ -455,7 +497,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-bold text-lg mb-4 text-red-700">❌ Common Federal Application Mistakes:</h4>
                   <ul className="space-y-3 text-gray-700">
@@ -482,6 +524,76 @@ export default function CSBFPGovernmentGrantsBlogPage() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Related Government Grant Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/ontario-business-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-red-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Ontario Business Grants</h3>
+                      <p className="text-sm text-gray-500">Growth funding for Ontario SMEs</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/bc-business-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-blue-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">BC Business Grants</h3>
+                      <p className="text-sm text-gray-500">Funding for British Columbia businesses</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/alberta-business-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-green-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Alberta Business Grants</h3>
+                      <p className="text-sm text-gray-500">Support for Alberta entrepreneurs</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/startup-grants-canada-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Briefcase className="w-8 h-8 text-purple-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Startup Grants Canada</h3>
+                      <p className="text-sm text-gray-500">New business funding opportunities</p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -490,10 +602,10 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                 Ready to Access CSBFP Government-Guaranteed Financing?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Get the complete CSBFP federal application guide or work with our government financing specialists 
+                Get the complete CSBFP federal application guide or work with our government financing specialists
                 who have secured $25M+ in CSBFP approvals with deep federal program expertise.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 {/* Get Application Guide CTA */}
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
@@ -522,7 +634,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-blue-200 text-sm mt-6">
                 92% success rate for CSBFP applications • Average financing secured: $285K • Federal program expertise
               </p>

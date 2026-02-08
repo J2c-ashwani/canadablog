@@ -97,6 +97,41 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gradient-to-r from-amber-50 to-orange-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Indigenous & Rural Funding</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-amber-500">
+                  <h3 className="font-semibold text-amber-700">Do I need status for Indigenous funding?</h3>
+                  <p className="text-sm text-gray-600">Not always - some programs serve all Indigenous-owned businesses</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-orange-500">
+                  <h3 className="font-semibold text-orange-700">Can non-Indigenous access rural grants?</h3>
+                  <p className="text-sm text-gray-600">Yes, Community Futures is open to all rural entrepreneurs</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-green-500">
+                  <h3 className="font-semibold text-green-700">What is NACCA and how does it help?</h3>
+                  <p className="text-sm text-gray-600">Network of 59 Aboriginal Financial Institutions across Canada</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-blue-500">
+                  <h3 className="font-semibold text-blue-700">How much can I get from AEP?</h3>
+                  <p className="text-sm text-gray-600">Up to $500K non-repayable grant for Indigenous businesses</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-purple-500">
+                  <h3 className="font-semibold text-purple-700">Is there funding for Indigenous tourism?</h3>
+                  <p className="text-sm text-gray-600">Yes, up to $150K through ITAC for cultural experiences</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-red-500">
+                  <h3 className="font-semibold text-red-700">What defines a rural area?</h3>
+                  <p className="text-sm text-gray-600">Generally communities under 30,000 population</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Program Statistics - SEO Optimized */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,7 +195,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Indigenous Business Funding Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Indigenous Business Funding Programs are Available?</h2>
 
               <div className="space-y-8">
                 {/* Aboriginal Entrepreneurship Program */}
@@ -321,7 +356,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Rural Business Development Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Rural Business Development Programs exist?</h2>
 
               <div className="space-y-8">
                 {/* Community Futures */}
@@ -432,7 +467,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Provincial Indigenous & Rural Business Support</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Which Provincial Indigenous & Rural Business Support Programs are Available?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
@@ -534,7 +569,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Success Tips for Indigenous & Rural Entrepreneurs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">What are Success Tips for Indigenous & Rural Entrepreneurs?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
@@ -641,6 +676,39 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                   </AccordionItem>
                 ))}
               </Accordion>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">📚 Related Canadian Business Grant Guides</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/canada/small-business-grants" className="block p-6 bg-amber-50 rounded-lg shadow hover:shadow-md transition border-l-4 border-amber-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">Canada Small Business Grants</h3>
+                  <p className="text-sm text-gray-600">Complete guide to all Canadian business funding</p>
+                </Link>
+                <Link href="/blog/women-entrepreneurship-fund-canada" className="block p-6 bg-orange-50 rounded-lg shadow hover:shadow-md transition border-l-4 border-orange-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">Women Entrepreneurship Fund</h3>
+                  <p className="text-sm text-gray-600">Federal programs for women-owned businesses</p>
+                </Link>
+                <Link href="/blog/canada-agri-food-technology-innovation-grants" className="block p-6 bg-green-50 rounded-lg shadow hover:shadow-md transition border-l-4 border-green-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">Agriculture & Agri-Food Grants</h3>
+                  <p className="text-sm text-gray-600">Funding for farming and food businesses</p>
+                </Link>
+              </div>
+              <div className="mt-6 grid md:grid-cols-2 gap-6">
+                <Link href="/blog/ontario-government-business-grants" className="block p-4 bg-gray-50 rounded-lg shadow hover:shadow-md transition">
+                  <h3 className="font-semibold text-gray-900">Ontario Business Grants →</h3>
+                  <p className="text-sm text-gray-600">Provincial programs including First Nations economic development</p>
+                </Link>
+                <Link href="/blog/british-columbia-government-business-grants" className="block p-4 bg-gray-50 rounded-lg shadow hover:shadow-md transition">
+                  <h3 className="font-semibold text-gray-900">BC Business Grants →</h3>
+                  <p className="text-sm text-gray-600">BC Indigenous and rural business programs</p>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

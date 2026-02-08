@@ -703,6 +703,65 @@ export default function IdeationResearchFundingCanadaPage() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-gradient-to-r from-purple-50 to-indigo-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">What are Common Questions About Ideation & Research Funding?</h2>
+              <p className="text-lg text-gray-600 text-center mb-8">Quick answers to the most frequently asked questions about early-stage research funding in Canada.</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#nserc" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-purple-100">
+                  <h3 className="font-semibold text-purple-700">Who can apply for NSERC Discovery Grants?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Researchers at eligible Canadian universities conducting fundamental research</p>
+                </a>
+                <a href="#trl" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-purple-100">
+                  <h3 className="font-semibold text-purple-700">What does TRL 1-3 mean?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Early discovery phase: basic research, concept formulation, and proof-of-principle</p>
+                </a>
+                <a href="#mitacs" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-purple-100">
+                  <h3 className="font-semibold text-purple-700">How does Mitacs Accelerate work?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Cost-shared internships connecting businesses with graduate researchers</p>
+                </a>
+                <a href="#funding" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-purple-100">
+                  <h3 className="font-semibold text-purple-700">How much funding is available?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Up to $1M through NSERC Discovery, $400K through SSHRC, $750K through CIHR</p>
+                </a>
+                <a href="#timeline" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-purple-100">
+                  <h3 className="font-semibold text-purple-700">How long is the NSERC application process?</h3>
+                  <p className="text-sm text-gray-600 mt-1">6-8 months from Notice of Intent to approval (August to April cycle)</p>
+                </a>
+                <a href="#outcomes" className="p-4 bg-white rounded-lg shadow hover:shadow-md transition border border-purple-100">
+                  <h3 className="font-semibold text-purple-700">What are acceptable Stage 1 outcomes?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Publications, proof-of-concept, IP foundations, and Stage 2 readiness</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">📚 Related Guides</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/blog/development-proof-concept-funding-canada" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">Stage 2: Development & Proof-of-Concept</h3>
+                  <p className="text-sm text-gray-600">Move from research to prototype with IRAP and SR&ED funding</p>
+                </Link>
+                <Link href="/blog/demonstration-pilot-funding-canada" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">Stage 3: Demonstration & Pilot</h3>
+                  <p className="text-sm text-gray-600">Scale to pre-commercial demonstration with SDTC and Clean Growth</p>
+                </Link>
+                <Link href="/blog/nserc-research-grants-canada" className="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition border border-gray-200">
+                  <h3 className="font-semibold text-gray-900 mb-2">NSERC Research Grants</h3>
+                  <p className="text-sm text-gray-600">Complete guide to Natural Sciences and Engineering Research Council programs</p>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Next Stage CTA */}
         <section className="py-20 bg-gradient-to-r from-purple-600 to-indigo-700">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

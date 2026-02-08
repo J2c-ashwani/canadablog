@@ -64,6 +64,43 @@ export default function CanadaAerospaceDefenceInnovationGrantsPage() {
           </div>
         </section>
 
+
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-slate-50 border-b border-slate-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Aerospace Funding</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#strategic-innovation" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-slate-200">
+                  <h3 className="font-semibold text-slate-800">What is the Strategic Innovation Fund?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Major federal funding ($10M+) for large-scale R&D and expansion.</p>
+                </a>
+                <a href="#defence" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-slate-200">
+                  <h3 className="font-semibold text-slate-800">How does IDEaS work?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Defence innovation challenges solving specific military problems.</p>
+                </a>
+                <a href="#space" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-slate-200">
+                  <h3 className="font-semibold text-slate-800">Does CSA fund satellites?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, the Space Technology Development Program funds space tech.</p>
+                </a>
+                <a href="#cgp" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-slate-200">
+                  <h3 className="font-semibold text-slate-800">Do I need Controlled Goods registration?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, mandatory for most defence and some aerospace projects.</p>
+                </a>
+                <a href="#sred" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-slate-200">
+                  <h3 className="font-semibold text-slate-800">Can I claim SR&ED?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Absolutely, aerospace has high R&D intensity suitable for SR&ED.</p>
+                </a>
+                <a href="#irap" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-slate-200">
+                  <h3 className="font-semibold text-slate-800">Is there funding for SMEs?</h3>
+                  <p className="text-sm text-gray-600 mt-1">IRAP provides salary support for smaller technical teams.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="overview" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -129,6 +166,91 @@ export default function CanadaAerospaceDefenceInnovationGrantsPage() {
               <p className="text-gray-700 mb-6">FedDev Ontario provides funding for the province&apos;s aerospace and space sector companies, particularly those clustered in the Greater Toronto Area and Ottawa regions. The agency supports supplier development, technology commercialization, and facility expansion for companies serving aerospace markets. PrairiesCan and Pacific Economic Development Canada increasingly support aerospace and space technology companies in western provinces as the sector grows beyond traditional Quebec and Ontario concentration.</p>
               <p className="text-gray-700 mb-6">Regional agency funding typically ranges from hundreds of thousands to several million dollars for individual projects, filling the gap between smaller IRAP support and larger Strategic Innovation Fund investments. Companies can often access regional agency funding more quickly than Strategic Innovation Fund support given simpler application processes and shorter review timelines. Regional agencies also provide business advisory services, market development support, and ecosystem connection assistance beyond direct funding.</p>
               <p className="text-gray-700 mb-6">Strategic stacking of regional funding with federal programs multiplies available support for aerospace projects. Many companies successfully combine regional agency contributions with IRAP funding, SR&ED tax credits, and ultimately Strategic Innovation Fund investment as projects mature. The key is understanding how different programs interact and ensuring compliance with stacking limits that apply to some funding combinations. Working with experienced grant consultants helps navigate these complexities and maximize total funding available for aerospace innovation investments across company growth stages.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="stdp-deep-dive" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Deep Dive: The Space Technology Development Program (STDP)</h2>
+              <p className="text-gray-700 mb-6">The CSA's flagship program isn't just for building rockets. It funds the "building blocks" of space systems. If you can build a better sensor, a lighter material, or smarter AI, you can get funded.</p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                  <h3 className="font-bold text-slate-900 mb-3">Priority Technologies (Stream A)</h3>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li><strong>Artificial Intelligence:</strong> Autonomous rover navigation.</li>
+                    <li><strong>Health:</strong> Remote medical monitoring (beneficial for deep space AND remote North).</li>
+                    <li><strong>Robotics:</strong> Next-gen Canadarm components.</li>
+                  </ul>
+                </div>
+                <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                  <h3 className="font-bold text-slate-900 mb-3">Commercial Potential (Stream B)</h3>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li><strong>Satellite Data:</strong> Processing earth observation data for farmers or insurance companies.</li>
+                    <li><strong>Communications:</strong> Low Earth Orbit (LEO) satellite components.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="cgp" className="py-16 bg-red-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-start">
+                <Shield className="w-10 h-10 text-red-600 mr-4 flex-shrink-0" />
+                <div>
+                  <h2 className="text-3xl font-bold mb-4 text-gray-900">Mandatory: The Controlled Goods Program (CGP)</h2>
+                  <p className="text-gray-700 mb-4">You cannot get a defence grant—or even <em>see</em> the technical data required to write a proposal—without being registered in the <strong>Controlled Goods Program</strong>.</p>
+
+                  <div className="bg-white p-6 rounded-lg shadow-sm border border-red-100">
+                    <h3 className="font-bold text-red-800 mb-3">The "Catch-22"</h3>
+                    <p className="text-sm text-gray-700 mb-4">You often need a contract to get into the CGP, but you need to be in the CGP to get a contract. </p>
+                    <p className="font-bold text-sm text-gray-900 mb-2">How to solve it:</p>
+                    <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
+                      <li>Find a Prime Contractor willing to sponsor you.</li>
+                      <li>Register voluntarily if you anticipate examining controlled technical data.</li>
+                      <li>Appoint a "Designated Official" (DO) in your company (must be a Canadian citizen/resident).</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="clusters" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Regional Aerospace Clusters</h2>
+              <p className="text-gray-700 mb-8">Funding often flows through these regional super-clusters. Membership is expensive, but the networking is essential for finding consortium partners for SIF bids.</p>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="border-blue-100">
+                  <CardHeader><CardTitle className="text-blue-800 text-lg">Aéro Montréal (Quebec)</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-xs text-gray-600 mb-2"><strong>Anchor Firms:</strong> Bombardier, CAE, Pratt & Whitney Canada.</p>
+                    <p className="text-xs text-gray-600"><strong>Focus:</strong> Sustainable aviation, AI in manufacturing.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-purple-100">
+                  <CardHeader><CardTitle className="text-purple-800 text-lg">OAC (Ontario)</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-xs text-gray-600 mb-2"><strong>Anchor Firms:</strong> De Havilland, Collins Aerospace.</p>
+                    <p className="text-xs text-gray-600"><strong>Focus:</strong> Landing gear, avionics, space robotics.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-emerald-100">
+                  <CardHeader><CardTitle className="text-emerald-800 text-lg">AIAC Pacific (BC)</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-xs text-gray-600 mb-2"><strong>Anchor Firms:</strong> Viking Air, MDA.</p>
+                    <p className="text-xs text-gray-600"><strong>Focus:</strong> Seaplanes, aerial firefighting, satellite surveillance.</p>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </section>
@@ -208,12 +330,52 @@ export default function CanadaAerospaceDefenceInnovationGrantsPage() {
           </div>
         </section>
 
+        <section id="hiring" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Talent Funding: Hiring Engineers for Free</h2>
+              <p className="text-gray-700 mb-6">Aerospace salaries are high. Use these programs to subsidize 50-75% of the cost of hiring new grads and interns.</p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
+                  <h3 className="font-bold text-yellow-900 mb-3 flex items-center"><Users className="w-5 h-5 mr-2" /> Mitacs Accelerate</h3>
+                  <p className="text-sm text-gray-700 mb-3"><strong>For:</strong> Master's/PhD students.</p>
+                  <p className="text-sm text-gray-700">Get a specialized researcher to solve a specific R&D problem. You pay $7.5k, Mitacs pays $7.5k. Total $15k/4 months.</p>
+                </div>
+                <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                  <h3 className="font-bold text-blue-900 mb-3 flex items-center"><Users className="w-5 h-5 mr-2" /> SWPP (Student Work Placement)</h3>
+                  <p className="text-sm text-gray-700 mb-3"><strong>For:</strong> Undergrad Co-ops.</p>
+                  <p className="text-sm text-gray-700">Technation and BioTalent (often used for aerospace) cover 50-70% of a student's wage, up to $7,000.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="green-aviation" className="py-16 bg-green-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-start">
+                <Target className="w-10 h-10 text-green-600 mr-4 flex-shrink-0" />
+                <div>
+                  <h2 className="text-3xl font-bold mb-4 text-green-900">The Future: Green Aviation Funding</h2>
+                  <p className="text-green-800 mb-4">The government has a specific mandate to decarbonize aviation. If your project involves <strong>Sustainable Aviation Fuel (SAF)</strong>, <strong>Electric Propulsion</strong>, or <strong>Lightweight Materials</strong>, you have a 3x higher chance of SIF funding.</p>
+                  <p className="font-bold text-green-900">Key Program: <span className="font-normal text-green-800">Initiative for Sustainable Aviation Technology (INSAT). Funding up to $350 million specifically for green aerospace tech.</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="faqs" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What aerospace grants are available in Canada 2026?</h3><p className="text-gray-700 mt-2 ml-7">Major aerospace funding includes the Strategic Innovation Fund (up to $500M+ for major projects), IRAP for SMEs (up to $1M), Canadian Space Agency programs, and IDEaS defence innovation challenges. Regional development agencies also provide sector-specific support.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How do I apply for aerospace innovation funding?</h3><p className="text-gray-700 mt-2 ml-7">Start with IRAP for smaller projects (contact an Industrial Technology Advisor). For major investments ($10M+), apply to the Strategic Innovation Fund. For defence applications, register for IDEaS challenges. For space, contact the Canadian Space Agency&apos;s funding office.</p></CardContent></Card>
                 <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can startups access aerospace funding or is it only for established companies?</h3><p className="text-gray-700 mt-2 ml-7">Yes, startups can access IRAP funding, CSA small projects, and IDEaS challenges. Strategic Innovation Fund typically requires established companies given project scale requirements. Build track record through smaller programs before pursuing large-scale funding.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What is the Strategic Innovation Fund for aerospace?</h3><p className="text-gray-700 mt-2 ml-7">SIF provides large-scale funding (typically $10M to $500M+) for major aerospace projects including R&D, facility expansion, and technology adoption. Aerospace is a designated priority sector with favorable evaluation. Projects must demonstrate significant economic benefit and IP retention in Canada.</p></CardContent></Card>
                 <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />How do security clearance requirements affect defence innovation programs?</h3><p className="text-gray-700 mt-2 ml-7">Many defence programs require security clearances that take three to six months to obtain. Start clearance processes immediately when pursuing defence opportunities. Some IDEaS challenges operate at unclassified levels accessible without prior clearance.</p></CardContent></Card>
                 <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What aerospace technologies are currently receiving priority funding?</h3><p className="text-gray-700 mt-2 ml-7">Electric and hybrid propulsion, sustainable aviation fuels, autonomous systems, and advanced manufacturing technologies are current priorities. Space sector focuses on lunar exploration contributions, satellite communications, and earth observation applications.</p></CardContent></Card>
               </div>
@@ -276,12 +438,18 @@ export default function CanadaAerospaceDefenceInnovationGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
+              <h2 className="text-2xl font-bold mb-6">Provincial Aerospace Clusters</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-slate-500 transition-all"><Plane className="w-5 h-5 text-blue-600 mr-3" /><span>Quebec Aerospace Hub</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-slate-500 transition-all"><Rocket className="w-5 h-5 text-purple-600 mr-3" /><span>Ontario Space & Avionics</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-slate-500 transition-all"><Target className="w-5 h-5 text-emerald-600 mr-3" /><span>BC UAV & Space Tech</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-slate-500 transition-all"><Shield className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Defence Tech</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-slate-500 transition-all"><Building className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold mb-4">Related Funding Guides</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/blog/strategic-innovation-fund-canada-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Strategic Innovation Fund Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/irap-industrial-research-assistance-program" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>IRAP Program Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/sred-scientific-research-experimental-development" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SR&amp;ED Tax Credits</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/canada/government-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>All Government Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/strategic-innovation-fund-canada-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Strategic Innovation Fund</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/irap-industrial-research-assistance-program" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-green-600 mr-3" /><span>IRAP Program Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>
@@ -299,7 +467,7 @@ export default function CanadaAerospaceDefenceInnovationGrantsPage() {
             </div>
           </div>
         </section>
-      </div>
+      </div >
       <Footer />
 
       {/* FAQ Schema */}
@@ -310,6 +478,30 @@ export default function CanadaAerospaceDefenceInnovationGrantsPage() {
             "@context": "https://schema.org",
             "@type": "FAQPage",
             "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What aerospace grants are available in Canada 2026?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Major aerospace funding includes the Strategic Innovation Fund (up to $500M+ for major projects), IRAP for SMEs (up to $1M), Canadian Space Agency programs, and IDEaS defence innovation challenges. Regional development agencies also provide sector-specific support."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I apply for aerospace innovation funding in Canada?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Start with IRAP for smaller projects (contact an Industrial Technology Advisor). For major investments ($10M+), apply to the Strategic Innovation Fund. For defence applications, register for IDEaS challenges. For space, contact the Canadian Space Agency's funding office."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the Strategic Innovation Fund for aerospace?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "SIF provides large-scale funding (typically $10M to $500M+) for major aerospace projects including R&D, facility expansion, and technology adoption. Aerospace is a designated priority sector with favorable evaluation. Projects must demonstrate significant economic benefit and IP retention in Canada."
+                }
+              },
               {
                 "@type": "Question",
                 "name": "Can startups access aerospace funding?",

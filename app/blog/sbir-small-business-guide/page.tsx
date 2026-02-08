@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, AlertCircle, Building, Clock, Download, TrendingUp, HelpCircle, BookOpen, ExternalLink, Lightbulb, Zap, Award } from "lucide-react"
+import { CheckCircle, DollarSign, Target, AlertCircle, Building, Clock, Download, TrendingUp, HelpCircle, BookOpen, ExternalLink, Lightbulb, Zap, Award, Shield, Heart, AlertTriangle, Leaf } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -16,6 +22,18 @@ export const metadata: Metadata = {
 export default function SBIRSmallBusinessGuide() {
   const faqData = [
     {
+      question: "What is the SBIR program and how much funding is available?",
+      answer: "SBIR (Small Business Innovation Research) is America's largest source of early-stage technology funding with over $4.1 billion awarded annually through 11 federal agencies. Phase I awards range from $50K-$300K for feasibility studies, and Phase II awards provide $750K-$1.7M for full R&D development. The funding is non-dilutive, meaning no equity is required and no repayment is needed."
+    },
+    {
+      question: "How do I apply for SBIR grants in 2026?",
+      answer: "First, identify topics matching your technology from agency solicitations (SBIR.gov lists all opportunities). Contact topic authors for clarification, prepare your technical and commercialization proposal following agency-specific formats, and submit through agency portals before deadlines. Review processes take 2-6 months depending on the agency."
+    },
+    {
+      question: "What is the difference between SBIR Phase I and Phase II?",
+      answer: "Phase I ($50K-$300K, 6-12 months) establishes technical feasibility and commercial potential. Phase II ($750K-$1.7M, 24 months) provides full R&D funding for prototype development and commercialization preparation. You must complete Phase I successfully before applying for Phase II from the same agency."
+    },
+    {
       question: "Can startups with no employees win SBIR awards?",
       answer: "Yes, very small companies including those with only founders can win SBIR awards. The principal investigator employment requirement means founders must work for the company, but large employee counts are not required. Many SBIR winners are small teams or even individual founders."
     },
@@ -26,6 +44,10 @@ export default function SBIRSmallBusinessGuide() {
     {
       question: "Does venture capital funding affect SBIR eligibility?",
       answer: "Venture capital ownership can affect eligibility through affiliation rules if portfolio company connections aggregate employee counts. Some agencies have waiver provisions for majority VC-owned companies meeting specific criteria. Check current SBA affiliation guidance for your situation."
+    },
+    {
+      question: "What are the success rates for SBIR applications?",
+      answer: "Success rates vary by agency but typically range from 15-30% for Phase I applications. Phase I to Phase II transition rates exceed 40% for companies with strong Phase I outcomes. Defense agencies tend to have higher award numbers but also more competition. NIH and NSF have rigorous scientific peer review processes."
     }
   ]
 
@@ -96,6 +118,33 @@ export default function SBIRSmallBusinessGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About SBIR Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#overview" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-800">What is SBIR funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Non-dilutive federal R&D grants for small businesses.</p>
+                </a>
+                <a href="#phase1" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-800">How much is a Phase I grant?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Typically $50,000 to $275,000 for feasibility.</p>
+                </a>
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-800">Do I give up equity?</h3>
+                  <p className="text-sm text-gray-600 mt-1">No, SBIR grants are 100% non-dilutive capital.</p>
+                </a>
+                <a href="#application" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-800">How long does it take?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Review process typically takes 3 to 6 months.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="overview" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -152,15 +201,153 @@ export default function SBIRSmallBusinessGuide() {
 
         <section id="agencies" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Participating Federal Agencies</h2>
-              <p className="text-gray-700 mb-6">Eleven federal agencies participate in the SBIR program, each bringing distinct focus areas, funding levels, and evaluation approaches. Understanding each agency&apos;s mission, priorities, and procedures is essential for targeting appropriate opportunities and crafting compelling proposals. Companies should research multiple agencies to identify the best alignment between their technology capabilities and agency research and development needs.</p>
-              <p className="text-gray-700 mb-6">The Department of Defense operates the largest SBIR program with over one point eight billion dollars annually across Army, Navy, Air Force, and other defense components. Defense SBIR topics address specific military capability needs including advanced materials, autonomous systems, cybersecurity, space technologies, and medical applications. Competition is intense but procurement pathways for successful technologies are well-established. Defense applications typically require proposals addressing specific solicitation topics rather than open-ended innovation areas.</p>
-              <p className="text-gray-700 mb-6">The National Institutes of Health provides the second-largest SBIR budget with approximately nine hundred million dollars annually for biomedical and health innovation. NIH SBIR emphasizes disease research, medical devices, therapeutics, diagnostics, and health information technology. Review processes incorporate rigorous scientific peer review similar to NIH research grant evaluation. Commercial potential assessment includes realistic pathways through FDA regulatory approval where applicable.</p>
-              <p className="text-gray-700 mb-6">The National Science Foundation, Department of Energy, NASA, USDA, and other agencies provide approximately one point four billion dollars combined through their SBIR programs. NSF emphasizes transformative technology innovation across science and engineering domains with strong commercialization focus through its i-Corps program. DOE supports clean energy, nuclear, grid modernization, and advanced materials technologies. NASA funds space technology, aeronautics, and earth science applications. USDA supports agricultural innovation, food systems, and natural resources technologies.</p>
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card><CardContent className="pt-6"><h3 className="font-bold text-blue-700 mb-2 flex items-center"><Building className="w-5 h-5 mr-2" />Major SBIR Agencies</h3><ul className="text-sm space-y-1"><li>Department of Defense (DoD): $1.8B annually</li><li>National Institutes of Health (NIH): $900M annually</li><li>National Science Foundation (NSF): $200M annually</li><li>Department of Energy (DOE): $350M annually</li></ul></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold text-green-700 mb-2 flex items-center"><TrendingUp className="w-5 h-5 mr-2" />Other Participating Agencies</h3><ul className="text-sm space-y-1"><li>NASA: Space and aeronautics technologies</li><li>USDA: Agricultural and food innovation</li><li>EPA: Environmental technologies</li><li>DHS: Homeland security applications</li></ul></CardContent></Card>
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-center">Deep Dive: The "Big 5" Agencies</h2>
+              <p className="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+                97% of SBIR funding comes from just five agencies. Each has a completely different culture, timeline, and review process. You cannot copy-paste a proposal from one to another.
+              </p>
+
+              <div className="space-y-8">
+                {/* Department of Defense */}
+                <Card className="border-l-4 border-l-blue-800">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center mb-4">
+                      <div className="bg-blue-100 p-3 rounded-full mr-4"><Shield className="w-8 h-8 text-blue-800" /></div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900">Department of Defense (DoD)</h3>
+                        <p className="text-sm text-gray-500 font-semibold">$1.8 Billion Annual Funding</p>
+                      </div>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="font-bold text-gray-800 mb-2">Focus Areas</h4>
+                        <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                          <li>Artificial Intelligence & Autonomy</li>
+                          <li>Advanced Materials & Manufacturing</li>
+                          <li>Cybersecurity & Communications</li>
+                          <li>Hypersonics & Space</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-800 mb-2">Insider Strategy</h4>
+                        <p className="text-sm text-gray-600">The customer is the Warfighter. You MUST speak with the "TPOC" (Technical Point of Contact) during the pre-release period. If you don't, your chances of winning drop significantly. They want solutions they can buy <em>now</em>.</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* NIH */}
+                <Card className="border-l-4 border-l-blue-400">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center mb-4">
+                      <div className="bg-blue-50 p-3 rounded-full mr-4"><Heart className="w-8 h-8 text-blue-500" /></div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900">National Institutes of Health (NIH)</h3>
+                        <p className="text-sm text-gray-500 font-semibold">$900 Million Annual Funding</p>
+                      </div>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="font-bold text-gray-800 mb-2">Focus Areas</h4>
+                        <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                          <li>Cancer Therapeutics & Diagnostics</li>
+                          <li>Aging & Alzheimer's Research</li>
+                          <li>Mental Health & Addiction</li>
+                          <li>Biomedical Engineering</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-800 mb-2">Insider Strategy</h4>
+                        <p className="text-sm text-gray-600">This is academic peer review. Your "Specific Aims" page is everything. If you don't nail the scientific hypothesis here, the rest isn't read. Commercialization is less critical in Phase I but mandatory for Phase II.</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* NSF */}
+                <Card className="border-l-4 border-l-yellow-500">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center mb-4">
+                      <div className="bg-yellow-50 p-3 rounded-full mr-4"><Lightbulb className="w-8 h-8 text-yellow-600" /></div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900">National Science Foundation (NSF)</h3>
+                        <p className="text-sm text-gray-500 font-semibold">$200 Million Annual Funding</p>
+                      </div>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="font-bold text-gray-800 mb-2">Focus Areas</h4>
+                        <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                          <li>Artificial Intelligence</li>
+                          <li>Robotics & Advanced Manufacturing</li>
+                          <li>Clean Energy & Environment</li>
+                          <li>IoT & Semiconductors</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-800 mb-2">Insider Strategy</h4>
+                        <p className="text-sm text-gray-600">NSF funds "high-risk, high-reward" technology. They do NOT buy anything. They want you to commercialize to the private sector. You must show how your innovation is a massive leap forward, not just an incremental improvement.</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* DOE */}
+                <Card className="border-l-4 border-l-green-600">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center mb-4">
+                      <div className="bg-green-50 p-3 rounded-full mr-4"><Zap className="w-8 h-8 text-green-600" /></div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900">Department of Energy (DOE)</h3>
+                        <p className="text-sm text-gray-500 font-semibold">$350 Million Annual Funding</p>
+                      </div>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="font-bold text-gray-800 mb-2">Focus Areas</h4>
+                        <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                          <li>Renewable Energy (Solar, Wind)</li>
+                          <li>Grid Modernization</li>
+                          <li>Nuclear Physics & Energy</li>
+                          <li>Carbon Capture & Storage</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-800 mb-2">Insider Strategy</h4>
+                        <p className="text-sm text-gray-600">Letter of Intent (LOI) is mandatory. If you miss the LOI deadline, you cannot apply. They are very focused on hard-tech prototype development and scalability.</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* NASA */}
+                <Card className="border-l-4 border-l-purple-600">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center mb-4">
+                      <div className="bg-purple-50 p-3 rounded-full mr-4"><Target className="w-8 h-8 text-purple-600" /></div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900">NASA</h3>
+                        <p className="text-sm text-gray-500 font-semibold">$180 Million Annual Funding</p>
+                      </div>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="font-bold text-gray-800 mb-2">Focus Areas</h4>
+                        <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                          <li>Life Support Systems</li>
+                          <li>Propulsion & Aeronautics</li>
+                          <li>Advanced Materials for Space</li>
+                          <li>Robotic Systems</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-800 mb-2">Insider Strategy</h4>
+                        <p className="text-sm text-gray-600">NASA wants technology they can use on a mission (" infusion"). Connect with a NASA center (like JPL or Langley) to find a champion who needs your tech for a future mission architecture.</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
               </div>
             </div>
           </div>
@@ -191,7 +378,79 @@ export default function SBIRSmallBusinessGuide() {
           </div>
         </section>
 
-        <section id="application" className="py-16 bg-white">
+        <section id="registration" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Before You Apply: The Registration Gauntlet</h2>
+              <div className="bg-red-50 border-l-4 border-red-500 p-6 mb-8">
+                <div className="flex items-start">
+                  <AlertTriangle className="w-6 h-6 text-red-600 mr-4 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-red-800">Warning: Start 6 Weeks Early</h3>
+                    <p className="text-sm text-red-700 mt-2">
+                      You cannot submit an application if your registrations are incomplete. Getting a CAGE code or SAM.gov activation can take 4-6 weeks. Do not wait until the solicitation opens.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <div className="flex items-center mb-4">
+                    <div className="w-8 h-8 bg-black rounded-full text-white flex items-center justify-center font-bold mr-3">1</div>
+                    <h3 className="font-bold text-lg">SAM.gov (Critical)</h3>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">System for Award Management. Required to do business with the US government. This generates your UEI (Unique Entity ID).</p>
+                  <ul className="text-xs text-gray-500 list-disc list-inside">
+                    <li>Requires IRS EIN number</li>
+                    <li>Takes 10-15 days for validation</li>
+                    <li>Must be renewed annually</li>
+                  </ul>
+                </div>
+
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <div className="flex items-center mb-4">
+                    <div className="w-8 h-8 bg-blue-600 rounded-full text-white flex items-center justify-center font-bold mr-3">2</div>
+                    <h3 className="font-bold text-lg">SBA Company Registry</h3>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Small Business Administration registry specifically for SBIR applicants.</p>
+                  <ul className="text-xs text-gray-500 list-disc list-inside">
+                    <li>Instant registration (PDF download)</li>
+                    <li>Validates small business status</li>
+                    <li>Links to your SAM profile</li>
+                  </ul>
+                </div>
+
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <div className="flex items-center mb-4">
+                    <div className="w-8 h-8 bg-green-600 rounded-full text-white flex items-center justify-center font-bold mr-3">3</div>
+                    <h3 className="font-bold text-lg">Grants.gov</h3>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">The submission portal for most civilian agencies (NIH, DOE, USDA). You need an "AOR" (Authorized Organization Representative) account.</p>
+                  <ul className="text-xs text-gray-500 list-disc list-inside">
+                    <li>Use same email as SAM.gov</li>
+                    <li>Requires password updates every 90 days</li>
+                  </ul>
+                </div>
+
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <div className="flex items-center mb-4">
+                    <div className="w-8 h-8 bg-purple-600 rounded-full text-white flex items-center justify-center font-bold mr-3">4</div>
+                    <h3 className="font-bold text-lg">Agency Portals</h3>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Specific portals for other agencies. You must register here too.</p>
+                  <ul className="text-xs text-gray-500 list-disc list-inside">
+                    <li><strong>DSIP:</strong> Defense SBIR/STTR Innovation Portal (DoD)</li>
+                    <li><strong>Research.gov:</strong> NSF Portal</li>
+                    <li><strong>eRA Commons:</strong> NIH (complex setup)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="application" className="py-16 bg-white border-t">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Application Process</h2>
@@ -205,13 +464,81 @@ export default function SBIRSmallBusinessGuide() {
           </div>
         </section>
 
+        <section id="phase-comparison" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-center">Snapshot: Phase I vs Phase II</h2>
+              <p className="text-gray-600 text-center mb-10 max-w-2xl mx-auto">Understanding the distinct goals of each phase is critical. Phase I is about <em>proving it works</em>. Phase II is about <em>making it market-ready</em>.</p>
+
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse border border-gray-200">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className="p-4 border border-gray-200 text-left">Feature</th>
+                      <th className="p-4 border border-gray-200 text-left text-blue-800">Phase I (Feasibility)</th>
+                      <th className="p-4 border border-gray-200 text-left text-purple-800">Phase II (Development)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    <tr>
+                      <td className="p-4 border border-gray-200 font-bold">Funding Amount</td>
+                      <td className="p-4 border border-gray-200">$50,000 - $295,924</td>
+                      <td className="p-4 border border-gray-200">$750,000 - $1,972,828</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="p-4 border border-gray-200 font-bold">Duration</td>
+                      <td className="p-4 border border-gray-200">6 - 12 Months</td>
+                      <td className="p-4 border border-gray-200">24 Months</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border border-gray-200 font-bold">Primary Goal</td>
+                      <td className="p-4 border border-gray-200">Scientific/Technical Merit & Feasibility</td>
+                      <td className="p-4 border border-gray-200">Prototype & Commercial Potential</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="p-4 border border-gray-200 font-bold">Success Rate</td>
+                      <td className="p-4 border border-gray-200">15% - 25%</td>
+                      <td className="p-4 border border-gray-200">45% - 55% (from Phase I)</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 border border-gray-200 font-bold">Key Output</td>
+                      <td className="p-4 border border-gray-200">Final Report + Feasibility Proof</td>
+                      <td className="p-4 border border-gray-200">Commercial Prototype / Product</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="proposal" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Proposal Writing Strategies</h2>
-              <p className="text-gray-700 mb-6">Winning SBIR proposals clearly articulate technological innovation, demonstrate deep domain expertise, and present compelling commercialization pathways. The technical section should describe the innovation&apos;s novelty relative to existing approaches, explain why current solutions are inadequate, and detail the proposed research methodology. Reviewers must understand what makes your approach different and better, not just that you will work on an important problem.</p>
-              <p className="text-gray-700 mb-6">The commercialization plan receives intense scrutiny because agencies want funded technologies to reach market impact. Strong commercialization sections identify specific customer segments with quantified market size, describe competitive positioning, and outline realistic revenue projections. Customer letters documenting interest, partnership agreements, and investment term sheets provide concrete evidence of commercial potential. Vague market descriptions or unrealistic projections raise red flags during review.</p>
-              <p className="text-gray-700 mb-6">Team qualification documentation must demonstrate capability to execute the proposed work. Principal investigator credentials should align with technical approach requirements. Company track record including previous SBIR awards, product development, and commercial sales provides evidence of execution capability. Advisory board members and consultants can supplement internal capabilities but should not replace core team expertise.</p>
+              <h2 className="text-3xl font-bold mb-6">Structuring Your Commercialization Plan</h2>
+              <p className="text-gray-700 mb-8">For Phase II (and increasingly Phase I), the "Commercialization Plan" is where many technical founders fail. Agencies do not fund science projects; they fund products. Here is the structure winning proposals use.</p>
+
+              <div className="space-y-6">
+                <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-600">
+                  <h3 className="text-lg font-bold mb-2">1. The Market Opportunity (Tam/Sam/Som)</h3>
+                  <p className="text-sm text-gray-600">Define your Total Addressable Market (TAM), Serviceable Available Market (SAM), and Serviceable Obtainable Market (SOM). <strong>Do not say "everyone".</strong> Be specific (e.g., "The 4,500 acute care hospitals in the US").</p>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-600">
+                  <h3 className="text-lg font-bold mb-2">2. The Customer & Pain Point</h3>
+                  <p className="text-sm text-gray-600">Who writes the check? Is it the Department of Defense? A hospital purchasing manager? A consumer? Clearly articulate <em>why</em> they are desperate for your solution.</p>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-600">
+                  <h3 className="text-lg font-bold mb-2">3. The Competition (Be Honest)</h3>
+                  <p className="text-sm text-gray-600">List competitors by name. Use a "feature matrix" to show where you win (e.g., "We are 50% cheaper," "We detect pathogens 2 hours faster"). <strong>Never say "we have no competitors".</strong></p>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-purple-600">
+                  <h3 className="text-lg font-bold mb-2 flex items-center"><Award className="w-5 h-5 mr-2" /> 4. Letters of Support (The Secret Weapon)</h3>
+                  <p className="text-sm text-gray-600"><strong>Crucial:</strong> Include actual letters from potential customers saying "If this innovation works as described, we would be interested in buying/testing it." This validates market pull better than any paragraph of text.</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -230,7 +557,65 @@ export default function SBIRSmallBusinessGuide() {
           </div>
         </section>
 
-        <section id="success" className="py-16 bg-gray-50">
+        <section id="success-stories" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-center">Real SBIR Success Stories</h2>
+
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+                <div className="md:flex">
+                  <div className="md:w-1/3 bg-blue-900 p-8 flex flex-col justify-center text-white">
+                    <Zap className="w-12 h-12 mb-4 text-yellow-400" />
+                    <h3 className="text-xl font-bold mb-2">Qualcomm</h3>
+                    <p className="text-blue-200 text-sm">San Diego, CA</p>
+                    <div className="mt-4 pt-4 border-t border-blue-700">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-blue-300">Impact</p>
+                      <p className="text-lg font-bold">Industry Giant</p>
+                    </div>
+                  </div>
+                  <div className="md:w-2/3 p-8">
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">From Small Grant to Global Standard</h4>
+                    <p className="text-gray-600 mb-4">
+                      Long before 5G, Qualcomm was a tiny startup with an idea for digital wireless communications (CDMA). They received $1.5 million in SBIR funding from the NSF and DoD in the late 1980s.
+                    </p>
+                    <p className="text-gray-600">
+                      <strong>The SBIR Effect:</strong> The grants allowed them to hire key engineers and build the first prototypes without giving up equity to VCs too early. Today, Qualcomm is worth over $150 billion, and their technology is in almost every smartphone on Earth.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div className="md:flex">
+                  <div className="md:w-1/3 bg-green-900 p-8 flex flex-col justify-center text-white">
+                    <Leaf className="w-12 h-12 mb-4 text-green-400" />
+                    <h3 className="text-xl font-bold mb-2">Ecovative Design</h3>
+                    <p className="text-green-200 text-sm">Green Island, NY</p>
+                    <div className="mt-4 pt-4 border-t border-green-700">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-green-300">Impact</p>
+                      <p className="text-lg font-bold">Sustainable Packaging</p>
+                    </div>
+                  </div>
+                  <div className="md:w-2/3 p-8">
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">Mushroom Roots Replacing Styrofoam</h4>
+                    <p className="text-gray-600 mb-4">
+                      Ecovative uses mycelium (mushroom roots) to grow 100% compostable packaging. They started with USDA and NSF SBIR grants to prove that their "grown" materials could match the performance of plastic.
+                    </p>
+                    <p className="text-gray-600">
+                      <strong>The SBIR Effect:</strong> The funding helped them scale from a university lab bench to a pilot factory. They now partner with giants like IKEA and Dell to replace tons of plastic waste annually.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 text-center">
+                <p className="text-gray-500 italic">Your company could be next. But only if you apply.</p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+        <section id="strategies" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Success Strategies</h2>
@@ -248,15 +633,16 @@ export default function SBIRSmallBusinessGuide() {
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <Card key={index}>
-                    <CardContent className="pt-6">
-                      <h3 className="font-bold flex items-start">
-                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
-                        {faq.question}
-                      </h3>
-                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
-                    </CardContent>
-                  </Card>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-800">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
               </div>
             </div>
@@ -266,12 +652,18 @@ export default function SBIRSmallBusinessGuide() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
+              <h2 className="text-3xl font-bold mb-6">State Business Grant Programs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/usa/california" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Building className="w-5 h-5 text-blue-600 mr-3" /><span>California Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/texas" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Building className="w-5 h-5 text-red-600 mr-3" /><span>Texas Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/new-york" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Building className="w-5 h-5 text-purple-600 mr-3" /><span>New York Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/florida" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Building className="w-5 h-5 text-orange-600 mr-3" /><span>Florida Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/small-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Building className="w-5 h-5 text-green-600 mr-3" /><span>All US Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold mb-4">Related SBIR Guides</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/blog/sbir-sttr-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBIR/STTR Complete Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/nsf-sbir-grants-technology-startups" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>NSF SBIR Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/nih-sbir-biotech-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>NIH SBIR Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/usa/small-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>All US Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/sbir-sttr-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-green-600 mr-3" /><span>SBIR/STTR Complete Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/nsf-sbir-grants-technology-startups" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-green-600 mr-3" /><span>NSF SBIR Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

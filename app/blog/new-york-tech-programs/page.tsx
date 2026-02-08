@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight, Briefcase, HelpCircle } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -23,6 +29,38 @@ export const metadata: Metadata = {
 }
 
 export default function NewYorkTechProgramsPage() {
+  const faqData = [
+    {
+      question: "What is the START-UP NY program?",
+      answer: "START-UP NY helps new and expanding businesses operate tax-free for 10 years on or near eligible university campuses throughout New York State. Partner businesses with SUNY, CUNY, Cornell, Columbia, or NYU gain access to research facilities, faculty expertise, and student talent."
+    },
+    {
+      question: "How much can I get from the NY Pre-Seed Matching Fund?",
+      answer: "The Pre-Seed and Seed Matching Fund offers $50,000 to $250,000 for early-stage startups in high-growth industries. However, you must have matching funds from a private co-investor to qualify."
+    },
+    {
+      question: "What is FuzeHub manufacturing grant amount?",
+      answer: "FuzeHub Manufacturing Grants provide up to $65,000 for New York State manufacturing technology companies. Startup eligibility requires annual revenue under $100K, total revenue under $500K, and being in business less than 5 years (7 years for life sciences)."
+    },
+    {
+      question: "Are NYC tech startups eligible for state grants?",
+      answer: "Yes, NYC tech startups in Manhattan, Brooklyn, Queens, and other boroughs can access all New York State programs including START-UP NY, Pre-Seed Matching Fund, NYSERDA clean energy grants, and NYC Economic Development Corporation (NYCEDC) programs."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <>
       <Header />
@@ -502,6 +540,76 @@ export default function NewYorkTechProgramsPage() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Related Funding Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/usa-federal-grants" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-blue-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">USA Federal Grants</h3>
+                      <p className="text-sm text-gray-500">Federal funding opportunities</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/california-tech-programs" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Rocket className="w-8 h-8 text-purple-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">California Tech Grants</h3>
+                      <p className="text-sm text-gray-500">West Coast funding guide</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/massachusetts-tech-programs" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Building className="w-8 h-8 text-green-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Massachusetts Tech</h3>
+                      <p className="text-sm text-gray-500">Innovation funding in MA</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/sba-7a-loans-complete-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Briefcase className="w-8 h-8 text-amber-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">SBA 7(a) Loans</h3>
+                      <p className="text-sm text-gray-500">Small business financing</p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-700 to-indigo-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -552,46 +660,7 @@ export default function NewYorkTechProgramsPage() {
       {/* FAQ Schema for Rich Results */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the START-UP NY program?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "START-UP NY helps new and expanding businesses operate tax-free for 10 years on or near eligible university campuses throughout New York State. Partner businesses with SUNY, CUNY, Cornell, Columbia, or NYU gain access to research facilities, faculty expertise, and student talent."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How much can I get from the NY Pre-Seed Matching Fund?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The Pre-Seed and Seed Matching Fund offers $50,000 to $250,000 for early-stage startups in high-growth industries. However, you must have matching funds from a private co-investor to qualify."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What is FuzeHub manufacturing grant amount?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "FuzeHub Manufacturing Grants provide up to $65,000 for New York State manufacturing technology companies. Startup eligibility requires annual revenue under $100K, total revenue under $500K, and being in business less than 5 years (7 years for life sciences)."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Are NYC tech startups eligible for state grants?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, NYC tech startups in Manhattan, Brooklyn, Queens, and other boroughs can access all New York State programs including START-UP NY, Pre-Seed Matching Fund, NYSERDA clean energy grants, and NYC Economic Development Corporation (NYCEDC) programs."
-                }
-              }
-            ]
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </>
   )

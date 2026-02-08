@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Factory, Settings, Cog } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Factory, Settings, Cog, MapPin, Briefcase, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,8 +20,44 @@ export const metadata: Metadata = {
 }
 
 export default function CanadaManufacturingIndustryGrantsGuidePage() {
+  const faqData = [
+    {
+      question: "What is the NGen Supercluster?",
+      answer: "NGen is Canada's Advanced Manufacturing Supercluster, providing funding and support for collaborative projects that develop and scale high-potential technologies."
+    },
+    {
+      question: "What funding is available for manufacturing automation?",
+      answer: "Various programs like the Advanced Manufacturing Investment Strategy (AMIS) and provincial streams offer grants and loans for adopting robotics, AI, and automation systems."
+    },
+    {
+      question: "Can I get funding for hiring new staff?",
+      answer: "Yes, many programs include provisions for workforce development, training, and hiring skilled personnel to operate new equipment or technologies."
+    },
+    {
+      question: "Are these grants taxable?",
+      answer: "Government grants are generally considered taxable income. Loans are not income, but interest payments may be deductible. Consult an accountant."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -77,7 +113,7 @@ export default function CanadaManufacturingIndustryGrantsGuidePage() {
               </div>
 
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada as Advanced Manufacturing Leader</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Why is Canada an Advanced Manufacturing Leader?</h2>
                 <p className="text-lg text-gray-700 mb-6">
                   Canada operates one of North America's most comprehensive manufacturing support ecosystems, with over $3.1 billion available annually through federal and provincial programs targeting productivity improvements, automation adoption, Industry 4.0 transformation, and advanced manufacturing capabilities. From the Next Generation Manufacturing Canada (NGen) supercluster to provincial advanced manufacturing investment strategies, Canada provides unparalleled support for manufacturing excellence across all sectors and company sizes.
                 </p>
@@ -112,7 +148,7 @@ export default function CanadaManufacturingIndustryGrantsGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Manufacturing & Industry Programs</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the Major Manufacturing & Industry Programs?</h2>
 
               <div className="space-y-8">
                 {/* NGen - Next Generation Manufacturing Canada */}
@@ -464,7 +500,7 @@ export default function CanadaManufacturingIndustryGrantsGuidePage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Manufacturing Funding Strategy Framework</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">What is the Manufacturing Funding Strategy Framework?</h2>
 
               <div className="space-y-6">
                 <Card className="border-blue-200">
@@ -528,6 +564,77 @@ export default function CanadaManufacturingIndustryGrantsGuidePage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+              <div className="grid gap-6">
+                {faqData.map((faq, index) => (
+                  <Card key={index} className="border-gray-100">
+                    <CardHeader>
+                      <CardTitle className="flex items-start text-lg text-gray-800">
+                        <HelpCircle className="w-6 h-6 text-gray-600 mr-3 shrink-0" />
+                        {faq.question}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 ml-9">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Related Government Grant Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/ontario-business-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-red-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Ontario Business Grants</h3>
+                      <p className="text-sm text-gray-500">Growth funding for Ontario SMEs</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/bc-business-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-blue-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">BC Business Grants</h3>
+                      <p className="text-sm text-gray-500">Funding for British Columbia businesses</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/alberta-business-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-green-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Alberta Business Grants</h3>
+                      <p className="text-sm text-gray-500">Support for Alberta entrepreneurs</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/startup-grants-canada-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Briefcase className="w-8 h-8 text-purple-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Startup Grants Canada</h3>
+                      <p className="text-sm text-gray-500">New business funding opportunities</p>
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

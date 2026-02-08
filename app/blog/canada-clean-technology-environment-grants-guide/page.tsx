@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Leaf, Sun, Recycle } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Leaf, Sun, Recycle, MapPin, Briefcase, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +19,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What clean technology grants are available in Canada?",
+    answer: "Major programs include SDTC (up to $15M), the Net Zero Accelerator ($8B initiative), Agricultural Clean Technology Program ($165M), and the Clean Growth Program. There are also Investment Tax Credits covering up to 30% of capital costs for clean energy systems."
+  },
+  {
+    question: "Who is eligible for SDTC funding?",
+    answer: "SDTC funds Canadian companies with pre-commercial clean technologies that have demonstrated environmental benefits and market potential. Projects typically receive $2M-$15M (up to 40% of costs) and must involve a consortium of partners."
+  },
+  {
+    question: "How do Clean Technology Investment Tax Credits work?",
+    answer: "The Clean Tech ITC provides a refundable tax credit of up to 30% of the capital cost of eligible property, such as solar, wind, and energy storage systems. It applies to taxable Canadian entities making eligible investments after March 28, 2023."
+  },
+  {
+    question: "Can I stack federal and provincial clean tech funding?",
+    answer: "Yes, many programs allow stacking of federal and provincial grants, though total government assistance is usually capped (often at 75-100%). Check specific program guidelines for stacking rules."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function CanadaCleanTechnologyEnvironmentGrantsGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -48,6 +84,41 @@ export default function CanadaCleanTechnologyEnvironmentGrantsGuidePage() {
                     Back to All Programs
                   </Link>
                 </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-teal-50 border-b border-teal-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About CleanTech Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">What clean technology grants exist?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Explore SDTC, Net Zero, and more.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">How to apply for SDTC funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Pre-commercial tech demonstration support.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">What is the Net Zero Accelerator?</h3>
+                  <p className="text-sm text-gray-600 mt-1">$8B fund for large decarbonization projects.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">Are there tax credits for clean energy?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Up to 30% refundable ITCs available.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">Who is eligible for funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Criteria for startups vs large industry.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">Can I stack grants and credits?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Combine funding sources effectively.</p>
+                </a>
               </div>
             </div>
           </div>
@@ -109,7 +180,7 @@ export default function CanadaCleanTechnologyEnvironmentGrantsGuidePage() {
         </section>
 
         {/* Major Clean Technology Programs */}
-        <section className="py-16 bg-gray-50">
+        <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Clean Technology & Environment Programs</h2>
@@ -532,6 +603,77 @@ export default function CanadaCleanTechnologyEnvironmentGrantsGuidePage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+              <div className="grid gap-6">
+                {faqData.map((faq, index) => (
+                  <Card key={index} className="border-green-100">
+                    <CardHeader>
+                      <CardTitle className="flex items-start text-lg text-gray-800">
+                        <HelpCircle className="w-6 h-6 text-green-600 mr-3 shrink-0" />
+                        {faq.question}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 ml-9">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Related Government Grant Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/energy-efficiency-grants-canada" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-green-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Energy Efficiency Grants</h3>
+                      <p className="text-sm text-gray-500">Retrofit funding for businesses</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/canada-innovation-research-development-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Briefcase className="w-8 h-8 text-blue-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Innovation Grants</h3>
+                      <p className="text-sm text-gray-500">R&D funding opportunities</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/agricultural-grants-canada" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Leaf className="w-8 h-8 text-amber-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Agricultural Grants</h3>
+                      <p className="text-sm text-gray-500">Farming and agri-tech funding</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/startup-grants-canada-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Briefcase className="w-8 h-8 text-purple-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Startup Grants</h3>
+                      <p className="text-sm text-gray-500">New business funding</p>
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

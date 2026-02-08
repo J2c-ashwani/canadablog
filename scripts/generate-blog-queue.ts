@@ -1,7 +1,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { blogPosts } from '../lib/data/blogPosts.ts';
+import { blogPosts } from '../lib/data/blogPosts';
 
 const OUTPUT_FILE = path.join(process.cwd(), 'blog_enrichment_queue.md');
 

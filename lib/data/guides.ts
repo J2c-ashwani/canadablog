@@ -950,7 +950,18 @@ export const guidesDatabase: Guide[] = [
       'Digital adoption programs',
       'Tech commercialization'
     ],
-    lastUpdated: '2025-09-10'
+    lastUpdated: '2025-09-10',
+    metrics: [
+      { label: 'Funding', value: '$2.4B', description: 'AI Strategy', color: 'text-blue-600', iconName: 'Cpu' },
+      { label: 'Adoption', value: '$15K', description: 'CDAP Grant', color: 'text-green-600', iconName: 'Laptop' },
+      { label: 'Scale', value: '$20M', description: 'Scale AI', color: 'text-purple-600', iconName: 'TrendingUp' },
+      { label: 'Talent', value: '50%', description: 'Wage Sub', color: 'text-indigo-600', iconName: 'Users' }
+    ],
+    expertTip: {
+      title: "Start with CDAP",
+      type: 'tip',
+      content: "For most SMEs, the <strong>Canada Digital Adoption Program (CDAP)</strong> is the best entry point. It provides immediate funds for planning and zero-interest loans for implementation."
+    }
   },
   {
     id: 'canada-life-sciences-funding-guide',

@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, ExternalLink } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -100,7 +106,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
         <section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Women Social Enterprise Grants by Province and Major City (2026-2027 Impact Funding Available)</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">What are the Women Social Enterprise Grants by Province?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Card className="border-purple-200 hover:shadow-lg transition-shadow">
@@ -219,7 +225,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                   <div className="flex items-start">
                     <TrendingUp className="w-6 h-6 text-purple-600 mr-3 mt-1" />
                     <div>
-                      <h3 className="text-lg font-bold text-purple-800 mb-2">🚀 2026-2027 Women Social Enterprise Funding Highlights</h3>
+                      <h3 className="text-lg font-bold text-purple-800 mb-2">🚀 What are the 2026-2027 Funding Highlights?</h3>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-purple-700">
                         <div>
                           <strong>Investment Readiness Program:</strong> Up to $300,000 grants for women-led social enterprises preparing for impact investment across all provinces
@@ -246,7 +252,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Social Enterprise Ecosystem for Women Entrepreneurs Across Canada</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the Social Enterprise Ecosystem?</h2>
                 <p className="text-lg text-gray-600 mb-4">
                   Canadian women social entrepreneurs have access to comprehensive funding for businesses that create
                   measurable social impact alongside financial sustainability. Federal programs like Investment Readiness
@@ -292,7 +298,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
         <section id="social-programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Federal Social Enterprise Grants and Impact Investment for Women Entrepreneurs Canada 2026-2027</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Federal Social Enterprise Grants?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Complete guide to federal social innovation funding programs available to women-led social enterprises
                 across all Canadian provinces including Ontario, Quebec, BC, Alberta women social entrepreneurs.
@@ -304,13 +310,13 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                   <CardHeader className="bg-gradient-to-r from-purple-100 to-pink-100">
                     <div className="flex items-center mb-2">
                       <Heart className="w-6 h-6 text-purple-600 mr-3" />
-                      <CardTitle className="text-purple-700 text-2xl">Investment Readiness Program (IRP) - Up to $300,000 Grants for Women Social Enterprises</CardTitle>
+                      <CardTitle className="text-purple-700 text-2xl">What is the Investment Readiness Program (IRP)?</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <div className="grid md:grid-cols-2 gap-6 mb-6">
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-purple-800">Federal Social Finance Investment Readiness Funding</h4>
+                        <h4 className="font-bold text-xl mb-4 text-purple-800">What is the Federal Social Finance Funding?</h4>
                         <div className="space-y-3">
                           <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
                             <div className="flex items-center justify-between mb-2">
@@ -339,7 +345,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">Regional IRP Success Stories - Women Social Enterprises</h4>
+                        <h4 className="font-bold text-xl mb-4 text-gray-800">What are the Regional IRP Success Stories?</h4>
                         <div className="space-y-4">
                           <div className="bg-green-50 p-4 rounded-lg border border-green-200">
                             <p className="font-bold text-green-800 mb-2">🏢 Toronto Affordable Housing - $280,000 IRP Grant</p>
@@ -411,13 +417,13 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                   <CardHeader className="bg-gradient-to-r from-indigo-100 to-purple-100">
                     <div className="flex items-center mb-2">
                       <DollarSign className="w-6 h-6 text-indigo-600 mr-3" />
-                      <CardTitle className="text-indigo-700 text-2xl">Social Finance Fund - Federal Investment in Social Innovation Ecosystem</CardTitle>
+                      <CardTitle className="text-indigo-700 text-2xl">What is the Social Finance Fund?</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-indigo-800">Government of Canada Social Finance Strategy</h4>
+                        <h4 className="font-bold text-xl mb-4 text-indigo-800">What is the Social Finance Strategy?</h4>
                         <div className="space-y-3">
                           <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
                             <p className="font-semibold text-gray-800 mb-3">Social Finance Fund Components:</p>
@@ -444,7 +450,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">Social Finance Ecosystem Examples</h4>
+                        <h4 className="font-bold text-xl mb-4 text-gray-800">What are the Social Finance Ecosystem Examples?</h4>
                         <div className="space-y-4 text-sm">
                           <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
                             <p className="font-bold text-purple-800 mb-2">🏦 Toronto Community Loan Fund</p>
@@ -474,13 +480,13 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                   <CardHeader className="bg-gradient-to-r from-green-100 to-emerald-100">
                     <div className="flex items-center mb-2">
                       <Building className="w-6 h-6 text-green-600 mr-3" />
-                      <CardTitle className="text-green-700 text-2xl">Community Futures Network - Rural & Small Community Social Enterprise Support</CardTitle>
+                      <CardTitle className="text-green-700 text-2xl">What is the Community Futures Network Support?</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-green-800">Community Futures Loans for Women Social Enterprises</h4>
+                        <h4 className="font-bold text-xl mb-4 text-green-800">What are the Community Futures Loans?</h4>
                         <div className="space-y-3">
                           <div className="bg-green-50 p-4 rounded-lg border border-green-200">
                             <p className="font-semibold text-gray-800 mb-3">Community Futures Financing:</p>
@@ -495,7 +501,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">Regional Community Futures Coverage</h4>
+                        <h4 className="font-bold text-xl mb-4 text-gray-800">What is the Regional Community Futures Coverage?</h4>
                         <div className="space-y-3 text-sm">
                           <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
                             <p className="font-bold text-blue-800">Rural Ontario - 42 Community Futures</p>
@@ -526,7 +532,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Ontario Social Enterprise Grants for Women Entrepreneurs - Community Development Funding</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Ontario Social Enterprise Grants?</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
                 Complete guide to Ontario provincial and municipal social innovation support for women-led community
                 businesses in Toronto, Ottawa, Hamilton, and all Ontario communities.
@@ -538,13 +544,13 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                   <CardHeader className="bg-gradient-to-r from-blue-100 to-cyan-100">
                     <div className="flex items-center mb-2">
                       <Award className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle className="text-blue-700 text-2xl">Ontario Trillium Foundation - Social Impact Grants Women-Led Organizations</CardTitle>
+                      <CardTitle className="text-blue-700 text-2xl">What is the Ontario Trillium Foundation Support?</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-blue-800">OTF Grant Programs</h4>
+                        <h4 className="font-bold text-xl mb-4 text-blue-800">What are the OTF Grant Programs?</h4>
                         <div className="space-y-3">
                           <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                             <p className="font-semibold text-gray-800 mb-3">Ontario Trillium Foundation Funding:</p>
@@ -559,7 +565,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">OTF Regional Success Stories</h4>
+                        <h4 className="font-bold text-xl mb-4 text-gray-800">What are the OTF Regional Success Stories?</h4>
                         <div className="space-y-4 text-sm">
                           <div className="bg-green-50 p-4 rounded-lg border border-green-200">
                             <p className="font-bold text-green-800 mb-2">🌟 Toronto Employment Training - $350,000 OTF</p>
@@ -581,7 +587,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                 {/* Toronto Social Innovation */}
                 <Card className="border-purple-200">
                   <CardHeader>
-                    <CardTitle className="text-purple-700 text-xl">Toronto Community Development & Social Innovation - Municipal Support</CardTitle>
+                    <CardTitle className="text-purple-700 text-xl">What is the Toronto Community Development Support?</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="grid md:grid-cols-2 gap-6 text-sm">
@@ -615,7 +621,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
         <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Quebec Économie Sociale Grants - Financement Femmes Entrepreneures</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Quebec Économie Sociale Grants?</h2>
               <p className="text-lg text-gray-600 text-center mb-8 max-w-4xl mx-auto">
                 Guide complet au financement économie sociale pour femmes entrepreneures québécoises. Complete guide
                 to Quebec social economy funding for women entrepreneurs.
@@ -626,13 +632,13 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                   <CardHeader className="bg-gradient-to-r from-blue-100 to-indigo-100">
                     <div className="flex items-center mb-2">
                       <Heart className="w-6 h-6 text-blue-600 mr-3" />
-                      <CardTitle className="text-blue-700 text-2xl">Chantier de l'économie sociale - Réseau Provincial</CardTitle>
+                      <CardTitle className="text-blue-700 text-2xl">What is the Chantier de l'économie sociale?</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-blue-800">Programmes Chantier</h4>
+                        <h4 className="font-bold text-xl mb-4 text-blue-800">What are the Programmes Chantier?</h4>
                         <div className="space-y-3">
                           <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                             <p className="font-semibold text-gray-800 mb-3">Financement disponible:</p>
@@ -646,7 +652,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-4 text-gray-800">CDEC Network Montreal</h4>
+                        <h4 className="font-bold text-xl mb-4 text-gray-800">What is the CDEC Network Montreal?</h4>
                         <div className="space-y-3 text-sm">
                           <div className="bg-purple-50 p-3 rounded-lg border border-purple-200">
                             <p className="font-bold text-purple-800">14 CDEC Greater Montreal</p>
@@ -670,7 +676,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Social Enterprise Funding by Impact Sector - Women Entrepreneurs Canada</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">What is the Social Enterprise Funding by Sector?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Affordable Housing */}
@@ -764,7 +770,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
         <section className="py-16 bg-gradient-to-br from-purple-50 to-indigo-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Women Social Enterprise Grant Application Success Strategies 2026-2027</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">What are the Application Success Strategies?</h2>
               <p className="text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto">
                 Proven strategies and insights for women social entrepreneurs to maximize grant approval rates and
                 impact investment readiness across all Canadian provinces.
@@ -775,7 +781,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                   <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
                     <CardTitle className="text-green-700 text-xl flex items-center">
                       <CheckCircle className="w-6 h-6 mr-3" />
-                      ✅ Winning Social Enterprise Application Strategies
+                      ✅ What are the Winning Application Strategies?
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="pt-6">
@@ -979,6 +985,56 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
                     </ul>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions About Social Enterprise Grants</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-indigo-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Social Impact Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/black-women-business-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-purple-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-purple-700 mb-2">Black Women Grants</h3>
+                  <p className="text-gray-600 text-sm">Funding for Black women social entrepreneurs</p>
+                </Link>
+                <Link href="/blog/indigenous-women-business-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-purple-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-purple-700 mb-2">Indigenous Business Grants</h3>
+                  <p className="text-gray-600 text-sm">Support for Indigenous women entrepreneurs</p>
+                </Link>
+                <Link href="/blog/women-clean-technology-grants-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-purple-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-purple-700 mb-2">Clean Tech Grants</h3>
+                  <p className="text-gray-600 text-sm">Funding for environmental social enterprises</p>
+                </Link>
+                <Link href="/blog/women-business-grants-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-purple-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-purple-700 mb-2">Women Business Grants</h3>
+                  <p className="text-gray-600 text-sm">Complete directory of funding opportunities</p>
+                </Link>
               </div>
             </div>
           </div>

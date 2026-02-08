@@ -118,7 +118,7 @@ export default function RDAGovernmentGrantsBlogPage() {
               </div>
 
               <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">RDA Network as Federal Regional Policy Tool</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the RDA Network?</h2>
                 <p className="text-lg text-gray-700 mb-6">
                   Canada's Regional Development Agencies (RDAs) represent the federal government's primary mechanism
                   for delivering tailored economic development support across diverse regional economies. Operating
@@ -157,7 +157,7 @@ export default function RDAGovernmentGrantsBlogPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Canada's 7 Regional Development Agencies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are Canada's 7 Regional Development Agencies?</h2>
 
               <div className="space-y-8">
                 {/* Atlantic Canada - ACOA */}
@@ -539,7 +539,7 @@ export default function RDAGovernmentGrantsBlogPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Federal RDA Program Integration</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How Do RDAs Integrate with Federal Programs?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
@@ -594,7 +594,7 @@ export default function RDAGovernmentGrantsBlogPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">RDA Federal Application Process</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What is the RDA Application Process?</h2>
 
               <div className="space-y-6">
                 <div className="flex items-start">
@@ -641,7 +641,7 @@ export default function RDAGovernmentGrantsBlogPage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">RDA Federal Application Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How Can You Succeed with RDA Applications?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
@@ -706,6 +706,59 @@ export default function RDAGovernmentGrantsBlogPage() {
             ))}
           </div>
         </div>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions About RDA Funding</h2>
+              <div className="space-y-4">
+                <a href="#" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-purple-700">Which RDA should I apply to?</span>
+                </a>
+                <a href="#" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-purple-700">Is RDA funding a grant or a loan?</span>
+                </a>
+                <a href="#" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-purple-700">What is the difference between RDA and IRAP?</span>
+                </a>
+                <a href="#" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-purple-700">Can I stack RDA funding with other grants?</span>
+                </a>
+                <a href="#" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-purple-700">What is the minimum revenue requirement?</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Government Funding Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/irap-industrial-research-assistance-program" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-purple-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-purple-700 mb-2">IRAP Funding Guide</h3>
+                  <p className="text-gray-600 text-sm">Up to $1M in non-repayable R&D grants from NRC-IRAP</p>
+                </Link>
+                <Link href="/blog/state-province-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-purple-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-purple-700 mb-2">State & Province Grants</h3>
+                  <p className="text-gray-600 text-sm">Local funding opportunities across North America</p>
+                </Link>
+                <Link href="/blog/sred-scientific-research-experimental-development" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-purple-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-purple-700 mb-2">SR&ED Tax Credits</h3>
+                  <p className="text-gray-600 text-sm">Up to 65% refundable R&D tax credits</p>
+                </Link>
+                <Link href="/blog/canada-federal-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-purple-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-purple-700 mb-2">Federal Grants Overview</h3>
+                  <p className="text-gray-600 text-sm">Complete guide to Canadian federal business grants</p>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Dual CTA Section */}
         <section className="py-16 bg-gradient-to-r from-purple-600 to-purple-800">

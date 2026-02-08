@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Rocket, Users, Building, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Briefcase, Globe, Zap, Layers } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Rocket, Users, Building, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Briefcase, Globe, Zap, Layers, MapPin } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -116,6 +122,43 @@ export default function CanadaStartupFundingGrantsGuide() {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-indigo-50 border-b border-indigo-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Startup Funding</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#futurpreneur-breakdown" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-indigo-100">
+                  <h3 className="font-semibold text-indigo-700">How do I apply for Futurpreneur?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Steps to access up to $75,000 in financing.</p>
+                </a>
+                <a href="#hiring-grants" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-indigo-100">
+                  <h3 className="font-semibold text-indigo-700">Can I get free money to hire?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Learn about Student Work Placement and IRAP subsidies.</p>
+                </a>
+                <a href="#futurpreneur-breakdown" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-indigo-100">
+                  <h3 className="font-semibold text-indigo-700">What is the Side Hustle program?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Funding for part-time founders keeping their day jobs.</p>
+                </a>
+                <a href="#innovative-solutions" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-indigo-100">
+                  <h3 className="font-semibold text-indigo-700">Does the government buy from startups?</h3>
+                  <p className="text-sm text-gray-600 mt-1">How Innovative Solutions Canada funds R&D.</p>
+                </a>
+                <a href="#hiring-grants" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-indigo-100">
+                  <h3 className="font-semibold text-indigo-700">What if I'm not a Canadian citizen?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Startup Visa Program for international founders.</p>
+                </a>
+                <a href="#futurpreneur-breakdown" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-indigo-100">
+                  <h3 className="font-semibold text-indigo-700">Do I need a business plan?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Crucial documents for loan approval.</p>
+                </a>
               </div>
             </div>
           </div>
@@ -429,16 +472,52 @@ export default function CanadaStartupFundingGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
-                      <HelpCircle className="w-5 h-5 text-indigo-500 mr-3 mt-0.5 flex-shrink-0" />
-                      {faq.question}
-                    </h3>
-                    <p className="text-gray-600 pl-8">{faq.answer}</p>
-                  </div>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Why Startup Applications Fail</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Card className="border-l-4 border-red-500 shadow-sm"><CardContent className="pt-4"><h3 className="font-bold text-red-700 mb-1">Unrealistic Projections</h3><p className="text-sm text-gray-600">Projecting $1M revenue in month 3 gets you rejected instantly.</p></CardContent></Card>
+                <Card className="border-l-4 border-red-500 shadow-sm"><CardContent className="pt-4"><h3 className="font-bold text-red-700 mb-1">Missing Loan Repayment</h3><p className="text-sm text-gray-600">If your cash flow doesn't show the monthly loan payment, you look incompetent.</p></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Explore More Funding Options</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><MapPin className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Target className="w-5 h-5 text-emerald-600 mr-3" /><span>BC Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Award className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/software-saas-startup-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Rocket className="w-5 h-5 text-blue-600 mr-3" /><span>SaaS & Startup Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/small-business-grants-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Lightbulb className="w-5 h-5 text-blue-600 mr-3" /><span>Small Business Grants Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>
@@ -470,7 +549,7 @@ export default function CanadaStartupFundingGrantsGuide() {
         </section>
 
         <Footer />
-      </div>
+      </div >
     </>
   )
 }

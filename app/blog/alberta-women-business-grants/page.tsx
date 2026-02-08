@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, MapPin, ExternalLink } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, MapPin, ExternalLink, HelpCircle, Briefcase } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -119,6 +125,33 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
                   </div>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Alberta Women Programs</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Who qualifies for AWE loans?</h3>
+                  <p className="text-sm text-gray-600 mt-1">50.1%+ women-owned Alberta businesses, market-ready stage.</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">What's Women Building Futures?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Trades training program connecting women to energy sector careers.</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Rural support available?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, Community Futures serves rural Alberta entrepreneurs.</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Energy sector funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Alberta Innovates and ERA support clean tech and energy innovation.</p>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -547,6 +580,89 @@ export default function AlbertaWomenBusinessGrantsGuidePage() {
                     </Link>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section and Related Guides */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              {/* FAQ Section */}
+              <div className="mb-20" id="faqs">
+                <h2 className="text-3xl font-bold text-center mb-12">Alberta Women Business Grants FAQs</h2>
+                <div className="space-y-4">
+                  {faqData.map((faq, index) => (
+                    <Accordion type="single" collapsible key={index}>
+                      <AccordionItem value={`item-${index}`}>
+                        <AccordionTrigger className="text-left">
+                          <span className="font-medium text-blue-900">{faq.question}</span>
+                        </AccordionTrigger>
+                        <AccordionContent className="text-gray-600">
+                          {faq.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  ))}
+                </div>
+              </div>
+
+              {/* Related Guides Section */}
+              <div className="mb-20">
+                <h2 className="text-3xl font-bold text-center mb-12">More Funding Resources for Alberta</h2>
+                <div className="grid md:grid-cols-3 gap-8">
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-amber-100">
+                    <CardHeader>
+                      <Briefcase className="w-8 h-8 text-amber-600 mb-4" />
+                      <CardTitle className="text-xl mb-2">Alberta Business Grants</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-6">
+                        Guide to provincial business grants, loans, and tax credits available in Alberta.
+                      </p>
+                      <Button variant="outline" className="w-full text-amber-700 border-amber-200 hover:bg-amber-50" asChild>
+                        <Link href="/blog/alberta-government-business-grants">
+                          View Alberta Grants
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-amber-100">
+                    <CardHeader>
+                      <MapPin className="w-8 h-8 text-amber-600 mb-4" />
+                      <CardTitle className="text-xl mb-2">Startup Funding</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-6">
+                        Explore startup funding, loans, and investment for new businesses across Canada.
+                      </p>
+                      <Button variant="outline" className="w-full text-amber-700 border-amber-200 hover:bg-amber-50" asChild>
+                        <Link href="/blog/startup-business-grants-canada-guide">
+                          View Startup Funding
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-amber-100">
+                    <CardHeader>
+                      <Target className="w-8 h-8 text-amber-600 mb-4" />
+                      <CardTitle className="text-xl mb-2">Grants for Women</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-6">
+                        See individual grant opportunities like the Amber Grant for women entrepreneurs.
+                      </p>
+                      <Button variant="outline" className="w-full text-amber-700 border-amber-200 hover:bg-amber-50" asChild>
+                        <Link href="/blog/amber-grant-women-canada">
+                          View Amber Grant
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
           </div>

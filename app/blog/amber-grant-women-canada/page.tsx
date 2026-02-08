@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Calendar } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Calendar, MapPin, Briefcase, HelpCircle } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +25,49 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "Do I have to be a specific type of business to apply?",
+    answer: "No. The Amber Grant is open to women-owned businesses in any industry, from tech startups and retail shops to creative freelancers and non-profits. If you have a business idea or an existing business, you are eligible."
+  },
+  {
+    question: "Is there a deadline for the Amber Grant?",
+    answer: "Yes, deadlines are rolling. Applications are accepted every month. The cutoff for each month's grant is the last day of that month. If you miss it, your application generally rolls over or you can apply for the next cycle."
+  },
+  {
+    question: "How are the winners chosen?",
+    answer: "Winners are chosen by the WomensNet advisory board. They look for passion, business savvy, and a clear explanation of how the grant money will be used to grow the business. Storytelling matters as much as the business plan."
+  },
+  {
+    question: "Is the application complicated?",
+    answer: "No. The Amber Grant application is designed to be simple. It typically involves answering a few short questions about your business and yourself, without the need for complex financial statements or long business plans."
+  },
+  {
+    question: "Can Canadian women apply for the Amber Grant?",
+    answer: "Yes. The Amber Grant is open to women entrepreneurs in Canada and the United States. Canadian applicants are fully eligible for both the monthly $10,000 grants and the annual $25,000 awards."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function AmberGrantWomenCanadaGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -35,8 +81,8 @@ export default function AmberGrantWomenCanadaGuidePage() {
                 Amber Grant for Women Canada
               </h1>
               <p className="text-xl text-amber-100 mb-8">
-                Monthly $10,000 grants awarded to three women-owned businesses every month, with one 
-                annual $25,000 year-end grand prize. Simple application process with rolling monthly 
+                Monthly $10,000 grants awarded to three women-owned businesses every month, with one
+                annual $25,000 year-end grand prize. Simple application process with rolling monthly
                 deadlines for Canadian and American women entrepreneurs across all industries.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -87,6 +133,33 @@ export default function AmberGrantWomenCanadaGuidePage() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Amber Grant</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Can Canadians apply?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes! The Amber Grant is fully open to Canadian women entrepreneurs.</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">What's the deadline?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Rolling monthly deadlines - last day of each month.</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Is the application hard?</h3>
+                  <p className="text-sm text-gray-600 mt-1">No, it's a simple short essay with $15 application fee.</p>
+                </a>
+                <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">What are the grant amounts?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Monthly $10K grants plus $25K annual award.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Grant Overview */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -94,9 +167,9 @@ export default function AmberGrantWomenCanadaGuidePage() {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Honoring Women Entrepreneurs Since 1998</h2>
                 <p className="text-lg text-gray-600">
-                  Founded by WomensNet in 1998 to honor Amber Wigdahl, who died at 19 before realizing 
-                  her business dreams, the Amber Grant has awarded over $10 million to women entrepreneurs 
-                  in the United States and Canada. With monthly $10,000 grants and a $25,000 annual award, 
+                  Founded by WomensNet in 1998 to honor Amber Wigdahl, who died at 19 before realizing
+                  her business dreams, the Amber Grant has awarded over $10 million to women entrepreneurs
+                  in the United States and Canada. With monthly $10,000 grants and a $25,000 annual award,
                   this accessible grant program supports women at all business stages.
                 </p>
               </div>
@@ -128,7 +201,7 @@ export default function AmberGrantWomenCanadaGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Amber Grant Award Programs</h2>
-              
+
               <div className="space-y-8">
                 {/* Monthly Amber Grant */}
                 <Card className="border-amber-200">
@@ -165,7 +238,7 @@ export default function AmberGrantWomenCanadaGuidePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 p-4 bg-amber-50 rounded-lg">
                       <h5 className="font-semibold mb-2">📋 Application Details:</h5>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -245,9 +318,9 @@ export default function AmberGrantWomenCanadaGuidePage() {
                             <span className="text-blue-700 font-bold">$10,000</span>
                           </div>
                           <div className="text-sm text-gray-600">
-                            <p>Monthly award focused on a specific business category that rotates each month. 
-                            Categories include retail, service-based, e-commerce, health/wellness, technology, 
-                            creative industries, and more based on WomensNet's monthly selection.</p>
+                            <p>Monthly award focused on a specific business category that rotates each month.
+                              Categories include retail, service-based, e-commerce, health/wellness, technology,
+                              creative industries, and more based on WomensNet's monthly selection.</p>
                           </div>
                         </div>
                       </div>
@@ -312,7 +385,7 @@ export default function AmberGrantWomenCanadaGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Amber Grant Application Process</h2>
-              
+
               <div className="space-y-6">
                 <div className="grid md:grid-cols-4 gap-6">
                   {[
@@ -324,7 +397,7 @@ export default function AmberGrantWomenCanadaGuidePage() {
                       color: "amber"
                     },
                     {
-                      step: "2", 
+                      step: "2",
                       title: "Complete Short Essay",
                       description: "Write brief essay about yourself and business dream",
                       icon: <FileText className="w-6 h-6" />,
@@ -347,11 +420,11 @@ export default function AmberGrantWomenCanadaGuidePage() {
                   ].map((item, index) => {
                     const colors = {
                       amber: "bg-amber-500 text-white",
-                      green: "bg-green-500 text-white", 
+                      green: "bg-green-500 text-white",
                       blue: "bg-blue-500 text-white",
                       orange: "bg-orange-500 text-white"
                     }
-                    
+
                     return (
                       <Card key={index} className="text-center">
                         <CardHeader>
@@ -404,7 +477,7 @@ export default function AmberGrantWomenCanadaGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Amber Grant Success Stories</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -471,7 +544,7 @@ export default function AmberGrantWomenCanadaGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Application Success Strategies</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
                   <CardHeader>
@@ -548,20 +621,100 @@ export default function AmberGrantWomenCanadaGuidePage() {
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-amber-500 to-orange-700">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              {/* FAQ Section */}
+              <div className="mb-20" id="faqs">
+                <h2 className="text-3xl font-bold text-center mb-12">Amber Grant FAQs</h2>
+                <div className="space-y-4">
+                  {faqData.map((faq, index) => (
+                    <Accordion type="single" collapsible key={index}>
+                      <AccordionItem value={`item-${index}`}>
+                        <AccordionTrigger className="text-left">
+                          <span className="font-medium text-blue-900">{faq.question}</span>
+                        </AccordionTrigger>
+                        <AccordionContent className="text-gray-600">
+                          {faq.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  ))}
+                </div>
+              </div>
+
+              {/* Related Guides Section */}
+              <div className="mb-20">
+                <h2 className="text-3xl font-bold text-center mb-12">More Funding for Women Entrepreneurs</h2>
+                <div className="grid md:grid-cols-3 gap-8">
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-amber-100">
+                    <CardHeader>
+                      <Briefcase className="w-8 h-8 text-amber-600 mb-4" />
+                      <CardTitle className="text-xl mb-2">Government Grants</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-6">
+                        Explore federal and provincial government grant programs for women-owned businesses in Canada.
+                      </p>
+                      <Button variant="outline" className="w-full text-amber-700 border-amber-200 hover:bg-amber-50" asChild>
+                        <Link href="/blog/women-entrepreneurship-strategy-canada-government-grants">
+                          View Government Grants
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-amber-100">
+                    <CardHeader>
+                      <MapPin className="w-8 h-8 text-amber-600 mb-4" />
+                      <CardTitle className="text-xl mb-2">Startup Funding</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-6">
+                        Discover startup funding options, loans, and investment opportunities for new Canadian businesses.
+                      </p>
+                      <Button variant="outline" className="w-full text-amber-700 border-amber-200 hover:bg-amber-50" asChild>
+                        <Link href="/blog/startup-business-grants-canada-guide">
+                          View Startup Funding
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 border-amber-100">
+                    <CardHeader>
+                      <Target className="w-8 h-8 text-amber-600 mb-4" />
+                      <CardTitle className="text-xl mb-2">Private Grants</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-6">
+                        Learn about other private sector grants like the Cartier Women's Initiative and more.
+                      </p>
+                      <Button variant="outline" className="w-full text-amber-700 border-amber-200 hover:bg-amber-50" asChild>
+                        <Link href="/blog/cartier-womens-initiative-canada">
+                          View Private Grants
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center text-white">
               <h2 className="text-3xl font-bold mb-6">
                 Ready to Apply for the Amber Grant?
               </h2>
               <p className="text-xl text-amber-100 mb-8">
-                Get our complete Amber Grant application guide with essay templates and winning strategies, 
+                Get our complete Amber Grant application guide with essay templates and winning strategies,
                 or work with our grant specialists for expert application support.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <div className="bg-white/10 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Free Application Guide</h4>
                   <p className="text-amber-100 text-sm mb-4">
-                    Get our comprehensive Amber Grant application guide with essay templates, 
+                    Get our comprehensive Amber Grant application guide with essay templates,
                     success strategies, and monthly deadline tracking.
                   </p>
                   <Button size="lg" className="w-full bg-white text-amber-700 hover:bg-gray-100" asChild>
@@ -575,7 +728,7 @@ export default function AmberGrantWomenCanadaGuidePage() {
                 <div className="bg-yellow-500/20 border-2 border-yellow-400 rounded-lg p-6 flex-1 max-w-md">
                   <h4 className="font-semibold text-white mb-2">Expert Application Support</h4>
                   <p className="text-yellow-100 text-sm mb-4">
-                    Work with grant specialists who understand Amber Grant requirements and can help 
+                    Work with grant specialists who understand Amber Grant requirements and can help
                     optimize your application for maximum success.
                   </p>
                   <Button size="lg" className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
@@ -585,7 +738,7 @@ export default function AmberGrantWomenCanadaGuidePage() {
                   </Button>
                 </div>
               </div>
-              
+
               <p className="text-amber-200 text-sm mt-6">
                 Expert guidance • Essay review • Application optimization • Monthly deadline tracking
               </p>

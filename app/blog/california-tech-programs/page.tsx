@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,49 @@ export const metadata: Metadata = {
 }
 
 export default function CaliforniaTechProgramsPage() {
+  const faqData = [
+    {
+      question: "What is the CalSEED Clean Energy Grant?",
+      answer: "CalSEED (California Sustainable Energy Entrepreneur Development) provides up to $50,000 in concept grants to early-stage clean energy technology entrepreneurs in California. The program specifically supports innovations in solar, wind, battery storage, electric vehicles, and energy efficiency technologies."
+    },
+    {
+      question: "How much is the California SBIR Match Grant?",
+      answer: "The California SBIR Matching Grant Program provides up to $50,000 matching funds for California companies that have received federal SBIR Phase I awards. This is additional non-dilutive funding that does not require equity."
+    },
+    {
+      question: "What is the California Competes Tax Credit?",
+      answer: "California Competes Tax Credit offers up to 25% tax credits for qualifying businesses making investments in California. Technology startups can receive significant tax benefits for job creation, capital investment, and expansion in California."
+    },
+    {
+      question: "Are Silicon Valley startups eligible for California grants?",
+      answer: "Yes, Silicon Valley and Bay Area technology startups can access all California state programs including CalSEED for cleantech, SBIR Matching for federal enhancement, California Competes Tax Credit, and GO-Biz incentive programs. San Francisco, San Jose, Palo Alto, and surrounding areas are all eligible."
+    },
+    {
+      question: "What industries qualify for California technology grants?",
+      answer: "California technology grants support clean energy, electric vehicles, battery storage, biotechnology, AI/ML, software, hardware, agtech, and advanced manufacturing. CalSEED focuses on clean energy while California Competes and SBIR Match support broader technology sectors."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-700 to-purple-900 text-white py-16">
@@ -207,6 +247,28 @@ export default function CaliforniaTechProgramsPage() {
                   </div>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-blue-50 border-b border-blue-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Card key={index} className="border-blue-100 shadow-sm hover:shadow-md transition-shadow">
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold text-gray-900 flex items-start text-lg">
+                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-1 flex-shrink-0" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -712,61 +774,59 @@ export default function CaliforniaTechProgramsPage() {
             </div>
           </div>
         </section>
-      </div>
+
+
+        {/* Compare Other State Tech Hubs */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-center">Compare Other Top US Tech Hubs</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/blog/new-york-tech-programs" className="block group">
+                  <Card className="h-full border-gray-200 hover:border-blue-500 transition-colors">
+                    <CardHeader>
+                      <CardTitle className="text-lg text-blue-700 group-hover:underline flex items-center">
+                        New York Tech Grants <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-gray-600">Silicon Alley funding vs. Silicon Valley.</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+                <Link href="/blog/washington-tech-programs" className="block group">
+                  <Card className="h-full border-gray-200 hover:border-teal-500 transition-colors">
+                    <CardHeader>
+                      <CardTitle className="text-lg text-teal-700 group-hover:underline flex items-center">
+                        Washington Tech <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-gray-600">Seattle cloud & AI ecosystem funding.</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+                <Link href="/blog/massachusetts-tech-programs" className="block group">
+                  <Card className="h-full border-gray-200 hover:border-purple-500 transition-colors">
+                    <CardHeader>
+                      <CardTitle className="text-lg text-purple-700 group-hover:underline flex items-center">
+                        Massachusetts Biotech <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-gray-600">Boston/Cambridge life sciences & robotics grants.</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div >
       <Footer />
 
       {/* FAQ Schema for Rich Results */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the CalSEED Clean Energy Grant?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "CalSEED (California Sustainable Energy Entrepreneur Development) provides up to $50,000 in concept grants to early-stage clean energy technology entrepreneurs in California. The program specifically supports innovations in solar, wind, battery storage, electric vehicles, and energy efficiency technologies."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How much is the California SBIR Match Grant?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The California SBIR Matching Grant Program provides up to $50,000 matching funds for California companies that have received federal SBIR Phase I awards. This is additional non-dilutive funding that does not require equity."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What is the California Competes Tax Credit?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "California Competes Tax Credit offers up to 25% tax credits for qualifying businesses making investments in California. Technology startups can receive significant tax benefits for job creation, capital investment, and expansion in California."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Are Silicon Valley startups eligible for California grants?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, Silicon Valley and Bay Area technology startups can access all California state programs including CalSEED for cleantech, SBIR Matching for federal enhancement, California Competes Tax Credit, and GO-Biz incentive programs. San Francisco, San Jose, Palo Alto, and surrounding areas are all eligible."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What industries qualify for California technology grants?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "California technology grants support clean energy, electric vehicles, battery storage, biotechnology, AI/ML, software, hardware, agtech, and advanced manufacturing. CalSEED focuses on clean energy while California Competes and SBIR Match support broader technology sectors."
-                }
-              }
-            ]
-          }),
-        }}
-      />
+      {/* FAQ Schema maintained via faqData above */}
     </>
   )
 }

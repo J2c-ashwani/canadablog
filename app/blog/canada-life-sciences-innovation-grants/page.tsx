@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, Download, Heart, Pill, Microscope, Dna, Stethoscope, Syringe, ExternalLink, ArrowRight } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, Download, Heart, Pill, Microscope, Dna, Stethoscope, Syringe, ExternalLink, ArrowRight, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -17,6 +17,38 @@ export const metadata: Metadata = {
     url: "https://www.fsidigital.ca/blog/canada-life-sciences-innovation-grants",
     images: ["/og-image.png"],
   },
+}
+
+const faqData = [
+  {
+    question: "What is the Biomanufacturing and Life Sciences Strategy?",
+    answer: "This federal strategy includes a $2.2 billion fund to grow Canada's biomanufacturing and life sciences sector. It prioritizes projects that enhance domestic manufacturing capacity for vaccines, therapeutics, and specialized medicines."
+  },
+  {
+    question: "Does Canada fund clinical trials?",
+    answer: "Yes, funding for clinical trials is available through the Canadian Institutes of Health Research (CIHR) and the Strategic Innovation Fund. Provinces particularly Ontario and Quebec also offer specialized support for clinical validation of health technologies."
+  },
+  {
+    question: "Can I use SR&ED for medical device R&D?",
+    answer: "Absolutely. Developing new medical devices often involves significant technological risk and experimentation, making it highly eligible for SR&ED tax credits. Costs for design, prototyping, and testing are typically claimable."
+  },
+  {
+    question: "What is the timeline for Health Canada approval funding?",
+    answer: "Regulatory approval processes can take 6-12 months or longer depending on device class or drug type. Grants supporting this phase often cover regulatory consultancy and submission costs to accelerate market access."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
 }
 
 export default function CanadaLifeSciencesInnovationGrantsPage() {
@@ -50,6 +82,33 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
                     Back to Innovation Grants
                   </Link>
                 </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-teal-50 border-b border-teal-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Biotech Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">Does Canada fund clinical trials?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, via CIHR and SIF programs.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">Are medical devices eligible?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, for prototyping and FDA/Health Canada pathways.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">What about biomanufacturing?</h3>
+                  <p className="text-sm text-gray-600 mt-1">$2.2B strategy for domestic production capacity.</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-teal-700">Can I use SR&ED?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, high eligibility for life science R&D.</p>
+                </a>
               </div>
             </div>
           </div>
@@ -608,52 +667,37 @@ export default function CanadaLifeSciencesInnovationGrantsPage() {
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white" id="faq">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="grid gap-6">
+                {faqData.map((faq, index) => (
+                  <Card key={index} className="border-teal-100">
+                    <CardHeader>
+                      <CardTitle className="text-lg text-teal-800 flex items-start">
+                        <HelpCircle className="w-5 h-5 mr-2 mt-1 flex-shrink-0" />
+                        {faq.question}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
       <Footer />
 
       {/* FAQ Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the Biomanufacturing and Life Sciences Strategy?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "This federal strategy includes a $2.2 billion fund to grow Canada's biomanufacturing and life sciences sector. It prioritizes projects that enhance domestic manufacturing capacity for vaccines, therapeutics, and specialized medicines."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Does Canada fund clinical trials?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, funding for clinical trials is available through the Canadian Institutes of Health Research (CIHR) and the Strategic Innovation Fund. Provinces particularly Ontario and Quebec also offer specialized support for clinical validation of health technologies."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Can I use SR&ED for medical device R&D?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Absolutely. Developing new medical devices often involves significant technological risk and experimentation, making it highly eligible for SR&ED tax credits. Costs for design, prototyping, and testing are typically claimable."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What is the timeline for Health Canada approval funding?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Regulatory approval processes can take 6-12 months or longer depending on device class or drug type. Grants supporting this phase often cover regulatory consultancy and submission costs to accelerate market access."
-                }
-              }
-            ]
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </>
   )

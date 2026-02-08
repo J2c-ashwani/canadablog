@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Wheat, Leaf, Sprout } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Wheat, Leaf, Sprout, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -13,11 +13,41 @@ export const metadata: Metadata = {
   keywords: "Canada agriculture grants, agri-food funding, AgriInnovate program, agricultural clean technology, farm grants Canada 2026",
   openGraph: {
     title: "Canada Agriculture & Agri-Food Grants 2026 | $2.3B+ Agricultural Innovation Funding Guide",
-    description: "Comprehensive guide to Canada's agriculture and agri-food funding ecosystem with 32+ programs offering $2.3B+ for innovation, sustainability, and growth.",
-    url: "https://www.fsidigital.ca/blog/canada-agriculture-agrifood-grants-guide",
+    description: "Complete guide to Canada's agriculture and agri-food grants. Access AgriInnovate, SCAP, Clean Technology programs, and 32+ programs offering $2.3B+ for agricultural excellence.",
+    url: "https://grants.finance/blog/canada-agriculture-agrifood-grants-guide",
+    siteName: "Grants Finance",
+    locale: "en_CA",
+    type: "article",
     images: ["/og-image.png"],
   },
 }
+
+const faqData = [
+  {
+    question: "Who is eligible for Canadian agriculture grants?",
+    answer: "Eligibility varies by program but generally includes primary producers (farmers, ranchers), food processors, agri-businesses, and agricultural organizations. Most federal programs like AgriInnovate require applicants to be incorporated for-profit organizations in Canada."
+  },
+  {
+    question: "Can I get government funding for farm equipment?",
+    answer: "Yes, but usually not for standard replacement. Programs like the Agricultural Clean Technology Program fund equipment that reduces greenhouse gas emissions (e.g., grain dryers, precision agriculture tech). SCAP programs often fund technology adoption that improves productivity."
+  },
+  {
+    question: "What is the Sustainable Canadian Agricultural Partnership (SCAP)?",
+    answer: "SCAP is a $3.5 billion, 5-year agreement (2023-2028) between federal, provincial, and territorial governments. It funds programs focused on climate change, sector growth, and public trust. You typically apply through your provincial ministry of agriculture."
+  },
+  {
+    question: "How much funding can getting for agricultural innovation?",
+    answer: "AgriInnovate offers repayable contributions up to $10 million per project (max 50% of costs). Smaller provincial SCAP programs might offer non-repayable grants from $5,000 to $100,000 for specific technology adoption or sustainability projects."
+  },
+  {
+    question: "Are there specific grants for young or new farmers?",
+    answer: "Yes. Farm Credit Canada (FCC) offers special loans and software. The AgriDiversity Program helps underrepresented groups. Many provincial SCAP programs also offer higher cost-sharing ratios (e.g., 60% vs 50%) for young farmers (under 40)."
+  },
+  {
+    question: "How long does it take to get approved for agriculture grants?",
+    answer: "Timelines vary. Provincial SCAP rebates can be quick (4-8 weeks), while major federal programs like AgriInnovate or AgriScience Clusters can take 4-8 months for due diligence and approval. Always apply well before you incur project costs."
+  }
+]
 
 export default function CanadaAgricultureAgrifoodGrantsGuidePage() {
   return (
@@ -48,6 +78,41 @@ export default function CanadaAgricultureAgrifoodGrantsGuidePage() {
                     Back to All Programs
                   </Link>
                 </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-green-50 border-b border-green-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Agriculture Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-green-700">Who is eligible for agriculture grants?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Farmers, processors, and agri-businesses.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-green-700">What is the SCAP program?</h3>
+                  <p className="text-sm text-gray-600 mt-1">$3.5B partnership for industry growth.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-green-700">How do I apply for AgriInnovate?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Funding for commercialization & adoption.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-green-700">Are there grants for clean farming?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Support for low-carbon technologies.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-green-700">How much funding can I get?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Up to $5M for major innovation projects.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-green-700">Is there funding for new farmers?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Programs for youth and startups available.</p>
+                </a>
               </div>
             </div>
           </div>
@@ -109,7 +174,7 @@ export default function CanadaAgricultureAgrifoodGrantsGuidePage() {
         </section>
 
         {/* Major Agriculture Programs */}
-        <section className="py-16 bg-gray-50">
+        <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Major Agriculture & Agri-Food Programs</h2>
@@ -634,8 +699,87 @@ export default function CanadaAgricultureAgrifoodGrantsGuidePage() {
             </div>
           </div>
         </section>
-      </div>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                      <HelpCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-700 ml-9">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Agriculture & Business Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      Manufacturing Grants
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Explore funding for food processing and manufacturing innovation.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/blog/canada-manufacturing-industry-grants-guide">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      Clean Tech Funding
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Grants for sustainable farming practices and clean technology adoption.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/blog/clean-tech-energy-grants">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div >
       <Footer />
+
+      {/* FAQ Schema for Rich Results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqData.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+
     </>
   )
 }

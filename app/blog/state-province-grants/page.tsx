@@ -141,7 +141,7 @@ export default function StateProvinceGrantsPage() {
                 </div>
 
                 <div id="why-local" className="scroll-mt-32">
-                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Why "Boring" Grants Are Better</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Why Are "Boring" Grants Better?</h2>
                   <p className="text-gray-700 mb-6">The most successful grant strategies often focus on programs that other businesses overlook. While everyone chases the headline-grabbing federal programs with hundreds of millions in total funding, the mathematically optimal approach targets smaller regional programs where you face less competition and higher approval rates. A twenty thousand dollar grant with a forty percent approval rate is worth more than a one hundred thousand dollar grant with a five percent approval rate when you factor in the time and resources invested in each application.</p>
                   <div className="grid md:grid-cols-2 gap-8">
                     <Card className="hover:shadow-lg transition border-emerald-100 bg-emerald-50/50">
@@ -165,7 +165,7 @@ export default function StateProvinceGrantsPage() {
                 <div id="top-10-states" className="scroll-mt-32 mt-20">
                   <div className="flex items-center mb-8">
                     <Star className="w-10 h-10 text-yellow-500 mr-4 fill-yellow-500" />
-                    <h2 className="text-4xl font-bold text-gray-900">Top 10 States/Provinces for Incentives</h2>
+                    <h2 className="text-4xl font-bold text-gray-900">Which are the Top 10 States/Provinces for Incentives?</h2>
                   </div>
                   <p className="text-lg text-gray-600 mb-10">We analyzed 60 jurisdictions based on Cash Grants, Tax Credits, and Cost of Doing Business. These are the winners for 2026.</p>
 
@@ -450,7 +450,7 @@ export default function StateProvinceGrantsPage() {
                 <div id="regional-clusters" className="scroll-mt-32 mt-20">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                     <Map className="w-8 h-8 text-purple-600 mr-3" />
-                    Regional Innovation Clusters: Where to Move?
+                    What are Regional Innovation Clusters and Where to Move?
                   </h2>
                   <p className="text-lg text-gray-600 mb-8">
                     Smart founders don't just look for money; they look for ecosystems. Governments spend billions building "Superclusters" where supply chains are concentrated. Moving here unlocks specific pots of money.
@@ -489,7 +489,7 @@ export default function StateProvinceGrantsPage() {
                   <div className="bg-green-50 border border-green-200 rounded-3xl p-8">
                     <div className="flex items-center mb-6">
                       <Users className="w-10 h-10 text-green-700 mr-4" />
-                      <h2 className="text-3xl font-bold text-green-900">The "Small Town" Advantage (Rural Grants)</h2>
+                      <h2 className="text-3xl font-bold text-green-900">What is the "Small Town" Advantage (Rural Grants)?</h2>
                     </div>
                     <p className="text-green-800 text-lg mb-6">
                       Major cities (Toronto, NYC, SF) don't need you. They have too many businesses. Small towns <em>need</em> you. Rural grants are easier to get and often cover higher percentages of costs.
@@ -512,7 +512,7 @@ export default function StateProvinceGrantsPage() {
                 {/* The "Site Selection" Game */}
                 <div className="mt-20">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center">
-                    <Flag className="mr-3 w-8 h-8 text-neutral-600" /> How to Play the "Site Selection" Game
+                    <Flag className="mr-3 w-8 h-8 text-neutral-600" /> How Do You Play the "Site Selection" Game?
                   </h2>
                   <p className="text-lg text-gray-600 mb-8">For major projects ($5M+), do not just "apply". You should negotiate. It is called Site Selection.</p>
 
@@ -629,6 +629,59 @@ export default function StateProvinceGrantsPage() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions About State & Provincial Grants</h2>
+              <div className="space-y-4">
+                <a href="#top-10-states" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-emerald-700">Which states/provinces have the best incentives?</span>
+                </a>
+                <a href="#why-local" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-emerald-700">Why are local grants easier to get than federal?</span>
+                </a>
+                <a href="#regional-clusters" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-emerald-700">What are regional innovation clusters?</span>
+                </a>
+                <a href="#rural-grants" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-emerald-700">Are there special grants for rural businesses?</span>
+                </a>
+                <a href="#state-faq" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-emerald-700">Do I have to move my company to get state grants?</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Regional Funding Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/regional-development-agencies-government-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-emerald-700 mb-2">Regional Development Agencies</h3>
+                  <p className="text-gray-600 text-sm">Canada's 7 RDAs offering up to $10M in federal regional funding</p>
+                </Link>
+                <Link href="/blog/ontario-business-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-emerald-700 mb-2">Ontario Business Grants</h3>
+                  <p className="text-gray-600 text-sm">FedDev Ontario and provincial funding programs</p>
+                </Link>
+                <Link href="/blog/indigenous-rural-business-funding-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-emerald-700 mb-2">Rural Business Funding</h3>
+                  <p className="text-gray-600 text-sm">USDA & Community Futures rural development programs</p>
+                </Link>
+                <Link href="/blog/canada-federal-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-emerald-700 mb-2">Federal Grants Overview</h3>
+                  <p className="text-gray-600 text-sm">Complete guide to Canadian federal business grants</p>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="bg-emerald-900 text-white py-24 border-t border-emerald-800">
           <div className="container mx-auto px-4 text-center max-w-4xl">
@@ -732,7 +785,7 @@ export default function StateProvinceGrantsPage() {
         <div className="mt-20 scroll-mt-32">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
             <Globe className="w-8 h-8 text-blue-600 mr-3" />
-            Official Investment Resources
+            What are Official Investment Resources?
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <Link href="https://www.trade.gov/selectusa" target="_blank" rel="noopener noreferrer" className="flex items-start p-6 bg-blue-50 rounded-xl border border-blue-100 hover:shadow-md transition-all">

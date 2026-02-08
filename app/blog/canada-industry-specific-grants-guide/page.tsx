@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, Factory, Wheat, Building2, Truck, Heart, Cpu, Leaf, Users, Award } from "lucide-react"
+import { CheckCircle, DollarSign, Target, Factory, Wheat, Building2, Truck, Heart, Cpu, Leaf, Users, Award, HelpCircle, FileText } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -11,7 +11,39 @@ export const metadata: Metadata = {
   title: "Canada Industry Specific Grants 2026 | $1.5B+ Sector-Focused Programs Across 25+ Industries",
   description: "Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agriculture, services, technology, healthcare, construction, and specialized industry funding.",
   keywords: "Canada industry specific grants, manufacturing grants Canada, agriculture grants, service industry funding, sector specific programs, industry targeted grants, specialized business funding",
+  openGraph: {
+    title: "Canada Industry Specific Grants 2026 | $1.5B+ Sector-Focused Guide",
+    description: "Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agriculture, services, technology, healthcare, construction, and specialized industry funding.",
+    url: "https://grants.finance/blog/canada-industry-specific-grants-guide",
+    siteName: "Grants Finance",
+    locale: "en_CA",
+    type: "article",
+    images: ["/og-image.png"],
+  },
 }
+
+const faqData = [
+  {
+    question: "What industries are eligible for Canadian government grants?",
+    answer: "Almost all major sectors have specific funding programs, including manufacturing (AMF), agriculture (SCAP), technology (IRAP), healthcare, tourism, and aerospace. Service-based businesses can often access general small business grants or digital adoption funding (CDAP)."
+  },
+  {
+    question: "Can I apply for multiple industry grants?",
+    answer: "Yes, stacking grants is a common strategy. You can often combine a federal program like IRAP (R&D) with a provincial manufacturing grant and a hiring grant. However, you typically cannot use two government sources to cover the exact same 100% of a cost (stacking limits usually cap at 75%)."
+  },
+  {
+    question: "Are there grants for construction companies?",
+    answer: "Yes, primarily for adopting new technologies (e.g., green building tech, digitalization), hiring apprentices, or purchasing equipment that improves productivity. Direct 'cash for operations' grants are rare in construction."
+  },
+  {
+    question: "How do I find grants for my specific niche?",
+    answer: "Start by identifying your NAICS code. Then look for 'sector-specific' streams within major agencies like ISED or your Regional Development Agency (e.g., FedDev Ontario, PrairiesCan). Industry associations often list specialized funding opportunities."
+  },
+  {
+    question: "What is the success rate for industry-specific grants?",
+    answer: "Generally higher than open competitions. Eligibility criteria are stricter, which filters out many applicants. If you meet the specific sector requirements (e.g., 'dairy processor' or 'automotive supplier'), your chances of approval are significantly better."
+  }
+]
 
 export default function CanadaIndustrySpecificGrantsGuide() {
   return (
@@ -29,7 +61,7 @@ export default function CanadaIndustrySpecificGrantsGuide() {
                 Canada Industry Specific Grants 2026
               </h1>
               <p className="text-xl text-indigo-100 mb-8">
-                Access $1.5B+ in Canadian sector-focused funding across 25+ specialized industry programs. From manufacturing 
+                Access $1.5B+ in Canadian sector-focused funding across 25+ specialized industry programs. From manufacturing
                 to agriculture, services to technology - complete guide to industry-tailored business support.
               </p>
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
@@ -40,6 +72,41 @@ export default function CanadaIndustrySpecificGrantsGuide() {
               <p className="text-indigo-200 text-sm mt-4">
                 Free consultation • 90% industry funding success rate • Average funding: $85K
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-indigo-50 border-b border-indigo-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Industry Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#sectors" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-indigo-700">What industries are eligible?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Manufacturing, tech, agri-food, and more.</p>
+                </a>
+                <a href="#faq" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-indigo-700">Can I apply for multiple grants?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, stacking is allowed within limits.</p>
+                </a>
+                <a href="#sectors" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-indigo-700">Are there grants for construction?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Focus on tech adoption and equipment.</p>
+                </a>
+                <a href="#sectors" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-indigo-700">How do I find grants for my niche?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Browse by industry sector below.</p>
+                </a>
+                <a href="#sectors" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-indigo-700">What is the AMF program?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Advanced Manufacturing Fund details.</p>
+                </a>
+                <a href="#sectors" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-indigo-700">Is there funding for retail?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Digital adoption and hiring grants.</p>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -71,7 +138,7 @@ export default function CanadaIndustrySpecificGrantsGuide() {
         </section>
 
         {/* Manufacturing Industry Programs */}
-        <section className="py-20 bg-gray-50">
+        <section id="sectors" className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="flex items-center justify-center mb-4">
@@ -81,7 +148,7 @@ export default function CanadaIndustrySpecificGrantsGuide() {
               <p className="text-center text-gray-600 mb-12">
                 Specialized funding programs designed specifically for Canadian manufacturers, processors, and industrial businesses.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-16">
                 {/* Advanced Manufacturing Fund */}
                 <Card className="border-2 border-blue-200">
@@ -178,7 +245,7 @@ export default function CanadaIndustrySpecificGrantsGuide() {
               <p className="text-center text-gray-600 mb-12">
                 Comprehensive funding ecosystem for farmers, agri-businesses, food processors, and agricultural technology companies.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-16">
                 {/* AgriInnovate Program */}
                 <Card className="border-2 border-green-200">
@@ -355,7 +422,7 @@ export default function CanadaIndustrySpecificGrantsGuide() {
               <p className="text-center text-gray-600 mb-12">
                 Specialized funding for technology companies, software developers, AI/ML businesses, and innovation-driven enterprises.
               </p>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="text-center">
                   <CardHeader>
@@ -374,7 +441,7 @@ export default function CanadaIndustrySpecificGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Building2 className="w-12 h-12 text-blue-600 mx-auto mb-4" />
@@ -392,7 +459,7 @@ export default function CanadaIndustrySpecificGrantsGuide() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center">
                   <CardHeader>
                     <Target className="w-12 h-12 text-green-600 mx-auto mb-4" />
@@ -420,7 +487,7 @@ export default function CanadaIndustrySpecificGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12">Service Industries & Other Specialized Sectors</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Healthcare & Social Services */}
                 <Card className="border-2 border-red-200">
@@ -551,7 +618,7 @@ export default function CanadaIndustrySpecificGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl font-bold mb-8">Why Industry-Specific Programs Matter</h2>
-              
+
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="text-center">
                   <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -562,7 +629,7 @@ export default function CanadaIndustrySpecificGrantsGuide() {
                     Programs designed to address specific industry challenges, opportunities, and regulatory requirements.
                   </p>
                 </div>
-                
+
                 <div className="text-center">
                   <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Users className="w-8 h-8 text-purple-600" />
@@ -572,7 +639,7 @@ export default function CanadaIndustrySpecificGrantsGuide() {
                     Funding agencies with deep understanding of industry dynamics, trends, and competitive landscapes.
                   </p>
                 </div>
-                
+
                 <div className="text-center">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Award className="w-8 h-8 text-green-600" />
@@ -595,8 +662,8 @@ export default function CanadaIndustrySpecificGrantsGuide() {
                 Unlock Your Industry's Specialized Funding with Expert Navigation of 25+ Programs
               </h2>
               <p className="text-xl text-indigo-100 mb-8">
-                Canada's industry-specific funding ecosystem spans manufacturing, agriculture, technology, healthcare, and specialized sectors. 
-                Our industry specialists understand sector-specific requirements and have helped 400+ businesses secure over $34M in 
+                Canada's industry-specific funding ecosystem spans manufacturing, agriculture, technology, healthcare, and specialized sectors.
+                Our industry specialists understand sector-specific requirements and have helped 400+ businesses secure over $34M in
                 industry-targeted funding with a 90% success rate.
               </p>
               <div className="bg-white/10 rounded-lg p-6 mb-8">
@@ -639,8 +706,87 @@ export default function CanadaIndustrySpecificGrantsGuide() {
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                      <HelpCircle className="w-6 h-6 text-purple-600 mr-3 flex-shrink-0 mt-0.5" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-700 ml-9">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Industry Funding Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      Manufacturing Grants
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Complete guide to the Advanced Manufacturing Fund and other industrial programs.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/blog/canada-manufacturing-industry-grants-guide">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      Tech & Innovation
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Funding for technology companies and digital adoption across all sectors.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/blog/canada-technology-adoption-grants-guide">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
       <Footer />
+
+      {/* FAQ Schema for Rich Results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqData.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+
     </>
   )
 }

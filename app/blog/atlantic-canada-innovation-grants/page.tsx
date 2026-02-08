@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Anchor, Waves, Wind, Plane, Ship, Zap, ExternalLink, ArrowRight, Building } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Anchor, Waves, Wind, Plane, Ship, Zap, ExternalLink, ArrowRight, Building, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -517,7 +517,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Where are Atlantic Canada's Innovation Hubs?</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Where are Atlantic Canada&apos;s Innovation Hubs?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-blue-200">
@@ -527,7 +527,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                   <CardContent>
                     <div className="space-y-3">
                       <p className="text-sm text-gray-700">
-                        <strong>Ocean Tech Capital:</strong> Atlantic Canada's innovation leader with COVE, Ocean Supercluster,
+                        <strong>Ocean Tech Capital:</strong> Atlantic Canada&apos;s innovation leader with COVE, Ocean Supercluster,
                         strong universities (Dalhousie, SMU), and vibrant startup ecosystem.
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
@@ -562,7 +562,7 @@ export default function AtlanticCanadaInnovationGrantsPage() {
 
                 <Card className="border-teal-200">
                   <CardHeader>
-                    <CardTitle className="text-teal-700">Newfoundland & Labrador - St. John's</CardTitle>
+                    <CardTitle className="text-teal-700">Newfoundland & Labrador - St. John&apos;s</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
@@ -676,6 +676,83 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                         </div>
                       </div>
                     </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                <Card className="border-gray-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-gray-900 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
+                      What is the Atlantic Innovation Fund (AIF)?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      The AIF is a major pan-Atlantic program administered by ACOA that provides repayable contributions of up to $15 million for large-scale R&D and commercialization projects.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-gray-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-gray-900 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
+                      How does Canada&apos;s Ocean Supercluster work?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      The Ocean Supercluster is an industry-led initiative that co-invests in collaborative technology projects across ocean sectors (fisheries, oil & gas, shipping, defence) to accelerate innovation.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-gray-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-gray-900 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
+                      What is the Atlantic Canada Innovation Tax Credit?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      This is a 15% investment tax credit for qualified R&D expenditures in Atlantic Canada. It can be stacked with federal SR&ED credits for significant returns on innovation investments.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-gray-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-gray-900 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
+                      Can I get funding for a startup in Halifax?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      Yes. Halifax has a thriving ecosystem. In addition to ACOA and Innovacorp (now Invest Nova Scotia), startups can access resources through Volta, CDL-Atlantic, and various university accelerators.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-gray-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-gray-900 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
+                      Are there grants for fisheries technology?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      Yes. The Atlantic Fisheries Fund and various provincial programs support the adoption of new technologies for sustainable harvesting, processing automation, and aquaculture innovation.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-gray-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-gray-900 flex items-start">
+                      <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
+                      Does ACOA fund tourism businesses?
+                    </h3>
+                    <p className="text-gray-700 mt-2 ml-7">
+                      Yes, ACOA often supports tourism operators who are upgrading facilities to extend the season, attracting international visitors, or developing unique experiential tourism products.
+                    </p>
                   </CardContent>
                 </Card>
               </div>

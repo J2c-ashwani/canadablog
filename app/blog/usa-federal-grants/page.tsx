@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, BookOpen, ExternalLink, HelpCircle, ChevronRight, Award, Briefcase, Shield } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, BookOpen, ExternalLink, HelpCircle, ChevronRight, Award, Briefcase, Shield, AlertTriangle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -15,6 +15,14 @@ export const metadata: Metadata = {
 
 export default function USAFederalGrantsPage() {
   const faqData = [
+    {
+      question: "What federal grants are available for small businesses in 2026?",
+      answer: "The main programs are SBIR/STTR (over $4B annually for R&D), SBA loan programs (7a, 504, Microloans), USDA rural business grants, EDA economic development grants, and agency-specific grants from DOD, NIH, DOE, NSF, and other agencies. State matching programs also amplify federal funding."
+    },
+    {
+      question: "How do I apply for SBIR grants?",
+      answer: "Register on SAM.gov first (takes 2-4 weeks). Search SBIR.gov for open solicitations matching your technology. Prepare a technical proposal and commercialization plan following the specific agency format. Submit before the deadline through the agency's portal. Review takes 2-6 months."
+    },
     {
       question: "Do I have to repay federal grants?",
       answer: "True grants don't require repayment. However, you must use funds as specified and may have reporting requirements. Loans (like SBA 7a) must be repaid."
@@ -32,7 +40,7 @@ export default function USAFederalGrantsPage() {
       answer: "A grant is assistance to support a public purpose (you get money to do research). A contract is when the government buys goods or services from you (you get money to deliver a product)."
     },
     {
-      question: "Do I need a grant writer?",
+      question: "Do I need a grant writer for federal applications?",
       answer: "It is not required, but highly recommended for complex programs like SBIR/STTR. The documentation is extensive and strict. Many professional grant writers specialize in specific agencies like NIH or DoD."
     }
   ];
@@ -112,6 +120,80 @@ export default function USAFederalGrantsPage() {
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="border-blue-200"><CardHeader><CardTitle className="text-blue-700">Grant Programs</CardTitle></CardHeader><CardContent><ul className="text-sm space-y-2"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>SBIR/STTR research grants</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Agency-specific R&amp;D funding</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Economic development grants</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Minority/women business programs</span></li></ul></CardContent></Card>
                 <Card className="border-green-200"><CardHeader><CardTitle className="text-green-700">Loan Programs</CardTitle></CardHeader><CardContent><ul className="text-sm space-y-2"><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>SBA 7(a) business loans</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>SBA 504 real estate loans</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>SBA Microloans</span></li><li className="flex items-start"><CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5" /><span>Disaster assistance loans</span></li></ul></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="sam-registration" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-blue-50 border border-blue-100 rounded-xl p-8 mb-12">
+                <h2 className="text-2xl font-bold mb-4 flex items-center text-blue-900"><AlertCircle className="w-6 h-6 mr-3 text-blue-600" /> Prerequisite: SAM.gov Registration</h2>
+                <p className="text-blue-800 mb-6"><strong>STOP!</strong> Do not try to apply for a grant until you have a Unique Entity ID (UEI). This process takes 2-4 weeks. Do it today.</p>
+
+                <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <ol className="space-y-4 relative border-l border-gray-200 ml-3">
+                    <li className="mb-10 ml-6">
+                      <span className="absolute flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full -left-4 ring-4 ring-white text-blue-600 font-bold">1</span>
+                      <h3 className="font-bold text-gray-900 mb-1">Get Your Tax ID (EIN)</h3>
+                      <p className="text-sm text-gray-600">You must have an Employer Identification Number from the IRS. It&apos;s free and instant online.</p>
+                    </li>
+                    <li className="mb-10 ml-6">
+                      <span className="absolute flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full -left-4 ring-4 ring-white text-blue-600 font-bold">2</span>
+                      <h3 className="font-bold text-gray-900 mb-1">Create a Login.gov Account</h3>
+                      <p className="text-sm text-gray-600">This is your master key for all federal websites (Grants.gov, SAM.gov, SBA).</p>
+                    </li>
+                    <li className="mb-10 ml-6">
+                      <span className="absolute flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full -left-4 ring-4 ring-white text-blue-600 font-bold">3</span>
+                      <h3 className="font-bold text-gray-900 mb-1">Register Entity on SAM.gov</h3>
+                      <p className="text-sm text-gray-600">This is the hard part. You need exact match banking info, address verification, and points of contact. <strong>Cost: FREE.</strong> (Beware of scams asking for money).</p>
+                    </li>
+                    <li className="ml-6">
+                      <span className="absolute flex items-center justify-center w-8 h-8 bg-green-100 rounded-full -left-4 ring-4 ring-white text-green-600 font-bold">4</span>
+                      <h3 className="font-bold text-gray-900 mb-1">Receive UEI</h3>
+                      <p className="text-sm text-gray-600">Once validated, you get your 12-character Unique Entity ID. Now you can apply.</p>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+
+              <h2 className="text-3xl font-bold mb-6">The "Generic Proposal Shell"</h2>
+              <p className="text-gray-700 mb-8">While every grant is different, 80% of the content is reusable. Build this master document to speed up applications.</p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">1. Organization Background</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-sm text-gray-600">
+                    500 words on your history, mission, and major accomplishments to date. Include staff bios and Board of Directors list.
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">2. Needs Statement</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-sm text-gray-600">
+                    Data-heavy description of the problem you solve. Use census data, industry reports, and localized statistics.
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">3. Methodology</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-sm text-gray-600">
+                    Your "secret sauce". How exactly do you deliver services? visual logic models or flowcharts are highly recommended here.
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">4. Evaluation Plan</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-sm text-gray-600">
+                    How will you know it worked? Define success metrics (KPIs) and how you will track them (e.g., surveys, intake forms).
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
@@ -253,6 +335,65 @@ export default function USAFederalGrantsPage() {
           </div>
         </section>
 
+
+        <section id="scams" className="py-16 bg-red-900 text-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 flex items-center"><AlertTriangle className="w-8 h-8 mr-3 text-yellow-400" /> WARNING: Grant Scams</h2>
+              <p className="text-red-100 text-lg mb-8">
+                Small business owners are the #1 target for grant scams. Scammers know you are looking for funding. If you see these signs, <strong>IT IS A SCAM.</strong>
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-red-800 p-6 rounded-lg border border-red-700">
+                  <h3 className="font-bold text-xl mb-3 text-yellow-400">1. "You Have Been Selected"</h3>
+                  <p className="text-sm text-red-100">
+                    <strong>The Lie:</strong> "Congratulations! You are eligible for a $50,000 guaranteed grant."
+                  </p>
+                  <p className="text-sm text-white mt-2 font-bold">
+                    <strong>The Truth:</strong> The government NEVER cold-calls or emails you to offer free money. You must always apply first.
+                  </p>
+                </div>
+
+                <div className="bg-red-800 p-6 rounded-lg border border-red-700">
+                  <h3 className="font-bold text-xl mb-3 text-yellow-400">2. "Processing Fees"</h3>
+                  <p className="text-sm text-red-100">
+                    <strong>The Lie:</strong> "Pay $299 to release your grant funds."
+                  </p>
+                  <p className="text-sm text-white mt-2 font-bold">
+                    <strong>The Truth:</strong> You NEVER pay a fee to receive a federal grant. SAM.gov is free. Grants.gov is free.
+                  </p>
+                </div>
+
+                <div className="bg-red-800 p-6 rounded-lg border border-red-700">
+                  <h3 className="font-bold text-xl mb-3 text-yellow-400">3. "Private Grant Agency"</h3>
+                  <p className="text-sm text-red-100">
+                    <strong>The Lie:</strong> A website that looks like a government site but ends in .com or .org.
+                  </p>
+                  <p className="text-sm text-white mt-2 font-bold">
+                    <strong>The Truth:</strong> Official federal grant websites ALWAYS end in <strong>.gov</strong>.
+                  </p>
+                </div>
+
+                <div className="bg-red-800 p-6 rounded-lg border border-red-700">
+                  <h3 className="font-bold text-xl mb-3 text-yellow-400">4. "Social Media Agents"</h3>
+                  <p className="text-sm text-red-100">
+                    <strong>The Lie:</strong> A Facebook/Instagram message from a "friend" saying they got $100k from a special agent.
+                  </p>
+                  <p className="text-sm text-white mt-2 font-bold">
+                    <strong>The Truth:</strong> This is a hacked account. The SBA does not communicate via Facebook Messenger.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 bg-black/30 p-4 rounded-lg text-center">
+                <p className="text-sm text-red-200">Report scams to <a href="https://reportfraud.ftc.gov" target="_blank" className="underline text-white font-bold">ReportFraud.ftc.gov</a></p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         <section id="faqs" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -274,16 +415,87 @@ export default function USAFederalGrantsPage() {
           </div>
         </section>
 
-        <section className="py-16 bg-gray-50">
+        <section id="states" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/blog/sbir-sttr-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBIR/STTR Complete Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/sba-7a-loans-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA 7(a) Loans Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/federal-grants-women-minorities" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Women &amp; Minority Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/state-local-business-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>State &amp; Local Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-center">Top State-Level Grant Programs (2026)</h2>
+              <p className="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+                While federal grants get the headlines, state grants often have higher approval rates because the competition is local. Here are the flagship programs in the largest states.
+              </p>
+
+              <div className="overflow-x-auto mb-12">
+                <table className="w-full bg-white shadow-lg rounded-xl overflow-hidden border">
+                  <thead className="bg-blue-900 text-white">
+                    <tr>
+                      <th className="p-4 text-left">State</th>
+                      <th className="p-4 text-left">Program Name</th>
+                      <th className="p-4 text-left">Amount</th>
+                      <th className="p-4 text-left">Best For...</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr className="hover:bg-blue-50 transition-colors">
+                      <td className="p-4 font-bold">California</td>
+                      <td className="p-4">
+                        <span className="font-bold text-blue-700">CalCompetes Tax Credit</span>
+                        <br /><span className="text-xs text-gray-500">GO-Biz Innovation Grant</span>
+                      </td>
+                      <td className="p-4 font-medium">$20k - $5M+</td>
+                      <td className="p-4 text-sm">Tech startups and manufacturers creating full-time jobs.</td>
+                    </tr>
+                    <tr className="hover:bg-blue-50 transition-colors">
+                      <td className="p-4 font-bold">New York</td>
+                      <td className="p-4">
+                        <span className="font-bold text-blue-700">Excelsior Jobs Program</span>
+                        <br /><span className="text-xs text-gray-500">NY State Seed Funding</span>
+                      </td>
+                      <td className="p-4 font-medium">Up to 6.85% wages</td>
+                      <td className="p-4 text-sm">Clean energy, biotech, and software development.</td>
+                    </tr>
+                    <tr className="hover:bg-blue-50 transition-colors">
+                      <td className="p-4 font-bold">Texas</td>
+                      <td className="p-4">
+                        <span className="font-bold text-blue-700">Texas Enterprise Fund (TEF)</span>
+                        <br /><span className="text-xs text-gray-500">Product Development Fund</span>
+                      </td>
+                      <td className="p-4 font-medium">Variable (High)</td>
+                      <td className="p-4 text-sm">"Deal-closing" grants for companies considering moving to Texas.</td>
+                    </tr>
+                    <tr className="hover:bg-blue-50 transition-colors">
+                      <td className="p-4 font-bold">Florida</td>
+                      <td className="p-4">
+                        <span className="font-bold text-blue-700">High Tech Corridor</span>
+                        <br /><span className="text-xs text-gray-500">Enterprise Florida</span>
+                      </td>
+                      <td className="p-4 font-medium">$10k - $150k</td>
+                      <td className="p-4 text-sm">Research partnerships with universities (UF, UCF, USF).</td>
+                    </tr>
+                    <tr className="hover:bg-blue-50 transition-colors">
+                      <td className="p-4 font-bold">Illinois</td>
+                      <td className="p-4">
+                        <span className="font-bold text-blue-700">Advantage Illinois</span>
+                        <br /><span className="text-xs text-gray-500">Angel Investment Credit</span>
+                      </td>
+                      <td className="p-4 font-medium">Participation Loan</td>
+                      <td className="p-4 text-sm">Early-stage startups needing lower interest rates.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-gray-50 p-6 rounded-lg text-center">
+                  <h3 className="font-bold mb-2">Don't See Your State?</h3>
+                  <p className="text-sm text-gray-600 mb-4">We track grant programs for all 50 states. Find your local Small Business Development Center (SBDC) for free help.</p>
+                  <Button variant="outline" asChild><Link href="/usa">View All 50 State Guides</Link></Button>
+                </div>
+                <div className="bg-gray-50 p-6 rounded-lg text-center">
+                  <h3 className="font-bold mb-2">SBDC Locator</h3>
+                  <p className="text-sm text-gray-600 mb-4">There are 900+ SBDC offices in the US. They provide free grant consulting funded by the SBA.</p>
+                  <Button variant="outline" asChild><Link href="https://www.sba.gov/local-assistance/resource-partners/small-business-development-centers-sbdc" target="_blank">Find an SBDC Near You</Link></Button>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
@@ -297,7 +509,7 @@ export default function USAFederalGrantsPage() {
             </div>
           </div>
         </section>
-      </div>
+      </div >
       <Footer />
     </>
   )

@@ -303,6 +303,36 @@ export default function USAGrantsPage() {
         </div>
       </section>
 
+      {/* Popular Guides Section */}
+      <section className="py-16 bg-white border-t">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Popular Business Funding Guides</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              In-depth guides to help you navigate US government funding programs.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link href="/blog/usa-federal-grants" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
+              <h3 className="font-bold text-lg mb-2 group-hover:text-primary">USA Federal Grants Guide</h3>
+              <p className="text-gray-600 text-sm">Complete guide to SBIR/STTR, SBA programs, and agency-specific federal funding.</p>
+            </Link>
+            <Link href="/blog/sbir-small-business-guide" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
+              <h3 className="font-bold text-lg mb-2 group-hover:text-primary">SBIR Small Business Guide</h3>
+              <p className="text-gray-600 text-sm">How to win SBIR Phase I and II grants across 11 federal agencies.</p>
+            </Link>
+            <Link href="/blog/state-local-business-grants-guide" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
+              <h3 className="font-bold text-lg mb-2 group-hover:text-primary">State & Local Grants Guide</h3>
+              <p className="text-gray-600 text-sm">Regional economic development funding, tax credits, and job creation incentives.</p>
+            </Link>
+            <Link href="/blog/industry-specific-business-grants-guide" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
+              <h3 className="font-bold text-lg mb-2 group-hover:text-primary">Industry-Specific Grants</h3>
+              <p className="text-gray-600 text-sm">Targeted funding for manufacturing, healthcare, cleantech, and more industries.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   )

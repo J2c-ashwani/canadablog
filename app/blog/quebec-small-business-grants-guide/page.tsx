@@ -105,6 +105,41 @@ export default function QuebecSmallBusinessGrantsGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-blue-50 border-b border-blue-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Quebec Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">Who is eligible for Quebec business grants?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Check eligibility for Investissement Québec programs.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">How do R&D tax credits work?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Get up to 37.5% refundable credits for innovation.</p>
+                </a>
+                <a href="#cities" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">Are there grants for Montreal businesses?</h3>
+                  <p className="text-sm text-gray-600 mt-1">See PME MTL and local development funding.</p>
+                </a>
+                <a href="#how-to-apply" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">Do I need to apply in French?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Learn about language requirements and support.</p>
+                </a>
+                <a href="#alternatives" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">Are there loans available?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Investissement Québec financing options explained.</p>
+                </a>
+                <a href="#industries" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">Which industries are prioritized?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Aerospace, AI, and manufacturing sectors.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Key Statistics */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

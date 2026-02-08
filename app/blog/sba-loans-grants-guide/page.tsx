@@ -6,8 +6,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   CheckCircle, DollarSign, Target, AlertTriangle, FileText,
   Clock, ChevronRight, ExternalLink, BookOpen, HelpCircle, Briefcase,
-  Building2, CreditCard, TrendingUp, ShieldCheck, Percent
+  Building2, CreditCard, TrendingUp, ShieldCheck, Percent, AlertCircle
 } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,6 +25,14 @@ export const metadata: Metadata = {
 
 export default function SBALoansGrantsGuidePage() {
   const faqData = [
+    {
+      question: "What SBA loans are available for small businesses in 2026?",
+      answer: "The main SBA loan programs are: 7(a) loans up to $5M for general business purposes, CDC/504 loans up to $5.5M for real estate and equipment, Microloans up to $50K for startups, and Disaster loans up to $2M for emergency recovery."
+    },
+    {
+      question: "What is the interest rate on SBA loans in 2026?",
+      answer: "SBA 7(a) loan rates are typically Prime + 2.25% to Prime + 4.75% depending on loan size and term. CDC/504 loans offer fixed rates. Microloans range from 8-13%. Disaster loans are as low as 4% for qualifying businesses."
+    },
     {
       question: "How long does SBA loan approval take?",
       answer: "Typically 30-90 days for standard 7(a) loans. SBA Express can be approved in 36 hours. Microloans often take 2-4 weeks."
@@ -115,6 +129,33 @@ export default function SBALoansGrantsGuidePage() {
               <div><div className="text-3xl font-bold text-blue-600 mb-2">$5M</div><div className="text-gray-600">Max 7(a) Loan</div></div>
               <div><div className="text-3xl font-bold text-purple-600 mb-2">75-85%</div><div className="text-gray-600">SBA Guarantee</div></div>
               <div><div className="text-3xl font-bold text-emerald-600 mb-2">10%</div><div className="text-gray-600">Min Down Payment</div></div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About SBA Loans</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#overview" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">What is an SBA loan?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Government-backed financing reducing lender risk.</p>
+                </a>
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">What credit score do I need?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Typically 650+ for 7(a) loans, lower for microloans.</p>
+                </a>
+                <a href="#loan-types" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">How much can I borrow?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Up to $5 Million for 7(a) and $5.5M for 504 loans.</p>
+                </a>
+                <a href="#how-to-apply" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">How long does it take?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Usually 30-90 days from application to funding.</p>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -333,6 +374,62 @@ export default function SBALoansGrantsGuidePage() {
           </div>
         </section>
 
+        <section id="community-advantage" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Community Advantage: For Underserved Markets</h2>
+              <p className="text-gray-700 mb-6">If you have a lower credit score or are in an underserved community (rural, veteran, low-income), standard 7(a) lenders might reject you. <strong>Community Advantage</strong> is the backdoor.</p>
+
+              <div className="bg-purple-50 border border-purple-200 rounded-xl p-6">
+                <h3 className="font-bold text-purple-900 mb-4 flex items-center"><Target className="w-5 h-5 mr-2" /> Key Features</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 mb-1">Mission-Based Lenders</p>
+                    <p className="text-xs text-gray-600">These loans are not issued by big banks. They are issued by CDFIs (Community Development Financial Institutions) who care about your story.</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 mb-1">Up to $350,000</p>
+                    <p className="text-xs text-gray-600">Enough to buy a franchise or start a serious Main Street business.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="caplines" className="py-16 bg-green-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-start">
+                <TrendingUp className="w-10 h-10 text-green-600 mr-4 flex-shrink-0" />
+                <div>
+                  <h2 className="text-3xl font-bold mb-4 text-green-900">SBA CAPLines (Revolving Credit)</h2>
+                  <p className="text-green-800 mb-4">Most people think SBA loans are term loans (lump sum). <strong>CAPLines</strong> are revolving Lines of Credit to help with seasonality.</p>
+
+                  <div className="grid md:grid-cols-2 gap-4 text-slate-900">
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-green-100">
+                      <h4 className="font-bold mb-2">Contract CAPLine</h4>
+                      <p className="text-xs">You won a big government contract but don't have the cash to buy materials? This funds that specific contract.</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-green-100">
+                      <h4 className="font-bold mb-2">Seasonal CAPLine</h4>
+                      <p className="text-xs">For Christmas inventory or summer staffing. You pay it down when the season ends.</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-green-100">
+                      <h4 className="font-bold mb-2">Builders CAPLine</h4>
+                      <p className="text-xs">For general contractors creating or renovating buildings for resale.</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-green-100">
+                      <h4 className="font-bold mb-2">Working Capital CAPLine</h4>
+                      <p className="text-xs">A general revolving line secured by accounts receivable and inventory.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Comparison */}
         <section id="comparison" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -361,16 +458,44 @@ export default function SBALoansGrantsGuidePage() {
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <Card key={index}>
-                    <CardContent className="pt-6">
-                      <h3 className="font-bold flex items-start">
-                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                        {faq.question}
-                      </h3>
-                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
-                    </CardContent>
-                  </Card>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-900">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Loans Get Stuck */}
+        <section id="common-mistakes" className="py-16 bg-red-50 border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-red-900">Why SBA Loans Get Stuck</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">1. The "Global Cash Flow" Miss</h3>
+                  <p className="text-sm text-gray-700">SBA lenders look at "Global Cash Flow." This means they check if your business income + personal income can cover your business debt + personal mortgage. If your personal debt is too high, your business loan is denied.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">2. Ineligible Use of Proceeds</h3>
+                  <p className="text-sm text-gray-700">You cannot use SBA loan proceeds to pay off IRS tax debt or to pay the owner a dividend. Be very specific about "Working Capital" use.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">3. Life Insurance Requirement</h3>
+                  <p className="text-sm text-gray-700">Surprise! For most SBA loans, the key person (you) must get a life insurance policy assigned to the lender. This often delays closing by weeks.</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg border border-red-100 shadow-sm">
+                  <h3 className="font-bold text-red-800 mb-2">4. Environmental Phase I</h3>
+                  <p className="text-sm text-gray-700">Buying a building that used to be a dry cleaner or gas station? You will need an expensive Environmental Site Assessment. Start this early.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -380,12 +505,18 @@ export default function SBALoansGrantsGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
+              <h2 className="text-2xl font-bold mb-6">State Small Business Programs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/usa/california" className="flex items-center p-4 bg-white rounded-lg border hover:border-green-500 transition-all"><Building2 className="w-5 h-5 text-blue-600 mr-3" /><span>California Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/texas" className="flex items-center p-4 bg-white rounded-lg border hover:border-green-500 transition-all"><Building2 className="w-5 h-5 text-orange-600 mr-3" /><span>Texas Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/florida" className="flex items-center p-4 bg-white rounded-lg border hover:border-green-500 transition-all"><Building2 className="w-5 h-5 text-green-600 mr-3" /><span>Florida Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/new-york" className="flex items-center p-4 bg-white rounded-lg border hover:border-green-500 transition-all"><Building2 className="w-5 h-5 text-purple-600 mr-3" /><span>New York Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa" className="flex items-center p-4 bg-white rounded-lg border hover:border-green-500 transition-all"><ShieldCheck className="w-5 h-5 text-red-600 mr-3" /><span>All 50 States</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold mb-4">Related Funding Guides</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <Link href="/blog/sba-7a-loans-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA 7(a) Loans Deep Dive</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/sba-microloans-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA Microloans Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/sbir-sttr-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBIR/STTR R&amp;D Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/small-business-grants-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/sbir-sttr-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-green-600 mr-3" /><span>SBIR/STTR R&D Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

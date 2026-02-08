@@ -129,7 +129,7 @@ export default function SREDTaxCreditsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada's Premier R&D Tax Incentive Program</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the SR&ED Tax Incentive Program?</h2>
                 <p className="text-lg text-gray-600">
                   The SR&ED program provides tax incentives to Canadian businesses that conduct research and development in Canada,
                   supporting innovation across all industries with up to 65% combined federal and provincial tax credits.
@@ -162,7 +162,7 @@ export default function SREDTaxCreditsGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">2026 SR&ED Tax Credit Rates & Eligibility</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the 2026 SR&ED Tax Credit Rates & Eligibility?</h2>
 
               <div className="space-y-8">
                 {/* Canadian-Controlled Private Corporations */}
@@ -455,7 +455,7 @@ export default function SREDTaxCreditsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">SR&ED Tax Credit Calculator</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">How to Calculate Your SR&ED Tax Credits?</h2>
                 <p className="text-lg text-gray-600">
                   Estimate your potential SR&ED tax credits based on 2026 enhanced rates and expenditure limits.
                 </p>
@@ -550,7 +550,7 @@ export default function SREDTaxCreditsGuidePage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">SR&ED Application Process & Timeline</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What is the SR&ED Application Process & Timeline?</h2>
 
               <div className="space-y-6">
                 <div className="grid md:grid-cols-4 gap-6">
@@ -642,7 +642,7 @@ export default function SREDTaxCreditsGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">SR&ED Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are Key SR&ED Success Strategies?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
@@ -721,7 +721,7 @@ export default function SREDTaxCreditsGuidePage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Provincial SR&ED Tax Credits</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Which Provinces Offer SR&ED Tax Credits?</h2>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
@@ -829,6 +829,59 @@ export default function SREDTaxCreditsGuidePage() {
             ))}
           </div>
         </div>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions About SR&ED Tax Credits</h2>
+              <div className="space-y-4">
+                <a href="#overview" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">What is SR&ED and how does it work?</span>
+                </a>
+                <a href="#eligibility" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">Who qualifies for SR&ED tax credits?</span>
+                </a>
+                <a href="#calculator" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">How much SR&ED funding can I receive?</span>
+                </a>
+                <a href="#eligible-activities" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">What activities qualify for SR&ED?</span>
+                </a>
+                <a href="#application" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-green-700">How do I apply for SR&ED tax credits?</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Government Funding Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/irap-industrial-research-assistance-program" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-green-700 mb-2">IRAP Funding Guide</h3>
+                  <p className="text-gray-600 text-sm">Up to $1M in non-repayable R&D grants from NRC-IRAP</p>
+                </Link>
+                <Link href="/blog/canada-innovation-research-development-grants-guide" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-green-700 mb-2">Canada R&D Grants Guide</h3>
+                  <p className="text-gray-600 text-sm">Complete overview of Canadian innovation funding programs</p>
+                </Link>
+                <Link href="/blog/ideation-research-funding-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-green-700 mb-2">Ideation & Research Funding</h3>
+                  <p className="text-gray-600 text-sm">Early-stage research and ideation grants in Canada</p>
+                </Link>
+                <Link href="/blog/development-proof-concept-funding-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-green-700 mb-2">Proof of Concept Funding</h3>
+                  <p className="text-gray-600 text-sm">Development and prototype funding programs</p>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Dual CTA Section */}
         <section className="py-20 bg-gradient-to-r from-green-600 to-green-800">

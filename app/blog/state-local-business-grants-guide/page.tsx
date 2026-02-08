@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, MapPin, Users, Building2, BookOpen, HelpCircle, ChevronRight } from "lucide-react"
+import { ExternalLink, Clock, DollarSign, Target, CheckCircle, AlertCircle, MapPin, Users, Building2, BookOpen, HelpCircle, ChevronRight, AlertTriangle } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -15,6 +21,14 @@ export const metadata: Metadata = {
 
 export default function StateLocalBusinessGrantsGuide() {
   const faqData = [
+    {
+      question: "What state business grants are available in 2026?",
+      answer: "Every state offers economic development programs. Top programs include California CalCompetes (up to $20M tax credits), Texas Enterprise Fund ($5M+), New York Excelsior Jobs Program, and Florida Quick Action Closing Fund. Most states offer job creation credits, investment tax credits, and workforce training grants."
+    },
+    {
+      question: "How do I apply for state economic development grants?",
+      answer: "Contact your state's economic development agency or local EDC before making location decisions—many programs require pre-approval. Prepare a business plan with job projections and investment plans. Work with state staff to identify all applicable programs, as they can often be stacked."
+    },
     {
       question: "How do I find my state's programs?",
       answer: "Search for '[Your State] economic development' or contact your state's Department of Commerce. Our state-by-state guides also list major programs and contacts."
@@ -88,6 +102,33 @@ export default function StateLocalBusinessGrantsGuide() {
                   <li><a href="#faqs" className="text-blue-700 hover:underline">12. FAQs</a></li>
                 </ul>
               </nav>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About State & Local Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#top-states" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Which states have the best programs?</h3>
+                  <p className="text-sm text-gray-600 mt-1">California, Texas, and New York offer the largest incentive packages.</p>
+                </a>
+                <a href="#finding" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">How do I find local programs?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Contact your local Economic Development Corporation or Chamber of Commerce.</p>
+                </a>
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">What are common requirements?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Job creation thresholds, capital investment, and business location.</p>
+                </a>
+                <a href="#application" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-900">Can I combine programs?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, most state programs can be stacked with federal funding.</p>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -174,13 +215,69 @@ export default function StateLocalBusinessGrantsGuide() {
         <section id="application" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Application Process</h2>
-              <p className="text-gray-700 mb-6">State and local grant applications generally involve contacting your state economic development agency or local EDC first. Many programs require pre-approval before making location or investment decisions. Building relationships with program administrators significantly improves success rates.</p>
-              <div className="space-y-4">
-                <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">1</div><div><h3 className="font-bold">Contact State/Local EDC</h3><p className="text-gray-600 text-sm">Reach out to economic development staff before making decisions. Many programs require pre-approval.</p></div></div>
-                <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">2</div><div><h3 className="font-bold">Identify Applicable Programs</h3><p className="text-gray-600 text-sm">Work with staff to identify all programs you may qualify for. Programs can often be combined.</p></div></div>
-                <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">3</div><div><h3 className="font-bold">Submit Application Package</h3><p className="text-gray-600 text-sm">Complete applications with required documentation including business plan, financials, and job projections.</p></div></div>
-                <div className="flex items-start p-4 bg-gray-50 rounded-lg border"><div className="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold mr-4 flex-shrink-0">4</div><div><h3 className="font-bold">Negotiate Terms</h3><p className="text-gray-600 text-sm">Larger projects often involve negotiation. Emphasize your project&apos;s economic impact and job quality.</p></div></div>
+              <h2 className="text-3xl font-bold mb-6">Application Process: A "Main Street" Example</h2>
+              <p className="text-gray-700 mb-8">To understand the local grant process, let&apos;s walk through a typical successful application for a "Downtown Facade Improvement Grant"—one of the most common local programs.</p>
+
+              <div className="bg-orange-50 rounded-xl border border-orange-100 p-8 mb-12">
+                <h3 className="text-xl font-bold text-orange-900 mb-4">Case Study: The "Coffee Corner" Renovation</h3>
+                <div className="space-y-6">
+                  <div className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-orange-600 text-white flex items-center justify-center font-bold flex-shrink-0">1</div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">Pre-Application Meeting (Crucial Step)</h4>
+                      <p className="text-sm text-gray-600">Owner Sarah didn&apos;t just apply. She met with the "Main Street Manager" <em>first</em>. She brought a rough sketch of her new sign and awning. The manager told her: "We prefer historical colors, not neon." Sarah adjusted her plan <em>before</em> applying.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-orange-600 text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">The Quote Collection</h4>
+                      <p className="text-sm text-gray-600">The grant required "two competitive bids." Sarah got three. One contractor was $5,000, another $8,000. She chose the $5,000 one, showing fiscal responsibility to the grant committee.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-orange-600 text-white flex items-center justify-center font-bold flex-shrink-0">3</div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">The "Before" Photos</h4>
+                      <p className="text-sm text-gray-600">Sarah took high-resolution photos of her peeling paint. Grant committees love a dramatic "Before & After" story. She made sure the ugly parts were clearly visible.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold flex-shrink-0">✓</div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">Result: Approved</h4>
+                      <p className="text-sm text-gray-600">She received a $2,500 reimbursement grant (50% match) because her project aligned perfectly with the town&apos;s goal of "Historic Revitalization," not just "Business Growth."</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <h2 className="text-3xl font-bold mb-6">Decision Matrix: State vs. Local</h2>
+              <p className="text-gray-700 mb-6">Should you spend time on State or Local programs? Use this matrix to decide where your highest probability of success lies.</p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-t-4 border-orange-500">
+                  <CardHeader><CardTitle className="text-orange-700">Apply LOCALLY If...</CardTitle></CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 text-sm text-gray-600">
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 text-orange-500 mr-2 mt-0.5" /> You are a retail, restaurant, or service business.</li>
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 text-orange-500 mr-2 mt-0.5" /> You are creating 1-5 jobs.</li>
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 text-orange-500 mr-2 mt-0.5" /> You need physical improvements (signage, paint).</li>
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 text-orange-500 mr-2 mt-0.5" /> You are located in a specific "downtown" district.</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+                <Card className="border-t-4 border-blue-500">
+                  <CardHeader><CardTitle className="text-blue-700">Apply to STATE If...</CardTitle></CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 text-sm text-gray-600">
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-500 mr-2 mt-0.5" /> You are in manufacturing, tech, or export.</li>
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-500 mr-2 mt-0.5" /> You are creating 10+ full-time jobs with benefits.</li>
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-500 mr-2 mt-0.5" /> You are investing $1M+ in capital equipment.</li>
+                      <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-500 mr-2 mt-0.5" /> You are considering moving to another state.</li>
+                    </ul>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
@@ -238,6 +335,107 @@ export default function StateLocalBusinessGrantsGuide() {
           </div>
         </section>
 
+        <section id="micro-grants" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">City-Level Micro-Grants: The "Low Hanging Fruit"</h2>
+              <p className="text-gray-700 mb-6">While everyone chases $50k state grants, thousands of cities offer smaller $2k-$10k grants with much higher approval rates. These are often for specific improvements like signage, digital marketing, or security.</p>
+
+              <div className="overflow-x-auto rounded-xl border border-gray-200 mb-8">
+                <table className="w-full text-sm text-left">
+                  <thead className="bg-gray-100 text-gray-700 font-bold">
+                    <tr>
+                      <th className="p-3">Program Type</th>
+                      <th className="p-3 text-green-700">Typical Amount</th>
+                      <th className="p-3">Common Use Case</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr className="bg-white">
+                      <td className="p-3 font-semibold">Facade Improvement</td>
+                      <td className="p-3">$5,000 - $25,000</td>
+                      <td className="p-3">New signs, painting, windows, awnings.</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="p-3 font-semibold">Digital Adoption</td>
+                      <td className="p-3">$1,000 - $5,000</td>
+                      <td className="p-3">Website redesign, e-commerce setup.</td>
+                    </tr>
+                    <tr className="bg-white">
+                      <td className="p-3 font-semibold">Security Grant</td>
+                      <td className="p-3">$500 - $2,500</td>
+                      <td className="p-3">Installing cameras, better lighting.</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="p-3 font-semibold">Outdoor Dining</td>
+                      <td className="p-3">$2,000 - $10,000</td>
+                      <td className="p-3">Patio furniture, heaters, barriers.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4">
+                <p className="text-sm text-yellow-900"><strong>Pro Tip:</strong> To find these, search Google for <code>"[Your City Name] economic development grants"</code> or call your City Hall&apos;s "Planning Department". They are often not advertised well.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="chambers" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Hidden Funds: Chambers of Commerce</h2>
+              <p className="text-gray-700 mb-6">Local Chambers of Commerce don&apos;t just host mixers; they often administer grant programs funded by corporate donors (like FedEx, Verizon) or local governments.</p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-purple-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-lg text-purple-800 mb-2">Downtown Associations (BIA)</h3>
+                    <p className="text-sm text-gray-700">Business Improvement Areas collect a tax levy from local businesses and reinvest it. They often fund:</p>
+                    <ul className="mt-2 space-y-1 text-sm text-gray-600">
+                      <li>• Street festivals (bringing you customers)</li>
+                      <li>• Area beautification</li>
+                      <li>• Collective marketing campaigns</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-blue-200">
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-lg text-blue-800 mb-2">Corporate-Chamber Partnerships</h3>
+                    <p className="text-sm text-gray-700">Large corporations often route their "Small Business Support" funds through the U.S. Chamber of Commerce Foundation to reach local businesses efficiently.</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="seda-directory" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">State Economic Development Agency (SEDA) Directory</h2>
+              <p className="text-gray-700 mb-8">Don&apos;t know who to call? Here is the "Big List" of the primary agency in major states that handles business grants. Bookmark their "Incentives" page.</p>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+                <div className="p-3 border rounded hover:bg-gray-50"><strong className="block text-gray-900">California</strong><span className="text-gray-600">GO-Biz (Governor&apos;s Office)</span></div>
+                <div className="p-3 border rounded hover:bg-gray-50"><strong className="block text-gray-900">Texas</strong><span className="text-gray-600">Texas Economic Development</span></div>
+                <div className="p-3 border rounded hover:bg-gray-50"><strong className="block text-gray-900">New York</strong><span className="text-gray-600">Empire State Development</span></div>
+                <div className="p-3 border rounded hover:bg-gray-50"><strong className="block text-gray-900">Florida</strong><span className="text-gray-600">Enterprise Florida</span></div>
+                <div className="p-3 border rounded hover:bg-gray-50"><strong className="block text-gray-900">Illinois</strong><span className="text-gray-600">DCEO</span></div>
+                <div className="p-3 border rounded hover:bg-gray-50"><strong className="block text-gray-900">Pennsylvania</strong><span className="text-gray-600">DCED</span></div>
+                <div className="p-3 border rounded hover:bg-gray-50"><strong className="block text-gray-900">Ohio</strong><span className="text-gray-600">JobsOhio</span></div>
+                <div className="p-3 border rounded hover:bg-gray-50"><strong className="block text-gray-900">Georgia</strong><span className="text-gray-600">Dept. of Economic Dev.</span></div>
+                <div className="p-3 border rounded hover:bg-gray-50"><strong className="block text-gray-900">North Carolina</strong><span className="text-gray-600">EDPNC</span></div>
+                <div className="p-3 border rounded hover:bg-gray-50"><strong className="block text-gray-900">Michigan</strong><span className="text-gray-600">MEDC</span></div>
+                <div className="p-3 border rounded hover:bg-gray-50"><strong className="block text-gray-900">New Jersey</strong><span className="text-gray-600">NJEDA</span></div>
+                <div className="p-3 border rounded hover:bg-gray-50"><strong className="block text-gray-900">Virginia</strong><span className="text-gray-600">VEDP</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="success" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -250,21 +448,41 @@ export default function StateLocalBusinessGrantsGuide() {
           </div>
         </section>
 
+        <section id="scams" className="py-16 bg-red-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-red-900 flex items-center"><AlertTriangle className="w-8 h-8 mr-3" /> Warning: Local Grant Scams</h2>
+              <p className="text-red-800 mb-6">Local businesses are prime targets for scammers pretending to be the "State Department of Grants".</p>
+              <ul className="space-y-4">
+                <li className="flex items-start bg-white p-4 rounded shadow-sm">
+                  <span className="font-bold text-red-600 mr-2">RED FLAG 1:</span>
+                  <span className="text-gray-700">They ask you to pay a "processing fee" to receive the grant. Real government grants <strong>never</strong> ask for money.</span>
+                </li>
+                <li className="flex items-start bg-white p-4 rounded shadow-sm">
+                  <span className="font-bold text-red-600 mr-2">RED FLAG 2:</span>
+                  <span className="text-gray-700">They contact you via social media (Instagram/Facebook) claiming you won a "COVID Relief Grant".</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <section id="faqs" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <Card key={index}>
-                    <CardContent className="pt-6">
-                      <h3 className="font-bold flex items-start">
-                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                        {faq.question}
-                      </h3>
-                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
-                    </CardContent>
-                  </Card>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-900">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
               </div>
             </div>
@@ -299,12 +517,18 @@ export default function StateLocalBusinessGrantsGuide() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
+              <h2 className="text-3xl font-bold mb-6">Top State Grant Programs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/usa/california" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><MapPin className="w-5 h-5 text-blue-600 mr-3" /><span>California Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/texas" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><MapPin className="w-5 h-5 text-red-600 mr-3" /><span>Texas Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/new-york" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><MapPin className="w-5 h-5 text-purple-600 mr-3" /><span>New York Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/florida" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><MapPin className="w-5 h-5 text-orange-600 mr-3" /><span>Florida Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/small-business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><MapPin className="w-5 h-5 text-green-600 mr-3" /><span>All State Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold mb-4">Related Funding Guides</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/usa" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>State-by-State Funding Guides</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/small-business-grants-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/sba-7a-loans-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA 7(a) Loans</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/industry-specific-business-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Industry-Specific Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/usa-federal-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-green-600 mr-3" /><span>Federal Grants Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/sbir-small-business-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-green-600 mr-3" /><span>SBIR Small Business Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

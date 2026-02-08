@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, DollarSign, Target, Clock, ChevronRight, ExternalLink, BookOpen, HelpCircle, Users, Heart, Shield } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -15,6 +21,14 @@ export const metadata: Metadata = {
 
 export default function FederalGrantsWomenMinoritiesPage() {
   const faqData = [
+    {
+      question: "What federal grants are available for women-owned businesses in 2026?",
+      answer: "The main programs are WOSB (Women-Owned Small Business) and EDWOSB (Economically Disadvantaged) certifications, which provide access to 5% of all federal contracts (over $25 billion annually) through set-aside competitions and sole-source awards up to $4M-$7M."
+    },
+    {
+      question: "How do I get certified as a minority-owned business?",
+      answer: "Apply for the SBA 8(a) Business Development Program through assist.sba.gov. You must be 51% owned by a socially and economically disadvantaged individual, have been in business for 2+ years, and demonstrate good character and potential for success."
+    },
     {
       question: "How long does certification take?",
       answer: "WOSB: 2-4 weeks using the new SBA portal. 8(a): 90-180 days (more complex). HUBZone: 60-90 days. SDVOSB: 60-90 days. Processing times depend heavily on documentation completeness."
@@ -231,6 +245,59 @@ export default function FederalGrantsWomenMinoritiesPage() {
           </div>
         </section>
 
+        <section id="naics" className="py-16 bg-gray-50 border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Mastering NAICS Codes</h2>
+              <p className="text-gray-700 mb-6">The government buys everything using <strong>NAICS Codes</strong> (North American Industry Classification System). If you don't know your code, you can't find the contract.</p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-white p-6 rounded-lg border shadow-sm">
+                  <h3 className="font-bold text-lg mb-3">How to Find Your Code</h3>
+                  <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
+                    <li>Go to <strong>Census.gov/naics</strong></li>
+                    <li>Search for your primary keyword (e.g., "Web Design" or "Catering")</li>
+                    <li>Identify the 6-digit code that best fits (e.g., 541511)</li>
+                    <li>Add this code to your SAM.gov profile</li>
+                  </ol>
+                </div>
+                <div className="bg-white p-6 rounded-lg border shadow-sm">
+                  <h3 className="font-bold text-lg mb-3">Common Small Business Codes</h3>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li><strong>541511:</strong> Custom Computer Programming</li>
+                    <li><strong>541611:</strong> Admin Management Consulting</li>
+                    <li><strong>236220:</strong> Commercial Building Construction</li>
+                    <li><strong>561720:</strong> Janitorial Services</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="subcontracting" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">The Back Door: Subcontracting</h2>
+              <p className="text-gray-700 mb-6">Large Prime Contractors are <em>required</em> to subcontract a percentage of their work to small businesses. This is often easier than winning a prime contract yourself.</p>
+
+              <div className="bg-green-50 border border-green-200 rounded-xl p-6">
+                <h3 className="font-bold text-green-900 mb-4">Where to Find Subcontracting Opportunities</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <Link href="https://eweb1.sba.gov/subnet/client/dsp_Landing.cfm" className="block p-4 bg-white rounded border hover:shadow-md transition-all">
+                    <div className="font-bold text-blue-700 mb-1">SBA SubNet</div>
+                    <p className="text-xs text-gray-600">Official database where Primes post needs.</p>
+                  </Link>
+                  <Link href="https://www.gsa.gov/small-business/register-your-business/subcontracting-directory" className="block p-4 bg-white rounded border hover:shadow-md transition-all">
+                    <div className="font-bold text-blue-700 mb-1">GSA Subcontracting Directory</div>
+                    <p className="text-xs text-gray-600">List of GSA Primes looking for partners.</p>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="mistakes" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -240,6 +307,123 @@ export default function FederalGrantsWomenMinoritiesPage() {
                 <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ Control Issues</h3><p className="text-sm text-gray-600">Qualifying owner must demonstrate actual control over business decisions and daily operations, not just ownership.</p></CardContent></Card>
                 <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ Missing Recertification</h3><p className="text-sm text-gray-600">Annual recertification is required. Missing deadlines results in immediate loss of certification.</p></CardContent></Card>
                 <Card><CardContent className="pt-6"><h3 className="font-bold text-red-600 mb-2">❌ Pass-Through Arrangements</h3><p className="text-sm text-gray-600">Using certification only to win contracts then subcontracting most work is fraud and results in debarment.</p></CardContent></Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="teaming" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Teaming & Joint Ventures: The Secret Weapon</h2>
+              <p className="text-gray-700 mb-8">Small businesses often lack the capacity to handle massive federal contracts alone. The government encourages "Teaming Arrangements" where you partner with other firms. This is the fastest way to scale.</p>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-purple-50 border border-purple-200 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-purple-800 mb-4 flex items-center"><Users className="w-5 h-5 mr-2" /> Joint Ventures (JV)</h3>
+                  <p className="text-sm text-gray-700 mb-4">A new legal entity formed by two companies. Essential for the <strong>SBA Mentor-Protégé Program</strong>.</p>
+                  <ul className="space-y-3 text-sm text-gray-700">
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-purple-600 mr-2 mt-0.5" /><strong>The Loophole:</strong> An 8(a) protégé can JV with a large mentor and <em>still</em> bid on small business contracts.</li>
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-purple-600 mr-2 mt-0.5" /><strong>Performance:</strong> You gain the past performance of your large mentor.</li>
+                  </ul>
+                </div>
+
+                <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center"><Users className="w-5 h-5 mr-2" /> Prime/Sub Teaming</h3>
+                  <p className="text-sm text-gray-700 mb-4">No new entity. One company is the Prime (boss), the other is the Sub (worker).</p>
+                  <ul className="space-y-3 text-sm text-gray-700">
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-0.5" /><strong>Entry Strategy:</strong> Be a subcontractor to a large prime (like Lockheed or Booz Allen) to learn the ropes.</li>
+                    <li className="flex items-start"><CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-0.5" /><strong>Limitations:</strong> The Prime must perform at least 50% of the work (limitations on subcontracting).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="capability" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Your Resume: The Capability Statement</h2>
+              <p className="text-gray-700 mb-6">Federal contracting officers don't read websites; they read <strong>Capability Statements</strong>. This 1-page document is your ticket to a meeting. If you don't have one, you don't exist.</p>
+
+              <div className="bg-white rounded-xl shadow-sm border p-8">
+                <h3 className="font-bold text-lg mb-6 border-b pb-2">Anatomy of a Winning Capability Statement</h3>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-bold text-blue-700 text-sm uppercase">1. Core Competencies</h4>
+                      <p className="text-sm text-gray-600">Bulleted list of what you do best. Be specific. "Electrical Engineering" is better than "Engineering."</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-blue-700 text-sm uppercase">2. Past Performance</h4>
+                      <p className="text-sm text-gray-600">List 3-5 previous clients with contract values. "Delivered $50k IT project for Dept of Education."</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-blue-700 text-sm uppercase">3. Differentiators</h4>
+                      <p className="text-sm text-gray-600">Why you? "We hold a patent" or "We are located 5 mins from the base."</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-bold text-blue-700 text-sm uppercase">4. Company Data</h4>
+                      <ul className="text-sm text-gray-600 font-mono bg-gray-50 p-3 rounded">
+                        <li>UEI: XXXXXXXXX</li>
+                        <li>CAGE Code: XXXXX</li>
+                        <li>NAICS Codes: 541511, 541330</li>
+                        <li>Certifications: WOSB, 8(a)</li>
+                      </ul>
+                    </div>
+                    <div className="bg-yellow-50 p-3 rounded border border-yellow-200">
+                      <p className="text-sm text-yellow-800 font-bold">Pro Tip:</p>
+                      <p className="text-xs text-yellow-800">Customize your Capability Statement for <em>every</em> agency you solicit. Don't send a DoD statement to the Dept of Education.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="grants-vs-contracts" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Crucial Distinction: Grants vs. Contracts</h2>
+              <p className="text-gray-700 mb-6">Many new businesses waste months looking for "startup grants." The federal government rarely gives grants to start a business. They give <strong>contracts</strong> to buy things.</p>
+
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse border border-gray-200">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className="border px-4 py-3 text-left">Feature</th>
+                      <th className="border px-4 py-3 text-left">Grant (The Myth)</th>
+                      <th className="border px-4 py-3 text-left">Contract (The Reality)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border px-4 py-3 font-semibold">Purpose</td>
+                      <td className="border px-4 py-3">Public good (e.g., medical research)</td>
+                      <td className="border px-4 py-3">Government purchase (e.g., buying software)</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border px-4 py-3 font-semibold">Outcome</td>
+                      <td className="border px-4 py-3">Report or Research Knowledge</td>
+                      <td className="border px-4 py-3">Product or Service Delivery</td>
+                    </tr>
+                    <tr>
+                      <td className="border px-4 py-3 font-semibold">Profit</td>
+                      <td className="border px-4 py-3">Usually 0% allowed</td>
+                      <td className="border px-4 py-3">Profit is expected/encouraged</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border px-4 py-3 font-semibold">Example</td>
+                      <td className="border px-4 py-3">"Study effects of climate change"</td>
+                      <td className="border px-4 py-3">"Build a solar farm for the Navy"</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -263,15 +447,16 @@ export default function FederalGrantsWomenMinoritiesPage() {
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <Card key={index}>
-                    <CardContent className="pt-6">
-                      <h3 className="font-bold flex items-start">
-                        <HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                        {faq.question}
-                      </h3>
-                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
-                    </CardContent>
-                  </Card>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
               </div>
             </div>
@@ -306,12 +491,18 @@ export default function FederalGrantsWomenMinoritiesPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
+              <h2 className="text-3xl font-bold mb-6">State Women & Minority Programs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/usa/california" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Users className="w-5 h-5 text-pink-600 mr-3" /><span>California Women Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/texas" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Users className="w-5 h-5 text-purple-600 mr-3" /><span>Texas Minority Business</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/new-york" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Users className="w-5 h-5 text-blue-600 mr-3" /><span>New York MWBE Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/florida" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Users className="w-5 h-5 text-orange-600 mr-3" /><span>Florida Diversity Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/usa/women-entrepreneurs-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Heart className="w-5 h-5 text-red-600 mr-3" /><span>All Women Entrepreneurs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold mb-4">Related Funding Guides</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/blog/women-business-centers-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Women&apos;s Business Centers</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/sba-7a-loans-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>SBA 7(a) Loans</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/small-business-grants-complete-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/usa" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>State-by-State Guides</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/women-business-centers-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-pink-600 mr-3" /><span>Women's Business Centers Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/sbir-small-business-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-green-600 mr-3" /><span>SBIR Small Business Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

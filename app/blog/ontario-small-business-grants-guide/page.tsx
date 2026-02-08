@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, DollarSign, Target, MapPin, Users, Zap, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Factory, Briefcase, GraduationCap } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -121,12 +127,47 @@ export default function OntarioSmallBusinessGrantsGuide() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Ontario Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#starter-company" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">How do I get the $5,000 Starter Company grant?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Requirements for the Small Business Enterprise Centre program.</p>
+                </a>
+                <a href="#regional-funds" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">What is the SWODF/EODF fund?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Explaining the major regional expansion funds.</p>
+                </a>
+                <a href="#digital-main-street" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">Is the Digital Main Street grant open?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Current status of the $2,500 digital transformation grant.</p>
+                </a>
+                <a href="#rics" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">Where can tech startups get funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Guide to MaRS, Communitech, and Regional Innovation Centres.</p>
+                </a>
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">Are there grants for hiring via Employment Ontario?</h3>
+                  <p className="text-sm text-gray-600 mt-1"> subsidies for apprentices and youth employment.</p>
+                </a>
+                <a href="#starter-company" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">Who is eligible for Summer Company?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Student grant details and deadlines.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Section 1: Starter Company Plus */}
         <section id="starter-company" className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">1. Starter Company Plus</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">What is Starter Company Plus?</h2>
                 <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                   The best program for launching or expanding a small business in Ontario. It combines money with mandatory mentorship.
                 </p>
@@ -202,7 +243,7 @@ export default function OntarioSmallBusinessGrantsGuide() {
               <div className="flex items-center mb-8">
                 <MapPin className="w-10 h-10 text-emerald-600 mr-4" />
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900">2. The "Acronym" Funds (SWODF, EODF, NOHFC)</h2>
+                  <h2 className="text-3xl font-bold text-gray-900">What are the "Acronym" Funds (SWODF, EODF, NOHFC)?</h2>
                   <p className="text-gray-600">Where the BIG money lives ($100k+)</p>
                 </div>
               </div>
@@ -257,7 +298,7 @@ export default function OntarioSmallBusinessGrantsGuide() {
         <section className="py-20 bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto prose prose-lg prose-blue text-gray-700">
-              <h2>The "Golden Horseshoe" Myth (And Where to Actually Look)</h2>
+              <h2>What is the "Golden Horseshoe" Myth?</h2>
               <p>
                 A common misconception is that all the money is in Toronto. In reality, the Ontario government incentivizes businesses to <strong>leave Toronto</strong>.
               </p>
@@ -309,13 +350,71 @@ export default function OntarioSmallBusinessGrantsGuide() {
           </div>
         </section>
 
+        <section id="digital-main-street" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">What is Digital Main Street (ShopHERE)?</h2>
+              <p className="text-gray-700 mb-6">While the famous $2,500 grant comes and goes, the <strong>ShopHERE</strong> program is a constant gem. It builds your e-commerce store for free.</p>
+
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                <h3 className="font-bold text-blue-900 mb-4 flex items-center"><Zap className="w-5 h-5 mr-2" /> What you get</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 mb-1">1. Free Shopify Store</p>
+                    <p className="text-xs text-gray-600">Students build it for you. You just provide the photos and text. This saves you 40+ hours of work.</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 mb-1">2. 1-on-1 Training</p>
+                    <p className="text-xs text-gray-600">They don't just hand it over; they teach you how to manage inventory and shipping.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="rics" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-start">
+                <Target className="w-10 h-10 text-purple-600 mr-4 flex-shrink-0" />
+                <div>
+                  <h2 className="text-3xl font-bold mb-4 text-purple-900">What are Regional Innovation Centres (RICs)?</h2>
+                  <p className="text-purple-800 mb-4">If you are a tech startup, stop looking at "SBECs" and start looking at "RICs". Ontario funds these hubs to scale tech.</p>
+
+                  <div className="grid md:grid-cols-2 gap-4 text-slate-900">
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-purple-100">
+                      <h4 className="font-bold mb-2">MaRS (Toronto)</h4>
+                      <p className="text-xs">The behemoth. Specialized streams for Health, Cleantech, and Fintech. Hard to get into, but massive investor access.</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-purple-100">
+                      <h4 className="font-bold mb-2">Communitech (Waterloo)</h4>
+                      <p className="text-xs">For deep tech and SaaS. Known for connecting startups with big corporate buyers.</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-purple-100">
+                      <h4 className="font-bold mb-2">Invest Ottawa</h4>
+                      <p className="text-xs">Focus on autonomous vehicles and defense via Area X.O.</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-purple-100">
+                      <h4 className="font-bold mb-2">Spark Centre (Durham)</h4>
+                      <p className="text-xs">Great for energy and smart city startups.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
         {/* Section 3: Manufacturing (AMIC) */}
         <section className="py-20 bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="flex items-center mb-8">
                 <Factory className="w-10 h-10 text-gray-700 mr-4" />
-                <h2 className="text-3xl font-bold text-gray-900">3. Manufacturing (AMIC)</h2>
+                <h2 className="text-3xl font-bold text-gray-900">What is Manufacturing (AMIC)?</h2>
               </div>
               <p className="text-lg text-gray-600 mb-10 max-w-3xl">
                 The updated <strong>Advanced Manufacturing and Innovation Competitiveness (AMIC)</strong> stream is critical for Ontario's industrial base.
@@ -358,16 +457,40 @@ export default function OntarioSmallBusinessGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Frequently Asked Questions</h2>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <h3 className="font-bold text-gray-900 mb-2 flex items-start">
-                      <HelpCircle className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
-                      {faq.question}
-                    </h3>
-                    <p className="text-gray-600 pl-8">{faq.answer}</p>
-                  </div>
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Other Provincial Business Programs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><MapPin className="w-5 h-5 text-emerald-600 mr-3" /><span>BC Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Briefcase className="w-5 h-5 text-purple-600 mr-3" /><span>Quebec Business Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Factory className="w-5 h-5 text-orange-600 mr-3" /><span>Alberta Innovation Funds</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Target className="w-5 h-5 text-blue-600 mr-3" /><span>Ontario Hub Page</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Shield className="w-5 h-5 text-red-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/canadian-small-business-funding-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Lightbulb className="w-5 h-5 text-blue-600 mr-3" /><span>Federal Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/futurpreneur-loans-mentorship" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><GraduationCap className="w-5 h-5 text-green-600 mr-3" /><span>Futurpreneur Youth Loans</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>
@@ -377,7 +500,7 @@ export default function OntarioSmallBusinessGrantsGuide() {
         <section className="py-24 bg-blue-900 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-4xl font-bold mb-6">Find Your Local SBEC</h2>
+              <h2 className="text-4xl font-bold mb-6">How Do You Find Your Local SBEC?</h2>
               <p className="text-xl text-blue-100 mb-10">
                 You cannot access Starter Company Plus without contacting your local Small Business Enterprise Centre.
               </p>

@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,6 +26,38 @@ export const metadata: Metadata = {
 }
 
 export default function ColoradoTechProgramsPage() {
+  const faqData = [
+    {
+      question: "What is the Colorado Advanced Industries Accelerator Grant?",
+      answer: "The Advanced Industries Accelerator Grant provides $125,000-$500,000 to Colorado technology companies in advanced industries including aerospace, bioscience, electronics, energy, infrastructure engineering, and technology. The program supports proof-of-concept, commercialization, and technology transfer initiatives."
+    },
+    {
+      question: "How much can I get from the Colorado Innovation Modernization Program?",
+      answer: "The Innovation Modernization Program offers up to $150,000 in grants for Colorado manufacturing companies to adopt advanced technology and improve competitiveness. The program typically covers up to 50% of project costs."
+    },
+    {
+      question: "What industries qualify for Colorado Advanced Industries grants?",
+      answer: "Colorado Advanced Industries grants support seven key sectors: Advanced Manufacturing, Aerospace, Bioscience, Electronics, Energy and Natural Resources, Infrastructure Engineering, and Technology including software and IT. Companies must demonstrate Colorado presence and job creation commitment."
+    },
+    {
+      question: "Are Denver and Boulder startups eligible for Colorado tech grants?",
+      answer: "Yes, Denver, Boulder, Colorado Springs, and Front Range technology startups can access all Colorado state programs including Advanced Industries Accelerator Grants, Innovation Modernization funds, and SBIR matching programs. Colorado's tech ecosystem spans the entire Front Range corridor."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
     <>
       <Header />
@@ -620,52 +658,36 @@ export default function ColoradoTechProgramsPage() {
             </div>
           </div>
         </section>
-      </div>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div >
       <Footer />
 
       {/* FAQ Schema for Rich Results */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the Colorado Advanced Industries Accelerator Grant?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The Advanced Industries Accelerator Grant provides $125,000-$500,000 to Colorado technology companies in advanced industries including aerospace, bioscience, electronics, energy, infrastructure engineering, and technology. The program supports proof-of-concept, commercialization, and technology transfer initiatives."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How much can I get from the Colorado Innovation Modernization Program?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The Innovation Modernization Program offers up to $150,000 in grants for Colorado manufacturing companies to adopt advanced technology and improve competitiveness. The program typically covers up to 50% of project costs."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What industries qualify for Colorado Advanced Industries grants?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Colorado Advanced Industries grants support seven key sectors: Advanced Manufacturing, Aerospace, Bioscience, Electronics, Energy and Natural Resources, Infrastructure Engineering, and Technology including software and IT. Companies must demonstrate Colorado presence and job creation commitment."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Are Denver and Boulder startups eligible for Colorado tech grants?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, Denver, Boulder, Colorado Springs, and Front Range technology startups can access all Colorado state programs including Advanced Industries Accelerator Grants, Innovation Modernization funds, and SBIR matching programs. Colorado's tech ecosystem spans the entire Front Range corridor."
-                }
-              }
-            ]
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </>
   )

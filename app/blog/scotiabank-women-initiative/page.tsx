@@ -3,14 +3,26 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, AlertCircle, Building, Clock, Download, TrendingUp, HelpCircle, BookOpen, ExternalLink, Award, Users, Heart } from "lucide-react"
+import { CheckCircle, DollarSign, Target, AlertCircle, Building, Clock, Download, TrendingUp, HelpCircle, BookOpen, ExternalLink, Award, Users, Heart, Briefcase } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Scotiabank Women Initiative 2026 | Complete Funding & Business Support Guide",
-  description: "Complete guide to the Scotiabank Women Initiative for women entrepreneurs. Access $3 billion in capital, mentorship programs, business education, and exclusive resources for women-owned businesses.",
-  keywords: "Scotiabank Women Initiative, women entrepreneur funding Canada, Scotiabank women business loans, women business support Canada, women entrepreneur programs",
+  title: "Scotiabank Women Initiative 2026 | $3B Capital, Free Advisory & Business Education",
+  description: "Complete guide to Scotiabank Women Initiative for women entrepreneurs. Access $3 billion in capital commitment, free specialized advisory services, business education from partner institutions like Rotman and Ivey, plus networking with 10,000+ women business owners.",
+  keywords: "Scotiabank Women Initiative 2026, $3 billion women entrepreneur funding, Scotiabank women business loans, women entrepreneur advisory services Canada, women business support programs, Scotiabank small business women, free business education women entrepreneurs",
+  openGraph: {
+    title: "Scotiabank Women Initiative 2026 | $3B Capital + Free Advisory",
+    description: "Access $3B in capital, free advisory services, business education from Rotman and Ivey, and networking with 10,000+ women entrepreneurs.",
+    url: "https://www.fsidigital.ca/blog/scotiabank-women-initiative",
+    images: ["/images/blog/women-business-theme.png"],
+  },
 }
 
 const faqData = [
@@ -26,6 +38,27 @@ const faqData = [
     question: "Does the Scotiabank Women Initiative provide grants or only loans?",
     answer: "The Scotiabank Women Initiative provides commercial banking products including loans and credit facilities rather than grants. The $3 billion capital commitment reflects lending availability. Grants are available through government programs which can complement this initiative."
   },
+  {
+    question: "Are there specific industries Scotiabank prefers?",
+    answer: "While Scotiabank lends to all industries, they have deep expertise in Healthcare (physicians/dentists), Agriculture, and Manufacturing. Women-led businesses in these sectors often find the adjudication process smoother due to the bank's sectoral knowledge."
+  },
+  {
+    question: "Can I use the Scotiabank Women Initiative if I bank elsewhere?",
+    answer: "You can access some educational webinars and open networking events as a non-client. However, to access the $3B capital pool or the 1-on-1 Advisory Services, you must move your primary business banking relationship to Scotiabank."
+  },
+  {
+    question: "What credit score do I need?",
+    answer: "For commercial loans under $50,000, your personal credit score (ideally 680+) is heavily weighted. For larger lines of credit or term loans ($250k+), the bank focuses more on your business's Debt Service Coverage Ratio (DSCR) - your ability to generate enough cash to cover loan payments."
+  },
+  {
+    question: "Does this program help with VC funding?",
+    answer: "Directly, no. Scotiabank provides debt, not equity. However, the 'Women Initiative' network includes many angel investors and VC partners (like The51). Advisors can often make warm introductions to equity partners if debt financing isn't the right fit."
+  },
+  {
+    question: "What is the 'StrikeUP' conference relation?",
+    answer: "Scotiabank is a major sponsor of StrikeUP, Canada's flagship digital conference for women entrepreneurs. It's a key venue where the Initiative launches new tools and where participants can network with thousands of peers."
+  }
+  ,
   {
     question: "How do I get started with the Scotiabank Women Initiative?",
     answer: "Contact Scotiabank small business banking through branch visit, phone, or online. Request information about the Women Initiative and connection to a program advisor. Existing customers can request transfer to program-specialized advisors."
@@ -65,6 +98,33 @@ export default function ScotiabankWomenInitiativePage() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About The Initiative</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#capital" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-red-900">How much funding is available?</h3>
+                  <p className="text-sm text-gray-600 mt-1">$3 Billion in committed capital for women-owned businesses.</p>
+                </a>
+                <a href="#advisory" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-red-900">Is the advisory free?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, specialized advisory services are included at no extra cost.</p>
+                </a>
+                <a href="#eligibility" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-red-900">Do I need to be 100% owner?</h3>
+                  <p className="text-sm text-gray-600 mt-1">No, meaningful ownership or a leadership role is sufficient.</p>
+                </a>
+                <a href="#education" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-red-900">What education is offered?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Workshops and courses from partners like Rotman and Ivey.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-8 bg-white border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
@@ -100,7 +160,125 @@ export default function ScotiabankWomenInitiativePage() {
           </div>
         </section>
 
-        <section id="overview" className="py-16 bg-gray-50">
+        {/* Program Pillars */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Four Pillars of Support</h2>
+              <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
+                The Scotiabank Women Initiative provides comprehensive support across capital, advisory, education, and community.
+              </p>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <Card className="border-2 border-red-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                  <CardHeader className="bg-gradient-to-br from-red-50 to-rose-50">
+                    <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-3">
+                      <DollarSign className="w-6 h-6 text-white" />
+                    </div>
+                    <CardTitle className="text-red-700">Capital Access</CardTitle>
+                    <div className="text-2xl font-bold text-gray-900">$3 Billion</div>
+                  </CardHeader>
+                  <CardContent className="pt-4">
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Operating lines of credit</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Term loans &amp; equipment financing</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Commercial mortgages</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-2 border-blue-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                  <CardHeader className="bg-gradient-to-br from-blue-50 to-indigo-50">
+                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-3">
+                      <Users className="w-6 h-6 text-white" />
+                    </div>
+                    <CardTitle className="text-blue-700">Advisory Services</CardTitle>
+                    <div className="text-2xl font-bold text-gray-900">Free</div>
+                  </CardHeader>
+                  <CardContent className="pt-4">
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Specialized small business advisors</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Cash flow optimization</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Financial planning support</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-2 border-green-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                  <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
+                    <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-3">
+                      <BookOpen className="w-6 h-6 text-white" />
+                    </div>
+                    <CardTitle className="text-green-700">Education</CardTitle>
+                    <div className="text-2xl font-bold text-gray-900">Partner Programs</div>
+                  </CardHeader>
+                  <CardContent className="pt-4">
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Rotman School of Management</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Ivey Business School</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Online courses &amp; webinars</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-2 border-purple-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                  <CardHeader className="bg-gradient-to-br from-purple-50 to-pink-50">
+                    <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-3">
+                      <Heart className="w-6 h-6 text-white" />
+                    </div>
+                    <CardTitle className="text-purple-700">Community</CardTitle>
+                    <div className="text-2xl font-bold text-gray-900">10,000+</div>
+                  </CardHeader>
+                  <CardContent className="pt-4">
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>National networking events</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Peer mentorship matching</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Global expansion support</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="overview" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Scotiabank Women Initiative Overview</h2>
@@ -131,11 +309,64 @@ export default function ScotiabankWomenInitiativePage() {
         <section id="advisory" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Advisory Services</h2>
-              <p className="text-gray-700 mb-6">Specialized advisory services distinguish the Scotiabank Women Initiative from standard business banking relationships. Program advisors receive specific training on the challenges and opportunities facing women entrepreneurs, enabling more relevant guidance than generic small business advice. Advisory relationships are ongoing rather than transactional, building over time as businesses grow and needs evolve. There are no fees for advisory services beyond standard banking product costs.</p>
-              <p className="text-gray-700 mb-6">Advisory support covers the full spectrum of business financial management. Cash flow optimization helps businesses manage seasonal variations and growth-related working capital needs. Financial planning assistance helps owners prepare for major decisions including expansion, acquisition, or eventual exit. Tax planning coordination connects business owners with appropriate specialist resources. Investment guidance helps business owners think about wealth building beyond their business operations.</p>
-              <p className="text-gray-700 mb-6">The advisory team helps women entrepreneurs navigate the broader ecosystem of business support resources. Connections to government grant and loan programs complement Scotiabank financing. Introductions to professional service providers including accountants, lawyers, and industry specialists expand business support networks. Referrals to industry associations and trade organizations help business owners build sector-specific connections and market intelligence.</p>
-              <p className="text-gray-700 mb-6">Digital advisory tools supplement in-person relationships. Online resources include business planning templates, financial management tools, and educational content addressing common entrepreneurship challenges. Webinars and virtual workshops provide flexible learning options for time-constrained business owners. Mobile banking capabilities enable real-time financial monitoring and management regardless of location.</p>
+              <h2 className="text-3xl font-bold mb-6">Advisory Services: How to Prepare</h2>
+              <p className="text-gray-700 mb-8">Meeting with a Scotiabank Women Initiative advisor is more than a sales call; it&apos;s a strategic session. To get the most out of these free services, preparation is key.</p>
+
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-12">
+                <div className="bg-blue-900 text-white p-6">
+                  <h3 className="text-xl font-bold flex items-center"><Briefcase className="w-6 h-6 mr-3" /> The "First Meeting" Checklist</h3>
+                  <p className="text-blue-100 mt-2">Bring these items to your first consultation to signal you are serious and "bank-ready".</p>
+                </div>
+                <div className="p-6 grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-4 border-b pb-2">Financial Documents</h4>
+                    <ul className="space-y-3 text-sm text-gray-600">
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" /> Last 2 years of Notice of Assessments (T1 or T2)</li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" /> Current Year-to-Date Balance Sheet & Income Statement</li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" /> List of current business debts and monthly payments</li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" /> Personal Net Worth Statement (assets vs liabilities)</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-4 border-b pb-2">Business Context</h4>
+                    <ul className="space-y-3 text-sm text-gray-600">
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0" /> <strong>The "Ask":</strong> Know exactly how much you need and what it&apos;s for.</li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0" /> <strong>The Repayment:</strong> Simple explanation of how cash flow covers the loan.</li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0" /> <strong>Orbit Chart:</strong> Who are your key suppliers and customers?</li>
+                      <li className="flex items-start"><CheckCircle className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0" /> <strong>Growth Plan:</strong> One-page summary of next 12 months.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <h3 className="text-2xl font-bold mb-6">Success Stories: Initiative in Action</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader className="pb-2">
+                    <Badge className="w-fit mb-2 bg-purple-100 text-purple-800 hover:bg-purple-200">Expansion</Badge>
+                    <CardTitle className="text-lg">Tech Scale-Up "DataFlow"</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 mb-4"><strong>Challenge:</strong> rapid growth required 3 new senior hires ($400k/yr) before revenue caught up. Traditional banks saw "negative cash flow" and said no.</p>
+                    <div className="bg-gray-50 p-3 rounded text-sm">
+                      <strong>Solution:</strong> SWI Advisor structured a $500k operating line based on <em>recurring revenue contracts</em> rather than historical EBITDA, bridging the cash gap.
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader className="pb-2">
+                    <Badge className="w-fit mb-2 bg-green-100 text-green-800 hover:bg-green-200">Acquisition</Badge>
+                    <CardTitle className="text-lg">Retailer "GreenHome"</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 mb-4"><strong>Challenge:</strong> Founder wanted to buy her competitor using vendor take-back financing but needed $200k for down payment.</p>
+                    <div className="bg-gray-50 p-3 rounded text-sm">
+                      <strong>Solution:</strong> SWI Advisor used the <span className="font-semibold">CSBFP program</span> (government guarantee) stacked with a term loan to secure the real estate, freeing up cash for the acquisition.
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </section>
@@ -207,12 +438,60 @@ export default function ScotiabankWomenInitiativePage() {
 
         <section id="comparison" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Comparison with Other Women Entrepreneur Programs</h2>
-              <p className="text-gray-700 mb-6">The Scotiabank Women Initiative complements rather than duplicates other women entrepreneur support programs. Government programs like the Women Entrepreneurship Strategy provide grants and specific financing programs with eligibility criteria and application processes. The Scotiabank program provides commercial banking services and support rather than grant funding. Women entrepreneurs can and should access both government programs and bank-sponsored initiatives for comprehensive support.</p>
-              <p className="text-gray-700 mb-6">Other major banks offer women entrepreneur programs with different structures and emphases. RBC provides women entrepreneur financing and programming through its business banking offerings. BMO&apos;s programs include the Celebrating Women Grant providing award funding to selected recipients. BDC offers the Women Entrepreneurship Loan Fund with specialized financing terms. Evaluating multiple programs enables women entrepreneurs to select the best fit for their specific needs.</p>
-              <p className="text-gray-700 mb-6">The key advantage of the Scotiabank Women Initiative lies in its integration of capital access with comprehensive business support services. Unlike pure financing programs that provide money but limited guidance, or mentorship programs that provide advice but no capital, this initiative combines both elements through an integrated banking relationship. The ongoing advisory relationship means support evolves as business needs change rather than ending when a single transaction completes. This longitudinal support model particularly benefits women entrepreneurs building businesses over multiple years where needs shift from startup financing through growth capital to succession planning.</p>
-              <p className="text-gray-700 mb-6">Comparison shopping across women entrepreneur programs represents smart strategy for maximizing support. The Scotiabank program works well for businesses seeking a primary banking relationship with dedicated support infrastructure. Government grant programs provide non-dilutive funding for specific projects meeting eligibility criteria. Venture capital and angel investment programs offer growth capital for high-potential businesses pursuing rapid scaling. Each option serves different circumstances, and sophisticated women entrepreneurs layer multiple programs to create optimal support packages for their specific business situations and growth objectives.</p>
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-center">Compare Your Funding Options</h2>
+              <p className="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+                The Scotiabank Women Initiative is excellent, but it's not the only game in town. Here is how it stacks up against other funding sources for women entrepreneurs.
+              </p>
+
+              <div className="overflow-x-auto">
+                <table className="w-full bg-white shadow-sm rounded-lg overflow-hidden">
+                  <thead className="bg-gray-900 text-white">
+                    <tr>
+                      <th className="p-4 text-left">Funding Source</th>
+                      <th className="p-4 text-left">Best For...</th>
+                      <th className="p-4 text-left">Pros</th>
+                      <th className="p-4 text-left">Cons</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-4 font-bold text-red-700">Scotiabank Women Initiative</td>
+                      <td className="p-4">Established businesses needing operating capital, commercial real estate, or expansion loans.</td>
+                      <td className="p-4"><ul className="list-disc list-inside text-sm text-green-700"><li>Dedicated advisor support</li><li>Market interest rates</li><li>Relationship building</li></ul></td>
+                      <td className="p-4 text-sm text-gray-600">Strictly debt financing (must be repaid); requires collateral/cash flow coverage.</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-4 font-bold text-blue-700">BDC Woman Entrepreneur Loan</td>
+                      <td className="p-4">Startups or scale-ups who lack tangible collateral (assets) for traditional bank loans.</td>
+                      <td className="p-4"><ul className="list-disc list-inside text-sm text-green-700"><li>Flexible repayment terms</li><li>Higher risk tolerance</li><li>Online application</li></ul></td>
+                      <td className="p-4 text-sm text-gray-600">Interest rates are typically higher than Scotiabank (Base + Variance).</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-4 font-bold text-purple-700">Women Entrepreneurship Strategy (WES)</td>
+                      <td className="p-4">Specific projects (digital adoption, export) aligned with government priorities.</td>
+                      <td className="p-4"><ul className="list-disc list-inside text-sm text-green-700"><li>Non-repayable grants</li><li>Access to ecosystem partners</li></ul></td>
+                      <td className="p-4 text-sm text-gray-600">Highly competitive; specific application windows; strict reporting requirements.</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="p-4 font-bold text-teal-700">StartUp Canada / Parsa Trust</td>
+                      <td className="p-4">Early-stage social enterprises or micro-businesses.</td>
+                      <td className="p-4"><ul className="list-disc list-inside text-sm text-green-700"><li>Micro-grants ($5k-$10k)</li><li>Community focus</li></ul></td>
+                      <td className="p-4 text-sm text-gray-600">Small amounts; minimal impact for large scale-ups.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="mt-8 p-6 bg-yellow-50 rounded-lg border border-yellow-200">
+                <h3 className="font-bold text-yellow-800 flex items-center mb-2">
+                  <Target className="w-5 h-5 mr-2" /> Expert Recommendation
+                </h3>
+                <p className="text-yellow-900 text-sm">
+                  Most successful women entrepreneurs <strong>stack</strong> these. They use a massive Scotiabank operating line for daily cash flow, a BDC loan for equipment financing (longer amortization), and apply for WES grants for special projects like "going digital."
+                </p>
+              </div>
+
             </div>
           </div>
         </section>
@@ -234,9 +513,18 @@ export default function ScotiabankWomenInitiativePage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Do I need to be a majority business owner to participate?</h3><p className="text-gray-700 mt-2 ml-7">No, the program serves women with any ownership percentage as well as women executives and leaders in business roles without ownership. The focus is on supporting women in business leadership regardless of specific ownership structure. Even minority shareholders and C-suite executives without equity can access advisory, education, and networking resources.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Are there fees for program participation?</h3><p className="text-gray-700 mt-2 ml-7">Advisory services, core education programming, and networking events are available at no additional cost beyond standard banking product fees. Some partner programs may have separate costs, but the core initiative resources are included as part of your banking relationship.</p></CardContent></Card>
-                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Does the program provide grants or only loans?</h3><p className="text-gray-700 mt-2 ml-7">The Scotiabank Women Initiative provides commercial banking products including loans and credit facilities rather than grants. The capital commitment reflects lending availability rather than grant funding. Grants are available through government programs which can complement this initiative, and your advisor can help identify relevant grant opportunities to pursue alongside bank financing.</p></CardContent></Card>
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-900">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
               </div>
             </div>
           </div>

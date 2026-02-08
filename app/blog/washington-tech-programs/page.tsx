@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -18,6 +18,25 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
 }
+
+const faqData = [
+  {
+    question: "What is the WRF Technology Commercialization Grant?",
+    answer: "The Washington Research Foundation (WRF) Technology Commercialization Fund provides early-stage funding to Washington State inventors and entrepreneurs commercializing technologies developed at Washington universities. Grants support proof-of-concept and prototype development."
+  },
+  {
+    question: "How much can I get from Washington Innovation Modernization?",
+    answer: "The Washington Innovation and Modernization Program offers grants for manufacturing technology adoption and workforce development. Amounts vary by program cycle but typically range from $50,000-$200,000 for qualifying Washington manufacturers."
+  },
+  {
+    question: "What clean energy grants are available in Washington State?",
+    answer: "Washington State offers clean energy technology funding through the Clean Energy Fund, supporting solar, wind, energy storage, and grid modernization projects. The Washington State Department of Commerce administers various incentive programs for clean technology companies."
+  },
+  {
+    question: "Are Seattle and Bellevue startups eligible for Washington grants?",
+    answer: "Yes, Seattle, Bellevue, Tacoma, Redmond, and Puget Sound region technology startups can access all Washington state programs including WRF commercialization funding, clean energy grants, and manufacturing modernization programs. Eastern Washington communities are also eligible."
+  }
+]
 
 export default function WashingtonTechProgramsPage() {
   return (
@@ -597,6 +616,65 @@ export default function WashingtonTechProgramsPage() {
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 shadow-sm">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-start">
+                      <HelpCircle className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-700 ml-9">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Technology Funding Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      Tech Startup Funding
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Complete guide to funding for technology startups across the US.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/usa/technology-startup-grants">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-left">
+                    <h4 className="font-bold text-lg mb-2 flex items-center">
+                      <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                      SBIR/STTR Guide
+                    </h4>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Learn how to access federal R&D funding for your innovation.
+                    </p>
+                    <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50" asChild>
+                      <Link href="/usa/sbir-sttr-grants-guide">Read Guide</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
       <Footer />
 
@@ -607,41 +685,15 @@ export default function WashingtonTechProgramsPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the WRF Technology Commercialization Grant?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The Washington Research Foundation (WRF) Technology Commercialization Fund provides early-stage funding to Washington State inventors and entrepreneurs commercializing technologies developed at Washington universities. Grants support proof-of-concept and prototype development."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How much can I get from Washington Innovation Modernization?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The Washington Innovation and Modernization Program offers grants for manufacturing technology adoption and workforce development. Amounts vary by program cycle but typically range from $50,000-$200,000 for qualifying Washington manufacturers."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What clean energy grants are available in Washington State?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Washington State offers clean energy technology funding through the Clean Energy Fund, supporting solar, wind, energy storage, and grid modernization projects. The Washington State Department of Commerce administers various incentive programs for clean technology companies."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Are Seattle and Bellevue startups eligible for Washington grants?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, Seattle, Bellevue, Tacoma, Redmond, and Puget Sound region technology startups can access all Washington state programs including WRF commercialization funding, clean energy grants, and manufacturing modernization programs. Eastern Washington communities are also eligible."
-                }
+            "mainEntity": faqData.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
               }
-            ]
-          }),
+            }))
+          })
         }}
       />
     </>

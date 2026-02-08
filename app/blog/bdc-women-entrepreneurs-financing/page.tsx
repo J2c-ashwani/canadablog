@@ -128,7 +128,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada's Premier Women Entrepreneur Banking Partner</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Why is BDC a Key Partner for Women Entrepreneurs?</h2>
                 <p className="text-lg text-gray-600">
                   BDC combines flexible financing with expert advisory services specifically designed for
                   women-led businesses. Unlike traditional banks, BDC offers patient capital with terms
@@ -162,7 +162,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BDC Women Entrepreneur Financing Solutions</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What Financing Solutions Does BDC Offer Women?</h2>
 
               <div className="space-y-8">
                 {/* Business Growth Financing */}
@@ -342,7 +342,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
         <section id="eligibility" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BDC Women Entrepreneur Financing Eligibility</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Who is Eligible for BDC Women's Financing?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Business Eligibility */}
@@ -419,7 +419,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BDC Financing Application Process</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What is the BDC Financing Application Process?</h2>
 
               <div className="space-y-6">
                 <div className="grid md:grid-cols-4 gap-6">
@@ -511,7 +511,7 @@ export default function BDCWomenEntrepreneursGuidePage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">BDC Application Success Strategies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How Can You Succeed with a BDC Application?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
@@ -620,6 +620,59 @@ export default function BDCWomenEntrepreneursGuidePage() {
                     <div className="text-sm text-gray-600">Strategic business consulting</div>
                   </div>
                 </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions About BDC Women Financing</h2>
+              <div className="space-y-4">
+                <a href="#eligibility" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <span className="font-medium text-blue-700">What are the eligibility requirements for BDC financing?</span>
+                </a>
+                <a href="#" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <span className="font-medium text-blue-700">What is the BDC Thrive ETA Fund?</span>
+                </a>
+                <a href="#" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <span className="font-medium text-blue-700">Does BDC offer advisory services along with financing?</span>
+                </a>
+                <a href="#" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <span className="font-medium text-blue-700">How long does the BDC financing application process take?</span>
+                </a>
+                <a href="#" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-200">
+                  <span className="font-medium text-blue-700">What are the interest rates for BDC loans?</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Women Entrepreneur Funding Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/bmo-celebrating-women-grant" className="block p-6 bg-gray-50 rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">BMO Celebrating Women Grant</h3>
+                  <p className="text-gray-600 text-sm">$10K non-repayable grant for women-owned businesses</p>
+                </Link>
+                <Link href="/blog/indigenous-women-business-grants-canada" className="block p-6 bg-gray-50 rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">Indigenous Women Business Grants</h3>
+                  <p className="text-gray-600 text-sm">Funding programs for Indigenous women entrepreneurs</p>
+                </Link>
+                <Link href="/blog/women-clean-technology-grants-canada" className="block p-6 bg-gray-50 rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">Women Clean Tech Grants</h3>
+                  <p className="text-gray-600 text-sm">Green economy funding for women-led businesses</p>
+                </Link>
+                <Link href="/blog/edc-women-trade-export-financing" className="block p-6 bg-gray-50 rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">EDC Women in Trade</h3>
+                  <p className="text-gray-600 text-sm">Export financing for women-owned businesses</p>
+                </Link>
               </div>
             </div>
           </div>

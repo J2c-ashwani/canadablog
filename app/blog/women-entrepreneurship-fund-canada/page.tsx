@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, DollarSign, Target, XCircle, Users, RefreshCw, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, History, Briefcase } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { CheckCircle, DollarSign, Target, XCircle, Users, RefreshCw, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, History, Briefcase, FileText } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -15,6 +21,14 @@ export const metadata: Metadata = {
 
 export default function WomenEntrepreneurshipFundGuide() {
   const faqData = [
+    {
+      question: "What is the Women Entrepreneurship Fund in Canada 2026?",
+      answer: "The Women Entrepreneurship Fund (WEF) was a one-time $20 million grant program that closed in 2019. The current 2026 alternatives are the Women Entrepreneurship Loan Fund (WELF) offering up to $50k in loans, and the Ecosystem Fund supporting non-profits that help women entrepreneurs."
+    },
+    {
+      question: "How do I apply for women small business grants in Canada?",
+      answer: "Direct government grants like WEF are closed. For 2026, apply for the WELF loan through BDC-affiliated lenders for up to $50k. For actual grants, look at private options like Visa She's Next ($10k) or Amex Blueprint ($10k), or sector-specific programs like SWPP hiring grants."
+    },
     {
       question: "Is the Women Entrepreneurship Fund (WEF) still accepting applications?",
       answer: "No. The direct grant portion of the strategy (WEF) closed in 2019/2020. It was a one-time injection. The current strategy focuses on LOANS (WELF) and Ecosystem support."
@@ -104,6 +118,41 @@ export default function WomenEntrepreneurshipFundGuide() {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gradient-to-r from-pink-50 to-purple-50 border-b-2 border-pink-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">❓ Common Questions About the Women Entrepreneurship Fund</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <a href="#history" className="p-5 bg-white rounded-lg shadow hover:shadow-md transition border border-pink-100">
+                  <h3 className="font-semibold text-pink-900 mb-2">Is the WEF still accepting applications?</h3>
+                  <p className="text-sm text-gray-600">Program status and closure timeline</p>
+                </a>
+                <a href="#alternatives" className="p-5 bg-white rounded-lg shadow hover:shadow-md transition border border-purple-100">
+                  <h3 className="font-semibold text-purple-900 mb-2">What replaced the $100k grant?</h3>
+                  <p className="text-sm text-gray-600">Current 2026 funding alternatives</p>
+                </a>
+                <a href="#welf-guide" className="p-5 bg-white rounded-lg shadow hover:shadow-md transition border border-emerald-100">
+                  <h3 className="font-semibold text-emerald-900 mb-2">How do I apply for WELF loans?</h3>
+                  <p className="text-sm text-gray-600">Step-by-step application process</p>
+                </a>
+                <a href="#partners" className="p-5 bg-white rounded-lg shadow hover:shadow-md transition border border-blue-100">
+                  <h3 className="font-semibold text-blue-900 mb-2">Which organizations offer free help?</h3>
+                  <p className="text-sm text-gray-600">Ecosystem Fund partners and services</p>
+                </a>
+                <a href="#crowdfunding" className="p-5 bg-white rounded-lg shadow hover:shadow-md transition border border-orange-100">
+                  <h3 className="font-semibold text-orange-900 mb-2">Are there private grant alternatives?</h3>
+                  <p className="text-sm text-gray-600">Visa She's Next, Amex Blueprint, angel networks</p>
+                </a>
+                <a href="#application-checklist" className="p-5 bg-white rounded-lg shadow hover:shadow-md transition border border-indigo-100">
+                  <h3 className="font-semibold text-indigo-900 mb-2">What documents do I need?</h3>
+                  <p className="text-sm text-gray-600">Complete application checklist</p>
+                </a>
               </div>
             </div>
           </div>
@@ -293,6 +342,143 @@ export default function WomenEntrepreneurshipFundGuide() {
           </div>
         </section>
 
+        <section id="welf-guide" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">How to Apply for the WELF Loan (Step-by-Step)</h2>
+              <p className="text-gray-700 mb-8">Since the grant is gone, the $50,000 WELF loan is your best government-backed option. It's administered by different partners depending on your region.</p>
+
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <div className="bg-emerald-100 p-3 rounded-full mr-4">
+                    <Target className="w-6 h-6 text-emerald-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Step 1: Choose Your Lender</h3>
+                    <p className="text-gray-600 text-sm">You don't apply to the government directly. You apply to a Delivery Organization. Common ones include <strong>Coralus (formerly SheEO)</strong>, <strong>Evol (Quebec)</strong>, and <strong>Women's Enterprise Organizations of Canada (WEOC)</strong>.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="bg-blue-100 p-3 rounded-full mr-4">
+                    <FileText className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Step 2: Prepare the "Growth Plan"</h3>
+                    <p className="text-gray-600 text-sm">Unlike a standard bank loan, WELF requires a "Growth Plan" rather than just a business plan. Focus on how the money generates revenue immediately (e.g., buying inventory to fill orders), not just paying rent.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="bg-purple-100 p-3 rounded-full mr-4">
+                    <CheckCircle className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Step 3: The "Micro-Loan" Stage</h3>
+                    <p className="text-gray-600 text-sm">Many lenders start you with a smaller amount (e.g., $5k-$10k). Repaying this successfully unlocks the full $50k tier. It's a ladder system.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="partners" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Ecosystem Fund Partners: Free Help</h2>
+              <p className="text-gray-700 mb-6">The government pays these organizations to help you for free. If you pay a consultant for a business plan, you are wasting money. Go to these non-profits instead.</p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-pink-200">
+                  <CardHeader className="bg-pink-50">
+                    <CardTitle className="text-pink-900 text-lg">The Forum (National)</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-4">
+                    <p className="text-sm text-gray-700 mb-3"><strong>Best For:</strong> Mentorship and Pitch Training.</p>
+                    <p className="text-xs text-gray-600">Runs distinct programs like "E-Series" and "Pitch for the Purse." Massive community of mentors.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-purple-200">
+                  <CardHeader className="bg-purple-50">
+                    <CardTitle className="text-purple-900 text-lg">Coralus (Global/National)</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-4">
+                    <p className="text-sm text-gray-700 mb-3"><strong>Best For:</strong> "Radical Generosity" and 0% Interest Loans.</p>
+                    <p className="text-xs text-gray-600">Community-funded loans where the network buys your products to help you repay.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-blue-200">
+                  <CardHeader className="bg-blue-50">
+                    <CardTitle className="text-blue-900 text-lg">PARO Centre (Ontario/North)</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-4">
+                    <p className="text-sm text-gray-700 mb-3"><strong>Best For:</strong> Peer Lending Circles.</p>
+                    <p className="text-xs text-gray-600">Join a "Circle" of 4-7 women. You approve each other's loans. High approval rates.</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-orange-200">
+                  <CardHeader className="bg-orange-50">
+                    <CardTitle className="text-orange-900 text-lg">Women's Enterprise Centre (BC/MB)</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-4">
+                    <p className="text-sm text-gray-700 mb-3"><strong>Best For:</strong> Traditional Business Training.</p>
+                    <p className="text-xs text-gray-600">Excellent workshops on cash flow, marketing, and export.</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="crowdfunding" className="py-16 bg-white border-t">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Alternative: Crowdfunding & Angel Investors</h2>
+              <p className="text-gray-700 mb-6">If you don't want a loan (WELF), consider equity crowdfunding or angel networks. Women-led startups actually outperform men in crowdfunding campaigns.</p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-purple-50 p-6 rounded-lg border border-purple-100">
+                  <h3 className="font-bold text-purple-900 mb-3 flex items-center"><Users className="w-5 h-5 mr-2" /> Crowdfunding Platforms</h3>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li><strong>iFundWomen:</strong> The only platform dedicated 100% to women. Includes coaching.</li>
+                    <li><strong>FrontFundr:</strong> Equity crowdfunding. Sell shares of your company to the public (not just rich people).</li>
+                    <li><strong>Kickstarter:</strong> Product-based. Best for CPG brands (food, beauty, fashion).</li>
+                  </ul>
+                </div>
+                <div className="bg-pink-50 p-6 rounded-lg border border-pink-100">
+                  <h3 className="font-bold text-pink-900 mb-3 flex items-center"><Target className="w-5 h-5 mr-2" /> Angel Networks</h3>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li><strong>The51:</strong> Financial feminist platform in Calgary/Toronto.</li>
+                    <li><strong>Phoenix Fire:</strong> Angel network for women in Ontario.</li>
+                    <li><strong>Women's Equity Lab:</strong> Early-stage investing in BC.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="application-checklist" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Application Checklist: Be Ready</h2>
+              <p className="text-gray-700 mb-6">When you apply for the WELF loan or any private grant, have these ready. Missing documents = automatic rejection.</p>
+
+              <div className="bg-white rounded-xl shadow-sm border p-6">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" /><span className="text-sm">Proof of 50%+ Woman Ownership (Shareholder Agreement)</span></div>
+                  <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" /><span className="text-sm">2 Years of Financial Statements (Notice to Reader)</span></div>
+                  <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" /><span className="text-sm">Current Month Balance Sheet</span></div>
+                  <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" /><span className="text-sm">12-Month Cash Flow Forecast</span></div>
+                  <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" /><span className="text-sm">Personal Net Worth Statement</span></div>
+                  <div className="flex items-center"><CheckCircle className="w-5 h-5 text-green-500 mr-3" /><span className="text-sm">The "Growth Plan" (How you spend the money)</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Detailed FAQ Section */}
         <section className="py-20 bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -308,6 +494,27 @@ export default function WomenEntrepreneurshipFundGuide() {
                     <p className="text-gray-600 pl-8">{faq.answer}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Provincial Women's Grant Programs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <Link href="/canada/ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Users className="w-5 h-5 text-pink-600 mr-3" /><span>Ontario Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/british-columbia" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Users className="w-5 h-5 text-purple-600 mr-3" /><span>BC Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/alberta" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Users className="w-5 h-5 text-blue-600 mr-3" /><span>Alberta Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada/quebec" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Users className="w-5 h-5 text-orange-600 mr-3" /><span>Quebec Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-pink-500 transition-all"><Shield className="w-5 h-5 text-green-600 mr-3" /><span>All Provincial Programs</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link href="/blog/women-entrepreneurship-loan-fund-canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><DollarSign className="w-5 h-5 text-emerald-600 mr-3" /><span>WELF Loan Fund ($50k)</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/bdc-women-entrepreneurs-financing" className="flex items-center p-4 bg-white rounded-lg border hover:border-emerald-500 transition-all"><Briefcase className="w-5 h-5 text-blue-600 mr-3" /><span>BDC Women Financing</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

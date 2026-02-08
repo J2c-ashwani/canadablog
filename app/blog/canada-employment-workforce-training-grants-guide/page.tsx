@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, GraduationCap, UserCheck, BrainCircuit } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, GraduationCap, UserCheck, BrainCircuit, MapPin, Briefcase, HelpCircle } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +25,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "What is the Canada Job Grant (CJG)?",
+    answer: "The CJG is a federal-provincial program that covers 50-100% of training costs for eligible employees. Employers contribute a portion of the cost, and the government reimburses the rest. It's available in most provinces and territories."
+  },
+  {
+    question: "How much funding can I get for hiring a student?",
+    answer: "Programs like Canada Summer Jobs (CSJ) and the Student Work Placement Program (SWPP) offer wage subsidies ranging from 50% to 100% of the minimum hourly wage, often up to $5,000-$7,500 per placement."
+  },
+  {
+    question: "Are there grants for hiring apprentices?",
+    answer: "Yes, the Apprenticeship Service provides up to $5,000 for hiring a first-year Red Seal apprentice, and up to $10,000 if the apprentice is from an equity-deserving group."
+  },
+  {
+    question: "Can I get funding to train my existing employees?",
+    answer: "Yes, the Canada Job Grant and various provincial training programs are specifically designed to upskill existing employees. Training must usually be provided by an eligible third-party trainer."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -535,6 +577,123 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Related Government Grant Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/canada-hiring-training-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Users className="w-8 h-8 text-blue-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Hiring & Training Grants</h3>
+                      <p className="text-sm text-gray-500">Subsidies for new hires</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/canada-startup-funding-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Briefcase className="w-8 h-8 text-purple-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Startup Funding</h3>
+                      <p className="text-sm text-gray-500">Capital for new businesses</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/small-business-grants-complete-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-green-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Small Business Grants</h3>
+                      <p className="text-sm text-gray-500">Comprehensive funding guide</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/ontario-business-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-red-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Ontario Business Grants</h3>
+                      <p className="text-sm text-gray-500">Regional funding opportunities</p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Related Government Grant Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/canada-hiring-training-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Users className="w-8 h-8 text-blue-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Hiring & Training Grants</h3>
+                      <p className="text-sm text-gray-500">Subsidies for new hires</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/canada-startup-funding-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Briefcase className="w-8 h-8 text-purple-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Startup Funding</h3>
+                      <p className="text-sm text-gray-500">Capital for new businesses</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/small-business-grants-complete-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-green-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Small Business Grants</h3>
+                      <p className="text-sm text-gray-500">Comprehensive funding guide</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/ontario-business-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-red-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Ontario Business Grants</h3>
+                      <p className="text-sm text-gray-500">Regional funding opportunities</p>
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

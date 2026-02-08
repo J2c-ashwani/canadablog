@@ -128,7 +128,7 @@ export default function EDCWomenInTradeGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Canada's Export Finance Partner for Women Entrepreneurs</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">What is the EDC Women in Trade Program?</h2>
                 <p className="text-lg text-gray-600">
                   EDC Women in Trade addresses the critical gap in export financing for women-owned businesses.
                   With only 11% of women-owned SMEs active in international markets, EDC provides equity capital,
@@ -162,7 +162,7 @@ export default function EDCWomenInTradeGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">EDC Women in Trade Financing Solutions</h2>
+              <h2 id="financing-solutions" className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the EDC Financing Solutions?</h2>
 
               <div className="space-y-8">
                 {/* Inclusive Trade Investments Program */}
@@ -342,7 +342,7 @@ export default function EDCWomenInTradeGuidePage() {
         <section id="eligibility" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">EDC Women in Trade Eligibility</h2>
+              <h2 id="eligibility" className="text-3xl font-bold text-gray-900 mb-12 text-center">Who is Eligible for EDC Women in Trade?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Business Eligibility */}
@@ -419,7 +419,7 @@ export default function EDCWomenInTradeGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">EDC Application Process</h2>
+              <h2 id="application-process" className="text-3xl font-bold text-gray-900 mb-12 text-center">What is the EDC Application Process?</h2>
 
               <div className="space-y-6">
                 <div className="grid md:grid-cols-4 gap-6">
@@ -511,7 +511,7 @@ export default function EDCWomenInTradeGuidePage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">EDC Application Success Strategies</h2>
+              <h2 id="success-strategies" className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the Application Success Strategies?</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">
@@ -590,7 +590,7 @@ export default function EDCWomenInTradeGuidePage() {
         <section className="py-12 bg-white border-t border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Official EDC Resources</h2>
+              <h2 id="official-resources" className="text-3xl font-bold text-gray-900 mb-8 text-center">What are the Official EDC Resources?</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <a href="https://www.edc.ca/en/solutions/women-in-trade.html" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-teal-50 transition-colors border border-gray-200">
                   <ExternalLink className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0" />
@@ -620,6 +620,50 @@ export default function EDCWomenInTradeGuidePage() {
                     <div className="text-sm text-gray-600">Export market development funding</div>
                   </div>
                 </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions</h2>
+              <div className="grid gap-6 md:grid-cols-2">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 className="font-semibold text-gray-900 mb-2">{faq.question}</h3>
+                    <p className="text-gray-600">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">What are Related Export & Funding Guides?</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/women-export-trade-grants-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-teal-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-teal-700 mb-2">Women Export Grants</h3>
+                  <p className="text-gray-600 text-sm">CanExport and trade funding for women entrepreneurs</p>
+                </Link>
+                <Link href="/blog/women-business-grants-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-teal-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-teal-700 mb-2">Women Business Grants</h3>
+                  <p className="text-gray-600 text-sm">Comprehensive guide to Canadian women's funding</p>
+                </Link>
+                <Link href="/blog/canada-federal-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-teal-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-teal-700 mb-2">Federal Gov Grants</h3>
+                  <p className="text-gray-600 text-sm">Complete overview of federal business funding</p>
+                </Link>
+                <Link href="/blog/ontario-business-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-teal-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-teal-700 mb-2">Ontario Business Grants</h3>
+                  <p className="text-gray-600 text-sm">Provincial funding programs for Ontario businesses</p>
+                </Link>
               </div>
             </div>
           </div>

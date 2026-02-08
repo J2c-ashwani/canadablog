@@ -280,7 +280,7 @@ export default function SBIRSTTRGuidePage() {
         <section id="phases" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">The Three-Phase Structure</h2>
+              <h2 className="text-3xl font-bold mb-6">What is the Three-Phase Structure?</h2>
 
               <div className="space-y-6">
                 <div className="border-l-4 border-green-500 pl-6 py-4 bg-green-50 rounded-r-lg">
@@ -321,7 +321,7 @@ export default function SBIRSTTRGuidePage() {
         <section id="agencies" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">11 Participating Federal Agencies</h2>
+              <h2 className="text-3xl font-bold mb-6">What are the 11 Participating Federal Agencies?</h2>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="p-6 bg-white rounded-lg border">
@@ -355,7 +355,7 @@ export default function SBIRSTTRGuidePage() {
         <section id="how-to-apply" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">How to Apply for SBIR/STTR</h2>
+              <h2 className="text-3xl font-bold mb-6">How Do You Apply for SBIR/STTR?</h2>
 
               <div className="space-y-4">
                 <div className="flex items-start p-4 bg-gray-50 rounded-lg">
@@ -485,7 +485,7 @@ export default function SBIRSTTRGuidePage() {
         <section id="mistakes" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Common Mistakes That Get Proposals Rejected</h2>
+              <h2 className="text-3xl font-bold mb-6">What Common Mistakes Get Proposals Rejected?</h2>
 
               <div className="space-y-4">
                 <Card><CardContent className="pt-6">
@@ -536,7 +536,7 @@ export default function SBIRSTTRGuidePage() {
         <section id="winning-strategies" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Winning Strategies for SBIR/STTR</h2>
+              <h2 className="text-3xl font-bold mb-6">What are the Winning Strategies for SBIR/STTR?</h2>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="p-6 bg-green-50 rounded-lg border border-green-200">
@@ -567,7 +567,7 @@ export default function SBIRSTTRGuidePage() {
         <section id="alternatives" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">Alternative Federal R&amp;D Programs</h2>
+              <h2 className="text-3xl font-bold mb-6">What are Alternative Federal R&D Programs?</h2>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="p-6 bg-white rounded-lg border">
@@ -645,6 +645,59 @@ export default function SBIRSTTRGuidePage() {
                   <BookOpen className="w-5 h-5 text-blue-600 mr-3" />
                   <span className="text-gray-700 group-hover:text-blue-600">All Grant Guides</span>
                   <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions About SBIR/STTR</h2>
+              <div className="space-y-4">
+                <a href="#overview" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">What is the difference between SBIR and STTR?</span>
+                </a>
+                <a href="#eligibility" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">Who is eligible for SBIR/STTR grants?</span>
+                </a>
+                <a href="#funding" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">How much SBIR/STTR funding can I receive?</span>
+                </a>
+                <a href="#phases" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">What are Phase I, II, and III?</span>
+                </a>
+                <a href="#how-to-apply" className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <span className="font-medium text-blue-700">How do I apply for SBIR/STTR?</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Federal R&D Funding Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/nsf-sbir-grants-technology-startups" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">NSF SBIR Grants</h3>
+                  <p className="text-gray-600 text-sm">Deep tech and science-focused SBIR funding from NSF</p>
+                </Link>
+                <Link href="/blog/nih-sbir-biotech-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">NIH SBIR for Biotech</h3>
+                  <p className="text-gray-600 text-sm">Healthcare and biotech R&D funding from NIH</p>
+                </Link>
+                <Link href="/blog/dod-sbir-defense-tech-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">DoD SBIR Defense Tech</h3>
+                  <p className="text-gray-600 text-sm">Defense technology R&D funding from Department of Defense</p>
+                </Link>
+                <Link href="/blog/sba-7a-loans-complete-guide" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">SBA 7(a) Loans Guide</h3>
+                  <p className="text-gray-600 text-sm">Up to $5M in government-backed small business financing</p>
                 </Link>
               </div>
             </div>

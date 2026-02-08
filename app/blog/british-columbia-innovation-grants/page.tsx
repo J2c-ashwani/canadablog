@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Waves, Film, Leaf, Zap, Mountain, Sailboat, ExternalLink, ArrowRight, Building } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Waves, Film, Leaf, Zap, Mountain, Sailboat, ExternalLink, ArrowRight, Building, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -20,9 +20,49 @@ export const metadata: Metadata = {
 }
 
 export default function BritishColumbiaInnovationGrantsPage() {
+  const faqData = [
+    {
+      question: "What is the BC Innovation Tax Credit (BCITC)?",
+      answer: "The BCITC is a 10% refundable tax credit for qualifying R&D corporations in British Columbia. It stacks with the federal SR&ED credit, allowing you to recover a significant portion of your R&D costs."
+    },
+    {
+      question: "How does the Innovate BC Ignite program work?",
+      answer: "Ignite provides up to $300,000 to fund collaborative R&D projects that tackle industrial problems. You need to form a consortium (industry + academic partner) and demonstrate a clear path to commercialization."
+    },
+    {
+      question: "Is there funding for clean energy startups in BC?",
+      answer: "Yes. BC is a global cleantech hub. Programs like the CleanBC Industry Fund and various federal-provincial partnerships support zero-emission vehicles, hydrogen, and carbon capture technologies."
+    },
+    {
+      question: "What is New Ventures BC?",
+      answer: "New Ventures BC hosts an annual startup competition offering over $250,000 in cash and prizes. It also provides mentorship and education for early-stage tech companies."
+    },
+    {
+      question: "Are film tax credits refundable in BC?",
+      answer: "Yes, many of BC's film and creative tax credits are refundable, meaning if your credit exceeds your tax payable, you get the difference as a cash refund."
+    }
+  ]
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-teal-700 to-blue-800 text-white py-16">
@@ -76,6 +116,43 @@ export default function BritishColumbiaInnovationGrantsPage() {
                   <div className="text-3xl font-bold text-emerald-600 mb-2">#1</div>
                   <div className="text-gray-600">CleanTech Hub in Canada</div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-teal-50 border-b border-teal-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About BC Innovation</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-teal-100">
+                  <h3 className="font-semibold text-teal-700">What is the BCITC?</h3>
+                  <p className="text-sm text-gray-600 mt-1">A 10% refundable tax credit for R&D expenditures.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-teal-100">
+                  <h3 className="font-semibold text-teal-700">How much does Innovate BC fund?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Up to $300k for R&D through the Ignite program.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-teal-100">
+                  <h3 className="font-semibold text-teal-700">Is there cleantech funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, BC is Canada's #1 cleantech hub with specific grants.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-teal-100">
+                  <h3 className="font-semibold text-teal-700">What is New Ventures BC?</h3>
+                  <p className="text-sm text-gray-600 mt-1">A startup accelerator with $150k+ in cash prizes.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-teal-100">
+                  <h3 className="font-semibold text-teal-700">Are film tax credits refundable?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, 35% to 58.5% credits for eligible labor.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-teal-100">
+                  <h3 className="font-semibold text-teal-700">Can I stack grants?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, BCITC stacks with federal SR&ED up to 75%.</p>
+                </a>
               </div>
             </div>
           </div>
@@ -683,6 +760,75 @@ export default function BritishColumbiaInnovationGrantsPage() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Card key={index} className="border-gray-200">
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold text-gray-900 flex items-start">
+                        <HelpCircle className="w-5 h-5 text-teal-600 mr-2 mt-0.5" />
+                        {faq.question}
+                      </h3>
+                      <p className="text-gray-700 mt-2 ml-7">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Compare Innovation Ecosystems */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6 text-center">Compare Provincial Innovation Ecosystems</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link href="/blog/ontario-innovation-grants" className="block group">
+                  <Card className="h-full border-gray-200 hover:border-blue-500 transition-colors">
+                    <CardHeader>
+                      <CardTitle className="text-lg text-blue-700 group-hover:underline flex items-center">
+                        Ontario Innovation <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-gray-600">Compare BCITC with Ontario's OIDMTC and innovation grants.</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+                <Link href="/blog/alberta-innovation-grants" className="block group">
+                  <Card className="h-full border-gray-200 hover:border-teal-500 transition-colors">
+                    <CardHeader>
+                      <CardTitle className="text-lg text-teal-700 group-hover:underline flex items-center">
+                        Alberta Tech Grants <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-gray-600">See how Alberta Innovates compares to Innovate BC.</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+                <Link href="/blog/quebec-innovation-grants" className="block group">
+                  <Card className="h-full border-gray-200 hover:border-purple-500 transition-colors">
+                    <CardHeader>
+                      <CardTitle className="text-lg text-purple-700 group-hover:underline flex items-center">
+                        Quebec Tech Funding <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-gray-600">Explore Quebec's generous R&D tax credits and grants.</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Official Resources Section */}
         <section className="py-16 bg-gray-50 border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -766,7 +912,7 @@ export default function BritishColumbiaInnovationGrantsPage() {
             </div>
           </div>
         </section>
-      </div>
+      </div >
       <Footer />
 
       {/* FAQ Schema */}

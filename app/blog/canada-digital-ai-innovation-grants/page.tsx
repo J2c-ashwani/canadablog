@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, Download, Brain, Code, Database, Sparkles, ExternalLink, ArrowRight } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -17,6 +23,38 @@ export const metadata: Metadata = {
     url: "https://www.fsidigital.ca/blog/canada-digital-ai-innovation-grants",
     images: ["/og-image.png"],
   },
+}
+
+const faqData = [
+  {
+    question: "What is the Scale AI Supercluster funding?",
+    answer: "Scale AI offers funding for industry-led projects that accelerate the adoption of AI in supply chains. It typically covers up to 50% of eligible project costs for consortiums that include startups, SMEs, and research institutions."
+  },
+  {
+    question: "Is CDAP grant still available?",
+    answer: "The CDAP 'Boost Your Business Technology' grant is currently fully subscribed, but the 'Grow Your Business Online' grant remains available for smaller businesses. Additionally, businesses may still access zero-interest loans through BDC for digital transformation."
+  },
+  {
+    question: "Does IRAP fund AI startups?",
+    answer: "Yes, IRAP heavily supports AI and machine learning R&D. They provide non-repayable contributions covering 60-80% of technical labor and subcontractor costs for innovative software development projects."
+  },
+  {
+    question: "Are there grants for AI research in Canada?",
+    answer: "Yes, through the Pan-Canadian AI Strategy, funding is available for AI research institutes (Mila, Vector, Amii) and collaborative projects between academia and industry. NSERC also offers Alliance grants for university-industry AI partnerships."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
 }
 
 export default function CanadaDigitalAIInnovationGrantsPage() {
@@ -506,6 +544,29 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
           </div>
         </section>
 
+        {/* Common Questions Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Common Questions About Digital & AI Grants</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-blue-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Official Resources Section */}
         <section className="py-16 bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -611,49 +672,9 @@ export default function CanadaDigitalAIInnovationGrantsPage() {
       </div>
       <Footer />
 
-      {/* FAQ Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the Scale AI Supercluster funding?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Scale AI offers funding for industry-led projects that accelerate the adoption of AI in supply chains. It typically covers up to 50% of eligible project costs for consortiums that include startups, SMEs, and research institutions."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Is CDAP grant still available?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The CDAP 'Boost Your Business Technology' grant is currently fully subscribed, but the 'Grow Your Business Online' grant remains available for smaller businesses. Additionally, businesses may still access zero-interest loans through BDC for digital transformation."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Does IRAP fund AI startups?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, IRAP heavily supports AI and machine learning R&D. They provide non-repayable contributions covering 60-80% of technical labor and subcontractor costs for innovative software development projects."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Are there grants for AI research in Canada?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, through the Pan-Canadian AI Strategy, funding is available for AI research institutes (Mila, Vector, Amii) and collaborative projects between academia and industry. NSERC also offers Alliance grants for university-industry AI partnerships."
-                }
-              }
-            ]
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </>
   )

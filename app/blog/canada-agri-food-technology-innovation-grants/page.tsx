@@ -3,14 +3,20 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Target, Building, HelpCircle, BookOpen, ExternalLink, Leaf, TrendingUp, DollarSign, Factory, ArrowRight } from "lucide-react"
+import { CheckCircle, Target, Building, HelpCircle, BookOpen, ExternalLink, Leaf, TrendingUp, DollarSign, Factory, ArrowRight, Clock, Users, AlertCircle, Lightbulb, Award, FileText, MapPin, Zap, Sprout, Droplets, Sun, Tractor, FlaskConical } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Agri-Food Technology Innovation Grants 2026 | Complete Funding Guide",
-  description: "Complete guide to Canadian agri-food technology and innovation grants. Access federal and provincial funding for agricultural technology, food processing innovation, and sustainability projects.",
-  keywords: "agri-food technology grants Canada, agricultural innovation funding, food processing grants, sustainable agriculture grants, AgriScience funding",
+  title: "Canada Agri-Food Technology Innovation Grants 2026 | $500M+ AgriScience, AgriInnovate, SCAP Funding Guide",
+  description: "Complete 2026 guide to Canadian agri-food technology grants. Access $500M+ annual funding through AgriScience ($340M), AgriInnovate (up to $10M per project), and provincial CAP programs for precision agriculture, sustainable farming, and food processing innovation.",
+  keywords: "agri-food technology grants Canada 2026, AgriScience funding $340M, AgriInnovate program, SCAP agricultural grants, precision agriculture funding, sustainable farming grants Canada, food processing innovation grants, agricultural clean technology program, CAP provincial grants",
+  openGraph: {
+    title: "Canada Agri-Food Tech Grants 2026 | $500M+ Federal & Provincial Funding",
+    description: "Access AgriScience, AgriInnovate, and provincial CAP funding for agricultural innovation, precision farming, and food processing technology.",
+    url: "https://www.fsidigital.ca/blog/canada-agri-food-technology-innovation-grants",
+    images: ["/images/blog/canada-business-theme.png"],
+  },
 }
 
 export default function AgrifoodTechGrantsGuidePage() {
@@ -35,7 +41,247 @@ export default function AgrifoodTechGrantsGuidePage() {
               <div><div className="text-3xl font-bold text-green-600 mb-2">$500M+</div><div className="text-gray-600">Annual Funding</div></div>
               <div><div className="text-3xl font-bold text-blue-600 mb-2">50%</div><div className="text-gray-600">Cost Share Rates</div></div>
               <div><div className="text-3xl font-bold text-purple-600 mb-2">15+</div><div className="text-gray-600">Active Programs</div></div>
-              <div><div className="text-3xl font-bold text-orange-600 mb-2">5 Yrs</div><div className="text-gray-600">CAP Framework</div></div>
+            </div>
+          </div>
+        </section>
+
+        {/* Major Program Cards */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Key Agri-Food Innovation Programs</h2>
+              <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
+                Federal and provincial programs providing over $500M annually for agricultural technology development, precision farming, and food processing innovation.
+              </p>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* AgriScience Program */}
+                <Card className="border-2 border-green-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                  <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
+                    <div className="flex items-center mb-2">
+                      <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-3">
+                        <FlaskConical className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-green-700">$340M</div>
+                        <div className="text-sm text-gray-600">Over 5 Years</div>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-lg mb-3">AgriScience Program</h3>
+                    <ul className="space-y-2 text-sm text-gray-700 mb-4">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Research clusters for sector challenges</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Industry-led applied research</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Multi-year funding available</span>
+                      </li>
+                    </ul>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="#agriscience-details">Learn More</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                {/* AgriInnovate Program */}
+                <Card className="border-2 border-blue-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                  <CardHeader className="bg-gradient-to-br from-blue-50 to-indigo-50">
+                    <div className="flex items-center mb-2">
+                      <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <Zap className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-blue-700">$10M</div>
+                        <div className="text-sm text-gray-600">Max Per Project</div>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-lg mb-3">AgriInnovate Program</h3>
+                    <ul className="space-y-2 text-sm text-gray-700 mb-4">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Commercialization support</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Equipment &amp; facility funding</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Repayable contributions</span>
+                      </li>
+                    </ul>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="#agriinnovate-details">Learn More</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                {/* Agricultural Clean Technology */}
+                <Card className="border-2 border-emerald-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                  <CardHeader className="bg-gradient-to-br from-emerald-50 to-teal-50">
+                    <div className="flex items-center mb-2">
+                      <div className="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center mr-3">
+                        <Leaf className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-emerald-700">$165.7M</div>
+                        <div className="text-sm text-gray-600">Clean Tech Fund</div>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-lg mb-3">Ag Clean Technology</h3>
+                    <ul className="space-y-2 text-sm text-gray-700 mb-4">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>GHG emission reduction</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Up to 50% cost share</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Non-repayable grants</span>
+                      </li>
+                    </ul>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="#clean-tech-details">Learn More</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                {/* Provincial CAP Programs */}
+                <Card className="border-2 border-purple-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                  <CardHeader className="bg-gradient-to-br from-purple-50 to-pink-50">
+                    <div className="flex items-center mb-2">
+                      <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mr-3">
+                        <MapPin className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-purple-700">$100K</div>
+                        <div className="text-sm text-gray-600">Typical Max</div>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <h3 className="font-bold text-lg mb-3">Provincial CAP</h3>
+                    <ul className="space-y-2 text-sm text-gray-700 mb-4">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Technology adoption grants</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>All provinces covered</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Simplified applications</span>
+                      </li>
+                    </ul>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="#provincial-programs">Learn More</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Technology Categories */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Which Innovation Categories are Eligible?</h2>
+              <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+                Agri-food funding supports a wide range of technologies and innovations across the agricultural value chain.
+              </p>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <Card className="border-l-4 border-l-green-500 hover:shadow-lg transition-shadow">
+                  <CardContent className="pt-6">
+                    <Tractor className="w-8 h-8 text-green-600 mb-3" />
+                    <h3 className="font-bold text-lg mb-2">Precision Agriculture</h3>
+                    <p className="text-sm text-gray-600 mb-3">GPS guidance, variable rate application, sensors, drones, yield mapping, soil analysis</p>
+                    <p className="text-xs text-green-700 font-semibold">AgriInnovate + Provincial CAP</p>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-l-4 border-l-blue-500 hover:shadow-lg transition-shadow">
+                  <CardContent className="pt-6">
+                    <Factory className="w-8 h-8 text-blue-600 mb-3" />
+                    <h3 className="font-bold text-lg mb-2">Food Processing</h3>
+                    <p className="text-sm text-gray-600 mb-3">Automation, robotics, quality control, packaging innovation, shelf-life extension</p>
+                    <p className="text-xs text-blue-700 font-semibold">Up to $10M per project</p>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-l-4 border-l-emerald-500 hover:shadow-lg transition-shadow">
+                  <CardContent className="pt-6">
+                    <Droplets className="w-8 h-8 text-emerald-600 mb-3" />
+                    <h3 className="font-bold text-lg mb-2">Sustainability Tech</h3>
+                    <p className="text-sm text-gray-600 mb-3">Water management, carbon sequestration, renewable energy, waste reduction</p>
+                    <p className="text-xs text-emerald-700 font-semibold">Ag Clean Tech priority</p>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-l-4 border-l-purple-500 hover:shadow-lg transition-shadow">
+                  <CardContent className="pt-6">
+                    <Sprout className="w-8 h-8 text-purple-600 mb-3" />
+                    <h3 className="font-bold text-lg mb-2">Emerging Foods</h3>
+                    <p className="text-sm text-gray-600 mb-3">Plant proteins, cellular agriculture, vertical farming, alternative ingredients</p>
+                    <p className="text-xs text-purple-700 font-semibold">High-growth priority</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        {/* Common Questions Section */}
+        <section className="py-12 bg-green-50 border-b border-green-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Agri-Food Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#agriscience-details" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-green-100">
+                  <h3 className="font-semibold text-green-800">What is the AgriScience Program?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Large-scale funding ($340M) for pre-commercial science and research clusters.</p>
+                </a>
+                <a href="#agriinnovate-details" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-green-100">
+                  <h3 className="font-semibold text-green-800">Can I get funding for equipment?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, AgriInnovate and CAP programs fund equipment adoption.</p>
+                </a>
+                <a href="#clean-tech-details" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-green-100">
+                  <h3 className="font-semibold text-green-800">Are there grants for solar/energy?</h3>
+                  <p className="text-sm text-gray-600 mt-1">The Ag Clean Technology Program supports energy efficiency projects.</p>
+                </a>
+                <a href="#provincial-programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-green-100">
+                  <h3 className="font-semibold text-green-800">Do small farms qualify?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, provincial CAP programs often have streams for smaller producers.</p>
+                </a>
+                <a href="#innovation-categories" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-green-100">
+                  <h3 className="font-semibold text-green-800">Is vertical farming eligible?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Yes, under food processing and emerging technology streams.</p>
+                </a>
+                <a href="#hubs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-green-100">
+                  <h3 className="font-semibold text-green-800">Where can I find research partners?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Universities and innovation hubs are key partners for AgriScience projects.</p>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -72,9 +318,9 @@ export default function AgrifoodTechGrantsGuidePage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Are there Provincial Grants for Agriculture?</h2>
-              <p className="text-gray-700 mb-6">Provincial governments deliver cost-shared programming under SCAP that addresses regional agricultural priorities and industry structures. Ontario&apos;s Canadian Agricultural Partnership programs support technology adoption through competitive grants for equipment, software, and infrastructure investments. Focus areas include precision agriculture, controlled environment agriculture, and processing automation aligned with the province&apos;s diverse agricultural economy.</p>
-              <p className="text-gray-700 mb-6">Saskatchewan and Alberta provide substantial technology support through their respective CAP programs, reflecting the Prairie provinces&apos; grain, oilseed, and livestock production focus. Precision agriculture equipment, water management systems, and livestock monitoring technologies receive priority funding. Saskatchewan&apos;s programs also emphasize pulse crop innovation and value-added processing development supporting the province&apos;s leadership in specialty crop production.</p>
-              <p className="text-gray-700 mb-6">British Columbia&apos;s programs reflect the province&apos;s diverse agricultural sectors including greenhouse production, viticulture, and organic farming. Technology funding supports controlled environment systems, water conservation technologies, and organic production innovations. The province also emphasizes food processing innovation supporting value-added product development for local and export markets, with particular attention to Indigenous food systems development.</p>
+              <p className="text-gray-700 mb-6">Provincial governments deliver cost-shared programming under SCAP that addresses regional agricultural priorities and industry structures. <Link href="/canada/ontario" className="text-green-600 hover:underline">Ontario&apos;s</Link> Canadian Agricultural Partnership programs support technology adoption through competitive grants for equipment, software, and infrastructure investments. Focus areas include precision agriculture, controlled environment agriculture, and processing automation aligned with the province&apos;s diverse agricultural economy.</p>
+              <p className="text-gray-700 mb-6"><Link href="/canada/saskatchewan" className="text-green-600 hover:underline">Saskatchewan</Link> and <Link href="/canada/alberta" className="text-green-600 hover:underline">Alberta</Link> provide substantial technology support through their respective CAP programs, reflecting the Prairie provinces&apos; grain, oilseed, and livestock production focus. Precision agriculture equipment, water management systems, and livestock monitoring technologies receive priority funding. Saskatchewan&apos;s programs also emphasize pulse crop innovation and value-added processing development supporting the province&apos;s leadership in specialty crop production.</p>
+              <p className="text-gray-700 mb-6"><Link href="/canada/british-columbia" className="text-green-600 hover:underline">British Columbia&apos;s</Link> programs reflect the province&apos;s diverse agricultural sectors including greenhouse production, viticulture, and organic farming. Technology funding supports controlled environment systems, water conservation technologies, and organic production innovations. The province also emphasizes food processing innovation supporting value-added product development for local and export markets, with particular attention to Indigenous food systems development.</p>
               <p className="text-gray-700 mb-6">Atlantic provinces coordinate technology programming addressing regional challenges including shorter growing seasons, remote farm locations, and specialized production systems. Innovation funding supports season extension technologies, remote monitoring capabilities, and processing innovations for regional specialty products including seafood, berries, and maple products. Collaborative approaches across Atlantic provinces maximize impact of limited regional research capacity.</p>
             </div>
           </div>
@@ -128,14 +374,85 @@ export default function AgrifoodTechGrantsGuidePage() {
           </div>
         </section>
 
+        <section id="glossary" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Agri-Tech Glossary: Speak the Language</h2>
+              <p className="text-gray-700 mb-8">Understanding these key terms will help you write a stronger grant application.</p>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="p-4 border border-green-100 rounded-lg bg-green-50">
+                  <h3 className="font-bold text-green-800 mb-1">Precision Agriculture</h3>
+                  <p className="text-sm text-gray-600">Using satellites, sensors, and data to optimize crop yields and reduce inputs like fertilizer and water.</p>
+                </div>
+                <div className="p-4 border border-green-100 rounded-lg bg-green-50">
+                  <h3 className="font-bold text-green-800 mb-1">Vertical Farming</h3>
+                  <p className="text-sm text-gray-600">Growing crops in stacked layers, often in controlled environments, to maximize space and efficiency.</p>
+                </div>
+                <div className="p-4 border border-green-100 rounded-lg bg-green-50">
+                  <h3 className="font-bold text-green-800 mb-1">Regenerative Agriculture</h3>
+                  <p className="text-sm text-gray-600">Farming practices that restore soil health and sequester carbon, such as cover cropping and no-till.</p>
+                </div>
+                <div className="p-4 border border-green-100 rounded-lg bg-green-50">
+                  <h3 className="font-bold text-green-800 mb-1">Cellular Agriculture</h3>
+                  <p className="text-sm text-gray-600">Producing animal products (like meat or milk) from cell structures rather than raising livestock.</p>
+                </div>
+                <div className="p-4 border border-green-100 rounded-lg bg-green-50">
+                  <h3 className="font-bold text-green-800 mb-1">Bio-stimulants</h3>
+                  <p className="text-sm text-gray-600">Substances applied to plants or soils to enhance nutrient efficiency and stress tolerance naturally.</p>
+                </div>
+                <div className="p-4 border border-green-100 rounded-lg bg-green-50">
+                  <h3 className="font-bold text-green-800 mb-1">Internet of Things (IoT)</h3>
+                  <p className="text-sm text-gray-600">Connected devices (sensors, drones, tractors) that exchange data to automate farm management.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="hubs" className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-6">Where are Canada&apos;s Agri-Food Innovation Hubs?</h2>
+              <p className="text-gray-700 mb-6">Partnering with these research centers can significantly boost your grant approval odds.</p>
+
+              <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
+                <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+                  <div className="p-6 text-center">
+                    <div className="text-4xl mb-2">🌽</div>
+                    <h3 className="font-bold text-lg mb-1">University of Guelph</h3>
+                    <p className="text-xs text-gray-500 uppercase font-semibold mb-2">Ontario</p>
+                    <p className="text-sm text-gray-600">Known as Canada&apos;s Food University. World-class research in plant/animal science.</p>
+                  </div>
+                  <div className="p-6 text-center">
+                    <div className="text-4xl mb-2">🌾</div>
+                    <h3 className="font-bold text-lg mb-1">University of Saskatchewan</h3>
+                    <p className="text-xs text-gray-500 uppercase font-semibold mb-2">Saskatchewan</p>
+                    <p className="text-sm text-gray-600">Global Institute for Food Security (GIFS) leader in crop innovation.</p>
+                  </div>
+                  <div className="p-6 text-center">
+                    <div className="text-4xl mb-2">🐂</div>
+                    <h3 className="font-bold text-lg mb-1">Olds College</h3>
+                    <p className="text-xs text-gray-500 uppercase font-semibold mb-2">Alberta</p>
+                    <p className="text-sm text-gray-600">Home of the Smart Farm, testing autonomous ag-equipment in real conditions.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
               <div className="space-y-4">
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What is the Sustainable Canadian Agricultural Partnership?</h3><p className="text-gray-700 mt-2 ml-7">Sustainable CAP is a 5-year, $3.5 billion investment by federal, provincial, and territorial governments to strengthen the competitiveness, innovation, and resiliency of the agriculture, agri-food and agri-based products sector.</p></CardContent></Card>
                 <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />What funding levels are available?</h3><p className="text-gray-700 mt-2 ml-7">Funding varies by program and project scope. Technology adoption grants may provide fifty percent of eligible costs up to one hundred thousand dollars. AgriInnovate commercialization projects can receive several million dollars in repayable contributions. Research clusters receive multi-million dollar allocations over five-year periods.</p></CardContent></Card>
                 <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Can small farms access innovation funding?</h3><p className="text-gray-700 mt-2 ml-7">Yes, provincial CAP programs specifically target technology adoption by producers of all sizes. Many programs have lower contribution limits and simplified application processes for smaller operations. Farm-level precision agriculture and sustainability investments are priority areas across provinces.</p></CardContent></Card>
                 <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Are technology companies eligible?</h3><p className="text-gray-700 mt-2 ml-7">Agri-food technology developers are eligible for innovation and commercialization programs. Companies benefit from partnerships with agricultural producers who can demonstrate practical application and adoption potential. Industry association membership may strengthen applications.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Does AgriInnovate fund new equipment?</h3><p className="text-gray-700 mt-2 ml-7">Yes, AgriInnovate can support costs related to the adoption of innovative technologies, including equipment purchase and installation, particularly if it demonstrates commercialization of a new product or process.</p></CardContent></Card>
+                <Card><CardContent className="pt-6"><h3 className="font-bold flex items-start"><HelpCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />Is vertical farming eligible for funding?</h3><p className="text-gray-700 mt-2 ml-7">Yes, vertical farming and controlled environment agriculture projects are often eligible under innovation and technology adoption streams, especially those focusing on food security and sustainable production methods.</p></CardContent></Card>
               </div>
             </div>
           </div>
@@ -219,7 +536,7 @@ export default function AgrifoodTechGrantsGuidePage() {
             </div>
           </div>
         </section>
-      </div>
+      </div >
       <Footer />
 
       {/* FAQ Schema */}
@@ -240,10 +557,26 @@ export default function AgrifoodTechGrantsGuidePage() {
               },
               {
                 "@type": "Question",
+                "name": "What funding levels are available?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Funding varies by program and project scope. Technology adoption grants may provide 50% of eligible costs up to $100,000. AgriInnovate commercialization projects can receive several million dollars in repayable contributions. Research clusters receive multi-million dollar allocations."
+                }
+              },
+              {
+                "@type": "Question",
                 "name": "Can small farms get grants for technology?",
                 "acceptedAnswer": {
                   "@type": "Answer",
                   "text": "Yes, many provincial programs under Sustainable CAP are designed specifically for producers to adopt new technologies, such as precision agriculture tools, efficient irrigation systems, and farm management software."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are technology companies eligible?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Agri-food technology developers are eligible for innovation and commercialization programs. Companies benefit from partnerships with agricultural producers who can demonstrate practical application and adoption potential."
                 }
               },
               {

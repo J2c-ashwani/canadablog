@@ -3,7 +3,13 @@ import { Footer } from "@/components/Footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Calendar, Globe } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, Calendar, Globe, MapPin, Briefcase, HelpCircle } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
 
@@ -19,9 +25,45 @@ export const metadata: Metadata = {
   },
 }
 
+const faqData = [
+  {
+    question: "Is the Cartier Women's Initiative open to Canadian entrepreneurs?",
+    answer: "Yes, Canadian women entrepreneurs can apply under the North America Regional Award or for the thematic Science & Technology Pioneer Award. The initiative welcomes applicants from all countries."
+  },
+  {
+    question: "Do I need to be profitable to apply for Cartier Women's Initiative?",
+    answer: "You do not need to be profitable, but your business must be revenue-generating with a proven business model. You must demonstrate the potential for scalability and financial sustainability."
+  },
+  {
+    question: "What does the Cartier Women's Initiative fellowship include?",
+    answer: "The fellowship includes a $100,000/$60,000/$30,000 grant, a 12-month educational program with INSEAD business school, executive coaching, and access to a global network of impact entrepreneurs."
+  },
+  {
+    question: "Can non-profits apply for the Cartier Women's Initiative?",
+    answer: "No, the program is open to for-profit businesses only. Non-profit organizations are not eligible, as the initiative focuses on market-based solutions to social and environmental challenges."
+  }
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
+
 export default function CartierWomensInitiativeCanadaGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -529,6 +571,76 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <Accordion type="single" collapsible key={index}>
+                    <AccordionItem value={`item-${index}`}>
+                      <AccordionTrigger className="text-left">
+                        <span className="font-medium text-purple-700">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Guides Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Related Government Grant Guides</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Link href="/blog/women-entrepreneurship-strategy-canada" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <MapPin className="w-8 h-8 text-pink-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Women Entrepreneurship Strategy</h3>
+                      <p className="text-sm text-gray-500">Government funding for women</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/private-women-grants-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Briefcase className="w-8 h-8 text-purple-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Private Women Grants</h3>
+                      <p className="text-sm text-gray-500">Non-government funding options</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/women-technology-grants-canada" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Briefcase className="w-8 h-8 text-blue-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Women Tech Grants</h3>
+                      <p className="text-sm text-gray-500">Funding for female tech founders</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link href="/blog/startup-grants-canada-guide" className="block group">
+                  <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
+                    <Rocket className="w-8 h-8 text-green-600 mr-4" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Startup Grants</h3>
+                      <p className="text-sm text-gray-500">New business funding</p>
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
