@@ -21,8 +21,9 @@ export async function generateStaticParams() {
   return guideList.map((g) => ({ slug: g.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const guide = guides.find((g) => g.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const guide = guides.find((g) => g.slug === slug);
   if (!guide) return { title: 'Guide Not Found' };
 
   // Site-Wide Enrichment Logic:
@@ -44,8 +45,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function GuidePage({ params }: { params: { slug: string } }) {
-  const guide = guides.find((g) => g.slug === params.slug);
+export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const guide = guides.find((g) => g.slug === slug);
   if (!guide) return notFound();
 
   // Select grants by region (guide.region) or all if Both

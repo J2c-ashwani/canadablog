@@ -30,8 +30,9 @@ export async function generateStaticParams() {
     return states.map((state) => ({ state: state.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { state: string } }): Promise<Metadata> {
-    const state = getStateDetailBySlug(params.state);
+export async function generateMetadata({ params }: { params: Promise<{ state: string }> }): Promise<Metadata> {
+    const { state: stateSlug } = await params;
+    const state = getStateDetailBySlug(stateSlug);
     if (!state) return { title: 'State Not Found' };
 
     return {
@@ -49,8 +50,9 @@ export async function generateMetadata({ params }: { params: { state: string } }
     };
 }
 
-export default function StatePage({ params }: { params: { state: string } }) {
-    const state = getStateDetailBySlug(params.state);
+export default async function StatePage({ params }: { params: Promise<{ state: string }> }) {
+    const { state: stateSlug } = await params;
+    const state = getStateDetailBySlug(stateSlug);
     if (!state) return notFound();
 
     const jsonLd = {

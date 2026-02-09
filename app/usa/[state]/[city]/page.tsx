@@ -43,18 +43,19 @@ export async function generateStaticParams() {
     return params;
 }
 
-export async function generateMetadata({ params }: { params: { state: string; city: string } }): Promise<Metadata> {
-    const state = getStateDetailBySlug(params.state);
+export async function generateMetadata({ params }: { params: Promise<{ state: string; city: string }> }): Promise<Metadata> {
+    const { state: stateParam, city: cityParam } = await params;
+    const state = getStateDetailBySlug(stateParam);
     if (!state || !state.cityGuides) return { title: 'City Not Found' };
 
-    const cityData = state.cityGuides.find(c => toSlug(c.city) === params.city);
+    const cityData = state.cityGuides.find(c => toSlug(c.city) === cityParam);
     if (!cityData) return { title: 'City Not Found' };
 
     return {
         title: `${cityData.city} Small Business Grants 2026 | ${state.name} Funding Guide`,
         description: `Complete guide to small business grants and funding in ${cityData.city}, ${state.name}. Access local ${cityData.city} programs, ${state.name} incentives, and federal opportunities.`,
         alternates: {
-            canonical: `https://www.fsidigital.ca/usa/${state.slug}/${params.city}`,
+            canonical: `https://www.fsidigital.ca/usa/${state.slug}/${cityParam}`,
         },
         robots: { index: true, follow: true },
         openGraph: {
@@ -65,16 +66,17 @@ export async function generateMetadata({ params }: { params: { state: string; ci
     };
 }
 
-export default function CityPage({ params }: { params: { state: string; city: string } }) {
-    const state = getStateDetailBySlug(params.state);
+export default async function CityPage({ params }: { params: Promise<{ state: string; city: string }> }) {
+    const { state: stateParam, city: cityParam } = await params;
+    const state = getStateDetailBySlug(stateParam);
     if (!state || !state.cityGuides) return notFound();
 
-    const cityData = state.cityGuides.find(c => toSlug(c.city) === params.city);
+    const cityData = state.cityGuides.find(c => toSlug(c.city) === cityParam);
     if (!cityData) return notFound();
 
     // Find local resources that match this city
     const localResources = state.localResources?.filter(r =>
-        toSlug(r.location).includes(params.city) || params.city.includes(toSlug(r.location))
+        toSlug(r.location).includes(cityParam) || cityParam.includes(toSlug(r.location))
     ) || [];
 
     const jsonLd = {
@@ -88,7 +90,7 @@ export default function CityPage({ params }: { params: { state: string; city: st
         "dateModified": new Date().toISOString(),
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": `https://www.fsidigital.ca/usa/${state.slug}/${params.city}`
+            "@id": `https://www.fsidigital.ca/usa/${state.slug}/${cityParam}`
         }
     };
 
