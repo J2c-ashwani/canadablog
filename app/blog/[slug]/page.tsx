@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen, DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, Globe, RefreshCw, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, Cpu, FileText, Search, List, Layers, Map, BarChart, Unlock, FastForward } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen, DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, Globe, RefreshCw, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, Cpu, FileText, Search, List, Layers, Map, BarChart, Unlock, FastForward, Grid, Home, Percent, Flag, AlertCircle } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -19,7 +19,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 // Icon mapping for dynamic rendering from data
 const iconMap: Record<string, any> = {
-  DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, Globe, RefreshCw, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, Cpu, FileText, Search, List, Layers, Map, BarChart, Unlock, FastForward
+  DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, Globe, RefreshCw, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, Cpu, FileText, Search, List, Layers, Map, BarChart, Unlock, FastForward,
+  Calendar, Clock, Grid, Home, Percent, Flag, AlertCircle
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -142,7 +143,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <GrantSuccessTable
                     title="Quick Funding Facts"
                     metrics={post.metrics.map(m => {
-                      const IconComponent = m.iconName ? iconMap[m.iconName] : Target;
+                      const IconComponent = (m.iconName && iconMap[m.iconName]) ? iconMap[m.iconName] : Target;
                       return {
                         ...m,
                         icon: <IconComponent className="w-6 h-6" />

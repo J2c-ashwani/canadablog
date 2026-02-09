@@ -16,13 +16,14 @@ import {
     ArrowLeft, DollarSign, Users, Briefcase, Target, Building, Zap, TrendingUp,
     Rocket, Mountain, Globe, Leaf, Cpu, Shield, Clock, Award, CheckCircle,
     AlertTriangle, FileText, ExternalLink, ChevronRight, List, HelpCircle,
-    BookOpen, Lightbulb, MapPin
+    BookOpen, Lightbulb, MapPin, Grid, Home, Percent, Flag, AlertCircle
 } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
     DollarSign, Users, Briefcase, Target, Building, Zap, TrendingUp, Rocket,
     Mountain, Globe, Leaf, Cpu, Shield, Clock, Award, CheckCircle, AlertTriangle,
-    FileText, ExternalLink, List, HelpCircle, BookOpen, Lightbulb, MapPin
+    FileText, ExternalLink, List, HelpCircle, BookOpen, Lightbulb, MapPin,
+    Grid, Home, Percent, Flag, AlertCircle
 };
 
 export async function generateStaticParams() {

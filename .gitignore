@@ -25,3 +25,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts.env.local
+
+# audit scripts
+audit_blog_posts.py
+audit_expert_insights.js
+audit_expert_insights_v2.js
+audit_priority_posts.py
+check_functional_orphans.ts
+check_orphans.ts
