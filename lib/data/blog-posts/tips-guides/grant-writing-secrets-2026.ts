@@ -1,4 +1,4 @@
-// lib/data/blog-posts/tips-guides/grant-writing-secrets-2025.ts
+// lib/data/blog-posts/tips-guides/grant-writing-secrets-2026.ts
 export default `
   <div class="bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded-lg mb-8 border border-purple-200">
     <h2 class="text-2xl font-bold text-purple-900 mb-4">✍️ Professional Grant Writer Reveals Industry Secrets</h2>

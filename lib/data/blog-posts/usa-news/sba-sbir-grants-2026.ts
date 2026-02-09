@@ -1,7 +1,7 @@
-// lib/data/blog-posts/usa-news/sba-sbir-grants-2025.ts
+// lib/data/blog-posts/usa-news/sba-sbir-grants-2026.ts
 export default `
   <div class="bg-purple-50 p-6 rounded-lg mb-8">
-    <h2 class="text-2xl font-bold text-purple-900 mb-4">🚀 SBIR 2025: Your Roadmap to $500M in Tech Funding</h2>
+    <h2 class="text-2xl font-bold text-purple-900 mb-4">🚀 SBIR 2026: Your Roadmap to $500M in Tech Funding</h2>
     <div class="grid md:grid-cols-2 gap-6">
       <div>
         <h3 class="font-bold text-purple-800 mb-2">💰 Maximum Funding Levels</h3>
@@ -80,7 +80,7 @@ export default `
         <li>• <strong>Research Triangle, NC:</strong> $54M</li>
       </ul>
       
-      <h4 class="font-semibold text-blue-700 mb-2">🔥 Hot AI Subtopics for 2025:</h4>
+      <h4 class="font-semibold text-blue-700 mb-2">🔥 Hot AI Subtopics for 2026:</h4>
       <ul class="text-blue-600 space-y-1 text-sm">
         <li>• Healthcare AI diagnostics ($650K avg award)</li>
         <li>• Autonomous vehicle systems ($580K avg)</li>
@@ -164,7 +164,7 @@ export default `
     </div>
   </div>
 
-  <h2 class="text-2xl font-bold mt-8 mb-4">📊 2025 SBIR Success Rate Analysis by Region</h2>
+  <h2 class="text-2xl font-bold mt-8 mb-4">📊 2026 SBIR Success Rate Analysis by Region</h2>
   
   <div class="bg-gray-50 p-6 rounded-lg mb-8">
     <div class="grid md:grid-cols-4 gap-6">
@@ -192,7 +192,7 @@ export default `
     
     <div class="mt-6 grid md:grid-cols-2 gap-6 text-sm">
       <div class="bg-white p-4 rounded">
-        <h4 class="font-semibold text-gray-800 mb-2">🔥 Fastest Growing Regions (2024-2025)</h4>
+        <h4 class="font-semibold text-gray-800 mb-2">🔥 Fastest Growing Regions (2024-2026)</h4>
         <ul class="space-y-1 text-gray-600">
           <li>• <strong>Florida:</strong> 45% increase in applications</li>
           <li>• <strong>Arizona:</strong> 42% increase</li>
@@ -258,7 +258,7 @@ export default `
     </div>
   </div>
 
-  <h2 class="text-2xl font-bold mt-8 mb-4">📅 2025 SBIR Application Strategy & Timeline</h2>
+  <h2 class="text-2xl font-bold mt-8 mb-4">📅 2026 SBIR Application Strategy & Timeline</h2>
   
   <div class="bg-red-50 border border-red-200 p-6 rounded-lg mb-8">
     <h3 class="text-xl font-bold text-red-800 mb-4">🚨 Critical Dates by Agency</h3>
@@ -267,15 +267,15 @@ export default `
         <h4 class="font-semibold text-red-700 mb-3">Major Agency Deadlines</h4>
         <div class="space-y-2 text-sm">
           <div class="bg-white p-3 rounded border border-red-200">
-            <strong>NSF SBIR:</strong> April 15, 2025<br>
+            <strong>NSF SBIR:</strong> April 15, 2026<br>
             <span class="text-red-600">$2.5B total funding available</span>
           </div>
           <div class="bg-white p-3 rounded border border-red-200">
-            <strong>NIH SBIR:</strong> April 5, 2025<br>
+            <strong>NIH SBIR:</strong> April 5, 2026<br>
             <span class="text-red-600">$1.8B healthcare innovation funding</span>
           </div>
           <div class="bg-white p-3 rounded border border-red-200">
-            <strong>DoD SBIR:</strong> Multiple windows 2025<br>
+            <strong>DoD SBIR:</strong> Multiple windows 2026<br>
             <span class="text-red-600">$3.2B defense technology funding</span>
           </div>
         </div>

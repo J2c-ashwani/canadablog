@@ -784,7 +784,7 @@ export default function OntarioInnovationGrantsTaxCreditsPage() {
                   </h3>
                   <ul className="space-y-3">
                     <li>
-                      <Link href="/blog/ontario-government-business-grants" className="flex items-center text-blue-600 hover:underline">
+                      <Link href="/blog/ontario-business-grants-2025" className="flex items-center text-blue-600 hover:underline">
                         Ontario Business Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
                       </Link>
                     </li>

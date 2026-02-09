@@ -775,12 +775,12 @@ export default function PrairieProvincesInnovationGrantsPage() {
                   </h3>
                   <ul className="space-y-3">
                     <li>
-                      <Link href="/blog/saskatchewan-government-business-grants" className="flex items-center text-amber-600 hover:underline">
+                      <Link href="/blog/saskatchewan-business-grants-2025" className="flex items-center text-amber-600 hover:underline">
                         Saskatchewan Business Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
                       </Link>
                     </li>
                     <li>
-                      <Link href="/blog/manitoba-government-business-grants" className="flex items-center text-amber-600 hover:underline">
+                      <Link href="/blog/manitoba-business-grants-2025" className="flex items-center text-amber-600 hover:underline">
                         Manitoba Business Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
                       </Link>
                     </li>

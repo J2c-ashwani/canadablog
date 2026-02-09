@@ -30,14 +30,15 @@ export const metadata: Metadata = {
     },
 };
 
-export default function ExpertInsightsPage({
+export default async function ExpertInsightsPage({
     searchParams
 }: {
-    searchParams: { category?: string; page?: string }
+    searchParams: Promise<{ category?: string; page?: string }>
 }) {
+    const resolvedParams = await searchParams;
     const allPosts = getExpertInsightPosts();
-    const selectedCategory = searchParams.category;
-    const currentPage = parseInt(searchParams.page || '1');
+    const selectedCategory = resolvedParams.category;
+    const currentPage = parseInt(resolvedParams.page || '1');
     const postsPerPage = 9;
 
     // Filter posts by category if selected

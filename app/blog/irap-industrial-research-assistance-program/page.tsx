@@ -896,9 +896,9 @@ export default function IRAPGuidePage() {
                     federal programs like IRAP.
                   </p>
                   <div className="flex flex-wrap gap-2 mt-2">
-                    <Link href="/blog/ontario-government-business-grants" className="text-green-700 hover:underline text-sm">Ontario →</Link>
-                    <Link href="/blog/british-columbia-government-business-grants" className="text-green-700 hover:underline text-sm">BC →</Link>
-                    <Link href="/blog/alberta-government-business-grants" className="text-green-700 hover:underline text-sm">Alberta →</Link>
+                    <Link href="/blog/ontario-business-grants-2025" className="text-green-700 hover:underline text-sm">Ontario →</Link>
+                    <Link href="/blog/bc-business-grants-2025" className="text-green-700 hover:underline text-sm">BC →</Link>
+                    <Link href="/blog/alberta-business-grants-2025" className="text-green-700 hover:underline text-sm">Alberta →</Link>
                   </div>
                 </div>
               </div>

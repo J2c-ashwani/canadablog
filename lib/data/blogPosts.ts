@@ -9,8 +9,8 @@ import nsfPost from './blog-posts/usa-news/nsf-stem-research-2025';
 import oct2025Post from './blog-posts/funding-alerts/october-2025-last-chance';
 import q42025Post from './blog-posts/funding-alerts/q4-2025-deadlines';
 import q12026Post from './blog-posts/seasonal/q1-2026-grant-deadlines';
-import sbaSbirPost from './blog-posts/usa-news/sba-sbir-grants-2025';
-import grantSecretsPost from './blog-posts/tips-guides/grant-writing-secrets-2025';
+import sbaSbirPost from './blog-posts/usa-news/sba-sbir-grants-2026';
+import grantSecretsPost from './blog-posts/tips-guides/grant-writing-secrets-2026';
 import usdaRuralPost from './blog-posts/usa-news/usda-rural-grants-2025';
 import nyGrantsPost from './blog-posts/state-specific/new-york-business-grants-2025';
 import regionalDevPost from './blog-posts/canada-news/canada-regional-development-2025';
@@ -6381,13 +6381,13 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 1036,
-    slug: "alberta-business-grants-2025",
-    title: "Alberta Business Grants 2025: Innovation & Growth",
-    excerpt: "🇨🇦 Explore Alberta's funding landscape. From Alberta Innovates vouchers to the Digital Economy Program, discover how to fund your Wild Rose Country business.",
+    slug: "alberta-business-grants-2026",
+    title: "Alberta Business Grants 2026: Innovation & Growth",
+    excerpt: "🇨🇦 Explore Alberta's funding landscape for 2026. From Alberta Innovates vouchers to the Digital Economy Program, discover how to fund your Wild Rose Country business.",
     category: "Province-Specific",
     categoryColor: "bg-blue-100 text-blue-800",
     author: "Alberta Funding Team",
-    date: "2025-02-01",
+    date: "2026-02-01",
     readTime: "14 min read",
     image: "/images/blog/alberta-business-theme.png",
     featured: true,
@@ -7158,13 +7158,13 @@ ${q12026Post}
   {
     id: 2046,
     type: 'grant-news',
-    slug: "sba-sbir-grants-2025",
-    title: "SBA SBIR/STTR 2025: America's Seed Fund",
-    excerpt: "🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. How to access over $4 billion in non-dilutive R&D funding.",
+    slug: "sba-sbir-grants-2026",
+    title: "SBA SBIR/STTR 2026: America's Seed Fund",
+    excerpt: "🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. How to access over $4 billion in non-dilutive R&D funding in 2026.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
     author: "Federal Innovation Team",
-    date: "2025-03-10",
+    date: "2026-03-10",
     readTime: "12 min read",
     image: "/images/blog/sbir-grants.jpg",
     featured: false,
@@ -7189,13 +7189,13 @@ ${sbaSbirPost}
   {
     id: 2047,
     type: 'expert-insight',
-    slug: "grant-writing-secrets-2025",
-    title: "Grant Writing Secrets: 7 Tips from Pro Writers",
-    excerpt: "✍️ Increase your approval odds. Professional grant writers share their top strategies for crafting winning proposals in 2025.",
+    slug: "grant-writing-secrets-2026",
+    title: "Grant Writing Secrets 2026: 7 Tips from Pro Writers",
+    excerpt: "✍️ Increase your approval odds. Professional grant writers share their top strategies for crafting winning proposals in 2026.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
     author: "Grant Review Board",
-    date: "2025-04-15",
+    date: "2026-04-15",
     readTime: "10 min read",
     image: "/images/blog/grant-writing.jpg",
     featured: false,
@@ -7203,9 +7203,13 @@ ${sbaSbirPost}
 ${grantSecretsPost}
     `,
     seo: {
-      keywords: ["grant writing tips", "how to write a grant proposal", "winning grant applications", "grant writing mistakes to avoid"]
+      keywords: ["grant writing tips 2026", "how to write a grant proposal", "winning grant applications", "grant writing mistakes to avoid"]
     },
-    metrics: [],
+    metrics: [
+      { label: 'Success Rate', value: '30%', description: 'Avg. Approval', color: 'text-green-600', iconName: 'PieChart' },
+      { label: 'Preparation', value: '40hrs', description: 'Avg. Time Investment', color: 'text-blue-600', iconName: 'Clock' },
+      { label: 'ROI', value: 'High', description: 'Non-Dilutive Capital', color: 'text-purple-600', iconName: 'TrendingUp' }
+    ],
     expertTip: {
       title: "Clarity over Jargon",
       type: 'tip',

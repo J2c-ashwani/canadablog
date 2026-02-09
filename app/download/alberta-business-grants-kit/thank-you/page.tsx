@@ -16,13 +16,13 @@ export default function AlbertaBusinessGrantsDownloadThankYouPage() {
               <div className="bg-orange-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="w-12 h-12 text-orange-600" />
               </div>
-              
+
               <h1 className="text-4xl font-bold text-gray-900 mb-4">
                 Your Alberta Business Grants Toolkit is On Its Way!
               </h1>
-              
+
               <p className="text-xl text-gray-600 mb-8">
-                Check your email for instant access to the Alberta Business Grants Application Toolkit. 
+                Check your email for instant access to the Alberta Business Grants Application Toolkit.
                 If you don't see it in a few minutes, check your spam folder.
               </p>
 
@@ -67,7 +67,7 @@ export default function AlbertaBusinessGrantsDownloadThankYouPage() {
               <div className="bg-orange-50 border border-orange-200 p-6 rounded-lg mb-8">
                 <h3 className="font-bold text-orange-800 mb-4">Ready for Expert Alberta Energy Innovation Support?</h3>
                 <p className="text-orange-700 mb-4">
-                  Our Alberta energy innovation funding specialists have secured $11M+ in provincial funding with an 84% success rate. 
+                  Our Alberta energy innovation funding specialists have secured $11M+ in provincial funding with an 84% success rate.
                   Get professional guidance for your Alberta provincial application and clean technology development.
                 </p>
                 <Button size="lg" className="bg-orange-600 hover:bg-orange-700" asChild>
@@ -81,7 +81,7 @@ export default function AlbertaBusinessGrantsDownloadThankYouPage() {
                 <p className="text-gray-600 mb-4">Continue exploring Alberta provincial business support:</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button variant="outline" asChild>
-                    <Link href="/blog/alberta-government-business-grants">
+                    <Link href="/blog/alberta-business-grants-2025">
                       Read Complete Alberta Government Guide
                     </Link>
                   </Button>

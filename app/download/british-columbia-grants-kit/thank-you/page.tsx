@@ -16,13 +16,13 @@ export default function BritishColumbiaGrantsDownloadThankYouPage() {
               <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="w-12 h-12 text-blue-600" />
               </div>
-              
+
               <h1 className="text-4xl font-bold text-gray-900 mb-4">
                 Your BC Business Grants Toolkit is On Its Way!
               </h1>
-              
+
               <p className="text-xl text-gray-600 mb-8">
-                Check your email for instant access to the British Columbia Business Grants Application Toolkit. 
+                Check your email for instant access to the British Columbia Business Grants Application Toolkit.
                 If you don't see it in a few minutes, check your spam folder.
               </p>
 
@@ -67,7 +67,7 @@ export default function BritishColumbiaGrantsDownloadThankYouPage() {
               <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
                 <h3 className="font-bold text-blue-800 mb-4">Ready for Expert BC Innovation Support?</h3>
                 <p className="text-blue-700 mb-4">
-                  Our BC innovation funding specialists have secured $8M+ in provincial funding with an 85% success rate. 
+                  Our BC innovation funding specialists have secured $8M+ in provincial funding with an 85% success rate.
                   Get professional guidance for your BC provincial application and innovation ecosystem development.
                 </p>
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
@@ -81,7 +81,7 @@ export default function BritishColumbiaGrantsDownloadThankYouPage() {
                 <p className="text-gray-600 mb-4">Continue exploring BC provincial business support:</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button variant="outline" asChild>
-                    <Link href="/blog/british-columbia-government-business-grants">
+                    <Link href="/blog/bc-business-grants-2025">
                       Read Complete BC Government Guide
                     </Link>
                   </Button>

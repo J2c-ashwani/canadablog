@@ -700,7 +700,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                 </Link>
               </div>
               <div className="mt-6 grid md:grid-cols-2 gap-6">
-                <Link href="/blog/ontario-government-business-grants" className="block p-4 bg-gray-50 rounded-lg shadow hover:shadow-md transition">
+                <Link href="/blog/ontario-business-grants-2025" className="block p-4 bg-gray-50 rounded-lg shadow hover:shadow-md transition">
                   <h3 className="font-semibold text-gray-900">Ontario Business Grants →</h3>
                   <p className="text-sm text-gray-600">Provincial programs including First Nations economic development</p>
                 </Link>

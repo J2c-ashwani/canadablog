@@ -36,7 +36,7 @@ export default function CanadaGovernmentGrantsPage() {
                 $12+ Billion Available in Government Business Funding
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-red-100 leading-relaxed max-w-3xl mx-auto">
-                Access comprehensive government funding from federal, provincial, and territorial programs. 
+                Access comprehensive government funding from federal, provincial, and territorial programs.
                 From Strategic Innovation Fund to local business support - find the perfect government grant for your business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -93,7 +93,7 @@ export default function CanadaGovernmentGrantsPage() {
                   Major Federal Government Grant Programs
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Access flagship federal programs designed to support Canadian businesses 
+                  Access flagship federal programs designed to support Canadian businesses
                   across all sectors, sizes, and stages of development.
                 </p>
               </div>
@@ -128,7 +128,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Large-scale funding for transformative business projects that drive innovation, 
+                      Large-scale funding for transformative business projects that drive innovation,
                       economic growth, and job creation across Canada.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -182,7 +182,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Non-repayable contributions for businesses developing and 
+                      Non-repayable contributions for businesses developing and
                       commercializing innovative technologies and solutions.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -236,7 +236,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Government-guaranteed loans for small businesses to purchase equipment, 
+                      Government-guaranteed loans for small businesses to purchase equipment,
                       improve leasehold, and buy real property.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -290,7 +290,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Region-specific federal funding delivered through six development 
+                      Region-specific federal funding delivered through six development
                       agencies supporting local economic priorities.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -344,7 +344,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Comprehensive federal support for agriculture, agri-food, and 
+                      Comprehensive federal support for agriculture, agri-food, and
                       agri-based businesses and research initiatives.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -398,7 +398,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Comprehensive support ecosystem for women entrepreneurs including 
+                      Comprehensive support ecosystem for women entrepreneurs including
                       financing, mentorship, and market access programs.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -439,7 +439,7 @@ export default function CanadaGovernmentGrantsPage() {
                   Provincial Government Business Support
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Provincial governments offer specialized programs tailored to local 
+                  Provincial governments offer specialized programs tailored to local
                   economic priorities and regional business development needs.
                 </p>
               </div>
@@ -475,7 +475,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </li>
                     </ul>
                     <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/ontario-government-business-grants">
+                      <Link href="/blog/ontario-business-grants-2025">
                         Learn More
                       </Link>
                     </Button>
@@ -549,7 +549,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </li>
                     </ul>
                     <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/british-columbia-government-business-grants">
+                      <Link href="/blog/bc-business-grants-2025">
                         Learn More
                       </Link>
                     </Button>
@@ -586,7 +586,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </li>
                     </ul>
                     <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/alberta-government-business-grants">
+                      <Link href="/blog/alberta-business-grants-2025">
                         Learn More
                       </Link>
                     </Button>
@@ -617,7 +617,7 @@ export default function CanadaGovernmentGrantsPage() {
                   Government Grants by Program Type
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Explore government funding opportunities organized by program focus, 
+                  Explore government funding opportunities organized by program focus,
                   department, and specific business support objectives.
                 </p>
               </div>
@@ -637,7 +637,7 @@ export default function CanadaGovernmentGrantsPage() {
                     icon: <Factory className="w-8 h-8 text-blue-600" />,
                     title: "Manufacturing & Industry",
                     description: "Advanced manufacturing, productivity, and industrial development",
-                    amount: "$3.1B+", 
+                    amount: "$3.1B+",
                     programs: "38+ Programs",
                     color: "blue",
                     slug: "canada-manufacturing-industry-grants-guide"
@@ -681,13 +681,13 @@ export default function CanadaGovernmentGrantsPage() {
                 ].map((category, index) => {
                   const colorClasses = {
                     red: "border-red-200 hover:border-red-300",
-                    blue: "border-blue-200 hover:border-blue-300", 
+                    blue: "border-blue-200 hover:border-blue-300",
                     green: "border-green-200 hover:border-green-300",
                     purple: "border-purple-200 hover:border-purple-300",
                     orange: "border-orange-200 hover:border-orange-300",
                     teal: "border-teal-200 hover:border-teal-300"
                   }
-                  
+
                   return (
                     <Card key={index} className={`hover:shadow-lg transition-all ${colorClasses[category.color as keyof typeof colorClasses]}`}>
                       <CardHeader>
@@ -725,7 +725,7 @@ export default function CanadaGovernmentGrantsPage() {
                 Navigate Canada's $12B+ Government Funding Ecosystem with Expert Guidance
               </h2>
               <p className="text-xl text-red-100 mb-8">
-                Government grants span multiple departments, agencies, and levels of government. Our specialists understand 
+                Government grants span multiple departments, agencies, and levels of government. Our specialists understand
                 the complex application processes and have secured over $85M in government funding for Canadian businesses.
               </p>
               <div className="bg-white/10 rounded-lg p-6 mb-8">
