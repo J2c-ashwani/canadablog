@@ -34,10 +34,11 @@ const nextConfig = {
         permanent: true,
       },
       // Zombie Page Redirects (Feb 2026 Audit)
-      { source: '/blog/alberta-government-business-grants', destination: '/blog/alberta-business-grants-2025', permanent: true },
-      { source: '/blog/ontario-government-business-grants', destination: '/blog/ontario-business-grants-2025', permanent: true },
-      { source: '/blog/british-columbia-government-business-grants', destination: '/blog/bc-business-grants-2025', permanent: true },
       { source: '/blog/manitoba-government-business-grants', destination: '/blog/manitoba-business-grants-2025', permanent: true },
+      // Alberta Grant Consolidations (Batch 1 Cleanup)
+      { source: '/blog/alberta-government-business-grants', destination: '/blog/alberta-small-business-grants-guide', permanent: true },
+      { source: '/blog/alberta-business-grants-2026', destination: '/blog/alberta-small-business-grants-guide', permanent: true },
+      { source: '/blog/alberta-business-grants-2025', destination: '/blog/alberta-small-business-grants-guide', permanent: true },
       { source: '/blog/quebec-government-business-grants', destination: '/blog/quebec-business-grants-2025', permanent: true },
       { source: '/blog/saskatchewan-government-business-grants', destination: '/blog/saskatchewan-business-grants-2025', permanent: true },
       { source: '/blog/atlantic-canada-business-grants', destination: '/blog/atlantic-business-grants-2025', permanent: true },

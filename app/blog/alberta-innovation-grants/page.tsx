@@ -81,7 +81,40 @@ export default function AlbertaInnovationGrantsPage() {
           </div>
         </section>
 
-        {/* Major Alberta Programs */}
+        {/* Common Questions Section */}
+        <section className="py-12 bg-blue-50 border-b border-blue-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Alberta Innovation Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-orange-700">What does Alberta Innovates fund?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Explore core programs for tech &amp; innovation.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-orange-700">How do I get ERA cleantech funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Learn about Emissions Reduction Alberta programs.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-orange-700">Is there AI grant funding in Alberta?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Discover AI4Society and Amii support programs.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-orange-700">What sectors get priority funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">See which industries Alberta prioritizes.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-orange-700">How much can my startup get?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Learn about funding amounts per program.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-orange-700">Are grants non-repayable?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Understand grant vs. repayable contributions.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">

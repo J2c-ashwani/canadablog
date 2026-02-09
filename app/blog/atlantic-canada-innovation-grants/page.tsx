@@ -81,7 +81,40 @@ export default function AtlanticCanadaInnovationGrantsPage() {
           </div>
         </section>
 
-        {/* Major Atlantic Programs */}
+        {/* Common Questions Section */}
+        <section className="py-12 bg-cyan-50 border-b border-cyan-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About Atlantic Canada Innovation Grants</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">What is the Atlantic Innovation Fund?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Learn about AIF and large-scale R&amp;D funding.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">How do I apply for ACOA funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Explore ACOA business development programs.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">Is there ocean technology funding?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Discover Ocean Supercluster and maritime support.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">What is the 15% ACITC tax credit?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Understand Atlantic R&amp;D tax credit stacking.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">Can startups get funding in Halifax?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Nova Scotia startup ecosystem resources.</p>
+                </a>
+                <a href="#programs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                  <h3 className="font-semibold text-blue-700">Are there grants for fisheries tech?</h3>
+                  <p className="text-sm text-gray-600 mt-1">Atlantic Fisheries Fund and aquaculture support.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
         <section id="programs" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
