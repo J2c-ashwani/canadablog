@@ -5,6 +5,19 @@ import doePost from './blog-posts/usa-news/doe-clean-tech-2025';
 import epaPost from './blog-posts/usa-news/epa-environmental-justice-2025';
 import nsfPost from './blog-posts/usa-news/nsf-stem-research-2025';
 
+// Batch 17 Restored Imports
+import oct2025Post from './blog-posts/funding-alerts/october-2025-last-chance';
+import q42025Post from './blog-posts/funding-alerts/q4-2025-deadlines';
+import q12026Post from './blog-posts/seasonal/q1-2026-grant-deadlines';
+import sbaSbirPost from './blog-posts/usa-news/sba-sbir-grants-2025';
+import grantSecretsPost from './blog-posts/tips-guides/grant-writing-secrets-2025';
+import usdaRuralPost from './blog-posts/usa-news/usda-rural-grants-2025';
+import nyGrantsPost from './blog-posts/state-specific/new-york-business-grants-2025';
+import regionalDevPost from './blog-posts/canada-news/canada-regional-development-2025';
+import superclustersPost from './blog-posts/canada-news/innovation-superclusters-2025';
+import ruralBizPost from './blog-posts/demographic-specific/rural-business-development-2025';
+import sredTaxPost from './blog-posts/canada-news/sred-tax-credits-2025';
+
 export type BlogPostType = 'grant-news' | 'expert-insight';
 
 export interface BlogPost {
@@ -7051,6 +7064,328 @@ ${nsfPost}
         answer: "Overall it's around 15%, but if your Project Pitch is accepted, the full proposal success rate is significantly higher (around 45%)."
       }
     ]
+  },
+  {
+    id: 2043,
+    type: 'grant-news',
+    slug: "october-2025-last-chance",
+    title: "October 2025: Last Chance Grant Deadlines",
+    excerpt: "⏰ Urgent funding alert! Key federal and provincial grant programs closing this month. Don't miss out on over $15M in expiring opportunities.",
+    category: "Funding Alerts",
+    categoryColor: "bg-red-100 text-red-800",
+    author: "Grant Alert Team",
+    date: "2025-10-01",
+    readTime: "5 min read",
+    image: "/images/blog/deadline-alert.jpg",
+    featured: false,
+    content: `
+${oct2025Post}
+    `,
+    seo: {
+      keywords: ["grant deadlines October 2025", "expiring grants Canada", "last chance business funding", "urgent grant alerts"]
+    },
+    metrics: [
+      { label: 'Closing', value: '12', description: 'Grants Ending', color: 'text-red-600', iconName: 'Clock' },
+      { label: 'Value', value: '$15M', description: 'Total Funding', color: 'text-green-600', iconName: 'DollarSign' }
+    ],
+    expertTip: {
+      title: "Submit Early",
+      type: 'warning',
+      content: "Systems often crash on deadline days due to high traffic. Aim to submit at least <strong>48 hours before</strong> the official cutoff."
+    },
+    faq: []
+  },
+  {
+    id: 2044,
+    type: 'grant-news',
+    slug: "q4-2025-deadlines",
+    title: "Q4 2025 Grant Deadlines: End of Year Funding",
+    excerpt: "📅 Plan your year-end funding strategy. Critical deadlines for November and December 2025 across all major grant categories.",
+    category: "Funding Alerts",
+    categoryColor: "bg-orange-100 text-orange-800",
+    author: "Strategic Planning Team",
+    date: "2025-10-15",
+    readTime: "7 min read",
+    image: "/images/blog/calendar-planning.jpg",
+    featured: false,
+    content: `
+${q42025Post}
+    `,
+    seo: {
+      keywords: ["Q4 2025 grant deadlines", "year end business grants", "November 2025 grants", "December 2025 funding"]
+    },
+    metrics: [
+      { label: 'Q4 Pool', value: '$45M', description: 'Available Funds', color: 'text-blue-600', iconName: 'PieChart' },
+      { label: 'Programs', value: '25+', description: 'Active Grants', color: 'text-purple-600', iconName: 'List' }
+    ],
+    expertTip: {
+      title: "Fiscal Year End",
+      type: 'tip',
+      content: "Many government fiscal years end in March, meaning Q4 is often when agencies rush to allocate remaining budgets. Look for 'surplus' funding announcements."
+    },
+    faq: []
+  },
+  {
+    id: 2045,
+    type: 'expert-insight',
+    slug: "q1-2026-grant-deadlines",
+    title: "Q1 2026 Grant Forecast: Prepare Now",
+    excerpt: "🔮 Get a head start on 2026. Preview of major grant programs opening in January, February, and March 2026.",
+    category: "Seasonal",
+    categoryColor: "bg-blue-100 text-blue-800",
+    author: "Future Trends Team",
+    date: "2025-11-01",
+    readTime: "8 min read",
+    image: "/images/blog/future-forecast.jpg",
+    featured: false,
+    content: `
+${q12026Post}
+    `,
+    seo: {
+      keywords: ["2026 grant forecast", "Q1 2026 funding", "upcoming business grants Canada", "future grant opportunities"]
+    },
+    metrics: [
+      { label: 'Forecast', value: '$120M', description: 'Projected Opening', color: 'text-indigo-600', iconName: 'TrendingUp' },
+      { label: 'New', value: '15', description: 'Program Launches', color: 'text-green-600', iconName: 'Zap' }
+    ],
+    expertTip: {
+      title: "Pre-Preparation",
+      type: 'success',
+      content: "Use Q4 2025 to update your business plan and financial statements so you are ready to apply the moment Q1 2026 applications open."
+    },
+    faq: []
+  },
+  {
+    id: 2046,
+    type: 'grant-news',
+    slug: "sba-sbir-grants-2025",
+    title: "SBA SBIR/STTR 2025: America's Seed Fund",
+    excerpt: "🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. How to access over $4 billion in non-dilutive R&D funding.",
+    category: "USA News",
+    categoryColor: "bg-blue-100 text-blue-800",
+    author: "Federal Innovation Team",
+    date: "2025-03-10",
+    readTime: "12 min read",
+    image: "/images/blog/sbir-grants.jpg",
+    featured: false,
+    content: `
+${sbaSbirPost}
+    `,
+    seo: {
+      keywords: ["SBIR grants 2025", "STTR funding", "America's Seed Fund", "R&D grants USA", "tech startup funding"]
+    },
+    metrics: [
+      { label: 'Total', value: '$4B+', description: 'Annual Budget', color: 'text-green-600', iconName: 'Database' },
+      { label: 'Phase I', value: '$150k+', description: 'Concept Funding', color: 'text-blue-600', iconName: 'Beaker' },
+      { label: 'Phase II', value: '$1M+', description: 'Prototype Funding', color: 'text-purple-600', iconName: 'Rocket' }
+    ],
+    expertTip: {
+      title: "Topic Fit",
+      type: 'tip',
+      content: "SBIR is topic-specific. Agencies release 'solicitations' with specific problems they need solved. Your proposal MUST address one of these specific topics."
+    },
+    faq: []
+  },
+  {
+    id: 2047,
+    type: 'expert-insight',
+    slug: "grant-writing-secrets-2025",
+    title: "Grant Writing Secrets: 7 Tips from Pro Writers",
+    excerpt: "✍️ Increase your approval odds. Professional grant writers share their top strategies for crafting winning proposals in 2025.",
+    category: "Tips & Guides",
+    categoryColor: "bg-purple-100 text-purple-800",
+    author: "Grant Review Board",
+    date: "2025-04-15",
+    readTime: "10 min read",
+    image: "/images/blog/grant-writing.jpg",
+    featured: false,
+    content: `
+${grantSecretsPost}
+    `,
+    seo: {
+      keywords: ["grant writing tips", "how to write a grant proposal", "winning grant applications", "grant writing mistakes to avoid"]
+    },
+    metrics: [],
+    expertTip: {
+      title: "Clarity over Jargon",
+      type: 'tip',
+      content: "Reviewers are often generalists, not specialists in your niche. Write simply and clearly. Avoid excessive industry jargon."
+    },
+    faq: []
+  },
+  {
+    id: 2048,
+    type: 'grant-news',
+    slug: "usda-rural-grants-2025",
+    title: "USDA Rural Business Development Grants 2025",
+    excerpt: "🇺🇸 Support for rural entrepreneurs. The USDA provides grants for training, equipment, and real estate in eligible rural areas.",
+    category: "USA News",
+    categoryColor: "bg-green-100 text-green-800",
+    author: "Rural Development Team",
+    date: "2025-05-20",
+    readTime: "9 min read",
+    image: "/images/blog/rural-development.jpg",
+    featured: false,
+    content: `
+${usdaRuralPost}
+    `,
+    seo: {
+      keywords: ["USDA grants", "rural business grants", "RBDG program", "agricultural business funding", "rural entrepreneurship"]
+    },
+    metrics: [
+      { label: 'Max', value: '$500k', description: 'Grant Amount', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Eligible', value: '<50k', description: 'Pop. Limit', color: 'text-blue-600', iconName: 'Users' }
+    ],
+    expertTip: {
+      title: "Check Eligibility",
+      type: 'warning',
+      content: "Use the USDA's online mapping tool to confirm your address is in an eligible rural zone BEFORE you start your application."
+    },
+    faq: []
+  },
+  {
+    id: 2049,
+    type: 'grant-news',
+    slug: "new-york-business-grants-2025",
+    title: "New York Business Grants 2025: State Guide",
+    excerpt: "🗽 Comprehensive guide to business grants in New York State. Covering NYC small business funds, upstate revitalization, and tech incentives.",
+    category: "State-Specific",
+    categoryColor: "bg-blue-100 text-blue-800",
+    author: "NY Funding Desk",
+    date: "2025-06-01",
+    readTime: "11 min read",
+    image: "/images/blog/new-york-business.jpg",
+    featured: false,
+    content: `
+${nyGrantsPost}
+    `,
+    seo: {
+      keywords: ["New York business grants", "NYC small business funding", "NYS grants 2025", "startup grants New York"]
+    },
+    metrics: [
+      { label: 'State', value: '$800M', description: 'Econ Dev Fund', color: 'text-blue-600', iconName: 'Briefcase' },
+      { label: 'NYC', value: '$20k', description: 'Small Biz Grant', color: 'text-green-600', iconName: 'MapPin' }
+    ],
+    expertTip: {
+      title: "REDC Priority",
+      type: 'tip',
+      content: "Align your project with your Regional Economic Development Council (REDC) strategic plan to boost your scoring chances."
+    },
+    faq: []
+  },
+  {
+    id: 2050,
+    type: 'grant-news',
+    slug: "canada-regional-development-2025",
+    title: "Canada's Regional Development Agencies: 2025 Funding",
+    excerpt: "🇨🇦 The 7 Regional Development Agencies (RDAs) are a primary source of business funding. Learn which agency covers your region and what they fund.",
+    category: "Canada News",
+    categoryColor: "bg-red-100 text-red-800",
+    author: "Regional Growth Team",
+    date: "2025-07-10",
+    readTime: "10 min read",
+    image: "/images/blog/regional-canada.jpg",
+    featured: false,
+    content: `
+${regionalDevPost}
+    `,
+    seo: {
+      keywords: ["RDAs Canada", "FedDev Ontario", "PacifiCan", "PrairiesCan", "ACOA grants", "regional development funding"]
+    },
+    metrics: [],
+    expertTip: {
+      title: "Scale-Up Focus",
+      type: 'tip',
+      content: "RDAs primarily fund <strong>expansion and scaling</strong> activities, not early-stage startups. Demonstrate you have a proven market and need capital to grow."
+    },
+    faq: []
+  },
+  {
+    id: 2051,
+    type: 'grant-news',
+    slug: "innovation-superclusters-2025",
+    title: "Global Innovation Clusters: 2025 Call for Projects",
+    excerpt: "🇨🇦 Canada's Superclusters (now Global Innovation Clusters) are co-investing millions in collaborative tech projects. Digital, Protein, Ocean, AI, and Manufacturing.",
+    category: "Canada News",
+    categoryColor: "bg-teal-100 text-teal-800",
+    author: "Innovation Desk",
+    date: "2025-08-05",
+    readTime: "9 min read",
+    image: "/images/blog/superclusters.jpg",
+    featured: false,
+    content: `
+${superclustersPost}
+    `,
+    seo: {
+      keywords: ["Global Innovation Clusters", "Canada Superclusters", "Digital Cluster", "Protein Industries Canada", "NGen manufacturing grants"]
+    },
+    metrics: [
+      { label: 'Match', value: '50%', description: 'Co-Investment', color: 'text-teal-600', iconName: 'RefreshCw' },
+      { label: 'Clusters', value: '5', description: 'Key Sectors', color: 'text-blue-600', iconName: 'Layers' }
+    ],
+    expertTip: {
+      title: "Collaboration is Key",
+      type: 'warning',
+      content: "You cannot apply alone. Supercluster projects require a consortium of members (e.g., SMEs, large corporations, academic institutions)."
+    },
+    faq: []
+  },
+  {
+    id: 2052,
+    type: 'grant-news',
+    slug: "rural-business-development-2025",
+    title: "Rural Canada Business Development 2025",
+    excerpt: "🇨🇦 Specific funding streams for rural Canadian businesses. CFDC loans, rural broadband funds, and agricultural support.",
+    category: "Demographic-Specific",
+    categoryColor: "bg-green-100 text-green-800",
+    author: "Rural Policy Team",
+    date: "2025-09-12",
+    readTime: "8 min read",
+    image: "/images/blog/rural-canada.jpg",
+    featured: false,
+    content: `
+${ruralBizPost}
+    `,
+    seo: {
+      keywords: ["Rural business grants Canada", "Community Futures loans", "rural broadband funding", "Northern Ontario grants"]
+    },
+    metrics: [],
+    expertTip: {
+      title: "Visit Your CFDC",
+      type: 'tip',
+      content: "Your local <strong>Community Futures Development Corporation (CFDC)</strong> office is your best resource. They offer flexible loans and localized advice."
+    },
+    faq: []
+  },
+  {
+    id: 2053,
+    type: 'grant-news',
+    slug: "sred-tax-credits-2025",
+    title: "SR&ED 2025: Maximizing Your Tax Credits",
+    excerpt: "🇨🇦 The Scientific Research and Experimental Development (SR&ED) program is Canada's largest R&D incentive. Guide to claiming your 35% credit.",
+    category: "Canada News",
+    categoryColor: "bg-blue-100 text-blue-800",
+    author: "Tax Incentive Team",
+    date: "2025-02-20",
+    readTime: "13 min read",
+    image: "/images/blog/sred-credits.jpg",
+    featured: false,
+    content: `
+${sredTaxPost}
+    `,
+    seo: {
+      keywords: ["SR&ED 2025", "R&D tax credits Canada", "SRED claim guide", "innovation tax refunds"]
+    },
+    metrics: [
+      { label: 'Credit', value: '35%', description: 'Of Expenses', color: 'text-green-600', iconName: 'Percent' },
+      { label: 'Refund', value: 'Cash', description: 'For CCPCs', color: 'text-blue-600', iconName: 'DollarSign' }
+    ],
+    expertTip: {
+      title: "Document Everything",
+      type: 'warning',
+      content: "The #1 reason for reduced claims is poor documentation. Keep contemporaneous records of your experiments, failures, and technical obstacles."
+    },
+    faq: []
   }
 ];
 
