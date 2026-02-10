@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Shield, Sparkles, Users, MapPin, DollarSign, Target, Loader2 } from "lucide-react"
 import Link from "next/link"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
 export default function AIMachineLearningGrantsGuideDownloadPage() {
   const router = useRouter()
@@ -66,7 +68,7 @@ export default function AIMachineLearningGrantsGuideDownloadPage() {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
-              
+
               {/* Header Section */}
               <div className="text-center mb-12">
                 <Badge className="mb-4 bg-violet-100 text-violet-800 border-violet-200">
@@ -76,25 +78,25 @@ export default function AIMachineLearningGrantsGuideDownloadPage() {
                   Get Your Free AI & Machine Learning Startup Grants Application Guide & Complete Funding Templates
                 </h1>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Download our comprehensive AI and machine learning technology startup grants toolkit covering NSF AI 
-                  Research Institutes $100 million funding establishing collaborative AI research hubs nationwide advancing 
-                  transformative AI innovations, NSF SBIR Phase I grants up to $305,000 AI/ML proof concept technical 
-                  feasibility, Phase II grants up to $1.25 million full AI development commercialization, Fast-Track Pilot 
-                  Program $1.555M combined funding NSF lineage companies, DOD SBIR AI applications defense autonomous systems 
-                  military intelligence cybersecurity, NIST AI Technology frameworks standards measurement trustworthy AI, 
-                  state programs California Massachusetts New York supporting regional AI innovation ecosystems. Complete 
-                  application strategies, proposal templates for natural language processing NLP conversational AI, computer 
-                  vision image recognition video analytics, machine learning platforms MLOps model deployment, deep learning 
-                  neural networks generative AI, predictive analytics forecasting recommendation systems, autonomous systems 
-                  robotics intelligent agents, AI-powered automation intelligent process automation, explainable AI XAI 
-                  trustworthy AI safety, eligibility requirements, submission timelines, success strategies for AI ML startups 
-                  pursuing 100% non-dilutive federal funding requiring zero equity supporting full ownership intellectual 
+                  Download our comprehensive AI and machine learning technology startup grants toolkit covering NSF AI
+                  Research Institutes $100 million funding establishing collaborative AI research hubs nationwide advancing
+                  transformative AI innovations, NSF SBIR Phase I grants up to $305,000 AI/ML proof concept technical
+                  feasibility, Phase II grants up to $1.25 million full AI development commercialization, Fast-Track Pilot
+                  Program $1.555M combined funding NSF lineage companies, DOD SBIR AI applications defense autonomous systems
+                  military intelligence cybersecurity, NIST AI Technology frameworks standards measurement trustworthy AI,
+                  state programs California Massachusetts New York supporting regional AI innovation ecosystems. Complete
+                  application strategies, proposal templates for natural language processing NLP conversational AI, computer
+                  vision image recognition video analytics, machine learning platforms MLOps model deployment, deep learning
+                  neural networks generative AI, predictive analytics forecasting recommendation systems, autonomous systems
+                  robotics intelligent agents, AI-powered automation intelligent process automation, explainable AI XAI
+                  trustworthy AI safety, eligibility requirements, submission timelines, success strategies for AI ML startups
+                  pursuing 100% non-dilutive federal funding requiring zero equity supporting full ownership intellectual
                   property control commercialization revenue generation business growth advancing American AI leadership.
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
-                
+
                 {/* What's Included Section */}
                 <Card className="border-violet-200 bg-white">
                   <CardHeader>
@@ -195,13 +197,13 @@ export default function AIMachineLearningGrantsGuideDownloadPage() {
                     </CardHeader>
                     <CardContent className="pt-6">
                       <form onSubmit={handleSubmit} className="space-y-4">
-                        
+
                         <div>
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
                             Full Name *
                           </label>
-                          <input 
-                            type="text" 
+                          <input
+                            type="text"
                             required
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -214,8 +216,8 @@ export default function AIMachineLearningGrantsGuideDownloadPage() {
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
                             Business Email *
                           </label>
-                          <input 
-                            type="email" 
+                          <input
+                            type="email"
                             required
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -223,24 +225,24 @@ export default function AIMachineLearningGrantsGuideDownloadPage() {
                             placeholder="your.email@startup.com"
                           />
                         </div>
-                      <div>
-                        <Label htmlFor="phone">Phone Number *</Label>
-                        <Input 
-                          id="phone" 
-                          type="tel" 
-                          required 
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          placeholder="+1 (555) 000-0000"
-                          className="mt-1"
-                        />
-                      </div>
+                        <div>
+                          <Label htmlFor="phone">Phone Number *</Label>
+                          <Input
+                            id="phone"
+                            type="tel"
+                            required
+                            value={formData.phone}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                            placeholder="+1 (555) 000-0000"
+                            className="mt-1"
+                          />
+                        </div>
 
                         <div>
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
                             Company Name
                           </label>
-                          <input 
+                          <input
                             type="text"
                             value={formData.company}
                             onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -253,7 +255,7 @@ export default function AIMachineLearningGrantsGuideDownloadPage() {
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
                             AI Technology Category
                           </label>
-                          <select 
+                          <select
                             value={formData.category}
                             onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
@@ -274,7 +276,7 @@ export default function AIMachineLearningGrantsGuideDownloadPage() {
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
                             Grant Application Stage
                           </label>
-                          <select 
+                          <select
                             value={formData.stage}
                             onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
@@ -292,7 +294,7 @@ export default function AIMachineLearningGrantsGuideDownloadPage() {
                           <label className="block text-sm font-semibold mb-2 text-gray-700">
                             Funding Interest
                           </label>
-                          <select 
+                          <select
                             value={formData.funding}
                             onChange={(e) => setFormData({ ...formData, funding: e.target.value })}
                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
@@ -313,19 +315,19 @@ export default function AIMachineLearningGrantsGuideDownloadPage() {
                         )}
 
                         <div className="flex items-start pt-2">
-                          <input 
-                            type="checkbox" 
+                          <input
+                            type="checkbox"
                             id="consent"
-                            required 
+                            required
                             className="mt-1 mr-3"
                           />
                           <label htmlFor="consent" className="text-xs text-gray-600">
-                            I agree to receive the AI/ML grants guide and occasional federal state funding opportunities 
+                            I agree to receive the AI/ML grants guide and occasional federal state funding opportunities
                             and innovation programs. You can unsubscribe anytime. We respect your privacy.
                           </label>
                         </div>
 
-                        <Button 
+                        <Button
                           type="submit"
                           disabled={isSubmitting}
                           className="w-full bg-gradient-to-r from-violet-700 to-fuchsia-900 hover:from-violet-800 hover:to-fuchsia-950 text-white font-semibold py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
@@ -374,7 +376,7 @@ export default function AIMachineLearningGrantsGuideDownloadPage() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
                   Why AI & Machine Learning Startups Choose Our Grant Guide
                 </h3>
-                
+
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="text-center">
                     <div className="bg-violet-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">

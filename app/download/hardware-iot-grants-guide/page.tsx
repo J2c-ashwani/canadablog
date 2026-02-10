@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Shield, Sparkles, Users, MapPin, DollarSign, Target, Clock, Award, FileText, TrendingUp, Wifi, Cpu, Cog, Loader2 } from "lucide-react"
 import Link from "next/link"
+import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input"
 
 export default function HardwareIoTGrantsGuideDownloadPage() {
   const router = useRouter()
