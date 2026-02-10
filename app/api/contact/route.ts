@@ -4,7 +4,7 @@ import { appendLeadToSheet } from "@/lib/google-sheets"
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, category, message } = body
+    const { name, email, phone, category, message } = body
 
     // Validate required fields
     if (!email || !name || !message) {
@@ -21,6 +21,7 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
       email,
       name,
+      phone,
       additionalNotes: `Category: ${category || "General"}\nMessage: ${message}`,
     }).catch((error) => {
       console.error("❌ Failed to save contact lead to Google Sheets:", error)

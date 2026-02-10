@@ -4,7 +4,7 @@ import { appendLeadToSheet } from "@/lib/google-sheets"
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { email, name, guideName, country } = body
+    const { email, name, phone, guideName, country } = body
 
     if (!email) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 })
@@ -16,6 +16,7 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
       email,
       name,
+      phone,
       country,
       additionalNotes: `Downloaded guide: ${guideName || "Grant Guide"}`,
     })

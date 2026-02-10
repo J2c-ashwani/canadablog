@@ -15,6 +15,7 @@ export default function AlbertaWomenGrantsDownloadPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
     region: "",
     interest: "",
@@ -33,6 +34,7 @@ export default function AlbertaWomenGrantsDownloadPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: formData.email,
+          phone: formData.phone,
           name: formData.name,
           company: formData.company,
           guideName: "Alberta Women Business Grants Guide",
@@ -211,6 +213,18 @@ export default function AlbertaWomenGrantsDownloadPage() {
                             placeholder="jane@yourbusiness.com"
                           />
                         </div>
+                      <div>
+                        <Label htmlFor="phone">Phone Number *</Label>
+                        <Input 
+                          id="phone" 
+                          type="tel" 
+                          required 
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          placeholder="+1 (555) 000-0000"
+                          className="mt-1"
+                        />
+                      </div>
 
                         <div>
                           <label className="block text-sm font-semibold mb-2 text-gray-700">

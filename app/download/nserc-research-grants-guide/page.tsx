@@ -20,6 +20,7 @@ export default function NSERCResearchGrantsDownloadPage() {
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     institution: "",
     position: "",
     researchArea: "",
@@ -41,6 +42,7 @@ export default function NSERCResearchGrantsDownloadPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: formData.email,
+          phone: formData.phone,
           name: `${formData.firstName} ${formData.lastName}`,
           company: formData.institution,
           guideName: "NSERC Research Grants Application Kit",
@@ -267,6 +269,18 @@ export default function NSERCResearchGrantsDownloadPage() {
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="john.smith@university.ca"
+                          className="mt-1"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone">Phone Number *</Label>
+                        <Input 
+                          id="phone" 
+                          type="tel" 
+                          required 
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          placeholder="+1 (555) 000-0000"
                           className="mt-1"
                         />
                       </div>

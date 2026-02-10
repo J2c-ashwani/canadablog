@@ -373,6 +373,20 @@ export function AIGrantFinderForm() {
             </div>
 
             <div className="space-y-2">
+              <Label htmlFor="phone" className="text-base font-semibold">
+                Phone Number *
+              </Label>
+              <Input
+                id="phone"
+                type="tel"
+                placeholder="+1 (555) 000-0000"
+                className="h-12"
+                onChange={(e) => updateFormData("phone", e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="space-y-2">
               <Label htmlFor="company" className="text-base font-semibold">
                 Company Name
               </Label>

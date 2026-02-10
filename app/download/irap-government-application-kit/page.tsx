@@ -20,6 +20,7 @@ export default function IRAPGovernmentDownloadPage() {
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     company: "",
     role: "",
     fundingAmount: "",
@@ -41,6 +42,7 @@ export default function IRAPGovernmentDownloadPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: formData.email,
+          phone: formData.phone,
           name: `${formData.firstName} ${formData.lastName}`,
           company: formData.company,
           guideName: "IRAP Government Application Toolkit",
@@ -267,6 +269,18 @@ export default function IRAPGovernmentDownloadPage() {
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="your.email@company.com"
+                          className="mt-1"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone">Phone Number *</Label>
+                        <Input 
+                          id="phone" 
+                          type="tel" 
+                          required 
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          placeholder="+1 (555) 000-0000"
                           className="mt-1"
                         />
                       </div>

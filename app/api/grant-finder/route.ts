@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
       email: body.email,
       companyName: body.companyName || "",
       country: body.country,
+      phone: body.phone,
       state: body.state || "",
       industry: body.industry,
       businessStage: body.businessStage,

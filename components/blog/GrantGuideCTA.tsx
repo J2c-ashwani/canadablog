@@ -1,12 +1,12 @@
-
 "use client";
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Download, Mail, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, Download, FileText, Mail, Phone } from 'lucide-react';
 
 export default function GrantGuideCTA() {
     const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
     const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -20,6 +20,7 @@ export default function GrantGuideCTA() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     email,
+                    phone,
                     guideName: 'Ultimate Grant Guide 2026',
                 }),
             });
@@ -91,6 +92,16 @@ export default function GrantGuideCTA() {
                             placeholder="Enter your work email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-blue-200/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white/20 transition-all font-medium"
+                        />
+                    </div>
+                    <div className="relative">
+                        <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                        <input
+                            type="tel"
+                            placeholder="Enter your phone number (optional)"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
                             className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-blue-200/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white/20 transition-all font-medium"
                         />
                     </div>

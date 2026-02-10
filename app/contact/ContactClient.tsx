@@ -9,6 +9,7 @@ export default function ContactClient() {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
+        phone: "",
         category: "General Question",
         message: "",
     })
@@ -32,7 +33,7 @@ export default function ContactClient() {
 
             if (response.ok) {
                 setSubmitStatus("success")
-                setFormData({ name: "", email: "", category: "General Question", message: "" })
+                setFormData({ name: "", email: "", phone: "", category: "General Question", message: "" })
             } else {
                 setSubmitStatus("error")
             }
@@ -125,6 +126,17 @@ export default function ContactClient() {
                                         required
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                                    <input
+                                        type="tel"
+                                        required
+                                        placeholder="+1 (555) 000-0000"
+                                        value={formData.phone}
+                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     />
                                 </div>

@@ -11,6 +11,7 @@ export interface GrantFinderRequest {
   businessDescription: string
   email: string
   companyName?: string
+  phone?: string
 }
 
 export interface GrantMatch {
@@ -99,17 +100,17 @@ Business Profile:
 
 Matched Grants:
 ${JSON.stringify(
-  baselineMatches.matches.slice(0, 5).map((m) => ({
-    id: m.grant.id,
-    name: m.grant.name,
-    description: m.grant.description,
-    category: m.grant.category,
-    fundingRange: `$${m.grant.fundingMin}-$${m.grant.fundingMax}`,
-    currentScore: m.matchScore,
-  })),
-  null,
-  2,
-)}
+      baselineMatches.matches.slice(0, 5).map((m) => ({
+        id: m.grant.id,
+        name: m.grant.name,
+        description: m.grant.description,
+        category: m.grant.category,
+        fundingRange: `$${m.grant.fundingMin}-$${m.grant.fundingMax}`,
+        currentScore: m.matchScore,
+      })),
+      null,
+      2,
+    )}
 
 Respond with ONLY valid JSON (no markdown):
 {
