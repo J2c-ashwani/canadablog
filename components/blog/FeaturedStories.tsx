@@ -9,7 +9,7 @@ export default function FeaturedStories({ type }: { type?: 'grant-news' | 'exper
   let featuredPosts = getFeaturedPosts();
 
   if (type) {
-    featuredPosts = featuredPosts.filter(post => post.type === type);
+    featuredPosts = featuredPosts.filter(post => post.type === type).slice(0, 1);
   }
 
 
