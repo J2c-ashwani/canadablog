@@ -10,6 +10,7 @@ import AdSlot from '@/components/blog/AdSlot';
 import RelatedPosts from '@/components/blog/RelatedPosts';
 import CategorySidebar from '@/components/blog/CategorySidebar';
 import NewsletterBox from '@/components/blog/NewsletterBox';
+import GrantGuideCTA from '@/components/blog/GrantGuideCTA';
 import { getBlogPostBySlug, blogCategories } from '@/lib/data/blogPosts';
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
 import { generateBlogPostSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/schema';
@@ -221,16 +222,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </article>
 
             <aside className="sticky top-8 lg:col-span-1 space-y-6">
+              <GrantGuideCTA />
               <CategorySidebar type={post.type} />
               <AdSlot adSlot="3456789012" adFormat="vertical" style={{ minHeight: 600 }} />
               <NewsletterBox />
             </aside>
           </div>
-        </div>
-      </main>
+        </div >
+      </main >
 
       <RelatedPosts currentPost={fullPost} />
       <Footer />
-    </div>
+    </div >
   );
 }
