@@ -92,7 +92,7 @@ export default function CanadaManufacturingFundingGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-slate-800/50 border-slate-400/30 text-slate-100 hover:bg-slate-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/manufacturing-funding-strategy">
+                  <Link href="/guides/canada-manufacturing-funding-guide">
                     Modernization Strategy
                   </Link>
                 </Button>

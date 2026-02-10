@@ -91,7 +91,7 @@ export default function ApplySBALoansGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-blue-800/50 border-blue-400/30 text-blue-100 hover:bg-blue-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/sba-loan-requirements-checklist">
+                  <Link href="/guides/apply-sba-loans">
                     Download Checklist
                   </Link>
                 </Button>
@@ -348,7 +348,7 @@ export default function ApplySBALoansGuide() {
                     <div className="mt-3 text-xs text-purple-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
                   </div>
                 </Link>
-                <Link href="/guides/apply-startup-grants" className="group block h-full">
+                <Link href="/guides/apply-small-business-grants" className="group block h-full">
                   <div className="bg-white border hover:border-green-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
                     <div className="text-sm text-green-600 font-semibold mb-2">Startups</div>
                     <h4 className="font-bold text-slate-900 group-hover:text-green-700 mb-2">Startup Funding</h4>

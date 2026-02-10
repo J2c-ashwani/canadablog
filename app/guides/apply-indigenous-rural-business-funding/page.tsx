@@ -91,7 +91,7 @@ export default function IndigenousRuralBusinessFundingGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-orange-800/50 border-orange-400/30 text-orange-100 hover:bg-orange-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/indigenous-business-plan-template">
+                  <Link href="/guides/apply-indigenous-rural-business-funding">
                     Download Template
                   </Link>
                 </Button>

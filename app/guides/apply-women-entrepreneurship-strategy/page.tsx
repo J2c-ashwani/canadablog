@@ -94,7 +94,7 @@ export default function WESApplicationGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-rose-800/30 border-rose-400/30 text-rose-100 hover:bg-rose-800/50 backdrop-blur-sm" asChild>
-                  <Link href="/blog/women-entrepreneurship-canada-guide">
+                  <Link href="/guides/apply-women-entrepreneurship-strategy">
                     Success Tips
                   </Link>
                 </Button>
@@ -429,7 +429,7 @@ export default function WESApplicationGuide() {
                     <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
                   </div>
                 </Link>
-                <Link href="/guides/apply-startup-grants" className="group block h-full">
+                <Link href="/guides/apply-small-business-grants" className="group block h-full">
                   <div className="bg-white border hover:border-purple-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
                     <div className="text-sm text-purple-600 font-semibold mb-2">Startups</div>
                     <h4 className="font-bold text-slate-900 group-hover:text-purple-700 mb-2">Startup Grants</h4>

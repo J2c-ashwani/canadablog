@@ -92,7 +92,7 @@ export default function CanadaDigitalAIFundingGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-indigo-800/50 border-indigo-400/30 text-indigo-100 hover:bg-indigo-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/ai-funding-canada-strategy">
+                  <Link href="/guides/canada-digital-ai-funding-guide">
                     AI Strategy
                   </Link>
                 </Button>

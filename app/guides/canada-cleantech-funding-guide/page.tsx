@@ -92,7 +92,7 @@ export default function CanadaCleanTechFundingGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-teal-800/50 border-teal-400/30 text-teal-100 hover:bg-teal-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/cleantech-grants-canada">
+                  <Link href="/guides/canada-cleantech-funding-guide">
                     CleanTech Strategy
                   </Link>
                 </Button>

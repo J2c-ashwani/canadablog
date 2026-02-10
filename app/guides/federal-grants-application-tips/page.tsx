@@ -91,7 +91,7 @@ export default function FederalGrantsApplicationTipsGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-slate-700/50 border-white/30 text-white hover:bg-slate-700/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/grant-proposal-template">
+                  <Link href="/guides/federal-grants-application-tips">
                     Download Template
                   </Link>
                 </Button>

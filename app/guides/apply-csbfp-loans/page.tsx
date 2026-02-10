@@ -564,7 +564,7 @@ export default function CSBFPApplicationGuide() {
                     <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
                   </div>
                 </Link>
-                <Link href="/guides/startup-funding-canada" className="group block h-full">
+                <Link href="/guides/apply-irap-grants" className="group block h-full">
                   <div className="bg-white border hover:border-purple-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
                     <div className="text-sm text-purple-600 font-semibold mb-2">Startups</div>
                     <h4 className="font-bold text-gray-900 group-hover:text-purple-700 mb-2">Startup Funding Guide</h4>

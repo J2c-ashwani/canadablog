@@ -461,7 +461,7 @@ export default function IRAPGovernmentGrantsGuide() {
                     <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
                   </div>
                 </Link>
-                <Link href="/guides/business-grants-ontario" className="group block h-full">
+                <Link href="/guides/apply-ontario-business-grants" className="group block h-full">
                   <div className="bg-gray-50 border hover:border-purple-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
                     <div className="text-sm text-purple-600 font-semibold mb-2">Provincial</div>
                     <h4 className="font-bold text-gray-900 group-hover:text-purple-700 mb-2">Ontario Grants</h4>

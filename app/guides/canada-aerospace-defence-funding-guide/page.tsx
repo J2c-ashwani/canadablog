@@ -100,7 +100,7 @@ export default function CanadaAerospaceDefenceFundingGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-slate-800/50 border-blue-400/30 text-blue-100 hover:bg-slate-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/aerospace-defence-funding-canada">
+                  <Link href="/guides/canada-aerospace-defence-funding-guide">
                     Industry Insights
                   </Link>
                 </Button>

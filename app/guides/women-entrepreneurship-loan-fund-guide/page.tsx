@@ -91,7 +91,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-pink-800/50 border-pink-400/30 text-pink-100 hover:bg-pink-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/welf-application-tips">
+                  <Link href="/guides/women-entrepreneurship-loan-fund-guide">
                     See Requirements
                   </Link>
                 </Button>
@@ -378,7 +378,7 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
                     <div className="mt-3 text-xs text-blue-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
                   </div>
                 </Link>
-                <Link href="/guides/apply-startup-grants" className="group block h-full">
+                <Link href="/guides/apply-small-business-grants" className="group block h-full">
                   <div className="bg-white border hover:border-purple-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
                     <div className="text-sm text-purple-600 font-semibold mb-2">Grants</div>
                     <h4 className="font-bold text-slate-900 group-hover:text-purple-700 mb-2">Startup Grants</h4>

@@ -92,7 +92,7 @@ export default function CanadaLifeSciencesFundingGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-cyan-800/50 border-cyan-400/30 text-cyan-100 hover:bg-cyan-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/biotech-grants-canada-guide">
+                  <Link href="/guides/canada-life-sciences-funding-guide">
                     Biotech Strategy
                   </Link>
                 </Button>

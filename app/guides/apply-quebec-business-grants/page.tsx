@@ -526,7 +526,7 @@ export default function QuebecBusinessGrantsGuide() {
               <div className="border-t border-gray-200 pt-12 mb-12">
                 <h3 className="text-xl font-bold text-gray-900 mb-6">Explore Related Funding Opportunities</h3>
                 <div className="grid md:grid-cols-3 gap-6">
-                  <Link href="/blog/ontario-business-grants" className="group block">
+                  <Link href="/guides/apply-ontario-business-grants" className="group block">
                     <div className="bg-white border hover:border-blue-300 rounded-lg p-4 transition-all hover:shadow-md h-full">
                       <div className="text-sm text-blue-600 font-semibold mb-2">Provincial Peer</div>
                       <h4 className="font-bold text-gray-900 group-hover:text-blue-700 mb-2">Ontario Business Grants</h4>

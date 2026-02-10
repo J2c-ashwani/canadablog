@@ -91,7 +91,7 @@ export default function CaliforniaLoanGuaranteeGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-orange-800/50 border-amber-200/30 text-amber-50 hover:bg-orange-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/ca-loan-guarantee-checklist">
+                  <Link href="/guides/california-loan-guarantee-guide">
                     Download Checklist
                   </Link>
                 </Button>
@@ -314,7 +314,7 @@ export default function CaliforniaLoanGuaranteeGuide() {
                     <div className="mt-3 text-xs text-green-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
                   </div>
                 </Link>
-                <Link href="/guides/canada-small-business-financing-program-guide" className="group block h-full">
+                <Link href="/guides/apply-csbfp-loans" className="group block h-full">
                   <div className="bg-white border hover:border-red-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
                     <div className="text-sm text-red-600 font-semibold mb-2">Canada</div>
                     <h4 className="font-bold text-slate-900 group-hover:text-red-700 mb-2">CSBFP Guide</h4>

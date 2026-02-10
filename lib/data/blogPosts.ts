@@ -7479,7 +7479,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
 
   <div class="bg-green-50 border-l-4 border-green-500 p-4 my-6">
     <p class="font-semibold text-green-800">🔗 Related Agricultural Funding</p>
-    <p class="text-green-700">Stack with: <a href="/blog/clean-technology-2026" class="underline hover:text-green-900">Clean Tech Grants</a>, <a href="/blog/business-grants-ontario-2026" class="underline hover:text-green-900">Ontario Grants</a>, <a href="/blog/manitoba-business-grants-2026" class="underline hover:text-green-900">Manitoba Ag Funding</a>.</p>
+    <p class="text-green-700">Stack with: <a href="/blog/clean-technology-2026" class="underline hover:text-green-900">Clean Tech Grants</a>, <a href="/guides/apply-ontario-business-grants" class="underline hover:text-green-900">Ontario Grants</a>, <a href="/blog/manitoba-business-grants-2026" class="underline hover:text-green-900">Manitoba Ag Funding</a>.</p>
   </div>
 
   <div class="bg-gradient-to-r from-green-50 to-yellow-50 p-6 rounded-lg mb-8 border border-green-200">

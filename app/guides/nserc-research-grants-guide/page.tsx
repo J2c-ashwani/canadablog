@@ -91,7 +91,7 @@ export default function NSERCResearchGrantsGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-indigo-800/50 border-indigo-400/30 text-white hover:bg-indigo-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/nserc-proposal-template">
+                  <Link href="/guides/nserc-research-grants-guide">
                     Download Template
                   </Link>
                 </Button>
@@ -360,7 +360,7 @@ export default function NSERCResearchGrantsGuide() {
             <div className="max-w-4xl mx-auto">
               <h3 className="text-xl font-bold text-slate-900 mb-6">Related Research Funding</h3>
               <div className="grid md:grid-cols-3 gap-6">
-                <Link href="/guides/apply-nrc-irap" className="group block h-full">
+                <Link href="/guides/apply-irap-grants" className="group block h-full">
                   <div className="bg-slate-50 border hover:border-orange-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
                     <div className="text-sm text-orange-600 font-semibold mb-2">Industry</div>
                     <h4 className="font-bold text-slate-900 group-hover:text-orange-700 mb-2">NRC IRAP Guide</h4>
@@ -368,7 +368,7 @@ export default function NSERCResearchGrantsGuide() {
                     <div className="mt-3 text-xs text-orange-600 font-medium flex items-center">Read Guide <ArrowRight className="w-3 h-3 ml-1" /></div>
                   </div>
                 </Link>
-                <Link href="/guides/apply-mitacs-accelerate" className="group block h-full">
+                <Link href="/guides/nserc-research-grants-guide" className="group block h-full">
                   <div className="bg-slate-50 border hover:border-blue-300 rounded-lg p-4 transition-all hover:shadow-md h-full flex flex-col">
                     <div className="text-sm text-blue-600 font-semibold mb-2">Internships</div>
                     <h4 className="font-bold text-slate-900 group-hover:text-blue-700 mb-2">Mitacs Accelerate</h4>

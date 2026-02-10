@@ -92,7 +92,7 @@ export default function CanadaAgriFoodFundingGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-emerald-800/50 border-emerald-400/30 text-emerald-100 hover:bg-emerald-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/agri-food-processing-grants-canada">
+                  <Link href="/guides/canada-agri-food-funding-guide">
                     Processing Insights
                   </Link>
                 </Button>

@@ -368,7 +368,7 @@ export default function SBIRResearchGrantsGuide() {
                     </div>
                     <ArrowRight className="w-4 h-4 text-gray-400 ml-auto" />
                   </Link>
-                  <Link href="/guides/sttr-vs-sbir" className="flex items-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                  <Link href="/guides/apply-sbir-grants" className="flex items-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
                     <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-4">
                       <Users className="w-5 h-5 text-purple-600" />
                     </div>

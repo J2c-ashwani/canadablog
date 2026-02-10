@@ -91,7 +91,7 @@ export default function EDCWomenInTradeApplicationGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-teal-800/50 border-teal-400/30 text-teal-100 hover:bg-teal-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/export-readiness-checklist">
+                  <Link href="/guides/edc-women-trade-export-financing-guide">
                     Am I Export Ready?
                   </Link>
                 </Button>

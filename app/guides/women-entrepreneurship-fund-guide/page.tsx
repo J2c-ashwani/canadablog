@@ -92,7 +92,7 @@ export default function WomenEntrepreneurshipFundApplicationGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-purple-800/50 border-purple-400/30 text-purple-100 hover:bg-purple-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/women-entrepreneurship-fund-strategy">
+                  <Link href="/guides/women-entrepreneurship-fund-guide">
                     Strategy Guide
                   </Link>
                 </Button>

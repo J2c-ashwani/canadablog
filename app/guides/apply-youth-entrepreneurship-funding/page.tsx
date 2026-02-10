@@ -91,7 +91,7 @@ export default function YouthEntrepreneurshipFundingGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-blue-800/50 border-blue-400/30 text-blue-100 hover:bg-blue-800/80 backdrop-blur-sm" asChild>
-                  <Link href="/blog/youth-business-plan-template">
+                  <Link href="/guides/apply-youth-entrepreneurship-funding">
                     Download Template
                   </Link>
                 </Button>
