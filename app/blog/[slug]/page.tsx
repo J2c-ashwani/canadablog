@@ -11,6 +11,7 @@ import RelatedPosts from '@/components/blog/RelatedPosts';
 import CategorySidebar from '@/components/blog/CategorySidebar';
 import NewsletterBox from '@/components/blog/NewsletterBox';
 import GrantGuideCTA from '@/components/blog/GrantGuideCTA';
+import LastVerifiedBadge from '@/components/blog/LastVerifiedBadge';
 import { getBlogPostBySlug, blogCategories } from '@/lib/data/blogPosts';
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
 import { generateBlogPostSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/schema';
@@ -108,7 +109,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 {post.title}
               </h1>
 
-              <div className="flex items-center gap-6 mb-8 pb-8 border-b border-gray-200 dark:border-neutral-800 text-gray-600 dark:text-gray-400">
+              <div className="flex flex-wrap items-center gap-6 mb-8 pb-8 border-b border-gray-200 dark:border-neutral-800 text-gray-600 dark:text-gray-400">
                 <div className="flex items-center">
                   <User className="w-4 h-4 mr-2" />
                   <span>{post.author}</span>
@@ -127,6 +128,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <Clock className="w-4 h-4 mr-2" />
                   <span>{post.readTime}</span>
                 </div>
+                <LastVerifiedBadge date={post.date} />
               </div>
 
               <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-12">
