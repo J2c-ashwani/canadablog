@@ -1,18 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap
 Sitemap: https://www.fsidigital.ca/sitemap.xml
-
-# Disallow admin areas
-Disallow: /admin/
-Disallow: /api/
-Disallow: /_next/
-Disallow: /private/
-
-# Allow important pages
-Allow: /usa/
-Allow: /canada/
-Allow: /guides/
-Allow: /blog/
-Allow: /grant-finder
