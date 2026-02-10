@@ -9,26 +9,78 @@ import AdSlot from '@/components/blog/AdSlot';
 import { getExpertInsightPosts } from '@/lib/data/blogPosts';
 import { generateBlogSchema } from '@/lib/schema';
 
-export const metadata: Metadata = {
-    title: "Expert Insights & Government Grant Analysis | FSI Digital",
-    description: "Deep dive analysis, expert strategies, and comprehensive guides for securing government funding and business grants.",
-    keywords: "grant analysis, expert grant tips, business funding strategies, grant writing advice, government funding insights",
-    openGraph: {
-        title: "Expert Insights & Grant Strategies | FSI Digital",
-        description: "Expert analysis and strategies for securing government grants.",
-        url: "https://www.fsidigital.ca/expert-insights",
-        siteName: "FSI Digital",
-        images: [
-            {
-                url: "/images/blog/grant-finder-blog-og.png",
-                width: 1200,
-                height: 630,
-                alt: "FSI Digital Expert Insights",
-            },
-        ],
-        type: "website",
-    },
-};
+export async function generateMetadata({
+    searchParams
+}: {
+    searchParams: Promise<{ category?: string; page?: string }>
+}): Promise<Metadata> {
+    const resolvedParams = await searchParams;
+    const { category, page } = resolvedParams;
+    const pageNum = parseInt(page || '1');
+
+    // Base URL
+    const baseUrl = 'https://www.fsidigital.ca/expert-insights';
+
+    // Construct Title & Description
+    let title = "Expert Insights & Government Grant Analysis | FSI Digital";
+    let description = "Deep dive analysis, expert strategies, and comprehensive guides for securing government funding and business grants.";
+
+    if (category) {
+        const readableCategory = category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        title = `${readableCategory} Grants Analysis & Insights | FSI Digital`;
+        description = `Read expert insights and analysis on ${readableCategory} government grants and funding opportunities.`;
+    }
+
+    if (pageNum > 1) {
+        title = `${title} - Page ${pageNum}`;
+    }
+
+    // Construct Canonical URL
+    // If page=1, strip it. If category exists, keep it.
+    let canonicalUrl = baseUrl;
+    const params = new URLSearchParams();
+
+    if (category) {
+        params.set('category', category);
+    }
+    // We generally don't include page=1 in canonical
+    if (pageNum > 1) {
+        params.set('page', pageNum.toString());
+    }
+
+    const queryString = params.toString();
+    if (queryString) {
+        canonicalUrl = `${baseUrl}?${queryString}`;
+    }
+
+    return {
+        title,
+        description,
+        keywords: "grant analysis, expert grant tips, business funding strategies, grant writing advice, government funding insights",
+        openGraph: {
+            title,
+            description,
+            url: canonicalUrl,
+            siteName: "FSI Digital",
+            images: [
+                {
+                    url: "/images/blog/grant-finder-blog-og.png",
+                    width: 1200,
+                    height: 630,
+                    alt: title,
+                },
+            ],
+            type: "website",
+        },
+        alternates: {
+            canonical: canonicalUrl,
+        },
+        robots: {
+            index: true,
+            follow: true,
+        }
+    };
+}
 
 export default async function ExpertInsightsPage({
     searchParams
