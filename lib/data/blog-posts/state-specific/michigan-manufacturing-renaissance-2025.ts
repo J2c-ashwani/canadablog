@@ -246,6 +246,155 @@ export default `
     </div>
   </div>
 
+  <h2 class="text-2xl font-bold mt-8 mb-4">💼 Good Jobs for Michigan Tax Incentives</h2>
+
+  <div class="bg-yellow-50 border border-yellow-200 p-6 rounded-lg mb-8">
+    <p class="text-yellow-800 mb-4">The <strong>Good Jobs for Michigan program</strong> provides income tax capture incentives for companies creating 250+ high-paying jobs, making it one of the most aggressive talent attraction programs in the Midwest.</p>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white p-4 rounded border border-yellow-200">
+        <h4 class="font-semibold text-yellow-700 mb-2">Program Structure</h4>
+        <ul class="text-sm text-yellow-600 space-y-1">
+          <li>• <strong>Eligibility:</strong> 250+ net new jobs</li>
+          <li>• <strong>Benefit:</strong> Income tax capture for up to 10 years</li>
+          <li>• <strong>Wage requirement:</strong> Above county average</li>
+          <li>• <strong>Annual review:</strong> Must maintain job levels</li>
+          <li>• <strong>Combined with:</strong> State Essential Services Assessment</li>
+        </ul>
+      </div>
+      <div class="bg-white p-4 rounded border border-yellow-200">
+        <h4 class="font-semibold text-yellow-700 mb-2">Michigan Strategic Fund Tools</h4>
+        <ul class="text-sm text-yellow-600 space-y-1">
+          <li>• <strong>MBDP:</strong> Performance-based grants</li>
+          <li>• <strong>Capital Access:</strong> Loan enhancement program</li>
+          <li>• <strong>Community Revitalization:</strong> Blight elimination</li>
+          <li>• <strong>Brownfield Tax Incentives:</strong> Site cleanup</li>
+          <li>• <strong>SmartZones:</strong> Tech accelerator districts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">🎓 Workforce Development for EV Manufacturing</h2>
+
+  <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-lg mb-8">
+    <p class="text-indigo-800 mb-4">Michigan is investing heavily in <strong>workforce transformation</strong> to retrain ICE workers for EV manufacturing — a critical element of every grant application.</p>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div>
+        <h4 class="font-semibold text-indigo-700 mb-2">Going PRO Training Fund</h4>
+        <ul class="text-sm text-indigo-600 space-y-1">
+          <li>• Up to $1,500/employee for training</li>
+          <li>• EV-specific skills development</li>
+          <li>• Online and in-person eligible</li>
+          <li>• Quarterly application cycles</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-indigo-700 mb-2">MI Reconnect</h4>
+        <ul class="text-sm text-indigo-600 space-y-1">
+          <li>• Free community college tuition</li>
+          <li>• For adults 25+ years old</li>
+          <li>• Manufacturing certificate programs</li>
+          <li>• Robotics and automation tracks</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-indigo-700 mb-2">Industry Cluster Approach</h4>
+        <ul class="text-sm text-indigo-600 space-y-1">
+          <li>• Michigan EV Jobs Academy</li>
+          <li>• Battery technology certification</li>
+          <li>• High-voltage safety training</li>
+          <li>• Industry 4.0 digital skills</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">🔌 EV Charging Infrastructure Grants</h2>
+
+  <div class="bg-green-50 border border-green-200 p-6 rounded-lg mb-8">
+    <p class="text-green-800 mb-4">Michigan is allocating <strong>$110M from the National Electric Vehicle Infrastructure (NEVI) program</strong> to build a statewide EV charging network, creating opportunities for charging companies and installers.</p>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white p-4 rounded border border-green-200">
+        <h4 class="font-semibold text-green-700 mb-2">NEVI Funding Eligibility</h4>
+        <ul class="text-sm text-green-600 space-y-1">
+          <li>• DC fast chargers along Alternative Fuel Corridors</li>
+          <li>• Minimum 4 ports per station (150kW+)</li>
+          <li>• 20% private match required</li>
+          <li>• Buy America requirements</li>
+        </ul>
+      </div>
+      <div class="bg-white p-4 rounded border border-green-200">
+        <h4 class="font-semibold text-green-700 mb-2">Supply Chain Opportunities</h4>
+        <ul class="text-sm text-green-600 space-y-1">
+          <li>• EVSE hardware manufacturing</li>
+          <li>• Electrical installation services</li>
+          <li>• Network management software</li>
+          <li>• Payment processing systems</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">📋 Application Strategy for Michigan Manufacturers</h2>
+
+  <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg mb-8">
+    <div class="space-y-4">
+      <div class="flex items-start">
+        <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 font-bold">1</span>
+        <div><strong>Get Your MEDC Regional Advisor:</strong> Every Michigan region has a dedicated MEDC (Michigan Economic Development Corporation) business development manager. They provide free, confidential project assessment and can navigate you through the state's complex incentive landscape.</div>
+      </div>
+      <div class="flex items-start">
+        <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 font-bold">2</span>
+        <div><strong>Document Your EV Transition Plan:</strong> If you're an ICE component supplier, detail how your products can be adapted for EV applications. Show the technology roadmap, required equipment changes, and workforce retraining needs.</div>
+      </div>
+      <div class="flex items-start">
+        <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 font-bold">3</span>
+        <div><strong>Leverage OEM Relationships:</strong> Applications mentioning contracts or LOIs from GM, Ford, or Stellantis receive priority consideration. Even a letter acknowledging technology potential from a Tier 1 supplier strengthens your case significantly.</div>
+      </div>
+      <div class="flex items-start">
+        <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 font-bold">4</span>
+        <div><strong>Include Workforce Impact:</strong> Michigan specifically scores applications on job quality — wages, benefits, career pathways. Show how your project creates well-paying jobs with advancement opportunities, not just job numbers.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">❓ Michigan Manufacturing Grants FAQ</h2>
+
+  <div class="space-y-4 mb-8">
+    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+      <h3 class="font-semibold text-blue-800 mb-2">Can non-automotive manufacturers apply?</h3>
+      <p class="text-blue-700 text-sm">Absolutely. While EV is the headline, Michigan Strategic Fund programs serve all manufacturing sectors. Companies in food processing, medical devices, aerospace, and defense manufacturing regularly receive MBDP grants. The state is actively diversifying beyond automotive.</p>
+    </div>
+    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+      <h3 class="font-semibold text-blue-800 mb-2">What is the minimum investment for Good Jobs for Michigan?</h3>
+      <p class="text-blue-700 text-sm">Good Jobs for Michigan requires creation of 250+ net new jobs. There's no minimum capital investment, but the program is designed for major expansions or relocations. For smaller companies, the Michigan Business Development Program (MBDP) is more appropriate — it requires as few as 50 new jobs.</p>
+    </div>
+    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+      <h3 class="font-semibold text-blue-800 mb-2">How fast can I get Michigan state approval?</h3>
+      <p class="text-blue-700 text-sm">Michigan has one of the fastest approval timelines in the Midwest. MBDP grants can be approved in 4-6 weeks for priority projects. The Supplier Conversion Grant has a longer timeline (3-4 months) due to DOE involvement. SmartZone programs can approve tenants in as little as 2 weeks.</p>
+    </div>
+    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+      <h3 class="font-semibold text-blue-800 mb-2">Does Michigan offer property tax abatements?</h3>
+      <p class="text-blue-700 text-sm">Yes. Industrial Facilities Tax Exemption (IFT) certificates can reduce property taxes by up to 50% for 12 years on new facilities and equipment. PA 198 (now PA 275) abatements are approved at the local level within designated districts. Renaissance Zones offer near-complete tax elimination for up to 15 years.</p>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">⚡ Michigan's Electric Vehicle Transformation</h2>
+
+  <div class="bg-green-50 border border-green-200 p-6 rounded-lg mb-8">
+    <p class="text-green-800 mb-4">Michigan is experiencing the most dramatic industrial transformation since Henry Ford launched the assembly line over a century ago. The state's transition from internal combustion engine manufacturing to electric vehicle production represents a $50 billion investment opportunity, with General Motors alone committing $35 billion to EV development by 2025. Ford's $3.5 billion investment in the BlueOval Battery Park Michigan facility in Marshall will create 2,500 jobs and produce lithium iron phosphate batteries for next-generation EVs. Stellantis is investing $3.6 billion across three Michigan plants for EV and plug-in hybrid production.</p>
+    <p class="text-green-800 mb-4">For small and medium manufacturers, this transition creates unprecedented supply chain opportunities. Every electric vehicle contains approximately 10,000 fewer moving parts than a conventional vehicle, but it requires entirely new components: battery cells and packs, power electronics, electric motors, thermal management systems, and charging equipment. Michigan's automotive supply chain — 1,200+ companies employing 200,000+ workers — must pivot to produce these new components. The state government recognizes this challenge and has deployed over $300 million in targeted grants to help existing suppliers retool and new companies enter the EV supply chain.</p>
+    <p class="text-green-800">The Michigan Economic Development Corporation's Critical Industry Program specifically targets EV supply chain companies, providing grants of $100,000 to $5 million for capital equipment, facility modifications, and workforce training related to EV component production. Companies that demonstrate contracts or letters of intent from OEMs receive priority consideration. Second-tier suppliers that can demonstrate relationships with Tier 1 companies serving GM, Ford, or Stellantis are also prioritized. The application process evaluates technical readiness, job creation potential, and the applicant's long-term viability in the electrification ecosystem.</p>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">🤖 Automation and AI in Michigan Manufacturing</h2>
+
+  <div class="bg-purple-50 border border-purple-200 p-6 rounded-lg mb-8">
+    <p class="text-purple-800 mb-4">Michigan's manufacturing sector is embracing automation and artificial intelligence at a pace that exceeds the national average, driven by the recognition that competitiveness in EV manufacturing requires world-class efficiency. The state's Industry 4.0 Technology Center at the University of Michigan provides free assessments for small manufacturers evaluating automation investments, and the Michigan Manufacturing Technology Center (MMTC) offers subsidized consulting for digital transformation projects. Combined with federal MEP funding, these programs mean that Michigan manufacturers can access expert guidance on automation at little or no cost.</p>
+    <p class="text-purple-800 mb-4">The PlanetM mobility initiative positions Michigan as a global testing ground for autonomous vehicle technology and connected infrastructure. Companies developing sensors, software, connectivity hardware, and related technologies can access $12 million in annual PlanetM grants, plus a unique regulatory environment that allows testing of autonomous vehicles on public roads. The American Center for Mobility in Ypsilanti provides a 500-acre test facility available to companies at subsidized rates through state partnership agreements. Companies that test and validate their technologies through PlanetM gain credibility with automotive OEMs and access to Michigan's dense network of mobility investors and partners.</p>
+    <p class="text-purple-800">For traditional manufacturers, the path to automation does not have to be overwhelming or expensive. The Michigan STEP (Strategic Training Enhancement Program) forward grants provide up to $1,500 per employee for automation-related training, including robotics programming, PLC systems, machine vision, and industrial IoT. Companies that complete MMTC assessments and develop implementation roadmaps are eligible for additional state and federal funding to acquire and install automated equipment. The typical ROI for manufacturing automation investments in Michigan is 18-24 months, with labor cost reductions of 20-35% and quality improvements of 30-50% in automated processes compared to manual operations.</p>
+  </div>
+
   <!-- LEAD GENERATION CTA SECTION -->
   <div class="bg-gradient-to-r from-blue-600 via-green-500 to-blue-600 text-white p-8 rounded-lg text-center mb-8">
     <h2 class="text-3xl font-bold mb-4">🚗 Drive Michigan's $1.1B Manufacturing Revolution!</h2>

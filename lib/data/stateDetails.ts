@@ -10340,25 +10340,7 @@ Oregon is B-Corp friendly and rewards sustainable business practices with prefer
         },
 
         overview: {
-            introduction: `Oklahoma offers **cash rebates**, not just tax credits. The Quality Jobs Program pays up to 5% of payroll (10% for high-wage jobs) as a quarterly check for 10 years.
-            
-The state is an aerospace and energy powerhouse—home to the world's largest MRO facility (American Airlines in Tulsa), Tinker AFB, and is a pioneer in UAV/Drone testing.`,
-
-            economicLandscape: `OKC and Tulsa are the twin engines. OKC is known for biotech and aviation. Tulsa leads in energy tech and cybersecurity.
-            
-Oklahoma's grid is over 40% wind-powered, offering cheap green electricity. Tribal partnerships (Chickasaw, Choctaw) provide additional unique incentives.`,
-
-            keyOpportunities: `**Quality Jobs Program**: 5% cash rebate on new payroll. No tax liability needed—you get a check every quarter.
-            
-**21st Century Quality Jobs**: 10% rebate for high-wage engineering/software jobs.
-            
-**Aerospace Engineer Tax Credit**: $5k personal credit + 10% company credit for aerospace engineers.`,
-
-            futureTrends: `**Hydrogen Hub**: Oklahoma is positioning for a major role in hydrogen production using its wind capacity.
-            
-**Film/TV Growth**: A new film incentive is attracting productions to OKC and Tulsa.
-            
-**EV Supply Chain**: The state is targeting EV battery component manufacturers with its cheap wind power.`
+** EV Supply Chain**: The state is targeting EV battery component manufacturers with its cheap wind power.`
         },
 
         topPrograms: [
@@ -10377,7 +10359,7 @@ Oklahoma's grid is over 40% wind-powered, offering cheap green electricity. Trib
                 applicationProcess: 'Apply/Contract with Dept of Commerce. Paid quarterly.',
                 successRate: 'High',
                 website: 'https://www.okcommerce.gov/doing-business/business-relocation-expansion/incentives/quality-jobs-program/',
-                description: `The gold standard of cash rebates. Companies receive a quarterly check from the state tax commission for up to 5% of taxable payroll for new jobs. It lasts 10 years. It is "performance-based," meaning you get paid after you pay the wages.`
+                description: `The gold standard of cash rebates.Companies receive a quarterly check from the state tax commission for up to 5 % of taxable payroll for new jobs.It lasts 10 years.It is "performance-based," meaning you get paid after you pay the wages.`
             },
             {
                 name: '21st Century Quality Jobs',
@@ -10394,7 +10376,7 @@ Oklahoma's grid is over 40% wind-powered, offering cheap green electricity. Trib
                 applicationProcess: 'Same as Quality Jobs but stricter wage auditing.',
                 successRate: 'High',
                 website: 'https://www.okcommerce.gov/doing-business/business-relocation-expansion/incentives/',
-                description: `Supercharged version of Quality Jobs. If you hire highly paid professionals (engineers, software devs) at 300% of the average wage, the rebate doubles to 10% cash back.`
+                description: `Supercharged version of Quality Jobs.If you hire highly paid professionals(engineers, software devs) at 300 % of the average wage, the rebate doubles to 10 % cash back.`
             },
             {
                 name: 'Investment / New Jobs Tax Credit',
@@ -10411,7 +10393,7 @@ Oklahoma's grid is over 40% wind-powered, offering cheap green electricity. Trib
                 applicationProcess: 'Select option on tax return / apply to county assessor.',
                 successRate: 'High',
                 website: 'https://www.okcommerce.gov/',
-                description: `Manufacturers have a choice: take a tax credit based on investment/jobs created, OR take a 5-year exemption from ad valorem (property) taxes. The property tax exemption is usually the smarter play for capital-intensive plants.`
+                description: `Manufacturers have a choice: take a tax credit based on investment / jobs created, OR take a 5 - year exemption from ad valorem(property) taxes.The property tax exemption is usually the smarter play for capital - intensive plants.`
             },
             {
                 name: 'Aerospace Engineer Tax Credit',
@@ -10427,162 +10409,162 @@ Oklahoma's grid is over 40% wind-powered, offering cheap green electricity. Trib
                 applicationProcess: 'Engineer claims on personal tax. Company claims on corporate.',
                 successRate: '100% for eligible',
                 website: 'https://www.okcommerce.gov/aerospace-engineer-tax-credit/',
-                description: `Unique in the nation. Aerospace engineers get a $5,000 tax credit personally for 5 years. The COMPANY gets a credit equal to 10% of the engineer's wages for 5 years (up to $12,500/yr).`
+                description: `Unique in the nation.Aerospace engineers get a $5,000 tax credit personally for 5 years.The COMPANY gets a credit equal to 10 % of the engineer's wages for 5 years (up to $12,500/yr).`
             },
-            {
-                name: 'Small Employer Quality Jobs',
-                agency: 'Oklahoma Dept of Commerce',
-                fundingAmount: 'Cash Rebate (5% of payroll)',
+{
+    name: 'Small Employer Quality Jobs',
+        agency: 'Oklahoma Dept of Commerce',
+            fundingAmount: 'Cash Rebate (5% of payroll)',
                 fundingType: 'Grant',
-                eligibility: [
-                    'Small business (<90 employees)',
-                    'Create 5 - 15 jobs',
-                    'Located in designated area'
-                ],
-                industries: ['Small Business'],
-                deadline: 'Rolling',
-                applicationProcess: 'Simplified application.',
-                successRate: 'High',
-                website: 'https://www.okcommerce.gov/',
-                description: `Designed for smaller companies that can't meet the massive payroll thresholds of the standard program. Pays the same 5% rebate for up to 7 years.`
-            },
-            {
-                name: 'Business Expansion Incentive Program',
-                agency: 'OK Commerce',
-                fundingAmount: 'Cash payments for infrastructure',
+                    eligibility: [
+                        'Small business (<90 employees)',
+                        'Create 5 - 15 jobs',
+                        'Located in designated area'
+                    ],
+                        industries: ['Small Business'],
+                            deadline: 'Rolling',
+                                applicationProcess: 'Simplified application.',
+                                    successRate: 'High',
+                                        website: 'https://www.okcommerce.gov/',
+                                            description: `Designed for smaller companies that can't meet the massive payroll thresholds of the standard program. Pays the same 5% rebate for up to 7 years.`
+},
+{
+    name: 'Business Expansion Incentive Program',
+        agency: 'OK Commerce',
+            fundingAmount: 'Cash payments for infrastructure',
                 fundingType: 'Grant',
-                eligibility: [
-                    'Make capital investment',
-                    'Create jobs'
-                ],
-                industries: ['Industrial'],
-                deadline: 'Discretionary',
-                applicationProcess: 'Closed deals.',
-                successRate: 'Selective',
-                website: 'https://www.okcommerce.gov/',
-                description: `Discretionary funds to help with public infrastructure upgrades needed for a project.`
-            }
+                    eligibility: [
+                        'Make capital investment',
+                        'Create jobs'
+                    ],
+                        industries: ['Industrial'],
+                            deadline: 'Discretionary',
+                                applicationProcess: 'Closed deals.',
+                                    successRate: 'Selective',
+                                        website: 'https://www.okcommerce.gov/',
+                                            description: `Discretionary funds to help with public infrastructure upgrades needed for a project.`
+}
         ],
 
-        eligibility: {
-            generalRequirements: [
-                'Registered in Oklahoma',
-                'E-Verify required',
-                'Offer "Basic Health Insurance" (company pays 50% premium)',
-                'Payroll threshold met within 3 years'
-            ],
-            businessTypes: [
-                'C-Corps, S-Corps, LLCs',
-                'Partnerships'
-            ],
+eligibility: {
+    generalRequirements: [
+        'Registered in Oklahoma',
+        'E-Verify required',
+        'Offer "Basic Health Insurance" (company pays 50% premium)',
+        'Payroll threshold met within 3 years'
+    ],
+        businessTypes: [
+            'C-Corps, S-Corps, LLCs',
+            'Partnerships'
+        ],
             restrictions: [
                 'Cannot double-dip Quality Jobs and Small Employer Quality Jobs',
                 'Retail excluded',
                 'Jobs must be full-time (30+ hours)'
             ],
-            documentationNeeded: [
-                'Application',
-                'Cost/Benefit Analysis',
-                'Quarterly payroll reports',
-                'Health plan summary'
-            ]
+                documentationNeeded: [
+                    'Application',
+                    'Cost/Benefit Analysis',
+                    'Quarterly payroll reports',
+                    'Health plan summary'
+                ]
+},
+
+applicationProcess: {
+    steps: [
+        {
+            step: 1,
+            title: 'Preliminary Analysis',
+            description: 'Commerce runs a cost-benefit analysis to determine max incentive.',
+            timeframe: '1 week'
         },
-
-        applicationProcess: {
-            steps: [
-                {
-                    step: 1,
-                    title: 'Preliminary Analysis',
-                    description: 'Commerce runs a cost-benefit analysis to determine max incentive.',
-                    timeframe: '1 week'
-                },
-                {
-                    step: 2,
-                    title: 'Offer Letter',
-                    description: 'Receive formal incentive offer.',
-                    timeframe: '2 weeks'
-                },
-                {
-                    step: 3,
-                    title: 'Contract',
-                    description: 'Sign contract with Dept of Commerce.',
-                    timeframe: 'Monthly'
-                },
-                {
-                    step: 4,
-                    title: 'Hire',
-                    description: 'Begin operations and hiring.',
-                    timeframe: 'Project start'
-                },
-                {
-                    step: 5,
-                    title: 'Rebate',
-                    description: 'File quarterly claim forms to get cash payments.',
-                    timeframe: 'Quarterly'
-                }
-            ],
-            tips: [
-                'The Aerospace Engineer credit is a recruiting superpower—put it in your job postings.',
-                'Quality Jobs cash is not taxed by the state.',
-                'Wind energy contracts can often lower your utility bill to <4 cents/kWh.',
-                'Tribal partnerships (Chickasaw, Choctaw, Cherokee) offer additional unique incentives.'
-            ]
+        {
+            step: 2,
+            title: 'Offer Letter',
+            description: 'Receive formal incentive offer.',
+            timeframe: '2 weeks'
         },
-
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Aerospace & Defense',
-                    description: 'MRO capital of the world. Tinker AFB. Drone testing.',
-                    funding: 'Engineer Tax Credits'
-                },
-                {
-                    name: 'Energy',
-                    description: 'Traditional Oil & Gas + massive Wind and Hydrogen investments.',
-                    funding: 'Investment Tax Credits'
-                },
-                {
-                    name: 'Biotech',
-                    description: 'Emerging hub in OKC around the Innovation District.',
-                    funding: 'Quality Jobs'
-                }
-            ],
-            emerging: [
-                'Film & TV',
-                'Data Centers',
-                'Advanced Mobility (EVs)'
-            ]
+        {
+            step: 3,
+            title: 'Contract',
+            description: 'Sign contract with Dept of Commerce.',
+            timeframe: 'Monthly'
         },
+        {
+            step: 4,
+            title: 'Hire',
+            description: 'Begin operations and hiring.',
+            timeframe: 'Project start'
+        },
+        {
+            step: 5,
+            title: 'Rebate',
+            description: 'File quarterly claim forms to get cash payments.',
+            timeframe: 'Quarterly'
+        }
+    ],
+        tips: [
+            'The Aerospace Engineer credit is a recruiting superpower—put it in your job postings.',
+            'Quality Jobs cash is not taxed by the state.',
+            'Wind energy contracts can often lower your utility bill to <4 cents/kWh.',
+            'Tribal partnerships (Chickasaw, Choctaw, Cherokee) offer additional unique incentives.'
+        ]
+},
 
-        successStories: [
-            {
-                company: 'American Airlines',
-                grant: 'Various',
-                amount: 'Strategic Partner',
-                outcome: 'Maintains world\'s largest commercial aviation maintenance base in Tulsa.'
-            },
-            {
-                company: 'Google',
-                grant: 'Investment Tax Credit',
-                amount: 'Pryor Creek Data Center',
-                outcome: 'Invested billions in data center infrastructure.'
-            }
-        ],
+industryFocus: {
+    primary: [
+        {
+            name: 'Aerospace & Defense',
+            description: 'MRO capital of the world. Tinker AFB. Drone testing.',
+            funding: 'Engineer Tax Credits'
+        },
+        {
+            name: 'Energy',
+            description: 'Traditional Oil & Gas + massive Wind and Hydrogen investments.',
+            funding: 'Investment Tax Credits'
+        },
+        {
+            name: 'Biotech',
+            description: 'Emerging hub in OKC around the Innovation District.',
+            funding: 'Quality Jobs'
+        }
+    ],
+        emerging: [
+            'Film & TV',
+            'Data Centers',
+            'Advanced Mobility (EVs)'
+        ]
+},
 
-        faqs: [
-            {
-                question: 'Is Quality Jobs a tax credit?',
-                answer: 'No, it is a CASH REBATE. You get a check. You do not need tax liability to benefit from it.'
-            },
-            {
-                question: 'What is the "wind" advantage?',
-                answer: 'Oklahoma generates massive wind power, often leading to negative pricing at night. Industrial users get extremely cheap rates.'
-            },
-            {
-                question: 'Do tribal incentives apply?',
-                answer: 'Yes. If you locate on tribal land (which is much of Eastern OK), you may qualify for accelerated depreciation and specific federal credits.'
-            }
-        ],
+successStories: [
+    {
+        company: 'American Airlines',
+        grant: 'Various',
+        amount: 'Strategic Partner',
+        outcome: 'Maintains world\'s largest commercial aviation maintenance base in Tulsa.'
+    },
+    {
+        company: 'Google',
+        grant: 'Investment Tax Credit',
+        amount: 'Pryor Creek Data Center',
+        outcome: 'Invested billions in data center infrastructure.'
+    }
+],
+
+    faqs: [
+        {
+            question: 'Is Quality Jobs a tax credit?',
+            answer: 'No, it is a CASH REBATE. You get a check. You do not need tax liability to benefit from it.'
+        },
+        {
+            question: 'What is the "wind" advantage?',
+            answer: 'Oklahoma generates massive wind power, often leading to negative pricing at night. Industrial users get extremely cheap rates.'
+        },
+        {
+            question: 'Do tribal incentives apply?',
+            answer: 'Yes. If you locate on tribal land (which is much of Eastern OK), you may qualify for accelerated depreciation and specific federal credits.'
+        }
+    ],
 
         resources: [
             {
@@ -10602,99 +10584,99 @@ Oklahoma's grid is over 40% wind-powered, offering cheap green electricity. Trib
             }
         ],
 
-        localResources: [
-            {
-                name: 'Tulsa Innovation Labs',
-                location: 'Tulsa',
-                website: 'https://tulsainnovationlabs.com/',
-                services: ['Cybersecurity', 'Virtual Health']
-            },
-            {
-                name: 'Oklahoma SBDC',
-                location: 'Statewide',
-                website: 'https://oklahomabdc.org/',
-                services: ['Small Business Support', 'Training']
-            },
-            {
-                name: 'Tom Love Innovation Hub',
-                location: 'Norman',
-                website: 'https://www.ou.edu/price/tomloveinnovationhub',
-                services: ['OU Spinoffs', 'Entrepreneurship']
-            }
-        ],
+            localResources: [
+                {
+                    name: 'Tulsa Innovation Labs',
+                    location: 'Tulsa',
+                    website: 'https://tulsainnovationlabs.com/',
+                    services: ['Cybersecurity', 'Virtual Health']
+                },
+                {
+                    name: 'Oklahoma SBDC',
+                    location: 'Statewide',
+                    website: 'https://oklahomabdc.org/',
+                    services: ['Small Business Support', 'Training']
+                },
+                {
+                    name: 'Tom Love Innovation Hub',
+                    location: 'Norman',
+                    website: 'https://www.ou.edu/price/tomloveinnovationhub',
+                    services: ['OU Spinoffs', 'Entrepreneurship']
+                }
+            ],
 
-        cityGuides: [
-            {
-                city: 'Oklahoma City',
-                description: 'State Capital. Biotech Innovation District, aerospace, and Paycom HQ.',
-                keyIndustries: ['Biotech', 'Aerospace', 'Weather Tech'],
-                programs: ['Quality Jobs', 'OKC Economic Development']
-            },
-            {
-                city: 'Tulsa',
-                description: 'Energy capital. American Airlines MRO, cybersecurity cluster, and Tulsa Remote.',
-                keyIndustries: ['Energy Tech', 'MRO', 'Cybersecurity'],
-                programs: ['21st Century Quality Jobs', 'Tulsa Innovation Labs']
-            },
-            {
-                city: 'Pryor Creek',
-                description: 'MidAmerica Industrial Park. Google data center, cheap utilities, extreme rural incentives.',
-                keyIndustries: ['Data Centers', 'Manufacturing'],
-                programs: ['Investment Tax Credit', 'Property Tax Exemption']
-            }
-        ],
+                cityGuides: [
+                    {
+                        city: 'Oklahoma City',
+                        description: 'State Capital. Biotech Innovation District, aerospace, and Paycom HQ.',
+                        keyIndustries: ['Biotech', 'Aerospace', 'Weather Tech'],
+                        programs: ['Quality Jobs', 'OKC Economic Development']
+                    },
+                    {
+                        city: 'Tulsa',
+                        description: 'Energy capital. American Airlines MRO, cybersecurity cluster, and Tulsa Remote.',
+                        keyIndustries: ['Energy Tech', 'MRO', 'Cybersecurity'],
+                        programs: ['21st Century Quality Jobs', 'Tulsa Innovation Labs']
+                    },
+                    {
+                        city: 'Pryor Creek',
+                        description: 'MidAmerica Industrial Park. Google data center, cheap utilities, extreme rural incentives.',
+                        keyIndustries: ['Data Centers', 'Manufacturing'],
+                        programs: ['Investment Tax Credit', 'Property Tax Exemption']
+                    }
+                ],
 
-        expertTips: [
-            {
-                title: 'Recruit Engineers',
-                content: 'Use the Aerospace Engineer Tax Credit to steal talent from CA or TX. Paying them an effective $5k bonus tax-free is huge.',
-                type: 'success'
-            },
-            {
-                title: 'Quality Jobs Quarterly',
-                content: 'Don\'t forget to file your quarterly claim. The money is lost if you don\'t claim it on time.',
-                type: 'warning'
-            }
-        ],
+                    expertTips: [
+                        {
+                            title: 'Recruit Engineers',
+                            content: 'Use the Aerospace Engineer Tax Credit to steal talent from CA or TX. Paying them an effective $5k bonus tax-free is huge.',
+                            type: 'success'
+                        },
+                        {
+                            title: 'Quality Jobs Quarterly',
+                            content: 'Don\'t forget to file your quarterly claim. The money is lost if you don\'t claim it on time.',
+                            type: 'warning'
+                        }
+                    ],
 
-        metrics: [
-            { label: 'Funding', value: '$700M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Rebate', value: '5-10%', description: 'Cash Payroll', color: 'text-blue-600', iconName: 'RefreshCw' },
-            { label: 'Energy', value: 'Wind', description: '40%+ Renewable', color: 'text-purple-600', iconName: 'Zap' },
-            { label: 'Engineer', value: '$5k', description: 'Tax Credit', color: 'text-orange-600', iconName: 'UserPlus' }
-        ],
+                        metrics: [
+                            { label: 'Funding', value: '$700M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                            { label: 'Rebate', value: '5-10%', description: 'Cash Payroll', color: 'text-blue-600', iconName: 'RefreshCw' },
+                            { label: 'Energy', value: 'Wind', description: '40%+ Renewable', color: 'text-purple-600', iconName: 'Zap' },
+                            { label: 'Engineer', value: '$5k', description: 'Tax Credit', color: 'text-orange-600', iconName: 'UserPlus' }
+                        ],
 
-        seoKeywords: [
-            'oklahoma business grants',
-            'quality jobs program oklahoma',
-            'aerospace engineer tax credit',
-            'small employer quality jobs',
-            'oklahoma investment tax credit',
-            'startup funding tulsa',
-            'okc business incentives',
-            '21st century quality jobs',
-            'oklahoma manufacturing grants',
-            'tribal business incentives'
-        ],
+                            seoKeywords: [
+                                'oklahoma business grants',
+                                'quality jobs program oklahoma',
+                                'aerospace engineer tax credit',
+                                'small employer quality jobs',
+                                'oklahoma investment tax credit',
+                                'startup funding tulsa',
+                                'okc business incentives',
+                                '21st century quality jobs',
+                                'oklahoma manufacturing grants',
+                                'tribal business incentives'
+                            ],
 
-        metaDescription: 'Complete guide to Oklahoma business grants and funding in 2026. Access $700M+ via Quality Jobs Cash Rebates, Aerospace Tax Credits, and 5-Year Prop Tax Exemptions.'
+                                metaDescription: 'Complete guide to Oklahoma business grants and funding in 2026. Access $700M+ via Quality Jobs Cash Rebates, Aerospace Tax Credits, and 5-Year Prop Tax Exemptions.'
     },
-    {
-        id: 'connecticut',
+{
+    id: 'connecticut',
         name: 'Connecticut',
-        slug: 'connecticut',
-        abbreviation: 'CT',
-        region: 'Northeast',
+            slug: 'connecticut',
+                abbreviation: 'CT',
+                    region: 'Northeast',
 
-        heroStats: {
-            totalFunding: '$500M+',
+                        heroStats: {
+        totalFunding: '$500M+',
             programCount: '30+',
-            successRate: '20-30%',
-            avgProcessingTime: '60-90 days'
-        },
+                successRate: '20-30%',
+                    avgProcessingTime: '60-90 days'
+    },
 
-        overview: {
-            introduction: `Connecticut punches above its weight. Despite being tiny, it's a titan in bioscience (Yale New Haven), aerospace/defense (Pratt Whitney, Electric Boat), and insurance (Hartford).
+    overview: {
+        introduction: `Connecticut punches above its weight. Despite being tiny, it's a titan in bioscience (Yale New Haven), aerospace/defense (Pratt Whitney, Electric Boat), and insurance (Hartford).
             
 Connecticut Innovations (CI) is one of the most active state-backed VC firms in the nation. The DECD oversees JobsCT (tax rebate for jobs) and the Manufacturing Innovation Fund (equipment vouchers).`,
 
@@ -10702,224 +10684,224 @@ Connecticut Innovations (CI) is one of the most active state-backed VC firms in 
             
 Electric Boat (submarines) and Pratt & Whitney (jet engines) drive a massive aerospace supply chain. Offshore wind is the next frontier (New London port).`,
 
-            keyOpportunities: `**JobsCT**: Get 25% of your employees' state income tax back as a rebate (50% in Opportunity Zones).
+                keyOpportunities: `**JobsCT**: Get 25% of your employees' state income tax back as a rebate (50% in Opportunity Zones).
             
 **Manufacturing Innovation Fund (MIF)**: $49k matching grants for new equipment. Popular and competitive.
             
 **CT Innovations**: State VC arm investing $500k-$2M in tech, bio, and climate startups.`,
 
-            futureTrends: `**Offshore Wind**: New London is being transformed into a major offshore wind staging port.
+                    futureTrends: `**Offshore Wind**: New London is being transformed into a major offshore wind staging port.
             
 **Biotech 2.0**: Yale spinoffs are fueling a new wave of genomic medicine startups.
             
 **Insurtech**: Hartford is reinventing itself as an insurtech hub, attracting startups to disrupt the legacy carriers.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'JobsCT Tax Rebate',
-                agency: 'DECD',
-                fundingAmount: 'Tax Rebate (25% of Withholding Tax)',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Create 25 net new jobs',
-                    'Pay $85k+ average salary (location adjusted)',
-                    'Maintain jobs for 24 months'
-                ],
-                industries: ['Finance', 'Tech', 'Bioscience'],
-                deadline: 'Rolling',
-                applicationProcess: 'Earn-as-you-grow. No upfront bond.',
-                successRate: 'High',
-                website: 'https://portal.ct.gov/DECD/Content/Business-Development/05_Funding_Opportunities/JobsCT',
-                description: `A simpler, earn-as-you-grow rebate. If you create 25 new jobs paying decent wages (varies by city, but typically ~$85k), you get a rebate equal to 25% of the state income tax those employees pay. In Opportunity Zones, it bumps to 50%.`
-            },
-            {
-                name: 'Manufacturing Innovation Fund (MIF) Voucher',
-                agency: 'CCAT / DECD',
-                fundingAmount: 'Grant up to $49,000 (Matched 1:1)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Manufacturer with <100 employees',
-                    'Located in CT',
-                    'Matching funds required'
-                ],
-                industries: ['Manufacturing'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply through CCAT. Very popular.',
-                successRate: 'Competitive',
-                website: 'https://ctmvp.ccat.us/',
-                description: `The MVP (Manufacturing Voucher Program) provides matching grants for buying new equipment (3D printers, CNCs, robotic arms). You put in $50k, the state puts in $49k.`
-            },
-            {
-                name: 'Connecticut Innovations (CI) Equity',
-                agency: 'Connecticut Innovations',
-                fundingAmount: '$500k - $2M Equity Investment',
-                fundingType: 'Hybrid',
-                eligibility: [
-                    'High growth potential',
-                    'Bioscience, Tech, Climate Tech',
-                    'CT HQ'
-                ],
-                industries: ['Startup', 'Tech'],
-                deadline: 'Rolling',
-                applicationProcess: 'VC-style pitch process.',
-                successRate: 'Selective',
-                website: 'https://ctinnovations.com/',
-                description: `CI is the state's VC arm. They lead or follow in seed/Series A rounds. They are critical for the bioscience ecosystem in New Haven.`
-            },
-            {
-                name: 'Angel Investor Tax Credit',
-                agency: 'Connecticut Innovations',
-                fundingAmount: '25% Tax Credit for Investors',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Invest $25k+ in qualified CT startup',
-                    'Tech, Bio, or Green Tech'
-                ],
-                industries: ['Investors', 'Startups'],
-                deadline: 'Annual Cap ($5M)',
-                applicationProcess: 'Investor applies after making investment.',
-                successRate: 'First-come, first-served',
-                website: 'https://ctinnovations.com/angel-investor-tax-credit/',
-                description: `Investors get a 25% tax credit on investments in eligible CT startups. This makes raising money from local angels much easier.`
-            },
-            {
-                name: 'Digital Media & Motion Picture Tax Credit',
-                agency: 'DECD',
-                fundingAmount: '10% - 30% Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Spend >$100k in CT',
-                    'Production / Post-production'
-                ],
-                industries: ['Film', 'Digital Media'],
-                deadline: 'Rolling',
-                applicationProcess: 'Production office review.',
-                successRate: 'High',
-                website: 'https://portal.ct.gov/DECD/Content/Film-TV-Digital-Media/01_Film_TV_Digital_Media_Tax_Credit_Programs',
-                description: `Attracts ESPN, WWE, and NBC Sports. Credits are transferable. Digital animation gets higher rates.`
-            },
-            {
-                name: 'Small Business Express',
-                agency: 'DECD',
-                fundingAmount: 'Revolving Loan Fund / Grant',
-                fundingType: 'Hybrid',
-                eligibility: [
-                    '<100 employees',
-                    'Registered in CT for 1 year'
-                ],
-                industries: ['Small Business'],
-                deadline: 'Paused/Cyclical',
-                applicationProcess: 'Currently undergoing restructuring to "Boost Fund".',
-                successRate: 'Variable',
-                website: 'https://portal.ct.gov/DECD/Content/Business-Development/05_Funding_Opportunities/Small-Business-Express',
-                description: `Formerly the main small business grant vehicle, now shifting towards a loan guarantee model focused on minority and women-owned businesses.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'JobsCT Tax Rebate',
+            agency: 'DECD',
+            fundingAmount: 'Tax Rebate (25% of Withholding Tax)',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Create 25 net new jobs',
+                'Pay $85k+ average salary (location adjusted)',
+                'Maintain jobs for 24 months'
+            ],
+            industries: ['Finance', 'Tech', 'Bioscience'],
+            deadline: 'Rolling',
+            applicationProcess: 'Earn-as-you-grow. No upfront bond.',
+            successRate: 'High',
+            website: 'https://portal.ct.gov/DECD/Content/Business-Development/05_Funding_Opportunities/JobsCT',
+            description: `A simpler, earn-as-you-grow rebate. If you create 25 new jobs paying decent wages (varies by city, but typically ~$85k), you get a rebate equal to 25% of the state income tax those employees pay. In Opportunity Zones, it bumps to 50%.`
+        },
+        {
+            name: 'Manufacturing Innovation Fund (MIF) Voucher',
+            agency: 'CCAT / DECD',
+            fundingAmount: 'Grant up to $49,000 (Matched 1:1)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Manufacturer with <100 employees',
+                'Located in CT',
+                'Matching funds required'
+            ],
+            industries: ['Manufacturing'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply through CCAT. Very popular.',
+            successRate: 'Competitive',
+            website: 'https://ctmvp.ccat.us/',
+            description: `The MVP (Manufacturing Voucher Program) provides matching grants for buying new equipment (3D printers, CNCs, robotic arms). You put in $50k, the state puts in $49k.`
+        },
+        {
+            name: 'Connecticut Innovations (CI) Equity',
+            agency: 'Connecticut Innovations',
+            fundingAmount: '$500k - $2M Equity Investment',
+            fundingType: 'Hybrid',
+            eligibility: [
+                'High growth potential',
+                'Bioscience, Tech, Climate Tech',
+                'CT HQ'
+            ],
+            industries: ['Startup', 'Tech'],
+            deadline: 'Rolling',
+            applicationProcess: 'VC-style pitch process.',
+            successRate: 'Selective',
+            website: 'https://ctinnovations.com/',
+            description: `CI is the state's VC arm. They lead or follow in seed/Series A rounds. They are critical for the bioscience ecosystem in New Haven.`
+        },
+        {
+            name: 'Angel Investor Tax Credit',
+            agency: 'Connecticut Innovations',
+            fundingAmount: '25% Tax Credit for Investors',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Invest $25k+ in qualified CT startup',
+                'Tech, Bio, or Green Tech'
+            ],
+            industries: ['Investors', 'Startups'],
+            deadline: 'Annual Cap ($5M)',
+            applicationProcess: 'Investor applies after making investment.',
+            successRate: 'First-come, first-served',
+            website: 'https://ctinnovations.com/angel-investor-tax-credit/',
+            description: `Investors get a 25% tax credit on investments in eligible CT startups. This makes raising money from local angels much easier.`
+        },
+        {
+            name: 'Digital Media & Motion Picture Tax Credit',
+            agency: 'DECD',
+            fundingAmount: '10% - 30% Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Spend >$100k in CT',
+                'Production / Post-production'
+            ],
+            industries: ['Film', 'Digital Media'],
+            deadline: 'Rolling',
+            applicationProcess: 'Production office review.',
+            successRate: 'High',
+            website: 'https://portal.ct.gov/DECD/Content/Film-TV-Digital-Media/01_Film_TV_Digital_Media_Tax_Credit_Programs',
+            description: `Attracts ESPN, WWE, and NBC Sports. Credits are transferable. Digital animation gets higher rates.`
+        },
+        {
+            name: 'Small Business Express',
+            agency: 'DECD',
+            fundingAmount: 'Revolving Loan Fund / Grant',
+            fundingType: 'Hybrid',
+            eligibility: [
+                '<100 employees',
+                'Registered in CT for 1 year'
+            ],
+            industries: ['Small Business'],
+            deadline: 'Paused/Cyclical',
+            applicationProcess: 'Currently undergoing restructuring to "Boost Fund".',
+            successRate: 'Variable',
+            website: 'https://portal.ct.gov/DECD/Content/Business-Development/05_Funding_Opportunities/Small-Business-Express',
+            description: `Formerly the main small business grant vehicle, now shifting towards a loan guarantee model focused on minority and women-owned businesses.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                'Registered with CT Secretary of State',
-                'Good standing with Dept of Revenue Services (DRS)',
-                'DOL (Labor) compliance',
-                'Insurance (Workers Comp) mandatory'
-            ],
+        generalRequirements: [
+            'Registered with CT Secretary of State',
+            'Good standing with Dept of Revenue Services (DRS)',
+            'DOL (Labor) compliance',
+            'Insurance (Workers Comp) mandatory'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs'
             ],
-            restrictions: [
-                'JobsCT creates "Net New" jobs only (can\'t fire and re-hire)',
-                'Retail excluded from most incentives',
-                'Angel Credit capped at $500k per investor'
-            ],
-            documentationNeeded: [
-                'Project Plan',
-                'Financials (3 years)',
-                'Workforce plan (hiring schedule)',
-                'MIF: Equipment quotes'
-            ]
-        },
+                restrictions: [
+                    'JobsCT creates "Net New" jobs only (can\'t fire and re-hire)',
+                    'Retail excluded from most incentives',
+                    'Angel Credit capped at $500k per investor'
+                ],
+                    documentationNeeded: [
+                        'Project Plan',
+                        'Financials (3 years)',
+                        'Workforce plan (hiring schedule)',
+                        'MIF: Equipment quotes'
+                    ]
+    },
 
-        applicationProcess: {
-            steps: [
-                {
-                    step: 1,
-                    title: 'Discovery',
-                    description: 'Contact DECD or AdvanceCT (non-profit partner).',
-                    timeframe: '1 week'
-                },
-                {
-                    step: 2,
-                    title: 'Application',
-                    description: 'Submit formal application via DECD portal.',
-                    timeframe: '2-4 weeks'
-                },
-                {
-                    step: 3,
-                    title: 'Review',
-                    description: 'Internal vetting and due diligence (credit checks).',
-                    timeframe: '1-2 months'
-                },
-                {
-                    step: 4,
-                    title: 'Award',
-                    description: 'Funding approval / Tax Credit Reservation.',
-                    timeframe: 'Milestone'
-                },
-                {
-                    step: 5,
-                    title: 'Reporting',
-                    description: 'Annual job audits to unlock rebates.',
-                    timeframe: 'Annual'
-                }
-            ],
+    applicationProcess: {
+        steps: [
+            {
+                step: 1,
+                title: 'Discovery',
+                description: 'Contact DECD or AdvanceCT (non-profit partner).',
+                timeframe: '1 week'
+            },
+            {
+                step: 2,
+                title: 'Application',
+                description: 'Submit formal application via DECD portal.',
+                timeframe: '2-4 weeks'
+            },
+            {
+                step: 3,
+                title: 'Review',
+                description: 'Internal vetting and due diligence (credit checks).',
+                timeframe: '1-2 months'
+            },
+            {
+                step: 4,
+                title: 'Award',
+                description: 'Funding approval / Tax Credit Reservation.',
+                timeframe: 'Milestone'
+            },
+            {
+                step: 5,
+                title: 'Reporting',
+                description: 'Annual job audits to unlock rebates.',
+                timeframe: 'Annual'
+            }
+        ],
             tips: [
                 'AdvanceCT is your best friend—they act as a conciege for navigating state bureaucracy.',
                 'The MIF voucher runs out of money often. Apply early in the fiscal year (July).',
                 'Yale University spinouts have a dedicated pathway for funding.',
                 'Opportunity Zones in Bridgeport and New Haven offer double benefits.'
             ]
-        },
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Advanced Manufacturing',
-                    description: 'Aerospace (Pratt & Whitney, Sikorsky), Submarines (Electric Boat).',
-                    funding: 'MIF Vouchers'
-                },
-                {
-                    name: 'Bioscience / Health',
-                    description: 'Yale/New Haven hub. Pfizer (Groton). Genomic medicine.',
-                    funding: 'CT Innovations'
-                },
-                {
-                    name: 'Insurtech / Fintech',
-                    description: 'Hartford ("Insurance Capital") modernization.',
-                    funding: 'JobsCT'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Advanced Manufacturing',
+                description: 'Aerospace (Pratt & Whitney, Sikorsky), Submarines (Electric Boat).',
+                funding: 'MIF Vouchers'
+            },
+            {
+                name: 'Bioscience / Health',
+                description: 'Yale/New Haven hub. Pfizer (Groton). Genomic medicine.',
+                funding: 'CT Innovations'
+            },
+            {
+                name: 'Insurtech / Fintech',
+                description: 'Hartford ("Insurance Capital") modernization.',
+                funding: 'JobsCT'
+            }
+        ],
             emerging: [
                 'Offshore Wind',
                 'Digital Health',
                 'Cannabis'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Sema4',
-                grant: 'CT Innovations / JobsCT',
-                amount: '$10M loan + Credits',
-                outcome: 'Genomic testing company scaled rapidly and went public.'
-            },
-            {
-                company: 'ASML',
-                grant: 'Manufacturing incentives',
-                amount: 'Expansion',
-                outcome: 'Major expansion of semiconductor equipment R&D in Wilton.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Sema4',
+            grant: 'CT Innovations / JobsCT',
+            amount: '$10M loan + Credits',
+            outcome: 'Genomic testing company scaled rapidly and went public.'
+        },
+        {
+            company: 'ASML',
+            grant: 'Manufacturing incentives',
+            amount: 'Expansion',
+            outcome: 'Major expansion of semiconductor equipment R&D in Wilton.'
+        }
+    ],
 
         faqs: [
             {
@@ -10936,117 +10918,117 @@ Electric Boat (submarines) and Pratt & Whitney (jet engines) drive a massive aer
             }
         ],
 
-        resources: [
-            {
-                name: 'DECD',
-                url: 'https://portal.ct.gov/DECD',
-                description: 'Dept of Economic and Community Development.'
-            },
-            {
-                name: 'AdvanceCT',
-                url: 'https://www.advancect.org/',
-                description: 'Business recruitment non-profit.'
-            },
-            {
-                name: 'CT Innovations',
-                url: 'https://ctinnovations.com/',
-                description: 'Venture capital and angel credits.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'DECD',
+                    url: 'https://portal.ct.gov/DECD',
+                    description: 'Dept of Economic and Community Development.'
+                },
+                {
+                    name: 'AdvanceCT',
+                    url: 'https://www.advancect.org/',
+                    description: 'Business recruitment non-profit.'
+                },
+                {
+                    name: 'CT Innovations',
+                    url: 'https://ctinnovations.com/',
+                    description: 'Venture capital and angel credits.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'CCAT (CT Center for Advanced Technology)',
-                location: 'Hartford',
-                website: 'https://www.ccat.us/',
-                services: ['MIF Vouchers', 'Manufacturing Support']
-            },
-            {
-                name: 'New Haven Innovation Hub',
-                location: 'New Haven',
-                website: 'https://www.nhbic.org/',
-                services: ['Yale Spinoffs', 'Bioscience Incubator']
-            },
-            {
-                name: 'Fairfield County SCORE',
-                location: 'Stamford',
-                website: 'https://www.score.org/',
-                services: ['Mentoring', 'Business Planning']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'CCAT (CT Center for Advanced Technology)',
+                        location: 'Hartford',
+                        website: 'https://www.ccat.us/',
+                        services: ['MIF Vouchers', 'Manufacturing Support']
+                    },
+                    {
+                        name: 'New Haven Innovation Hub',
+                        location: 'New Haven',
+                        website: 'https://www.nhbic.org/',
+                        services: ['Yale Spinoffs', 'Bioscience Incubator']
+                    },
+                    {
+                        name: 'Fairfield County SCORE',
+                        location: 'Stamford',
+                        website: 'https://www.score.org/',
+                        services: ['Mentoring', 'Business Planning']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Hartford',
-                description: 'Insurance Capital. Insurtech, fintech, and Knowledge Corridor hub.',
-                keyIndustries: ['Insurance', 'Fintech'],
-                programs: ['JobsCT', 'Boost Fund']
-            },
-            {
-                city: 'New Haven',
-                description: 'Yale University anchor. World-class bioscience and healthtech cluster.',
-                keyIndustries: ['Bioscience', 'Digital Health'],
-                programs: ['CT Innovations', 'Angel Tax Credit']
-            },
-            {
-                city: 'Groton / New London',
-                description: 'Submarine Capital. Electric Boat and offshore wind staging.',
-                keyIndustries: ['Aerospace', 'Maritime', 'Wind'],
-                programs: ['MIF Vouchers', 'Defense Supply Chain']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Hartford',
+                            description: 'Insurance Capital. Insurtech, fintech, and Knowledge Corridor hub.',
+                            keyIndustries: ['Insurance', 'Fintech'],
+                            programs: ['JobsCT', 'Boost Fund']
+                        },
+                        {
+                            city: 'New Haven',
+                            description: 'Yale University anchor. World-class bioscience and healthtech cluster.',
+                            keyIndustries: ['Bioscience', 'Digital Health'],
+                            programs: ['CT Innovations', 'Angel Tax Credit']
+                        },
+                        {
+                            city: 'Groton / New London',
+                            description: 'Submarine Capital. Electric Boat and offshore wind staging.',
+                            keyIndustries: ['Aerospace', 'Maritime', 'Wind'],
+                            programs: ['MIF Vouchers', 'Defense Supply Chain']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'MIF Double Dip',
-                content: 'If you are a manufacturer, you can often use the MIF voucher ($49k) AND the Energy Efficiency Fund (utility specific) to upgrade equipment for nearly free.',
-                type: 'tip'
-            },
-            {
-                title: 'Angel Credit for Founders',
-                content: 'Founders: Use the 25% tax credit as a carrot to close hesitant local investors. It reduces their risk immediately.',
-                type: 'success'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'MIF Double Dip',
+                                content: 'If you are a manufacturer, you can often use the MIF voucher ($49k) AND the Energy Efficiency Fund (utility specific) to upgrade equipment for nearly free.',
+                                type: 'tip'
+                            },
+                            {
+                                title: 'Angel Credit for Founders',
+                                content: 'Founders: Use the 25% tax credit as a carrot to close hesitant local investors. It reduces their risk immediately.',
+                                type: 'success'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$500M+', description: 'Total Investment', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Rebate', value: '25%', description: 'JobsCT Tax', color: 'text-blue-600', iconName: 'RefreshCw' },
-            { label: 'Voucher', value: '$49k', description: 'Manufacturing', color: 'text-purple-600', iconName: 'Wrench' },
-            { label: 'Angel', value: '25%', description: 'Investor Credit', color: 'text-orange-600', iconName: 'Users' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$500M+', description: 'Total Investment', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Rebate', value: '25%', description: 'JobsCT Tax', color: 'text-blue-600', iconName: 'RefreshCw' },
+                                { label: 'Voucher', value: '$49k', description: 'Manufacturing', color: 'text-purple-600', iconName: 'Wrench' },
+                                { label: 'Angel', value: '25%', description: 'Investor Credit', color: 'text-orange-600', iconName: 'Users' }
+                            ],
 
-        seoKeywords: [
-            'connecticut business grants',
-            'jobsct tax rebate',
-            'manufacturing innovation fund ct',
-            'connecticut innovations venture capital',
-            'small business grants hartford',
-            'angel investor tax credit ct',
-            'bioscience funding new haven',
-            'advancect incentives',
-            'digital media tax credit ct',
-            'ct boost fund'
-        ],
+                                seoKeywords: [
+                                    'connecticut business grants',
+                                    'jobsct tax rebate',
+                                    'manufacturing innovation fund ct',
+                                    'connecticut innovations venture capital',
+                                    'small business grants hartford',
+                                    'angel investor tax credit ct',
+                                    'bioscience funding new haven',
+                                    'advancect incentives',
+                                    'digital media tax credit ct',
+                                    'ct boost fund'
+                                ],
 
-        metaDescription: 'Complete guide to Connecticut business grants and funding in 2026. Access $500M+ via JobsCT Rebates, Manufacturing Vouchers, and CT Innovations VC.'
-    },
-    {
-        id: 'iowa',
+                                    metaDescription: 'Complete guide to Connecticut business grants and funding in 2026. Access $500M+ via JobsCT Rebates, Manufacturing Vouchers, and CT Innovations VC.'
+},
+{
+    id: 'iowa',
         name: 'Iowa',
-        slug: 'iowa',
-        abbreviation: 'IA',
-        region: 'Midwest',
+            slug: 'iowa',
+                abbreviation: 'IA',
+                    region: 'Midwest',
 
-        heroStats: {
-            totalFunding: '$450M+',
+                        heroStats: {
+        totalFunding: '$450M+',
             programCount: '15+',
-            successRate: '35-50%',
-            avgProcessingTime: '30-45 days'
-        },
+                successRate: '35-50%',
+                    avgProcessingTime: '30-45 days'
+    },
 
-        overview: {
-            introduction: `Iowa is a quiet giant in the "Bio-economy" and advanced manufacturing. The Iowa Economic Development Authority (IEDA) manages the "High Quality Jobs" (HQJ) program, which provides direct tax credits and refunds for capital-intensive projects.
+    overview: {
+        introduction: `Iowa is a quiet giant in the "Bio-economy" and advanced manufacturing. The Iowa Economic Development Authority (IEDA) manages the "High Quality Jobs" (HQJ) program, which provides direct tax credits and refunds for capital-intensive projects.
             
 Known for its massive wind energy capacity (highest percentage in the nation) and low cost of doing business, Iowa is increasingly attracting data centers and "post-ethanol" biochem firms.`,
 
@@ -11054,225 +11036,225 @@ Known for its massive wind energy capacity (highest percentage in the nation) an
             
 Advanced manufacturing (John Deere, Vermeer) anchors the rural economy. The Renewable Chemical Production Tax Credit is a unique tool to diversify beyond ethanol.`,
 
-            keyOpportunities: `**High Quality Jobs (HQJ)**: The flagship program. Offers Investment Tax Credits (up to 10%) and Sales Tax Refunds on construction.
+                keyOpportunities: `**High Quality Jobs (HQJ)**: The flagship program. Offers Investment Tax Credits (up to 10%) and Sales Tax Refunds on construction.
             
 **Renewable Chemical Production Tax Credit**: A world-first incentive paying $0.05/lb for bio-based chemicals.
             
 **260E Training**: A diversion mechanism that lets you use your withholding tax to pay for employee training.`,
 
-            futureTrends: `**Carbon Capture**: Iowa is ground zero for CO2 pipeline projects and carbon sequestration, critical for the future of ethanol.
+                    futureTrends: `**Carbon Capture**: Iowa is ground zero for CO2 pipeline projects and carbon sequestration, critical for the future of ethanol.
             
 **AgTech 2.0**: Moving beyond yield to precision agriculture, robotics, and biologicals.
             
 **Insurtech**: Des Moines is leveraging its insurance dominance to attract fintech startups helping legacy carriers modernize.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'High Quality Jobs (HQJ)',
-                agency: 'IEDA',
-                fundingAmount: 'Tax Credits + Refunds',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Created jobs pay wages at 100-120% of "Laborshed Wage"',
-                    'Offer sufficient benefits',
-                    'Make capital investment'
-                ],
-                industries: ['Manufacturing', 'Bioscience', 'Finance'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply to IEDA board monthly.',
-                successRate: 'High',
-                website: 'https://www.iowaeda.com/business-incentives/high-quality-jobs/',
-                description: `This is the primary incentive. It offers an Investment Tax Credit (up to 10% of investment), Sales Tax Refund on construction/racking, and sometimes a Research Activities Credit. The wage thresholds are strict but transparent.`
-            },
-            {
-                name: 'Renewable Chemical Production Tax Credit',
-                agency: 'IEDA',
-                fundingAmount: '$0.05 per pound (Refundable)',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Produce chemicals from biomass',
-                    'Not fuel/ethanol (must be chemical)',
-                    'Production in Iowa'
-                ],
-                industries: ['Biochem', 'AgTech'],
-                deadline: 'Annual',
-                applicationProcess: 'Competitive. Global first.',
-                successRate: 'Specialized',
-                website: 'https://www.iowaeda.com/business-incentives/renewable-chemicals/',
-                description: `A world-first incentive. It pays companies $0.05 per pound for producing renewable chemicals (plastics, solvents from corn/soy). It helps define the "post-ethanol" future.`
-            },
-            {
-                name: 'Innovation Fund Tax Credit',
-                agency: 'IEDA',
-                fundingAmount: '25% Investor Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Invest in certified Innovation Funds',
-                    'Funds invest in Iowa startups'
-                ],
-                industries: ['Investors', 'Startups'],
-                deadline: 'Rolling',
-                applicationProcess: 'Investor claims credit.',
-                successRate: 'Available',
-                website: 'https://www.iowaeda.com/innovation/innovation-fund-tax-credit/',
-                description: `Incentivizes private capital. Investors in certified Iowa innovation funds receive a 25% tax credit. These certificates are transferable (can be sold).`
-            },
-            {
-                name: 'Proof of Commercial Relevance (POCR)',
-                agency: 'IEDA',
-                fundingAmount: '$25,000 Loan (Low Interest)',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Iowa startup',
-                    'Market validation phase',
-                    'Matching funds 1:2'
-                ],
-                industries: ['Tech', 'Bioscience', 'Advanced Mfg'],
-                deadline: 'Rolling',
-                applicationProcess: 'Pitch to IEDA committee.',
-                successRate: 'Competitive',
-                website: 'https://www.iowaeda.com/innovation/pocr/',
-                description: `Low-interest loans for startups validating their market. Followed by the Demonstration Fund ($100k loan) for scaling.`
-            },
-            {
-                name: 'New Jobs Training (260E)',
-                agency: 'Iowa Community Colleges',
-                fundingAmount: 'Diverted Withholding Tax',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Create new positions',
-                    'Train employees in Iowa'
-                ],
-                industries: ['All Eligible'],
-                deadline: 'Rolling',
-                applicationProcess: 'Partner with local Community College.',
-                successRate: 'High',
-                website: 'https://www.iowaeda.com/',
-                description: `Allows companies to divert 1.5% or 3% of their new employees' withholding taxes to pay for training. The college issues bonds to pay for training upfront, and the bonds are retired by the diverted tax.`
-            },
-            {
-                name: 'Demonstration Fund',
-                agency: 'IEDA',
-                fundingAmount: 'Up to $100,000 Loan/Royalty',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Revenue generation phase',
-                    'Advanced Tech / Bio',
-                    'Iowa based'
-                ],
-                industries: ['Tech'],
-                deadline: 'Rolling',
-                applicationProcess: 'Committee review.',
-                successRate: 'Competitive',
-                website: 'https://www.iowaeda.com/innovation/demonstration-fund/',
-                description: `Gap funding for startups moving from prototype to market. Often structured as a royalty-based loan (pay back as % of revenue).`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'High Quality Jobs (HQJ)',
+            agency: 'IEDA',
+            fundingAmount: 'Tax Credits + Refunds',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Created jobs pay wages at 100-120% of "Laborshed Wage"',
+                'Offer sufficient benefits',
+                'Make capital investment'
+            ],
+            industries: ['Manufacturing', 'Bioscience', 'Finance'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply to IEDA board monthly.',
+            successRate: 'High',
+            website: 'https://www.iowaeda.com/business-incentives/high-quality-jobs/',
+            description: `This is the primary incentive. It offers an Investment Tax Credit (up to 10% of investment), Sales Tax Refund on construction/racking, and sometimes a Research Activities Credit. The wage thresholds are strict but transparent.`
+        },
+        {
+            name: 'Renewable Chemical Production Tax Credit',
+            agency: 'IEDA',
+            fundingAmount: '$0.05 per pound (Refundable)',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Produce chemicals from biomass',
+                'Not fuel/ethanol (must be chemical)',
+                'Production in Iowa'
+            ],
+            industries: ['Biochem', 'AgTech'],
+            deadline: 'Annual',
+            applicationProcess: 'Competitive. Global first.',
+            successRate: 'Specialized',
+            website: 'https://www.iowaeda.com/business-incentives/renewable-chemicals/',
+            description: `A world-first incentive. It pays companies $0.05 per pound for producing renewable chemicals (plastics, solvents from corn/soy). It helps define the "post-ethanol" future.`
+        },
+        {
+            name: 'Innovation Fund Tax Credit',
+            agency: 'IEDA',
+            fundingAmount: '25% Investor Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Invest in certified Innovation Funds',
+                'Funds invest in Iowa startups'
+            ],
+            industries: ['Investors', 'Startups'],
+            deadline: 'Rolling',
+            applicationProcess: 'Investor claims credit.',
+            successRate: 'Available',
+            website: 'https://www.iowaeda.com/innovation/innovation-fund-tax-credit/',
+            description: `Incentivizes private capital. Investors in certified Iowa innovation funds receive a 25% tax credit. These certificates are transferable (can be sold).`
+        },
+        {
+            name: 'Proof of Commercial Relevance (POCR)',
+            agency: 'IEDA',
+            fundingAmount: '$25,000 Loan (Low Interest)',
+            fundingType: 'Loan',
+            eligibility: [
+                'Iowa startup',
+                'Market validation phase',
+                'Matching funds 1:2'
+            ],
+            industries: ['Tech', 'Bioscience', 'Advanced Mfg'],
+            deadline: 'Rolling',
+            applicationProcess: 'Pitch to IEDA committee.',
+            successRate: 'Competitive',
+            website: 'https://www.iowaeda.com/innovation/pocr/',
+            description: `Low-interest loans for startups validating their market. Followed by the Demonstration Fund ($100k loan) for scaling.`
+        },
+        {
+            name: 'New Jobs Training (260E)',
+            agency: 'Iowa Community Colleges',
+            fundingAmount: 'Diverted Withholding Tax',
+            fundingType: 'Grant',
+            eligibility: [
+                'Create new positions',
+                'Train employees in Iowa'
+            ],
+            industries: ['All Eligible'],
+            deadline: 'Rolling',
+            applicationProcess: 'Partner with local Community College.',
+            successRate: 'High',
+            website: 'https://www.iowaeda.com/',
+            description: `Allows companies to divert 1.5% or 3% of their new employees' withholding taxes to pay for training. The college issues bonds to pay for training upfront, and the bonds are retired by the diverted tax.`
+        },
+        {
+            name: 'Demonstration Fund',
+            agency: 'IEDA',
+            fundingAmount: 'Up to $100,000 Loan/Royalty',
+            fundingType: 'Loan',
+            eligibility: [
+                'Revenue generation phase',
+                'Advanced Tech / Bio',
+                'Iowa based'
+            ],
+            industries: ['Tech'],
+            deadline: 'Rolling',
+            applicationProcess: 'Committee review.',
+            successRate: 'Competitive',
+            website: 'https://www.iowaeda.com/innovation/demonstration-fund/',
+            description: `Gap funding for startups moving from prototype to market. Often structured as a royalty-based loan (pay back as % of revenue).`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                'Registered in Iowa',
-                'Pay wages meeting "Laborshed" thresholds (updated annually)',
-                'But-for clause (incentive needed for project to proceed)',
-                'Environmental compliance'
-            ],
+        generalRequirements: [
+            'Registered in Iowa',
+            'Pay wages meeting "Laborshed" thresholds (updated annually)',
+            'But-for clause (incentive needed for project to proceed)',
+            'Environmental compliance'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs'
             ],
-            restrictions: [
-                'Retail excluded from HQJ',
-                'Ethanol fuel production excluded from Chemical Credit (must be non-fuel)',
-                'Clawbacks enforced if jobs not maintained'
-            ],
-            documentationNeeded: [
-                'HQJ Application',
-                'Local match resolution (city council)',
-                'Financial statements',
-                'Wage/Benefit analysis'
-            ]
-        },
+                restrictions: [
+                    'Retail excluded from HQJ',
+                    'Ethanol fuel production excluded from Chemical Credit (must be non-fuel)',
+                    'Clawbacks enforced if jobs not maintained'
+                ],
+                    documentationNeeded: [
+                        'HQJ Application',
+                        'Local match resolution (city council)',
+                        'Financial statements',
+                        'Wage/Benefit analysis'
+                    ]
+    },
 
-        applicationProcess: {
-            steps: [
-                {
-                    step: 1,
-                    title: 'Project Manager',
-                    description: 'Contact IEDA. They assign a project manager to guide you.',
-                    timeframe: '1 week'
-                },
-                {
-                    step: 2,
-                    title: 'Local Match',
-                    description: 'Secure a local match (property tax abatement) from the city/county. Mandatory for HQJ.',
-                    timeframe: '2-4 weeks'
-                },
-                {
-                    step: 3,
-                    title: 'Board Application',
-                    description: 'Submit HQJ application to IEDA Board (meets monthly).',
-                    timeframe: 'Monthly'
-                },
-                {
-                    step: 4,
-                    title: 'Contract',
-                    description: 'Sign contract and begin project. Do not start construction before this.',
-                    timeframe: '1 week'
-                },
-                {
-                    step: 5,
-                    title: 'Compliance',
-                    description: 'Annual reporting of job numbers and wages.',
-                    timeframe: 'Annual'
-                }
-            ],
+    applicationProcess: {
+        steps: [
+            {
+                step: 1,
+                title: 'Project Manager',
+                description: 'Contact IEDA. They assign a project manager to guide you.',
+                timeframe: '1 week'
+            },
+            {
+                step: 2,
+                title: 'Local Match',
+                description: 'Secure a local match (property tax abatement) from the city/county. Mandatory for HQJ.',
+                timeframe: '2-4 weeks'
+            },
+            {
+                step: 3,
+                title: 'Board Application',
+                description: 'Submit HQJ application to IEDA Board (meets monthly).',
+                timeframe: 'Monthly'
+            },
+            {
+                step: 4,
+                title: 'Contract',
+                description: 'Sign contract and begin project. Do not start construction before this.',
+                timeframe: '1 week'
+            },
+            {
+                step: 5,
+                title: 'Compliance',
+                description: 'Annual reporting of job numbers and wages.',
+                timeframe: 'Annual'
+            }
+        ],
             tips: [
                 'The "Local Match" from the city is critical. Without a city tax abatement, the state won\'t give you the HQJ credits.',
                 'The Renewable Chemical credit is refundable—meaning cash back if you have no tax liability.',
                 'Data Centers (Google/Facebook) get specific exemptions on electricity tax and equipment sales tax.',
                 'Iowa\'s "Laborshed Wage" requirement is strict; check the map before applying.'
             ]
-        },
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'AgTech / Bioscience',
-                    description: 'Global leader in corn/soy genetics, biofuels, and now renewable chemicals.',
-                    funding: 'Renewable Chemical Credit'
-                },
-                {
-                    name: 'Advanced Manufacturing',
-                    description: 'John Deere, Vermeer, HNI. Heavy machinery focus.',
-                    funding: 'HQJ'
-                },
-                {
-                    name: 'Insurance / Finance',
-                    description: 'Des Moines allows a gross premiums tax credit for expansion.',
-                    funding: 'HQJ'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'AgTech / Bioscience',
+                description: 'Global leader in corn/soy genetics, biofuels, and now renewable chemicals.',
+                funding: 'Renewable Chemical Credit'
+            },
+            {
+                name: 'Advanced Manufacturing',
+                description: 'John Deere, Vermeer, HNI. Heavy machinery focus.',
+                funding: 'HQJ'
+            },
+            {
+                name: 'Insurance / Finance',
+                description: 'Des Moines allows a gross premiums tax credit for expansion.',
+                funding: 'HQJ'
+            }
+        ],
             emerging: [
                 'EdTech',
                 'Renewable Energy (Wind)',
                 'Testing/Labs'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Qore (Cargill + Helm)',
-                grant: 'Renewable Chemical Credit',
-                amount: 'Strategic',
-                outcome: 'Building massive $300M bioplastics plant in Eddyville.'
-            },
-            {
-                company: 'Apple',
-                grant: 'HQJ / Property Tax',
-                amount: '$200M+ value',
-                outcome: 'Built massive data center near Des Moines powered by renewable energy.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Qore (Cargill + Helm)',
+            grant: 'Renewable Chemical Credit',
+            amount: 'Strategic',
+            outcome: 'Building massive $300M bioplastics plant in Eddyville.'
+        },
+        {
+            company: 'Apple',
+            grant: 'HQJ / Property Tax',
+            amount: '$200M+ value',
+            outcome: 'Built massive data center near Des Moines powered by renewable energy.'
+        }
+    ],
 
         faqs: [
             {
@@ -11289,117 +11271,117 @@ Advanced manufacturing (John Deere, Vermeer) anchors the rural economy. The Rene
             }
         ],
 
-        resources: [
-            {
-                name: 'IEDA',
-                url: 'https://www.iowaeda.com/',
-                description: 'Iowa Economic Development Authority.'
-            },
-            {
-                name: 'IASourceLink',
-                url: 'https://www.iasourcelink.com/',
-                description: 'Small business resource hub.'
-            },
-            {
-                name: 'CIRAS',
-                url: 'https://www.ciras.iastate.edu/',
-                description: 'Industrial research and service.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'IEDA',
+                    url: 'https://www.iowaeda.com/',
+                    description: 'Iowa Economic Development Authority.'
+                },
+                {
+                    name: 'IASourceLink',
+                    url: 'https://www.iasourcelink.com/',
+                    description: 'Small business resource hub.'
+                },
+                {
+                    name: 'CIRAS',
+                    url: 'https://www.ciras.iastate.edu/',
+                    description: 'Industrial research and service.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'West Des Moines Incubator',
-                location: 'West Des Moines',
-                website: 'https://www.wdm.iowa.gov/',
-                services: ['Startups', 'Office Space']
-            },
-            {
-                name: 'ISU Research Park',
-                location: 'Ames',
-                website: 'https://www.isupark.org/',
-                services: ['AgTech', 'University Spinoffs']
-            },
-            {
-                name: 'NewBoCo',
-                location: 'Cedar Rapids',
-                website: 'https://newbo.co/',
-                services: ['Accelerator', 'Coding School']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'West Des Moines Incubator',
+                        location: 'West Des Moines',
+                        website: 'https://www.wdm.iowa.gov/',
+                        services: ['Startups', 'Office Space']
+                    },
+                    {
+                        name: 'ISU Research Park',
+                        location: 'Ames',
+                        website: 'https://www.isupark.org/',
+                        services: ['AgTech', 'University Spinoffs']
+                    },
+                    {
+                        name: 'NewBoCo',
+                        location: 'Cedar Rapids',
+                        website: 'https://newbo.co/',
+                        services: ['Accelerator', 'Coding School']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Des Moines',
-                description: 'Global Insurance Capital and data center hub. Strong fintech and insurtech scene.',
-                keyIndustries: ['Insurance', 'Data Centers', 'AgTech'],
-                programs: ['HQJ', 'Demonstration Fund']
-            },
-            {
-                city: 'Ames',
-                description: 'Home to Iowa State University. Deep AgTech and bioscience research.',
-                keyIndustries: ['AgTech', 'Bioscience'],
-                programs: ['ISU Research Park', 'POCR']
-            },
-            {
-                city: 'Cedar Rapids',
-                description: 'Manufacturing powerhouse (Collins Aerospace). Growing tech ecosystem.',
-                keyIndustries: ['Aerospace', 'Food Processing'],
-                programs: ['NewBoCo', 'Automation Grants']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Des Moines',
+                            description: 'Global Insurance Capital and data center hub. Strong fintech and insurtech scene.',
+                            keyIndustries: ['Insurance', 'Data Centers', 'AgTech'],
+                            programs: ['HQJ', 'Demonstration Fund']
+                        },
+                        {
+                            city: 'Ames',
+                            description: 'Home to Iowa State University. Deep AgTech and bioscience research.',
+                            keyIndustries: ['AgTech', 'Bioscience'],
+                            programs: ['ISU Research Park', 'POCR']
+                        },
+                        {
+                            city: 'Cedar Rapids',
+                            description: 'Manufacturing powerhouse (Collins Aerospace). Growing tech ecosystem.',
+                            keyIndustries: ['Aerospace', 'Food Processing'],
+                            programs: ['NewBoCo', 'Automation Grants']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Secure the Local Match',
-                content: 'Start talking to the City Council or Mayor early. Their property tax abatement is the "ticket to play" for the bigger state money.',
-                type: 'warning'
-            },
-            {
-                title: 'Refundable Chemical Credit',
-                content: 'If you are in green chemistry, Iowa is arguably the best place in the world due to the $0.05/lb direct cash payment.',
-                type: 'success'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Secure the Local Match',
+                                content: 'Start talking to the City Council or Mayor early. Their property tax abatement is the "ticket to play" for the bigger state money.',
+                                type: 'warning'
+                            },
+                            {
+                                title: 'Refundable Chemical Credit',
+                                content: 'If you are in green chemistry, Iowa is arguably the best place in the world due to the $0.05/lb direct cash payment.',
+                                type: 'success'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$450M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Chemicals', value: '$0.05/lb', description: 'Refundable Credit', color: 'text-blue-600', iconName: 'FlaskConical' },
-            { label: 'Training', value: '100%', description: '260E Offset', color: 'text-purple-600', iconName: 'BookOpen' },
-            { label: 'Inv. Tax', value: '10%', description: 'Investment Credit', color: 'text-orange-600', iconName: 'TrendingUp' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$450M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Chemicals', value: '$0.05/lb', description: 'Refundable Credit', color: 'text-blue-600', iconName: 'FlaskConical' },
+                                { label: 'Training', value: '100%', description: '260E Offset', color: 'text-purple-600', iconName: 'BookOpen' },
+                                { label: 'Inv. Tax', value: '10%', description: 'Investment Credit', color: 'text-orange-600', iconName: 'TrendingUp' }
+                            ],
 
-        seoKeywords: [
-            'iowa business grants',
-            'high quality jobs program iowa',
-            'renewable chemical production tax credit',
-            'startup funding des moines',
-            '260e training grant',
-            'iowa innovation fund',
-            'manufacturing incentives iowa',
-            'agtech grants iowa',
-            'small business loans iowa',
-            'ieda incentives'
-        ],
+                                seoKeywords: [
+                                    'iowa business grants',
+                                    'high quality jobs program iowa',
+                                    'renewable chemical production tax credit',
+                                    'startup funding des moines',
+                                    '260e training grant',
+                                    'iowa innovation fund',
+                                    'manufacturing incentives iowa',
+                                    'agtech grants iowa',
+                                    'small business loans iowa',
+                                    'ieda incentives'
+                                ],
 
-        metaDescription: 'Complete guide to Iowa business grants and funding in 2026. Access $450M+ via High Quality Jobs Credits, Renewable Chemical Refunds, and Startup Loans.'
-    },
-    {
-        id: 'mississippi',
+                                    metaDescription: 'Complete guide to Iowa business grants and funding in 2026. Access $450M+ via High Quality Jobs Credits, Renewable Chemical Refunds, and Startup Loans.'
+},
+{
+    id: 'mississippi',
         name: 'Mississippi',
-        slug: 'mississippi',
-        abbreviation: 'MS',
-        region: 'Southeast',
+            slug: 'mississippi',
+                abbreviation: 'MS',
+                    region: 'Southeast',
 
-        heroStats: {
-            totalFunding: '$400M+',
+                        heroStats: {
+        totalFunding: '$400M+',
             programCount: '15+',
-            successRate: '40-50%',
-            avgProcessingTime: '45-60 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '45-60 days'
+    },
 
-        overview: {
-            introduction: `Mississippi has revolutionized its incentive structure with "MFLEX"—a universal tax credit that simplifies the entire application process. The Mississippi Development Authority (MDA) is highly aggressive in recruiting advanced manufacturing, aerospace, and data centers.
+    overview: {
+        introduction: `Mississippi has revolutionized its incentive structure with "MFLEX"—a universal tax credit that simplifies the entire application process. The Mississippi Development Authority (MDA) is highly aggressive in recruiting advanced manufacturing, aerospace, and data centers.
             
 The state offers some of the lowest operating costs in the nation and has shovel-ready mega-sites in the "Golden Triangle."`,
 
@@ -11407,149 +11389,149 @@ The state offers some of the lowest operating costs in the nation and has shovel
             
 Amazon Web Services (AWS) recently committed $10B to the state, signaling a major shift toward cloud computing.`,
 
-            keyOpportunities: `**MFLEX**: The Universal Tax Credit. It eliminates the need to apply for separate job/investment credits. You get one dashboard and one credit to use against almost any tax.
+                keyOpportunities: `**MFLEX**: The Universal Tax Credit. It eliminates the need to apply for separate job/investment credits. You get one dashboard and one credit to use against almost any tax.
             
 **Project-Ready Sites**: Mississippi invests heavily in site preparation so companies can break ground on Day 1.
             
 **Workforce Training**: The community college system is legendary for its custom training programs (WET Fund).`,
 
-            futureTrends: `**Cloud Capital**: With the AWS mega-investment, Mississippi is becoming a low-cost, high-power hub for data centers.
+                    futureTrends: `**Cloud Capital**: With the AWS mega-investment, Mississippi is becoming a low-cost, high-power hub for data centers.
             
 **Blue Economy**: Leveraging the Gulf Coast for unmanned maritime systems and ocean tech.
             
 **Energy**: Expansion of nuclear (Grand Gulf) and biomass energy production.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'MFLEX (Mississippi Flexible Tax Incentive)',
-                agency: 'MDA',
-                fundingAmount: 'Universal Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Invest $2.5M+',
-                    'Create 10 jobs',
-                    'Pay 110% of county/state wage',
-                    'Strategic Industry'
-                ],
-                industries: ['Manufacturing', 'Data Centers', 'Distribution'],
-                deadline: 'Rolling',
-                applicationProcess: 'Single simplified application.',
-                successRate: 'High',
-                website: 'https://mississippi.org/mflex/',
-                description: `MFLEX is a game-changer. Instead of piecing together 5 different tax credits, you get one "Universal Credit" based on your total economic impact. This credit can offset State Income Tax, Franchise Tax, and Sales/Use Tax. It is designed for speed and simplicity.`
-            },
-            {
-                name: 'ACE Fund (Advantage Mississippi)',
-                agency: 'MDA',
-                fundingAmount: 'Discretionary Cash Grant',
-                fundingType: 'Grant',
-                eligibility: [
-                    'High impact project',
-                    'Public infrastructure need',
-                    'Local partnership required'
-                ],
-                industries: ['Industrial', 'Aerospace'],
-                deadline: 'Rolling',
-                applicationProcess: 'Negotiated by MDA.',
-                successRate: 'Selective',
-                website: 'https://mississippi.org/incentives/',
-                description: `A deal-closing fund used for public infrastructure upgrades (roads, sewer, rail) needed for a new plant. If you need a new access road to your site, the ACE fund pays for it.`
-            },
-            {
-                name: 'Growth and Prosperity (GAP) Program',
-                agency: 'MDA',
-                fundingAmount: '10-year Tax Exemption',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Locate in designated GAP county (economically distressed)',
-                    'Create 8-10 jobs'
-                ],
-                industries: ['Manufacturing', 'Processing'],
-                deadline: 'Rolling',
-                applicationProcess: 'Designation based.',
-                successRate: 'High',
-                website: 'https://mississippi.org/incentives/',
-                description: `Exempts businesses in certain underdeveloped counties from ALL state income and franchise taxes for up to 10 years. Also exempts sales tax on equipment. It is effectively a tax-free holiday.`
-            },
-            {
-                name: 'Mississippi Seed Fund',
-                agency: 'Innovate Mississippi',
-                fundingAmount: '$10,000 - $100,000',
-                fundingType: 'Hybrid',
-                eligibility: [
-                    'Tech-based startup',
-                    'Based in Mississippi',
-                    'High growth potential'
-                ],
-                industries: ['Tech', 'Startup', 'Deep Tech'],
-                deadline: 'Rolling',
-                applicationProcess: 'Pitch to Innovate MS.',
-                successRate: 'Competitive',
-                website: 'https://www.innovatemsz.com/',
-                description: `Provides pre-seed and seed funding for Mississippi tech startups. Includes "Proof of Concept" awards (cash) and Seed Funds (convertible notes). Critical for the Jackson tech ecosystem.`
-            },
-            {
-                name: 'Advantage Jobs Program',
-                agency: 'MDA',
-                fundingAmount: 'Cash Rebate (90% of Withholding)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Create 25 jobs (or 10 in some areas)',
-                    'Pay 110% of average wage',
-                    'Industry specific'
-                ],
-                industries: ['Manufacturing', 'Data Centers', 'Regional HQ'],
-                deadline: 'Quarterly',
-                applicationProcess: 'Filing with Dept of Revenue.',
-                successRate: 'High',
-                website: 'https://mississippi.org/incentives/',
-                description: `A cash rebate program that refunds 90% of the state income tax withheld from employees for up to 10 years. This puts actual cash back into the company's operating budget every quarter.`
-            },
-            {
-                name: 'Workforce Enhancement Training (WET) Fund',
-                agency: 'Community Colleges',
-                fundingAmount: '100% Training Costs',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Train new or existing employees',
-                    'Partner with Comm College'
-                ],
-                industries: ['All Eligible'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply with local college.',
-                successRate: 'High',
-                website: 'https://www.mccb.edu/',
-                description: `State funds pay for custom training programs delivered by the community college system. Can cover instructor costs, materials, and vendor training. Mississippi's workforce training is ranked top-tier.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'MFLEX (Mississippi Flexible Tax Incentive)',
+            agency: 'MDA',
+            fundingAmount: 'Universal Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Invest $2.5M+',
+                'Create 10 jobs',
+                'Pay 110% of county/state wage',
+                'Strategic Industry'
+            ],
+            industries: ['Manufacturing', 'Data Centers', 'Distribution'],
+            deadline: 'Rolling',
+            applicationProcess: 'Single simplified application.',
+            successRate: 'High',
+            website: 'https://mississippi.org/mflex/',
+            description: `MFLEX is a game-changer. Instead of piecing together 5 different tax credits, you get one "Universal Credit" based on your total economic impact. This credit can offset State Income Tax, Franchise Tax, and Sales/Use Tax. It is designed for speed and simplicity.`
+        },
+        {
+            name: 'ACE Fund (Advantage Mississippi)',
+            agency: 'MDA',
+            fundingAmount: 'Discretionary Cash Grant',
+            fundingType: 'Grant',
+            eligibility: [
+                'High impact project',
+                'Public infrastructure need',
+                'Local partnership required'
+            ],
+            industries: ['Industrial', 'Aerospace'],
+            deadline: 'Rolling',
+            applicationProcess: 'Negotiated by MDA.',
+            successRate: 'Selective',
+            website: 'https://mississippi.org/incentives/',
+            description: `A deal-closing fund used for public infrastructure upgrades (roads, sewer, rail) needed for a new plant. If you need a new access road to your site, the ACE fund pays for it.`
+        },
+        {
+            name: 'Growth and Prosperity (GAP) Program',
+            agency: 'MDA',
+            fundingAmount: '10-year Tax Exemption',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Locate in designated GAP county (economically distressed)',
+                'Create 8-10 jobs'
+            ],
+            industries: ['Manufacturing', 'Processing'],
+            deadline: 'Rolling',
+            applicationProcess: 'Designation based.',
+            successRate: 'High',
+            website: 'https://mississippi.org/incentives/',
+            description: `Exempts businesses in certain underdeveloped counties from ALL state income and franchise taxes for up to 10 years. Also exempts sales tax on equipment. It is effectively a tax-free holiday.`
+        },
+        {
+            name: 'Mississippi Seed Fund',
+            agency: 'Innovate Mississippi',
+            fundingAmount: '$10,000 - $100,000',
+            fundingType: 'Hybrid',
+            eligibility: [
+                'Tech-based startup',
+                'Based in Mississippi',
+                'High growth potential'
+            ],
+            industries: ['Tech', 'Startup', 'Deep Tech'],
+            deadline: 'Rolling',
+            applicationProcess: 'Pitch to Innovate MS.',
+            successRate: 'Competitive',
+            website: 'https://www.innovatemsz.com/',
+            description: `Provides pre-seed and seed funding for Mississippi tech startups. Includes "Proof of Concept" awards (cash) and Seed Funds (convertible notes). Critical for the Jackson tech ecosystem.`
+        },
+        {
+            name: 'Advantage Jobs Program',
+            agency: 'MDA',
+            fundingAmount: 'Cash Rebate (90% of Withholding)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Create 25 jobs (or 10 in some areas)',
+                'Pay 110% of average wage',
+                'Industry specific'
+            ],
+            industries: ['Manufacturing', 'Data Centers', 'Regional HQ'],
+            deadline: 'Quarterly',
+            applicationProcess: 'Filing with Dept of Revenue.',
+            successRate: 'High',
+            website: 'https://mississippi.org/incentives/',
+            description: `A cash rebate program that refunds 90% of the state income tax withheld from employees for up to 10 years. This puts actual cash back into the company's operating budget every quarter.`
+        },
+        {
+            name: 'Workforce Enhancement Training (WET) Fund',
+            agency: 'Community Colleges',
+            fundingAmount: '100% Training Costs',
+            fundingType: 'Grant',
+            eligibility: [
+                'Train new or existing employees',
+                'Partner with Comm College'
+            ],
+            industries: ['All Eligible'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply with local college.',
+            successRate: 'High',
+            website: 'https://www.mccb.edu/',
+            description: `State funds pay for custom training programs delivered by the community college system. Can cover instructor costs, materials, and vendor training. Mississippi's workforce training is ranked top-tier.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Registered in Mississippi**: Must be active with Secretary of State.',
-                '**E-Verify**: Verification of all employees is mandatory in MS.',
-                '**Wage Thresholds**: Most incentives require paying >110% of the county average wage.',
-                '**Health Insurance**: Company must pay >50% of employee premium.'
-            ],
+        generalRequirements: [
+            '**Registered in Mississippi**: Must be active with Secretary of State.',
+            '**E-Verify**: Verification of all employees is mandatory in MS.',
+            '**Wage Thresholds**: Most incentives require paying >110% of the county average wage.',
+            '**Health Insurance**: Company must pay >50% of employee premium.'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'Startups (for Seed Fund)'
             ],
-            restrictions: [
-                '**Retail/Gaming**: Generally excluded from state incentives (despite gaming being big).',
-                '**Clawbacks**: Strictly enforced if job/investment targets are missed.',
-                '**Local Match**: Often required for ACE grants.'
-            ],
-            documentationNeeded: [
-                'MFLEX Application',
-                '3-Year Financial Projections',
-                'Construction Budget',
-                'Hiring & Training Plan'
-            ]
-        },
+                restrictions: [
+                    '**Retail/Gaming**: Generally excluded from state incentives (despite gaming being big).',
+                    '**Clawbacks**: Strictly enforced if job/investment targets are missed.',
+                    '**Local Match**: Often required for ACE grants.'
+                ],
+                    documentationNeeded: [
+                        'MFLEX Application',
+                        '3-Year Financial Projections',
+                        'Construction Budget',
+                        'Hiring & Training Plan'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `Mississippi has simplified its process significantly with MFLEX.
+    applicationProcess: {
+        guide: `Mississippi has simplified its process significantly with MFLEX.
 
 **Phase 1: Project Scoping**
 Meet with MDA (Mississippi Development Authority). They will assign a project manager.
@@ -11597,59 +11579,59 @@ You file your taxes and apply the credit. For Advantage Jobs rebates, you file q
                     timeframe: 'Quarterly'
                 }
             ],
-            tips: [
-                '**Energy Partner**: Coordinate with Entergy or Mississippi Power early. They have their own pots of grant money for economic development.',
-                '**Site Readiness**: Look at the "Golden Triangle" if you need a mega-site. It is one of the best industrial ecosystems in the South.',
-                '**Innovate MS**: If you are a startup, go to Innovate Mississippi immediately. They are the gateway to capital.',
-                '**Cost of Living**: Use the low COL as a recruiting tool. Wages go 30% further here than in urban centers.'
-            ]
-        },
+                tips: [
+                    '**Energy Partner**: Coordinate with Entergy or Mississippi Power early. They have their own pots of grant money for economic development.',
+                    '**Site Readiness**: Look at the "Golden Triangle" if you need a mega-site. It is one of the best industrial ecosystems in the South.',
+                    '**Innovate MS**: If you are a startup, go to Innovate Mississippi immediately. They are the gateway to capital.',
+                    '**Cost of Living**: Use the low COL as a recruiting tool. Wages go 30% further here than in urban centers.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Automotive',
-                    description: 'Nissan (Canton), Toyota (Blue Springs), PACCAR. Massive automotive corridor.',
-                    funding: 'MFLEX'
-                },
-                {
-                    name: 'Shipbuilding / Aerospace',
-                    description: 'Ingalls (Pascagoula) building Navy destroyers. NASA Stennis testing rockets.',
-                    funding: 'ACE Fund'
-                },
-                {
-                    name: 'Data Centers',
-                    description: 'Amazon Web Services (AWS) investing $10B+. Specific tax exemptions.',
-                    funding: 'Tech Exemptions'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Automotive',
+                description: 'Nissan (Canton), Toyota (Blue Springs), PACCAR. Massive automotive corridor.',
+                funding: 'MFLEX'
+            },
+            {
+                name: 'Shipbuilding / Aerospace',
+                description: 'Ingalls (Pascagoula) building Navy destroyers. NASA Stennis testing rockets.',
+                funding: 'ACE Fund'
+            },
+            {
+                name: 'Data Centers',
+                description: 'Amazon Web Services (AWS) investing $10B+. Specific tax exemptions.',
+                funding: 'Tech Exemptions'
+            }
+        ],
             emerging: [
                 '**Blue Economy**: Ocean and maritime technology on the Gulf Coast.',
                 '**Forestry Products**: innovative timber and biomass use.',
                 '**Unmanned Systems**: Drones and autonomous maritime vessels.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Amazon Web Services (AWS)',
-                grant: 'MFLEX / Tax Exemptions',
-                amount: '$10B Investment',
-                outcome: 'Largest economic development project in state history, creating a cloud hub.'
-            },
-            {
-                company: 'PACCAR',
-                grant: 'Advantage Jobs',
-                amount: 'Expansion',
-                outcome: 'Engine manufacturing plant expansion in Columbus.'
-            },
-            {
-                company: 'Steel Dynamics',
-                grant: 'Overall Package',
-                amount: 'Mega-Site',
-                outcome: 'Major aluminum rolling mill in the Golden Triangle.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Amazon Web Services (AWS)',
+            grant: 'MFLEX / Tax Exemptions',
+            amount: '$10B Investment',
+            outcome: 'Largest economic development project in state history, creating a cloud hub.'
+        },
+        {
+            company: 'PACCAR',
+            grant: 'Advantage Jobs',
+            amount: 'Expansion',
+            outcome: 'Engine manufacturing plant expansion in Columbus.'
+        },
+        {
+            company: 'Steel Dynamics',
+            grant: 'Overall Package',
+            amount: 'Mega-Site',
+            outcome: 'Major aluminum rolling mill in the Golden Triangle.'
+        }
+    ],
 
         faqs: [
             {
@@ -11666,122 +11648,122 @@ You file your taxes and apply the credit. For Advantage Jobs rebates, you file q
             }
         ],
 
-        resources: [
-            {
-                name: 'Mississippi Development Authority',
-                url: 'https://mississippi.org/',
-                description: 'State economic development agency.'
-            },
-            {
-                name: 'Innovate Mississippi',
-                url: 'https://www.innovatemsz.com/',
-                description: 'Startup and tech support.'
-            },
-            {
-                name: 'Golden Triangle Link',
-                url: 'https://gtrlink.org/',
-                description: 'Regional development powerhouse.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'Mississippi Development Authority',
+                    url: 'https://mississippi.org/',
+                    description: 'State economic development agency.'
+                },
+                {
+                    name: 'Innovate Mississippi',
+                    url: 'https://www.innovatemsz.com/',
+                    description: 'Startup and tech support.'
+                },
+                {
+                    name: 'Golden Triangle Link',
+                    url: 'https://gtrlink.org/',
+                    description: 'Regional development powerhouse.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Jackson State Innovation',
-                location: 'Jackson',
-                website: 'https://www.jsums.edu/',
-                services: ['R&D', 'Talent']
-            },
-            {
-                name: 'The Bean Path',
-                location: 'Jackson',
-                website: 'https://www.thebeanpath.org/',
-                services: ['Tech Education', 'Incubator']
-            },
-            {
-                name: 'Code MS',
-                location: 'Statewide',
-                website: 'https://codems.org/',
-                services: ['Coding Bootcamp', 'Workforce']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Jackson State Innovation',
+                        location: 'Jackson',
+                        website: 'https://www.jsums.edu/',
+                        services: ['R&D', 'Talent']
+                    },
+                    {
+                        name: 'The Bean Path',
+                        location: 'Jackson',
+                        website: 'https://www.thebeanpath.org/',
+                        services: ['Tech Education', 'Incubator']
+                    },
+                    {
+                        name: 'Code MS',
+                        location: 'Statewide',
+                        website: 'https://codems.org/',
+                        services: ['Coding Bootcamp', 'Workforce']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Jackson',
-                description: 'State Capital. Hub for healthcare, government, and emerging tech.',
-                keyIndustries: ['Healthcare', 'GovTech'],
-                programs: ['Innovate MS']
-            },
-            {
-                city: 'Biloxi / Gulfport',
-                description: 'The Coast. Blue economy, tourism, and aerospace.',
-                keyIndustries: ['Maritime', 'Aerospace'],
-                programs: ['Blue Economy Grants']
-            },
-            {
-                city: 'Starkville / Columbus',
-                description: 'The Golden Triangle. Industrial powerhouse and home to Mississippi State University.',
-                keyIndustries: ['Manufacturing', 'R&D'],
-                programs: ['GTR Link']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Jackson',
+                            description: 'State Capital. Hub for healthcare, government, and emerging tech.',
+                            keyIndustries: ['Healthcare', 'GovTech'],
+                            programs: ['Innovate MS']
+                        },
+                        {
+                            city: 'Biloxi / Gulfport',
+                            description: 'The Coast. Blue economy, tourism, and aerospace.',
+                            keyIndustries: ['Maritime', 'Aerospace'],
+                            programs: ['Blue Economy Grants']
+                        },
+                        {
+                            city: 'Starkville / Columbus',
+                            description: 'The Golden Triangle. Industrial powerhouse and home to Mississippi State University.',
+                            keyIndustries: ['Manufacturing', 'R&D'],
+                            programs: ['GTR Link']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Apply for MFLEX',
-                content: 'MFLEX is better than the legacy programs for 90% of companies. It offers cash-flow flexibility that old tax credits did not.',
-                type: 'success'
-            },
-            {
-                title: 'Data Center Safe Harbor',
-                content: 'Mississippi has specific legislation shielding data center equipment from sales tax for 20+ years. It is a hidden gem for crypto/AI computing.',
-                type: 'tip'
-            },
-            {
-                title: 'Power of the Triangle',
-                content: 'The Golden Triangle Link is arguably the most effective regional economic development group in the US. If you are manufacturing, talk to them.',
-                type: 'success'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Apply for MFLEX',
+                                content: 'MFLEX is better than the legacy programs for 90% of companies. It offers cash-flow flexibility that old tax credits did not.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'Data Center Safe Harbor',
+                                content: 'Mississippi has specific legislation shielding data center equipment from sales tax for 20+ years. It is a hidden gem for crypto/AI computing.',
+                                type: 'tip'
+                            },
+                            {
+                                title: 'Power of the Triangle',
+                                content: 'The Golden Triangle Link is arguably the most effective regional economic development group in the US. If you are manufacturing, talk to them.',
+                                type: 'success'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$400M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Rebate', value: '4%', description: 'MFLEX value', color: 'text-blue-600', iconName: 'RefreshCw' },
-            { label: 'Training', value: 'Free', description: 'WET Fund', color: 'text-purple-600', iconName: 'BookOpen' },
-            { label: 'Seed', value: '$100k', description: 'Startup Fund', color: 'text-orange-600', iconName: 'Rocket' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$400M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Rebate', value: '4%', description: 'MFLEX value', color: 'text-blue-600', iconName: 'RefreshCw' },
+                                { label: 'Training', value: 'Free', description: 'WET Fund', color: 'text-purple-600', iconName: 'BookOpen' },
+                                { label: 'Seed', value: '$100k', description: 'Startup Fund', color: 'text-orange-600', iconName: 'Rocket' }
+                            ],
 
-        seoKeywords: [
-            'mississippi business grants',
-            'mflex tax incentive',
-            'mississippi seed fund',
-            'small business grants jackson ms',
-            'advantage jobs program',
-            'ace fund mississippi',
-            'data center incentives ms',
-            'innovate mississippi funding',
-            'workforce training grants ms',
-            'minority business grants mississippi'
-        ],
+                                seoKeywords: [
+                                    'mississippi business grants',
+                                    'mflex tax incentive',
+                                    'mississippi seed fund',
+                                    'small business grants jackson ms',
+                                    'advantage jobs program',
+                                    'ace fund mississippi',
+                                    'data center incentives ms',
+                                    'innovate mississippi funding',
+                                    'workforce training grants ms',
+                                    'minority business grants mississippi'
+                                ],
 
-        metaDescription: 'Complete guide to Mississippi business grants and funding in 2026. Access $400M+ via MFLEX Universal Credits, Seed Funds, and Data Center Incentives.'
-    },
-    {
-        id: 'arkansas',
+                                    metaDescription: 'Complete guide to Mississippi business grants and funding in 2026. Access $400M+ via MFLEX Universal Credits, Seed Funds, and Data Center Incentives.'
+},
+{
+    id: 'arkansas',
         name: 'Arkansas',
-        slug: 'arkansas',
-        abbreviation: 'AR',
-        region: 'Southeast',
+            slug: 'arkansas',
+                abbreviation: 'AR',
+                    region: 'Southeast',
 
-        heroStats: {
-            totalFunding: '$350M+',
+                        heroStats: {
+        totalFunding: '$350M+',
             programCount: '15+',
-            successRate: '40-50%',
-            avgProcessingTime: '45-60 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '45-60 days'
+    },
 
-        overview: {
-            introduction: `Arkansas punches above its weight. Home to Walmart, Tyson Foods, and J.B. Hunt, the state has leveraged its retail logistics expertise into a growing tech hub. The Arkansas Economic Development Commission (AEDC) offers programs like "Create Rebate" (cash for payroll) and "ArkPlus" (income tax credits).
+    overview: {
+        introduction: `Arkansas punches above its weight. Home to Walmart, Tyson Foods, and J.B. Hunt, the state has leveraged its retail logistics expertise into a growing tech hub. The Arkansas Economic Development Commission (AEDC) offers programs like "Create Rebate" (cash for payroll) and "ArkPlus" (income tax credits).
             
 Northwest Arkansas (Bentonville/Fayetteville) is one of the fastest-growing metros in the US and a hotbed for startups thanks to massive investment from the Walton Family Foundation.`,
 
@@ -11789,224 +11771,224 @@ Northwest Arkansas (Bentonville/Fayetteville) is one of the fastest-growing metr
             
 Steel production is booming in Northeast Arkansas with Big River Steel (Nucor). The state has some of the lowest energy costs in the nation.`,
 
-            keyOpportunities: `**Create Rebate**: Direct cash payments equal to 3.9%-5% of your new payroll. This is annual cash, not just a tax offset.
+                keyOpportunities: `**Create Rebate**: Direct cash payments equal to 3.9%-5% of your new payroll. This is annual cash, not just a tax offset.
             
 **Tax Back**: States refunds sales tax on buildings and machinery. Immediate 6-10% savings on construction.
             
 **Equity Investment Tax Credit**: 33.3% credit for investors. Transferable. This has fueled a surge in angel/VC activity.`,
 
-            futureTrends: `**Lithium Boom**: Arkansas sits atop massive lithium brine deposits. Extraction technology is maturing and major projects are underway.
+                    futureTrends: `**Lithium Boom**: Arkansas sits atop massive lithium brine deposits. Extraction technology is maturing and major projects are underway.
             
 **Tech Corridor**: NWA is intentionally building a "Silicon" alternative. Bike trails and arts are a key recruiting tool.
             
 **Supply Chain 2.0**: Walmart is driving autonomous trucking and warehouse automation statewide.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'Create Rebate',
-                agency: 'AEDC',
-                fundingAmount: 'Cash Rebate (3.9% - 5% of payroll)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Create $2M payroll (new employees)',
-                    'Full-time jobs',
-                    'Strategic sector'
-                ],
-                industries: ['Manufacturing', 'Tech', 'HQ'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply/Contract with AEDC.',
-                successRate: 'High',
-                website: 'https://www.arkansasedc.com/incentives/business-incentives',
-                description: `Provides annual cash payments based on the payroll of new full-time permanent employees. The rebate creates a cash flow stream for up to 10 years. Minimum payroll threshold applies.`
-            },
-            {
-                name: 'Tax Back Program',
-                agency: 'AEDC',
-                fundingAmount: 'Sales Tax Refund (Building Materials)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Invest $100k+',
-                    'Create jobs',
-                    'Specific sectors ( Mfg, Tech)'
-                ],
-                industries: ['Construction', 'Manufacturing'],
-                deadline: 'Before construction',
-                applicationProcess: 'Approved before spending.',
-                successRate: 'High',
-                website: 'https://www.arkansasedc.com/',
-                description: `Refunds state and local sales taxes paid on building materials and taxable machinery. This creates an immediate 6.5% - 10% savings on construction costs.`
-            },
-            {
-                name: 'ArkPlus',
-                agency: 'AEDC',
-                fundingAmount: '10% Income Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Invest $2M - $5M',
-                    'Create payroll of $1M - $2M',
-                    'Tech or Industrial'
-                ],
-                industries: ['Tech', 'Manufacturing'],
-                deadline: 'Rolling',
-                applicationProcess: 'AEDC approval.',
-                successRate: 'Competitive',
-                website: 'https://www.arkansasedc.com/',
-                description: `Offers a state income tax credit equal to 10% of the total investment in a new location or expansion. Can be used to offset 50% of tax liability.`
-            },
-            {
-                name: 'Equity Investment Tax Credit',
-                agency: 'AEDC',
-                fundingAmount: '33.3% Investor Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Invest in tech-based AR business',
-                    'Approved business'
-                ],
-                industries: ['Investors', 'Startups'],
-                deadline: 'Annual',
-                applicationProcess: 'Discretionary. Investor applies.',
-                successRate: 'Selective',
-                website: 'https://www.arkansasedc.com/',
-                description: `Investors receive a transferable tax credit equal to 33.3% of their investment in eligible high-tech startups. This de-risks angel investment significantly.`
-            },
-            {
-                name: 'Workforce 2000',
-                agency: 'AEDC',
-                fundingAmount: 'Training Tax Credits',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Train existing employees',
-                    'Trade associations or companies'
-                ],
-                industries: ['Manufacturing'],
-                deadline: 'Rolling',
-                applicationProcess: 'Simple application.',
-                successRate: 'High',
-                website: 'https://www.arkansasedc.com/',
-                description: `Provides tax credits for training existing workforce in new technologies.`
-            },
-            {
-                name: 'Small Business Loan Guaranty',
-                agency: 'AEDC',
-                fundingAmount: 'Loan Guarantee',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Cannot get full financing otherwise',
-                    'Create jobs'
-                ],
-                industries: ['Small Business'],
-                deadline: 'Rolling',
-                applicationProcess: 'Bank applies on behalf of business.',
-                successRate: 'Variable',
-                website: 'https://www.arkansasedc.com/community-resources/small-business-funding',
-                description: `AEDC guarantees up to 50% or 75% of a bank loan, helping small businesses access capital they otherwise wouldn't qualify for.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Create Rebate',
+            agency: 'AEDC',
+            fundingAmount: 'Cash Rebate (3.9% - 5% of payroll)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Create $2M payroll (new employees)',
+                'Full-time jobs',
+                'Strategic sector'
+            ],
+            industries: ['Manufacturing', 'Tech', 'HQ'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply/Contract with AEDC.',
+            successRate: 'High',
+            website: 'https://www.arkansasedc.com/incentives/business-incentives',
+            description: `Provides annual cash payments based on the payroll of new full-time permanent employees. The rebate creates a cash flow stream for up to 10 years. Minimum payroll threshold applies.`
+        },
+        {
+            name: 'Tax Back Program',
+            agency: 'AEDC',
+            fundingAmount: 'Sales Tax Refund (Building Materials)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Invest $100k+',
+                'Create jobs',
+                'Specific sectors ( Mfg, Tech)'
+            ],
+            industries: ['Construction', 'Manufacturing'],
+            deadline: 'Before construction',
+            applicationProcess: 'Approved before spending.',
+            successRate: 'High',
+            website: 'https://www.arkansasedc.com/',
+            description: `Refunds state and local sales taxes paid on building materials and taxable machinery. This creates an immediate 6.5% - 10% savings on construction costs.`
+        },
+        {
+            name: 'ArkPlus',
+            agency: 'AEDC',
+            fundingAmount: '10% Income Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Invest $2M - $5M',
+                'Create payroll of $1M - $2M',
+                'Tech or Industrial'
+            ],
+            industries: ['Tech', 'Manufacturing'],
+            deadline: 'Rolling',
+            applicationProcess: 'AEDC approval.',
+            successRate: 'Competitive',
+            website: 'https://www.arkansasedc.com/',
+            description: `Offers a state income tax credit equal to 10% of the total investment in a new location or expansion. Can be used to offset 50% of tax liability.`
+        },
+        {
+            name: 'Equity Investment Tax Credit',
+            agency: 'AEDC',
+            fundingAmount: '33.3% Investor Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Invest in tech-based AR business',
+                'Approved business'
+            ],
+            industries: ['Investors', 'Startups'],
+            deadline: 'Annual',
+            applicationProcess: 'Discretionary. Investor applies.',
+            successRate: 'Selective',
+            website: 'https://www.arkansasedc.com/',
+            description: `Investors receive a transferable tax credit equal to 33.3% of their investment in eligible high-tech startups. This de-risks angel investment significantly.`
+        },
+        {
+            name: 'Workforce 2000',
+            agency: 'AEDC',
+            fundingAmount: 'Training Tax Credits',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Train existing employees',
+                'Trade associations or companies'
+            ],
+            industries: ['Manufacturing'],
+            deadline: 'Rolling',
+            applicationProcess: 'Simple application.',
+            successRate: 'High',
+            website: 'https://www.arkansasedc.com/',
+            description: `Provides tax credits for training existing workforce in new technologies.`
+        },
+        {
+            name: 'Small Business Loan Guaranty',
+            agency: 'AEDC',
+            fundingAmount: 'Loan Guarantee',
+            fundingType: 'Loan',
+            eligibility: [
+                'Cannot get full financing otherwise',
+                'Create jobs'
+            ],
+            industries: ['Small Business'],
+            deadline: 'Rolling',
+            applicationProcess: 'Bank applies on behalf of business.',
+            successRate: 'Variable',
+            website: 'https://www.arkansasedc.com/community-resources/small-business-funding',
+            description: `AEDC guarantees up to 50% or 75% of a bank loan, helping small businesses access capital they otherwise wouldn't qualify for.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                'Registered in Arkansas',
-                'Tax clearance',
-                'Strategic sector (Retail often excluded, but HQs allowed)',
-                'Job creation minimums vary by tier'
-            ],
+        generalRequirements: [
+            'Registered in Arkansas',
+            'Tax clearance',
+            'Strategic sector (Retail often excluded, but HQs allowed)',
+            'Job creation minimums vary by tier'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs'
             ],
-            restrictions: [
-                'Cannot stack "Create Rebate" and "ArkPlus" usually (one or the other)',
-                'Local approval required for Tax Back (city/county must agree to refund their portion)',
-                'Clawbacks enforced'
-            ],
-            documentationNeeded: [
-                'Incentive application',
-                'Local resolution (for Tax Back)',
-                'Payroll reports',
-                'Projected budget'
-            ]
-        },
+                restrictions: [
+                    'Cannot stack "Create Rebate" and "ArkPlus" usually (one or the other)',
+                    'Local approval required for Tax Back (city/county must agree to refund their portion)',
+                    'Clawbacks enforced'
+                ],
+                    documentationNeeded: [
+                        'Incentive application',
+                        'Local resolution (for Tax Back)',
+                        'Payroll reports',
+                        'Projected budget'
+                    ]
+    },
 
-        applicationProcess: {
-            steps: [
-                {
-                    step: 1,
-                    title: 'Contact AEDC',
-                    description: 'Engage with a business development manager at the state level.',
-                    timeframe: '1 week'
-                },
-                {
-                    step: 2,
-                    title: 'Proposal',
-                    description: 'AEDC presents an incentive package outlining benefits.',
-                    timeframe: '2-weeks'
-                },
-                {
-                    step: 3,
-                    title: 'Local Resolution',
-                    description: 'For Tax Back, go to city council and quorum court for approval.',
-                    timeframe: '1 month'
-                },
-                {
-                    step: 4,
-                    title: 'Agreement',
-                    description: 'Sign financial incentive agreement.',
-                    timeframe: '2 weeks'
-                },
-                {
-                    step: 5,
-                    title: 'Claim',
-                    description: 'Submit annual claims for rebates/credits.',
-                    timeframe: 'Annual'
-                }
-            ],
+    applicationProcess: {
+        steps: [
+            {
+                step: 1,
+                title: 'Contact AEDC',
+                description: 'Engage with a business development manager at the state level.',
+                timeframe: '1 week'
+            },
+            {
+                step: 2,
+                title: 'Proposal',
+                description: 'AEDC presents an incentive package outlining benefits.',
+                timeframe: '2-weeks'
+            },
+            {
+                step: 3,
+                title: 'Local Resolution',
+                description: 'For Tax Back, go to city council and quorum court for approval.',
+                timeframe: '1 month'
+            },
+            {
+                step: 4,
+                title: 'Agreement',
+                description: 'Sign financial incentive agreement.',
+                timeframe: '2 weeks'
+            },
+            {
+                step: 5,
+                title: 'Claim',
+                description: 'Submit annual claims for rebates/credits.',
+                timeframe: 'Annual'
+            }
+        ],
             tips: [
                 'Northwest Arkansas (Bentonville) is a completely different ecosystem than the rest of the state—very tech/retail focused.',
                 'The Equity Investment Tax Credit is transferable, meaning you can sell it if you have no AR tax liability.',
                 'Get the local mayor involved early; local politics matter for the Tax Back program.',
                 'Energy costs in AR are some of the lowest in the nation.'
             ]
-        },
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Retail Tech / Logistics',
-                    description: 'Walmart HQ ecosystem. massive RFID and supply chain innovation.',
-                    funding: 'Equity Investment Credit'
-                },
-                {
-                    name: 'Steel / Manufacturing',
-                    description: 'Big River Steel (Nucor). Electric arc furnaces.',
-                    funding: 'ArkPlus'
-                },
-                {
-                    name: 'Food Processing',
-                    description: 'Tyson Foods. Poultry and prepared foods.',
-                    funding: 'Create Rebate'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Retail Tech / Logistics',
+                description: 'Walmart HQ ecosystem. massive RFID and supply chain innovation.',
+                funding: 'Equity Investment Credit'
+            },
+            {
+                name: 'Steel / Manufacturing',
+                description: 'Big River Steel (Nucor). Electric arc furnaces.',
+                funding: 'ArkPlus'
+            },
+            {
+                name: 'Food Processing',
+                description: 'Tyson Foods. Poultry and prepared foods.',
+                funding: 'Create Rebate'
+            }
+        ],
             emerging: [
                 'Lithium Extraction',
                 'Cybersecurity',
                 'Fintech'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Walmart / Symbotic',
-                grant: 'Create Rebate',
-                amount: 'Strategic',
-                outcome: 'Automation of regional distribution centers.'
-            },
-            {
-                company: 'Envirotech Vehicles',
-                grant: 'ArkPlus',
-                amount: 'Factory setup',
-                outcome: 'Established EV manufacturing plant in Osceola.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Walmart / Symbotic',
+            grant: 'Create Rebate',
+            amount: 'Strategic',
+            outcome: 'Automation of regional distribution centers.'
+        },
+        {
+            company: 'Envirotech Vehicles',
+            grant: 'ArkPlus',
+            amount: 'Factory setup',
+            outcome: 'Established EV manufacturing plant in Osceola.'
+        }
+    ],
 
         faqs: [
             {
@@ -12023,341 +12005,321 @@ Steel production is booming in Northeast Arkansas with Big River Steel (Nucor). 
             }
         ],
 
-        resources: [
-            {
-                name: 'Arkansas EDC',
-                url: 'https://www.arkansasedc.com/',
-                description: 'State economic development.'
-            },
-            {
-                name: 'Little Rock Venture Center',
-                url: 'https://www.venturecenter.co/',
-                description: 'Startup accelerator.'
-            },
-            {
-                name: 'Startup Junkie',
-                url: 'https://www.startupjunkie.org/',
-                description: 'Entrepreneurial support NWA.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'Arkansas EDC',
+                    url: 'https://www.arkansasedc.com/',
+                    description: 'State economic development.'
+                },
+                {
+                    name: 'Little Rock Venture Center',
+                    url: 'https://www.venturecenter.co/',
+                    description: 'Startup accelerator.'
+                },
+                {
+                    name: 'Startup Junkie',
+                    url: 'https://www.startupjunkie.org/',
+                    description: 'Entrepreneurial support NWA.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'ARK Challenge',
-                location: 'NWA / LR',
-                website: 'https://www.arkchallenge.org/',
-                services: ['Accelerator', 'Seed Funding']
-            },
-            {
-                name: 'Conductor',
-                location: 'Conway',
-                website: 'https://conductorco.com/',
-                services: ['Incubator', 'Cowork']
-            },
-            {
-                name: 'The Brewer Family Center',
-                location: 'Fayetteville',
-                website: 'https://walton.uark.edu/entrepreneur/',
-                services: ['Entrepreneurship', 'UA Connection']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'ARK Challenge',
+                        location: 'NWA / LR',
+                        website: 'https://www.arkchallenge.org/',
+                        services: ['Accelerator', 'Seed Funding']
+                    },
+                    {
+                        name: 'Conductor',
+                        location: 'Conway',
+                        website: 'https://conductorco.com/',
+                        services: ['Incubator', 'Cowork']
+                    },
+                    {
+                        name: 'The Brewer Family Center',
+                        location: 'Fayetteville',
+                        website: 'https://walton.uark.edu/entrepreneur/',
+                        services: ['Entrepreneurship', 'UA Connection']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Bentonville',
-                description: 'Walmart HQ. Capital for retail-tech, supply chain and CPG innovation.',
-                keyIndustries: ['Retail Tech', 'CPG', 'Supply Chain'],
-                programs: ['Equity Investment Tax Credit']
-            },
-            {
-                city: 'Little Rock',
-                description: 'State Capital. Banking, fintech, and healthcare hub.',
-                keyIndustries: ['Fintech', 'Healthcare'],
-                programs: ['Venture Center']
-            },
-            {
-                city: 'Osceola / Jonesboro',
-                description: 'Northeast Steel Belt. Heavy manufacturing on the Mississippi River.',
-                keyIndustries: ['Steel', 'Manufacturing'],
-                programs: ['ArkPlus']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Bentonville',
+                            description: 'Walmart HQ. Capital for retail-tech, supply chain and CPG innovation.',
+                            keyIndustries: ['Retail Tech', 'CPG', 'Supply Chain'],
+                            programs: ['Equity Investment Tax Credit']
+                        },
+                        {
+                            city: 'Little Rock',
+                            description: 'State Capital. Banking, fintech, and healthcare hub.',
+                            keyIndustries: ['Fintech', 'Healthcare'],
+                            programs: ['Venture Center']
+                        },
+                        {
+                            city: 'Osceola / Jonesboro',
+                            description: 'Northeast Steel Belt. Heavy manufacturing on the Mississippi River.',
+                            keyIndustries: ['Steel', 'Manufacturing'],
+                            programs: ['ArkPlus']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Sell Your Credits',
-                content: 'If you invest in an Arkansas startup, you can sell the 33.3% tax credit to a local bank or corporation. It\'s almost as good as cash.',
-                type: 'success'
-            },
-            {
-                title: 'Create Rebate Cash',
-                content: 'For labor-intensive companies (call centers, factories), the Create Rebate checks can cover your utility bills for the year.',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Sell Your Credits',
+                                content: 'If you invest in an Arkansas startup, you can sell the 33.3% tax credit to a local bank or corporation. It\'s almost as good as cash.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'Create Rebate Cash',
+                                content: 'For labor-intensive companies (call centers, factories), the Create Rebate checks can cover your utility bills for the year.',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$350M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Rebate', value: '5%', description: 'Cash Payroll', color: 'text-blue-600', iconName: 'RefreshCw' },
-            { label: 'Refund', value: 'Sales Tax', description: 'Construction', color: 'text-purple-600', iconName: 'Hammer' },
-            { label: 'Investor', value: '33%', description: 'Tax Credit', color: 'text-orange-600', iconName: 'PieChart' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$350M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Rebate', value: '5%', description: 'Cash Payroll', color: 'text-blue-600', iconName: 'RefreshCw' },
+                                { label: 'Refund', value: 'Sales Tax', description: 'Construction', color: 'text-purple-600', iconName: 'Hammer' },
+                                { label: 'Investor', value: '33%', description: 'Tax Credit', color: 'text-orange-600', iconName: 'PieChart' }
+                            ],
 
-        seoKeywords: [
-            'arkansas business grants',
-            'create rebate program',
-            'tax back program arkansas',
-            'equity investment tax credit ar',
-            'northwest arkansas startup funding',
-            'arkplus tax credit',
-            'small business loans arkansas',
-            'opportunity zones little rock',
-            'startup junkie nwa',
-            'manufacturing incentives arkansas'
-        ],
+                                seoKeywords: [
+                                    'arkansas business grants',
+                                    'create rebate program',
+                                    'tax back program arkansas',
+                                    'equity investment tax credit ar',
+                                    'northwest arkansas startup funding',
+                                    'arkplus tax credit',
+                                    'small business loans arkansas',
+                                    'opportunity zones little rock',
+                                    'startup junkie nwa',
+                                    'manufacturing incentives arkansas'
+                                ],
 
-        metaDescription: 'Complete guide to Arkansas business grants and funding in 2026. Access $350M+ via Create Rebate Cash, Tax Back Refunds, and 33% Investor Credits.'
-    },
-    {
-        id: 'kansas',
+                                    metaDescription: 'Complete guide to Arkansas business grants and funding in 2026. Access $350M+ via Create Rebate Cash, Tax Back Refunds, and 33% Investor Credits.'
+},
+{
+    id: 'kansas',
         name: 'Kansas',
-        slug: 'kansas',
-        abbreviation: 'KS',
-        region: 'Midwest',
+            slug: 'kansas',
+                abbreviation: 'KS',
+                    region: 'Midwest',
 
-        heroStats: {
-            totalFunding: '$300M+',
+                        heroStats: {
+        totalFunding: '$300M+',
             programCount: '20+',
-            successRate: '40-50%',
-            avgProcessingTime: '30-45 days'
+                successRate: '40-50%',
+                    avgProcessingTime: '30-45 days'
+    },
+** Remote Work Incentive **: ROZ(Rural Opportunity Zones) pays remote workers to relocate and pays no income tax for 5 years.`
+    },
+
+    topPrograms: [
+        {
+            name: 'PEAK (Promoting Employment Across Kansas)',
+            agency: 'KS Dept of Commerce',
+            fundingAmount: '95% Payroll Withholding Retention',
+            fundingType: 'Grant',
+            eligibility: [
+                'Create 5-10 jobs (depending on county)',
+                'Pay above average county wage',
+                'Strategic industry'
+            ],
+            industries: ['Manufacturing', 'HQ', 'Services'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply before hiring.',
+            successRate: 'High',
+            website: 'https://www.kansascommerce.gov/program/taxes-and-financing/peak/',
+            description: `The flagship incentive.Instead of paying payroll withholding tax to the state, qualified companies keep 95 % of it.This is effectively a cash injection every payroll cycle for up to 10 years.`
         },
-
-        overview: {
-            introduction: `Kansas has one of the most aggressive payroll incentive programs in the nation: PEAK (Promoting Employment Across Kansas). Companies can keep **95%** of the payroll withholding tax they collect from employees.
-            
-The state is an aerospace powerhouse (Wichita is "Air Capital of the World") and hosts the Animal Health Corridor (KC to Manhattan) with over half of the world's animal health companies.`,
-
-            economicLandscape: `Wichita = Aerospace (Textron, Spirit AeroSystems). Kansas City (KS side) is a logistics, auto, and AI hub. The Panasonic EV battery plant marks a new era of advanced manufacturing.
-            
-The state invests heavily in wind energy and food processing. Net work Kansas is a powerful entrepreneurial resource.`,
-
-            keyOpportunities: `**PEAK**: Keep 95% of employee withholding tax for up to 10 years. This is essentially free cash every payroll cycle.
-            
-**HPIP**: 10% tax credit on capital investment AND sales tax exemption on machinery.
-            
-**Angel Tax Credit**: 50%—one of the highest in the nation. Runs out fast.`,
-
-            futureTrends: `**EV Manufacturing**: The Panasonic mega-site is attracting a supply chain of battery component firms.
-            
-**AI Agriculture**: KC is becoming a hub for AgTech and precision farming.
-            
-**Remote Work Incentive**: ROZ (Rural Opportunity Zones) pays remote workers to relocate and pays no income tax for 5 years.`
+        {
+            name: 'HPIP (High Performance Incentive Program)',
+            agency: 'KS Dept of Commerce',
+            fundingAmount: '10% Investment Credit + Training',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Pay above average wage',
+                ' Invest in training (>2% of payroll)',
+                'Make capital investment'
+            ],
+            industries: ['All Eligible'],
+            deadline: 'Rolling',
+            applicationProcess: 'Certification required.',
+            successRate: 'High',
+            website: 'https://www.kansascommerce.gov/program/taxes-and-financing/hpip/',
+            description: `Provides a 10 % tax credit on eligible capital investment(machinery, buildings).Crucially, it exempts the company from sales tax on that investment.It also unlocks unlimited training tax credits.`
         },
-
-        topPrograms: [
-            {
-                name: 'PEAK (Promoting Employment Across Kansas)',
-                agency: 'KS Dept of Commerce',
-                fundingAmount: '95% Payroll Withholding Retention',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Create 5-10 jobs (depending on county)',
-                    'Pay above average county wage',
-                    'Strategic industry'
-                ],
-                industries: ['Manufacturing', 'HQ', 'Services'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply before hiring.',
-                successRate: 'High',
-                website: 'https://www.kansascommerce.gov/program/taxes-and-financing/peak/',
-                description: `The flagship incentive. Instead of paying payroll withholding tax to the state, qualified companies keep 95% of it. This is effectively a cash injection every payroll cycle for up to 10 years.`
-            },
-            {
-                name: 'HPIP (High Performance Incentive Program)',
-                agency: 'KS Dept of Commerce',
-                fundingAmount: '10% Investment Credit + Training',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Pay above average wage',
-                    ' Invest in training (>2% of payroll)',
-                    'Make capital investment'
-                ],
-                industries: ['All Eligible'],
-                deadline: 'Rolling',
-                applicationProcess: 'Certification required.',
-                successRate: 'High',
-                website: 'https://www.kansascommerce.gov/program/taxes-and-financing/hpip/',
-                description: `Provides a 10% tax credit on eligible capital investment (machinery, buildings). Crucially, it exempts the company from sales tax on that investment. It also unlocks unlimited training tax credits.`
-            },
-            {
-                name: 'KIT / KIR (training)',
-                agency: 'KS Dept of Commerce',
-                fundingAmount: 'Cash for Training',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Create new jobs (KIT) or retrain (KIR)',
-                    'Pay average wage'
-                ],
-                industries: ['Manufacturing', 'Tech'],
-                deadline: 'Rolling',
-                applicationProcess: 'Competitive.',
-                successRate: 'High',
-                website: 'https://www.kansascommerce.gov/program/workforce-services/kit-kir/',
-                description: `Kansas Industrial Training (KIT) covers costs for new hires (instructors, materials, wages). Kansas Industrial Retraining (KIR) covers retraining existing staff to avoid layoffs.`
-            },
-            {
-                name: 'Angel Investor Tax Credit',
-                agency: 'KS Dept of Commerce',
-                fundingAmount: '50% Tax Credit for Investors',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Invest in KS tech/ag startup',
-                    'Certified business'
-                ],
-                industries: ['Investors', 'Startups'],
-                deadline: 'Annual Cap ($6M)',
-                applicationProcess: 'Investor applies.',
-                successRate: 'First-come, first-served',
-                website: 'https://www.kansascommerce.gov/program/taxes-and-financing/angel-investor-tax-credit/',
-                description: `Investors receive a tax credit equal to 50% of their investment in a qualified Kansas business. This is one of the highest rates in the nation (most are 25%).`
-            },
-            {
-                name: 'Rural Opportunity Zones (ROZ)',
-                agency: 'KS Dept of Commerce',
-                fundingAmount: 'Income Tax Waiver',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Move to a ROZ county (77 counties)',
-                    'Lived out of state for 5+ years'
-                ],
-                industries: ['Individuals', 'Remote Workers'],
-                deadline: 'Annual',
-                applicationProcess: 'Personal tax return.',
-                successRate: 'High',
-                website: 'https://www.kansascommerce.gov/program/taxes-and-financing/rural-opportunity-zones-roz/',
-                description: `Individuals moving to rural Kansas from out of state pay 0% state income tax for 5 years. Also offers student loan repayment ($15k).`
-            },
-            {
-                name: 'Attracting Powerful Economic Expansion (APEX)',
-                agency: 'KS Dept of Commerce',
-                fundingAmount: 'Mega-Project Incentives',
-                fundingType: 'Hybrid',
-                eligibility: [
-                    'Invest $1B+',
-                    'Specific sectors (Aerospace/Auto)'
-                ],
-                industries: ['Automotive', 'Aerospace'],
-                deadline: 'Legislative Approval',
-                applicationProcess: 'Negotiated.',
-                successRate: 'Very Selective',
-                website: 'https://www.kansascommerce.gov/',
-                description: `New tool created for mega-projects (like the Panasonic battery plant). Offers refundable tax credits up to 15% and payroll rebates.`
-            }
-        ],
+        {
+            name: 'KIT / KIR (training)',
+            agency: 'KS Dept of Commerce',
+            fundingAmount: 'Cash for Training',
+            fundingType: 'Grant',
+            eligibility: [
+                'Create new jobs (KIT) or retrain (KIR)',
+                'Pay average wage'
+            ],
+            industries: ['Manufacturing', 'Tech'],
+            deadline: 'Rolling',
+            applicationProcess: 'Competitive.',
+            successRate: 'High',
+            website: 'https://www.kansascommerce.gov/program/workforce-services/kit-kir/',
+            description: `Kansas Industrial Training(KIT) covers costs for new hires(instructors, materials, wages).Kansas Industrial Retraining(KIR) covers retraining existing staff to avoid layoffs.`
+        },
+        {
+            name: 'Angel Investor Tax Credit',
+            agency: 'KS Dept of Commerce',
+            fundingAmount: '50% Tax Credit for Investors',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Invest in KS tech/ag startup',
+                'Certified business'
+            ],
+            industries: ['Investors', 'Startups'],
+            deadline: 'Annual Cap ($6M)',
+            applicationProcess: 'Investor applies.',
+            successRate: 'First-come, first-served',
+            website: 'https://www.kansascommerce.gov/program/taxes-and-financing/angel-investor-tax-credit/',
+            description: `Investors receive a tax credit equal to 50 % of their investment in a qualified Kansas business.This is one of the highest rates in the nation(most are 25 %).`
+        },
+        {
+            name: 'Rural Opportunity Zones (ROZ)',
+            agency: 'KS Dept of Commerce',
+            fundingAmount: 'Income Tax Waiver',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Move to a ROZ county (77 counties)',
+                'Lived out of state for 5+ years'
+            ],
+            industries: ['Individuals', 'Remote Workers'],
+            deadline: 'Annual',
+            applicationProcess: 'Personal tax return.',
+            successRate: 'High',
+            website: 'https://www.kansascommerce.gov/program/taxes-and-financing/rural-opportunity-zones-roz/',
+            description: `Individuals moving to rural Kansas from out of state pay 0 % state income tax for 5 years.Also offers student loan repayment($15k).`
+        },
+        {
+            name: 'Attracting Powerful Economic Expansion (APEX)',
+            agency: 'KS Dept of Commerce',
+            fundingAmount: 'Mega-Project Incentives',
+            fundingType: 'Hybrid',
+            eligibility: [
+                'Invest $1B+',
+                'Specific sectors (Aerospace/Auto)'
+            ],
+            industries: ['Automotive', 'Aerospace'],
+            deadline: 'Legislative Approval',
+            applicationProcess: 'Negotiated.',
+            successRate: 'Very Selective',
+            website: 'https://www.kansascommerce.gov/',
+            description: `New tool created for mega - projects(like the Panasonic battery plant).Offers refundable tax credits up to 15 % and payroll rebates.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                'Registered in Kansas',
-                'Tax clearance certificate',
-                'Wage standards (usually median county wage)',
-                'Health insurance (company pays >50% premium)'
-            ],
+        generalRequirements: [
+            'Registered in Kansas',
+            'Tax clearance certificate',
+            'Wage standards (usually median county wage)',
+            'Health insurance (company pays >50% premium)'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs'
             ],
-            restrictions: [
-                'Retail excluded from PEAK/HPIP',
-                'Cannot stack PEAK and HPIP credits on the same dollars',
-                'ROZ is for individuals, not companies, but helps recruiting'
-            ],
-            documentationNeeded: [
-                'PEAK application',
-                'Project description',
-                '5-year financial projection',
-                'Training plan (for KIT)'
-            ]
-        },
+                restrictions: [
+                    'Retail excluded from PEAK/HPIP',
+                    'Cannot stack PEAK and HPIP credits on the same dollars',
+                    'ROZ is for individuals, not companies, but helps recruiting'
+                ],
+                    documentationNeeded: [
+                        'PEAK application',
+                        'Project description',
+                        '5-year financial projection',
+                        'Training plan (for KIT)'
+                    ]
+    },
 
-        applicationProcess: {
-            steps: [
-                {
-                    step: 1,
-                    title: 'Regional Manager',
-                    description: 'Contact Commerce Regional Project Manager.',
-                    timeframe: '1 week'
-                },
-                {
-                    step: 2,
-                    title: 'Proposal',
-                    description: 'Receive incentive proposal.',
-                    timeframe: '2 weeks'
-                },
-                {
-                    step: 3,
-                    title: 'Application',
-                    description: 'Submit formal application for PEAK/HPIP.',
-                    timeframe: 'Monthly review'
-                },
-                {
-                    step: 4,
-                    title: 'Contract',
-                    description: 'Execute agreement.',
-                    timeframe: '2-3 weeks'
-                },
-                {
-                    step: 5,
-                    title: 'Compliance',
-                    description: 'Keep payroll records for retention audit.',
-                    timeframe: 'Quarterly'
-                }
-            ],
+    applicationProcess: {
+        steps: [
+            {
+                step: 1,
+                title: 'Regional Manager',
+                description: 'Contact Commerce Regional Project Manager.',
+                timeframe: '1 week'
+            },
+            {
+                step: 2,
+                title: 'Proposal',
+                description: 'Receive incentive proposal.',
+                timeframe: '2 weeks'
+            },
+            {
+                step: 3,
+                title: 'Application',
+                description: 'Submit formal application for PEAK/HPIP.',
+                timeframe: 'Monthly review'
+            },
+            {
+                step: 4,
+                title: 'Contract',
+                description: 'Execute agreement.',
+                timeframe: '2-3 weeks'
+            },
+            {
+                step: 5,
+                title: 'Compliance',
+                description: 'Keep payroll records for retention audit.',
+                timeframe: 'Quarterly'
+            }
+        ],
             tips: [
                 'Use ROZ as a recruiting tool. "Move here and pay 0% income tax plus get your student loans paid" is a powerful pitch.',
                 'The Angel Credit runs out fast. Investors should apply Jan 1.',
                 'Wichita has a massive ecosystem of aerospace suppliers; if you are in that vertical, go there.',
                 'The 95% PEAK retention is liquid cash—treat it as revenue in your model.'
             ]
-        },
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Aerospace',
-                    description: 'Wichita (Air Capital). Spirit AeroSystems, Textron, Bombardier.',
-                    funding: 'HPIP / KIT'
-                },
-                {
-                    name: 'Animal Health',
-                    description: 'KC Animal Health Corridor. 56% of global animal health companies are here.',
-                    funding: 'Angel Credit'
-                },
-                {
-                    name: 'Advanced Manufacturing',
-                    description: 'Panasonic EV battery plant ($4B investment).',
-                    funding: 'APEX'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Aerospace',
+                description: 'Wichita (Air Capital). Spirit AeroSystems, Textron, Bombardier.',
+                funding: 'HPIP / KIT'
+            },
+            {
+                name: 'Animal Health',
+                description: 'KC Animal Health Corridor. 56% of global animal health companies are here.',
+                funding: 'Angel Credit'
+            },
+            {
+                name: 'Advanced Manufacturing',
+                description: 'Panasonic EV battery plant ($4B investment).',
+                funding: 'APEX'
+            }
+        ],
             emerging: [
                 'Renewable Energy (Wind)',
                 'Food Processing',
                 'Logistics'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Panasonic Energy',
-                grant: 'APEX',
-                amount: '$829M package',
-                outcome: 'Building massive EV battery factory in De Soto.'
-            },
-            {
-                company: 'Textron Aviation',
-                grant: 'PEAK / HPIP',
-                amount: 'Retained',
-                outcome: 'Continued expansion of Cessna and Beechcraft lines.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Panasonic Energy',
+            grant: 'APEX',
+            amount: '$829M package',
+            outcome: 'Building massive EV battery factory in De Soto.'
+        },
+        {
+            company: 'Textron Aviation',
+            grant: 'PEAK / HPIP',
+            amount: 'Retained',
+            outcome: 'Continued expansion of Cessna and Beechcraft lines.'
+        }
+    ],
 
         faqs: [
             {
@@ -12374,267 +12336,267 @@ The state invests heavily in wind energy and food processing. Net work Kansas is
             }
         ],
 
-        resources: [
-            {
-                name: 'Kansas Commerce',
-                url: 'https://www.kansascommerce.gov/',
-                description: 'State economic development.'
-            },
-            {
-                name: 'NetWork Kansas',
-                url: 'https://www.networkkansas.com/',
-                description: 'Entrepreneurial referral center.'
-            },
-            {
-                name: 'KC Animal Health',
-                url: 'https://kcanimalhealth.thinkkc.com/',
-                description: 'Industry corridor.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'Kansas Commerce',
+                    url: 'https://www.kansascommerce.gov/',
+                    description: 'State economic development.'
+                },
+                {
+                    name: 'NetWork Kansas',
+                    url: 'https://www.networkkansas.com/',
+                    description: 'Entrepreneurial referral center.'
+                },
+                {
+                    name: 'KC Animal Health',
+                    url: 'https://kcanimalhealth.thinkkc.com/',
+                    description: 'Industry corridor.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Kansas City Digital Sandbox',
-                location: 'KC Metro',
-                website: 'https://www.digitalsandboxkc.com/',
-                services: ['Proof-of-Concept Grants', 'Startups']
-            },
-            {
-                name: 'Enterprise Center of Johnson County',
-                location: 'Overland Park',
-                website: 'https://ecjc.com/',
-                services: ['Incubator', 'Mentoring']
-            },
-            {
-                name: 'eCenter at Wichita State',
-                location: 'Wichita',
-                website: 'https://www.wichita.edu/industry_and_defense/ecenter/',
-                services: ['Accelerator', 'Prototyping']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Kansas City Digital Sandbox',
+                        location: 'KC Metro',
+                        website: 'https://www.digitalsandboxkc.com/',
+                        services: ['Proof-of-Concept Grants', 'Startups']
+                    },
+                    {
+                        name: 'Enterprise Center of Johnson County',
+                        location: 'Overland Park',
+                        website: 'https://ecjc.com/',
+                        services: ['Incubator', 'Mentoring']
+                    },
+                    {
+                        name: 'eCenter at Wichita State',
+                        location: 'Wichita',
+                        website: 'https://www.wichita.edu/industry_and_defense/ecenter/',
+                        services: ['Accelerator', 'Prototyping']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Wichita',
-                description: 'Air Capital of the World. Aerospace manufacturing and supply chain hub.',
-                keyIndustries: ['Aerospace', 'Manufacturing'],
-                programs: ['HPIP', 'KIT']
-            },
-            {
-                city: 'Kansas City (KS)',
-                description: 'Logistics, animal health, and growing tech scene. Near the Panasonic plant',
-                keyIndustries: ['Logistics', 'Animal Health', 'EV Supply'],
-                programs: ['PEAK', 'Angel Credit']
-            },
-            {
-                city: 'Manhattan / Junction City',
-                description: 'Home to K-State. Agricultural innovation and military (Fort Riley) presence.',
-                keyIndustries: ['AgTech', 'Defense'],
-                programs: ['Rural Opportunity Zones']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Wichita',
+                            description: 'Air Capital of the World. Aerospace manufacturing and supply chain hub.',
+                            keyIndustries: ['Aerospace', 'Manufacturing'],
+                            programs: ['HPIP', 'KIT']
+                        },
+                        {
+                            city: 'Kansas City (KS)',
+                            description: 'Logistics, animal health, and growing tech scene. Near the Panasonic plant',
+                            keyIndustries: ['Logistics', 'Animal Health', 'EV Supply'],
+                            programs: ['PEAK', 'Angel Credit']
+                        },
+                        {
+                            city: 'Manhattan / Junction City',
+                            description: 'Home to K-State. Agricultural innovation and military (Fort Riley) presence.',
+                            keyIndustries: ['AgTech', 'Defense'],
+                            programs: ['Rural Opportunity Zones']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Stack HPIP and PEAK',
-                content: 'While you can\'t double count, sophisticated companies use PEAK for the jobs and HPIP for the capital investment (machinery) to maximize returns.',
-                type: 'tip'
-            },
-            {
-                title: 'Recruit with ROZ',
-                content: 'If you are in a rural county, legally you can market the "No Income Tax" benefit to candidates from out of state.',
-                type: 'success'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Stack HPIP and PEAK',
+                                content: 'While you can\'t double count, sophisticated companies use PEAK for the jobs and HPIP for the capital investment (machinery) to maximize returns.',
+                                type: 'tip'
+                            },
+                            {
+                                title: 'Recruit with ROZ',
+                                content: 'If you are in a rural county, legally you can market the "No Income Tax" benefit to candidates from out of state.',
+                                type: 'success'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$300M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Retain', value: '95%', description: 'PEAK Withholding', color: 'text-blue-600', iconName: 'RefreshCw' },
-            { label: 'Angel', value: '50%', description: 'Tax Credit', color: 'text-purple-600', iconName: 'PieChart' },
-            { label: 'Income', value: '0%', description: 'Rural (ROZ)', color: 'text-orange-600', iconName: 'MapPin' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$300M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Retain', value: '95%', description: 'PEAK Withholding', color: 'text-blue-600', iconName: 'RefreshCw' },
+                                { label: 'Angel', value: '50%', description: 'Tax Credit', color: 'text-purple-600', iconName: 'PieChart' },
+                                { label: 'Income', value: '0%', description: 'Rural (ROZ)', color: 'text-orange-600', iconName: 'MapPin' }
+                            ],
 
-        seoKeywords: [
-            'kansas business grants',
-            'peak program kansas',
-            'hpip tax credit',
-            'kansas industrial training',
-            'angel investor tax credit ks',
-            'rural opportunity zones kansas',
-            'small business grants wichita',
-            'animal health corridor funding',
-            'apex incentives kansas',
-            'minority business grants kansas'
-        ],
+                                seoKeywords: [
+                                    'kansas business grants',
+                                    'peak program kansas',
+                                    'hpip tax credit',
+                                    'kansas industrial training',
+                                    'angel investor tax credit ks',
+                                    'rural opportunity zones kansas',
+                                    'small business grants wichita',
+                                    'animal health corridor funding',
+                                    'apex incentives kansas',
+                                    'minority business grants kansas'
+                                ],
 
-        metaDescription: 'Complete guide to Kansas business grants and funding in 2026. Access $300M+ via PEAK 95% Payroll Retention, 50% Angel Tax Credits, and Rural Opportunity Zones.'
-    },
-    {
-        id: 'utah',
+                                    metaDescription: 'Complete guide to Kansas business grants and funding in 2026. Access $300M+ via PEAK 95% Payroll Retention, 50% Angel Tax Credits, and Rural Opportunity Zones.'
+},
+{
+    id: 'utah',
         name: 'Utah',
-        slug: 'utah',
-        abbreviation: 'UT',
-        region: 'West',
+            slug: 'utah',
+                abbreviation: 'UT',
+                    region: 'West',
 
-        heroStats: {
-            totalFunding: '$450M+',
+                        heroStats: {
+        totalFunding: '$450M+',
             programCount: '20+',
-            successRate: '25-35%',
-            avgProcessingTime: '60-90 days'
-        },
+                successRate: '25-35%',
+                    avgProcessingTime: '60-90 days'
+    },
 
-        overview: {
-            introduction: `Utah is effectively "Silicon Valley 2.0" but with lower taxes and better skiing. The state is consistently ranked #1 for business environment. The Governor's Office of Economic Opportunity (Go Utah) runs a highly disciplined, post-performance incentive system known as EDTIF.
+    overview: {
+        introduction: `Utah is effectively "Silicon Valley 2.0" but with lower taxes and better skiing.The state is consistently ranked #1 for business environment.The Governor's Office of Economic Opportunity (Go Utah) runs a highly disciplined, post-performance incentive system known as EDTIF.
             
 Salt Lake City, Lehi, and Provo form the "Silicon Slopes"—a massive corridor of SaaS unicorns and engineering talent.`,
 
-            economicLandscape: `The "Silicon Slopes" (Lehi/Provo) is home to Qualtrics, Domo, Adobe, and practically every major SaaS sales team in the US.
+            economicLandscape: `The "Silicon Slopes"(Lehi / Provo) is home to Qualtrics, Domo, Adobe, and practically every major SaaS sales team in the US.
             
-Beyond software, Utah is a powerhouse in Aerospace (Northrop Grumman), Life Sciences (BioHive), and Outdoor Products (Black Diamond).`,
+Beyond software, Utah is a powerhouse in Aerospace(Northrop Grumman), Life Sciences(BioHive), and Outdoor Products(Black Diamond).`,
 
-            keyOpportunities: `**EDTIF Tax Credits**: The flagship incentive. It is refundable (cash back) but strictly post-performance. You must create the jobs first.
+                keyOpportunities: `** EDTIF Tax Credits **: The flagship incentive.It is refundable(cash back) but strictly post - performance.You must create the jobs first.
             
-**Manufacturing Modernization**: A unique grant that pays you to automate processes, reflecting the state's tight labor market.
-            
-**Rural Growth**: The REDTIF program offers even more aggressive incentives (up to 50% rebate) for companies expanding off the Wasatch Front.`,
+** Manufacturing Modernization **: A unique grant that pays you to automate processes, reflecting the state's tight labor market.
 
-            futureTrends: `**Deep Tech**: Heavy investment in quantum computing and advanced materials.
+        ** Rural Growth **: The REDTIF program offers even more aggressive incentives(up to 50 % rebate) for companies expanding off the Wasatch Front.`,
+
+                    futureTrends: `** Deep Tech **: Heavy investment in quantum computing and advanced materials.
             
-**Inland Port**: The Utah Inland Port Authority is transforming logistics in the West.
+** Inland Port **: The Utah Inland Port Authority is transforming logistics in the West.
             
-**Water Tech**: Due to the Great Salt Lake challenges, water ag-tech is a massive priority.`
+** Water Tech **: Due to the Great Salt Lake challenges, water ag - tech is a massive priority.`
+    },
+
+    topPrograms: [
+        {
+            name: 'EDTIF (Tax Increment Financing)',
+            agency: 'Go Utah',
+            fundingAmount: 'Tax Credit (Rebate)',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Create 50 jobs (urban)',
+                'Pay 110% of county average wage',
+                'Strategic industry target',
+                'Compete with another state'
+            ],
+            industries: ['Tech', 'Life Science', 'Mfg', 'Aerospace'],
+            deadline: 'Rolling',
+            applicationProcess: 'Board approval required.',
+            successRate: 'Selective',
+            website: 'https://business.utah.gov/edtif/',
+            description: `The gold standard of Utah incentives.A refundable tax credit for up to 20 years.Companies receive a cash rebate of up to 30 % of the new state taxes(sales, corporate, withholding) they generate.strictly post - performance.`
         },
+        {
+            name: 'REDTIF (Rural EDTIF)',
+            agency: 'Go Utah',
+            fundingAmount: 'Tax Credit (up to 50%)',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Locate in rural county',
+                'Create new jobs (thresholds lower than urban)',
+                'Pay 110% wage'
+            ],
+            industries: ['Rural Business', 'Remote Work Hubs'],
+            deadline: 'Rolling',
+            applicationProcess: 'Same as EDTIF but more flexible.',
+            successRate: 'High',
+            website: 'https://business.utah.gov/rural/',
+            description: `The rural version of EDTIF.It offers a significantly higher rebate(up to 50 %) to encourage growth in places like St.George, Heber, or Logan.`
+        },
+        {
+            name: 'TAP (Technology Advancement Program)',
+            agency: 'Go Utah',
+            fundingAmount: 'Grant ($100k - $300k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Utah small business',
+                'Strategic technology',
+                'TRL 3-5 (Development phase)'
+            ],
+            industries: ['Deep Tech', 'Aerospace', 'Life Science'],
+            deadline: 'Competitive Cycles',
+            applicationProcess: 'Detailed technical proposal & pitch.',
+            successRate: 'Competitive',
+            website: 'https://business.utah.gov/innovation/tap/',
+            description: `Provides non - dilutive grants to help small businesses develop technology.Critical for the "deep tech" ecosystem.Usually requires matching funds.`
+        },
+        {
+            name: 'Manufacturing Modernization Grant',
+            agency: 'Go Utah',
+            fundingAmount: 'Grant (up to $750k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Utah manufacturer',
+                'Implement "Industry 4.0" tech',
+                'Goal: Reduce labor reliance or reshore'
+            ],
+            industries: ['Manufacturing'],
+            deadline: 'Cyclical',
+            applicationProcess: 'Grant application.',
+            successRate: 'Competitive',
+            website: 'https://business.utah.gov/manufacturing-modernization-grant/',
+            description: `Helps manufacturers modernize equipment and adopt automation to reduce reliance on labor supply(which is tight in Utah).Pays for robots, sensors, and smart factory tech.`
+        },
+        {
+            name: 'Industrial Assistance Fund (IAF)',
+            agency: 'Go Utah',
+            fundingAmount: 'Discretionary Grant',
+            fundingType: 'Grant',
+            eligibility: [
+                'Create high paying jobs',
+                'Solve infrastructure need',
+                'Corporate expansion'
+            ],
+            industries: ['Industrial'],
+            deadline: 'Rolling',
+            applicationProcess: 'Governor/Board discretion.',
+            successRate: 'Selective',
+            website: 'https://business.utah.gov/',
+            description: `A "deal closing" fund used for infrastructure or unique needs.Often used as a sweetener for major HQs that need a road or utility upgrade to say yes.`
+        },
+        {
+            name: 'Enterprise Zone (Rural)',
+            agency: 'Go Utah',
+            fundingAmount: 'Tax Credits',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Located in Enterprise Zone (Rural)',
+                'Invest in plant/equipment'
+            ],
+            industries: ['Any'],
+            deadline: 'Annual',
+            applicationProcess: 'Tax return.',
+            successRate: 'High',
+            website: 'https://business.utah.gov/rural/enterprise-zones/',
+            description: `Non - refundable tax credits for investment and job creation in designated rural zones.Good for smaller rural businesses that don't fit REDTIF.`
+}
+    ],
 
-        topPrograms: [
-            {
-                name: 'EDTIF (Tax Increment Financing)',
-                agency: 'Go Utah',
-                fundingAmount: 'Tax Credit (Rebate)',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Create 50 jobs (urban)',
-                    'Pay 110% of county average wage',
-                    'Strategic industry target',
-                    'Compete with another state'
-                ],
-                industries: ['Tech', 'Life Science', 'Mfg', 'Aerospace'],
-                deadline: 'Rolling',
-                applicationProcess: 'Board approval required.',
-                successRate: 'Selective',
-                website: 'https://business.utah.gov/edtif/',
-                description: `The gold standard of Utah incentives. A refundable tax credit for up to 20 years. Companies receive a cash rebate of up to 30% of the new state taxes (sales, corporate, withholding) they generate. strictly post-performance.`
-            },
-            {
-                name: 'REDTIF (Rural EDTIF)',
-                agency: 'Go Utah',
-                fundingAmount: 'Tax Credit (up to 50%)',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Locate in rural county',
-                    'Create new jobs (thresholds lower than urban)',
-                    'Pay 110% wage'
-                ],
-                industries: ['Rural Business', 'Remote Work Hubs'],
-                deadline: 'Rolling',
-                applicationProcess: 'Same as EDTIF but more flexible.',
-                successRate: 'High',
-                website: 'https://business.utah.gov/rural/',
-                description: `The rural version of EDTIF. It offers a significantly higher rebate (up to 50%) to encourage growth in places like St. George, Heber, or Logan.`
-            },
-            {
-                name: 'TAP (Technology Advancement Program)',
-                agency: 'Go Utah',
-                fundingAmount: 'Grant ($100k - $300k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Utah small business',
-                    'Strategic technology',
-                    'TRL 3-5 (Development phase)'
-                ],
-                industries: ['Deep Tech', 'Aerospace', 'Life Science'],
-                deadline: 'Competitive Cycles',
-                applicationProcess: 'Detailed technical proposal & pitch.',
-                successRate: 'Competitive',
-                website: 'https://business.utah.gov/innovation/tap/',
-                description: `Provides non-dilutive grants to help small businesses develop technology. Critical for the "deep tech" ecosystem. Usually requires matching funds.`
-            },
-            {
-                name: 'Manufacturing Modernization Grant',
-                agency: 'Go Utah',
-                fundingAmount: 'Grant (up to $750k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Utah manufacturer',
-                    'Implement "Industry 4.0" tech',
-                    'Goal: Reduce labor reliance or reshore'
-                ],
-                industries: ['Manufacturing'],
-                deadline: 'Cyclical',
-                applicationProcess: 'Grant application.',
-                successRate: 'Competitive',
-                website: 'https://business.utah.gov/manufacturing-modernization-grant/',
-                description: `Helps manufacturers modernize equipment and adopt automation to reduce reliance on labor supply (which is tight in Utah). Pays for robots, sensors, and smart factory tech.`
-            },
-            {
-                name: 'Industrial Assistance Fund (IAF)',
-                agency: 'Go Utah',
-                fundingAmount: 'Discretionary Grant',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Create high paying jobs',
-                    'Solve infrastructure need',
-                    'Corporate expansion'
-                ],
-                industries: ['Industrial'],
-                deadline: 'Rolling',
-                applicationProcess: 'Governor/Board discretion.',
-                successRate: 'Selective',
-                website: 'https://business.utah.gov/',
-                description: `A "deal closing" fund used for infrastructure or unique needs. Often used as a sweetener for major HQs that need a road or utility upgrade to say yes.`
-            },
-            {
-                name: 'Enterprise Zone (Rural)',
-                agency: 'Go Utah',
-                fundingAmount: 'Tax Credits',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Located in Enterprise Zone (Rural)',
-                    'Invest in plant/equipment'
-                ],
-                industries: ['Any'],
-                deadline: 'Annual',
-                applicationProcess: 'Tax return.',
-                successRate: 'High',
-                website: 'https://business.utah.gov/rural/enterprise-zones/',
-                description: `Non-refundable tax credits for investment and job creation in designated rural zones. Good for smaller rural businesses that don't fit REDTIF.`
-            }
+eligibility: {
+    generalRequirements: [
+        '**Registered in Utah**: Must be active with Commerce Dept.',
+        '**Wage Standard**: Almost all incentives require paying >110% of the county average wage.',
+        '**Local Match**: The city/county must offer an incentive first (e.g., property tax break) for the state to jump in.'
+    ],
+        businessTypes: [
+            'C-Corps, S-Corps, LLCs',
+            'Tech Startups (for TAP)'
         ],
-
-        eligibility: {
-            generalRequirements: [
-                '**Registered in Utah**: Must be active with Commerce Dept.',
-                '**Wage Standard**: Almost all incentives require paying >110% of the county average wage.',
-                '**Local Match**: The city/county must offer an incentive first (e.g., property tax break) for the state to jump in.'
-            ],
-            businessTypes: [
-                'C-Corps, S-Corps, LLCs',
-                'Tech Startups (for TAP)'
-            ],
             restrictions: [
                 '**Retail**: Excluded from EDTIF (local population service).',
                 '**Construction**: Generally excluded.',
                 '**But-For**: You must prove you are considering another state and the incentive is needed to win the deal.'
             ],
-            documentationNeeded: [
-                'Go Utah Application',
-                '3-Year Financials',
-                'Economic Impact Model (RIMS II)',
-                'Local Incentive Letter'
-            ]
-        },
+                documentationNeeded: [
+                    'Go Utah Application',
+                    '3-Year Financials',
+                    'Economic Impact Model (RIMS II)',
+                    'Local Incentive Letter'
+                ]
+},
 
-        applicationProcess: {
-            guide: `Utah's process is professional, fast, and transparent.
+applicationProcess: {
+    guide: `Utah's process is professional, fast, and transparent.
 
 **Phase 1: EDCUtah Discovery**
 Start with EDCUtah (Economic Development Corp of Utah). They are the non-profit concierge that will run the numbers and guide you.
@@ -12653,106 +12615,106 @@ You hire people, pay them, and pay your taxes. Then, an independent auditor veri
 
 **Phase 6: Rebate**
 The state cuts you a check (refundable tax credit) for 30% of the new taxes you paid.`,
-            steps: [
-                {
-                    step: 1,
-                    title: 'Discovery',
-                    description: 'Meet with EDCUtah to map out sites and incentives.',
-                    timeframe: 'Week 1'
-                },
-                {
-                    step: 2,
-                    title: 'Local Deal',
-                    description: 'Secure incentive letter from City/County.',
-                    timeframe: 'Month 1'
-                },
-                {
-                    step: 3,
-                    title: 'Board Vote',
-                    description: 'Go Utah Board votes on the incentive package.',
-                    timeframe: 'Monthly'
-                },
-                {
-                    step: 4,
-                    title: 'Performance',
-                    description: 'Hire and invest according to schedule.',
-                    timeframe: 'Ongoing'
-                },
-                {
-                    step: 5,
-                    title: 'Audit & Cash',
-                    description: 'Submit audit to get your tax rebate check.',
-                    timeframe: 'Annual'
-                }
-            ],
+        steps: [
+            {
+                step: 1,
+                title: 'Discovery',
+                description: 'Meet with EDCUtah to map out sites and incentives.',
+                timeframe: 'Week 1'
+            },
+            {
+                step: 2,
+                title: 'Local Deal',
+                description: 'Secure incentive letter from City/County.',
+                timeframe: 'Month 1'
+            },
+            {
+                step: 3,
+                title: 'Board Vote',
+                description: 'Go Utah Board votes on the incentive package.',
+                timeframe: 'Monthly'
+            },
+            {
+                step: 4,
+                title: 'Performance',
+                description: 'Hire and invest according to schedule.',
+                timeframe: 'Ongoing'
+            },
+            {
+                step: 5,
+                title: 'Audit & Cash',
+                description: 'Submit audit to get your tax rebate check.',
+                timeframe: 'Annual'
+            }
+        ],
             tips: [
                 '**Use EDCUtah**: They are free to use and know where all the hidden pockets of funding are.',
                 '**Automation First**: If you are a manufacturer, ask about the Modernization Grant immediately.',
                 '**Wage Matters**: If you aren\'t paying 110% of the county average, you occupy a "weak" negotiating position. Utah wants high wages.',
                 '**Proximity**: Lehi is the center of the universe for SaaS. If you need sales talent, be there.'
             ]
+},
+
+industryFocus: {
+    primary: [
+        {
+            name: 'Software / SaaS',
+            description: 'Silicon Slopes (Adobe, Pluralsight, Domo). The sales and engineering capital of the Rockies.',
+            funding: 'EDTIF'
         },
-
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Software / SaaS',
-                    description: 'Silicon Slopes (Adobe, Pluralsight, Domo). The sales and engineering capital of the Rockies.',
-                    funding: 'EDTIF'
-                },
-                {
-                    name: 'Life Sciences',
-                    description: 'BioHive. Medical devices, genetics (Intermountain Health), and diagnostics.',
-                    funding: 'TAP / EDTIF'
-                },
-                {
-                    name: 'Aerospace',
-                    description: 'Hill AFB anchors a massive composites and dense systems cluster (Northrop Grumman).',
-                    funding: 'EDTIF'
-                }
-            ],
-            emerging: [
-                '**Outdoor Products**: HQ for Black Diamond, Cotopaxi. Integrating tech with gear.',
-                '**Fintech**: Industrial banks and payment processing (SoFi, Galileo).',
-                '**Energy**: Hydrogen storage (Delta) and geothermal.'
-            ]
+        {
+            name: 'Life Sciences',
+            description: 'BioHive. Medical devices, genetics (Intermountain Health), and diagnostics.',
+            funding: 'TAP / EDTIF'
         },
+        {
+            name: 'Aerospace',
+            description: 'Hill AFB anchors a massive composites and dense systems cluster (Northrop Grumman).',
+            funding: 'EDTIF'
+        }
+    ],
+        emerging: [
+            '**Outdoor Products**: HQ for Black Diamond, Cotopaxi. Integrating tech with gear.',
+            '**Fintech**: Industrial banks and payment processing (SoFi, Galileo).',
+            '**Energy**: Hydrogen storage (Delta) and geothermal.'
+        ]
+},
 
-        successStories: [
-            {
-                company: 'Texas Instruments',
-                grant: 'EDTIF',
-                amount: '30% Rebate',
-                outcome: 'Building massive $11B semiconductor wafer fab in Lehi.'
-            },
-            {
-                company: 'Traeger Grills',
-                grant: 'EDTIF',
-                amount: 'HQ Expansion',
-                outcome: 'Moved global HQ to Salt Lake City, redefining the outdoor cooking market.'
-            },
-            {
-                company: 'Northrop Grumman',
-                grant: 'EDTIF',
-                amount: 'Strategic',
-                outcome: 'Major expansion for the GBSD (missile defense) program.'
-            }
-        ],
+successStories: [
+    {
+        company: 'Texas Instruments',
+        grant: 'EDTIF',
+        amount: '30% Rebate',
+        outcome: 'Building massive $11B semiconductor wafer fab in Lehi.'
+    },
+    {
+        company: 'Traeger Grills',
+        grant: 'EDTIF',
+        amount: 'HQ Expansion',
+        outcome: 'Moved global HQ to Salt Lake City, redefining the outdoor cooking market.'
+    },
+    {
+        company: 'Northrop Grumman',
+        grant: 'EDTIF',
+        amount: 'Strategic',
+        outcome: 'Major expansion for the GBSD (missile defense) program.'
+    }
+],
 
-        faqs: [
-            {
-                question: 'What is "Post-Performance"?',
-                answer: 'It means you don\'t get a dime until AFTER you have created the jobs, paid the taxes, and submitted an audit. Utah protects the taxpayer first.'
-            },
-            {
-                question: 'Is there startup cash?',
-                answer: 'Yes, the TAP grant is the main vehicle for non-dilutive startup cash ($100k+), but it is competitive and deep-tech focused.'
-            },
-            {
-                question: 'What qualifies as "Rural"?',
-                answer: 'Basically anything off the Wasatch Front (SLC/Provo/Ogden corridor). St. George, while growing, often has different tiers or counts as rural for REDTIF.'
-            }
-        ],
+    faqs: [
+        {
+            question: 'What is "Post-Performance"?',
+            answer: 'It means you don\'t get a dime until AFTER you have created the jobs, paid the taxes, and submitted an audit. Utah protects the taxpayer first.'
+        },
+        {
+            question: 'Is there startup cash?',
+            answer: 'Yes, the TAP grant is the main vehicle for non-dilutive startup cash ($100k+), but it is competitive and deep-tech focused.'
+        },
+        {
+            question: 'What qualifies as "Rural"?',
+            answer: 'Basically anything off the Wasatch Front (SLC/Provo/Ogden corridor). St. George, while growing, often has different tiers or counts as rural for REDTIF.'
+        }
+    ],
 
         resources: [
             {
@@ -12772,104 +12734,104 @@ The state cuts you a check (refundable tax credit) for 30% of the new taxes you 
             }
         ],
 
-        localResources: [
-            {
-                name: 'Silicon Slopes',
-                location: 'Lehi/Remote',
-                website: 'https://siliconslopes.com/',
-                services: ['Community', 'Events']
-            },
-            {
-                name: 'Salt Lake City Econ Dev',
-                location: 'SLC',
-                website: 'https://www.slc.gov/ed/',
-                services: ['Business Licensing', 'Loans']
-            },
-            {
-                name: 'TechRidge',
-                location: 'St. George',
-                website: 'https://techridge.com/',
-                services: ['Office Space', 'Incubation']
-            }
-        ],
+            localResources: [
+                {
+                    name: 'Silicon Slopes',
+                    location: 'Lehi/Remote',
+                    website: 'https://siliconslopes.com/',
+                    services: ['Community', 'Events']
+                },
+                {
+                    name: 'Salt Lake City Econ Dev',
+                    location: 'SLC',
+                    website: 'https://www.slc.gov/ed/',
+                    services: ['Business Licensing', 'Loans']
+                },
+                {
+                    name: 'TechRidge',
+                    location: 'St. George',
+                    website: 'https://techridge.com/',
+                    services: ['Office Space', 'Incubation']
+                }
+            ],
 
-        cityGuides: [
-            {
-                city: 'Salt Lake City',
-                description: 'The Hub. Financial center, diverse culture, and transit-connected. Great for HQs.',
-                keyIndustries: ['Finance', 'BioTech', 'SaaS'],
-                programs: ['RDA Loans']
-            },
-            {
-                city: 'Lehi',
-                description: 'Silicon Slopes Central. Choosing Lehi puts you next to Adobe, Microsoft, and Oracle.',
-                keyIndustries: ['Software', 'Sales'],
-                programs: ['EDTIF']
-            },
-            {
-                city: 'St. George',
-                description: 'The Southern Hub. Warm weather, recreation, and a fast-growing tech scene (TechRidge).',
-                keyIndustries: ['Remote Tech', 'Healthcare'],
-                programs: ['REDTIF']
-            }
-        ],
+                cityGuides: [
+                    {
+                        city: 'Salt Lake City',
+                        description: 'The Hub. Financial center, diverse culture, and transit-connected. Great for HQs.',
+                        keyIndustries: ['Finance', 'BioTech', 'SaaS'],
+                        programs: ['RDA Loans']
+                    },
+                    {
+                        city: 'Lehi',
+                        description: 'Silicon Slopes Central. Choosing Lehi puts you next to Adobe, Microsoft, and Oracle.',
+                        keyIndustries: ['Software', 'Sales'],
+                        programs: ['EDTIF']
+                    },
+                    {
+                        city: 'St. George',
+                        description: 'The Southern Hub. Warm weather, recreation, and a fast-growing tech scene (TechRidge).',
+                        keyIndustries: ['Remote Tech', 'Healthcare'],
+                        programs: ['REDTIF']
+                    }
+                ],
 
-        expertTips: [
-            {
-                title: 'Automate with Grants',
-                content: 'Use the Manufacturing Modernization Grant to buy robots. Utah has a labor shortage, so the state pays you to automate jobs rather than just find bodies.',
-                type: 'tip'
-            },
-            {
-                title: 'Go Rural (REDTIF)',
-                content: 'If you can locate a satellite office in Heber or St. George, you can tap into the REDTIF 50% rebate, which is massive compared to the urban 20-30%.',
-                type: 'success'
-            },
-            {
-                title: 'Local Match First',
-                content: 'Do not go to the state until you have a letter of support from the city. The state requires a "local match" to activate EDTIF.',
-                type: 'warning'
-            }
-        ],
+                    expertTips: [
+                        {
+                            title: 'Automate with Grants',
+                            content: 'Use the Manufacturing Modernization Grant to buy robots. Utah has a labor shortage, so the state pays you to automate jobs rather than just find bodies.',
+                            type: 'tip'
+                        },
+                        {
+                            title: 'Go Rural (REDTIF)',
+                            content: 'If you can locate a satellite office in Heber or St. George, you can tap into the REDTIF 50% rebate, which is massive compared to the urban 20-30%.',
+                            type: 'success'
+                        },
+                        {
+                            title: 'Local Match First',
+                            content: 'Do not go to the state until you have a letter of support from the city. The state requires a "local match" to activate EDTIF.',
+                            type: 'warning'
+                        }
+                    ],
 
-        metrics: [
-            { label: 'Funding', value: '$450M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Rebate', value: '30%', description: 'Urban Tax', color: 'text-blue-600', iconName: 'RefreshCw' },
-            { label: 'Rural', value: '50%', description: 'REDTIF Tax', color: 'text-purple-600', iconName: 'MapPin' },
-            { label: 'Startup', value: '$300k', description: 'TAP Grant', color: 'text-orange-600', iconName: 'Rocket' }
-        ],
+                        metrics: [
+                            { label: 'Funding', value: '$450M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                            { label: 'Rebate', value: '30%', description: 'Urban Tax', color: 'text-blue-600', iconName: 'RefreshCw' },
+                            { label: 'Rural', value: '50%', description: 'REDTIF Tax', color: 'text-purple-600', iconName: 'MapPin' },
+                            { label: 'Startup', value: '$300k', description: 'TAP Grant', color: 'text-orange-600', iconName: 'Rocket' }
+                        ],
 
-        seoKeywords: [
-            'utah business grants',
-            'edtif tax credit utah',
-            'silicon slopes funding',
-            'tap grant utah',
-            'manufacturing modernization grant',
-            'rural business grants utah',
-            'small business loans salt lake city',
-            'redtif incentives',
-            'startup funding provo',
-            'go utah grants'
-        ],
+                            seoKeywords: [
+                                'utah business grants',
+                                'edtif tax credit utah',
+                                'silicon slopes funding',
+                                'tap grant utah',
+                                'manufacturing modernization grant',
+                                'rural business grants utah',
+                                'small business loans salt lake city',
+                                'redtif incentives',
+                                'startup funding provo',
+                                'go utah grants'
+                            ],
 
-        metaDescription: 'Complete guide to Utah business grants and funding in 2026. Access $450M+ via EDTIF Tax Credits, Manufacturing Automation Grants, and Silicon Slopes funding.'
-    },
-    {
-        id: 'nevada',
+                                metaDescription: 'Complete guide to Utah business grants and funding in 2026. Access $450M+ via EDTIF Tax Credits, Manufacturing Automation Grants, and Silicon Slopes funding.'
+},
+{
+    id: 'nevada',
         name: 'Nevada',
-        slug: 'nevada',
-        abbreviation: 'NV',
-        region: 'West',
+            slug: 'nevada',
+                abbreviation: 'NV',
+                    region: 'West',
 
-        heroStats: {
-            totalFunding: '$250M+',
+                        heroStats: {
+        totalFunding: '$250M+',
             programCount: '15+',
-            successRate: '35-45%',
-            avgProcessingTime: '45-60 days'
-        },
+                successRate: '35-45%',
+                    avgProcessingTime: '45-60 days'
+    },
 
-        overview: {
-            introduction: `Nevada is arguably the most tax-friendly state in the U.S. for business, featuring NO corporate income tax, NO personal income tax, and NO franchise tax. The Governor's Office of Economic Development (GOED) supplements this with powerful discretionary incentives like the Catalyst Fund.
+    overview: {
+        introduction: `Nevada is arguably the most tax-friendly state in the U.S. for business, featuring NO corporate income tax, NO personal income tax, and NO franchise tax. The Governor's Office of Economic Development (GOED) supplements this with powerful discretionary incentives like the Catalyst Fund.
             
 The state is aggressively diversifying beyond gaming and tourism, emerging as a global hub for lithium tech, advanced manufacturing, and logistics.`,
 
@@ -12877,150 +12839,150 @@ The state is aggressively diversifying beyond gaming and tourism, emerging as a 
             
 Rural Nevada is the epicenter of the U.S. critical minerals supply chain (Lithium Loop).`,
 
-            keyOpportunities: `**Tax Abatements**: The primary tool. Validated companies pay 2% sales tax (down from ~8%) on equipment and receive 50% property tax cuts for 10 years.
+                keyOpportunities: `**Tax Abatements**: The primary tool. Validated companies pay 2% sales tax (down from ~8%) on equipment and receive 50% property tax cuts for 10 years.
             
 **Catalyst Fund**: A closing fund that provides discretionary cash grants to win major competitive projects.
             
 **Silver State Works**: Hard cash for hiring. Employers get up to $2,000 per hire for taking people off unemployment rolls.`,
 
-            futureTrends: `**Lithium Capital**: With the Thacker Pass mine and recycling hubs, Nevada controls the US battery supply chain.
+                    futureTrends: `**Lithium Capital**: With the Thacker Pass mine and recycling hubs, Nevada controls the US battery supply chain.
             
 **Water Tech**: Innovating for water conservation in the desert is a major priority and funding target.
             
 **Logistics**: Being a one-day truck drive from 60 million customers (CA, AZ, UT) without the California tax burden.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'Sales & Use Tax Abatement',
-                agency: 'GOED',
-                fundingAmount: 'Rate Reduction to 2%',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Invest $1M (Urban) or $250k (Rural)',
-                    'Create 50 jobs (Urban) or 10 (Rural)',
-                    'Pay 100% of average wage & Health Benefits'
-                ],
-                industries: ['Data Centers', 'Manufacturing', 'Aviation'],
-                deadline: 'Rolling',
-                applicationProcess: 'Board approval required.',
-                successRate: 'High',
-                website: 'https://goed.nv.gov/incentives/tax-abatements/',
-                description: `Reduces the sales tax rate on eligible capital equipment purchases to 2%. For a data center buying millions in servers or a factory buying robots, this saves massive upfront cash.`
-            },
-            {
-                name: 'Catalyst Fund',
-                agency: 'GOED',
-                fundingAmount: 'Discretionary Grant ($100k+)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Job creation primary target',
-                    'Significant capital investment',
-                    'High wage jobs',
-                    'Local community support'
-                ],
-                industries: ['Manufacturing', 'Tech', 'Logistics'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply through Regional Development Authority (RDA).',
-                successRate: 'Selective',
-                website: 'https://goed.nv.gov/incentives/catalyst-fund/',
-                description: `A discretionary closing fund used to bring high-value deals to the state. It essentially buys down the cost of expansion. You MUST apply through your local RDA (e.g., LVGEA in Vegas).`
-            },
-            {
-                name: 'Personal Property Tax Abatement',
-                agency: 'GOED',
-                fundingAmount: '50% Abatement (10 years)',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Meet investment/job benchmarks',
-                    'Industrial machinery focus'
-                ],
-                industries: ['Industrial', 'Mining', 'Logistics'],
-                deadline: 'Rolling',
-                applicationProcess: 'Board approval.',
-                successRate: 'High',
-                website: 'https://goed.nv.gov/incentives/tax-abatements/',
-                description: `Abates personal property tax (on equipment/machinery) by up to 50% for up to 10 years. Since Nevada taxes business equipment, this is critical for heavy industry to stay competitive.`
-            },
-            {
-                name: 'Silver State Works',
-                agency: 'DETR',
-                fundingAmount: '$2,000 per hire',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Hire from unemployment rolls',
-                    'Full time job (30+ hrs)',
-                    'Retain for 90 days'
-                ],
-                industries: ['All'],
-                deadline: 'Rolling',
-                applicationProcess: 'Simple application to DETR.',
-                successRate: 'High',
-                website: 'https://labor.nv.gov/Business/Silver_State_Works/',
-                description: `Employer incentive program. Provides up to $2,000 per employee in wage validations or on-the-job training allowances for hiring eligible unemployed workers. Very little paperwork compared to federal programs.`
-            },
-            {
-                name: 'Train Employees Now (TEN)',
-                agency: 'GOED',
-                fundingAmount: 'Training Grant',
-                fundingType: 'Grant',
-                eligibility: [
-                    'New or expanding company',
-                    'Short-term training needs',
-                    'Partner with community college'
-                ],
-                industries: ['Manufacturing', 'Tech'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply with training provider.',
-                successRate: 'High',
-                website: 'https://goed.nv.gov/programs/workforce-development/',
-                description: `Provides matching funds to community colleges to design custom training programs for a specific company's new hires. The state pays the college to train your people your way.`
-            },
-            {
-                name: 'Battle Born Venture',
-                agency: 'Nevada SBDC / GOED',
-                fundingAmount: 'Equity Investment',
-                fundingType: 'Hybrid',
-                eligibility: [
-                    'Nevada startup',
-                    'High growth potential',
-                    '< $5M revenue'
-                ],
-                industries: ['Tech', 'Startup', 'Life Science'],
-                deadline: 'Rolling',
-                applicationProcess: 'Pitch application.',
-                successRate: 'Competitive',
-                website: 'https://goed.nv.gov/programs/innovation-based-economic-development/',
-                description: `State venture capital fund that invests in early-stage Nevada companies. Focuses on aerospace, energy, health, and IT. Acts as a co-investor to private VC.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Sales & Use Tax Abatement',
+            agency: 'GOED',
+            fundingAmount: 'Rate Reduction to 2%',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Invest $1M (Urban) or $250k (Rural)',
+                'Create 50 jobs (Urban) or 10 (Rural)',
+                'Pay 100% of average wage & Health Benefits'
+            ],
+            industries: ['Data Centers', 'Manufacturing', 'Aviation'],
+            deadline: 'Rolling',
+            applicationProcess: 'Board approval required.',
+            successRate: 'High',
+            website: 'https://goed.nv.gov/incentives/tax-abatements/',
+            description: `Reduces the sales tax rate on eligible capital equipment purchases to 2%. For a data center buying millions in servers or a factory buying robots, this saves massive upfront cash.`
+        },
+        {
+            name: 'Catalyst Fund',
+            agency: 'GOED',
+            fundingAmount: 'Discretionary Grant ($100k+)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Job creation primary target',
+                'Significant capital investment',
+                'High wage jobs',
+                'Local community support'
+            ],
+            industries: ['Manufacturing', 'Tech', 'Logistics'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply through Regional Development Authority (RDA).',
+            successRate: 'Selective',
+            website: 'https://goed.nv.gov/incentives/catalyst-fund/',
+            description: `A discretionary closing fund used to bring high-value deals to the state. It essentially buys down the cost of expansion. You MUST apply through your local RDA (e.g., LVGEA in Vegas).`
+        },
+        {
+            name: 'Personal Property Tax Abatement',
+            agency: 'GOED',
+            fundingAmount: '50% Abatement (10 years)',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Meet investment/job benchmarks',
+                'Industrial machinery focus'
+            ],
+            industries: ['Industrial', 'Mining', 'Logistics'],
+            deadline: 'Rolling',
+            applicationProcess: 'Board approval.',
+            successRate: 'High',
+            website: 'https://goed.nv.gov/incentives/tax-abatements/',
+            description: `Abates personal property tax (on equipment/machinery) by up to 50% for up to 10 years. Since Nevada taxes business equipment, this is critical for heavy industry to stay competitive.`
+        },
+        {
+            name: 'Silver State Works',
+            agency: 'DETR',
+            fundingAmount: '$2,000 per hire',
+            fundingType: 'Grant',
+            eligibility: [
+                'Hire from unemployment rolls',
+                'Full time job (30+ hrs)',
+                'Retain for 90 days'
+            ],
+            industries: ['All'],
+            deadline: 'Rolling',
+            applicationProcess: 'Simple application to DETR.',
+            successRate: 'High',
+            website: 'https://labor.nv.gov/Business/Silver_State_Works/',
+            description: `Employer incentive program. Provides up to $2,000 per employee in wage validations or on-the-job training allowances for hiring eligible unemployed workers. Very little paperwork compared to federal programs.`
+        },
+        {
+            name: 'Train Employees Now (TEN)',
+            agency: 'GOED',
+            fundingAmount: 'Training Grant',
+            fundingType: 'Grant',
+            eligibility: [
+                'New or expanding company',
+                'Short-term training needs',
+                'Partner with community college'
+            ],
+            industries: ['Manufacturing', 'Tech'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply with training provider.',
+            successRate: 'High',
+            website: 'https://goed.nv.gov/programs/workforce-development/',
+            description: `Provides matching funds to community colleges to design custom training programs for a specific company's new hires. The state pays the college to train your people your way.`
+        },
+        {
+            name: 'Battle Born Venture',
+            agency: 'Nevada SBDC / GOED',
+            fundingAmount: 'Equity Investment',
+            fundingType: 'Hybrid',
+            eligibility: [
+                'Nevada startup',
+                'High growth potential',
+                '< $5M revenue'
+            ],
+            industries: ['Tech', 'Startup', 'Life Science'],
+            deadline: 'Rolling',
+            applicationProcess: 'Pitch application.',
+            successRate: 'Competitive',
+            website: 'https://goed.nv.gov/programs/innovation-based-economic-development/',
+            description: `State venture capital fund that invests in early-stage Nevada companies. Focuses on aerospace, energy, health, and IT. Acts as a co-investor to private VC.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Registered in Nevada**: Must be active with Secretary of State.',
-                '**Wage Requirements**: Most abatements requiring paying 100% of the statewide average wage.',
-                '**Health Insurance**: MANDATORY. You must offer a plan and pay >65% of the premium.',
-                '**Local Endorsement**: RDAs (Regional Development Authorities) must sponsor your application.'
-            ],
+        generalRequirements: [
+            '**Registered in Nevada**: Must be active with Secretary of State.',
+            '**Wage Requirements**: Most abatements requiring paying 100% of the statewide average wage.',
+            '**Health Insurance**: MANDATORY. You must offer a plan and pay >65% of the premium.',
+            '**Local Endorsement**: RDAs (Regional Development Authorities) must sponsor your application.'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'Startups (for Battle Born)'
             ],
-            restrictions: [
-                '**Retail**: Generally excluded from abatements (local service).',
-                '**Five-Year Rule**: You must maintain operations for 5 years to keep abatements.',
-                '**Clawbacks**: If you leave early or fire everyone, you pay the taxes back with interest.'
-            ],
-            documentationNeeded: [
-                'GOED Abatement Application',
-                'Equipment List (for Sales Tax)',
-                'Hiring Schedule',
-                'Proof of Health Insurance Plan'
-            ]
-        },
+                restrictions: [
+                    '**Retail**: Generally excluded from abatements (local service).',
+                    '**Five-Year Rule**: You must maintain operations for 5 years to keep abatements.',
+                    '**Clawbacks**: If you leave early or fire everyone, you pay the taxes back with interest.'
+                ],
+                    documentationNeeded: [
+                        'GOED Abatement Application',
+                        'Equipment List (for Sales Tax)',
+                        'Hiring Schedule',
+                        'Proof of Health Insurance Plan'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `Nevada's process is unique because it flows through "RDAs" (Regional Development Authorities). You generally cannot go straight to the state.
+    applicationProcess: {
+        guide: `Nevada's process is unique because it flows through "RDAs" (Regional Development Authorities). You generally cannot go straight to the state.
 
 **Phase 1: Contact RDA**
 If in Vegas, call the LVGEA. If in Reno, call EDAWN. They are your gatekeepers and advocates.
@@ -13068,59 +13030,59 @@ You sign the contract and receive a "Tax Exemption Certificate" to show vendors 
                     timeframe: 'Every 2 years'
                 }
             ],
-            tips: [
-                '**Gatekeepers**: You MUST contact the Regional Development Authority (RDA) first. Do not try to bypass them.',
-                '**Inventory Tax**: Nevada has NO inventory tax. This is a massive competitive advantage over California for warehousing.',
-                '**Data Centers**: The "Data Center Abatement" is specific and extremely powerful (up to 20 years) for massive capex projects.',
-                '**Reno vs Vegas**: Reno is the industrial/battery hub. Vegas is the entertainment/sports/tech hub. Choose accordingly.'
-            ]
-        },
+                tips: [
+                    '**Gatekeepers**: You MUST contact the Regional Development Authority (RDA) first. Do not try to bypass them.',
+                    '**Inventory Tax**: Nevada has NO inventory tax. This is a massive competitive advantage over California for warehousing.',
+                    '**Data Centers**: The "Data Center Abatement" is specific and extremely powerful (up to 20 years) for massive capex projects.',
+                    '**Reno vs Vegas**: Reno is the industrial/battery hub. Vegas is the entertainment/sports/tech hub. Choose accordingly.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Logistics / Warehousing',
-                    description: 'Proximity to CA ports without CA taxes. 24 hour reach to most of West.',
-                    funding: 'Abatements'
-                },
-                {
-                    name: 'Mining / Lithium',
-                    description: 'Lithium loop. Only active lithium mine in US. Battery recycling hub.',
-                    funding: 'Catalyst / Tax'
-                },
-                {
-                    name: 'Data Centers',
-                    description: 'Switch, Google. Massive infrastructure due to low disaster risk and cheap power.',
-                    funding: 'Data Center Abatement'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Logistics / Warehousing',
+                description: 'Proximity to CA ports without CA taxes. 24 hour reach to most of West.',
+                funding: 'Abatements'
+            },
+            {
+                name: 'Mining / Lithium',
+                description: 'Lithium loop. Only active lithium mine in US. Battery recycling hub.',
+                funding: 'Catalyst / Tax'
+            },
+            {
+                name: 'Data Centers',
+                description: 'Switch, Google. Massive infrastructure due to low disaster risk and cheap power.',
+                funding: 'Data Center Abatement'
+            }
+        ],
             emerging: [
                 '**Sports Tech**: DraftKings, UFC. Leveraging Vegas status.',
                 '**Clean Energy**: Solar and Geothermal leadership.',
                 '**Water Tech**: Desert innovation.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Tesla Gigafactory',
-                grant: 'Tax Abatements',
-                amount: '$1.3B Value',
-                outcome: 'Built largest battery factory in the world near Reno, transforming the regional economy.'
-            },
-            {
-                company: 'Google',
-                grant: 'Abatements',
-                amount: '$25M+',
-                outcome: 'Massive data center investments in Henderson and Storey County.'
-            },
-            {
-                company: 'Redwood Materials',
-                grant: 'Catalyst',
-                amount: 'Strategic',
-                outcome: 'Battery recycling giant scaling up in Northern Nevada.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Tesla Gigafactory',
+            grant: 'Tax Abatements',
+            amount: '$1.3B Value',
+            outcome: 'Built largest battery factory in the world near Reno, transforming the regional economy.'
+        },
+        {
+            company: 'Google',
+            grant: 'Abatements',
+            amount: '$25M+',
+            outcome: 'Massive data center investments in Henderson and Storey County.'
+        },
+        {
+            company: 'Redwood Materials',
+            grant: 'Catalyst',
+            amount: 'Strategic',
+            outcome: 'Battery recycling giant scaling up in Northern Nevada.'
+        }
+    ],
 
         faqs: [
             {
@@ -13137,117 +13099,117 @@ You sign the contract and receive a "Tax Exemption Certificate" to show vendors 
             }
         ],
 
-        resources: [
-            {
-                name: 'GOED',
-                url: 'https://goed.nv.gov/',
-                description: 'Governor\'s Office of Economic Development.'
-            },
-            {
-                name: 'LVGEA',
-                url: 'https://lvgea.org/',
-                description: 'Las Vegas Global Economic Alliance (RDA).'
-            },
-            {
-                name: 'EDAWN',
-                url: 'https://www.edawn.org/',
-                description: 'Economic Development Authority of Western Nevada (RDA).'
-            }
-        ],
+            resources: [
+                {
+                    name: 'GOED',
+                    url: 'https://goed.nv.gov/',
+                    description: 'Governor\'s Office of Economic Development.'
+                },
+                {
+                    name: 'LVGEA',
+                    url: 'https://lvgea.org/',
+                    description: 'Las Vegas Global Economic Alliance (RDA).'
+                },
+                {
+                    name: 'EDAWN',
+                    url: 'https://www.edawn.org/',
+                    description: 'Economic Development Authority of Western Nevada (RDA).'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'StartupNV',
-                location: 'Statewide',
-                website: 'https://startupnv.org/',
-                services: ['Incubator', 'Mentorship']
-            },
-            {
-                name: 'UNLV Black Fire',
-                location: 'Las Vegas',
-                website: 'https://www.unlv.edu/blackfire',
-                services: ['Hospitality Tech', 'Innovation']
-            },
-            {
-                name: 'Reno Hive',
-                location: 'Reno',
-                website: 'https://renohive.com/',
-                services: ['Coworking', 'Community']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'StartupNV',
+                        location: 'Statewide',
+                        website: 'https://startupnv.org/',
+                        services: ['Incubator', 'Mentorship']
+                    },
+                    {
+                        name: 'UNLV Black Fire',
+                        location: 'Las Vegas',
+                        website: 'https://www.unlv.edu/blackfire',
+                        services: ['Hospitality Tech', 'Innovation']
+                    },
+                    {
+                        name: 'Reno Hive',
+                        location: 'Reno',
+                        website: 'https://renohive.com/',
+                        services: ['Coworking', 'Community']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Las Vegas',
-                description: 'Global stage. Not just casinos—growing fast in sports tech, fintech, and health.',
-                keyIndustries: ['Hospitality', 'Tech', 'Entertainment'],
-                programs: ['LVGEA Incentives']
-            },
-            {
-                city: 'Reno',
-                description: 'The Biggest Little City. Tech manufacturing hub. Close to Tahoe. Tesla country.',
-                keyIndustries: ['Manufacturing', 'Logistics', 'Tech'],
-                programs: ['EDAWN Support']
-            },
-            {
-                city: 'Henderson',
-                description: 'Premier suburb of Vegas. Google data centers and Haas Automation HQ.',
-                keyIndustries: ['Industrial', 'Data Centers'],
-                programs: ['City Grants']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Las Vegas',
+                            description: 'Global stage. Not just casinos—growing fast in sports tech, fintech, and health.',
+                            keyIndustries: ['Hospitality', 'Tech', 'Entertainment'],
+                            programs: ['LVGEA Incentives']
+                        },
+                        {
+                            city: 'Reno',
+                            description: 'The Biggest Little City. Tech manufacturing hub. Close to Tahoe. Tesla country.',
+                            keyIndustries: ['Manufacturing', 'Logistics', 'Tech'],
+                            programs: ['EDAWN Support']
+                        },
+                        {
+                            city: 'Henderson',
+                            description: 'Premier suburb of Vegas. Google data centers and Haas Automation HQ.',
+                            keyIndustries: ['Industrial', 'Data Centers'],
+                            programs: ['City Grants']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Data Center Safe Haven',
-                content: 'Nevada offers arguably the best data center package in the US due to the combination of low heat (low cooling costs in north), cheap power, and tax abatements.',
-                type: 'success'
-            },
-            {
-                title: 'RDA is Key',
-                content: 'Your relationship with LVGEA or EDAWN will make or break your incentive application. Get them on your side immediately.',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Data Center Safe Haven',
+                                content: 'Nevada offers arguably the best data center package in the US due to the combination of low heat (low cooling costs in north), cheap power, and tax abatements.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'RDA is Key',
+                                content: 'Your relationship with LVGEA or EDAWN will make or break your incentive application. Get them on your side immediately.',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$250M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Tax', value: '0%', description: 'Corporate Tax', color: 'text-blue-600', iconName: 'Shield' },
-            { label: 'Sales', value: '2%', description: 'Abated Rate', color: 'text-purple-600', iconName: 'Tag' },
-            { label: 'Training', value: '$2000', description: 'Per Hire', color: 'text-orange-600', iconName: 'Users' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$250M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Tax', value: '0%', description: 'Corporate Tax', color: 'text-blue-600', iconName: 'Shield' },
+                                { label: 'Sales', value: '2%', description: 'Abated Rate', color: 'text-purple-600', iconName: 'Tag' },
+                                { label: 'Training', value: '$2000', description: 'Per Hire', color: 'text-orange-600', iconName: 'Users' }
+                            ],
 
-        seoKeywords: [
-            'nevada business grants',
-            'catalyst fund nevada',
-            'tax abatement nevada',
-            'silver state works',
-            'reno startup funding',
-            'las vegas small business grants',
-            'goed incentives',
-            'nevada commerce tax',
-            'start a business in nevada',
-            'nevada opportunity zones'
-        ],
+                                seoKeywords: [
+                                    'nevada business grants',
+                                    'catalyst fund nevada',
+                                    'tax abatement nevada',
+                                    'silver state works',
+                                    'reno startup funding',
+                                    'las vegas small business grants',
+                                    'goed incentives',
+                                    'nevada commerce tax',
+                                    'start a business in nevada',
+                                    'nevada opportunity zones'
+                                ],
 
-        metaDescription: 'Complete guide to Nevada business grants and funding in 2026. Access Catalyst Fund grants, 0% Corporate Tax benefits, and Sales Tax Abatements.'
-    },
-    {
-        id: 'new-mexico',
+                                    metaDescription: 'Complete guide to Nevada business grants and funding in 2026. Access Catalyst Fund grants, 0% Corporate Tax benefits, and Sales Tax Abatements.'
+},
+{
+    id: 'new-mexico',
         name: 'New Mexico',
-        slug: 'new-mexico',
-        abbreviation: 'NM',
-        region: 'Southwest',
+            slug: 'new-mexico',
+                abbreviation: 'NM',
+                    region: 'Southwest',
 
-        heroStats: {
-            totalFunding: '$300M+',
+                        heroStats: {
+        totalFunding: '$300M+',
             programCount: '20+',
-            successRate: '40-50%',
-            avgProcessingTime: '30-45 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '30-45 days'
+    },
 
-        overview: {
-            introduction: `New Mexico offers some of the most generous incentives in the nation, particularly for workforce training (JTIP) and closing deals (LEDA). The New Mexico Economic Development Department (NMEDD) is highly proactive.
+    overview: {
+        introduction: `New Mexico offers some of the most generous incentives in the nation, particularly for workforce training (JTIP) and closing deals (LEDA). The New Mexico Economic Development Department (NMEDD) is highly proactive.
             
 The state is a leader in aerospace/defense (Sandia, Los Alamos Labs), and film production (Netflix/Disney hubs). Spaceport America marks its commitment to commercial space.`,
 
@@ -13255,223 +13217,223 @@ The state is a leader in aerospace/defense (Sandia, Los Alamos Labs), and film p
             
 New Mexico's cluster of National Labs spins off deep-tech startups at a rapid pace.`,
 
-            keyOpportunities: `**LEDA**: The Local Economic Development Act provides cash grants for land/building/infrastructure, channeled through local governments.
+                keyOpportunities: `**LEDA**: The Local Economic Development Act provides cash grants for land/building/infrastructure, channeled through local governments.
             
 **JTIP**: Job Training Incentive Program rebates 50-75% of trainee wages for 6 months. It's widely considered one of the best in the nation.
             
 **Film Incentive**: A 35% refundable tax credit has turned Albuquerque into "Tamalewood."`,
 
-            futureTrends: `**Hydrogen Hub**: New Mexico is positioning as a national hydrogen production center.
+                    futureTrends: `**Hydrogen Hub**: New Mexico is positioning as a national hydrogen production center.
             
 **Bioscience**: Leveraging Los Alamos and Sandia for biotech spinoffs.
             
 **Outdoor Rec**: Cultivating an outdoor recreation economy built on land/water resources.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'LEDA (Local Economic Development Act)',
-                agency: 'NMEDD',
-                fundingAmount: 'Discretionary Cash Grant',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Qualified entity (Mfg, Non-retail)',
-                    'Create full-time jobs',
-                    'Strategic investment'
-                ],
-                industries: ['Manufacturing', 'Tech', 'Warehouse'],
-                deadline: 'Rolling',
-                applicationProcess: 'Municipality acts as fiscal agent.',
-                successRate: 'High',
-                website: 'https://edd.newmexico.gov/business-development/edd-programs-for-business/leda/',
-                description: `A closing fund used to reimburse companies for land, building, and infrastructure costs. The state grants the money to the local city/county, which then passes it to the company.`
-            },
-            {
-                name: 'JTIP (Job Training Incentive Program)',
-                agency: 'NMEDD',
-                fundingAmount: '50-75% Wage Reimbursement',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Create new jobs',
-                    'Manufacturing or non-retail export',
-                    'Hire NM residents'
-                ],
-                industries: ['All Eligible'],
-                deadline: 'Monthly Board Meetings',
-                applicationProcess: 'Apply before hiring.',
-                successRate: 'Very High',
-                website: 'https://edd.newmexico.gov/jtip/',
-                description: `Reimburses 50-75% of employee wages for up to 6 months during training. Custom training at educational institutions can also be covered. This is pure cash back.`
-            },
-            {
-                name: 'Angel Investment Tax Credit',
-                agency: 'NMEDD',
-                fundingAmount: '25% Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Invest in NM high-tech firm',
-                    'Manufacturing / Green Energy'
-                ],
-                industries: ['Investors', 'Startups'],
-                deadline: 'Annual',
-                applicationProcess: 'Investor application.',
-                successRate: 'High',
-                website: 'https://edd.newmexico.gov/',
-                description: `Investors can claim a tax credit equal to 25% of their investment in qualified New Mexico businesses. Can be claimed for up to 5 investments per year.`
-            },
-            {
-                name: 'Technology Jobs & R&D Tax Credit',
-                agency: 'Tax & Rev',
-                fundingAmount: 'Tax Credit (Double Dip)',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Conduct R&D in New Mexico',
-                    'Qualified expenditures'
-                ],
-                industries: ['Tech', 'Science'],
-                deadline: 'Annual',
-                applicationProcess: 'Tax return.',
-                successRate: 'High',
-                website: 'https://edd.newmexico.gov/',
-                description: `Offers a tax credit against gross receipts tax or payroll tax. Unique because you can take this credit AND federal R&D credits (Double Dip).`
-            },
-            {
-                name: 'Film & Media Tax Credit',
-                agency: 'NM Film Office',
-                fundingAmount: '25-35% Refundable Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Film production in NM',
-                    'Specific spend criteria'
-                ],
-                industries: ['Film', 'Media'],
-                deadline: 'Rolling',
-                applicationProcess: 'Registration requisite.',
-                successRate: 'High',
-                website: 'https://nmfilm.com/',
-                description: `One of the most aggressive film incentives in the world. Refundable tax credit of up to 35% on direct production expenditures.`
-            },
-            {
-                name: 'Collateral Support Program',
-                agency: 'NMEDD',
-                fundingAmount: 'Loan Collateral',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Small business with collateral shortfall',
-                    'Bank participation'
-                ],
-                industries: ['Small Business'],
-                deadline: 'Rolling',
-                applicationProcess: 'Through lender.',
-                successRate: 'Variable',
-                website: 'https://edd.newmexico.gov/',
-                description: `Helps businesses get bank loans by pledging a CD as collateral to cover a shortfall in the borrower's collateral coverage.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'LEDA (Local Economic Development Act)',
+            agency: 'NMEDD',
+            fundingAmount: 'Discretionary Cash Grant',
+            fundingType: 'Grant',
+            eligibility: [
+                'Qualified entity (Mfg, Non-retail)',
+                'Create full-time jobs',
+                'Strategic investment'
+            ],
+            industries: ['Manufacturing', 'Tech', 'Warehouse'],
+            deadline: 'Rolling',
+            applicationProcess: 'Municipality acts as fiscal agent.',
+            successRate: 'High',
+            website: 'https://edd.newmexico.gov/business-development/edd-programs-for-business/leda/',
+            description: `A closing fund used to reimburse companies for land, building, and infrastructure costs. The state grants the money to the local city/county, which then passes it to the company.`
+        },
+        {
+            name: 'JTIP (Job Training Incentive Program)',
+            agency: 'NMEDD',
+            fundingAmount: '50-75% Wage Reimbursement',
+            fundingType: 'Grant',
+            eligibility: [
+                'Create new jobs',
+                'Manufacturing or non-retail export',
+                'Hire NM residents'
+            ],
+            industries: ['All Eligible'],
+            deadline: 'Monthly Board Meetings',
+            applicationProcess: 'Apply before hiring.',
+            successRate: 'Very High',
+            website: 'https://edd.newmexico.gov/jtip/',
+            description: `Reimburses 50-75% of employee wages for up to 6 months during training. Custom training at educational institutions can also be covered. This is pure cash back.`
+        },
+        {
+            name: 'Angel Investment Tax Credit',
+            agency: 'NMEDD',
+            fundingAmount: '25% Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Invest in NM high-tech firm',
+                'Manufacturing / Green Energy'
+            ],
+            industries: ['Investors', 'Startups'],
+            deadline: 'Annual',
+            applicationProcess: 'Investor application.',
+            successRate: 'High',
+            website: 'https://edd.newmexico.gov/',
+            description: `Investors can claim a tax credit equal to 25% of their investment in qualified New Mexico businesses. Can be claimed for up to 5 investments per year.`
+        },
+        {
+            name: 'Technology Jobs & R&D Tax Credit',
+            agency: 'Tax & Rev',
+            fundingAmount: 'Tax Credit (Double Dip)',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Conduct R&D in New Mexico',
+                'Qualified expenditures'
+            ],
+            industries: ['Tech', 'Science'],
+            deadline: 'Annual',
+            applicationProcess: 'Tax return.',
+            successRate: 'High',
+            website: 'https://edd.newmexico.gov/',
+            description: `Offers a tax credit against gross receipts tax or payroll tax. Unique because you can take this credit AND federal R&D credits (Double Dip).`
+        },
+        {
+            name: 'Film & Media Tax Credit',
+            agency: 'NM Film Office',
+            fundingAmount: '25-35% Refundable Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Film production in NM',
+                'Specific spend criteria'
+            ],
+            industries: ['Film', 'Media'],
+            deadline: 'Rolling',
+            applicationProcess: 'Registration requisite.',
+            successRate: 'High',
+            website: 'https://nmfilm.com/',
+            description: `One of the most aggressive film incentives in the world. Refundable tax credit of up to 35% on direct production expenditures.`
+        },
+        {
+            name: 'Collateral Support Program',
+            agency: 'NMEDD',
+            fundingAmount: 'Loan Collateral',
+            fundingType: 'Loan',
+            eligibility: [
+                'Small business with collateral shortfall',
+                'Bank participation'
+            ],
+            industries: ['Small Business'],
+            deadline: 'Rolling',
+            applicationProcess: 'Through lender.',
+            successRate: 'Variable',
+            website: 'https://edd.newmexico.gov/',
+            description: `Helps businesses get bank loans by pledging a CD as collateral to cover a shortfall in the borrower's collateral coverage.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                'Registered in New Mexico',
-                'Nont-retail focused (mostly)',
-                'Solvency demonstration (financials)',
-                'Local support (Community must want you)'
-            ],
+        generalRequirements: [
+            'Registered in New Mexico',
+            'Nont-retail focused (mostly)',
+            'Solvency demonstration (financials)',
+            'Local support (Community must want you)'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs'
             ],
-            restrictions: [
-                'LEDA cannot be used for working capital or inventory',
-                'JTIP requires trainees to be NM residents for 1 year (usually)',
-                'Retail completely excluded from LEDA/JTIP'
-            ],
-            documentationNeeded: [
-                'LEDA Project Application',
-                '3-year financial statements',
-                'JTIP hiring plan',
-                'Lease or purchase agreement'
-            ]
-        },
+                restrictions: [
+                    'LEDA cannot be used for working capital or inventory',
+                    'JTIP requires trainees to be NM residents for 1 year (usually)',
+                    'Retail completely excluded from LEDA/JTIP'
+                ],
+                    documentationNeeded: [
+                        'LEDA Project Application',
+                        '3-year financial statements',
+                        'JTIP hiring plan',
+                        'Lease or purchase agreement'
+                    ]
+    },
 
-        applicationProcess: {
-            steps: [
-                {
-                    step: 1,
-                    title: 'Regional Rep',
-                    description: 'Contact your NMEDD regional representative.',
-                    timeframe: '1 week'
-                },
-                {
-                    step: 2,
-                    title: 'City Engagement',
-                    description: 'Work with the local city/county to pass a LEDA ordinance (if not already in place).',
-                    timeframe: '1-2 months'
-                },
-                {
-                    step: 3,
-                    title: 'Application',
-                    description: 'Submit LEDA/JTIP applications.',
-                    timeframe: 'Monthly deadlines'
-                },
-                {
-                    step: 4,
-                    title: 'Board Meeting',
-                    description: 'Present to the JTIP board or local council.',
-                    timeframe: 'Monthly'
-                },
-                {
-                    step: 5,
-                    title: 'PPA',
-                    description: 'Sign Project Participation Agreement (PPA).',
-                    timeframe: '2-4 weeks'
-                }
-            ],
+    applicationProcess: {
+        steps: [
+            {
+                step: 1,
+                title: 'Regional Rep',
+                description: 'Contact your NMEDD regional representative.',
+                timeframe: '1 week'
+            },
+            {
+                step: 2,
+                title: 'City Engagement',
+                description: 'Work with the local city/county to pass a LEDA ordinance (if not already in place).',
+                timeframe: '1-2 months'
+            },
+            {
+                step: 3,
+                title: 'Application',
+                description: 'Submit LEDA/JTIP applications.',
+                timeframe: 'Monthly deadlines'
+            },
+            {
+                step: 4,
+                title: 'Board Meeting',
+                description: 'Present to the JTIP board or local council.',
+                timeframe: 'Monthly'
+            },
+            {
+                step: 5,
+                title: 'PPA',
+                description: 'Sign Project Participation Agreement (PPA).',
+                timeframe: '2-4 weeks'
+            }
+        ],
             tips: [
                 'JTIP is "Best in Class". If you are hiring, you are leaving money on the table if you don\'t use it.',
                 'LEDA funds flow through the city, so your relationship with the Mayor/City Manager is critical.',
                 'The R&D tax credit is refundable for small businesses (under $5M revenue) - meaning cash back.',
                 'Santa Fe and ABQ have their own additional minimum wage/living wage rules.'
             ]
-        },
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Aerospace / Defense',
-                    description: 'Spaceport America, Virgin Galactic, Kirtland AFB. Massive DoD spend.',
-                    funding: 'LEDA / JTIP'
-                },
-                {
-                    name: 'Film & Media',
-                    description: 'Netflix and NBCUniversal have massive production hubs in Albuquerque.',
-                    funding: '35% Tax Credit'
-                },
-                {
-                    name: 'Value-Added Ag',
-                    description: 'Chile processing, pecan processing, dairy.',
-                    funding: 'LEDA'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Aerospace / Defense',
+                description: 'Spaceport America, Virgin Galactic, Kirtland AFB. Massive DoD spend.',
+                funding: 'LEDA / JTIP'
+            },
+            {
+                name: 'Film & Media',
+                description: 'Netflix and NBCUniversal have massive production hubs in Albuquerque.',
+                funding: '35% Tax Credit'
+            },
+            {
+                name: 'Value-Added Ag',
+                description: 'Chile processing, pecan processing, dairy.',
+                funding: 'LEDA'
+            }
+        ],
             emerging: [
                 'Hydrogen Energy',
                 'Bioscience',
                 'Outdoor Rec'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Intel',
-                grant: 'LEDA / JTIP',
-                amount: '$3.5B Invest',
-                outcome: 'Major expansion of Rio Rancho chip manufacturing commercial hub.'
-            },
-            {
-                company: 'Netflix',
-                grant: 'LEDA / Film Credit',
-                amount: 'Strategic',
-                outcome: 'Established one of their largest global production studios in ABQ.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Intel',
+            grant: 'LEDA / JTIP',
+            amount: '$3.5B Invest',
+            outcome: 'Major expansion of Rio Rancho chip manufacturing commercial hub.'
+        },
+        {
+            company: 'Netflix',
+            grant: 'LEDA / Film Credit',
+            amount: 'Strategic',
+            outcome: 'Established one of their largest global production studios in ABQ.'
+        }
+    ],
 
         faqs: [
             {
@@ -13488,117 +13450,117 @@ New Mexico's cluster of National Labs spins off deep-tech startups at a rapid pa
             }
         ],
 
-        resources: [
-            {
-                name: 'NMEDD',
-                url: 'https://edd.newmexico.gov/',
-                description: 'State economic development.'
-            },
-            {
-                name: 'NM Finance Authority',
-                url: 'https://www.nmfa.net/',
-                description: 'Bonding and lending.'
-            },
-            {
-                name: 'ABQid',
-                url: 'https://abqid.com/',
-                description: 'Startup accelerator.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'NMEDD',
+                    url: 'https://edd.newmexico.gov/',
+                    description: 'State economic development.'
+                },
+                {
+                    name: 'NM Finance Authority',
+                    url: 'https://www.nmfa.net/',
+                    description: 'Bonding and lending.'
+                },
+                {
+                    name: 'ABQid',
+                    url: 'https://abqid.com/',
+                    description: 'Startup accelerator.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Deep Dive Coding',
-                location: 'Albuquerque',
-                website: 'https://deepdivecoding.com/',
-                services: ['Bootcamp', 'Talent Pipeline']
-            },
-            {
-                name: 'Santa Fe Business Incubator',
-                location: 'Santa Fe',
-                website: 'https://sfbi.net/',
-                services: ['Incubator', 'Mentoring']
-            },
-            {
-                name: 'Arrowhead Center',
-                location: 'Las Cruces',
-                website: 'https://arrowheadcenter.nmsu.edu/',
-                services: ['NMSU Spinoffs', 'Accelerator']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Deep Dive Coding',
+                        location: 'Albuquerque',
+                        website: 'https://deepdivecoding.com/',
+                        services: ['Bootcamp', 'Talent Pipeline']
+                    },
+                    {
+                        name: 'Santa Fe Business Incubator',
+                        location: 'Santa Fe',
+                        website: 'https://sfbi.net/',
+                        services: ['Incubator', 'Mentoring']
+                    },
+                    {
+                        name: 'Arrowhead Center',
+                        location: 'Las Cruces',
+                        website: 'https://arrowheadcenter.nmsu.edu/',
+                        services: ['NMSU Spinoffs', 'Accelerator']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Albuquerque',
-                description: 'Largest city. Film, tech, healthcare, and aerospace hub.',
-                keyIndustries: ['Film', 'Healthcare', 'Tech'],
-                programs: ['LEDA', 'ABQid']
-            },
-            {
-                city: 'Santa Fe',
-                description: 'State Capital. Art, tourism, and government technology hub.',
-                keyIndustries: ['Art', 'GovTech', 'Wellness'],
-                programs: ['SFBI', 'Angel Tax Credit']
-            },
-            {
-                city: 'Las Cruces',
-                description: 'Borderplex. Logistics, NMSU research, and Spaceport America access.',
-                keyIndustries: ['Aerospace', 'Manufacturing', 'Logistics'],
-                programs: ['Arrowhead Center', 'JTIP']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Albuquerque',
+                            description: 'Largest city. Film, tech, healthcare, and aerospace hub.',
+                            keyIndustries: ['Film', 'Healthcare', 'Tech'],
+                            programs: ['LEDA', 'ABQid']
+                        },
+                        {
+                            city: 'Santa Fe',
+                            description: 'State Capital. Art, tourism, and government technology hub.',
+                            keyIndustries: ['Art', 'GovTech', 'Wellness'],
+                            programs: ['SFBI', 'Angel Tax Credit']
+                        },
+                        {
+                            city: 'Las Cruces',
+                            description: 'Borderplex. Logistics, NMSU research, and Spaceport America access.',
+                            keyIndustries: ['Aerospace', 'Manufacturing', 'Logistics'],
+                            programs: ['Arrowhead Center', 'JTIP']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Maximize JTIP',
-                content: 'JTIP covers 50-75% of wages. This effectively lets you hire higher-quality talent for the same net cost. Use it to poach talent.',
-                type: 'success'
-            },
-            {
-                title: 'Double Dip R&D',
-                content: 'New Mexico is one of the few places you can take the State R&D credit without reducing your Federal deduction. It\'s a massive benefit for science startups.',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Maximize JTIP',
+                                content: 'JTIP covers 50-75% of wages. This effectively lets you hire higher-quality talent for the same net cost. Use it to poach talent.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'Double Dip R&D',
+                                content: 'New Mexico is one of the few places you can take the State R&D credit without reducing your Federal deduction. It\'s a massive benefit for science startups.',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$300M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Training', value: '75%', description: 'Wage Rebate', color: 'text-blue-600', iconName: 'Users' },
-            { label: 'Film', value: '35%', description: 'Refundable Credit', color: 'text-purple-600', iconName: 'Video' },
-            { label: 'Angel', value: '25%', description: 'Tax Credit', color: 'text-orange-600', iconName: 'PieChart' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$300M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Training', value: '75%', description: 'Wage Rebate', color: 'text-blue-600', iconName: 'Users' },
+                                { label: 'Film', value: '35%', description: 'Refundable Credit', color: 'text-purple-600', iconName: 'Video' },
+                                { label: 'Angel', value: '25%', description: 'Tax Credit', color: 'text-orange-600', iconName: 'PieChart' }
+                            ],
 
-        seoKeywords: [
-            'new mexico business grants',
-            'leda grant new mexico',
-            'jtip training program',
-            'nm film tax credit',
-            'angel investment tax credit nm',
-            'small business loans albuquerque',
-            'r&d tax credit new mexico',
-            'startup funding santa fe',
-            'rural grants new mexico',
-            'minority business assistance nm'
-        ],
+                                seoKeywords: [
+                                    'new mexico business grants',
+                                    'leda grant new mexico',
+                                    'jtip training program',
+                                    'nm film tax credit',
+                                    'angel investment tax credit nm',
+                                    'small business loans albuquerque',
+                                    'r&d tax credit new mexico',
+                                    'startup funding santa fe',
+                                    'rural grants new mexico',
+                                    'minority business assistance nm'
+                                ],
 
-        metaDescription: 'Complete guide to New Mexico business grants and funding in 2026. Access LEDA Cash Grants, 75% JTIP Wage Rebates, and 35% Film Tax Credits.'
-    },
-    {
-        id: 'west-virginia',
+                                    metaDescription: 'Complete guide to New Mexico business grants and funding in 2026. Access LEDA Cash Grants, 75% JTIP Wage Rebates, and 35% Film Tax Credits.'
+},
+{
+    id: 'west-virginia',
         name: 'West Virginia',
-        slug: 'west-virginia',
-        abbreviation: 'WV',
-        region: 'Southeast',
+            slug: 'west-virginia',
+                abbreviation: 'WV',
+                    region: 'Southeast',
 
-        heroStats: {
-            totalFunding: '$200M+',
+                        heroStats: {
+        totalFunding: '$200M+',
             programCount: '12+',
-            successRate: '40-50%',
-            avgProcessingTime: '45-60 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '45-60 days'
+    },
 
-        overview: {
-            introduction: `West Virginia is aggressively transitioning its economy with substantial incentives for manufacturing, tourism, and remote work (Ascend WV). The West Virginia Department of Economic Development (WVDED) oversees these programs, focusing on diversifying beyond coal into energy, aerospace, and technology.
+    overview: {
+        introduction: `West Virginia is aggressively transitioning its economy with substantial incentives for manufacturing, tourism, and remote work (Ascend WV). The West Virginia Department of Economic Development (WVDED) oversees these programs, focusing on diversifying beyond coal into energy, aerospace, and technology.
             
 The state offers some of the lowest energy costs in the industrial world and is within an overnight drive of half the US population.`,
 
@@ -13606,147 +13568,147 @@ The state offers some of the lowest energy costs in the industrial world and is 
             
 Remote work is a major economic driver, with "Ascend WV" successfully recruiting high-earning professionals to relocate.`,
 
-            keyOpportunities: `**Remote Incentives**: Ascend WV allows remote workers to bring their jobs and receive $12,000 cash + benefits.
+                keyOpportunities: `**Remote Incentives**: Ascend WV allows remote workers to bring their jobs and receive $12,000 cash + benefits.
             
 **Training**: The Governor's Guaranteed Work Force Program provides up to $2,000 per employee for training, one of the most flexible in the nation.
             
 **Infrastructure**: The Industrial Access Road Program builds free public roads to new industrial sites, saving developers millions.`,
 
-            futureTrends: `**Clean Energy Hub**: West Virginia is central to the Appalachian Hydrogen Hub, driving billions in new investment.
+                    futureTrends: `**Clean Energy Hub**: West Virginia is central to the Appalachian Hydrogen Hub, driving billions in new investment.
             
 **Aerospace**: Growing fast in the North Central region (Fairmont/Morgantown) near federal anchors.
             
 **Outdoor Economy**: Positioning itself as the "East Coast Adventure Capital" to attract tourism and talent.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'Ascend WV',
-                agency: 'Private / State',
-                fundingAmount: '$12,000 Cash + Benefits',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Remote worker (full-time)',
-                    'Move to WV from out of state',
-                    '18+ years old',
-                    'U.S. Citizen/Green Card'
-                ],
-                industries: ['Individuals', 'Remote Work'],
-                deadline: 'Rolling (Cohorts)',
-                applicationProcess: 'Competitive application & interview.',
-                successRate: 'Selective',
-                website: 'https://ascendwv.com/',
-                description: `A national model for remote work recruitment. Pays $12,000 cash ($10k over 1st year, $2k for 2nd) to remote workers who move to WV. Includes free outdoor recreation packages, coworking space, and social programming. Not a business grant, but a huge talent attractor.`
-            },
-            {
-                name: "Governor's Guaranteed Work Force Program",
-                agency: 'WVDED',
-                fundingAmount: 'Training Grant (up to $2,000/employee)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Create 10 jobs',
-                    'Manufacturing or Tech focus',
-                    'Pay above min wage'
-                ],
-                industries: ['All Eligible'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply before training starts.',
-                successRate: 'High',
-                website: 'https://westvirginia.gov/incentives-and-programs/workforce-training/',
-                description: `Provides customized training grants for new and expanding companies. Covers tech training, quality control, and safety training. One of the most user-friendly training funds in the US.`
-            },
-            {
-                name: 'Tourism Development Act',
-                agency: 'Tourism Office',
-                fundingAmount: '25-35% Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Invest in new tourism attraction',
-                    'Draw 20%+ visitors from out of state',
-                    'Minimum investment thresholds apply'
-                ],
-                industries: ['Tourism', 'Hospitality'],
-                deadline: 'Rolling',
-                applicationProcess: 'Application to Tourism Office.',
-                successRate: 'Selective',
-                website: 'https://westvirginia.gov/incentives-and-programs/tourism-development/',
-                description: `Allows approved tourism projects (lodging, amusement, recreation) to retain a portion of the consumer sales tax they generate (up to 35% of investment value) over 10 years. Effectively a rebate on your customers' taxes.`
-            },
-            {
-                name: 'Manufacturing Investment Credit',
-                agency: 'Tax Dept',
-                fundingAmount: '5% Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Manufacturing investment',
-                    'Buy equipment/buildings'
-                ],
-                industries: ['Manufacturing'],
-                deadline: 'Annual',
-                applicationProcess: 'Tax return.',
-                successRate: 'High',
-                website: 'https://westvirginia.gov/incentives-and-programs/tax-credits-and-financing/',
-                description: `A tax credit equal to 5% of your qualified investment in new manufacturing property. Can be used to offset up to 60% of the Business Franchise Tax and Corporate Net Income Tax.`
-            },
-            {
-                name: 'Direct Loan Program',
-                agency: 'WVEDA',
-                fundingAmount: 'Low Interest Loan (up to 45% of project)',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Create jobs',
-                    'Fixed assets financing (Land/Building/Equip)'
-                ],
-                industries: ['Manufacturing', 'Industrial', 'Distribution'],
-                deadline: 'Monthly Board',
-                applicationProcess: 'Apply to WVEDA.',
-                successRate: 'Competitive',
-                website: 'https://wveda.org/',
-                description: `The WV Economic Development Authority provides low-interest direct loans (typically tied to T-notes) for land, buildings, and equipment. They often take a subordinate position to banks to close the "gap".`
-            },
-            {
-                name: 'Economic Opportunity Credit',
-                agency: 'Tax Dept',
-                fundingAmount: 'Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Create 20 jobs (or 10 in small biz)',
-                    'Qualified investment'
-                ],
-                industries: ['Manufacturing', 'HQ', 'Tech'],
-                deadline: 'Annual',
-                applicationProcess: 'Tax return.',
-                successRate: 'High',
-                website: 'https://westvirginia.gov/incentives-and-programs/tax-credits-and-financing/',
-                description: `Offset up to 80% of corporate income tax and other taxes for 13 years if you create at least 20 new jobs. The credit amount depends on the jobs created and wages paid.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Ascend WV',
+            agency: 'Private / State',
+            fundingAmount: '$12,000 Cash + Benefits',
+            fundingType: 'Grant',
+            eligibility: [
+                'Remote worker (full-time)',
+                'Move to WV from out of state',
+                '18+ years old',
+                'U.S. Citizen/Green Card'
+            ],
+            industries: ['Individuals', 'Remote Work'],
+            deadline: 'Rolling (Cohorts)',
+            applicationProcess: 'Competitive application & interview.',
+            successRate: 'Selective',
+            website: 'https://ascendwv.com/',
+            description: `A national model for remote work recruitment. Pays $12,000 cash ($10k over 1st year, $2k for 2nd) to remote workers who move to WV. Includes free outdoor recreation packages, coworking space, and social programming. Not a business grant, but a huge talent attractor.`
+        },
+        {
+            name: "Governor's Guaranteed Work Force Program",
+            agency: 'WVDED',
+            fundingAmount: 'Training Grant (up to $2,000/employee)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Create 10 jobs',
+                'Manufacturing or Tech focus',
+                'Pay above min wage'
+            ],
+            industries: ['All Eligible'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply before training starts.',
+            successRate: 'High',
+            website: 'https://westvirginia.gov/incentives-and-programs/workforce-training/',
+            description: `Provides customized training grants for new and expanding companies. Covers tech training, quality control, and safety training. One of the most user-friendly training funds in the US.`
+        },
+        {
+            name: 'Tourism Development Act',
+            agency: 'Tourism Office',
+            fundingAmount: '25-35% Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Invest in new tourism attraction',
+                'Draw 20%+ visitors from out of state',
+                'Minimum investment thresholds apply'
+            ],
+            industries: ['Tourism', 'Hospitality'],
+            deadline: 'Rolling',
+            applicationProcess: 'Application to Tourism Office.',
+            successRate: 'Selective',
+            website: 'https://westvirginia.gov/incentives-and-programs/tourism-development/',
+            description: `Allows approved tourism projects (lodging, amusement, recreation) to retain a portion of the consumer sales tax they generate (up to 35% of investment value) over 10 years. Effectively a rebate on your customers' taxes.`
+        },
+        {
+            name: 'Manufacturing Investment Credit',
+            agency: 'Tax Dept',
+            fundingAmount: '5% Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Manufacturing investment',
+                'Buy equipment/buildings'
+            ],
+            industries: ['Manufacturing'],
+            deadline: 'Annual',
+            applicationProcess: 'Tax return.',
+            successRate: 'High',
+            website: 'https://westvirginia.gov/incentives-and-programs/tax-credits-and-financing/',
+            description: `A tax credit equal to 5% of your qualified investment in new manufacturing property. Can be used to offset up to 60% of the Business Franchise Tax and Corporate Net Income Tax.`
+        },
+        {
+            name: 'Direct Loan Program',
+            agency: 'WVEDA',
+            fundingAmount: 'Low Interest Loan (up to 45% of project)',
+            fundingType: 'Loan',
+            eligibility: [
+                'Create jobs',
+                'Fixed assets financing (Land/Building/Equip)'
+            ],
+            industries: ['Manufacturing', 'Industrial', 'Distribution'],
+            deadline: 'Monthly Board',
+            applicationProcess: 'Apply to WVEDA.',
+            successRate: 'Competitive',
+            website: 'https://wveda.org/',
+            description: `The WV Economic Development Authority provides low-interest direct loans (typically tied to T-notes) for land, buildings, and equipment. They often take a subordinate position to banks to close the "gap".`
+        },
+        {
+            name: 'Economic Opportunity Credit',
+            agency: 'Tax Dept',
+            fundingAmount: 'Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Create 20 jobs (or 10 in small biz)',
+                'Qualified investment'
+            ],
+            industries: ['Manufacturing', 'HQ', 'Tech'],
+            deadline: 'Annual',
+            applicationProcess: 'Tax return.',
+            successRate: 'High',
+            website: 'https://westvirginia.gov/incentives-and-programs/tax-credits-and-financing/',
+            description: `Offset up to 80% of corporate income tax and other taxes for 13 years if you create at least 20 new jobs. The credit amount depends on the jobs created and wages paid.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Registered in WV**: Must be filed with the Secretary of State.',
-                '**Tax Clearance**: Must be in good standing with Tax Department.',
-                '**Job Creation**: Most credits are tied to net new jobs.'
-            ],
+        generalRequirements: [
+            '**Registered in WV**: Must be filed with the Secretary of State.',
+            '**Tax Clearance**: Must be in good standing with Tax Department.',
+            '**Job Creation**: Most credits are tied to net new jobs.'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'Sole Proprietors (for Ascend)'
             ],
-            restrictions: [
-                '**Retail**: Generally excluded from incentives (except Tourism).',
-                '**Ascend WV**: Strictly for individuals/remote workers, not corporate relocation.',
-                '**Clawbacks**: Apply if job counts drop below thresholds.'
-            ],
-            documentationNeeded: [
-                'WVEDA Loan Application',
-                '3-Year Financials',
-                'Training Plan (for GGWFP)',
-                'Business Plan'
-            ]
-        },
+                restrictions: [
+                    '**Retail**: Generally excluded from incentives (except Tourism).',
+                    '**Ascend WV**: Strictly for individuals/remote workers, not corporate relocation.',
+                    '**Clawbacks**: Apply if job counts drop below thresholds.'
+                ],
+                    documentationNeeded: [
+                        'WVEDA Loan Application',
+                        '3-Year Financials',
+                        'Training Plan (for GGWFP)',
+                        'Business Plan'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `West Virginia is "relationship-driven." Access to decision-makers is easier here than in larger states.
+    applicationProcess: {
+        guide: `West Virginia is "relationship-driven." Access to decision-makers is easier here than in larger states.
 
 **Phase 1: Relationship Building**
 Contact the WVDED (Department of Economic Development) Business Development team. They will assign a project manager to guide you through incentives.
@@ -13794,59 +13756,59 @@ Most tax credits are claimed on the annual return, but you may need certificatio
                     timeframe: 'Annual'
                 }
             ],
-            tips: [
-                '**WVEDA is Key**: They are a "deal closer" lender; they will take risks banks won\'t to make a project happen.',
-                '**Ascend Strategy**: Ascend WV provides incredible PR and community integration for small remote teams moving together.',
-                '**Sales Tax Rebate**: The Tourism tax credit is basically a rebate of the sales tax your customers pay—very powerful cash flow tool for hotels/resorts.',
-                '**Golden Horseshoe**: The Eastern Panhandle is effectively a DC suburb but with WV costs—ideal for fed-tech contractors.'
-            ]
-        },
+                tips: [
+                    '**WVEDA is Key**: They are a "deal closer" lender; they will take risks banks won\'t to make a project happen.',
+                    '**Ascend Strategy**: Ascend WV provides incredible PR and community integration for small remote teams moving together.',
+                    '**Sales Tax Rebate**: The Tourism tax credit is basically a rebate of the sales tax your customers pay—very powerful cash flow tool for hotels/resorts.',
+                    '**Golden Horseshoe**: The Eastern Panhandle is effectively a DC suburb but with WV costs—ideal for fed-tech contractors.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Energy / Hydrogen',
-                    description: 'ARCH2 Hydrogen Hub. Transitioning from coal to clean energy leadership.',
-                    funding: 'Federal + State'
-                },
-                {
-                    name: 'Manufacturing',
-                    description: 'Nucor Steel ($2.7B plant). Chemicals and metals valley.',
-                    funding: 'Economic Opportunity Credit'
-                },
-                {
-                    name: 'Tourism',
-                    description: 'New River Gorge National Park has caused an outdoor recreation boom.',
-                    funding: 'Tourism Act'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Energy / Hydrogen',
+                description: 'ARCH2 Hydrogen Hub. Transitioning from coal to clean energy leadership.',
+                funding: 'Federal + State'
+            },
+            {
+                name: 'Manufacturing',
+                description: 'Nucor Steel ($2.7B plant). Chemicals and metals valley.',
+                funding: 'Economic Opportunity Credit'
+            },
+            {
+                name: 'Tourism',
+                description: 'New River Gorge National Park has caused an outdoor recreation boom.',
+                funding: 'Tourism Act'
+            }
+        ],
             emerging: [
                 '**Aerospace**: Strong cluster near FBI/NASA facilities.',
                 '**Remote Tech**: Driven by Ascend WV talent influx.',
                 '**Timber/Hardwoods**: Value-added wood products.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Nucor Steel',
-                grant: 'Incentive Package',
-                amount: '$2.7B Invest',
-                outcome: 'Building massive steel sheet mill in Mason County, the largest single investment in state history.'
-            },
-            {
-                company: 'Ascend WV Members',
-                grant: 'Ascend',
-                amount: '$12k ea',
-                outcome: 'Hundreds of remote workers relocated to Morgantown, Lewisburg, and the Eastern Panhandle.'
-            },
-            {
-                company: 'Form Energy',
-                grant: 'Incentive Package',
-                amount: '$760M Invest',
-                outcome: 'Building an iron-air battery manufacturing plant in Weirton on a former steel site.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Nucor Steel',
+            grant: 'Incentive Package',
+            amount: '$2.7B Invest',
+            outcome: 'Building massive steel sheet mill in Mason County, the largest single investment in state history.'
+        },
+        {
+            company: 'Ascend WV Members',
+            grant: 'Ascend',
+            amount: '$12k ea',
+            outcome: 'Hundreds of remote workers relocated to Morgantown, Lewisburg, and the Eastern Panhandle.'
+        },
+        {
+            company: 'Form Energy',
+            grant: 'Incentive Package',
+            amount: '$760M Invest',
+            outcome: 'Building an iron-air battery manufacturing plant in Weirton on a former steel site.'
+        }
+    ],
 
         faqs: [
             {
@@ -13863,117 +13825,117 @@ Most tax credits are claimed on the annual return, but you may need certificatio
             }
         ],
 
-        resources: [
-            {
-                name: 'West Virginia DED',
-                url: 'https://westvirginia.gov/',
-                description: 'State economic development agency.'
-            },
-            {
-                name: 'WVEDA',
-                url: 'https://wveda.org/',
-                description: 'Lending authority.'
-            },
-            {
-                name: 'Ascend WV',
-                url: 'https://ascendwv.com/',
-                description: 'Remote work program.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'West Virginia DED',
+                    url: 'https://westvirginia.gov/',
+                    description: 'State economic development agency.'
+                },
+                {
+                    name: 'WVEDA',
+                    url: 'https://wveda.org/',
+                    description: 'Lending authority.'
+                },
+                {
+                    name: 'Ascend WV',
+                    url: 'https://ascendwv.com/',
+                    description: 'Remote work program.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Charleston Area Alliance',
-                location: 'Charleston',
-                website: 'https://charlestonareaalliance.org/',
-                services: ['Regional Dev', 'Networking']
-            },
-            {
-                name: 'Morgantown Area Partnership',
-                location: 'Morgantown',
-                website: 'https://www.morgantownpartnership.com/',
-                services: ['Tech Transfer', 'Chamber']
-            },
-            {
-                name: 'Huntington Area Dev Council',
-                location: 'Huntington',
-                website: 'https://hadco.org/',
-                services: ['Site Selection', 'Mfg Support']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Charleston Area Alliance',
+                        location: 'Charleston',
+                        website: 'https://charlestonareaalliance.org/',
+                        services: ['Regional Dev', 'Networking']
+                    },
+                    {
+                        name: 'Morgantown Area Partnership',
+                        location: 'Morgantown',
+                        website: 'https://www.morgantownpartnership.com/',
+                        services: ['Tech Transfer', 'Chamber']
+                    },
+                    {
+                        name: 'Huntington Area Dev Council',
+                        location: 'Huntington',
+                        website: 'https://hadco.org/',
+                        services: ['Site Selection', 'Mfg Support']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Morgantown',
-                description: 'University City (WVU). Tech hub, young population, and home to many Ascend members.',
-                keyIndustries: ['Education', 'Healthcare', 'Tech'],
-                programs: ['Vantage Ventures']
-            },
-            {
-                city: 'Charleston',
-                description: 'The Capital. Government, law, and energy center. Riverfront access.',
-                keyIndustries: ['Government', 'Energy', 'Medical'],
-                programs: ['Alliance Funds']
-            },
-            {
-                city: 'Martinsburg',
-                description: 'The Eastern Panhandle. DC commutable. Fast growing commuter hub.',
-                keyIndustries: ['Logistics', 'Defense', 'Residential'],
-                programs: ['Opportunity Zones']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Morgantown',
+                            description: 'University City (WVU). Tech hub, young population, and home to many Ascend members.',
+                            keyIndustries: ['Education', 'Healthcare', 'Tech'],
+                            programs: ['Vantage Ventures']
+                        },
+                        {
+                            city: 'Charleston',
+                            description: 'The Capital. Government, law, and energy center. Riverfront access.',
+                            keyIndustries: ['Government', 'Energy', 'Medical'],
+                            programs: ['Alliance Funds']
+                        },
+                        {
+                            city: 'Martinsburg',
+                            description: 'The Eastern Panhandle. DC commutable. Fast growing commuter hub.',
+                            keyIndustries: ['Logistics', 'Defense', 'Residential'],
+                            programs: ['Opportunity Zones']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Move Your Team',
-                content: 'If you have a remote team of 5 people, have everyone apply to Ascend WV. That is $60,000 in cash plus free coworking space and community.',
-                type: 'success'
-            },
-            {
-                title: 'Use WVEDA Loans',
-                content: 'Don\'t just look for grants. A 3% fixed rate loan for 15 years on a building is often better than a small one-time grant.',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Move Your Team',
+                                content: 'If you have a remote team of 5 people, have everyone apply to Ascend WV. That is $60,000 in cash plus free coworking space and community.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'Use WVEDA Loans',
+                                content: 'Don\'t just look for grants. A 3% fixed rate loan for 15 years on a building is often better than a small one-time grant.',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$200M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Cash', value: '$12k', description: 'Ascend Move', color: 'text-blue-600', iconName: 'MapPin' },
-            { label: 'Training', value: '$2000', description: 'Per Employee', color: 'text-purple-600', iconName: 'BookOpen' },
-            { label: 'Loan', value: 'Low %', description: 'Direct Loan', color: 'text-orange-600', iconName: 'Landmark' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$200M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Cash', value: '$12k', description: 'Ascend Move', color: 'text-blue-600', iconName: 'MapPin' },
+                                { label: 'Training', value: '$2000', description: 'Per Employee', color: 'text-purple-600', iconName: 'BookOpen' },
+                                { label: 'Loan', value: 'Low %', description: 'Direct Loan', color: 'text-orange-600', iconName: 'Landmark' }
+                            ],
 
-        seoKeywords: [
-            'west virginia business grants',
-            'ascend wv application',
-            'wveda loans',
-            'governor guaranteed work force',
-            'small business grants charleston wv',
-            'manufacturing investment credit wv',
-            'tourism development act wv',
-            'remote work incentives',
-            'startup funding morgantown',
-            'opportunity zones west virginia'
-        ],
+                                seoKeywords: [
+                                    'west virginia business grants',
+                                    'ascend wv application',
+                                    'wveda loans',
+                                    'governor guaranteed work force',
+                                    'small business grants charleston wv',
+                                    'manufacturing investment credit wv',
+                                    'tourism development act wv',
+                                    'remote work incentives',
+                                    'startup funding morgantown',
+                                    'opportunity zones west virginia'
+                                ],
 
-        metaDescription: 'Complete guide to West Virginia business grants and funding in 2026. Access Ascend WV $12k Cash, Governor\'s Guaranteed Training Grants, and Low-Interest Loans.'
-    },
-    {
-        id: 'nebraska',
+                                    metaDescription: 'Complete guide to West Virginia business grants and funding in 2026. Access Ascend WV $12k Cash, Governor\'s Guaranteed Training Grants, and Low-Interest Loans.'
+},
+{
+    id: 'nebraska',
         name: 'Nebraska',
-        slug: 'nebraska',
-        abbreviation: 'NE',
-        region: 'Midwest',
+            slug: 'nebraska',
+                abbreviation: 'NE',
+                    region: 'Midwest',
 
-        heroStats: {
-            totalFunding: '$250M+',
+                        heroStats: {
+        totalFunding: '$250M+',
             programCount: '15+',
-            successRate: '40-50%',
-            avgProcessingTime: '30-45 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '30-45 days'
+    },
 
-        overview: {
-            introduction: `Nebraska's "ImagiNE Nebraska" Act is the cornerstone of its economic development, providing a highly flexible toolkit of refundable tax credits, wage credits, and sales tax exemptions. The Nebraska Department of Economic Development (DED) is known for being accessible, unpretentious, and aggressively pro-business.
+    overview: {
+        introduction: `Nebraska's "ImagiNE Nebraska" Act is the cornerstone of its economic development, providing a highly flexible toolkit of refundable tax credits, wage credits, and sales tax exemptions. The Nebraska Department of Economic Development (DED) is known for being accessible, unpretentious, and aggressively pro-business.
             
 The state has a booming "Silicon Prairie" tech scene in Omaha/Lincoln, driven by high-quality talent and low costs, and is a global leader in AgTech and food processing.`,
 
@@ -13981,150 +13943,150 @@ The state has a booming "Silicon Prairie" tech scene in Omaha/Lincoln, driven by
             
 Agriculture remains king, but value-added Ag (processing) is where the growth and incentives are focused. The state is also a logistics hub due to its central location.`,
 
-            keyOpportunities: `**Flexible Credits**: ImagiNE Nebraska is the main show: highly flexible tax credits that can be used for almost anything (payroll, infrastructure, R&D) depending on your investment tier.
+                keyOpportunities: `**Flexible Credits**: ImagiNE Nebraska is the main show: highly flexible tax credits that can be used for almost anything (payroll, infrastructure, R&D) depending on your investment tier.
             
 **Innovation Grants**: The Business Innovation Act provides critical non-dilutive capital for startups, including prototype grants and SBIR matching.
             
 **Rural Bonus**: The Rural Advantage program boosts incentives for companies locating in smaller towns (under 2,500 people), making it ideal for distributed teams or manufacturing.`,
 
-            futureTrends: `**AgTech 2.0**: Nebraska is positioning itself as the global capital for precision agriculture and autonomous farming tech.
+                    futureTrends: `**AgTech 2.0**: Nebraska is positioning itself as the global capital for precision agriculture and autonomous farming tech.
             
 **FinTech**: Building on its insurance roots to become a hub for insurtech and blockchain finance.
             
 **Biomanufacturing**: Leveraging agricultural output to feed bio-based manufacturing industries.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'ImagiNE Nebraska',
-                agency: 'DED',
-                fundingAmount: 'Refundable Tax Credits / Wage Credits',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Multiple Tiers (Invest $1M - $250M)',
-                    'Create jobs (5 - 50+)',
-                    'Pay >100% min wage',
-                    'Offer benefits'
-                ],
-                industries: ['Manufacturing', 'Tech', 'HQ', 'R&D'],
-                deadline: 'Rolling',
-                applicationProcess: 'Online application.',
-                successRate: 'High',
-                website: 'https://supercharge.imagine.nebraska.gov/',
-                description: `A modernized, tier-based incentive package. Benefits include wage credits (cash back on payroll), investment credits, sales tax exemptions, and personal property tax exemptions. Valid for up to 15 years. The "cash back" wage credit is particularly powerful for high-paying tech jobs.`
-            },
-            {
-                name: 'Customized Job Training (CJT)',
-                agency: 'DED',
-                fundingAmount: 'Training Grant (up to $4,000/job)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Create net new jobs',
-                    'Increase wages',
-                    'Strategic industry'
-                ],
-                industries: ['All Eligible'],
-                deadline: 'Rolling',
-                applicationProcess: 'Application required.',
-                successRate: 'High',
-                website: 'https://opportunity.nebraska.gov/',
-                description: `Reimburses companies for training costs. Can cover instructor fees, curriculum development, and materials. Flexible and easy to use for scaling companies.`
-            },
-            {
-                name: 'Business Innovation Act (BIA)',
-                agency: 'DED',
-                fundingAmount: 'Matching Grants ($50k - $500k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Nebraska small business',
-                    'Innovation/Tech focus',
-                    'Matching funds required (1:1 or 1:2)'
-                ],
-                industries: ['Tech', 'AgTech', 'Startup', 'Bio'],
-                deadline: 'Cyclical',
-                applicationProcess: 'Competitive.',
-                successRate: 'Competitive',
-                website: 'https://opportunity.nebraska.gov/programs/business/bia/',
-                description: `Includes Prototype Grants ($15k), SBIR Matching Grants (up to $200k), and R&D Grants. Critical source of non-dilutive capital for seed-stage startups. Highly regarded program.`
-            },
-            {
-                name: 'Rural Advantage',
-                agency: 'DED',
-                fundingAmount: 'Enhanced Incentives',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Locate in county < 15k pop',
-                    'Invest $1M (lower threshold)'
-                ],
-                industries: ['Ag', 'Mfg'],
-                deadline: 'Rolling',
-                applicationProcess: 'Part of ImagiNE.',
-                successRate: 'High',
-                website: 'https://imagine.nebraska.gov/',
-                description: `Lowers the investment and job creation thresholds for ImagiNE Nebraska benefits if you locate in a rural area. Also offers specific micro-lending support.`
-            },
-            {
-                name: 'Site & Building Development Fund',
-                agency: 'DED',
-                fundingAmount: 'Grant / Loan',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Local government or non-profit',
-                    'Industrial site prep',
-                    'Business attraction'
-                ],
-                industries: ['Industrial'],
-                deadline: 'Rolling',
-                applicationProcess: 'City applies.',
-                successRate: 'High',
-                website: 'https://opportunity.nebraska.gov/',
-                description: `Helps communities prepare industrial sites (roads, sewers, demo) to attract business. Technically a grant to the city, but benefits the company by lowering site costs.`
-            },
-            {
-                name: 'Microenterprise Loan Program',
-                agency: 'REAP',
-                fundingAmount: 'Loan (up to $50k)',
-                fundingType: 'Loan',
-                eligibility: [
-                    '10 or fewer employees',
-                    'Startups allowed',
-                    'Gap financing'
-                ],
-                industries: ['Small Business'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply to REAP.',
-                successRate: 'High',
-                website: 'https://www.cfra.org/reap',
-                description: `Provides crucial gap financing for micro-businesses and startups that might not qualify for traditional bank loans. Includes technical assistance and coaching.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'ImagiNE Nebraska',
+            agency: 'DED',
+            fundingAmount: 'Refundable Tax Credits / Wage Credits',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Multiple Tiers (Invest $1M - $250M)',
+                'Create jobs (5 - 50+)',
+                'Pay >100% min wage',
+                'Offer benefits'
+            ],
+            industries: ['Manufacturing', 'Tech', 'HQ', 'R&D'],
+            deadline: 'Rolling',
+            applicationProcess: 'Online application.',
+            successRate: 'High',
+            website: 'https://supercharge.imagine.nebraska.gov/',
+            description: `A modernized, tier-based incentive package. Benefits include wage credits (cash back on payroll), investment credits, sales tax exemptions, and personal property tax exemptions. Valid for up to 15 years. The "cash back" wage credit is particularly powerful for high-paying tech jobs.`
+        },
+        {
+            name: 'Customized Job Training (CJT)',
+            agency: 'DED',
+            fundingAmount: 'Training Grant (up to $4,000/job)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Create net new jobs',
+                'Increase wages',
+                'Strategic industry'
+            ],
+            industries: ['All Eligible'],
+            deadline: 'Rolling',
+            applicationProcess: 'Application required.',
+            successRate: 'High',
+            website: 'https://opportunity.nebraska.gov/',
+            description: `Reimburses companies for training costs. Can cover instructor fees, curriculum development, and materials. Flexible and easy to use for scaling companies.`
+        },
+        {
+            name: 'Business Innovation Act (BIA)',
+            agency: 'DED',
+            fundingAmount: 'Matching Grants ($50k - $500k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Nebraska small business',
+                'Innovation/Tech focus',
+                'Matching funds required (1:1 or 1:2)'
+            ],
+            industries: ['Tech', 'AgTech', 'Startup', 'Bio'],
+            deadline: 'Cyclical',
+            applicationProcess: 'Competitive.',
+            successRate: 'Competitive',
+            website: 'https://opportunity.nebraska.gov/programs/business/bia/',
+            description: `Includes Prototype Grants ($15k), SBIR Matching Grants (up to $200k), and R&D Grants. Critical source of non-dilutive capital for seed-stage startups. Highly regarded program.`
+        },
+        {
+            name: 'Rural Advantage',
+            agency: 'DED',
+            fundingAmount: 'Enhanced Incentives',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Locate in county < 15k pop',
+                'Invest $1M (lower threshold)'
+            ],
+            industries: ['Ag', 'Mfg'],
+            deadline: 'Rolling',
+            applicationProcess: 'Part of ImagiNE.',
+            successRate: 'High',
+            website: 'https://imagine.nebraska.gov/',
+            description: `Lowers the investment and job creation thresholds for ImagiNE Nebraska benefits if you locate in a rural area. Also offers specific micro-lending support.`
+        },
+        {
+            name: 'Site & Building Development Fund',
+            agency: 'DED',
+            fundingAmount: 'Grant / Loan',
+            fundingType: 'Grant',
+            eligibility: [
+                'Local government or non-profit',
+                'Industrial site prep',
+                'Business attraction'
+            ],
+            industries: ['Industrial'],
+            deadline: 'Rolling',
+            applicationProcess: 'City applies.',
+            successRate: 'High',
+            website: 'https://opportunity.nebraska.gov/',
+            description: `Helps communities prepare industrial sites (roads, sewers, demo) to attract business. Technically a grant to the city, but benefits the company by lowering site costs.`
+        },
+        {
+            name: 'Microenterprise Loan Program',
+            agency: 'REAP',
+            fundingAmount: 'Loan (up to $50k)',
+            fundingType: 'Loan',
+            eligibility: [
+                '10 or fewer employees',
+                'Startups allowed',
+                'Gap financing'
+            ],
+            industries: ['Small Business'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply to REAP.',
+            successRate: 'High',
+            website: 'https://www.cfra.org/reap',
+            description: `Provides crucial gap financing for micro-businesses and startups that might not qualify for traditional bank loans. Includes technical assistance and coaching.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Registered in NE**: Must be filed with the Secretary of State.',
-                '**E-Verify**: Mandatory for all state incentives.',
-                '**Wage Impact**: Most programs require paying above the county average wage.'
-            ],
+        generalRequirements: [
+            '**Registered in NE**: Must be filed with the Secretary of State.',
+            '**E-Verify**: Mandatory for all state incentives.',
+            '**Wage Impact**: Most programs require paying above the county average wage.'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'Cooperatives',
                 'Startups (for BIA)'
             ],
-            restrictions: [
-                '**Retail**: Generally excluded from ImagiNE Act.',
-                '**Public Sector**: Government entities not eligible.',
-                '**Clawbacks**: ImagiNE incentives are performance-based; failure to meet goals results in repayment.'
-            ],
-            documentationNeeded: [
-                'ImagiNE Application',
-                'Business Plan (for BIA)',
-                '3-Year Financials',
-                'E-Verify Proof'
-            ]
-        },
+                restrictions: [
+                    '**Retail**: Generally excluded from ImagiNE Act.',
+                    '**Public Sector**: Government entities not eligible.',
+                    '**Clawbacks**: ImagiNE incentives are performance-based; failure to meet goals results in repayment.'
+                ],
+                    documentationNeeded: [
+                        'ImagiNE Application',
+                        'Business Plan (for BIA)',
+                        '3-Year Financials',
+                        'E-Verify Proof'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `Nebraska's process is streamlined but rigorous on compliance.
+    applicationProcess: {
+        guide: `Nebraska's process is streamlined but rigorous on compliance.
 
 **Phase 1: Discovery**
 Meet with DED (Department of Economic Development) early. They are very hands-on and will guide you to the right "Tier" in the ImagiNE Act.
@@ -14172,59 +14134,59 @@ Using the tax credits requires annual reporting. Set up your accounting system t
                     timeframe: 'Annual'
                 }
             ],
-            tips: [
-                '**Lock it In**: Apply for ImagiNE *before* you sign a lease or hire anyone. You only get credit for net NEW activity after the application date.',
-                '**Wage Credits**: The wage credit is refundable cash. Prioritize high-wage jobs to maximize this.',
-                '**BIA**: The BIA Prototype grant is one of the easiest $15k grants to get in the country for a legit software idea.',
-                '**TIF**: Tax Increment Financing is huge in Omaha/Lincoln for real estate heavy projects.'
-            ]
-        },
+                tips: [
+                    '**Lock it In**: Apply for ImagiNE *before* you sign a lease or hire anyone. You only get credit for net NEW activity after the application date.',
+                    '**Wage Credits**: The wage credit is refundable cash. Prioritize high-wage jobs to maximize this.',
+                    '**BIA**: The BIA Prototype grant is one of the easiest $15k grants to get in the country for a legit software idea.',
+                    '**TIF**: Tax Increment Financing is huge in Omaha/Lincoln for real estate heavy projects.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'AgTech / Food',
-                    description: 'The creative center of the cornbelt. Value-added food processing and precision ag tech.',
-                    funding: 'ImagiNE / BIA'
-                },
-                {
-                    name: 'FinTech / InsurTech',
-                    description: 'Omaha is an insurance capital. Deep talent pool for risk/finance tech.',
-                    funding: 'ImagiNE'
-                },
-                {
-                    name: 'Advanced Manufacturing',
-                    description: 'Strong industrial base with low energy costs.',
-                    funding: 'ImagiNE / CJT'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'AgTech / Food',
+                description: 'The creative center of the cornbelt. Value-added food processing and precision ag tech.',
+                funding: 'ImagiNE / BIA'
+            },
+            {
+                name: 'FinTech / InsurTech',
+                description: 'Omaha is an insurance capital. Deep talent pool for risk/finance tech.',
+                funding: 'ImagiNE'
+            },
+            {
+                name: 'Advanced Manufacturing',
+                description: 'Strong industrial base with low energy costs.',
+                funding: 'ImagiNE / CJT'
+            }
+        ],
             emerging: [
                 '**Biofuels**: Ethanol and renewable diesel leadership.',
                 '**Logistics**: Central location makes it a prime distribution hub.',
                 '**Data Centers**: Cheap power and cool climate attract server farms.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Hudl',
-                grant: 'BIA / ImagiNE',
-                amount: 'Growth',
-                outcome: 'Lincoln-based sports tech unicorn that leveraged state support to scale globally.'
-            },
-            {
-                company: 'Monolith Materials',
-                grant: 'Site Dev',
-                amount: 'Major',
-                outcome: 'Built a massive clean carbon black plant in rural Nebraska using renewable energy.'
-            },
-            {
-                company: 'Toast',
-                grant: 'ImagiNE',
-                amount: 'Expansion',
-                outcome: 'Fintech giant opened a major office in Omaha to tap into the support talent.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Hudl',
+            grant: 'BIA / ImagiNE',
+            amount: 'Growth',
+            outcome: 'Lincoln-based sports tech unicorn that leveraged state support to scale globally.'
+        },
+        {
+            company: 'Monolith Materials',
+            grant: 'Site Dev',
+            amount: 'Major',
+            outcome: 'Built a massive clean carbon black plant in rural Nebraska using renewable energy.'
+        },
+        {
+            company: 'Toast',
+            grant: 'ImagiNE',
+            amount: 'Expansion',
+            outcome: 'Fintech giant opened a major office in Omaha to tap into the support talent.'
+        }
+    ],
 
         faqs: [
             {
@@ -14245,122 +14207,122 @@ Using the tax credits requires annual reporting. Set up your accounting system t
             }
         ],
 
-        resources: [
-            {
-                name: 'Nebraska DED',
-                url: 'https://opportunity.nebraska.gov/',
-                description: 'Primary economic development agency.'
-            },
-            {
-                name: 'Invest Nebraska',
-                url: 'https://www.investnebraska.com/',
-                description: 'Venture development organization & BIA partner.'
-            },
-            {
-                name: 'Silicon Prairie News',
-                url: 'https://siliconprairienews.com/',
-                description: 'Tech news and startup community info.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'Nebraska DED',
+                    url: 'https://opportunity.nebraska.gov/',
+                    description: 'Primary economic development agency.'
+                },
+                {
+                    name: 'Invest Nebraska',
+                    url: 'https://www.investnebraska.com/',
+                    description: 'Venture development organization & BIA partner.'
+                },
+                {
+                    name: 'Silicon Prairie News',
+                    url: 'https://siliconprairienews.com/',
+                    description: 'Tech news and startup community info.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Greater Omaha Chamber',
-                location: 'Omaha',
-                website: 'https://www.omahachamber.org/',
-                services: ['Site Selection', 'TIF']
-            },
-            {
-                name: 'Lincoln Partnership for Econ Dev',
-                location: 'Lincoln',
-                website: 'https://selectlincoln.org/',
-                services: ['Startup Support', 'University Links']
-            },
-            {
-                name: 'Center for Rural Affairs',
-                location: 'Statewide',
-                website: 'https://www.cfra.org/',
-                services: ['Micro-lending', 'Rural Biz Support']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Greater Omaha Chamber',
+                        location: 'Omaha',
+                        website: 'https://www.omahachamber.org/',
+                        services: ['Site Selection', 'TIF']
+                    },
+                    {
+                        name: 'Lincoln Partnership for Econ Dev',
+                        location: 'Lincoln',
+                        website: 'https://selectlincoln.org/',
+                        services: ['Startup Support', 'University Links']
+                    },
+                    {
+                        name: 'Center for Rural Affairs',
+                        location: 'Statewide',
+                        website: 'https://www.cfra.org/',
+                        services: ['Micro-lending', 'Rural Biz Support']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Omaha',
-                description: 'The Big City. Finance, Fortune 500 HQs, and a dense startup ecosystem. Urban amenities.',
-                keyIndustries: ['Finance', 'Tech', 'Healthcare'],
-                programs: ['Chamber Incentives']
-            },
-            {
-                city: 'Lincoln',
-                description: 'The College Town (UNL). Silicon Prairie hub (Hudl). highly educated workforce.',
-                keyIndustries: ['GovTech', 'SportsTech', 'Education'],
-                programs: ['NMotion Accelerator']
-            },
-            {
-                city: 'Grand Island',
-                description: 'Ag & Manufacturing Hub. Central logistics point. Strong manufacturing workforce.',
-                keyIndustries: ['Ag Processing', 'Logistics'],
-                programs: ['Rural Advantage']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Omaha',
+                            description: 'The Big City. Finance, Fortune 500 HQs, and a dense startup ecosystem. Urban amenities.',
+                            keyIndustries: ['Finance', 'Tech', 'Healthcare'],
+                            programs: ['Chamber Incentives']
+                        },
+                        {
+                            city: 'Lincoln',
+                            description: 'The College Town (UNL). Silicon Prairie hub (Hudl). highly educated workforce.',
+                            keyIndustries: ['GovTech', 'SportsTech', 'Education'],
+                            programs: ['NMotion Accelerator']
+                        },
+                        {
+                            city: 'Grand Island',
+                            description: 'Ag & Manufacturing Hub. Central logistics point. Strong manufacturing workforce.',
+                            keyIndustries: ['Ag Processing', 'Logistics'],
+                            programs: ['Rural Advantage']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Prototype Grant',
-                content: 'If you have a customized software or hardware idea, apply for the BIA Prototype grant. It is $15k, often no-match or low-match, and helps build your MVP.',
-                type: 'success'
-            },
-            {
-                title: 'Tier Selection',
-                content: 'When applying for ImagiNE, be conservative with your Tier selection. Better to over-perform in a lower tier than miss the metrics of a higher one.',
-                type: 'warning'
-            },
-            {
-                title: 'UNL Connection',
-                content: 'Leverage the University of Nebraska. They have aggressive tech transfer programs and student innovation labs (Nebraska Innovation Campus).',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Prototype Grant',
+                                content: 'If you have a customized software or hardware idea, apply for the BIA Prototype grant. It is $15k, often no-match or low-match, and helps build your MVP.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'Tier Selection',
+                                content: 'When applying for ImagiNE, be conservative with your Tier selection. Better to over-perform in a lower tier than miss the metrics of a higher one.',
+                                type: 'warning'
+                            },
+                            {
+                                title: 'UNL Connection',
+                                content: 'Leverage the University of Nebraska. They have aggressive tech transfer programs and student innovation labs (Nebraska Innovation Campus).',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$250M+', description: 'Total Incentives', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Tech', value: 'High', description: 'Silicon Prairie', color: 'text-blue-600', iconName: 'Cpu' },
-            { label: 'Tax', value: '0%', description: 'Sales Tax (ImagiNE)', color: 'text-purple-600', iconName: 'Percent' },
-            { label: 'Grant', value: '$15k', description: 'Prototype Grant', color: 'text-orange-600', iconName: 'Rocket' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$250M+', description: 'Total Incentives', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Tech', value: 'High', description: 'Silicon Prairie', color: 'text-blue-600', iconName: 'Cpu' },
+                                { label: 'Tax', value: '0%', description: 'Sales Tax (ImagiNE)', color: 'text-purple-600', iconName: 'Percent' },
+                                { label: 'Grant', value: '$15k', description: 'Prototype Grant', color: 'text-orange-600', iconName: 'Rocket' }
+                            ],
 
-        seoKeywords: [
-            'nebraska business grants',
-            'imagine nebraska act tiers',
-            'nebraska business innovation act',
-            'bia prototype grant',
-            'omaha small business loans',
-            'nebraska rural advantage',
-            'silicon prairie startup funding',
-            'ded job training grant',
-            'start a business in nebraska',
-            'nebraska manufacturing incentives'
-        ],
+                                seoKeywords: [
+                                    'nebraska business grants',
+                                    'imagine nebraska act tiers',
+                                    'nebraska business innovation act',
+                                    'bia prototype grant',
+                                    'omaha small business loans',
+                                    'nebraska rural advantage',
+                                    'silicon prairie startup funding',
+                                    'ded job training grant',
+                                    'start a business in nebraska',
+                                    'nebraska manufacturing incentives'
+                                ],
 
-        metaDescription: 'Complete guide to Nebraska business grants and ImagiNE Nebraska Act 2026. Access Prototype Grants, Refundable Wage Credits, and Rural Advantage incentives.'
-    },
-    {
-        id: 'idaho',
+                                    metaDescription: 'Complete guide to Nebraska business grants and ImagiNE Nebraska Act 2026. Access Prototype Grants, Refundable Wage Credits, and Rural Advantage incentives.'
+},
+{
+    id: 'idaho',
         name: 'Idaho',
-        slug: 'idaho',
-        abbreviation: 'ID',
-        region: 'West',
+            slug: 'idaho',
+                abbreviation: 'ID',
+                    region: 'West',
 
-        heroStats: {
-            totalFunding: '$180M+',
+                        heroStats: {
+        totalFunding: '$180M+',
             programCount: '12+',
-            successRate: '40-50%',
-            avgProcessingTime: '30-45 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '30-45 days'
+    },
 
-        overview: {
-            introduction: `Idaho is one of the fastest-growing states in the US, celebrated for its unique blend of low regulation, fiscal conservatism, and aggressive business incentives. The state government operates at the "speed of business," minimizing red tape and focusing on performance-based rewards.
+    overview: {
+        introduction: `Idaho is one of the fastest-growing states in the US, celebrated for its unique blend of low regulation, fiscal conservatism, and aggressive business incentives. The state government operates at the "speed of business," minimizing red tape and focusing on performance-based rewards.
 
 The Idaho Department of Commerce manages the state's flagship incentive, the "Tax Reimbursement Incentive" (TRI), which has successfully attracted billions in capital investment from tech giants like Micron and food processors like Chobani.`,
 
@@ -14368,147 +14330,147 @@ The Idaho Department of Commerce manages the state's flagship incentive, the "Ta
 
 Cost of living and doing business remains significantly lower than coastal states, driving a massive migration of talent and capital into the state.`,
 
-            keyOpportunities: `**Refundable Tax Credits**: The TRI is unique because it is *refundable*. Even if you have no tax liability, the state will write you a check for up to 30% of your new tax revenues.
+                keyOpportunities: `**Refundable Tax Credits**: The TRI is unique because it is *refundable*. Even if you have no tax liability, the state will write you a check for up to 30% of your new tax revenues.
             
 **Semiconductors**: With the CHIPS Act, Idaho is seeing massive investment in chip manufacturing.
             
 **Energy**: Idaho has some of the cheapest industrial power rates in the nation (hydroelectric), making it ideal for energy-intensive manufacturing.`,
 
-            futureTrends: `**Nuclear Research**: Idaho National Lab (INL) is the nation's premier nuclear research facility, driving a micro-reactor tech boom.
+                    futureTrends: `**Nuclear Research**: Idaho National Lab (INL) is the nation's premier nuclear research facility, driving a micro-reactor tech boom.
             
 **Advanced Materials**: New composites and manufacturing techniques are being pioneered for aerospace in the Coeur d'Alene region.
             
 **AgTech**: Integration of AI and robotics into large-scale farming is a major growth sector.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'Tax Reimbursement Incentive (TRI)',
-                agency: 'Commerce',
-                fundingAmount: 'Refundable Tax Credit (up to 30%)',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Create 20 jobs (Urban) or 50 (Rural)',
-                    'Pay >county average wage',
-                    'Community match required'
-                ],
-                industries: ['Aerospace', 'Tech', 'Manufacturing', 'Agribusiness'],
-                deadline: 'Rolling',
-                applicationProcess: 'Application to Commerce.',
-                successRate: 'High',
-                website: 'https://commerce.idaho.gov/incentives/tax-reimbursement-incentive/',
-                description: `This is Idaho's "Closer." It is a performance-based tax credit of up to 30% on sales, payroll, and corporate income taxes for up to 15 years. Crucially, it is REFUNDABLE. If your credit exceeds your tax liability, you get the difference as a cash check.`
-            },
-            {
-                name: 'Idaho Workforce Development Training Fund',
-                agency: 'WDC',
-                fundingAmount: 'Training Reimbursement ($3k/employee)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Train new employees',
-                    'Pay >$15/hr'
-                ],
-                industries: ['All Eligible'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply online.',
-                successRate: 'High',
-                website: 'https://wdc.idaho.gov/',
-                description: `Reimburses employers for the cost of training new workers. It is flexible and can be used for internal training limits or external courses. It is designed to de-risk hiring.`
-            },
-            {
-                name: 'Idaho GEM Grant',
-                agency: 'Commerce',
-                fundingAmount: 'Public Infrastructure Grant ($50k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'City/County applies',
-                    'Supports new business expansion',
-                    'Job creation'
-                ],
-                industries: ['Industrial', 'Manufacturing'],
-                deadline: 'Rolling',
-                applicationProcess: 'City must apply.',
-                successRate: 'Competitive',
-                website: 'https://commerce.idaho.gov/communities/community-grants/gem-grant/',
-                description: `Grants to local governments to improve public infrastructure (sewer, water, road, power) needed to support a specific business expansion. If you need a turning lane for your trucks, this pays for it.`
-            },
-            {
-                name: 'STEP Grant (Export)',
-                agency: 'Commerce',
-                fundingAmount: 'Export Grant (up to $9k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Small business',
-                    'Export potential'
-                ],
-                industries: ['Export'],
-                deadline: 'Bi-annual',
-                applicationProcess: 'Competitive.',
-                successRate: 'High',
-                website: 'https://commerce.idaho.gov/incentives/step-grant/',
-                description: `Funds to help Idaho small businesses enter international markets. Covers trade shows, website translation, Gold Key services, and international marketing campaigns.`
-            },
-            {
-                name: 'Business Advantage',
-                agency: 'Tax Commission',
-                fundingAmount: 'Tax Credits',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Invest $500k',
-                    'Create 10 jobs',
-                    'Pay >$40k/yr w/ benefits'
-                ],
-                industries: ['Manufacturing', 'Tech', 'Ag'],
-                deadline: 'Annual',
-                applicationProcess: 'Tax return.',
-                successRate: 'High',
-                website: 'https://commerce.idaho.gov/incentives/idaho-business-advantage/',
-                description: `A package of incentives including a 2.5% investment tax credit, a sales tax rebate on construction materials (huge savings), and a property tax exemption on new improvements.`
-            },
-            {
-                name: 'Collateral Support Program',
-                agency: 'Idaho SBDC/Commerce',
-                fundingAmount: 'Loan Collateral',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Small business',
-                    'Collateral shortfall'
-                ],
-                industries: ['Small Business'],
-                deadline: 'Rolling',
-                applicationProcess: 'Through lender.',
-                successRate: 'Variable',
-                website: 'https://commerce.idaho.gov/',
-                description: `Cash collateral accounts to help small businesses secure SBA 504 loans or other commercial financing when they don't have enough physical assets to pledge.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Tax Reimbursement Incentive (TRI)',
+            agency: 'Commerce',
+            fundingAmount: 'Refundable Tax Credit (up to 30%)',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Create 20 jobs (Urban) or 50 (Rural)',
+                'Pay >county average wage',
+                'Community match required'
+            ],
+            industries: ['Aerospace', 'Tech', 'Manufacturing', 'Agribusiness'],
+            deadline: 'Rolling',
+            applicationProcess: 'Application to Commerce.',
+            successRate: 'High',
+            website: 'https://commerce.idaho.gov/incentives/tax-reimbursement-incentive/',
+            description: `This is Idaho's "Closer." It is a performance-based tax credit of up to 30% on sales, payroll, and corporate income taxes for up to 15 years. Crucially, it is REFUNDABLE. If your credit exceeds your tax liability, you get the difference as a cash check.`
+        },
+        {
+            name: 'Idaho Workforce Development Training Fund',
+            agency: 'WDC',
+            fundingAmount: 'Training Reimbursement ($3k/employee)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Train new employees',
+                'Pay >$15/hr'
+            ],
+            industries: ['All Eligible'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply online.',
+            successRate: 'High',
+            website: 'https://wdc.idaho.gov/',
+            description: `Reimburses employers for the cost of training new workers. It is flexible and can be used for internal training limits or external courses. It is designed to de-risk hiring.`
+        },
+        {
+            name: 'Idaho GEM Grant',
+            agency: 'Commerce',
+            fundingAmount: 'Public Infrastructure Grant ($50k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'City/County applies',
+                'Supports new business expansion',
+                'Job creation'
+            ],
+            industries: ['Industrial', 'Manufacturing'],
+            deadline: 'Rolling',
+            applicationProcess: 'City must apply.',
+            successRate: 'Competitive',
+            website: 'https://commerce.idaho.gov/communities/community-grants/gem-grant/',
+            description: `Grants to local governments to improve public infrastructure (sewer, water, road, power) needed to support a specific business expansion. If you need a turning lane for your trucks, this pays for it.`
+        },
+        {
+            name: 'STEP Grant (Export)',
+            agency: 'Commerce',
+            fundingAmount: 'Export Grant (up to $9k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Small business',
+                'Export potential'
+            ],
+            industries: ['Export'],
+            deadline: 'Bi-annual',
+            applicationProcess: 'Competitive.',
+            successRate: 'High',
+            website: 'https://commerce.idaho.gov/incentives/step-grant/',
+            description: `Funds to help Idaho small businesses enter international markets. Covers trade shows, website translation, Gold Key services, and international marketing campaigns.`
+        },
+        {
+            name: 'Business Advantage',
+            agency: 'Tax Commission',
+            fundingAmount: 'Tax Credits',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Invest $500k',
+                'Create 10 jobs',
+                'Pay >$40k/yr w/ benefits'
+            ],
+            industries: ['Manufacturing', 'Tech', 'Ag'],
+            deadline: 'Annual',
+            applicationProcess: 'Tax return.',
+            successRate: 'High',
+            website: 'https://commerce.idaho.gov/incentives/idaho-business-advantage/',
+            description: `A package of incentives including a 2.5% investment tax credit, a sales tax rebate on construction materials (huge savings), and a property tax exemption on new improvements.`
+        },
+        {
+            name: 'Collateral Support Program',
+            agency: 'Idaho SBDC/Commerce',
+            fundingAmount: 'Loan Collateral',
+            fundingType: 'Loan',
+            eligibility: [
+                'Small business',
+                'Collateral shortfall'
+            ],
+            industries: ['Small Business'],
+            deadline: 'Rolling',
+            applicationProcess: 'Through lender.',
+            successRate: 'Variable',
+            website: 'https://commerce.idaho.gov/',
+            description: `Cash collateral accounts to help small businesses secure SBA 504 loans or other commercial financing when they don't have enough physical assets to pledge.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Registered in Idaho**: Must be a legal entity in the state.',
-                '**Community Match**: For TRI, the local city/county must contribute something (tax abatement, fee waiver, infrastructure).',
-                '**Wage Thresholds**: Incentives are tied to paying above the average county wage.',
-                '**But For**: You must prove the project would not happen in Idaho "but for" the incentive.'
-            ],
+        generalRequirements: [
+            '**Registered in Idaho**: Must be a legal entity in the state.',
+            '**Community Match**: For TRI, the local city/county must contribute something (tax abatement, fee waiver, infrastructure).',
+            '**Wage Thresholds**: Incentives are tied to paying above the average county wage.',
+            '**But For**: You must prove the project would not happen in Idaho "but for" the incentive.'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'Manufacturers, Tech Companies, HQs'
             ],
-            restrictions: [
-                '**Retail**: Generally excluded from TRI and other major incentives.',
-                '**Local Service**: Doctors, lawyers, and personal services are generally ineligible.',
-                '**Clawbacks**: If you don\'t create the promised jobs, you pay the money back.'
-            ],
-            documentationNeeded: [
-                'TRI Application',
-                'Economic Impact Analysis (Commerce runs this)',
-                'Letter of Support from Local City/County',
-                '3 Years Financials'
-            ]
-        },
+                restrictions: [
+                    '**Retail**: Generally excluded from TRI and other major incentives.',
+                    '**Local Service**: Doctors, lawyers, and personal services are generally ineligible.',
+                    '**Clawbacks**: If you don\'t create the promised jobs, you pay the money back.'
+                ],
+                    documentationNeeded: [
+                        'TRI Application',
+                        'Economic Impact Analysis (Commerce runs this)',
+                        'Letter of Support from Local City/County',
+                        '3 Years Financials'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `Applying for incentives in Idaho is a relationship-based process. You don't just fill out a form; you negotiate a deal with the state and the local community.
+    applicationProcess: {
+        guide: `Applying for incentives in Idaho is a relationship-based process. You don't just fill out a form; you negotiate a deal with the state and the local community.
 
 **Phase 1: Discovery**
 Contact Idaho Commerce. They are very pro-business. They will assign a project manager to walk you through the options.
@@ -14556,59 +14518,59 @@ You sign the contract. You assume the risk. You hire the people. THEN you get th
                     timeframe: '2 weeks'
                 }
             ],
-            tips: [
-                '**The "Community Match"**: It doesn\'t have to be cash. It can be expedited permitting or land write-downs. Be creative.',
-                '**Power Rates**: Leverage Idaho Power\'s incredibly low industrial rates in your operational cost models.',
-                '**Rural Bonus**: The job creation requirements are much lower (20 vs 50) if you locate in a rural county.',
-                '**Fiscal Stability**: Idaho has a AAA credit rating and runs a surplus. They pay their incentives.'
-            ]
-        },
+                tips: [
+                    '**The "Community Match"**: It doesn\'t have to be cash. It can be expedited permitting or land write-downs. Be creative.',
+                    '**Power Rates**: Leverage Idaho Power\'s incredibly low industrial rates in your operational cost models.',
+                    '**Rural Bonus**: The job creation requirements are much lower (20 vs 50) if you locate in a rural county.',
+                    '**Fiscal Stability**: Idaho has a AAA credit rating and runs a surplus. They pay their incentives.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Food Processing',
-                    description: 'Chobani, Simplot, McCain. The "Magic Valley" feeds the world.',
-                    funding: 'TRI / WFT / Ag Grants'
-                },
-                {
-                    name: 'Semiconductors',
-                    description: 'Micron is investing $15B. The supply chain for chips is exploding here.',
-                    funding: 'CHIPS / TRI'
-                },
-                {
-                    name: 'Rec & Tourism',
-                    description: 'Sun Valley is world-famous. Outdoor gear manufacturing is a strong niche.',
-                    funding: 'TRI / GEM'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Food Processing',
+                description: 'Chobani, Simplot, McCain. The "Magic Valley" feeds the world.',
+                funding: 'TRI / WFT / Ag Grants'
+            },
+            {
+                name: 'Semiconductors',
+                description: 'Micron is investing $15B. The supply chain for chips is exploding here.',
+                funding: 'CHIPS / TRI'
+            },
+            {
+                name: 'Rec & Tourism',
+                description: 'Sun Valley is world-famous. Outdoor gear manufacturing is a strong niche.',
+                funding: 'TRI / GEM'
+            }
+        ],
             emerging: [
                 '**Nuclear Energy**: INL is driving a micro-reactor revolution.',
                 '**Aerospace**: Northern Idaho is a hub for parts and composites.',
                 '**Firearms/Ammo**: A very friendly regulatory environment for this industry.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Micron Technology',
-                grant: 'TRI + CHIPS',
-                amount: '$15B+ Invest',
-                outcome: 'Constructing a massive new memory fabrication plant in Boise, the largest private investment in state history.'
-            },
-            {
-                company: 'Chobani',
-                grant: 'WFT / TRI',
-                amount: 'Expansion',
-                outcome: 'World\'s largest yogurt plant in Twin Falls, transforming the local dairy economy.'
-            },
-            {
-                company: 'Meta (Facebook)',
-                grant: 'Tax Exemption',
-                amount: '$800M',
-                outcome: 'Built a massive data center in Kuna, utilizing the sales tax exemption on server equipment.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Micron Technology',
+            grant: 'TRI + CHIPS',
+            amount: '$15B+ Invest',
+            outcome: 'Constructing a massive new memory fabrication plant in Boise, the largest private investment in state history.'
+        },
+        {
+            company: 'Chobani',
+            grant: 'WFT / TRI',
+            amount: 'Expansion',
+            outcome: 'World\'s largest yogurt plant in Twin Falls, transforming the local dairy economy.'
+        },
+        {
+            company: 'Meta (Facebook)',
+            grant: 'Tax Exemption',
+            amount: '$800M',
+            outcome: 'Built a massive data center in Kuna, utilizing the sales tax exemption on server equipment.'
+        }
+    ],
 
         faqs: [
             {
@@ -14629,122 +14591,122 @@ You sign the contract. You assume the risk. You hire the people. THEN you get th
             }
         ],
 
-        resources: [
-            {
-                name: 'Idaho Commerce',
-                url: 'https://commerce.idaho.gov/',
-                description: 'State economic development agency.'
-            },
-            {
-                name: 'Idaho SBDC',
-                url: 'https://idahosbdc.org/',
-                description: 'Small business support network.'
-            },
-            {
-                name: 'Boise Valley Economic Partnership',
-                url: 'https://www.bvep.org/',
-                description: 'Regional economic development for the Boise metro.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'Idaho Commerce',
+                    url: 'https://commerce.idaho.gov/',
+                    description: 'State economic development agency.'
+                },
+                {
+                    name: 'Idaho SBDC',
+                    url: 'https://idahosbdc.org/',
+                    description: 'Small business support network.'
+                },
+                {
+                    name: 'Boise Valley Economic Partnership',
+                    url: 'https://www.bvep.org/',
+                    description: 'Regional economic development for the Boise metro.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Trailhead',
-                location: 'Boise, ID',
-                website: 'https://trailheadboise.org/',
-                services: ['Incubator', 'Coworking', 'Mentorship']
-            },
-            {
-                name: 'Innovation Center',
-                location: 'Twin Falls, ID',
-                website: 'https://innovationcollective.co/',
-                services: ['AgTech', 'Events', 'Networking']
-            },
-            {
-                name: 'Idaho Women\'s Business Center',
-                location: 'Boise, ID',
-                website: 'https://idahowomen.org/',
-                services: ['Training', 'Counseling', 'Grants']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Trailhead',
+                        location: 'Boise, ID',
+                        website: 'https://trailheadboise.org/',
+                        services: ['Incubator', 'Coworking', 'Mentorship']
+                    },
+                    {
+                        name: 'Innovation Center',
+                        location: 'Twin Falls, ID',
+                        website: 'https://innovationcollective.co/',
+                        services: ['AgTech', 'Events', 'Networking']
+                    },
+                    {
+                        name: 'Idaho Women\'s Business Center',
+                        location: 'Boise, ID',
+                        website: 'https://idahowomen.org/',
+                        services: ['Training', 'Counseling', 'Grants']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Boise',
-                description: 'The City of Trees. Tech hub, state capital, and cultural center. Fast-paced growth.',
-                keyIndustries: ['Tech', 'Health', 'Finance'],
-                programs: ['TRAILHEAD', 'BVEP Incentives']
-            },
-            {
-                city: 'Twin Falls',
-                description: 'The Magic Valley. Agribusiness capital. Chobani and Clif Bar call it home.',
-                keyIndustries: ['Food Processing', 'Ag', 'Logistics'],
-                programs: ['Rural Economic Development Services']
-            },
-            {
-                city: 'Coeur d\'Alene',
-                description: 'The Lake City. Tourism, aerospace, and medical hub in the north.',
-                keyIndustries: ['Tourism', 'Aerospace', 'Healthcare'],
-                programs: ['Jobs Plus']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Boise',
+                            description: 'The City of Trees. Tech hub, state capital, and cultural center. Fast-paced growth.',
+                            keyIndustries: ['Tech', 'Health', 'Finance'],
+                            programs: ['TRAILHEAD', 'BVEP Incentives']
+                        },
+                        {
+                            city: 'Twin Falls',
+                            description: 'The Magic Valley. Agribusiness capital. Chobani and Clif Bar call it home.',
+                            keyIndustries: ['Food Processing', 'Ag', 'Logistics'],
+                            programs: ['Rural Economic Development Services']
+                        },
+                        {
+                            city: 'Coeur d\'Alene',
+                            description: 'The Lake City. Tourism, aerospace, and medical hub in the north.',
+                            keyIndustries: ['Tourism', 'Aerospace', 'Healthcare'],
+                            programs: ['Jobs Plus']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Use the Refundable Credit',
-                content: 'The TRI being refundable is a game changer for startups that might not have a huge tax liability yet but have big payrolls.',
-                type: 'success'
-            },
-            {
-                title: 'Training Funds are Easy',
-                content: 'The Workforce Development Training Fund is known for being straightforward. If you are hiring, apply.',
-                type: 'tip'
-            },
-            {
-                title: 'Low Energy Costs',
-                content: 'Factor in the cheap industrial power rates when calculating your Opex. It can save you millions over 10 years compared to CA.',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Use the Refundable Credit',
+                                content: 'The TRI being refundable is a game changer for startups that might not have a huge tax liability yet but have big payrolls.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'Training Funds are Easy',
+                                content: 'The Workforce Development Training Fund is known for being straightforward. If you are hiring, apply.',
+                                type: 'tip'
+                            },
+                            {
+                                title: 'Low Energy Costs',
+                                content: 'Factor in the cheap industrial power rates when calculating your Opex. It can save you millions over 10 years compared to CA.',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$180M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Refund', value: '30%', description: 'Tax Refund', color: 'text-blue-600', iconName: 'RefreshCw' },
-            { label: 'Jobs', value: '20+', description: 'Min Creation', color: 'text-purple-600', iconName: 'Users' },
-            { label: 'Power', value: 'Low', description: 'Energy Cost', color: 'text-orange-600', iconName: 'Zap' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$180M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Refund', value: '30%', description: 'Tax Refund', color: 'text-blue-600', iconName: 'RefreshCw' },
+                                { label: 'Jobs', value: '20+', description: 'Min Creation', color: 'text-purple-600', iconName: 'Users' },
+                                { label: 'Power', value: 'Low', description: 'Energy Cost', color: 'text-orange-600', iconName: 'Zap' }
+                            ],
 
-        seoKeywords: [
-            'idaho business grants',
-            'tax reimbursement incentive idaho',
-            'boise startup funding',
-            'workforce training fund idaho',
-            'gem grant idaho',
-            'manufacturing incentives idaho',
-            'small business grants idaho',
-            'starting a business in idaho',
-            'idaho opportunity fund',
-            'women owned business idaho'
-        ],
+                                seoKeywords: [
+                                    'idaho business grants',
+                                    'tax reimbursement incentive idaho',
+                                    'boise startup funding',
+                                    'workforce training fund idaho',
+                                    'gem grant idaho',
+                                    'manufacturing incentives idaho',
+                                    'small business grants idaho',
+                                    'starting a business in idaho',
+                                    'idaho opportunity fund',
+                                    'women owned business idaho'
+                                ],
 
-        metaDescription: 'Complete guide to Idaho business grants and funding in 2026. Access the Tax Reimbursement Incentive (TRI), Workforce Training Funds, and GEM Grants.'
-    },
-    {
-        id: 'hawaii',
+                                    metaDescription: 'Complete guide to Idaho business grants and funding in 2026. Access the Tax Reimbursement Incentive (TRI), Workforce Training Funds, and GEM Grants.'
+},
+{
+    id: 'hawaii',
         name: 'Hawaii',
-        slug: 'hawaii',
-        abbreviation: 'HI',
-        region: 'West',
+            slug: 'hawaii',
+                abbreviation: 'HI',
+                    region: 'West',
 
-        heroStats: {
-            totalFunding: '$100M+',
+                        heroStats: {
+        totalFunding: '$100M+',
             programCount: '10+',
-            successRate: '30-40%',
-            avgProcessingTime: '45-60 days'
-        },
+                successRate: '30-40%',
+                    avgProcessingTime: '45-60 days'
+    },
 
-        overview: {
-            introduction: `Hawaii offers unique incentives focused on diversifying its economy beyond tourism. The Hawaii Technology Development Corporation (HTDC) is the key agency for tech and manufacturing, providing aggressive matching grants and infrastructure support.
+    overview: {
+        introduction: `Hawaii offers unique incentives focused on diversifying its economy beyond tourism. The Hawaii Technology Development Corporation (HTDC) is the key agency for tech and manufacturing, providing aggressive matching grants and infrastructure support.
             
 The state is a testbed for renewable energy and ag-tech due to its isolated geography, high energy costs, and year-round growing season.`,
 
@@ -14752,148 +14714,148 @@ The state is a testbed for renewable energy and ag-tech due to its isolated geog
             
 Cost of doing business is high (energy, logistics), but the Enterprise Zone program helps mitigate this with 100% tax exemptions.`,
 
-            keyOpportunities: `**R&D Match**: The Hawaii SBIR Matching Grant provides up to 50% matching funds for federal grants - one of the most generous rates in the country.
+                keyOpportunities: `**R&D Match**: The Hawaii SBIR Matching Grant provides up to 50% matching funds for federal grants - one of the most generous rates in the country.
             
 **Tax Free**: Enterprise Zones offer 100% GET (General Excise Tax) exemption for up to 7 years. Since GET is on *gross* revenue, this is a massive bottom-line boost.
             
 **Manufacturing**: The MAP grant covers 20% of equipment and training costs.`,
 
-            futureTrends: `**Clean Energy**: Hawaii is mandated to be 100% renewable by 2045. Massive investment in grid, solar, and ocean storage.
+                    futureTrends: `**Clean Energy**: Hawaii is mandated to be 100% renewable by 2045. Massive investment in grid, solar, and ocean storage.
             
 **Aquaculture**: Becoming a global hub for open-ocean fish farming technologies.
             
 **Creative Industries**: Film tax credits are attracting major studio productions year-round.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'Hawaii SBIR Match',
-                agency: 'HTDC',
-                fundingAmount: 'Matching Grant (up to 50%)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Received Federal SBIR Phase I/II',
-                    'Hawaii based company',
-                    'Maintains research in HI'
-                ],
-                industries: ['Tech', 'R&D', 'AgTech', 'Dual-Use'],
-                deadline: 'Annual',
-                applicationProcess: 'Competitive.',
-                successRate: 'High',
-                website: 'https://www.htdc.org/money/',
-                description: `Matches federal SBIR/STTR awards. Phase I match up to 50% (max $75k), Phase II match up to $500k. Essential for R&D companies leveraging the huge military presence (INDOPACOM).`
-            },
-            {
-                name: 'Manufacturing Assistance Program (MAP)',
-                agency: 'HTDC',
-                fundingAmount: '20% Grant (up to $100k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Manufacturer in Hawaii',
-                    'Buy equipment',
-                    'Train employees'
-                ],
-                industries: ['Manufacturing', 'Food Processing'],
-                deadline: 'Annual',
-                applicationProcess: 'Online application.',
-                successRate: 'Competitive',
-                website: 'https://www.htdc.org/map/',
-                description: `Reimburses 20% of qualified manufacturing expenses (equipment purchase, training, energy efficiency). Capped at $100k grant. Highly popular for local food brands scaling export.`
-            },
-            {
-                name: 'Enterprise Zones (EZ)',
-                agency: 'DBEDT',
-                fundingAmount: '100% GET Exemption',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Located in EZ',
-                    'Increase jobs by 10% annually',
-                    'Ag, Manufacturing, or Tech'
-                ],
-                industries: ['Ag', 'Tech', 'Mfg'],
-                deadline: 'Annual',
-                applicationProcess: 'Register with County.',
-                successRate: 'High',
-                website: 'https://invest.hawaii.gov/business/ez/',
-                description: `Exempts eligible businesses from the General Excise Tax (GET) - which is basically a 4-4.5% sales tax on GROSS revenue. Also provides income tax credits for 7 years. This is a game-changer for margins.`
-            },
-            {
-                name: 'Motion Picture Tax Credit',
-                agency: 'Film Office',
-                fundingAmount: '22-27% Refundable Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Film/TV production',
-                    '$100k minimum spend',
-                    'Hire locals'
-                ],
-                industries: ['Film'],
-                deadline: 'Rolling',
-                applicationProcess: 'Register production.',
-                successRate: 'High',
-                website: 'https://filmoffice.hawaii.gov/',
-                description: `Refundable tax credit of 22% (Oahu) or 27% (Neighbor Islands) on qualified production costs. Capped at $50M/year total for the state. Includes above-the-line costs (with caps).`
-            },
-            {
-                name: 'Hawaii State Trade Expansion Program (HiSTEP)',
-                agency: 'DBEDT',
-                fundingAmount: 'Export Grant (up to $15k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Hawaii product',
-                    'Export ready',
-                    'Small business'
-                ],
-                industries: ['Export', 'Consumer Goods'],
-                deadline: 'Annual',
-                applicationProcess: 'Application.',
-                successRate: 'Competitive',
-                website: 'https://invest.hawaii.gov/exporting/histep/',
-                description: `Funds to help Hawaii companies export "Made in Hawaii" products. Pays for trade shows, gold key services, website translation, and international marketing.`
-            },
-            {
-                name: 'Renewable Energy Technologies Income Tax Credit',
-                agency: 'Tax Dept',
-                fundingAmount: '35% Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Solar or Wind system',
-                    'Commercial or Residential'
-                ],
-                industries: ['Energy'],
-                deadline: 'Annual',
-                applicationProcess: 'Tax return.',
-                successRate: 'High',
-                website: 'https://tax.hawaii.gov/',
-                description: `Tax credit for installing solar or wind energy systems. 35% of the cost. Can be combined with federal credits for massive savings on energy infrastructure.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Hawaii SBIR Match',
+            agency: 'HTDC',
+            fundingAmount: 'Matching Grant (up to 50%)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Received Federal SBIR Phase I/II',
+                'Hawaii based company',
+                'Maintains research in HI'
+            ],
+            industries: ['Tech', 'R&D', 'AgTech', 'Dual-Use'],
+            deadline: 'Annual',
+            applicationProcess: 'Competitive.',
+            successRate: 'High',
+            website: 'https://www.htdc.org/money/',
+            description: `Matches federal SBIR/STTR awards. Phase I match up to 50% (max $75k), Phase II match up to $500k. Essential for R&D companies leveraging the huge military presence (INDOPACOM).`
+        },
+        {
+            name: 'Manufacturing Assistance Program (MAP)',
+            agency: 'HTDC',
+            fundingAmount: '20% Grant (up to $100k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Manufacturer in Hawaii',
+                'Buy equipment',
+                'Train employees'
+            ],
+            industries: ['Manufacturing', 'Food Processing'],
+            deadline: 'Annual',
+            applicationProcess: 'Online application.',
+            successRate: 'Competitive',
+            website: 'https://www.htdc.org/map/',
+            description: `Reimburses 20% of qualified manufacturing expenses (equipment purchase, training, energy efficiency). Capped at $100k grant. Highly popular for local food brands scaling export.`
+        },
+        {
+            name: 'Enterprise Zones (EZ)',
+            agency: 'DBEDT',
+            fundingAmount: '100% GET Exemption',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Located in EZ',
+                'Increase jobs by 10% annually',
+                'Ag, Manufacturing, or Tech'
+            ],
+            industries: ['Ag', 'Tech', 'Mfg'],
+            deadline: 'Annual',
+            applicationProcess: 'Register with County.',
+            successRate: 'High',
+            website: 'https://invest.hawaii.gov/business/ez/',
+            description: `Exempts eligible businesses from the General Excise Tax (GET) - which is basically a 4-4.5% sales tax on GROSS revenue. Also provides income tax credits for 7 years. This is a game-changer for margins.`
+        },
+        {
+            name: 'Motion Picture Tax Credit',
+            agency: 'Film Office',
+            fundingAmount: '22-27% Refundable Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Film/TV production',
+                '$100k minimum spend',
+                'Hire locals'
+            ],
+            industries: ['Film'],
+            deadline: 'Rolling',
+            applicationProcess: 'Register production.',
+            successRate: 'High',
+            website: 'https://filmoffice.hawaii.gov/',
+            description: `Refundable tax credit of 22% (Oahu) or 27% (Neighbor Islands) on qualified production costs. Capped at $50M/year total for the state. Includes above-the-line costs (with caps).`
+        },
+        {
+            name: 'Hawaii State Trade Expansion Program (HiSTEP)',
+            agency: 'DBEDT',
+            fundingAmount: 'Export Grant (up to $15k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Hawaii product',
+                'Export ready',
+                'Small business'
+            ],
+            industries: ['Export', 'Consumer Goods'],
+            deadline: 'Annual',
+            applicationProcess: 'Application.',
+            successRate: 'Competitive',
+            website: 'https://invest.hawaii.gov/exporting/histep/',
+            description: `Funds to help Hawaii companies export "Made in Hawaii" products. Pays for trade shows, gold key services, website translation, and international marketing.`
+        },
+        {
+            name: 'Renewable Energy Technologies Income Tax Credit',
+            agency: 'Tax Dept',
+            fundingAmount: '35% Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Solar or Wind system',
+                'Commercial or Residential'
+            ],
+            industries: ['Energy'],
+            deadline: 'Annual',
+            applicationProcess: 'Tax return.',
+            successRate: 'High',
+            website: 'https://tax.hawaii.gov/',
+            description: `Tax credit for installing solar or wind energy systems. 35% of the cost. Can be combined with federal credits for massive savings on energy infrastructure.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Registered in Hawaii (DCCA)**: Must be a legal entity.',
-                '**GET License**: All businesses must have a General Excise Tax license.',
-                '**Federal Award**: For SBIR match, you must have the federal award in hand.'
-            ],
+        generalRequirements: [
+            '**Registered in Hawaii (DCCA)**: Must be a legal entity.',
+            '**GET License**: All businesses must have a General Excise Tax license.',
+            '**Federal Award**: For SBIR match, you must have the federal award in hand.'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'Native Hawaiian Organizations (NHOs)'
             ],
-            restrictions: [
-                '**Retail**: Excluded from EZ and most manufacturing grants.',
-                '**Job Growth**: EZ requires maintaining a 10% annual job growth rate.',
-                '**Jones Act**: Be aware that shipping physical goods to the mainland is expensive.'
-            ],
-            documentationNeeded: [
-                'HTDC Application',
-                'EZ Enrollment Form (County Specific)',
-                'GET Reconciliations',
-                'Tax Returns'
-            ]
-        },
+                restrictions: [
+                    '**Retail**: Excluded from EZ and most manufacturing grants.',
+                    '**Job Growth**: EZ requires maintaining a 10% annual job growth rate.',
+                    '**Jones Act**: Be aware that shipping physical goods to the mainland is expensive.'
+                ],
+                    documentationNeeded: [
+                        'HTDC Application',
+                        'EZ Enrollment Form (County Specific)',
+                        'GET Reconciliations',
+                        'Tax Returns'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `Hawaii's ecosystem is small and personal. "Talking story" (building relationships) is crucial.
+    applicationProcess: {
+        guide: `Hawaii's ecosystem is small and personal. "Talking story" (building relationships) is crucial.
 
 **Phase 1: Registration**
 You must register with DCCA and get your GET license. You cannot apply for anything without these.
@@ -14941,59 +14903,59 @@ If you are Native Hawaiian owned, connect with OHA (Office of Hawaiian Affairs) 
                     timeframe: 'Annual'
                 }
             ],
-            tips: [
-                '**GET Exemption is King**: The EZ exemption saves you 4.5% on TOP LINE revenue. For a low-margin business, this can double your net profit.',
-                '**Apply Fast**: HTDC grants (MAP) often run out of money. Have your application ready to submit the millisecond the portal opens.',
-                '**Brand Value**: The "Made in Hawaii" brand commands a premium globally. Use HiSTEP to exploit it.',
-                '**Neighbor Islands**: Maui, Big Island, and Kauai often have \"bonus\" incentives (higher film credit caps, less competition for EZ spots).'
-            ]
-        },
+                tips: [
+                    '**GET Exemption is King**: The EZ exemption saves you 4.5% on TOP LINE revenue. For a low-margin business, this can double your net profit.',
+                    '**Apply Fast**: HTDC grants (MAP) often run out of money. Have your application ready to submit the millisecond the portal opens.',
+                    '**Brand Value**: The "Made in Hawaii" brand commands a premium globally. Use HiSTEP to exploit it.',
+                    '**Neighbor Islands**: Maui, Big Island, and Kauai often have \"bonus\" incentives (higher film credit caps, less competition for EZ spots).'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Defense / Dual-Use',
-                    description: 'Pearl Harbor / INDOPACOM. Huge opportunity for DoD contractors and R&D.',
-                    funding: 'SBIR'
-                },
-                {
-                    name: 'Agriculture',
-                    description: 'Coffee, Mac nuts, tropical fruits. Strong focus on value-added processing and export.',
-                    funding: 'MAP / EZ'
-                },
-                {
-                    name: 'Film',
-                    description: 'Hawaii 5-0, Jurassic Park, White Lotus. Consistent production hub with deep crew base.',
-                    funding: 'Tax Credit'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Defense / Dual-Use',
+                description: 'Pearl Harbor / INDOPACOM. Huge opportunity for DoD contractors and R&D.',
+                funding: 'SBIR'
+            },
+            {
+                name: 'Agriculture',
+                description: 'Coffee, Mac nuts, tropical fruits. Strong focus on value-added processing and export.',
+                funding: 'MAP / EZ'
+            },
+            {
+                name: 'Film',
+                description: 'Hawaii 5-0, Jurassic Park, White Lotus. Consistent production hub with deep crew base.',
+                funding: 'Tax Credit'
+            }
+        ],
             emerging: [
                 '**Ocean Tech**: Aquaculture and blue economy tech is centered around the Kona coast.',
                 '**Astronomy**: Mauna Kea is the world\'s premier astronomy site (though politically sensitive).',
                 '**Renewable Energy**: Geothermal, hydrogen, and wave energy pilots.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Kona Brewing',
-                grant: 'MAP / EZ',
-                amount: 'Growth',
-                outcome: 'Major manufacturing and export operations that grew into a national brand.'
-            },
-            {
-                company: 'Oceanit',
-                grant: 'SBIR Match',
-                amount: 'Millions',
-                outcome: 'Leading "Mind to Market" innovation lab in Honolulu, delivering diverse tech to DoD and commercial markets.'
-            },
-            {
-                company: 'Hilo Hattie',
-                grant: 'HiSTEP',
-                amount: 'Export',
-                outcome: 'Iconic retailer expanding e-commerce presence globally using export assistance.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Kona Brewing',
+            grant: 'MAP / EZ',
+            amount: 'Growth',
+            outcome: 'Major manufacturing and export operations that grew into a national brand.'
+        },
+        {
+            company: 'Oceanit',
+            grant: 'SBIR Match',
+            amount: 'Millions',
+            outcome: 'Leading "Mind to Market" innovation lab in Honolulu, delivering diverse tech to DoD and commercial markets.'
+        },
+        {
+            company: 'Hilo Hattie',
+            grant: 'HiSTEP',
+            amount: 'Export',
+            outcome: 'Iconic retailer expanding e-commerce presence globally using export assistance.'
+        }
+    ],
 
         faqs: [
             {
@@ -15014,122 +14976,122 @@ If you are Native Hawaiian owned, connect with OHA (Office of Hawaiian Affairs) 
             }
         ],
 
-        resources: [
-            {
-                name: 'HTDC',
-                url: 'https://www.htdc.org/',
-                description: 'Technology development & Manufacturing.'
-            },
-            {
-                name: 'DBEDT',
-                url: 'https://invest.hawaii.gov/',
-                description: 'State economic development & EZ program.'
-            },
-            {
-                name: 'The Box Jelly',
-                url: 'https://www.theboxjelly.com/',
-                description: 'Coworking / Startup hub in Honolulu.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'HTDC',
+                    url: 'https://www.htdc.org/',
+                    description: 'Technology development & Manufacturing.'
+                },
+                {
+                    name: 'DBEDT',
+                    url: 'https://invest.hawaii.gov/',
+                    description: 'State economic development & EZ program.'
+                },
+                {
+                    name: 'The Box Jelly',
+                    url: 'https://www.theboxjelly.com/',
+                    description: 'Coworking / Startup hub in Honolulu.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Maui Economic Development Board',
-                location: 'Maui',
-                website: 'https://www.medb.org/',
-                services: ['Tech Training', 'Space Surveillance']
-            },
-            {
-                name: 'Hawaii Island Economic Development Board',
-                location: 'Hilo/Kona',
-                website: 'https://hiedb.org/',
-                services: ['Ag Support', 'Astronomy']
-            },
-            {
-                name: 'Kauai Economic Development Board',
-                location: 'Kauai',
-                website: 'https://kedb.com/',
-                services: ['Food Systems', 'Creative']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Maui Economic Development Board',
+                        location: 'Maui',
+                        website: 'https://www.medb.org/',
+                        services: ['Tech Training', 'Space Surveillance']
+                    },
+                    {
+                        name: 'Hawaii Island Economic Development Board',
+                        location: 'Hilo/Kona',
+                        website: 'https://hiedb.org/',
+                        services: ['Ag Support', 'Astronomy']
+                    },
+                    {
+                        name: 'Kauai Economic Development Board',
+                        location: 'Kauai',
+                        website: 'https://kedb.com/',
+                        services: ['Food Systems', 'Creative']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Honolulu',
-                description: 'The Capital. Center of government, finance, and defense. Urban jungle in paradise.',
-                keyIndustries: ['Defense', 'Finance', 'Tourism'],
-                programs: ['HTDC HQ']
-            },
-            {
-                city: 'Kailua-Kona',
-                description: 'The Blue Tech Hub. NELHA (energy/ocean lab) is here. Ag-tech focus.',
-                keyIndustries: ['Aquaculture', 'Coffee', 'Energy'],
-                programs: ['NELHA Incubator']
-            },
-            {
-                city: 'Kahului',
-                description: 'Maui\'s Commerce Hub. Logistics and service center for the valley isle.',
-                keyIndustries: ['Logistics', 'Retail'],
-                programs: ['MEDB']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Honolulu',
+                            description: 'The Capital. Center of government, finance, and defense. Urban jungle in paradise.',
+                            keyIndustries: ['Defense', 'Finance', 'Tourism'],
+                            programs: ['HTDC HQ']
+                        },
+                        {
+                            city: 'Kailua-Kona',
+                            description: 'The Blue Tech Hub. NELHA (energy/ocean lab) is here. Ag-tech focus.',
+                            keyIndustries: ['Aquaculture', 'Coffee', 'Energy'],
+                            programs: ['NELHA Incubator']
+                        },
+                        {
+                            city: 'Kahului',
+                            description: 'Maui\'s Commerce Hub. Logistics and service center for the valley isle.',
+                            keyIndustries: ['Logistics', 'Retail'],
+                            programs: ['MEDB']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'SBIR is King',
-                content: 'Because of the military presence, federal R&D grants are huge here. If you get one, the state match makes it incredibly lucrative.',
-                type: 'success'
-            },
-            {
-                title: 'EZ Exemption',
-                content: 'If you are in Ag, Mfg, or Tech, locate in an Enterprise Zone. Saving 4% on top-line revenue is better than almost any income tax credit.',
-                type: 'tip'
-            },
-            {
-                title: 'Relationships Matter',
-                content: 'Hawaii is a small town. Treat everyone with respect ("Aloha Spirit"). Burning a bridge here is fatal.',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'SBIR is King',
+                                content: 'Because of the military presence, federal R&D grants are huge here. If you get one, the state match makes it incredibly lucrative.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'EZ Exemption',
+                                content: 'If you are in Ag, Mfg, or Tech, locate in an Enterprise Zone. Saving 4% on top-line revenue is better than almost any income tax credit.',
+                                type: 'tip'
+                            },
+                            {
+                                title: 'Relationships Matter',
+                                content: 'Hawaii is a small town. Treat everyone with respect ("Aloha Spirit"). Burning a bridge here is fatal.',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$100M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'GET', value: '100%', description: 'Tax Exemption', color: 'text-blue-600', iconName: 'Shield' },
-            { label: 'SBIR', value: '50%', description: 'State Match', color: 'text-purple-600', iconName: 'Zap' },
-            { label: 'Film', value: '27%', description: 'Refundable Credit', color: 'text-orange-600', iconName: 'Video' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$100M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'GET', value: '100%', description: 'Tax Exemption', color: 'text-blue-600', iconName: 'Shield' },
+                                { label: 'SBIR', value: '50%', description: 'State Match', color: 'text-purple-600', iconName: 'Zap' },
+                                { label: 'Film', value: '27%', description: 'Refundable Credit', color: 'text-orange-600', iconName: 'Video' }
+                            ],
 
-        seoKeywords: [
-            'hawaii business grants',
-            'htdc map grant',
-            'sbir matching grant hawaii',
-            'enterprise zone hawaii',
-            'native hawaiian business grants',
-            'hawaii film tax credit',
-            'histep export grant',
-            'oahu small business loans',
-            'agtech funding hawaii',
-            'start a business in hawaii'
-        ],
+                                seoKeywords: [
+                                    'hawaii business grants',
+                                    'htdc map grant',
+                                    'sbir matching grant hawaii',
+                                    'enterprise zone hawaii',
+                                    'native hawaiian business grants',
+                                    'hawaii film tax credit',
+                                    'histep export grant',
+                                    'oahu small business loans',
+                                    'agtech funding hawaii',
+                                    'start a business in hawaii'
+                                ],
 
-        metaDescription: 'Complete guide to Hawaii business grants and funding in 2026. Access HTDC Manufacturing Grants, SBIR Matching Funds, and 100% Tax Exemptions.'
-    },
-    {
-        id: 'maine',
+                                    metaDescription: 'Complete guide to Hawaii business grants and funding in 2026. Access HTDC Manufacturing Grants, SBIR Matching Funds, and 100% Tax Exemptions.'
+},
+{
+    id: 'maine',
         name: 'Maine',
-        slug: 'maine',
-        abbreviation: 'ME',
-        region: 'Northeast',
+            slug: 'maine',
+                abbreviation: 'ME',
+                    region: 'Northeast',
 
-        heroStats: {
-            totalFunding: '$150M+',
+                        heroStats: {
+        totalFunding: '$150M+',
             programCount: '15+',
-            successRate: '40-50%',
-            avgProcessingTime: '30-45 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '30-45 days'
+    },
 
-        overview: {
-            introduction: `Maine is actively courting innovation with the Maine Technology Institute (MTI) leading the charge. The state facilitates an aggressive R&D environment, offering robust tax credits, seed funding, and direct loans to startups. Maine's strategy is to leverage its natural assets (forests, ocean) for modern applications (bioplastics, aquaculture).
+    overview: {
+        introduction: `Maine is actively courting innovation with the Maine Technology Institute (MTI) leading the charge. The state facilitates an aggressive R&D environment, offering robust tax credits, seed funding, and direct loans to startups. Maine's strategy is to leverage its natural assets (forests, ocean) for modern applications (bioplastics, aquaculture).
 
 The state also provides significant tax relief through the Pine Tree Development Zone (PTDZ) program, designed to attract new "quality jobs" to the state.`,
 
@@ -15137,147 +15099,147 @@ The state also provides significant tax relief through the Pine Tree Development
 
 Maine has the oldest population in the US, so workforce attraction is a top priority for economic development officials.`,
 
-            keyOpportunities: `**Innovation Funding**: MTI works like a VC fund but with better terms. They offer grants, loans, and equity investments.
+                keyOpportunities: `**Innovation Funding**: MTI works like a VC fund but with better terms. They offer grants, loans, and equity investments.
             
 **Blue Economy**: If you are in aquaculture or marine tech, there is no better place in the global north to launch.
             
 **Clean Energy**: Maine is aggressively pursuing offshore wind and energy storage, with significant grant funding available.`,
 
-            futureTrends: `**Offshore Wind**: The Gulf of Maine is slated to become a massive floating offshore wind hub, creating a new supply chain.
+                    futureTrends: `**Offshore Wind**: The Gulf of Maine is slated to become a massive floating offshore wind hub, creating a new supply chain.
             
 **Cross-Laminated Timber (CLT)**: Maine is positioning itself as the leader in mass timber construction materials.
             
 **Biotechnology**: The Roux Institute in Portland (Northeastern University) is catalyzing a new wave of life sciences and AI startups.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'Maine Technology Institute (MTI) Funding',
-                agency: 'MTI',
-                fundingAmount: 'Grants & Loans ($25k - $500k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Tech-based business',
-                    '7 Technology Sectors',
-                    'Matching funds required (1:1)'
-                ],
-                industries: ['Biotech', 'Marine', 'Forestry', 'IT', 'Precision Mfg'],
-                deadline: 'Rolling',
-                applicationProcess: 'Proposal to MTI.',
-                successRate: 'Competitive',
-                website: 'https://www.mainetechnology.org/',
-                description: `MTI offers a continuum of funding from early-stage "Tech Start" grants ($5k) to large "Prime" loans ($500k+). They invest in high-growth potential businesses in 7 specific sectors. The funding is often a mix of grant and low-interest loan.`
-            },
-            {
-                name: 'Pine Tree Development Zone (PTDZ)',
-                agency: 'DECD',
-                fundingAmount: '80-100% Tax Reimbursement',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Create new quality jobs',
-                    'Target Industries (Mfg, Finance, Tech)'
-                ],
-                industries: ['Manufacturing', 'Tech', 'Finance'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply BEFORE hiring.',
-                successRate: 'High',
-                website: 'https://www.maine.gov/decd/business-development/tax-incentives/pine-tree-zones',
-                description: `This program reimburses 80% of state income taxes withheld for new hires for 10 years. It also provides a 100% corporate income tax credit and sales tax exemptions on construction materials and equipment.`
-            },
-            {
-                name: 'SEED Capital Tax Credit',
-                agency: 'FAME',
-                fundingAmount: '40% Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Invest in Maine business',
-                    'Business < $5M revenue'
-                ],
-                industries: ['Investors', 'Startups'],
-                deadline: 'Calendar Year',
-                applicationProcess: 'Investor applies.',
-                successRate: 'High',
-                website: 'https://www.famemaine.com/business/equity-capital/maine-seed-capital-tax-credit-program/',
-                description: `Investors receive a state income tax credit equal to 40% of their investment in an eligible Maine business. This credit is refundable for private venture funds, making it a key tool for startups to attract angels.`
-            },
-            {
-                name: 'FAME Direct Loan',
-                agency: 'FAME',
-                fundingAmount: 'Loan (up to $500k)',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Gap financing',
-                    'Create jobs',
-                    'Creditworthy'
-                ],
-                industries: ['All Eligible'],
-                deadline: 'Monthly',
-                applicationProcess: 'Apply to FAME.',
-                successRate: 'Variable',
-                website: 'https://www.famemaine.com/business/loans-equity-capital/direct-loans/',
-                description: `The Finance Authority of Maine (FAME) provides direct loans to fill the gap when a bank won't cover the full project cost. They often take a subordinate position to the bank.`
-            },
-            {
-                name: 'Domestic Trade Grants',
-                agency: 'MITC',
-                fundingAmount: 'Marketing Grant (up to $5k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Maine company',
-                    'Expand US markets'
-                ],
-                industries: ['Various'],
-                deadline: 'Rolling',
-                applicationProcess: 'Application.',
-                successRate: 'High',
-                website: 'https://www.mitc.com/',
-                description: `Grants to help Maine companies sell their products in other US states. Covers trade shows, sales trips, and marketing collateral.`
-            },
-            {
-                name: 'Clean Energy Partnership',
-                agency: 'GEO',
-                fundingAmount: 'Grants',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Clean energy/efficiency',
-                    'Innovation'
-                ],
-                industries: ['Energy'],
-                deadline: 'Variable',
-                applicationProcess: 'RFP.',
-                successRate: 'Competitive',
-                website: 'https://www.maine.gov/energy/opportunities/grants',
-                description: `Funding for clean energy innovation, workforce development, and energy efficiency upgrades. Driven by the state's aggressive climate goals.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Maine Technology Institute (MTI) Funding',
+            agency: 'MTI',
+            fundingAmount: 'Grants & Loans ($25k - $500k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Tech-based business',
+                '7 Technology Sectors',
+                'Matching funds required (1:1)'
+            ],
+            industries: ['Biotech', 'Marine', 'Forestry', 'IT', 'Precision Mfg'],
+            deadline: 'Rolling',
+            applicationProcess: 'Proposal to MTI.',
+            successRate: 'Competitive',
+            website: 'https://www.mainetechnology.org/',
+            description: `MTI offers a continuum of funding from early-stage "Tech Start" grants ($5k) to large "Prime" loans ($500k+). They invest in high-growth potential businesses in 7 specific sectors. The funding is often a mix of grant and low-interest loan.`
+        },
+        {
+            name: 'Pine Tree Development Zone (PTDZ)',
+            agency: 'DECD',
+            fundingAmount: '80-100% Tax Reimbursement',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Create new quality jobs',
+                'Target Industries (Mfg, Finance, Tech)'
+            ],
+            industries: ['Manufacturing', 'Tech', 'Finance'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply BEFORE hiring.',
+            successRate: 'High',
+            website: 'https://www.maine.gov/decd/business-development/tax-incentives/pine-tree-zones',
+            description: `This program reimburses 80% of state income taxes withheld for new hires for 10 years. It also provides a 100% corporate income tax credit and sales tax exemptions on construction materials and equipment.`
+        },
+        {
+            name: 'SEED Capital Tax Credit',
+            agency: 'FAME',
+            fundingAmount: '40% Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Invest in Maine business',
+                'Business < $5M revenue'
+            ],
+            industries: ['Investors', 'Startups'],
+            deadline: 'Calendar Year',
+            applicationProcess: 'Investor applies.',
+            successRate: 'High',
+            website: 'https://www.famemaine.com/business/equity-capital/maine-seed-capital-tax-credit-program/',
+            description: `Investors receive a state income tax credit equal to 40% of their investment in an eligible Maine business. This credit is refundable for private venture funds, making it a key tool for startups to attract angels.`
+        },
+        {
+            name: 'FAME Direct Loan',
+            agency: 'FAME',
+            fundingAmount: 'Loan (up to $500k)',
+            fundingType: 'Loan',
+            eligibility: [
+                'Gap financing',
+                'Create jobs',
+                'Creditworthy'
+            ],
+            industries: ['All Eligible'],
+            deadline: 'Monthly',
+            applicationProcess: 'Apply to FAME.',
+            successRate: 'Variable',
+            website: 'https://www.famemaine.com/business/loans-equity-capital/direct-loans/',
+            description: `The Finance Authority of Maine (FAME) provides direct loans to fill the gap when a bank won't cover the full project cost. They often take a subordinate position to the bank.`
+        },
+        {
+            name: 'Domestic Trade Grants',
+            agency: 'MITC',
+            fundingAmount: 'Marketing Grant (up to $5k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Maine company',
+                'Expand US markets'
+            ],
+            industries: ['Various'],
+            deadline: 'Rolling',
+            applicationProcess: 'Application.',
+            successRate: 'High',
+            website: 'https://www.mitc.com/',
+            description: `Grants to help Maine companies sell their products in other US states. Covers trade shows, sales trips, and marketing collateral.`
+        },
+        {
+            name: 'Clean Energy Partnership',
+            agency: 'GEO',
+            fundingAmount: 'Grants',
+            fundingType: 'Grant',
+            eligibility: [
+                'Clean energy/efficiency',
+                'Innovation'
+            ],
+            industries: ['Energy'],
+            deadline: 'Variable',
+            applicationProcess: 'RFP.',
+            successRate: 'Competitive',
+            website: 'https://www.maine.gov/energy/opportunities/grants',
+            description: `Funding for clean energy innovation, workforce development, and energy efficiency upgrades. Driven by the state's aggressive climate goals.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Registered in Maine**: Must be a legal entity in the state.',
-                '**Sector Alignment**: MTI funding is strictly for the 7 technology sectors (Bio, Composites, Forestry, Marine, Environmental, IT, Precision Mfg).',
-                '**Quality Jobs**: PTDZ incentives require paying above the county average wage and providing health benefits/retirement.',
-                '**Matching Funds**: Almost all MTI grants require you to put in your own cash (usually 1:1).'
-            ],
+        generalRequirements: [
+            '**Registered in Maine**: Must be a legal entity in the state.',
+            '**Sector Alignment**: MTI funding is strictly for the 7 technology sectors (Bio, Composites, Forestry, Marine, Environmental, IT, Precision Mfg).',
+            '**Quality Jobs**: PTDZ incentives require paying above the county average wage and providing health benefits/retirement.',
+            '**Matching Funds**: Almost all MTI grants require you to put in your own cash (usually 1:1).'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'High-growth Startups',
                 'Manufacturers'
             ],
-            restrictions: [
-                '**Retail/Service**: Generally excluded from PTDZ and MTI.',
-                '**Prior Spending**: You cannot get reimbursed for money you already spent.',
-                '**Letter of Intent**: You MUST file a letter of intent for PTDZ before you hire anyone or buy equipment.'
-            ],
-            documentationNeeded: [
-                'MTI Proposal (Technical & Business)',
-                'PTDZ Letter of Intent',
-                '3 Years Financial Projections',
-                'Investor Term Sheets (for Seed Credit)'
-            ]
-        },
+                restrictions: [
+                    '**Retail/Service**: Generally excluded from PTDZ and MTI.',
+                    '**Prior Spending**: You cannot get reimbursed for money you already spent.',
+                    '**Letter of Intent**: You MUST file a letter of intent for PTDZ before you hire anyone or buy equipment.'
+                ],
+                    documentationNeeded: [
+                        'MTI Proposal (Technical & Business)',
+                        'PTDZ Letter of Intent',
+                        '3 Years Financial Projections',
+                        'Investor Term Sheets (for Seed Credit)'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `Maine's ecosystem is small and collaborative. "Warm introductions" work well here. MTI and FAME work closely together.
+    applicationProcess: {
+        guide: `Maine's ecosystem is small and collaborative. "Warm introductions" work well here. MTI and FAME work closely together.
 
 **Phase 1: The MTI Conversation**
 If you are a tech/innovation business, start with MTI. Meet with an Investment Officer. They will tell you which funds fit your stage (Tech Start, Seed, Prime).
@@ -15325,59 +15287,59 @@ MTI requires regular status reports. PTDZ requires annual reporting to Maine Rev
                     timeframe: '1 month'
                 }
             ],
-            tips: [
-                '**MTI is "Friendly" Capital**: They want you to succeed. Their loans often have favorable terms (like revenue-based repayment) compared to banks.',
-                '**The Seed Credit is Powerful**: Use the 40% tax credit as a closing tool for investors. It creates urgency.',
-                '**Portland is Hot**: The startup scene in Portland is booming. Join the "Startup Maine" community for networking.',
-                '**University connections**: Connect with the Roux Institute or UMaine for R&D partnerships—this strengthens your MTI applications.'
-            ]
-        },
+                tips: [
+                    '**MTI is "Friendly" Capital**: They want you to succeed. Their loans often have favorable terms (like revenue-based repayment) compared to banks.',
+                    '**The Seed Credit is Powerful**: Use the 40% tax credit as a closing tool for investors. It creates urgency.',
+                    '**Portland is Hot**: The startup scene in Portland is booming. Join the "Startup Maine" community for networking.',
+                    '**University connections**: Connect with the Roux Institute or UMaine for R&D partnerships—this strengthens your MTI applications.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Blue Economy',
-                    description: 'Aquaculture, marine tech, and seafood processing. The Gulf of Maine Research Institute is a global hub.',
-                    funding: 'MTI / Blue Economy Grants'
-                },
-                {
-                    name: 'Forest Products',
-                    description: 'Bio-plastics, biofuels, and mass timber (CLT). Revitalizing the paper mill towns.',
-                    funding: 'MTI / Forestry Grants'
-                },
-                {
-                    name: 'Life Sciences',
-                    description: 'Jackson Laboratory (Bar Harbor) and IDEXX (Westbrook) anchor a massive bio cluster.',
-                    funding: 'MTI / NIH Match'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Blue Economy',
+                description: 'Aquaculture, marine tech, and seafood processing. The Gulf of Maine Research Institute is a global hub.',
+                funding: 'MTI / Blue Economy Grants'
+            },
+            {
+                name: 'Forest Products',
+                description: 'Bio-plastics, biofuels, and mass timber (CLT). Revitalizing the paper mill towns.',
+                funding: 'MTI / Forestry Grants'
+            },
+            {
+                name: 'Life Sciences',
+                description: 'Jackson Laboratory (Bar Harbor) and IDEXX (Westbrook) anchor a massive bio cluster.',
+                funding: 'MTI / NIH Match'
+            }
+        ],
             emerging: [
                 '**Offshore Wind**: UMaine has patented floating wind technology.',
                 '**Food Tech**: Value-added food processing is growing fast.',
                 '**Remote Tech**: Portland is attracting remote tech workers.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Vetter Systems',
-                grant: 'MTI / PTDZ',
-                amount: 'Growth',
-                outcome: 'Software company scaling in rural Maine, utilizing connectivity and tax incentives.'
-            },
-            {
-                company: 'Atlantic Sea Farms',
-                grant: 'MTI',
-                amount: 'Innovation',
-                outcome: 'Kelp farming innovation leader, creating a new crop for lobstermen to farm in the off-season.'
-            },
-            {
-                company: 'TimberHP',
-                grant: 'FAME / MTI',
-                amount: 'Capital',
-                outcome: 'repurposed a paper mill to manufacture wood fiber insulation, creating huge job numbers.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Vetter Systems',
+            grant: 'MTI / PTDZ',
+            amount: 'Growth',
+            outcome: 'Software company scaling in rural Maine, utilizing connectivity and tax incentives.'
+        },
+        {
+            company: 'Atlantic Sea Farms',
+            grant: 'MTI',
+            amount: 'Innovation',
+            outcome: 'Kelp farming innovation leader, creating a new crop for lobstermen to farm in the off-season.'
+        },
+        {
+            company: 'TimberHP',
+            grant: 'FAME / MTI',
+            amount: 'Capital',
+            outcome: 'repurposed a paper mill to manufacture wood fiber insulation, creating huge job numbers.'
+        }
+    ],
 
         faqs: [
             {
@@ -15398,122 +15360,122 @@ MTI requires regular status reports. PTDZ requires annual reporting to Maine Rev
             }
         ],
 
-        resources: [
-            {
-                name: 'Maine DECD',
-                url: 'https://www.maine.gov/decd/',
-                description: 'Dept of Economic & Community Development.'
-            },
-            {
-                name: 'MTI',
-                url: 'https://www.mainetechnology.org/',
-                description: 'Tech funding & grants.'
-            },
-            {
-                name: 'FAME',
-                url: 'https://www.famemaine.com/',
-                description: 'Finance Authority of Maine (Loans/Equity).'
-            }
-        ],
+            resources: [
+                {
+                    name: 'Maine DECD',
+                    url: 'https://www.maine.gov/decd/',
+                    description: 'Dept of Economic & Community Development.'
+                },
+                {
+                    name: 'MTI',
+                    url: 'https://www.mainetechnology.org/',
+                    description: 'Tech funding & grants.'
+                },
+                {
+                    name: 'FAME',
+                    url: 'https://www.famemaine.com/',
+                    description: 'Finance Authority of Maine (Loans/Equity).'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'The Roux Institute',
-                location: 'Portland, ME',
-                website: 'https://roux.northeastern.edu/',
-                services: ['R&D', 'Talent', 'Incubation']
-            },
-            {
-                name: 'Startup Maine',
-                location: 'Portland, ME',
-                website: 'https://startupmaine.org/',
-                services: ['Networking', 'Conferences', 'Mentorship']
-            },
-            {
-                name: 'TechPlace',
-                location: 'Brunswick, ME',
-                website: 'https://techplacemaine.us/',
-                services: ['Manufacturing Incubator', 'Composite Lab']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'The Roux Institute',
+                        location: 'Portland, ME',
+                        website: 'https://roux.northeastern.edu/',
+                        services: ['R&D', 'Talent', 'Incubation']
+                    },
+                    {
+                        name: 'Startup Maine',
+                        location: 'Portland, ME',
+                        website: 'https://startupmaine.org/',
+                        services: ['Networking', 'Conferences', 'Mentorship']
+                    },
+                    {
+                        name: 'TechPlace',
+                        location: 'Brunswick, ME',
+                        website: 'https://techplacemaine.us/',
+                        services: ['Manufacturing Incubator', 'Composite Lab']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Portland',
-                description: 'The Hub. Foodie capital, deep water port, and home to high-growth tech and fintech.',
-                keyIndustries: ['FinTech', 'Marine', 'Food'],
-                programs: ['Portland Economic Development Loans']
-            },
-            {
-                city: 'Bangor',
-                description: 'The Connector. Hub for northern Maine, forestry, and logistics.',
-                keyIndustries: ['Forestry', 'Retail', 'Healthcare'],
-                programs: ['Banor Innovation Center']
-            },
-            {
-                city: 'Lewiston/Auburn',
-                description: 'Manufacturing Center. Converting historic mills into modern spaces.',
-                keyIndustries: ['Manufacturing', 'Healthcare', 'Logistics'],
-                programs: ['L/A Economic Growth Council']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Portland',
+                            description: 'The Hub. Foodie capital, deep water port, and home to high-growth tech and fintech.',
+                            keyIndustries: ['FinTech', 'Marine', 'Food'],
+                            programs: ['Portland Economic Development Loans']
+                        },
+                        {
+                            city: 'Bangor',
+                            description: 'The Connector. Hub for northern Maine, forestry, and logistics.',
+                            keyIndustries: ['Forestry', 'Retail', 'Healthcare'],
+                            programs: ['Banor Innovation Center']
+                        },
+                        {
+                            city: 'Lewiston/Auburn',
+                            description: 'Manufacturing Center. Converting historic mills into modern spaces.',
+                            keyIndustries: ['Manufacturing', 'Healthcare', 'Logistics'],
+                            programs: ['L/A Economic Growth Council']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Start with MTI',
-                content: 'Even if you are just an idea stage, talk to MTI. They have "Tech Start" grants just for market research and IP protection.',
-                type: 'success'
-            },
-            {
-                title: 'Stack Credits',
-                content: 'You can often stack the Seed Capital Tax Credit (for investors) with MTI grants (for the company).',
-                type: 'tip'
-            },
-            {
-                title: 'Ocean Clusters',
-                content: 'If you are in marine tech, work out of the New England Ocean Cluster in Portland. It is the epicenter of the Blue Economy.',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Start with MTI',
+                                content: 'Even if you are just an idea stage, talk to MTI. They have "Tech Start" grants just for market research and IP protection.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'Stack Credits',
+                                content: 'You can often stack the Seed Capital Tax Credit (for investors) with MTI grants (for the company).',
+                                type: 'tip'
+                            },
+                            {
+                                title: 'Ocean Clusters',
+                                content: 'If you are in marine tech, work out of the New England Ocean Cluster in Portland. It is the epicenter of the Blue Economy.',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$150M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Angel', value: '40%', description: 'Tax Credit', color: 'text-blue-600', iconName: 'PieChart' },
-            { label: 'Rebate', value: '80%', description: 'Payroll Tax', color: 'text-purple-600', iconName: 'RefreshCw' },
-            { label: 'Tech', value: '$500k', description: 'MTI Loans', color: 'text-orange-600', iconName: 'Cpu' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$150M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Angel', value: '40%', description: 'Tax Credit', color: 'text-blue-600', iconName: 'PieChart' },
+                                { label: 'Rebate', value: '80%', description: 'Payroll Tax', color: 'text-purple-600', iconName: 'RefreshCw' },
+                                { label: 'Tech', value: '$500k', description: 'MTI Loans', color: 'text-orange-600', iconName: 'Cpu' }
+                            ],
 
-        seoKeywords: [
-            'maine business grants',
-            'mti funding',
-            'pine tree development zone',
-            'seed capital tax credit maine',
-            'small business loans maine',
-            'aquaculture grants maine',
-            'forestry business grants',
-            'start a business in portland maine',
-            'maine technology institute grants',
-            'fame maine loans'
-        ],
+                                seoKeywords: [
+                                    'maine business grants',
+                                    'mti funding',
+                                    'pine tree development zone',
+                                    'seed capital tax credit maine',
+                                    'small business loans maine',
+                                    'aquaculture grants maine',
+                                    'forestry business grants',
+                                    'start a business in portland maine',
+                                    'maine technology institute grants',
+                                    'fame maine loans'
+                                ],
 
-        metaDescription: 'Complete guide to Maine business grants and funding in 2026. Access MTI Innovation Grants, 80% Tax Reimbursements, and 40% Angel Tax Credits.'
-    },
-    {
-        id: 'new-hampshire',
+                                    metaDescription: 'Complete guide to Maine business grants and funding in 2026. Access MTI Innovation Grants, 80% Tax Reimbursements, and 40% Angel Tax Credits.'
+},
+{
+    id: 'new-hampshire',
         name: 'New Hampshire',
-        slug: 'new-hampshire',
-        abbreviation: 'NH',
-        region: 'Northeast',
+            slug: 'new-hampshire',
+                abbreviation: 'NH',
+                    region: 'Northeast',
 
-        heroStats: {
-            totalFunding: '$100M+',
+                        heroStats: {
+        totalFunding: '$100M+',
             programCount: '10+',
-            successRate: '40-50%',
-            avgProcessingTime: '30-45 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '30-45 days'
+    },
 
-        overview: {
-            introduction: `New Hampshire is defined by its "New Hampshire Advantage"—a distinct fiscal policy that features zero general sales tax and zero personal income tax on wages. This creates a highly competitive environment for businesses, particularly in high-tech manufacturing, defense, and tourism.
+    overview: {
+        introduction: `New Hampshire is defined by its "New Hampshire Advantage"—a distinct fiscal policy that features zero general sales tax and zero personal income tax on wages. This creates a highly competitive environment for businesses, particularly in high-tech manufacturing, defense, and tourism.
 
 While the state does not offer as many direct cash grants as some neighbors (like New York or Mass), it compensates with a regulatory environment designed to let businesses keep more of what they earn. State "grants" often take the form of aggressive tax credits (R&D, Coos County) and workforce training reimbursements.`,
 
@@ -15521,148 +15483,148 @@ While the state does not offer as many direct cash grants as some neighbors (lik
 
 The Upper Valley (Hanover/Lebanon), anchored by Dartmouth College and Dartmouth-Hitchcock Medical Center, drives bio-medical research and startups. Tourism dominates the North Country and Lakes Region.`,
 
-            keyOpportunities: `**Workforce Training**: The NH Job Training Fund is the state's most accessible "free money" program, offering a 50% match for upgrading employee skills.
+                keyOpportunities: `**Workforce Training**: The NH Job Training Fund is the state's most accessible "free money" program, offering a 50% match for upgrading employee skills.
             
 **R&D Tax Credits**: For tech and manufacturing firms, the Research and Development Tax Credit is a critical tool to offset the Business Profits Tax (BPT).
             
 **Regenerative Medicine**: Manchester is rapidly becoming the "Silicon Valley of Tissue Engineering" thanks to federal and private investment in the Advanced Regenerative Manufacturing Institute (ARMI).`,
 
-            futureTrends: `**Bio-Fabrication Valley**: With Dean Kamen's leadership and ARMI, Manchester is positioning itself as the global capital for manufacturing human organs and tissues. Startups in this space will find unmatched support.
+                    futureTrends: `**Bio-Fabrication Valley**: With Dean Kamen's leadership and ARMI, Manchester is positioning itself as the global capital for manufacturing human organs and tissues. Startups in this space will find unmatched support.
             
 **Tech Migration**: As taxes rise in Massachusetts, NH expects a continued influx of SaaS and remote-first tech companies establishing HQs in Portsmouth and Nashua.
             
 **Clean Energy**: Offshore wind development in the Gulf of Maine is creating a new supply chain opportunity for NH's maritime and manufacturing base.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'NH Job Training Fund',
-                agency: 'BEA',
-                fundingAmount: '50% Match (up to $100k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Enhance employee skills',
-                    '50% cash match required',
-                    'NH-based employees'
-                ],
-                industries: ['Manufacturing', 'Tech', 'Services'],
-                deadline: 'Rolling',
-                applicationProcess: 'Online application via NH Economy.',
-                successRate: 'High',
-                website: 'https://www.nheconomy.com/office-of-workforce-opportunity/resources-for-businesses/job-training-fund',
-                description: `This is the state's primary discretionary grant program. If you need to train your team on new software, lean manufacturing techniques, or safety protocols, the state will pay half the bill. It is designed to keep the NH workforce competitive.`
-            },
-            {
-                name: 'Research and Development Tax Credit',
-                agency: 'DRA',
-                fundingAmount: 'Tax Credit (Varies)',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Qualified R&D Spend (federal definition)',
-                    'Manufacturing / Tech focus'
-                ],
-                industries: ['Tech', 'Manufacturing', 'Biotech'],
-                deadline: 'June 30 (Annual)',
-                applicationProcess: 'Form DP-160 to Dept of Revenue.',
-                successRate: 'Competitive',
-                website: 'https://www.revenue.nh.gov/faq/business-profits.htm',
-                description: `A powerful tool for startups. You can apply a credit against your Business Profits Tax (BPT) or Business Enterprise Tax (BET) for qualified R&D expenditures. The state cap is often hit, so early application is crucial.`
-            },
-            {
-                name: 'NH Business Finance Authority (BFA) Loan Guarantees',
-                agency: 'BFA',
-                fundingAmount: 'Loan Guarantee / CAP',
-                fundingType: 'Loan Support',
-                eligibility: [
-                    'Creditworthy business',
-                    'Expansion / Working Capital',
-                    'Gap in collateral'
-                ],
-                industries: ['All'],
-                deadline: 'Rolling',
-                applicationProcess: 'Through a participating bank.',
-                successRate: 'High',
-                website: 'https://nhbfa.com/',
-                description: `The BFA doesn't usually lend directly (except for massive industrial projects); instead, they de-risk your bank loan. If your local bank says "no" because you lack collateral, the BFA can provide a guarantee to turn that "no" into a "yes".`
-            },
-            {
-                name: 'Coos County Job Creation Tax Credit',
-                agency: 'DRA',
-                fundingAmount: 'Tax Credit ($750-$1,000/job)',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Located in Coos County (North Country)',
-                    'Create new, permanent jobs'
-                ],
-                industries: ['All'],
-                deadline: 'Annual',
-                applicationProcess: 'Tax return filing.',
-                successRate: 'High',
-                website: 'https://www.revenue.nh.gov/',
-                description: `Designed to spur employment in the state's most rural northern county. Businesses get a direct credit against taxes for every new hire. It works well for tourism, logging, and small manufacturing businesses in the North Country.`
-            },
-            {
-                name: 'Renewable Energy Fund (REF) Grants',
-                agency: 'PUC',
-                fundingAmount: 'Grant (Rebate)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Commercial / Industrial',
-                    'Solar, Biomass, Hydro projects'
-                ],
-                industries: ['Energy', 'Construction'],
-                deadline: 'Rolling (Solicitations vary)',
-                applicationProcess: 'Competitive RFP.',
-                successRate: 'Moderate',
-                website: 'https://www.puc.nh.gov/Sustainable%20Energy/RenewableEnergyFund.html',
-                description: `Grants and rebates for businesses installing renewable energy capacity. Solar rebates for commercial properties are common, helping to offset the relatively high cost of electricity in the region.`
-            },
-            {
-                name: 'Microenterprise CDBG Grants',
-                agency: 'CDFA',
-                fundingAmount: 'Grant (up to $50k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    '5 or fewer employees',
-                    'Low-to-moderate income owner',
-                    'Specific counties only'
-                ],
-                industries: ['Small Retail', 'Service', 'Artisan'],
-                deadline: 'Varies by County',
-                applicationProcess: 'Through local County Economic Dev Corps.',
-                successRate: 'Variable',
-                website: 'https://nhcdfa.org/programs/community-development-block-grant/',
-                description: `Federal CDBG funds administered by the state. These micro-grants are for very small businesses in qualifying areas (excludes Manchester/Nashua/Portsmouth usually). Great for equipment or working capital.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'NH Job Training Fund',
+            agency: 'BEA',
+            fundingAmount: '50% Match (up to $100k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Enhance employee skills',
+                '50% cash match required',
+                'NH-based employees'
+            ],
+            industries: ['Manufacturing', 'Tech', 'Services'],
+            deadline: 'Rolling',
+            applicationProcess: 'Online application via NH Economy.',
+            successRate: 'High',
+            website: 'https://www.nheconomy.com/office-of-workforce-opportunity/resources-for-businesses/job-training-fund',
+            description: `This is the state's primary discretionary grant program. If you need to train your team on new software, lean manufacturing techniques, or safety protocols, the state will pay half the bill. It is designed to keep the NH workforce competitive.`
+        },
+        {
+            name: 'Research and Development Tax Credit',
+            agency: 'DRA',
+            fundingAmount: 'Tax Credit (Varies)',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Qualified R&D Spend (federal definition)',
+                'Manufacturing / Tech focus'
+            ],
+            industries: ['Tech', 'Manufacturing', 'Biotech'],
+            deadline: 'June 30 (Annual)',
+            applicationProcess: 'Form DP-160 to Dept of Revenue.',
+            successRate: 'Competitive',
+            website: 'https://www.revenue.nh.gov/faq/business-profits.htm',
+            description: `A powerful tool for startups. You can apply a credit against your Business Profits Tax (BPT) or Business Enterprise Tax (BET) for qualified R&D expenditures. The state cap is often hit, so early application is crucial.`
+        },
+        {
+            name: 'NH Business Finance Authority (BFA) Loan Guarantees',
+            agency: 'BFA',
+            fundingAmount: 'Loan Guarantee / CAP',
+            fundingType: 'Loan Support',
+            eligibility: [
+                'Creditworthy business',
+                'Expansion / Working Capital',
+                'Gap in collateral'
+            ],
+            industries: ['All'],
+            deadline: 'Rolling',
+            applicationProcess: 'Through a participating bank.',
+            successRate: 'High',
+            website: 'https://nhbfa.com/',
+            description: `The BFA doesn't usually lend directly (except for massive industrial projects); instead, they de-risk your bank loan. If your local bank says "no" because you lack collateral, the BFA can provide a guarantee to turn that "no" into a "yes".`
+        },
+        {
+            name: 'Coos County Job Creation Tax Credit',
+            agency: 'DRA',
+            fundingAmount: 'Tax Credit ($750-$1,000/job)',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Located in Coos County (North Country)',
+                'Create new, permanent jobs'
+            ],
+            industries: ['All'],
+            deadline: 'Annual',
+            applicationProcess: 'Tax return filing.',
+            successRate: 'High',
+            website: 'https://www.revenue.nh.gov/',
+            description: `Designed to spur employment in the state's most rural northern county. Businesses get a direct credit against taxes for every new hire. It works well for tourism, logging, and small manufacturing businesses in the North Country.`
+        },
+        {
+            name: 'Renewable Energy Fund (REF) Grants',
+            agency: 'PUC',
+            fundingAmount: 'Grant (Rebate)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Commercial / Industrial',
+                'Solar, Biomass, Hydro projects'
+            ],
+            industries: ['Energy', 'Construction'],
+            deadline: 'Rolling (Solicitations vary)',
+            applicationProcess: 'Competitive RFP.',
+            successRate: 'Moderate',
+            website: 'https://www.puc.nh.gov/Sustainable%20Energy/RenewableEnergyFund.html',
+            description: `Grants and rebates for businesses installing renewable energy capacity. Solar rebates for commercial properties are common, helping to offset the relatively high cost of electricity in the region.`
+        },
+        {
+            name: 'Microenterprise CDBG Grants',
+            agency: 'CDFA',
+            fundingAmount: 'Grant (up to $50k)',
+            fundingType: 'Grant',
+            eligibility: [
+                '5 or fewer employees',
+                'Low-to-moderate income owner',
+                'Specific counties only'
+            ],
+            industries: ['Small Retail', 'Service', 'Artisan'],
+            deadline: 'Varies by County',
+            applicationProcess: 'Through local County Economic Dev Corps.',
+            successRate: 'Variable',
+            website: 'https://nhcdfa.org/programs/community-development-block-grant/',
+            description: `Federal CDBG funds administered by the state. These micro-grants are for very small businesses in qualifying areas (excludes Manchester/Nashua/Portsmouth usually). Great for equipment or working capital.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**NH Business Registration**: Must be in good standing with the Secretary of State.',
-                '**Tax Compliance**: Even without income tax, you must be current on Business Enterprise Tax (BET) and Business Profits Tax (BPT) filings.',
-                '**Matching Funds**: Almost all NH state grants (Job Training, REF) require the business to put up 50% of the cash.',
-                '**Employee count**: Job training funds are strictly based on W-2 employees, not contractors.'
-            ],
+        generalRequirements: [
+            '**NH Business Registration**: Must be in good standing with the Secretary of State.',
+            '**Tax Compliance**: Even without income tax, you must be current on Business Enterprise Tax (BET) and Business Profits Tax (BPT) filings.',
+            '**Matching Funds**: Almost all NH state grants (Job Training, REF) require the business to put up 50% of the cash.',
+            '**Employee count**: Job training funds are strictly based on W-2 employees, not contractors.'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'Sole Proprietorships (Limited access)',
                 'Manufacturers (Priority status)'
             ],
-            restrictions: [
-                '**Safety Training**: The Job Training Fund cannot be used for mandatory OSHA/Safety training; it must be skill-additive.',
-                '**Retail**: Generally excluded from BFA major financing tools.',
-                '**Location**: CDBG/Microenterprise grants are strictly geographically fenced to rural/low-income census tracts.'
-            ],
-            documentationNeeded: [
-                'Training Vendor Quotes (for Job Training Fund)',
-                'Business Tax Returns (NH BPT/BET forms)',
-                'Bank financing denial (for BFA support)',
-                'Payroll records (to prove job creation)'
-            ]
-        },
+                restrictions: [
+                    '**Safety Training**: The Job Training Fund cannot be used for mandatory OSHA/Safety training; it must be skill-additive.',
+                    '**Retail**: Generally excluded from BFA major financing tools.',
+                    '**Location**: CDBG/Microenterprise grants are strictly geographically fenced to rural/low-income census tracts.'
+                ],
+                    documentationNeeded: [
+                        'Training Vendor Quotes (for Job Training Fund)',
+                        'Business Tax Returns (NH BPT/BET forms)',
+                        'Bank financing denial (for BFA support)',
+                        'Payroll records (to prove job creation)'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `Navigating New Hampshire's funding landscape is less about finding a single "grant portal" and more about understanding the tax code and workforce ecosystems.
+    applicationProcess: {
+        guide: `Navigating New Hampshire's funding landscape is less about finding a single "grant portal" and more about understanding the tax code and workforce ecosystems.
 
 **Phase 1: Tax Structure Mastery**
 Before applying for anything, understand the BET (Business Enterprise Tax) and BPT (Business Profits Tax). The BET hits you on wages/interest/dividends even if you aren't profitable. Many "incentives" are actually credits against these specific taxes. Talk to a NH CPA immediately.
@@ -15710,59 +15672,59 @@ If you are in biotech, the path is distinct. Engagement with ARMI (BioFabUSA) in
                     timeframe: 'Post-Training'
                 }
             ],
-            tips: [
-                '**The "Border Value"**: If you sell digital services, locating in Salem or Nashua (right on the MA border) gives you access to Boston talent/clients with NH tax benefits. Mention this strategic location in applications.',
-                '**Energy Costs**: NH has high electricity rates. Use the Renewable Energy Fund to install solar and reduce your OpEx. It improves your P&L for loan applications.',
-                '**Manufacturing is King**: The state government LOVES manufacturing. If you make a physical product, you are at the front of the line for help.',
-                '**Small State, Big Access**: It is possible to get a meeting with the Commissioner of Economic Affairs in NH. Networking works here.'
-            ]
-        },
+                tips: [
+                    '**The "Border Value"**: If you sell digital services, locating in Salem or Nashua (right on the MA border) gives you access to Boston talent/clients with NH tax benefits. Mention this strategic location in applications.',
+                    '**Energy Costs**: NH has high electricity rates. Use the Renewable Energy Fund to install solar and reduce your OpEx. It improves your P&L for loan applications.',
+                    '**Manufacturing is King**: The state government LOVES manufacturing. If you make a physical product, you are at the front of the line for help.',
+                    '**Small State, Big Access**: It is possible to get a meeting with the Commissioner of Economic Affairs in NH. Networking works here.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Advanced Manufacturing',
-                    description: 'The backbone of the economy. Aerospace components, firearms (Sig Sauer), and defense electronics.',
-                    funding: 'Job Training Fund / R&D Tax Credit'
-                },
-                {
-                    name: 'Biotech & MedTech',
-                    description: 'Focused on the Upper Valley (Dartmouth) and Manchester (ARMI). Tissue engineering is a global specialty here.',
-                    funding: 'ARMI / Venture Capital'
-                },
-                {
-                    name: 'Technology (SaaS)',
-                    description: 'Portsmouth/Seacoast is a vibrant tech hub. Low taxes attract founders exiting Boston.',
-                    funding: 'BFA Loans / Angel Investors'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Advanced Manufacturing',
+                description: 'The backbone of the economy. Aerospace components, firearms (Sig Sauer), and defense electronics.',
+                funding: 'Job Training Fund / R&D Tax Credit'
+            },
+            {
+                name: 'Biotech & MedTech',
+                description: 'Focused on the Upper Valley (Dartmouth) and Manchester (ARMI). Tissue engineering is a global specialty here.',
+                funding: 'ARMI / Venture Capital'
+            },
+            {
+                name: 'Technology (SaaS)',
+                description: 'Portsmouth/Seacoast is a vibrant tech hub. Low taxes attract founders exiting Boston.',
+                funding: 'BFA Loans / Angel Investors'
+            }
+        ],
             emerging: [
                 '**Offshore Wind Support**: Maritime industries preparing for Gulf of Maine wind farms.',
                 '**Outdoor Recreation**: "Granite State" branding for gear and experience companies.',
                 '**Agri-Tech**: Small scale, high-value farming in the Connecticut River Valley.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'DEKA Research',
-                grant: 'Strategic Partnership',
-                amount: 'N/A',
-                outcome: 'Founded by Dean Kamen in Manchester. The anchor tenant of the state\'s innovation economy (Segway, Luke Arm, Slingshot).'
-            },
-            {
-                company: 'Rusty Dog Coffee',
-                grant: 'Microenterprise CDBG',
-                amount: '$25,000',
-                outcome: 'Used grant funds to purchase a new roaster and expand wholesale operations.'
-            },
-            {
-                company: 'Worthen Industries',
-                grant: 'Job Training Fund',
-                amount: '$50,000+',
-                outcome: 'Used matching grants to train employees on advanced adhesive manufacturing processes.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'DEKA Research',
+            grant: 'Strategic Partnership',
+            amount: 'N/A',
+            outcome: 'Founded by Dean Kamen in Manchester. The anchor tenant of the state\'s innovation economy (Segway, Luke Arm, Slingshot).'
+        },
+        {
+            company: 'Rusty Dog Coffee',
+            grant: 'Microenterprise CDBG',
+            amount: '$25,000',
+            outcome: 'Used grant funds to purchase a new roaster and expand wholesale operations.'
+        },
+        {
+            company: 'Worthen Industries',
+            grant: 'Job Training Fund',
+            amount: '$50,000+',
+            outcome: 'Used matching grants to train employees on advanced adhesive manufacturing processes.'
+        }
+    ],
 
         faqs: [
             {
@@ -15783,127 +15745,127 @@ If you are in biotech, the path is distinct. Engagement with ARMI (BioFabUSA) in
             }
         ],
 
-        resources: [
-            {
-                name: 'NH Dept of Business & Economic Affairs (BEA)',
-                url: 'https://www.nheconomy.com/',
-                description: 'The main entry point for state incentives.'
-            },
-            {
-                name: 'NH Business Finance Authority (BFA)',
-                url: 'https://nhbfa.com/',
-                description: 'State-backed lending and credit enhancement.'
-            },
-            {
-                name: 'NH Small Business Development Center',
-                url: 'https://www.nhsbdc.org/',
-                description: 'Excellent advising and grant navigation.'
-            },
-            {
-                name: 'Live Free and Start',
-                url: 'http://livefreeandstart.com/',
-                description: 'State initiative specifically for high-tech startups.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'NH Dept of Business & Economic Affairs (BEA)',
+                    url: 'https://www.nheconomy.com/',
+                    description: 'The main entry point for state incentives.'
+                },
+                {
+                    name: 'NH Business Finance Authority (BFA)',
+                    url: 'https://nhbfa.com/',
+                    description: 'State-backed lending and credit enhancement.'
+                },
+                {
+                    name: 'NH Small Business Development Center',
+                    url: 'https://www.nhsbdc.org/',
+                    description: 'Excellent advising and grant navigation.'
+                },
+                {
+                    name: 'Live Free and Start',
+                    url: 'http://livefreeandstart.com/',
+                    description: 'State initiative specifically for high-tech startups.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Manchester SBDC',
-                location: '88 Commercial St, Manchester, NH',
-                website: 'https://www.nhsbdc.org/',
-                services: ['Start-up Advising', 'Manufacturing Support', 'Export Help']
-            },
-            {
-                name: 'Seacoast SBDC (Portsmouth)',
-                location: '1 Washington St, Dover, NH',
-                website: 'https://www.nhsbdc.org/',
-                services: ['Tech Startups', 'Blue Economy', 'Angel Investor Prep']
-            },
-            {
-                name: 'Dartmouth Regional Tech Center',
-                location: '16 Cavendish Ct, Lebanon, NH',
-                website: 'https://thedrtc.com/',
-                services: ['Biotech Incubator', 'Lab Space', 'Dartmouth Spinoffs']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Manchester SBDC',
+                        location: '88 Commercial St, Manchester, NH',
+                        website: 'https://www.nhsbdc.org/',
+                        services: ['Start-up Advising', 'Manufacturing Support', 'Export Help']
+                    },
+                    {
+                        name: 'Seacoast SBDC (Portsmouth)',
+                        location: '1 Washington St, Dover, NH',
+                        website: 'https://www.nhsbdc.org/',
+                        services: ['Tech Startups', 'Blue Economy', 'Angel Investor Prep']
+                    },
+                    {
+                        name: 'Dartmouth Regional Tech Center',
+                        location: '16 Cavendish Ct, Lebanon, NH',
+                        website: 'https://thedrtc.com/',
+                        services: ['Biotech Incubator', 'Lab Space', 'Dartmouth Spinoffs']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Manchester',
-                description: 'The largest city and industrial heart. Home to the Millyard (tech/biotech hub), SNHU, and the main airport.',
-                keyIndustries: ['Bio-Fabrication', 'Higher Ed', 'Finance', 'Manufacturing'],
-                programs: ['Manchester Development Corp Loans', 'Foreign Trade Zone']
-            },
-            {
-                city: 'Nashua',
-                description: 'The "Gate City" on the MA border. Popular for defense contractors and tech companies seeking proximity to Boston without the tax bill.',
-                keyIndustries: ['Defense (BAE Systems)', 'Retail', 'Tech'],
-                programs: ['Nashua Revolving Loan Fund', 'Downtown Improvement']
-            },
-            {
-                city: 'Portsmouth',
-                description: 'Historic seaport and cultural gem. High cost of living but a magnet for tech talent, creative agencies, and advanced trades.',
-                keyIndustries: ['Tech/SaaS', 'Tourism', 'Maritime', 'Craft Brewing'],
-                programs: ['Pease Development Authority incentives', 'Seacoast Econ Dev']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Manchester',
+                            description: 'The largest city and industrial heart. Home to the Millyard (tech/biotech hub), SNHU, and the main airport.',
+                            keyIndustries: ['Bio-Fabrication', 'Higher Ed', 'Finance', 'Manufacturing'],
+                            programs: ['Manchester Development Corp Loans', 'Foreign Trade Zone']
+                        },
+                        {
+                            city: 'Nashua',
+                            description: 'The "Gate City" on the MA border. Popular for defense contractors and tech companies seeking proximity to Boston without the tax bill.',
+                            keyIndustries: ['Defense (BAE Systems)', 'Retail', 'Tech'],
+                            programs: ['Nashua Revolving Loan Fund', 'Downtown Improvement']
+                        },
+                        {
+                            city: 'Portsmouth',
+                            description: 'Historic seaport and cultural gem. High cost of living but a magnet for tech talent, creative agencies, and advanced trades.',
+                            keyIndustries: ['Tech/SaaS', 'Tourism', 'Maritime', 'Craft Brewing'],
+                            programs: ['Pease Development Authority incentives', 'Seacoast Econ Dev']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'The "Mass" Strategy',
-                content: 'Smart NH businesses recruit talent from Massachusetts who want to move north for a lower cost of living/higher quality of life. Market your "quality of life" to potential hires.',
-                type: 'tip'
-            },
-            {
-                title: 'Equipment CaPEx',
-                content: 'Since there is no sales tax, buying heavy expensive machinery in NH saves you 6-8% immediately compared to neighboring states. It’s an instant discount.',
-                type: 'success'
-            },
-            {
-                title: 'Watch the Property Tax',
-                content: 'NH has no income/sales tax, so it funds everything via Property Tax. These rates can be very high in some towns. Check the mill rate before buying commercial real estate.',
-                type: 'warning'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'The "Mass" Strategy',
+                                content: 'Smart NH businesses recruit talent from Massachusetts who want to move north for a lower cost of living/higher quality of life. Market your "quality of life" to potential hires.',
+                                type: 'tip'
+                            },
+                            {
+                                title: 'Equipment CaPEx',
+                                content: 'Since there is no sales tax, buying heavy expensive machinery in NH saves you 6-8% immediately compared to neighboring states. It’s an instant discount.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'Watch the Property Tax',
+                                content: 'NH has no income/sales tax, so it funds everything via Property Tax. These rates can be very high in some towns. Check the mill rate before buying commercial real estate.',
+                                type: 'warning'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Sales Tax', value: '0%', description: 'Equipment Savings', color: 'text-green-600', iconName: 'ShoppingBag' },
-            { label: 'Grant', value: '50%', description: 'Training Match', color: 'text-blue-600', iconName: 'Users' },
-            { label: 'Tax Credit', value: 'R&D', description: 'Innovation Offset', color: 'text-purple-600', iconName: 'Cpu' },
-            { label: 'Commute', value: 'Easy', description: 'Access to Boston', color: 'text-orange-600', iconName: 'MapPin' }
-        ],
+                            metrics: [
+                                { label: 'Sales Tax', value: '0%', description: 'Equipment Savings', color: 'text-green-600', iconName: 'ShoppingBag' },
+                                { label: 'Grant', value: '50%', description: 'Training Match', color: 'text-blue-600', iconName: 'Users' },
+                                { label: 'Tax Credit', value: 'R&D', description: 'Innovation Offset', color: 'text-purple-600', iconName: 'Cpu' },
+                                { label: 'Commute', value: 'Easy', description: 'Access to Boston', color: 'text-orange-600', iconName: 'MapPin' }
+                            ],
 
-        seoKeywords: [
-            'new hampshire business grants',
-            'nh job training fund',
-            'no sales tax business benefits',
-            'nh r&d tax credit',
-            'manchester nh manufacturing grants',
-            'bfa business loans',
-            'starting a business in nh',
-            'biotech funding new hampshire',
-            'small business loans nh',
-            'coos county business grants'
-        ],
+                                seoKeywords: [
+                                    'new hampshire business grants',
+                                    'nh job training fund',
+                                    'no sales tax business benefits',
+                                    'nh r&d tax credit',
+                                    'manchester nh manufacturing grants',
+                                    'bfa business loans',
+                                    'starting a business in nh',
+                                    'biotech funding new hampshire',
+                                    'small business loans nh',
+                                    'coos county business grants'
+                                ],
 
-        metaDescription: 'Complete guide to New Hampshire business grants and funding in 2026. Access the 50% Job Training Match, R&D Tax Credits, and 0% Sales Tax benefits.'
-    },
-    {
-        id: 'rhode-island',
+                                    metaDescription: 'Complete guide to New Hampshire business grants and funding in 2026. Access the 50% Job Training Match, R&D Tax Credits, and 0% Sales Tax benefits.'
+},
+{
+    id: 'rhode-island',
         name: 'Rhode Island',
-        slug: 'rhode-island',
-        abbreviation: 'RI',
-        region: 'Northeast',
+            slug: 'rhode-island',
+                abbreviation: 'RI',
+                    region: 'Northeast',
 
-        heroStats: {
-            totalFunding: '$80M+',
+                        heroStats: {
+        totalFunding: '$80M+',
             programCount: '15+',
-            successRate: '35-45%',
-            avgProcessingTime: '30-45 days'
-        },
+                successRate: '35-45%',
+                    avgProcessingTime: '30-45 days'
+    },
 
-        overview: {
-            introduction: `Rhode Island packs a punch with some of the most accessible innovation vouchers and tax credits in New England. Rhode Island Commerce is very active in supporting the "Blue Economy" (marine tech) and design sectors, leveraging the state's Ivy League talent pool.
+    overview: {
+        introduction: `Rhode Island packs a punch with some of the most accessible innovation vouchers and tax credits in New England. Rhode Island Commerce is very active in supporting the "Blue Economy" (marine tech) and design sectors, leveraging the state's Ivy League talent pool.
 
 The state is small but densely connected, meaning access to decision-makers—from bank presidents to strict regulators—is easier than in larger states.`,
 
@@ -15911,150 +15873,150 @@ The state is small but densely connected, meaning access to decision-makers—fr
 
 The state is aggressively targeting offshore wind energy, taking advantage of its geography to become the logistics hub for the Atlantic wind farms.`,
 
-            keyOpportunities: `**Innovation Vouchers**: Grants of up to $50,000 are available for R&D, one of the easiest "first checks" for startups in the region.
+                keyOpportunities: `**Innovation Vouchers**: Grants of up to $50,000 are available for R&D, one of the easiest "first checks" for startups in the region.
             
 **Job Creation**: The Qualified Jobs Incentive provides refundable tax credits for new hires, effectively subsidizing your payroll.
             
 **Supply Chain**: The SupplyRI program connects small local suppliers with massive institutional buyers like universities and hospitals.`,
 
-            futureTrends: `**Offshore Wind**: Massive port investments in Providence and Quonset to support turbine assembly.
+                    futureTrends: `**Offshore Wind**: Massive port investments in Providence and Quonset to support turbine assembly.
             
 **Blue Tech**: Autonomous underwater vehicles (AUVs) and smart sensors are a booming sub-sector.
             
 **Food Tech**: Culinary innovation is moving from restaurants to packaged goods and ag-tech.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'Innovation Vouchers',
-                agency: 'RI Commerce',
-                fundingAmount: 'Grant (up to $50k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Small business (<500 employees)',
-                    'Partner with RI university/hospital',
-                    'R&D Project'
-                ],
-                industries: ['R&D', 'Tech', 'Design', 'Manufacturing'],
-                deadline: 'Rolling',
-                applicationProcess: 'Online application.',
-                successRate: 'High',
-                website: 'https://commerceri.com/innovation-vouchers/',
-                description: `Provides grants of up to $50,000 to fund R&D projects with a Rhode Island knowledge partner (Brown, URI, RISD, Hospitals). Great for early-stage validation, prototyping, and testing.`
-            },
-            {
-                name: 'Qualified Jobs Incentive',
-                agency: 'RI Commerce',
-                fundingAmount: 'Refundable Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Create new full-time jobs',
-                    'Pay >median wage',
-                    'Commit to maintain jobs'
-                ],
-                industries: ['All Eligible'],
-                deadline: 'Rolling',
-                applicationProcess: 'Board approval.',
-                successRate: 'High',
-                website: 'https://commerceri.com/qualified-jobs-incentive/',
-                description: `Tax credits for up to 10 years. The unique part is that the credits are redeemable for cash (refundable) if you don't have tax liability. Essentially, the state pays you to hire people.`
-            },
-            {
-                name: 'Rebuild Rhode Island',
-                agency: 'RI Commerce',
-                fundingAmount: 'Tax Credit / Gap Financing',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Real estate development',
-                    'Commercial/Residential',
-                    'Financing gap demo'
-                ],
-                industries: ['Real Estate', 'Hospitality'],
-                deadline: 'Rolling',
-                applicationProcess: 'Detailed application.',
-                successRate: 'Selective',
-                website: 'https://commerceri.com/rebuild-ri/',
-                description: `Fills the financing gap for real estate projects that otherwise wouldn't happen. Can support adaptive reuse, historic preservation, and new construction. Often critical for mill conversions.`
-            },
-            {
-                name: 'Main Street RI Streetscape',
-                agency: 'RI Commerce',
-                fundingAmount: 'Grant',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Municipalities / Districts',
-                    'Physical improvements',
-                    'Economic impact'
-                ],
-                industries: ['Retail', 'Local Business'],
-                deadline: 'Annual',
-                applicationProcess: 'Competitive.',
-                successRate: 'Variable',
-                website: 'https://commerceri.com/incentives/main-street-ri-streetscape-improvement-fund/',
-                description: `Grants to improve commercial districts (lighting, sidewalks, facades) to attract more foot traffic and business. Indirectly benefits all local retail.`
-            },
-            {
-                name: 'Small Business Loan Fund',
-                agency: 'RI Commerce',
-                fundingAmount: 'Loan',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Small business unable to get bank loan',
-                    'Located in RI',
-                    'Viable business plan'
-                ],
-                industries: ['All'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply to Commerce.',
-                successRate: 'Variable',
-                website: 'https://commerceri.com/financing/',
-                description: `Direct lending to small businesses that are bankable but can't get traditional financing due to collateral shortfalls or being too new.`
-            },
-            {
-                name: 'SupplyRI',
-                agency: 'RI Commerce',
-                fundingAmount: 'Contract Access',
-                fundingType: 'Hybrid',
-                eligibility: [
-                    'RI supplier',
-                    'Register in database',
-                    'Capacity to scale'
-                ],
-                industries: ['B2B', 'Services', 'Construction'],
-                deadline: 'Rolling',
-                applicationProcess: 'Registration.',
-                successRate: 'N/A',
-                website: 'https://supplyrhodeisland.com/',
-                description: `Not a grant, but a powerful procurement program connecting huge RI anchors (universities, hospitals, insurers) with local small suppliers.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Innovation Vouchers',
+            agency: 'RI Commerce',
+            fundingAmount: 'Grant (up to $50k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Small business (<500 employees)',
+                'Partner with RI university/hospital',
+                'R&D Project'
+            ],
+            industries: ['R&D', 'Tech', 'Design', 'Manufacturing'],
+            deadline: 'Rolling',
+            applicationProcess: 'Online application.',
+            successRate: 'High',
+            website: 'https://commerceri.com/innovation-vouchers/',
+            description: `Provides grants of up to $50,000 to fund R&D projects with a Rhode Island knowledge partner (Brown, URI, RISD, Hospitals). Great for early-stage validation, prototyping, and testing.`
+        },
+        {
+            name: 'Qualified Jobs Incentive',
+            agency: 'RI Commerce',
+            fundingAmount: 'Refundable Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Create new full-time jobs',
+                'Pay >median wage',
+                'Commit to maintain jobs'
+            ],
+            industries: ['All Eligible'],
+            deadline: 'Rolling',
+            applicationProcess: 'Board approval.',
+            successRate: 'High',
+            website: 'https://commerceri.com/qualified-jobs-incentive/',
+            description: `Tax credits for up to 10 years. The unique part is that the credits are redeemable for cash (refundable) if you don't have tax liability. Essentially, the state pays you to hire people.`
+        },
+        {
+            name: 'Rebuild Rhode Island',
+            agency: 'RI Commerce',
+            fundingAmount: 'Tax Credit / Gap Financing',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Real estate development',
+                'Commercial/Residential',
+                'Financing gap demo'
+            ],
+            industries: ['Real Estate', 'Hospitality'],
+            deadline: 'Rolling',
+            applicationProcess: 'Detailed application.',
+            successRate: 'Selective',
+            website: 'https://commerceri.com/rebuild-ri/',
+            description: `Fills the financing gap for real estate projects that otherwise wouldn't happen. Can support adaptive reuse, historic preservation, and new construction. Often critical for mill conversions.`
+        },
+        {
+            name: 'Main Street RI Streetscape',
+            agency: 'RI Commerce',
+            fundingAmount: 'Grant',
+            fundingType: 'Grant',
+            eligibility: [
+                'Municipalities / Districts',
+                'Physical improvements',
+                'Economic impact'
+            ],
+            industries: ['Retail', 'Local Business'],
+            deadline: 'Annual',
+            applicationProcess: 'Competitive.',
+            successRate: 'Variable',
+            website: 'https://commerceri.com/incentives/main-street-ri-streetscape-improvement-fund/',
+            description: `Grants to improve commercial districts (lighting, sidewalks, facades) to attract more foot traffic and business. Indirectly benefits all local retail.`
+        },
+        {
+            name: 'Small Business Loan Fund',
+            agency: 'RI Commerce',
+            fundingAmount: 'Loan',
+            fundingType: 'Loan',
+            eligibility: [
+                'Small business unable to get bank loan',
+                'Located in RI',
+                'Viable business plan'
+            ],
+            industries: ['All'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply to Commerce.',
+            successRate: 'Variable',
+            website: 'https://commerceri.com/financing/',
+            description: `Direct lending to small businesses that are bankable but can't get traditional financing due to collateral shortfalls or being too new.`
+        },
+        {
+            name: 'SupplyRI',
+            agency: 'RI Commerce',
+            fundingAmount: 'Contract Access',
+            fundingType: 'Hybrid',
+            eligibility: [
+                'RI supplier',
+                'Register in database',
+                'Capacity to scale'
+            ],
+            industries: ['B2B', 'Services', 'Construction'],
+            deadline: 'Rolling',
+            applicationProcess: 'Registration.',
+            successRate: 'N/A',
+            website: 'https://supplyrhodeisland.com/',
+            description: `Not a grant, but a powerful procurement program connecting huge RI anchors (universities, hospitals, insurers) with local small suppliers.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Registered in RI**: Must be a legal entity in the state.',
-                '**Knowledge Partner**: For Innovation Vouchers, you MUST partner with a local university or hospital (Brown, URI, etc.).',
-                '**Wage Standards**: Qualified Jobs credits require paying above the median hourly wage for the industry.'
-            ],
+        generalRequirements: [
+            '**Registered in RI**: Must be a legal entity in the state.',
+            '**Knowledge Partner**: For Innovation Vouchers, you MUST partner with a local university or hospital (Brown, URI, etc.).',
+            '**Wage Standards**: Qualified Jobs credits require paying above the median hourly wage for the industry.'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'Design Firms',
                 'Marine Tech Startups'
             ],
-            restrictions: [
-                '**Rent/Overhead**: Innovation Grants cannot be used for rent or general overhead, only specific R&D project costs.',
-                '**Retail**: Rebuild RI works for mixed-use, but pure retail has fewer options outside of Main Street grants.',
-                '**Clawbacks**: The state will claw back tax credits if you fire the employees you promised to hire.'
-            ],
-            documentationNeeded: [
-                'Innovation Voucher Application',
-                'Scope of Work with University Partner',
-                'Pro Forma (for Rebuild RI)',
-                '3-Year Hiring Plan (for Qualified Jobs)'
-            ]
-        },
+                restrictions: [
+                    '**Rent/Overhead**: Innovation Grants cannot be used for rent or general overhead, only specific R&D project costs.',
+                    '**Retail**: Rebuild RI works for mixed-use, but pure retail has fewer options outside of Main Street grants.',
+                    '**Clawbacks**: The state will claw back tax credits if you fire the employees you promised to hire.'
+                ],
+                    documentationNeeded: [
+                        'Innovation Voucher Application',
+                        'Scope of Work with University Partner',
+                        'Pro Forma (for Rebuild RI)',
+                        '3-Year Hiring Plan (for Qualified Jobs)'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `Rhode Island is highly centralized. RI Commerce is the "one-stop shop" for almost everything.
+    applicationProcess: {
+        guide: `Rhode Island is highly centralized. RI Commerce is the "one-stop shop" for almost everything.
 
 **Phase 1: The Innovation Voucher**
 This is the best starting point. Find a professor at URI or Brown who likes your tech. Write a scope of work together. Apply for the $50k. It's a high-probability win.
@@ -16102,59 +16064,59 @@ Join the "Venture Café Providence" gatherings. It is the center of gravity for 
                     timeframe: 'Rolling'
                 }
             ],
-            tips: [
-                '**The "Brown" Effect**: Having a partnership with Brown University gives you instant credibility with investors. Use the voucher to get that logo on your deck.',
-                '**Design Matters**: RISD alumni run half the creative world. If your product needs design work, hire local talent and use state training grants.',
-                '**Blue Economy**: If it touches the water (sensors, boats, wind), you have a massive advantage in RI.',
-                '**Providence Loans**: Don\'t forget the Providence Revolving Fund—it has separate money for city-based businesses.'
-            ]
-        },
+                tips: [
+                    '**The "Brown" Effect**: Having a partnership with Brown University gives you instant credibility with investors. Use the voucher to get that logo on your deck.',
+                    '**Design Matters**: RISD alumni run half the creative world. If your product needs design work, hire local talent and use state training grants.',
+                    '**Blue Economy**: If it touches the water (sensors, boats, wind), you have a massive advantage in RI.',
+                    '**Providence Loans**: Don\'t forget the Providence Revolving Fund—it has separate money for city-based businesses.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Blue Economy',
-                    description: 'Offshore wind, defense, marine trades. 400 miles of coastline define the economy.',
-                    funding: 'Innovation Vouchers'
-                },
-                {
-                    name: 'Design & Food',
-                    description: 'World-class design talent from RISD. Food incubator hub (Hope & Main).',
-                    funding: 'SupplyRI'
-                },
-                {
-                    name: 'Biotech',
-                    description: 'Growing fast due to spillover from Boston and strong Brown Medical School research.',
-                    funding: 'Qualified Jobs'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Blue Economy',
+                description: 'Offshore wind, defense, marine trades. 400 miles of coastline define the economy.',
+                funding: 'Innovation Vouchers'
+            },
+            {
+                name: 'Design & Food',
+                description: 'World-class design talent from RISD. Food incubator hub (Hope & Main).',
+                funding: 'SupplyRI'
+            },
+            {
+                name: 'Biotech',
+                description: 'Growing fast due to spillover from Boston and strong Brown Medical School research.',
+                funding: 'Qualified Jobs'
+            }
+        ],
             emerging: [
                 '**Composites**: Advanced materials for boat building and aerospace.',
                 '**Cybersecurity**: Naval War College drives demand.',
                 '**Data Analytics**: Rising hub for insurance and health data.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Regent Craft',
-                grant: 'Qualified Jobs',
-                amount: 'Incentives',
-                outcome: 'Moved HQ to RI to build electric sea-gliders, hiring hundreds of engineers.'
-            },
-            {
-                company: 'Jaia Robotics',
-                grant: 'Innovation Voucher',
-                amount: '$50k',
-                outcome: 'Developed low-cost aquatic drones for data collection with university partners.'
-            },
-            {
-                company: 'GoTeff',
-                grant: 'Innovation Voucher',
-                amount: '$50k',
-                outcome: 'Food startup developed new product lines using ancient grains with Johnson & Wales University.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Regent Craft',
+            grant: 'Qualified Jobs',
+            amount: 'Incentives',
+            outcome: 'Moved HQ to RI to build electric sea-gliders, hiring hundreds of engineers.'
+        },
+        {
+            company: 'Jaia Robotics',
+            grant: 'Innovation Voucher',
+            amount: '$50k',
+            outcome: 'Developed low-cost aquatic drones for data collection with university partners.'
+        },
+        {
+            company: 'GoTeff',
+            grant: 'Innovation Voucher',
+            amount: '$50k',
+            outcome: 'Food startup developed new product lines using ancient grains with Johnson & Wales University.'
+        }
+    ],
 
         faqs: [
             {
@@ -16175,122 +16137,122 @@ Join the "Venture Café Providence" gatherings. It is the center of gravity for 
             }
         ],
 
-        resources: [
-            {
-                name: 'RI Commerce',
-                url: 'https://commerceri.com/',
-                description: 'State economic development.'
-            },
-            {
-                name: 'RIHub',
-                url: 'https://rihub.org/',
-                description: 'Startup incubator / accelerator.'
-            },
-            {
-                name: 'SEG',
-                url: 'https://segreenhouse.org/',
-                description: 'Social Enterprise Greenhouse (Impact Biz).'
-            }
-        ],
+            resources: [
+                {
+                    name: 'RI Commerce',
+                    url: 'https://commerceri.com/',
+                    description: 'State economic development.'
+                },
+                {
+                    name: 'RIHub',
+                    url: 'https://rihub.org/',
+                    description: 'Startup incubator / accelerator.'
+                },
+                {
+                    name: 'SEG',
+                    url: 'https://segreenhouse.org/',
+                    description: 'Social Enterprise Greenhouse (Impact Biz).'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Venture Café',
-                location: 'Providence, RI',
-                website: 'https://venturecafeprovidence.org/',
-                services: ['Networking', 'Events']
-            },
-            {
-                name: 'Hope & Main',
-                location: 'Warren, RI',
-                website: 'https://makefoodyourbusiness.org/',
-                services: ['Food Incubator', 'Commercial Kitchen']
-            },
-            {
-                name: '401 Tech Bridge',
-                location: 'Portsmouth, RI',
-                website: 'https://401techbridge.org/',
-                services: ['Blue Tech', 'Materials Testing']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Venture Café',
+                        location: 'Providence, RI',
+                        website: 'https://venturecafeprovidence.org/',
+                        services: ['Networking', 'Events']
+                    },
+                    {
+                        name: 'Hope & Main',
+                        location: 'Warren, RI',
+                        website: 'https://makefoodyourbusiness.org/',
+                        services: ['Food Incubator', 'Commercial Kitchen']
+                    },
+                    {
+                        name: '401 Tech Bridge',
+                        location: 'Portsmouth, RI',
+                        website: 'https://401techbridge.org/',
+                        services: ['Blue Tech', 'Materials Testing']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Providence',
-                description: 'The Creative Capital. Design, Food, and Tech. Vibrant and walkable.',
-                keyIndustries: ['Design', 'EdTech', 'Food'],
-                programs: ['Providence Revolving Fund']
-            },
-            {
-                city: 'Newport',
-                description: 'The Blue Hub. Defense, Sailing, and Tourism.',
-                keyIndustries: ['Defense', 'Marine', 'Tourism'],
-                programs: ['Innovate Newport']
-            },
-            {
-                city: 'Pawtucket',
-                description: 'The Maker City. Historic mills converting to studios.',
-                keyIndustries: ['Manufacturing', 'Arts', 'Crafts'],
-                programs: ['Arts District Incentives']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Providence',
+                            description: 'The Creative Capital. Design, Food, and Tech. Vibrant and walkable.',
+                            keyIndustries: ['Design', 'EdTech', 'Food'],
+                            programs: ['Providence Revolving Fund']
+                        },
+                        {
+                            city: 'Newport',
+                            description: 'The Blue Hub. Defense, Sailing, and Tourism.',
+                            keyIndustries: ['Defense', 'Marine', 'Tourism'],
+                            programs: ['Innovate Newport']
+                        },
+                        {
+                            city: 'Pawtucket',
+                            description: 'The Maker City. Historic mills converting to studios.',
+                            keyIndustries: ['Manufacturing', 'Arts', 'Crafts'],
+                            programs: ['Arts District Incentives']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Leverage the Universities',
-                content: 'Brown and RISD are world-class. The Innovation Voucher covers the cost of hiring their labs/professors. Use it to build your MVP.',
-                type: 'success'
-            },
-            {
-                title: 'Get "Qualified"',
-                content: 'The Qualified Jobs credit is refundable. That means if you are a startup with no profit, the state still sends you a check for the credit value.',
-                type: 'tip'
-            },
-            {
-                title: 'Go Blue',
-                content: 'There is a massive push for "Blue Technology" (ocean tech). If you can pivot your tech to apply to the ocean, funding becomes much easier.',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Leverage the Universities',
+                                content: 'Brown and RISD are world-class. The Innovation Voucher covers the cost of hiring their labs/professors. Use it to build your MVP.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'Get "Qualified"',
+                                content: 'The Qualified Jobs credit is refundable. That means if you are a startup with no profit, the state still sends you a check for the credit value.',
+                                type: 'tip'
+                            },
+                            {
+                                title: 'Go Blue',
+                                content: 'There is a massive push for "Blue Technology" (ocean tech). If you can pivot your tech to apply to the ocean, funding becomes much easier.',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$80M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'R&D', value: '$50k', description: 'Voucher', color: 'text-blue-600', iconName: 'Beaker' },
-            { label: 'Rebate', value: 'Yes', description: 'Refundable Tax', color: 'text-purple-600', iconName: 'RefreshCw' },
-            { label: 'Supply', value: 'B2B', description: 'SupplyRI', color: 'text-orange-600', iconName: 'Truck' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$80M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'R&D', value: '$50k', description: 'Voucher', color: 'text-blue-600', iconName: 'Beaker' },
+                                { label: 'Rebate', value: 'Yes', description: 'Refundable Tax', color: 'text-purple-600', iconName: 'RefreshCw' },
+                                { label: 'Supply', value: 'B2B', description: 'SupplyRI', color: 'text-orange-600', iconName: 'Truck' }
+                            ],
 
-        seoKeywords: [
-            'rhode island business grants',
-            'innovation vouchers ri',
-            'qualified jobs incentive',
-            'small business loans providence',
-            'blue economy grants',
-            'rebuild rhode island',
-            'supplyri procurement',
-            'risd design grants',
-            'woman owned business grants ri',
-            'startup funding rhode island'
-        ],
+                                seoKeywords: [
+                                    'rhode island business grants',
+                                    'innovation vouchers ri',
+                                    'qualified jobs incentive',
+                                    'small business loans providence',
+                                    'blue economy grants',
+                                    'rebuild rhode island',
+                                    'supplyri procurement',
+                                    'risd design grants',
+                                    'woman owned business grants ri',
+                                    'startup funding rhode island'
+                                ],
 
-        metaDescription: 'Complete guide to Rhode Island business grants and funding in 2026. Access $50k Innovation Vouchers, Refundable Tax Credits, and Blue Economy funding.'
-    },
-    {
-        id: 'montana',
+                                    metaDescription: 'Complete guide to Rhode Island business grants and funding in 2026. Access $50k Innovation Vouchers, Refundable Tax Credits, and Blue Economy funding.'
+},
+{
+    id: 'montana',
         name: 'Montana',
-        slug: 'montana',
-        abbreviation: 'MT',
-        region: 'West',
+            slug: 'montana',
+                abbreviation: 'MT',
+                    region: 'West',
 
-        heroStats: {
-            totalFunding: '$120M+',
+                        heroStats: {
+        totalFunding: '$120M+',
             programCount: '10+',
-            successRate: '40-50%',
-            avgProcessingTime: '45-60 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '45-60 days'
+    },
 
-        overview: {
-            introduction: `Montana is enticing businesses with its high quality of life and "Big Sky" business climate (No Sales Tax). The Montana Department of Commerce offers aggressive cash grants for job creation, directly paying companies up to $7,500 for every new job created.
+    overview: {
+        introduction: `Montana is enticing businesses with its high quality of life and "Big Sky" business climate (No Sales Tax). The Montana Department of Commerce offers aggressive cash grants for job creation, directly paying companies up to $7,500 for every new job created.
             
 The state has a rapidly growing Photonics/Optics cluster in Bozeman, known as the "Gallatin Valley," which has the highest density of optics companies per capita in the nation.`,
 
@@ -16298,149 +16260,149 @@ The state has a rapidly growing Photonics/Optics cluster in Bozeman, known as th
             
 Remote work has brought an influx of talent and capital, creating a "Zoom Town" phenomenon that has accelerated startup formation.`,
 
-            keyOpportunities: `**Cash for Jobs**: The Big Sky Economic Development Trust Fund (BSTF) pays cash for job creation—it's one of the most straightforward incentive programs in the US.
+                keyOpportunities: `**Cash for Jobs**: The Big Sky Economic Development Trust Fund (BSTF) pays cash for job creation—it's one of the most straightforward incentive programs in the US.
             
 **Training**: The Primary Sector Workforce Training Grant reimburses training costs for new hires, effectively subsidizing your onboarding.
             
 **No Sales Tax**: A permanent 0% sales tax rate reduces the cost of every piece of equipment, server, and desk you buy by 5-10% compared to other states.`,
 
-            futureTrends: `**Photonics**: Continued dominance in laser and optics technology, fueled by MSU research.
+                    futureTrends: `**Photonics**: Continued dominance in laser and optics technology, fueled by MSU research.
             
 **SaaS**: A growing cloud ecosystem in Missoula (onX, Submittable).
             
 **Value-Added Ag**: Moving from raw wheat/beef to processed goods (craft brewing, hemp, premium meats).`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'Big Sky Economic Development Trust Fund (BSTF)',
-                agency: 'Commerce',
-                fundingAmount: 'Grant ($5k - $7.5k per job)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Create "basic sector" jobs',
-                    'Pay >county wage',
-                    'Local Gov Sponsor'
-                ],
-                industries: ['Manufacturing', 'Tech', 'Export', 'R&D'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply through local EDO.',
-                successRate: 'High',
-                website: 'https://commercemt.com/',
-                description: `A cash grant awarded to local governments to assist businesses in creating good - paying jobs.Though the funds go to the county, they are passed through to the business to pay for equipment, construction, or wage reimbursement.Matches are required.`
-            },
-            {
-                name: 'Primary Sector Workforce Training Grant',
-                agency: 'Commerce',
-                fundingAmount: 'Training Grant (up to $5k/employee)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Create new full-time jobs',
-                    'Primary sector (export focused)',
-                    'Training plan'
-                ],
-                industries: ['All Eligible'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply to Commerce.',
-                successRate: 'High',
-                website: 'https://business.mt.gov/Business-Assistance/Workforce-Training-Grant',
-                description: `Grant to reimburse businesses for the cost of training new employees in eligible primary sector jobs(jobs that export goods / services out of state).It turns your training expense into a grant receivable.`
-            },
-            {
-                name: 'Indian Equity Fund (IEF) Small Business Grant',
-                agency: 'Commerce',
-                fundingAmount: 'Grant (up to $14k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Native American owned',
-                    'Montana resident',
-                    'Enrolled tribal member'
-                ],
-                industries: ['All'],
-                deadline: 'Annual (Aug/Sept)',
-                applicationProcess: 'Competitive.',
-                successRate: 'Competitive',
-                website: 'https://business.mt.gov/Business-Assistance/Indian-Equity-Fund',
-                description: `Specific funds for Native American business owners to start or expand a business.Can be used for assets, working capital, inventory, and equipment.One of the few "startup" grants available.`
-            },
-            {
-                name: 'Growth Through Agriculture',
-                agency: 'Dept of Ag',
-                fundingAmount: 'Grant / Loan',
-                fundingType: 'Hybrid',
-                eligibility: [
-                    'Add value to Ag products',
-                    'Innovative ag business',
-                    'Processing capacity'
-                ],
-                industries: ['AgTech', 'Food'],
-                deadline: 'Bi-annual',
-                applicationProcess: 'Council review.',
-                successRate: 'Competitive',
-                website: 'https://agr.mt.gov/Growth-Through-Agriculture',
-                description: `Grants and low - interest loans to strengthen the agriculture industry.Focus on processing and marketing—turning a raw commodity into a consumer product.`
-            },
-            {
-                name: 'MicroBusiness Finance Program',
-                agency: 'Commerce',
-                fundingAmount: 'Loan (up to $100k)',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Microbusiness (<10 employees)',
-                    'Montana based'
-                ],
-                industries: ['Small Business'],
-                deadline: 'Rolling',
-                applicationProcess: 'Through MicroBusiness Development Corp (MBDC).',
-                successRate: 'High',
-                website: 'https://business.mt.gov/',
-                description: `Loans for very small businesses that might not qualify for traditional bank financing.Administered through local development corporations.`
-            },
-            {
-                name: 'Film Media Tax Credit',
-                agency: 'Commerce',
-                fundingAmount: '20-35% Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Film production in MT',
-                    '$350k spend',
-                    'Hire MT residents'
-                ],
-                industries: ['Film'],
-                deadline: 'Rolling',
-                applicationProcess: 'Apply to Film Office.',
-                successRate: 'High',
-                website: 'https://montanafilm.com/',
-                description: `Transferable tax credit for film production.The "Yellowstone effect" has made this huge.Additional bonuses for using MT residents and filming in underserved areas.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Big Sky Economic Development Trust Fund (BSTF)',
+            agency: 'Commerce',
+            fundingAmount: 'Grant ($5k - $7.5k per job)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Create "basic sector" jobs',
+                'Pay >county wage',
+                'Local Gov Sponsor'
+            ],
+            industries: ['Manufacturing', 'Tech', 'Export', 'R&D'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply through local EDO.',
+            successRate: 'High',
+            website: 'https://commercemt.com/',
+            description: `A cash grant awarded to local governments to assist businesses in creating good - paying jobs.Though the funds go to the county, they are passed through to the business to pay for equipment, construction, or wage reimbursement.Matches are required.`
+        },
+        {
+            name: 'Primary Sector Workforce Training Grant',
+            agency: 'Commerce',
+            fundingAmount: 'Training Grant (up to $5k/employee)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Create new full-time jobs',
+                'Primary sector (export focused)',
+                'Training plan'
+            ],
+            industries: ['All Eligible'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply to Commerce.',
+            successRate: 'High',
+            website: 'https://business.mt.gov/Business-Assistance/Workforce-Training-Grant',
+            description: `Grant to reimburse businesses for the cost of training new employees in eligible primary sector jobs(jobs that export goods / services out of state).It turns your training expense into a grant receivable.`
+        },
+        {
+            name: 'Indian Equity Fund (IEF) Small Business Grant',
+            agency: 'Commerce',
+            fundingAmount: 'Grant (up to $14k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Native American owned',
+                'Montana resident',
+                'Enrolled tribal member'
+            ],
+            industries: ['All'],
+            deadline: 'Annual (Aug/Sept)',
+            applicationProcess: 'Competitive.',
+            successRate: 'Competitive',
+            website: 'https://business.mt.gov/Business-Assistance/Indian-Equity-Fund',
+            description: `Specific funds for Native American business owners to start or expand a business.Can be used for assets, working capital, inventory, and equipment.One of the few "startup" grants available.`
+        },
+        {
+            name: 'Growth Through Agriculture',
+            agency: 'Dept of Ag',
+            fundingAmount: 'Grant / Loan',
+            fundingType: 'Hybrid',
+            eligibility: [
+                'Add value to Ag products',
+                'Innovative ag business',
+                'Processing capacity'
+            ],
+            industries: ['AgTech', 'Food'],
+            deadline: 'Bi-annual',
+            applicationProcess: 'Council review.',
+            successRate: 'Competitive',
+            website: 'https://agr.mt.gov/Growth-Through-Agriculture',
+            description: `Grants and low - interest loans to strengthen the agriculture industry.Focus on processing and marketing—turning a raw commodity into a consumer product.`
+        },
+        {
+            name: 'MicroBusiness Finance Program',
+            agency: 'Commerce',
+            fundingAmount: 'Loan (up to $100k)',
+            fundingType: 'Loan',
+            eligibility: [
+                'Microbusiness (<10 employees)',
+                'Montana based'
+            ],
+            industries: ['Small Business'],
+            deadline: 'Rolling',
+            applicationProcess: 'Through MicroBusiness Development Corp (MBDC).',
+            successRate: 'High',
+            website: 'https://business.mt.gov/',
+            description: `Loans for very small businesses that might not qualify for traditional bank financing.Administered through local development corporations.`
+        },
+        {
+            name: 'Film Media Tax Credit',
+            agency: 'Commerce',
+            fundingAmount: '20-35% Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Film production in MT',
+                '$350k spend',
+                'Hire MT residents'
+            ],
+            industries: ['Film'],
+            deadline: 'Rolling',
+            applicationProcess: 'Apply to Film Office.',
+            successRate: 'High',
+            website: 'https://montanafilm.com/',
+            description: `Transferable tax credit for film production.The "Yellowstone effect" has made this huge.Additional bonuses for using MT residents and filming in underserved areas.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Registered in MT**: Must be filed with the Secretary of State.',
-                '**Primary Sector**: Most state funds (BSTF, Training) target businesses that export goods/services out of state.',
-                '**Local Sponsor**: For BSTF, you must work through your local city or county government.'
-            ],
+        generalRequirements: [
+            '**Registered in MT**: Must be filed with the Secretary of State.',
+            '**Primary Sector**: Most state funds (BSTF, Training) target businesses that export goods/services out of state.',
+            '**Local Sponsor**: For BSTF, you must work through your local city or county government.'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'Tribal Businesses',
                 'Manufacturers'
             ],
-            restrictions: [
-                '**Retail/Service**: Generally excluded from almost all state grants (BSTF, Training).',
-                '**Match**: BSTF requires a 1:1 match, usually in the form of a bank loan or owner investment.',
-                '**Reimbursement**: Training grants are paid AFTER the training is complete.'
-            ],
-            documentationNeeded: [
-                'Business Plan',
-                'Financial Projections (3 years)',
-                'Hiring Schedule',
-                'Proof of Match (Loan Letter)'
-            ]
-        },
+                restrictions: [
+                    '**Retail/Service**: Generally excluded from almost all state grants (BSTF, Training).',
+                    '**Match**: BSTF requires a 1:1 match, usually in the form of a bank loan or owner investment.',
+                    '**Reimbursement**: Training grants are paid AFTER the training is complete.'
+                ],
+                    documentationNeeded: [
+                        'Business Plan',
+                        'Financial Projections (3 years)',
+                        'Hiring Schedule',
+                        'Proof of Match (Loan Letter)'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `Montana is a relationship state.You cannot just fill out a form online for the big grants; you need a local partner.
+    applicationProcess: {
+        guide: `Montana is a relationship state.You cannot just fill out a form online for the big grants; you need a local partner.
 
 ** Phase 1: Local EDO Contact **
     Contact your local Economic Development Organization(EDO).In Bozeman, it's Prospera. In Missoula, it's the Missoula Economic Partnership.You NEED them.They will be the applicant for your BSTF grant.
@@ -16488,59 +16450,59 @@ Remote work has brought an influx of talent and capital, creating a "Zoom Town" 
                     timeframe: 'Quarterly'
                 }
             ],
-            tips: [
-                '**The Local EDO is Key**: You literally cannot apply for BSTF alone; the county has to be the applicant. Treat your EDO rep like a partner.',
-                '**No Sales Tax**: This is huge. It effectively gives you a 5-10% discount on all capex compared to other states.',
-                '**Optics Cluster**: If you are in optics/photonics, being in Bozeman gives you access to talent you can\'t find anywhere else.',
-                '**Remote Jobs Count**: If you hire a remote worker living in MT, you can often still get the incentives.'
-            ]
-        },
+                tips: [
+                    '**The Local EDO is Key**: You literally cannot apply for BSTF alone; the county has to be the applicant. Treat your EDO rep like a partner.',
+                    '**No Sales Tax**: This is huge. It effectively gives you a 5-10% discount on all capex compared to other states.',
+                    '**Optics Cluster**: If you are in optics/photonics, being in Bozeman gives you access to talent you can\'t find anywhere else.',
+                    '**Remote Jobs Count**: If you hire a remote worker living in MT, you can often still get the incentives.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Photonics / Optics',
-                    description: 'Highest density of optics companies per capita in US (Bozeman). Home to major laser research.',
-                    funding: 'BSTF / SBIR'
-                },
-                {
-                    name: 'Agriculture',
-                    description: 'Beef, Wheat, Barley. Increasing focus on value-added processing (beer, pasta, snacks).',
-                    funding: 'Growth Through Ag'
-                },
-                {
-                    name: 'Tech / SaaS',
-                    description: 'Oracle, Workiva, onX. Growing cloud ecosystem in Missoula and Bozeman.',
-                    funding: 'Training Grant'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Photonics / Optics',
+                description: 'Highest density of optics companies per capita in US (Bozeman). Home to major laser research.',
+                funding: 'BSTF / SBIR'
+            },
+            {
+                name: 'Agriculture',
+                description: 'Beef, Wheat, Barley. Increasing focus on value-added processing (beer, pasta, snacks).',
+                funding: 'Growth Through Ag'
+            },
+            {
+                name: 'Tech / SaaS',
+                description: 'Oracle, Workiva, onX. Growing cloud ecosystem in Missoula and Bozeman.',
+                funding: 'Training Grant'
+            }
+        ],
             emerging: [
                 '**Bioscience**: NIH funding is growing at UM and MSU.',
                 '**Film**: Yellowstone series kicked off a massive production boom.',
                 '**Gunsmithing**: A niche but significant cluster in the Flathead Valley.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'onX Maps',
-                grant: 'BSTF / Training',
-                amount: 'Growth',
-                outcome: 'Missoula-based GPS hunting app unicorn that used state training funds to scale its engineering team.'
-            },
-            {
-                company: 'Bridger Photonics',
-                grant: 'SBIR / BSTF',
-                amount: 'Millions',
-                outcome: 'Leader in methane leak detection technologies, spun out of MSU research.'
-            },
-            {
-                company: 'MeatEater',
-                grant: 'Incentives',
-                amount: 'Unknown',
-                outcome: 'Media lifestyle brand that relocated to Bozeman, anchoring the outdoor media cluster.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'onX Maps',
+            grant: 'BSTF / Training',
+            amount: 'Growth',
+            outcome: 'Missoula-based GPS hunting app unicorn that used state training funds to scale its engineering team.'
+        },
+        {
+            company: 'Bridger Photonics',
+            grant: 'SBIR / BSTF',
+            amount: 'Millions',
+            outcome: 'Leader in methane leak detection technologies, spun out of MSU research.'
+        },
+        {
+            company: 'MeatEater',
+            grant: 'Incentives',
+            amount: 'Unknown',
+            outcome: 'Media lifestyle brand that relocated to Bozeman, anchoring the outdoor media cluster.'
+        }
+    ],
 
         faqs: [
             {
@@ -16561,122 +16523,122 @@ Remote work has brought an influx of talent and capital, creating a "Zoom Town" 
             }
         ],
 
-        resources: [
-            {
-                name: 'Montana Commerce',
-                url: 'https://commerce.mt.gov/',
-                description: 'State economic development.'
-            },
-            {
-                name: 'Prospera',
-                url: 'https://prosperamt.org/',
-                description: 'Bozeman Economic Development.'
-            },
-            {
-                name: 'MWETC',
-                url: 'https://mwtc.org/',
-                description: 'World Trade Center Montana.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'Montana Commerce',
+                    url: 'https://commerce.mt.gov/',
+                    description: 'State economic development.'
+                },
+                {
+                    name: 'Prospera',
+                    url: 'https://prosperamt.org/',
+                    description: 'Bozeman Economic Development.'
+                },
+                {
+                    name: 'MWETC',
+                    url: 'https://mwtc.org/',
+                    description: 'World Trade Center Montana.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Missoula Economic Partnership',
-                location: 'Missoula, MT',
-                website: 'https://www.missoulapartnership.com/',
-                services: ['Site Selection', 'Incentives']
-            },
-            {
-                name: 'Big Sky EDA',
-                location: 'Billings, MT',
-                website: 'https://www.bigskyeda.org/',
-                services: ['Loan Programs', 'Co-working']
-            },
-            {
-                name: 'Montana High Tech Business Alliance',
-                location: 'Statewide',
-                website: 'https://mthightech.org/',
-                services: ['Networking', 'Advocacy']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Missoula Economic Partnership',
+                        location: 'Missoula, MT',
+                        website: 'https://www.missoulapartnership.com/',
+                        services: ['Site Selection', 'Incentives']
+                    },
+                    {
+                        name: 'Big Sky EDA',
+                        location: 'Billings, MT',
+                        website: 'https://www.bigskyeda.org/',
+                        services: ['Loan Programs', 'Co-working']
+                    },
+                    {
+                        name: 'Montana High Tech Business Alliance',
+                        location: 'Statewide',
+                        website: 'https://mthightech.org/',
+                        services: ['Networking', 'Advocacy']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Bozeman',
-                description: 'The Tech Hub. Optics, outdoors, and rapid growth. Very expensive housing.',
-                keyIndustries: ['Photonics', 'SaaS', 'Outdoor'],
-                programs: ['Prospera Grants']
-            },
-            {
-                city: 'Missoula',
-                description: 'The Cultural Center. University town, liberal vibe, creative economy.',
-                keyIndustries: ['Tech', 'Arts', 'Brewing'],
-                programs: ['MEP Incentives']
-            },
-            {
-                city: 'Billings',
-                description: 'The Energy Center. Oil, gas, and healthcare hub. More industrial.',
-                keyIndustries: ['Energy', 'Health', 'Ag'],
-                programs: ['Big Sky EDA Loans']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Bozeman',
+                            description: 'The Tech Hub. Optics, outdoors, and rapid growth. Very expensive housing.',
+                            keyIndustries: ['Photonics', 'SaaS', 'Outdoor'],
+                            programs: ['Prospera Grants']
+                        },
+                        {
+                            city: 'Missoula',
+                            description: 'The Cultural Center. University town, liberal vibe, creative economy.',
+                            keyIndustries: ['Tech', 'Arts', 'Brewing'],
+                            programs: ['MEP Incentives']
+                        },
+                        {
+                            city: 'Billings',
+                            description: 'The Energy Center. Oil, gas, and healthcare hub. More industrial.',
+                            keyIndustries: ['Energy', 'Health', 'Ag'],
+                            programs: ['Big Sky EDA Loans']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'No Sales Tax',
-                content: 'This equates to an automatic 5-10% discount on all your startup capital equipment compared to other states. Factor that in.',
-                type: 'tip'
-            },
-            {
-                title: 'BSTF for Remote?',
-                content: 'If you are bringing net new remote jobs to MT that serve out-of-state clients, you can often still qualify for BSTF funding.',
-                type: 'success'
-            },
-            {
-                title: 'University Tech Transfer',
-                content: 'MSU in Bozeman is a powerhouse for research. Look for "Tech Link" to license DOD technology for commercial use.',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'No Sales Tax',
+                                content: 'This equates to an automatic 5-10% discount on all your startup capital equipment compared to other states. Factor that in.',
+                                type: 'tip'
+                            },
+                            {
+                                title: 'BSTF for Remote?',
+                                content: 'If you are bringing net new remote jobs to MT that serve out-of-state clients, you can often still qualify for BSTF funding.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'University Tech Transfer',
+                                content: 'MSU in Bozeman is a powerhouse for research. Look for "Tech Link" to license DOD technology for commercial use.',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$120M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Sales', value: '0%', description: 'Sales Tax', color: 'text-blue-600', iconName: 'Tag' },
-            { label: 'Grant', value: '$7.5k', description: 'Per Job (BSTF)', color: 'text-purple-600', iconName: 'Users' },
-            { label: 'Training', value: '$5k', description: 'Per Trainee', color: 'text-orange-600', iconName: 'BookOpen' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$120M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Sales', value: '0%', description: 'Sales Tax', color: 'text-blue-600', iconName: 'Tag' },
+                                { label: 'Grant', value: '$7.5k', description: 'Per Job (BSTF)', color: 'text-purple-600', iconName: 'Users' },
+                                { label: 'Training', value: '$5k', description: 'Per Trainee', color: 'text-orange-600', iconName: 'BookOpen' }
+                            ],
 
-        seoKeywords: [
-            'montana business grants',
-            'big sky trust fund',
-            'business grants montana',
-            'indian equity fund montana',
-            'no sales tax states',
-            'bozeman tech funding',
-            'workforce training grant mt',
-            'growth through agriculture',
-            'montana film tax credit',
-            'small business loans missoula'
-        ],
+                                seoKeywords: [
+                                    'montana business grants',
+                                    'big sky trust fund',
+                                    'business grants montana',
+                                    'indian equity fund montana',
+                                    'no sales tax states',
+                                    'bozeman tech funding',
+                                    'workforce training grant mt',
+                                    'growth through agriculture',
+                                    'montana film tax credit',
+                                    'small business loans missoula'
+                                ],
 
-        metaDescription: 'Complete guide to Montana business grants and funding in 2026. Access Big Sky Trust Fund Cash Grants, Workforce Training Funds, and 0% Sales Tax.'
-    },
-    {
-        id: 'delaware',
+                                    metaDescription: 'Complete guide to Montana business grants and funding in 2026. Access Big Sky Trust Fund Cash Grants, Workforce Training Funds, and 0% Sales Tax.'
+},
+{
+    id: 'delaware',
         name: 'Delaware',
-        slug: 'delaware',
-        abbreviation: 'DE',
-        region: 'Northeast',
+            slug: 'delaware',
+                abbreviation: 'DE',
+                    region: 'Northeast',
 
-        heroStats: {
-            totalFunding: '$100M+',
+                        heroStats: {
+        totalFunding: '$100M+',
             programCount: '10+',
-            successRate: '40-50%',
-            avgProcessingTime: '30-45 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '30-45 days'
+    },
 
-        overview: {
-            introduction: `Delaware is the corporate capital of the world, home to over 60 % of Fortune 500 companies.While famous for incorporation services, the state has built a powerful, specialized innovation ecosystem.The Delaware Prosperity Partnership(DPP) aggressively courts high - impact projects with discretionary cash grants.
+    overview: {
+        introduction: `Delaware is the corporate capital of the world, home to over 60 % of Fortune 500 companies.While famous for incorporation services, the state has built a powerful, specialized innovation ecosystem.The Delaware Prosperity Partnership(DPP) aggressively courts high - impact projects with discretionary cash grants.
 
 The state is small, agile, and offers direct access to key decision - makers, making it a "concierge" experience for businesses.`,
 
@@ -16684,148 +16646,148 @@ The state is small, agile, and offers direct access to key decision - makers, ma
 
     Uniquely, Delaware is within a 2 - hour train ride of NYC and DC, offering big - city access with a lower cost of operation.`,
 
-            keyOpportunities: `** Strategic Fund **: This is the state's deal-closing fund. It provides cash grants for job creation and capital investment.
+                keyOpportunities: `** Strategic Fund **: This is the state's deal-closing fund. It provides cash grants for job creation and capital investment.
 
     ** Science & Tech **: The EDGE Grant offers up to $100k for early - stage STEM startups, one of the most generous seed grants in the region.
             
 ** Lab Space **: Subsidies are available for growing science companies to rent expensive wet lab space.`,
 
-            futureTrends: `** Gene Therapy **: Delaware is positioning itself as a leader in CRISPR and gene editing research.
+                    futureTrends: `** Gene Therapy **: Delaware is positioning itself as a leader in CRISPR and gene editing research.
             
 ** FinTech Innovation **: Moving beyond traditional banking into blockchain and defi payments.
             
 ** Clean Hydrogen **: The state is a key partner in the Mid - Atlantic Clean Hydrogen Hub.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'Delaware Strategic Fund',
-                agency: 'DPP / DEDO',
-                fundingAmount: 'Discretionary Grant',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Major expansion / relocation',
-                    'High quality jobs',
-                    'Capital investment'
-                ],
-                industries: ['FinTech', 'Science', 'Manufacturing', 'Logistics'],
-                deadline: 'Rolling',
-                applicationProcess: 'Council on Development Finance (CDF).',
-                successRate: 'Selective',
-                website: 'https://business.delaware.gov/incentives/',
-                description: `The state's primary deal closing fund. It offers grants for job creation ($500-$5000 per job), relocation expenses, and capital expenditures. It is highly discretionary and based on ROI for the state. If you are bringing good jobs, they will write a check.`
-            },
-            {
-                name: 'EDGE Grants',
-                agency: 'Division of Small Business',
-                fundingAmount: 'Matching Grant (up to $100k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    '< 10 employees',
-                    'In operation < 7 years',
-                    '3:1 match (STEM) or 3:1 match (Entrepreneur)'
-                ],
-                industries: ['STEM', 'Small Business'],
-                deadline: 'Bi-annual',
-                applicationProcess: 'Competitive Pitch.',
-                successRate: 'Competitive',
-                website: 'https://business.delaware.gov/edge/',
-                description: `Encouraging Development, Growth and Expansion (EDGE). STEM companies can get up to $100k for eligible expenses (3:1 match, meaning you put in $33k to get $100k). Non-STEM businesses can get up to $50k.`
-            },
-            {
-                name: 'Modernization Investment Support Initiative (MISI)',
-                agency: 'DPP',
-                fundingAmount: 'Grant',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Existing DE company',
-                    'Reinvesting in modern equipment',
-                    'Retaining jobs'
-                ],
-                industries: ['Manufacturing'],
-                deadline: 'Rolling',
-                applicationProcess: 'CDF review.',
-                successRate: 'High',
-                website: 'https://business.delaware.gov/incentives/',
-                description: `Grants to help existing Delaware manufacturers upgrade their equipment and facilities to stay competitive. It prevents companies from moving operations offshore or to cheaper states.`
-            },
-            {
-                name: 'Graduation Lab Space Grants',
-                agency: 'DPP',
-                fundingAmount: 'Rent Subsidy',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Science company',
-                    'Moving out of incubator',
-                    'Leasing commercial lab space'
-                ],
-                industries: ['Biotech', 'ChemTech', 'Life Sciences'],
-                deadline: 'Rolling',
-                applicationProcess: 'Application.',
-                successRate: 'High',
-                website: 'https://business.delaware.gov/incentives/',
-                description: `Helps early stage science companies pay for expensive lab space when they "graduate" from an incubator like the Delaware Innovation Space. It subsidizes rent to keep them in the state.`
-            },
-            {
-                name: 'R&D Tax Credit',
-                agency: 'Division of Revenue',
-                fundingAmount: 'Tax Credit (Refundable)',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Qualified R&D expenses',
-                    'Small business check (<$20M receipts)'
-                ],
-                industries: ['R&D', 'Tech', 'Science'],
-                deadline: 'Annual',
-                applicationProcess: 'Tax return.',
-                successRate: 'High',
-                website: 'https://revenue.delaware.gov/business-tax-forms/research-development-tax-credit/',
-                description: `Delaware offers a state R&D tax credit. Crucially for startups, a portion of this credit is REFUNDABLE for small businesses. You don't need to be profitable to get cash back.`
-            },
-            {
-                name: 'SSBCI Loan Participation',
-                agency: 'DEDA',
-                fundingAmount: 'Loan Support',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Small business',
-                    'Lender participation'
-                ],
-                industries: ['All'],
-                deadline: 'Rolling',
-                applicationProcess: 'Through lender.',
-                successRate: 'Variable',
-                website: 'https://business.delaware.gov/ssbci/',
-                description: `Federal funds used to support small business loans. The state buys a "participation" in a bank loan, reducing the bank's risk and lowering the interest rate for the borrower.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Delaware Strategic Fund',
+            agency: 'DPP / DEDO',
+            fundingAmount: 'Discretionary Grant',
+            fundingType: 'Grant',
+            eligibility: [
+                'Major expansion / relocation',
+                'High quality jobs',
+                'Capital investment'
+            ],
+            industries: ['FinTech', 'Science', 'Manufacturing', 'Logistics'],
+            deadline: 'Rolling',
+            applicationProcess: 'Council on Development Finance (CDF).',
+            successRate: 'Selective',
+            website: 'https://business.delaware.gov/incentives/',
+            description: `The state's primary deal closing fund. It offers grants for job creation ($500-$5000 per job), relocation expenses, and capital expenditures. It is highly discretionary and based on ROI for the state. If you are bringing good jobs, they will write a check.`
+        },
+        {
+            name: 'EDGE Grants',
+            agency: 'Division of Small Business',
+            fundingAmount: 'Matching Grant (up to $100k)',
+            fundingType: 'Grant',
+            eligibility: [
+                '< 10 employees',
+                'In operation < 7 years',
+                '3:1 match (STEM) or 3:1 match (Entrepreneur)'
+            ],
+            industries: ['STEM', 'Small Business'],
+            deadline: 'Bi-annual',
+            applicationProcess: 'Competitive Pitch.',
+            successRate: 'Competitive',
+            website: 'https://business.delaware.gov/edge/',
+            description: `Encouraging Development, Growth and Expansion (EDGE). STEM companies can get up to $100k for eligible expenses (3:1 match, meaning you put in $33k to get $100k). Non-STEM businesses can get up to $50k.`
+        },
+        {
+            name: 'Modernization Investment Support Initiative (MISI)',
+            agency: 'DPP',
+            fundingAmount: 'Grant',
+            fundingType: 'Grant',
+            eligibility: [
+                'Existing DE company',
+                'Reinvesting in modern equipment',
+                'Retaining jobs'
+            ],
+            industries: ['Manufacturing'],
+            deadline: 'Rolling',
+            applicationProcess: 'CDF review.',
+            successRate: 'High',
+            website: 'https://business.delaware.gov/incentives/',
+            description: `Grants to help existing Delaware manufacturers upgrade their equipment and facilities to stay competitive. It prevents companies from moving operations offshore or to cheaper states.`
+        },
+        {
+            name: 'Graduation Lab Space Grants',
+            agency: 'DPP',
+            fundingAmount: 'Rent Subsidy',
+            fundingType: 'Grant',
+            eligibility: [
+                'Science company',
+                'Moving out of incubator',
+                'Leasing commercial lab space'
+            ],
+            industries: ['Biotech', 'ChemTech', 'Life Sciences'],
+            deadline: 'Rolling',
+            applicationProcess: 'Application.',
+            successRate: 'High',
+            website: 'https://business.delaware.gov/incentives/',
+            description: `Helps early stage science companies pay for expensive lab space when they "graduate" from an incubator like the Delaware Innovation Space. It subsidizes rent to keep them in the state.`
+        },
+        {
+            name: 'R&D Tax Credit',
+            agency: 'Division of Revenue',
+            fundingAmount: 'Tax Credit (Refundable)',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Qualified R&D expenses',
+                'Small business check (<$20M receipts)'
+            ],
+            industries: ['R&D', 'Tech', 'Science'],
+            deadline: 'Annual',
+            applicationProcess: 'Tax return.',
+            successRate: 'High',
+            website: 'https://revenue.delaware.gov/business-tax-forms/research-development-tax-credit/',
+            description: `Delaware offers a state R&D tax credit. Crucially for startups, a portion of this credit is REFUNDABLE for small businesses. You don't need to be profitable to get cash back.`
+        },
+        {
+            name: 'SSBCI Loan Participation',
+            agency: 'DEDA',
+            fundingAmount: 'Loan Support',
+            fundingType: 'Loan',
+            eligibility: [
+                'Small business',
+                'Lender participation'
+            ],
+            industries: ['All'],
+            deadline: 'Rolling',
+            applicationProcess: 'Through lender.',
+            successRate: 'Variable',
+            website: 'https://business.delaware.gov/ssbci/',
+            description: `Federal funds used to support small business loans. The state buys a "participation" in a bank loan, reducing the bank's risk and lowering the interest rate for the borrower.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Registered in Delaware**: Must have a physical presence (worksite), not just a registered agent.',
-                '**Job Creation**: The Strategic Fund is almost entirely driven by the number and quality of jobs created.',
-                '**Capital Investment**: For MISI and Strategic Fund, you must be spending money on buildings or equipment.'
-            ],
+        generalRequirements: [
+            '**Registered in Delaware**: Must have a physical presence (worksite), not just a registered agent.',
+            '**Job Creation**: The Strategic Fund is almost entirely driven by the number and quality of jobs created.',
+            '**Capital Investment**: For MISI and Strategic Fund, you must be spending money on buildings or equipment.'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'Startups (EDGE)',
                 'Major Corporations (Strategic Fund)'
             ],
-            restrictions: [
-                '**Retail/Restaurant**: Generally excluded from Strategic Fund.',
-                '**Clawbacks**: All Strategic Fund grants have strict clawback provisions if you leave the state or fire potential employees.',
-                '**Prevailing Wage**: Construction projects funded by state grants may trigger prevailing wage rules.'
-            ],
-            documentationNeeded: [
-                'Strategic Fund Application',
-                '3-Year Financials',
-                'Business Plan & Pitch Deck (for EDGE)',
-                'Lease Agreement (for Lab Space)'
-            ]
-        },
+                restrictions: [
+                    '**Retail/Restaurant**: Generally excluded from Strategic Fund.',
+                    '**Clawbacks**: All Strategic Fund grants have strict clawback provisions if you leave the state or fire potential employees.',
+                    '**Prevailing Wage**: Construction projects funded by state grants may trigger prevailing wage rules.'
+                ],
+                    documentationNeeded: [
+                        'Strategic Fund Application',
+                        '3-Year Financials',
+                        'Business Plan & Pitch Deck (for EDGE)',
+                        'Lease Agreement (for Lab Space)'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `Delaware is "small enough to return your call." You can often get a meeting with the head of the prosperity partnership or even the Governor for major projects.
+    applicationProcess: {
+        guide: `Delaware is "small enough to return your call." You can often get a meeting with the head of the prosperity partnership or even the Governor for major projects.
 
 **Phase 1: DPP Consultation**
 Contact the Delaware Prosperity Partnership. They act as the concierge. They will assign a project manager to package your incentives.
@@ -16873,59 +16835,59 @@ Strategic Fund grants are usually paid out *after* milestones are met (e.g., Cer
                     timeframe: 'Rolling'
                 }
             ],
-            tips: [
-                '**High Wages Matter**: Delaware prioritizes jobs that pay above $50k/year. Low-wage jobs won\'t get much funding.',
-                '**Pitch Perfect**: For EDGE, treat it like a VC pitch. Focus on market size and scalability.',
-                '**Lab Space**: If you are in biotech, ask about the "Graduation" grants. It can save you thousands in rent.',
-                '**Accessibility**: Use the fact that you can meet decision-makers to your advantage. Build relationships.'
-            ]
-        },
+                tips: [
+                    '**High Wages Matter**: Delaware prioritizes jobs that pay above $50k/year. Low-wage jobs won\'t get much funding.',
+                    '**Pitch Perfect**: For EDGE, treat it like a VC pitch. Focus on market size and scalability.',
+                    '**Lab Space**: If you are in biotech, ask about the "Graduation" grants. It can save you thousands in rent.',
+                    '**Accessibility**: Use the fact that you can meet decision-makers to your advantage. Build relationships.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'FinTech',
-                    description: 'The credit card capital of the world. Huge demand for payment tech, cybersecurity, and compliance.',
-                    funding: 'Strategic Fund'
-                },
-                {
-                    name: 'Science & Tech',
-                    description: 'DuPont\'s legacy + UD\'s research = a massive materials and life sciences cluster.',
-                    funding: 'EDGE / Lab Grants'
-                },
-                {
-                    name: 'Manufacturing',
-                    description: 'High-value, low-volume manufacturing (medical devices, aerospace parts).',
-                    funding: 'MISI'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'FinTech',
+                description: 'The credit card capital of the world. Huge demand for payment tech, cybersecurity, and compliance.',
+                funding: 'Strategic Fund'
+            },
+            {
+                name: 'Science & Tech',
+                description: 'DuPont\'s legacy + UD\'s research = a massive materials and life sciences cluster.',
+                funding: 'EDGE / Lab Grants'
+            },
+            {
+                name: 'Manufacturing',
+                description: 'High-value, low-volume manufacturing (medical devices, aerospace parts).',
+                funding: 'MISI'
+            }
+        ],
             emerging: [
                 '**Clean Hydrogen**: Major federal hub funding coming to the region.',
                 '**AgTech**: Innovations in poultry processing and vertical farming.',
                 '**Gene Therapy**: Expanding manufacturing capacity for personalized medicine.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Incyte',
-                grant: 'Strategic Fund',
-                amount: 'Millions',
-                outcome: 'Global biopharm HQ expansion in Wilmington, anchoring the life sciences cluster.'
-            },
-            {
-                company: 'Prelude Therapeutics',
-                grant: 'Strategic Fund',
-                amount: 'Growth',
-                outcome: 'Major lab expansion and job creation, graduating from incubation to independence.'
-            },
-            {
-                company: 'Code Differently',
-                grant: 'Training Grant',
-                amount: 'Workforce',
-                outcome: 'Innovative coding bootcamp training diverse talent for local banks.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Incyte',
+            grant: 'Strategic Fund',
+            amount: 'Millions',
+            outcome: 'Global biopharm HQ expansion in Wilmington, anchoring the life sciences cluster.'
+        },
+        {
+            company: 'Prelude Therapeutics',
+            grant: 'Strategic Fund',
+            amount: 'Growth',
+            outcome: 'Major lab expansion and job creation, graduating from incubation to independence.'
+        },
+        {
+            company: 'Code Differently',
+            grant: 'Training Grant',
+            amount: 'Workforce',
+            outcome: 'Innovative coding bootcamp training diverse talent for local banks.'
+        }
+    ],
 
         faqs: [
             {
@@ -16946,122 +16908,122 @@ Strategic Fund grants are usually paid out *after* milestones are met (e.g., Cer
             }
         ],
 
-        resources: [
-            {
-                name: 'Delaware Prosperity Partnership',
-                url: 'https://choose.delaware.gov/',
-                description: 'Private/Public economic development agency.'
-            },
-            {
-                name: 'Div of Small Business',
-                url: 'https://business.delaware.gov/',
-                description: 'State support for small biz.'
-            },
-            {
-                name: 'Delaware Innovation Space',
-                url: 'https://deinnovationspace.org/',
-                description: 'Premier science incubator.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'Delaware Prosperity Partnership',
+                    url: 'https://choose.delaware.gov/',
+                    description: 'Private/Public economic development agency.'
+                },
+                {
+                    name: 'Div of Small Business',
+                    url: 'https://business.delaware.gov/',
+                    description: 'State support for small biz.'
+                },
+                {
+                    name: 'Delaware Innovation Space',
+                    url: 'https://deinnovationspace.org/',
+                    description: 'Premier science incubator.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'The Mill',
-                location: 'Wilmington, DE',
-                website: 'https://themillspace.com/',
-                services: ['Coworking', 'Community', 'Events']
-            },
-            {
-                name: 'Horn Entrepreneurship',
-                location: 'Newark, DE',
-                website: 'https://www.udel.edu/research-innovation-entrepreneurship/entrepreneurship/',
-                services: ['Training', 'Funding', 'Mentorship']
-            },
-            {
-                name: 'Emerging Enterprise Center',
-                location: 'New Castle, DE',
-                website: 'https://eecincubator.com/',
-                services: ['Incubation', 'Coaching']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'The Mill',
+                        location: 'Wilmington, DE',
+                        website: 'https://themillspace.com/',
+                        services: ['Coworking', 'Community', 'Events']
+                    },
+                    {
+                        name: 'Horn Entrepreneurship',
+                        location: 'Newark, DE',
+                        website: 'https://www.udel.edu/research-innovation-entrepreneurship/entrepreneurship/',
+                        services: ['Training', 'Funding', 'Mentorship']
+                    },
+                    {
+                        name: 'Emerging Enterprise Center',
+                        location: 'New Castle, DE',
+                        website: 'https://eecincubator.com/',
+                        services: ['Incubation', 'Coaching']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Wilmington',
-                description: 'Corporate Capital. Banking, Law, and increasingly Tech and Creative. Riverfront is booming.',
-                keyIndustries: ['Finance', 'Legal', 'Creative'],
-                programs: ['Wilmington Economic Development']
-            },
-            {
-                city: 'Newark',
-                description: 'University City. Home of UD and the STAR Campus. Science and research hub.',
-                keyIndustries: ['R&D', 'Education', 'Life Sciences'],
-                programs: ['STAR Campus Partnerships']
-            },
-            {
-                city: 'Dover',
-                description: 'State Capital. Logistics and manufacturing centered around the Air Force Base.',
-                keyIndustries: ['Logistics', 'Public Sector', 'Mfg'],
-                programs: ['Downtown Dover Grants']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Wilmington',
+                            description: 'Corporate Capital. Banking, Law, and increasingly Tech and Creative. Riverfront is booming.',
+                            keyIndustries: ['Finance', 'Legal', 'Creative'],
+                            programs: ['Wilmington Economic Development']
+                        },
+                        {
+                            city: 'Newark',
+                            description: 'University City. Home of UD and the STAR Campus. Science and research hub.',
+                            keyIndustries: ['R&D', 'Education', 'Life Sciences'],
+                            programs: ['STAR Campus Partnerships']
+                        },
+                        {
+                            city: 'Dover',
+                            description: 'State Capital. Logistics and manufacturing centered around the Air Force Base.',
+                            keyIndustries: ['Logistics', 'Public Sector', 'Mfg'],
+                            programs: ['Downtown Dover Grants']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Apply for EDGE',
-                content: 'For early stage startups, the EDGE grant is the gold standard. $100k for STEM companies is enough to build a real prototype.',
-                type: 'success'
-            },
-            {
-                title: 'Lab Space Help',
-                content: 'Lab space is expensive. Delaware specifically has grants to subside your lab rent. Ask DPP about them.',
-                type: 'tip'
-            },
-            {
-                title: 'Zero Sales Tax',
-                content: 'Don\'t forget to factor in the 0% sales tax on your CapEx budget. It saves you 6-10% compared to neighbors like PA or MD.',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Apply for EDGE',
+                                content: 'For early stage startups, the EDGE grant is the gold standard. $100k for STEM companies is enough to build a real prototype.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'Lab Space Help',
+                                content: 'Lab space is expensive. Delaware specifically has grants to subside your lab rent. Ask DPP about them.',
+                                type: 'tip'
+                            },
+                            {
+                                title: 'Zero Sales Tax',
+                                content: 'Don\'t forget to factor in the 0% sales tax on your CapEx budget. It saves you 6-10% compared to neighbors like PA or MD.',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$100M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'EDGE', value: '$100k', description: 'STEM Grant', color: 'text-blue-600', iconName: 'Beaker' },
-            { label: 'Sales', value: '0%', description: 'Sales Tax', color: 'text-purple-600', iconName: 'Tag' },
-            { label: 'R&D', value: 'Rebate', description: 'Refundable Credit', color: 'text-orange-600', iconName: 'RefreshCw' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$100M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'EDGE', value: '$100k', description: 'STEM Grant', color: 'text-blue-600', iconName: 'Beaker' },
+                                { label: 'Sales', value: '0%', description: 'Sales Tax', color: 'text-purple-600', iconName: 'Tag' },
+                                { label: 'R&D', value: 'Rebate', description: 'Refundable Credit', color: 'text-orange-600', iconName: 'RefreshCw' }
+                            ],
 
-        seoKeywords: [
-            'delaware business grants',
-            'edge grant delaware',
-            'strategic fund grants',
-            'small business loans delaware',
-            'no sales tax business',
-            'fintech funding wilmington',
-            'incorporate in delaware',
-            'delaware prosperity partnership',
-            'startup funding newark de',
-            'woman owned business grants de'
-        ],
+                                seoKeywords: [
+                                    'delaware business grants',
+                                    'edge grant delaware',
+                                    'strategic fund grants',
+                                    'small business loans delaware',
+                                    'no sales tax business',
+                                    'fintech funding wilmington',
+                                    'incorporate in delaware',
+                                    'delaware prosperity partnership',
+                                    'startup funding newark de',
+                                    'woman owned business grants de'
+                                ],
 
-        metaDescription: 'Complete guide to Delaware business grants and funding in 2026. Access EDGE Grants ($100k), Strategic Fund Cash, and 0% Sales Tax benefits.'
-    },
-    {
-        id: 'south-dakota',
+                                    metaDescription: 'Complete guide to Delaware business grants and funding in 2026. Access EDGE Grants ($100k), Strategic Fund Cash, and 0% Sales Tax benefits.'
+},
+{
+    id: 'south-dakota',
         name: 'South Dakota',
-        slug: 'south-dakota',
-        abbreviation: 'SD',
-        region: 'Midwest',
+            slug: 'south-dakota',
+                abbreviation: 'SD',
+                    region: 'Midwest',
 
-        heroStats: {
-            totalFunding: '$80M+',
+                        heroStats: {
+        totalFunding: '$80M+',
             programCount: '8+',
-            successRate: '40-50%',
-            avgProcessingTime: '30-45 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '30-45 days'
+    },
 
-        overview: {
-            introduction: `South Dakota offers perhaps the most tax-friendly climate in the nation: No Corporate Income Tax, No Personal Income Tax, No Personal Property Tax, No Business Inventory Tax.
+    overview: {
+        introduction: `South Dakota offers perhaps the most tax-friendly climate in the nation: No Corporate Income Tax, No Personal Income Tax, No Personal Property Tax, No Business Inventory Tax.
 
 The Governor's Office of Economic Development (GOED) focuses on low-interest loans rather than grants, but the tax savings are the real "grant" in perpetuity.`,
 
@@ -17069,211 +17031,211 @@ The Governor's Office of Economic Development (GOED) focuses on low-interest loa
 
 The state is a haven for trusts and banking assets.`,
 
-            keyOpportunities: `The Reinvestment Payment Program (RPP) is a grant to offset the Sales/Use tax paid on construction.
+                keyOpportunities: `The Reinvestment Payment Program (RPP) is a grant to offset the Sales/Use tax paid on construction.
 
 REDI Fund offers low-interest loans for job creation.`,
         },
 
-        topPrograms: [
-            {
-                name: 'Reinvestment Payment Program (RPP)',
-                agency: 'GOED',
-                fundingAmount: 'Grant (Tax Rebate)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Project cost >$20M (or >$2M for equipment)',
-                    'New construction / expansion'
-                ],
-                industries: ['Manufacturing', 'Processing', 'Wind'],
-                deadline: 'Rolling',
-                applicationProcess: 'Board of Econ Dev.',
-                successRate: 'High',
-                website: 'https://sdgoed.com/financing-incentives/reinvestment-payment-program/',
-                description: `A grant that effectively rebates the sales/use tax paid on project costs. Used for large capex projects.`
-            },
-            {
-                name: 'REDI Fund',
-                agency: 'GOED',
-                fundingAmount: 'Low Interest Loan',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Create new jobs',
-                    'Permanent financing'
-                ],
-                industries: ['All Eligible'],
-                deadline: 'Rolling',
-                applicationProcess: 'Board approval.',
-                successRate: 'Competitive',
-                website: 'https://sdgoed.com/financing-incentives/redi-fund/',
-                description: `Revolving Economic Development and Initiative (REDI) Fund. Provides low-interest loans (often <2%) for land, building, and equipment. Matches bank financing.`
-            },
-            {
-                name: 'South Dakota Works',
-                agency: 'GOED',
-                fundingAmount: 'Loan Participation',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Small business',
-                    'Working capital / assets'
-                ],
-                industries: ['All'],
-                deadline: 'Rolling',
-                applicationProcess: 'Through lender.',
-                successRate: 'High',
-                website: 'https://sdgoed.com/',
-                description: `State participation in commercial loans to lower the risk for banks and improve terms for borrowers.`
-            },
-            {
-                name: 'Apprenticeship Grants',
-                agency: 'Dept of Labor',
-                fundingAmount: 'Training Grant',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Registered apprenticeship',
-                    'New hires'
-                ],
-                industries: ['Trades', 'Mfg', 'Tech'],
-                deadline: 'Rolling',
-                applicationProcess: 'Application.',
-                successRate: 'High',
-                website: 'https://dlr.sd.gov/',
-                description: `Grants to support the setup costs and instruction for registered apprenticeship programs.`
-            },
-            {
-                name: 'MicroLOAN South Dakota',
-                agency: 'GOED',
-                fundingAmount: 'Loan ($1k - $100k)',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Small business not bankable',
-                    'SD resident'
-                ],
-                industries: ['Small Business'],
-                deadline: 'Rolling',
-                applicationProcess: 'Direct.',
-                successRate: 'Variable',
-                website: 'https://sdgoed.com/',
-                description: `Small loans for startup or expansion working capital.`
-            },
-            {
-                name: 'Proof of Concept Fund',
-                agency: 'GOED',
-                fundingAmount: 'Loan/Equity (up to $25k)',
-                fundingType: 'Hybrid',
-                eligibility: [
-                    'Innovation / Tech',
-                    'Research stage'
-                ],
-                industries: ['Bio', 'Tech', 'Ag'],
-                deadline: 'Monthly',
-                applicationProcess: 'Research & Commercialization Council.',
-                successRate: 'Competitive',
-                website: 'https://sdgoed.com/',
-                description: `Funding to prove technical and economic feasibility of an innovation. Often structured as a convertible note.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Reinvestment Payment Program (RPP)',
+            agency: 'GOED',
+            fundingAmount: 'Grant (Tax Rebate)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Project cost >$20M (or >$2M for equipment)',
+                'New construction / expansion'
+            ],
+            industries: ['Manufacturing', 'Processing', 'Wind'],
+            deadline: 'Rolling',
+            applicationProcess: 'Board of Econ Dev.',
+            successRate: 'High',
+            website: 'https://sdgoed.com/financing-incentives/reinvestment-payment-program/',
+            description: `A grant that effectively rebates the sales/use tax paid on project costs. Used for large capex projects.`
+        },
+        {
+            name: 'REDI Fund',
+            agency: 'GOED',
+            fundingAmount: 'Low Interest Loan',
+            fundingType: 'Loan',
+            eligibility: [
+                'Create new jobs',
+                'Permanent financing'
+            ],
+            industries: ['All Eligible'],
+            deadline: 'Rolling',
+            applicationProcess: 'Board approval.',
+            successRate: 'Competitive',
+            website: 'https://sdgoed.com/financing-incentives/redi-fund/',
+            description: `Revolving Economic Development and Initiative (REDI) Fund. Provides low-interest loans (often <2%) for land, building, and equipment. Matches bank financing.`
+        },
+        {
+            name: 'South Dakota Works',
+            agency: 'GOED',
+            fundingAmount: 'Loan Participation',
+            fundingType: 'Loan',
+            eligibility: [
+                'Small business',
+                'Working capital / assets'
+            ],
+            industries: ['All'],
+            deadline: 'Rolling',
+            applicationProcess: 'Through lender.',
+            successRate: 'High',
+            website: 'https://sdgoed.com/',
+            description: `State participation in commercial loans to lower the risk for banks and improve terms for borrowers.`
+        },
+        {
+            name: 'Apprenticeship Grants',
+            agency: 'Dept of Labor',
+            fundingAmount: 'Training Grant',
+            fundingType: 'Grant',
+            eligibility: [
+                'Registered apprenticeship',
+                'New hires'
+            ],
+            industries: ['Trades', 'Mfg', 'Tech'],
+            deadline: 'Rolling',
+            applicationProcess: 'Application.',
+            successRate: 'High',
+            website: 'https://dlr.sd.gov/',
+            description: `Grants to support the setup costs and instruction for registered apprenticeship programs.`
+        },
+        {
+            name: 'MicroLOAN South Dakota',
+            agency: 'GOED',
+            fundingAmount: 'Loan ($1k - $100k)',
+            fundingType: 'Loan',
+            eligibility: [
+                'Small business not bankable',
+                'SD resident'
+            ],
+            industries: ['Small Business'],
+            deadline: 'Rolling',
+            applicationProcess: 'Direct.',
+            successRate: 'Variable',
+            website: 'https://sdgoed.com/',
+            description: `Small loans for startup or expansion working capital.`
+        },
+        {
+            name: 'Proof of Concept Fund',
+            agency: 'GOED',
+            fundingAmount: 'Loan/Equity (up to $25k)',
+            fundingType: 'Hybrid',
+            eligibility: [
+                'Innovation / Tech',
+                'Research stage'
+            ],
+            industries: ['Bio', 'Tech', 'Ag'],
+            deadline: 'Monthly',
+            applicationProcess: 'Research & Commercialization Council.',
+            successRate: 'Competitive',
+            website: 'https://sdgoed.com/',
+            description: `Funding to prove technical and economic feasibility of an innovation. Often structured as a convertible note.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                'Registered in SD',
-                'Job creation is key for REDI',
-                'Capital Investment key for RPP'
-            ],
+        generalRequirements: [
+            'Registered in SD',
+            'Job creation is key for REDI',
+            'Capital Investment key for RPP'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs'
             ],
-            restrictions: [
-                'Retail excluded from REDI/RPP',
-                'REDI loans require a bank to fund at least 50% of the project',
-                'RPP has high investment thresholds'
-            ],
-            documentationNeeded: [
-                'Loan Application',
-                '3-year Financials',
-                'Business Plan'
-            ]
-        },
+                restrictions: [
+                    'Retail excluded from REDI/RPP',
+                    'REDI loans require a bank to fund at least 50% of the project',
+                    'RPP has high investment thresholds'
+                ],
+                    documentationNeeded: [
+                        'Loan Application',
+                        '3-year Financials',
+                        'Business Plan'
+                    ]
+    },
 
-        applicationProcess: {
-            steps: [
-                {
-                    step: 1,
-                    title: 'Contact GOED',
-                    description: 'Discuss project with a loan officer.',
-                    timeframe: '1 week'
-                },
-                {
-                    step: 2,
-                    title: 'Loan App',
-                    description: 'Submit full REDI or SD Works application.',
-                    timeframe: '1 month'
-                },
-                {
-                    step: 3,
-                    title: 'Board Meeting',
-                    description: 'Board of Economic Development reviews deal.',
-                    timeframe: 'Monthly'
-                },
-                {
-                    step: 4,
-                    title: 'Closing',
-                    description: 'Loan documents signed.',
-                    timeframe: '2-3 weeks'
-                },
-                {
-                    step: 5,
-                    title: 'Servicing',
-                    description: 'Monthly loan payments.',
-                    timeframe: 'Term'
-                }
-            ],
+    applicationProcess: {
+        steps: [
+            {
+                step: 1,
+                title: 'Contact GOED',
+                description: 'Discuss project with a loan officer.',
+                timeframe: '1 week'
+            },
+            {
+                step: 2,
+                title: 'Loan App',
+                description: 'Submit full REDI or SD Works application.',
+                timeframe: '1 month'
+            },
+            {
+                step: 3,
+                title: 'Board Meeting',
+                description: 'Board of Economic Development reviews deal.',
+                timeframe: 'Monthly'
+            },
+            {
+                step: 4,
+                title: 'Closing',
+                description: 'Loan documents signed.',
+                timeframe: '2-3 weeks'
+            },
+            {
+                step: 5,
+                title: 'Servicing',
+                description: 'Monthly loan payments.',
+                timeframe: 'Term'
+            }
+        ],
             tips: [
                 'The tax savings here are the real headline. 0% Corporate Tax is unbeatable for high-profit companies.',
                 'The REDI fund interest rates are set by the board and are very competitive (often below prime).',
                 'Sioux Falls is booming and has costs much lower than Minneapolis.',
                 'Ellsworth AFB B-21 Raider mission is creating a massive boom in defense contracting in rapid City.'
             ]
-        },
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Financial Services',
-                    description: 'Credit card processing, trusts, banking back-office.',
-                    funding: 'No Tax'
-                },
-                {
-                    name: 'Agriculture',
-                    description: 'Processing, biotech (poet ethanol).',
-                    funding: 'REDI Fund'
-                },
-                {
-                    name: 'Cyber / Defense',
-                    description: 'Dakota State University is a cyber powerhouse for NSA/DoD.',
-                    funding: 'Proof of Concept'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Financial Services',
+                description: 'Credit card processing, trusts, banking back-office.',
+                funding: 'No Tax'
+            },
+            {
+                name: 'Agriculture',
+                description: 'Processing, biotech (poet ethanol).',
+                funding: 'REDI Fund'
+            },
+            {
+                name: 'Cyber / Defense',
+                description: 'Dakota State University is a cyber powerhouse for NSA/DoD.',
+                funding: 'Proof of Concept'
+            }
+        ],
             emerging: [
                 'Biotech',
                 'Precision Ag',
                 'Remote Work'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'SAB Biotherapeutics',
-                grant: 'REDI / Equity',
-                amount: 'Millions',
-                outcome: 'Global biopharma company using cattle to produce human antibodies.'
-            },
-            {
-                company: 'Viaflex',
-                grant: 'RPP',
-                amount: 'Rebate',
-                outcome: 'Major expansion of polymer film manufacturing.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'SAB Biotherapeutics',
+            grant: 'REDI / Equity',
+            amount: 'Millions',
+            outcome: 'Global biopharma company using cattle to produce human antibodies.'
+        },
+        {
+            company: 'Viaflex',
+            grant: 'RPP',
+            amount: 'Rebate',
+            outcome: 'Major expansion of polymer film manufacturing.'
+        }
+    ],
 
         faqs: [
             {
@@ -17290,75 +17252,75 @@ REDI Fund offers low-interest loans for job creation.`,
             }
         ],
 
-        resources: [
-            {
-                name: 'SD GOED',
-                url: 'https://sdgoed.com/',
-                description: 'State economic development.'
-            },
-            {
-                name: 'SD Biotech',
-                url: 'https://sdbio.org/',
-                description: 'Industry association.'
-            },
-            {
-                name: 'StartHub SD',
-                url: 'https://starthub.org/',
-                description: 'Startup resources.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'SD GOED',
+                    url: 'https://sdgoed.com/',
+                    description: 'State economic development.'
+                },
+                {
+                    name: 'SD Biotech',
+                    url: 'https://sdbio.org/',
+                    description: 'Industry association.'
+                },
+                {
+                    name: 'StartHub SD',
+                    url: 'https://starthub.org/',
+                    description: 'Startup resources.'
+                }
+            ],
 
-        expertTips: [
-            {
-                title: 'Calculate the Tax Savings',
-                content: 'Don\'t just look for cash grants. Calculate your 10-year savings from 0% corporate tax. It likely dwarfs any grant other states offer.',
-                type: 'success'
-            },
-            {
-                title: 'Cyber talent at DSU',
-                content: 'Dakota State University has a world-renowned cyber program. Hire interns/grads there for elite security talent.',
-                type: 'tip'
-            }
-        ],
+                expertTips: [
+                    {
+                        title: 'Calculate the Tax Savings',
+                        content: 'Don\'t just look for cash grants. Calculate your 10-year savings from 0% corporate tax. It likely dwarfs any grant other states offer.',
+                        type: 'success'
+                    },
+                    {
+                        title: 'Cyber talent at DSU',
+                        content: 'Dakota State University has a world-renowned cyber program. Hire interns/grads there for elite security talent.',
+                        type: 'tip'
+                    }
+                ],
 
-        metrics: [
-            { label: 'Funding', value: '$80M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Tax', value: '0%', description: 'Corporate Tax', color: 'text-blue-600', iconName: 'Shield' },
-            { label: 'Loan', value: '<3%', description: 'Low Interest', color: 'text-purple-600', iconName: 'Landmark' },
-            { label: 'Cyber', value: 'Elite', description: 'Talent Pool', color: 'text-orange-600', iconName: 'Lock' }
-        ],
+                    metrics: [
+                        { label: 'Funding', value: '$80M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                        { label: 'Tax', value: '0%', description: 'Corporate Tax', color: 'text-blue-600', iconName: 'Shield' },
+                        { label: 'Loan', value: '<3%', description: 'Low Interest', color: 'text-purple-600', iconName: 'Landmark' },
+                        { label: 'Cyber', value: 'Elite', description: 'Talent Pool', color: 'text-orange-600', iconName: 'Lock' }
+                    ],
 
-        seoKeywords: [
-            'south dakota business grants',
-            'no corporate income tax states',
-            'redi fund loan',
-            'reinvestment payment program',
-            'sioux falls startup funding',
-            'rapid city small business loans',
-            'proof of concept fund sd',
-            'dakota state university cyber',
-            'agtech funding south dakota',
-            'start a business in sd'
-        ],
+                        seoKeywords: [
+                            'south dakota business grants',
+                            'no corporate income tax states',
+                            'redi fund loan',
+                            'reinvestment payment program',
+                            'sioux falls startup funding',
+                            'rapid city small business loans',
+                            'proof of concept fund sd',
+                            'dakota state university cyber',
+                            'agtech funding south dakota',
+                            'start a business in sd'
+                        ],
 
-        metaDescription: 'Complete guide to South Dakota business grants and funding in 2026. Access Low-Interest REDI Loans, 0% Corporate Tax, and Proof of Concept Funds.'
-    },
-    {
-        id: 'north-dakota',
+                            metaDescription: 'Complete guide to South Dakota business grants and funding in 2026. Access Low-Interest REDI Loans, 0% Corporate Tax, and Proof of Concept Funds.'
+},
+{
+    id: 'north-dakota',
         name: 'North Dakota',
-        slug: 'north-dakota',
-        abbreviation: 'ND',
-        region: 'Midwest',
+            slug: 'north-dakota',
+                abbreviation: 'ND',
+                    region: 'Midwest',
 
-        heroStats: {
-            totalFunding: '$90M+',
+                        heroStats: {
+        totalFunding: '$90M+',
             programCount: '10+',
-            successRate: '40-50%',
-            avgProcessingTime: '30-45 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '30-45 days'
+    },
 
-        overview: {
-            introduction: `North Dakota is unique in the US for having its own "Sovereign Wealth Fund" (Legacy Fund) and the Bank of North Dakota (BND)—the only state-owned bank in the country. These financial tools allow the state to offer aggressive 0% interest loans and "interest rate buydowns" that private equity can't match.
+    overview: {
+        introduction: `North Dakota is unique in the US for having its own "Sovereign Wealth Fund" (Legacy Fund) and the Bank of North Dakota (BND)—the only state-owned bank in the country. These financial tools allow the state to offer aggressive 0% interest loans and "interest rate buydowns" that private equity can't match.
 
 The state is a global leader in Unmanned Aerial Systems (UAS), energy (oil, gas, hydrogen), and value-added agriculture.`,
 
@@ -17366,148 +17328,148 @@ The state is a global leader in Unmanned Aerial Systems (UAS), energy (oil, gas,
 
 The state has a massive labor shortage, driving extreme incentives for automation and workforce recruitment.`,
 
-            keyOpportunities: `**0% Financing**: The LIFT Fund offers 0% interest loans for applied research and commercialization.
+                keyOpportunities: `**0% Financing**: The LIFT Fund offers 0% interest loans for applied research and commercialization.
             
 **AgTech**: The Grand Farm initiative in Fargo is the world's first fully autonomous farm test site.
             
 **Cheap Capital**: The PACE program can lower your commercial loan interest rate to 1% by using BND funds.`,
 
-            futureTrends: `**Autonomous Systems**: Beyond drones, ND is testing autonomous trucks and farm equipment statewide.
+                    futureTrends: `**Autonomous Systems**: Beyond drones, ND is testing autonomous trucks and farm equipment statewide.
             
 **Carbon Capture**: Massive investments in carbon capture and storage (CCS) for the ethanol and coal industries.
             
 **Bio-Manufacturing**: A developing cluster using agricultural feedstock for industrial bio-products.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'Agricultural Products Utilization Commission (APUC)',
-                agency: 'Dept of Ag',
-                fundingAmount: 'Grant',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Add value to ND ag products',
-                    'Create new wealth',
-                    'Research / Protoyping'
-                ],
-                industries: ['AgTech', 'Food', 'Processing'],
-                deadline: 'Quarterly',
-                applicationProcess: 'Board review.',
-                successRate: 'Competitive',
-                website: 'https://www.nd.gov/ndda/apuc',
-                description: `One of the most accessible grants in the state. If you are taking a raw commodity (wheat, corn, beef) and turning it into something more valuable (flour, ethanol, jerky), APUC will fund your R&D, marketing, and feasibility studies.`
-            },
-            {
-                name: 'LIFT Fund',
-                agency: 'Commerce',
-                fundingAmount: '0% Loan (up to $1M+)',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Applied research',
-                    'Commercialization',
-                    'Innovation'
-                ],
-                industries: ['Tech', 'UAS', 'Energy', 'MedTech'],
-                deadline: 'Monthly',
-                applicationProcess: 'Innovation Technology Loan Fund Committee.',
-                successRate: 'Competitive',
-                website: 'https://business.nd.gov/finance/LIFT/',
-                description: `The Legacy Innovation Fund (LIFT) provides 0% interest loans for the "commercialization of intellectual property." It acts like venture debt but without the equity dilution or interest payments.`
-            },
-            {
-                name: 'Bioscience Innovation Grant (BIG)',
-                agency: 'Commerce',
-                fundingAmount: 'Grant',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Bioscience company',
-                    'Research / Development'
-                ],
-                industries: ['Biotech', 'Ag-Bio', 'MedTech'],
-                deadline: 'Rolling',
-                applicationProcess: 'Committee review.',
-                successRate: 'High',
-                website: 'https://business.nd.gov/bioscience/',
-                description: `Grants to support the bioscience industry. Funds can be used for buying equipment, supplies, and paying personnel. Designed to grow the bio-cluster in Fargo and Grand Forks.`
-            },
-            {
-                name: 'Flex PACE',
-                agency: 'Bank of ND',
-                fundingAmount: 'Interest Buydown (up to $500k)',
-                fundingType: 'Loan Support',
-                eligibility: [
-                    'Community support',
-                    'Gap financing',
-                    'Primary sector business'
-                ],
-                industries: ['All'],
-                deadline: 'Rolling',
-                applicationProcess: 'Through local lender.',
-                successRate: 'High',
-                website: 'https://bnd.nd.gov/',
-                description: `The Bank of North Dakota buys down the interest rate on a commercial loan. The local community provides a match, and the result is often a loan with a 1% or 2% interest rate. This is massive for construction projects.`
-            },
-            {
-                name: 'Renaissance Zone',
-                agency: 'Commerce',
-                fundingAmount: 'Tax Exemption',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Located in Zone (Downtowns)',
-                    'Renovation / Leasing',
-                    'City approval'
-                ],
-                industries: ['Real Estate', 'Retail', 'Tech'],
-                deadline: 'Rolling',
-                applicationProcess: 'City approval.',
-                successRate: 'High',
-                website: 'https://communityservices.nd.gov/',
-                description: `5-year property tax exemption and 5-year state income tax exemption for businesses investing in designated downtown zones. Used heavily to revitalize downtown Fargo and Bismarck.`
-            },
-            {
-                name: 'Automation Tax Credit',
-                agency: 'Tax Dept',
-                fundingAmount: '20% Tax Credit',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Purchase automation equipment',
-                    'Manufacturing / Processing'
-                ],
-                industries: ['Manufacturing'],
-                deadline: 'Annual',
-                applicationProcess: 'Tax return.',
-                successRate: 'High',
-                website: 'https://www.nd.gov/tax/',
-                description: `Tax credit for 20% of the cost of machinery and equipment that automates a manufacturing process. Directly targets the labor shortage issue.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Agricultural Products Utilization Commission (APUC)',
+            agency: 'Dept of Ag',
+            fundingAmount: 'Grant',
+            fundingType: 'Grant',
+            eligibility: [
+                'Add value to ND ag products',
+                'Create new wealth',
+                'Research / Protoyping'
+            ],
+            industries: ['AgTech', 'Food', 'Processing'],
+            deadline: 'Quarterly',
+            applicationProcess: 'Board review.',
+            successRate: 'Competitive',
+            website: 'https://www.nd.gov/ndda/apuc',
+            description: `One of the most accessible grants in the state. If you are taking a raw commodity (wheat, corn, beef) and turning it into something more valuable (flour, ethanol, jerky), APUC will fund your R&D, marketing, and feasibility studies.`
+        },
+        {
+            name: 'LIFT Fund',
+            agency: 'Commerce',
+            fundingAmount: '0% Loan (up to $1M+)',
+            fundingType: 'Loan',
+            eligibility: [
+                'Applied research',
+                'Commercialization',
+                'Innovation'
+            ],
+            industries: ['Tech', 'UAS', 'Energy', 'MedTech'],
+            deadline: 'Monthly',
+            applicationProcess: 'Innovation Technology Loan Fund Committee.',
+            successRate: 'Competitive',
+            website: 'https://business.nd.gov/finance/LIFT/',
+            description: `The Legacy Innovation Fund (LIFT) provides 0% interest loans for the "commercialization of intellectual property." It acts like venture debt but without the equity dilution or interest payments.`
+        },
+        {
+            name: 'Bioscience Innovation Grant (BIG)',
+            agency: 'Commerce',
+            fundingAmount: 'Grant',
+            fundingType: 'Grant',
+            eligibility: [
+                'Bioscience company',
+                'Research / Development'
+            ],
+            industries: ['Biotech', 'Ag-Bio', 'MedTech'],
+            deadline: 'Rolling',
+            applicationProcess: 'Committee review.',
+            successRate: 'High',
+            website: 'https://business.nd.gov/bioscience/',
+            description: `Grants to support the bioscience industry. Funds can be used for buying equipment, supplies, and paying personnel. Designed to grow the bio-cluster in Fargo and Grand Forks.`
+        },
+        {
+            name: 'Flex PACE',
+            agency: 'Bank of ND',
+            fundingAmount: 'Interest Buydown (up to $500k)',
+            fundingType: 'Loan Support',
+            eligibility: [
+                'Community support',
+                'Gap financing',
+                'Primary sector business'
+            ],
+            industries: ['All'],
+            deadline: 'Rolling',
+            applicationProcess: 'Through local lender.',
+            successRate: 'High',
+            website: 'https://bnd.nd.gov/',
+            description: `The Bank of North Dakota buys down the interest rate on a commercial loan. The local community provides a match, and the result is often a loan with a 1% or 2% interest rate. This is massive for construction projects.`
+        },
+        {
+            name: 'Renaissance Zone',
+            agency: 'Commerce',
+            fundingAmount: 'Tax Exemption',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Located in Zone (Downtowns)',
+                'Renovation / Leasing',
+                'City approval'
+            ],
+            industries: ['Real Estate', 'Retail', 'Tech'],
+            deadline: 'Rolling',
+            applicationProcess: 'City approval.',
+            successRate: 'High',
+            website: 'https://communityservices.nd.gov/',
+            description: `5-year property tax exemption and 5-year state income tax exemption for businesses investing in designated downtown zones. Used heavily to revitalize downtown Fargo and Bismarck.`
+        },
+        {
+            name: 'Automation Tax Credit',
+            agency: 'Tax Dept',
+            fundingAmount: '20% Tax Credit',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Purchase automation equipment',
+                'Manufacturing / Processing'
+            ],
+            industries: ['Manufacturing'],
+            deadline: 'Annual',
+            applicationProcess: 'Tax return.',
+            successRate: 'High',
+            website: 'https://www.nd.gov/tax/',
+            description: `Tax credit for 20% of the cost of machinery and equipment that automates a manufacturing process. Directly targets the labor shortage issue.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Registered in ND**: Must be filed with the Secretary of State.',
-                '**Primary Sector**: Most state funds (LIFT, PACE) target businesses that export goods/services out of state.',
-                '**Community Support**: The PACE program requires the local city to "buy in" with a match.'
-            ],
+        generalRequirements: [
+            '**Registered in ND**: Must be filed with the Secretary of State.',
+            '**Primary Sector**: Most state funds (LIFT, PACE) target businesses that export goods/services out of state.',
+            '**Community Support**: The PACE program requires the local city to "buy in" with a match.'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'Tech Startups',
                 'Value-added Ag Producers'
             ],
-            restrictions: [
-                '**Retail/Service**: Generally excluded from LIFT and PACE (unless in a Renaissance Zone).',
-                '**ND Products**: APUC strictly requires the project to benefit North Dakota agricultural products.',
-                '**Repayment**: LIFT is a loan, not a grant. You have to pay it back eventually (though terms are generous).'
-            ],
-            documentationNeeded: [
-                'APUC Grant Application',
-                'LIFT Pitch Deck & Financials',
-                'Letter of Support from City (for PACE)',
-                'Bank Commitment Letter'
-            ]
-        },
+                restrictions: [
+                    '**Retail/Service**: Generally excluded from LIFT and PACE (unless in a Renaissance Zone).',
+                    '**ND Products**: APUC strictly requires the project to benefit North Dakota agricultural products.',
+                    '**Repayment**: LIFT is a loan, not a grant. You have to pay it back eventually (though terms are generous).'
+                ],
+                    documentationNeeded: [
+                        'APUC Grant Application',
+                        'LIFT Pitch Deck & Financials',
+                        'Letter of Support from City (for PACE)',
+                        'Bank Commitment Letter'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `North Dakota's process is relationship-heavy. The state is small; everyone knows everyone. Start with the Department of Commerce, but quickly loop in your local Economic Development Corporation (EDC).
+    applicationProcess: {
+        guide: `North Dakota's process is relationship-heavy. The state is small; everyone knows everyone. Start with the Department of Commerce, but quickly loop in your local Economic Development Corporation (EDC).
 
 **Phase 1: Local EDO Contact**
 If you want PACE financing, you NEED the local city on board. Call the Fargo-Moorhead EDC or Bismarck Mandan Chamber EDC.
@@ -17555,59 +17517,59 @@ LIFT funds are drawn down as needed. PACE interest buys downs happen automatical
                     timeframe: 'Rolling'
                 }
             ],
-            tips: [
-                '**The BND Advantage**: Use the "Bank of North Dakota" story in your pitch. No other state has a bank that exists solely to help businesses.',
-                '**Fargo is Cool**: Don\'t underestimate Fargo. It has a hip downtown and a massive Microsoft presence. Use this to recruit talent.',
-                '**LIFT is "Free" Money**: A 0% loan is mathematically equal to a grant in high-inflation environments. Prioritize this.',
-                '**Ag is Tech**: If you are doing ANYTHING with food, position it as "AgTech" to unlock APUC and Bioscience funds.'
-            ]
-        },
+                tips: [
+                    '**The BND Advantage**: Use the "Bank of North Dakota" story in your pitch. No other state has a bank that exists solely to help businesses.',
+                    '**Fargo is Cool**: Don\'t underestimate Fargo. It has a hip downtown and a massive Microsoft presence. Use this to recruit talent.',
+                    '**LIFT is "Free" Money**: A 0% loan is mathematically equal to a grant in high-inflation environments. Prioritize this.',
+                    '**Ag is Tech**: If you are doing ANYTHING with food, position it as "AgTech" to unlock APUC and Bioscience funds.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'UAS / Drones',
-                    description: 'Grand Sky business park is the epicenter. First state with BVLOS (Beyond Visual Line of Sight) approval.',
-                    funding: 'LIFT / Autonomous Grants'
-                },
-                {
-                    name: 'Agriculture',
-                    description: 'Value-added processing. Sugar beets, wheat, soy, and honey.',
-                    funding: 'APUC'
-                },
-                {
-                    name: 'Energy',
-                    description: 'Oil (Bakken), Lignite, and rapid Hydrogen expansion.',
-                    funding: 'Clean Sustainable Energy Authority'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'UAS / Drones',
+                description: 'Grand Sky business park is the epicenter. First state with BVLOS (Beyond Visual Line of Sight) approval.',
+                funding: 'LIFT / Autonomous Grants'
+            },
+            {
+                name: 'Agriculture',
+                description: 'Value-added processing. Sugar beets, wheat, soy, and honey.',
+                funding: 'APUC'
+            },
+            {
+                name: 'Energy',
+                description: 'Oil (Bakken), Lignite, and rapid Hydrogen expansion.',
+                funding: 'Clean Sustainable Energy Authority'
+            }
+        ],
             emerging: [
                 '**Cybersecurity**: Educational push at universities.',
                 '**Bio-manufacturing**: Using corn/soy for plastics.',
                 '**Data Centers**: Cheap power and cool climate attract server farms.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Bushel',
-                grant: 'LIFT',
-                amount: 'Innovation',
-                outcome: 'Fargo-based ag-tech platform connecting farmers and grain buyers, now a national leader.'
-            },
-            {
-                company: 'General Atomics',
-                grant: 'Training / IAS',
-                amount: 'Growth',
-                outcome: 'Established a major pilot training center at Grand Sky business park.'
-            },
-            {
-                company: 'Botlink',
-                grant: 'LIFT',
-                amount: 'Startup',
-                outcome: 'Drone software platform scaling globally from Fargo.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Bushel',
+            grant: 'LIFT',
+            amount: 'Innovation',
+            outcome: 'Fargo-based ag-tech platform connecting farmers and grain buyers, now a national leader.'
+        },
+        {
+            company: 'General Atomics',
+            grant: 'Training / IAS',
+            amount: 'Growth',
+            outcome: 'Established a major pilot training center at Grand Sky business park.'
+        },
+        {
+            company: 'Botlink',
+            grant: 'LIFT',
+            amount: 'Startup',
+            outcome: 'Drone software platform scaling globally from Fargo.'
+        }
+    ],
 
         faqs: [
             {
@@ -17628,122 +17590,122 @@ LIFT funds are drawn down as needed. PACE interest buys downs happen automatical
             }
         ],
 
-        resources: [
-            {
-                name: 'ND Commerce',
-                url: 'https://business.nd.gov/',
-                description: 'State economic development.'
-            },
-            {
-                name: 'Bank of ND',
-                url: 'https://bnd.nd.gov/',
-                description: 'State Bank (Loan Programs).'
-            },
-            {
-                name: 'Grand Farm',
-                url: 'https://grandfarm.com/',
-                description: 'AgTech innovation hub.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'ND Commerce',
+                    url: 'https://business.nd.gov/',
+                    description: 'State economic development.'
+                },
+                {
+                    name: 'Bank of ND',
+                    url: 'https://bnd.nd.gov/',
+                    description: 'State Bank (Loan Programs).'
+                },
+                {
+                    name: 'Grand Farm',
+                    url: 'https://grandfarm.com/',
+                    description: 'AgTech innovation hub.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Fargo-Moorhead EDC',
-                location: 'Fargo, ND',
-                website: 'https://gfmedc.com/',
-                services: ['Site Selection', 'Incentives']
-            },
-            {
-                name: 'Bismarck Mandan Chamber EDC',
-                location: 'Bismarck, ND',
-                website: 'https://www.bismarckmandan.com/',
-                services: ['Policy', 'Growth']
-            },
-            {
-                name: 'UND Center for Innovation',
-                location: 'Grand Forks, ND',
-                website: 'https://und.edu/center-for-innovation/',
-                services: ['Incubator', 'UAS Support']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Fargo-Moorhead EDC',
+                        location: 'Fargo, ND',
+                        website: 'https://gfmedc.com/',
+                        services: ['Site Selection', 'Incentives']
+                    },
+                    {
+                        name: 'Bismarck Mandan Chamber EDC',
+                        location: 'Bismarck, ND',
+                        website: 'https://www.bismarckmandan.com/',
+                        services: ['Policy', 'Growth']
+                    },
+                    {
+                        name: 'UND Center for Innovation',
+                        location: 'Grand Forks, ND',
+                        website: 'https://und.edu/center-for-innovation/',
+                        services: ['Incubator', 'UAS Support']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Fargo',
-                description: 'The Engine. Tech, Ag, and Medicine. Young population and vibrant downtown.',
-                keyIndustries: ['Tech', 'Ag', 'Health'],
-                programs: ['Renaissance Zone']
-            },
-            {
-                city: 'Bismarck',
-                description: 'The Capital. Government and Energy hub. Stable and growing.',
-                keyIndustries: ['Energy', 'Gov', 'Health'],
-                programs: ['CORE Incentive']
-            },
-            {
-                city: 'Grand Forks',
-                description: 'Innovation City. Home of UND and the massive drone ecosystem.',
-                keyIndustries: ['UAS', 'Manufacturing', 'Education'],
-                programs: ['Growth Fund']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Fargo',
+                            description: 'The Engine. Tech, Ag, and Medicine. Young population and vibrant downtown.',
+                            keyIndustries: ['Tech', 'Ag', 'Health'],
+                            programs: ['Renaissance Zone']
+                        },
+                        {
+                            city: 'Bismarck',
+                            description: 'The Capital. Government and Energy hub. Stable and growing.',
+                            keyIndustries: ['Energy', 'Gov', 'Health'],
+                            programs: ['CORE Incentive']
+                        },
+                        {
+                            city: 'Grand Forks',
+                            description: 'Innovation City. Home of UND and the massive drone ecosystem.',
+                            keyIndustries: ['UAS', 'Manufacturing', 'Education'],
+                            programs: ['Growth Fund']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Use the BND Buydown',
-                content: 'The PACE program can get your commercial loan interest rate down to 1%. In today\'s market, that saves you millions on a building project.',
-                type: 'success'
-            },
-            {
-                title: 'Automate Everything',
-                content: 'ND has a massive labor shortage. Use the Automation Tax Credit to buy robots instead of trying to hire people you can\'t find.',
-                type: 'tip'
-            },
-            {
-                title: 'Grand Sky',
-                content: 'If you are in drones/UAS, you have to be at Grand Sky. It is the only place with these kinds of flight permissions.',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Use the BND Buydown',
+                                content: 'The PACE program can get your commercial loan interest rate down to 1%. In today\'s market, that saves you millions on a building project.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'Automate Everything',
+                                content: 'ND has a massive labor shortage. Use the Automation Tax Credit to buy robots instead of trying to hire people you can\'t find.',
+                                type: 'tip'
+                            },
+                            {
+                                title: 'Grand Sky',
+                                content: 'If you are in drones/UAS, you have to be at Grand Sky. It is the only place with these kinds of flight permissions.',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$90M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Loan', value: '0%', description: 'LIFT Fund', color: 'text-blue-600', iconName: 'Percent' },
-            { label: 'Auto', value: '20%', description: 'Tax Credit', color: 'text-purple-600', iconName: 'Cpu' },
-            { label: 'Interest', value: '1%', description: 'PACE Rate', color: 'text-orange-600', iconName: 'TrendingDown' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$90M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Loan', value: '0%', description: 'LIFT Fund', color: 'text-blue-600', iconName: 'Percent' },
+                                { label: 'Auto', value: '20%', description: 'Tax Credit', color: 'text-purple-600', iconName: 'Cpu' },
+                                { label: 'Interest', value: '1%', description: 'PACE Rate', color: 'text-orange-600', iconName: 'TrendingDown' }
+                            ],
 
-        seoKeywords: [
-            'north dakota business grants',
-            'lift fund nd',
-            'bank of north dakota business loans',
-            'apuc grant',
-            'fargo startup funding',
-            'uas grants north dakota',
-            'automation tax credit nd',
-            'pace loan nd',
-            'renaissance zone nd',
-            'start a business in north dakota'
-        ],
+                                seoKeywords: [
+                                    'north dakota business grants',
+                                    'lift fund nd',
+                                    'bank of north dakota business loans',
+                                    'apuc grant',
+                                    'fargo startup funding',
+                                    'uas grants north dakota',
+                                    'automation tax credit nd',
+                                    'pace loan nd',
+                                    'renaissance zone nd',
+                                    'start a business in north dakota'
+                                ],
 
-        metaDescription: 'Complete guide to North Dakota business grants and funding in 2026. Access 0% Interest LIFT Loans, Agriculture Grants, and Automation Tax Credits.'
-    },
-    {
-        id: 'alaska',
+                                    metaDescription: 'Complete guide to North Dakota business grants and funding in 2026. Access 0% Interest LIFT Loans, Agriculture Grants, and Automation Tax Credits.'
+},
+{
+    id: 'alaska',
         name: 'Alaska',
-        slug: 'alaska',
-        abbreviation: 'AK',
-        region: 'West',
+            slug: 'alaska',
+                abbreviation: 'AK',
+                    region: 'West',
 
-        heroStats: {
-            totalFunding: '$50M+',
+                        heroStats: {
+        totalFunding: '$50M+',
             programCount: '8+',
-            successRate: '30-40%',
-            avgProcessingTime: '45-60 days'
-        },
+                successRate: '30-40%',
+                    avgProcessingTime: '45-60 days'
+    },
 
-        overview: {
-            introduction: `Alaska offers a unique frontier for business, characterized by its vast natural resources, strategic global location, and a tax environment that is incredibly favorable to entrepreneurs. With no state sales tax and no personal income tax, the cost of doing business is mitigated by these fiscal advantages, although logistics and labor costs remain higher than the lower 48 states.
+    overview: {
+        introduction: `Alaska offers a unique frontier for business, characterized by its vast natural resources, strategic global location, and a tax environment that is incredibly favorable to entrepreneurs. With no state sales tax and no personal income tax, the cost of doing business is mitigated by these fiscal advantages, although logistics and labor costs remain higher than the lower 48 states.
 
 The state's economy is currently undergoing a significant transition. While oil and gas remain the primary revenue drivers, there is a concerted state-led effort to diversify into mariculture (seaweed and shellfish farming), renewable energy, and tourism. The "Alaska Brand"—associated with purity, wilderness, and sustainability—provides a massive competitive advantage for export-oriented businesses, particularly in the seafood and consumer goods sectors.`,
 
@@ -17751,152 +17713,152 @@ The state's economy is currently undergoing a significant transition. While oil 
 
 Anchorage serves as the primary economic hub, hosting the Ted Stevens Anchorage International Airport, which is one of the busiest cargo airports in the world. This makes Alaska a surprising logistics superpower—90% of the industrialized world is within 9.5 hours of flying time. Fairbanks serves as the gateway to the Interior and the North Slope, while Southeast Alaska (Juneau, Ketchikan) is dominated by tourism, fishing, and government services.`,
 
-            keyOpportunities: `**Mariculture**: The state has arguably the highest potential for aquaculture in the US. The Mariculture Incentive Grant and loan programs are aggressively funding new kelp and oyster farms.
+                keyOpportunities: `**Mariculture**: The state has arguably the highest potential for aquaculture in the US. The Mariculture Incentive Grant and loan programs are aggressively funding new kelp and oyster farms.
             
 **Tourism Expansion**: Post-pandemic travel to Alaska has surged. Opportunities exist not just in cruise ship support, but in independent, high-value eco-tourism and cultural tourism.
 
 **Logistics & Cold Storage**: With global supply chains shifting, Alaska's position as a cargo hub creates opportunities for value-added logistics, cold storage, and transshipment services.`,
 
-            futureTrends: `**Arctic Strategic Importance**: As shipping lanes open and geopolitical interest in the Arctic rises, federal investment in Alaska's infrastructure (ports, broadband, defense) is skyrocketing.
+                    futureTrends: `**Arctic Strategic Importance**: As shipping lanes open and geopolitical interest in the Arctic rises, federal investment in Alaska's infrastructure (ports, broadband, defense) is skyrocketing.
             
 **Renewable Microgrids**: Alaska is a global leader in microgrid technology. Remote communities are transitioning from diesel to wind, solar, and river hydro. There is massive funding available for "energy transition" projects that can prove viability in harsh climates.
             
 **Critical Minerals**: The push for domestic EV battery production has put a spotlight on Alaska's deposits of graphite, cobalt, and rare earths. Expect significant federal and state support for environmentally responsible mining projects over the next decade.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'Mariculture Incentive Grant',
-                agency: 'AFDF',
-                fundingAmount: 'Grant (Varies)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Seaweed / Shellfish farm',
-                    'Processing equipment',
-                    'Alaska resident ownership preferred'
-                ],
-                industries: ['Aquaculture', 'Food Production'],
-                deadline: 'Annual (Typically Jan/Feb)',
-                applicationProcess: 'Competitive RFP via AFDF website.',
-                successRate: 'Variable',
-                website: 'https://www.afdf.org/mariculture/',
-                description: `This program is a cornerstone of the state's goal to build a $100 million mariculture industry. Grants typically fund infrastructure (lines, buoys), processing equipment (dryers, freezers), and marketing efforts. It effectively de-risks the high startup costs associated with ocean farming.`
-            },
-            {
-                name: 'Small Business Economic Development (SBED) Loan',
-                agency: 'DED',
-                fundingAmount: 'Loan (up to $300k)',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Alaska resident (majority owner)',
-                    'Small business <500 employees',
-                    'Denied by traditional lender'
-                ],
-                industries: ['All'],
-                deadline: 'Rolling',
-                applicationProcess: 'Direct application to Division of Econ Dev.',
-                successRate: 'High',
-                website: 'https://www.commerce.alaska.gov/web/ded/FIN/LoanPrograms/SmallBusinessEconomicDevelopmentLoanProgram.aspx',
-                description: `The SBED loan is the "lender of last resort" for viable Alaska businesses. If you have a solid business plan but a bank won't fund you (perhaps due to lack of collateral or credit history), this program steps in. Interest rates are fixed and often below prime.`
-            },
-            {
-                name: 'Rural Development Initiative Fund (RDIF)',
-                agency: 'DED',
-                fundingAmount: 'Loan (up to $150k)',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Located in community < 2,000 or off road system',
-                    'Create jobs in rural Alaska'
-                ],
-                industries: ['Rural'],
-                deadline: 'Rolling',
-                applicationProcess: 'Direct application.',
-                successRate: 'High',
-                website: 'https://www.commerce.alaska.gov/web/ded/FIN/LoanPrograms/RuralDevelopmentInitiativeFund.aspx',
-                description: `Designed specifically for "bush" Alaska. Capital is extremely hard to find in rural villages. This fund provides loans for working capital, equipment, and construction to businesses that serve these remote populations.`
-            },
-            {
-                name: 'Alaska STEP Grant',
-                agency: 'DED / SBA',
-                fundingAmount: 'Export Grant (Reimbursement)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'US-organized business',
-                    'Export potential',
-                    'In business > 1 year'
-                ],
-                industries: ['Seafood', 'Tourism', 'Consumer Goods'],
-                deadline: 'Rolling (Funds deplete quickly)',
-                applicationProcess: 'Online portal.',
-                successRate: 'Competitive',
-                website: 'https://www.commerce.alaska.gov/web/ded/DEV/InternationalTrade/STEP.aspx',
-                description: `The State Trade Expansion Program (STEP) helps Alaska businesses go global. It reimburses costs for international trade show booths, foreign market sales trips, and website localization. It is heavily used by seafood exporters.`
-            },
-            {
-                name: 'Tourism Marketing Grant Program',
-                agency: 'ATIA',
-                fundingAmount: 'Matching Grant',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Tourism-related business',
-                    'Must match funds 1:1',
-                    'Marketing focus'
-                ],
-                industries: ['Tourism'],
-                deadline: 'Annual (Fall)',
-                applicationProcess: 'Membership application to ATIA.',
-                successRate: 'High',
-                website: 'https://www.alaskatia.org/marketing/marketing-programs',
-                description: `Managed by the Alaska Travel Industry Association. These funds allow smaller operators to buy into larger state marketing campaigns (like "Travel Alaska" magazine ads or digital campaigns) at a subsidized rate.`
-            },
-            {
-                name: 'Film Production Tax Credit (Transferable)',
-                agency: 'Alaska Film Office',
-                fundingAmount: 'Tax Credit (Up to 30-35%)',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    '$100k minimum spend (mostly)',
-                    'Hire Alaska crew',
-                    'Feature film or TV series'
-                ],
-                industries: ['Film', 'Media'],
-                deadline: 'Subject to Legislative Appropriations',
-                applicationProcess: 'Pre-qualification required.',
-                successRate: 'Variable',
-                website: 'https://www.commerce.alaska.gov/web/ded/DEV/FilmOffice.aspx',
-                description: `While the program's funding is often a political football, when active, it offers one of the only ways to offset production costs in the state. Credits are transferable, meaning you can sell them to oil companies who need to pay state taxes.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Mariculture Incentive Grant',
+            agency: 'AFDF',
+            fundingAmount: 'Grant (Varies)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Seaweed / Shellfish farm',
+                'Processing equipment',
+                'Alaska resident ownership preferred'
+            ],
+            industries: ['Aquaculture', 'Food Production'],
+            deadline: 'Annual (Typically Jan/Feb)',
+            applicationProcess: 'Competitive RFP via AFDF website.',
+            successRate: 'Variable',
+            website: 'https://www.afdf.org/mariculture/',
+            description: `This program is a cornerstone of the state's goal to build a $100 million mariculture industry. Grants typically fund infrastructure (lines, buoys), processing equipment (dryers, freezers), and marketing efforts. It effectively de-risks the high startup costs associated with ocean farming.`
+        },
+        {
+            name: 'Small Business Economic Development (SBED) Loan',
+            agency: 'DED',
+            fundingAmount: 'Loan (up to $300k)',
+            fundingType: 'Loan',
+            eligibility: [
+                'Alaska resident (majority owner)',
+                'Small business <500 employees',
+                'Denied by traditional lender'
+            ],
+            industries: ['All'],
+            deadline: 'Rolling',
+            applicationProcess: 'Direct application to Division of Econ Dev.',
+            successRate: 'High',
+            website: 'https://www.commerce.alaska.gov/web/ded/FIN/LoanPrograms/SmallBusinessEconomicDevelopmentLoanProgram.aspx',
+            description: `The SBED loan is the "lender of last resort" for viable Alaska businesses. If you have a solid business plan but a bank won't fund you (perhaps due to lack of collateral or credit history), this program steps in. Interest rates are fixed and often below prime.`
+        },
+        {
+            name: 'Rural Development Initiative Fund (RDIF)',
+            agency: 'DED',
+            fundingAmount: 'Loan (up to $150k)',
+            fundingType: 'Loan',
+            eligibility: [
+                'Located in community < 2,000 or off road system',
+                'Create jobs in rural Alaska'
+            ],
+            industries: ['Rural'],
+            deadline: 'Rolling',
+            applicationProcess: 'Direct application.',
+            successRate: 'High',
+            website: 'https://www.commerce.alaska.gov/web/ded/FIN/LoanPrograms/RuralDevelopmentInitiativeFund.aspx',
+            description: `Designed specifically for "bush" Alaska. Capital is extremely hard to find in rural villages. This fund provides loans for working capital, equipment, and construction to businesses that serve these remote populations.`
+        },
+        {
+            name: 'Alaska STEP Grant',
+            agency: 'DED / SBA',
+            fundingAmount: 'Export Grant (Reimbursement)',
+            fundingType: 'Grant',
+            eligibility: [
+                'US-organized business',
+                'Export potential',
+                'In business > 1 year'
+            ],
+            industries: ['Seafood', 'Tourism', 'Consumer Goods'],
+            deadline: 'Rolling (Funds deplete quickly)',
+            applicationProcess: 'Online portal.',
+            successRate: 'Competitive',
+            website: 'https://www.commerce.alaska.gov/web/ded/DEV/InternationalTrade/STEP.aspx',
+            description: `The State Trade Expansion Program (STEP) helps Alaska businesses go global. It reimburses costs for international trade show booths, foreign market sales trips, and website localization. It is heavily used by seafood exporters.`
+        },
+        {
+            name: 'Tourism Marketing Grant Program',
+            agency: 'ATIA',
+            fundingAmount: 'Matching Grant',
+            fundingType: 'Grant',
+            eligibility: [
+                'Tourism-related business',
+                'Must match funds 1:1',
+                'Marketing focus'
+            ],
+            industries: ['Tourism'],
+            deadline: 'Annual (Fall)',
+            applicationProcess: 'Membership application to ATIA.',
+            successRate: 'High',
+            website: 'https://www.alaskatia.org/marketing/marketing-programs',
+            description: `Managed by the Alaska Travel Industry Association. These funds allow smaller operators to buy into larger state marketing campaigns (like "Travel Alaska" magazine ads or digital campaigns) at a subsidized rate.`
+        },
+        {
+            name: 'Film Production Tax Credit (Transferable)',
+            agency: 'Alaska Film Office',
+            fundingAmount: 'Tax Credit (Up to 30-35%)',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                '$100k minimum spend (mostly)',
+                'Hire Alaska crew',
+                'Feature film or TV series'
+            ],
+            industries: ['Film', 'Media'],
+            deadline: 'Subject to Legislative Appropriations',
+            applicationProcess: 'Pre-qualification required.',
+            successRate: 'Variable',
+            website: 'https://www.commerce.alaska.gov/web/ded/DEV/FilmOffice.aspx',
+            description: `While the program's funding is often a political football, when active, it offers one of the only ways to offset production costs in the state. Credits are transferable, meaning you can sell them to oil companies who need to pay state taxes.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Alaska Business License**: Mandatory for any activity. Annual fee is low ($50).',
-                '**Residency**: For state loan programs (SBED, RDIF), the majority owner (51%+) is usually required to be an Alaska resident for at least one year.',
-                '**Bank Denial**: State loan programs often require a "turn-down letter" from a commercial bank to prove you cannot get private financing.',
-                '**Collateral**: Unlike some venture grants, Alaska state loans are secured. You will need to pledge assets (boats, gear, real estate).'
-            ],
+        generalRequirements: [
+            '**Alaska Business License**: Mandatory for any activity. Annual fee is low ($50).',
+            '**Residency**: For state loan programs (SBED, RDIF), the majority owner (51%+) is usually required to be an Alaska resident for at least one year.',
+            '**Bank Denial**: State loan programs often require a "turn-down letter" from a commercial bank to prove you cannot get private financing.',
+            '**Collateral**: Unlike some venture grants, Alaska state loans are secured. You will need to pledge assets (boats, gear, real estate).'
+        ],
             businessTypes: [
                 'Sole Proprietorships (Common in fishing)',
                 'Limited Liability Companies (LLCs)',
                 'Alaska Native Corporations (ANCs) & Subsidiaries',
                 'Cooperatives'
             ],
-            restrictions: [
-                '**Marijuana**: Federal funding restrictions apply to SBA-backed programs.',
-                '**Sin Taxes**: Alcohol/Gaming businesses may face stricter scrutiny for state loans.',
-                '**Logistics Reality**: Business plans that do not accurately account for the high cost of shipping (barge/air) are frequently rejected.'
-            ],
-            documentationNeeded: [
-                'Proof of Alaska Residency (Voter registration, PFD receipt)',
-                'Current Business License',
-                '3 Years of Tax Returns (Personal & Business)',
-                'Detailed Business Plan with "Bush" logistics factored in (if applicable)',
-                'Turn-down letter from a private bank (for SBED/RDIF)'
-            ]
-        },
+                restrictions: [
+                    '**Marijuana**: Federal funding restrictions apply to SBA-backed programs.',
+                    '**Sin Taxes**: Alcohol/Gaming businesses may face stricter scrutiny for state loans.',
+                    '**Logistics Reality**: Business plans that do not accurately account for the high cost of shipping (barge/air) are frequently rejected.'
+                ],
+                    documentationNeeded: [
+                        'Proof of Alaska Residency (Voter registration, PFD receipt)',
+                        'Current Business License',
+                        '3 Years of Tax Returns (Personal & Business)',
+                        'Detailed Business Plan with "Bush" logistics factored in (if applicable)',
+                        'Turn-down letter from a private bank (for SBED/RDIF)'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `Applying for funding in Alaska requires a mix of formal documentation and "frontier networking". Incentives are often relationship-driven, especially when dealing with Regional Economic Development Organizations (ARDORs).
+    applicationProcess: {
+        guide: `Applying for funding in Alaska requires a mix of formal documentation and "frontier networking". Incentives are often relationship-driven, especially when dealing with Regional Economic Development Organizations (ARDORs).
 
 **Phase 1: Preparation & Residency**
 Before you apply for anything, ensure your residency status is ironclad. If you are new to the state, you generally need to wait one full year (and qualify for a PFD) before you are eligible for resident-only loans. Get your Alaska Business License immediately; it's cheap and establishes your timeline.
@@ -17944,59 +17906,59 @@ Funding disbursement can be slow. If you are timing your funding for the summer 
                     timeframe: '3-6 weeks'
                 }
             ],
-            tips: [
-                '**Leverage ANCs**: Partnering with an Alaska Native Corporation (ANC) can be a game-changer. They have special federal contracting privileges (SBA 8a) and significant capital to invest in local ventures.',
-                '**Watch the Season**: Government offices slow down during hunting season (Sept) and fishing season (Summer). Seriously. Plan your administrative work for the winter darker months.',
-                '**Freight Costs**: Never estimate shipping costs based on Lower 48 rates. Always get a hard quote from Lynden, Carlile, or Alaska Air Cargo. Grants reviewers check this line item first.',
-                '**Energy Audits**: Electricity in rural Alaska is incredibly expensive (diesel generation). Including renewable energy or efficiency upgrades in your business plan makes you much more attractive for funding.'
-            ]
-        },
+                tips: [
+                    '**Leverage ANCs**: Partnering with an Alaska Native Corporation (ANC) can be a game-changer. They have special federal contracting privileges (SBA 8a) and significant capital to invest in local ventures.',
+                    '**Watch the Season**: Government offices slow down during hunting season (Sept) and fishing season (Summer). Seriously. Plan your administrative work for the winter darker months.',
+                    '**Freight Costs**: Never estimate shipping costs based on Lower 48 rates. Always get a hard quote from Lynden, Carlile, or Alaska Air Cargo. Grants reviewers check this line item first.',
+                    '**Energy Audits**: Electricity in rural Alaska is incredibly expensive (diesel generation). Including renewable energy or efficiency upgrades in your business plan makes you much more attractive for funding.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Seafood & Mariculture',
-                    description: 'The lifeblood of coastal Alaska. Funding is shifting from wild capture to sustainable farming (kelp, oysters) and value-added processing (e.g., salmon jerky, pet treats).',
-                    funding: 'Mariculture Incentive Grant'
-                },
-                {
-                    name: 'Tourism & Hospitality',
-                    description: 'Alaska creates "bucket list" experiences. High demand for eco-lodges, guided adventures, and cultural tourism owned by indigenous operators.',
-                    funding: 'DED Loans / ATIA Marketing'
-                },
-                {
-                    name: 'Logistics & Air Cargo',
-                    description: 'Anchorage is a top-5 global cargo hub. Businesses supporting aviation, cold chain storage, and transshipment are highly encouraged.',
-                    funding: 'Industrial Revenue Bonds'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Seafood & Mariculture',
+                description: 'The lifeblood of coastal Alaska. Funding is shifting from wild capture to sustainable farming (kelp, oysters) and value-added processing (e.g., salmon jerky, pet treats).',
+                funding: 'Mariculture Incentive Grant'
+            },
+            {
+                name: 'Tourism & Hospitality',
+                description: 'Alaska creates "bucket list" experiences. High demand for eco-lodges, guided adventures, and cultural tourism owned by indigenous operators.',
+                funding: 'DED Loans / ATIA Marketing'
+            },
+            {
+                name: 'Logistics & Air Cargo',
+                description: 'Anchorage is a top-5 global cargo hub. Businesses supporting aviation, cold chain storage, and transshipment are highly encouraged.',
+                funding: 'Industrial Revenue Bonds'
+            }
+        ],
             emerging: [
                 '**Clean Energy / Microgrids**: Testing ground for wind-diesel hybrid systems.',
                 '**Critical Minerals Mining**: Graphite, Rare Earths for US supply chain security.',
                 '**Blue Economy**: Ocean tech, autonomous marine drones, and research.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Barnacle Foods',
-                grant: 'Mariculture Incentive / STEP',
-                amount: 'Growth Capital',
-                outcome: 'Started in a kitchen in Juneau, now selling kelp salsa and hot sauce nationwide. Used grants to scale production and attend national trade shows.'
-            },
-            {
-                company: 'Heather\'s Choice',
-                grant: 'SBED Loan / Kickstarter',
-                amount: 'Expansion',
-                outcome: 'Manufacturer of dehydrated backpacking meals. Used state loans to build out a commercial kitchen and scale manufacturing in Anchorage.'
-            },
-            {
-                company: 'Alaskan Brewing Co.',
-                grant: 'State Marketing Support',
-                amount: 'Brand Growth',
-                outcome: 'Leveraged the "Alaska Brand" to become one of the most recognized craft breweries in the US, despite high shipping costs.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Barnacle Foods',
+            grant: 'Mariculture Incentive / STEP',
+            amount: 'Growth Capital',
+            outcome: 'Started in a kitchen in Juneau, now selling kelp salsa and hot sauce nationwide. Used grants to scale production and attend national trade shows.'
+        },
+        {
+            company: 'Heather\'s Choice',
+            grant: 'SBED Loan / Kickstarter',
+            amount: 'Expansion',
+            outcome: 'Manufacturer of dehydrated backpacking meals. Used state loans to build out a commercial kitchen and scale manufacturing in Anchorage.'
+        },
+        {
+            company: 'Alaskan Brewing Co.',
+            grant: 'State Marketing Support',
+            amount: 'Brand Growth',
+            outcome: 'Leveraged the "Alaska Brand" to become one of the most recognized craft breweries in the US, despite high shipping costs.'
+        }
+    ],
 
         faqs: [
             {
@@ -18017,127 +17979,127 @@ Funding disbursement can be slow. If you are timing your funding for the summer 
             }
         ],
 
-        resources: [
-            {
-                name: 'Alaska Division of Economic Development (DED)',
-                url: 'https://www.commerce.alaska.gov/web/ded/',
-                description: 'The primary state agency for business loans and grants.'
-            },
-            {
-                name: 'Alaska Small Business Development Center (SBDC)',
-                url: 'https://aksbdc.org/',
-                description: 'Free counseling, workshops, and grant assistance.'
-            },
-            {
-                name: 'Alaska Federation of Natives (AFN)',
-                url: 'https://www.nativefederation.org/',
-                description: 'Key organization for networking with Native Corporations.'
-            },
-            {
-                name: 'Alaska Industrial Development and Export Authority (AIDEA)',
-                url: 'http://www.aidea.org/',
-                description: 'Development finance authority for large-scale projects.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'Alaska Division of Economic Development (DED)',
+                    url: 'https://www.commerce.alaska.gov/web/ded/',
+                    description: 'The primary state agency for business loans and grants.'
+                },
+                {
+                    name: 'Alaska Small Business Development Center (SBDC)',
+                    url: 'https://aksbdc.org/',
+                    description: 'Free counseling, workshops, and grant assistance.'
+                },
+                {
+                    name: 'Alaska Federation of Natives (AFN)',
+                    url: 'https://www.nativefederation.org/',
+                    description: 'Key organization for networking with Native Corporations.'
+                },
+                {
+                    name: 'Alaska Industrial Development and Export Authority (AIDEA)',
+                    url: 'http://www.aidea.org/',
+                    description: 'Development finance authority for large-scale projects.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Anchorage SBDC',
-                location: '1901 Bragaw St, Anchorage, AK',
-                website: 'https://aksbdc.org/',
-                services: ['Business Planning', 'Loan Application Support', 'Export Assistance']
-            },
-            {
-                name: 'Juneau Economic Development Council (JEDC)',
-                location: '612 W Willoughby Ave, Juneau, AK',
-                website: 'https://www.jedc.org/',
-                services: ['Southeast Region Grants', 'Mariculture Support', 'STEM Programs']
-            },
-            {
-                name: 'Fairbanks Economic Development Corp',
-                location: '330 Wendell Ave, Fairbanks, AK',
-                website: 'https://www.investfairbanks.com/',
-                services: ['Interior Business Support', 'Military Contract Assistance', 'Energy Projects']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Anchorage SBDC',
+                        location: '1901 Bragaw St, Anchorage, AK',
+                        website: 'https://aksbdc.org/',
+                        services: ['Business Planning', 'Loan Application Support', 'Export Assistance']
+                    },
+                    {
+                        name: 'Juneau Economic Development Council (JEDC)',
+                        location: '612 W Willoughby Ave, Juneau, AK',
+                        website: 'https://www.jedc.org/',
+                        services: ['Southeast Region Grants', 'Mariculture Support', 'STEM Programs']
+                    },
+                    {
+                        name: 'Fairbanks Economic Development Corp',
+                        location: '330 Wendell Ave, Fairbanks, AK',
+                        website: 'https://www.investfairbanks.com/',
+                        services: ['Interior Business Support', 'Military Contract Assistance', 'Energy Projects']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Anchorage',
-                description: 'The economic engine of the state, holding 40% of the population. It is the logistics, healthcare, and financial center.',
-                keyIndustries: ['Logistics (Air Cargo)', 'Healthcare', 'Government', 'Tourism'],
-                programs: ['Municipality of Anchorage Property Tax Incentives', 'Cook Inlet Lending Center']
-            },
-            {
-                city: 'Fairbanks',
-                description: 'The Golden Heart City. Hub for the Interior, mining support, and military bases (Eielson AFB, Fort Wainwright).',
-                keyIndustries: ['Defense', 'Mining Support', 'University Research', 'Tourism (Aurora)'],
-                programs: ['FEDC Business Retention & Expansion', 'Golden Valley Electric Association Efficiency Loans']
-            },
-            {
-                city: 'Juneau',
-                description: 'The State Capital. accessible only by air or sea. Economy is driven by government, mining (Hecla Greens Creek), and massive cruise tourism.',
-                keyIndustries: ['Government', 'Mining', 'Tourism', 'Fisheries'],
-                programs: ['JEDC Revolving Loan Fund', 'Downtown Improvement Grants']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Anchorage',
+                            description: 'The economic engine of the state, holding 40% of the population. It is the logistics, healthcare, and financial center.',
+                            keyIndustries: ['Logistics (Air Cargo)', 'Healthcare', 'Government', 'Tourism'],
+                            programs: ['Municipality of Anchorage Property Tax Incentives', 'Cook Inlet Lending Center']
+                        },
+                        {
+                            city: 'Fairbanks',
+                            description: 'The Golden Heart City. Hub for the Interior, mining support, and military bases (Eielson AFB, Fort Wainwright).',
+                            keyIndustries: ['Defense', 'Mining Support', 'University Research', 'Tourism (Aurora)'],
+                            programs: ['FEDC Business Retention & Expansion', 'Golden Valley Electric Association Efficiency Loans']
+                        },
+                        {
+                            city: 'Juneau',
+                            description: 'The State Capital. accessible only by air or sea. Economy is driven by government, mining (Hecla Greens Creek), and massive cruise tourism.',
+                            keyIndustries: ['Government', 'Mining', 'Tourism', 'Fisheries'],
+                            programs: ['JEDC Revolving Loan Fund', 'Downtown Improvement Grants']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'Use the PFD as Seed Money',
-                content: 'Every resident gets a Permanent Fund Dividend ($1k-$3k) annually. For a family of 4, that’s $10k in "free" seed capital every October. Many small businesses start exactly this way.',
-                type: 'tip'
-            },
-            {
-                title: 'The "Alaska Premium"',
-                content: 'Alaskan consumers are loyal to "Made in Alaska" products and willing to pay more for them to support local makers. Use the "Made in Alaska" permit logo on your packaging.',
-                type: 'success'
-            },
-            {
-                title: 'Shipping Trap',
-                content: 'Do not base your margins on Amazon Prime shipping rates. Real freight costs are high. Negotiate a contract with a freight forwarder immediately if you are moving physical goods.',
-                type: 'warning'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'Use the PFD as Seed Money',
+                                content: 'Every resident gets a Permanent Fund Dividend ($1k-$3k) annually. For a family of 4, that’s $10k in "free" seed capital every October. Many small businesses start exactly this way.',
+                                type: 'tip'
+                            },
+                            {
+                                title: 'The "Alaska Premium"',
+                                content: 'Alaskan consumers are loyal to "Made in Alaska" products and willing to pay more for them to support local makers. Use the "Made in Alaska" permit logo on your packaging.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'Shipping Trap',
+                                content: 'Do not base your margins on Amazon Prime shipping rates. Real freight costs are high. Negotiate a contract with a freight forwarder immediately if you are moving physical goods.',
+                                type: 'warning'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'State Tax', value: '0%', description: 'No Sales/Income Tax', color: 'text-green-600', iconName: 'TrendingDown' },
-            { label: 'SBED Loan', value: '$300k', description: 'Max State Loan', color: 'text-blue-600', iconName: 'DollarSign' },
-            { label: 'Residency', value: '1 Year', description: 'Required for Loans', color: 'text-purple-600', iconName: 'Home' },
-            { label: 'Logistics', value: 'Hub', description: '9.5hr to 90% World', color: 'text-orange-600', iconName: 'Globe' }
-        ],
+                            metrics: [
+                                { label: 'State Tax', value: '0%', description: 'No Sales/Income Tax', color: 'text-green-600', iconName: 'TrendingDown' },
+                                { label: 'SBED Loan', value: '$300k', description: 'Max State Loan', color: 'text-blue-600', iconName: 'DollarSign' },
+                                { label: 'Residency', value: '1 Year', description: 'Required for Loans', color: 'text-purple-600', iconName: 'Home' },
+                                { label: 'Logistics', value: 'Hub', description: '9.5hr to 90% World', color: 'text-orange-600', iconName: 'Globe' }
+                            ],
 
-        seoKeywords: [
-            'alaska business grants',
-            'business license alaska',
-            'no income tax states business',
-            'mariculture grants',
-            'anchorage small business loans',
-            'alaska native corporation partnership',
-            'sbed loan alaska',
-            'starting a business in alaska',
-            'commercial fishing loans alaska',
-            'tourism grants alaska'
-        ],
+                                seoKeywords: [
+                                    'alaska business grants',
+                                    'business license alaska',
+                                    'no income tax states business',
+                                    'mariculture grants',
+                                    'anchorage small business loans',
+                                    'alaska native corporation partnership',
+                                    'sbed loan alaska',
+                                    'starting a business in alaska',
+                                    'commercial fishing loans alaska',
+                                    'tourism grants alaska'
+                                ],
 
-        metaDescription: 'Complete guide to Alaska business grants and funding in 2026. Access Mariculture Grants, Low-Interest State Loans, and 0% Tax benefits.'
-    },
-    {
-        id: 'vermont',
+                                    metaDescription: 'Complete guide to Alaska business grants and funding in 2026. Access Mariculture Grants, Low-Interest State Loans, and 0% Tax benefits.'
+},
+{
+    id: 'vermont',
         name: 'Vermont',
-        slug: 'vermont',
-        abbreviation: 'VT',
-        region: 'Northeast',
+            slug: 'vermont',
+                abbreviation: 'VT',
+                    region: 'Northeast',
 
-        heroStats: {
-            totalFunding: '$60M+',
+                        heroStats: {
+        totalFunding: '$60M+',
             programCount: '8+',
-            successRate: '40-50%',
-            avgProcessingTime: '30-45 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '30-45 days'
+    },
 
-        overview: {
-            introduction: `Vermont brands itself on quality, sustainability, and community. It is a state where "small business" is the norm, and the economic ecosystem is tightly knit. The Vermont Economic Development Authority (VEDA) acts as the state's financial backbone, offering loans where traditional banks might hesitate.
+    overview: {
+        introduction: `Vermont brands itself on quality, sustainability, and community. It is a state where "small business" is the norm, and the economic ecosystem is tightly knit. The Vermont Economic Development Authority (VEDA) acts as the state's financial backbone, offering loans where traditional banks might hesitate.
 
 The state is aggressively recruiting remote workers and green tech innovation, aiming to balance its aging demographic with fresh entrepreneurial energy. Its "purity" brand—synonymous with maple, cheese, and craft beer—provides an automatic premium for any consumer product exported from the state.`,
 
@@ -18145,149 +18107,149 @@ The state is aggressively recruiting remote workers and green tech innovation, a
 
 Manufacturing remains a quiet powerhouse, particularly in aerospace and precision machining, often feeding into supply chains for companies in neighboring Connecticut and Canada.`,
 
-            keyOpportunities: `**Green Tech & Aviation**: Burlington is aiming to be the "Electric Aviation Capital of the East." Beta Technologies' rapid growth has spawned a need for suppliers, engineers, and support services.
+                keyOpportunities: `**Green Tech & Aviation**: Burlington is aiming to be the "Electric Aviation Capital of the East." Beta Technologies' rapid growth has spawned a need for suppliers, engineers, and support services.
             
 **Value-Added Agriculture**: The "Working Lands" initiative pours money into businesses that turn raw farm products into shelf-stable goods (e.g., turning milk into artisanal cheese or apples into hard cider).
             
 **Remote Work Hub**: With 100% renewable electricity in Burlington and state incentives for relocating workers, the service sector for remote employees (co-working, cafes, lifestyle services) is booming.`,
 
-            futureTrends: `**Climate Migration**: Vermont is increasingly seen as a "climate haven," attracting wealthy migrants and businesses from flood/fire-prone areas. This is driving a real estate and construction boom.
+                    futureTrends: `**Climate Migration**: Vermont is increasingly seen as a "climate haven," attracting wealthy migrants and businesses from flood/fire-prone areas. This is driving a real estate and construction boom.
             
 **Mass Timber**: As a heavily forested state, Vermont is pioneering the use of Mass Timber (CLT) in construction. Expect grants for forestry innovation to rise.
             
 **Employee Ownership**: Vermont leads the nation in ESOPs (Employee Stock Ownership Plans) and Co-ops. State policy will continue to heavily favor businesses that adopt this model.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'Vermont Employment Growth Incentive (VEGI)',
-                agency: 'DED',
-                fundingAmount: 'Cash Grant (Performance)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Create new payroll (above threshold)',
-                    'Capital Investment',
-                    'But-For requirement (Project wouldn\'t happen without it)'
-                ],
-                industries: ['Tech', 'Manufacturing', 'Green Economy'],
-                deadline: 'Rolling (Board meets monthly)',
-                applicationProcess: 'Projections & VEPC Board Approval.',
-                successRate: 'Selective',
-                website: 'https://accd.vermont.gov/economic-development/funding-incentives/vegi',
-                description: `This is the state's flagship economic tool. It is NOT a tax credit; it is a cash payment paid out over 5 years if you hit your hiring targets. It requires rigorous modeling to prove the "But-For" clause—that you would not have done the project without this money.`
-            },
-            {
-                name: 'VEDA Direct Loan Program',
-                agency: 'VEDA',
-                fundingAmount: 'Loan (up to $2.5M)',
-                fundingType: 'Loan',
-                eligibility: [
-                    'Manufacturing / Processing',
-                    'Travel / Tourism',
-                    '40% Project Cost Coverage'
-                ],
-                industries: ['Manufacturing', 'Tourism', 'Agriculture'],
-                deadline: 'Rolling',
-                applicationProcess: 'Direct application to VEDA.',
-                successRate: 'High',
-                website: 'https://www.veda.org/financing/commercial-financing/direct-loan-program/',
-                description: `When a bank will only lend 50% of a project's cost, VEDA steps in to lend another 40%, often at a lower rate. This "subordinate" debt allows businesses to retain cash. It is widely used for buying machinery or expanding ski resorts.`
-            },
-            {
-                name: 'Working Lands Enterprise Fund',
-                agency: 'Agency of Ag',
-                fundingAmount: 'Grant ($10k - $250k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Ag or Forestry business',
-                    'Supply chain impact',
-                    'Business growth plan'
-                ],
-                industries: ['Agriculture', 'Forestry', 'Food Systems'],
-                deadline: 'Annual (Fall)',
-                applicationProcess: 'Competitive RFP.',
-                successRate: 'Competitive',
-                website: 'https://workinglands.vermont.gov/',
-                description: `A hugely popular grant for the "working landscape." It funds infrastructure (e.g., a new slaughterhouse, a lumber kiln, a maple bottling line) that helps not just one business, but the whole local supply chain.`
-            },
-            {
-                name: 'Windham County Economic Development Program',
-                agency: 'ACCD',
-                fundingAmount: 'Grants / Loans',
-                fundingType: 'Hybrid',
-                eligibility: [
-                    'Located in Windham County (Brattleboro area)',
-                    'Job creation'
-                ],
-                industries: ['All'],
-                deadline: 'Rolling',
-                applicationProcess: 'Direct application.',
-                successRate: 'Variable',
-                website: 'https://accd.vermont.gov/economic-development/funding-incentives/windham-county',
-                description: `A special pot of funds ($10M+) created from the settlement of the Vermont Yankee nuclear plant closure. It is specifically designed to replace the economic hole left by the plant, offering flexible capital for businesses in the southeast corner of the state.`
-            },
-            {
-                name: 'Vermont Training Program (VTP)',
-                agency: 'DED',
-                fundingAmount: '50% Reimbursement',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Train new/existing employees',
-                    'Skill upgrade (not onboarding)',
-                    'Manufacturing / Tech / Health'
-                ],
-                industries: ['Manufacturing', 'Tech'],
-                deadline: 'Rolling',
-                applicationProcess: 'Simple Application.',
-                successRate: 'High',
-                website: 'https://accd.vermont.gov/economic-development/funding-incentives/training',
-                description: `Reimburses 50% of the wages or tuition costs for training employees. It is often used for LEAN manufacturing certification or software training. It is one of the least bureaucratic programs in the state.`
-            },
-            {
-                name: 'Brownfields Revitalization Fund',
-                agency: 'ACCD',
-                fundingAmount: 'Grant / Loan',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Contaminated site',
-                    'Redevelopment plan'
-                ],
-                industries: ['Real Estate', 'Development'],
-                deadline: 'Rolling',
-                applicationProcess: 'Site assessment first.',
-                successRate: 'Moderate',
-                website: 'https://accd.vermont.gov/economic-development/funding-incentives/brownfields',
-                description: `Vermont has many old mills. This fund pays for the cleanup (remediation) of these historic structures, turning them into apartments, breweries, or tech offices.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Vermont Employment Growth Incentive (VEGI)',
+            agency: 'DED',
+            fundingAmount: 'Cash Grant (Performance)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Create new payroll (above threshold)',
+                'Capital Investment',
+                'But-For requirement (Project wouldn\'t happen without it)'
+            ],
+            industries: ['Tech', 'Manufacturing', 'Green Economy'],
+            deadline: 'Rolling (Board meets monthly)',
+            applicationProcess: 'Projections & VEPC Board Approval.',
+            successRate: 'Selective',
+            website: 'https://accd.vermont.gov/economic-development/funding-incentives/vegi',
+            description: `This is the state's flagship economic tool. It is NOT a tax credit; it is a cash payment paid out over 5 years if you hit your hiring targets. It requires rigorous modeling to prove the "But-For" clause—that you would not have done the project without this money.`
+        },
+        {
+            name: 'VEDA Direct Loan Program',
+            agency: 'VEDA',
+            fundingAmount: 'Loan (up to $2.5M)',
+            fundingType: 'Loan',
+            eligibility: [
+                'Manufacturing / Processing',
+                'Travel / Tourism',
+                '40% Project Cost Coverage'
+            ],
+            industries: ['Manufacturing', 'Tourism', 'Agriculture'],
+            deadline: 'Rolling',
+            applicationProcess: 'Direct application to VEDA.',
+            successRate: 'High',
+            website: 'https://www.veda.org/financing/commercial-financing/direct-loan-program/',
+            description: `When a bank will only lend 50% of a project's cost, VEDA steps in to lend another 40%, often at a lower rate. This "subordinate" debt allows businesses to retain cash. It is widely used for buying machinery or expanding ski resorts.`
+        },
+        {
+            name: 'Working Lands Enterprise Fund',
+            agency: 'Agency of Ag',
+            fundingAmount: 'Grant ($10k - $250k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Ag or Forestry business',
+                'Supply chain impact',
+                'Business growth plan'
+            ],
+            industries: ['Agriculture', 'Forestry', 'Food Systems'],
+            deadline: 'Annual (Fall)',
+            applicationProcess: 'Competitive RFP.',
+            successRate: 'Competitive',
+            website: 'https://workinglands.vermont.gov/',
+            description: `A hugely popular grant for the "working landscape." It funds infrastructure (e.g., a new slaughterhouse, a lumber kiln, a maple bottling line) that helps not just one business, but the whole local supply chain.`
+        },
+        {
+            name: 'Windham County Economic Development Program',
+            agency: 'ACCD',
+            fundingAmount: 'Grants / Loans',
+            fundingType: 'Hybrid',
+            eligibility: [
+                'Located in Windham County (Brattleboro area)',
+                'Job creation'
+            ],
+            industries: ['All'],
+            deadline: 'Rolling',
+            applicationProcess: 'Direct application.',
+            successRate: 'Variable',
+            website: 'https://accd.vermont.gov/economic-development/funding-incentives/windham-county',
+            description: `A special pot of funds ($10M+) created from the settlement of the Vermont Yankee nuclear plant closure. It is specifically designed to replace the economic hole left by the plant, offering flexible capital for businesses in the southeast corner of the state.`
+        },
+        {
+            name: 'Vermont Training Program (VTP)',
+            agency: 'DED',
+            fundingAmount: '50% Reimbursement',
+            fundingType: 'Grant',
+            eligibility: [
+                'Train new/existing employees',
+                'Skill upgrade (not onboarding)',
+                'Manufacturing / Tech / Health'
+            ],
+            industries: ['Manufacturing', 'Tech'],
+            deadline: 'Rolling',
+            applicationProcess: 'Simple Application.',
+            successRate: 'High',
+            website: 'https://accd.vermont.gov/economic-development/funding-incentives/training',
+            description: `Reimburses 50% of the wages or tuition costs for training employees. It is often used for LEAN manufacturing certification or software training. It is one of the least bureaucratic programs in the state.`
+        },
+        {
+            name: 'Brownfields Revitalization Fund',
+            agency: 'ACCD',
+            fundingAmount: 'Grant / Loan',
+            fundingType: 'Grant',
+            eligibility: [
+                'Contaminated site',
+                'Redevelopment plan'
+            ],
+            industries: ['Real Estate', 'Development'],
+            deadline: 'Rolling',
+            applicationProcess: 'Site assessment first.',
+            successRate: 'Moderate',
+            website: 'https://accd.vermont.gov/economic-development/funding-incentives/brownfields',
+            description: `Vermont has many old mills. This fund pays for the cleanup (remediation) of these historic structures, turning them into apartments, breweries, or tech offices.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Vermont Business Registry**: Must be registered with the Secretary of State.',
-                '**"Good Standing"**: Tax clearance from the Dept of Taxes is mandatory for every grant.',
-                '**Wage Standards**: Many grants (like VEGI) require you to pay significantly above the minimum wage (often 160% of min wage).',
-                '**Environmental Compliance**: Vermont strict Act 250 land use laws can hold up projects; ensure you are compliant before applying for funding.'
-            ],
+        generalRequirements: [
+            '**Vermont Business Registry**: Must be registered with the Secretary of State.',
+            '**"Good Standing"**: Tax clearance from the Dept of Taxes is mandatory for every grant.',
+            '**Wage Standards**: Many grants (like VEGI) require you to pay significantly above the minimum wage (often 160% of min wage).',
+            '**Environmental Compliance**: Vermont strict Act 250 land use laws can hold up projects; ensure you are compliant before applying for funding.'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'Cooperatives (High Priority)',
                 'B-Corps (Benefit Corporations)'
             ],
-            restrictions: [
-                '**Retail/Service**: Generally excluded from VEDA and VEGI, unless they have a "background" export function.',
-                '**"But-For"**: For VEGI, you must prove the project would not happen in VT without the incentive. If you announce the project before approval, you are disqualified.',
-                '**Housing**: Lack of workforce housing is a silent killer for grant applications that promise big job numbers.'
-            ],
-            documentationNeeded: [
-                'VEGI Cost-Benefit Model (Spreadsheet)',
-                '3 Years of Financial Statements',
-                'Personal Financial Statement (for VEDA loans)',
-                'Act 250 Permit Status (if building)'
-            ]
-        },
+                restrictions: [
+                    '**Retail/Service**: Generally excluded from VEDA and VEGI, unless they have a "background" export function.',
+                    '**"But-For"**: For VEGI, you must prove the project would not happen in VT without the incentive. If you announce the project before approval, you are disqualified.',
+                    '**Housing**: Lack of workforce housing is a silent killer for grant applications that promise big job numbers.'
+                ],
+                    documentationNeeded: [
+                        'VEGI Cost-Benefit Model (Spreadsheet)',
+                        '3 Years of Financial Statements',
+                        'Personal Financial Statement (for VEDA loans)',
+                        'Act 250 Permit Status (if building)'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `Funding in Vermont is "high-touch." You don't just fill out a form; you meet the people. The scale is small enough that personal relationships with lenders and officials matter immensely.
+    applicationProcess: {
+        guide: `Funding in Vermont is "high-touch." You don't just fill out a form; you meet the people. The scale is small enough that personal relationships with lenders and officials matter immensely.
 
 **Phase 1: The Regional Help**
 Start with your Regional Development Corporation (RDC). There are 12 of them (e.g., GBIC in Burlington, BDCC in Brattleboro). They are the gatekeepers. They will tell you which state buckets apply to you and help you write the application.
@@ -18337,59 +18299,59 @@ Emphasize sustainability and community. If your business is a B-Corp or has an e
                     timeframe: 'Annual'
                 }
             ],
-            tips: [
-                '**Housing is Leverage**: If your business plan includes building housing for your workers, the state will roll out the red carpet.',
-                '**Act 250**: Never ignore this. It is the land use law that governs everything. Ask about it in your first meeting.',
-                '**The Co-op Advantage**: If you can structure as a co-op, do it. There are specific loan funds just for co-ops.',
-                '**Burlington vs. The Rest**: Funding is often easier to get for projects OUTSIDE Burlington (rural preference), but the talent IS in Burlington.'
-            ]
-        },
+                tips: [
+                    '**Housing is Leverage**: If your business plan includes building housing for your workers, the state will roll out the red carpet.',
+                    '**Act 250**: Never ignore this. It is the land use law that governs everything. Ask about it in your first meeting.',
+                    '**The Co-op Advantage**: If you can structure as a co-op, do it. There are specific loan funds just for co-ops.',
+                    '**Burlington vs. The Rest**: Funding is often easier to get for projects OUTSIDE Burlington (rural preference), but the talent IS in Burlington.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Green Energy & Aviation',
-                    description: 'Beta Technologies has created a gravity well for electric aviation talent and suppliers.',
-                    funding: 'VEGI / VEDA'
-                },
-                {
-                    name: 'Value-Added Food',
-                    description: 'taking raw ag products and processing them (cheese, beer, syrup, cured meats). High margin, exportable.',
-                    funding: 'Working Lands Enterprise Fund'
-                },
-                {
-                    name: 'Advanced Manufacturing',
-                    description: 'Precision machining for aerospace and semiconductors (GlobalFoundries is nearby).',
-                    funding: 'Vermont Training Program'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Green Energy & Aviation',
+                description: 'Beta Technologies has created a gravity well for electric aviation talent and suppliers.',
+                funding: 'VEGI / VEDA'
+            },
+            {
+                name: 'Value-Added Food',
+                description: 'taking raw ag products and processing them (cheese, beer, syrup, cured meats). High margin, exportable.',
+                funding: 'Working Lands Enterprise Fund'
+            },
+            {
+                name: 'Advanced Manufacturing',
+                description: 'Precision machining for aerospace and semiconductors (GlobalFoundries is nearby).',
+                funding: 'Vermont Training Program'
+            }
+        ],
             emerging: [
                 '**Mass Timber Construction**: Using local forests for high-tech building materials.',
                 '**Remote Work Services**: Lifestyle businesses serving the influx of remote tech workers.',
                 '**Climate Tech**: Startups focused on grid resilience and weatherization.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Beta Technologies',
-                grant: 'VEGI / Training',
-                amount: 'Multi-Million',
-                outcome: 'Burlington-based EV aircraft maker. Used state incentives to build a massive manufacturing facility at the airport.'
-            },
-            {
-                company: 'Lawson\'s Finest Liquids',
-                grant: 'VEDA Loan',
-                amount: 'Expansion',
-                outcome: 'Craft brewery that used VEDA financing to build their destination taproom in Waitsfield, a major tourism draw.'
-            },
-            {
-                company: 'Jasper Hill Farm',
-                grant: 'Working Lands',
-                amount: 'Growth',
-                outcome: 'World-renowned cheese maker. Used grants to build the "Cellars," a massive underground aging facility used by multiple farms.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Beta Technologies',
+            grant: 'VEGI / Training',
+            amount: 'Multi-Million',
+            outcome: 'Burlington-based EV aircraft maker. Used state incentives to build a massive manufacturing facility at the airport.'
+        },
+        {
+            company: 'Lawson\'s Finest Liquids',
+            grant: 'VEDA Loan',
+            amount: 'Expansion',
+            outcome: 'Craft brewery that used VEDA financing to build their destination taproom in Waitsfield, a major tourism draw.'
+        },
+        {
+            company: 'Jasper Hill Farm',
+            grant: 'Working Lands',
+            amount: 'Growth',
+            outcome: 'World-renowned cheese maker. Used grants to build the "Cellars," a massive underground aging facility used by multiple farms.'
+        }
+    ],
 
         faqs: [
             {
@@ -18410,127 +18372,127 @@ Emphasize sustainability and community. If your business is a B-Corp or has an e
             }
         ],
 
-        resources: [
-            {
-                name: 'Agency of Commerce (ACCD)',
-                url: 'https://accd.vermont.gov/',
-                description: 'The parent agency for Economic Development.'
-            },
-            {
-                name: 'Vermont Economic Development Authority (VEDA)',
-                url: 'https://www.veda.org/',
-                description: 'The state\'s bank. Low-interest loans.'
-            },
-            {
-                name: 'Vermont Sustainable Jobs Fund (VSJF)',
-                url: 'https://www.vsjf.org/',
-                description: 'Focuses on forestry, ag, and green economy.'
-            },
-            {
-                name: 'Center for Women & Enterprise (CWE)',
-                url: 'https://cweonline.org/',
-                description: 'Designated Women\'s Business Center for VT.'
-            }
-        ],
+            resources: [
+                {
+                    name: 'Agency of Commerce (ACCD)',
+                    url: 'https://accd.vermont.gov/',
+                    description: 'The parent agency for Economic Development.'
+                },
+                {
+                    name: 'Vermont Economic Development Authority (VEDA)',
+                    url: 'https://www.veda.org/',
+                    description: 'The state\'s bank. Low-interest loans.'
+                },
+                {
+                    name: 'Vermont Sustainable Jobs Fund (VSJF)',
+                    url: 'https://www.vsjf.org/',
+                    description: 'Focuses on forestry, ag, and green economy.'
+                },
+                {
+                    name: 'Center for Women & Enterprise (CWE)',
+                    url: 'https://cweonline.org/',
+                    description: 'Designated Women\'s Business Center for VT.'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Hula Lakeside',
-                location: '50 Lakeside Ave, Burlington, VT',
-                website: 'https://www.hulalakeside.com/',
-                services: ['Co-working', 'Venture Capital', 'Tech Incubator']
-            },
-            {
-                name: 'Brattleboro Dev Credit Corp (BDCC)',
-                location: '76 Cotton Mill Hill, Brattleboro, VT',
-                website: 'https://brattleborodevelopment.com/',
-                services: ['Windham County Grants', 'Business Accelerator']
-            },
-            {
-                name: 'The Generator',
-                location: '40 Sears Ln, Burlington, VT',
-                website: 'https://generatorvt.com/',
-                services: ['Makerspace', 'Prototyping Lab', 'Manufacturing Training']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Hula Lakeside',
+                        location: '50 Lakeside Ave, Burlington, VT',
+                        website: 'https://www.hulalakeside.com/',
+                        services: ['Co-working', 'Venture Capital', 'Tech Incubator']
+                    },
+                    {
+                        name: 'Brattleboro Dev Credit Corp (BDCC)',
+                        location: '76 Cotton Mill Hill, Brattleboro, VT',
+                        website: 'https://brattleborodevelopment.com/',
+                        services: ['Windham County Grants', 'Business Accelerator']
+                    },
+                    {
+                        name: 'The Generator',
+                        location: '40 Sears Ln, Burlington, VT',
+                        website: 'https://generatorvt.com/',
+                        services: ['Makerspace', 'Prototyping Lab', 'Manufacturing Training']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Burlington',
-                description: 'The economic engine. Home to UVM, the hospital, and a booming tech scene. Very progressive, expensive real estate.',
-                keyIndustries: ['Tech', 'Education', 'Healthcare', 'Aviation'],
-                programs: ['Burlington Electric Efficiency Rebates', 'CEDO Small Business Loans']
-            },
-            {
-                city: 'Montpelier/Barre',
-                description: 'The Capital Region. Government services, insurance (National Life), and stone cutting (granite).',
-                keyIndustries: ['Government', 'Insurance', 'Stone/Granite', 'Food Processing'],
-                programs: ['Barre Area Development Loans']
-            },
-            {
-                city: 'Brattleboro',
-                description: 'Southeast hub. Gateway to markets in MA/CT. Strong food distribution and arts economy.',
-                keyIndustries: ['Food Distribution (UNFI)', 'Arts', 'Manufacturing'],
-                programs: ['Windham County EDC Fund']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Burlington',
+                            description: 'The economic engine. Home to UVM, the hospital, and a booming tech scene. Very progressive, expensive real estate.',
+                            keyIndustries: ['Tech', 'Education', 'Healthcare', 'Aviation'],
+                            programs: ['Burlington Electric Efficiency Rebates', 'CEDO Small Business Loans']
+                        },
+                        {
+                            city: 'Montpelier/Barre',
+                            description: 'The Capital Region. Government services, insurance (National Life), and stone cutting (granite).',
+                            keyIndustries: ['Government', 'Insurance', 'Stone/Granite', 'Food Processing'],
+                            programs: ['Barre Area Development Loans']
+                        },
+                        {
+                            city: 'Brattleboro',
+                            description: 'Southeast hub. Gateway to markets in MA/CT. Strong food distribution and arts economy.',
+                            keyIndustries: ['Food Distribution (UNFI)', 'Arts', 'Manufacturing'],
+                            programs: ['Windham County EDC Fund']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'The B-Corp Halo',
-                content: 'Vermont has the highest concentration of B-Corps per capita. Becoming one opens doors to networking and specific impact-investor funding circles.',
-                type: 'success'
-            },
-            {
-                title: 'Energy Costs',
-                content: 'Electricity can be expensive, but Burlington has 100% renewable power. Use "Efficiency Vermont" rebates to lower your bill—they pay for LED upgrades, insulation, and heat pumps.',
-                type: 'tip'
-            },
-            {
-                title: 'Don\'t Ignore Canada',
-                content: 'Montreal is only 90 minutes away. Many VT businesses successfully export to Quebec. The state offers specific "STEP" grants to help you market in Canada.',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'The B-Corp Halo',
+                                content: 'Vermont has the highest concentration of B-Corps per capita. Becoming one opens doors to networking and specific impact-investor funding circles.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'Energy Costs',
+                                content: 'Electricity can be expensive, but Burlington has 100% renewable power. Use "Efficiency Vermont" rebates to lower your bill—they pay for LED upgrades, insulation, and heat pumps.',
+                                type: 'tip'
+                            },
+                            {
+                                title: 'Don\'t Ignore Canada',
+                                content: 'Montreal is only 90 minutes away. Many VT businesses successfully export to Quebec. The state offers specific "STEP" grants to help you market in Canada.',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Grant', value: 'Cash', description: 'VEGI Incentive', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Energy', value: '100%', description: 'Renewable (BTV)', color: 'text-blue-600', iconName: 'Zap' },
-            { label: 'Loan', value: '40%', description: 'VEDA Participation', color: 'text-purple-600', iconName: 'Percent' },
-            { label: 'Growth', value: 'Tech', description: 'aviation/green', color: 'text-orange-600', iconName: 'TrendingUp' }
-        ],
+                            metrics: [
+                                { label: 'Grant', value: 'Cash', description: 'VEGI Incentive', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Energy', value: '100%', description: 'Renewable (BTV)', color: 'text-blue-600', iconName: 'Zap' },
+                                { label: 'Loan', value: '40%', description: 'VEDA Participation', color: 'text-purple-600', iconName: 'Percent' },
+                                { label: 'Growth', value: 'Tech', description: 'aviation/green', color: 'text-orange-600', iconName: 'TrendingUp' }
+                            ],
 
-        seoKeywords: [
-            'vermont business grants',
-            'working lands enterprise fund',
-            'vegi incentive vermont',
-            'veda business loans',
-            'starting a business in burlington vt',
-            'green tech grants vermont',
-            'agriculture grants vt',
-            'small business funding vt',
-            'woman owned business grants vt',
-            'start a business in vermont'
-        ],
+                                seoKeywords: [
+                                    'vermont business grants',
+                                    'working lands enterprise fund',
+                                    'vegi incentive vermont',
+                                    'veda business loans',
+                                    'starting a business in burlington vt',
+                                    'green tech grants vermont',
+                                    'agriculture grants vt',
+                                    'small business funding vt',
+                                    'woman owned business grants vt',
+                                    'start a business in vermont'
+                                ],
 
-        metaDescription: 'Complete guide to Vermont business grants and funding in 2026. Access Working Lands Grants, VEGI Cash Incentives, and VEDA low-interest loans.'
-    },
-    {
-        id: 'wyoming',
+                                    metaDescription: 'Complete guide to Vermont business grants and funding in 2026. Access Working Lands Grants, VEGI Cash Incentives, and VEDA low-interest loans.'
+},
+{
+    id: 'wyoming',
         name: 'Wyoming',
-        slug: 'wyoming',
-        abbreviation: 'WY',
-        region: 'West',
+            slug: 'wyoming',
+                abbreviation: 'WY',
+                    region: 'West',
 
-        heroStats: {
-            totalFunding: '$50M+',
+                        heroStats: {
+        totalFunding: '$50M+',
             programCount: '6+',
-            successRate: '40-50%',
-            avgProcessingTime: '30-45 days'
-        },
+                successRate: '40-50%',
+                    avgProcessingTime: '30-45 days'
+    },
 
-        overview: {
-            introduction: `Wyoming is widely considered the most business-friendly state in America from a tax and legal perspective. It has NO corporate income tax, NO personal income tax, and very low property taxes. It pioneered the LLC model and has now pioneered the DAO LLC (Decentralized Autonomous Organization) framework, making it the global capital for Web3 and blockchain businesses.
+    overview: {
+        introduction: `Wyoming is widely considered the most business-friendly state in America from a tax and legal perspective. It has NO corporate income tax, NO personal income tax, and very low property taxes. It pioneered the LLC model and has now pioneered the DAO LLC (Decentralized Autonomous Organization) framework, making it the global capital for Web3 and blockchain businesses.
 
 The state's economic development strategy is unique: instead of just giving cash to businesses, it often gives grants to local towns to build *infrastructure* (roads, water, or even entire buildings) specifically for a business to use.`,
 
@@ -18538,151 +18500,151 @@ The state's economic development strategy is unique: instead of just giving cash
 
 Cheyenne is becoming a massive data center hub (Microsoft has a major presence) due to the cool climate (less cooling needed) and cheap power.`,
 
-            keyOpportunities: `**Infrastructure-as-a-Grant**: The Business Ready Community (BRC) program allows the state to pay for the construction of your facility, which you then lease at a favorable rate.
+                keyOpportunities: `**Infrastructure-as-a-Grant**: The Business Ready Community (BRC) program allows the state to pay for the construction of your facility, which you then lease at a favorable rate.
             
 **Blockchain/Fintech**: Wyoming has created a special banking charter (SPDI) that allows crypto companies to operate as banks.
             
 **Manufacturing**: With no inventory tax and low electricity rates, manufacturing is a strong growth sector.`,
 
-            futureTrends: `**Nuclear Energy**: TerraPower (Bill Gates' company) is building a next-generation nuclear reactor in Kemmerer, creating a massive new energy supply chain.
+                    futureTrends: `**Nuclear Energy**: TerraPower (Bill Gates' company) is building a next-generation nuclear reactor in Kemmerer, creating a massive new energy supply chain.
             
 **Indoor Agriculture**: Vertical farming is taking off (e.g., Plenty) to provide fresh produce in a state with a short growing season.
             
 **Remote Wealth**: Jackson Hole continues to attract ultra-high-net-worth individuals, creating a micro-economy of high-end services and investment capital.`
-        },
+    },
 
-        topPrograms: [
-            {
-                name: 'Business Ready Community (BRC) - Business Committed',
-                agency: 'WBC',
-                fundingAmount: 'Grant (Infrastructure)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Business relocation / expansion',
-                    'Local Gov Sponsor',
-                    'Job creation'
-                ],
-                industries: ['Data Centers', 'Manufacturing', 'Tech'],
-                deadline: 'Quarterly',
-                applicationProcess: 'SLIB Board.',
-                successRate: 'Selective',
-                website: 'https://wyomingbusiness.org/brc',
-                description: `This is the state's "Big Gun." The state grants money to a city or county to build infrastructure (water, sewer, roads) or a building (manufacturing plant, lab) SPECIFICALLY for your business. You don't get the cash; you get a building or a road.`
-            },
-            {
-                name: 'Kickstart Wyoming',
-                agency: 'WBC / IMPACT 307',
-                fundingAmount: 'Grant ($5k - $50k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Wyoming startup',
-                    'High growth potential',
-                    'Principal place of business in WY'
-                ],
-                industries: ['Tech', 'Innovation', 'AgTech'],
-                deadline: 'Rolling',
-                applicationProcess: 'Pitch Competition.',
-                successRate: 'Competitive',
-                website: 'https://impact307.org/',
-                description: `Seed funding for early-stage Wyoming startups. It acts like pre-seed capital. It is administered through the IMPACT 307 incubator network (formerly the Technology Business Center).`
-            },
-            {
-                name: 'SBIR Matching Grant',
-                agency: 'WBC',
-                fundingAmount: 'Matching Grant (up to $200k)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Federal SBIR awardee',
-                    'Wyoming based',
-                    'Phase I or Phase II'
-                ],
-                industries: ['R&D', 'Tech', 'Science'],
-                deadline: 'Rolling',
-                applicationProcess: 'Application.',
-                successRate: 'High',
-                website: 'https://wyomingbusiness.org/services/investment/sbir-sttr/',
-                description: `If you win a Federal SBIR grant, Wyoming will match it. This essentially doubles your non-dilutive funding, giving you a longer runway to commercialize your technology.`
-            },
-            {
-                name: 'Wyoming Venture Capital (VC) Trust',
-                agency: 'WBC',
-                fundingAmount: 'Equity Investment',
-                fundingType: 'Equity',
-                eligibility: [
-                    'High growth',
-                    'Wyoming HQ',
-                    'Raising Series A/B'
-                ],
-                industries: ['Tech', 'Crypto', 'Advanced Mfg'],
-                deadline: 'Rolling',
-                applicationProcess: 'VC Pitch.',
-                successRate: 'Selective',
-                website: 'https://wyomingbusiness.org/services/investment/venture-capital/',
-                description: `A new state-backed VC fund designed to address the lack of venture capital in the region. It invests equity into high-growth Wyoming startups.`
-            },
-            {
-                name: 'Workforce Development Training Fund',
-                agency: 'DWS',
-                fundingAmount: 'Grant ($1k - $5k/employee)',
-                fundingType: 'Grant',
-                eligibility: [
-                    'Train new/existing employees',
-                    'Skill upgrade',
-                    'Wyoming business'
-                ],
-                industries: ['All'],
-                deadline: 'Monthly',
-                applicationProcess: 'Application.',
-                successRate: 'High',
-                website: 'https://dws.wyo.gov/business/business-training-grants/',
-                description: `Grants to cover the cost of training. "Pre-Hiring" grants cover training for potential hires. "Business Training" grants cover skill upgrades for current staff.`
-            },
-            {
-                name: 'Data Center Tax Exemption',
-                agency: 'Dept of Rev',
-                fundingAmount: 'Tax Exemption',
-                fundingType: 'Tax Credit',
-                eligibility: [
-                    'Data center',
-                    '$5M investment',
-                    'IT Equipment purchase'
-                ],
-                industries: ['Data Centers', 'Crypto Mining'],
-                deadline: 'Rolling',
-                applicationProcess: 'Application.',
-                successRate: 'High',
-                website: 'https://wyomingbusiness.org/industries/technology/',
-                description: `Sales tax exemption on the purchase of computer equipment for data centers. In a state with 4% sales tax, saving that on $100M of servers is massive.`
-            }
-        ],
+    topPrograms: [
+        {
+            name: 'Business Ready Community (BRC) - Business Committed',
+            agency: 'WBC',
+            fundingAmount: 'Grant (Infrastructure)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Business relocation / expansion',
+                'Local Gov Sponsor',
+                'Job creation'
+            ],
+            industries: ['Data Centers', 'Manufacturing', 'Tech'],
+            deadline: 'Quarterly',
+            applicationProcess: 'SLIB Board.',
+            successRate: 'Selective',
+            website: 'https://wyomingbusiness.org/brc',
+            description: `This is the state's "Big Gun." The state grants money to a city or county to build infrastructure (water, sewer, roads) or a building (manufacturing plant, lab) SPECIFICALLY for your business. You don't get the cash; you get a building or a road.`
+        },
+        {
+            name: 'Kickstart Wyoming',
+            agency: 'WBC / IMPACT 307',
+            fundingAmount: 'Grant ($5k - $50k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Wyoming startup',
+                'High growth potential',
+                'Principal place of business in WY'
+            ],
+            industries: ['Tech', 'Innovation', 'AgTech'],
+            deadline: 'Rolling',
+            applicationProcess: 'Pitch Competition.',
+            successRate: 'Competitive',
+            website: 'https://impact307.org/',
+            description: `Seed funding for early-stage Wyoming startups. It acts like pre-seed capital. It is administered through the IMPACT 307 incubator network (formerly the Technology Business Center).`
+        },
+        {
+            name: 'SBIR Matching Grant',
+            agency: 'WBC',
+            fundingAmount: 'Matching Grant (up to $200k)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Federal SBIR awardee',
+                'Wyoming based',
+                'Phase I or Phase II'
+            ],
+            industries: ['R&D', 'Tech', 'Science'],
+            deadline: 'Rolling',
+            applicationProcess: 'Application.',
+            successRate: 'High',
+            website: 'https://wyomingbusiness.org/services/investment/sbir-sttr/',
+            description: `If you win a Federal SBIR grant, Wyoming will match it. This essentially doubles your non-dilutive funding, giving you a longer runway to commercialize your technology.`
+        },
+        {
+            name: 'Wyoming Venture Capital (VC) Trust',
+            agency: 'WBC',
+            fundingAmount: 'Equity Investment',
+            fundingType: 'Equity',
+            eligibility: [
+                'High growth',
+                'Wyoming HQ',
+                'Raising Series A/B'
+            ],
+            industries: ['Tech', 'Crypto', 'Advanced Mfg'],
+            deadline: 'Rolling',
+            applicationProcess: 'VC Pitch.',
+            successRate: 'Selective',
+            website: 'https://wyomingbusiness.org/services/investment/venture-capital/',
+            description: `A new state-backed VC fund designed to address the lack of venture capital in the region. It invests equity into high-growth Wyoming startups.`
+        },
+        {
+            name: 'Workforce Development Training Fund',
+            agency: 'DWS',
+            fundingAmount: 'Grant ($1k - $5k/employee)',
+            fundingType: 'Grant',
+            eligibility: [
+                'Train new/existing employees',
+                'Skill upgrade',
+                'Wyoming business'
+            ],
+            industries: ['All'],
+            deadline: 'Monthly',
+            applicationProcess: 'Application.',
+            successRate: 'High',
+            website: 'https://dws.wyo.gov/business/business-training-grants/',
+            description: `Grants to cover the cost of training. "Pre-Hiring" grants cover training for potential hires. "Business Training" grants cover skill upgrades for current staff.`
+        },
+        {
+            name: 'Data Center Tax Exemption',
+            agency: 'Dept of Rev',
+            fundingAmount: 'Tax Exemption',
+            fundingType: 'Tax Credit',
+            eligibility: [
+                'Data center',
+                '$5M investment',
+                'IT Equipment purchase'
+            ],
+            industries: ['Data Centers', 'Crypto Mining'],
+            deadline: 'Rolling',
+            applicationProcess: 'Application.',
+            successRate: 'High',
+            website: 'https://wyomingbusiness.org/industries/technology/',
+            description: `Sales tax exemption on the purchase of computer equipment for data centers. In a state with 4% sales tax, saving that on $100M of servers is massive.`
+        }
+    ],
 
         eligibility: {
-            generalRequirements: [
-                '**Wyoming Domicile**: You must be registered in WY (easy and cheap).',
-                '**Local Partner**: For BRC grants, you MUST have a City, Town, or County willing to apply on your behalf.',
-                '**Job Quality**: Grants favor jobs that pay above the county average wage.',
-                '**Financial Viability**: The state treats grants like investments; you must prove your business is solvent.'
-            ],
+        generalRequirements: [
+            '**Wyoming Domicile**: You must be registered in WY (easy and cheap).',
+            '**Local Partner**: For BRC grants, you MUST have a City, Town, or County willing to apply on your behalf.',
+            '**Job Quality**: Grants favor jobs that pay above the county average wage.',
+            '**Financial Viability**: The state treats grants like investments; you must prove your business is solvent.'
+        ],
             businessTypes: [
                 'C-Corps, S-Corps, LLCs',
                 'DAO LLCs (Decentralized Autonomous Orgs)',
                 'Series LLCs'
             ],
-            restrictions: [
-                '**Retail**: Generally excluded from BRC and Kickstart.',
-                '**Speculation**: Real estate speculation is not funded; the facility must be for YOUR business operations.',
-                '**Reporting**: Strict reporting on job creation for 3-5 years after receiving a BRC benefit.'
-            ],
-            documentationNeeded: [
-                'Business Plan',
-                '3 Years Financial Projections',
-                'Letter of Support from Local City/County (Critical for BRC)',
-                'Pitch Deck (for Kickstart/VC)'
-            ]
-        },
+                restrictions: [
+                    '**Retail**: Generally excluded from BRC and Kickstart.',
+                    '**Speculation**: Real estate speculation is not funded; the facility must be for YOUR business operations.',
+                    '**Reporting**: Strict reporting on job creation for 3-5 years after receiving a BRC benefit.'
+                ],
+                    documentationNeeded: [
+                        'Business Plan',
+                        '3 Years Financial Projections',
+                        'Letter of Support from Local City/County (Critical for BRC)',
+                        'Pitch Deck (for Kickstart/VC)'
+                    ]
+    },
 
-        applicationProcess: {
-            guide: `Wyoming is small (population-wise). Access is easy. You can often get the CEO of the Business Council or even the Governor on the phone if your project is big enough.
+    applicationProcess: {
+        guide: `Wyoming is small (population-wise). Access is easy. You can often get the CEO of the Business Council or even the Governor on the phone if your project is big enough.
 
 **Phase 1: The Local Connection**
 For the big money (BRC), you don't apply to the state. You apply to a **City or County**. You need to convince the Mayor or Commissioners that your business is good for their town. They then apply to the state for the money to build your infrastructure.
@@ -18730,59 +18692,59 @@ Since there is no income tax, your primary interaction with the state revenue de
                     timeframe: '6-12 Months'
                 }
             ],
-            tips: [
-                '**The "Cowboy Ethics"**: A handshake still means something here. Be honest and straightforward. Slick "salesy" pitches don\'t work well.',
-                '**DAO Laws**: If you are a blockchain company, incorporate as a DAO LLC. It provides liability protection for token holders.',
-                '**Cheyenne vs. Jackson**: Jackson is for VC/Wealth; Cheyenne is for Infrastructure/Data Centers; Laramie is for R&D (University).',
-                '**Cheap Energy**: Highlight your power needs. Wyoming has some of the cheapest industrial power rates in the US.'
-            ]
-        },
+                tips: [
+                    '**The "Cowboy Ethics"**: A handshake still means something here. Be honest and straightforward. Slick "salesy" pitches don\'t work well.',
+                    '**DAO Laws**: If you are a blockchain company, incorporate as a DAO LLC. It provides liability protection for token holders.',
+                    '**Cheyenne vs. Jackson**: Jackson is for VC/Wealth; Cheyenne is for Infrastructure/Data Centers; Laramie is for R&D (University).',
+                    '**Cheap Energy**: Highlight your power needs. Wyoming has some of the cheapest industrial power rates in the US.'
+                ]
+    },
 
-        industryFocus: {
-            primary: [
-                {
-                    name: 'Blockchain & FinTech',
-                    description: 'Home to the first crypto banks (SPDIs). The regulatory sandbox attracts global Web3 companies.',
-                    funding: 'VC Trust / Tax Exemption'
-                },
-                {
-                    name: 'Advanced Energy',
-                    description: 'Carbon capture, Hydrogen, and Next-Gen Nuclear (TerraPower).',
-                    funding: 'BRC Infrastructure'
-                },
-                {
-                    name: 'Outdoor Products',
-                    description: 'Manufacturing gear for shooting, hunting, and hiking. "Born in Wyoming" branding.',
-                    funding: 'BRC / Kickstart'
-                }
-            ],
+    industryFocus: {
+        primary: [
+            {
+                name: 'Blockchain & FinTech',
+                description: 'Home to the first crypto banks (SPDIs). The regulatory sandbox attracts global Web3 companies.',
+                funding: 'VC Trust / Tax Exemption'
+            },
+            {
+                name: 'Advanced Energy',
+                description: 'Carbon capture, Hydrogen, and Next-Gen Nuclear (TerraPower).',
+                funding: 'BRC Infrastructure'
+            },
+            {
+                name: 'Outdoor Products',
+                description: 'Manufacturing gear for shooting, hunting, and hiking. "Born in Wyoming" branding.',
+                funding: 'BRC / Kickstart'
+            }
+        ],
             emerging: [
                 '**Indoor Agriculture**: High-tech vertical farming.',
                 '**Remote Work**: Tax-free living for remote tech workers.',
                 '**Advanced Manufacturing**: Small arms and aerospace components.'
             ]
-        },
+    },
 
-        successStories: [
-            {
-                company: 'Kraken Bank',
-                grant: 'Charter',
-                amount: 'Regulatory',
-                outcome: 'First SPDI (Special Purpose Depository Institution) bank charter in the US.'
-            },
-            {
-                company: 'Plenty',
-                grant: 'BRC',
-                amount: 'Infrastructure',
-                outcome: 'Built a massive vertical farming research facility in Laramie with state support.'
-            },
-            {
-                company: 'Weatherby',
-                grant: 'BRC',
-                amount: 'Relocation',
-                outcome: 'Major firearms manufacturer moved HQ and manufacturing from California to Sheridan, WY.'
-            }
-        ],
+    successStories: [
+        {
+            company: 'Kraken Bank',
+            grant: 'Charter',
+            amount: 'Regulatory',
+            outcome: 'First SPDI (Special Purpose Depository Institution) bank charter in the US.'
+        },
+        {
+            company: 'Plenty',
+            grant: 'BRC',
+            amount: 'Infrastructure',
+            outcome: 'Built a massive vertical farming research facility in Laramie with state support.'
+        },
+        {
+            company: 'Weatherby',
+            grant: 'BRC',
+            amount: 'Relocation',
+            outcome: 'Major firearms manufacturer moved HQ and manufacturing from California to Sheridan, WY.'
+        }
+    ],
 
         faqs: [
             {
@@ -18803,106 +18765,106 @@ Since there is no income tax, your primary interaction with the state revenue de
             }
         ],
 
-        resources: [
-            {
-                name: 'Wyoming Business Council (WBC)',
-                url: 'https://wyomingbusiness.org/',
-                description: 'The main economic development agency.'
-            },
-            {
-                name: 'IMPACT 307',
-                url: 'https://impact307.org/',
-                description: 'Startup incubator network (Laramie, Casper, Sheridan).'
-            },
-            {
-                name: 'Wyoming Secretary of State',
-                url: 'https://sos.wyo.gov/',
-                description: 'Business registration portal (very efficient).'
-            }
-        ],
+            resources: [
+                {
+                    name: 'Wyoming Business Council (WBC)',
+                    url: 'https://wyomingbusiness.org/',
+                    description: 'The main economic development agency.'
+                },
+                {
+                    name: 'IMPACT 307',
+                    url: 'https://impact307.org/',
+                    description: 'Startup incubator network (Laramie, Casper, Sheridan).'
+                },
+                {
+                    name: 'Wyoming Secretary of State',
+                    url: 'https://sos.wyo.gov/',
+                    description: 'Business registration portal (very efficient).'
+                }
+            ],
 
-        localResources: [
-            {
-                name: 'Silicon Couloir',
-                location: 'Jackson Hole, WY',
-                website: 'https://www.siliconcouloir.com/',
-                services: ['Angel Group', 'Pitch Days', 'Networking']
-            },
-            {
-                name: 'Cheyenne LEADS',
-                location: 'Cheyenne, WY',
-                website: 'https://cheyenneleads.org/',
-                services: ['Data Center Recruiting', 'Site Selection']
-            },
-            {
-                name: 'Manufacturing Works',
-                location: 'Laramie, WY',
-                website: 'https://www.manufacturing-works.com/',
-                services: ['Lean Mfg Training', 'Consulting']
-            }
-        ],
+                localResources: [
+                    {
+                        name: 'Silicon Couloir',
+                        location: 'Jackson Hole, WY',
+                        website: 'https://www.siliconcouloir.com/',
+                        services: ['Angel Group', 'Pitch Days', 'Networking']
+                    },
+                    {
+                        name: 'Cheyenne LEADS',
+                        location: 'Cheyenne, WY',
+                        website: 'https://cheyenneleads.org/',
+                        services: ['Data Center Recruiting', 'Site Selection']
+                    },
+                    {
+                        name: 'Manufacturing Works',
+                        location: 'Laramie, WY',
+                        website: 'https://www.manufacturing-works.com/',
+                        services: ['Lean Mfg Training', 'Consulting']
+                    }
+                ],
 
-        cityGuides: [
-            {
-                city: 'Cheyenne',
-                description: 'The Capital. Data center hub (Microsoft), government, and logistics (I-80/I-25 crossroads).',
-                keyIndustries: ['Data Centers', 'Government', 'Logistics'],
-                programs: ['Cheyenne LEADS Incentives']
-            },
-            {
-                city: 'Jackson',
-                description: 'The Wealth Hub. Home to billionaires, venture capital, and high-end tourism. VERY expensive real estate.',
-                keyIndustries: ['Finance', 'Tourism', 'Real Estate'],
-                programs: ['Silicon Couloir Angel Group']
-            },
-            {
-                city: 'Laramie',
-                description: 'The Brains. Home to University of Wyoming. Hub for tech transfer and R&D startups.',
-                keyIndustries: ['EdTech', 'R&D', 'Engineering'],
-                programs: ['IMPACT 307 Incubator']
-            }
-        ],
+                    cityGuides: [
+                        {
+                            city: 'Cheyenne',
+                            description: 'The Capital. Data center hub (Microsoft), government, and logistics (I-80/I-25 crossroads).',
+                            keyIndustries: ['Data Centers', 'Government', 'Logistics'],
+                            programs: ['Cheyenne LEADS Incentives']
+                        },
+                        {
+                            city: 'Jackson',
+                            description: 'The Wealth Hub. Home to billionaires, venture capital, and high-end tourism. VERY expensive real estate.',
+                            keyIndustries: ['Finance', 'Tourism', 'Real Estate'],
+                            programs: ['Silicon Couloir Angel Group']
+                        },
+                        {
+                            city: 'Laramie',
+                            description: 'The Brains. Home to University of Wyoming. Hub for tech transfer and R&D startups.',
+                            keyIndustries: ['EdTech', 'R&D', 'Engineering'],
+                            programs: ['IMPACT 307 Incubator']
+                        }
+                    ],
 
-        expertTips: [
-            {
-                title: 'The BRC is Unique',
-                content: 'Understand that BRC grants go to the CITY, not you. You must "sell" your project to the local Mayor first.',
-                type: 'warning'
-            },
-            {
-                title: 'Crypto Haven',
-                content: 'If you are in Web3/Crypto, Wyoming is the Delaware of the digital asset world. Domicile here.',
-                type: 'success'
-            },
-            {
-                title: 'No Income Tax',
-                content: 'The lack of income tax essentially gives you a 5-10% "grant" every year compared to operating in NY or CA.',
-                type: 'tip'
-            }
-        ],
+                        expertTips: [
+                            {
+                                title: 'The BRC is Unique',
+                                content: 'Understand that BRC grants go to the CITY, not you. You must "sell" your project to the local Mayor first.',
+                                type: 'warning'
+                            },
+                            {
+                                title: 'Crypto Haven',
+                                content: 'If you are in Web3/Crypto, Wyoming is the Delaware of the digital asset world. Domicile here.',
+                                type: 'success'
+                            },
+                            {
+                                title: 'No Income Tax',
+                                content: 'The lack of income tax essentially gives you a 5-10% "grant" every year compared to operating in NY or CA.',
+                                type: 'tip'
+                            }
+                        ],
 
-        metrics: [
-            { label: 'Funding', value: '$50M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
-            { label: 'Tax', value: '0%', description: 'Income Tax', color: 'text-blue-600', iconName: 'Shield' },
-            { label: 'Build', value: 'BRC', description: 'Infrastructure', color: 'text-purple-600', iconName: 'Hammer' },
-            { label: 'Crypto', value: 'DAO', description: 'Legal Structure', color: 'text-orange-600', iconName: 'Globe' }
-        ],
+                            metrics: [
+                                { label: 'Funding', value: '$50M+', description: 'Incentive pool', color: 'text-green-600', iconName: 'DollarSign' },
+                                { label: 'Tax', value: '0%', description: 'Income Tax', color: 'text-blue-600', iconName: 'Shield' },
+                                { label: 'Build', value: 'BRC', description: 'Infrastructure', color: 'text-purple-600', iconName: 'Hammer' },
+                                { label: 'Crypto', value: 'DAO', description: 'Legal Structure', color: 'text-orange-600', iconName: 'Globe' }
+                            ],
 
-        seoKeywords: [
-            'wyoming business grants',
-            'no corporate tax states',
-            'business ready community grant',
-            'blockchain laws wyoming',
-            'dao llc wyoming',
-            'kickstart wyoming grant',
-            'impact 307',
-            'cheyenne startup funding',
-            'data center tax exemption wy',
-            'start a business in wyoming'
-        ],
+                                seoKeywords: [
+                                    'wyoming business grants',
+                                    'no corporate tax states',
+                                    'business ready community grant',
+                                    'blockchain laws wyoming',
+                                    'dao llc wyoming',
+                                    'kickstart wyoming grant',
+                                    'impact 307',
+                                    'cheyenne startup funding',
+                                    'data center tax exemption wy',
+                                    'start a business in wyoming'
+                                ],
 
-        metaDescription: 'Complete guide to Wyoming business grants and funding in 2026. Access Business Ready Community Grants, 0% Tax, and DAO legal structures.'
-    }
+                                    metaDescription: 'Complete guide to Wyoming business grants and funding in 2026. Access Business Ready Community Grants, 0% Tax, and DAO legal structures.'
+}
 ];
 
 // Helper functions

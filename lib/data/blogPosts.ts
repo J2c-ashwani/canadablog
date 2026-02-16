@@ -18,6 +18,34 @@ import superclustersPost from './blog-posts/canada-news/innovation-superclusters
 import ruralBizPost from './blog-posts/demographic-specific/rural-business-development-2025';
 import sredTaxPost from './blog-posts/canada-news/sred-tax-credits-2025';
 
+// Batch 18: Restored Missing 2025 Content (Zombie Fix)
+import cleanTechPost from './blog-posts/canada-news/clean-technology-2025';
+import applyUsaPost from './blog-posts/tips-guides/apply-usa-grants-2025';
+import canExportGrants2025 from './blog-posts/canada-news/canexport-grants-2025';
+import ruralBusiness2025 from './blog-posts/demographic-specific/rural-business-development-2025';
+import veteransBusiness2025 from './blog-posts/usa-news/veterans-business-grants-2025';
+import newYorkGrants2025 from './blog-posts/state-specific/new-york-business-grants-2025';
+import manufacturingGrants2025 from './blog-posts/industry-specific/manufacturing-grants-2025';
+import minorityBusiness2025 from './blog-posts/demographic-specific/minority-business-grants-2025';
+import digitalTransformation2025 from './blog-posts/canada-news/digital-transformation-2025';
+import agriInnovation2025 from './blog-posts/canada-news/agricultural-innovation-2025';
+import usdaRural2025 from './blog-posts/usa-news/usda-rural-grants-2025';
+import womenBusiness2025 from './blog-posts/demographic-specific/women-business-grants-2025';
+import technologyStartup2025 from './blog-posts/industry-specific/technology-startup-grants-2025';
+
+// Batch 19: Bonus Zombie Posts (Healthcare, State, Federal)
+import healthcareGrants2025 from './blog-posts/industry-specific/healthcare-grants-2025';
+import californiaGrants2025 from './blog-posts/state-specific/california-business-grants-2025';
+import floridaGrants2025 from './blog-posts/state-specific/florida-business-grants-2025';
+import illinoisGrants2025 from './blog-posts/state-specific/illinois-business-development-2025';
+import michiganGrants2025 from './blog-posts/state-specific/michigan-manufacturing-renaissance-2025';
+import pennsylvaniaGrants2025 from './blog-posts/state-specific/pennsylvania-innovation-2025';
+import texasGrants2025 from './blog-posts/state-specific/texas-business-grants-2025';
+import doeCleanTech2025 from './blog-posts/usa-news/doe-clean-tech-2025';
+import epaJustice2025 from './blog-posts/usa-news/epa-environmental-justice-2025';
+import hudCommunity2025 from './blog-posts/usa-news/hud-community-2025';
+import nsfStem2025 from './blog-posts/usa-news/nsf-stem-research-2025';
+
 export type BlogPostType = 'grant-news' | 'expert-insight';
 
 export interface BlogPost {
@@ -2131,7 +2159,54 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    content: "",
+    content: `
+      <p>Quebec offers a distinct and generous ecosystem of business funding, primarily driven by <strong>Investissement Québec (IQ)</strong> and various provincial ministries. Unlike other provinces, Quebec's funding landscape is deeply integrated with its economic development strategy, focusing heavily on innovation, exports, and regional development.</p>
+
+      <h3>Key Funding Agencies in Quebec</h3>
+      <ul>
+        <li><strong>Investissement Québec (IQ):</strong> The main financing arm of the government, offering loans, loan guarantees, and equity investments.</li>
+        <li><strong>Ministère de l'Économie, de l'Innovation et de l'Énergie (MEIE):</strong> Manages major grant programs like ESSOR and innovation supports.</li>
+        <li><strong>Groupes de médecine de famille (GMF) & Health:</strong> Specific funding for healthcare innovation.</li>
+      </ul>
+
+      <h3>Top Grant Programs for 2026</h3>
+      
+      <h4>1. ESSOR Program</h4>
+      <p>The <strong>ESSOR</strong> program is Quebec's flagship initiative to support investment projects. It targets businesses undertaking major projects that contribute to Quebec's economic prosperity.</p>
+      <ul>
+        <li><strong>Funding Amount:</strong> Varies significantly based on project size, often covering up to 50% of eligible costs through repayable and non-repayable contributions.</li>
+        <li><strong>Eligibility:</strong> For-profit businesses, cooperatives, and social economy enterprises.</li>
+        <li><strong>Use of Funds:</strong> Construction, equipment purchase, digital transformation, and international expansion.</li>
+      </ul>
+
+      <h4>2. Programme innovation (Innovation Program)</h4>
+      <p>Managed by IQ, this program supports businesses at various stages of innovation, from planning to pre-commercialization.</p>
+      <ul>
+        <li><strong>Funding:</strong> Up to $500,000 per project or 50% of expenses.</li>
+        <li><strong>Focus:</strong> Product development, process improvement, and technology adoption.</li>
+      </ul>
+
+      <h4>3. The "Crédit d'impôt pour le développement des affaires électroniques" (CDAE)</h4>
+      <p>Quebec is famous for its generous tax credits, particularly in the tech and multimedia sectors.</p>
+      <ul>
+        <li><strong>Benefit:</strong> A refundable tax credit covering up to 30% of eligible salaries for IT and multimedia jobs.</li>
+        <li><strong>Impact:</strong> This credit has made Montreal a global hub for gaming and AI.</li>
+      </ul>
+
+      <h4>4. PME en action</h4>
+      <p>A program designed to increase the productivity of Quebec SMEs.</p>
+      <ul>
+        <li><strong>Support:</strong> Grants and loans to modernize operations and improve competitiveness.</li>
+      </ul>
+
+      <h3>French Language Requirements</h3>
+      <p class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+        <strong>Important:</strong> Bill 96 has strengthened French language requirements. To qualify for most provincial funding, your business must demonstrate compliance with stronger French language laws. Ensure all your documentation and applications are in professional Canadian French to avoid automatic disqualification.
+      </p>
+
+      <h3>Regional Support (MRC)</h3>
+      <p>Don't overlook your local <strong>Municipalité régionale de comté (MRC)</strong>. Each region in Quebec has specific funds (like the <em>Fonds locaux d'investissement</em> - FLI) to support local entrepreneurs. These are often easier to access than major provincial grants for smaller projects.</p>
+    `,
     seo: {
       keywords: ["Quebec", "Government", "Business", "Grants", "2026"]
     },
@@ -9590,7 +9665,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/atlantic-business-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     metrics: [
       { label: "Interest Rate", value: "0% (ACOA Loans)" },
       { label: "Top Sector", value: "Ocean Tech & Export" },
@@ -9598,7 +9673,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { label: "Wait Time", value: "3-6 Months" }
     ],
     expertTip: "Always mention 'Export' in your ACOA application. Even if you only sell to one customer in Maine, emphasizing that 'money is flowing into Canada' triggers higher scoring.",
-content: `
+    content: `
       <div class="bg-teal-50 p-6 rounded-lg mb-8 border border-teal-100">
         <h2 class="text-2xl font-bold text-teal-900 mb-4">🌊 Atlantic Momentum: Growing East Coast Business</h2>
         <p class="mb-4 text-teal-800">Atlantic Canada is experiencing a business renaissance. Driven by the Atlantic Growth Strategy, federal and provincial governments are pouring resources into innovation, ocean tech, tourism, and export readiness. Whether you are in Halifax, St. John's, Charlottetown, or Fredericton, 2026 offers unprecedented funding opportunities for local businesses.</p>
@@ -9966,7 +10041,7 @@ content: `
     image: "/images/blog/usa-grants-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     metrics: [
       { label: "Funding Amount", value: "$5,000 - $89,000" },
       { label: "Success Rate", value: "High" },
@@ -9974,7 +10049,7 @@ content: `
       { label: "Loan Terms", value: "Interest-Only Year 1" }
     ],
     expertTip: "Use the VAC Education Benefit to get a formal business certification (PMP or MBA) before launching. It adds credibility to your loan applications.",
-content: `
+    content: `
       <div class="bg-blue-50 p-6 rounded-lg mb-8 border border-blue-100">
         <h2 class="text-2xl font-bold text-blue-900 mb-4">🎖️ Mission: Entrepreneurship</h2>
         <p class="mb-4 text-blue-800">For Canadian veterans transitioning to civilian life, entrepreneurship offers a powerful path to purpose and financial independence. While specific "veteran-only" grants are rare in Canada compared to the US, a robust network of support systems, financing options, and tailored programs exists to help you launch and scale your business.</p>
@@ -10368,7 +10443,7 @@ content: `
     image: "/images/blog/community-diversity-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     metrics: [
       { label: "Max Funding", value: "$4 Billion Total Fund" },
       { label: "Amortization", value: "Up to 50 Years" },
@@ -10376,7 +10451,7 @@ content: `
       { label: "Priority", value: "Multi-Unit & Retrofit" }
     ],
     expertTip: "Don't try to navigate CMHC alone. Use a CMHC-approved correspondent lender. They define your 'Debt Coverage Ratio' differently than a standard bank, often allowing you to borrow millions more.",
-content: `
+    content: `
       <div class="bg-green-50 p-6 rounded-lg mb-8 border border-green-100">
         <h2 class="text-2xl font-bold text-green-900 mb-4">🏠 Building Communities: 2026 Housing Grants</h2>
         <p class="mb-4 text-green-800">The housing crisis remains a top priority for the Canadian government. In 2026, billions of dollars are flowing through the Canada Mortgage and Housing Corporation (CMHC) and Infrastructure Canada to incentivize new builds, retrofits, and affordable housing solutions. Whether you are a non-profit, a developer, or a municipality, there is funding to be claimed.</p>
@@ -10742,7 +10817,7 @@ content: `
     image: "/images/blog/women-entrepreneurship-grants-2026.png",
     featured: true,
     type: "expert-insight",
-    
+
     metrics: [
       { label: "Loan Amount", value: "$100,000 (BDC)" },
       { label: "Target", value: "51% Woman-Owned" },
@@ -10750,7 +10825,7 @@ content: `
       { label: "Equity Fund", value: "$160M Ecosystem" }
     ],
     expertTip: "Don't just apply for money; apply for the 'advisory' streams. A WES-funded mentor reviewing your financials is often worth more than a $5,000 micro-grant.",
-content: `
+    content: `
       <div class="bg-purple-50 p-6 rounded-lg mb-8 border border-purple-100">
         <h2 class="text-2xl font-bold text-purple-900 mb-4">👩‍💼 Closing the Gap: Women's Business Funding</h2>
         <p class="mb-4 text-purple-800">Women entrepreneurs add billions to the Canadian economy, yet they remain underfunded compared to their male counterparts. The federal government has recognized this, mandating the <strong>Women Entrepreneurship Strategy (WES)</strong> to double the number of women-owned businesses by 2026. This means dedicated funding pools, specialized loan products, and exclusive mentorship networks are now active.</p>
@@ -11074,7 +11149,7 @@ content: `
     image: "/images/blog/alberta-business-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     metrics: [
       { label: "Max Funding", value: "$5M+" },
       { label: "Key Agency", value: "Alberta Innovates" },
@@ -11082,7 +11157,7 @@ content: `
       { label: "Focus Sectors", value: "Energy, Ag, Tech" }
     ],
     expertTip: "For Alberta Innovates vouchers, find your Service Provider (the vendor) FIRST. Having them co-sign the application increases your success rate significantly.",
-content: `
+    content: `
       <div class="bg-blue-50 p-6 rounded-lg mb-8 border border-blue-100">
         <h2 class="text-2xl font-bold text-blue-900 mb-4">🏔️ Alberta Advantage: Funding Innovation</h2>
         <p class="mb-4 text-blue-800">Alberta remains one of the most business-friendly environments in Canada. In 2026, the province is doubling down on diversifying its economy beyond oil and gas, with massive incentives for tech, agriculture, and film. Whether you are a startup in Calgary or a manufacturer in Edmonton, there is capital waiting for you.</p>
@@ -12906,7 +12981,7 @@ ${sredTaxPost}
     image: "/images/blog/sustainability-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     metrics: [
       { label: "Tax Credit", value: "30% Refundable" },
       { label: "Grant Cover", value: "Up to 50% of Cost" },
@@ -12914,7 +12989,7 @@ ${sredTaxPost}
       { label: "Focus", value: "Net-Zero Transition" }
     ],
     expertTip: "Focus on 'Scope 1' emissions first (your direct fuel usage). These are the easiest to measure and the easiest to get funded under current NRCan programs.",
-content: `
+    content: `
       <div class="bg-emerald-50 p-6 rounded-lg mb-8 border border-emerald-100">
         <h2 class="text-2xl font-bold text-emerald-900 mb-4">🌱 Going Net-Zero: The Green Funding Boom</h2>
         <p class="mb-4 text-emerald-800">Canada has a legally binding target to reach Net-Zero emissions by 2050. To get there, the government is essentially paying businesses to go green. In 2026, energy efficiency isn't just an expense—it's a revenue stream. From retrofitting old buildings to installing EV chargers, billions in grants and tax credits are available to offset your costs.</p>
@@ -13262,6 +13337,703 @@ content: `
       }
     ],
   },
+  // Batch 18: Restored 2025 Content
+  {
+    id: 3001,
+    slug: "clean-technology-2025",
+    title: "Canada's $400M Clean Technology Leadership | Funding & Grants 2025",
+    excerpt: "Environment and Climate Change Canada has launched the most comprehensive clean technology funding program in history, investing $400 million to position Canada as a global clean technology superpower.",
+    category: "Canada News",
+    categoryColor: "bg-red-100 text-red-800",
+    author: "FSI Digital Team",
+    date: "2025-02-15",
+    readTime: "8 min read",
+    image: "/images/blog/canada-grants-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: cleanTechPost,
+    seo: {
+      keywords: ["Clean Technology", "Canada Grants", "Green Funding", "Net Zero"]
+    },
+    metrics: [
+      { label: 'Funding', value: '$400M', description: 'Total Investment', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Jobs', value: '50,000', description: 'New Positions', color: 'text-blue-600', iconName: 'Users' },
+      { label: 'Focus', value: 'Net-Zero', description: '2050 Goal', color: 'text-emerald-600', iconName: 'Leaf' },
+      { label: 'Provinces', value: 'All', description: 'National Scope', color: 'text-purple-600', iconName: 'Map' }
+    ],
+    expertTip: {
+      title: "Stack Programs for Maximum Impact",
+      type: 'success',
+      content: "Combine federal clean tech funding with provincial incentives like <strong>Alberta Innovates</strong> or <strong>CleanBC</strong> to cover up to 75% of your project costs."
+    }
+  },
+  {
+    id: 3002,
+    slug: "apply-usa-grants-2025",
+    title: "Your 2025 Grant Success Blueprint | Application Strategy Guide",
+    excerpt: "Navigating the US government grant system can feel overwhelming, but with the right strategy, you can join the 37,000+ businesses that secured federal funding. This guide covers SAM.gov, research, and application tactics.",
+    category: "Tips & Guides",
+    categoryColor: "bg-purple-100 text-purple-800",
+    author: "FSI Digital Team",
+    date: "2025-02-15",
+    readTime: "12 min read",
+    image: "/images/blog/tech-innovation-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: applyUsaPost,
+    seo: {
+      keywords: ["USA Grants", "Grant Application", "SAM.gov", "Small Business Funding"]
+    },
+    metrics: [
+      { label: 'Success', value: '43%', description: 'National Average', color: 'text-blue-600', iconName: 'TrendingUp' },
+      { label: 'Funding', value: '$50K+', description: 'Typical Award', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Time', value: '4 Weeks', description: 'Avg Process', color: 'text-yellow-600', iconName: 'Clock' },
+      { label: 'Step 1', value: 'SAM.gov', description: 'Mandatory', color: 'text-red-600', iconName: 'AlertCircle' }
+    ],
+    expertTip: {
+      title: "SAM.gov is the Gatekeeper",
+      type: 'warning',
+      content: "You cannot apply for ANY federal grant without an active <strong>SAM.gov registration</strong>. It takes 2-4 weeks to process, so start this step immediately."
+    }
+  },
+  {
+    id: 3003,
+    slug: "canexport-grants-2025",
+    title: "CanExport Grants 2025: International Market Expansion | Funding Guide",
+    excerpt: "Canada's CanExport programs provide comprehensive support for international expansion, with over $75 million available annually. Learn how to access up to $50K for marketing and $600K for R&D partnerships.",
+    category: "Canada News",
+    categoryColor: "bg-red-100 text-red-800",
+    author: "FSI Digital Team",
+    date: "2025-02-16",
+    readTime: "10 min read",
+    image: "/images/blog/export-trade-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: canExportGrants2025,
+    seo: {
+      keywords: ["CanExport", "Export Grants", "Global Markets", "International Trade", "TCS"]
+    },
+    metrics: [
+      { label: 'Funding', value: '$75M+', description: 'Annual Budget', color: 'text-green-600', iconName: 'Globe' },
+      { label: 'Grant Max', value: '$50K', description: 'For SMEs', color: 'text-blue-600', iconName: 'DollarSign' },
+      { label: 'Coverage', value: '50%', description: 'Of Expenses', color: 'text-purple-600', iconName: 'PieChart' },
+      { label: 'Success', value: '82%', description: 'Approval Rate', color: 'text-emerald-600', iconName: 'CheckCircle' }
+    ],
+    expertTip: {
+      title: "Focus on New Markets",
+      type: 'tip',
+      content: "CanExport strictly funds <strong>new market entry</strong>. You must have less than $100k (or 10%) sales in the target country to qualify."
+    }
+  },
+  {
+    id: 3004,
+    slug: "rural-business-development-2025",
+    title: "Rural Business Development Grants 2025: $1.2B Funding Guide",
+    excerpt: "Rural America is experiencing a renaissance with $1.2 billion in targeted grants. Discover USDA programs, value-added producer grants, and technology funding designed to revitalize small town businesses.",
+    category: "Demographic-Specific",
+    categoryColor: "bg-green-100 text-green-800",
+    author: "FSI Digital Team",
+    date: "2025-02-16",
+    readTime: "11 min read",
+    image: "/images/blog/rural-development-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: ruralBusiness2025,
+    seo: {
+      keywords: ["Rural Grants", "USDA Business", "Small Town Funding", "Agri-Business", "Main Street"]
+    },
+    metrics: [
+      { label: 'Fund Pool', value: '$1.2B', description: 'Total Annual', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'USDA Max', value: '$500K', description: 'Dev Grants', color: 'text-orange-600', iconName: 'TrendingUp' },
+      { label: 'Pop Limit', value: '<50k', description: 'Eligibility', color: 'text-blue-600', iconName: 'MapPin' },
+      { label: 'Success', value: '88%', description: 'With Help', color: 'text-emerald-600', iconName: 'ThumbsUp' }
+    ],
+    expertTip: {
+      title: "Value-Added is Key",
+      type: 'success',
+      content: "Commodity farming is low margin. <strong>Value-Added Producer Grants (VAPG)</strong> offer up to $250k to process your crops into consumer products."
+    }
+  },
+  {
+    id: 3005,
+    slug: "veterans-business-grants-2025",
+    title: "Veterans Business Grants 2025: $75M Funding Revolution",
+    excerpt: "The federal government has committed $75 million to veteran entrepreneurship. From SBA 7(a) fee waivers to the VetBiz program, learn how to access capital and federal contracting advantages.",
+    category: "USA News",
+    categoryColor: "bg-blue-100 text-blue-800",
+    author: "FSI Digital Team",
+    date: "2025-02-16",
+    readTime: "12 min read",
+    image: "/images/blog/veteran-business-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: veteransBusiness2025,
+    seo: {
+      keywords: ["Veteran Grants", "VOSB", "SDVOSB", "Military Business", "SBA Veteran"]
+    },
+    metrics: [
+      { label: 'Dedicated', value: '$75M', description: 'Grant Funding', color: 'text-red-600', iconName: 'Flag' },
+      { label: 'Contracts', value: '3%', description: 'Fed Set-Aside', color: 'text-blue-600', iconName: 'Briefcase' },
+      { label: 'Loan Fee', value: '$0', description: 'Under $350k', color: 'text-green-600', iconName: 'Percent' },
+      { label: 'Success', value: '67%', description: 'Approval Rate', color: 'text-purple-600', iconName: 'Award' }
+    ],
+    expertTip: {
+      title: "Get Certified First",
+      type: 'warning',
+      content: "You cannot access set-aside contracts without official verification. Apply for <strong>VetCert (formerly CVE)</strong> through the SBA immediately."
+    }
+  },
+  {
+    id: 3006,
+    slug: "new-york-business-grants-2025",
+    title: "New York Business Grants 2025: Empire State Funding Guide",
+    excerpt: "New York State offers $1.8 billion in funding through its Regional Economic Development Councils. Explore the Consolidated Funding Application (CFA), Excelsior Jobs tax credits, and SSBCI opportunities.",
+    category: "State-Specific",
+    categoryColor: "bg-indigo-100 text-indigo-800",
+    author: "FSI Digital Team",
+    date: "2025-02-16",
+    readTime: "14 min read",
+    image: "/images/blog/new-york-business-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: newYorkGrants2025,
+    seo: {
+      keywords: ["New York Grants", "NYS CFA", "Excelsior Jobs", "REDC", "Empire State Dev"]
+    },
+    metrics: [
+      { label: 'REDC Fund', value: '$1.8B', description: 'Regional Aid', color: 'text-blue-600', iconName: 'Map' },
+      { label: 'Tax Credit', value: '$5k', description: 'Per New Job', color: 'text-green-600', iconName: 'UserPlus' },
+      { label: 'Lending', value: '$500M', description: 'SSBCI Funds', color: 'text-orange-600', iconName: 'Bank' },
+      { label: 'Regions', value: '10', description: 'Councils', color: 'text-purple-600', iconName: 'Grid' }
+    ],
+    expertTip: {
+      title: "The Power of One",
+      type: 'tip',
+      content: "NY's <strong>Consolidated Funding Application (CFA)</strong> allows you to apply for dozens of funding sources with a single application. Don't miss the July deadline."
+    }
+  },
+  {
+    id: 3007,
+    slug: "manufacturing-grants-2025",
+    title: "Manufacturing Grants 2025: $2.3B Industrial Renaissance",
+    excerpt: "American manufacturing is booming with $2.3 billion in grants for automation, reshoring, and workforce development. Learn about MEP centers, smart manufacturing incentives, and federal support.",
+    category: "Industry-Specific",
+    categoryColor: "bg-gray-100 text-gray-800",
+    author: "FSI Digital Team",
+    date: "2025-02-16",
+    readTime: "10 min read",
+    image: "/images/blog/manufacturing-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: manufacturingGrants2025,
+    seo: {
+      keywords: ["Manufacturing Grants", "Smart Factory", "MEP", "Reshoring", "Industry 4.0"]
+    },
+    metrics: [
+      { label: 'Total Fund', value: '$2.3B', description: 'Fed & State', color: 'text-blue-600', iconName: 'Settings' },
+      { label: 'ROI', value: '$19:$1', description: 'MEP Avg', color: 'text-green-600', iconName: 'TrendingUp' },
+      { label: 'Smart Mfg', value: '$890M', description: 'Tech Grants', color: 'text-purple-600', iconName: 'Cpu' },
+      { label: 'Jobs', value: '12.8M', description: 'Sector Size', color: 'text-orange-600', iconName: 'Users' }
+    ],
+    expertTip: {
+      title: "Automate to Compete",
+      type: 'success',
+      content: "The biggest grant pools are for <strong>Industry 4.0</strong> adoption. Frame your equipment purchase as a 'Digital Transformation' project to qualify."
+    }
+  },
+  {
+    id: 3008,
+    slug: "minority-business-grants-2025",
+    title: "Minority Business Enterprise Grants 2025: $1.9B Funding Guide",
+    excerpt: "Minority-owned businesses are driving economic growth with $1.9 trillion in revenue. Access $1.9 billion in targeted grants, SBA 8(a) contracts, and NMSDC opportunities.",
+    category: "Demographic-Specific",
+    categoryColor: "bg-purple-100 text-purple-800",
+    author: "FSI Digital Team",
+    date: "2025-02-16",
+    readTime: "13 min read",
+    image: "/images/blog/minority-business-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: minorityBusiness2025,
+    seo: {
+      keywords: ["Minority Grants", "MBE Certification", "SBA 8(a)", "NMSDC", "Supplier Diversity"]
+    },
+    metrics: [
+      { label: 'Targeted', value: '$1.9B', description: 'Grant Funding', color: 'text-purple-600', iconName: 'Users' },
+      { label: 'Contracts', value: '$3.8B', description: 'SBA 8(a)', color: 'text-blue-600', iconName: 'Briefcase' },
+      { label: 'Success', value: '86%', description: 'Certified MBEs', color: 'text-green-600', iconName: 'CheckCircle' },
+      { label: 'Gap', value: '8.2%', description: 'VC Share', color: 'text-red-600', iconName: 'AlertTriangle' }
+    ],
+    expertTip: {
+      title: "Certification is Key",
+      type: 'tip',
+      content: "Getting certified as an <strong>MBE (Minority Business Enterprise)</strong> through NMSDC or SBA 8(a) unlocks access to 90% of restricted funding pools."
+    }
+  },
+  {
+    id: 3009,
+    slug: "digital-transformation-2025",
+    title: "Canada's $90M Digital Transformation Revolution: CDAP Guide",
+    excerpt: "The Canada Digital Adoption Program (CDAP) offers $90 million to boost SME technology. Get up to $15,000 for planning and $100,000 interest-free loans for implementation.",
+    category: "Canada News",
+    categoryColor: "bg-blue-100 text-blue-800",
+    author: "FSI Digital Team",
+    date: "2025-02-16",
+    readTime: "11 min read",
+    image: "/images/blog/digital-adoption-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: digitalTransformation2025,
+    seo: {
+      keywords: ["CDAP", "Digital Adoption", "Tech Grants", "E-commerce", "Digital Transformation"]
+    },
+    metrics: [
+      { label: 'Total Fund', value: '$90M', description: 'CDAP Budget', color: 'text-blue-600', iconName: 'Server' },
+      { label: 'Grant', value: '$15K', description: 'Planning', color: 'text-green-600', iconName: 'FileText' },
+      { label: 'Loan', value: '$100K', description: '0% Interest', color: 'text-purple-600', iconName: 'DollarSign' },
+      { label: 'Success', value: '92%', description: 'With Advisor', color: 'text-emerald-600', iconName: 'ThumbsUp' }
+    ],
+    expertTip: {
+      title: "Pick the Right Stream",
+      type: 'tip',
+      content: "Don't mix them up: <strong>Stream 2</strong> is for consumer retail/marketing. <strong>Stream 3</strong> is for enterprise technology and heavy equipment software."
+    }
+  },
+  {
+    id: 3010,
+    slug: "agricultural-innovation-2025",
+    title: "Canada's $180M Agricultural Innovation Revolution: AgriInnovate Guide",
+    excerpt: "Agriculture and Agri-Food Canada has launched a $180 million innovation fund. Learn how to access up to $5M for commercialization, demonstration, and adoption of ag-tech.",
+    category: "Canada News",
+    categoryColor: "bg-green-100 text-green-800",
+    author: "FSI Digital Team",
+    date: "2025-02-16",
+    readTime: "12 min read",
+    image: "/images/blog/agri-innovation-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: agriInnovation2025,
+    seo: {
+      keywords: ["AgriInnovate", "AgTech", "Farming Grants", "Sustainable Ag", "Food Processing"]
+    },
+    metrics: [
+      { label: 'Fund Pool', value: '$180M', description: 'Innovation', color: 'text-green-600', iconName: 'Sprout' },
+      { label: 'Max Grant', value: '$5M', description: 'Per Project', color: 'text-blue-600', iconName: 'Award' },
+      { label: 'Cost Share', value: '60%', description: 'Gov Portion', color: 'text-orange-600', iconName: 'PieChart' },
+      { label: 'Success', value: '81%', description: 'Demo Projects', color: 'text-emerald-600', iconName: 'TrendingUp' }
+    ],
+    expertTip: {
+      title: "Commercial Ready Only",
+      type: 'warning',
+      content: "AgriInnovate does NOT fund basic research. You must have a <strong>working prototype</strong> and identified customers to be eligible."
+    }
+  },
+  {
+    id: 3011,
+    slug: "usda-rural-grants-2025",
+    title: "USDA's $300M Rural Revolution: Business & Innovation Grants",
+    excerpt: "The USDA is investing $300 million in rural agricultural innovation targeted at 46 million rural Americans. Discover funding for value-added production, renewable energy, and broadband.",
+    category: "USA News",
+    categoryColor: "bg-yellow-100 text-yellow-800",
+    author: "FSI Digital Team",
+    date: "2025-02-16",
+    readTime: "10 min read",
+    image: "/images/blog/rural-usa-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: usdaRural2025,
+    seo: {
+      keywords: ["USDA Grants", "Rural Development", "Ag Innovation", "Rural Business", "Value-Added"]
+    },
+    metrics: [
+      { label: 'Innovation', value: '$300M', description: 'Total Fund', color: 'text-green-600', iconName: 'Globe' },
+      { label: 'Bus. Grant', value: '$500K', description: 'Max Award', color: 'text-blue-600', iconName: 'DollarSign' },
+      { label: 'Pop Limit', value: '<50k', description: 'Priority', color: 'text-purple-600', iconName: 'MapPin' },
+      { label: 'Success', value: '90%', description: 'Ag States', color: 'text-emerald-600', iconName: 'Check' }
+    ],
+    expertTip: {
+      title: "Location Matters",
+      type: 'tip',
+      content: "Check your address on the USDA eligibility map. Innovations in counties with <strong>under 25,000 population</strong> get 25% bonus points."
+    }
+  },
+  {
+    id: 3012,
+    slug: "women-business-grants-2025",
+    title: "Women-Owned Business Grants 2025: $2.1B Funding Guide",
+    excerpt: "Women entrepreneurs now own 42% of US businesses. Access $2.1 billion in targeted grants, SBA Women's Business Centers, and the Amber Grant.",
+    category: "Demographic-Specific",
+    categoryColor: "bg-pink-100 text-pink-800",
+    author: "FSI Digital Team",
+    date: "2025-02-16",
+    readTime: "11 min read",
+    image: "/images/blog/women-business-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: womenBusiness2025,
+    seo: {
+      keywords: ["Women Grants", "WOSB Certification", "Amber Grant", "Female Founders", "SBA Women"]
+    },
+    metrics: [
+      { label: 'Total Fund', value: '$2.1B', description: 'Women Grants', color: 'text-pink-600', iconName: 'Heart' },
+      { label: 'Contracts', value: '$25B', description: 'WOSB Goal', color: 'text-purple-600', iconName: 'Briefcase' },
+      { label: 'Gap', value: '2.4%', description: 'VC Funding', color: 'text-red-600', iconName: 'AlertCircle' },
+      { label: 'Success', value: '89%', description: 'WBC Support', color: 'text-green-600', iconName: 'Check' }
+    ],
+    expertTip: {
+      title: "Get Certified",
+      type: 'tip',
+      content: "<strong>WOSB (Women-Owned Small Business)</strong> certification is your golden ticket. It sets aside 5% of all federal contracts specifically for you."
+    }
+  },
+  {
+    id: 3013,
+    slug: "technology-startup-grants-2025",
+    title: "Technology Startup Grants 2025: $3.4B Innovation Fund",
+    excerpt: "Silicon Valley isn't the only path to funding. The SBIR program offers $3.4 billion in non-dilutive grants for tech startups. Phase I awards up to $250k.",
+    category: "Industry-Specific",
+    categoryColor: "bg-purple-100 text-purple-800",
+    author: "FSI Digital Team",
+    date: "2025-02-16",
+    readTime: "14 min read",
+    image: "/images/blog/tech-startup-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: technologyStartup2025,
+    seo: {
+      keywords: ["Tech Grants", "SBIR", "STTR", "Startup Funding", "Non-Dilutive"]
+    },
+    metrics: [
+      { label: 'SBIR Fund', value: '$3.4B', description: 'Annual Budget', color: 'text-purple-600', iconName: 'Cpu' },
+      { label: 'Phase I', value: '$250K', description: 'Concept', color: 'text-blue-600', iconName: 'Lightbulb' },
+      { label: 'Phase II', value: '$1.5M', description: 'Prototype', color: 'text-green-600', iconName: 'Rocket' },
+      { label: 'Equity', value: '0%', description: 'Taken', color: 'text-emerald-600', iconName: 'Shield' }
+    ],
+    expertTip: {
+      title: "Non-Dilutive Gold",
+      type: 'success',
+      content: "SBIR grants are <strong>equity-free</strong>. You keep 100% ownership of your company and IP, unlike with Venture Capital."
+    }
+  },
+  {
+    id: 3014,
+    slug: "healthcare-grants-2025",
+    title: "Healthcare Business Grants 2025: $4.5B Funding Guide",
+    excerpt: "The healthcare sector is seeing unprecedented grant funding for digital health, rural access, and medical innovation. Access $4.5 billion in HRSA, NIH, and private foundation grants.",
+    category: "Industry-Specific",
+    categoryColor: "bg-orange-100 text-orange-800",
+    author: "FSI Digital Team",
+    date: "2025-02-17",
+    readTime: "12 min read",
+    image: "/images/blog/healthcare-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: healthcareGrants2025,
+    seo: {
+      keywords: ["Healthcare Grants", "Medical Funding", "Digital Health", "Rural Health", "HRSA"]
+    },
+    metrics: [
+      { label: 'Total Fund', value: '$4.5B', description: 'Healthcare Grants', color: 'text-blue-600', iconName: 'Activity' },
+      { label: 'Max Award', value: '$1.2M', description: 'Innovation Grant', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Focus', value: 'Digital', description: 'Telehealth/AI', color: 'text-purple-600', iconName: 'Smartphone' },
+      { label: 'Success', value: '82%', description: 'Rural Priority', color: 'text-teal-600', iconName: 'Check' }
+    ],
+    expertTip: {
+      title: "Rural Advantage",
+      type: 'tip',
+      content: "<strong>Rural healthcare providers</strong> have significantly higher grant success rates. Highlight any service to underserved or rural populations in your application."
+    }
+  },
+  {
+    id: 3015,
+    slug: "california-business-grants-2025",
+    title: "California Small Business Grants 2025: $1.5B Funding Guide",
+    excerpt: "California leads the nation in state-level business support. Access $1.5 billion through the Dream Fund, California Competes Tax Credit, and regional innovation hubs.",
+    category: "State-Specific",
+    categoryColor: "bg-green-100 text-green-800",
+    author: "FSI Digital Team",
+    date: "2025-02-17",
+    readTime: "15 min read",
+    image: "/images/blog/california-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: californiaGrants2025,
+    seo: {
+      keywords: ["California Grants", "Dream Fund", "Small Business", "Startup Funding", "CalOSBA"]
+    },
+    metrics: [
+      { label: 'State Fund', value: '$1.5B', description: 'Annual Budget', color: 'text-blue-600', iconName: 'Sun' },
+      { label: 'Dream Fund', value: '$35K', description: 'Seed Grant', color: 'text-green-600', iconName: 'Zap' },
+      { label: 'Tax Credit', value: '50%', description: 'R&D Credit', color: 'text-purple-600', iconName: 'PieChart' },
+      { label: 'Hubs', value: '18', description: 'Innovation Centers', color: 'text-orange-600', iconName: 'MapPin' }
+    ],
+    expertTip: {
+      title: "Local Technical Assistance",
+      type: 'success',
+      content: "California requires many applicants to work with a <strong>technical assistance center</strong>. Connect with your local SBDC or Women's Business Center immediately to be eligible."
+    }
+  },
+  {
+    id: 3016,
+    slug: "florida-business-grants-2025",
+    title: "Florida Business Grants 2025: $850M Growth Funding",
+    excerpt: "Florida's business-friendly environment includes $850 million in targeted grants for export growth, high-tech industry, and tourism development. Learn how to access Enterprise Florida funds.",
+    category: "State-Specific",
+    categoryColor: "bg-green-100 text-green-800",
+    author: "FSI Digital Team",
+    date: "2025-02-17",
+    readTime: "11 min read",
+    image: "/images/blog/florida-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: floridaGrants2025,
+    seo: {
+      keywords: ["Florida Grants", "Enterprise Florida", "Export Grants", "Small Business", "Tourism Funding"]
+    },
+    metrics: [
+      { label: 'Growth Fund', value: '$850M', description: 'State Incentives', color: 'text-orange-600', iconName: 'TrendingUp' },
+      { label: 'Export', value: '$50K', description: 'Trade Grants', color: 'text-blue-600', iconName: 'Globe' },
+      { label: 'Tax', value: '0%', description: 'State Income Tax', color: 'text-green-600', iconName: 'Smile' },
+      { label: 'Tech', value: 'High', description: 'Space/Cyber Focus', color: 'text-purple-600', iconName: 'Rocket' }
+    ],
+    expertTip: {
+      title: "Export Markets",
+      type: 'tip',
+      content: "Florida aggressively funds companies looking to <strong>export products</strong>. The Enterprise Florida Trade Grants can cover 100% of the cost of trade shows and missions."
+    }
+  },
+  {
+    id: 3017,
+    slug: "illinois-business-development-2025",
+    title: "Illinois Business Development Grants 2025: $650M Guide",
+    excerpt: "Illinois DCEO offers over $650 million in business development grants. From Advantage Illinois low-interest loans to EDGE tax credits, discover opportunities for Prairie State businesses.",
+    category: "State-Specific",
+    categoryColor: "bg-green-100 text-green-800",
+    author: "FSI Digital Team",
+    date: "2025-02-17",
+    readTime: "10 min read",
+    image: "/images/blog/illinois-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: illinoisGrants2025,
+    seo: {
+      keywords: ["Illinois Grants", "DCEO", "Advantage Illinois", "Small Business", "Manufacturing"]
+    },
+    metrics: [
+      { label: 'DCEO Fund', value: '$650M', description: 'State Grants', color: 'text-blue-600', iconName: 'Landmark' },
+      { label: 'Advantage', value: '2%', description: 'Low Interest Loans', color: 'text-green-600', iconName: 'Percent' },
+      { label: 'Credit', value: 'Agri', description: 'Focus Sector', color: 'text-yellow-600', iconName: 'Sprout' },
+      { label: 'Equity', value: '$10M', description: 'Social Equity', color: 'text-purple-600', iconName: 'Users' }
+    ],
+    expertTip: {
+      title: "Social Equity Priority",
+      type: 'tip',
+      content: "Illinois has strong <strong>social equity requirements</strong> for many cannabis and tech cannabis grants. Being a Social Equity Applicant significantly increases your chances."
+    }
+  },
+  {
+    id: 3018,
+    slug: "michigan-manufacturing-renaissance-2025",
+    title: "Michigan Manufacturing Grants 2025: $500M Industry 4.0",
+    excerpt: "Michigan is investing $500 million to reclaim its manufacturing crown. New grants support Industry 4.0 adoption, EV supply chain transition, and advanced manufacturing technologies.",
+    category: "State-Specific",
+    categoryColor: "bg-green-100 text-green-800",
+    author: "FSI Digital Team",
+    date: "2025-02-17",
+    readTime: "12 min read",
+    image: "/images/blog/michigan-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: michiganGrants2025,
+    seo: {
+      keywords: ["Michigan Grants", "Manufacturing", "Industry 4.0", "EV Transition", "MEDC"]
+    },
+    metrics: [
+      { label: 'Mfg Fund', value: '$500M', description: 'Industry Support', color: 'text-blue-600', iconName: 'Tool' },
+      { label: 'Tech Grant', value: '$25K', description: 'Industry 4.0', color: 'text-purple-600', iconName: 'Cpu' },
+      { label: 'EV Focus', value: 'High', description: 'Supply Chain', color: 'text-green-600', iconName: 'BatteryCharging' },
+      { label: 'Skills', value: '$2K', description: 'Training/Hire', color: 'text-orange-600', iconName: 'Users' }
+    ],
+    expertTip: {
+      title: "Industry 4.0 Grant",
+      type: 'success',
+      content: "The <strong>Industry 4.0 Implementation Grant</strong> pays 50% of software/hardware costs up to $25k. It's one of the easiest grants to get if you are a small manufacturer."
+    }
+  },
+  {
+    id: 3019,
+    slug: "pennsylvania-innovation-2025",
+    title: "Pennsylvania Innovation Grants 2025: $670M Industrial Fund",
+    excerpt: "Pennsylvania's Ben Franklin Technology Partners and PIDA offer $670 million in funding. Learn how to access capital for industrial innovation, life sciences, and tech startups.",
+    category: "State-Specific",
+    categoryColor: "bg-green-100 text-green-800",
+    author: "FSI Digital Team",
+    date: "2025-02-18",
+    readTime: "13 min read",
+    image: "/images/blog/pennsylvania-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: pennsylvaniaGrants2025,
+    seo: {
+      keywords: ["Pennsylvania Grants", "Ben Franklin Tech", "PIDA", "Innovation", "Startups"]
+    },
+    metrics: [
+      { label: 'Innovation', value: '$670M', description: 'State Fund', color: 'text-blue-600', iconName: 'Zap' },
+      { label: 'BFTP', value: '$100K+', description: 'Tech Investment', color: 'text-purple-600', iconName: 'Award' },
+      { label: 'Loan', value: '1.5%', description: 'PIDA Rate', color: 'text-green-600', iconName: 'Percent' },
+      { label: 'Jobs', value: '$35K', description: 'Per Job Created', color: 'text-orange-600', iconName: 'UserPlus' }
+    ],
+    expertTip: {
+      title: "Convertible Debt",
+      type: 'tip',
+      content: "Ben Franklin Technology Partners investments are often <strong>convertible debt</strong>, not simple grants. This means they convert to equity later, but offer friendly terms compared to VCs."
+    }
+  },
+  {
+    id: 3020,
+    slug: "texas-business-grants-2025",
+    title: "Texas Business Grants 2025: $1.2B Enterprise Fund",
+    excerpt: "Everything is bigger in Texas, including the $1.2 billion Texas Enterprise Fund. Discover deal-closing grants, product development funds, and opportunities in the Lone Star State.",
+    category: "State-Specific",
+    categoryColor: "bg-green-100 text-green-800",
+    author: "FSI Digital Team",
+    date: "2025-02-18",
+    readTime: "16 min read",
+    image: "/images/blog/texas-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: texasGrants2025,
+    seo: {
+      keywords: ["Texas Grants", "Enterprise Fund", "Deal Closing", "Business Incentives", "Governor's Office"]
+    },
+    metrics: [
+      { label: 'TEF Fund', value: '$1.2B', description: 'Deal Closing', color: 'text-red-600', iconName: 'Star' },
+      { label: 'Tax', value: '0%', description: 'Income Tax', color: 'text-blue-600', iconName: 'Smile' },
+      { label: 'Training', value: '$2K', description: 'Skills Fund', color: 'text-purple-600', iconName: 'BookOpen' },
+      { label: 'Product', value: 'Asset', description: 'Space/Bio', color: 'text-orange-600', iconName: 'Rocket' }
+    ],
+    expertTip: {
+      title: "Competitive Necessity",
+      type: 'warning',
+      content: "For the Texas Enterprise Fund, you must demonstrate <strong>competitive necessity</strong>—meaning you have a viable offer from another state. It's a deal-closing fund, not a startup handout."
+    }
+  },
+  {
+    id: 3021,
+    slug: "doe-clean-tech-2025",
+    title: "DOE Clean Energy Grants 2025: $800M Innovation Fund",
+    excerpt: "The Department of Energy is deploying $800 million for clean tech innovation. From ARPA-E to solar and battery storage grants, find out how to fund your climate solution.",
+    category: "USA News",
+    categoryColor: "bg-blue-100 text-blue-800",
+    author: "FSI Digital Team",
+    date: "2025-02-18",
+    readTime: "14 min read",
+    image: "/images/blog/clean-energy-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: doeCleanTech2025,
+    seo: {
+      keywords: ["DOE Grants", "Clean Energy", "Climate Tech", "ARPA-E", "Solar Funding"]
+    },
+    metrics: [
+      { label: 'DOE Fund', value: '$800M', description: 'Innovation', color: 'text-green-600', iconName: 'Sun' },
+      { label: 'ARPA-E', value: '$3M', description: 'High Risk R&D', color: 'text-purple-600', iconName: 'Zap' },
+      { label: 'Storage', value: 'High', description: 'Battery Priority', color: 'text-blue-600', iconName: 'Battery' },
+      { label: 'Labs', value: 'Access', description: 'National Labs', color: 'text-orange-600', iconName: 'Beaker' }
+    ],
+    expertTip: {
+      title: "Lab Partnership",
+      type: 'success',
+      content: "Partnering with a <strong>National Laboratory</strong> (like NREL or Oak Ridge) significantly boosts your chances. They have the testing facilities your startup lacks."
+    }
+  },
+  {
+    id: 3022,
+    slug: "epa-environmental-justice-2025",
+    title: "EPA Environmental Justice Grants 2025: $100M Community Fund",
+    excerpt: "The EPA's Environmental Justice program offers $100 million to community organizations. Fund projects that address pollution and public health in underserved communities.",
+    category: "USA News",
+    categoryColor: "bg-blue-100 text-blue-800",
+    author: "FSI Digital Team",
+    date: "2025-02-18",
+    readTime: "12 min read",
+    image: "/images/blog/environmental-justice-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: epaJustice2025,
+    seo: {
+      keywords: ["EPA Grants", "Environmental Justice", "Community Grants", "Pollution", "Public Health"]
+    },
+    metrics: [
+      { label: 'EJ Fund', value: '$100M', description: 'Community Grants', color: 'text-green-600', iconName: 'Globe' },
+      { label: 'Grant', value: '$500K', description: 'Max Award', color: 'text-blue-600', iconName: 'DollarSign' },
+      { label: 'Focus', value: 'Health', description: 'Public Health', color: 'text-red-600', iconName: 'Heart' },
+      { label: 'Lead', value: 'Local', description: 'Community Led', color: 'text-purple-600', iconName: 'Users' }
+    ],
+    expertTip: {
+      title: "Community Leadership",
+      type: 'tip',
+      content: "The EPA requires proof of <strong>community leadership</strong>. The project shouldn't just help the community; it should be driven by it. Document all community meetings and input."
+    }
+  },
+  {
+    id: 3023,
+    slug: "hud-community-2025",
+    title: "HUD Community Development Grants 2025: $150M CDBG Guide",
+    excerpt: "HUD's CDBG program provides $150 million for community development. Learn how local governments and nonprofits can access funds for housing, infrastructure, and economic development.",
+    category: "USA News",
+    categoryColor: "bg-blue-100 text-blue-800",
+    author: "FSI Digital Team",
+    date: "2025-02-19",
+    readTime: "13 min read",
+    image: "/images/blog/community-development-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: hudCommunity2025,
+    seo: {
+      keywords: ["HUD Grants", "CDBG", "Community Development", "Housing", "Infrastructure"]
+    },
+    metrics: [
+      { label: 'CDBG', value: '$150M', description: 'Block Grants', color: 'text-orange-600', iconName: 'Home' },
+      { label: 'LMI', value: '70%', description: 'Benefit Required', color: 'text-blue-600', iconName: 'Users' },
+      { label: 'Housing', value: 'Priority', description: 'Affordable', color: 'text-purple-600', iconName: 'Key' },
+      { label: 'Infra', value: 'Eligible', description: 'Streets/Water', color: 'text-green-600', iconName: 'Truck' }
+    ],
+    expertTip: {
+      title: "LMI Benefit",
+      type: 'warning',
+      content: "At least 70% of CDBG funds must benefit <strong>Low-to-Moderate Income (LMI)</strong> persons. Ensure your project area qualifies using HUD's mapping tools."
+    }
+  },
+  {
+    id: 3024,
+    slug: "nsf-stem-research-2025",
+    title: "NSF STEM Research Grants 2025: $200M SBIR/STTR Guide",
+    excerpt: "The NSF seeds the future with $200 million in STEM research grants. The SBIR/STTR program funds high-risk, high-impact technologies with commercial potential.",
+    category: "USA News",
+    categoryColor: "bg-blue-100 text-blue-800",
+    author: "FSI Digital Team",
+    date: "2025-02-19",
+    readTime: "14 min read",
+    image: "/images/blog/stem-research-theme.png",
+    featured: false,
+    type: "grant-news",
+    content: nsfStem2025,
+    seo: {
+      keywords: ["NSF Grants", "STEM Research", "SBIR", "Deep Tech", "Scientific Funding"]
+    },
+    metrics: [
+      { label: 'Seed Fund', value: '$200M', description: 'America\'s Seed Fund', color: 'text-blue-600', iconName: 'Cpu' },
+      { label: 'Phase I', value: '$305K', description: 'Feasibility', color: 'text-green-600', iconName: 'Beaker' },
+      { label: 'Phase II', value: '$1.75M', description: 'Prototype', color: 'text-purple-600', iconName: 'Rocket' },
+      { label: 'Equity', value: '0%', description: 'Founders Keep', color: 'text-orange-600', iconName: 'Shield' }
+    ],
+    expertTip: {
+      title: "Commercialization Plan",
+      type: 'success',
+      content: "NSF differs from NIH in its intense focus on <strong>commercialization</strong>. Your plan to make money is just as important as your plan to make the technology work."
+    }
+  }
 ];
 
 export const blogCategories = [

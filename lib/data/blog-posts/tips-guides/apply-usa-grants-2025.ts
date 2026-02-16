@@ -313,6 +313,202 @@ export default `
     </div>
   </div>
 
+  <h2 class="text-2xl font-bold mt-8 mb-4">🔄 Step 4: Post-Submission Tracking & Follow-Up</h2>
+
+  <div class="bg-green-50 border border-green-200 p-6 rounded-lg mb-8">
+    <p class="text-green-800 mb-4">Submitting your application is only the beginning. <strong>95% of applicants fail to properly track and follow up</strong>, costing them corrections opportunities and faster decisions.</p>
+    <div class="space-y-4">
+      <div class="flex items-start">
+        <span class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 font-bold">1</span>
+        <div><strong>Save Your Confirmation Number:</strong> Every Grants.gov submission generates a tracking number. Check your submission status within 48 hours — "Received" means it's in the system, "Validated" means it passed initial review, "Rejected with Errors" means you need to fix and resubmit before the deadline.</div>
+      </div>
+      <div class="flex items-start">
+        <span class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 font-bold">2</span>
+        <div><strong>Respond to Reviewer Questions Immediately:</strong> Program officers may contact you for clarifications during merit review. Delayed responses (>48 hours) can push your application to the bottom of the pile. Keep your phone and email notifications on during review periods.</div>
+      </div>
+      <div class="flex items-start">
+        <span class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 font-bold">3</span>
+        <div><strong>Negotiate Your Award Terms:</strong> If selected, you'll enter award negotiation. This is where you finalize budget, milestones, and reporting requirements. Don't accept unfavorable terms — negotiate deliverable timelines and indirect cost rates before signing.</div>
+      </div>
+      <div class="flex items-start">
+        <span class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 font-bold">4</span>
+        <div><strong>Plan for Compliance Reporting:</strong> Federal grants require quarterly financial reports (SF-425) and progress reports. Many small businesses underestimate the administrative burden — budget 10-15% of the grant for compliance and reporting activities.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">📊 Federal Grant Types: Which Is Right for You?</h2>
+
+  <div class="overflow-x-auto mb-8">
+    <div class="bg-white border border-gray-200 rounded-lg p-6">
+      <div class="grid grid-cols-5 gap-2 text-xs font-semibold text-gray-700 border-b pb-2 mb-2">
+        <div>Grant Type</div>
+        <div>Award Size</div>
+        <div>Best For</div>
+        <div>Timeline</div>
+        <div>Difficulty</div>
+      </div>
+      <div class="grid grid-cols-5 gap-2 text-xs text-gray-600 border-b py-2">
+        <div class="font-semibold text-blue-700">SBIR Phase I</div>
+        <div>$50K-$275K</div>
+        <div>Tech startups (R&D)</div>
+        <div>6-12 months</div>
+        <div>⭐⭐⭐ Medium</div>
+      </div>
+      <div class="grid grid-cols-5 gap-2 text-xs text-gray-600 border-b py-2">
+        <div class="font-semibold text-blue-700">SBIR Phase II</div>
+        <div>$500K-$2.5M</div>
+        <div>Phase I winners</div>
+        <div>12-24 months</div>
+        <div>⭐⭐ Lower (if Phase I done)</div>
+      </div>
+      <div class="grid grid-cols-5 gap-2 text-xs text-gray-600 border-b py-2">
+        <div class="font-semibold text-green-700">USDA Rural Dev</div>
+        <div>$10K-$500K</div>
+        <div>Rural businesses</div>
+        <div>3-6 months</div>
+        <div>⭐⭐ Moderate</div>
+      </div>
+      <div class="grid grid-cols-5 gap-2 text-xs text-gray-600 border-b py-2">
+        <div class="font-semibold text-green-700">EDA Grants</div>
+        <div>$100K-$3M</div>
+        <div>Economic development</div>
+        <div>6-12 months</div>
+        <div>⭐⭐⭐ Medium</div>
+      </div>
+      <div class="grid grid-cols-5 gap-2 text-xs text-gray-600 border-b py-2">
+        <div class="font-semibold text-purple-700">NSF I-Corps</div>
+        <div>$50K</div>
+        <div>Customer discovery</div>
+        <div>2-3 months</div>
+        <div>⭐ Easiest entry</div>
+      </div>
+      <div class="grid grid-cols-5 gap-2 text-xs text-gray-600 py-2">
+        <div class="font-semibold text-orange-700">DOE FOA</div>
+        <div>$500K-$10M</div>
+        <div>Clean energy tech</div>
+        <div>6-18 months</div>
+        <div>⭐⭐⭐⭐ Competitive</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">🕐 Monthly Grant Application Calendar</h2>
+
+  <div class="bg-purple-50 border border-purple-200 p-6 rounded-lg mb-8">
+    <p class="text-purple-800 mb-4">Federal grants follow seasonal patterns. Knowing <strong>when agencies release funding</strong> lets you prepare proposals months in advance.</p>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div>
+        <h4 class="font-semibold text-purple-700 mb-2">Peak Seasons (Best Time to Apply)</h4>
+        <ul class="text-sm text-purple-600 space-y-1">
+          <li>• <strong>October-December:</strong> New fiscal year, fresh budgets, most solicitations released</li>
+          <li>• <strong>January-March:</strong> Largest volume of open solicitations, agencies spending down Q1 budgets</li>
+          <li>• <strong>April-May:</strong> SBIR spring cycles, state-level programs open</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-purple-700 mb-2">Off-Peak (Prepare During These)</h4>
+        <ul class="text-sm text-purple-600 space-y-1">
+          <li>• <strong>June-July:</strong> Use this time to update SAM.gov, gather documents, build partnerships</li>
+          <li>• <strong>August:</strong> Watch for early fall solicitation previews and pre-announcements</li>
+          <li>• <strong>September:</strong> End-of-fiscal-year spending creates last-minute opportunities</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">🎯 Grants vs. SBA Loans vs. SBIC: How to Choose</h2>
+
+  <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-8">
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded border border-blue-200">
+        <h4 class="font-semibold text-blue-700 mb-2">Federal Grants</h4>
+        <ul class="text-sm text-blue-600 space-y-1">
+          <li>• <strong>Repayment:</strong> None (free money)</li>
+          <li>• <strong>Equity:</strong> Zero dilution</li>
+          <li>• <strong>Timeline:</strong> 6-12 months to award</li>
+          <li>• <strong>Effort:</strong> High (competitive process)</li>
+          <li>• <strong>Best for:</strong> R&D, innovation, specific sectors</li>
+        </ul>
+      </div>
+      <div class="bg-white p-4 rounded border border-blue-200">
+        <h4 class="font-semibold text-blue-700 mb-2">SBA 7(a) / 504 Loans</h4>
+        <ul class="text-sm text-blue-600 space-y-1">
+          <li>• <strong>Repayment:</strong> Yes, with interest</li>
+          <li>• <strong>Equity:</strong> Zero dilution</li>
+          <li>• <strong>Timeline:</strong> 2-8 weeks approval</li>
+          <li>• <strong>Effort:</strong> Moderate</li>
+          <li>• <strong>Best for:</strong> Equipment, real estate, working capital</li>
+        </ul>
+      </div>
+      <div class="bg-white p-4 rounded border border-blue-200">
+        <h4 class="font-semibold text-blue-700 mb-2">SBIC Venture Capital</h4>
+        <ul class="text-sm text-blue-600 space-y-1">
+          <li>• <strong>Repayment:</strong> Exit-based</li>
+          <li>• <strong>Equity:</strong> Significant dilution</li>
+          <li>• <strong>Timeline:</strong> 3-6 months</li>
+          <li>• <strong>Effort:</strong> Moderate-High</li>
+          <li>• <strong>Best for:</strong> High-growth, scalable businesses</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">❓ US Grant Application FAQ</h2>
+
+  <div class="space-y-4 mb-8">
+    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+      <h3 class="font-semibold text-green-800 mb-2">Can sole proprietors apply for federal grants?</h3>
+      <p class="text-green-700 text-sm">Most SBIR/STTR programs require an LLC or corporation. However, USDA grants, SBA programs, and many state-level grants accept sole proprietors. If you're serious about federal grants, incorporate as an LLC ($50-$200 in most states) before applying.</p>
+    </div>
+    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+      <h3 class="font-semibold text-green-800 mb-2">How much does it cost to apply for a grant?</h3>
+      <p class="text-green-700 text-sm">Federal grant applications are always free to submit. Your costs are time spent on proposal writing (40-200 hours depending on complexity) and any professional grant writer fees ($3,000-$15,000 for SBIR proposals). Many SBDC offices provide free proposal review and editing assistance.</p>
+    </div>
+    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+      <h3 class="font-semibold text-green-800 mb-2">Can I apply for multiple grants simultaneously?</h3>
+      <p class="text-green-700 text-sm">Yes! In fact, we recommend it. Apply to 5-10 grants simultaneously to maximize your odds. The key is that each proposal must be unique — you cannot submit the same proposal to different agencies. However, you can submit variations of the same project tailored to each agency's priorities.</p>
+    </div>
+    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+      <h3 class="font-semibold text-green-800 mb-2">What happens if I don't spend all the grant money?</h3>
+      <p class="text-green-700 text-sm">Unspent federal grant funds must be returned to the government. You cannot keep excess funds, use them for unrelated purposes, or roll them into other projects without prior approval. This is why accurate budgeting is critical — overbudgeting wastes everyone's time, and underbudgeting means you can't complete the project.</p>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">🏛️ Federal vs. State Grants: Strategic Considerations</h2>
+
+  <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
+    <p class="text-blue-800 mb-4">Understanding the fundamental differences between federal and state grant programs is essential for building an effective funding strategy. Federal grants tend to be larger in dollar amount but more competitive, with application processes that can stretch 3-6 months from solicitation to award. State grants are typically smaller but faster to process, with many programs offering rolling application deadlines and turnaround times of 4-8 weeks. The most effective strategy is to pursue both simultaneously, using state grants as bridge funding while waiting for larger federal awards to materialize.</p>
+    <p class="text-blue-800 mb-4">Federal programs like SBIR, EDA, and USDA require registration on SAM.gov, a UEI number, and compliance with the Uniform Administrative Requirements (2 CFR Part 200). These requirements create an administrative overhead that many small businesses underestimate. However, once you have completed initial registration and built institutional infrastructure for federal compliance, subsequent applications become dramatically easier. Companies that have successfully managed one federal grant are 3-4 times more likely to win additional awards because they can demonstrate proven administrative capacity and track records of performance reporting.</p>
+    <p class="text-blue-800">State programs often have simpler application requirements but narrower eligibility criteria tied to geographic location, industry sector, company size, or job creation commitments. Many state economic development agencies use clawback provisions, meaning that if you receive a grant for promising to create 50 jobs but only create 30, you may need to return a proportional amount of funding. Understanding these commitment structures upfront prevents costly surprises later. The best approach is to make conservative commitments that you are confident you can exceed, rather than overpromising to secure a larger award.</p>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">📋 Building a Professional Grant Application</h2>
+
+  <div class="bg-indigo-50 border border-indigo-200 p-6 rounded-lg mb-8">
+    <p class="text-indigo-800 mb-4">A professional grant application goes far beyond filling out forms and writing a narrative. The most competitive applications tell a compelling story supported by hard data, presented in a format that makes it easy for reviewers to find and evaluate the information they need. Grant reviewers read dozens or hundreds of applications for each solicitation cycle, and they spend an average of 20-30 minutes on initial review. Your application must communicate its key value proposition within the first two pages, or it risks being screened out before the detailed review stage.</p>
+    <p class="text-indigo-800 mb-4">The strongest applications include the following elements: a clear problem statement supported by credible market data or economic analysis, a specific and measurable project plan with milestones and deliverables, a realistic budget that accounts for indirect costs and contingencies, evidence of organizational capacity such as management team bios and prior project experience, and strong letters of support from partners, customers, or community stakeholders. Each element should be internally consistent — a budget that does not align with the project timeline, or milestones that contradict the narrative, will raise red flags for reviewers and undermine your credibility.</p>
+    <p class="text-indigo-800">Budget development deserves special attention because it is the most common area where applications are weakened. Reviewers are experienced professionals who can immediately identify unrealistic cost estimates — budgets that are too low signal naivety or intentional lowballing, while budgets that are too high suggest wasteful spending. Request exactly what you need, itemize every major expense, and include a budget narrative that explains why each cost is necessary and reasonable. Build in a 5-10% contingency for unexpected expenses, and clearly separate direct costs from indirect costs. If your organization has a federally negotiated indirect cost rate, include documentation. If not, most programs allow a de minimis rate of 10% modified total direct costs.</p>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">🚫 Top 5 Grant Application Mistakes (And How to Fix Them)</h2>
+
+  <div class="bg-red-50 border border-red-200 p-6 rounded-lg mb-8">
+    <p class="text-red-800 mb-4">**1. Ignoring the Scoring Rubric:** Every grant has a detailed scoring criteria. If "Community Impact" is worth 30 points and "Technical Innovation" is worth 10, do not spend 90% of your pages writing about the technology. Write to the rubric. Literally use the rubric headers as your document section headers.</p>
+    <p class="text-red-800 mb-4">**2. The "Wall of Text":** Reviewers are tired. If your page is a solid block of 10-point font text, they will skim it. Use bolding for key metrics. Use bullet points. Use white space. Build simple charts or graphics to explain complex flows. Make it "skimmable" but substantial.</p>
+    <p class="text-red-800 mb-4">**3. Vague Budgeting:** "Equipment: $50,000" is a red flag. "High-Performance Liquid Chromatography (HPLC) System, Agilent Model 1260: $48,500 + $1,500 shipping" is a green flag. Detailed budgets show you have done your homework and understand the real costs of execution.</p>
+    <p class="text-red-800 mb-4">**4. Waiting on Letters of Support:** You cannot get a meaningful letter of support 48 hours before the deadline. You will get a generic template that reviewers ignore. Ask partners 3 weeks out. Draft the letter *for* them so they just have to sign it. Make sure the letter commits to something specific ("We will refer 50 patients") rather than general support ("We think this is a nice project").</p>
+    <p class="text-red-800">**5. Failing to Proofread:** It sounds basic, but typos destroy credibility. If you can't be detail-oriented on the application, why should the government trust you with a million dollars? Have someone *outside* your field read it. If they can't understand the summary, rewrite it until they can.</p>
+  </div>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">🏆 You Won! Now the Work Begins (Post-Award Management)</h2>
+
+  <div class="bg-green-50 border border-green-200 p-6 rounded-lg mb-8">
+    <p class="text-green-800 mb-4">Celebrating a grant win is great, but the **Post-Award** phase is where the risk lies. The "Kickoff Meeting" with your program officer sets the tone. Be prepared with a revised budget (awards are often slightly different than requests) and an updated timeline. This is your chance to build a relationship with the person who approves your invoices.</p>
+    <p class="text-green-800 mb-4">**Reporting is everything.** Set calendar reminders for quarterly financial and technical reports. Missing a report deadline can freeze your funding drawdowns instantly. Keep your technical milestones realistic. If you are falling behind, communicate *early*. Program officers can approve "No-Cost Extensions" (add time to the grant without adding money) if you have a good reason, but they hate surprises at the end of the fiscal year.</p>
+    <p class="text-green-800">**Audit Proofing:** Keep every receipt. Track time for every employee charging the grant (time & effort reporting is the #1 audit finding). Do not commingle grant funds with general operating funds in your accounting software; use "Class" tracking or separate cost centers. If you buy a laptop with grant money, tag it with an asset sticker. The government technically owns it until they sign it over to you at the end. Treat the money with fiduciary reverence.</p>
+  </div>
+
   <!-- LEAD GENERATION CTA SECTION -->
   <div class="bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 text-white p-8 rounded-lg text-center mb-8">
     <h2 class="text-3xl font-bold mb-4">🎯 Don't Navigate This Alone - Get Expert Help!</h2>

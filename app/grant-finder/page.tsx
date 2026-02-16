@@ -141,6 +141,52 @@ export default function GrantFinderPage() {
             </Card>
           </div>
         </div>
+        <section className="py-20 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+              <p className="text-xl text-gray-600">Common questions about finding government grants</p>
+            </div>
+
+            <div className="max-w-3xl mx-auto space-y-6">
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">Is the AI Grant Finder free to use?</h3>
+                  <p className="text-gray-600">
+                    Yes, our basic grant matching tool is completely free. You can search for grants, view eligibility requirements, and get initial matches without any cost.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">How accurate are the grant matches?</h3>
+                  <p className="text-gray-600">
+                    Our AI analyzes over 50 data points from your business profile against thousands of active grant criteria. While we provide high-probability matches, final eligibility is determined by the funding agency.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">Do you help with grant writing?</h3>
+                  <p className="text-gray-600">
+                    We provide comprehensive guides, templates, and expert tips to help you write successful applications. For complex federal grants, we recommend partnering with a professional grant writer.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">What types of businesses can find grants?</h3>
+                  <p className="text-gray-600">
+                    Our database includes funding for startups, small businesses, non-profits, and large enterprises across all industries, including technology, manufacturing, agriculture, and healthcare.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
       </section>
 
       <Footer />
