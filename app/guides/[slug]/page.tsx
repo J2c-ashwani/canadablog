@@ -104,6 +104,13 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           </section>
         )}
 
+        {/* GUIDES MAIN CONTENT (New Architecture for SEO) */}
+        {guide.content && (
+          <section className="mb-12 prose prose-lg prose-green max-w-none">
+            <div dangerouslySetInnerHTML={{ __html: guide.content }} />
+          </section>
+        )}
+
         {/* CTA - NO FORM */}
         <section className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="md:col-span-2 p-4 border rounded bg-white">

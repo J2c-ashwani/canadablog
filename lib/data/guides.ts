@@ -26,6 +26,7 @@ export interface Guide {
     content: string
     type: 'tip' | 'warning' | 'success'
   }
+  content?: string // HTML content for the guide body
 }
 
 export const guidesDatabase: Guide[] = [
@@ -537,7 +538,60 @@ export const guidesDatabase: Guide[] = [
       title: "Focus on Economic Impact",
       type: 'tip',
       content: "The government prioritizes applications that demonstrate clear **job creation** and economic benefit. Don't just explain how the money helps *you*; explain how it helps the *economy*."
-    }
+    },
+    content: `
+      <h2>Overview of the Women Entrepreneurship Fund</h2>
+      <p>The <strong>Women Entrepreneurship Fund (WEF)</strong> is a flagship initiative under Canada’s Women Entrepreneurship Strategy (WES), designed to help women-owned and women-led businesses grow and reach new markets. Unlike loans, this funding is a <strong>non-repayable contribution (grant)</strong>, making it highly competitive and sought after.</p>
+      <p>The fund directly supports projects that help women entrepreneurs scale their businesses, expand into international markets, and adopt new technologies. It is administered by Innovation, Science and Economic Development Canada (ISED).</p>
+
+      <h3>Funding Amount and Terms</h3>
+      <ul>
+        <li><strong>Maximum Grant:</strong> Up to $100,000 per project.</li>
+        <li><strong>Cost Sharing:</strong> The grant typically covers up to 90% of eligible costs for non-profits and up to 50-75% for for-profit businesses (depending on the specific intake stream).</li>
+        <li><strong>Project Duration:</strong> Projects usually must be completed within 12 months.</li>
+      </ul>
+
+      <h2>Eligibility Requirements</h2>
+      <p>To qualify for the Women Entrepreneurship Fund, your business must meet the following strict criteria:</p>
+      <ul>
+        <li><strong>Ownership:</strong> The business must be <strong>majority owned (more than 50%)</strong> and controlled by women.</li>
+        <li><strong>Leadership:</strong> The business must be led by women (e.g., CEO, President).</li>
+        <li><strong>Status:</strong> Must be a for-profit company or a non-profit organization supporting women entrepreneurs.</li>
+        <li><strong>Location:</strong> Must be incorporated and operating in Canada.</li>
+        <li><strong>History:</strong> Startups are generally eligible, but established businesses with 2+ years of operation and revenue generation are often prioritized for growth funding.</li>
+        <li><strong>Employees:</strong> Typically requires fewer than 500 employees (SME status).</li>
+      </ul>
+
+      <h3>Eligible Activities</h3>
+      <p>Funding is provided for specific projects, not general operating costs. Eligible activities include:</p>
+      <ul>
+        <li><strong>Marketing & Strategy:</strong> Developing marketing plans, rebranding, or attending international trade shows.</li>
+        <li><strong>Technology Adoption:</strong> upgrading software, implementing CRM systems, or digital transformation.</li>
+        <li><strong>Productivity Improvements:</strong> Purchasing equipment or machinery to increase efficiency.</li>
+        <li><strong>International Expansion:</strong> Activities related to entering new global markets.</li>
+      </ul>
+
+      <h2>Application Process</h2>
+      <p>The application process for the WEF is rigorous. Here is a step-by-step guide to applying:</p>
+      <ol>
+        <li><strong>Check for Open Intakes:</strong> The WEF operates on a "Call for Proposals" basis. Funding is not always open. Monitor the <a href="https://ised-isde.canada.ca/site/women-entrepreneurship-strategy/en/women-entrepreneurship-fund" target="_blank" rel="noopener noreferrer">ISED website</a> regularly.</li>
+        <li><strong>Prepare Your Business Plan:</strong> You need a robust business plan that clearly outlines your growth strategy, financial projections, and how the funding will achieve specific outcomes (e.g., X% revenue growth, Y new jobs).</li>
+        <li><strong>Secure Matching Funds:</strong> Proof of your portion of the project funding (e.g., bank statements, loan approval) is often required at the time of application.</li>
+        <li><strong>Submit via ISED Portal:</strong> Applications are submitted digitally through the ISED online portal. Ensure all documents are uploaded correctly.</li>
+      </ol>
+
+      <h2>Evaluation Criteria</h2>
+      <p>Applications are assessed based on:</p>
+      <ul>
+        <li><strong>Innovation:</strong> Does the project introduce a new product, service, or process?</li>
+        <li><strong>Market Potential:</strong> Is there a clear demand for the growth plan?</li>
+        <li><strong>Team Capacity:</strong> Does the management team have the experience to execute the project?</li>
+        <li><strong>Economic Benefit:</strong> Will the project create jobs in Canada?</li>
+      </ul>
+
+      <h2>Success Tips</h2>
+      <p>Since the program is highly competitive, ensure your application stands out by quantifying your results. Instead of saying "we will grow sales," say "we project a <strong>$250,000 increase in export revenue</strong> within 18 months." Highlight your commitment to diversity and inclusion, as this aligns with the fund's core mission.</p>
+    `
   },
   {
     id: 'women-entrepreneurship-loan-fund-guide',

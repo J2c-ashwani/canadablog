@@ -1,38 +1,35 @@
+import { blogPosts, BlogPost } from './lib/data/blogPosts.ts';
 
-import { blogPosts } from './lib/data/blogPosts';
+const enrichedPosts: BlogPost[] = [];
+const missingEnrichmentPosts: BlogPost[] = [];
 
-const targetSlugs = [
-  'clean-technology-2025',
-  'apply-usa-grants-2025',
-  'canexport-grants-2025',
-  'rural-business-development-2025',
-  'veterans-business-grants-2025',
-  'new-york-business-grants-2025',
-  'manufacturing-grants-2025',
-  'digital-transformation-2025',
-  'agricultural-innovation-2025',
-  'minority-business-grants-2025',
-  'usda-rural-grants-2025',
-  'quebec-government-business-grants',
-  'quebec-business-grants-2025',
-  'women-business-grants-2025',
-  'technology-startup-grants-2025',
-  'cybersecurity-grants'
-];
+console.log(`\n=== CHECKING ${blogPosts.length} BLOG POSTS FOR ENRICHMENT ===\n`);
 
-targetSlugs.forEach(slug => {
-  const post = blogPosts.find(p => p.slug === slug);
-  if (post) {
-    const hasMetrics = !!post.metrics && post.metrics.length > 0;
-    const hasExpertTip = !!post.expertTip;
-    const isIndexed = hasMetrics || hasExpertTip;
-    
-    console.log(`Slug: ${slug}`);
-    console.log(`  - ID: ${post.id}`);
-    console.log(`  - Metrics: ${hasMetrics ? '✅' : '❌'}`);
-    console.log(`  - ExpertTip: ${hasExpertTip ? '✅' : '❌'}`);
-    console.log(`  - Indexable: ${isIndexed ? '✅' : '❌'}`);
+blogPosts.forEach(post => {
+  const hasmetrics = post.metrics && post.metrics.length > 0;
+  const hasexpertTip = !!post.expertTip;
+
+  if (hasmetrics && hasexpertTip) {
+    enrichedPosts.push(post);
   } else {
-    console.log(`Slug: ${slug} NOT FOUND`);
+    // Only flag if it's genuinely missing content
+    // Some posts might be intentional stubs, but we'll list them all
+    missingEnrichmentPosts.push(post);
   }
 });
+
+console.log(`✅ Fully Enriched: ${enrichedPosts.length}`);
+console.log(`❌ Missing Enrichment: ${missingEnrichmentPosts.length}`);
+console.log(`\n--- QUEUE OF ${missingEnrichmentPosts.length} POSTS TO ENRICH ---\n`);
+
+missingEnrichmentPosts.forEach(post => {
+  const missingFields = [];
+  if (!post.metrics || post.metrics.length === 0) missingFields.push('metrics');
+  if (!post.expertTip) missingFields.push('expertTip');
+
+  console.log(`- [ ] ${post.slug} (Missing: ${missingFields.join(', ')})`);
+});
+
+if (missingEnrichmentPosts.length === 0) {
+  console.log('\n🎉 ALL POSTS ARE ENRICHED! GREAT JOB! 🎉');
+}

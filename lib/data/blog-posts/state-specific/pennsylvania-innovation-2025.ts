@@ -28,7 +28,16 @@ export default `
 
   <p class="text-lg mb-6">Pennsylvania is transforming from its industrial legacy into a 21st-century innovation powerhouse, with <strong>$670 million in targeted grants and incentives</strong> supporting advanced manufacturing, biotechnology, and clean energy initiatives. As the birthplace of American manufacturing with a $900 billion economy, Pennsylvania offers unparalleled opportunities for businesses leveraging the state's world-class universities, skilled workforce, and strategic East Coast location.</p>
 
-  <h2 class="text-2xl font-bold mt-8 mb-4">🎯 Pennsylvania Department of Community & Economic Development Programs</h2>
+  <h2 class="text-2xl font-bold mb-4">Who is Eligible for Pennsylvania Innovation Grants?</h2>
+  <p class="mb-4">To qualify for state funding programs like PIDA or Ben Franklin Technology Partners, businesses generally must meet these criteria:</p>
+  <ul class="list-disc pl-6 space-y-2 mb-8 text-gray-700">
+    <li><strong>Pennsylvania Presence:</strong> Must have a physical operation in the state.</li>
+    <li><strong>Job Creation:</strong> Many programs (like PIDA) require retaining or creating full-time jobs (e.g., 1 job per $35,000 borrowed).</li>
+    <li><strong>Sector Focus:</strong> Priority is given to manufacturing, industrial enterprise, R&D, and technology. Retail and service businesses usually do not qualify for major industrial grants.</li>
+    <li><strong>Financial Viability:</strong> Must show ability to repay loans or match grant funds (often 50% match required).</li>
+  </ul>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4">What DCED Programs Are Available for Pennsylvania Businesses?</h2>
   
   <div class="bg-green-50 border border-green-200 p-6 rounded-lg mb-8">
     <h3 class="text-xl font-bold text-green-800 mb-4">🏛️ Flagship Industrial Development Programs</h3>
@@ -109,7 +118,7 @@ export default `
     </div>
   </div>
 
-  <h2 class="text-2xl font-bold mt-8 mb-4">🔬 Ben Franklin Technology Partners</h2>
+  <h2 class="text-2xl font-bold mt-8 mb-4">How Does Ben Franklin Technology Partners Fund Startups?</h2>
   
   <div class="space-y-6 mb-8">
     <div class="bg-gradient-to-r from-purple-50 to-purple-100 border-l-4 border-purple-500 p-6 rounded-r-lg">
@@ -154,7 +163,7 @@ export default `
     </div>
   </div>
 
-  <h2 class="text-2xl font-bold mt-8 mb-4">🤖 Pittsburgh: America's AI & Robotics Capital</h2>
+  <h2 class="text-2xl font-bold mt-8 mb-4">Why is Pittsburgh a Hub for AI and Robotics Grants?</h2>
 
   <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
     <p class="text-blue-800 mb-4">Pittsburgh has transformed from a steel city into one of America's top AI and robotics hubs, anchored by <strong>Carnegie Mellon University's National Robotics Engineering Center (NREC)</strong> and a thriving startup ecosystem.</p>
@@ -192,7 +201,7 @@ export default `
     </div>
   </div>
 
-  <h2 class="text-2xl font-bold mt-8 mb-4">💲 Pennsylvania R&D Tax Credits</h2>
+  <h2 class="text-2xl font-bold mt-8 mb-4">How Do Pennsylvania R&D Tax Credits Work?</h2>
 
   <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg mb-8">
     <p class="text-green-800 mb-4">Pennsylvania offers one of the most generous state R&D tax credit programs in the nation, <strong>stackable with federal R&D credits</strong> for significant combined savings.</p>
@@ -220,7 +229,7 @@ export default `
     </div>
   </div>
 
-  <h2 class="text-2xl font-bold mt-8 mb-4">🏘️ Pennsylvania Opportunity Zones</h2>
+  <h2 class="text-2xl font-bold mt-8 mb-4">What Are the Benefits of Pennsylvania Opportunity Zones?</h2>
 
   <div class="bg-orange-50 border border-orange-200 p-6 rounded-lg mb-8">
     <p class="text-orange-800 mb-4">Pennsylvania has <strong>300 certified Opportunity Zones</strong> across the state, offering significant tax advantages for businesses investing in designated communities.</p>
@@ -259,7 +268,7 @@ export default `
     </div>
   </div>
 
-  <h2 class="text-2xl font-bold mt-8 mb-4">📋 Application Strategy for Pennsylvania Grants</h2>
+  <h2 class="text-2xl font-bold mt-8 mb-4">How to Apply for Pennsylvania Innovation Grants?</h2>
 
   <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg mb-8">
     <div class="space-y-4">
@@ -282,26 +291,7 @@ export default `
     </div>
   </div>
 
-  <h2 class="text-2xl font-bold mt-8 mb-4">❓ Pennsylvania Innovation Grants FAQ</h2>
 
-  <div class="space-y-4 mb-8">
-    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-      <h3 class="font-semibold text-blue-800 mb-2">Can startups apply for PIDA loans?</h3>
-      <p class="text-blue-700 text-sm">PIDA loans require job creation and are typically better suited for established companies expanding operations. Startups should look to Ben Franklin Technology Partners for equity investments ($50K-$500K) or Innovation Works for seed-stage funding ($25K-$250K). Both programs accept pre-revenue companies.</p>
-    </div>
-    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-      <h3 class="font-semibold text-blue-800 mb-2">How do I get a RACP grant?</h3>
-      <p class="text-blue-700 text-sm">RACP grants require a state legislator to sponsor your project — this is non-negotiable. Contact your state senator or representative first to discuss your project's regional economic impact. The governor's budget office allocates funds, and sponsored projects compete based on economic development merit.</p>
-    </div>
-    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-      <h3 class="font-semibold text-blue-800 mb-2">What is the Keystone Innovation Zone (KIZ) tax credit?</h3>
-      <p class="text-blue-700 text-sm">KIZ provides tax credits for technology-based companies less than 8 years old, located within designated zones near universities and research institutions. Credits equal 50% of the increase in gross revenues from year to year, up to $100,000 annually. Major KIZs are in Philadelphia, Pittsburgh, State College, and the Lehigh Valley.</p>
-    </div>
-    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-      <h3 class="font-semibold text-blue-800 mb-2">Are there programs for manufacturing companies specifically?</h3>
-      <p class="text-blue-700 text-sm">Yes. Beyond PIDA, the Pennsylvania Industrial Resource Centers (IRCs) provide subsidized consulting for manufacturers. The Manufacturing PA initiative offers workforce training grants, and the PA SBDC network provides free business consulting. The state's Made in Pennsylvania program also helps with marketing and export assistance.</p>
-    </div>
-  </div>
 
   <h2 class="text-2xl font-bold mt-8 mb-4">🏙️ Philadelphia Innovation Ecosystem</h2>
 
