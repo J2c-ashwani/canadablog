@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Strategic Innovation Fund Application Guide 2025 | Step-by-Step SIF Funding Process",
+  title: "Strategic Innovation Fund Application Guide 2026 | Step-by-Step SIF Funding Process",
   description: "Complete step-by-step guide to applying for Strategic Innovation Fund (SIF) funding. Get SIF application templates, innovation project strategies, and proven application frameworks for $10M+ projects.",
   keywords: "strategic innovation fund application guide, how to apply SIF funding, innovation project grant application Canada, SIF grant application process, transformative project funding, ISED funding, innovation supercluster",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-strategic-innovation-fund",
   },
   openGraph: {
-    title: "Strategic Innovation Fund Application Guide 2025 | SIF Funding Process",
+    title: "Strategic Innovation Fund Application Guide 2026 | SIF Funding Process",
     description: "Step-by-step guide with templates and strategies for successful Strategic Innovation Fund applications for Canadian innovation projects.",
     url: "https://www.fsidigital.ca/guides/apply-strategic-innovation-fund",
     images: ["/og-image.png"],
@@ -91,7 +91,7 @@ export default function SIFApplicationGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-white/20 text-white border-white/30">
-                🏛️ SIF Funding Application Guide 2025
+                🏛️ SIF Funding Application Guide 2026
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
                 Strategic Innovation Fund Application Guide

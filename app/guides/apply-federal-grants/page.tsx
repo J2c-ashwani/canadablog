@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "How to Apply for Federal Grants 2025 | Complete Application Guide | Grants.gov, SAM.gov, SBIR",
+  title: "How to Apply for Federal Grants 2026 | Complete Application Guide | Grants.gov, SAM.gov, SBIR",
   description: "Step-by-step guide to applying for federal grants. Learn eligibility requirements, application process, winning strategies, and access billions in government funding through Grants.gov, SBIR, and more.",
   keywords: "federal grants application, how to apply federal grants, government grants, grants.gov application, federal funding guide, SBIR grants, SAM registration",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-federal-grants",
   },
   openGraph: {
-    title: "How to Apply for Federal Grants 2025",
+    title: "How to Apply for Federal Grants 2026",
     description: "Complete guide to applying for federal grants with winning strategies and step-by-step process.",
     url: "https://www.fsidigital.ca/guides/apply-federal-grants",
     images: ["/og-image.png"],
@@ -91,7 +91,7 @@ export default function ApplyFederalGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-white/20 text-white border-white/30">
-                🇺🇸 Federal Grants Application Guide 2025
+                🇺🇸 Federal Grants Application Guide 2026
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
                 How to Apply for Federal Grants

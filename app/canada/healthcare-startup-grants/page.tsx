@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-    title: "Healthcare Startup Grants 2025 | Canada Health Tech Funding",
+    title: "Healthcare Startup Grants Canada 2026: Fund Your Health Tech",
     description:
         "Find grants and funding for healthcare and medtech startups in Canada. Complete guide to IRAP, CIHR, and Digital Health funding.",
     keywords:
@@ -33,7 +33,7 @@ const healthGrants: Grant[] = [
         status: "Active",
         tags: ["Research", "Commercialization"],
         requirements: ["Scientific review"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "health-irap",
@@ -51,7 +51,7 @@ const healthGrants: Grant[] = [
         status: "Active",
         tags: ["Innovation", "R&D"],
         requirements: ["Project advisor assessment"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "health-digital",
@@ -69,7 +69,7 @@ const healthGrants: Grant[] = [
         status: "Active",
         tags: ["Digital", "Health"],
         requirements: ["Membership"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
 ]
 
@@ -88,7 +88,7 @@ export default function HealthcareGrantsPage() {
                                 HealthTech Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Healthcare Startup Grants 2025</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Healthcare Startup Grants 2026</h1>
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover grants, R&D funding, and incubators for healthcare, medtech, and digital health startups in Canada.
                         </p>

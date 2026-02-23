@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "BC Business Grants 2025: Complete Application Guide | Innovate BC, CleanBC, Creative BC",
+  title: "BC Business Grants 2026: Complete Application Guide | Innovate BC, CleanBC, Creative BC",
   description: "Complete step-by-step guide to applying for British Columbia business grants and provincial funding. Get BC application templates, provincial strategies, and frameworks for Innovate BC, CleanBC, and Creative BC programs.",
   keywords: "British Columbia business grants, BC provincial funding, Innovate BC application, CleanBC funding, Creative BC grants, how to apply BC government grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-british-columbia-grants",
   },
   openGraph: {
-    title: "British Columbia Business Grants Application Guide 2025",
+    title: "British Columbia Business Grants Application Guide 2026",
     description: "Step-by-step guide with templates and strategies for successful BC provincial funding applications.",
     url: "https://www.fsidigital.ca/guides/apply-british-columbia-grants",
     images: ["/og-image.png"],
@@ -91,7 +91,7 @@ export default function BritishColumbiaBusinessGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-white/20 text-white border-white/30">
-                🏔️ Pacific Province Business Funding Guide 2025
+                🏔️ Pacific Province Business Funding Guide 2026
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
                 How to Apply for British Columbia Business Grants

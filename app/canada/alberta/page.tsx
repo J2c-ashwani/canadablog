@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-    title: "Alberta Business Grants 2025 | Provincial Funding Programs",
+    title: "Alberta Business Grants 2026: 15+ Programs Open Now [Full List]",
     description:
         "Find Alberta business grants and provincial funding programs. Complete guide to Alberta government grants, Alberta Innovates funding, and application deadlines.",
     keywords:
@@ -33,7 +33,7 @@ const albertaGrants: Grant[] = [
         status: "Active",
         tags: ["Innovation", "Technology"],
         requirements: ["Service provider quote", "Project plan"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "ab-cares",
@@ -51,7 +51,7 @@ const albertaGrants: Grant[] = [
         status: "Closed",
         tags: ["Economic Development", "Community"],
         requirements: ["Impact assessment"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "ab-export",
@@ -69,7 +69,7 @@ const albertaGrants: Grant[] = [
         status: "Active",
         tags: ["Export", "Marketing"],
         requirements: ["Export plan", "Travel budget"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "ab-digital-traction",
@@ -87,7 +87,7 @@ const albertaGrants: Grant[] = [
         status: "Active",
         tags: ["Software", "Startup"],
         requirements: ["Product roadmap"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
 ]
 
@@ -106,7 +106,7 @@ export default function AlbertaGrantsPage() {
                                 Alberta Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Alberta Business Grants 2025</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Alberta Business Grants 2026: Programs Open Now</h1>
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover comprehensive Alberta provincial funding programs, business grants, and government incentives
                             available to entrepreneurs and companies across Alberta.

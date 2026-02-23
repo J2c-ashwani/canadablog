@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-    title: "Green Energy Business Grants 2025 | Canada Funding",
+    title: "Green Energy Grants Canada 2026: $1.5B+ in Cleantech Funding",
     description:
         "Find grants and funding for green energy and cleantech projects in Canada. Complete guide to renewable energy grants, efficiency incentives, and Net Zero funding.",
     keywords:
@@ -33,7 +33,7 @@ const greenGrants: Grant[] = [
         status: "Active",
         tags: ["Renewable", "Grid", "Cleantech"],
         requirements: ["Technical feasibility", "Emissions reduction"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "green-homes",
@@ -51,7 +51,7 @@ const greenGrants: Grant[] = [
         status: "Active",
         tags: ["Retrofit", "Efficiency"],
         requirements: ["Energy audit"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "green-ag",
@@ -69,7 +69,7 @@ const greenGrants: Grant[] = [
         status: "Active",
         tags: ["Agriculture", "Cleantech"],
         requirements: ["Environmental benefit"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
 ]
 
@@ -88,7 +88,7 @@ export default function GreenEnergyGrantsPage() {
                                 Green Energy Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Green Energy & Cleantech Grants 2025</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Green Energy & Cleantech Grants 2026: $1.5B+ Available</h1>
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover grants and incentives for renewable energy projects, energy efficiency upgrades, and cleantech innovation across Canada.
                         </p>

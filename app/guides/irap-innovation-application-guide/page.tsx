@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "IRAP Funding Guide 2025: Application, Eligibility & ITA Contact",
+  title: "IRAP Funding Guide 2026: Application, Eligibility & ITA Contact",
   description: "Complete guide to the Industrial Research Assistance Program (IRAP). How to get up to $500K in non-repayable R&D funding and connect with an ITA.",
   keywords: "IRAP grants, Industrial Research Assistance Program, NRC IRAP, R&D funding canada, technology grants, ITA contact",
   alternates: {

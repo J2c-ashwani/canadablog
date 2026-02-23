@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Complete CSBFP Application Guide 2025 | Step-by-Step Process",
+  title: "Complete CSBFP Application Guide 2026 | Step-by-Step Process",
   description: "Step-by-step guide to applying for Canada Small Business Financing Program loans. Get templates, checklists, and expert strategies for CSBFP success.",
   keywords: "CSBFP application guide, how to apply CSBFP, Canada Small Business Financing Program application, CSBFP loan process, business loan checklist",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-csbfp-loans",
   },
   openGraph: {
-    title: "Complete CSBFP Application Guide 2025 | Step-by-Step Process",
+    title: "Complete CSBFP Application Guide 2026 | Step-by-Step Process",
     description: "Step-by-step guide with templates and strategies for successful CSBFP loan applications for Canadian small businesses.",
     url: "https://www.fsidigital.ca/guides/apply-csbfp-loans",
     images: ["/og-image.png"],

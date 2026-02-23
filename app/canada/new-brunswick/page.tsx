@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-    title: "New Brunswick Business Grants 2025 | Provincial Funding Programs",
+    title: "New Brunswick Business Grants 2026 | Provincial Funding Programs",
     description:
         "Find New Brunswick business grants and provincial funding programs. Complete guide to New Brunswick government grants, ONB funding, and application deadlines.",
     keywords:
@@ -33,7 +33,7 @@ const nbGrants: Grant[] = [
         status: "Active",
         tags: ["Growth", "Expansion"],
         requirements: ["Business plan", "Financials"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "nb-export",
@@ -51,7 +51,7 @@ const nbGrants: Grant[] = [
         status: "Active",
         tags: ["Export", "Marketing"],
         requirements: ["Export strategy"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "nb-workforce",
@@ -69,7 +69,7 @@ const nbGrants: Grant[] = [
         status: "Active",
         tags: ["Hiring", "Wage Subsidy"],
         requirements: ["Hiring plan"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
 ]
 
@@ -88,7 +88,7 @@ export default function NewBrunswickGrantsPage() {
                                 New Brunswick Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">New Brunswick Business Grants 2025</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">New Brunswick Business Grants 2026</h1>
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover comprehensive New Brunswick provincial funding programs, business grants, and government incentives
                             available to entrepreneurs and companies across New Brunswick.

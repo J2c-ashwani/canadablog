@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Manufacturing Grants Canada 2025 | NGen & Industry 4.0 Funding",
+  title: "Manufacturing Grants Canada 2026 | NGen & Industry 4.0 Funding",
   description: "Complete guide to advanced manufacturing funding. Apply for NGen supercluster projects, IRAP manufacturing grants, and CDAP digital adoption loans.",
   keywords: "manufacturing grants Canada, NGen funding, advanced manufacturing, Industry 4.0 grants, robotics funding, automation grants Canada",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-manufacturing-funding-guide",
   },
   openGraph: {
-    title: "Manufacturing Grants Canada 2025 | NGen & Automation",
+    title: "Manufacturing Grants Canada 2026 | NGen & Automation",
     description: "Step-by-step guide to securing up to $10M for factory modernization and Industry 4.0 adoption.",
     url: "https://www.fsidigital.ca/guides/canada-manufacturing-funding-guide",
     images: ["/og-image.png"],

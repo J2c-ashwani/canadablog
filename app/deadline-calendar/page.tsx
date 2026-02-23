@@ -9,7 +9,7 @@ import { Calendar, Clock, Bell } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "USA Grant Deadlines 2025 | Interactive Calendar & Alerts",
+  title: "Grant Deadlines Calendar 2026: Never Miss a Deadline [Free]",
   description:
     "Track USA grant deadlines with our interactive calendar. Get deadline alerts, export to Google Calendar, and never miss a funding opportunity.",
   keywords:
@@ -34,7 +34,7 @@ export default function DeadlineCalendarPage() {
                 Interactive Calendar
               </Badge>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">USA Grant Deadlines 2025</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">USA Grant Deadlines 2026</h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Stay on top of grant deadlines with our interactive calendar. Track upcoming opportunities, set reminders,
               and export deadlines to your calendar.

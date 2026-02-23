@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "IRAP Government Grants Application Guide 2025 | Federal R&D Funding",
+  title: "IRAP Government Grants Application Guide 2026 | Federal R&D Funding",
   description: "Complete guide to applying for IRAP government grants. Learn federal compliance requirements, Treasury Board reporting standards, and how to secure federal R&D funding.",
   keywords: "IRAP government grants, federal R&D funding Canada, government grant application guide, NRC IRAP compliance, federal innovation grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-irap-government-grants",
   },
   openGraph: {
-    title: "IRAP Government Grants Application Guide 2025 | Federal R&D Funding",
+    title: "IRAP Government Grants Application Guide 2026 | Federal R&D Funding",
     description: "Step-by-step guide with federal compliance templates and strategies for successful IRAP government grant applications.",
     url: "https://www.fsidigital.ca/guides/apply-irap-government-grants",
     images: ["/og-image.png"],

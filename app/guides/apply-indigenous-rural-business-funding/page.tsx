@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Indigenous & Rural Business Funding Guide 2025 | Grants & Loans",
+  title: "Indigenous & Rural Business Funding Guide 2026 | Grants & Loans",
   description: "Complete guide to Aboriginal Entrepreneurship Program (AEP), NACCA loans, and rural business grants. Get templates and strategies for approval.",
   keywords: "Indigenous business grants, Aboriginal Entrepreneurship Program, NACCA loans, rural business funding Canada, First Nations business loans, Metis entrepreneur funding",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-indigenous-rural-business-funding",
   },
   openGraph: {
-    title: "Indigenous & Rural Business Funding Guide 2025",
+    title: "Indigenous & Rural Business Funding Guide 2026",
     description: "Unlock funding for Indigenous and rural businesses. Step-by-step guide to NACCA, AEP, and Community Futures.",
     url: "https://www.fsidigital.ca/guides/apply-indigenous-rural-business-funding",
     images: ["/og-image.png"],

@@ -13,7 +13,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Quebec Small Business Grants 2026 | $1.8B+ Complete Funding Guide",
-  description: "Complete guide to Quebec small business grants. Access Investissement Québec SME Fund, Quebec Startup Fund, R&D Tax Credits up to 37.5%, and francophone business support. Expert tips in French & English.",
+  description: "Quebec offers R&D tax credits up to 37.5% — the highest in North America. Plus Investissement Québec SME Fund and 15+ more programs you should know.",
   keywords: "Quebec small business grants, Investissement Quebec SME fund, Quebec startup funding, Quebec R&D tax credits, francophone business grants Quebec, Montreal business grants, subventions PME Quebec",
 }
 

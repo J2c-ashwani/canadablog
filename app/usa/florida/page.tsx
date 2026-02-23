@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-    title: "Florida Business Grants 2025 | FL State Funding Programs",
+    title: "Florida Business Grants 2026 | FL State Funding Programs",
     description:
         "Find Florida small business grants and state funding programs. Complete guide to Enterprise Florida grants, research funding, and business incentives.",
     keywords:
@@ -109,7 +109,7 @@ export default function FloridaGrantsPage() {
                                 Florida State Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Florida Business Grants 2025</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Florida Business Grants 2026</h1>
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover Florida's business incentives, research grants, and export funding programs
                             supporting the Sunshine State's diverse economy.

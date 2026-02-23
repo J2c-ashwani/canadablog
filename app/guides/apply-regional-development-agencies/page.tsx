@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Regional Development Agencies Application Guide 2025 | Step-by-Step RDA Funding",
+  title: "Regional Development Agencies Application Guide 2026 | Step-by-Step RDA Funding",
   description: "Complete step-by-step guide to applying for Regional Development Agency (RDA) funding. Get templates, regional strategies, and proven application frameworks for ACOA, FedDev, Ced, and more.",
   keywords: "Regional Development Agencies application guide, RDA funding application process, ACOA application guide, FedDev Ontario application, PacifiCan funding application, Canada regional grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-regional-development-agencies",
   },
   openGraph: {
-    title: "Regional Development Agencies Application Guide 2025 | RDA Funding Process",
+    title: "Regional Development Agencies Application Guide 2026 | RDA Funding Process",
     description: "Step-by-step guide with templates and strategies for successful RDA federal funding applications across all 7 Canadian regional agencies.",
     url: "https://www.fsidigital.ca/guides/apply-regional-development-agencies",
     images: ["/og-image.png"],

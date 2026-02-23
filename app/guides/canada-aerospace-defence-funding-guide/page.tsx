@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Aerospace & Defence Grants Canada 2025 | CSA & IDEaS Projects",
+  title: "Aerospace & Defence Grants Canada 2026 | CSA & IDEaS Projects",
   description: "Complete guide to aerospace and defence funding in Canada. Apply for CSA space technology grants, IDEaS defence innovation, and SIF aerospace streams.",
   keywords: "aerospace grants Canada, CSA funding application, IDEaS program guide, defence innovation grants, space technology funding, SIF aerospace",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-aerospace-defence-funding-guide",
   },
   openGraph: {
-    title: "Aerospace & Defence Grants Canada 2025 | Application Guide",
+    title: "Aerospace & Defence Grants Canada 2026 | Application Guide",
     description: "Step-by-step guide to securing funding from the Canadian Space Agency (CSA) and Department of National Defence (IDEaS).",
     url: "https://www.fsidigital.ca/guides/canada-aerospace-defence-funding-guide",
     images: ["/og-image.png"],

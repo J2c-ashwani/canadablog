@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women Entrepreneurship Strategy 2025 | $100K Grants & Loans",
+  title: "Women Entrepreneurship Strategy 2026 | $100K Grants & Loans",
   description:
     "Complete guide to Canada's Women Entrepreneurship Strategy (WES). Apply for the $100K Entrepreneurship Fund, $50K microloans, and BDC Women in Tech capital.",
   keywords:
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: "https://www.fsidigital.ca/guides/apply-women-entrepreneurship-strategy",
   },
   openGraph: {
-    title: "Women Entrepreneurship Strategy 2025 | $100K Funding",
+    title: "Women Entrepreneurship Strategy 2026 | $100K Funding",
     description: "Step-by-step application guide for WES grants and loans for Canadian women entrepreneurs.",
     url: "https://www.fsidigital.ca/guides/apply-women-entrepreneurship-strategy",
     images: ["/og-image.png"],

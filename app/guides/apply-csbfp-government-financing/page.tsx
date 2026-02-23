@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "CSBFP Government Financing Application Guide 2025 | Step-by-Step Federal Loan Guarantee Process",
+  title: "CSBFP Government Financing Application Guide 2026 | Step-by-Step Federal Loan Guarantee Process",
   description: "Complete step-by-step guide to applying for CSBFP government-guaranteed loans. Get federal financing templates, lender selection strategies, and proven application frameworks for up to $1.15M in financing.",
   keywords: "CSBFP government financing application guide, how to apply CSBFP loans, federal loan guarantee application Canada, CSBFP compliance application process, government guaranteed business loan application guide, Canada Small Business Financing Program",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-csbfp-government-financing",
   },
   openGraph: {
-    title: "CSBFP Government Financing Application Guide 2025 | Federal Loan Guarantee Process",
+    title: "CSBFP Government Financing Application Guide 2026 | Federal Loan Guarantee Process",
     description: "Step-by-step guide with templates and strategies for successful CSBFP government-guaranteed loan applications for Canadian small businesses.",
     url: "https://www.fsidigital.ca/guides/apply-csbfp-government-financing",
     images: ["/og-image.png"],
@@ -91,7 +91,7 @@ export default function CSBFPGovernmentFinancingGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-white/20 text-white border-white/30">
-                🏛️ Federal Loan Guarantee Application Guide 2025
+                🏛️ Federal Loan Guarantee Application Guide 2026
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
                 CSBFP Government Financing Application Guide

@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Biotech & Life Sciences Grants Canada 2025 | Clinical Trials Funding",
+  title: "Biotech & Life Sciences Grants Canada 2026 | Clinical Trials Funding",
   description: "Complete guide to life sciences funding. Apply for IRAP biotech grants, Clinical Trials Fund, and medical device commercialization support.",
   keywords: "life sciences grants Canada, biotech funding, clinical trials grants, medical device funding, health tech grants, biomanufacturing funding",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-life-sciences-funding-guide",
   },
   openGraph: {
-    title: "Biotech & Life Sciences Grants Canada 2025",
+    title: "Biotech & Life Sciences Grants Canada 2026",
     description: "Step-by-step guide to securing funding for drug development, clinical trials, and medical devices.",
     url: "https://www.fsidigital.ca/guides/canada-life-sciences-funding-guide",
     images: ["/og-image.png"],

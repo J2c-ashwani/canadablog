@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-    title: "Saskatchewan Business Grants 2025 | Provincial Funding Programs",
+    title: "Saskatchewan Business Grants 2026 | Provincial Funding Programs",
     description:
         "Find Saskatchewan business grants and provincial funding programs. Complete guide to Saskatchewan government grants, eligibility requirements, and application deadlines.",
     keywords:
@@ -33,7 +33,7 @@ const saskGrants: Grant[] = [
         status: "Active",
         tags: ["Tax Credit", "Angel Investment"],
         requirements: ["Eligible startup status"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "sk-lean",
@@ -51,7 +51,7 @@ const saskGrants: Grant[] = [
         status: "Active",
         tags: ["Efficiency", "Manufacturing"],
         requirements: ["Project quote"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "sk-job-grant",
@@ -69,7 +69,7 @@ const saskGrants: Grant[] = [
         status: "Active",
         tags: ["Training", "Employment"],
         requirements: ["Training plan"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
 ]
 
@@ -88,7 +88,7 @@ export default function SaskatchewanGrantsPage() {
                                 Saskatchewan Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Saskatchewan Business Grants 2025</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Saskatchewan Business Grants 2026</h1>
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover comprehensive Saskatchewan provincial funding programs, business grants, and government incentives
                             available to entrepreneurs and companies across Saskatchewan.

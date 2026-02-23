@@ -126,7 +126,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             <div>
               <h3 className="font-semibold text-lg mb-2">Get Expert Help</h3>
               <p className="text-sm text-gray-600 mb-4">
-                Professional grant application support with Top 50 USA & Canada Startup Grants 2025 guide
+                Professional grant application support with Top 50 USA & Canada Startup Grants 2026 guide
               </p>
             </div>
             <Button className="w-full bg-green-600 hover:bg-green-700 text-white" asChild>
@@ -207,7 +207,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           <h3 className="text-2xl font-bold mb-4">Get Your Free Grant Application Guide</h3>
           <p className="text-green-100 mb-6 text-lg">
             Download our comprehensive grant application guide with templates, strategies,
-            and Top 50 USA & Canada Startup Grants 2025.
+            and Top 50 USA & Canada Startup Grants 2026.
           </p>
           <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>
             <Link href="/contact?service=grant-expert-help">

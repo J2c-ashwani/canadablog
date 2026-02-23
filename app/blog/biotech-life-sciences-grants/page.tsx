@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Biotech & Life Sciences Grants Canada 2026 | Funding Guide",
-  description: "Complete 2026 guide to Canadian biotech funding. Access the Biomanufacturing Fund, Genome Canada grants, and clinical trial support.",
+  description: "Canada's biotech funding landscape: $720M+ available. Access the Biomanufacturing Fund, Genome Canada grants, and clinical trial support.",
   keywords: "Canada biotech grants, life sciences funding, biomanufacturing strategy, Genome Canada, CIHR grants, health tech startups Canada",
 }
 

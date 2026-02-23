@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women Entrepreneurship Loan Fund (WELF) 2025 | $50K Loans",
+  title: "Women Entrepreneurship Loan Fund (WELF) 2026 | $50K Loans",
   description: "Official guide to the Women Entrepreneurship Loan Fund (WELF). Apply for up to $50,000 in microloans through WEOC, NACCA, and other partners.",
   keywords: "Women Entrepreneurship Loan Fund, WELF loan, women business loans Canada, WEOC loans, NACCA women funding",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/women-entrepreneurship-loan-fund-guide",
   },
   openGraph: {
-    title: "Women Entrepreneurship Loan Fund 2025 | $50K Microloans",
+    title: "Women Entrepreneurship Loan Fund 2026 | $50K Microloans",
     description: "Step-by-step application guide for WELF microloans via WEOC, NACCA, and Coralus.",
     url: "https://www.fsidigital.ca/guides/women-entrepreneurship-loan-fund-guide",
     images: ["/og-image.png"],

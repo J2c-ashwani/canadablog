@@ -7,7 +7,7 @@ import { CheckCircle, FileText, Clock, AlertCircle } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "How to Apply for Government Grants USA 2025 | Step-by-Step Guide",
+  title: "How to Apply for Government Grants USA 2026 | Step-by-Step Guide",
   description:
     "Complete guide on how to apply for government grants in the USA. Step-by-step process, required documents, deadlines, and expert tips for successful applications.",
   keywords:

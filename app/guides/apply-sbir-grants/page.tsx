@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "SBIR Phase I & II Requirements 2025 | $1.7M R&D Funding",
+  title: "SBIR Phase I & II Requirements 2026 | $1.7M R&D Funding",
   description: "Complete guide to Small Business Innovation Research (SBIR) grants. Learn how to write a winning proposal for Phase I ($250k) and Phase II ($1.7M) funding.",
   keywords: "SBIR grant requirements, SBIR Phase I vs Phase II, federal R&D grants, NSF SBIR, NIH SBIR, DoD small business grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-sbir-grants",
   },
   openGraph: {
-    title: "SBIR Grant Application Guide 2025 | $1.7M Funding",
+    title: "SBIR Grant Application Guide 2026 | $1.7M Funding",
     description: "Step-by-step guide to applying for federal R&D grants. Download proposal templates and budget guides.",
     url: "https://www.fsidigital.ca/guides/apply-sbir-grants",
     images: ["/og-image.png"],
@@ -79,7 +79,7 @@ export default function ApplySBIRGrantsGuide() {
                 🚀 Federal R&D Guide
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
-                How to Apply for <br className="hidden md:block" /> SBIR Grants (2025)
+                How to Apply for <br className="hidden md:block" /> SBIR Grants (2026)
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-indigo-100 leading-relaxed text-pretty">
                 The ultimate guide to "America's Seed Fund". <br className="hidden md:block" /> Secure <strong>$1.7 Million+</strong> in non-dilutive R&D funding.

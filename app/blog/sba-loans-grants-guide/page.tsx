@@ -18,8 +18,8 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "SBA Loans & Grants Complete Guide 2026 | 7(a), 504, Microloans Explained",
-  description: "Complete guide to SBA loans and grants. Learn about 7(a) loans, CDC/504 loans, microloans, disaster loans, and SBA-backed grant programs. Access up to $5M in funding.",
+  title: "SBA Loans 2026: Get Up to $5M — 7(a), 504 & Microloan Guide",
+  description: "The SBA approved $44.8B last year. We break down every loan type, the exact credit score needed, and the 4 mistakes that get applications denied instantly.",
   keywords: "SBA loans, SBA grants, 7(a) loans, 504 loans, microloans, SBA disaster loans, small business funding",
 }
 

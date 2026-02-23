@@ -10,10 +10,11 @@ import type { Metadata } from "next"
 import { ExpertTipBox } from "@/components/blog/ExpertTipBox"
 import AdSlot from "@/components/blog/AdSlot"
 import NewsletterBox from "@/components/blog/NewsletterBox"
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema"
 
 export const metadata: Metadata = {
   title: "Canadian Government Grants (2026): The Complete Federal Funding Guide",
-  description: "The ultimate guide to federal business grants in Canada. Master the SIF Streams, ISED, AAFC, and IRAP ecosystems. Learn how to secure funding for startups, R&D, and export growth.",
+  description: "Most businesses apply to the wrong agency and get rejected. This playbook shows you exactly which of the 3 federal agencies to target and the stacking limits that trip up 80% of applicants.",
   keywords: "Canada federal grants 2026, Strategic Innovation Fund streams, SR&ED guide 2026, IRAP funding guide, Canadian government business grants, startup funding Canada",
   openGraph: {
     title: "Canadian Government Grants (2026): The Complete Federal Funding Guide",
@@ -62,6 +63,11 @@ export default function CanadaFederalGrantsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <BreadcrumbSchema items={[
+        { name: "Home", url: "https://www.fsidigital.ca" },
+        { name: "Guides", url: "https://www.fsidigital.ca/blog" },
+        { name: "Canadian Government Grants", url: "https://www.fsidigital.ca/blog/canada-federal-grants" }
+      ]} />
       <div className="min-h-screen bg-gray-50 bg-slate-50 dark:bg-neutral-900">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-red-700 to-red-900 text-white py-24 relative overflow-hidden">

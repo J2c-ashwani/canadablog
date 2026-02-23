@@ -8,11 +8,11 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canadian Government Grants for Business 2025 | Federal & Provincial $12B+ Available",
+  title: "Canadian Government Grants for Business 2026 | Federal & Provincial $12B+ Available",
   description: "Comprehensive guide to Canadian government grants for businesses. Access federal programs like Strategic Innovation Fund, IRAP, and provincial funding with $12B+ available for all business types.",
   keywords: "Canadian government grants, Canada business funding, federal grants Canada, provincial grants, startup funding Canada, Strategic Innovation Fund, IRAP",
   openGraph: {
-    title: "Canadian Government Grants for Business 2025 | Federal & Provincial $12B+ Available",
+    title: "Canadian Government Grants for Business 2026 | Federal & Provincial $12B+ Available",
     description: "Complete guide to Canadian government business grants with federal and provincial programs offering $12B+ in funding opportunities.",
     url: "https://www.fsidigital.ca/canada/government-grants",
     images: ["/og-image.png"],

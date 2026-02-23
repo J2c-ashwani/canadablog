@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-  title: "Ontario Business Grants 2025 | Provincial Funding Programs",
+  title: "Ontario Business Grants 2026 | Provincial Funding Programs",
   description:
     "Find Ontario business grants and provincial funding programs. Complete guide to Ontario government grants, eligibility requirements, and application deadlines.",
   keywords:
@@ -36,7 +36,7 @@ const ontarioGrants: Grant[] = [
     status: "Active",
     tags: ["Manufacturing", "Innovation", "Supply Chain"],
     requirements: ["Project proposal", "Financial statements", "Job creation potential"],
-    lastUpdated: "2025-01-01"
+    lastUpdated: "2026-01-01"
   },
   {
     id: "on-tax-credit",
@@ -54,7 +54,7 @@ const ontarioGrants: Grant[] = [
     status: "Active",
     tags: ["Tax Credit", "R&D", "Innovation"],
     requirements: ["Tax return filing", "SR&ED claim"],
-    lastUpdated: "2025-01-01"
+    lastUpdated: "2026-01-01"
   },
   {
     id: "on-scale-vouchers",
@@ -72,7 +72,7 @@ const ontarioGrants: Grant[] = [
     status: "Active",
     tags: ["Voucher", "Advisory", "Scale-up"],
     requirements: ["Application form", "Growth plan"],
-    lastUpdated: "2025-01-01"
+    lastUpdated: "2026-01-01"
   },
   {
     id: "oce-tech",
@@ -90,7 +90,7 @@ const ontarioGrants: Grant[] = [
     status: "Active",
     tags: ["Deep Tech", "Commercialization", "Research"],
     requirements: ["Collaboration agreement", "Project plan"],
-    lastUpdated: "2025-01-01"
+    lastUpdated: "2026-01-01"
   },
 ]
 
@@ -109,7 +109,7 @@ export default function OntarioGrantsPage() {
                 Ontario Provincial Funding
               </Badge>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Ontario Business Grants 2025</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Ontario Business Grants 2026</h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Discover comprehensive Ontario provincial funding programs, business grants, and government incentives
               available to entrepreneurs and companies across Ontario.

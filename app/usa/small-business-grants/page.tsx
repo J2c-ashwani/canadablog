@@ -10,12 +10,12 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Small Business Grants USA 2025 | SBA & Federal Small Business Funding",
+  title: "Small Business Grants USA 2026: $44.8B Available [Apply Now]",
   description:
     "Find small business grants in the USA. Browse SBA grants, federal small business funding, microloans, and government programs with up to $2M available.",
   keywords: "small business grants usa, SBA grants, small business funding, federal grants small business, government business grants",
   openGraph: {
-    title: "Small Business Grants USA 2025 | SBA & Federal Small Business Funding",
+    title: "Small Business Grants USA 2026: $44.8B Available [Apply Now]",
     description: "Find small business grants and funding programs in the USA.",
     url: "https://www.fsidigital.ca/usa/small-business-grants",
   },

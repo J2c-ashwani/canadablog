@@ -8,11 +8,11 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women Business Grants Canada 2025 | $6B+ Funding for Women Entrepreneurs",
+  title: "Women Business Grants Canada 2026: $6B+ Funding [Full List]",
   description: "Complete guide to women business grants in Canada. Access Women Entrepreneurship Strategy, loan funds, provincial programs, and $6B+ in funding for women-owned and women-led businesses.",
   keywords: "women business grants Canada, women entrepreneur funding, women entrepreneurship strategy, grants for women owned businesses, female entrepreneur grants, women business loans Canada, funding for women entrepreneurs",
   openGraph: {
-    title: "Women Business Grants Canada 2025 | $6B+ Funding for Women Entrepreneurs",
+    title: "Women Business Grants Canada 2026: $6B+ Funding [Full List]",
     description: "Comprehensive funding guide for Canadian women entrepreneurs with federal programs, provincial grants, and $6B+ available through Women Entrepreneurship Strategy.",
     url: "https://www.fsidigital.ca/canada/women-business-grants",
     images: ["/og-image.png"],

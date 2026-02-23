@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "DOE Clean Energy Grants 2025 | $62B Funding Guide",
+  title: "DOE Clean Energy Grants 2026 | $62B Funding Guide",
   description: "Official guide to Department of Energy (DOE) grants. Funding for solar, wind, and clean tech startups. Learn how to apply for ARPA-E and EERE grants.",
   keywords: "DOE clean energy grants, solar energy funding, wind energy grants, ARPA-E application, EERE funding opportunities, clean tech startup grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-doe-clean-energy-grants",
   },
   openGraph: {
-    title: "DOE Clean Energy Grant Guide 2025 | $62B Available",
+    title: "DOE Clean Energy Grant Guide 2026 | $62B Available",
     description: "Access billions in federal funding for renewable energy and clean tech. Step-by-step application guide.",
     url: "https://www.fsidigital.ca/guides/apply-doe-clean-energy-grants",
     images: ["/og-image.png"],
@@ -79,7 +79,7 @@ export default function DOECleanEnergyGrantsGuide() {
                 ⚡ Federal Energy Grants
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
-                DOE Clean Energy <br className="hidden md:block" /> Grants (2025)
+                DOE Clean Energy <br className="hidden md:block" /> Grants (2026)
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-emerald-100 leading-relaxed text-pretty">
                 Tap into the <strong>$62 Billion</strong> clean energy revolution. <br className="hidden md:block" /> Funding for Solar, Wind, and Deep Tech.

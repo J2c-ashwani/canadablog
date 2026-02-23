@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Alberta Business Grants 2025: Complete Application Guide | Alberta Innovates, ERA, PrairiesCan",
+  title: "Alberta Business Grants 2026: Complete Application Guide | Alberta Innovates, ERA, PrairiesCan",
   description: "Complete step-by-step guide to applying for Alberta business grants and provincial funding. Get Alberta application templates, energy innovation strategies, and frameworks for Alberta Innovates, ERA, and economic diversification programs.",
   keywords: "Alberta business grants, Alberta Innovates application, ERA funding, Alberta energy innovation grants, PrairiesCan Alberta, how to apply Alberta government grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-alberta-business-grants",
   },
   openGraph: {
-    title: "Alberta Business Grants Application Guide 2025 | Energy & Innovation Funding",
+    title: "Alberta Business Grants Application Guide 2026 | Energy & Innovation Funding",
     description: "Step-by-step guide with templates and strategies for successful Alberta provincial funding applications.",
     url: "https://www.fsidigital.ca/guides/apply-alberta-business-grants",
     images: ["/og-image.png"],
@@ -91,7 +91,7 @@ export default function AlbertaBusinessGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-white/20 text-white border-white/30">
-                🛢️ Energy Province Business Funding Guide 2025
+                🛢️ Energy Province Business Funding Guide 2026
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
                 How to Apply for Alberta Business Grants

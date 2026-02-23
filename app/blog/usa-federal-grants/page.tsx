@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "USA Federal Business Grants 2026 | Complete Guide to Federal Funding Programs",
+  title: "US Federal Grants 2026: SBIR, SBA & Grants.gov Playbook",
   description: "Comprehensive guide to USA federal business grants including SBIR, STTR, SBA programs, minority grants, women-owned business grants, and state-specific funding opportunities.",
   keywords: "federal business grants USA, federal funding programs, SBIR grants, STTR grants, SBA grants, government grants for small business",
 }

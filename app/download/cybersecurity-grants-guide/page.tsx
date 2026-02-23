@@ -123,7 +123,7 @@ export default function CybersecurityGrantsGuideDownloadPage() {
                     <Card className="border-purple-200 bg-white">
                       <CardContent className="pt-6 text-center">
                         <div className="text-3xl font-bold text-purple-600 mb-1">106</div>
-                        <div className="text-sm text-gray-600 mb-2">DOD Topics 2025</div>
+                        <div className="text-sm text-gray-600 mb-2">DOD Topics 2026</div>
                         <div className="text-xs text-gray-500">Cybersecurity focus</div>
                       </CardContent>
                     </Card>

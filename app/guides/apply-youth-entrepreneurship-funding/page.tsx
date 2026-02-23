@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Youth Entrepreneurship Funding Guide 2025 | Futurpreneur & Grants",
+  title: "Youth Entrepreneurship Funding Guide 2026 | Futurpreneur & Grants",
   description: "Complete guide to Futurpreneur Canada loans, youth business grants, and startup funding for ages 18-39. Get application templates and mentor matching tips.",
   keywords: "Futurpreneur Canada, youth business grants, young entrepreneur loans, CYBF application, under 40 business funding, student business grants Ontario",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-youth-entrepreneurship-funding",
   },
   openGraph: {
-    title: "Youth Entrepreneurship Funding Guide 2025",
+    title: "Youth Entrepreneurship Funding Guide 2026",
     description: "Launch your business with Futurpreneur and youth grants. Step-by-step guide for Canadian founders aged 18-39.",
     url: "https://www.fsidigital.ca/guides/apply-youth-entrepreneurship-funding",
     images: ["/og-image.png"],

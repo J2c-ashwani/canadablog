@@ -15,7 +15,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Women Entrepreneurship Fund (WEF) 2026 | Status & Alternatives",
-  description: "Is the Women Entrepreneurship Fund still open? No. Learn about the 2026 alternatives: The $50k WELF loan and the Ecosystem Fund.",
+  description: "The Women Entrepreneurship Fund is closed — but $6B+ in alternatives exist. The $50K WELF loan and Ecosystem Fund are taking applications now.",
   keywords: "Women Entrepreneurship Fund application, WEF grant status, Canada women business grants, WELF vs WEF, women entrepreneur funding Canada 2026",
 }
 

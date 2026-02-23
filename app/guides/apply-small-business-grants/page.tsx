@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Small Business Grants 2025 | SBA & Federal Funding Guide",
+  title: "Small Business Grants 2026 | SBA & Federal Funding Guide",
   description: "Stop searching for 'free money' scams. Learn the real way to get small business funding through SBA 7(a) loans, microloans, and federal grants.",
   keywords: "small business grants, SBA 7a loan requirements, apply for business grants, federal small business funding, startup grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-small-business-grants",
   },
   openGraph: {
-    title: "Small Business Grants & Loans Guide 2025",
+    title: "Small Business Grants & Loans Guide 2026",
     description: "The definitive guide to SBA loans and federal grants. Learn the difference between 7(a) loans and SBIR grants.",
     url: "https://www.fsidigital.ca/guides/apply-small-business-grants",
     images: ["/og-image.png"],

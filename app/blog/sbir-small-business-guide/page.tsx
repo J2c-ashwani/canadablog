@@ -15,7 +15,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "SBIR Small Business Innovation Research 2026 | Complete Federal R&D Grant Guide",
-  description: "Complete guide to SBIR grants for small businesses. Learn Phase I & II funding up to $1.7M, eligibility requirements, application strategies, and how to win federal R&D grants.",
+  description: "SBIR awards $4B/year to small businesses — but you need the right strategy. Phase I ($275K) and Phase II ($1.7M) breakdown with agency-specific tips.",
   keywords: "SBIR grants, small business innovation research, federal R&D grants, SBIR Phase I Phase II, innovation funding, government grants for startups",
 }
 

@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Federal Grants Application Tips 2025 | Expert Acceptance Strategies",
+  title: "Federal Grants Application Tips 2026 | Expert Acceptance Strategies",
   description: "Master the federal grant application process. Expert tips on writing narratives, budget justification, SAM.gov registration, and avoiding rejection.",
   keywords: "federal grant application tips, grants.gov strategies, write winning grant proposal, federal funding guide, SAM.gov registration tips",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/federal-grants-application-tips",
   },
   openGraph: {
-    title: "Federal Grants Application Tips 2025 | Expert Strategies",
+    title: "Federal Grants Application Tips 2026 | Expert Strategies",
     description: "Stop getting rejected. Learn the insider tips to writing winning federal grant applications.",
     url: "https://www.fsidigital.ca/guides/federal-grants-application-tips",
     images: ["/og-image.png"],

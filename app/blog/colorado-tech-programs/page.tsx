@@ -15,7 +15,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Colorado Tech Startup Grants 2026-2027 | $500K Advanced Industries Accelerator, $250K Early-Stage Capital, SBIR Matching, Clean Energy Fund",
-  description: "Complete 2026-2027 guide to Colorado technology startup grants. Advanced Industries Accelerator Early-Stage Capital grants up to $250K, Proof of Concept $150K, 35% Investment Tax Credit, SBIR State Matching, Clean Energy Fund supporting Denver Boulder Colorado Springs tech corridor ecosystem.",
+  description: "Colorado's Advanced Industries program gives startups up to $250K in early-stage capital. Plus the 35% Investment Tax Credit and SBIR state matching.",
   keywords: "Colorado tech startup grants 2026, Advanced Industries Accelerator grants Colorado, Early-Stage Capital grants $250K, Colorado SBIR matching, Denver tech corridor funding, Boulder startup grants, Colorado Springs innovation programs, Clean Energy Fund Colorado, Investment Tax Credit 35%, Colorado advanced industries seven sectors",
   openGraph: {
     title: "Colorado Tech Grants 2026 | $250K Early-Stage, 35% Tax Credit, SBIR Match",

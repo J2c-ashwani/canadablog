@@ -8,7 +8,7 @@ import { HelpCircle } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "USA Small Business Grants FAQ 2025 | Common Questions Answered",
+  title: "USA Small Business Grants FAQ 2026 | Common Questions Answered",
   description:
     "Get answers to frequently asked questions about USA small business grants. Expert guidance on eligibility, applications, deadlines, and funding requirements.",
   keywords:

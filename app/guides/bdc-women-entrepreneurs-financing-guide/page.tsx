@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "BDC Woman Entrepreneur Financing 2025 | $100K Online Loan",
+  title: "BDC Woman Entrepreneur Financing 2026 | $100K Online Loan",
   description: "Complete guide to BDC's Women Entrepreneur financing. Apply for the $100K online loan, Thrive Venture Fund, and advisory services.",
   keywords: "BDC women entrepreneur loan, BDC Thrive Lab, women business loans Canada, BDC advisory services, female founder funding",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/bdc-women-entrepreneurs-financing-guide",
   },
   openGraph: {
-    title: "BDC Women Financing 2025 | Loans & Venture Capital",
+    title: "BDC Women Financing 2026 | Loans & Venture Capital",
     description: "Step-by-step guide to securing up to $100k online or millions in venture capital from BDC.",
     url: "https://www.fsidigital.ca/guides/bdc-women-entrepreneurs-financing-guide",
     images: ["/og-image.png"],

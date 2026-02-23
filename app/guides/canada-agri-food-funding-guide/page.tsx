@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Agri-Food & AgriTech Grants Canada 2025 | Processing & Innovation Funding",
+  title: "Agri-Food & AgriTech Grants Canada 2026 | Processing & Innovation Funding",
   description: "Guide to federal funding for food processing and agritech. Apply for AgriInnovate, AgriProcessing, and food automation grants.",
   keywords: "agri-food grants Canada, food processing funding, agritech grants, AgriInnovate application, food automation grants, sustainable food production funding",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-agri-food-funding-guide",
   },
   openGraph: {
-    title: "Agri-Food & AgriTech Grants Canada 2025 | Funding Guide",
+    title: "Agri-Food & AgriTech Grants Canada 2026 | Funding Guide",
     description: "Step-by-step guide to securing grants for food processing, agritech innovation, and value-added agriculture.",
     url: "https://www.fsidigital.ca/guides/canada-agri-food-funding-guide",
     images: ["/og-image.png"],

@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-    title: "Nova Scotia Business Grants 2025 | Provincial Funding Programs",
+    title: "Nova Scotia Business Grants 2026: Top 10 Programs [Free Guide]",
     description:
         "Find Nova Scotia business grants and provincial funding programs. Complete guide to Nova Scotia government grants, Invest Nova Scotia funding, and application deadlines.",
     keywords:
@@ -33,7 +33,7 @@ const nsGrants: Grant[] = [
         status: "Active",
         tags: ["Export", "Marketing"],
         requirements: ["Export plan", "Travel budget"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "ns-loan-guarantee",
@@ -51,7 +51,7 @@ const nsGrants: Grant[] = [
         status: "Active",
         tags: ["Loan", "Small Business"],
         requirements: ["Business plan", "Credit union application"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "ns-gto",
@@ -69,7 +69,7 @@ const nsGrants: Grant[] = [
         status: "Active",
         tags: ["Hiring", "Youth"],
         requirements: ["New hire details"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
 ]
 
@@ -88,7 +88,7 @@ export default function NovaScotiaGrantsPage() {
                                 Nova Scotia Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Nova Scotia Business Grants 2025</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Nova Scotia Business Grants 2026</h1>
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover comprehensive Nova Scotia provincial funding programs, business grants, and government incentives
                             available to entrepreneurs and companies across Nova Scotia.

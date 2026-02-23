@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-    title: "Manitoba Business Grants 2025 | Provincial Funding Programs",
+    title: "Manitoba Business Grants 2026 | Provincial Funding Programs",
     description:
         "Find Manitoba business grants and provincial funding programs. Complete guide to Manitoba government grants, eligibility requirements, and application deadlines.",
     keywords:
@@ -33,7 +33,7 @@ const manitobaGrants: Grant[] = [
         status: "Active",
         tags: ["Innovation", "Commercialization"],
         requirements: ["Business plan", "Market analysis"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "mb-mwci",
@@ -51,7 +51,7 @@ const manitobaGrants: Grant[] = [
         status: "Active",
         tags: ["Capital", "Investment"],
         requirements: ["Project proposal", "Economic benefit analysis"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "mb-sector",
@@ -69,7 +69,7 @@ const manitobaGrants: Grant[] = [
         status: "Active",
         tags: ["Sector", "Growth"],
         requirements: ["Sector alignment"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
 ]
 
@@ -88,7 +88,7 @@ export default function ManitobaGrantsPage() {
                                 Manitoba Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Manitoba Business Grants 2025</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Manitoba Business Grants 2026</h1>
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover comprehensive Manitoba provincial funding programs, business grants, and government incentives
                             available to entrepreneurs and companies across Manitoba.

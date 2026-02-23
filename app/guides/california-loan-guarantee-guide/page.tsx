@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "California Small Business Loan Guarantee 2025 | IBank Guide",
+  title: "California Small Business Loan Guarantee 2026 | IBank Guide",
   description: "Official guide to the California Small Business Loan Guarantee Program (SSBCI). How to get state-backed loans up to $2.5 million if you lack collateral.",
   keywords: "California small business loan guarantee, IBank loan guarantee, California SSBCI, state backed business loans, FDC loan guarantee",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/california-loan-guarantee-guide",
   },
   openGraph: {
-    title: "California Small Business Loan Guarantee Guide 2025",
+    title: "California Small Business Loan Guarantee Guide 2026",
     description: "Get approved for a business loan even if you lack collateral. The state of California will guarantee up to 95% of your loan.",
     url: "https://www.fsidigital.ca/guides/california-loan-guarantee-guide",
     images: ["/og-image.png"],

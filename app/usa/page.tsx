@@ -10,13 +10,13 @@ import { getAllStateDetails } from "@/lib/data/stateDetails"
 
 
 export const metadata: Metadata = {
-  title: "USA Government Grants | Federal & State Business Funding 2025",
+  title: "USA Government Grants 2026: Federal & State Funding [50 States]",
   description:
     "Find USA government grants for small businesses and startups. Explore federal funding, state programs, SBIR/STTR grants, and opportunities for women and minorities.",
   keywords:
     "USA government grants, federal business grants, state business grants, small business funding, SBIR grants, startup grants USA",
   openGraph: {
-    title: "USA Government Grants | Federal & State Business Funding 2025",
+    title: "USA Government Grants 2026: Federal & State Funding [50 States]",
     description: "Find USA government grants for small businesses and startups. Explore federal funding and state programs.",
     url: "https://www.fsidigital.ca/usa",
   },

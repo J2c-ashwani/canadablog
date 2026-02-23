@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-    title: "Agriculture Startup Funding 2025 | Canada Agritech Grants",
+    title: "Agriculture Grants Canada 2026: AAFC & Agritech Programs",
     description:
         "Find agriculture startup funding and grants in Canada. Complete guide to agritech grants, FCC loans, and Sustainable Canadian Agricultural Partnership.",
     keywords:
@@ -33,7 +33,7 @@ const agriGrants: Grant[] = [
         status: "Active",
         tags: ["Risk Management", "Farm"],
         requirements: ["Risk assessment"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "ag-agriinnovate",
@@ -51,7 +51,7 @@ const agriGrants: Grant[] = [
         status: "Active",
         tags: ["Innovation", "Commercialization"],
         requirements: ["Business case", "Innovation description"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "ag-fcc",
@@ -69,7 +69,7 @@ const agriGrants: Grant[] = [
         status: "Active",
         tags: ["Loan", "Young Farmer"],
         requirements: ["Credit check", "Business plan"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
 ]
 
@@ -88,7 +88,7 @@ export default function AgricultureGrantsPage() {
                                 Agriculture Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Agriculture Startup Funding 2025</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Agriculture Grants Canada 2026</h1>
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover grants, loans, and funding opportunities for agriculture startups, agritech innovation, and food processors in Canada.
                         </p>

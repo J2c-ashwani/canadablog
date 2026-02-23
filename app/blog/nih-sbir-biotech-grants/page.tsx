@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "NIH SBIR Biotech Grants 2026-2027 | $285K Phase I, $2M Phase II Medical Device & Digital Health Funding",
-  description: "Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $285K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation.",
+  description: "NIH awards $1.2B/year in SBIR/STTR grants. Phase I: $285K, Phase II: $2M. Get the exact submission windows and review criteria for biotech startups.",
   keywords: "NIH SBIR grants 2026, biotech grants, medical device funding, digital health SBIR, therapeutics grants, diagnostics funding, NIH innovation grants",
   openGraph: {
     title: "NIH SBIR Grants 2026 | $285K-$2M Biotech Funding",

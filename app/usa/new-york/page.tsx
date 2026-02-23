@@ -10,7 +10,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-    title: "New York Business Grants 2025 | NY State Funding Programs",
+    title: "New York Business Grants 2026 | NY State Funding Programs",
     description:
         "Find New York small business grants and state funding programs. Complete guide to NYS government grants, eligibility requirements, and application deadlines.",
     keywords:
@@ -110,7 +110,7 @@ export default function NewYorkGrantsPage() {
                                 New York State Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">New York Business Grants 2025</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">New York Business Grants 2026</h1>
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Access comprehensive New York state funding programs, startup grants, and economic incentives
                             for businesses in NYC, Upstate, and across the Empire State.

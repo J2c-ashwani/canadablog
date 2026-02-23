@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Complete IRAP Application Guide 2025 | Step-by-Step R&D Grant Process",
+  title: "Complete IRAP Application Guide 2026 | Step-by-Step R&D Grant Process",
   description: "Step-by-step guide to applying for NRC IRAP grants. Get templates, R&D project frameworks, and expert tips for successful innovation funding.",
   keywords: "IRAP application guide, how to apply IRAP, NRC IRAP process, R&D grant application, industrial research funding, Canada innovation grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-irap-grants",
   },
   openGraph: {
-    title: "Complete IRAP Application Guide 2025 | Step-by-Step R&D Grant Process",
+    title: "Complete IRAP Application Guide 2026 | Step-by-Step R&D Grant Process",
     description: "Step-by-step guide to applying for NRC IRAP grants. Get templates, R&D project frameworks, and expert tips for successful innovation funding.",
     url: "https://www.fsidigital.ca/guides/apply-irap-grants",
     images: ["/og-image.png"],

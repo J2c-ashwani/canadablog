@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "NSERC Research Grants 2025 | I2I & Alliance Application Guide",
+  title: "NSERC Research Grants 2026 | I2I & Alliance Application Guide",
   description: "Complete guide to NSERC Idea to Innovation (I2I) and Alliance grants. Learn how to secure up to $1M+ in research funding for university-industry partnerships.",
   keywords: "NSERC I2I application, Alliance grants Canada, university research funding, NSERC proposal guide, HQP training plan",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/nserc-research-grants-guide",
   },
   openGraph: {
-    title: "NSERC Research Grants Guide 2025",
+    title: "NSERC Research Grants Guide 2026",
     description: "Secure funding for your research lab. Step-by-step guide to NSERC I2I and Alliance grants.",
     url: "https://www.fsidigital.ca/guides/nserc-research-grants-guide",
     images: ["/og-image.png"],

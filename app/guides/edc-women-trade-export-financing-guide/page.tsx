@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "EDC Women in Trade 2025 | $50M Export Funding",
+  title: "EDC Women in Trade 2026 | $50M Export Funding",
   description: "Complete guide to EDC's Women in Trade financing. Apply for the $50M Inclusive Trade Investment Fund, export credit insurance, and global market access.",
   keywords: "EDC Women in Trade, export financing Canada, Inclusive Trade Investments, women exporter grants, EDC equity fund",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/edc-women-trade-export-financing-guide",
   },
   openGraph: {
-    title: "EDC Women in Trade Financing 2025 | Export Capital",
+    title: "EDC Women in Trade Financing 2026 | Export Capital",
     description: "Step-by-step guide to securing up to $50M in equity and export financing for women-led businesses.",
     url: "https://www.fsidigital.ca/guides/edc-women-trade-export-financing-guide",
     images: ["/og-image.png"],

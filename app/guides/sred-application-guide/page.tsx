@@ -8,7 +8,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "SR&ED Tax Credits 2025: Application, Rates & Eligibility",
+  title: "SR&ED Tax Credits 2026: Application, Rates & Eligibility",
   description: "Complete guide to claiming SR&ED tax credits. Learn how to get up to 65% of your R&D costs refunded by the CRA.",
   keywords: "SR&ED tax credits, SRED application, R&D tax incentives canada, T661 form, scientific research experimental development",
   alternates: {
@@ -147,7 +147,7 @@ export default function SREDApplicationGuide() {
                   <div className="flex items-start">
                     <Shield className="w-8 h-8 text-green-600 mr-4 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-bold text-green-900 mb-2">It's 2025: Rates have Improved</h4>
+                      <h4 className="font-bold text-green-900 mb-2">It's 2026: Rates have Improved</h4>
                       <p className="text-green-800 leading-relaxed">
                         Recent changes have expanded eligibility for some public corporations and restored capital expenditure credits.
                         <strong> Always use the latest T661 form</strong>.

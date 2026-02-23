@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "SBA Loan Requirements 2025 | 7(a), 504 & Microloans",
+  title: "SBA Loan Requirements 2026 | 7(a), 504 & Microloans",
   description: "Official guide to applying for SBA loans. Compare 7(a), CDC/504, and Microloan requirements. Learn how to get approved for up to $5M.",
   keywords: "SBA loan requirements, SBA 7a loan application, SBA 504 loan guide, federal small business loans, SBA lender match",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-sba-loans",
   },
   openGraph: {
-    title: "SBA Loan Application Guide 2025 | $5M Funding",
+    title: "SBA Loan Application Guide 2026 | $5M Funding",
     description: "Step-by-step process for SBA 7(a) and 504 loans. Download checklists and find approved lenders.",
     url: "https://www.fsidigital.ca/guides/apply-sba-loans",
     images: ["/og-image.png"],
@@ -79,7 +79,7 @@ export default function ApplySBALoansGuide() {
                 🏢 Federal Loan Guide
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
-                How to Apply for <br className="hidden md:block" /> SBA Loans (2025)
+                How to Apply for <br className="hidden md:block" /> SBA Loans (2026)
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed text-pretty">
                 The complete handbook to 7(a), 504, and Microloans. <br className="hidden md:block" /> Secure up to <strong>$5 Million</strong> in government-backed funding.

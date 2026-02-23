@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "CleanTech Funding Canada 2025 | SDTC & Net Zero Grants",
+  title: "CleanTech Funding Canada 2026 | SDTC & Net Zero Grants",
   description: "Complete guide to clean technology funding. Apply for SDTC, Clean Tech ITCs (30%), and Net Zero Accelerator grants.",
   keywords: "cleantech funding Canada, SDTC application guide, Clean Tech ITC, Net Zero Accelerator, environmental grants, green technology funding",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-cleantech-funding-guide",
   },
   openGraph: {
-    title: "CleanTech Funding Canada 2025 | SDTC & ITCs",
+    title: "CleanTech Funding Canada 2026 | SDTC & ITCs",
     description: "Step-by-step guide to securing up to $15M in clean tech funding and 30% tax credits.",
     url: "https://www.fsidigital.ca/guides/canada-cleantech-funding-guide",
     images: ["/og-image.png"],

@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Agriculture & Agri-Food Canada Application Guide 2025 | Federal Funding",
+  title: "Agriculture & Agri-Food Canada Application Guide 2026 | Federal Funding",
   description: "Step-by-step guide to applying for AAFC federal funding. Get application templates, AgriInnovate strategies, and compliance checklists.",
   keywords: "Agriculture Agri-Food Canada application, AAFC funding guide, AgriInnovate application, AgriScience program, farm grants Canada, agricultural funding process",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-agriculture-agri-food-canada",
   },
   openGraph: {
-    title: "Agriculture & Agri-Food Canada Application Guide 2025 | Federal Funding",
+    title: "Agriculture & Agri-Food Canada Application Guide 2026 | Federal Funding",
     description: "Step-by-step guide with templates and strategies for successful AAFC federal funding applications.",
     url: "https://www.fsidigital.ca/guides/apply-agriculture-agri-food-canada",
     images: ["/og-image.png"],

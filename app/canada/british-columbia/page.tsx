@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-    title: "BC Business Grants 2025 | British Columbia Funding Programs",
+    title: "BC Business Grants 2026: $200M+ Available [How to Apply]",
     description:
         "Find British Columbia business grants and provincial funding programs. Complete guide to BC government grants, Innovate BC funding, and application deadlines.",
     keywords:
@@ -33,7 +33,7 @@ const bcGrants: Grant[] = [
         status: "Active",
         tags: ["R&D", "Technology"],
         requirements: ["Consortium agreement", "Research plan"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "bc-clean-industry",
@@ -51,7 +51,7 @@ const bcGrants: Grant[] = [
         status: "Active",
         tags: ["Clean Tech", "Environment"],
         requirements: ["Emissions study", "Project plan"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "bc-employer-training",
@@ -69,7 +69,7 @@ const bcGrants: Grant[] = [
         status: "Active",
         tags: ["Training", "Workforce"],
         requirements: ["Training plan", "Employee eligibility"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "bc-buy-bc",
@@ -87,7 +87,7 @@ const bcGrants: Grant[] = [
         status: "Active",
         tags: ["Agriculture", "Marketing"],
         requirements: ["Marketing plan"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
 ]
 
@@ -106,7 +106,7 @@ export default function BritishColumbiaGrantsPage() {
                                 British Columbia Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">British Columbia Business Grants 2025</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">BC Business Grants 2026: $200M+ Available</h1>
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover comprehensive BC provincial funding programs, business grants, and government incentives
                             available to entrepreneurs and companies across British Columbia.

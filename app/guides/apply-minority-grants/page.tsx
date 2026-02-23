@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Minority & Women Business Grants 2025 | Certification Guide",
+  title: "Minority & Women Business Grants 2026 | Certification Guide",
   description: "Get certified for set-aside federal contracts. Comprehensive guide to 8(a), WOSB, and SDVOSB certifications and minority business grants.",
   keywords: "minority business grants, women owned business grants, 8a certification requirements, WOSB certification, SDVOSB grants, minority contracting",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-minority-grants",
   },
   openGraph: {
-    title: "Minority & Women Business Funding Guide 2025",
+    title: "Minority & Women Business Funding Guide 2026",
     description: "The federal government awards 23% of contracts to small businesses. Learn how to get your share through 8(a) and WOSB certification.",
     url: "https://www.fsidigital.ca/guides/apply-minority-grants",
     images: ["/og-image.png"],

@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "SBA Application Process 2025 | Step-by-Step Approval Guide",
+  title: "SBA Application Process 2026 | Step-by-Step Approval Guide",
   description: "Master the SBA application process. From EIN registration to 'Lender Match' and final approval. Download the 2025 document checklist.",
   keywords: "SBA application process, SBA 7a application steps, lenders match, SBA grant application, small business funding guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/sba-application-process",
   },
   openGraph: {
-    title: "SBA Loan & Grant Application Guide 2025",
+    title: "SBA Loan & Grant Application Guide 2026",
     description: "Step-by-step walkthrough of the federal funding process. Avoid common rejection mistakes.",
     url: "https://www.fsidigital.ca/guides/sba-application-process",
     images: ["/og-image.png"],
@@ -79,7 +79,7 @@ export default function SBAApplicationProcessGuide() {
                 📋 Application Masterclass
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
-                The SBA Application <br className="hidden md:block" /> Process (2025)
+                The SBA Application <br className="hidden md:block" /> Process (2026)
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-slate-200 leading-relaxed text-pretty">
                 From "Lender Match" to "Clear to Close". <br className="hidden md:block" /> Step-by-step instructions to get your federal funding approved.

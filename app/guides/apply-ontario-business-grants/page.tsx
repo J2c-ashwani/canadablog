@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Ontario Business Grants 2025: Complete Application Guide | Starter Company Plus, OCI, Ontario Creates",
+  title: "Ontario Business Grants 2026: Complete Application Guide | Starter Company Plus, OCI, Ontario Creates",
   description: "Complete step-by-step guide to applying for Ontario business grants and provincial funding. Get Ontario application templates, provincial strategies, and proven frameworks for Starter Company Plus, Ontario Creates, and OCI programs.",
   keywords: "Ontario business grants application guide, Ontario provincial funding application process, Starter Company Plus application, Ontario Creates funding application, how to apply Ontario grants, OCI funding",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-ontario-business-grants",
   },
   openGraph: {
-    title: "Ontario Business Grants Application Guide 2025 | Provincial Funding Process",
+    title: "Ontario Business Grants Application Guide 2026 | Provincial Funding Process",
     description: "Step-by-step guide with templates and strategies for successful Ontario provincial funding applications.",
     url: "https://www.fsidigital.ca/guides/apply-ontario-business-grants",
     images: ["/og-image.png"],
@@ -91,7 +91,7 @@ export default function OntarioBusinessGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-white/20 text-white border-white/30">
-                🍁 Provincial Business Funding Application Guide 2025
+                🍁 Provincial Business Funding Application Guide 2026
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
                 How to Apply for Ontario Business Grants

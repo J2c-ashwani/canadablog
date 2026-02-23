@@ -158,7 +158,7 @@ export default function SREDDownloadPage() {
                       <CardHeader>
                         <div className="flex items-center">
                           <Shield className="w-6 h-6 text-purple-600 mr-3" />
-                          <CardTitle className="text-purple-700">2025 Enhanced Rates Guide</CardTitle>
+                          <CardTitle className="text-purple-700">2026 Enhanced Rates Guide</CardTitle>
                         </div>
                       </CardHeader>
                       <CardContent>

@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-  title: "Texas Business Funding Programs 2025 | State Grants & Incentives",
+  title: "Texas Business Funding Programs 2026 | State Grants & Incentives",
   description:
     "Discover Texas business funding programs, state grants, and economic incentives. Complete guide to Texas government funding for startups and small businesses.",
   keywords:
@@ -109,7 +109,7 @@ export default function TexasGrantsPage() {
                 Texas State Funding
               </Badge>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Texas Business Funding Programs 2025</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Texas Business Funding Programs 2026</h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Explore comprehensive Texas state funding programs, business incentives, and government grants available
               to entrepreneurs and companies in the Lone Star State.

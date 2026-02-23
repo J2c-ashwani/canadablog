@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-    title: "Quebec Business Grants 2025 | Provincial Funding Programs",
+    title: "Quebec Business Grants 2026: 20+ Programs Open [Guide]",
     description:
         "Find Quebec business grants and provincial funding programs. Complete guide to Quebec government grants (programs de subventions), eligibility requirements, and application deadlines.",
     keywords:
@@ -33,7 +33,7 @@ const quebecGrants: Grant[] = [
         status: "Active",
         tags: ["Investment", "Strategic", "Growth"],
         requirements: ["Business plan", "Financials"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "qc-technoclimat",
@@ -51,7 +51,7 @@ const quebecGrants: Grant[] = [
         status: "Active",
         tags: ["Green", "Energy", "Innovation"],
         requirements: ["Technical documentation", "Emissions impact"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "qc-pme-action",
@@ -69,7 +69,7 @@ const quebecGrants: Grant[] = [
         status: "Active",
         tags: ["Productivity", "SME"],
         requirements: ["Project plan"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "qc-creativite",
@@ -87,7 +87,7 @@ const quebecGrants: Grant[] = [
         status: "Active",
         tags: ["Innovation", "Technology"],
         requirements: ["Innovation assessment"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
 ]
 
@@ -106,7 +106,7 @@ export default function QuebecGrantsPage() {
                                 Quebec Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Quebec Business Grants 2025</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Quebec Business Grants 2026: Programs Open Now</h1>
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover comprehensive Quebec provincial funding programs, business grants, and government incentives
                             available to entrepreneurs and companies across Quebec.

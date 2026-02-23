@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "AI Funding Canada 2025 | Scale AI & CDAP Grants",
+  title: "AI Funding Canada 2026 | Scale AI & CDAP Grants",
   description: "Complete guide to AI and digital adoption funding. Apply for Scale AI supercluster projects, CDAP digital transformation grants, and IRAP machine learning funding.",
   keywords: "AI funding Canada, Scale AI grants, CDAP application, machine learning grants, artificial intelligence funding, digital adoption grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-digital-ai-funding-guide",
   },
   openGraph: {
-    title: "AI Funding Canada 2025 | Scale AI & CDAP",
+    title: "AI Funding Canada 2026 | Scale AI & CDAP",
     description: "Step-by-step guide to securing up to $5M in AI funding and digital adoption grants.",
     url: "https://www.fsidigital.ca/guides/canada-digital-ai-funding-guide",
     images: ["/og-image.png"],

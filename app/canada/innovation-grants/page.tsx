@@ -8,11 +8,11 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Canada Innovation Grants 2025 | $4.2B+ R&D Funding for Canadian Innovators",
+  title: "Canada Innovation Grants 2026: $4.2B+ R&D Funding [Apply]",
   description: "Comprehensive guide to Canadian innovation grants. Access SR&ED, IRAP, SIF, NSERC, and 45+ programs offering $4.2B+ for research, development, and technology commercialization.",
   keywords: "Canada innovation grants, R&D funding Canada, SR&ED tax credits, IRAP grants, Strategic Innovation Fund, NSERC funding, technology commercialization Canada",
   openGraph: {
-    title: "Canada Innovation Grants 2025 | $4.2B+ R&D Funding for Canadian Innovators",
+    title: "Canada Innovation Grants 2026: $4.2B+ R&D Funding [Apply]",
     description: "Complete guide to Canadian innovation funding with federal and provincial programs offering $4.2B+ for research, development, and commercialization.",
     url: "https://grantfinder.pro/canada/innovation-grants",
     images: ["/og-image.png"],
@@ -69,7 +69,7 @@ export default function CanadaInnovationGrantsPage() {
                 <div className="p-6">
                   <div className="text-4xl font-bold text-purple-600 mb-2">35%</div>
                   <div className="text-gray-600 font-medium">SR&ED Refundable Rate</div>
-                  <div className="text-sm text-gray-500 mt-1">Enhanced 2025 Limits</div>
+                  <div className="text-sm text-gray-500 mt-1">Enhanced 2026 Limits</div>
                 </div>
                 <div className="p-6">
                   <div className="text-4xl font-bold text-orange-600 mb-2">$100M</div>

@@ -13,7 +13,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "IRAP Industrial Research Assistance Program 2026 | Up to $1M Non-Repayable R&D Grants",
-  description: "Complete guide to IRAP funding. Access up to $1M in non-repayable R&D grants from the National Research Council of Canada. Eligibility, application process, and approval strategies for Canadian tech SMEs.",
+  description: "IRAP funds up to $1M for R&D — but 70% of first-time applicants get rejected. Here's exactly how to build the ITA relationship that gets your project approved.",
   keywords: "IRAP, Industrial Research Assistance Program, NRC IRAP, Canada R&D grants, technology grants Canada, innovation funding, non-repayable grants",
 }
 

@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Quebec Business Grants 2025: Complete Application Guide | Investissement Québec, ESSOR, R&D Credits",
+  title: "Quebec Business Grants 2026: Complete Application Guide | Investissement Québec, ESSOR, R&D Credits",
   description: "Complete 2025 guide to Quebec provincial funding. Step-by-step process for Investissement Québec loans, ESSOR grants up to $15M, and 30% R&D tax credits. Bilingual support available.",
   keywords: "Quebec business grants, Investissement Québec, ESSOR program, aide aux entreprises, R&D tax credits quebec, subvention quebec, CDAE tax credit, Impulsion PME",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-quebec-business-grants",
   },
   openGraph: {
-    title: "Quebec Business Grants 2025: Complete Application Guide",
+    title: "Quebec Business Grants 2026: Complete Application Guide",
     description: "Unlock up to $15M in Quebec provincial funding. Learn the step-by-step process for ESSOR, IQ loans, and R&D credits.",
     url: "https://www.fsidigital.ca/guides/apply-quebec-business-grants",
     images: ["/og-image.png"],
@@ -91,7 +91,7 @@ export default function QuebecBusinessGrantsGuide() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-white/10 text-blue-100 border-blue-200/20 backdrop-blur-sm px-4 py-1.5 text-sm">
-                ⚜️ Guide Complet / Complete Guide 2025
+                ⚜️ Guide Complet / Complete Guide 2026
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
                 How to Apply for <br className="hidden md:block" />Quebec Business Grants

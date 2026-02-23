@@ -8,14 +8,14 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "SBA Growth Accelerator Fund 2025 | $200K Prizes",
+  title: "SBA Growth Accelerator Fund 2026 | $200K Prizes",
   description: "Guide to the SBA Growth Accelerator Fund Competition (GAFC). Funding for incubators, accelerators, and ecosystem builders supporting STEM/R&D startups.",
   keywords: "SBA growth accelerator fund, GAFC 2025, incubator grants, accelerator funding, ecosystem builder grants, STEM startup support",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/sba-growth-accelerator-fund-guide",
   },
   openGraph: {
-    title: "SBA Growth Accelerator Fund Competition 2025",
+    title: "SBA Growth Accelerator Fund Competition 2026",
     description: "Win up to $200,000 to built your startup ecosystem. Application guide for accelerators and incubators.",
     url: "https://www.fsidigital.ca/guides/sba-growth-accelerator-fund-guide",
     images: ["/og-image.png"],
@@ -79,7 +79,7 @@ export default function SBAGrowthAcceleratorFundGuide() {
                 🏆 Ecosystem Builder Guide
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
-                SBA Growth Accelerator <br className="hidden md:block" /> Fund (2025)
+                SBA Growth Accelerator <br className="hidden md:block" /> Fund (2026)
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-teal-100 leading-relaxed text-pretty">
                 Win up to <strong>$200,000</strong> to empower your startup community. <br className="hidden md:block" /> The complete guide to the GAFC.

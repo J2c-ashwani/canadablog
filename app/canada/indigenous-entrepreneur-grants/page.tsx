@@ -9,7 +9,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 
 export const metadata: Metadata = {
-    title: "Indigenous Entrepreneur Grants 2025 | Canada Funding",
+    title: "Indigenous Business Grants 2026: $500K+ Programs [Apply Now]",
     description:
         "Find grants and funding for Indigenous entrepreneurs in Canada. Complete guide to Indigenous business grants, CCAB resources, and government support.",
     keywords:
@@ -33,7 +33,7 @@ const indigenousGrants: Grant[] = [
         status: "Active",
         tags: ["Indigenous", "Entrepreneurship"],
         requirements: ["Proof of ancestry", "Business plan"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "ind-nacca",
@@ -51,7 +51,7 @@ const indigenousGrants: Grant[] = [
         status: "Active",
         tags: ["Financing", "Capital"],
         requirements: ["Business viability"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
     {
         id: "ind-ccab",
@@ -69,7 +69,7 @@ const indigenousGrants: Grant[] = [
         status: "Active",
         tags: ["Grants", "Support"],
         requirements: ["Membership"],
-        lastUpdated: "2025-01-01"
+        lastUpdated: "2026-01-01"
     },
 ]
 
@@ -88,7 +88,7 @@ export default function IndigenousGrantsPage() {
                                 Specific Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Indigenous Entrepreneur Grants 2025</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Indigenous Entrepreneur Grants 2026</h1>
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover grants, loans, and resources specifically designed to support Indigenous (First Nations, Inuit, and Métis) entrepreneurs and businesses across Canada.
                         </p>
