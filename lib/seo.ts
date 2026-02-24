@@ -1,6 +1,14 @@
 import { BlogPost } from './data/blogPosts';
 
 export function generateMetadata(post: BlogPost) {
+  // Determine OG category from post category
+  const ogCategory = post.category?.toLowerCase().includes('women') ? 'women'
+    : post.category?.toLowerCase().includes('usa') ? 'usa'
+      : post.category?.toLowerCase().includes('technology') || post.category?.toLowerCase().includes('innovation') ? 'tech'
+        : 'canada';
+
+  const ogImageUrl = `/api/og?title=${encodeURIComponent(post.seo.metaTitle || post.title)}&subtitle=${encodeURIComponent(post.seo.metaDescription || post.excerpt)}&category=${ogCategory}`;
+
   return {
     title: post.seo.metaTitle || `${post.title} | FSI Digital`,
     description: post.seo.metaDescription || post.excerpt,
@@ -12,7 +20,7 @@ export function generateMetadata(post: BlogPost) {
       siteName: 'FSI Digital',
       images: [
         {
-          url: post.seo.ogImage || `/images/blog/${post.image}`,
+          url: post.seo.ogImage || ogImageUrl,
           width: 1200,
           height: 630,
           alt: post.title,

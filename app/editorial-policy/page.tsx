@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://www.fsidigital.ca/editorial-policy",
     },
+    robots: { index: true, follow: true },
 }
 
 export default function EditorialPolicyPage() {

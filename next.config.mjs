@@ -33,25 +33,32 @@ const nextConfig = {
         destination: '/grant-finder',
         permanent: true,
       },
-      // Zombie Page Redirects (Feb 2026 Audit)
-      { source: '/blog/manitoba-government-business-grants', destination: '/blog/manitoba-business-grants-2025', permanent: true },
-      // Alberta Grant Consolidations (Batch 1 Cleanup)
+      // Zombie Page Redirects — Fixed Feb 2026 (pointing to correct 2026 slugs)
+      { source: '/blog/manitoba-government-business-grants', destination: '/blog/manitoba-business-grants-2026', permanent: true },
+      // Alberta Grant Consolidations
       { source: '/blog/alberta-government-business-grants', destination: '/blog/alberta-small-business-grants-guide', permanent: true },
       { source: '/blog/alberta-business-grants-2026', destination: '/blog/alberta-small-business-grants-guide', permanent: true },
       { source: '/blog/alberta-business-grants-2025', destination: '/blog/alberta-small-business-grants-guide', permanent: true },
-      { source: '/blog/quebec-government-business-grants', destination: '/blog/quebec-business-grants-2025', permanent: true },
-      { source: '/blog/saskatchewan-government-business-grants', destination: '/blog/saskatchewan-business-grants-2025', permanent: true },
-      { source: '/blog/atlantic-canada-business-grants', destination: '/blog/atlantic-business-grants-2025', permanent: true },
-      { source: '/blog/black-entrepreneur-grants-canada', destination: '/blog/black-entrepreneurship-loan-fund-2025', permanent: true },
-      { source: '/blog/construction-business-grants-canada', destination: '/blog/canada-construction-grants-2025', permanent: true },
-      { source: '/blog/disability-business-grants-canada', destination: '/blog/disability-business-grants-2025', permanent: true },
-      { source: '/blog/hospitality-business-grants-canada', destination: '/blog/hospitality-grants-canada-2025', permanent: true },
-      { source: '/blog/minority-business-grants-canada', destination: '/blog/minority-business-grants-2025', permanent: true },
-      { source: '/blog/retail-business-grants-canada', destination: '/blog/retail-business-grants-2025', permanent: true },
+      // Provincial Consolidations → correct 2026 slugs
+      { source: '/blog/quebec-government-business-grants', destination: '/blog/quebec-business-grants-2026', permanent: true },
+      { source: '/blog/quebec-business-grants-2025', destination: '/blog/quebec-business-grants-2026', permanent: true },
+      { source: '/blog/saskatchewan-government-business-grants', destination: '/blog/saskatchewan-business-grants-2026', permanent: true },
+      { source: '/blog/saskatchewan-business-grants-2025', destination: '/blog/saskatchewan-business-grants-2026', permanent: true },
+      { source: '/blog/atlantic-canada-business-grants', destination: '/blog/atlantic-business-grants-2026', permanent: true },
+      { source: '/blog/atlantic-business-grants-2025', destination: '/blog/atlantic-business-grants-2026', permanent: true },
+      // Demographic Consolidations → correct 2026 slugs
+      { source: '/blog/black-entrepreneur-grants-canada', destination: '/blog/black-entrepreneurship-loan-fund-2026', permanent: true },
+      { source: '/blog/black-entrepreneurship-loan-fund-2025', destination: '/blog/black-entrepreneurship-loan-fund-2026', permanent: true },
+      { source: '/blog/minority-business-grants-canada', destination: '/blog/minority-business-grants-2026', permanent: true },
+      { source: '/blog/minority-business-grants-2025', destination: '/blog/minority-business-grants-2026', permanent: true },
+      // Industry pages without dedicated posts → Canada hub
+      { source: '/blog/construction-business-grants-canada', destination: '/canada', permanent: true },
+      { source: '/blog/disability-business-grants-canada', destination: '/canada', permanent: true },
+      { source: '/blog/hospitality-business-grants-canada', destination: '/canada', permanent: true },
+      { source: '/blog/retail-business-grants-canada', destination: '/canada', permanent: true },
       // Expert Insights 2026 Updates
       { source: '/blog/grant-writing-secrets-2025', destination: '/blog/grant-writing-secrets-2026', permanent: true },
       { source: '/blog/sba-sbir-grants-2025', destination: '/blog/sba-sbir-grants-2026', permanent: true },
-      { source: '/blog/alberta-business-grants-2025', destination: '/blog/alberta-business-grants-2026', permanent: true },
     ]
   },
 }
