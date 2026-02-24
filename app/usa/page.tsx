@@ -333,6 +333,39 @@ export default function USAGrantsPage() {
         </div>
       </section>
 
+      {/* Cross-Country & Category Internal Links */}
+      <section className="py-16 bg-gray-50 border-t">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Also Explore</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/canada" className="group block p-5 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-2">🇨🇦 Government Grants Canada 2026</h3>
+              <p className="text-sm text-gray-600">300+ federal and provincial programs with $10B+ available for Canadian businesses.</p>
+            </Link>
+            <Link href="/usa/women-entrepreneurs-grants" className="group block p-5 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-2">👩‍💼 Women Entrepreneurs Grants USA</h3>
+              <p className="text-sm text-gray-600">SBA microloans, federal funding up to $1M for women-owned small businesses.</p>
+            </Link>
+            <Link href="/blog/sba-loans-grants-guide" className="group block p-5 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-2">🏦 SBA Microloan Program Guide</h3>
+              <p className="text-sm text-gray-600">Up to $50K through nonprofit intermediaries — requirements, max amount, and how to apply.</p>
+            </Link>
+            <Link href="/canada/women-business-grants" className="group block p-5 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-2">👩‍💼 Women Business Grants Canada</h3>
+              <p className="text-sm text-gray-600">$6B+ through WELF microloans, BDC financing, and Women Entrepreneurship Strategy.</p>
+            </Link>
+            <Link href="/usa/technology-startup-grants" className="group block p-5 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-2">💡 Tech Startup Grants USA</h3>
+              <p className="text-sm text-gray-600">SBIR/STTR, NSF, and DOE grants for technology and innovation startups.</p>
+            </Link>
+            <Link href="/blog/canada-startup-funding-grants-guide" className="group block p-5 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-2">📚 Canada Startup Funding Guide</h3>
+              <p className="text-sm text-gray-600">35+ programs worth $1.2B+ — IRAP, BDC, and provincial accelerators.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   )

@@ -1115,7 +1115,28 @@ export default function WomenBusinessGrantsCanadaPage() {
           </div>
         </section>
       </div>
+      {/* Cross-Links */}
+      <section className="py-12 bg-white border-t">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Funding Resources</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/usa/women-entrepreneurs-grants" className="group block p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-pink-500 hover:shadow-md transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-pink-600 mb-2">🇺🇸 Women Entrepreneurs Grants USA</h3>
+              <p className="text-sm text-gray-600">SBA microloans, federal funding up to $1M for women-owned businesses in the US.</p>
+            </Link>
+            <Link href="/canada" className="group block p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-2">🇨🇦 All Canada Business Grants</h3>
+              <p className="text-sm text-gray-600">300+ federal and provincial programs with $10B+ available.</p>
+            </Link>
+            <Link href="/blog/sba-loans-grants-guide" className="group block p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
+              <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-2">🏦 SBA Microloan Guide</h3>
+              <p className="text-sm text-gray-600">Up to $50K through nonprofit intermediaries — popular with women entrepreneurs.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
       <Footer />
     </>
   )
 }
+

@@ -568,6 +568,32 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                     </div>
                 </article>
             </main>
+
+            {/* Cross-Links — appears on all 50 state pages */}
+            <section className="py-12 bg-gray-50 border-t">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6">Explore More Funding</h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <Link href="/usa" className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
+                            <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-1 text-sm">🇺🇸 All USA Grants</h3>
+                            <p className="text-xs text-gray-600">50 states, 5,000+ programs</p>
+                        </Link>
+                        <Link href="/canada" className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
+                            <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-1 text-sm">🇨🇦 Canada Grants</h3>
+                            <p className="text-xs text-gray-600">300+ federal & provincial</p>
+                        </Link>
+                        <Link href="/usa/women-entrepreneurs-grants" className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-pink-500 hover:shadow-md transition-all">
+                            <h3 className="font-semibold text-gray-900 group-hover:text-pink-600 mb-1 text-sm">👩‍💼 Women Grants</h3>
+                            <p className="text-xs text-gray-600">SBA microloans & federal</p>
+                        </Link>
+                        <Link href="/blog/sba-loans-grants-guide" className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
+                            <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-1 text-sm">🏦 SBA Microloan Guide</h3>
+                            <p className="text-xs text-gray-600">Up to $50K, how to apply</p>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
             <Footer />
         </div>
     );
