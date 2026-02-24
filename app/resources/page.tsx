@@ -34,7 +34,7 @@ const resources: Resource[] = [
         description: "Banking built for startups. No monthly fees, wire fees, or minimums. Ideal for holding grant funds separately.",
         icon: <Landmark className="w-8 h-8 text-blue-600" />,
         features: ["No monthly fees", "FDIC Insured", "Virtual Cards"],
-        link: "#", // Affiliate link would go here
+        link: "https://mercury.com",
         badge: "Top Pick"
     },
     {
@@ -44,7 +44,7 @@ const resources: Resource[] = [
         description: "The easiest way to form your LLC or Corporation. Required for 99% of government grant applications.",
         icon: <Scale className="w-8 h-8 text-indigo-600" />,
         features: ["Fast filing", "Registered Agent", "Compliance Alerts"],
-        link: "#", // Affiliate link would go here
+        link: "https://www.zenbusiness.com",
         badge: "Essential"
     },
     {
@@ -53,8 +53,8 @@ const resources: Resource[] = [
         category: "Accounting",
         description: "Track your grant spending accurately to withstand government audits. The industry standard.",
         icon: <Calculator className="w-8 h-8 text-green-600" />,
-        features: ["Expense Tracking", "invoicing", "Tax Prep"],
-        link: "#", // Affiliate link would go here
+        features: ["Expense Tracking", "Invoicing", "Tax Prep"],
+        link: "https://quickbooks.intuit.com",
     },
     {
         id: "hiring-1",
@@ -63,7 +63,7 @@ const resources: Resource[] = [
         description: "Manage payroll for your team. Many hiring grants require robust payroll systems like Gusto.",
         icon: <Briefcase className="w-8 h-8 text-orange-600" />,
         features: ["Automated Payroll", "Tax Filing", "Benefits"],
-        link: "#", // Affiliate link would go here
+        link: "https://gusto.com",
     }
 ]
 

@@ -31,12 +31,7 @@ export default function AdSlot({
   }, []);
 
   if (!process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID) {
-    return (
-      <div className={`bg-gray-100 p-4 text-center text-gray-500 ${className}`} style={style}>
-        <p>Advertisement Space</p>
-        <p className="text-xs">Configure NEXT_PUBLIC_ADSENSE_PUBLISHER_ID</p>
-      </div>
-    );
+    return null;
   }
 
   return (

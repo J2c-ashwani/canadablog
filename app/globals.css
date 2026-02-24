@@ -44,29 +44,39 @@
   --font-mono: "JetBrains Mono", monospace;
 
   /* Color System - Professional Government/Business Theme */
-  --color-primary: #1e40af; /* Blue 700 - Trust & Authority */
+  --color-primary: #1e40af;
+  /* Blue 700 - Trust & Authority */
   --color-primary-foreground: #ffffff;
-  --color-secondary: #059669; /* Green 600 - Growth & Success */
+  --color-secondary: #059669;
+  /* Green 600 - Growth & Success */
   --color-secondary-foreground: #ffffff;
-  --color-accent: #0ea5e9; /* Sky 500 - Professional Accent */
+  --color-accent: #0ea5e9;
+  /* Sky 500 - Professional Accent */
   --color-accent-foreground: #ffffff;
 
   /* Neutral System */
   --color-background: #ffffff;
-  --color-foreground: #1f2937; /* Gray 800 */
-  --color-muted: #f9fafb; /* Gray 50 */
-  --color-muted-foreground: #6b7280; /* Gray 500 */
+  --color-foreground: #1f2937;
+  /* Gray 800 */
+  --color-muted: #f9fafb;
+  /* Gray 50 */
+  --color-muted-foreground: #6b7280;
+  /* Gray 500 */
   --color-card: #ffffff;
   --color-card-foreground: #1f2937;
-  --color-border: #e5e7eb; /* Gray 200 */
+  --color-border: #e5e7eb;
+  /* Gray 200 */
   --color-input: #ffffff;
 
   /* Semantic Colors */
-  --color-destructive: #dc2626; /* Red 600 */
+  --color-destructive: #dc2626;
+  /* Red 600 */
   --color-destructive-foreground: #ffffff;
-  --color-warning: #d97706; /* Amber 600 */
+  --color-warning: #d97706;
+  /* Amber 600 */
   --color-warning-foreground: #ffffff;
-  --color-success: #059669; /* Green 600 */
+  --color-success: #059669;
+  /* Green 600 */
   --color-success-foreground: #ffffff;
 
   /* Component Specific */
@@ -181,10 +191,57 @@ img {
   z-index: 50;
 }
 
+/* Fix text contrast in blog content — tables had white text on white backgrounds */
+.prose table,
+.prose thead,
+.prose tbody,
+.prose tr,
+.prose th,
+.prose td {
+  color: #1f2937 !important;
+  /* gray-800 — always dark, readable text */
+  background-color: transparent;
+}
+
+.prose thead {
+  background-color: #f3f4f6 !important;
+  /* gray-100 header bg */
+}
+
+.prose th {
+  color: #111827 !important;
+  /* gray-900 — bold header text */
+  font-weight: 600;
+}
+
+.prose tbody tr:nth-child(even) {
+  background-color: #f9fafb !important;
+  /* gray-50 zebra stripe */
+}
+
+/* Also fix any inline-styled colored backgrounds in blog content */
+.prose [style*="background"] {
+  color: #1f2937 !important;
+}
+
+.prose [style*="background"] p,
+.prose [style*="background"] span,
+.prose [style*="background"] li,
+.prose [style*="background"] h1,
+.prose [style*="background"] h2,
+.prose [style*="background"] h3,
+.prose [style*="background"] h4,
+.prose [style*="background"] strong,
+.prose [style*="background"] em,
+.prose [style*="background"] a {
+  color: inherit !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

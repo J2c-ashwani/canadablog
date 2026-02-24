@@ -8,6 +8,8 @@ import nsfPost from './blog-posts/usa-news/nsf-stem-research-2025';
 // Batch 17 Restored Imports
 import oct2025Post from './blog-posts/funding-alerts/october-2025-last-chance';
 import q42025Post from './blog-posts/funding-alerts/q4-2025-deadlines';
+import oct2026Post from './blog-posts/funding-alerts/october-2026-last-chance';
+import q42026Post from './blog-posts/funding-alerts/q4-2026-deadlines';
 import q12026Post from './blog-posts/seasonal/q1-2026-grant-deadlines';
 import sbaSbirPost from './blog-posts/usa-news/sba-sbir-grants-2026';
 import grantSecretsPost from './blog-posts/tips-guides/grant-writing-secrets-2026';
@@ -10378,7 +10380,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     author: "Alberta Funding Team",
     date: "2026-02-01",
     readTime: "14 min read",
-    image: "/images/blog/alberta-business.jpg",
+    image: "/images/blog/alberta-business-theme.png",
     featured: false,
     content: albertaBusinessGrants2026.content,
     type: 'expert-insight',
@@ -10409,7 +10411,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     author: "Veterans Support Team",
     date: "2026-02-11",
     readTime: "14 min read",
-    image: "/images/blog/veteran-business.jpg",
+    image: "/images/blog/community-diversity-theme.png",
     featured: false,
     content: `<div class="bg-indigo-50 border-l-4 border-indigo-500 p-8 rounded-r-lg shadow-md my-8" >
     <h2 class="text-2xl font-bold text-indigo-900 mb-4" >🎖️ From Service to CEO: The 2026 Landscape </h2>
@@ -10609,7 +10611,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     author: "Women's Funding Network",
     date: "2026-02-10",
     readTime: "15 min read",
-    image: "/images/blog/women-entrepreneurs.jpg",
+    image: "/images/blog/women-entrepreneurship-grants-2026.png",
     featured: false,
     content: `<div class="bg-pink-50 border-l-4 border-pink-500 p-8 rounded-r-lg shadow-md my-8" >
     <h2 class="text-2xl font-bold text-pink-900 mb-4" >👩‍💼 The State of Women's Entrepreneurship in 2026</h2>
@@ -10865,7 +10867,7 @@ Write: "This grant will fund a high-capacity oven, allowing me to increase produ
     author: "Inclusive Growth Team",
     date: "2026-02-09",
     readTime: "15 min read",
-    image: "/images/blog/minority-business.jpg",
+    image: "/images/blog/community-diversity-theme.png",
     featured: false,
     content: `<div class="bg-orange-50 border-l-4 border-orange-500 p-8 rounded-r-lg shadow-md my-8" >
     <h2 class="text-2xl font-bold text-orange-900 mb-4" >🌍 Closing the Funding Gap in 2026 </h2>
@@ -11077,7 +11079,7 @@ However, a single corporate contract can yield 100x that investment.
     author: "Federal Policy Team",
     date: "2026-02-14",
     readTime: "12 min read",
-    image: "/images/blog/biden-grants.jpg",
+    image: "/images/blog/usa-grants-theme.png",
     featured: true,
     content: `
 ${bidenPost}
@@ -11121,7 +11123,7 @@ ${bidenPost}
     author: "Energy Innovation Team",
     date: "2026-02-13",
     readTime: "15 min read",
-    image: "/images/blog/clean-energy.jpg",
+    image: "/images/blog/clean-tech-grants-2026.png",
     featured: false,
     content: `
 ${doePost}
@@ -11165,7 +11167,7 @@ ${doePost}
     author: "Environmental Policy Team",
     date: "2026-02-15",
     readTime: "10 min read",
-    image: "/images/blog/environmental-justice.jpg",
+    image: "/images/blog/clean-tech-grants-2026.png",
     featured: false,
     content: `
 ${epaPost}
@@ -11209,7 +11211,7 @@ ${epaPost}
     author: "Science & Tech Team",
     date: "2026-02-16",
     readTime: "14 min read",
-    image: "/images/blog/science-tech.jpg",
+    image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     content: `
 ${nsfPost}
@@ -11253,26 +11255,47 @@ ${nsfPost}
     author: "Grant Alert Team",
     date: "2026-10-01",
     readTime: "5 min read",
-    image: "/images/blog/deadline-alert.jpg",
+    image: "/images/blog/funding-alerts-theme.png",
     featured: false,
     content: `
-      <div class="bg-red-50 p-6 rounded-lg mb-8 border border-red-200">
-        <h2 class="text-2xl font-bold text-red-900 mb-4">⏰ October 2026 Grant Alert</h2>
-        <p class="mb-4 text-red-800">Coming soon. We are tracking upcoming deadlines for October 2026. Stay tuned for updates on federal and provincial grant closures.</p>
-      </div>
+${oct2026Post}
     `,
     seo: {
-      keywords: ["grant deadlines October 2026", "expiring grants Canada", "last chance business funding", "urgent grant alerts"]
+      keywords: ["grant deadlines October 2026", "expiring grants Canada", "last chance business funding", "urgent grant alerts", "CDAP deadline", "Ontario Scale-Up Vouchers"]
     },
     metrics: [
       { label: 'Closing', value: '12', description: 'Grants Ending', color: 'text-red-600', iconName: 'Clock' },
-      { label: 'Value', value: '$15M', description: 'Total Funding', color: 'text-green-600', iconName: 'DollarSign' }
+      { label: 'Value', value: '$920M', description: 'Total Available', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Programs', value: '8+', description: 'Active Deadlines', color: 'text-blue-600', iconName: 'List' },
+      { label: 'Approval', value: '68%', description: 'CDAP Rate', color: 'text-purple-600', iconName: 'Target' }
     ],
     expertTip: {
       title: "Submit Early",
       type: 'warning',
-      content: "Systems often crash on deadline days due to high traffic. Aim to submit at least <strong>48 hours before</strong> the official cutoff."
+      content: "Government portals frequently crash on deadline days due to high traffic. Aim to submit at least <strong>48 hours before</strong> the official cutoff. For CDAP specifically, register with your Digital Advisor immediately — they handle most of the application."
     },
+    faq: [
+      {
+        question: "What is the easiest October grant to apply for?",
+        answer: "The <strong>Canada Digital Adoption Program (CDAP)</strong> is the easiest with a 68% approval rate. A Digital Advisor handles most of the application for you — you just provide your business information and financial statements."
+      },
+      {
+        question: "Can I still apply if the deadline is in a few days?",
+        answer: "Yes, for programs like CDAP and IRAP Youth Employment. CDAP advisors often accommodate urgent timelines, and IRAP has a 71% approval rate with 2-3 week turnaround. However, avoid rushing programs that require detailed project proposals like FedDev Ontario."
+      },
+      {
+        question: "What happens if I miss the October deadline?",
+        answer: "Most federal programs reopen in Q1 2027, but funding pools shrink as the fiscal year progresses. Provincial programs vary — some have continuous intake while others only open once per year. The CDAP program specifically may not reopen."
+      },
+      {
+        question: "Which provinces have the most October grants closing?",
+        answer: "Ontario leads with $312M in closing programs including Scale-Up Vouchers and the Ontario Together Fund. British Columbia ($189M) and Alberta ($156M) follow with programs like the BC Innovator Skills Initiative and Alberta Innovates Digital Innovation."
+      },
+      {
+        question: "Do I need matching funds for these grants?",
+        answer: "It depends on the program. CDAP requires no matching funds. Ontario Scale-Up Vouchers require 1:1 matching. Alberta Innovates requires 50% cost-sharing. IRAP Youth Employment and Women Entrepreneurship Fund require no matching from the employer."
+      }
+    ],
   },
   {
     id: 2044,
@@ -11285,26 +11308,47 @@ ${nsfPost}
     author: "Strategic Planning Team",
     date: "2026-10-15",
     readTime: "7 min read",
-    image: "/images/blog/calendar-planning.jpg",
+    image: "/images/blog/funding-alerts-theme.png",
     featured: false,
     content: `
-      <div class="bg-orange-50 p-6 rounded-lg mb-8 border border-orange-200">
-        <h2 class="text-2xl font-bold text-orange-900 mb-4">📅 Q4 2026 Outlook</h2>
-        <p class="mb-4 text-orange-800">Preparing for year-end 2026? We are compiling the definitive list of Q4 grant opportunities. Check back shortly for the full guide.</p>
-      </div>
+${q42026Post}
     `,
     seo: {
-      keywords: ["Q4 2026 grant deadlines", "year end business grants", "November 2026 grants", "December 2026 funding"]
+      keywords: ["Q4 2026 grant deadlines", "year end business grants", "November 2026 grants", "December 2026 funding", "SR&ED deadline", "IRAP funding"]
     },
     metrics: [
-      { label: 'Q4 Pool', value: '$45M', description: 'Available Funds', color: 'text-blue-600', iconName: 'PieChart' },
-      { label: 'Programs', value: '25+', description: 'Active Grants', color: 'text-purple-600', iconName: 'List' }
+      { label: 'Q4 Pool', value: '$580M+', description: 'Available Funds', color: 'text-blue-600', iconName: 'PieChart' },
+      { label: 'Programs', value: '25+', description: 'Active Grants', color: 'text-purple-600', iconName: 'List' },
+      { label: 'Approval', value: '+15%', description: 'Q4 Boost', color: 'text-green-600', iconName: 'TrendingUp' },
+      { label: 'Competition', value: '-30%', description: 'Fewer Applicants', color: 'text-orange-600', iconName: 'Users' }
     ],
     expertTip: {
-      title: "Fiscal Year End",
+      title: "Fiscal Year End Strategy",
       type: 'tip',
-      content: "Many government fiscal years end in March, meaning Q4 is often when agencies rush to allocate remaining budgets. Look for 'surplus' funding announcements."
+      content: "Canada's federal fiscal year ends March 31. Q4 is when program officers have the clearest picture of remaining budgets. Applications submitted in November and December often see <strong>faster approvals</strong> and <strong>higher success rates</strong> as agencies rush to deploy remaining funds."
     },
+    faq: [
+      {
+        question: "Why is Q4 the best time to apply for grants?",
+        answer: "Q4 offers <strong>15% higher approval rates</strong> and <strong>30% less competition</strong> compared to Q1/Q2. Government agencies are pushing to allocate remaining budgets before fiscal year milestones, and fewer businesses apply during the holiday season."
+      },
+      {
+        question: "What is SR&ED and should I file before December 31?",
+        answer: "SR&ED (Scientific Research and Experimental Development) is Canada's largest R&D incentive — a <strong>35% tax credit for small businesses</strong>. If your fiscal year ended June 2025, your filing deadline is December 31, 2026. The average claim is $85,000. Use a specialized SR&ED consultant — they increase claim values by 40% on average."
+      },
+      {
+        question: "How many grant applications should I submit in Q4?",
+        answer: "We recommend <strong>3-5 applications</strong> across different programs. With average success rates of 15-20%, volume matters. Focus on 2-3 strong-fit programs rather than applying to everything. Quality applications to well-matched programs always beat volume of weak applications."
+      },
+      {
+        question: "What documents do I need ready for Q4 applications?",
+        answer: "Most programs require: <strong>(1)</strong> Last 2 years of financial statements, <strong>(2)</strong> Active Business Number in good standing with CRA, <strong>(3)</strong> Incorporation documents, <strong>(4)</strong> Project description (1-5 pages depending on program), <strong>(5)</strong> Cash flow projections."
+      },
+      {
+        question: "Which Q4 program has the highest approval rate?",
+        answer: "The <strong>Canada Job Grant</strong> has the highest at 72%, followed by <strong>Mitacs Accelerate</strong> at 67% and <strong>IRAP Accelerated Technology</strong> at 45% for returning clients. Provincial training grants generally have higher approval rates than federal innovation grants."
+      }
+    ],
   },
   {
     id: 2045,
@@ -11346,7 +11390,7 @@ ${q12026Post}
     author: "Federal Innovation Team",
     date: "2026-03-10",
     readTime: "12 min read",
-    image: "/images/blog/sbir-grants.jpg",
+    image: "/images/blog/usa-grants-theme.png",
     featured: false,
     content: `
 ${sbaSbirPost}
@@ -11406,7 +11450,7 @@ ${grantSecretsPost}
     author: "Rural Development Team",
     date: "2026-05-20",
     readTime: "9 min read",
-    image: "/images/blog/rural-development.jpg",
+    image: "/images/blog/usa-grants-theme.png",
     featured: false,
     content: `
 ${usdaRuralPost}
@@ -11435,7 +11479,7 @@ ${usdaRuralPost}
     author: "NY Funding Desk",
     date: "2026-06-01",
     readTime: "11 min read",
-    image: "/images/blog/new-york-business.jpg",
+    image: "/images/blog/usa-grants-theme.png",
     featured: false,
     content: `
 ${nyGrantsPost}
@@ -11464,7 +11508,7 @@ ${nyGrantsPost}
     author: "Regional Growth Team",
     date: "2026-07-10",
     readTime: "10 min read",
-    image: "/images/blog/regional-canada.jpg",
+    image: "/images/blog/canada-grants-theme.png",
     featured: false,
     content: `
 ${regionalDevPost}
@@ -11511,7 +11555,7 @@ ${regionalDevPost}
     author: "Innovation Desk",
     date: "2026-08-05",
     readTime: "9 min read",
-    image: "/images/blog/superclusters.jpg",
+    image: "/images/blog/innovation-canada-grants-2026.png",
     featured: false,
     content: `
 ${superclustersPost}
@@ -11572,7 +11616,7 @@ ${superclustersPost}
     author: "Rural Policy Team",
     date: "2026-09-12",
     readTime: "8 min read",
-    image: "/images/blog/rural-canada.jpg",
+    image: "/images/blog/canada-grants-theme.png",
     featured: false,
     content: `
 ${ruralBizPost}
@@ -11619,7 +11663,7 @@ ${ruralBizPost}
     author: "Tax Incentive Team",
     date: "2026-02-20",
     readTime: "13 min read",
-    image: "/images/blog/sred-credits.jpg",
+    image: "/images/blog/canada-grants-theme.png",
     featured: false,
     content: `
 ${sredTaxPost}

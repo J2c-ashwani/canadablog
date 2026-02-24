@@ -208,13 +208,6 @@ export default function HomePageClient() {
                 </div>
             </section>
 
-            {/* AdSense Placement */}
-            <div className="ad-container">
-                <div className="ad-banner">
-                    <p className="text-gray-500 text-sm">Advertisement</p>
-                </div>
-            </div>
-
             {/* Features Section */}
             <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
