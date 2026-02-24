@@ -211,17 +211,17 @@ export default `
     <p class="text-xl mb-6">Join 10,000+ entrepreneurs who've secured over $2.3 billion in federal funding with our proven system</p>
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🎯 Free Grant Matching</h3>
-        <p>Our AI finds the perfect grants for your business in under 60 seconds</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🎯 Matching Strategy</h3>
+        <p class="text-gray-800">Identify which SSBCI programs (VC, loan guarantees, CDFI) fit your growth stage</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">📋 Application Review</h3>
-        <p>Expert review of your application before submission (95% approval rate)</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🤝 Lender Connections</h3>
+        <p class="text-gray-800">Access our network of community banks and CDFIs deploying federal funds</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">⏰ Deadline Alerts</h3>
-        <p>Never miss another deadline with our automated alert system</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📋 SEDI Optimization</h3>
+        <p class="text-gray-800">Ensure your application highlights social and economic impact for priority processing</p>
       </div>
     </div>
 

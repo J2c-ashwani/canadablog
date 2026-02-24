@@ -363,16 +363,18 @@ export default `
     <h2 class="text-3xl font-bold mb-4">🆘 FINAL WEEK EMERGENCY SUPPORT!</h2>
     <p class="text-xl mb-6">Don't let $850M slip away! Get expert help to submit before these deadlines</p>
     
-    <div class="grid md:grid-cols-2 gap-6 mb-8 text-sm">
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">⚡ 24-Hour Application Sprint</h3>
-        <p>Complete application development and submission within 24 hours for single opportunity</p>
-        <p class="text-xs mt-2 opacity-75">Perfect for: NSF I-Corps, SBA Growth Accelerator</p>
+    <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🎯 Deadline Triage</h3>
+        <p class="text-gray-800">Identify which expiring funds you are most likely to win based on our data</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🎯 Opportunity Triage</h3>
-        <p>Expert analysis of which program gives you the highest success probability with time remaining</p>
-        <p class="text-xs mt-2 opacity-75">Perfect for: Multiple opportunities, unclear which to pursue</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📋 Rapid Application Strategy</h3>
+        <p class="text-gray-800">Execute our proven 7-day grant submission protocol for urgent deadlines</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">💼 Alternative Funding Mapping</h3>
+        <p class="text-gray-800">If you miss October, we map your next best opportunities for Q1 2026</p>
       </div>
     </div>
 

@@ -382,17 +382,17 @@ export default `
     <p class="text-xl mb-6">Join 450+ clean energy innovators who've secured DOE funding with our specialized expertise</p>
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🔬 Technology Readiness Assessment</h3>
-        <p>Evaluate your innovation's commercial viability and alignment with DOE priorities</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🏢 Manufacturing Transition</h3>
+        <p class="text-gray-800">Re-tool your existing facility to produce clean energy components</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🤝 Strategic Partnership Matching</h3>
-        <p>Connect with national labs, universities, and industry partners DOE values</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🔬 Prototype Funding</h3>
+        <p class="text-gray-800">Secure lab vouchers and pilot funding for your new climate tech</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">📊 Commercialization Roadmap</h3>
-        <p>Develop the business plan and market strategy that DOE reviewers fund</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📋 Compliance & Reporting</h3>
+        <p class="text-gray-800">Navigate the complex community benefits plans require by DOE grants</p>
       </div>
     </div>
 

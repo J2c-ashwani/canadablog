@@ -613,17 +613,17 @@ export default `
     <p class="text-xl mb-6">Join 1,200+ STEM entrepreneurs who've secured NSF funding with our proven university partnership strategies</p>
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🎯 Project Pitch Optimization</h3>
-        <p>Perfect your 3-page pitch with feedback from former NSF Program Directors who know exactly what gets invited</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🔬 Merit Review Preparation</h3>
+        <p class="text-gray-800">Align your proposal with NSF's rigorous intellectual merit and broader impacts criteria</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🏫 University Partnership Facilitation</h3>
-        <p>Get introduced to faculty co-PIs at top research universities in your technology area</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🤝 Commercialization Planning</h3>
+        <p class="text-gray-800">Develop the mandatory direct-to-market strategy required for SBIR/STTR Phase I</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">📊 Technical Merit Review</h3>
-        <p>Expert analysis of your innovation's intellectual merit and broader impact potential</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📋 Academic Partnership</h3>
+        <p class="text-gray-800">Structure the required university sub-awards and technology transfer agreements</p>
       </div>
     </div>
 

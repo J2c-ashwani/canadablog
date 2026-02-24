@@ -609,17 +609,17 @@ export default `
     <p class="text-xl mb-6">Join 18,000+ Canadian businesses that secured CDAP funding with our digital transformation expertise</p>
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🎯 CDAP Stream Selection</h3>
-        <p>Determine which CDAP program maximizes your funding and matches your digital transformation needs</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">💻 Technical Roadmap</h3>
+        <p class="text-gray-800">Ensure your project aligns with CDAP requirements for digital adoption planning</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">📋 Digital Adoption Plan Development</h3>
-        <p>Create comprehensive plans that secure full funding and drive real business transformation</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🤝 Vendor Matching</h3>
+        <p class="text-gray-800">Connect with approved digital advisors who can implement your desired software</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🤝 Advisor Matching & Management</h3>
-        <p>Connect with top-tier digital advisors and manage the entire CDAP process seamlessly</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📋 BDC Loan Integration</h3>
+        <p class="text-gray-800">Structure your application to maximize the $100K zero-interest BDC loan component</p>
       </div>
     </div>
 

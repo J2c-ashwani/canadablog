@@ -702,17 +702,17 @@ export default `
     <p class="text-xl mb-6">Join 340+ agricultural innovators who've won AgriInnovate funding with our specialized expertise</p>
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🎯 Commercial Readiness Assessment</h3>
-        <p>Evaluate your technology's readiness for AgriInnovate and identify gaps before application</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🚜 Technology Assessment</h3>
+        <p class="text-gray-800">Evaluate which precision farming tools qualify under current SCAP guidelines</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🤝 Industry Partnership Facilitation</h3>
-        <p>Connect with agricultural producers, commodity groups, and research institutions across Canada</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🤝 Provincial Matching</h3>
+        <p class="text-gray-800">Navigate the complex web of cost-shared federal-provincial agriculture programs</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">📊 Agricultural Impact Quantification</h3>
-        <p>Develop the metrics and business case that AgriInnovate reviewers fund</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📋 Carbon Project Design</h3>
+        <p class="text-gray-800">Structure your sustainable practices to maximize both grants and carbon offset revenue</p>
       </div>
     </div>
 

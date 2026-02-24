@@ -402,17 +402,17 @@ export default `
     <p class="text-xl mb-6">Join 850+ rural businesses that secured USDA funding with our rural-specific expertise</p>
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🗺️ Rural Eligibility Check</h3>
-        <p>Verify your county qualifies for rural grants and identify best funding opportunities for your location</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🗺️ Geographic Eligibility</h3>
+        <p class="text-gray-800">Verify your address qualifies under USDA's specific rural population definitions</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🚜 Agricultural Impact Strategy</h3>
-        <p>Position your business to show maximum benefit to local farming communities and rural economy</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🤝 Match Funding Strategy</h3>
+        <p class="text-gray-800">Structure your project to meet the 50% REAP matching requirement</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🤝 Rural Partnership Network</h3>
-        <p>Connect with agricultural cooperatives, extension services, and rural development organizations</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📋 Energy Audits</h3>
+        <p class="text-gray-800">Connect with certified energy auditors required for REAP applications</p>
       </div>
     </div>
 

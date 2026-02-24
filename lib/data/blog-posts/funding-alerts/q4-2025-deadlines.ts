@@ -369,17 +369,17 @@ export default `
     <p class="text-xl mb-6">Get expert help to submit winning applications before these critical deadlines</p>
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">⚡ Emergency Application Review</h3>
-        <p>48-hour turnaround to get your application submission-ready before October 15th deadline</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🎯 Strategic Matching</h3>
+        <p class="text-gray-800">Identify which year-end grants perfectly align with your current business goals</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">📋 Last-Minute Optimization</h3>
-        <p>Focus on your strongest opportunities with highest success probability for your state</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📋 Application Acceleration</h3>
+        <p class="text-gray-800">Rapid-response grant writing to meet tight Q4 deadlines without sacrificing quality</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🎯 Deadline Coaching</h3>
-        <p>Daily check-ins and milestone tracking to ensure on-time submission</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">💰 Stacked Funding</h3>
+        <p class="text-gray-800">Combine federal, provincial, and private grants before budgets reset in January</p>
       </div>
     </div>
 

@@ -816,17 +816,17 @@ export default `
     <p class="text-xl mb-6">Join 2,400+ veterans who've built successful businesses with our military-focused strategies</p>
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🎯 Military Skill Translation</h3>
-        <p>Transform your MOS, leadership experience, and military networks into business competitive advantages</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🏅 Certification Strategy</h3>
+        <p class="text-gray-800">Navigate the VOSB/SDVOSB certification process to unlock set-aside contracts</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🏛️ Federal Contracting Mastery</h3>
-        <p>Navigate the $600B federal market with insider knowledge of procurement processes and veteran preferences</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🤝 Federal Contracting Access</h3>
+        <p class="text-gray-800">Learn how to bid on and win exclusive veteran-owned government contracts</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🤝 Veteran Network Activation</h3>
-        <p>Leverage military connections, veteran business communities, and defense industry relationships</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📋 Franchise & Start-Up Funding</h3>
+        <p class="text-gray-800">Identify specialized grants and discounted franchise fees for military veterans</p>
       </div>
     </div>
 

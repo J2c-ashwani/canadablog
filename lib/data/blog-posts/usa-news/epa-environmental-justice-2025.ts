@@ -554,19 +554,19 @@ export default `
     <p class="text-xl mb-6">Join 850+ communities that have won EPA environmental justice grants with our specialized expertise</p>
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🏘️ Community Engagement Strategy</h3>
-        <p>Build authentic grassroots leadership and document community support that EPA reviewers fund</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🤝 Coalition Building</h3>
+        <p class="text-gray-800">Structuring the required NGO/Community partnerships for EPA approval</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">📊 Environmental Justice Documentation</h3>
-        <p>Use EPA tools and data to demonstrate disproportionate environmental burdens in your community</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📊 Data & Mapping</h3>
+        <p class="text-gray-800">Using the CEJST tool to prove your project's impact on disadvantaged communities</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🤝 Partnership Development</h3>
-        <p>Connect with community organizations, health providers, and advocacy groups for stronger applications</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📋 Compliance & Reporting</h3>
+        <p class="text-gray-800">Navigating federal procurement standards and Justice40 reporting requirements</p>
       </div>
-          </div>
+    </div>
 
     <div class="space-y-4">
       <a href="/environmental-justice-consultation" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-green-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 border-2 border-yellow-300">

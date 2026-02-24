@@ -515,17 +515,17 @@ export default `
     <p class="text-xl mb-6">Join 15,000+ businesses that have secured federal funding with our proven system</p>
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">📋 Application Review & Optimization</h3>
-        <p>Expert review by former program officers who know exactly what reviewers want to see</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🎯 Sam.gov Registration</h3>
+        <p class="text-gray-800">Full setup of your UEI, CAGE code, and SAM.gov profile without the headaches</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🗺️ State-Specific Strategy</h3>
-        <p>Customized approach based on your state's funding priorities and success patterns</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🤝 Match Strategy</h3>
+        <p class="text-gray-800">Mapping your business capabilities to specific NOFOs and agency priorities</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">⏰ Deadline Management</h3>
-        <p>Never miss another opportunity with our automated tracking and reminder system</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📋 Narrative Development</h3>
+        <p class="text-gray-800">Expert writing that aligns perfectly with the federal scoring rubric</p>
       </div>
     </div>
 

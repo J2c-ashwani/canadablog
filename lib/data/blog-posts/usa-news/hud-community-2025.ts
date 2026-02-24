@@ -695,17 +695,17 @@ export default `
     <p class="text-xl mb-6">Join 850+ communities that have won HUD CDBG grants with our comprehensive compliance and application strategies</p>
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">📋 CDBG Compliance Audit</h3>
-        <p>Complete review of your project's eligibility, national objective compliance, and regulatory requirements</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🏘️ Affordable Housing</h3>
+        <p class="text-gray-800">Structuring mixed-income developments utilizing HOME funds and tax credits</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🏘️ Community Needs Assessment</h3>
-        <p>Professional demographic analysis and community survey design to strengthen your application</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🤝 Non-Profit Partnerships</h3>
+        <p class="text-gray-800">Aligning with local CHDOs to access exclusive funding set-asides</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">✍️ Application Writing Service</h3>
-        <p>Expert application development by former HUD staff who understand exactly what reviewers want to see</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📋 Entitlement Compliance</h3>
+        <p class="text-gray-800">Navigating Davis-Bacon wages and environmental reviews for federal grants</p>
       </div>
     </div>
 

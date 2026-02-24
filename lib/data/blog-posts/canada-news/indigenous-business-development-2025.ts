@@ -508,17 +508,17 @@ export default `
     <p class="text-xl mb-6">Join 1,200+ Indigenous entrepreneurs who've secured government funding with our culturally-informed approach</p>
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🎯 Cultural Business Integration</h3>
-        <p>Develop business models that honor traditional values while meeting modern market demands</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🎯 Cultural Business Integration</h3>
+        <p class="text-gray-800">Develop business models that honor traditional values while meeting modern market demands</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🤝 Indigenous Partnership Network</h3>
-        <p>Connect with Indigenous business councils, development corporations, and mentor networks</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">🤝 Indigenous Partnership Network</h3>
+        <p class="text-gray-800">Connect with Indigenous business councils, development corporations, and mentor networks</p>
       </div>
-      <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">📋 Funding Strategy Optimization</h3>
-        <p>Navigate federal, provincial, and band-level funding with expert guidance on Indigenous priorities</p>
+      <div class="bg-white p-4 rounded-lg shadow-sm">
+        <h3 class="font-bold text-gray-900 mb-2">📋 Funding Strategy Optimization</h3>
+        <p class="text-gray-800">Navigate federal, provincial, and band-level funding with expert guidance on Indigenous priorities</p>
       </div>
     </div>
 
