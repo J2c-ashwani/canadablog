@@ -14,6 +14,10 @@ export const metadata: Metadata = {
         "Find Nova Scotia business grants and provincial funding programs. Complete guide to Nova Scotia government grants, Invest Nova Scotia funding, and application deadlines.",
     keywords:
         "Nova Scotia business grants, Nova Scotia government funding, provincial grants NS, Halifax business grants, Invest Nova Scotia",
+    alternates: {
+        canonical: "https://www.fsidigital.ca/canada/nova-scotia",
+    },
+    robots: { index: true, follow: true },
 }
 
 const nsGrants: Grant[] = [

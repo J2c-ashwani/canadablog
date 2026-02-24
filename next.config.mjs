@@ -59,6 +59,10 @@ const nextConfig = {
       // Expert Insights 2026 Updates
       { source: '/blog/grant-writing-secrets-2025', destination: '/blog/grant-writing-secrets-2026', permanent: true },
       { source: '/blog/sba-sbir-grants-2025', destination: '/blog/sba-sbir-grants-2026', permanent: true },
+      // Crawled-not-indexed fixes
+      { source: '/blog/healthcare-grants-2025', destination: '/blog/healthcare-grants-2026', permanent: true },
+      { source: '/blog/clean-technology-2025', destination: '/blog/clean-technology-2026', permanent: true },
+      { source: '/blog/illinois-business-development-2025', destination: '/usa/illinois', permanent: true },
     ]
   },
   async headers() {

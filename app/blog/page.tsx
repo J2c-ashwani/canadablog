@@ -10,26 +10,63 @@ import { getGrantNewsPosts } from '@/lib/data/blogPosts';
 import { generateBlogPageMetadata } from '@/lib/seo';
 import { generateBlogSchema } from '@/lib/schema';
 
-export const metadata: Metadata = {
-  title: "Grant News, Alerts & Guides | FSI Digital Blog",
-  description: "Stay updated with the latest grant opportunities, funding alerts, and expert application guides for USA and Canada grants.",
-  keywords: "grant funding blog, government grants news, funding opportunities, grant alerts, business funding tips, entrepreneur grants",
-  openGraph: {
-    title: "Grant News & Funding Alerts | FSI Digital Blog",
-    description: "Latest grant opportunities, funding alerts, and application guides for USA and Canada.",
-    url: "https://www.fsidigital.ca/blog",
-    siteName: "FSI Digital",
-    images: [
-      {
-        url: "/images/blog/grant-finder-blog-og.png",
-        width: 1200,
-        height: 630,
-        alt: "FSI Digital Blog",
-      },
-    ],
-    type: "website",
-  },
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string; page?: string }>;
+}): Promise<Metadata> {
+  const resolvedParams = await searchParams;
+  const { category, page } = resolvedParams;
+  const pageNum = parseInt(page || '1');
+
+  const baseUrl = 'https://www.fsidigital.ca/blog';
+
+  let title = "Grant News, Alerts & Guides | FSI Digital Blog";
+  let description = "Stay updated with the latest grant opportunities, funding alerts, and expert application guides for USA and Canada grants.";
+
+  if (category) {
+    const readableCategory = category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    title = `${readableCategory} Grants | FSI Digital Blog`;
+    description = `Browse ${readableCategory} grant opportunities, funding alerts, and guides.`;
+  }
+
+  if (pageNum > 1) {
+    title = `${title} - Page ${pageNum}`;
+  }
+
+  // Canonical: page 1 = /blog, page N = /blog?page=N
+  let canonicalUrl = baseUrl;
+  const params = new URLSearchParams();
+  if (category) params.set('category', category);
+  if (pageNum > 1) params.set('page', pageNum.toString());
+  const queryString = params.toString();
+  if (queryString) canonicalUrl = `${baseUrl}?${queryString}`;
+
+  return {
+    title,
+    description,
+    keywords: "grant funding blog, government grants news, funding opportunities, grant alerts, business funding tips, entrepreneur grants",
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: "FSI Digital",
+      images: [
+        {
+          url: "/images/blog/grant-finder-blog-og.png",
+          width: 1200,
+          height: 630,
+          alt: "FSI Digital Blog",
+        },
+      ],
+      type: "website",
+    },
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    robots: { index: true, follow: true },
+  };
+}
 
 export default async function BlogPage({
   searchParams

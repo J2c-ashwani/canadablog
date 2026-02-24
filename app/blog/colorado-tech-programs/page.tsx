@@ -23,6 +23,10 @@ export const metadata: Metadata = {
     url: "https://www.fsidigital.ca/blog/colorado-tech-programs",
     images: ["/og-image.png"],
   },
+  alternates: {
+    canonical: "https://www.fsidigital.ca/blog/colorado-tech-programs",
+  },
+  robots: { index: true, follow: true },
 }
 
 export default function ColoradoTechProgramsPage() {
