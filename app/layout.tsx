@@ -2,9 +2,18 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import Script from "next/script"
+import dynamic from "next/dynamic"
 import "./globals.css"
-import { CookieConsent } from "@/components/cookie-consent"
-import { LeadMagnetPopup } from "@/components/lead-magnet-popup"
+
+// Lazy-load client components to reduce TBT — these are not needed at first paint
+const CookieConsent = dynamic(
+  () => import("@/components/cookie-consent").then(m => ({ default: m.CookieConsent })),
+  { ssr: false }
+)
+const LeadMagnetPopup = dynamic(
+  () => import("@/components/lead-magnet-popup").then(m => ({ default: m.LeadMagnetPopup })),
+  { ssr: false }
+)
 
 const inter = Inter({
   subsets: ["latin"],
@@ -94,9 +103,9 @@ export default function RootLayout({
         {/* Google Analytics GA4 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-DZ55NMNLYM"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -107,7 +116,7 @@ export default function RootLayout({
         </Script>
 
       </head>
-      <body className="font-sans" suppressHydrationWarning>
+      <body className="font-sans">
         {children}
         <CookieConsent />
         <LeadMagnetPopup />

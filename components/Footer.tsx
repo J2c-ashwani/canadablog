@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useState, FormEvent } from 'react';
@@ -52,9 +53,11 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img
+              <Image
                 src="/logo.png"
                 alt="FSI Digital"
+                width={120}
+                height={32}
                 className="h-8 w-auto object-contain bg-white rounded px-1"
               />
             </div>
@@ -237,10 +240,10 @@ export function Footer() {
 
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">© 2025 FSI Digital. All rights reserved.</p>
+            <p className="text-gray-400 text-sm">© 2026 FSI Digital. All rights reserved.</p>
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 mt-2 md:mt-0">
               <p className="text-gray-400 text-sm">
-                Last updated: January 2025
+                Last updated: February 2026
               </p>
               <div className="flex space-x-4">
                 <Link href="/privacy" className="text-gray-400 hover:text-white text-xs">

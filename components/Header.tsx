@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Search, ChevronDown } from "lucide-react"
@@ -44,10 +45,13 @@ export function Header() {
           <div className="flex justify-between items-center h-16 sm:h-24 gap-4">
             {/* Logo */}
             <Link href="/" className="flex items-center flex-shrink-0">
-              <img
+              <Image
                 src="/logo.png"
                 alt="FSI Digital Logo"
+                width={200}
+                height={80}
                 className="h-12 sm:h-20 w-auto object-contain"
+                priority
               />
             </Link>
 

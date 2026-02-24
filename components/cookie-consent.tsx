@@ -56,7 +56,7 @@ export function CookieConsent() {
             <Button size="sm" onClick={acceptCookies} className="bg-white text-gray-900 hover:bg-gray-100">
               Accept All
             </Button>
-            <button onClick={declineCookies} className="text-white hover:text-gray-300 ml-2">
+            <button onClick={declineCookies} className="text-white hover:text-gray-300 ml-2" aria-label="Close cookie banner">
               <X className="w-4 h-4" />
             </button>
           </div>
