@@ -2,18 +2,8 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import Script from "next/script"
-import dynamic from "next/dynamic"
 import "./globals.css"
-
-// Lazy-load client components to reduce TBT — these are not needed at first paint
-const CookieConsent = dynamic(
-  () => import("@/components/cookie-consent").then(m => ({ default: m.CookieConsent })),
-  { ssr: false }
-)
-const LeadMagnetPopup = dynamic(
-  () => import("@/components/lead-magnet-popup").then(m => ({ default: m.LeadMagnetPopup })),
-  { ssr: false }
-)
+import { ClientOverlays } from "@/components/ClientOverlays"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -118,8 +108,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         {children}
-        <CookieConsent />
-        <LeadMagnetPopup />
+        <ClientOverlays />
 
         <script
           type="application/ld+json"

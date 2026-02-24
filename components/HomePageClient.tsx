@@ -1,104 +1,21 @@
-'use client';
+// Server-rendered homepage — hero text (LCP element) paints immediately
+// Only the email forms are client components for interactivity
 
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Search, Download, TrendingUp, Users, DollarSign, Calendar, ArrowRight, CheckCircle } from "lucide-react"
 import Link from "next/link"
-import { useState, FormEvent } from 'react';
+import { HeroEmailForm, NewsletterForm } from "./HomePageForms"
 
 export default function HomePageClient() {
-    const [email, setEmail] = useState('');
-    const [emailNewsletter, setEmailNewsletter] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
-    const [isLoadingNewsletter, setIsLoadingNewsletter] = useState(false);
-
-    // Hero section form handler
-    const handleHeroSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-
-        if (!email) {
-            alert('Please enter your email address');
-            return;
-        }
-
-        setIsLoading(true);
-
-        try {
-            const response = await fetch('/api/subscribe', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    email,
-                    name: '',
-                }),
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                alert('Success! Check your email for the PDF guide.');
-                setEmail('');
-                // Optional: Redirect to download page
-                // window.location.href = '/download/top-50-grants-guide';
-            } else {
-                alert(data.error || 'Something went wrong. Please try again.');
-            }
-        } catch (error) {
-            alert('Failed to subscribe. Please try again.');
-            console.error('Subscription error:', error);
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    // Newsletter section form handler
-    const handleNewsletterSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-
-        if (!emailNewsletter) {
-            alert('Please enter your email address');
-            return;
-        }
-
-        setIsLoadingNewsletter(true);
-
-        try {
-            const response = await fetch('/api/subscribe', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    email: emailNewsletter,
-                    name: '',
-                }),
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                alert('Success! Check your email for the PDF guide.');
-                setEmailNewsletter('');
-                // Optional: Redirect to download page
-                // window.location.href = '/download/top-50-grants-guide';
-            } else {
-                alert(data.error || 'Something went wrong. Please try again.');
-            }
-        } catch (error) {
-            alert('Failed to subscribe. Please try again.');
-            console.error('Subscription error:', error);
-        } finally {
-            setIsLoadingNewsletter(false);
-        }
-    };
-
     return (
         <div className="min-h-screen bg-white">
             <Header />
 
-            {/* Hero Section */}
+            {/* Hero Section — server-rendered for fast LCP */}
             <section className="hero-section text-white py-12 sm:py-16 md:py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto text-center">
@@ -116,27 +33,8 @@ export default function HomePageClient() {
                             <strong>FSI Digital</strong> helps you secure non-dilutive <strong>investment</strong> for your business. Discover thousands of government funding opportunities in USA and Canada. The smartest alternative to <strong>investor</strong> capital.
                         </p>
 
-                        <form onSubmit={handleHeroSubmit} className="flex flex-col gap-4 justify-center items-center mb-8 sm:mb-12 px-4 sm:px-0">
-                            <div className="flex flex-col gap-3 w-full max-w-md sm:max-w-lg">
-                                <Input
-                                    type="email"
-                                    placeholder="Enter your email for free PDF guide"
-                                    className="bg-white text-gray-900 border-0 h-12 sm:h-14 text-base w-full rounded-lg"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                />
-                                <Button
-                                    type="submit"
-                                    size="lg"
-                                    className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold h-12 sm:h-14 px-6 sm:px-8 w-full"
-                                    disabled={isLoading}
-                                >
-                                    <Download className="w-5 h-5 mr-2" />
-                                    {isLoading ? 'Sending...' : 'Get Free PDF Guide'}
-                                </Button>
-                            </div>
-                        </form>
+                        {/* Client component — interactive form */}
+                        <HeroEmailForm />
 
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto px-4 sm:px-0">
                             <Button
@@ -347,7 +245,7 @@ export default function HomePageClient() {
                             </div>
                             <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Free PDF Guides</h3>
                             <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                                Download our comprehensive guides including "Top 50 USA & Canada Startup Grants 2025" absolutely free.
+                                Download our comprehensive guides including &quot;Top 50 USA &amp; Canada Startup Grants 2026&quot; absolutely free.
                             </p>
                         </div>
 
@@ -406,25 +304,8 @@ export default function HomePageClient() {
                             businesses in USA and Canada.
                         </p>
 
-                        <form onSubmit={handleNewsletterSubmit} className="flex flex-col gap-3 sm:gap-4 justify-center items-center max-w-sm sm:max-w-md mx-auto px-4 sm:px-0">
-                            <Input
-                                type="email"
-                                placeholder="Enter your email address"
-                                className="bg-white text-gray-900 border-0 h-12 sm:h-14 text-base w-full"
-                                value={emailNewsletter}
-                                onChange={(e) => setEmailNewsletter(e.target.value)}
-                                required
-                            />
-                            <Button
-                                type="submit"
-                                size="lg"
-                                className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold h-12 sm:h-14 px-6 sm:px-8 w-full"
-                                disabled={isLoadingNewsletter}
-                            >
-                                <Download className="w-5 h-5 mr-2" />
-                                {isLoadingNewsletter ? 'Sending...' : 'Download Free'}
-                            </Button>
-                        </form>
+                        {/* Client component — interactive form */}
+                        <NewsletterForm />
 
                         <div className="flex flex-col sm:flex-row items-center justify-center mt-4 sm:mt-6 space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-blue-100">
                             <div className="flex items-center">
