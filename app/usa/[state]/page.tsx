@@ -37,14 +37,14 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     if (!state) return { title: 'State Not Found' };
 
     return {
-        title: `${state.name} Small Business Grants 2026 | ${state.heroStats.totalFunding} Complete Funding Guide`,
+        title: `${state.name} Business Grants 2026: ${state.heroStats.totalFunding}+ Available [Apply]`,
         description: state.metaDescription,
         alternates: {
             canonical: `https://www.fsidigital.ca/usa/${state.slug}`,
         },
         robots: { index: true, follow: true },
         openGraph: {
-            title: `${state.name} Small Business Grants 2026`,
+            title: `${state.name} Small Business Grants & Funding 2026`,
             description: state.metaDescription,
             type: 'article',
         },

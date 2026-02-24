@@ -10,49 +10,49 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women Entrepreneurs Grants USA 2026 | Female Business Owner Funding",
+  title: "Small Business Funding for Women 2026: Grants & Loans [USA]",
   description:
-    "Find grants for women entrepreneurs in the USA. Browse women-owned business grants, SBA programs for women, and federal funding up to $1M available.",
-  keywords: "women entrepreneurs grants usa, women owned business grants, female entrepreneur funding, SBA women grants, grants for women business owners",
+    "Women-owned small business grants, SBA microloans, and federal funding up to $1M. 13M+ women-owned businesses qualify. Find your program.",
+  keywords: "small business funding for women, funding for women entrepreneurs, woman owned small business grants, grants for women owned businesses, startup funding for women, business grants for women, women entrepreneur grants, ladies business loan",
   openGraph: {
-    title: "Women Entrepreneurs Grants USA 2026 | Female Business Owner Funding",
-    description: "Find grants and funding programs specifically for women entrepreneurs and female business owners in the USA.",
+    title: "Small Business Funding for Women 2026: Grants & Loans [USA]",
+    description: "Women-owned small business grants, SBA microloans, and federal funding up to $1M.",
     url: "https://www.fsidigital.ca/usa/women-entrepreneurs-grants",
   },
 }
 
 export default function USAWomenEntrepreneursGrantsPage() {
   const usaGrants = getGrantsByCountry("USA")
-  
+
   // ✅ EXPANDED: Show 8+ relevant grants for women entrepreneurs
-  const womenGrants = usaGrants.filter((grant) => 
+  const womenGrants = usaGrants.filter((grant) =>
     // Direct women-focused grants
-    grant.category.includes("Women") || 
+    grant.category.includes("Women") ||
     grant.name.includes("Women") ||
     grant.name.includes("Female") ||
     grant.eligibility.some(e => e.includes("women") || e.includes("female") || e.includes("Women")) ||
-    
+
     // Small Business grants (highly relevant for women entrepreneurs)
     grant.category.includes("Small Business") ||
     grant.name.includes("Small Business") ||
     grant.name.includes("SBA") ||
     grant.eligibility.some(e => e.includes("small business")) ||
-    
+
     // Minority grants (many include women)
     grant.category.includes("Minority") ||
     grant.name.includes("Minority") ||
     grant.eligibility.some(e => e.includes("minority")) ||
-    
+
     // Innovation/Research grants (growing area for women)
     grant.name.includes("SBIR") ||
     grant.name.includes("STTR") ||
     grant.name.includes("Innovation") ||
     grant.category.includes("Innovation") ||
-    
+
     // Technology grants (women in tech focus)
     grant.category.includes("Technology") ||
     grant.name.includes("Technology") ||
-    
+
     // Economic Development grants
     grant.category.includes("Economic Development") ||
     grant.name.includes("Economic Development")
@@ -74,7 +74,7 @@ export default function USAWomenEntrepreneursGrantsPage() {
               </span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-pink-100 leading-relaxed text-pretty">
-              Comprehensive funding opportunities for women entrepreneurs and female business owners. Access specialized 
+              Comprehensive funding opportunities for women entrepreneurs and female business owners. Access specialized
               grants, SBA programs, and federal funding designed to support women-led businesses across America.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -168,7 +168,7 @@ export default function USAWomenEntrepreneursGrantsPage() {
                     <li>• Networking opportunities</li>
                     <li>• Government contracting assistance</li>
                   </ul>
-                  
+
                   <div className="pt-4">
                     <Button variant="outline" className="w-full" asChild>
                       <Link href="/blog/women-business-centers-guide">

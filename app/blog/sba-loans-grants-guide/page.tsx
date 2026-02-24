@@ -18,9 +18,9 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "SBA Loans 2026: Get Up to $5M — 7(a), 504 & Microloan Guide",
-  description: "The SBA approved $44.8B last year. We break down every loan type, the exact credit score needed, and the 4 mistakes that get applications denied instantly.",
-  keywords: "SBA loans, SBA grants, 7(a) loans, 504 loans, microloans, SBA disaster loans, small business funding",
+  title: "SBA Microloan Program 2026: Requirements, Max Amount & How to Apply",
+  description: "SBA Microloan: up to $50K through nonprofit intermediaries. Plus 7(a) loans ($5M), 504 loans, and disaster loans. Credit score requirements, terms, and the 4 mistakes that get you denied.",
+  keywords: "sba microloan program, sba microloan requirements, sba microloan maximum amount, sba microloans provided through nonprofit intermediaries, sba microloan program details, SBA loans, 7(a) loans, 504 loans, small business funding",
 }
 
 export default function SBALoansGrantsGuidePage() {

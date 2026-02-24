@@ -8,12 +8,12 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Women Business Grants Canada 2026: $6B+ Funding [Full List]",
-  description: "Complete guide to women business grants in Canada. Access Women Entrepreneurship Strategy, loan funds, provincial programs, and $6B+ in funding for women-owned and women-led businesses.",
-  keywords: "women business grants Canada, women entrepreneur funding, women entrepreneurship strategy, grants for women owned businesses, female entrepreneur grants, women business loans Canada, funding for women entrepreneurs",
+  title: "Women-Owned Business Grants Canada 2026: $6B+ [Full List]",
+  description: "150+ grants for women entrepreneurs in Canada. WELF microloans ($50K), WES Strategy, BDC women financing & provincial programs. See which ones you qualify for.",
+  keywords: "women-owned business grants canada, women entrepreneurs canada, grants for women in business canada, canadian grants for women entrepreneurs, funding for women entrepreneurs, women business loans Canada, ladies business loan",
   openGraph: {
-    title: "Women Business Grants Canada 2026: $6B+ Funding [Full List]",
-    description: "Comprehensive funding guide for Canadian women entrepreneurs with federal programs, provincial grants, and $6B+ available through Women Entrepreneurship Strategy.",
+    title: "Women-Owned Business Grants Canada 2026: $6B+ [Full List]",
+    description: "150+ grants for women entrepreneurs in Canada. WELF, BDC, and provincial programs with $6B+ available.",
     url: "https://www.fsidigital.ca/canada/women-business-grants",
     images: ["/og-image.png"],
   },
@@ -36,7 +36,7 @@ export default function WomenBusinessGrantsCanadaPage() {
                 $6+ Billion Available for Women-Owned & Women-Led Businesses
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-pink-100 leading-relaxed max-w-3xl mx-auto">
-                Access comprehensive funding through Women Entrepreneurship Strategy, loan funds, provincial programs, 
+                Access comprehensive funding through Women Entrepreneurship Strategy, loan funds, provincial programs,
                 and federal grants designed specifically for women entrepreneurs across Canada.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -93,7 +93,7 @@ export default function WomenBusinessGrantsCanadaPage() {
                   Women Entrepreneurship Strategy (WES) Programs
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Federal government programs specifically designed to support women entrepreneurs 
+                  Federal government programs specifically designed to support women entrepreneurs
                   at every stage - from startup to scale-up and beyond.
                 </p>
               </div>
@@ -128,7 +128,7 @@ export default function WomenBusinessGrantsCanadaPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      National microloan program providing up to $50,000 for women entrepreneurs, 
+                      National microloan program providing up to $50,000 for women entrepreneurs,
                       particularly startups, underrepresented groups, and sole proprietorships.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -182,7 +182,7 @@ export default function WomenBusinessGrantsCanadaPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Non-repayable funding for women-owned businesses to expand operations, 
+                      Non-repayable funding for women-owned businesses to expand operations,
                       innovate product lines, hire staff, and access new markets.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -236,7 +236,7 @@ export default function WomenBusinessGrantsCanadaPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Comprehensive financing and advisory services designed for women-led businesses 
+                      Comprehensive financing and advisory services designed for women-led businesses
                       with flexible terms and strategic growth support.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -290,7 +290,7 @@ export default function WomenBusinessGrantsCanadaPage() {
                       </div>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      Export financing and equity capital for women-owned businesses targeting 
+                      Export financing and equity capital for women-owned businesses targeting
                       international markets and global expansion opportunities.
                     </p>
                     <div className="space-y-2 mb-4">
@@ -331,7 +331,7 @@ export default function WomenBusinessGrantsCanadaPage() {
                   Provincial Women Entrepreneurship Support
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Province-specific funding programs and organizations supporting women 
+                  Province-specific funding programs and organizations supporting women
                   entrepreneurs with grants, loans, mentorship, and business services.
                 </p>
               </div>
@@ -509,7 +509,7 @@ export default function WomenBusinessGrantsCanadaPage() {
                   Competitive Women Business Awards & Grant Opportunities
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  National and international grant competitions recognizing and funding 
+                  National and international grant competitions recognizing and funding
                   exceptional women entrepreneurs across Canada and beyond.
                 </p>
               </div>
@@ -621,7 +621,7 @@ export default function WomenBusinessGrantsCanadaPage() {
                   Women Business Grants by Industry Sector
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Specialized funding opportunities for women entrepreneurs in specific 
+                  Specialized funding opportunities for women entrepreneurs in specific
                   industries, sectors, and business focus areas.
                 </p>
               </div>
@@ -962,7 +962,7 @@ export default function WomenBusinessGrantsCanadaPage() {
                 Maximize Your Success with Women Business Grant Experts
               </h2>
               <p className="text-xl text-pink-100 mb-8">
-                Women entrepreneurs face unique challenges accessing capital. Our specialized grant consultants understand 
+                Women entrepreneurs face unique challenges accessing capital. Our specialized grant consultants understand
                 the Women Entrepreneurship Strategy ecosystem and have secured over $42M in funding for women-led businesses.
               </p>
               <div className="bg-white/10 rounded-lg p-6 mb-8">
@@ -1028,8 +1028,8 @@ export default function WomenBusinessGrantsCanadaPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-700">
-                      Most programs require 51% or more ownership by women, or majority women leadership in decision-making roles. 
-                      Some programs have flexible definitions including women-identifying entrepreneurs, women majority boards, 
+                      Most programs require 51% or more ownership by women, or majority women leadership in decision-making roles.
+                      Some programs have flexible definitions including women-identifying entrepreneurs, women majority boards,
                       or businesses advancing women's economic participation.
                     </p>
                   </CardContent>
@@ -1043,8 +1043,8 @@ export default function WomenBusinessGrantsCanadaPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-700">
-                      Women entrepreneurs can access over $6 billion through combined federal, provincial, and organizational programs. 
-                      Individual grants range from $2,500 microloans to multi-million dollar innovation funding. The Women Entrepreneurship 
+                      Women entrepreneurs can access over $6 billion through combined federal, provincial, and organizational programs.
+                      Individual grants range from $2,500 microloans to multi-million dollar innovation funding. The Women Entrepreneurship
                       Loan Fund provides up to $50,000, while growth programs can exceed $1M for established businesses.
                     </p>
                   </CardContent>
@@ -1058,8 +1058,8 @@ export default function WomenBusinessGrantsCanadaPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-700">
-                      Programs vary: grants are non-repayable contributions, loans require repayment with flexible terms, and equity 
-                      investments involve ownership stakes. Women Entrepreneurship Fund grants are non-repayable, while Women 
+                      Programs vary: grants are non-repayable contributions, loans require repayment with flexible terms, and equity
+                      investments involve ownership stakes. Women Entrepreneurship Fund grants are non-repayable, while Women
                       Entrepreneurship Loan Fund requires repayment. Review each program's specific terms carefully.
                     </p>
                   </CardContent>
@@ -1073,8 +1073,8 @@ export default function WomenBusinessGrantsCanadaPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-700">
-                      Yes, women entrepreneurs can apply to multiple programs simultaneously. Strategic portfolio approaches often yield 
-                      better results by diversifying funding sources. Ensure no program restrictions prohibit concurrent applications, 
+                      Yes, women entrepreneurs can apply to multiple programs simultaneously. Strategic portfolio approaches often yield
+                      better results by diversifying funding sources. Ensure no program restrictions prohibit concurrent applications,
                       and disclose other funding applications when required. Expert consultants maximize multi-program success rates.
                     </p>
                   </CardContent>
@@ -1088,8 +1088,8 @@ export default function WomenBusinessGrantsCanadaPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-700">
-                      Technology, clean energy, manufacturing, healthcare, and social enterprises receive substantial women entrepreneur 
-                      funding. However, programs exist for all industries including retail, services, agriculture, creative industries, 
+                      Technology, clean energy, manufacturing, healthcare, and social enterprises receive substantial women entrepreneur
+                      funding. However, programs exist for all industries including retail, services, agriculture, creative industries,
                       and professional services. Industry-agnostic programs focus on innovation, growth potential, and economic impact.
                     </p>
                   </CardContent>
@@ -1103,9 +1103,9 @@ export default function WomenBusinessGrantsCanadaPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-700">
-                      Application timelines vary by program complexity: simple applications take 2-4 weeks to prepare, comprehensive 
-                      applications require 2-3 months. Review periods range from 4-12 weeks post-submission. Funding disbursement 
-                      typically occurs 30-90 days after approval. Rolling intake programs offer flexibility, while annual competitions 
+                      Application timelines vary by program complexity: simple applications take 2-4 weeks to prepare, comprehensive
+                      applications require 2-3 months. Review periods range from 4-12 weeks post-submission. Funding disbursement
+                      typically occurs 30-90 days after approval. Rolling intake programs offer flexibility, while annual competitions
                       have fixed deadlines.
                     </p>
                   </CardContent>
