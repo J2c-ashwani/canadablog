@@ -7,6 +7,12 @@ import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, MapPi
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "California Small Business Loan Guarantee 2026 | IBank Guide",
   description: "Official guide to the California Small Business Loan Guarantee Program (SSBCI). How to get state-backed loans up to $2.5 million if you lack collateral.",
@@ -81,9 +87,16 @@ export default function CaliforniaLoanGuaranteeGuide() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
                 California Small Business <br className="hidden md:block" /> Loan Guarantee
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-amber-100 leading-relaxed text-pretty">
-                The state will back <strong>95%</strong> of your loan. <br className="hidden md:block" /> Get funded even without perfect collateral.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="California Small Business Loan Guarantee Program Guide — Complete guide to accessing California state loan guarantees for small businesses." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-orange-800 hover:bg-orange-50 font-bold shadow-lg" asChild>
                   <Link href="#fdc-map">
@@ -99,6 +112,12 @@ export default function CaliforniaLoanGuaranteeGuide() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
+    ]} />
+
 
         {/* QUERY HOOK: Common Questions */}
         <div className="bg-white border-b border-orange-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
@@ -196,7 +215,11 @@ export default function CaliforniaLoanGuaranteeGuide() {
         <section id="fdc-map" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-slate-900 mb-6 text-center">Find Your FDC Contact</h2>
+              
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-slate-900 mb-6 text-center">Find Your FDC Contact</h2>
               <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
                 You do not apply to the "State." You apply through a <strong>Financial Development Corporation (FDC)</strong>. Find the one in your region below.
               </p>

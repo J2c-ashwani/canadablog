@@ -7,6 +7,12 @@ import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Searc
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "How to Apply for Federal Grants 2026 | Complete Application Guide | Grants.gov, SAM.gov, SBIR",
   description: "Step-by-step guide to applying for federal grants. Learn eligibility requirements, application process, winning strategies, and access billions in government funding through Grants.gov, SBIR, and more.",
@@ -96,10 +102,16 @@ export default function ApplyFederalGrantsGuide() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
                 How to Apply for Federal Grants
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed text-pretty">
-                Complete step-by-step guide to applying for federal grants. Learn how to navigate the federal funding landscape
-                and secure government grants for your business, nonprofit, or research project.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="How to Apply for USA Federal Grants — Complete step-by-step guide for navigating the US federal grant application process including Grants.gov registration and submission." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
                   <Link href="#programs">
@@ -115,6 +127,12 @@ export default function ApplyFederalGrantsGuide() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+    ]} />
+
 
         {/* QUERY HOOK: Common Questions */}
         <div className="bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm/50">
@@ -214,7 +232,11 @@ export default function ApplyFederalGrantsGuide() {
 
               {/* Major Federal Grant Programs */}
               <div id="programs" className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">What are the major federal grant programs?</h2>
+                
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-gray-900 mb-6">What are the major federal grant programs?</h2>
 
                 <div className="space-y-6">
                   {/* SBIR/STTR */}

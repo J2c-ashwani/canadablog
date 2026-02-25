@@ -7,6 +7,12 @@ import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Light
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "SR&ED Tax Credits 2026: Application, Rates & Eligibility",
   description: "Complete guide to claiming SR&ED tax credits. Learn how to get up to 65% of your R&D costs refunded by the CRA.",
@@ -74,9 +80,16 @@ export default function SREDApplicationGuide() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
                 How to Apply for <br className="hidden md:block" />SR&ED Tax Credits
               </h1>
-              <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Get up to <strong>65% of your R&D costs refunded</strong>. The complete guide to eligibility, Form T661, and maximizing your claim.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="SR&ED gives CCPCs a 35% refundable tax credit on eligible R&D. You must file within 18 months of your fiscal year end. The key requirement is proving 'technological uncertainty' — document your failures, they are your strongest evidence." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-green-700 hover:bg-green-50 font-bold" asChild>
@@ -89,6 +102,15 @@ export default function SREDApplicationGuide() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Eligible Work', id: 'eligible-activities' },
+      { title: 'Documentation', id: 'documentation' },
+      { title: 'Claim Process', id: 'claim-process' },
+      { title: 'Audit Risk', id: 'audit-preparation' }
+    ]} />
+
 
         {/* 1. QUERY HOOK: Common Questions */}
         <div className="bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm/50">
@@ -181,7 +203,12 @@ export default function SREDApplicationGuide() {
               </div>
 
               <div id="eligibility" className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">What activities are actually eligible?</h2>
+                
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      title: "Protect Your SR&ED Claim",
+      description: "Our certified SR&ED consultants prepare audit-proof documentation and maximize your claim value.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-gray-900 mb-6">What activities are actually eligible?</h2>
 
                 <p className="text-gray-600 mb-6 text-lg">
                   SR&ED is not just for scientists in lab coats. It applies to software developers, manufacturers, and engineers solving hard problems.

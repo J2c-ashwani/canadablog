@@ -10,6 +10,12 @@ import {
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "SBIR Research Grants 2026: Application Guide & Requirements",
   description: "Complete guide to applying for SBIR Phase I & II grants. Learn eligibility, deadlines, and how to secure up to $1.7M in federal R&D funding without equity loss.",
@@ -95,12 +101,25 @@ export default function SBIRResearchGrantsGuide() {
                   Get Up to $1.7M Funding
                 </span>
               </h1>
-              <p className="text-xl text-blue-100 mb-8 leading-relaxed max-w-2xl mx-auto">
-                No equity loss. No repayment. The complete guide to securing Phase I & II funding for your technology startup.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="How to Apply for SBIR Research Grants — Complete guide to applying for Small Business Innovation Research (SBIR) Phase I & II grants." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+    ]} />
+
 
         {/* 1. QUERY HOOK: Common Questions */}
         <section className="py-12 bg-white border-b border-gray-100">
@@ -163,7 +182,11 @@ export default function SBIRResearchGrantsGuide() {
 
               {/* 2. STRUCTURE SCAN: Question-based Headings */}
               <div id="eligibility" className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">How does the SBIR Application Process work?</h2>
+                
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Our SBIR specialists help tech startups secure non-dilutive R&D funding with proven proposal strategies.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-gray-900 mb-6">How does the SBIR Application Process work?</h2>
 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
                   <div className="flex items-start">

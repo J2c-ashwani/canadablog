@@ -13,6 +13,12 @@ import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, F
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "Women Entrepreneurship Strategy Canada 2026 | $6B+ Female Business Grants & Loans",
   description: "Complete guide to Canada's Women Entrepreneurship Strategy. Access $6B+ in women business grants, female entrepreneur funding, and women-owned business loans across all Canadian provinces.",
@@ -76,10 +82,16 @@ export default function WESBlogPage() {
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Women Entrepreneurship Strategy Canada 2026
               </h1>
-              <p className="text-xl text-pink-100 mb-8">
-                Access $6+ billion in Canadian government funding for women entrepreneurs. Complete guide to
-                female business grants, women-owned business loans, and WES support programs across all provinces.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="Yes — Canada's Women Entrepreneurship Strategy (WES) offers $6B+ through 15+ coordinated programs, including grants up to $100K, BDC loans, and free mentorship. It's not a single program — stack multiple WES initiatives for maximum funding." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-pink-700 hover:bg-gray-100" asChild>
                   <Link href="/grant-finder?program=wes&gender=female">
@@ -95,6 +107,15 @@ export default function WESBlogPage() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ]} />
+
 
         {/* Program Statistics - SEO Optimized */}
         <section className="py-16 bg-white">
@@ -158,7 +179,11 @@ export default function WESBlogPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Women Entrepreneurship Strategy Funding Programs</h2>
+              
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Women-owned business? Our team specializes in WES program applications — we help you access grants, loans, and advisory services in one coordinated strategy.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Women Entrepreneurship Strategy Funding Programs</h2>
 
               <div className="space-y-8">
                 {/* Women Entrepreneurship Fund */}

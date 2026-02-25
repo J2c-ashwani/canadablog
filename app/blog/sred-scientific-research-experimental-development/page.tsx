@@ -7,6 +7,12 @@ import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, F
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "SR&ED Tax Credits Canada 2026 | Scientific Research & Experimental Development Guide - 65% Refundable",
   description: "Complete guide to SR&ED tax credits in Canada. Enhanced 2026 rates with 35% federal refundable + provincial credits up to 65% total. $4.5M expenditure limit.",
@@ -73,9 +79,16 @@ export default function SREDTaxCreditsGuidePage() {
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Scientific Research & Experimental Development (SR&ED) Tax Credits
               </h1>
-              <p className="text-xl text-green-100 mb-8">
-                Canada's largest R&D tax incentive program providing up to 65% refundable tax credits for eligible research and experimental development activities. Enhanced 2026 rates with $4.5M expenditure limit and expanded eligibility.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="SR&ED gives Canadian businesses a 35% refundable federal tax credit on eligible R&D expenditures (up to $4.5M). Combined with provincial credits, you can recover up to 65% of your R&D costs — the highest rate in North America." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>
                   <Link href="#calculator">
@@ -91,6 +104,15 @@ export default function SREDTaxCreditsGuidePage() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Tax Credits', id: 'tax-credits' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Claim', id: 'how-to-claim' },
+      { title: 'FAQ', id: 'faq' }
+    ]} />
+
 
         {/* Enhanced 2026 Changes Alert */}
         <section className="py-8 bg-blue-50 border-b-2 border-blue-200">
@@ -162,7 +184,12 @@ export default function SREDTaxCreditsGuidePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the 2026 SR&ED Tax Credit Rates & Eligibility?</h2>
+              
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      title: "Maximize Your SR&ED Claim",
+      description: "Our SR&ED specialists have recovered over $50M in tax credits for Canadian tech companies. Get a free assessment of your eligible R&D activities.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What are the 2026 SR&ED Tax Credit Rates & Eligibility?</h2>
 
               <div className="space-y-8">
                 {/* Canadian-Controlled Private Corporations */}

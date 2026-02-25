@@ -7,6 +7,12 @@ import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Light
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "IRAP Funding Guide 2026: Application, Eligibility & ITA Contact",
   description: "Complete guide to the Industrial Research Assistance Program (IRAP). How to get up to $500K in non-repayable R&D funding and connect with an ITA.",
@@ -74,9 +80,16 @@ export default function IRAPInnovationApplicationGuide() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
                 How to Apply for <br className="hidden md:block" />IRAP Innovation Funding
               </h1>
-              <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Secure up to <strong>$500,000 in non-repayable R&D funding</strong>. Step-by-step guide to connecting with an ITA and getting approved.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="IRAP Innovation Funding Application Guide — Strategic guide for accessing IRAP innovation funding and technical advisory services." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-blue-700 hover:bg-blue-50 font-bold" asChild>
@@ -89,6 +102,12 @@ export default function IRAPInnovationApplicationGuide() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+    ]} />
+
 
         {/* 1. QUERY HOOK: Common Questions */}
         <div className="bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm/50">
@@ -181,7 +200,11 @@ export default function IRAPInnovationApplicationGuide() {
               </div>
 
               <div id="eligibility" className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Who is eligible for IRAP Funding?</h2>
+                
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Need help with your IRAP application? Our specialists connect you with the right ITA and prepare your proposal.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-gray-900 mb-6">Who is eligible for IRAP Funding?</h2>
 
                 <p className="text-gray-600 mb-6 text-lg">
                   IRAP supports small and medium-sized businesses (SMEs) in Canada that want to develop and commercialize technologies.

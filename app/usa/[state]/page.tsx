@@ -11,6 +11,10 @@ import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable';
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox';
 import { GlobalGrantGuide } from '@/components/blog/GlobalGrantGuide';
 import { getStateDetailBySlug, getAllStateDetails, getQueryBasedSections, getQueryExpanders, getRelatedGuides } from '@/lib/data/stateDetails';
+import EEATBadge from '@/components/blog/EEATBadge';
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import InlineCTA from '@/components/blog/InlineCTA';
 import {
 
     ArrowLeft, DollarSign, Users, Briefcase, Target, Building, Zap, TrendingUp,
@@ -105,6 +109,12 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                             {state.name} Small Business Grants 2026
                         </h1>
+                        {state.shortAnswer && (
+                            <ShortAnswerBox content={state.shortAnswer} />
+                        )}
+                        <div className="mt-4 mb-6">
+                            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-02-09" />
+                        </div>
                         <p className="text-xl text-gray-600 mb-6">
                             Complete guide to {state.heroStats.totalFunding} in {state.name} business funding across {state.heroStats.programCount} programs
                         </p>
@@ -148,6 +158,13 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                             <li><a href="#related-guides" className="text-green-600 hover:underline">12. Related Guides</a></li>
                         </ul>
                     </nav>
+
+                    {/* Eligible Check */}
+                    {state.eligibleCheck && (
+                        <div className="mb-12">
+                            <EligibleCheck />
+                        </div>
+                    )}
 
                     {/* Overview Section */}
                     <section id="overview" className="mb-12">
@@ -222,6 +239,18 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                             ))}
                         </div>
                     </section>
+
+                    {/* Inline CTA */}
+                    {state.inlineCTA && (
+                        <div className="mb-12">
+                            <InlineCTA
+                                title={state.inlineCTA.title}
+                                description={state.inlineCTA.description}
+                                buttonText={state.inlineCTA.buttonText}
+                                buttonLink={state.inlineCTA.buttonLink}
+                            />
+                        </div>
+                    )}
 
                     {/* Eligibility Section */}
                     <section id="eligibility" className="mb-12">

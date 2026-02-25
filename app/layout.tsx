@@ -78,7 +78,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} antialiased`} suppressHydrationWarning>
       <head>
         {/* Preconnect to critical third-party origins for CWV */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -106,7 +106,7 @@ export default function RootLayout({
         </Script>
 
       </head>
-      <body className="font-sans">
+      <body className="font-sans" suppressHydrationWarning>
         {children}
         <ClientOverlays />
 

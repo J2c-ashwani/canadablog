@@ -13,6 +13,12 @@ import {
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "Agriculture Canada Grants 2026 | AAFC Federal Funding Guide",
   description: "Complete guide to the $3.5B Sustainable Canadian Agricultural Partnership. Access AgriInnovate, AgriScience, AgriCompetitiveness, and Clean Technology funding for farms, processors, and agri-tech companies.",
@@ -80,11 +86,29 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-white/20 text-white border-white/30"><Sprout className="w-3 h-3 mr-1" /> Federal Agri-Food Programs</Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">Agriculture and Agri-Food Canada Grants 2026</h1>
-              <p className="text-xl text-green-100 mb-8">Comprehensive guide to the $3.5 billion Sustainable Canadian Agricultural Partnership funding. From AgriInnovate commercialization to AgriScience research clusters, access federal funding for agricultural innovation, sustainability, and competitiveness.</p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="Yes — Agriculture & Agri-Food Canada offers up to $5M through AgriInnovate, AgriScience, and Sustainable CAP programs. Most funding is delivered through provincial agriculture ministries on a 50% cost-sharing basis." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild><Link href="/grant-finder?program=agriculture">Find AAFC Programs</Link></Button>
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ]} />
+
 
         <section className="py-8 bg-white border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,7 +138,11 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
         <section className="py-12 bg-gray-50 border-b border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About AAFC Grants</h2>
+              
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Get matched with the right AAFC program for your farm or agribusiness — our grant specialists navigate federal and provincial channels for you.",
+    }} /></div>
+<h2 className="text-2xl font-bold text-gray-900 mb-6">❓ Common Questions About AAFC Grants</h2>
               <div className="grid md:grid-cols-2 gap-4">
                 <a href="#faqs" className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
                   <h3 className="font-semibold text-blue-900">AgriInnovate vs AgriScience?</h3>

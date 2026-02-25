@@ -7,6 +7,12 @@ import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Build
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "Small Business Grants 2026 | SBA & Federal Funding Guide",
   description: "Stop searching for 'free money' scams. Learn the real way to get small business funding through SBA 7(a) loans, microloans, and federal grants.",
@@ -81,9 +87,16 @@ export default function ApplySmallBusinessGrantsGuide() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
                 Small Business Grants <br className="hidden md:block" /> & Funding Guide
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed text-pretty">
-                Navigate the <strong>$500 Billion</strong> world of federal funding. <br className="hidden md:block" /> Loans, Grants, and Micro-financing explained.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="Search Grants.gov for 1000+ active federal grant opportunities ($50K-$500K typical). Federal grants fund specific projects, not general business expenses. Approval takes 3-12 months with a 10-30% success rate." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50 font-bold shadow-lg" asChild>
                   <Link href="#programs">
@@ -99,6 +112,15 @@ export default function ApplySmallBusinessGrantsGuide() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Find Grants', id: 'find-grants' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'Application', id: 'application' },
+      { title: 'Tips', id: 'tips' }
+    ]} />
+
 
         {/* QUERY HOOK: Common Questions */}
         <div className="bg-white border-b border-blue-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
@@ -220,7 +242,11 @@ export default function ApplySmallBusinessGrantsGuide() {
         <section id="sba-process" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">The Application Flow</h2>
+              
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Overwhelmed by Grants.gov? Our team pre-qualifies opportunities for your business type and handles the application process.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">The Application Flow</h2>
 
               <div className="relative border-l-2 border-blue-200 pl-8 space-y-12 ml-4 md:ml-0">
 

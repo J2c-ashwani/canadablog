@@ -7,6 +7,12 @@ import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Credi
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "SBA Loan Requirements 2026 | 7(a), 504 & Microloans",
   description: "Official guide to applying for SBA loans. Compare 7(a), CDC/504, and Microloan requirements. Learn how to get approved for up to $5M.",
@@ -81,9 +87,16 @@ export default function ApplySBALoansGuide() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
                 How to Apply for <br className="hidden md:block" /> SBA Loans (2026)
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed text-pretty">
-                The complete handbook to 7(a), 504, and Microloans. <br className="hidden md:block" /> Secure up to <strong>$5 Million</strong> in government-backed funding.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="SBA Loan Application Guide — Learn how to successfully apply for SBA loans including 7(a), 504, and microloan programs." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50 font-bold shadow-lg" asChild>
                   <Link href="#types">
@@ -99,6 +112,12 @@ export default function ApplySBALoansGuide() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
+    ]} />
+
 
         {/* QUERY HOOK: Common Questions */}
         <div className="bg-white border-b border-blue-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
@@ -231,7 +250,11 @@ export default function ApplySBALoansGuide() {
         <section id="requirements" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Eligibility Checklist</h2>
+              
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Not sure which SBA program fits? Our funding specialists match you to the right opportunity.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Eligibility Checklist</h2>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-green-200">

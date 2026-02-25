@@ -7,6 +7,12 @@ import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Alert
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "SBA Application Process 2026 | Step-by-Step Approval Guide",
   description: "Master the SBA application process. From EIN registration to 'Lender Match' and final approval. Download the 2025 document checklist.",
@@ -81,9 +87,16 @@ export default function SBAApplicationProcessGuide() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
                 The SBA Application <br className="hidden md:block" /> Process (2026)
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-slate-200 leading-relaxed text-pretty">
-                From "Lender Match" to "Clear to Close". <br className="hidden md:block" /> Step-by-step instructions to get your federal funding approved.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="The SBA application takes 30-90 days. You need a 640+ credit score, 10-20% down payment, and proof you can't get a conventional loan. Start at SBA.gov/lender-match to find an approved lender." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-50 font-bold shadow-lg" asChild>
                   <Link href="#checklist">
@@ -99,6 +112,15 @@ export default function SBAApplicationProcessGuide() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Requirements', id: 'requirements' },
+      { title: 'Documents', id: 'documents' },
+      { title: 'Timeline', id: 'timeline' },
+      { title: 'Mistakes', id: 'mistakes' }
+    ]} />
+
 
         {/* QUERY HOOK: Common Questions */}
         <div className="bg-white border-b border-slate-200 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
@@ -179,7 +201,11 @@ export default function SBAApplicationProcessGuide() {
               {/* Step 2 */}
               <div id="step2" className="mb-16 relative border-l-2 border-slate-200 pl-8 ml-4 md:ml-0">
                 <div className="absolute -left-[41px] bg-slate-900 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">2</div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-6">The "Packet" (Documents)</h2>
+                
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Need help with your SBA application? Our funding specialists guide you through every step.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-slate-900 mb-6">The "Packet" (Documents)</h2>
                 <p className="text-lg text-slate-600 mb-6">
                   Lenders will not look at you without a complete packet. Gather these BEFORE you approach a bank.
                 </p>

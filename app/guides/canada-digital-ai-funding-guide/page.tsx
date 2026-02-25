@@ -7,6 +7,12 @@ import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Targe
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "AI Funding Canada 2026 | Scale AI & CDAP Grants",
   description: "Complete guide to AI and digital adoption funding. Apply for Scale AI supercluster projects, CDAP digital transformation grants, and IRAP machine learning funding.",
@@ -81,10 +87,16 @@ export default function CanadaDigitalAIFundingGuide() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
                 Canada AI Grants Guide
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-indigo-100 leading-relaxed text-pretty">
-                The comprehensive handbook for AI innovation.
-                Secure Scale AI funding, CDAP digital grants, and IRAP R&D support.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="Canada Digital & AI Funding Guide — Funding opportunities for digital transformation and AI development projects." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold shadow-lg shadow-indigo-900/50" asChild>
                   <Link href="#programs">
@@ -100,6 +112,12 @@ export default function CanadaDigitalAIFundingGuide() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+    ]} />
+
 
         {/* QUERY HOOK: Common Questions */}
         <div className="bg-white border-b border-indigo-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
@@ -241,7 +259,11 @@ export default function CanadaDigitalAIFundingGuide() {
         <section id="process" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">AI Project Lifecycle</h2>
+              
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">AI Project Lifecycle</h2>
 
               <div className="relative border-l-2 border-slate-200 pl-8 space-y-12 ml-4 md:ml-0">
 

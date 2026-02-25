@@ -132,8 +132,7 @@ export const blogPosts: BlogPost[] = [
       title: "Apply Through Provincial Channels",
       type: 'tip',
       content: "Most AAFC programs are delivered through <strong>provincial agriculture ministries</strong>. Start by contacting your provincial agriculture office for application pathways and regional program variations."
-    },
-    shortAnswer: "Yes — Agriculture & Agri-Food Canada offers up to $5M through AgriInnovate, AgriScience, and Sustainable CAP programs. Most funding is delivered through provincial agriculture ministries on a 50% cost-sharing basis.",
+    }, shortAnswer: "Yes — Agriculture & Agri-Food Canada offers up to $5M through AgriInnovate, AgriScience, and Sustainable CAP programs. Most funding is delivered through provincial agriculture ministries on a 50% cost-sharing basis.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -172,15 +171,18 @@ export const blogPosts: BlogPost[] = [
       title: "Commercial Potential is Critical",
       type: 'tip',
       content: "NSF implies 'science', but the SBIR program is about <strong>commercialization</strong>. You must show a clear path to market revenue, not just cool tech."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to AI and machine learning grants.",
+    }, shortAnswer: "Complete 2026-2027 guide to AI and machine learning grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for AI & Machine Learning Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3,
@@ -209,15 +211,18 @@ export const blogPosts: BlogPost[] = [
       title: "Alberta Innovates is your First Stop",
       type: 'success',
       content: "For most Alberta tech startups, the <strong>Alberta Innovates Voucher Program</strong> is the entry point. It pays service providers directly to help you build or market your product."
-    },
-    shortAnswer: "Alberta Government Business Grants 2026 supports Alberta-based businesses. Complete guide to Alberta government business grants and provincial funding programs.",
+    }, shortAnswer: "Complete guide to Alberta government business grants and provincial funding programs. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Alberta Government Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 4,
@@ -246,15 +251,18 @@ export const blogPosts: BlogPost[] = [
       title: "Stack Programs for Maximum Impact",
       type: 'success',
       content: "Alberta allows <strong>stacking multiple programs</strong>. Combine Alberta Innovates vouchers with ERA funding and federal SR&ED credits to maximize your non-dilutive capital."
-    },
-    shortAnswer: "Alberta Innovation Grants & Funding 2026 supports Alberta-based businesses. Complete guide to Alberta innovation grants and funding programs.",
+    }, shortAnswer: "Complete guide to Alberta innovation grants and funding programs. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Alberta Innovation Grants & Funding 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 5,
@@ -282,15 +290,18 @@ export const blogPosts: BlogPost[] = [
       title: "Look for 'CARES'",
       type: 'tip',
       content: "The Community and Regional Economic Support (CARES) program often funds local initiatives. Check with your local Chamber of Commerce for municipal-level grants."
-    },
-    shortAnswer: "Alberta Small Business Grants 2026 supports Alberta-based businesses. Complete guide to Alberta small business grants.",
+    }, shortAnswer: "Complete guide to Alberta small business grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Alberta Small Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 6,
@@ -319,15 +330,18 @@ export const blogPosts: BlogPost[] = [
       title: "AWE is More Than Loans",
       type: 'tip',
       content: "Alberta Women Entrepreneurs offers <strong>free business advisory services</strong> even if you don't take a loan. Use their expertise for business planning, export readiness, and growth strategy."
-    },
-    shortAnswer: "Yes — Alberta Women Business Grants 2026 supports women-owned businesses with dedicated funding. Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovati.",
+    }, shortAnswer: "Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovation funding.. Funding amounts average up to $150 for eligible applicants.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Alberta Women Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 7,
@@ -356,15 +370,18 @@ export const blogPosts: BlogPost[] = [
       title: "Tell Your Story",
       type: 'tip',
       content: "The Amber Grant is not about ROI or spreadsheets. They want to hear your <strong>personal story</strong> and passion. Be authentic, vulnerable, and explain what the money would specifically do for you <em>right now</em>."
-    },
-    shortAnswer: "Yes — this program offers $10K for women entrepreneurs in Canada. Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award.",
+    }, shortAnswer: "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Amber Grant for Women Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 8,
@@ -393,15 +410,18 @@ export const blogPosts: BlogPost[] = [
       title: "Collaborate with Universities",
       type: 'tip',
       content: "The AIF strongly favors projects that involve <strong>collaboration with Atlantic research institutions</strong>. Adding Dalhousie or UNB as a partner significantly increases your success probability."
-    },
-    shortAnswer: "Yes — Atlantic Canada Innovation Grants & Funding 2026 is available for eligible Canadian businesses. Complete guide to Atlantic Canada innovation grants.",
+    }, shortAnswer: "Complete guide to Atlantic Canada innovation grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Atlantic Canada Innovation Grants & Funding 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 9,
@@ -430,15 +450,18 @@ export const blogPosts: BlogPost[] = [
       title: "Leverage ACOA's Network",
       type: 'success',
       content: "ACOA (Atlantic Canada Opportunities Agency) is more than just funding; they offer invaluable <strong>business advisory services and connections</strong>. Engage with their business development officers early."
-    },
-    shortAnswer: "Yes — Atlantic Canada Small Business Grants 2026 is available for eligible Canadian businesses. Complete guide to Atlantic Canada business grants.",
+    }, shortAnswer: "Complete guide to Atlantic Canada business grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Atlantic Canada Small Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 10,
@@ -467,15 +490,18 @@ export const blogPosts: BlogPost[] = [
       title: "Use SBVC Tax Credit Strategically",
       type: 'tip',
       content: "The BC Small Business Venture Capital Tax Credit gives investors <strong>30% credit</strong>. Use this to attract angel investors who get immediate tax benefits for backing your company."
-    },
-    shortAnswer: "BC Small Business Grants 2026 supports BC-based businesses. Complete guide to BC small business grants.",
+    }, shortAnswer: "Complete guide to BC small business grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for BC Small Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 11,
@@ -504,15 +530,18 @@ export const blogPosts: BlogPost[] = [
       title: "WeBC is Your Starting Point",
       type: 'success',
       content: "Women's Enterprise Centre BC offers <strong>free business advising</strong> and can connect you to multiple funding sources. They know the BC funding landscape inside out."
-    },
-    shortAnswer: "Yes — BC Women Business Grants 2026 supports women-owned businesses with dedicated funding. Complete guide to BC women entrepreneurship support with Women.",
+    }, shortAnswer: "Complete guide to BC women entrepreneurship support with Women. Funding amounts average up to $150 for eligible applicants.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for BC Women Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 12,
@@ -541,15 +570,18 @@ export const blogPosts: BlogPost[] = [
       title: "BDC Advisory is the Real Value",
       type: 'tip',
       content: "Beyond financing, BDC offers <strong>free strategic advisory services</strong> for women entrepreneurs. Their Growth Driver and Digital Adoption programs can transform your business operations."
-    },
-    shortAnswer: "Yes — BDC Women Entrepreneurs Financing 2026 supports women-owned businesses with dedicated funding. Complete guide to BDC Women Entrepreneurs financing with flexible loan terms, strategic advisory services, and growth support from Business Developmen.",
+    }, shortAnswer: "Complete guide to BDC Women Entrepreneurs financing with flexible loan terms, strategic advisory services, and growth support from Business Development Bank of Canada.. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Loan Details', id: 'loan-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for BDC Women Entrepreneurs Financing 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 13,
@@ -578,15 +610,18 @@ export const blogPosts: BlogPost[] = [
       title: "Principal Investigator is Key",
       type: 'warning',
       content: "NIH reviewers focus heavily on the <strong>PI's credentials and track record</strong>. If your team lacks biotech research credentials, consider adding a scientific advisory board member with NIH grant history."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to biotech and life sciences grants.",
+    }, shortAnswer: "Complete 2026-2027 guide to biotech and life sciences grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Programs', id: 'programs' }, { title: 'Requirements', id: 'requirements' }, { title: 'Timeline', id: 'timeline' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Biotech & Life Sciences Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 14,
@@ -615,15 +650,18 @@ export const blogPosts: BlogPost[] = [
       title: "Show Community Impact",
       type: 'tip',
       content: "BMO looks for businesses that give back. In your application, explicitly highlight how your growth will <strong>positively impact your local community</strong> or industry."
-    },
-    shortAnswer: "Yes — BMO Celebrating Women Grant 2026 supports women-owned businesses with dedicated funding. Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources.",
+    }, shortAnswer: "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for BMO Celebrating Women Grant 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 15,
@@ -652,15 +690,18 @@ export const blogPosts: BlogPost[] = [
       title: "PacifiCan is Your Federal Connection",
       type: 'success',
       content: "PacifiCan (Pacific Economic Development Canada) offers <strong>significant federal funding</strong> for BC businesses. They often co-fund with provincial programs for maximum support."
-    },
-    shortAnswer: "British Columbia Government Business Grants 2026 supports BC-based businesses. Complete guide to British Columbia government business grants and provincial funding programs.",
+    }, shortAnswer: "Complete guide to British Columbia government business grants and provincial funding programs. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for British Columbia Government Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 16,
@@ -689,15 +730,18 @@ export const blogPosts: BlogPost[] = [
       title: "Stack BCITC with SR&ED",
       type: 'tip',
       content: "The BC Innovation Tax Credit <strong>stacks on top of federal SR&ED</strong>. Together you can recover up to 55% of eligible R&D expenses. Always apply for both."
-    },
-    shortAnswer: "British Columbia Innovation Grants & Tax Credits 2026 supports BC-based businesses. Complete guide to BC innovation grants and tax credits.",
+    }, shortAnswer: "Complete guide to BC innovation grants and tax credits. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Tax Credits', id: 'tax-credits' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Claim', id: 'how-to-claim' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for British Columbia Innovation Grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 17,
@@ -726,15 +770,18 @@ export const blogPosts: BlogPost[] = [
       title: "Apply for SBIR Match Early",
       type: 'warning',
       content: "California's SBIR/STTR State Match program has <strong>limited funds each cycle</strong>. Apply immediately after receiving federal SBIR approval—funds often run out within months."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to California technology startup grants and incentives.",
+    }, shortAnswer: "Complete 2026-2027 guide to California technology startup grants and incentives. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Tax Credits', id: 'tax-credits' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Claim', id: 'how-to-claim' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for California Tech Startup Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 18,
@@ -763,15 +810,18 @@ export const blogPosts: BlogPost[] = [
       title: "Focus on NGen",
       type: 'tip',
       content: "NGen (Next Generation Manufacturing Canada) is the primary funding body. Join their cluster <strong>before applying</strong> to access exclusive member-only funding calls."
-    },
-    shortAnswer: "Yes — Canada Advanced Manufacturing Innovation Grants 2026 is available for eligible Canadian businesses. Complete guide to Canadian advanced manufacturing innovation grants.",
+    }, shortAnswer: "Complete guide to Canadian advanced manufacturing innovation grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Canada Advanced Manufacturing Innovation Grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 19,
@@ -800,15 +850,18 @@ export const blogPosts: BlogPost[] = [
       title: "IDEaS Challenges",
       type: 'success',
       content: "The IDEaS program operates on a challenge basis. <strong>Subscribe to DND alerts</strong> to apply as soon as a challenge matches your technology—windows are short."
-    },
-    shortAnswer: "Yes — Canada Aerospace & Defence Grants 2026 is available for eligible Canadian businesses. Complete guide to Canadian aerospace and defence innovation grants.",
+    }, shortAnswer: "Complete guide to Canadian aerospace and defence innovation grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada Aerospace & Defence Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 20,
@@ -837,15 +890,18 @@ export const blogPosts: BlogPost[] = [
       title: "Provincial vs Federal",
       type: 'tip',
       content: "Most agricultural funding is administered provincially under the Sustainable Canadian Agricultural Partnership (SCAP). <strong>Check your provincial delivery agent</strong> first."
-    },
-    shortAnswer: "Yes — Canada Agri-Food Technology Grants 2026 is available for eligible Canadian businesses. Complete guide to Canadian agri-food technology innovation grants.",
+    }, shortAnswer: "Complete guide to Canadian agri-food technology innovation grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada Agri — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 21,
@@ -874,15 +930,18 @@ export const blogPosts: BlogPost[] = [
       title: "Young Farmers Advantage",
       type: 'success',
       content: "If you are under 40, you qualify for <strong>FCC Young Farmer loans</strong> with significantly reduced interest rates and flexible repayment terms. Combine this with SCAP grants."
-    },
-    shortAnswer: "Yes — Canada Agriculture & Agri-Food Grants 2026 is available for eligible Canadian businesses. Complete guide to Canada.",
+    }, shortAnswer: "Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Canada Agriculture & Agri — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 22,
@@ -911,15 +970,18 @@ export const blogPosts: BlogPost[] = [
       title: "Claim the ITC Investment Tax Credit",
       type: 'warning',
       content: "The new Clean Technology Investment Tax Credit (ITC) offers a <strong>refundable 30% credit</strong> on capital costs. This is distinct from grants and can be claimed on your tax return."
-    },
-    shortAnswer: "Yes — Canada Clean Technology & Environment Grants 2026 is available for eligible Canadian businesses. Complete guide to Canada.",
+    }, shortAnswer: "Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada Clean Technology & Environment Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 23,
@@ -948,15 +1010,18 @@ export const blogPosts: BlogPost[] = [
       title: "Seed Fund Availability",
       type: 'tip',
       content: "SDTC (Sustainable Development Technology Canada) offers <strong>Seed Funding</strong> for earlier stage companies nominated by accelerators. You don't always need to be Series A ready."
-    },
-    shortAnswer: "Yes — Canada Clean Technology Innovation Grants 2026 is available for eligible Canadian businesses. Complete guide to Canadian clean technology innovation grants.",
+    }, shortAnswer: "Complete guide to Canadian clean technology innovation grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Canada Clean Technology Innovation Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 24,
@@ -985,15 +1050,18 @@ export const blogPosts: BlogPost[] = [
       title: "Use CDAP for Strategy",
       type: 'success',
       content: "The Canada Digital Adoption Program (CDAP) pays for a consultant to write your digital plan. <strong>Use this plan</strong> to unlock the $100k interest-free BDC loan."
-    },
-    shortAnswer: "Yes — Canada Digital & AI Innovation Grants 2026 is available for eligible Canadian businesses. Complete guide to Canadian digital and AI innovation grants.",
+    }, shortAnswer: "Complete guide to Canadian digital and AI innovation grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Canada Digital & AI Innovation Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 25,
@@ -1022,15 +1090,18 @@ export const blogPosts: BlogPost[] = [
       title: "Canada-Ontario Job Grant (COJG)",
       type: 'tip',
       content: "The COJG covers up to <strong>83% of third-party training costs</strong>. You can use this to upskill your existing team in new technologies or sales methods."
-    },
-    shortAnswer: "Yes — Canada Employment & Workforce Training Grants 2026 is available for eligible Canadian businesses. Complete guide to Canada.",
+    }, shortAnswer: "Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada Employment & Workforce Training Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 26,
@@ -1059,15 +1130,18 @@ export const blogPosts: BlogPost[] = [
       title: "Digital Marketing Eligibility",
       type: 'success',
       content: "CanExport now covers <strong>exclusively digital activities</strong> like SEO and online advertising for foreign markets. You don't even need to travel to qualify."
-    },
-    shortAnswer: "Yes — Canada Export Development Grants 2026 is available for eligible Canadian businesses. Complete guide to Canadian export development grants.",
+    }, shortAnswer: "Complete guide to Canadian export development grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada Export Development Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 27,
@@ -1096,15 +1170,18 @@ export const blogPosts: BlogPost[] = [
       title: "Stack Funding Programs",
       type: 'tip',
       content: "Federal grants can often be <strong>stacked with provincial funding</strong>. Always check if you can apply for both a federal wage subsidy and a provincial training grant for the same employee."
-    },
-    shortAnswer: "Yes — Canada Federal Grants is available for eligible Canadian businesses. Complete guide to government grants.",
+    }, shortAnswer: "Complete guide to government grants.. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada Federal Grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 28,
@@ -1133,15 +1210,18 @@ export const blogPosts: BlogPost[] = [
       title: "Strategic Innovation Fund (SIF)",
       type: 'success',
       content: "For large-scale expansion projects over $10 million, the <strong>Strategic Innovation Fund</strong> is your primary target. It offers repayable and non-repayable contributions for major investments."
-    },
-    shortAnswer: "Yes — Canada Growth & Expansion Grants 2026 is available for eligible Canadian businesses. Complete guide to Canadian business expansion grants.",
+    }, shortAnswer: "Complete guide to Canadian business expansion grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada Growth & Expansion Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 29,
@@ -1170,15 +1250,18 @@ export const blogPosts: BlogPost[] = [
       title: "Student Work Placement Program (SWPP)",
       type: 'tip',
       content: "SWPP covers up to <strong>75% of wages</strong> (max $7,500) for hiring post-secondary students. It's the most accessible hiring grant available across all industries."
-    },
-    shortAnswer: "Yes — Canada Hiring & Training Grants 2026 is available for eligible Canadian businesses. Complete guide to Canadian hiring and training grants.",
+    }, shortAnswer: "Complete guide to Canadian hiring and training grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada Hiring & Training Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 30,
@@ -1207,15 +1290,18 @@ export const blogPosts: BlogPost[] = [
       title: "Check Your Niche",
       type: 'tip',
       content: "Don't just look for general business grants. <strong>Search by your NAICS code</strong> or industry association (e.g., CMF for media, FACTOR for music) to find less competitive, sector-specific pots."
-    },
-    shortAnswer: "Yes — Canada Industry Specific Grants 2026 is available for eligible Canadian businesses. Complete guide to Canadian industry specific grants.",
+    }, shortAnswer: "Complete guide to Canadian industry specific grants. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada Industry Specific Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 31,
@@ -1244,15 +1330,18 @@ export const blogPosts: BlogPost[] = [
       title: "SR&ED vs IRAP",
       type: 'warning',
       content: "SR&ED is a tax <strong>refund</strong> for work already done. IRAP is a <strong>grant</strong> for future work. You can typically claim the non-IRAP portion of your costs for SR&ED."
-    },
-    shortAnswer: "Yes — Canada Innovation & R&D Grants 2026 is available for eligible Canadian businesses. Complete guide to Canada.",
+    }, shortAnswer: "Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Canada Innovation & R&D Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 32,
@@ -1281,15 +1370,18 @@ export const blogPosts: BlogPost[] = [
       title: "Biomanufacturing Focus",
       type: 'tip',
       content: "The federal government is prioritizing domestic <strong>biomanufacturing capacity</strong>. Projects that build Canadian production capabilities for vaccines and therapeutics are top priority."
-    },
-    shortAnswer: "Yes — Canada Life Sciences Grants 2026 is available for eligible Canadian businesses. Complete guide to Canadian life sciences innovation grants.",
+    }, shortAnswer: "Yes — Complete guide to Canadian life sciences innovation grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada Life Sciences Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 33,
@@ -1318,15 +1410,18 @@ export const blogPosts: BlogPost[] = [
       title: "Advanced Manufacturing Supercluster",
       type: 'success',
       content: "Join the <strong>NGen Supercluster</strong> to access unique manufacturing funding calls not available to the general public. Membership is free or low-cost for SMEs."
-    },
-    shortAnswer: "Yes — Canada Manufacturing & Industry Grants 2026 is available for eligible Canadian businesses. Complete guide to Canada.",
+    }, shortAnswer: "Yes — Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada Manufacturing & Industry Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 34,
@@ -1355,15 +1450,18 @@ export const blogPosts: BlogPost[] = [
       title: "Regional Development Agencies (RDAs)",
       type: 'tip',
       content: "Your local RDA (like ACOA, FedDev, PrairiesCan) is your <strong>best first stop</strong>. They often have unadvertised funds for local job creation and economic diversification."
-    },
-    shortAnswer: "Yes — Canada Regional Economic Development Grants 2026 is available for eligible Canadian businesses. Complete guide to Canada.",
+    }, shortAnswer: "Yes — Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada Regional Economic Development Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 35,
@@ -1392,15 +1490,18 @@ export const blogPosts: BlogPost[] = [
       title: "Bootstrap First",
       type: 'warning',
       content: "Most 'startup grants' are actually for <strong>hiring</strong> or <strong>training</strong>, not for general operating costs. You need to have some initial capital (bootstrap) to pay upfront costs before the grant reimburses you."
-    },
-    shortAnswer: "Yes — Canada Startup Grants 2026: 35+ Programs Worth $1.2B+ [Apply] is available for eligible Canadian businesses. Most Canadian startups only know about Futurpreneur.",
+    }, shortAnswer: "Yes — Most Canadian startups only know about Futurpreneur. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 36,
@@ -1429,15 +1530,18 @@ export const blogPosts: BlogPost[] = [
       title: "Get CDAP Certified",
       type: 'success',
       content: "The <strong>CDAP Digital Adoption Plan</strong> is the gateway key. Once you have this certified plan, you unlock the $100k BDC loan and wage subsidies. Prioritize getting this plan done first."
-    },
-    shortAnswer: "Yes — Canada Technology Adoption Grants 2026 is available for eligible Canadian businesses. Complete guide to Canadian technology adoption grants.",
+    }, shortAnswer: "Yes — Complete guide to Canadian technology adoption grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada Technology Adoption Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 37,
@@ -1466,15 +1570,18 @@ export const blogPosts: BlogPost[] = [
       title: "Impact Focus",
       type: 'tip',
       content: "Cartier looks for <strong>social or environmental impact</strong>. Your application must clearly articulate how your business is solving a major global challenge, not just generating revenue."
-    },
-    shortAnswer: "Yes — Cartier Women supports women-owned businesses with dedicated funding. Complete guide to Cartier Women.",
+    }, shortAnswer: "Yes — Complete guide to Cartier Women. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Cartier Women — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 38,
@@ -1503,15 +1610,18 @@ export const blogPosts: BlogPost[] = [
       title: "US DOE Alignment",
       type: 'warning',
       content: "For US clean tech grants, ensure your technology aligns with <strong>current DOE 'Earthshots'</strong> (e.g., Hydrogen, Long Duration Storage). Mentioning these specific goals strengthens your proposal."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to clean tech and energy grants.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to clean tech and energy grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Programs', id: 'programs' }, { title: 'Requirements', id: 'requirements' }, { title: 'Timeline', id: 'timeline' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Clean Tech & Energy Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 39,
@@ -1603,7 +1713,18 @@ export const blogPosts: BlogPost[] = [
       title: "Enterprise Zones",
       type: 'tip',
       content: "Colorado's <strong>Enterprise Zone Tax Credits</strong> can be stacked with these grants. If your startup is located in a designated zone, you could double your financial benefits."
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to Colorado technology startup grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Colorado Tech Startup Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 40,
@@ -1632,15 +1753,18 @@ export const blogPosts: BlogPost[] = [
       title: "Demonstrate Sales Traction",
       type: 'success',
       content: "At the commercialization stage, funders want to see <strong>purchase orders or letters of intent</strong>. Prove that the market is pulling your technology to de-risk their large investment."
-    },
-    shortAnswer: "Yes — Stage 4: Commercialization & Scale-Up Funding Canada 2026 is available for eligible Canadian businesses. Complete guide to Canadian commercialization and scale-up funding.",
+    }, shortAnswer: "Yes — Complete guide to Canadian commercialization and scale-up funding. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Programs', id: 'programs' }, { title: 'Requirements', id: 'requirements' }, { title: 'Timeline', id: 'timeline' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Stage 4: Commercialization & Scale — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 41,
@@ -1669,15 +1793,18 @@ export const blogPosts: BlogPost[] = [
       title: "Bank Approval First",
       type: 'tip',
       content: "You don't apply to the government for CSBFP. You apply <strong>through your bank</strong>. The government just guarantees the loan behind the scenes to help the bank say 'yes'."
-    },
-    shortAnswer: "Yes — Canada Small Business Financing Program (CSBFP) 2026 is available for eligible Canadian businesses. Complete guide to Canada Small Business Financing Program.",
+    }, shortAnswer: "Yes — Complete guide to Canada Small Business Financing Program. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Loan Details', id: 'loan-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 42,
@@ -1706,15 +1833,18 @@ export const blogPosts: BlogPost[] = [
       title: "Reduced Personal Risk",
       type: 'success',
       content: "Unlike standard bank loans requiring 100% personal guarantees, CSBFP loans often cap personal guarantees at <strong>25% of the loan amount</strong>, significantly reducing your personal risk."
-    },
-    shortAnswer: "Yes — CSBFP Canada Small Business Financing Program 2026 is available for eligible Canadian businesses. Complete guide to CSBFP government-guaranteed loans for Canadian small businesses.",
+    }, shortAnswer: "Yes — Complete guide to CSBFP government-guaranteed loans for Canadian small businesses. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for CSBFP Canada Small Business Financing Program 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 43,
@@ -1758,15 +1888,18 @@ export const blogPosts: BlogPost[] = [
         question: "What is 'Dual-Use' technology?",
         answer: "Dual-use means your technology has both military/government applications and commercial applications. DoD prefers dual-use tech because the commercial market helps sustain the company when government contracts are paused."
       }
-    ],
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to cybersecurity grants.",
+    ], shortAnswer: "Yes — Complete 2026-2027 guide to cybersecurity grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Cybersecurity Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 44,
@@ -1795,15 +1928,18 @@ export const blogPosts: BlogPost[] = [
       title: "Pre-Revenue Eligibility",
       type: 'tip',
       content: "Demonstration funds like SDTC are specifically for <strong>pre-revenue technologies</strong>. If you are already selling the product commercially, you are too late for this stage."
-    },
-    shortAnswer: "Yes — Stage 3: Demonstration & Pilot Funding Canada 2026 is available for eligible Canadian businesses. Complete guide to Canadian demonstration and pilot project funding.",
+    }, shortAnswer: "Yes — Complete guide to Canadian demonstration and pilot project funding. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Programs', id: 'programs' }, { title: 'Requirements', id: 'requirements' }, { title: 'Timeline', id: 'timeline' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Stage 3: Demonstration & Pilot Funding Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 45,
@@ -1832,15 +1968,18 @@ export const blogPosts: BlogPost[] = [
       title: "Focus on TRL",
       type: 'warning',
       content: "Ensure your technology is at TRL 4-6. TRL 1-3 is too early, and TRL 7-9 is too commercial."
-    },
-    shortAnswer: "Yes — Stage 2: Development & Proof-of-Concept Funding Canada 2026 is available for eligible Canadian businesses. Complete guide to Canadian development and proof-of-concept funding.",
+    }, shortAnswer: "Yes — Complete guide to Canadian development and proof-of-concept funding. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Programs', id: 'programs' }, { title: 'Requirements', id: 'requirements' }, { title: 'Timeline', id: 'timeline' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Stage 2: Development & Proof — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 46,
@@ -1869,15 +2008,18 @@ export const blogPosts: BlogPost[] = [
       title: "Dual-Use Strategy",
       type: 'tip',
       content: "Highlight <strong>commercial potential</strong> alongside defense applications. The DOD prefers technologies that have sustainable commercial markets."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to Department of Defense SBIR/STTR grants for defense tech startups.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to Department of Defense SBIR/STTR grants for defense tech startups. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Programs', id: 'programs' }, { title: 'Requirements', id: 'requirements' }, { title: 'Timeline', id: 'timeline' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for DOD SBIR Defense Tech Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 47,
@@ -1906,15 +2048,18 @@ export const blogPosts: BlogPost[] = [
       title: "LOI Requirement",
       type: 'warning',
       content: "Letters of Support are critical for Phase I, but <strong>Letters of Intent (LOI)</strong> from potential customers are essential for Phase II success."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Programs', id: 'programs' }, { title: 'Requirements', id: 'requirements' }, { title: 'Timeline', id: 'timeline' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for DOE SBIR Clean Energy Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 48,
@@ -1943,15 +2088,18 @@ export const blogPosts: BlogPost[] = [
       title: "Export Focus",
       type: 'tip',
       content: "This is primarily for EXPORT-focused businesses. You must demonstrate a clear strategy for international sales growth."
-    },
-    shortAnswer: "Yes — EDC Women in Trade Export Financing 2026 supports women-owned businesses with dedicated funding. Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support from Export Development Canad.",
+    }, shortAnswer: "Yes — Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support from Export Development Canada for women-owned businesses.. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for EDC Women in Trade Export Financing 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 49,
@@ -1980,15 +2128,18 @@ export const blogPosts: BlogPost[] = [
       title: "Certification is Required",
       type: 'warning',
       content: "You MUST be certified to access set-aside contracts. <strong>WOSB certification is free through SBA</strong>. Don't pay third parties for what the government offers at no cost."
-    },
-    shortAnswer: "Yes — Federal Grants for Women, Minorities & Veterans 2026 supports women-owned businesses with dedicated funding. Complete guide to federal grants for women-owned, minority-owned, and veteran-owned businesses.",
+    }, shortAnswer: "Yes — Complete guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 50,
@@ -2017,15 +2168,18 @@ export const blogPosts: BlogPost[] = [
       title: "Technical Risk",
       type: 'warning',
       content: "For NSF/SBIR, you must prove <strong>technical risk</strong>. If it's just engineering integration, it won't be funded. Show the scientific challenge."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to hardware and IoT startup grants.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to hardware and IoT startup grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Programs', id: 'programs' }, { title: 'Requirements', id: 'requirements' }, { title: 'Timeline', id: 'timeline' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Hardware & IoT Startup Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 51,
@@ -2054,15 +2208,18 @@ export const blogPosts: BlogPost[] = [
       title: "Academic Partners",
       type: 'tip',
       content: "Partner with a university researcher. NSERC grants are often more accessible when you have an academic collaboration."
-    },
-    shortAnswer: "Yes — Stage 1: Ideation & Research Funding Canada 2026 is available for eligible Canadian businesses. Complete guide to Canadian ideation and research funding for early-stage innovation.",
+    }, shortAnswer: "Yes — Complete guide to Canadian ideation and research funding for early-stage innovation. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Programs', id: 'programs' }, { title: 'Requirements', id: 'requirements' }, { title: 'Timeline', id: 'timeline' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Stage 1: Ideation & Research Funding Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 52,
@@ -2091,15 +2248,18 @@ export const blogPosts: BlogPost[] = [
       title: "Community Impact",
       type: 'warning',
       content: "Demonstrate clear community benefits. Projects that create local jobs and use local resources are prioritized."
-    },
-    shortAnswer: "Yes — Indigenous & Rural Business Funding Canada 2026 is available for eligible Canadian businesses. Complete guide to Indigenous business grants and rural business funding in Canada.",
+    }, shortAnswer: "Yes — Complete guide to Indigenous business grants and rural business funding in Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Our grant experts specialize in connecting underrepresented entrepreneurs with the right funding programs.",
+      description: "Get matched with the right alternative or direct funding for Indigenous & Rural Business Funding Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 53,
@@ -2128,15 +2288,18 @@ export const blogPosts: BlogPost[] = [
       title: "IWEF Program",
       type: 'tip',
       content: "Look into the Indigenous Women Entrepreneurship Fund (IWEF). It offers micro-loans specifically for starting or expanding your business."
-    },
-    shortAnswer: "Yes — this program offers $50K for women entrepreneurs in Canada. Complete 2026-2027 guide to Indigenous women business grants in Canada.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to Indigenous women business grants in Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Indigenous Women Business Grants Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 54,
@@ -2165,15 +2328,18 @@ export const blogPosts: BlogPost[] = [
       title: "Match Your Sector",
       type: 'tip',
       content: "Don't apply for generic grants. <strong>Sector-specific programs have less competition</strong> and prefer applicants who deeply understand their industry."
-    },
-    shortAnswer: "Industry-Specific Business Grants Guide 2026 is a non-dilutive funding opportunity for qualifying businesses. Complete guide to industry-specific business grants.",
+    }, shortAnswer: "Yes — Complete guide to industry-specific business grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for Industry — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 55,
@@ -2202,8 +2368,7 @@ export const blogPosts: BlogPost[] = [
       title: "ITA Relationship",
       type: 'warning',
       content: "Your Industrial Technology Advisor (ITA) is your gateway. Build a strong relationship with them before submitting a formal proposal."
-    },
-    shortAnswer: "IRAP provides up to $10M in non-repayable R&D grants for Canadian tech SMEs. It covers up to 80% of labour costs. You cannot apply online — you must first contact an Industrial Technology Advisor (ITA) at 1-877-994-4727.",
+    }, shortAnswer: "IRAP provides up to $10M in non-repayable R&D grants for Canadian tech SMEs. It covers up to 80% of labour costs. You cannot apply online — you must first contact an Industrial Technology Advisor (ITA) at 1-877-994-4727.",
     jumpLinks: [
       { title: 'Funding', id: 'funding' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -2243,15 +2408,18 @@ export const blogPosts: BlogPost[] = [
       title: "Stacking Funding",
       type: 'tip',
       content: "You can stack IRAP with SR&ED tax credits. IRAP covers costs upfront, while SR&ED covers the remaining eligible expenses at tax time."
-    },
-    shortAnswer: "Yes — IRAP Industrial Research Assistance Program Canada 2026 is available for eligible Canadian businesses. Complete guide to IRAP government funding for Canadian R&D projects.",
+    }, shortAnswer: "Yes — Complete guide to IRAP government funding for Canadian R&D projects. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 57,
@@ -2280,15 +2448,18 @@ export const blogPosts: BlogPost[] = [
       title: "ITA Nomination Required",
       type: 'warning',
       content: "You cannot apply for IRAP without an <strong>Industrial Technology Advisor (ITA)</strong> nomination. Build a relationship with an ITA <em>months</em> before you need the funding."
-    },
-    shortAnswer: "IRAP Industrial Research Assistance Program 2026 is a non-dilutive funding opportunity for qualifying businesses. Complete guide to IRAP innovation funding from National Research Council Canada.",
+    }, shortAnswer: "Yes — Complete guide to IRAP innovation funding from National Research Council Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for IRAP Industrial Research Assistance Program 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 58,
@@ -2317,15 +2488,18 @@ export const blogPosts: BlogPost[] = [
       title: "Northern Bonus",
       type: 'tip',
       content: "Projects located in <strong>Northern Manitoba</strong> often garner extra scoring points and higher funding ratios. Highlight your rural or northern impact clearly."
-    },
-    shortAnswer: "Manitoba Small Business Grants 2026 is a non-dilutive funding opportunity for qualifying businesses. Complete guide to Manitoba small business grants.",
+    }, shortAnswer: "Yes — Complete guide to Manitoba small business grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for Manitoba Small Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 59,
@@ -2354,15 +2528,18 @@ export const blogPosts: BlogPost[] = [
       title: "SBIR START Program",
       type: 'success',
       content: "MassVentures SBIR START matches your federal SBIR with <strong>up to $500K in additional state funding</strong>. Apply immediately after federal award notification."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to Massachusetts technology startup grants and incentives.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to Massachusetts technology startup grants and incentives. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Massachusetts Tech Startup Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 60,
@@ -2391,15 +2568,18 @@ export const blogPosts: BlogPost[] = [
       title: "NASA Subtopics",
       type: 'warning',
       content: "NASA SBIR has very specific subtopics. Your proposal <strong>MUST align precisely</strong> with an open subtopic—generic 'space tech' proposals will be rejected."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Programs', id: 'programs' }, { title: 'Requirements', id: 'requirements' }, { title: 'Timeline', id: 'timeline' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for NASA SBIR Space Tech Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 61,
@@ -2428,15 +2608,18 @@ export const blogPosts: BlogPost[] = [
       title: "START-UP NY Campus",
       type: 'success',
       content: "START-UP NY requires locating on or near a <strong>SUNY or private college campus</strong>. The 10-year tax exemption makes this worth exploring for NYC-area startups."
-    },
-    shortAnswer: "New York Tech Startup Grants 2026-2027 is a non-dilutive funding opportunity for qualifying businesses. Complete 2026-2027 guide to New York technology startup grants and incentives.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to New York technology startup grants and incentives. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Tax Credits', id: 'tax-credits' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Claim', id: 'how-to-claim' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for New York Tech Startup Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 62,
@@ -2465,15 +2648,18 @@ export const blogPosts: BlogPost[] = [
       title: "Scientific Rigor",
       type: 'warning',
       content: "NIH reviewers are PhD scientists. Your proposal must demonstrate <strong>rigorous scientific methodology</strong>—not just business potential."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Programs', id: 'programs' }, { title: 'Requirements', id: 'requirements' }, { title: 'Timeline', id: 'timeline' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for NIH SBIR Biotech Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 63,
@@ -2502,15 +2688,18 @@ export const blogPosts: BlogPost[] = [
       title: "University Affiliation Required",
       type: 'warning',
       content: "NSERC grants require a <strong>principal investigator at a Canadian university</strong>. If you're a startup, partner with a professor who can be your PI."
-    },
-    shortAnswer: "Yes — NSERC Research Grants Canada 2026 is available for eligible Canadian businesses. Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K.",
+    }, shortAnswer: "Yes — Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for NSERC Research Grants Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 64,
@@ -2539,15 +2728,18 @@ export const blogPosts: BlogPost[] = [
       title: "University Partnership",
       type: 'success',
       content: "NSF highly values <strong>university partnerships</strong>. Having a faculty collaborator or advisor significantly increases your chances of winning."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for NSF SBIR Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 65,
@@ -2576,15 +2768,18 @@ export const blogPosts: BlogPost[] = [
       title: "NWBC is Advisory",
       type: 'tip',
       content: "NWBC doesn't give grants directly. They <strong>advise on policy and certifications</strong>. Use their resources to understand WOSB certification and federal contracting."
-    },
-    shortAnswer: "Yes — National Women supports women-owned businesses with dedicated funding. Complete guide to NWBC programs and initiatives.",
+    }, shortAnswer: "Yes — Complete guide to NWBC programs and initiatives. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for National Women — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 66,
@@ -2613,15 +2808,18 @@ export const blogPosts: BlogPost[] = [
       title: "Local Office First",
       type: 'tip',
       content: "Always contact your <strong>local OCED office</strong> before applying. They provide free advisory services and can dramatically improve your application quality."
-    },
-    shortAnswer: "Ontario Government Business Grants 2026 supports Ontario-based businesses. Complete guide to Ontario government business grants and provincial funding programs.",
+    }, shortAnswer: "Yes — Complete guide to Ontario government business grants and provincial funding programs. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Ontario Government Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 67,
@@ -2650,15 +2848,18 @@ export const blogPosts: BlogPost[] = [
       title: "Stack with SR&ED",
       type: 'success',
       content: "The Ontario Innovation Tax Credit (OITC) <strong>stacks with federal SR&ED</strong>. You can claim both on the same R&D expenses for maximum benefit."
-    },
-    shortAnswer: "Ontario Innovation Grants & Tax Credits 2026 supports Ontario-based businesses. Complete guide to Ontario innovation grants and tax credits.",
+    }, shortAnswer: "Yes — Complete guide to Ontario innovation grants and tax credits. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Tax Credits', id: 'tax-credits' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Claim', id: 'how-to-claim' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Ontario Innovation Grants & Tax Credits 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 68,
@@ -2687,15 +2888,18 @@ export const blogPosts: BlogPost[] = [
       title: "Digital Main Street",
       type: 'tip',
       content: "If you're a retail or main street business, apply for <strong>Digital Main Street</strong> grants first. They're easier to get and build credibility for larger programs."
-    },
-    shortAnswer: "Ontario Small Business Grants 2026 supports Ontario-based businesses. Complete guide to Ontario small business grants and funding.",
+    }, shortAnswer: "Yes — Complete guide to Ontario small business grants and funding. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Ontario Small Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 69,
@@ -2724,15 +2928,18 @@ export const blogPosts: BlogPost[] = [
       title: "RE3 Fast Track",
       type: 'success',
       content: "The FedDev Ontario <strong>RE3 Program</strong> offers up to $5,000 with minimal paperwork. It's the fastest path to non-repayable funding for women entrepreneurs."
-    },
-    shortAnswer: "Yes — Ontario Women Business Grants 2026 supports women-owned businesses with dedicated funding. Complete guide to Ontario women entrepreneurship support with FedDev Ontario RE3 grants up to $5,000, PARO microfinancing, Women.",
+    }, shortAnswer: "Yes — Complete guide to Ontario women entrepreneurship support with FedDev Ontario RE3 grants up to $5,000, PARO microfinancing, Women. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Ontario Women Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 70,
@@ -2761,15 +2968,18 @@ export const blogPosts: BlogPost[] = [
       title: "Resource Conversion",
       type: 'tip',
       content: "Prairie provinces prioritize <strong>resource conversion</strong> projects. Agricultural and mining tech that adds value to raw materials gets highest priority."
-    },
-    shortAnswer: "Prairie Provinces Innovation Grants 2026 is a non-dilutive funding opportunity for qualifying businesses. Complete guide to Prairie innovation grants.",
+    }, shortAnswer: "Yes — Complete guide to Prairie innovation grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Prairie Provinces Innovation Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 71,
@@ -2798,15 +3008,18 @@ export const blogPosts: BlogPost[] = [
       title: "Tell Your Story",
       type: 'tip',
       content: "Private foundation grants favor <strong>compelling personal narratives</strong> over financial projections. Focus on your journey, mission, and community impact."
-    },
-    shortAnswer: "Yes — Private Women Grants Guide 2026 supports women-owned businesses with dedicated funding. Complete guide to private foundation grants for women entrepreneurs.",
+    }, shortAnswer: "Yes — Complete guide to private foundation grants for women entrepreneurs. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Private Women Grants Guide 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 72,
@@ -2858,15 +3071,18 @@ export const blogPosts: BlogPost[] = [
       title: "French is Required",
       type: 'warning',
       content: "Most Quebec programs require <strong>French-language applications</strong>. Hire a professional translator or use certified translation services for official submissions."
-    },
-    shortAnswer: "Quebec Government Business Grants 2026 supports Quebec-based businesses. Complete guide to Quebec government business grants and aide aux entreprises provincial funding.",
+    }, shortAnswer: "Yes — Complete guide to Quebec government business grants and aide aux entreprises provincial funding. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Quebec Government Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 73,
@@ -2895,15 +3111,18 @@ export const blogPosts: BlogPost[] = [
       title: "Combine Federal & Provincial",
       type: 'success',
       content: "Quebec companies can <strong>stack federal SR&ED</strong> (15-35%) with Quebec's CRIC (30%), achieving total R&D tax credits of 45-65%—the highest in North America."
-    },
-    shortAnswer: "Quebec Innovation Grants & Tax Credits 2026 supports Quebec-based businesses. Complete guide to Quebec innovation grants and tax credits.",
+    }, shortAnswer: "Yes — Complete guide to Quebec innovation grants and tax credits. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Tax Credits', id: 'tax-credits' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Claim', id: 'how-to-claim' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Quebec Innovation Grants & Tax Credits 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 74,
@@ -2932,15 +3151,18 @@ export const blogPosts: BlogPost[] = [
       title: "Francophone Advantage",
       type: 'tip',
       content: "Businesses operating <strong>primarily in French</strong> receive priority scoring and expedited processing for Quebec provincial programs."
-    },
-    shortAnswer: "Quebec Small Business Grants 2026 supports Quebec-based businesses. Complete guide to Quebec small business grants.",
+    }, shortAnswer: "Yes — Complete guide to Quebec small business grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Quebec Small Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 75,
@@ -2969,15 +3191,18 @@ export const blogPosts: BlogPost[] = [
       title: "Réseau Connection",
       type: 'success',
       content: "Joining <strong>Réseau des Femmes d'Affaires</strong> provides mentorship, networking, and significantly improves grant success rates for Quebec women entrepreneurs."
-    },
-    shortAnswer: "Yes — Quebec Women Business Grants 2026 supports women-owned businesses with dedicated funding. Complete guide to Quebec women entrepreneurship support with R\u00e9seau des Femmes d.",
+    }, shortAnswer: "Yes — Complete guide to Quebec women entrepreneurship support with R\u00e9seau des Femmes d. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Quebec Women Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 76,
@@ -3006,15 +3231,18 @@ export const blogPosts: BlogPost[] = [
       title: "Build Your Story",
       type: 'tip',
       content: "RBC judges prioritize <strong>compelling narratives</strong> over pure financials. Focus your application on overcoming adversity and community impact."
-    },
-    shortAnswer: "Yes — RBC Canadian Women Entrepreneur Awards 2026: Complete Guide to $100K+ in Grants & Recognition supports women-owned businesses with dedicated funding. Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2026.",
+    }, shortAnswer: "Yes — Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2026. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 77,
@@ -3043,15 +3271,18 @@ export const blogPosts: BlogPost[] = [
       title: "Match Your RDA",
       type: 'success',
       content: "Each province has a designated RDA (e.g., <strong>FedDev Ontario</strong>, <strong>PacifiCan</strong>). Apply through your local RDA for faster processing and higher approval rates."
-    },
-    shortAnswer: "Yes — Regional Development Agencies Canada 2026 is available for eligible Canadian businesses. Complete guide to Canada.",
+    }, shortAnswer: "Yes — Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Regional Development Agencies Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 78,
@@ -3080,15 +3311,18 @@ export const blogPosts: BlogPost[] = [
       title: "Agriculture Angle",
       type: 'tip',
       content: "Saskatchewan prioritizes <strong>agriculture-related innovations</strong>. Even tech businesses can qualify by demonstrating applications for farming/agribusiness."
-    },
-    shortAnswer: "Saskatchewan Small Business Grants 2026 is a non-dilutive funding opportunity for qualifying businesses. Complete guide to Saskatchewan small business grants.",
+    }, shortAnswer: "Yes — Complete guide to Saskatchewan small business grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for Saskatchewan Small Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 79,
@@ -3117,15 +3351,18 @@ export const blogPosts: BlogPost[] = [
       title: "Use an SBA Lender",
       type: 'tip',
       content: "Apply through an <strong>SBA Preferred Lender</strong> for faster processing. They can approve loans without SBA review, cutting weeks off approval time."
-    },
-    shortAnswer: "SBA 7(a) Loans Complete Guide 2026 is available through the Small Business Administration. Complete guide to SBA 7(a) loans.",
+    }, shortAnswer: "Yes — Complete guide to SBA 7(a) loans. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Not sure which SBA program fits? Our funding specialists match you to the right opportunity in minutes.",
+      description: "Get matched with the right alternative or direct funding for SBA 7(a) Loans Complete Guide 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 80,
@@ -3154,15 +3391,18 @@ export const blogPosts: BlogPost[] = [
       title: "Apply Immediately",
       type: 'warning',
       content: "Disaster loan deadlines are <strong>strict and non-negotiable</strong>. Apply within 60 days of declaration for physical damage, 9 months for economic injury."
-    },
-    shortAnswer: "SBA Disaster Relief Loans Guide 2026 is available through the Small Business Administration. Complete guide to SBA disaster relief loans.",
+    }, shortAnswer: "Yes — Complete guide to SBA disaster relief loans. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Not sure which SBA program fits? Our funding specialists match you to the right opportunity in minutes.",
+      description: "Get matched with the right alternative or direct funding for SBA Disaster Relief Loans Guide 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 81,
@@ -3191,8 +3431,7 @@ export const blogPosts: BlogPost[] = [
       title: "SBA Doesn't Give Grants",
       type: 'warning',
       content: "Despite common belief, <strong>SBA offers loans, not grants</strong>. The only SBA 'grants' are SBIR/STTR R&D funding, which have strict technical requirements."
-    },
-    shortAnswer: "The SBA offers loans (7(a) up to $5M, 504 up to $5.5M, Microloans up to $50K) — not grants. The only 'grants' are SBIR/STTR R&D awards up to $1.7M, which require a technology innovation component.",
+    }, shortAnswer: "The SBA offers loans (7(a) up to $5M, 504 up to $5.5M, Microloans up to $50K) — not grants. The only 'grants' are SBIR/STTR R&D awards up to $1.7M, which require a technology innovation component.",
     jumpLinks: [
       { title: '7(a) Loans', id: 'sba-7a' },
       { title: '504 Loans', id: 'sba-504' },
@@ -3232,15 +3471,18 @@ export const blogPosts: BlogPost[] = [
       title: "Intermediary Lenders",
       type: 'tip',
       content: "SBA microloans come through <strong>nonprofit intermediary lenders</strong>. Find your local microlender at SBA.gov for personalized support and faster processing."
-    },
-    shortAnswer: "SBA Microloans Complete Guide 2026 is available through the Small Business Administration. Complete guide to SBA microloans.",
+    }, shortAnswer: "Yes — Complete guide to SBA microloans. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Not sure which SBA program fits? Our funding specialists match you to the right opportunity in minutes.",
+      description: "Get matched with the right alternative or direct funding for SBA Microloans Complete Guide 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 83,
@@ -3269,15 +3511,18 @@ export const blogPosts: BlogPost[] = [
       title: "Agency Match",
       type: 'tip',
       content: "Each agency has different priorities. <strong>Match your tech area to the right agency</strong>—NIH for health, DOE for energy, DOD for defense, etc."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete guide to SBIR grants for small businesses.",
+    }, shortAnswer: "Yes — Complete guide to SBIR grants for small businesses. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for SBIR Small Business Innovation Research 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 84,
@@ -3306,15 +3551,18 @@ export const blogPosts: BlogPost[] = [
       title: "STTR Requires Partnership",
       type: 'warning',
       content: "STTR (Small Business Technology Transfer) <strong>requires a formal university partnership</strong>. SBIR does not. Choose the right program for your situation."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete guide to SBIR and STTR grants.",
+    }, shortAnswer: "Yes — Complete guide to SBIR and STTR grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for SBIR & STTR Grants Complete Guide 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 85,
@@ -3343,15 +3591,18 @@ export const blogPosts: BlogPost[] = [
       title: "Banking Relationship Value",
       type: 'tip',
       content: "Scotiabank Women Initiative provides not just capital access but also <strong>priority banking relationships</strong> and financial advisory services typically reserved for larger enterprises."
-    },
-    shortAnswer: "Yes — Scotiabank Women Initiative 2026 supports women-owned businesses with dedicated funding. Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and comprehensive support for Cana.",
+    }, shortAnswer: "Yes — Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and comprehensive support for Canadian women-led businesses.. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Scotiabank Women Initiative 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 86,
@@ -3380,15 +3631,18 @@ export const blogPosts: BlogPost[] = [
       title: "Layered Funding Strategy",
       type: 'success',
       content: "Most successful businesses apply for <strong>multiple complementary programs</strong> simultaneously—combining an SBA loan with state grants and local incentives for maximum capital."
-    },
-    shortAnswer: "Small Business Grants Complete Guide 2026 is available through the Small Business Administration. Complete guide to small business grants.",
+    }, shortAnswer: "Yes — Complete guide to small business grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Not sure which SBA program fits? Our funding specialists match you to the right opportunity in minutes.",
+      description: "Get matched with the right alternative or direct funding for Small Business Grants Complete Guide 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 87,
@@ -3417,15 +3671,18 @@ export const blogPosts: BlogPost[] = [
       title: "SaaS-Specific Advantage",
       type: 'success',
       content: "Software and SaaS companies qualify for <strong>accelerated SBIR timelines</strong> because digital products can demonstrate technical feasibility faster than hardware innovations."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to software and SaaS startup grants.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to software and SaaS startup grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Programs', id: 'programs' }, { title: 'Requirements', id: 'requirements' }, { title: 'Timeline', id: 'timeline' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Software & SaaS Startup Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 88,
@@ -3454,8 +3711,7 @@ export const blogPosts: BlogPost[] = [
       title: " Provincial Stacking",
       type: 'success',
       content: "Combine <strong>federal 35% SR&ED</strong> with provincial credits (e.g., Quebec 30%) to achieve 65% total refundable R&D tax credits—the highest rate in North America."
-    },
-    shortAnswer: "SR&ED gives Canadian businesses a 35% refundable federal tax credit on eligible R&D expenditures (up to $4.5M). Combined with provincial credits, you can recover up to 65% of your R&D costs — the highest rate in North America.",
+    }, shortAnswer: "SR&ED gives Canadian businesses a 35% refundable federal tax credit on eligible R&D expenditures (up to $4.5M). Combined with provincial credits, you can recover up to 65% of your R&D costs — the highest rate in North America.",
     jumpLinks: [
       { title: 'Tax Credits', id: 'tax-credits' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -3495,15 +3751,18 @@ export const blogPosts: BlogPost[] = [
       title: "Regional Advantage",
       type: 'tip',
       content: "State and local grants often have <strong>less competition</strong> than federal programs. Focus on regions with active economic development zones for higher approval rates."
-    },
-    shortAnswer: "State & Local Business Grants Guide 2026 provides US-based business funding. Complete guide to state and local business grants.",
+    }, shortAnswer: "Yes — Complete guide to state and local business grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for State & Local Business Grants Guide 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 90,
@@ -3532,15 +3791,18 @@ export const blogPosts: BlogPost[] = [
       title: "State Priority Advantage",
       type: 'tip',
       content: "State and provincial grants often have <strong>higher approval rates</strong> (60-75%) than federal programs because they prioritize local economic development and job creation."
-    },
-    shortAnswer: "State Province Grants provides US-based business funding. Complete guide to government grants.",
+    }, shortAnswer: "Yes — Complete guide to government grants.. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for State Province Grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 91,
@@ -3569,15 +3831,18 @@ export const blogPosts: BlogPost[] = [
       title: "Combine State & Federal",
       type: 'success',
       content: "Women entrepreneurs can <strong>stack state grants with federal programs</strong> like SBA loans and WOSB certifications for comprehensive funding packages."
-    },
-    shortAnswer: "Yes — State Women Business Programs Guide 2026 supports women-owned businesses with dedicated funding. Complete guide to state and local women business programs.",
+    }, shortAnswer: "Yes — Complete guide to state and local women business programs. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for State Women Business Programs Guide 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 92,
@@ -3606,15 +3871,18 @@ export const blogPosts: BlogPost[] = [
       title: "Scale Requirement",
       type: 'warning',
       content: "SIF targets <strong>large-scale transformational projects</strong> with $10M+ budgets. Smaller companies should partner with larger firms or apply to SR&ED/IRAP instead."
-    },
-    shortAnswer: "Yes — Strategic Innovation Fund Canada 2026 is available for eligible Canadian businesses. Complete guide to Strategic Innovation Fund (SIF) funding in Canada.",
+    }, shortAnswer: "Yes — Complete guide to Strategic Innovation Fund (SIF) funding in Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Strategic Innovation Fund Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 93,
@@ -3643,15 +3911,18 @@ export const blogPosts: BlogPost[] = [
       title: "Lower Competition Edge",
       type: 'success',
       content: "Territorial programs have <strong>85%+ approval rates</strong> due to lower application volumes and government priority on Northern economic development."
-    },
-    shortAnswer: "Territories Small Business Grants 2026 is a non-dilutive funding opportunity for qualifying businesses. Complete guide to Territories business grants.",
+    }, shortAnswer: "Yes — Complete guide to Territories business grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for Territories Small Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 94,
@@ -3680,15 +3951,18 @@ export const blogPosts: BlogPost[] = [
       title: "Grants.gov Portal",
       type: 'tip',
       content: "All federal grants are listed on <strong>Grants.gov</strong>—create an account and set up custom alerts for your industry to catch new opportunities early."
-    },
-    shortAnswer: "Usa Federal Grants provides US-based business funding. Complete guide to government grants.",
+    }, shortAnswer: "Yes — Complete guide to government grants.. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for Usa Federal Grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 95,
@@ -3717,15 +3991,18 @@ export const blogPosts: BlogPost[] = [
       title: "AgTech Funding Advantage",
       type: 'success',
       content: "USDA SBIR has <strong>higher approval rates</strong> (28%) than NSF SBIR (17%) because agriculture technology receives federal priority for food security and sustainability goals."
-    },
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Programs', id: 'programs' }, { title: 'Requirements', id: 'requirements' }, { title: 'Timeline', id: 'timeline' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for USDA SBIR AgTech Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 96,
@@ -3754,15 +4031,18 @@ export const blogPosts: BlogPost[] = [
       title: "Pacific Northwest Advantage",
       type: 'success',
       content: "Washington tech grants prioritize <strong>clean energy and software</strong> because of Boeing, Microsoft, and Amazon partnerships—leveraging state's tech ecosystem."
-    },
-    shortAnswer: "Washington Tech Startup Grants 2026-2027 is a non-dilutive funding opportunity for qualifying businesses. Complete 2026-2027 guide to Washington state technology startup grants.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to Washington state technology startup grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Washington Tech Startup Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 97,
@@ -3791,15 +4071,18 @@ export const blogPosts: BlogPost[] = [
       title: "Matching Strategy",
       type: 'tip',
       content: "WBDC requires <strong>dollar-for-dollar matching</strong> from your own investment, but accepts equipment purchases, professional services, and sweat equity as qualifying matches."
-    },
-    shortAnswer: "Yes — WBDC Equity Match Grant 2027 supports women-owned businesses with dedicated funding. Complete guide to WBDC Equity Match Grant with quarterly deadlines, $2,500-$10,000 funding for Connecticut women-owned businesses with matching invest.",
+    }, shortAnswer: "Yes — Complete guide to WBDC Equity Match Grant with quarterly deadlines, $2,500-$10,000 funding for Connecticut women-owned businesses with matching investment requirement.. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for WBDC Equity Match Grant 2027 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 98,
@@ -3828,15 +4111,18 @@ export const blogPosts: BlogPost[] = [
       title: "Free Expert Guidance",
       type: 'success',
       content: "Women's Business Centers provide <strong>free one-on-one counseling</strong> and training valued at $5,000+ annually, plus priority access to SBA loans and grants."
-    },
-    shortAnswer: "Yes — Women supports women-owned businesses with dedicated funding. Complete guide to Women.",
+    }, shortAnswer: "Yes — Complete guide to Women. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Women — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 99,
@@ -3865,15 +4151,18 @@ export const blogPosts: BlogPost[] = [
       title: "Dual Diversity Priority",
       type: 'success',
       content: "Women-led clean technology businesses receive <strong>priority scoring</strong> in SDTC applications because they meet both diversity and environmental innovation mandates."
-    },
-    shortAnswer: "Yes — this program offers $10M for women entrepreneurs in Canada. Complete 2026-2027 guide to clean tech grants for women entrepreneurs.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to clean tech grants for women entrepreneurs. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Women Clean Technology Grants Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 100,
@@ -3902,15 +4191,18 @@ export const blogPosts: BlogPost[] = [
       title: "WEF Application Strategy",
       type: 'success',
       content: "Women Entrepreneurship Fund applications succeed by demonstrating <strong>scalable growth potential</strong> and job creation, not just business survival."
-    },
-    shortAnswer: "Yes — Women Entrepreneurship Fund Canada 2026 provides funding for women-led businesses in Canada. Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses.",
+    }, shortAnswer: "Yes — Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Women Entrepreneurship Fund Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 101,
@@ -3939,15 +4231,18 @@ export const blogPosts: BlogPost[] = [
       title: "Microloan Benefits",
       type: 'tip',
       content: "WELF microloans have <strong>no collateral requirements</strong> and flexible repayment terms, making them ideal for women entrepreneurs who can't qualify for traditional bank financing."
-    },
-    shortAnswer: "Yes — Women Entrepreneurship Loan Fund (WELF) 2026 supports women-owned businesses with dedicated funding. Complete guide to WELF microloans from Innovation, Science & Economic Development Canada.",
+    }, shortAnswer: "Yes — Complete guide to WELF microloans from Innovation, Science & Economic Development Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Loan Details', id: 'loan-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Women Entrepreneurship Loan Fund (WELF) 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 102,
@@ -3976,8 +4271,7 @@ export const blogPosts: BlogPost[] = [
       title: "WES Ecosystem Approach",
       type: 'success',
       content: "Women Entrepreneurship Strategy is <strong>not a single program</strong> but an ecosystem of coordinated federal initiatives—apply to multiple WES programs simultaneously for maximum funding."
-    },
-    shortAnswer: "Yes — Canada's Women Entrepreneurship Strategy (WES) offers $6B+ through 15+ coordinated programs, including grants up to $100K, BDC loans, and free mentorship. It's not a single program — stack multiple WES initiatives for maximum funding.",
+    }, shortAnswer: "Yes — Canada's Women Entrepreneurship Strategy (WES) offers $6B+ through 15+ coordinated programs, including grants up to $100K, BDC loans, and free mentorship. It's not a single program — stack multiple WES initiatives for maximum funding.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -4016,15 +4310,18 @@ export const blogPosts: BlogPost[] = [
       title: "Layered WES Funding",
       type: 'success',
       content: "Combine WES <strong>non-repayable grants</strong> with WES loan programs and WES ecosystem services for comprehensive support package worth $100K+ in total value."
-    },
-    shortAnswer: "Yes — this program offers $6B for women entrepreneurs in Canada. Complete guide to Canada.",
+    }, shortAnswer: "Yes — Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Women Entrepreneurship Strategy Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 104,
@@ -4053,15 +4350,18 @@ export const blogPosts: BlogPost[] = [
       title: "Trade Mission Advantage",
       type: 'success',
       content: "Women-led businesses get <strong>priority placement</strong> on Government of Canada trade missions and receive higher CanExport grant amounts (up to $75K vs. $50K standard)."
-    },
-    shortAnswer: "Yes — this program offers $75K for women entrepreneurs in Canada. Complete 2026-2027 guide to export grants for women entrepreneurs.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to export grants for women entrepreneurs. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Women Export Trade Grants Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 105,
@@ -4090,15 +4390,18 @@ export const blogPosts: BlogPost[] = [
       title: "Equipment Financing Edge",
       type: 'success',
       content: "Women-owned manufacturing businesses qualify for <strong>combined NRC IRAP + provincial equipment grants</strong> totaling 60-75% of equipment costs, compared to 35-50% for general applicants."
-    },
-    shortAnswer: "Yes — this program offers $10M for women entrepreneurs in Canada. Complete 2026-2027 guide to manufacturing grants for women-owned businesses in Ontario, Quebec, BC, Alberta.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to manufacturing grants for women-owned businesses in Ontario, Quebec, BC, Alberta. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Loan Details', id: 'loan-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Women Manufacturing Grants Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 106,
@@ -4127,15 +4430,18 @@ export const blogPosts: BlogPost[] = [
       title: "Social Impact Multiplier",
       type: 'success',
       content: "Women-led social enterprises access <strong>both traditional business grants AND impact-focused funding</strong>, doubling available capital compared to standard businesses."
-    },
-    shortAnswer: "Yes — Women Social Enterprise Grants Canada 2026-2027 provides funding for women-led businesses in Canada. Complete 2026-2027 guide to social enterprise grants for women-led impact businesses in Ontario, Quebec, BC, Alberta.",
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to social enterprise grants for women-led impact businesses in Ontario, Quebec, BC, Alberta. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Women Social Enterprise Grants Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 107,
@@ -4164,15 +4470,18 @@ export const blogPosts: BlogPost[] = [
       title: "STEM Diversity Bonus",
       type: 'success',
       content: "Women in STEM receive <strong>priority scoring</strong> in NSF and SBIR applications, increasing approval odds by 35-40% compared to general applicant pool."
-    },
-    shortAnswer: "Yes — Women in Technology & STEM Grants Guide 2026 supports women-owned businesses with dedicated funding. Complete guide to grants for women in technology and STEM fields.",
+    }, shortAnswer: "Yes — Complete guide to grants for women in technology and STEM fields. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Women in Technology & STEM Grants Guide 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 108,
@@ -4201,15 +4510,18 @@ export const blogPosts: BlogPost[] = [
       title: "Provincial Tech Stacking",
       type: 'success',
       content: "Combine <strong>federal NRC IRAP with provincial tech grants</strong> (Innovate BC, Alberta Innovates, Ontario Centres of Excellence) for 70-80% total R&D cost coverage."
-    },
-    shortAnswer: "Yes — Women in Technology Grants Canada 2026 provides funding for women-led businesses in Canada. Complete guide to Canadian women technology grants with NRC IRAP, Innovate BC, Alberta Innovates, AI funding, software development support, and digita.",
+    }, shortAnswer: "Yes — Complete guide to Canadian women technology grants with NRC IRAP, Innovate BC, Alberta Innovates, AI funding, software development support, and digital innovation programs.. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Programs', id: 'programs' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Success Tips', id: 'success-tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Women in Technology Grants Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 109,
@@ -4238,15 +4550,18 @@ export const blogPosts: BlogPost[] = [
       title: "EDWOSB Advantage",
       type: 'success',
       content: "Economically Disadvantaged WOSB (EDWOSB) certification provides <strong>sole-source contracts up to $7M</strong> and priority in competitive bidding for federal opportunities."
-    },
-    shortAnswer: "Yes — WOSB Federal Contracting Guide 2026 supports women-owned businesses with dedicated funding. Complete guide to WOSB and EDWOSB certification for federal contracting.",
+    }, shortAnswer: "Yes — Complete guide to WOSB and EDWOSB certification for federal contracting. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for WOSB Federal Contracting Guide 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 110,
@@ -4275,15 +4590,18 @@ export const blogPosts: BlogPost[] = [
       title: "Youth Funding Stack",
       type: 'success',
       content: "Young entrepreneurs (18-35) can combine <strong>CYBF grants + provincial youth programs + federal YES funding</strong> for total startup capital of $100K+ with minimal equity dilution."
-    },
-    shortAnswer: "Yes — Youth Entrepreneurship Canada 2026 is available for eligible Canadian businesses. Complete guide to Canadian youth entrepreneur funding programs.",
+    }, shortAnswer: "Yes — Complete guide to Canadian youth entrepreneur funding programs. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Our grant experts specialize in connecting underrepresented entrepreneurs with the right funding programs.",
+      description: "Get matched with the right alternative or direct funding for Youth Entrepreneurship Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 1000,
@@ -4326,15 +4644,18 @@ export const blogPosts: BlogPost[] = [
       title: "Prepare Early",
       type: 'tip',
       content: "Grants are cyclical. Many programs reset their budgets in April (start of fiscal year). Prepare your business plans in Q1 to be ready for the April intake."
-    },
-    shortAnswer: "Yes — 2026 Canadian Small Business Grant Forecast is available for eligible Canadian businesses. Get ahead of the curve.",
+    }, shortAnswer: "Yes — Get ahead of the curve. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for 2026 Canadian Small Business Grant Forecast — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
 
   {
@@ -4505,7 +4826,18 @@ export const blogPosts: BlogPost[] = [
         question: "How long does approval take?",
         answer: "Timelines vary, but expect **4-8 weeks** for standard files. Ensure your business plan is solid to avoid delays."
       }
-    ]
+    ], shortAnswer: "Yes — 🇨🇦 Complete guide to the Black Entrepreneurship Loan Fund. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
 
   {
@@ -4674,7 +5006,18 @@ export const blogPosts: BlogPost[] = [
         question: "Are there grants for newcomers?",
         answer: "Direct grants are rare. Most funding is in the form of **loans** or **free training/mentorship**."
       }
-    ]
+    ], shortAnswer: "Yes — 🇨🇦 Complete guide for immigrants and newcomers starting a business in Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1005,
@@ -4821,7 +5164,18 @@ export const blogPosts: BlogPost[] = [
         question: "Is there funding for Indigenous businesses in BC?",
         answer: "Yes. The **Indigenous Business & Investment Council (IBIC)** and various Aboriginal Capital Corporations (ACCs) provide specialized loans and grants."
       }
-    ]
+    ], shortAnswer: "Yes — 🇨🇦 British Columbia's top funding programs explained. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for BC Business Grants 2026: Innovation & Growth — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1006,
@@ -4964,7 +5318,18 @@ export const blogPosts: BlogPost[] = [
         question: "What about the high cost of energy?",
         answer: "Look into the **Arctic Energy Fund**. It helps businesses switch from diesel to solar, wind, or biomass."
       }
-    ]
+    ], shortAnswer: "Yes — 🇨🇦 Business in the North is unique. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1007,
@@ -5137,7 +5502,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Does the government take equity?",
         answer: "For grants (IRAP, CDAP) and contributions (SIF), generally **No**. They are non-dilutive."
       }
-    ]
+    ], shortAnswer: "Yes — 🇨🇦 This is the big league. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Innovation Canada Grants 2026: R&D & Tech Funding — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
 
   {
@@ -5313,7 +5689,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Are these grants taxable?",
         answer: "Yes. Like federal grants, provincial subsidies are taxable income. Loans are not income, but the interest benefit (if 0%) might have tax implications."
       }
-    ]
+    ], shortAnswer: "Yes — 🇨🇦 Québec offers some of the most generous R&D and manufacturing grants in North America. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Quebec Business Grants 2026: Innovation Capital — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1011,
@@ -5453,7 +5840,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Can I stack federal grants with SAVI?",
         answer: "Yes. You can often combine provincial SAVI funding with federal programs like SCAP, subject to stacking limits (usually 75-90%)."
       }
-    ]
+    ], shortAnswer: "Yes — 🇨🇦 Saskatchewan is more than just wheat. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
 
   {
@@ -5779,7 +6177,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Do I need patents to apply?",
         answer: "While strict patents aren't always mandatory, you must own the <strong>Intellectual Property (IP)</strong> or have a clear license to exploit it. Government funders want to ensure the economic benefits (jobs, profits) stay in Canada."
       }
-    ]
+    ], shortAnswer: "Yes — 🇨🇦 The definitive guide to Canada's Clean Technology funding landscape for 2026. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1016,
@@ -5998,7 +6407,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "How long does approval take?",
         answer: "Since decisions are made by the local financial institution, approval can be relatively fast—often within 2 to 4 weeks, provided your business plan and documentation are complete."
       }
-    ]
+    ], shortAnswer: "Yes — 🇨🇦 The complete guide to Canada's expanded Small Business Financing Program (CSBFP). Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1017,
@@ -6659,7 +7079,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "What is the Aboriginal Business Development Program?",
         answer: "It provides access to capital, business support services, and procurement opportunities. It is now largely administered through the network of <strong>Aboriginal Financial Institutions (AFIs)</strong>."
       }
-    ]
+    ], shortAnswer: "Yes — \ud83e\udeb6 Canada's $120M Indigenous Business Revolution: Complete Funding Guide\n    \n      \n        \ud83c\udfc6 Top Indigenous Business Regions\n        \n          \u2022 Bri.... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Indigenous Business Development 2026 — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1018,
@@ -7213,7 +7644,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "When should I apply?",
         answer: "You must submit your application at least <strong>60 days before</strong> you incur your first eligible expense."
       }
-    ]
+    ], shortAnswer: "Yes — \ud83c\udde8\ud83c\udde6 CanExport Grants 2026: International Market Expansion - $75M+ Export Engine\n    \n      \n        \ud83c\udfc6 CanExport Program Portfolio\n        \n          \u2022 .... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canexport Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1019,
@@ -7719,7 +8161,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "What costs are covered?",
         answer: "IRAP primarily covers <strong>internal technical labour costs</strong> (salaries of employees working on the project) and some subcontractor fees."
       }
-    ]
+    ], shortAnswer: "Yes — \ud83c\udde8\ud83c\udde6 Canada IRAP Grants 2026: Industrial Research Assistance Program - $400M+ Innovation Powerhouse\n    \n      \n        \ud83c\udfc6 IRAP Program Scale\n        \n  .... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Irap Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1020,
@@ -8482,7 +8935,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Who is eligible for the $2,400 micro-grant?",
         answer: "Consumer-facing businesses (retail, service) with at least one employee and revenue over $30,000 are typically eligible for the 'Grow Your Business Online' grant."
       }
-    ]
+    ], shortAnswer: "Yes — \ud83d\udcbb Canada's $90M Digital Transformation Revolution: Complete CDAP Guide\n    \n      \n        \ud83c\udfc6 Top Digital Innovation Provinces\n        \n          \u2022 Ont.... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Digital Transformation 2026 — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1021,
@@ -9333,7 +9797,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Do I need to be incorporated?",
         answer: "Yes, you must be a for-profit legal entity (corporation, co-operative, or partnership) to apply. Sole proprietorships are typically not eligible."
       }
-    ]
+    ], shortAnswer: "Yes — 🌾 Canada's $180M Agricultural Innovation Revolution: Complete AgriInnovate Guide\n    \n      \n        🏆 Top Agricultural Innovation Provinces\n        \n.... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
 
   {
@@ -9523,7 +9998,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Are these grants taxable?",
         answer: "Yes. Most government grants are considered taxable income."
       }
-    ]
+    ], shortAnswer: "Yes — Manitoba's Innovation Growth Program gives up to $100K for commercialization. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1024,
@@ -9782,7 +10268,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Is mental health funding available?",
         answer: "Yes, it is a top priority. The federal government has specific funds dedicated to <strong>mental health and addiction services</strong>, particularly solutions that increase access to care (e.g., virtual counseling platforms)."
       }
-    ]
+    ], shortAnswer: "Yes — 90% of health startups apply to the wrong program and get rejected. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1025,
@@ -9918,7 +10415,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Is used equipment eligible?",
         answer: "Often no. Most programs want to stimulate the economy by purchasing <strong>new</strong>, state-of-the-art technology, not shuffling old machines around."
       }
-    ]
+    ], shortAnswer: "Yes — 🇨🇦 Modernize your factory with Canadian government grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1026,
@@ -10079,7 +10587,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Can I get funding for a mobile app?",
         answer: "Only if it involves 'technical uncertainty'. Building a standard e-commerce app or a Tinder-clone is considered 'standard engineering' and rarely qualifies for R&D grants. Building a novel algorithmic engine <em>within</em> the app might qualify."
       }
-    ]
+    ], shortAnswer: "Yes — Keep 100% equity: IRAP covers 80% of R&D salaries, SR&ED gives 45% tax credits, and the Digital Adoption Program funds your tech stack. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Tech Startup Grants Canada 2026: $4B+ Non — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
 
   {
@@ -10129,15 +10648,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
       title: "Pre-Application is Key",
       type: 'tip',
       content: "Many 2026 programs have <strong>mandatory pre-application phases</strong> in late 2026. Missing the December 2026 pre-application deadline often disqualifies you from the main funding."
-    },
-    shortAnswer: "2026 Grant Preview Early Bird is a non-dilutive funding opportunity for qualifying businesses. \ud83d\ude80 2026 Grant Preview: Early Bird Opportunities - $4.",
+    }, shortAnswer: "Yes — \ud83d\ude80 2026 Grant Preview: Early Bird Opportunities - $4.8B Future Funding Pipeline\n    \n      \n        \ud83c\udfc6 Top 2026 Early Bird Programs\n        \n          \u2022.... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for 2026 Grant Preview Early Bird — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
 
   {
@@ -10515,7 +11037,17 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Is there funding for tourism?",
         answer: "Yes. The <strong>Tourism Relief Fund</strong> has evolved into various regional asset enhancement grants. Check with your provincial tourism association (e.g., Tourism Nova Scotia) for specific 'start-up' or 'expansion' grants."
       }
-    ]
+    ], shortAnswer: "Yes — 🇨🇦 The East Coast is booming. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Atlantic Business Grants 2026: Ocean & Growth — our specialists navigate the complex federal and provincial channels for you.",
+    },
 
   },
   {
@@ -10561,17 +11093,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Are there grants for veteran spouses?",
         answer: "Some support networks and community programs extend to spouses. Additionally, if you co-own a business with your spouse, their involvement can strengthen your application for general small business grants."
       }
-    ],
-
-
-    shortAnswer: "Yes — Veteran Business Grants Canada 2026: $89K+ Available [Apply] is available for eligible Canadian businesses. Canadian veterans can access up to $89K through Prince\'s Trust, Futurpreneur, and the Education & Training Benefit.",
+    ], shortAnswer: "Yes — Canadian veterans can access up to $89K through Prince's Trust, Futurpreneur, and the Education & Training Benefit. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Our grant experts specialize in connecting underrepresented entrepreneurs with the right funding programs.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 1033,
@@ -10960,7 +11493,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Does the government fund student housing?",
         answer: "Yes. The <strong>Apartment Construction Loan Program (ACLP)</strong> specifically includes student housing projects, provided they are on or near campus and affordable."
       }
-    ]
+    ], shortAnswer: "Yes — 🇨🇦 Access CMHC and FCM funding for housing and community projects. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1034,
@@ -11292,7 +11836,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "Do I need to be incorporated?",
         answer: "For major loans, yes. For micro-grants and mentorship, sole proprietorships are often eligible."
       }
-    ]
+    ], shortAnswer: "Yes — 🇨🇦 The WES Ecosystem Fund, WEOC loans, and FACERF are changing the game. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 1036,
@@ -11322,15 +11877,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
       type: 'tip',
       content: "Alberta Innovates is strict about Technology Readiness Levels (TRL). Do not apply for a commercialization grant with a concept-stage idea. You WILL be rejected."
     },
-    faq: albertaBusinessGrants2026.faq,
-    shortAnswer: "Alberta Business Grants 2026: Innovation & Growth supports Alberta-based businesses. Alberta Business Grants 2026: Innovation & Growth.",
+    faq: albertaBusinessGrants2026.faq, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Alberta Business Grants 2026: Innovation & Growth — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2036,
@@ -11530,7 +12088,18 @@ However, some large SIF contributions may have repayment terms based on revenue 
         question: "How do I get SDVOSB certified?",
         answer: "You must apply through the **SBA VetCert** portal. Verification typically takes 30-60 days."
       }
-    ]
+    ], shortAnswer: "Yes — 🇺🇸 Complete guide to grants and resources for veteran-owned small businesses (VOSB) and service-disabled veteran-owned small businesses (SDVOSB).. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 2037,
@@ -11786,7 +12355,18 @@ Write: "This grant will fund a high-capacity oven, allowing me to increase produ
         question: "Can I get a grant to start a business?",
         answer: "Yes, grants like Amber and Galaxy are open to startups. However, federal contracts and larger corporate grants usually require 1-2 years of operational history."
       }
-    ]
+    ], shortAnswer: "Yes — 🇺🇸 A curated list of grants for women entrepreneurs in 2026. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Women's Business Grants 2026: $10M+ Opportunities — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 2038,
@@ -11998,7 +12578,18 @@ However, a single corporate contract can yield 100x that investment.
         question: "Can I apply regarding pre-revenue status?",
         answer: "Yes, grants like the Galaxy Grant are open to startups. However, federal 8(a) certification typically requires 2 years of business history."
       }
-    ]
+    ], shortAnswer: "Yes — 🇺🇸 Funding sources dedicated to Black, Latino, Asian, and Indigenous entrepreneurs. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Minority Business Grants 2026: Closing the Gap — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   {
     id: 2039,
@@ -12042,15 +12633,18 @@ ${bidenPost}
         question: "Do I need good credit?",
         answer: "Unlike loans, these grants focus more on business viability and demographic criteria than personal credit scores, though tax compliance is required."
       }
-    ],
-    shortAnswer: "Biden\'s $2.5B Small Business Grants: 2026 Guide is a non-dilutive funding opportunity for qualifying businesses. 🇺🇸 Everything you need to know about the new $2.",
+    ], shortAnswer: "Yes — 🇺🇸 Everything you need to know about the new $2.5 billion federal grant initiative for minority, women, and veteran entrepreneurs.. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for Biden's $2.5B Small Business Grants: 2026 Guide — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2040,
@@ -12094,15 +12688,18 @@ ${doePost}
         question: "Can I use funding for marketing?",
         answer: "Generally no. DOE funds are strictly for research, development, and technical demonstration, not for sales or marketing expenses."
       }
-    ],
-    shortAnswer: "DOE $800M Clean Tech Funding 2026 is a non-dilutive funding opportunity for qualifying businesses. 🇺🇸 The Department of Energy is investing heavily in solar, battery, and green technology.",
+    ], shortAnswer: "Yes — 🇺🇸 The Department of Energy is investing heavily in solar, battery, and green technology. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Our clean tech funding specialists help you access the right environmental and energy grant programs.",
+      description: "Get matched with the right alternative or direct funding for DOE $800M Clean Tech Funding 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2041,
@@ -12146,15 +12743,18 @@ ${epaPost}
         question: "Can for-profits apply?",
         answer: "Generally no, unless specifically partnering on a Pollution Prevention (P2) grant to reduce industrial waste."
       }
-    ],
-    shortAnswer: "EPA $100M Environmental Justice Grants is a non-dilutive funding opportunity for qualifying businesses. 🇺🇸 Funding for communities and non-profits fighting pollution and climate change in underserved areas.",
+    ], shortAnswer: "Yes — 🇺🇸 Funding for communities and non-profits fighting pollution and climate change in underserved areas. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Our clean tech funding specialists help you access the right environmental and energy grant programs.",
+      description: "Get matched with the right alternative or direct funding for EPA $100M Environmental Justice Grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2042,
@@ -12198,15 +12798,18 @@ ${nsfPost}
         question: "What is the success rate?",
         answer: "Overall it's around 15%, but if your Project Pitch is accepted, the full proposal success rate is significantly higher (around 45%)."
       }
-    ],
-    shortAnswer: "SBIR/STTR provides non-dilutive R&D grants for innovative small businesses. 🇺🇸 The National Science Foundation offers non-dilutive funding for high-tech startups.",
+    ], shortAnswer: "Yes — 🇺🇸 The National Science Foundation offers non-dilutive funding for high-tech startups. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for NSF SBIR/STTR: $200M for STEM Startups — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2043,
@@ -12259,15 +12862,18 @@ ${oct2026Post}
         question: "Do I need matching funds for these grants?",
         answer: "It depends on the program. CDAP requires no matching funds. Ontario Scale-Up Vouchers require 1:1 matching. Alberta Innovates requires 50% cost-sharing. IRAP Youth Employment and Women Entrepreneurship Fund require no matching from the employer."
       }
-    ],
-    shortAnswer: "October 2026: Last Chance Grant Deadlines is a non-dilutive funding opportunity for qualifying businesses. ⏰ Urgent funding alert! Key federal and provincial grant programs closing this month.",
+    ], shortAnswer: "Yes — ⏰ Urgent funding alert! Key federal and provincial grant programs closing this month. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for October 2026: Last Chance Grant Deadlines — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2044,
@@ -12320,15 +12926,18 @@ ${q42026Post}
         question: "Which Q4 program has the highest approval rate?",
         answer: "The <strong>Canada Job Grant</strong> has the highest at 72%, followed by <strong>Mitacs Accelerate</strong> at 67% and <strong>IRAP Accelerated Technology</strong> at 45% for returning clients. Provincial training grants generally have higher approval rates than federal innovation grants."
       }
-    ],
-    shortAnswer: "Q4 2026 Grant Deadlines: End of Year Funding is a non-dilutive funding opportunity for qualifying businesses. 📅 Plan your year-end funding strategy.",
+    ], shortAnswer: "Yes — 📅 Plan your year-end funding strategy. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for Q4 2026 Grant Deadlines: End of Year Funding — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2045,
@@ -12357,15 +12966,18 @@ ${q12026Post}
       title: "Pre-Preparation",
       type: 'success',
       content: "Use Q4 2026 to update your business plan and financial statements so you are ready to apply the moment Q1 2026 applications open."
-    },
-    shortAnswer: "Q1 2026 Grant Forecast: Prepare Now is a non-dilutive funding opportunity for qualifying businesses. 🔮 Get a head start on 2026.",
+    }, shortAnswer: "Yes — 🔮 Get a head start on 2026. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for Q1 2026 Grant Forecast: Prepare Now — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2046,
@@ -12395,15 +13007,18 @@ ${sbaSbirPost}
       title: "Topic Fit",
       type: 'tip',
       content: "SBIR is topic-specific. Agencies release 'solicitations' with specific problems they need solved. Your proposal MUST address one of these specific topics."
-    },
-    shortAnswer: "SBA SBIR/STTR 2026: America\'s Seed Fund is available through the Small Business Administration. 🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program.",
+    }, shortAnswer: "Yes — 🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Not sure which SBA program fits? Our funding specialists match you to the right opportunity in minutes.",
+      description: "Get matched with the right alternative or direct funding for SBA SBIR/STTR 2026: America's Seed Fund — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2047,
@@ -12433,15 +13048,18 @@ ${grantSecretsPost}
       title: "Clarity over Jargon",
       type: 'tip',
       content: "Reviewers are often generalists, not specialists in your niche. Write simply and clearly. Avoid excessive industry jargon."
-    },
-    shortAnswer: "Grant Writing Secrets 2026: 7 Tips from Pro Writers is a non-dilutive funding opportunity for qualifying businesses. ✍️ Increase your approval odds.",
+    }, shortAnswer: "Yes — ✍️ Increase your approval odds. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2048,
@@ -12470,15 +13088,18 @@ ${usdaRuralPost}
       title: "Check Eligibility",
       type: 'warning',
       content: "Use the USDA's online mapping tool to confirm your address is in an eligible rural zone BEFORE you start your application."
-    },
-    shortAnswer: "USDA Rural Business Development Grants 2026 is a non-dilutive funding opportunity for qualifying businesses. 🇺🇸 Support for rural entrepreneurs.",
+    }, shortAnswer: "Yes — 🇺🇸 Support for rural entrepreneurs. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for USDA Rural Business Development Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2049,
@@ -12507,15 +13128,18 @@ ${nyGrantsPost}
       title: "REDC Priority",
       type: 'tip',
       content: "Align your project with your Regional Economic Development Council (REDC) strategic plan to boost your scoring chances."
-    },
-    shortAnswer: "New York Business Grants 2026: State Guide provides US-based business funding. 🗽 Comprehensive guide to business grants in New York State.",
+    }, shortAnswer: "Yes — 🗽 Comprehensive guide to business grants in New York State. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for New York Business Grants 2026: State Guide — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2050,
@@ -12562,15 +13186,18 @@ ${regionalDevPost}
       title: "Scale-Up Focus",
       type: 'tip',
       content: "RDAs primarily fund <strong>expansion and scaling</strong> activities, not early-stage startups. Demonstrate you have a proven market and need capital to grow."
-    },
-    shortAnswer: "Yes — Canada\'s Regional Development Agencies: 2026 Funding is available for eligible Canadian businesses. 🇨🇦 The 7 Regional Development Agencies (RDAs) are a primary source of business funding.",
+    }, shortAnswer: "Yes — 🇨🇦 The 7 Regional Development Agencies (RDAs) are a primary source of business funding. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2051,
@@ -12631,15 +13258,18 @@ ${superclustersPost}
       title: "Collaboration is Key",
       type: 'warning',
       content: "You cannot apply alone. Supercluster projects require a consortium of members (e.g., SMEs, large corporations, academic institutions)."
-    },
-    shortAnswer: "Global Innovation Clusters: 2026 Call for Projects — here\'s what you need to know to apply successfully. 🇨🇦 Canada\'s Superclusters (now Global Innovation Clusters) are co-investing millions in collaborative tech projects.",
+    }, shortAnswer: "Yes — 🇨🇦 Canada's Superclusters (now Global Innovation Clusters) are co-investing millions in collaborative tech projects. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for Global Innovation Clusters: 2026 Call for Projects — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2052,
@@ -12686,15 +13316,18 @@ ${ruralBizPost}
       title: "Visit Your CFDC",
       type: 'tip',
       content: "Your local <strong>Community Futures Development Corporation (CFDC)</strong> office is your best resource. They offer flexible loans and localized advice."
-    },
-    shortAnswer: "Yes — Rural Canada Business Development 2026 is available for eligible Canadian businesses. 🇨🇦 Specific funding streams for rural Canadian businesses.",
+    }, shortAnswer: "Yes — 🇨🇦 Specific funding streams for rural Canadian businesses. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Rural Canada Business Development 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 2053,
@@ -12755,15 +13388,18 @@ ${sredTaxPost}
         question: "Do I need a consultant?",
         answer: "Not legally, but highly recommended. The documentation requirements are strict, and a specialist can often find eligible expenses you might miss."
       },
-    ],
-    shortAnswer: "SR&ED 2026: Maximizing Your Tax Credits — here\'s what you need to know to apply successfully. 🇨🇦 The Scientific Research and Experimental Development (SR&ED) program is Canada\'s largest R&D incentive.",
+    ], shortAnswer: "Yes — 🇨🇦 The Scientific Research and Experimental Development (SR&ED) program is Canada's largest R&D incentive. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Tax Credits', id: 'tax-credits' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Claim', id: 'how-to-claim' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for SR&ED 2026: Maximizing Your Tax Credits — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 1009,
@@ -13132,7 +13768,18 @@ ${sredTaxPost}
         question: "How do I claim the Investment Tax Credit (ITC)?",
         answer: "You claim it on your T2 corporate tax return. Work with an accountant to ensure your equipment meets Class 43.1/43.2 requirements."
       }
+    ], shortAnswer: "Yes — Detailed guide to Canada's green business grants for SMEs. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Green Business Funding 2026: Sustainability Grants — our specialists navigate the complex federal and provincial channels for you.",
+    },
+
   },
   // Batch 18: Restored 2025 Content
   {
@@ -13162,15 +13809,18 @@ ${sredTaxPost}
       title: "Stack Programs for Maximum Impact",
       type: 'success',
       content: "Combine federal clean tech funding with provincial incentives like <strong>Alberta Innovates</strong> or <strong>CleanBC</strong> to cover up to 75% of your project costs."
-    },
-    shortAnswer: "Yes — Canada\'s $400M Clean Technology Leadership is available for eligible Canadian businesses. Environment and Climate Change Canada has launched the most comprehensive clean technology funding program in history, investing $400 million to posit.",
+    }, shortAnswer: "Yes — Environment and Climate Change Canada has launched the most comprehensive clean technology funding program in history, investing $400 million to position Canada as a global clean technology superpower.. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for Canada's $400M Clean Technology Leadership — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3002,
@@ -13199,15 +13849,18 @@ ${sredTaxPost}
       title: "SAM.gov is the Gatekeeper",
       type: 'warning',
       content: "You cannot apply for ANY federal grant without an active <strong>SAM.gov registration</strong>. It takes 2-4 weeks to process, so start this step immediately."
-    },
-    shortAnswer: "Your 2025 Grant Success Blueprint is a non-dilutive funding opportunity for qualifying businesses. Navigating the US government grant system can feel overwhelming, but with the right strategy, you can join the 37,000+ businesses that secured federal.",
+    }, shortAnswer: "Yes — Navigating the US government grant system can feel overwhelming, but with the right strategy, you can join the 37,000+ businesses that secured federal funding. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for Your 2025 Grant Success Blueprint — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3003,
@@ -13236,15 +13889,18 @@ ${sredTaxPost}
       title: "Focus on New Markets",
       type: 'tip',
       content: "CanExport strictly funds <strong>new market entry</strong>. You must have less than $100k (or 10%) sales in the target country to qualify."
-    },
-    shortAnswer: "CanExport Grants 2025: International Market Expansion is a non-dilutive funding opportunity for qualifying businesses. Canada\'s CanExport programs provide comprehensive support for international expansion, with over $75 million available annually.",
+    }, shortAnswer: "Yes — Canada's CanExport programs provide comprehensive support for international expansion, with over $75 million available annually. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3004,
@@ -13273,15 +13929,18 @@ ${sredTaxPost}
       title: "Value-Added is Key",
       type: 'success',
       content: "Commodity farming is low margin. <strong>Value-Added Producer Grants (VAPG)</strong> offer up to $250k to process your crops into consumer products."
-    },
-    shortAnswer: "Rural Business Development Grants 2025: $1.2B Funding Guide is a non-dilutive funding opportunity for qualifying businesses. Rural America is experiencing a renaissance with $1.",
+    }, shortAnswer: "Yes — Rural America is experiencing a renaissance with $1.2 billion in targeted grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3005,
@@ -13310,15 +13969,18 @@ ${sredTaxPost}
       title: "Get Certified First",
       type: 'warning',
       content: "You cannot access set-aside contracts without official verification. Apply for <strong>VetCert (formerly CVE)</strong> through the SBA immediately."
-    },
-    shortAnswer: "Veterans Business Grants 2025: $75M Funding Revolution is a non-dilutive funding opportunity for qualifying businesses. The federal government has committed $75 million to veteran entrepreneurship.",
+    }, shortAnswer: "Yes — The federal government has committed $75 million to veteran entrepreneurship. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Our grant experts specialize in connecting underrepresented entrepreneurs with the right funding programs.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3006,
@@ -13347,15 +14009,18 @@ ${sredTaxPost}
       title: "The Power of One",
       type: 'tip',
       content: "NY's <strong>Consolidated Funding Application (CFA)</strong> allows you to apply for dozens of funding sources with a single application. Don't miss the July deadline."
-    },
-    shortAnswer: "New York Business Grants 2025: Empire State Funding Guide provides US-based business funding. New York State offers $1.",
+    }, shortAnswer: "Yes — New York State offers $1.8 billion in funding through its Regional Economic Development Councils. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3007,
@@ -13384,15 +14049,18 @@ ${sredTaxPost}
       title: "Automate to Compete",
       type: 'success',
       content: "The biggest grant pools are for <strong>Industry 4.0</strong> adoption. Frame your equipment purchase as a 'Digital Transformation' project to qualify."
-    },
-    shortAnswer: "Manufacturing Grants 2025: $2.3B Industrial Renaissance is a non-dilutive funding opportunity for qualifying businesses. American manufacturing is booming with $2.",
+    }, shortAnswer: "Yes — American manufacturing is booming with $2.3 billion in grants for automation, reshoring, and workforce development. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Building innovative technology? Our team connects tech startups with the best non-dilutive funding opportunities.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3008,
@@ -13421,15 +14089,18 @@ ${sredTaxPost}
       title: "Certification is Key",
       type: 'tip',
       content: "Getting certified as an <strong>MBE (Minority Business Enterprise)</strong> through NMSDC or SBA 8(a) unlocks access to 90% of restricted funding pools."
-    },
-    shortAnswer: "Minority Business Enterprise Grants 2025: $1.9B Funding Guide is a non-dilutive funding opportunity for qualifying businesses. Minority-owned businesses are driving economic growth with $1.",
+    }, shortAnswer: "Yes — Minority-owned businesses are driving economic growth with $1.9 trillion in revenue. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3009,
@@ -13458,15 +14129,18 @@ ${sredTaxPost}
       title: "Pick the Right Stream",
       type: 'tip',
       content: "Don't mix them up: <strong>Stream 2</strong> is for consumer retail/marketing. <strong>Stream 3</strong> is for enterprise technology and heavy equipment software."
-    },
-    shortAnswer: "Yes — Canada\'s $90M Digital Transformation Revolution: CDAP Guide is available for eligible Canadian businesses. The Canada Digital Adoption Program (CDAP) offers $90 million to boost SME technology.",
+    }, shortAnswer: "Yes — The Canada Digital Adoption Program (CDAP) offers $90 million to boost SME technology. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Let our Canadian grant experts navigate the application process and maximize your funding potential.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3010,
@@ -13495,15 +14169,18 @@ ${sredTaxPost}
       title: "Commercial Ready Only",
       type: 'warning',
       content: "AgriInnovate does NOT fund basic research. You must have a <strong>working prototype</strong> and identified customers to be eligible."
-    },
-    shortAnswer: "Yes — Canada\'s $180M Agricultural Innovation Revolution: AgriInnovate Guide is available for eligible Canadian businesses. Agriculture and Agri-Food Canada has launched a $180 million innovation fund.",
+    }, shortAnswer: "Yes — Agriculture and Agri-Food Canada has launched a $180 million innovation fund. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3011,
@@ -13532,15 +14209,18 @@ ${sredTaxPost}
       title: "Location Matters",
       type: 'tip',
       content: "Check your address on the USDA eligibility map. Innovations in counties with <strong>under 25,000 population</strong> get 25% bonus points."
-    },
-    shortAnswer: "USDA\'s $300M Rural Revolution: Business & Innovation Grants is a non-dilutive funding opportunity for qualifying businesses. The USDA is investing $300 million in rural agricultural innovation targeted at 46 million rural Americans.",
+    }, shortAnswer: "Yes — The USDA is investing $300 million in rural agricultural innovation targeted at 46 million rural Americans. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3012,
@@ -13591,15 +14271,18 @@ ${sredTaxPost}
         question: "Do I need to be a minority woman to qualify?",
         answer: "No. While there are specific grants for minority women (like the <strong>Galaxy Grant</strong>), most general women's business grants are open to all women entrepreneurs regardless of race or ethnicity."
       }
-    ],
-    shortAnswer: "Yes — Women-Owned Business Grants 2025: $2.1B Funding Guide supports women-owned businesses with dedicated funding. Women entrepreneurs now own 42% of US businesses.",
+    ], shortAnswer: "Yes — Women entrepreneurs now own 42% of US businesses. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+      description: "Get matched with the right alternative or direct funding for Women — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3013,
@@ -13650,15 +14333,18 @@ ${sredTaxPost}
         question: "How long does it take to get funding?",
         answer: "It typically takes 4-6 months from submission to award notification, and another 1-2 months to receive the first payment. It is not immediate capital, so plan your runway accordingly."
       }
-    ],
-    shortAnswer: "Technology Startup Grants 2025: $3.4B Innovation Fund is a non-dilutive funding opportunity for qualifying businesses. Silicon Valley isn\'t the only path to funding.",
+    ], shortAnswer: "Yes — Silicon Valley isn't the only path to funding. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3014,
@@ -13687,15 +14373,18 @@ ${sredTaxPost}
       title: "Rural Advantage",
       type: 'tip',
       content: "<strong>Rural healthcare providers</strong> have significantly higher grant success rates. Highlight any service to underserved or rural populations in your application."
-    },
-    shortAnswer: "Healthcare Business Grants 2025: $4.5B Funding Guide is a non-dilutive funding opportunity for qualifying businesses. The healthcare sector is seeing unprecedented grant funding for digital health, rural access, and medical innovation.",
+    }, shortAnswer: "Yes — The healthcare sector is seeing unprecedented grant funding for digital health, rural access, and medical innovation. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3015,
@@ -13724,15 +14413,18 @@ ${sredTaxPost}
       title: "Local Technical Assistance",
       type: 'success',
       content: "California requires many applicants to work with a <strong>technical assistance center</strong>. Connect with your local SBDC or Women's Business Center immediately to be eligible."
-    },
-    shortAnswer: "California Small Business Grants 2025: $1.5B Funding Guide is a non-dilutive funding opportunity for qualifying businesses. California leads the nation in state-level business support.",
+    }, shortAnswer: "Yes — California leads the nation in state-level business support. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3016,
@@ -13761,15 +14453,18 @@ ${sredTaxPost}
       title: "Export Markets",
       type: 'tip',
       content: "Florida aggressively funds companies looking to <strong>export products</strong>. The Enterprise Florida Trade Grants can cover 100% of the cost of trade shows and missions."
-    },
-    shortAnswer: "Florida Business Grants 2025: $850M Growth Funding is a non-dilutive funding opportunity for qualifying businesses. Florida\'s business-friendly environment includes $850 million in targeted grants for export growth, high-tech industry, and tourism development.",
+    }, shortAnswer: "Yes — Florida's business-friendly environment includes $850 million in targeted grants for export growth, high-tech industry, and tourism development. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for Florida Business Grants 2025: $850M Growth Funding — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3017,
@@ -13798,15 +14493,18 @@ ${sredTaxPost}
       title: "Social Equity Priority",
       type: 'tip',
       content: "Illinois has strong <strong>social equity requirements</strong> for many cannabis and tech cannabis grants. Being a Social Equity Applicant significantly increases your chances."
-    },
-    shortAnswer: "Illinois Business Development Grants 2025: $650M Guide is a non-dilutive funding opportunity for qualifying businesses. Illinois DCEO offers over $650 million in business development grants.",
+    }, shortAnswer: "Yes — Illinois DCEO offers over $650 million in business development grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3018,
@@ -13835,15 +14533,18 @@ ${sredTaxPost}
       title: "Industry 4.0 Grant",
       type: 'success',
       content: "The <strong>Industry 4.0 Implementation Grant</strong> pays 50% of software/hardware costs up to $25k. It's one of the easiest grants to get if you are a small manufacturer."
-    },
-    shortAnswer: "Michigan Manufacturing Grants 2025: $500M Industry 4.0 is a non-dilutive funding opportunity for qualifying businesses. Michigan is investing $500 million to reclaim its manufacturing crown.",
+    }, shortAnswer: "Yes — Michigan is investing $500 million to reclaim its manufacturing crown. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Our manufacturing grant experts help you access equipment, R&D, and workforce training funding programs.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3019,
@@ -13890,15 +14591,18 @@ ${sredTaxPost}
         question: "Are there programs for manufacturing companies specifically?",
         answer: "Yes. Beyond PIDA, the Pennsylvania Industrial Resource Centers (IRCs) provide subsidized consulting for manufacturers. The Manufacturing PA initiative offers workforce training grants, and the PA SBDC network provides free business consulting. The state's Made in Pennsylvania program also helps with marketing and export assistance."
       }
-    ],
-    shortAnswer: "Pennsylvania Innovation Grants 2025: $670M Industrial Fund is a non-dilutive funding opportunity for qualifying businesses. Pennsylvania\'s Ben Franklin Technology Partners and PIDA offer $670 million in funding.",
+    ], shortAnswer: "Yes — Pennsylvania's Ben Franklin Technology Partners and PIDA offer $670 million in funding. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3020,
@@ -13927,15 +14631,18 @@ ${sredTaxPost}
       title: "Competitive Necessity",
       type: 'warning',
       content: "For the Texas Enterprise Fund, you must demonstrate <strong>competitive necessity</strong>—meaning you have a viable offer from another state. It's a deal-closing fund, not a startup handout."
-    },
-    shortAnswer: "Texas Business Grants 2025: $1.2B Enterprise Fund is a non-dilutive funding opportunity for qualifying businesses. Everything is bigger in Texas, including the $1.",
+    }, shortAnswer: "Yes — Everything is bigger in Texas, including the $1.2 billion Texas Enterprise Fund. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for Texas Business Grants 2025: $1.2B Enterprise Fund — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3021,
@@ -13964,15 +14671,18 @@ ${sredTaxPost}
       title: "Lab Partnership",
       type: 'success',
       content: "Partnering with a <strong>National Laboratory</strong> (like NREL or Oak Ridge) significantly boosts your chances. They have the testing facilities your startup lacks."
-    },
-    shortAnswer: "DOE Clean Energy Grants 2025: $800M Innovation Fund is a non-dilutive funding opportunity for qualifying businesses. The Department of Energy is deploying $800 million for clean tech innovation.",
+    }, shortAnswer: "Yes — The Department of Energy is deploying $800 million for clean tech innovation. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need help with your R&D grant application? Our specialists have helped secure over $50M in innovation funding.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3022,
@@ -14001,15 +14711,18 @@ ${sredTaxPost}
       title: "Community Leadership",
       type: 'tip',
       content: "The EPA requires proof of <strong>community leadership</strong>. The project shouldn't just help the community; it should be driven by it. Document all community meetings and input."
-    },
-    shortAnswer: "EPA Environmental Justice Grants 2025: $100M Community Fund is a non-dilutive funding opportunity for qualifying businesses. The EPA\'s Environmental Justice program offers $100 million to community organizations.",
+    }, shortAnswer: "Yes — The EPA's Environmental Justice program offers $100 million to community organizations. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Funding Details', id: 'funding-details' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Our clean tech funding specialists help you access the right environmental and energy grant programs.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3023,
@@ -14038,15 +14751,18 @@ ${sredTaxPost}
       title: "LMI Benefit",
       type: 'warning',
       content: "At least 70% of CDBG funds must benefit <strong>Low-to-Moderate Income (LMI)</strong> persons. Ensure your project area qualifies using HUD's mapping tools."
-    },
-    shortAnswer: "HUD Community Development Grants 2025: $150M CDBG Guide is a non-dilutive funding opportunity for qualifying businesses. HUD\'s CDBG program provides $150 million for community development.",
+    }, shortAnswer: "Yes — HUD's CDBG program provides $150 million for community development. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'FAQ', id: 'faq' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step of the process.",
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
+
   },
   {
     id: 3024,

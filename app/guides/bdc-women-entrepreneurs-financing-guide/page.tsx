@@ -7,6 +7,12 @@ import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Light
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "BDC Woman Entrepreneur Financing 2026 | $100K Online Loan",
   description: "Complete guide to BDC's Women Entrepreneur financing. Apply for the $100K online loan, Thrive Venture Fund, and advisory services.",
@@ -81,9 +87,16 @@ export default function BDCWomenEntrepreneursApplicationGuide() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
                 BDC Women Entrepreneur <br className="hidden md:block" /> Financing
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed text-pretty">
-                The complete handbook to BDC's $100k online loan, <br className="hidden md:block" /> Thrive Venture Fund, and advisory services.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="BDC Women Entrepreneurs Financing Guide — Access Business Development Bank of Canada financing specifically for women-owned businesses." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold shadow-lg shadow-blue-900/50" asChild>
                   <Link href="#programs">
@@ -99,6 +112,12 @@ export default function BDCWomenEntrepreneursApplicationGuide() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+    ]} />
+
 
         {/* QUERY HOOK: Common Questions */}
         <div className="bg-white border-b border-blue-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
@@ -235,7 +254,11 @@ export default function BDCWomenEntrepreneursApplicationGuide() {
         <section id="process" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">How to Apply</h2>
+              
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Women-owned business? Our funding specialists help you access the right grants, loans, and support programs.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">How to Apply</h2>
 
               <div className="relative border-l-2 border-slate-200 pl-8 space-y-12 ml-4 md:ml-0">
 

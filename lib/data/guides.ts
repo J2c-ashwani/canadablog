@@ -68,8 +68,7 @@ export const guidesDatabase: Guide[] = [
       title: "The 'Credit Elsewhere' Test",
       type: 'warning',
       content: "The SBA will ONLY fund you if you <strong>cannot</strong> get a loan elsewhere on reasonable terms. You must prove you were rejected or couldn't get a standard bank loan first."
-    },
-    shortAnswer: "The SBA application takes 30-90 days. You need a 640+ credit score, 10-20% down payment, and proof you can't get a conventional loan. Start at SBA.gov/lender-match to find an approved lender.",
+    }, shortAnswer: "The SBA application takes 30-90 days. You need a 640+ credit score, 10-20% down payment, and proof you can't get a conventional loan. Start at SBA.gov/lender-match to find an approved lender.",
     jumpLinks: [
       { title: 'Requirements', id: 'requirements' },
       { title: 'Documents', id: 'documents' },
@@ -107,8 +106,7 @@ export const guidesDatabase: Guide[] = [
       title: "Beware of 'Free Money' Scams",
       type: 'warning',
       content: "The US Government does not give 'free money' for personal debt or starting a business without strings attached. Real federal grants are for specific projects (Health, Science, Education). If someone asks for a fee to apply, it is a scam."
-    },
-    shortAnswer: "How to Apply for USA Federal Grants — Complete step-by-step guide for navigating the US federal grant application process including Grants.gov registration an",
+    }, shortAnswer: "How to Apply for USA Federal Grants — Complete step-by-step guide for navigating the US federal grant application process including Grants.gov registration and submission.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -143,8 +141,7 @@ export const guidesDatabase: Guide[] = [
       title: "Pick the Right SBA Program",
       type: 'tip',
       content: "Most people apply for 7(a) when they should use 504. If you need <strong>real estate or long-term equipment</strong> (10+ years), the 504 program offers better rates and longer terms."
-    },
-    shortAnswer: "SBA Loan Application Guide — Learn how to successfully apply for SBA loans including 7(a), 504, and microloan programs.",
+    }, shortAnswer: "SBA Loan Application Guide — Learn how to successfully apply for SBA loans including 7(a), 504, and microloan programs.",
     jumpLinks: [
       { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
     ],
@@ -179,8 +176,7 @@ export const guidesDatabase: Guide[] = [
       'SBIR Phase I & II process',
       'Technical proposal writing',
       'Commercialization planning'
-    ],
-    shortAnswer: "How to Apply for SBIR Research Grants — Complete guide to applying for Small Business Innovation Research (SBIR) Phase I & II grants.",
+    ], shortAnswer: "How to Apply for SBIR Research Grants — Complete guide to applying for Small Business Innovation Research (SBIR) Phase I & II grants.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -215,8 +211,7 @@ export const guidesDatabase: Guide[] = [
       title: "STTR Needs a Research Partner",
       type: 'warning',
       content: "SBIR is for solo companies. <strong>STTR requires a partnership</strong> with a university or research institution. Don't apply to STTR unless you already have that MOU signed."
-    },
-    shortAnswer: "How to Apply for SBIR/STTR Grants — Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs.",
+    }, shortAnswer: "How to Apply for SBIR/STTR Grants — Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -251,8 +246,7 @@ export const guidesDatabase: Guide[] = [
       title: "Federal Grants Are Project-Based",
       type: 'warning',
       content: "The federal government does NOT give grants for 'starting a business' or 'paying off debt.' Federal grants fund <strong>specific projects</strong> (R&D, community programs, education). Check eligibility carefully."
-    },
-    shortAnswer: "Search Grants.gov for 1000+ active federal grant opportunities ($50K-$500K typical). Federal grants fund specific projects, not general business expenses. Approval takes 3-12 months with a 10-30% success rate.",
+    }, shortAnswer: "Search Grants.gov for 1000+ active federal grant opportunities ($50K-$500K typical). Federal grants fund specific projects, not general business expenses. Approval takes 3-12 months with a 10-30% success rate.",
     jumpLinks: [
       { title: 'Find Grants', id: 'find-grants' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -290,8 +284,7 @@ export const guidesDatabase: Guide[] = [
       title: "8(a) Program is a Game-Changer",
       type: 'success',
       content: "The SBA 8(a) Business Development Program provides <strong>9 years of sole-source federal contracts</strong> and mentorship. It's competitive to get in, but worth the effort for minority entrepreneurs."
-    },
-    shortAnswer: "Minority Business Grants Application Guide — How to access grants and funding specifically for minority-owned businesses in the USA.",
+    }, shortAnswer: "Minority Business Grants Application Guide — How to access grants and funding specifically for minority-owned businesses in the USA.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -326,8 +319,7 @@ export const guidesDatabase: Guide[] = [
       title: "Verify Eligibility First",
       type: 'warning',
       content: "This is for <strong>organizations supporting startups</strong>, not startups themselves. Accelerators, incubators, and non-profits are the applicants."
-    },
-    shortAnswer: "SBA Growth Accelerator Fund Application Guide — Guide to applying for SBA funding supporting business accelerators and incubators.",
+    }, shortAnswer: "SBA Growth Accelerator Fund Application Guide — Guide to applying for SBA funding supporting business accelerators and incubators.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -362,8 +354,7 @@ export const guidesDatabase: Guide[] = [
       title: "Answer the 'So What?'",
       type: 'tip',
       content: "Don't just describe <em>what</em> you will do. Explain <em>why it matters</em>. If your project succeeds, who benefits? How does the taxpayer get a return on investment?"
-    },
-    shortAnswer: "Federal Grant Application Tips & Best Practices — Expert tips and strategies for writing winning federal grant applications.",
+    }, shortAnswer: "Federal Grant Application Tips & Best Practices — Expert tips and strategies for writing winning federal grant applications.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -398,8 +389,7 @@ export const guidesDatabase: Guide[] = [
       title: "DOE Favors National Labs Partnerships",
       type: 'tip',
       content: "DOE grants have <strong>higher success rates</strong> when you partner with a National Laboratory (like Argonne, NREL, or Sandia). They provide technical expertise and credibility."
-    },
-    shortAnswer: "Department of Energy Clean Energy Grants Guide — How to apply for DOE funding for clean energy and sustainability projects.",
+    }, shortAnswer: "Department of Energy Clean Energy Grants Guide — How to apply for DOE funding for clean energy and sustainability projects.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -434,8 +424,7 @@ export const guidesDatabase: Guide[] = [
       title: "CA Guarantee vs SBA",
       type: 'tip',
       content: "California's program has <strong>looser credit requirements</strong> than SBA 7(a) but lower maximum amounts. Try CA first if you have credit challenges."
-    },
-    shortAnswer: "California Small Business Loan Guarantee Program Guide — Complete guide to accessing California state loan guarantees for small businesses.",
+    }, shortAnswer: "California Small Business Loan Guarantee Program Guide — Complete guide to accessing California state loan guarantees for small businesses.",
     jumpLinks: [
       { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
     ],
@@ -472,8 +461,7 @@ export const guidesDatabase: Guide[] = [
       title: "SIF is for 'Market Movers'",
       type: 'warning',
       content: "The Strategic Innovation Fund (SIF) is not for early-stage startups. It is designed for massive projects that create hundreds of jobs. If you are requesting less than $10M, look at <strong>IRAP</strong> or <strong>Regional Agencies</strong> instead."
-    },
-    shortAnswer: "Strategic Innovation Fund Application Guide — How to apply for large-scale innovation funding through Canada.",
+    }, shortAnswer: "Strategic Innovation Fund Application Guide — How to apply for large-scale innovation funding through Canada.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -508,8 +496,7 @@ export const guidesDatabase: Guide[] = [
       title: "The 'ITA' Factor",
       type: 'tip',
       content: "You cannot apply for IRAP through a portal. You must be 'invited' by an Industrial Technology Advisor (ITA). Your first step is not filling a form, but calling IRAP (1-877-994-4727) to request a consultation."
-    },
-    shortAnswer: "IRAP covers up to 80% of technical staff salaries ($150K-$500K typical first project). You cannot apply online — call 1-877-994-4727 and request an ITA consultation. Monthly approval cycles make it one of Canada's fastest innovation grants.",
+    }, shortAnswer: "IRAP covers up to 80% of technical staff salaries ($150K-$500K typical first project). You cannot apply online — call 1-877-994-4727 and request an ITA consultation. Monthly approval cycles make it one of Canada's fastest innovation grants.",
     jumpLinks: [
       { title: 'Eligibility', id: 'eligibility' },
       { title: 'Process', id: 'process' },
@@ -548,8 +535,7 @@ export const guidesDatabase: Guide[] = [
       title: "Call First, Apply Later",
       type: 'tip',
       content: "IRAP doesn't have an online application. You must <strong>call 1-877-994-4727</strong> to request an Industrial Technology Advisor (ITA) consultation. They decide if you're eligible BEFORE you prepare anything."
-    },
-    shortAnswer: "IRAP Government Grants Application Process — Detailed walkthrough of applying for IRAP government funding for innovation projects.",
+    }, shortAnswer: "IRAP Government Grants Application Process — Detailed walkthrough of applying for IRAP government funding for innovation projects.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -584,8 +570,7 @@ export const guidesDatabase: Guide[] = [
       title: "The ITA Relationship is Key",
       type: 'tip',
       content: "You cannot apply online blindly. <strong>You must engage an Industrial Technology Advisor (ITA)</strong> first. They invite you to apply. Cold applications don't exist."
-    },
-    shortAnswer: "IRAP Innovation Funding Application Guide — Strategic guide for accessing IRAP innovation funding and technical advisory services.",
+    }, shortAnswer: "IRAP Innovation Funding Application Guide — Strategic guide for accessing IRAP innovation funding and technical advisory services.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -620,8 +605,7 @@ export const guidesDatabase: Guide[] = [
       title: "Technological Uncertainty is Key",
       type: 'warning',
       content: "SR&ED is not for 'standard engineering' or 'bug fixing'. To qualify, you must prove you faced a technological uncertainty that standard practice could not resolve. Document your failures—they are your proof!"
-    },
-    shortAnswer: "SR&ED gives CCPCs a 35% refundable tax credit on eligible R&D. You must file within 18 months of your fiscal year end. The key requirement is proving 'technological uncertainty' — document your failures, they are your strongest evidence.",
+    }, shortAnswer: "SR&ED gives CCPCs a 35% refundable tax credit on eligible R&D. You must file within 18 months of your fiscal year end. The key requirement is proving 'technological uncertainty' — document your failures, they are your strongest evidence.",
     jumpLinks: [
       { title: 'Eligible Work', id: 'eligible-activities' },
       { title: 'Documentation', id: 'documentation' },
@@ -662,8 +646,7 @@ export const guidesDatabase: Guide[] = [
       title: "WES is an Ecosystem, Not a Program",
       type: 'success',
       content: "Women Entrepreneurship Strategy isn't one application. It's <strong>15+ coordinated programs</strong> (grants, loans, mentorship). Stack multiple WES programs for maximum benefit."
-    },
-    shortAnswer: "WES is a $6B ecosystem of 15+ programs — not a single application. Start with the Women Entrepreneurship Loan Fund (up to $100K), then stack mentorship, export support, and regional grants simultaneously.",
+    }, shortAnswer: "WES is a $6B ecosystem of 15+ programs — not a single application. Start with the Women Entrepreneurship Loan Fund (up to $100K), then stack mentorship, export support, and regional grants simultaneously.",
     jumpLinks: [
       { title: 'Overview', id: 'wes-overview' },
       { title: 'Programs', id: 'funding-programs' },
@@ -754,7 +737,18 @@ export const guidesDatabase: Guide[] = [
 
       <h2>Success Tips</h2>
       <p>Since the program is highly competitive, ensure your application stands out by quantifying your results. Instead of saying "we will grow sales," say "we project a <strong>$250,000 increase in export revenue</strong> within 18 months." Highlight your commitment to diversity and inclusion, as this aligns with the fund's core mission.</p>
-    `
+    `, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Need expert help securing Focus on Economic Impact? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   },
   {
     id: 'women-entrepreneurship-loan-fund-guide',
@@ -782,8 +776,7 @@ export const guidesDatabase: Guide[] = [
       title: "Apply via Partners",
       type: 'tip',
       content: "You don't apply to the government directly. Apply through <strong>Women's Enterprise Organizations (WEOs)</strong> like WEOC or Coralus. Each has different criteria."
-    },
-    shortAnswer: "Women Entrepreneurship Loan Fund Guide — Access low-interest loans through the Women Entrepreneurship Loan Fund program.",
+    }, shortAnswer: "Women Entrepreneurship Loan Fund Guide — Access low-interest loans through the Women Entrepreneurship Loan Fund program.",
     jumpLinks: [
       { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
     ],
@@ -818,8 +811,7 @@ export const guidesDatabase: Guide[] = [
       title: "The Mentor is the Key",
       type: 'success',
       content: "Futurpreneur isn't just money; it's a mentorship program. Showing that you are <strong>coachable</strong> during the interview is just as important as your business plan."
-    },
-    shortAnswer: "Youth Entrepreneurship Funding Application Guide — How young entrepreneurs can access government funding programs in Canada.",
+    }, shortAnswer: "Youth Entrepreneurship Funding Application Guide — How young entrepreneurs can access government funding programs in Canada.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -854,8 +846,7 @@ export const guidesDatabase: Guide[] = [
       title: "BDC Women Loan Advantages",
       type: 'success',
       content: "BDC's Women Entrepreneurship Program offers <strong>flexible terms and mentorship</strong> not available in traditional banking, plus can be stacked with government grants."
-    },
-    shortAnswer: "BDC Women Entrepreneurs Financing Guide — Access Business Development Bank of Canada financing specifically for women-owned businesses.",
+    }, shortAnswer: "BDC Women Entrepreneurs Financing Guide — Access Business Development Bank of Canada financing specifically for women-owned businesses.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -890,8 +881,7 @@ export const guidesDatabase: Guide[] = [
       title: "Stack CDAP with Wage Subsidies",
       type: 'tip',
       content: "Smart founders stack grants. Use the <strong>CDAP</strong> grant to pay for a digital strategy, then use a <strong>Digital Youth Internship</strong> grant to hire a student to implement it."
-    },
-    shortAnswer: "Canada Digital & AI Funding Guide — Funding opportunities for digital transformation and AI development projects.",
+    }, shortAnswer: "Canada Digital & AI Funding Guide — Funding opportunities for digital transformation and AI development projects.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -926,8 +916,7 @@ export const guidesDatabase: Guide[] = [
       title: "EDC + CanExport Stack",
       type: 'success',
       content: "Women exporters can combine <strong>CanExport grants (up to $75K) with EDC financing</strong> for comprehensive international expansion support."
-    },
-    shortAnswer: "EDC Women Trade & Export Financing Guide — Export Development Canada financing and support for women exporters.",
+    }, shortAnswer: "EDC Women Trade & Export Financing Guide — Export Development Canada financing and support for women exporters.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -962,8 +951,7 @@ export const guidesDatabase: Guide[] = [
       title: "Industry Partnerships Boost Success",
       type: 'tip',
       content: "Alliance grants require a <strong>private sector partner</strong>. Bringing cash/in-kind contributions from industry significantly increases your approval odds."
-    },
-    shortAnswer: "NSERC Research Grants Application Guide — How to apply for Natural Sciences and Engineering Research Council grants.",
+    }, shortAnswer: "NSERC Research Grants Application Guide — How to apply for Natural Sciences and Engineering Research Council grants.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -998,8 +986,7 @@ export const guidesDatabase: Guide[] = [
       title: "Know Your RDA",
       type: 'tip',
       content: "Each region has its own RDA: <strong>WD (West), PrairiesCan, FedDev Ontario, FedDev Southern Ontario, CED Quebec, ACOA (Atlantic)</strong>. Apply to YOUR regional agency, not all six."
-    },
-    shortAnswer: "Regional Development Agencies Funding Guide — Access funding through Canada.",
+    }, shortAnswer: "Regional Development Agencies Funding Guide — Access funding through Canada.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -1034,8 +1021,7 @@ export const guidesDatabase: Guide[] = [
       title: "Indigenous Set-Asides Have Priority",
       type: 'success',
       content: "Many federal programs have <strong>dedicated Indigenous set-asides</strong> with less competition. IAND programs also provide culturally relevant business support unavailable elsewhere."
-    },
-    shortAnswer: "Indigenous & Rural Business Funding Guide — Specialized funding programs for Indigenous and rural businesses in Canada.",
+    }, shortAnswer: "Indigenous & Rural Business Funding Guide — Specialized funding programs for Indigenous and rural businesses in Canada.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -1072,15 +1058,18 @@ export const guidesDatabase: Guide[] = [
       title: "Focus on 'SWODF' and 'EODF'",
       type: 'tip',
       content: "Outside of Toronto? The <strong>Southwestern (SWODF)</strong> and <strong>Eastern (EODF)</strong> Ontario Development Funds are the real heavy hitters for manufacturing and expansion projects over $500k."
-    },
-    shortAnswer: "Ontario Business Grants Application Guide — Complete guide to accessing provincial business grants and incentives in Ontario.",
+    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
-    }
+      description: "Need expert help securing Focus on 'SWODF' and 'EODF'? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   },
   {
     id: 'apply-quebec-business-grants',
@@ -1108,15 +1097,18 @@ export const guidesDatabase: Guide[] = [
       title: "Investissement Québec is King",
       type: 'success',
       content: "In Quebec, <strong>Investissement Québec (IQ)</strong> is the central hub. Unlike other provinces with fragmented agencies, IQ handles loans, equity, and grants under one roof. Start there."
-    },
-    shortAnswer: "Quebec Business Grants Application Guide — Navigate Quebec.",
+    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
-    }
+      description: "Need expert help securing Investissement Québec is King? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   },
   {
     id: 'apply-british-columbia-grants',
@@ -1144,15 +1136,18 @@ export const guidesDatabase: Guide[] = [
       title: "Target 'Innovate BC'",
       type: 'tip',
       content: "If you are a tech company, <strong>Innovate BC</strong> is your primary target. Their 'Hiring Grant' is one of the easiest ways to get $10,000 funded for a student or co-op hire."
-    },
-    shortAnswer: "British Columbia Business Grants Guide — Access provincial funding programs and incentives in British Columbia.",
+    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
-    }
+      description: "Need expert help securing Target 'Innovate BC'? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   },
   {
     id: 'apply-alberta-business-grants',
@@ -1180,15 +1175,18 @@ export const guidesDatabase: Guide[] = [
       title: "Alberta Innovates is your First Stop",
       type: 'success',
       content: "For most Alberta tech startups, the <strong>Alberta Innovates Voucher Program</strong> is the entry point. It pays service providers directly to help you build or market your product."
-    },
-    shortAnswer: "Alberta Business Grants Application Guide — Complete guide to Alberta provincial business funding and economic development programs.",
+    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
-    }
+      description: "Need expert help securing Alberta Innovates is your First Stop? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   },
   {
     id: 'apply-agriculture-agri-food-canada',
@@ -1216,15 +1214,18 @@ export const guidesDatabase: Guide[] = [
       title: "It's Not Just for Farmers",
       type: 'tip',
       content: "AgriInnovate is often misunderstood. It is for <strong>commercializing new agricultural technology</strong>. If you are a tech company building sensors for farms, YOU are eligible, not just the farmer."
-    },
-    shortAnswer: "Agriculture & Agri-Food Canada Funding Guide — How to access federal funding for agriculture, agribusiness, and food processing.",
+    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
-    }
+      description: "Need expert help securing It's Not Just for Farmers? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   },
 
   // Canada Sector-Specific Guides
@@ -1254,15 +1255,18 @@ export const guidesDatabase: Guide[] = [
       title: "SDTC Environmental Impact",
       type: 'warning',
       content: "SDTC requires <strong>quantifiable environmental benefits</strong> (GHG reduction, water savings, etc.). Vague sustainability claims won't meet the criteria."
-    },
-    shortAnswer: "Canada CleanTech Funding Application Guide — Access clean technology funding programs across federal and provincial levels.",
+    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Our clean tech funding specialists help you access the right environmental and energy grant programs.",
-    }
+      description: "Need expert help securing SDTC Environmental Impact? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   },
   {
     id: 'canada-digital-ai-funding-guide',
@@ -1290,15 +1294,18 @@ export const guidesDatabase: Guide[] = [
       title: "Start with CDAP",
       type: 'tip',
       content: "For most SMEs, the <strong>Canada Digital Adoption Program (CDAP)</strong> is the best entry point. It provides immediate funds for planning and zero-interest loans for implementation."
-    },
-    shortAnswer: "Canada Digital & AI Funding Guide — Funding opportunities for digital transformation and AI development projects.",
+    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
-    }
+      description: "Need expert help securing Start with CDAP? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   },
   {
     id: 'canada-life-sciences-funding-guide',
@@ -1326,15 +1333,18 @@ export const guidesDatabase: Guide[] = [
       title: "Regulatory Pathway Critical",
       type: 'warning',
       content: "Life sciences funding requires <strong>clear regulatory pathway</strong> (FDA/Health Canada). Demonstrate you understand approval process before applying."
-    },
-    shortAnswer: "Canada Life Sciences Funding Guide — Comprehensive funding guide for biotech, medical devices, and life sciences companies.",
+    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
-    }
+      description: "Need expert help securing Regulatory Pathway Critical? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   },
   {
     id: 'canada-aerospace-defence-funding-guide',
@@ -1362,15 +1372,18 @@ export const guidesDatabase: Guide[] = [
       title: "Defence Contracts = Long Sales Cycle",
       type: 'tip',
       content: "Aerospace/defence funding often requires <strong>2-3 years from application to contract</strong>. Have runway capital while pursuing these opportunities."
-    },
-    shortAnswer: "Canada Aerospace & Defence Funding Guide — Access specialized funding for aerospace and defence industry projects.",
+    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
-    }
+      description: "Need expert help securing Defence Contracts = Long Sales Cycle? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   },
   {
     id: 'canada-manufacturing-funding-guide',
@@ -1398,15 +1411,18 @@ export const guidesDatabase: Guide[] = [
       title: "Provincial Manufacturing Grants",
       type: 'tip',
       content: "Manufacturing grants vary widely by province. <strong>Ontario (SWODF/EODF) and Quebec (IQ) offer largest amounts</strong> for equipment and expansion."
-    },
-    shortAnswer: "Canada Manufacturing Funding Guide — Funding programs for manufacturing modernization, automation, and expansion.",
+    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
-    }
+      description: "Need expert help securing Provincial Manufacturing Grants? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   },
   {
     id: 'canada-agri-food-funding-guide',
@@ -1434,15 +1450,18 @@ export const guidesDatabase: Guide[] = [
       title: "Ag Programs Are Fragmented",
       type: 'tip',
       content: "Agriculture funding comes from <strong>federal + provincial + regional agencies</strong>. Check all three levels simultaneously for maximum coverage."
-    },
-    shortAnswer: "Canada Agri-Food Funding Guide — Complete funding guide for agriculture and food processing businesses.",
+    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
-    }
+      description: "Need expert help securing Ag Programs Are Fragmented? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   },
 
   // Specialized Loan Programs
@@ -1472,15 +1491,18 @@ export const guidesDatabase: Guide[] = [
       title: "CSBFP Doesn't Replace Collateral",
       type: 'warning',
       content: "Banks still lend to YOU. The CSBFP guarantee protects <strong>the bank</strong>, not you. If you default, you still owe. But it makes getting approved easier for startups without assets."
-    },
-    shortAnswer: "Canada Small Business Financing Program Guide — How to access government-backed small business loans through CSBFP.",
+    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
-    }
+      description: "Need expert help securing CSBFP Doesn't Replace Collateral? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   },
   {
     id: 'apply-csbfp-government-financing',
@@ -1508,15 +1530,18 @@ export const guidesDatabase: Guide[] = [
       title: "Shop Your Lender",
       type: 'tip',
       content: "<strong>All Canadian banks participate in CSBFP</strong>, but approval rates vary. If one bank rejects you, try another. The program is the same, but credit policies differ."
-    },
-    shortAnswer: "CSBFP Government Financing Application — Step-by-step guide to applying for CSBFP government-backed financing.",
+    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
-      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
     ],
     eligibleCheck: true,
     inlineCTA: {
-      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
-    }
+      description: "Need expert help securing Shop Your Lender? Our grant writers have successfully secured millions in non-dilutive funding for businesses like yours.",
+    },
+
   }
 ]
 

@@ -7,6 +7,12 @@ import { CheckCircle, Clock, FileText, DollarSign, Target, AlertCircle, Download
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "Complete IRAP Application Guide 2026 | Step-by-Step R&D Grant Process",
   description: "Step-by-step guide to applying for NRC IRAP grants. Get templates, R&D project frameworks, and expert tips for successful innovation funding.",
@@ -88,10 +94,16 @@ export default function IRAPApplicationGuide() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
                 IRAP Grant Application Guide
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-emerald-100 leading-relaxed text-pretty">
-                Step-by-step guide to successfully applying for Industrial Research Assistance Program (NRC IRAP) grants.
-                Complete with templates, project frameworks, and proven R&D strategies.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="IRAP covers up to 80% of technical staff salaries ($150K-$500K typical first project). You cannot apply online — call 1-877-994-4727 and request an ITA consultation. Monthly approval cycles make it one of Canada's fastest innovation grants." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
                   <Link href="#process">
@@ -107,6 +119,15 @@ export default function IRAPApplicationGuide() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'Process', id: 'process' },
+      { title: 'ITA Consult', id: 'ita-consultation' },
+      { title: 'Advisory', id: 'advisory-services' }
+    ]} />
+
 
         {/* QUERY HOOK: Common Questions */}
         <div className="bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm/50">
@@ -286,7 +307,12 @@ export default function IRAPApplicationGuide() {
         <section id="categories" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">IRAP Project Categories</h2>
+              
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      title: "Get IRAP Ready",
+      description: "We prepare your project documentation and connect you with the right ITA for your technology area.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">IRAP Project Categories</h2>
 
               <div className="space-y-6">
                 <Card>
