@@ -1,8 +1,4 @@
 import { Header } from "@/components/Header"
-import EEATBadge from "@/components/blog/EEATBadge"
-import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
-import EligibleCheck from "@/components/blog/EligibleCheck"
-import InlineCTA from "@/components/blog/InlineCTA"
 import { Footer } from "@/components/Footer"
 import { NewsletterSignup } from "@/components/newsletter-signup"
 import { GrantComparisonTable } from "@/components/grant-comparison-table"
@@ -97,15 +93,6 @@ export default function ManitobaGrantsPage() {
                             Discover comprehensive Manitoba provincial funding programs, business grants, and government incentives
                             available to entrepreneurs and companies across Manitoba.
                         </p>
-            <div className="mt-4">
-              <ShortAnswerBox content="Manitoba provides hundreds of millions in provincial government grants and funding programs for startups, small businesses, and expanding enterprises in 2026." />
-            </div>
-            <div className="mt-4 mb-8 flex justify-center">
-              <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-02-09" />
-            </div>
-            <div className="mt-8 mb-8">
-              <EligibleCheck />
-            </div>
                     </div>
 
                     {/* Stats Grid */}
@@ -151,16 +138,7 @@ export default function ManitobaGrantsPage() {
                     </div>
 
                     {/* Content Sections */}
-                    
-          <div className="mb-12">
-            <InlineCTA 
-                title="Need Strategy for Manitoba Grants?"
-                description="Our specialists can help you navigate Manitoba's provincial programs."
-                buttonText="Get Funding Assistance"
-                buttonLink="/contact"
-            />
-          </div>
-          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+                    <div className="grid lg:grid-cols-3 gap-8 mb-12">
                         <div className="lg:col-span-2 space-y-8">
                             <Card>
                                 <CardHeader>
