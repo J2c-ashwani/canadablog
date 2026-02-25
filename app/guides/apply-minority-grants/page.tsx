@@ -7,6 +7,12 @@ import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Award
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "Minority & Women Business Grants 2026 | Certification Guide",
   description: "Get certified for set-aside federal contracts. Comprehensive guide to 8(a), WOSB, and SDVOSB certifications and minority business grants.",
@@ -81,9 +87,16 @@ export default function ApplyMinorityGrantsGuide() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
                 Minority & Women <br className="hidden md:block" /> Business Funding
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-purple-100 leading-relaxed text-pretty">
-                Unlock billions in set-aside contracts. <br className="hidden md:block" /> The complete guide to <strong>8(a)</strong>, <strong>WOSB</strong>, and <strong>SDVOSB</strong> certification.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="Minority Business Grants Application Guide — How to access grants and funding specifically for minority-owned businesses in the USA." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-purple-900 hover:bg-purple-50 font-bold shadow-lg" asChild>
                   <Link href="#certifications">
@@ -99,6 +112,12 @@ export default function ApplyMinorityGrantsGuide() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+    ]} />
+
 
         {/* QUERY HOOK: Common Questions */}
         <div className="bg-white border-b border-purple-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
@@ -219,7 +238,11 @@ export default function ApplyMinorityGrantsGuide() {
         <section id="process" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">The Certification Journey</h2>
+              
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Need expert help with your grant application? Our funding specialists guide you through every step.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">The Certification Journey</h2>
 
               <div className="relative border-l-2 border-purple-200 pl-8 space-y-12 ml-4 md:ml-0">
 

@@ -35,6 +35,14 @@ export interface StateDetailedGrant {
     };
 
     // Overview Section (~300 words)
+    shortAnswer: " offers $0 in small business funding through 0 active programs. The average processing time is N/A.",
+    eligibleCheck: true,
+    inlineCTA: {
+        title: "Need expert help applying for  grants?",
+        description: "Our funding specialists can help you navigate 's government programs and maximize your funding potential.",
+        buttonText: "Get Funding Assistance",
+        buttonLink: "/contact"
+    },
     overview: {
         introduction: string;
         economicLandscape: string;
@@ -131,6 +139,15 @@ export interface StateDetailedGrant {
 
     // NEW: Related Guides for internal linking
     relatedGuides?: string[];  // Guide slugs to link to
+    // E-E-A-T Components
+    shortAnswer?: string;
+    eligibleCheck?: boolean;
+    inlineCTA?: {
+        title?: string;
+        description: string;
+        buttonText?: string;
+        buttonLink?: string;
+    };
 }
 
 export const stateDetails: StateDetailedGrant[] = [
@@ -148,6 +165,14 @@ export const stateDetails: StateDetailedGrant[] = [
             avgProcessingTime: '60-120 days'
         },
 
+        shortAnswer: "California offers $8.5B+ in small business funding through 150+ active programs. The average processing time is 60-120 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for California grants?",
+            description: "Our funding specialists can help you navigate California's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `California stands as the undisputed leader in small business funding opportunities in the United States, offering over $8.5 billion annually through more than 150 state-administered grant and incentive programs. As the world's fifth-largest economy, California has built an extensive ecosystem of funding mechanisms designed to support businesses at every stage of development, from early-stage startups to established enterprises seeking expansion capital.
 
@@ -601,6 +626,14 @@ The state's commitment to climate leadership has also spawned a robust ecosystem
             avgProcessingTime: '45-90 days'
         },
 
+        shortAnswer: "Texas offers $5.2B+ in small business funding through 95+ active programs. The average processing time is 45-90 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Texas grants?",
+            description: "Our funding specialists can help you navigate Texas's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Texas has emerged as the premier destination for business growth in the United States, combining a pro-business regulatory environment with substantial state funding programs totaling over $5.2 billion annually. The Lone Star State offers a unique value proposition: no state income tax, relatively low cost of living, and aggressive incentive programs designed to attract and retain businesses across all sectors.
 
@@ -1088,6 +1121,14 @@ Texas also offers significant property and sales tax abatements through Chapter 
             avgProcessingTime: '60-120 days'
         },
 
+        shortAnswer: "New York offers $7.1B+ in small business funding through 120+ active programs. The average processing time is 60-120 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for New York grants?",
+            description: "Our funding specialists can help you navigate New York's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `New York State offers one of the most comprehensive business incentive ecosystems in the nation, with over $7.1 billion in annual funding across more than 120 programs. From the global financial capital of New York City to the technology corridors of the Hudson Valley, the manufacturing centers of Western New York, and the emerging innovation hubs across Upstate, the Empire State provides diverse opportunities for businesses at every stage of growth.
 
@@ -1572,6 +1613,14 @@ New York has also committed unprecedented resources to green economy initiatives
             avgProcessingTime: '30-60 days'
         },
 
+        shortAnswer: "Florida offers $3.8B+ in small business funding through 75+ active programs. The average processing time is 30-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Florida grants?",
+            description: "Our funding specialists can help you navigate Florida's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Florida has established itself as one of America's most business-friendly states, offering over $3.8 billion in annual business incentive funding through more than 75 state programs. The Sunshine State combines zero state income tax with a favorable regulatory environment, strategic geographic location, and aggressive business recruitment efforts to attract companies from across the nation and around the world.
 
@@ -2047,6 +2096,14 @@ The state's population has grown by millions in recent years, driven significant
             avgProcessingTime: '45-90 days'
         },
 
+        shortAnswer: "Illinois offers $3.5B+ in small business funding through 85+ active programs. The average processing time is 45-90 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Illinois grants?",
+            description: "Our funding specialists can help you navigate Illinois's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Illinois serves as the economic engine of the Midwest, offering a robust ecosystem of over $3.5 billion in annual business funding and incentives. With Chicago as a global financial and technology hub, and a vast agricultural and manufacturing base throughout the state, Illinois provides diverse opportunities for businesses of all sizes. The state's strategic location, world-class universities, and extensive transportation infrastructure make it a premier destination for commerce.
 
@@ -2420,6 +2477,14 @@ Illinois is also a leader in clean energy transition, with the Climate and Equit
         },
 
 
+        shortAnswer: "Pennsylvania offers $2.9B+ in small business funding through 90+ active programs. The average processing time is 45-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Pennsylvania grants?",
+            description: "Our funding specialists can help you navigate Pennsylvania's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Pennsylvania offers one of the most established and diversified economic development ecosystems in the nation, backed by over $2.9 billion in annual funding. Situated between the East Coast commerce corridor and the Midwest industrial heartland, the Commonwealth leverages its unique geography, energy abundance, and research prowess to drive growth.
 
@@ -2803,6 +2868,14 @@ The state's manufacturing sector is also undergoing a significant renaissance, d
             avgProcessingTime: '45-60 days'
         },
 
+        shortAnswer: "Ohio offers $2.1B+ in small business funding through 70+ active programs. The average processing time is 45-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Ohio grants?",
+            description: "Our funding specialists can help you navigate Ohio's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Ohio has reinvented itself as a diversified innovation economy, offering over $2.1 billion in business incentives annually. While retaining its manufacturing prowess, the "Buckeye State" has become a leader in technology, healthcare, and logistics. The state's unique economic development model, led by the private non-profit corporation JobsOhio, allows for flexible, fast-moving deal structures that traditional state agencies often cannot match.
 
@@ -3170,6 +3243,14 @@ The state is investing heavily in "Innovation Districts" in its three major citi
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "Georgia offers $2.4B+ in small business funding through 65+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Georgia grants?",
+            description: "Our funding specialists can help you navigate Georgia's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Georgia has been named the "No. 1 State for Business" for over a decade straight by Site Selection magazine, a testament to its pro-business environment, world-class logistics, and collaborative state government. With over $2.4 billion in annual incentives, Georgia focuses heavily on workforce training, tax stability, and strategic investments in key sectors.
 
@@ -3524,6 +3605,14 @@ Beyond logistics, Georgia has become a premier destination for film and televisi
             avgProcessingTime: '30-90 days'
         },
 
+        shortAnswer: "North Carolina offers $2.0B+ in small business funding through 60+ active programs. The average processing time is 30-90 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for North Carolina grants?",
+            description: "Our funding specialists can help you navigate North Carolina's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `North Carolina consistently ranks as a top state for business, fueled by the world-famous Research Triangle Park (RTP) and a robust manufacturing sector. With over $2.0 billion in annual incentives, the state aggressively recruits high-tech, life sciences, and advanced manufacturing companies. The Economic Development Partnership of North Carolina (EDPNC) works hand-in-hand with the Department of Commerce to deliver a streamlined, customer-focused incentive experience.
 
@@ -3887,6 +3976,14 @@ Outside the metros, the state maintains a powerful manufacturing base, producing
             avgProcessingTime: '40-70 days'
         },
 
+        shortAnswer: "Michigan offers $1.8B+ in small business funding through 55+ active programs. The average processing time is 40-70 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Michigan grants?",
+            description: "Our funding specialists can help you navigate Michigan's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Michigan is the undisputed automotive capital of the world, but its economic story today is one of diversification into mobility, advanced manufacturing, and engineering. The Michigan Economic Development Corporation (MEDC) offers a highly sophisticated toolkit of incentives, backed by over $1.8 billion in annual resources, to ensure the state leads the electric vehicle revolution.
 
@@ -4254,6 +4351,14 @@ The state is pivoting aggressively to Industry 4.0, helping legacy manufacturers
             avgProcessingTime: '45-90 days'
         },
 
+        shortAnswer: "New Jersey offers $1.7B+ in small business funding through 50+ active programs. The average processing time is 45-90 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for New Jersey grants?",
+            description: "Our funding specialists can help you navigate New Jersey's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `New Jersey is a global leader in life sciences and technology, strategically located at the center of the Northeast corridor. The New Jersey Economic Development Authority (NJEDA) administers a robust portfolio of over $1.7 billion in incentives, designed to attract high-growth companies and support Main Street businesses.
 
@@ -4621,6 +4726,14 @@ The state has aggressively pivoted toward the innovation economy, creating the "
             avgProcessingTime: '30-60 days'
         },
 
+        shortAnswer: "Virginia offers $1.5B+ in small business funding through 45+ active programs. The average processing time is 30-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Virginia grants?",
+            description: "Our funding specialists can help you navigate Virginia's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Virginia is frequently named America's "Top State for Business" by CNBC, boasting a stable regulatory environment, highly skilled workforce, and strategic location next to Washington D.C. The Virginia Economic Development Partnership (VEDP) manages over $1.5 billion in incentives, focusing on performance-based grants that minimize risk to the taxpayer while maximizing ROI for businesses.
 
@@ -4985,6 +5098,14 @@ The state is investing aggressively in site readiness to attract semiconductor a
             avgProcessingTime: '45-90 days'
         },
 
+        shortAnswer: "Washington offers $1.9B+ in small business funding through 40+ active programs. The average processing time is 45-90 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Washington grants?",
+            description: "Our funding specialists can help you navigate Washington's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Washington State is a global powerhouse of innovation, home to iconic giants like Amazon, Microsoft, Boeing, and Starbucks. The Department of Commerce drives economic growth with a focus on clean technology, aerospace, and maritime industries. With 0% personal income tax and a highly skilled workforce, it remains a top destination for talent.
 
@@ -5346,6 +5467,14 @@ Beyond tech, Washington is an agricultural giant (apples, wheat, wine) and a lea
             avgProcessingTime: '60-120 days'
         },
 
+        shortAnswer: "Massachusetts offers $2.5B+ in small business funding through 65+ active programs. The average processing time is 60-120 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Massachusetts grants?",
+            description: "Our funding specialists can help you navigate Massachusetts's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Massachusetts is arguably the most innovative state in America, consistently ranking #1 for R&D intensity, patent creation, and venture capital per capita. The state's economic engine is powered by an unrivaled concentration of top-tier universities (MIT, Harvard) and a mature life sciences ecosystem.
 
@@ -5709,6 +5838,14 @@ West of Boston, the economy shifts toward precision manufacturing and defense. T
             avgProcessingTime: '30-60 days'
         },
 
+        shortAnswer: "Arizona offers $1.6B+ in small business funding through 40+ active programs. The average processing time is 30-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Arizona grants?",
+            description: "Our funding specialists can help you navigate Arizona's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Arizona has emerged as the "Semiconductor Desert," securing billions in investment from global giants like TSMC and Intel. The Arizona Commerce Authority (ACA) is one of the most aggressive and streamlined economic development agencies in the nation, managing a suite of $1.6 billion in incentives.
 
@@ -6071,6 +6208,14 @@ The state's economy is successfully diversifying away from just construction and
             avgProcessingTime: '45-75 days'
         },
 
+        shortAnswer: "Colorado offers $1.4B+ in small business funding through 45+ active programs. The average processing time is 45-75 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Colorado grants?",
+            description: "Our funding specialists can help you navigate Colorado's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Colorado is the premier destination for talent-driven industries, boasting one of the most educated workforces in the nation. The Colorado Office of Economic Development and International Trade (OEDIT) offers a sophisticated array of performance-based incentives, totaling over $1.4 billion, to support industries like aerospace, outdoors, and quantum computing.
 
@@ -6432,6 +6577,14 @@ Rural Colorado allows for diverse opportunities in outdoor recreation manufactur
             avgProcessingTime: '45-90 days'
         },
 
+        shortAnswer: "Minnesota offers $1B+ in small business funding through 35+ active programs. The average processing time is 45-90 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Minnesota grants?",
+            description: "Our funding specialists can help you navigate Minnesota's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Minnesota helps businesses grow with a stable economy, a highly educated workforce, and a history of corporate success (home to Target, UnitedHealth, 3M). The Department of Employment and Economic Development (DEED) offers a practical suite of incentives focused on job creation and capital investment.
 
@@ -6791,6 +6944,14 @@ Biobusiness is the crown jewel, but Minnesota is also a leader in financial serv
             avgProcessingTime: '45-90 days'
         },
 
+        shortAnswer: "Maryland offers $1.8B+ in small business funding through 55+ active programs. The average processing time is 45-90 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Maryland grants?",
+            description: "Our funding specialists can help you navigate Maryland's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Maryland is a giant in the research economy, capitalizing on its proximity to Washington D.C. and a dense concentration of federal agencies (NIH, FDA, NSA). The state's "BioHealth Capital Region" aims to be a top-3 global bio hub.
 
@@ -7150,6 +7311,14 @@ Maryland leads the nation in cyber-related jobs due to the presence of US Cyber 
             avgProcessingTime: '45-75 days'
         },
 
+        shortAnswer: "Indiana offers $1.1B+ in small business funding through 30+ active programs. The average processing time is 45-75 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Indiana grants?",
+            description: "Our funding specialists can help you navigate Indiana's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Indiana proudly brands itself as "A State That Works," and for businesses seeking a low-cost, high-stability environment, it delivers. The Indiana Economic Development Corporation (IEDC) operates with corporate-style efficiency, managing aggressive tax credits and grants designed to attract manufacturing, advanced logistics, and more recently, agbioscience and tech.
 
@@ -7508,6 +7677,14 @@ Northern Indiana is a global capital for medical devices (Warsaw) and RV manufac
             avgProcessingTime: '30-60 days'
         },
 
+        shortAnswer: "Tennessee offers $1.3B+ in small business funding through 25+ active programs. The average processing time is 30-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Tennessee grants?",
+            description: "Our funding specialists can help you navigate Tennessee's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Tennessee has no personal state income tax on wages and offers one of the most stable fiscal environments in the US. The Tennessee Department of Economic and Community Development (TNECD) uses a simplified but powerful toolkit, primarily the "FastTrack" grants, to support job creation.
 
@@ -7872,6 +8049,14 @@ Chattanooga ("Gig City") offers the world's fastest internet, driving a tech ren
             avgProcessingTime: '45-75 days'
         },
 
+        shortAnswer: "Wisconsin offers $1B+ in small business funding through 30+ active programs. The average processing time is 45-75 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Wisconsin grants?",
+            description: "Our funding specialists can help you navigate Wisconsin's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Wisconsin offers a "no-nonsense" business environment. The Wisconsin Economic Development Corporation (WEDC) oversees a portfolio of **refundable** tax credits, meaning if you earn more credits than you owe in taxes, the state writes you a check.
             
@@ -8229,6 +8414,14 @@ Wisconsin virtually eliminates income tax for manufacturers (the Manufacturing &
             avgProcessingTime: '30-60 days'
         },
 
+        shortAnswer: "Missouri offers $900M+ in small business funding through 25+ active programs. The average processing time is 30-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Missouri grants?",
+            description: "Our funding specialists can help you navigate Missouri's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Missouri relies on a powerful "retention" strategy—companies get to **keep** their state employee withholding taxes instead of paying them. This "Missouri Works" program is effectively a cash grant that scales with payroll.
             
@@ -8586,6 +8779,14 @@ The state is strategically located for logistics, reaching 50% of the US populat
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "South Carolina offers $800M+ in small business funding through 25+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for South Carolina grants?",
+            description: "Our funding specialists can help you navigate South Carolina's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `South Carolina is the "Tire Capital of the World" and a premier automotive hub. The SC Department of Commerce executes a highly effective strategy: use discretionary cash ("Closing Fund") to land deals, and statutory tax credits (JDC) to sustain them.
             
@@ -8940,6 +9141,14 @@ Exporting is easy here—the Port of Charleston is the most productive port in N
             avgProcessingTime: '45-60 days'
         },
 
+        shortAnswer: "Alabama offers $850M+ in small business funding through 20+ active programs. The average processing time is 45-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Alabama grants?",
+            description: "Our funding specialists can help you navigate Alabama's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Alabama has transformed into an advanced manufacturing titan. The "Made in Alabama" brand attracts massive FDI (Toyota, Mazda, Airbus). The state's secret weapon is AIDT (Alabama Industrial Development Training), consistently ranked the #1 workforce training program in the US.
             
@@ -9294,6 +9503,14 @@ The state offers a predictable, statutory incentive package via the "Jobs Act" a
             avgProcessingTime: '45-60 days'
         },
 
+        shortAnswer: "Louisiana offers $750M+ in small business funding through 25+ active programs. The average processing time is 45-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Louisiana grants?",
+            description: "Our funding specialists can help you navigate Louisiana's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Louisiana is an energy and chemical powerhouse located at the mouth of the Mississippi River. The Louisiana Economic Development (LED) agency is nationally recognized, particularly for its "LED FastStart" program, which has been ranked the #1 workforce training program in the US for over a decade.
             
@@ -9647,6 +9864,14 @@ Louisiana is a top exporter, with the Port of South Louisiana being the largest 
             avgProcessingTime: '45-60 days'
         },
 
+        shortAnswer: "Kentucky offers $800M+ in small business funding through 20+ active programs. The average processing time is 45-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Kentucky grants?",
+            description: "Our funding specialists can help you navigate Kentucky's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Kentucky is the logistics capital of the Eastern US, home to UPS Worldport and Amazon Air Hub. The Cabinet for Economic Development offers aggressive "pay-for-performance" incentives, primarily allowing companies to keep employee tax withholdings as cash.
             
@@ -9999,6 +10224,14 @@ Manufacturing is king—Ford trucks, Toyota Camrys, and aluminum production driv
             avgProcessingTime: '45-90 days'
         },
 
+        shortAnswer: "Oregon offers $650M+ in small business funding through 25+ active programs. The average processing time is 45-90 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Oregon grants?",
+            description: "Our funding specialists can help you navigate Oregon's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Oregon offers a unique value proposition: **no sales tax**. This is a massive draw for CapEx-heavy businesses. Business Oregon oversees incentives including the Business Expansion Program (BEP) and Enterprise Zones.
             
@@ -10354,6 +10587,14 @@ Oregon is B-Corp friendly and rewards sustainable business practices with prefer
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "Oklahoma offers $700M+ in small business funding through 20+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Oklahoma grants?",
+            description: "Our funding specialists can help you navigate Oklahoma's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `**EV Supply Chain**: The state is targeting EV battery component manufacturers with its cheap wind power.`,
         },
@@ -10690,6 +10931,14 @@ Oregon is B-Corp friendly and rewards sustainable business practices with prefer
             avgProcessingTime: '60-90 days'
         },
 
+        shortAnswer: "Connecticut offers $500M+ in small business funding through 30+ active programs. The average processing time is 60-90 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Connecticut grants?",
+            description: "Our funding specialists can help you navigate Connecticut's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Connecticut punches above its weight. Despite being tiny, it's a titan in bioscience (Yale New Haven), aerospace/defense (Pratt Whitney, Electric Boat), and insurance (Hartford).
             
@@ -11042,6 +11291,14 @@ Electric Boat (submarines) and Pratt & Whitney (jet engines) drive a massive aer
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "Iowa offers $450M+ in small business funding through 15+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Iowa grants?",
+            description: "Our funding specialists can help you navigate Iowa's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Iowa is a quiet giant in the "Bio-economy" and advanced manufacturing. The Iowa Economic Development Authority (IEDA) manages the "High Quality Jobs" (HQJ) program, which provides direct tax credits and refunds for capital-intensive projects.
             
@@ -11395,6 +11652,14 @@ Advanced manufacturing (John Deere, Vermeer) anchors the rural economy. The Rene
             avgProcessingTime: '45-60 days'
         },
 
+        shortAnswer: "Mississippi offers $400M+ in small business funding through 15+ active programs. The average processing time is 45-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Mississippi grants?",
+            description: "Our funding specialists can help you navigate Mississippi's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Mississippi has revolutionized its incentive structure with "MFLEX"—a universal tax credit that simplifies the entire application process. The Mississippi Development Authority (MDA) is highly aggressive in recruiting advanced manufacturing, aerospace, and data centers.
             
@@ -11777,6 +12042,14 @@ You file your taxes and apply the credit. For Advantage Jobs rebates, you file q
             avgProcessingTime: '45-60 days'
         },
 
+        shortAnswer: "Arkansas offers $350M+ in small business funding through 15+ active programs. The average processing time is 45-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Arkansas grants?",
+            description: "Our funding specialists can help you navigate Arkansas's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Arkansas punches above its weight. Home to Walmart, Tyson Foods, and J.B. Hunt, the state has leveraged its retail logistics expertise into a growing tech hub. The Arkansas Economic Development Commission (AEDC) offers programs like "Create Rebate" (cash for payroll) and "ArkPlus" (income tax credits).
             
@@ -12128,6 +12401,14 @@ Steel production is booming in Northeast Arkansas with Big River Steel (Nucor). 
             successRate: '40-50%',
             avgProcessingTime: '30-45 days'
         },
+        shortAnswer: "Kansas offers $300M+ in small business funding through 20+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Kansas grants?",
+            description: "Our funding specialists can help you navigate Kansas's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `**Remote Work Incentive**: ROZ (Rural Opportunity Zones) pays remote workers to relocate and pays no income tax for 5 years.`
         },
@@ -12461,6 +12742,14 @@ Steel production is booming in Northeast Arkansas with Big River Steel (Nucor). 
             avgProcessingTime: '60-90 days'
         },
 
+        shortAnswer: "Utah offers $450M+ in small business funding through 20+ active programs. The average processing time is 60-90 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Utah grants?",
+            description: "Our funding specialists can help you navigate Utah's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Utah is effectively "Silicon Valley 2.0" but with lower taxes and better skiing.The state is consistently ranked #1 for business environment.The Governor's Office of Economic Opportunity (Go Utah) runs a highly disciplined, post-performance incentive system known as EDTIF.
             
@@ -12846,6 +13135,14 @@ The state cuts you a check (refundable tax credit) for 30% of the new taxes you 
             avgProcessingTime: '45-60 days'
         },
 
+        shortAnswer: "Nevada offers $250M+ in small business funding through 15+ active programs. The average processing time is 45-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Nevada grants?",
+            description: "Our funding specialists can help you navigate Nevada's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Nevada is arguably the most tax-friendly state in the U.S. for business, featuring NO corporate income tax, NO personal income tax, and NO franchise tax. The Governor's Office of Economic Development (GOED) supplements this with powerful discretionary incentives like the Catalyst Fund.
             
@@ -13224,6 +13521,14 @@ You sign the contract and receive a "Tax Exemption Certificate" to show vendors 
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "New Mexico offers $300M+ in small business funding through 20+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for New Mexico grants?",
+            description: "Our funding specialists can help you navigate New Mexico's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `New Mexico offers some of the most generous incentives in the nation, particularly for workforce training (JTIP) and closing deals (LEDA). The New Mexico Economic Development Department (NMEDD) is highly proactive.
             
@@ -13575,6 +13880,14 @@ New Mexico's cluster of National Labs spins off deep-tech startups at a rapid pa
             avgProcessingTime: '45-60 days'
         },
 
+        shortAnswer: "West Virginia offers $200M+ in small business funding through 12+ active programs. The average processing time is 45-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for West Virginia grants?",
+            description: "Our funding specialists can help you navigate West Virginia's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `West Virginia is aggressively transitioning its economy with substantial incentives for manufacturing, tourism, and remote work (Ascend WV). The West Virginia Department of Economic Development (WVDED) oversees these programs, focusing on diversifying beyond coal into energy, aerospace, and technology.
             
@@ -13950,6 +14263,14 @@ Most tax credits are claimed on the annual return, but you may need certificatio
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "Nebraska offers $250M+ in small business funding through 15+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Nebraska grants?",
+            description: "Our funding specialists can help you navigate Nebraska's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Nebraska's "ImagiNE Nebraska" Act is the cornerstone of its economic development, providing a highly flexible toolkit of refundable tax credits, wage credits, and sales tax exemptions. The Nebraska Department of Economic Development (DED) is known for being accessible, unpretentious, and aggressively pro-business.
             
@@ -14337,6 +14658,14 @@ Using the tax credits requires annual reporting. Set up your accounting system t
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "Idaho offers $180M+ in small business funding through 12+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Idaho grants?",
+            description: "Our funding specialists can help you navigate Idaho's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Idaho is one of the fastest-growing states in the US, celebrated for its unique blend of low regulation, fiscal conservatism, and aggressive business incentives. The state government operates at the "speed of business," minimizing red tape and focusing on performance-based rewards.
 
@@ -14721,6 +15050,14 @@ You sign the contract. You assume the risk. You hire the people. THEN you get th
             avgProcessingTime: '45-60 days'
         },
 
+        shortAnswer: "Hawaii offers $100M+ in small business funding through 10+ active programs. The average processing time is 45-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Hawaii grants?",
+            description: "Our funding specialists can help you navigate Hawaii's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Hawaii offers unique incentives focused on diversifying its economy beyond tourism. The Hawaii Technology Development Corporation (HTDC) is the key agency for tech and manufacturing, providing aggressive matching grants and infrastructure support.
             
@@ -15106,6 +15443,14 @@ If you are Native Hawaiian owned, connect with OHA (Office of Hawaiian Affairs) 
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "Maine offers $150M+ in small business funding through 15+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Maine grants?",
+            description: "Our funding specialists can help you navigate Maine's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Maine is actively courting innovation with the Maine Technology Institute (MTI) leading the charge. The state facilitates an aggressive R&D environment, offering robust tax credits, seed funding, and direct loans to startups. Maine's strategy is to leverage its natural assets (forests, ocean) for modern applications (bioplastics, aquaculture).
 
@@ -15490,6 +15835,14 @@ MTI requires regular status reports. PTDZ requires annual reporting to Maine Rev
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "New Hampshire offers $100M+ in small business funding through 10+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for New Hampshire grants?",
+            description: "Our funding specialists can help you navigate New Hampshire's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `New Hampshire is defined by its "New Hampshire Advantage"—a distinct fiscal policy that features zero general sales tax and zero personal income tax on wages. This creates a highly competitive environment for businesses, particularly in high-tech manufacturing, defense, and tourism.
 
@@ -15880,6 +16233,14 @@ If you are in biotech, the path is distinct. Engagement with ARMI (BioFabUSA) in
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "Rhode Island offers $80M+ in small business funding through 15+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Rhode Island grants?",
+            description: "Our funding specialists can help you navigate Rhode Island's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Rhode Island packs a punch with some of the most accessible innovation vouchers and tax credits in New England. Rhode Island Commerce is very active in supporting the "Blue Economy" (marine tech) and design sectors, leveraging the state's Ivy League talent pool.
 
@@ -16267,6 +16628,14 @@ Join the "Venture Café Providence" gatherings. It is the center of gravity for 
             avgProcessingTime: '45-60 days'
         },
 
+        shortAnswer: "Montana offers $120M+ in small business funding through 10+ active programs. The average processing time is 45-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Montana grants?",
+            description: "Our funding specialists can help you navigate Montana's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Montana is enticing businesses with its high quality of life and "Big Sky" business climate (No Sales Tax). The Montana Department of Commerce offers aggressive cash grants for job creation, directly paying companies up to $7,500 for every new job created.
             
@@ -16653,6 +17022,14 @@ Remote work has brought an influx of talent and capital, creating a "Zoom Town" 
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "Delaware offers $100M+ in small business funding through 10+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Delaware grants?",
+            description: "Our funding specialists can help you navigate Delaware's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Delaware is the corporate capital of the world, home to over 60 % of Fortune 500 companies.While famous for incorporation services, the state has built a powerful, specialized innovation ecosystem.The Delaware Prosperity Partnership(DPP) aggressively courts high - impact projects with discretionary cash grants.
 
@@ -17038,6 +17415,14 @@ Strategic Fund grants are usually paid out *after* milestones are met (e.g., Cer
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "South Dakota offers $80M+ in small business funding through 8+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for South Dakota grants?",
+            description: "Our funding specialists can help you navigate South Dakota's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `South Dakota offers perhaps the most tax-friendly climate in the nation: No Corporate Income Tax, No Personal Income Tax, No Personal Property Tax, No Business Inventory Tax.
 
@@ -17335,6 +17720,14 @@ REDI Fund offers low-interest loans for job creation.`,
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "North Dakota offers $90M+ in small business funding through 10+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for North Dakota grants?",
+            description: "Our funding specialists can help you navigate North Dakota's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `North Dakota is unique in the US for having its own "Sovereign Wealth Fund" (Legacy Fund) and the Bank of North Dakota (BND)—the only state-owned bank in the country. These financial tools allow the state to offer aggressive 0% interest loans and "interest rate buydowns" that private equity can't match.
 
@@ -17720,6 +18113,14 @@ LIFT funds are drawn down as needed. PACE interest buys downs happen automatical
             avgProcessingTime: '45-60 days'
         },
 
+        shortAnswer: "Alaska offers $50M+ in small business funding through 8+ active programs. The average processing time is 45-60 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Alaska grants?",
+            description: "Our funding specialists can help you navigate Alaska's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Alaska offers a unique frontier for business, characterized by its vast natural resources, strategic global location, and a tax environment that is incredibly favorable to entrepreneurs. With no state sales tax and no personal income tax, the cost of doing business is mitigated by these fiscal advantages, although logistics and labor costs remain higher than the lower 48 states.
 
@@ -18114,6 +18515,14 @@ Funding disbursement can be slow. If you are timing your funding for the summer 
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "Vermont offers $60M+ in small business funding through 8+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Vermont grants?",
+            description: "Our funding specialists can help you navigate Vermont's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Vermont brands itself on quality, sustainability, and community. It is a state where "small business" is the norm, and the economic ecosystem is tightly knit. The Vermont Economic Development Authority (VEDA) acts as the state's financial backbone, offering loans where traditional banks might hesitate.
 
@@ -18507,6 +18916,14 @@ Emphasize sustainability and community. If your business is a B-Corp or has an e
             avgProcessingTime: '30-45 days'
         },
 
+        shortAnswer: "Wyoming offers $50M+ in small business funding through 6+ active programs. The average processing time is 30-45 days.",
+        eligibleCheck: true,
+        inlineCTA: {
+            title: "Need expert help applying for Wyoming grants?",
+            description: "Our funding specialists can help you navigate Wyoming's government programs and maximize your funding potential.",
+            buttonText: "Get Funding Assistance",
+            buttonLink: "/contact"
+        },
         overview: {
             introduction: `Wyoming is widely considered the most business-friendly state in America from a tax and legal perspective. It has NO corporate income tax, NO personal income tax, and very low property taxes. It pioneered the LLC model and has now pioneered the DAO LLC (Decentralized Autonomous Organization) framework, making it the global capital for Web3 and blockchain businesses.
 

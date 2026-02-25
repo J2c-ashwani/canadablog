@@ -11,6 +11,12 @@ import {
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "IRAP Industrial Research Assistance Program 2026 | Up to $1M Non-Repayable R&D Grants",
   description: "IRAP funds up to $1M for R&D — but 70% of first-time applicants get rejected. Here's exactly how to build the ITA relationship that gets your project approved.",
@@ -67,11 +73,16 @@ export default function IRAPGuidePage() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 Industrial Research Assistance Program (IRAP)
               </h1>
-              <p className="text-xl text-green-100 mb-8">
-                Access up to $1 million in non-repayable R&amp;D funding through Canada&apos;s
-                largest and most established technology assistance program. Complete guide
-                to eligibility, application process, and proven approval strategies.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="IRAP provides up to $10M in non-repayable R&D grants for Canadian tech SMEs. It covers up to 80% of labour costs. You cannot apply online — you must first contact an Industrial Technology Advisor (ITA) at 1-877-994-4727." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
                 <Link href="/contact?service=irap-application-help">
                   Get Expert Help with IRAP Applications
@@ -83,6 +94,15 @@ export default function IRAPGuidePage() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Funding', id: 'funding' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ]} />
+
 
         {/* Table of Contents */}
         <section className="py-8 bg-white border-b">
@@ -139,7 +159,12 @@ export default function IRAPGuidePage() {
         <section id="overview" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6">What is IRAP?</h2>
+              
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      title: "Need Help with Your IRAP Application?",
+      description: "Our team has helped 100+ Canadian tech companies secure IRAP funding. Let us connect you with the right ITA and prepare your proposal.",
+    }} /></div>
+<h2 className="text-3xl font-bold mb-6">What is IRAP?</h2>
 
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-4">

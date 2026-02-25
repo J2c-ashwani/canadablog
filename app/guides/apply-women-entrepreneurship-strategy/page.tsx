@@ -7,6 +7,12 @@ import { CheckCircle, Clock, FileText, DollarSign, Target, AlertCircle, Download
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "Women Entrepreneurship Strategy 2026 | $100K Grants & Loans",
   description:
@@ -83,10 +89,16 @@ export default function WESApplicationGuide() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
                 Women's Business Funding Guide
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-rose-100 leading-relaxed text-pretty">
-                The complete handbook for the Women Entrepreneurship Strategy (WES).
-                Secure $50k microloans, $100k ecosystem grants, and BDC capital.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="WES is a $6B ecosystem of 15+ programs — not a single application. Start with the Women Entrepreneurship Loan Fund (up to $100K), then stack mentorship, export support, and regional grants simultaneously." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-rose-700 hover:bg-rose-50 font-semibold shadow-lg" asChild>
                   <Link href="#programs">
@@ -102,6 +114,15 @@ export default function WESApplicationGuide() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Overview', id: 'wes-overview' },
+      { title: 'Programs', id: 'funding-programs' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'Mentorship', id: 'mentorship' }
+    ]} />
+
 
         {/* QUERY HOOK: Common Questions */}
         <div className="bg-white border-b border-rose-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
@@ -248,7 +269,11 @@ export default function WESApplicationGuide() {
         <section id="process" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">WES Application Timeline</h2>
+              
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Women-owned business in Canada? Let our WES specialists build your multi-program funding strategy.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">WES Application Timeline</h2>
               <div className="relative border-l-2 border-slate-200 pl-8 space-y-12 ml-4 md:ml-0">
 
                 {/* Step 1 */}

@@ -7,6 +7,12 @@ import { CheckCircle, Clock, FileText, DollarSign, Target, AlertCircle, Download
 import Link from "next/link"
 import type { Metadata } from "next"
 
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EEATBadge from '@/components/blog/EEATBadge';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+
 export const metadata: Metadata = {
   title: "IRAP Government Grants Application Guide 2026 | Federal R&D Funding",
   description: "Complete guide to applying for IRAP government grants. Learn federal compliance requirements, Treasury Board reporting standards, and how to secure federal R&D funding.",
@@ -88,10 +94,16 @@ export default function IRAPGovernmentGrantsGuide() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
                 IRAP Government Grants Application Guide
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-green-100 leading-relaxed text-pretty">
-                The comprehensive guide to securing federal IRAP funding. Master the government application process,
-                ensure federal compliance, and align with Canada's innovation strategy.
-              </p>
+              
+              <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
+                 <ShortAnswerBox content="IRAP Government Grants Application Process — Detailed walkthrough of applying for IRAP government funding for innovation projects." />
+              </div>
+              <div className="flex justify-center mb-8 relative z-20">
+                 <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                 </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
                   <Link href="#requirements">
@@ -107,6 +119,12 @@ export default function IRAPGovernmentGrantsGuide() {
             </div>
           </div>
         </section>
+        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+
+        <StickyTOC links={[
+      { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
+    ]} />
+
 
         {/* QUERY HOOK: Common Questions */}
         <div className="bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm/50">
@@ -211,7 +229,11 @@ export default function IRAPGovernmentGrantsGuide() {
         <section id="process" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">The Government Grant Process</h2>
+              
+        <div className="container mx-auto px-4 max-w-4xl my-12"><InlineCTA {...{
+      description: "Need help with your IRAP application? Our specialists connect you with the right ITA and prepare your proposal.",
+    }} /></div>
+<h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">The Government Grant Process</h2>
               <div className="space-y-8">
 
                 {/* Phase 1 */}
