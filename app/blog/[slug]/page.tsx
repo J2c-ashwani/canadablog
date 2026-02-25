@@ -12,7 +12,12 @@ import CategorySidebar from '@/components/blog/CategorySidebar';
 import NewsletterBox from '@/components/blog/NewsletterBox';
 import GrantGuideCTA from '@/components/blog/GrantGuideCTA';
 import LastVerifiedBadge from '@/components/blog/LastVerifiedBadge';
-import { getBlogPostBySlug, blogCategories } from '@/lib/data/blogPosts';
+import EEATBadge from '@/components/blog/EEATBadge';
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
+import { getBlogPostBySlug, getAllBlogPosts, blogCategories } from '@/lib/data/blogPosts';
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
 import { generateBlogPostSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/schema';
 import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable";
@@ -24,6 +29,11 @@ const iconMap: Record<string, any> = {
   DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, Globe, RefreshCw, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, Cpu, FileText, Search, List, Layers, Map, BarChart, Unlock, FastForward,
   Calendar, Clock, Grid, Home, Percent, Flag, AlertCircle
 };
+
+export async function generateStaticParams() {
+  const posts = getAllBlogPosts();
+  return posts.map((post) => ({ slug: post.slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -56,6 +66,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const content = post.content || '';
   const fullPost = post;
+
+  // Split content for InlineCTA injection
+  let beforeCTA = content;
+  let afterCTA = "";
+  if (post.inlineCTA) {
+    const h2Matches = [...content.matchAll(/<h2/gi)];
+    if (h2Matches.length >= 2) {
+      const splitIndex = h2Matches[Math.min(2, h2Matches.length - 1)].index;
+      if (splitIndex !== undefined) {
+        beforeCTA = content.substring(0, splitIndex);
+        afterCTA = content.substring(splitIndex);
+      }
+    }
+  }
 
   const category = blogCategories.find((cat) => cat.id === post.category);
   const blogPostSchema = generateBlogPostSchema(fullPost);
@@ -131,6 +155,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <LastVerifiedBadge date={post.date} />
               </div>
 
+              {/* E-E-A-T COMPONENTS (Phase 9) */}
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date={post.date} />
+
+              {post.shortAnswer && (
+                <ShortAnswerBox content={post.shortAnswer} />
+              )}
+
+              {post.eligibleCheck && (
+                <EligibleCheck />
+              )}
+
+              {post.jumpLinks && (
+                <StickyTOC links={post.jumpLinks} />
+              )}
+
               <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-12">
                 <img
                   src={post.image}
@@ -170,8 +209,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
               <div
                 className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700"
-                dangerouslySetInnerHTML={{ __html: content }}
+                dangerouslySetInnerHTML={{ __html: beforeCTA }}
               />
+
+              {post.inlineCTA && (
+                <div className="not-prose my-8">
+                  <InlineCTA {...post.inlineCTA} />
+                </div>
+              )}
+
+              {afterCTA && (
+                <div
+                  className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700"
+                  dangerouslySetInnerHTML={{ __html: afterCTA }}
+                />
+              )}
 
               {/* DYNAMIC ENRICHMENT: FAQ Schema UI */}
               {post.faq && (
@@ -200,7 +252,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                   <div className="flex flex-wrap gap-2">
                     <span className="text-gray-600 dark:text-gray-400 font-medium mr-2">Tags:</span>
-                    {post.seo.keywords.slice(0, 4).map((keyword, index) => (
+                    {(post.seo?.keywords ?? []).slice(0, 4).map((keyword, index) => (
                       <Badge key={index} variant="outline">
                         {keyword}
                       </Badge>

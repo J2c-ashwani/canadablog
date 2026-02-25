@@ -7,20 +7,20 @@ export function generateMetadata(post: BlogPost) {
       : post.category?.toLowerCase().includes('technology') || post.category?.toLowerCase().includes('innovation') ? 'tech'
         : 'canada';
 
-  const ogImageUrl = `/api/og?title=${encodeURIComponent(post.seo.metaTitle || post.title)}&subtitle=${encodeURIComponent(post.seo.metaDescription || post.excerpt)}&category=${ogCategory}`;
+  const ogImageUrl = `/api/og?title=${encodeURIComponent(post.seo?.metaTitle || post.title)}&subtitle=${encodeURIComponent(post.seo?.metaDescription || post.excerpt)}&category=${ogCategory}`;
 
   return {
-    title: post.seo.metaTitle || `${post.title} | FSI Digital`,
-    description: post.seo.metaDescription || post.excerpt,
-    keywords: post.seo.keywords.join(', '),
+    title: post.seo?.metaTitle || `${post.title} | FSI Digital`,
+    description: post.seo?.metaDescription || post.excerpt,
+    keywords: post.seo?.keywords?.join(', ') || '',
     openGraph: {
-      title: post.seo.metaTitle || post.title,
-      description: post.seo.metaDescription || post.excerpt,
+      title: post.seo?.metaTitle || post.title,
+      description: post.seo?.metaDescription || post.excerpt,
       url: `https://www.fsidigital.ca/blog/${post.slug}`,
       siteName: 'FSI Digital',
       images: [
         {
-          url: post.seo.ogImage || ogImageUrl,
+          url: post.seo?.ogImage || ogImageUrl,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -32,9 +32,9 @@ export function generateMetadata(post: BlogPost) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.seo.metaTitle || post.title,
-      description: post.seo.metaDescription || post.excerpt,
-      images: [post.seo.ogImage || `/images/blog/${post.image}`],
+      title: post.seo?.metaTitle || post.title,
+      description: post.seo?.metaDescription || post.excerpt,
+      images: [post.seo?.ogImage || `/images/blog/${post.image}`],
     },
     alternates: {
       canonical: `https://www.fsidigital.ca/blog/${post.slug}`,

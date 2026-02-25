@@ -34,7 +34,7 @@ export function generateBlogPostSchema(post: BlogPost) {
       "@id": `https://www.fsidigital.ca/blog/${post.slug}`
     },
     "articleSection": post.category,
-    "keywords": post.seo.keywords.join(", "),
+    "keywords": post.seo?.keywords?.join(", ") || "",
     "wordCount": post.content.length,
     "timeRequired": post.readTime
   };

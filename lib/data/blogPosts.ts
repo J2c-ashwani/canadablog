@@ -69,7 +69,7 @@ export interface BlogPost {
   featured: boolean;
   content: string;
   type: BlogPostType;
-  seo: {
+  seo?: {
     keywords: string[];
     metaTitle?: string;
     metaDescription?: string;
@@ -92,6 +92,16 @@ export interface BlogPost {
     question: string
     answer: string
   }[]
+  // E-E-A-T "Short Answer" Strategy Fields (Phase 9)
+  shortAnswer?: string;
+  jumpLinks?: { title: string; id: string }[];
+  eligibleCheck?: boolean;
+  inlineCTA?: {
+    title?: string;
+    description: string;
+    buttonText?: string;
+    buttonLink?: string;
+  };
 }
 
 export const blogPosts: BlogPost[] = [
@@ -122,6 +132,17 @@ export const blogPosts: BlogPost[] = [
       title: "Apply Through Provincial Channels",
       type: 'tip',
       content: "Most AAFC programs are delivered through <strong>provincial agriculture ministries</strong>. Start by contacting your provincial agriculture office for application pathways and regional program variations."
+    },
+    shortAnswer: "Yes — Agriculture & Agri-Food Canada offers up to $5M through AgriInnovate, AgriScience, and Sustainable CAP programs. Most funding is delivered through provincial agriculture ministries on a 50% cost-sharing basis.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right AAFC program for your farm or agribusiness — our grant specialists navigate federal and provincial channels for you.",
     },
   },
   {
@@ -1766,6 +1787,18 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "Your Industrial Technology Advisor (ITA) is your gateway. Build a strong relationship with them before submitting a formal proposal."
     },
+    shortAnswer: "IRAP provides up to $10M in non-repayable R&D grants for Canadian tech SMEs. It covers up to 80% of labour costs. You cannot apply online — you must first contact an Industrial Technology Advisor (ITA) at 1-877-994-4727.",
+    jumpLinks: [
+      { title: 'Funding', id: 'funding' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      title: "Need Help with Your IRAP Application?",
+      description: "Our team has helped 100+ Canadian tech companies secure IRAP funding. Let us connect you with the right ITA and prepare your proposal.",
+    },
   },
   {
     id: 56,
@@ -2543,6 +2576,18 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "Despite common belief, <strong>SBA offers loans, not grants</strong>. The only SBA 'grants' are SBIR/STTR R&D funding, which have strict technical requirements."
     },
+    shortAnswer: "The SBA offers loans (7(a) up to $5M, 504 up to $5.5M, Microloans up to $50K) — not grants. The only 'grants' are SBIR/STTR R&D awards up to $1.7M, which require a technology innovation component.",
+    jumpLinks: [
+      { title: '7(a) Loans', id: 'sba-7a' },
+      { title: '504 Loans', id: 'sba-504' },
+      { title: 'Microloans', id: 'microloans' },
+      { title: 'SBIR/STTR', id: 'sbir-sttr' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Not sure which SBA program fits your business? Our funding specialists match you with the right loan or grant program in minutes.",
+    },
   },
   {
     id: 82,
@@ -2745,6 +2790,18 @@ export const blogPosts: BlogPost[] = [
       title: " Provincial Stacking",
       type: 'success',
       content: "Combine <strong>federal 35% SR&ED</strong> with provincial credits (e.g., Quebec 30%) to achieve 65% total refundable R&D tax credits—the highest rate in North America."
+    },
+    shortAnswer: "SR&ED gives Canadian businesses a 35% refundable federal tax credit on eligible R&D expenditures (up to $4.5M). Combined with provincial credits, you can recover up to 65% of your R&D costs — the highest rate in North America.",
+    jumpLinks: [
+      { title: 'Tax Credits', id: 'tax-credits' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Claim', id: 'how-to-claim' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      title: "Maximize Your SR&ED Claim",
+      description: "Our SR&ED specialists have recovered over $50M in tax credits for Canadian tech companies. Get a free assessment of your eligible R&D activities.",
     },
   },
   {
@@ -3151,6 +3208,17 @@ export const blogPosts: BlogPost[] = [
       title: "WES Ecosystem Approach",
       type: 'success',
       content: "Women Entrepreneurship Strategy is <strong>not a single program</strong> but an ecosystem of coordinated federal initiatives—apply to multiple WES programs simultaneously for maximum funding."
+    },
+    shortAnswer: "Yes — Canada's Women Entrepreneurship Strategy (WES) offers $6B+ through 15+ coordinated programs, including grants up to $100K, BDC loans, and free mentorship. It's not a single program — stack multiple WES initiatives for maximum funding.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Women-owned business? Our team specializes in WES program applications — we help you access grants, loans, and advisory services in one coordinated strategy.",
     },
   },
   {

@@ -10,6 +10,11 @@ import { Button } from "@/components/ui/button";
 import { Download, MessageCircle, DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, RefreshCw, Clock, Globe, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, User, Cpu, FileText, BookOpen, AlertTriangle, Factory, Building, Lightbulb, Flag, Home, Settings, Search, List, Layers, Map, BarChart, Unlock, FastForward, Heart, Calendar, Grid, Percent, AlertCircle } from "lucide-react";
 import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable";
 import { ExpertTipBox } from "@/components/blog/ExpertTipBox";
+import EEATBadge from '@/components/blog/EEATBadge';
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import StickyTOC from '@/components/blog/StickyTOC';
+import InlineCTA from '@/components/blog/InlineCTA';
 
 // Icon mapping for dynamic rendering from data
 const iconMap: Record<string, any> = {
@@ -75,6 +80,21 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           <h1 className="text-3xl font-bold">{guide.title}</h1>
           <p className="text-gray-700 mt-2">{guide.description}</p>
         </header>
+
+        {/* E-E-A-T COMPONENTS (Phase 9) */}
+        <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date={guide.lastUpdated} />
+
+        {guide.shortAnswer && (
+          <ShortAnswerBox content={guide.shortAnswer} />
+        )}
+
+        {guide.eligibleCheck && (
+          <EligibleCheck />
+        )}
+
+        {guide.jumpLinks && (
+          <StickyTOC links={guide.jumpLinks} />
+        )}
 
         {/* DYNAMIC ENRICHMENT: Success Metrics Table */}
         {guide.metrics && (

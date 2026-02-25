@@ -27,6 +27,16 @@ export interface Guide {
     type: 'tip' | 'warning' | 'success'
   }
   content?: string // HTML content for the guide body
+  // E-E-A-T "Short Answer" Strategy Fields (Phase 9)
+  shortAnswer?: string;
+  jumpLinks?: { title: string; id: string }[];
+  eligibleCheck?: boolean;
+  inlineCTA?: {
+    title?: string;
+    description: string;
+    buttonText?: string;
+    buttonLink?: string;
+  };
 }
 
 export const guidesDatabase: Guide[] = [
@@ -58,6 +68,17 @@ export const guidesDatabase: Guide[] = [
       title: "The 'Credit Elsewhere' Test",
       type: 'warning',
       content: "The SBA will ONLY fund you if you <strong>cannot</strong> get a loan elsewhere on reasonable terms. You must prove you were rejected or couldn't get a standard bank loan first."
+    },
+    shortAnswer: "The SBA application takes 30-90 days. You need a 640+ credit score, 10-20% down payment, and proof you can't get a conventional loan. Start at SBA.gov/lender-match to find an approved lender.",
+    jumpLinks: [
+      { title: 'Requirements', id: 'requirements' },
+      { title: 'Documents', id: 'documents' },
+      { title: 'Timeline', id: 'timeline' },
+      { title: 'Mistakes', id: 'mistakes' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Need help with your SBA application? Our funding specialists guide you through every step.",
     }
   },
   {
@@ -198,6 +219,17 @@ export const guidesDatabase: Guide[] = [
       title: "Federal Grants Are Project-Based",
       type: 'warning',
       content: "The federal government does NOT give grants for 'starting a business' or 'paying off debt.' Federal grants fund <strong>specific projects</strong> (R&D, community programs, education). Check eligibility carefully."
+    },
+    shortAnswer: "Search Grants.gov for 1000+ active federal grant opportunities ($50K-$500K typical). Federal grants fund specific projects, not general business expenses. Approval takes 3-12 months with a 10-30% success rate.",
+    jumpLinks: [
+      { title: 'Find Grants', id: 'find-grants' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'Application', id: 'application' },
+      { title: 'Tips', id: 'tips' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Overwhelmed by Grants.gov? Our team pre-qualifies opportunities for your business type and handles the application process.",
     }
   },
   {
@@ -396,6 +428,18 @@ export const guidesDatabase: Guide[] = [
       title: "The 'ITA' Factor",
       type: 'tip',
       content: "You cannot apply for IRAP through a portal. You must be 'invited' by an Industrial Technology Advisor (ITA). Your first step is not filling a form, but calling IRAP (1-877-994-4727) to request a consultation."
+    },
+    shortAnswer: "IRAP covers up to 80% of technical staff salaries ($150K-$500K typical first project). You cannot apply online — call 1-877-994-4727 and request an ITA consultation. Monthly approval cycles make it one of Canada's fastest innovation grants.",
+    jumpLinks: [
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'Process', id: 'process' },
+      { title: 'ITA Consult', id: 'ita-consultation' },
+      { title: 'Advisory', id: 'advisory-services' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      title: "Get IRAP Ready",
+      description: "We prepare your project documentation and connect you with the right ITA for your technology area.",
     }
   },
   {
@@ -480,6 +524,18 @@ export const guidesDatabase: Guide[] = [
       title: "Technological Uncertainty is Key",
       type: 'warning',
       content: "SR&ED is not for 'standard engineering' or 'bug fixing'. To qualify, you must prove you faced a technological uncertainty that standard practice could not resolve. Document your failures—they are your proof!"
+    },
+    shortAnswer: "SR&ED gives CCPCs a 35% refundable tax credit on eligible R&D. You must file within 18 months of your fiscal year end. The key requirement is proving 'technological uncertainty' — document your failures, they are your strongest evidence.",
+    jumpLinks: [
+      { title: 'Eligible Work', id: 'eligible-activities' },
+      { title: 'Documentation', id: 'documentation' },
+      { title: 'Claim Process', id: 'claim-process' },
+      { title: 'Audit Risk', id: 'audit-preparation' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      title: "Protect Your SR&ED Claim",
+      description: "Our certified SR&ED consultants prepare audit-proof documentation and maximize your claim value.",
     }
   },
 
@@ -510,6 +566,17 @@ export const guidesDatabase: Guide[] = [
       title: "WES is an Ecosystem, Not a Program",
       type: 'success',
       content: "Women Entrepreneurship Strategy isn't one application. It's <strong>15+ coordinated programs</strong> (grants, loans, mentorship). Stack multiple WES programs for maximum benefit."
+    },
+    shortAnswer: "WES is a $6B ecosystem of 15+ programs — not a single application. Start with the Women Entrepreneurship Loan Fund (up to $100K), then stack mentorship, export support, and regional grants simultaneously.",
+    jumpLinks: [
+      { title: 'Overview', id: 'wes-overview' },
+      { title: 'Programs', id: 'funding-programs' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'Mentorship', id: 'mentorship' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Women-owned business in Canada? Let our WES specialists build your multi-program funding strategy.",
     }
   },
   {
