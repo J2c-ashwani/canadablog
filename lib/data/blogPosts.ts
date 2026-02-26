@@ -120,7 +120,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Agriculture", "&", "Agri-Food", "Canada", "Grants"]
+      keywords: ["Agriculture", "&", "Agri-Food", "Canada", "Grants"],
+    }, shortAnswer: "Yes — Agriculture & Agri-Food Canada offers up to $5M through AgriInnovate, AgriScience, and Sustainable CAP programs. Most funding is delivered through provincial agriculture ministries on a 50% cost-sharing basis.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right AAFC program for your farm or agribusiness — our grant specialists navigate federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Funding', value: 'Up to $5M', description: 'AgriInnovate Program', color: 'text-green-600', iconName: 'DollarSign' },
@@ -160,7 +170,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["AI", "&", "Machine", "Learning", "Grants"]
+      keywords: ["AI", "&", "Machine", "Learning", "Grants"],
+    }, shortAnswer: "Complete 2026-2027 guide to AI and machine learning grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for AI & Machine Learning Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Funding', value: '$305K - $1.25M', description: 'NSF SBIR Phases', color: 'text-blue-600', iconName: 'DollarSign' },
@@ -189,7 +209,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Alberta", "Government", "Business", "Grants", "2026"]
+      keywords: ["Alberta", "Government", "Business", "Grants", "2026"],
+    }, shortAnswer: "Complete guide to Alberta government business grants and provincial funding programs. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Alberta Government Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Voucher', value: '$15k - $100k', description: 'Alberta Innovates', color: 'text-blue-600', iconName: 'Zap' },
@@ -218,7 +248,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Alberta", "Innovation", "Grants", "&", "Funding"]
+      keywords: ["Alberta", "Innovation", "Grants", "&", "Funding"],
+    }, shortAnswer: "Complete guide to Alberta innovation grants and funding programs. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Alberta Innovation Grants & Funding 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Total', value: '$950M+', description: 'Annual allocation', color: 'text-green-600', iconName: 'DollarSign' },
@@ -247,7 +287,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Alberta", "Small", "Business", "Grants", "2026"]
+      keywords: ["Alberta", "Small", "Business", "Grants", "2026"],
+    }, shortAnswer: "Complete guide to Alberta small business grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Alberta Small Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Training', value: '$3000', description: 'Job Grant per hire', color: 'text-blue-600', iconName: 'Users' },
@@ -275,7 +325,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Alberta", "Women", "Business", "Grants", "2026"]
+      keywords: ["Alberta", "Women", "Business", "Grants", "2026"],
+    }, shortAnswer: "Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovation funding.. Funding amounts average up to $150 for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Alberta Women Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'AWE Loans', value: 'Up to $150K', description: 'Alberta Women Entrepreneurs', color: 'text-green-600', iconName: 'DollarSign' },
@@ -304,7 +364,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Amber", "Grant", "for", "Women", "Canada"]
+      keywords: ["Amber", "Grant", "for", "Women", "Canada"],
+    }, shortAnswer: "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Amber Grant for Women Canada 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Value', value: '$10,000', description: 'Monthly Grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -333,7 +403,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Atlantic", "Canada", "Innovation", "Grants", "&"]
+      keywords: ["Atlantic", "Canada", "Innovation", "Grants", "&"],
+    }, shortAnswer: "Complete guide to Atlantic Canada innovation grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Atlantic Canada Innovation Grants & Funding 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Funding', value: '$500k - $3M', description: 'Atlantic Innovation Fund', color: 'text-blue-600', iconName: 'DollarSign' },
@@ -362,7 +442,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Atlantic", "Canada", "Small", "Business", "Grants"]
+      keywords: ["Atlantic", "Canada", "Small", "Business", "Grants"],
+    }, shortAnswer: "Complete guide to Atlantic Canada business grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Atlantic Canada Small Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Funding', value: '$50k - $250k', description: 'ACOA Programs', color: 'text-blue-600', iconName: 'DollarSign' },
@@ -391,7 +481,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["BC", "Small", "Business", "Grants", "2026"]
+      keywords: ["BC", "Small", "Business", "Grants", "2026"],
+    }, shortAnswer: "Complete guide to BC small business grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for BC Small Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Recovery', value: '$30K', description: 'Small Business Grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -420,7 +520,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["BC", "Women", "Business", "Grants", "2026"]
+      keywords: ["BC", "Women", "Business", "Grants", "2026"],
+    }, shortAnswer: "Complete guide to BC women entrepreneurship support with Women. Funding amounts average up to $150 for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for BC Women Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'WeBC Loans', value: 'Up to $150K', description: 'Women Enterprise Centre', color: 'text-green-600', iconName: 'DollarSign' },
@@ -449,7 +559,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["BDC", "Women", "Entrepreneurs", "Financing", "2026"]
+      keywords: ["BDC", "Women", "Entrepreneurs", "Financing", "2026"],
+    }, shortAnswer: "Complete guide to BDC Women Entrepreneurs financing with flexible loan terms, strategic advisory services, and growth support from Business Development Bank of Canada.. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for BDC Women Entrepreneurs Financing 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Loans', value: '$100K - $5M', description: 'Flexible terms', color: 'text-green-600', iconName: 'DollarSign' },
@@ -478,7 +598,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Biotech", "&", "Life", "Sciences", "Grants"]
+      keywords: ["Biotech", "&", "Life", "Sciences", "Grants"],
+    }, shortAnswer: "Complete 2026-2027 guide to biotech and life sciences grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Biotech & Life Sciences Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Phase I', value: '$306K', description: 'NIH SBIR', color: 'text-green-600', iconName: 'DollarSign' },
@@ -507,7 +637,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["BMO", "Celebrating", "Women", "Grant", "2026"]
+      keywords: ["BMO", "Celebrating", "Women", "Grant", "2026"],
+    }, shortAnswer: "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for BMO Celebrating Women Grant 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Grant', value: '$10,000', description: 'Cash Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -536,7 +676,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["British", "Columbia", "Government", "Business", "Grants"]
+      keywords: ["British", "Columbia", "Government", "Business", "Grants"],
+    }, shortAnswer: "Complete guide to British Columbia government business grants and provincial funding programs. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for British Columbia Government Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Innovate BC', value: '$150K+', description: 'Tech programs', color: 'text-green-600', iconName: 'Zap' },
@@ -565,7 +715,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["British", "Columbia", "Innovation", "Grants", "&"]
+      keywords: ["British", "Columbia", "Innovation", "Grants", "&"],
+    }, shortAnswer: "Complete guide to BC innovation grants and tax credits. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for British Columbia Innovation Grants — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'BCITC', value: '10%', description: 'Innovation tax credit', color: 'text-green-600', iconName: 'PieChart' },
@@ -594,7 +754,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["California", "Tech", "Startup", "Grants", "2026-2027"]
+      keywords: ["California", "Tech", "Startup", "Grants", "2026-2027"],
+    }, shortAnswer: "Complete 2026-2027 guide to California technology startup grants and incentives. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for California Tech Startup Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'CalSEED', value: '$50K', description: 'Clean energy grant', color: 'text-green-600', iconName: 'Leaf' },
@@ -623,7 +793,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Advanced", "Manufacturing", "Innovation", "Grants"]
+      keywords: ["Canada", "Advanced", "Manufacturing", "Innovation", "Grants"],
+    }, shortAnswer: "Complete guide to Canadian advanced manufacturing innovation grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Advanced Manufacturing Innovation Grants — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Total', value: '$3.5B', description: 'NGen Funding', color: 'text-blue-600', iconName: 'Factory' },
@@ -652,7 +832,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Aerospace", "&", "Defence", "Grants"]
+      keywords: ["Canada", "Aerospace", "&", "Defence", "Grants"],
+    }, shortAnswer: "Complete guide to Canadian aerospace and defence innovation grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Aerospace & Defence Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Space', value: '$250M', description: 'CSA Funding', color: 'text-blue-600', iconName: 'Rocket' },
@@ -681,7 +871,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Agri-Food", "Technology", "Grants", "2026"]
+      keywords: ["Canada", "Agri-Food", "Technology", "Grants", "2026"],
+    }, shortAnswer: "Complete guide to Canadian agri-food technology innovation grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Agri — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Fund', value: '$2.3B', description: 'SCAP Partnership', color: 'text-green-600', iconName: 'Sprout' },
