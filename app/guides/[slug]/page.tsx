@@ -76,17 +76,29 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       <Header />
       <main className="max-w-6xl mx-auto py-12 px-6">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold">{guide.title}</h1>
-          <p className="text-gray-700 mt-2">{guide.description}</p>
-        </header>
+        {/* Q&A ANSWER ENGINE HERO */}
+        <div className="bg-gradient-to-br from-red-600 via-red-500 to-orange-500 rounded-2xl p-8 md:p-12 mb-8 text-center">
+          <div className="mb-4">
+            <span className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm text-white text-sm font-medium px-4 py-1.5 rounded-full">
+              🔥 {guide.category} Funding Guide
+            </span>
+          </div>
 
-        {/* E-E-A-T COMPONENTS (Phase 9) */}
-        <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date={guide.lastUpdated} />
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
+            {guide.title}
+          </h1>
 
-        {guide.shortAnswer && (
-          <ShortAnswerBox content={guide.shortAnswer} />
-        )}
+          {guide.shortAnswer && (
+            <div className="bg-white/15 backdrop-blur-sm border border-white/20 rounded-xl p-6 md:p-8 text-left max-w-3xl mx-auto">
+              <p className="text-white text-base md:text-lg leading-relaxed">
+                <span className="font-bold">The Short Answer: </span>
+                {guide.shortAnswer}
+              </p>
+            </div>
+          )}
+
+          <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date={guide.lastUpdated} />
+        </div>
 
         {guide.eligibleCheck && (
           <EligibleCheck />

@@ -111,8 +111,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-4 gap-8">
             <article className="lg:col-span-3 bg-white dark:bg-neutral-950 rounded-2xl shadow-lg p-8">
-              <div className="mb-8">
-                <Button variant="ghost" asChild>
+              <div className="mb-4">
+                <Button variant="ghost" size="sm" asChild>
                   <Link href={post.type === 'expert-insight' ? '/expert-insights' : '/blog'}>
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     {post.type === 'expert-insight' ? 'Back to Expert Insights' : 'Back to Grant News'}
@@ -120,20 +120,32 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </Button>
               </div>
 
-              <div className="mb-6">
-                <Badge className={category?.color ?? 'bg-gray-100 text-gray-800'}>
-                  {category?.name ?? 'General'}
-                </Badge>
-                {post.featured && (
-                  <Badge className="ml-2 bg-yellow-100 text-yellow-800">Featured</Badge>
+              {/* Q&A ANSWER ENGINE HERO */}
+              <div className="bg-gradient-to-br from-red-600 via-red-500 to-orange-500 rounded-2xl p-8 md:p-12 mb-8 text-center">
+                <div className="mb-4">
+                  <span className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm text-white text-sm font-medium px-4 py-1.5 rounded-full">
+                    🔥 {category?.name ?? 'Grant'} Answer Engine
+                  </span>
+                </div>
+
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
+                  {post.title}
+                </h1>
+
+                {post.shortAnswer && (
+                  <div className="bg-white/15 backdrop-blur-sm border border-white/20 rounded-xl p-6 md:p-8 text-left max-w-3xl mx-auto">
+                    <p className="text-white text-base md:text-lg leading-relaxed">
+                      <span className="font-bold">The Short Answer: </span>
+                      {post.shortAnswer}
+                    </p>
+                  </div>
                 )}
+
+                <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date={post.date} />
               </div>
 
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mt-4 mb-6">
-                {post.title}
-              </h1>
-
-              <div className="flex flex-wrap items-center gap-6 mb-8 pb-8 border-b border-gray-200 dark:border-neutral-800 text-gray-600 dark:text-gray-400">
+              {/* Metadata Bar (below hero) */}
+              <div className="flex flex-wrap items-center gap-6 mb-6 text-sm text-gray-500 dark:text-gray-400">
                 <div className="flex items-center">
                   <User className="w-4 h-4 mr-2" />
                   <span>{post.author}</span>
@@ -154,13 +166,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </div>
                 <LastVerifiedBadge date={post.date} />
               </div>
-
-              {/* E-E-A-T COMPONENTS (Phase 9) */}
-              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date={post.date} />
-
-              {post.shortAnswer && (
-                <ShortAnswerBox content={post.shortAnswer} />
-              )}
 
               {post.eligibleCheck && (
                 <EligibleCheck />
