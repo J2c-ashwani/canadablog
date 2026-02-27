@@ -326,7 +326,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Alberta", "Women", "Business", "Grants", "2026"],
-    }, shortAnswer: "Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovation funding.. Funding amounts average up to $150 for eligible applicants.",
+    }, shortAnswer: "Alberta Women Entrepreneurs (AWE) offers loans up to $150K plus free advisory services. Women Building Futures provides dedicated industry-ready training, and Innovate BC funds women-led tech startups across the province.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -443,7 +443,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Atlantic", "Canada", "Small", "Business", "Grants"],
-    }, shortAnswer: "Complete guide to Atlantic Canada business grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Atlantic Canada distributes $850M+ through ACOA and 4 provincial programs. ACOA's Business Development Program covers up to 50% of eligible costs, while Nova Scotia, New Brunswick, PEI, and Newfoundland each offer targeted SME grants.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -521,7 +521,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["BC", "Women", "Business", "Grants", "2026"],
-    }, shortAnswer: "Complete guide to BC women entrepreneurship support with Women. Funding amounts average up to $150 for eligible applicants.",
+    }, shortAnswer: "BC supports women entrepreneurs through WeBC loans up to $150K, Innovate BC tech funding, and free 1-on-1 business coaching. The Women Enterprise Centre is the best starting point for accessing all provincial and federal women-focused programs.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },

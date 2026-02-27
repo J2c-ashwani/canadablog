@@ -144,7 +144,7 @@ export const guidesDatabase: Guide[] = [
       type: 'tip',
       content: "Most people apply for 7(a) when they should use 504. If you need <strong>real estate or long-term equipment</strong> (10+ years), the 504 program offers better rates and longer terms."
     },
-    shortAnswer: "SBA Loan Application Guide — Learn how to successfully apply for SBA loans including 7(a), 504, and microloan programs.",
+    shortAnswer: "SBA 7(a) loans go up to $5M with terms to 25 years, 504 loans up to $5.5M for real estate/equipment, and Microloans up to $50K. Start at SBA.gov/lender-match — you apply through an approved lender, not directly through the SBA.",
     jumpLinks: [
       { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
     ],
@@ -291,7 +291,7 @@ export const guidesDatabase: Guide[] = [
       type: 'success',
       content: "The SBA 8(a) Business Development Program provides <strong>9 years of sole-source federal contracts</strong> and mentorship. It's competitive to get in, but worth the effort for minority entrepreneurs."
     },
-    shortAnswer: "Minority Business Grants Application Guide — How to access grants and funding specifically for minority-owned businesses in the USA.",
+    shortAnswer: "The SBA 8(a) Business Development Program provides 9 years of contracting preferences, mentorship, and technical assistance. MBE certification also unlocks MBDA grants, HUBZone preferences, and state-level minority set-aside contracts worth billions annually.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -327,7 +327,7 @@ export const guidesDatabase: Guide[] = [
       type: 'warning',
       content: "This is for <strong>organizations supporting startups</strong>, not startups themselves. Accelerators, incubators, and non-profits are the applicants."
     },
-    shortAnswer: "SBA Growth Accelerator Fund Application Guide — Guide to applying for SBA funding supporting business accelerators and incubators.",
+    shortAnswer: "The SBA Growth Accelerator Fund Competition awards $50,000 prizes to accelerators and incubators serving underrepresented entrepreneurs. Winners receive cash plus technical assistance — no equity taken, no matching funds required.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -399,7 +399,7 @@ export const guidesDatabase: Guide[] = [
       type: 'tip',
       content: "DOE grants have <strong>higher success rates</strong> when you partner with a National Laboratory (like Argonne, NREL, or Sandia). They provide technical expertise and credibility."
     },
-    shortAnswer: "Department of Energy Clean Energy Grants Guide — How to apply for DOE funding for clean energy and sustainability projects.",
+    shortAnswer: "The DOE distributes $30B+ annually for clean energy R&D. ARPA-E funds high-risk breakthrough projects ($500K-$10M), while the Loan Programs Office offers loan guarantees up to $40B for commercial-scale deployment of proven technologies.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -435,7 +435,7 @@ export const guidesDatabase: Guide[] = [
       type: 'tip',
       content: "California's program has <strong>looser credit requirements</strong> than SBA 7(a) but lower maximum amounts. Try CA first if you have credit challenges."
     },
-    shortAnswer: "California Small Business Loan Guarantee Program Guide — Complete guide to accessing California state loan guarantees for small businesses.",
+    shortAnswer: "The California Small Business Loan Guarantee Program (SBLGP) guarantees up to 80% of loans from $20K to $1.25M. This dramatically reduces lender risk, making it easier for startups and small businesses to get bank financing they'd otherwise be denied.",
     jumpLinks: [
       { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
     ],
@@ -473,7 +473,7 @@ export const guidesDatabase: Guide[] = [
       type: 'warning',
       content: "The Strategic Innovation Fund (SIF) is not for early-stage startups. It is designed for massive projects that create hundreds of jobs. If you are requesting less than $10M, look at <strong>IRAP</strong> or <strong>Regional Agencies</strong> instead."
     },
-    shortAnswer: "Strategic Innovation Fund Application Guide — How to apply for large-scale innovation funding through Canada.",
+    shortAnswer: "SIF provides repayable and non-repayable contributions for large-scale projects over $10M. It prioritizes AI, clean tech, and biomanufacturing. Applications require a 3-year business plan and proof of economic benefit — approval takes 6-12 months.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -549,7 +549,7 @@ export const guidesDatabase: Guide[] = [
       type: 'tip',
       content: "IRAP doesn't have an online application. You must <strong>call 1-877-994-4727</strong> to request an Industrial Technology Advisor (ITA) consultation. They decide if you're eligible BEFORE you prepare anything."
     },
-    shortAnswer: "IRAP Government Grants Application Process — Detailed walkthrough of applying for IRAP government funding for innovation projects.",
+    shortAnswer: "IRAP provides non-repayable contributions covering up to 80% of eligible labour costs for R&D projects. You cannot apply online — contact an Industrial Technology Advisor at 1-877-994-4727 to start the process. Approval cycles run monthly.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -585,7 +585,7 @@ export const guidesDatabase: Guide[] = [
       type: 'tip',
       content: "You cannot apply online blindly. <strong>You must engage an Industrial Technology Advisor (ITA)</strong> first. They invite you to apply. Cold applications don't exist."
     },
-    shortAnswer: "IRAP Innovation Funding Application Guide — Strategic guide for accessing IRAP innovation funding and technical advisory services.",
+    shortAnswer: "IRAP's Innovation Assistance Program funds technical projects from $50K to $10M. Your assigned ITA will help scope the project, define milestones, and build your application — their involvement significantly increases approval rates.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -783,7 +783,7 @@ export const guidesDatabase: Guide[] = [
       type: 'tip',
       content: "You don't apply to the government directly. Apply through <strong>Women's Enterprise Organizations (WEOs)</strong> like WEOC or Coralus. Each has different criteria."
     },
-    shortAnswer: "Women Entrepreneurship Loan Fund Guide — Access low-interest loans through the Women Entrepreneurship Loan Fund program.",
+    shortAnswer: "The Women Entrepreneurship Loan Fund provides loans up to $100K at below-market rates through participating organizations. Unlike traditional bank loans, it requires no collateral for amounts under $50K and includes free business advisory services.",
     jumpLinks: [
       { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
     ],
@@ -819,7 +819,7 @@ export const guidesDatabase: Guide[] = [
       type: 'success',
       content: "Futurpreneur isn't just money; it's a mentorship program. Showing that you are <strong>coachable</strong> during the interview is just as important as your business plan."
     },
-    shortAnswer: "Youth Entrepreneurship Funding Application Guide — How young entrepreneurs can access government funding programs in Canada.",
+    shortAnswer: "Futurpreneur Canada offers $20K in startup loans plus $40K from BDC for entrepreneurs aged 18-39. It includes 2 years of free mentorship. You need a business plan — use their free Business Plan Writer tool at futurpreneur.ca to start.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -855,7 +855,7 @@ export const guidesDatabase: Guide[] = [
       type: 'success',
       content: "BDC's Women Entrepreneurship Program offers <strong>flexible terms and mentorship</strong> not available in traditional banking, plus can be stacked with government grants."
     },
-    shortAnswer: "BDC Women Entrepreneurs Financing Guide — Access Business Development Bank of Canada financing specifically for women-owned businesses.",
+    shortAnswer: "BDC offers women-only financing from $100K to $5M with flexible repayment terms and reduced rates. Beyond capital, their Growth Driver program provides free strategic advisory and their Women in Tech Venture Fund invests in women-led tech companies.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -891,7 +891,7 @@ export const guidesDatabase: Guide[] = [
       type: 'tip',
       content: "Smart founders stack grants. Use the <strong>CDAP</strong> grant to pay for a digital strategy, then use a <strong>Digital Youth Internship</strong> grant to hire a student to implement it."
     },
-    shortAnswer: "Canada Digital & AI Funding Guide — Funding opportunities for digital transformation and AI development projects.",
+    shortAnswer: "CDAP provides a $15K grant for a digital adoption plan, unlocking a $100K interest-free BDC loan to implement it. Scale AI funds large supply-chain AI projects. Stack both programs to digitize operations at minimal cost.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -927,7 +927,7 @@ export const guidesDatabase: Guide[] = [
       type: 'success',
       content: "Women exporters can combine <strong>CanExport grants (up to $75K) with EDC financing</strong> for comprehensive international expansion support."
     },
-    shortAnswer: "EDC Women Trade & Export Financing Guide — Export Development Canada financing and support for women exporters.",
+    shortAnswer: "EDC's Women in Trade program offers export financing, insurance, and bonding specifically for women-led exporters. Their Export Guarantee Program covers up to 90% of export losses, reducing the financial risk of entering international markets.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -963,7 +963,7 @@ export const guidesDatabase: Guide[] = [
       type: 'tip',
       content: "Alliance grants require a <strong>private sector partner</strong>. Bringing cash/in-kind contributions from industry significantly increases your approval odds."
     },
-    shortAnswer: "NSERC Research Grants Application Guide — How to apply for Natural Sciences and Engineering Research Council grants.",
+    shortAnswer: "NSERC Discovery Grants fund 5-year research programs ($30K-$50K/year) in natural sciences and engineering. Engage Grants ($25K, 6-month) fund industry-academic partnerships. Alliance Grants co-fund larger collaborative R&D projects with private sector partners.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -999,7 +999,7 @@ export const guidesDatabase: Guide[] = [
       type: 'tip',
       content: "Each region has its own RDA: <strong>WD (West), PrairiesCan, FedDev Ontario, FedDev Southern Ontario, CED Quebec, ACOA (Atlantic)</strong>. Apply to YOUR regional agency, not all six."
     },
-    shortAnswer: "Regional Development Agencies Funding Guide — Access funding through Canada.",
+    shortAnswer: "Canada's 7 Regional Development Agencies (FedDev Ontario, PacifiCan, PrairiesCan, CED Quebec, ACOA, FedNor, CanNor) each offer region-specific grants and zero-interest loans. Contact your local agency first — they have dedicated advisors who help shape applications.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -1035,7 +1035,7 @@ export const guidesDatabase: Guide[] = [
       type: 'success',
       content: "Many federal programs have <strong>dedicated Indigenous set-asides</strong> with less competition. IAND programs also provide culturally relevant business support unavailable elsewhere."
     },
-    shortAnswer: "Indigenous & Rural Business Funding Guide — Specialized funding programs for Indigenous and rural businesses in Canada.",
+    shortAnswer: "The Aboriginal Business and Entrepreneurship Development (ABED) program provides non-repayable contributions up to $99,999. The Indigenous Growth Fund offers loans up to $250K. Rural businesses can additionally access CERP and regional agency funding for infrastructure and market access.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
