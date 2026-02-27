@@ -910,7 +910,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Agriculture", "&", "Agri-Food", "Grants"]
+      keywords: ["Canada", "Agriculture", "&", "Agri-Food", "Grants"],
+    }, shortAnswer: "Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Agriculture & Agri — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Youth', value: '$15k', description: 'Start-up Grant', color: 'text-green-600', iconName: 'UserPlus' },
@@ -939,7 +949,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Clean", "Technology", "&", "Environment"]
+      keywords: ["Canada", "Clean", "Technology", "&", "Environment"],
+    }, shortAnswer: "Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Clean Technology & Environment Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Net Zero', value: '$8B', description: 'Accelerator', color: 'text-green-600', iconName: 'Globe' },
@@ -968,7 +988,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Clean", "Technology", "Innovation", "Grants"]
+      keywords: ["Canada", "Clean", "Technology", "Innovation", "Grants"],
+    }, shortAnswer: "Complete guide to Canadian clean technology innovation grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Clean Technology Innovation Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'SDTC', value: '$400M', description: 'Tech Fund', color: 'text-green-600', iconName: 'Zap' },
@@ -997,7 +1027,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Digital", "&", "AI", "Innovation"]
+      keywords: ["Canada", "Digital", "&", "AI", "Innovation"],
+    }, shortAnswer: "Complete guide to Canadian digital and AI innovation grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Digital & AI Innovation Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'AI', value: '$350M', description: 'Scale AI', color: 'text-blue-600', iconName: 'Cpu' },
@@ -1026,7 +1066,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Employment", "&", "Workforce", "Training"]
+      keywords: ["Canada", "Employment", "&", "Workforce", "Training"],
+    }, shortAnswer: "Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Employment & Workforce Training Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Train', value: '$10k', description: 'Per Employee', color: 'text-green-600', iconName: 'Users' },
@@ -1055,7 +1105,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Export", "Development", "Grants", "2026"]
+      keywords: ["Canada", "Export", "Development", "Grants", "2026"],
+    }, shortAnswer: "Complete guide to Canadian export development grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Export Development Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Fund', value: '$50k', description: 'CanExport', color: 'text-blue-600', iconName: 'Globe' },
@@ -1084,7 +1144,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Federal", "Grants"]
+      keywords: ["Canada", "Federal", "Grants"],
+    }, shortAnswer: "Complete guide to government grants.. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Federal Grants — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Total', value: '$10B+', description: 'Annual Funding', color: 'text-green-600', iconName: 'DollarSign' },
@@ -1113,7 +1183,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Growth", "&", "Expansion", "Grants"]
+      keywords: ["Canada", "Growth", "&", "Expansion", "Grants"],
+    }, shortAnswer: "Complete guide to Canadian business expansion grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Growth & Expansion Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Fund', value: '$2.8B', description: 'SIF Program', color: 'text-blue-600', iconName: 'TrendingUp' },
@@ -1142,7 +1222,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Hiring", "&", "Training", "Grants"]
+      keywords: ["Canada", "Hiring", "&", "Training", "Grants"],
+    }, shortAnswer: "Complete guide to Canadian hiring and training grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Hiring & Training Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Student', value: '$7,000', description: 'Wage Subsidy', color: 'text-green-600', iconName: 'UserPlus' },
@@ -1171,7 +1261,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Industry", "Specific", "Grants", "2026"]
+      keywords: ["Canada", "Industry", "Specific", "Grants", "2026"],
+    }, shortAnswer: "Complete guide to Canadian industry specific grants. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Industry Specific Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Ag', value: '$3.5B', description: 'AgriScience', color: 'text-green-600', iconName: 'Sprout' },
@@ -1200,7 +1300,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Innovation", "&", "R&D", "Grants"]
+      keywords: ["Canada", "Innovation", "&", "R&D", "Grants"],
+    }, shortAnswer: "Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Innovation & R&D Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Tax', value: '35%', description: 'SR&ED Credit', color: 'text-blue-600', iconName: 'Percent' },
@@ -1229,7 +1339,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Life", "Sciences", "Grants", "2026"]
+      keywords: ["Canada", "Life", "Sciences", "Grants", "2026"],
+    }, shortAnswer: "Yes — Complete guide to Canadian life sciences innovation grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Life Sciences Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Fund', value: '$2.2B', description: 'Biomanufacturing', color: 'text-green-600', iconName: 'Activity' },
@@ -1258,7 +1378,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Manufacturing", "&", "Industry", "Grants"]
+      keywords: ["Canada", "Manufacturing", "&", "Industry", "Grants"],
+    }, shortAnswer: "Yes — Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Manufacturing & Industry Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Tech', value: '$1.2B', description: 'Adoption', color: 'text-blue-600', iconName: 'Cpu' },
@@ -1287,7 +1417,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Regional", "Economic", "Development", "Grants"]
+      keywords: ["Canada", "Regional", "Economic", "Development", "Grants"],
+    }, shortAnswer: "Yes — Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Regional Economic Development Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'West', value: '$500M', description: 'PrairiesCan', color: 'text-yellow-600', iconName: 'Sun' },
@@ -1316,7 +1456,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Startup", "Funding", "Grants", "2026"]
+      keywords: ["Canada", "Startup", "Funding", "Grants", "2026"],
+    }, shortAnswer: "Yes — Most Canadian startups only know about Futurpreneur. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Loan', value: '$60,000', description: 'Futurpreneur', color: 'text-blue-600', iconName: 'Rocket' },
@@ -1345,7 +1495,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Technology", "Adoption", "Grants", "2026"]
+      keywords: ["Canada", "Technology", "Adoption", "Grants", "2026"],
+    }, shortAnswer: "Yes — Complete guide to Canadian technology adoption grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Technology Adoption Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'CDAP', value: '$15k', description: 'Digital Plan', color: 'text-green-600', iconName: 'FileText' },
@@ -1374,7 +1534,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Cartier", "Women"]
+      keywords: ["Cartier", "Women"],
+    }, shortAnswer: "Yes — Complete guide to Cartier Women. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Cartier Women — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Award', value: '$100k', description: 'First Place', color: 'text-yellow-600', iconName: 'Trophy' },
@@ -1403,7 +1573,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Clean", "Tech", "&", "Energy", "Grants"]
+      keywords: ["Clean", "Tech", "&", "Energy", "Grants"],
+    }, shortAnswer: "Yes — Complete 2026-2027 guide to clean tech and energy grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Clean Tech & Energy Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Phase I', value: '$200k', description: 'Feasibility', color: 'text-green-600', iconName: 'Zap' },
@@ -1524,7 +1704,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Stage", "4:", "Commercialization", "&", "Scale-Up"]
+      keywords: ["Stage", "4:", "Commercialization", "&", "Scale-Up"],
+    }, shortAnswer: "Yes — Complete guide to Canadian commercialization and scale-up funding. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Stage 4: Commercialization & Scale — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Scale', value: '$10M+', description: 'SIF Funding', color: 'text-blue-600', iconName: 'TrendingUp' },
@@ -1553,7 +1743,17 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Small", "Business", "Financing", "Program"]
+      keywords: ["Canada", "Small", "Business", "Financing", "Program"],
+    }, shortAnswer: "Yes — Complete guide to Canada Small Business Financing Program. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for these grants — our specialists navigate the complex federal and provincial channels for you.",
     },
     metrics: [
       { label: 'Loan', value: '$1.15M', description: 'Max Amount', color: 'text-green-600', iconName: 'DollarSign' },
