@@ -141,7 +141,7 @@ export const guidesDatabase: Guide[] = [
       title: "Pick the Right SBA Program",
       type: 'tip',
       content: "Most people apply for 7(a) when they should use 504. If you need <strong>real estate or long-term equipment</strong> (10+ years), the 504 program offers better rates and longer terms."
-    }, shortAnswer: "SBA Loan Application Guide — Learn how to successfully apply for SBA loans including 7(a), 504, and microloan programs.",
+    }, shortAnswer: " — key highlights include 7(a) Max: $5M and 504 Max: $5.5M. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
     ],
@@ -284,7 +284,7 @@ export const guidesDatabase: Guide[] = [
       title: "8(a) Program is a Game-Changer",
       type: 'success',
       content: "The SBA 8(a) Business Development Program provides <strong>9 years of sole-source federal contracts</strong> and mentorship. It's competitive to get in, but worth the effort for minority entrepreneurs."
-    }, shortAnswer: "Minority Business Grants Application Guide — How to access grants and funding specifically for minority-owned businesses in the USA.",
+    }, shortAnswer: " — key highlights include MBDA: Free and 8(a): 9 Years. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -319,7 +319,7 @@ export const guidesDatabase: Guide[] = [
       title: "Verify Eligibility First",
       type: 'warning',
       content: "This is for <strong>organizations supporting startups</strong>, not startups themselves. Accelerators, incubators, and non-profits are the applicants."
-    }, shortAnswer: "SBA Growth Accelerator Fund Application Guide — Guide to applying for SBA funding supporting business accelerators and incubators.",
+    }, shortAnswer: " — key highlights include Prize: $50K-200K and Focus: STEM/R&D. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -389,7 +389,7 @@ export const guidesDatabase: Guide[] = [
       title: "DOE Favors National Labs Partnerships",
       type: 'tip',
       content: "DOE grants have <strong>higher success rates</strong> when you partner with a National Laboratory (like Argonne, NREL, or Sandia). They provide technical expertise and credibility."
-    }, shortAnswer: "Department of Energy Clean Energy Grants Guide — How to apply for DOE funding for clean energy and sustainability projects.",
+    }, shortAnswer: " — key highlights include Funding: $100M+ and Focus: CleanTech. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -424,7 +424,7 @@ export const guidesDatabase: Guide[] = [
       title: "CA Guarantee vs SBA",
       type: 'tip',
       content: "California's program has <strong>looser credit requirements</strong> than SBA 7(a) but lower maximum amounts. Try CA first if you have credit challenges."
-    }, shortAnswer: "California Small Business Loan Guarantee Program Guide — Complete guide to accessing California state loan guarantees for small businesses.",
+    }, shortAnswer: " — key highlights include State: California and Max: $2.5M. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
     ],
@@ -461,7 +461,7 @@ export const guidesDatabase: Guide[] = [
       title: "SIF is for 'Market Movers'",
       type: 'warning',
       content: "The Strategic Innovation Fund (SIF) is not for early-stage startups. It is designed for massive projects that create hundreds of jobs. If you are requesting less than $10M, look at <strong>IRAP</strong> or <strong>Regional Agencies</strong> instead."
-    }, shortAnswer: "Strategic Innovation Fund Application Guide — How to apply for large-scale innovation funding through Canada.",
+    }, shortAnswer: " — key highlights include Min Project: $10 Million and Funding Type: Contribution. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -535,7 +535,7 @@ export const guidesDatabase: Guide[] = [
       title: "Call First, Apply Later",
       type: 'tip',
       content: "IRAP doesn't have an online application. You must <strong>call 1-877-994-4727</strong> to request an Industrial Technology Advisor (ITA) consultation. They decide if you're eligible BEFORE you prepare anything."
-    }, shortAnswer: "IRAP Government Grants Application Process — Detailed walkthrough of applying for IRAP government funding for innovation projects.",
+    }, shortAnswer: " — key highlights include NRC: IRAP and Coverage: Up to 80%. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -570,7 +570,7 @@ export const guidesDatabase: Guide[] = [
       title: "The ITA Relationship is Key",
       type: 'tip',
       content: "You cannot apply online blindly. <strong>You must engage an Industrial Technology Advisor (ITA)</strong> first. They invite you to apply. Cold applications don't exist."
-    }, shortAnswer: "IRAP Innovation Funding Application Guide — Strategic guide for accessing IRAP innovation funding and technical advisory services.",
+    }, shortAnswer: " — key highlights include Contribution: 80% and Contractors: 50%. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -776,7 +776,7 @@ export const guidesDatabase: Guide[] = [
       title: "Apply via Partners",
       type: 'tip',
       content: "You don't apply to the government directly. Apply through <strong>Women's Enterprise Organizations (WEOs)</strong> like WEOC or Coralus. Each has different criteria."
-    }, shortAnswer: "Women Entrepreneurship Loan Fund Guide — Access low-interest loans through the Women Entrepreneurship Loan Fund program.",
+    }, shortAnswer: " — key highlights include Loan: $50K and Admin: Partners. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
     ],
@@ -811,7 +811,7 @@ export const guidesDatabase: Guide[] = [
       title: "The Mentor is the Key",
       type: 'success',
       content: "Futurpreneur isn't just money; it's a mentorship program. Showing that you are <strong>coachable</strong> during the interview is just as important as your business plan."
-    }, shortAnswer: "Youth Entrepreneurship Funding Application Guide — How young entrepreneurs can access government funding programs in Canada.",
+    }, shortAnswer: " — key highlights include Loan: $60k and Age: 18 - 39. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -846,7 +846,7 @@ export const guidesDatabase: Guide[] = [
       title: "BDC Women Loan Advantages",
       type: 'success',
       content: "BDC's Women Entrepreneurship Program offers <strong>flexible terms and mentorship</strong> not available in traditional banking, plus can be stacked with government grants."
-    }, shortAnswer: "BDC Women Entrepreneurs Financing Guide — Access Business Development Bank of Canada financing specifically for women-owned businesses.",
+    }, shortAnswer: " — key highlights include BDC: Loans and Women: Priority. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -881,7 +881,7 @@ export const guidesDatabase: Guide[] = [
       title: "Stack CDAP with Wage Subsidies",
       type: 'tip',
       content: "Smart founders stack grants. Use the <strong>CDAP</strong> grant to pay for a digital strategy, then use a <strong>Digital Youth Internship</strong> grant to hire a student to implement it."
-    }, shortAnswer: "Canada Digital & AI Funding Guide — Funding opportunities for digital transformation and AI development projects.",
+    }, shortAnswer: " — key highlights include Grant: $15,000 and Wage: $7,300. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -916,7 +916,7 @@ export const guidesDatabase: Guide[] = [
       title: "EDC + CanExport Stack",
       type: 'success',
       content: "Women exporters can combine <strong>CanExport grants (up to $75K) with EDC financing</strong> for comprehensive international expansion support."
-    }, shortAnswer: "EDC Women Trade & Export Financing Guide — Export Development Canada financing and support for women exporters.",
+    }, shortAnswer: " — key highlights include EDC: Crown Corp and Focus: Trade. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -951,7 +951,7 @@ export const guidesDatabase: Guide[] = [
       title: "Industry Partnerships Boost Success",
       type: 'tip',
       content: "Alliance grants require a <strong>private sector partner</strong>. Bringing cash/in-kind contributions from industry significantly increases your approval odds."
-    }, shortAnswer: "NSERC Research Grants Application Guide — How to apply for Natural Sciences and Engineering Research Council grants.",
+    }, shortAnswer: " — key highlights include Value: $20K-1M+ and Duration: 1-5 Years. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -986,7 +986,7 @@ export const guidesDatabase: Guide[] = [
       title: "Know Your RDA",
       type: 'tip',
       content: "Each region has its own RDA: <strong>WD (West), PrairiesCan, FedDev Ontario, FedDev Southern Ontario, CED Quebec, ACOA (Atlantic)</strong>. Apply to YOUR regional agency, not all six."
-    }, shortAnswer: "Regional Development Agencies Funding Guide — Access funding through Canada.",
+    }, shortAnswer: " — key highlights include Agencies: 6 RDAs and Funding: Varies. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -1021,7 +1021,7 @@ export const guidesDatabase: Guide[] = [
       title: "Indigenous Set-Asides Have Priority",
       type: 'success',
       content: "Many federal programs have <strong>dedicated Indigenous set-asides</strong> with less competition. IAND programs also provide culturally relevant business support unavailable elsewhere."
-    }, shortAnswer: "Indigenous & Rural Business Funding Guide — Specialized funding programs for Indigenous and rural businesses in Canada.",
+    }, shortAnswer: " — key highlights include IAND: Priority and Rural: USDA/NRC. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
     ],
@@ -1058,7 +1058,7 @@ export const guidesDatabase: Guide[] = [
       title: "Focus on 'SWODF' and 'EODF'",
       type: 'tip',
       content: "Outside of Toronto? The <strong>Southwestern (SWODF)</strong> and <strong>Eastern (EODF)</strong> Ontario Development Funds are the real heavy hitters for manufacturing and expansion projects over $500k."
-    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    }, shortAnswer: " — key highlights include Grant: $2,500 and Training: 100% Free. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1097,7 +1097,7 @@ export const guidesDatabase: Guide[] = [
       title: "Investissement Québec is King",
       type: 'success',
       content: "In Quebec, <strong>Investissement Québec (IQ)</strong> is the central hub. Unlike other provinces with fragmented agencies, IQ handles loans, equity, and grants under one roof. Start there."
-    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    }, shortAnswer: " — key highlights include Loan: $50k+ and Credit: 30%. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1136,7 +1136,7 @@ export const guidesDatabase: Guide[] = [
       title: "Target 'Innovate BC'",
       type: 'tip',
       content: "If you are a tech company, <strong>Innovate BC</strong> is your primary target. Their 'Hiring Grant' is one of the easiest ways to get $10,000 funded for a student or co-op hire."
-    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    }, shortAnswer: " — key highlights include Grant: $10,000 and Tax Credit: 30%. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1175,7 +1175,7 @@ export const guidesDatabase: Guide[] = [
       title: "Alberta Innovates is your First Stop",
       type: 'success',
       content: "For most Alberta tech startups, the <strong>Alberta Innovates Voucher Program</strong> is the entry point. It pays service providers directly to help you build or market your product."
-    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    }, shortAnswer: " — key highlights include Voucher: $15k - $100k and Clean Tech: $5M+. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1214,7 +1214,7 @@ export const guidesDatabase: Guide[] = [
       title: "It's Not Just for Farmers",
       type: 'tip',
       content: "AgriInnovate is often misunderstood. It is for <strong>commercializing new agricultural technology</strong>. If you are a tech company building sensors for farms, YOU are eligible, not just the farmer."
-    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    }, shortAnswer: " — key highlights include Funding: $5 Million and Type: Repayable. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1255,7 +1255,7 @@ export const guidesDatabase: Guide[] = [
       title: "SDTC Environmental Impact",
       type: 'warning',
       content: "SDTC requires <strong>quantifiable environmental benefits</strong> (GHG reduction, water savings, etc.). Vague sustainability claims won't meet the criteria."
-    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    }, shortAnswer: " — key highlights include SDTC: $10M and Focus: CleanTech. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1294,7 +1294,7 @@ export const guidesDatabase: Guide[] = [
       title: "Start with CDAP",
       type: 'tip',
       content: "For most SMEs, the <strong>Canada Digital Adoption Program (CDAP)</strong> is the best entry point. It provides immediate funds for planning and zero-interest loans for implementation."
-    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    }, shortAnswer: " — key highlights include Funding: $2.4B and Adoption: $15K. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1333,7 +1333,7 @@ export const guidesDatabase: Guide[] = [
       title: "Regulatory Pathway Critical",
       type: 'warning',
       content: "Life sciences funding requires <strong>clear regulatory pathway</strong> (FDA/Health Canada). Demonstrate you understand approval process before applying."
-    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    }, shortAnswer: " — key highlights include Focus: BioTech and Funding: $1M+. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1372,7 +1372,7 @@ export const guidesDatabase: Guide[] = [
       title: "Defence Contracts = Long Sales Cycle",
       type: 'tip',
       content: "Aerospace/defence funding often requires <strong>2-3 years from application to contract</strong>. Have runway capital while pursuing these opportunities."
-    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    }, shortAnswer: " — key highlights include Sector: Aerospace and Max: $10M+. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1411,7 +1411,7 @@ export const guidesDatabase: Guide[] = [
       title: "Provincial Manufacturing Grants",
       type: 'tip',
       content: "Manufacturing grants vary widely by province. <strong>Ontario (SWODF/EODF) and Quebec (IQ) offer largest amounts</strong> for equipment and expansion."
-    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    }, shortAnswer: " — key highlights include Sector: Mfg and Focus: Auto/Tech. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1450,7 +1450,7 @@ export const guidesDatabase: Guide[] = [
       title: "Ag Programs Are Fragmented",
       type: 'tip',
       content: "Agriculture funding comes from <strong>federal + provincial + regional agencies</strong>. Check all three levels simultaneously for maximum coverage."
-    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    }, shortAnswer: " — key highlights include Focus: Agri-Food and Range: $10K-5M. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1491,7 +1491,7 @@ export const guidesDatabase: Guide[] = [
       title: "CSBFP Doesn't Replace Collateral",
       type: 'warning',
       content: "Banks still lend to YOU. The CSBFP guarantee protects <strong>the bank</strong>, not you. If you default, you still owe. But it makes getting approved easier for startups without assets."
-    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    }, shortAnswer: " — key highlights include Max Loan: $1M and Equipment: $350K. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1530,7 +1530,7 @@ export const guidesDatabase: Guide[] = [
       title: "Shop Your Lender",
       type: 'tip',
       content: "<strong>All Canadian banks participate in CSBFP</strong>, but approval rates vary. If one bank rejects you, try another. The program is the same, but credit policies differ."
-    }, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
+    }, shortAnswer: " — key highlights include Max: $1M and Fee: 2%. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
