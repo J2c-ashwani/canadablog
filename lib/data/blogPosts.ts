@@ -171,7 +171,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["AI", "&", "Machine", "Learning", "Grants"],
-    }, shortAnswer: "Complete 2026-2027 guide to AI and machine learning grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Complete 2026-2027 guide to AI and machine learning grants. Programs like Scale AI and provincial tech funds offer millions in non-dilutive capital to de-risk commercial AI development.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -210,7 +210,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Alberta", "Government", "Business", "Grants", "2026"],
-    }, shortAnswer: "Complete guide to Alberta government business grants and provincial funding programs. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Alberta offers a robust ecosystem of provincial funding. Programs through Alberta Innovates and the Alberta Enterprise Corporation provide strategic capital for tech, energy, and agriculture businesses.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -249,7 +249,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Alberta", "Innovation", "Grants", "&", "Funding"],
-    }, shortAnswer: "Complete guide to Alberta innovation grants and funding programs. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Access Alberta's dedicated innovation funding. Alberta Innovates provides direct commercialization grants up to $500,000 to help tech startups move from prototype to global market.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -288,7 +288,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Alberta", "Small", "Business", "Grants", "2026"],
-    }, shortAnswer: "Complete guide to Alberta small business grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Alberta small businesses can access targeted provincial grants. Funding is available for digital adoption, specialized training, and market expansion specifically designed for AB-based companies.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -365,7 +365,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Amber", "Grant", "for", "Women", "Canada"],
-    }, shortAnswer: "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "The Amber Grant awards $10,000 monthly and a $25,000 year-end prize to women entrepreneurs. It's one of the most accessible grants, requiring only a simple story-based application instead of a complex pitch deck.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -404,7 +404,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Atlantic", "Canada", "Innovation", "Grants", "&"],
-    }, shortAnswer: "Complete guide to Atlantic Canada innovation grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "ACOA (Atlantic Canada Opportunities Agency) drives innovation in the East. They provide interest-free, non-dilutive loans and grants up to $500,000 for technology commercialization and productivity improvements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -482,7 +482,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["BC", "Small", "Business", "Grants", "2026"],
-    }, shortAnswer: "Complete guide to BC small business grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "BC offers targeted small business grants for local enterprises. Programs cover e-commerce scaling, employee training, and export readiness tailored specifically for British Columbia businesses.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -560,7 +560,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["BDC", "Women", "Entrepreneurs", "Financing", "2026"],
-    }, shortAnswer: "Complete guide to BDC Women Entrepreneurs financing with flexible loan terms, strategic advisory services, and growth support from Business Development Bank of Canada.. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "BDC offers flexible loans and specialized advisory services for women-led businesses. Beyond capital, they provide dedicated coaching to help women founders scale and optimize operations.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -599,7 +599,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Biotech", "&", "Life", "Sciences", "Grants"],
-    }, shortAnswer: "Complete 2026-2027 guide to biotech and life sciences grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Biotech startups can access massive federal funding pools like the NIH SBIR program. Phases I and II offer up to $2M+ in non-dilutive capital for high-risk, high-reward medical research.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -638,7 +638,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["BMO", "Celebrating", "Women", "Grant", "2026"],
-    }, shortAnswer: "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "BMO awards $10,000 grants alongside dedicated business advisory services. This program focuses on sustainability, community impact, and accelerating the growth of women-owned businesses.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -677,7 +677,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["British", "Columbia", "Government", "Business", "Grants"],
-    }, shortAnswer: "Complete guide to British Columbia government business grants and provincial funding programs. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "BC businesses can leverage provincial grants via Innovate BC and CleanBC. These programs prioritize sustainable economic growth, zero-emission technologies, and regional job creation.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -716,7 +716,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["British", "Columbia", "Innovation", "Grants", "&"],
-    }, shortAnswer: "Complete guide to BC innovation grants and tax credits. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "BC offers robust innovation support, highlighted by the 10% BC Innovation Tax Credit (BCITC). This stacks with federal SR&ED, allowing tech companies to dramatically reduce their R&D costs.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -755,7 +755,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["California", "Tech", "Startup", "Grants", "2026-2027"],
-    }, shortAnswer: "Complete 2026-2027 guide to California technology startup grants and incentives. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "California startups can tap into state-specific tech hubs and the $50k CalSEED program. GO-Biz also offers the California Competes Tax Credit to incentivize job creation and major capital investments.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -794,7 +794,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Advanced", "Manufacturing", "Innovation", "Grants"],
-    }, shortAnswer: "Complete guide to Canadian advanced manufacturing innovation grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Advanced manufacturers can access $3.1B+ in scale-up capital. NGen and the Strategic Innovation Fund provide heavy subsidies for adopting Industry 4.0, robotics, and automation technologies.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -833,7 +833,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Aerospace", "&", "Defence", "Grants"],
-    }, shortAnswer: "Complete guide to Canadian aerospace and defence innovation grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "The aerospace and defence sectors are supported by $450M+ in funding. Programs like the IDEaS challenge and CSA grants provide capital for R&D in dual-use technologies and space innovation.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -872,7 +872,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Agri-Food", "Technology", "Grants", "2026"],
-    }, shortAnswer: "Complete guide to Canadian agri-food technology innovation grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Agri-food tech companies can leverage $2.3B+ in federal and provincial funding. Programs prioritize precision agriculture, automation, and sustainable food processing solutions.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -911,7 +911,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Agriculture", "&", "Agri-Food", "Grants"],
-    }, shortAnswer: "Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Complete guide to Canada's $2.3B+ in agriculture grants. Programs like AgriInnovate and provincial SCAP funding offer up to 50% cost-sharing for agri-tech adoption and sustainable farming.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -950,7 +950,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Clean", "Technology", "&", "Environment"],
-    }, shortAnswer: "Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Canada offers over $1.2B in environmental and sustainability funding. The Clean Technology Investment Tax Credit (ITC) provides a 30% refundable credit, while SDTC funds major cleantech projects.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -989,7 +989,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Clean", "Technology", "Innovation", "Grants"],
-    }, shortAnswer: "Complete guide to Canadian clean technology innovation grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Access up to $15M for clean technology innovation through SDTC and the Net Zero Accelerator. These non-dilutive funds help scale green tech, water solutions, and emissions reduction projects.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1028,7 +1028,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Digital", "&", "AI", "Innovation"],
-    }, shortAnswer: "Complete guide to Canadian digital and AI innovation grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Canada is investing $850M+ in digital and AI innovation. Scale AI supports major supply chain projects, while CDAP offers up to $15k to help traditional businesses adopt new technologies.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1067,7 +1067,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Employment", "&", "Workforce", "Training"],
-    }, shortAnswer: "Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Employers can access over $1.9B in workforce funding. Programs like the Canada-Ontario Job Grant cover up to 83% of employee training costs, and SWPP offers $7,500 wage subsidies for hiring students.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1106,7 +1106,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Export", "Development", "Grants", "2026"],
-    }, shortAnswer: "Complete guide to Canadian export development grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Take your business global with $680M+ in export grants. CanExport covers up to 50% of eligible costs (up to $50k) for international expansion, including trade shows and digital marketing.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1145,7 +1145,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Federal", "Grants"],
-    }, shortAnswer: "Complete guide to government grants.. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "The federal government distributes over $10B annually across 4,000+ active grant and loan programs. These funds support everything from hiring and training to large-scale technological innovation.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1184,7 +1184,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Growth", "&", "Expansion", "Grants"],
-    }, shortAnswer: "Complete guide to Canadian business expansion grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Scale your business using Canada's $2.8B+ expansion funding. The Strategic Innovation Fund supports major capital projects over $10M, while regional agencies offer varied scale-up incentives.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1223,7 +1223,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Hiring", "&", "Training", "Grants"],
-    }, shortAnswer: "Complete guide to Canadian hiring and training grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Offset hiring costs with $1.9B+ in workforce development funding. Access $7,500 student wage subsidies, full coverage for specialized training, and $15,000 grants for hiring recent graduates.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1262,7 +1262,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Industry", "Specific", "Grants", "2026"],
-    }, shortAnswer: "Complete guide to Canadian industry specific grants. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Canada targets $1.5B+ toward specific sectors like auto, agriculture, and tourism. Leveraging industry-specific programs—like AgriScience or the EV Transition fund—often yields less competitive funding.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1301,7 +1301,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Innovation", "&", "R&D", "Grants"],
-    }, shortAnswer: "Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants.",
+    }, shortAnswer: "Recover your R&D costs through Canada's $4.2B+ innovation funding. The SR&ED program provides predictable tax incentives, backed by direct IRAP grants for technical innovation and commercialization.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1340,7 +1340,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Life", "Sciences", "Grants", "2026"],
-    }, shortAnswer: "Yes — Complete guide to Canadian life sciences innovation grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    }, shortAnswer: "The Life Sciences sector is supported by over $2.2B in federal and provincial funding. Major programs support medical device manufacturing, biomanufacturing, and clinical trial development.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1379,7 +1379,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Manufacturing", "&", "Industry", "Grants"],
-    }, shortAnswer: "Yes — Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    }, shortAnswer: "Manufacturers can tap into $3.1B+ for facility upgrades and Industry 4.0 adoption. NGen and regional programs offer millions in non-repayable funding for automation and advanced manufacturing tech.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1418,7 +1418,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Regional", "Economic", "Development", "Grants"],
-    }, shortAnswer: "Yes — Complete guide to Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    }, shortAnswer: "Canada's 7 Regional Development Agencies (like FedDev Ontario and PacifiCan) distribute $2B+ annually. These zero-interest, non-dilutive loans support local job creation, innovation, and community growth.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1457,7 +1457,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Startup", "Funding", "Grants", "2026"],
-    }, shortAnswer: "Yes — Most Canadian startups only know about Futurpreneur. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    }, shortAnswer: "Canadian startups have access to structured growth funding. From Futurpreneur's $60k launch loans to IRAP's technical grants and SR&ED, founders can scale without giving up equity.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1496,7 +1496,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Technology", "Adoption", "Grants", "2026"],
-    }, shortAnswer: "Yes — Complete guide to Canadian technology adoption grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    }, shortAnswer: "Offset the cost of new software and hardware with technology adoption grants. Programs like CDAP provide $15k for digital planning, unlocking $100k zero-interest BDC loans for implementation.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1535,7 +1535,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Cartier", "Women"],
-    }, shortAnswer: "Yes — Complete guide to Cartier Women. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    }, shortAnswer: "The Cartier Women's Initiative offers up to $100,000 USD in equity-free grant funding. Designed for impact-driven, women-led businesses, winners also receive elite executive coaching and global networking.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1574,7 +1574,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Clean", "Tech", "&", "Energy", "Grants"],
-    }, shortAnswer: "Yes — Complete 2026-2027 guide to clean tech and energy grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    }, shortAnswer: "Clean tech companies can access massive non-dilutive capital. Programs like the $2.3B DOE grants in the US and Canada's SDTC provide multi-million dollar support for transformational energy projects.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1705,7 +1705,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Stage", "4:", "Commercialization", "&", "Scale-Up"],
-    }, shortAnswer: "Yes — Complete guide to Canadian commercialization and scale-up funding. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    }, shortAnswer: "Transition from prototype to market with Canada's commercialization funds. IRAP and regional agencies offer substantial grants to help businesses prove their technology and secure early enterprise clients.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1744,7 +1744,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Small", "Business", "Financing", "Program"],
-    }, shortAnswer: "Yes — Complete guide to Canada Small Business Financing Program. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
+    }, shortAnswer: "The CSBFP offers government-backed loans up to $1.15 million for small businesses. These funds can be used for purchasing property, equipment, or leasehold improvements with highly competitive rates.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
