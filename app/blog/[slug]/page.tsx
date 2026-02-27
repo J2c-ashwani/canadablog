@@ -121,7 +121,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
 
               {/* Q&A ANSWER ENGINE HERO */}
-              <div className="bg-gradient-to-br from-red-600 via-red-500 to-orange-500 rounded-2xl p-8 md:p-12 mb-8 text-center">
+              <div className="bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-800 rounded-2xl p-8 md:p-12 mb-8 text-center">
                 <div className="mb-4">
                   <span className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm text-white text-sm font-medium px-4 py-1.5 rounded-full">
                     🔥 {category?.name ?? 'Grant'} Answer Engine
