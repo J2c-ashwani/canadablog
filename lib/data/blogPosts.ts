@@ -12082,7 +12082,7 @@ ${superclustersPost}
     category: "Demographic-Specific",
     categoryColor: "bg-green-100 text-green-800",
     author: "Rural Policy Team",
-    date: "2026-09-12",
+    date: "2026-02-12",
     readTime: "8 min read",
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
@@ -12107,7 +12107,7 @@ ${ruralBizPost}
 `,
     seo: {
       keywords: ["Rural business grants Canada", "Community Futures loans", "rural broadband funding", "Northern Ontario grants"]
-    },
+    }, shortAnswer: "Rural Canadian businesses (communities under 50K population) can access CFDC loans up to $150K with flexible terms, plus federal broadband and agricultural support grants. Start at your local Community Futures office — they provide free advisory and connect you to all available programs.",
     metrics: [
       { label: 'Max Loan', value: '$150k', description: 'Flexible Term', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Pop.', value: '<50k', description: 'Rural Limit', color: 'text-blue-600', iconName: 'MapPin' },
