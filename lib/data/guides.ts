@@ -67,7 +67,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "The 'Credit Elsewhere' Test",
       type: 'warning',
-      content: "The SBA will ONLY fund you if you <strong>cannot</strong> get a loan elsewhere on reasonable terms. You must prove you were rejected or couldn't get a standard bank loan first."
+      content: "The SBA will ONLY fund you if you <strong>cannot</strong> get a loan elsewhere on reasonable terms. You must prove you were rejected or couldn't get a standard bank loan first.",
     }, shortAnswer: "The SBA application takes 30-90 days. You need a 640+ credit score, 10-20% down payment, and proof you can't get a conventional loan. Start at SBA.gov/lender-match to find an approved lender.",
     jumpLinks: [
       { title: 'Requirements', id: 'requirements' },
@@ -105,7 +105,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Beware of 'Free Money' Scams",
       type: 'warning',
-      content: "The US Government does not give 'free money' for personal debt or starting a business without strings attached. Real federal grants are for specific projects (Health, Science, Education). If someone asks for a fee to apply, it is a scam."
+      content: "The US Government does not give 'free money' for personal debt or starting a business without strings attached. Real federal grants are for specific projects (Health, Science, Education). If someone asks for a fee to apply, it is a scam.",
     }, shortAnswer: "How to Apply for USA Federal Grants — Complete step-by-step guide for navigating the US federal grant application process including Grants.gov registration and submission.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -140,7 +140,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Pick the Right SBA Program",
       type: 'tip',
-      content: "Most people apply for 7(a) when they should use 504. If you need <strong>real estate or long-term equipment</strong> (10+ years), the 504 program offers better rates and longer terms."
+      content: "Most people apply for 7(a) when they should use 504. If you need <strong>real estate or long-term equipment</strong> (10+ years), the 504 program offers better rates and longer terms.",
     }, shortAnswer: " — key highlights include 7(a) Max: $5M and 504 Max: $5.5M. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
@@ -170,12 +170,13 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Don't Miss the SAM.gov Deadline",
       type: 'warning',
-      content: "Register on SAM.gov at least 4 weeks before you plan to submit. It's free, but processing times can be slow, and it is the #1 reason startups miss the submission window."
+      content: "Register on SAM.gov at least 4 weeks before you plan to submit. It's free, but processing times can be slow, and it is the #1 reason startups miss the submission window.",
+      shortAnswer: "Don't Miss the SAM.gov Deadline. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     highlights: [
       'SBIR Phase I & II process',
       'Technical proposal writing',
-      'Commercialization planning'
+      'Commercialization planning',
     ], shortAnswer: "How to Apply for SBIR Research Grants — Complete guide to applying for Small Business Innovation Research (SBIR) Phase I & II grants.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -210,7 +211,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "STTR Needs a Research Partner",
       type: 'warning',
-      content: "SBIR is for solo companies. <strong>STTR requires a partnership</strong> with a university or research institution. Don't apply to STTR unless you already have that MOU signed."
+      content: "SBIR is for solo companies. <strong>STTR requires a partnership</strong> with a university or research institution. Don't apply to STTR unless you already have that MOU signed.",
     }, shortAnswer: "How to Apply for SBIR/STTR Grants — Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -245,7 +246,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Federal Grants Are Project-Based",
       type: 'warning',
-      content: "The federal government does NOT give grants for 'starting a business' or 'paying off debt.' Federal grants fund <strong>specific projects</strong> (R&D, community programs, education). Check eligibility carefully."
+      content: "The federal government does NOT give grants for 'starting a business' or 'paying off debt.' Federal grants fund <strong>specific projects</strong> (R&D, community programs, education). Check eligibility carefully.",
     }, shortAnswer: "Search Grants.gov for 1000+ active federal grant opportunities ($50K-$500K typical). Federal grants fund specific projects, not general business expenses. Approval takes 3-12 months with a 10-30% success rate.",
     jumpLinks: [
       { title: 'Find Grants', id: 'find-grants' },
@@ -283,7 +284,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "8(a) Program is a Game-Changer",
       type: 'success',
-      content: "The SBA 8(a) Business Development Program provides <strong>9 years of sole-source federal contracts</strong> and mentorship. It's competitive to get in, but worth the effort for minority entrepreneurs."
+      content: "The SBA 8(a) Business Development Program provides <strong>9 years of sole-source federal contracts</strong> and mentorship. It's competitive to get in, but worth the effort for minority entrepreneurs.",
     }, shortAnswer: " — key highlights include MBDA: Free and 8(a): 9 Years. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -318,7 +319,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Verify Eligibility First",
       type: 'warning',
-      content: "This is for <strong>organizations supporting startups</strong>, not startups themselves. Accelerators, incubators, and non-profits are the applicants."
+      content: "This is for <strong>organizations supporting startups</strong>, not startups themselves. Accelerators, incubators, and non-profits are the applicants.",
     }, shortAnswer: " — key highlights include Prize: $50K-200K and Focus: STEM/R&D. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -353,7 +354,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Answer the 'So What?'",
       type: 'tip',
-      content: "Don't just describe <em>what</em> you will do. Explain <em>why it matters</em>. If your project succeeds, who benefits? How does the taxpayer get a return on investment?"
+      content: "Don't just describe <em>what</em> you will do. Explain <em>why it matters</em>. If your project succeeds, who benefits? How does the taxpayer get a return on investment?",
     }, shortAnswer: "Federal Grant Application Tips & Best Practices — Expert tips and strategies for writing winning federal grant applications.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -388,7 +389,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "DOE Favors National Labs Partnerships",
       type: 'tip',
-      content: "DOE grants have <strong>higher success rates</strong> when you partner with a National Laboratory (like Argonne, NREL, or Sandia). They provide technical expertise and credibility."
+      content: "DOE grants have <strong>higher success rates</strong> when you partner with a National Laboratory (like Argonne, NREL, or Sandia). They provide technical expertise and credibility.",
     }, shortAnswer: " — key highlights include Funding: $100M+ and Focus: CleanTech. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -423,7 +424,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "CA Guarantee vs SBA",
       type: 'tip',
-      content: "California's program has <strong>looser credit requirements</strong> than SBA 7(a) but lower maximum amounts. Try CA first if you have credit challenges."
+      content: "California's program has <strong>looser credit requirements</strong> than SBA 7(a) but lower maximum amounts. Try CA first if you have credit challenges.",
     }, shortAnswer: " — key highlights include State: California and Max: $2.5M. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
@@ -460,7 +461,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "SIF is for 'Market Movers'",
       type: 'warning',
-      content: "The Strategic Innovation Fund (SIF) is not for early-stage startups. It is designed for massive projects that create hundreds of jobs. If you are requesting less than $10M, look at <strong>IRAP</strong> or <strong>Regional Agencies</strong> instead."
+      content: "The Strategic Innovation Fund (SIF) is not for early-stage startups. It is designed for massive projects that create hundreds of jobs. If you are requesting less than $10M, look at <strong>IRAP</strong> or <strong>Regional Agencies</strong> instead.",
     }, shortAnswer: " — key highlights include Min Project: $10 Million and Funding Type: Contribution. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -495,7 +496,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "The 'ITA' Factor",
       type: 'tip',
-      content: "You cannot apply for IRAP through a portal. You must be 'invited' by an Industrial Technology Advisor (ITA). Your first step is not filling a form, but calling IRAP (1-877-994-4727) to request a consultation."
+      content: "You cannot apply for IRAP through a portal. You must be 'invited' by an Industrial Technology Advisor (ITA). Your first step is not filling a form, but calling IRAP (1-877-994-4727) to request a consultation.",
     }, shortAnswer: "IRAP covers up to 80% of technical staff salaries ($150K-$500K typical first project). You cannot apply online — call 1-877-994-4727 and request an ITA consultation. Monthly approval cycles make it one of Canada's fastest innovation grants.",
     jumpLinks: [
       { title: 'Eligibility', id: 'eligibility' },
@@ -534,7 +535,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Call First, Apply Later",
       type: 'tip',
-      content: "IRAP doesn't have an online application. You must <strong>call 1-877-994-4727</strong> to request an Industrial Technology Advisor (ITA) consultation. They decide if you're eligible BEFORE you prepare anything."
+      content: "IRAP doesn't have an online application. You must <strong>call 1-877-994-4727</strong> to request an Industrial Technology Advisor (ITA) consultation. They decide if you're eligible BEFORE you prepare anything.",
     }, shortAnswer: " — key highlights include NRC: IRAP and Coverage: Up to 80%. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -569,7 +570,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "The ITA Relationship is Key",
       type: 'tip',
-      content: "You cannot apply online blindly. <strong>You must engage an Industrial Technology Advisor (ITA)</strong> first. They invite you to apply. Cold applications don't exist."
+      content: "You cannot apply online blindly. <strong>You must engage an Industrial Technology Advisor (ITA)</strong> first. They invite you to apply. Cold applications don't exist.",
     }, shortAnswer: " — key highlights include Contribution: 80% and Contractors: 50%. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -604,7 +605,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Technological Uncertainty is Key",
       type: 'warning',
-      content: "SR&ED is not for 'standard engineering' or 'bug fixing'. To qualify, you must prove you faced a technological uncertainty that standard practice could not resolve. Document your failures—they are your proof!"
+      content: "SR&ED is not for 'standard engineering' or 'bug fixing'. To qualify, you must prove you faced a technological uncertainty that standard practice could not resolve. Document your failures—they are your proof!",
     }, shortAnswer: "SR&ED gives CCPCs a 35% refundable tax credit on eligible R&D. You must file within 18 months of your fiscal year end. The key requirement is proving 'technological uncertainty' — document your failures, they are your strongest evidence.",
     jumpLinks: [
       { title: 'Eligible Work', id: 'eligible-activities' },
@@ -645,7 +646,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "WES is an Ecosystem, Not a Program",
       type: 'success',
-      content: "Women Entrepreneurship Strategy isn't one application. It's <strong>15+ coordinated programs</strong> (grants, loans, mentorship). Stack multiple WES programs for maximum benefit."
+      content: "Women Entrepreneurship Strategy isn't one application. It's <strong>15+ coordinated programs</strong> (grants, loans, mentorship). Stack multiple WES programs for maximum benefit.",
     }, shortAnswer: "WES is a $6B ecosystem of 15+ programs — not a single application. Start with the Women Entrepreneurship Loan Fund (up to $100K), then stack mentorship, export support, and regional grants simultaneously.",
     jumpLinks: [
       { title: 'Overview', id: 'wes-overview' },
@@ -683,7 +684,8 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Focus on Economic Impact",
       type: 'tip',
-      content: "The government prioritizes applications that demonstrate clear **job creation** and economic benefit. Don't just explain how the money helps *you*; explain how it helps the *economy*."
+      content: "The government prioritizes applications that demonstrate clear **job creation** and economic benefit. Don't just explain how the money helps *you*; explain how it helps the *economy*.",
+    shortAnswer: " — key highlights include Funding: $100K and Success Rate: 20-30%. Our guide covers all eligible programs, application steps, and expert tips.",
     },
     content: `
       <h2>Overview of the Women Entrepreneurship Fund</h2>
@@ -736,7 +738,7 @@ export const guidesDatabase: Guide[] = [
       </ul>
 
       <h2>Success Tips</h2>
-      <p>Since the program is highly competitive, ensure your application stands out by quantifying your results. Instead of saying "we will grow sales," say "we project a <strong>$250,000 increase in export revenue</strong> within 18 months." Highlight your commitment to diversity and inclusion, as this aligns with the fund's core mission.</p>
+      <p>Since the program is highly competitive, ensure your application stands out by quantifying your results. Instead of saying "we will grow sales," say "we project a <strong>$250,000 increase in export revenue</strong> within 18 months." Highlight your commitment to diversity and inclusion, as this aligns with the fund's core mission.</p>,
     `, shortAnswer: "Yes — This program offers substantial funding.. Funding amounts average various funding amounts for eligible applicants. Our complete guide covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -775,7 +777,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Apply via Partners",
       type: 'tip',
-      content: "You don't apply to the government directly. Apply through <strong>Women's Enterprise Organizations (WEOs)</strong> like WEOC or Coralus. Each has different criteria."
+      content: "You don't apply to the government directly. Apply through <strong>Women's Enterprise Organizations (WEOs)</strong> like WEOC or Coralus. Each has different criteria.",
     }, shortAnswer: " — key highlights include Loan: $50K and Admin: Partners. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
@@ -810,7 +812,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "The Mentor is the Key",
       type: 'success',
-      content: "Futurpreneur isn't just money; it's a mentorship program. Showing that you are <strong>coachable</strong> during the interview is just as important as your business plan."
+      content: "Futurpreneur isn't just money; it's a mentorship program. Showing that you are <strong>coachable</strong> during the interview is just as important as your business plan.",
     }, shortAnswer: " — key highlights include Loan: $60k and Age: 18 - 39. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -845,7 +847,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "BDC Women Loan Advantages",
       type: 'success',
-      content: "BDC's Women Entrepreneurship Program offers <strong>flexible terms and mentorship</strong> not available in traditional banking, plus can be stacked with government grants."
+      content: "BDC's Women Entrepreneurship Program offers <strong>flexible terms and mentorship</strong> not available in traditional banking, plus can be stacked with government grants.",
     }, shortAnswer: " — key highlights include BDC: Loans and Women: Priority. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -880,7 +882,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Stack CDAP with Wage Subsidies",
       type: 'tip',
-      content: "Smart founders stack grants. Use the <strong>CDAP</strong> grant to pay for a digital strategy, then use a <strong>Digital Youth Internship</strong> grant to hire a student to implement it."
+      content: "Smart founders stack grants. Use the <strong>CDAP</strong> grant to pay for a digital strategy, then use a <strong>Digital Youth Internship</strong> grant to hire a student to implement it.",
     }, shortAnswer: " — key highlights include Grant: $15,000 and Wage: $7,300. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -915,7 +917,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "EDC + CanExport Stack",
       type: 'success',
-      content: "Women exporters can combine <strong>CanExport grants (up to $75K) with EDC financing</strong> for comprehensive international expansion support."
+      content: "Women exporters can combine <strong>CanExport grants (up to $75K) with EDC financing</strong> for comprehensive international expansion support.",
     }, shortAnswer: " — key highlights include EDC: Crown Corp and Focus: Trade. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -950,7 +952,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Industry Partnerships Boost Success",
       type: 'tip',
-      content: "Alliance grants require a <strong>private sector partner</strong>. Bringing cash/in-kind contributions from industry significantly increases your approval odds."
+      content: "Alliance grants require a <strong>private sector partner</strong>. Bringing cash/in-kind contributions from industry significantly increases your approval odds.",
     }, shortAnswer: " — key highlights include Value: $20K-1M+ and Duration: 1-5 Years. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -985,7 +987,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Know Your RDA",
       type: 'tip',
-      content: "Each region has its own RDA: <strong>WD (West), PrairiesCan, FedDev Ontario, FedDev Southern Ontario, CED Quebec, ACOA (Atlantic)</strong>. Apply to YOUR regional agency, not all six."
+      content: "Each region has its own RDA: <strong>WD (West), PrairiesCan, FedDev Ontario, FedDev Southern Ontario, CED Quebec, ACOA (Atlantic)</strong>. Apply to YOUR regional agency, not all six.",
     }, shortAnswer: " — key highlights include Agencies: 6 RDAs and Funding: Varies. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -1020,7 +1022,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Indigenous Set-Asides Have Priority",
       type: 'success',
-      content: "Many federal programs have <strong>dedicated Indigenous set-asides</strong> with less competition. IAND programs also provide culturally relevant business support unavailable elsewhere."
+      content: "Many federal programs have <strong>dedicated Indigenous set-asides</strong> with less competition. IAND programs also provide culturally relevant business support unavailable elsewhere.",
     }, shortAnswer: " — key highlights include IAND: Priority and Rural: USDA/NRC. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }
@@ -1057,7 +1059,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Focus on 'SWODF' and 'EODF'",
       type: 'tip',
-      content: "Outside of Toronto? The <strong>Southwestern (SWODF)</strong> and <strong>Eastern (EODF)</strong> Ontario Development Funds are the real heavy hitters for manufacturing and expansion projects over $500k."
+      content: "Outside of Toronto? The <strong>Southwestern (SWODF)</strong> and <strong>Eastern (EODF)</strong> Ontario Development Funds are the real heavy hitters for manufacturing and expansion projects over $500k.",
     }, shortAnswer: " — key highlights include Grant: $2,500 and Training: 100% Free. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1096,7 +1098,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Investissement Québec is King",
       type: 'success',
-      content: "In Quebec, <strong>Investissement Québec (IQ)</strong> is the central hub. Unlike other provinces with fragmented agencies, IQ handles loans, equity, and grants under one roof. Start there."
+      content: "In Quebec, <strong>Investissement Québec (IQ)</strong> is the central hub. Unlike other provinces with fragmented agencies, IQ handles loans, equity, and grants under one roof. Start there.",
     }, shortAnswer: " — key highlights include Loan: $50k+ and Credit: 30%. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1135,7 +1137,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Target 'Innovate BC'",
       type: 'tip',
-      content: "If you are a tech company, <strong>Innovate BC</strong> is your primary target. Their 'Hiring Grant' is one of the easiest ways to get $10,000 funded for a student or co-op hire."
+      content: "If you are a tech company, <strong>Innovate BC</strong> is your primary target. Their 'Hiring Grant' is one of the easiest ways to get $10,000 funded for a student or co-op hire.",
     }, shortAnswer: " — key highlights include Grant: $10,000 and Tax Credit: 30%. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1174,7 +1176,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Alberta Innovates is your First Stop",
       type: 'success',
-      content: "For most Alberta tech startups, the <strong>Alberta Innovates Voucher Program</strong> is the entry point. It pays service providers directly to help you build or market your product."
+      content: "For most Alberta tech startups, the <strong>Alberta Innovates Voucher Program</strong> is the entry point. It pays service providers directly to help you build or market your product.",
     }, shortAnswer: " — key highlights include Voucher: $15k - $100k and Clean Tech: $5M+. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1213,7 +1215,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "It's Not Just for Farmers",
       type: 'tip',
-      content: "AgriInnovate is often misunderstood. It is for <strong>commercializing new agricultural technology</strong>. If you are a tech company building sensors for farms, YOU are eligible, not just the farmer."
+      content: "AgriInnovate is often misunderstood. It is for <strong>commercializing new agricultural technology</strong>. If you are a tech company building sensors for farms, YOU are eligible, not just the farmer.",
     }, shortAnswer: " — key highlights include Funding: $5 Million and Type: Repayable. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1254,7 +1256,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "SDTC Environmental Impact",
       type: 'warning',
-      content: "SDTC requires <strong>quantifiable environmental benefits</strong> (GHG reduction, water savings, etc.). Vague sustainability claims won't meet the criteria."
+      content: "SDTC requires <strong>quantifiable environmental benefits</strong> (GHG reduction, water savings, etc.). Vague sustainability claims won't meet the criteria.",
     }, shortAnswer: " — key highlights include SDTC: $10M and Focus: CleanTech. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1293,7 +1295,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Start with CDAP",
       type: 'tip',
-      content: "For most SMEs, the <strong>Canada Digital Adoption Program (CDAP)</strong> is the best entry point. It provides immediate funds for planning and zero-interest loans for implementation."
+      content: "For most SMEs, the <strong>Canada Digital Adoption Program (CDAP)</strong> is the best entry point. It provides immediate funds for planning and zero-interest loans for implementation.",
     }, shortAnswer: " — key highlights include Funding: $2.4B and Adoption: $15K. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1332,7 +1334,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Regulatory Pathway Critical",
       type: 'warning',
-      content: "Life sciences funding requires <strong>clear regulatory pathway</strong> (FDA/Health Canada). Demonstrate you understand approval process before applying."
+      content: "Life sciences funding requires <strong>clear regulatory pathway</strong> (FDA/Health Canada). Demonstrate you understand approval process before applying.",
     }, shortAnswer: " — key highlights include Focus: BioTech and Funding: $1M+. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1371,7 +1373,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Defence Contracts = Long Sales Cycle",
       type: 'tip',
-      content: "Aerospace/defence funding often requires <strong>2-3 years from application to contract</strong>. Have runway capital while pursuing these opportunities."
+      content: "Aerospace/defence funding often requires <strong>2-3 years from application to contract</strong>. Have runway capital while pursuing these opportunities.",
     }, shortAnswer: " — key highlights include Sector: Aerospace and Max: $10M+. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1410,7 +1412,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Provincial Manufacturing Grants",
       type: 'tip',
-      content: "Manufacturing grants vary widely by province. <strong>Ontario (SWODF/EODF) and Quebec (IQ) offer largest amounts</strong> for equipment and expansion."
+      content: "Manufacturing grants vary widely by province. <strong>Ontario (SWODF/EODF) and Quebec (IQ) offer largest amounts</strong> for equipment and expansion.",
     }, shortAnswer: " — key highlights include Sector: Mfg and Focus: Auto/Tech. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1449,7 +1451,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Ag Programs Are Fragmented",
       type: 'tip',
-      content: "Agriculture funding comes from <strong>federal + provincial + regional agencies</strong>. Check all three levels simultaneously for maximum coverage."
+      content: "Agriculture funding comes from <strong>federal + provincial + regional agencies</strong>. Check all three levels simultaneously for maximum coverage.",
     }, shortAnswer: " — key highlights include Focus: Agri-Food and Range: $10K-5M. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1490,7 +1492,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "CSBFP Doesn't Replace Collateral",
       type: 'warning',
-      content: "Banks still lend to YOU. The CSBFP guarantee protects <strong>the bank</strong>, not you. If you default, you still owe. But it makes getting approved easier for startups without assets."
+      content: "Banks still lend to YOU. The CSBFP guarantee protects <strong>the bank</strong>, not you. If you default, you still owe. But it makes getting approved easier for startups without assets.",
     }, shortAnswer: " — key highlights include Max Loan: $1M and Equipment: $350K. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1529,7 +1531,7 @@ export const guidesDatabase: Guide[] = [
     expertTip: {
       title: "Shop Your Lender",
       type: 'tip',
-      content: "<strong>All Canadian banks participate in CSBFP</strong>, but approval rates vary. If one bank rejects you, try another. The program is the same, but credit policies differ."
+      content: "<strong>All Canadian banks participate in CSBFP</strong>, but approval rates vary. If one bank rejects you, try another. The program is the same, but credit policies differ.",
     }, shortAnswer: " — key highlights include Max: $1M and Fee: 2%. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

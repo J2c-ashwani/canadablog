@@ -120,7 +120,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Agriculture", "&", "Agri-Food", "Canada", "Grants"]
+      keywords: ["Agriculture", "&", "Agri-Food", "Canada", "Grants"],
+      shortAnswer: "Complete guide to Agriculture and Agri-Food Canada federal funding programs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Funding', value: 'Up to $5M', description: 'AgriInnovate Program', color: 'text-green-600', iconName: 'DollarSign' },
@@ -131,7 +132,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Apply Through Provincial Channels",
       type: 'tip',
-      content: "Most AAFC programs are delivered through <strong>provincial agriculture ministries</strong>. Start by contacting your provincial agriculture office for application pathways and regional program variations."
+      content: "Most AAFC programs are delivered through <strong>provincial agriculture ministries</strong>. Start by contacting your provincial agriculture office for application pathways and regional program variations.",
     }, shortAnswer: "Yes — Agriculture & Agri-Food Canada offers up to $5M through AgriInnovate, AgriScience, and Sustainable CAP programs. Most funding is delivered through provincial agriculture ministries on a 50% cost-sharing basis.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -159,7 +160,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["AI", "&", "Machine", "Learning", "Grants"]
+      keywords: ["AI", "&", "Machine", "Learning", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to AI and machine learning grants. Total funding available: $305K.",
     },
     metrics: [
       { label: 'Funding', value: '$305K - $1.25M', description: 'NSF SBIR Phases', color: 'text-blue-600', iconName: 'DollarSign' },
@@ -170,7 +172,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Commercial Potential is Critical",
       type: 'tip',
-      content: "NSF implies 'science', but the SBIR program is about <strong>commercialization</strong>. You must show a clear path to market revenue, not just cool tech."
+      content: "NSF implies 'science', but the SBIR program is about <strong>commercialization</strong>. You must show a clear path to market revenue, not just cool tech.",
     }, shortAnswer: "Complete 2026-2027 guide to AI and machine learning grants. Key highlights: Funding: $305K - $1.25M, Equity: 0%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -199,7 +201,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Alberta", "Government", "Business", "Grants", "2026"]
+      keywords: ["Alberta", "Government", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Alberta government business grants and provincial funding programs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Voucher', value: '$15k - $100k', description: 'Alberta Innovates', color: 'text-blue-600', iconName: 'Zap' },
@@ -210,7 +213,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Alberta Innovates is your First Stop",
       type: 'success',
-      content: "For most Alberta tech startups, the <strong>Alberta Innovates Voucher Program</strong> is the entry point. It pays service providers directly to help you build or market your product."
+      content: "For most Alberta tech startups, the <strong>Alberta Innovates Voucher Program</strong> is the entry point. It pays service providers directly to help you build or market your product.",
     }, shortAnswer: "Complete guide to Alberta government business grants and provincial funding programs. Key highlights: Voucher: $15k - $100k, Clean Tech: $5M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -239,7 +242,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Alberta", "Innovation", "Grants", "&", "Funding"]
+      keywords: ["Alberta", "Innovation", "Grants", "&", "Funding"],
+      shortAnswer: "Complete guide to Alberta innovation grants and funding programs. Total funding available: $950M+.",
     },
     metrics: [
       { label: 'Total', value: '$950M+', description: 'Annual allocation', color: 'text-green-600', iconName: 'DollarSign' },
@@ -250,7 +254,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Stack Programs for Maximum Impact",
       type: 'success',
-      content: "Alberta allows <strong>stacking multiple programs</strong>. Combine Alberta Innovates vouchers with ERA funding and federal SR&ED credits to maximize your non-dilutive capital."
+      content: "Alberta allows <strong>stacking multiple programs</strong>. Combine Alberta Innovates vouchers with ERA funding and federal SR&ED credits to maximize your non-dilutive capital.",
     }, shortAnswer: "Complete guide to Alberta innovation grants and funding programs. Key highlights: Total: $950M+, ERA: $100M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -279,7 +283,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Alberta", "Small", "Business", "Grants", "2026"]
+      keywords: ["Alberta", "Small", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Alberta small business grants. Total funding available: $980M+.",
     },
     metrics: [
       { label: 'Training', value: '$3000', description: 'Job Grant per hire', color: 'text-blue-600', iconName: 'Users' },
@@ -289,7 +294,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Look for 'CARES'",
       type: 'tip',
-      content: "The Community and Regional Economic Support (CARES) program often funds local initiatives. Check with your local Chamber of Commerce for municipal-level grants."
+      content: "The Community and Regional Economic Support (CARES) program often funds local initiatives. Check with your local Chamber of Commerce for municipal-level grants.",
     }, shortAnswer: "Complete guide to Alberta small business grants. Key highlights: Training: $3000, Digital: $15,000.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -318,7 +323,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Alberta", "Women", "Business", "Grants", "2026"]
+      keywords: ["Alberta", "Women", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovation funding. Total funding available: $580M.",
     },
     metrics: [
       { label: 'AWE Loans', value: 'Up to $150K', description: 'Alberta Women Entrepreneurs', color: 'text-green-600', iconName: 'DollarSign' },
@@ -329,7 +335,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "AWE is More Than Loans",
       type: 'tip',
-      content: "Alberta Women Entrepreneurs offers <strong>free business advisory services</strong> even if you don't take a loan. Use their expertise for business planning, export readiness, and growth strategy."
+      content: "Alberta Women Entrepreneurs offers <strong>free business advisory services</strong> even if you don't take a loan. Use their expertise for business planning, export readiness, and growth strategy.",
     }, shortAnswer: "Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovation funding. Key highlights: AWE Loans: Up to $150K, Training: Free.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -358,7 +364,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Amber", "Grant", "for", "Women", "Canada"]
+      keywords: ["Amber", "Grant", "for", "Women", "Canada"],
+      shortAnswer: "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Total funding available: $10K.",
     },
     metrics: [
       { label: 'Value', value: '$10,000', description: 'Monthly Grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -369,7 +376,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Tell Your Story",
       type: 'tip',
-      content: "The Amber Grant is not about ROI or spreadsheets. They want to hear your <strong>personal story</strong> and passion. Be authentic, vulnerable, and explain what the money would specifically do for you <em>right now</em>."
+      content: "The Amber Grant is not about ROI or spreadsheets. They want to hear your <strong>personal story</strong> and passion. Be authentic, vulnerable, and explain what the money would specifically do for you <em>right now</em>.",
     }, shortAnswer: "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Key highlights: Value: $10,000, Annual: $25,000.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -398,7 +405,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Atlantic", "Canada", "Innovation", "Grants", "&"]
+      keywords: ["Atlantic", "Canada", "Innovation", "Grants", "&"],
+      shortAnswer: "Complete guide to Atlantic Canada innovation grants. Total funding available: $650M+.",
     },
     metrics: [
       { label: 'Funding', value: '$500k - $3M', description: 'Atlantic Innovation Fund', color: 'text-blue-600', iconName: 'DollarSign' },
@@ -409,7 +417,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Collaborate with Universities",
       type: 'tip',
-      content: "The AIF strongly favors projects that involve <strong>collaboration with Atlantic research institutions</strong>. Adding Dalhousie or UNB as a partner significantly increases your success probability."
+      content: "The AIF strongly favors projects that involve <strong>collaboration with Atlantic research institutions</strong>. Adding Dalhousie or UNB as a partner significantly increases your success probability.",
     }, shortAnswer: "Complete guide to Atlantic Canada innovation grants. Key highlights: Funding: $500k - $3M, Credit: 15%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -438,7 +446,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Atlantic", "Canada", "Small", "Business", "Grants"]
+      keywords: ["Atlantic", "Canada", "Small", "Business", "Grants"],
+      shortAnswer: "Complete guide to Atlantic Canada business grants. Total funding available: $850M+.",
     },
     metrics: [
       { label: 'Funding', value: '$50k - $250k', description: 'ACOA Programs', color: 'text-blue-600', iconName: 'DollarSign' },
@@ -449,7 +458,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Leverage ACOA's Network",
       type: 'success',
-      content: "ACOA (Atlantic Canada Opportunities Agency) is more than just funding; they offer invaluable <strong>business advisory services and connections</strong>. Engage with their business development officers early."
+      content: "ACOA (Atlantic Canada Opportunities Agency) is more than just funding; they offer invaluable <strong>business advisory services and connections</strong>. Engage with their business development officers early.",
     }, shortAnswer: "Complete guide to Atlantic Canada business grants. Key highlights: Funding: $50k - $250k, Match: 25% - 75%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -478,7 +487,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["BC", "Small", "Business", "Grants", "2026"]
+      keywords: ["BC", "Small", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to BC small business grants. Total funding available: $1.3B+.",
     },
     metrics: [
       { label: 'Recovery', value: '$30K', description: 'Small Business Grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -489,7 +499,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Use SBVC Tax Credit Strategically",
       type: 'tip',
-      content: "The BC Small Business Venture Capital Tax Credit gives investors <strong>30% credit</strong>. Use this to attract angel investors who get immediate tax benefits for backing your company."
+      content: "The BC Small Business Venture Capital Tax Credit gives investors <strong>30% credit</strong>. Use this to attract angel investors who get immediate tax benefits for backing your company.",
     }, shortAnswer: "Complete guide to BC small business grants. Key highlights: Recovery: $30K, VC Tax: 30%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -518,7 +528,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["BC", "Women", "Business", "Grants", "2026"]
+      keywords: ["BC", "Women", "Business", "Grants", "2026"],
+      shortAnswer: "BC Women Business Grants: $650M in total funding is available across multiple federal and provincial programs. Our guide breaks down eligibility requirements, application steps, and expert strategies.",
     },
     metrics: [
       { label: 'WeBC Loans', value: 'Up to $150K', description: 'Women Enterprise Centre', color: 'text-green-600', iconName: 'DollarSign' },
@@ -529,7 +540,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "WeBC is Your Starting Point",
       type: 'success',
-      content: "Women's Enterprise Centre BC offers <strong>free business advising</strong> and can connect you to multiple funding sources. They know the BC funding landscape inside out."
+      content: "Women's Enterprise Centre BC offers <strong>free business advising</strong> and can connect you to multiple funding sources. They know the BC funding landscape inside out.",
     }, shortAnswer: "BC Women Business Grants: access $650M in available funding. Key programs offer WeBC Loans: Up to $150K and Tech Fund: $100K+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -558,7 +569,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["BDC", "Women", "Entrepreneurs", "Financing", "2026"]
+      keywords: ["BDC", "Women", "Entrepreneurs", "Financing", "2026"],
+      shortAnswer: "Complete guide to BDC Women Entrepreneurs financing with flexible loan terms, strategic advisory services, and growth support from Business Development Bank of Canada. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Loans', value: '$100K - $5M', description: 'Flexible terms', color: 'text-green-600', iconName: 'DollarSign' },
@@ -569,7 +581,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "BDC Advisory is the Real Value",
       type: 'tip',
-      content: "Beyond financing, BDC offers <strong>free strategic advisory services</strong> for women entrepreneurs. Their Growth Driver and Digital Adoption programs can transform your business operations."
+      content: "Beyond financing, BDC offers <strong>free strategic advisory services</strong> for women entrepreneurs. Their Growth Driver and Digital Adoption programs can transform your business operations.",
     }, shortAnswer: "Complete guide to BDC Women Entrepreneurs financing with flexible loan terms, strategic advisory services, and growth support from Business Development Bank of Canada. Key highlights: Loans: $100K - $5M, Rate: Competitive.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -598,7 +610,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Biotech", "&", "Life", "Sciences", "Grants"]
+      keywords: ["Biotech", "&", "Life", "Sciences", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to biotech and life sciences grants. Total funding available: $306K.",
     },
     metrics: [
       { label: 'Phase I', value: '$306K', description: 'NIH SBIR', color: 'text-green-600', iconName: 'DollarSign' },
@@ -609,7 +622,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Principal Investigator is Key",
       type: 'warning',
-      content: "NIH reviewers focus heavily on the <strong>PI's credentials and track record</strong>. If your team lacks biotech research credentials, consider adding a scientific advisory board member with NIH grant history."
+      content: "NIH reviewers focus heavily on the <strong>PI's credentials and track record</strong>. If your team lacks biotech research credentials, consider adding a scientific advisory board member with NIH grant history.",
     }, shortAnswer: "Complete 2026-2027 guide to biotech and life sciences grants. Key highlights: Phase I: $306K, Phase II: $2M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -638,7 +651,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["BMO", "Celebrating", "Women", "Grant", "2026"]
+      keywords: ["BMO", "Celebrating", "Women", "Grant", "2026"],
+      shortAnswer: "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources. Total funding available: $10K.",
     },
     metrics: [
       { label: 'Grant', value: '$10,000', description: 'Cash Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -649,7 +663,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Show Community Impact",
       type: 'tip',
-      content: "BMO looks for businesses that give back. In your application, explicitly highlight how your growth will <strong>positively impact your local community</strong> or industry."
+      content: "BMO looks for businesses that give back. In your application, explicitly highlight how your growth will <strong>positively impact your local community</strong> or industry.",
     }, shortAnswer: "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources. Key highlights: Grant: $10,000, Support: Advisory.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -678,7 +692,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["British", "Columbia", "Government", "Business", "Grants"]
+      keywords: ["British", "Columbia", "Government", "Business", "Grants"],
+      shortAnswer: "Complete guide to British Columbia government business grants and provincial funding programs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Innovate BC', value: '$150K+', description: 'Tech programs', color: 'text-green-600', iconName: 'Zap' },
@@ -689,7 +704,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "PacifiCan is Your Federal Connection",
       type: 'success',
-      content: "PacifiCan (Pacific Economic Development Canada) offers <strong>significant federal funding</strong> for BC businesses. They often co-fund with provincial programs for maximum support."
+      content: "PacifiCan (Pacific Economic Development Canada) offers <strong>significant federal funding</strong> for BC businesses. They often co-fund with provincial programs for maximum support.",
     }, shortAnswer: "Complete guide to British Columbia government business grants and provincial funding programs. Key highlights: Innovate BC: $150K+, CleanBC: $100M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -718,7 +733,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["British", "Columbia", "Innovation", "Grants", "&"]
+      keywords: ["British", "Columbia", "Innovation", "Grants", "&"],
+      shortAnswer: "Complete guide to BC innovation grants and tax credits. Total funding available: $1.8B+.",
     },
     metrics: [
       { label: 'BCITC', value: '10%', description: 'Innovation tax credit', color: 'text-green-600', iconName: 'PieChart' },
@@ -729,7 +745,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Stack BCITC with SR&ED",
       type: 'tip',
-      content: "The BC Innovation Tax Credit <strong>stacks on top of federal SR&ED</strong>. Together you can recover up to 55% of eligible R&D expenses. Always apply for both."
+      content: "The BC Innovation Tax Credit <strong>stacks on top of federal SR&ED</strong>. Together you can recover up to 55% of eligible R&D expenses. Always apply for both.",
     }, shortAnswer: "Complete guide to BC innovation grants and tax credits. Key highlights: BCITC: 10%, CleanTech: $1.8B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -758,7 +774,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["California", "Tech", "Startup", "Grants", "2026-2027"]
+      keywords: ["California", "Tech", "Startup", "Grants", "2026-2027"],
+      shortAnswer: "Complete 2026-2027 guide to California technology startup grants and incentives. Total funding available: $50K.",
     },
     metrics: [
       { label: 'CalSEED', value: '$50K', description: 'Clean energy grant', color: 'text-green-600', iconName: 'Leaf' },
@@ -769,7 +786,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Apply for SBIR Match Early",
       type: 'warning',
-      content: "California's SBIR/STTR State Match program has <strong>limited funds each cycle</strong>. Apply immediately after receiving federal SBIR approval—funds often run out within months."
+      content: "California's SBIR/STTR State Match program has <strong>limited funds each cycle</strong>. Apply immediately after receiving federal SBIR approval—funds often run out within months.",
     }, shortAnswer: "Complete 2026-2027 guide to California technology startup grants and incentives. Key highlights: CalSEED: $50K, SBIR Match: $50K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -798,7 +815,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Advanced", "Manufacturing", "Innovation", "Grants"]
+      keywords: ["Canada", "Advanced", "Manufacturing", "Innovation", "Grants"],
+      shortAnswer: "Complete guide to Canadian advanced manufacturing innovation grants. Total funding available: $3.1B+.",
     },
     metrics: [
       { label: 'Total', value: '$3.5B', description: 'NGen Funding', color: 'text-blue-600', iconName: 'Factory' },
@@ -809,7 +827,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Focus on NGen",
       type: 'tip',
-      content: "NGen (Next Generation Manufacturing Canada) is the primary funding body. Join their cluster <strong>before applying</strong> to access exclusive member-only funding calls."
+      content: "NGen (Next Generation Manufacturing Canada) is the primary funding body. Join their cluster <strong>before applying</strong> to access exclusive member-only funding calls.",
     }, shortAnswer: "Complete guide to Canadian advanced manufacturing innovation grants. Key highlights: Total: $3.5B, Project: $500k.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -838,7 +856,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Aerospace", "&", "Defence", "Grants"]
+      keywords: ["Canada", "Aerospace", "&", "Defence", "Grants"],
+      shortAnswer: "Complete guide to Canadian aerospace and defence innovation grants. Total funding available: $450M+.",
     },
     metrics: [
       { label: 'Space', value: '$250M', description: 'CSA Funding', color: 'text-blue-600', iconName: 'Rocket' },
@@ -849,7 +868,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "IDEaS Challenges",
       type: 'success',
-      content: "The IDEaS program operates on a challenge basis. <strong>Subscribe to DND alerts</strong> to apply as soon as a challenge matches your technology—windows are short."
+      content: "The IDEaS program operates on a challenge basis. <strong>Subscribe to DND alerts</strong> to apply as soon as a challenge matches your technology—windows are short.",
     }, shortAnswer: "Complete guide to Canadian aerospace and defence innovation grants. Key highlights: Space: $250M, Defence: $1.2B.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -878,7 +897,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Agri-Food", "Technology", "Grants", "2026"]
+      keywords: ["Canada", "Agri-Food", "Technology", "Grants", "2026"],
+      shortAnswer: "Complete guide to Canadian agri-food technology innovation grants. Total funding available: $2.3B+.",
     },
     metrics: [
       { label: 'Fund', value: '$2.3B', description: 'SCAP Partnership', color: 'text-green-600', iconName: 'Sprout' },
@@ -889,7 +909,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Provincial vs Federal",
       type: 'tip',
-      content: "Most agricultural funding is administered provincially under the Sustainable Canadian Agricultural Partnership (SCAP). <strong>Check your provincial delivery agent</strong> first."
+      content: "Most agricultural funding is administered provincially under the Sustainable Canadian Agricultural Partnership (SCAP). <strong>Check your provincial delivery agent</strong> first.",
     }, shortAnswer: "Complete guide to Canadian agri-food technology innovation grants. Key highlights: Fund: $2.3B, Tech: $50M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -918,7 +938,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Agriculture", "&", "Agri-Food", "Grants"]
+      keywords: ["Canada", "Agriculture", "&", "Agri-Food", "Grants"],
+      shortAnswer: "Canada Agriculture & Agri-Food Grants: $2.3B+ in total funding is available across multiple federal and provincial programs. Our guide breaks down eligibility requirements, application steps, and expert strategies.",
     },
     metrics: [
       { label: 'Youth', value: '$15k', description: 'Start-up Grant', color: 'text-green-600', iconName: 'UserPlus' },
@@ -929,7 +950,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Young Farmers Advantage",
       type: 'success',
-      content: "If you are under 40, you qualify for <strong>FCC Young Farmer loans</strong> with significantly reduced interest rates and flexible repayment terms. Combine this with SCAP grants."
+      content: "If you are under 40, you qualify for <strong>FCC Young Farmer loans</strong> with significantly reduced interest rates and flexible repayment terms. Combine this with SCAP grants.",
     }, shortAnswer: "Canada Agriculture & Agri-Food Grants: access $2.3B+ in available funding. Key programs offer Youth: $15k and Women: $5B.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -958,7 +979,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Clean", "Technology", "&", "Environment"]
+      keywords: ["Canada", "Clean", "Technology", "&", "Environment"],
+      shortAnswer: "Canada Clean Technology & Environment Grants: $1.2B+ in total funding is available across multiple federal and provincial programs. Our guide breaks down eligibility requirements, application steps, and expert strategies.",
     },
     metrics: [
       { label: 'Net Zero', value: '$8B', description: 'Accelerator', color: 'text-green-600', iconName: 'Globe' },
@@ -969,7 +991,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Claim the ITC Investment Tax Credit",
       type: 'warning',
-      content: "The new Clean Technology Investment Tax Credit (ITC) offers a <strong>refundable 30% credit</strong> on capital costs. This is distinct from grants and can be claimed on your tax return."
+      content: "The new Clean Technology Investment Tax Credit (ITC) offers a <strong>refundable 30% credit</strong> on capital costs. This is distinct from grants and can be claimed on your tax return.",
     }, shortAnswer: "Canada Clean Technology & Environment Grants: access $1.2B+ in available funding. Key programs offer Net Zero: $8B and ITC: 30%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -998,7 +1020,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Clean", "Technology", "Innovation", "Grants"]
+      keywords: ["Canada", "Clean", "Technology", "Innovation", "Grants"],
+      shortAnswer: "Complete guide to Canadian clean technology innovation grants. Total funding available: $1.2B+.",
     },
     metrics: [
       { label: 'SDTC', value: '$400M', description: 'Tech Fund', color: 'text-green-600', iconName: 'Zap' },
@@ -1009,7 +1032,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Seed Fund Availability",
       type: 'tip',
-      content: "SDTC (Sustainable Development Technology Canada) offers <strong>Seed Funding</strong> for earlier stage companies nominated by accelerators. You don't always need to be Series A ready."
+      content: "SDTC (Sustainable Development Technology Canada) offers <strong>Seed Funding</strong> for earlier stage companies nominated by accelerators. You don't always need to be Series A ready.",
     }, shortAnswer: "Complete guide to Canadian clean technology innovation grants. Key highlights: SDTC: $400M, Scale: $15M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1038,7 +1061,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Digital", "&", "AI", "Innovation"]
+      keywords: ["Canada", "Digital", "&", "AI", "Innovation"],
+      shortAnswer: "Complete guide to Canadian digital and AI innovation grants. Total funding available: $850M+.",
     },
     metrics: [
       { label: 'AI', value: '$350M', description: 'Scale AI', color: 'text-blue-600', iconName: 'Cpu' },
@@ -1049,7 +1073,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Use CDAP for Strategy",
       type: 'success',
-      content: "The Canada Digital Adoption Program (CDAP) pays for a consultant to write your digital plan. <strong>Use this plan</strong> to unlock the $100k interest-free BDC loan."
+      content: "The Canada Digital Adoption Program (CDAP) pays for a consultant to write your digital plan. <strong>Use this plan</strong> to unlock the $100k interest-free BDC loan.",
     }, shortAnswer: "Complete guide to Canadian digital and AI innovation grants. Key highlights: AI: $350M, CDAP: $15k.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1078,7 +1102,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Employment", "&", "Workforce", "Training"]
+      keywords: ["Canada", "Employment", "&", "Workforce", "Training"],
+      shortAnswer: "Canada Employment & Workforce Training Grants: $1.9B+ in total funding is available across multiple federal and provincial programs. Our guide breaks down eligibility requirements, application steps, and expert strategies.",
     },
     metrics: [
       { label: 'Train', value: '$10k', description: 'Per Employee', color: 'text-green-600', iconName: 'Users' },
@@ -1089,7 +1114,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Canada-Ontario Job Grant (COJG)",
       type: 'tip',
-      content: "The COJG covers up to <strong>83% of third-party training costs</strong>. You can use this to upskill your existing team in new technologies or sales methods."
+      content: "The COJG covers up to <strong>83% of third-party training costs</strong>. You can use this to upskill your existing team in new technologies or sales methods.",
     }, shortAnswer: "Canada Employment & Workforce Training Grants: access $1.9B+ in available funding. Key programs offer Train: $10k and Hire: $5000.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1118,7 +1143,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Export", "Development", "Grants", "2026"]
+      keywords: ["Canada", "Export", "Development", "Grants", "2026"],
+      shortAnswer: "Complete guide to Canadian export development grants. Total funding available: $680M+.",
     },
     metrics: [
       { label: 'Fund', value: '$50k', description: 'CanExport', color: 'text-blue-600', iconName: 'Globe' },
@@ -1129,7 +1155,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Digital Marketing Eligibility",
       type: 'success',
-      content: "CanExport now covers <strong>exclusively digital activities</strong> like SEO and online advertising for foreign markets. You don't even need to travel to qualify."
+      content: "CanExport now covers <strong>exclusively digital activities</strong> like SEO and online advertising for foreign markets. You don't even need to travel to qualify.",
     }, shortAnswer: "Complete guide to Canadian export development grants. Key highlights: Fund: $50k, Cost: 50%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1158,7 +1184,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Federal", "Grants"]
+      keywords: ["Canada", "Federal", "Grants"],
+      shortAnswer: "Canada Federal Grants. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     metrics: [
       { label: 'Total', value: '$10B+', description: 'Annual Funding', color: 'text-green-600', iconName: 'DollarSign' },
@@ -1169,7 +1196,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Stack Funding Programs",
       type: 'tip',
-      content: "Federal grants can often be <strong>stacked with provincial funding</strong>. Always check if you can apply for both a federal wage subsidy and a provincial training grant for the same employee."
+      content: "Federal grants can often be <strong>stacked with provincial funding</strong>. Always check if you can apply for both a federal wage subsidy and a provincial training grant for the same employee.",
     }, shortAnswer: "Canada Federal Grants — key highlights include Total: $10B+ and Programs: 4,000+. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1198,7 +1225,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Growth", "&", "Expansion", "Grants"]
+      keywords: ["Canada", "Growth", "&", "Expansion", "Grants"],
+      shortAnswer: "Complete guide to Canadian business expansion grants. Total funding available: $2.8B+.",
     },
     metrics: [
       { label: 'Fund', value: '$2.8B', description: 'SIF Program', color: 'text-blue-600', iconName: 'TrendingUp' },
@@ -1209,7 +1237,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Strategic Innovation Fund (SIF)",
       type: 'success',
-      content: "For large-scale expansion projects over $10 million, the <strong>Strategic Innovation Fund</strong> is your primary target. It offers repayable and non-repayable contributions for major investments."
+      content: "For large-scale expansion projects over $10 million, the <strong>Strategic Innovation Fund</strong> is your primary target. It offers repayable and non-repayable contributions for major investments.",
     }, shortAnswer: "Complete guide to Canadian business expansion grants. Key highlights: Fund: $2.8B, Scale: $10M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1238,7 +1266,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Hiring", "&", "Training", "Grants"]
+      keywords: ["Canada", "Hiring", "&", "Training", "Grants"],
+      shortAnswer: "Complete guide to Canadian hiring and training grants. Total funding available: $1.9B+.",
     },
     metrics: [
       { label: 'Student', value: '$7,000', description: 'Wage Subsidy', color: 'text-green-600', iconName: 'UserPlus' },
@@ -1249,7 +1278,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Student Work Placement Program (SWPP)",
       type: 'tip',
-      content: "SWPP covers up to <strong>75% of wages</strong> (max $7,500) for hiring post-secondary students. It's the most accessible hiring grant available across all industries."
+      content: "SWPP covers up to <strong>75% of wages</strong> (max $7,500) for hiring post-secondary students. It's the most accessible hiring grant available across all industries.",
     }, shortAnswer: "Complete guide to Canadian hiring and training grants. Key highlights: Student: $7,000, Grad: $15,000.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1278,7 +1307,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Industry", "Specific", "Grants", "2026"]
+      keywords: ["Canada", "Industry", "Specific", "Grants", "2026"],
+      shortAnswer: "Complete guide to Canadian industry specific grants. Total funding available: $1.5B+.",
     },
     metrics: [
       { label: 'Ag', value: '$3.5B', description: 'AgriScience', color: 'text-green-600', iconName: 'Sprout' },
@@ -1289,7 +1319,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Check Your Niche",
       type: 'tip',
-      content: "Don't just look for general business grants. <strong>Search by your NAICS code</strong> or industry association (e.g., CMF for media, FACTOR for music) to find less competitive, sector-specific pots."
+      content: "Don't just look for general business grants. <strong>Search by your NAICS code</strong> or industry association (e.g., CMF for media, FACTOR for music) to find less competitive, sector-specific pots.",
     }, shortAnswer: "Complete guide to Canadian industry specific grants. Key highlights: Ag: $3.5B, Auto: $2B.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1318,7 +1348,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Innovation", "&", "R&D", "Grants"]
+      keywords: ["Canada", "Innovation", "&", "R&D", "Grants"],
+      shortAnswer: "Canada Innovation & R&D Grants: $4.2B+ in total funding is available across multiple federal and provincial programs. Our guide breaks down eligibility requirements, application steps, and expert strategies.",
     },
     metrics: [
       { label: 'Tax', value: '35%', description: 'SR&ED Credit', color: 'text-blue-600', iconName: 'Percent' },
@@ -1329,7 +1360,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "SR&ED vs IRAP",
       type: 'warning',
-      content: "SR&ED is a tax <strong>refund</strong> for work already done. IRAP is a <strong>grant</strong> for future work. You can typically claim the non-IRAP portion of your costs for SR&ED."
+      content: "SR&ED is a tax <strong>refund</strong> for work already done. IRAP is a <strong>grant</strong> for future work. You can typically claim the non-IRAP portion of your costs for SR&ED.",
     }, shortAnswer: "Canada Innovation & R&D Grants: access $4.2B+ in available funding. Key programs offer Tax: 35% and Advice: Free.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1358,7 +1389,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Life", "Sciences", "Grants", "2026"]
+      keywords: ["Canada", "Life", "Sciences", "Grants", "2026"],
+      shortAnswer: "Complete guide to Canadian life sciences innovation grants. Total funding available: $720M+.",
     },
     metrics: [
       { label: 'Fund', value: '$2.2B', description: 'Biomanufacturing', color: 'text-green-600', iconName: 'Activity' },
@@ -1369,7 +1401,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Biomanufacturing Focus",
       type: 'tip',
-      content: "The federal government is prioritizing domestic <strong>biomanufacturing capacity</strong>. Projects that build Canadian production capabilities for vaccines and therapeutics are top priority."
+      content: "The federal government is prioritizing domestic <strong>biomanufacturing capacity</strong>. Projects that build Canadian production capabilities for vaccines and therapeutics are top priority.",
     }, shortAnswer: "Complete guide to Canadian life sciences innovation grants. Key highlights: Fund: $2.2B, Trials: $250M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1398,7 +1430,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Manufacturing", "&", "Industry", "Grants"]
+      keywords: ["Canada", "Manufacturing", "&", "Industry", "Grants"],
+      shortAnswer: "Canada Manufacturing & Industry Grants: $3.1B+ in total funding is available across multiple federal and provincial programs. Our guide breaks down eligibility requirements, application steps, and expert strategies.",
     },
     metrics: [
       { label: 'Tech', value: '$1.2B', description: 'Adoption', color: 'text-blue-600', iconName: 'Cpu' },
@@ -1409,7 +1442,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Advanced Manufacturing Supercluster",
       type: 'success',
-      content: "Join the <strong>NGen Supercluster</strong> to access unique manufacturing funding calls not available to the general public. Membership is free or low-cost for SMEs."
+      content: "Join the <strong>NGen Supercluster</strong> to access unique manufacturing funding calls not available to the general public. Membership is free or low-cost for SMEs.",
     }, shortAnswer: "Canada Manufacturing & Industry Grants: access $3.1B+ in available funding. Key programs offer Tech: $1.2B and Auto: $5B.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1438,7 +1471,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Regional", "Economic", "Development", "Grants"]
+      keywords: ["Canada", "Regional", "Economic", "Development", "Grants"],
+      shortAnswer: "Canada Regional Economic Development Grants: $2.8B+ in total funding is available across multiple federal and provincial programs. Our guide breaks down eligibility requirements, application steps, and expert strategies.",
     },
     metrics: [
       { label: 'West', value: '$500M', description: 'PrairiesCan', color: 'text-yellow-600', iconName: 'Sun' },
@@ -1449,7 +1483,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Regional Development Agencies (RDAs)",
       type: 'tip',
-      content: "Your local RDA (like ACOA, FedDev, PrairiesCan) is your <strong>best first stop</strong>. They often have unadvertised funds for local job creation and economic diversification."
+      content: "Your local RDA (like ACOA, FedDev, PrairiesCan) is your <strong>best first stop</strong>. They often have unadvertised funds for local job creation and economic diversification.",
     }, shortAnswer: "Canada Regional Economic Development Grants: access $2.8B+ in available funding. Key programs offer West: $500M and East: $300M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1478,7 +1512,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Startup", "Funding", "Grants", "2026"]
+      keywords: ["Canada", "Startup", "Funding", "Grants", "2026"],
+      shortAnswer: "Most Canadian startups only know about Futurpreneur. Total funding available: $1.2B+.",
     },
     metrics: [
       { label: 'Loan', value: '$60,000', description: 'Futurpreneur', color: 'text-blue-600', iconName: 'Rocket' },
@@ -1489,7 +1524,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Bootstrap First",
       type: 'warning',
-      content: "Most 'startup grants' are actually for <strong>hiring</strong> or <strong>training</strong>, not for general operating costs. You need to have some initial capital (bootstrap) to pay upfront costs before the grant reimburses you."
+      content: "Most 'startup grants' are actually for <strong>hiring</strong> or <strong>training</strong>, not for general operating costs. You need to have some initial capital (bootstrap) to pay upfront costs before the grant reimburses you.",
     }, shortAnswer: "Most Canadian startups only know about Futurpreneur. Key highlights: Loan: $60,000, Grant: $30,000.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1518,7 +1553,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Technology", "Adoption", "Grants", "2026"]
+      keywords: ["Canada", "Technology", "Adoption", "Grants", "2026"],
+      shortAnswer: "Complete guide to Canadian technology adoption grants. Total funding available: $950M+.",
     },
     metrics: [
       { label: 'CDAP', value: '$15k', description: 'Digital Plan', color: 'text-green-600', iconName: 'FileText' },
@@ -1529,7 +1565,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Get CDAP Certified",
       type: 'success',
-      content: "The <strong>CDAP Digital Adoption Plan</strong> is the gateway key. Once you have this certified plan, you unlock the $100k BDC loan and wage subsidies. Prioritize getting this plan done first."
+      content: "The <strong>CDAP Digital Adoption Plan</strong> is the gateway key. Once you have this certified plan, you unlock the $100k BDC loan and wage subsidies. Prioritize getting this plan done first.",
     }, shortAnswer: "Complete guide to Canadian technology adoption grants. Key highlights: CDAP: $15k, Loan: $100k.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1558,7 +1594,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Cartier", "Women"]
+      keywords: ["Cartier", "Women"],
+      shortAnswer: "Cartier Women. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     metrics: [
       { label: 'Award', value: '$100k', description: 'First Place', color: 'text-yellow-600', iconName: 'Trophy' },
@@ -1569,7 +1606,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Impact Focus",
       type: 'tip',
-      content: "Cartier looks for <strong>social or environmental impact</strong>. Your application must clearly articulate how your business is solving a major global challenge, not just generating revenue."
+      content: "Cartier looks for <strong>social or environmental impact</strong>. Your application must clearly articulate how your business is solving a major global challenge, not just generating revenue.",
     }, shortAnswer: "Cartier Women — key highlights include Award: $100k and Runner: $30k. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1598,7 +1635,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Clean", "Tech", "&", "Energy", "Grants"]
+      keywords: ["Clean", "Tech", "&", "Energy", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to clean tech and energy grants. Total funding available: $200K.",
     },
     metrics: [
       { label: 'Phase I', value: '$200k', description: 'Feasibility', color: 'text-green-600', iconName: 'Zap' },
@@ -1609,7 +1647,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "US DOE Alignment",
       type: 'warning',
-      content: "For US clean tech grants, ensure your technology aligns with <strong>current DOE 'Earthshots'</strong> (e.g., Hydrogen, Long Duration Storage). Mentioning these specific goals strengthens your proposal."
+      content: "For US clean tech grants, ensure your technology aligns with <strong>current DOE 'Earthshots'</strong> (e.g., Hydrogen, Long Duration Storage). Mentioning these specific goals strengthens your proposal.",
     }, shortAnswer: "Complete 2026-2027 guide to clean tech and energy grants. Key highlights: Phase I: $200k, Phase II: $1.6M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1701,7 +1739,8 @@ export const blogPosts: BlogPost[] = [
       </div>
     `,
     seo: {
-      keywords: ["Colorado", "Tech", "Startup", "Grants", "2026-2027"]
+      keywords: ["Colorado", "Tech", "Startup", "Grants", "2026-2027"],
+      shortAnswer: "Complete 2026-2027 guide to Colorado technology startup grants. Total funding available: $500K.",
     },
     metrics: [
       { label: 'Fund', value: '$500K', description: 'Accelerator', color: 'text-green-600', iconName: 'Rocket' },
@@ -1712,7 +1751,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Enterprise Zones",
       type: 'tip',
-      content: "Colorado's <strong>Enterprise Zone Tax Credits</strong> can be stacked with these grants. If your startup is located in a designated zone, you could double your financial benefits."
+      content: "Colorado's <strong>Enterprise Zone Tax Credits</strong> can be stacked with these grants. If your startup is located in a designated zone, you could double your financial benefits.",
     }, shortAnswer: "Yes — Complete 2026-2027 guide to Colorado technology startup grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1741,7 +1780,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Stage", "4:", "Commercialization", "&", "Scale-Up"]
+      keywords: ["Stage", "4:", "Commercialization", "&", "Scale-Up"],
+      shortAnswer: "Complete guide to Canadian commercialization and scale-up funding. Total funding available: $100M.",
     },
     metrics: [
       { label: 'Scale', value: '$10M+', description: 'SIF Funding', color: 'text-blue-600', iconName: 'TrendingUp' },
@@ -1752,7 +1792,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Demonstrate Sales Traction",
       type: 'success',
-      content: "At the commercialization stage, funders want to see <strong>purchase orders or letters of intent</strong>. Prove that the market is pulling your technology to de-risk their large investment."
+      content: "At the commercialization stage, funders want to see <strong>purchase orders or letters of intent</strong>. Prove that the market is pulling your technology to de-risk their large investment.",
     }, shortAnswer: "Complete guide to Canadian commercialization and scale-up funding. Key highlights: Scale: $10M+, Stage: TRL 9.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1781,7 +1821,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Canada", "Small", "Business", "Financing", "Program"]
+      keywords: ["Canada", "Small", "Business", "Financing", "Program"],
+      shortAnswer: "Complete guide to Canada Small Business Financing Program. Total funding available: $1M.",
     },
     metrics: [
       { label: 'Loan', value: '$1.15M', description: 'Max Amount', color: 'text-green-600', iconName: 'DollarSign' },
@@ -1792,7 +1833,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Bank Approval First",
       type: 'tip',
-      content: "You don't apply to the government for CSBFP. You apply <strong>through your bank</strong>. The government just guarantees the loan behind the scenes to help the bank say 'yes'."
+      content: "You don't apply to the government for CSBFP. You apply <strong>through your bank</strong>. The government just guarantees the loan behind the scenes to help the bank say 'yes'.",
     }, shortAnswer: "Complete guide to Canada Small Business Financing Program. Key highlights: Loan: $1.15M, Rate: Prime+3.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1821,7 +1862,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["CSBFP", "Canada", "Small", "Business", "Financing"]
+      keywords: ["CSBFP", "Canada", "Small", "Business", "Financing"],
+      shortAnswer: "Complete guide to CSBFP government-guaranteed loans for Canadian small businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Guarantee', value: '85%', description: 'Gov Backing', color: 'text-green-600', iconName: 'Shield' },
@@ -1832,7 +1874,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Reduced Personal Risk",
       type: 'success',
-      content: "Unlike standard bank loans requiring 100% personal guarantees, CSBFP loans often cap personal guarantees at <strong>25% of the loan amount</strong>, significantly reducing your personal risk."
+      content: "Unlike standard bank loans requiring 100% personal guarantees, CSBFP loans often cap personal guarantees at <strong>25% of the loan amount</strong>, significantly reducing your personal risk.",
     }, shortAnswer: "Complete guide to CSBFP government-guaranteed loans for Canadian small businesses. Key highlights: Guarantee: 85%, Loan: $1M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1869,7 +1911,8 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Dual-Use Strategy",
       type: 'success',
-      content: "The DOD prioritizes <strong>dual-use technology</strong>. Explicitly explain how your cybersecurity tool protects military networks AND has a viable commercial market (e.g., banking systems)."
+      content: "The DOD prioritizes <strong>dual-use technology</strong>. Explicitly explain how your cybersecurity tool protects military networks AND has a viable commercial market (e.g., banking systems).",
+      shortAnswer: "Complete 2026-2027 guide to cybersecurity grants. Total funding available: $1.8M.",
     },
     faq: [
       {
@@ -1887,7 +1930,7 @@ export const blogPosts: BlogPost[] = [
       {
         question: "What is 'Dual-Use' technology?",
         answer: "Dual-use means your technology has both military/government applications and commercial applications. DoD prefers dual-use tech because the commercial market helps sustain the company when government contracts are paused."
-      }
+      },
     ], shortAnswer: "Yes — Complete 2026-2027 guide to cybersecurity grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1916,7 +1959,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Stage", "3:", "Demonstration", "&", "Pilot"]
+      keywords: ["Stage", "3:", "Demonstration", "&", "Pilot"],
+      shortAnswer: "Complete guide to Canadian demonstration and pilot project funding. Total funding available: $15M.",
     },
     metrics: [
       { label: 'Fund', value: '$15M', description: 'SDTC Max', color: 'text-green-600', iconName: 'Zap' },
@@ -1927,7 +1971,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Pre-Revenue Eligibility",
       type: 'tip',
-      content: "Demonstration funds like SDTC are specifically for <strong>pre-revenue technologies</strong>. If you are already selling the product commercially, you are too late for this stage."
+      content: "Demonstration funds like SDTC are specifically for <strong>pre-revenue technologies</strong>. If you are already selling the product commercially, you are too late for this stage.",
     }, shortAnswer: "Complete guide to Canadian demonstration and pilot project funding. Key highlights: Fund: $15M, Share: 33%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1956,7 +2000,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Stage", "2:", "Development", "&", "Proof-of-Concept"]
+      keywords: ["Stage", "2:", "Development", "&", "Proof-of-Concept"],
+      shortAnswer: "Complete guide to Canadian development and proof-of-concept funding. Total funding available: $5M.",
     },
     metrics: [
       { label: 'Funding', value: '$5M', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -1967,7 +2012,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Focus on TRL",
       type: 'warning',
-      content: "Ensure your technology is at TRL 4-6. TRL 1-3 is too early, and TRL 7-9 is too commercial."
+      content: "Ensure your technology is at TRL 4-6. TRL 1-3 is too early, and TRL 7-9 is too commercial.",
     }, shortAnswer: "Complete guide to Canadian development and proof-of-concept funding. Key highlights: Funding: $5M, TRL: 4-6.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -1996,7 +2041,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["DOD", "SBIR", "Defense", "Tech", "Grants"]
+      keywords: ["DOD", "SBIR", "Defense", "Tech", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to Department of Defense SBIR/STTR grants for defense tech startups. Total funding available: $256K.",
     },
     metrics: [
       { label: 'Phase I', value: '$256K', description: 'Entry Grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2007,7 +2053,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Dual-Use Strategy",
       type: 'tip',
-      content: "Highlight <strong>commercial potential</strong> alongside defense applications. The DOD prefers technologies that have sustainable commercial markets."
+      content: "Highlight <strong>commercial potential</strong> alongside defense applications. The DOD prefers technologies that have sustainable commercial markets.",
     }, shortAnswer: "Complete 2026-2027 guide to Department of Defense SBIR/STTR grants for defense tech startups. Key highlights: Phase I: $256K, Phase II: $1.7M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2036,7 +2082,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["DOE", "SBIR", "Clean", "Energy", "Grants"]
+      keywords: ["DOE", "SBIR", "Clean", "Energy", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Total funding available: $200K.",
     },
     metrics: [
       { label: 'Phase I', value: '$200K', description: 'Concept', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2047,7 +2094,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "LOI Requirement",
       type: 'warning',
-      content: "Letters of Support are critical for Phase I, but <strong>Letters of Intent (LOI)</strong> from potential customers are essential for Phase II success."
+      content: "Letters of Support are critical for Phase I, but <strong>Letters of Intent (LOI)</strong> from potential customers are essential for Phase II success.",
     }, shortAnswer: "Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Key highlights: Phase I: $200K, Phase II: $1.85M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2076,7 +2123,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["EDC", "Women", "in", "Trade", "Export"]
+      keywords: ["EDC", "Women", "in", "Trade", "Export"],
+      shortAnswer: "Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support from Export Development Canada for women-owned businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Capital', value: '$10M+', description: 'Equity Invest', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2087,7 +2135,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Export Focus",
       type: 'tip',
-      content: "This is primarily for EXPORT-focused businesses. You must demonstrate a clear strategy for international sales growth."
+      content: "This is primarily for EXPORT-focused businesses. You must demonstrate a clear strategy for international sales growth.",
     }, shortAnswer: "Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support from Export Development Canada for women-owned businesses. Key highlights: Capital: $10M+, Target: Women.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2116,7 +2164,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Federal", "Grants", "for", "Women,", "Minorities"]
+      keywords: ["Federal", "Grants", "for", "Women,", "Minorities"],
+      shortAnswer: "Complete guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'WOSB', value: '5%', description: 'Set-aside goal', color: 'text-pink-600', iconName: 'Users' },
@@ -2127,7 +2176,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Certification is Required",
       type: 'warning',
-      content: "You MUST be certified to access set-aside contracts. <strong>WOSB certification is free through SBA</strong>. Don't pay third parties for what the government offers at no cost."
+      content: "You MUST be certified to access set-aside contracts. <strong>WOSB certification is free through SBA</strong>. Don't pay third parties for what the government offers at no cost.",
     }, shortAnswer: "Complete guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. Key highlights: WOSB: 5%, 8(a): 9 Years.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2156,7 +2205,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Hardware", "&", "IoT", "Startup", "Grants"]
+      keywords: ["Hardware", "&", "IoT", "Startup", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to hardware and IoT startup grants. Total funding available: $305K.",
     },
     metrics: [
       { label: 'NSF', value: '$305K', description: 'Phase I', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2167,7 +2217,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Technical Risk",
       type: 'warning',
-      content: "For NSF/SBIR, you must prove <strong>technical risk</strong>. If it's just engineering integration, it won't be funded. Show the scientific challenge."
+      content: "For NSF/SBIR, you must prove <strong>technical risk</strong>. If it's just engineering integration, it won't be funded. Show the scientific challenge.",
     }, shortAnswer: "Complete 2026-2027 guide to hardware and IoT startup grants. Key highlights: NSF: $305K, DOD: $1.7M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2196,7 +2246,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Stage", "1:", "Ideation", "&", "Research"]
+      keywords: ["Stage", "1:", "Ideation", "&", "Research"],
+      shortAnswer: "Complete guide to Canadian ideation and research funding for early-stage innovation. Total funding available: $1M.",
     },
     metrics: [
       { label: 'Funding', value: '$1M', description: 'Max Grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2207,7 +2258,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Academic Partners",
       type: 'tip',
-      content: "Partner with a university researcher. NSERC grants are often more accessible when you have an academic collaboration."
+      content: "Partner with a university researcher. NSERC grants are often more accessible when you have an academic collaboration.",
     }, shortAnswer: "Complete guide to Canadian ideation and research funding for early-stage innovation. Key highlights: Funding: $1M, TRL: 1-3.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2236,7 +2287,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Indigenous", "&", "Rural", "Business", "Funding"]
+      keywords: ["Indigenous", "&", "Rural", "Business", "Funding"],
+      shortAnswer: "Complete guide to Indigenous business grants and rural business funding in Canada. Total funding available: $500K+.",
     },
     metrics: [
       { label: 'Grant', value: '$500K', description: 'Max Amount', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2247,7 +2299,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Community Impact",
       type: 'warning',
-      content: "Demonstrate clear community benefits. Projects that create local jobs and use local resources are prioritized."
+      content: "Demonstrate clear community benefits. Projects that create local jobs and use local resources are prioritized.",
     }, shortAnswer: "Complete guide to Indigenous business grants and rural business funding in Canada. Key highlights: Grant: $500K, Equity: 15%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2276,7 +2328,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Indigenous", "Women", "Business", "Grants", "Canada"]
+      keywords: ["Indigenous", "Women", "Business", "Grants", "Canada"],
+      shortAnswer: "Complete 2026-2027 guide to Indigenous women business grants in Canada. Total funding available: $50K.",
     },
     metrics: [
       { label: 'Micro', value: '$50K', description: 'Max Loan', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2287,7 +2340,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "IWEF Program",
       type: 'tip',
-      content: "Look into the Indigenous Women Entrepreneurship Fund (IWEF). It offers micro-loans specifically for starting or expanding your business."
+      content: "Look into the Indigenous Women Entrepreneurship Fund (IWEF). It offers micro-loans specifically for starting or expanding your business.",
     }, shortAnswer: "Complete 2026-2027 guide to Indigenous women business grants in Canada. Key highlights: Micro: $50K, Grant: $5K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2316,7 +2369,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Industry-Specific", "Business", "Grants", "Guide", "2026"]
+      keywords: ["Industry-Specific", "Business", "Grants", "Guide", "2026"],
+      shortAnswer: "Complete guide to industry-specific business grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Sectors', value: '12+', description: 'Industry categories', color: 'text-blue-600', iconName: 'Layers' },
@@ -2327,7 +2381,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Match Your Sector",
       type: 'tip',
-      content: "Don't apply for generic grants. <strong>Sector-specific programs have less competition</strong> and prefer applicants who deeply understand their industry."
+      content: "Don't apply for generic grants. <strong>Sector-specific programs have less competition</strong> and prefer applicants who deeply understand their industry.",
     }, shortAnswer: "Complete guide to industry-specific business grants. Key highlights: Sectors: 12+, Tech: $1M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2356,7 +2410,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Industrial", "Research", "Assistance", "Program", "(IRAP)"]
+      keywords: ["Industrial", "Research", "Assistance", "Program", "(IRAP)"],
+      shortAnswer: "Complete guide to IRAP funding for Canadian tech SMEs. Total funding available: $1M.",
     },
     metrics: [
       { label: 'Funding', value: '$10M', description: 'Max Contribution', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2367,7 +2422,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "ITA Relationship",
       type: 'warning',
-      content: "Your Industrial Technology Advisor (ITA) is your gateway. Build a strong relationship with them before submitting a formal proposal."
+      content: "Your Industrial Technology Advisor (ITA) is your gateway. Build a strong relationship with them before submitting a formal proposal.",
     }, shortAnswer: "IRAP provides up to $10M in non-repayable R&D grants for Canadian tech SMEs. It covers up to 80% of labour costs. You cannot apply online — you must first contact an Industrial Technology Advisor (ITA) at 1-877-994-4727.",
     jumpLinks: [
       { title: 'Funding', id: 'funding' },
@@ -2396,7 +2451,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["IRAP", "Industrial", "Research", "Assistance", "Program"]
+      keywords: ["IRAP", "Industrial", "Research", "Assistance", "Program"],
+      shortAnswer: "Complete guide to IRAP government funding for Canadian R&D projects. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Phase', value: 'R&D', description: 'Technology', color: 'text-green-600', iconName: 'Cpu' },
@@ -2407,7 +2463,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Stacking Funding",
       type: 'tip',
-      content: "You can stack IRAP with SR&ED tax credits. IRAP covers costs upfront, while SR&ED covers the remaining eligible expenses at tax time."
+      content: "You can stack IRAP with SR&ED tax credits. IRAP covers costs upfront, while SR&ED covers the remaining eligible expenses at tax time.",
     }, shortAnswer: "Complete guide to IRAP government funding for Canadian R&D projects. Key highlights: Phase: R&D, Team: 1-500.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2436,7 +2492,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["IRAP", "Industrial", "Research", "Assistance", "Program"]
+      keywords: ["IRAP", "Industrial", "Research", "Assistance", "Program"],
+      shortAnswer: "Complete guide to IRAP innovation funding from National Research Council Canada. Total funding available: $500K.",
     },
     metrics: [
       { label: 'Fund', value: '$500K', description: 'Max Project', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2447,7 +2504,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "ITA Nomination Required",
       type: 'warning',
-      content: "You cannot apply for IRAP without an <strong>Industrial Technology Advisor (ITA)</strong> nomination. Build a relationship with an ITA <em>months</em> before you need the funding."
+      content: "You cannot apply for IRAP without an <strong>Industrial Technology Advisor (ITA)</strong> nomination. Build a relationship with an ITA <em>months</em> before you need the funding.",
     }, shortAnswer: "Complete guide to IRAP innovation funding from National Research Council Canada. Key highlights: Fund: $500K, Cover: 80%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2476,7 +2533,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Manitoba", "Small", "Business", "Grants", "2026"]
+      keywords: ["Manitoba", "Small", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Manitoba small business grants. Total funding available: $380M+.",
     },
     metrics: [
       { label: 'Pool', value: '$380M', description: 'Total Funds', color: 'text-green-600', iconName: 'Database' },
@@ -2487,7 +2545,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Northern Bonus",
       type: 'tip',
-      content: "Projects located in <strong>Northern Manitoba</strong> often garner extra scoring points and higher funding ratios. Highlight your rural or northern impact clearly."
+      content: "Projects located in <strong>Northern Manitoba</strong> often garner extra scoring points and higher funding ratios. Highlight your rural or northern impact clearly.",
     }, shortAnswer: "Complete guide to Manitoba small business grants. Key highlights: Pool: $380M, Focus: SME.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2516,7 +2574,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Massachusetts", "Tech", "Startup", "Grants", "2026-2027"]
+      keywords: ["Massachusetts", "Tech", "Startup", "Grants", "2026-2027"],
+      shortAnswer: "Complete 2026-2027 guide to Massachusetts technology startup grants and incentives. Total funding available: $500K.",
     },
     metrics: [
       { label: 'START', value: '$500K', description: 'MassVentures', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2527,7 +2586,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "SBIR START Program",
       type: 'success',
-      content: "MassVentures SBIR START matches your federal SBIR with <strong>up to $500K in additional state funding</strong>. Apply immediately after federal award notification."
+      content: "MassVentures SBIR START matches your federal SBIR with <strong>up to $500K in additional state funding</strong>. Apply immediately after federal award notification.",
     }, shortAnswer: "Complete 2026-2027 guide to Massachusetts technology startup grants and incentives. Key highlights: START: $500K, Clean: $350K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2556,7 +2615,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["NASA", "SBIR", "Space", "Tech", "Grants"]
+      keywords: ["NASA", "SBIR", "Space", "Tech", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups. Total funding available: $150K.",
     },
     metrics: [
       { label: 'Phase I', value: '$150K', description: 'Feasibility', color: 'text-green-600', iconName: 'Rocket' },
@@ -2567,7 +2627,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "NASA Subtopics",
       type: 'warning',
-      content: "NASA SBIR has very specific subtopics. Your proposal <strong>MUST align precisely</strong> with an open subtopic—generic 'space tech' proposals will be rejected."
+      content: "NASA SBIR has very specific subtopics. Your proposal <strong>MUST align precisely</strong> with an open subtopic—generic 'space tech' proposals will be rejected.",
     }, shortAnswer: "Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups. Key highlights: Phase I: $150K, Phase II: $850K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2596,7 +2656,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["New", "York", "Tech", "Startup", "Grants"]
+      keywords: ["New", "York", "Tech", "Startup", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to New York technology startup grants and incentives. Total funding available: $250K.",
     },
     metrics: [
       { label: 'Tax-Free', value: '10 Years', description: 'START-UP NY', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2607,7 +2668,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "START-UP NY Campus",
       type: 'success',
-      content: "START-UP NY requires locating on or near a <strong>SUNY or private college campus</strong>. The 10-year tax exemption makes this worth exploring for NYC-area startups."
+      content: "START-UP NY requires locating on or near a <strong>SUNY or private college campus</strong>. The 10-year tax exemption makes this worth exploring for NYC-area startups.",
     }, shortAnswer: "Complete 2026-2027 guide to New York technology startup grants and incentives. Key highlights: Tax-Free: 10 Years, Seed: $250K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2636,7 +2697,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["NIH", "SBIR", "Biotech", "Grants", "2026-2027"]
+      keywords: ["NIH", "SBIR", "Biotech", "Grants", "2026-2027"],
+      shortAnswer: "Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Total funding available: $285K.",
     },
     metrics: [
       { label: 'Phase I', value: '$285K', description: 'Feasibility', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2647,7 +2709,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Scientific Rigor",
       type: 'warning',
-      content: "NIH reviewers are PhD scientists. Your proposal must demonstrate <strong>rigorous scientific methodology</strong>—not just business potential."
+      content: "NIH reviewers are PhD scientists. Your proposal must demonstrate <strong>rigorous scientific methodology</strong>—not just business potential.",
     }, shortAnswer: "Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Key highlights: Phase I: $285K, Phase II: $2M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2676,7 +2738,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["NSERC", "Research", "Grants", "Canada", "2026"]
+      keywords: ["NSERC", "Research", "Grants", "Canada", "2026"],
+      shortAnswer: "Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'I2I', value: '$350K', description: 'Tech Transfer', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2687,7 +2750,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "University Affiliation Required",
       type: 'warning',
-      content: "NSERC grants require a <strong>principal investigator at a Canadian university</strong>. If you're a startup, partner with a professor who can be your PI."
+      content: "NSERC grants require a <strong>principal investigator at a Canadian university</strong>. If you're a startup, partner with a professor who can be your PI.",
     }, shortAnswer: "Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. Key highlights: I2I: $350K, Discovery: $40K/yr.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2716,7 +2779,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["NSF", "SBIR", "Grants", "2026-2027", "|"]
+      keywords: ["NSF", "SBIR", "Grants", "2026-2027", "|"],
+      shortAnswer: "Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Total funding available: $275K.",
     },
     metrics: [
       { label: 'Phase I', value: '$275K', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2727,7 +2791,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "University Partnership",
       type: 'success',
-      content: "NSF highly values <strong>university partnerships</strong>. Having a faculty collaborator or advisor significantly increases your chances of winning."
+      content: "NSF highly values <strong>university partnerships</strong>. Having a faculty collaborator or advisor significantly increases your chances of winning.",
     }, shortAnswer: "Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Key highlights: Phase I: $275K, Phase II: $2M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2756,7 +2820,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["National", "Women"]
+      keywords: ["National", "Women"],
+      shortAnswer: "National Women. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     metrics: [
       { label: 'Role', value: 'Advisory', description: 'Federal council', color: 'text-pink-600', iconName: 'Users' },
@@ -2767,7 +2832,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "NWBC is Advisory",
       type: 'tip',
-      content: "NWBC doesn't give grants directly. They <strong>advise on policy and certifications</strong>. Use their resources to understand WOSB certification and federal contracting."
+      content: "NWBC doesn't give grants directly. They <strong>advise on policy and certifications</strong>. Use their resources to understand WOSB certification and federal contracting.",
     }, shortAnswer: "National Women — key highlights include Role: Advisory and Focus: Policy. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2796,7 +2861,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Ontario", "Government", "Business", "Grants", "2026"]
+      keywords: ["Ontario", "Government", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Ontario government business grants and provincial funding programs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Pool', value: '$2.5B', description: 'Provincial', color: 'text-green-600', iconName: 'Maple' },
@@ -2807,7 +2873,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Local Office First",
       type: 'tip',
-      content: "Always contact your <strong>local OCED office</strong> before applying. They provide free advisory services and can dramatically improve your application quality."
+      content: "Always contact your <strong>local OCED office</strong> before applying. They provide free advisory services and can dramatically improve your application quality.",
     }, shortAnswer: "Complete guide to Ontario government business grants and provincial funding programs. Key highlights: Pool: $2.5B, Agency: OCED.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2836,7 +2902,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Ontario", "Innovation", "Grants", "&", "Tax"]
+      keywords: ["Ontario", "Innovation", "Grants", "&", "Tax"],
+      shortAnswer: "Complete guide to Ontario innovation grants and tax credits. Total funding available: $3.2B+.",
     },
     metrics: [
       { label: 'Credit', value: '10%', description: 'OITC Rate', color: 'text-green-600', iconName: 'Percent' },
@@ -2847,7 +2914,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Stack with SR&ED",
       type: 'success',
-      content: "The Ontario Innovation Tax Credit (OITC) <strong>stacks with federal SR&ED</strong>. You can claim both on the same R&D expenses for maximum benefit."
+      content: "The Ontario Innovation Tax Credit (OITC) <strong>stacks with federal SR&ED</strong>. You can claim both on the same R&D expenses for maximum benefit.",
     }, shortAnswer: "Complete guide to Ontario innovation grants and tax credits. Key highlights: Credit: 10%, Pool: $3.2B.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2876,7 +2943,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Ontario", "Small", "Business", "Grants", "2026"]
+      keywords: ["Ontario", "Small", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Ontario small business grants and funding. Total funding available: $2.1B+.",
     },
     metrics: [
       { label: 'Fund', value: '$2.1B', description: 'Available', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2887,7 +2955,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Digital Main Street",
       type: 'tip',
-      content: "If you're a retail or main street business, apply for <strong>Digital Main Street</strong> grants first. They're easier to get and build credibility for larger programs."
+      content: "If you're a retail or main street business, apply for <strong>Digital Main Street</strong> grants first. They're easier to get and build credibility for larger programs.",
     }, shortAnswer: "Complete guide to Ontario small business grants and funding. Key highlights: Fund: $2.1B, Target: SME.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2916,7 +2984,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Ontario", "Women", "Business", "Grants", "2026"]
+      keywords: ["Ontario", "Women", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Ontario women entrepreneurship support with FedDev Ontario RE3 grants up to $5,000, PARO microfinancing, Women. Total funding available: $850M.",
     },
     metrics: [
       { label: 'Pool', value: '$850M', description: 'Women Focus', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2927,7 +2996,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "RE3 Fast Track",
       type: 'success',
-      content: "The FedDev Ontario <strong>RE3 Program</strong> offers up to $5,000 with minimal paperwork. It's the fastest path to non-repayable funding for women entrepreneurs."
+      content: "The FedDev Ontario <strong>RE3 Program</strong> offers up to $5,000 with minimal paperwork. It's the fastest path to non-repayable funding for women entrepreneurs.",
     }, shortAnswer: "Complete guide to Ontario women entrepreneurship support with FedDev Ontario RE3 grants up to $5,000, PARO microfinancing, Women. Key highlights: Pool: $850M, Grant: $5K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2956,7 +3025,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Prairie", "Provinces", "Innovation", "Grants", "2026"]
+      keywords: ["Prairie", "Provinces", "Innovation", "Grants", "2026"],
+      shortAnswer: "Complete guide to Prairie innovation grants. Total funding available: $580M+.",
     },
     metrics: [
       { label: 'Fund', value: '$580M', description: 'Regional', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2967,7 +3037,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Resource Conversion",
       type: 'tip',
-      content: "Prairie provinces prioritize <strong>resource conversion</strong> projects. Agricultural and mining tech that adds value to raw materials gets highest priority."
+      content: "Prairie provinces prioritize <strong>resource conversion</strong> projects. Agricultural and mining tech that adds value to raw materials gets highest priority.",
     }, shortAnswer: "Complete guide to Prairie innovation grants. Key highlights: Fund: $580M, Regions: 3.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -2996,7 +3066,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Private", "Women", "Grants", "Guide", "2026"]
+      keywords: ["Private", "Women", "Grants", "Guide", "2026"],
+      shortAnswer: "Complete guide to private foundation grants for women entrepreneurs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Amber', value: '$10K', description: 'Monthly grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3007,7 +3078,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Tell Your Story",
       type: 'tip',
-      content: "Private foundation grants favor <strong>compelling personal narratives</strong> over financial projections. Focus on your journey, mission, and community impact."
+      content: "Private foundation grants favor <strong>compelling personal narratives</strong> over financial projections. Focus on your journey, mission, and community impact.",
     }, shortAnswer: "Complete guide to private foundation grants for women entrepreneurs. Key highlights: Amber: $10K, IFundWomen: $25K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3038,7 +3109,8 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Language Compliance (Bill 96)",
       type: 'warning',
-      content: "Quebec funding requires <strong>strict adherence to French language laws</strong>. Ensure your business plan, financial statements, and application forms are professionally translated into French. English-only applications are often rejected outright by provincial agencies."
+      content: "Quebec funding requires <strong>strict adherence to French language laws</strong>. Ensure your business plan, financial statements, and application forms are professionally translated into French. English-only applications are often rejected outright by provincial agencies.",
+      shortAnswer: "Complete guide to Quebec government business grants and aide aux entreprises provincial funding. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     faq: [
       {
@@ -3070,7 +3142,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "French is Required",
       type: 'warning',
-      content: "Most Quebec programs require <strong>French-language applications</strong>. Hire a professional translator or use certified translation services for official submissions."
+      content: "Most Quebec programs require <strong>French-language applications</strong>. Hire a professional translator or use certified translation services for official submissions.",
     }, shortAnswer: "Complete guide to Quebec government business grants and aide aux entreprises provincial funding. Key highlights: IQ: $500K+, ESSOR: $50K+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3099,7 +3171,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Quebec", "Innovation", "Grants", "&", "Tax"]
+      keywords: ["Quebec", "Innovation", "Grants", "&", "Tax"],
+      shortAnswer: "Complete guide to Quebec innovation grants and tax credits. Total funding available: $2.5B+.",
     },
     metrics: [
       { label: 'Fund', value: '$2.5B', description: 'Provincial Pool', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3110,7 +3183,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Combine Federal & Provincial",
       type: 'success',
-      content: "Quebec companies can <strong>stack federal SR&ED</strong> (15-35%) with Quebec's CRIC (30%), achieving total R&D tax credits of 45-65%—the highest in North America."
+      content: "Quebec companies can <strong>stack federal SR&ED</strong> (15-35%) with Quebec's CRIC (30%), achieving total R&D tax credits of 45-65%—the highest in North America.",
     }, shortAnswer: "Complete guide to Quebec innovation grants and tax credits. Key highlights: Fund: $2.5B, R&D Credit: 30%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3139,7 +3212,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Quebec", "Small", "Business", "Grants", "2026"]
+      keywords: ["Quebec", "Small", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Quebec small business grants. Total funding available: $1.8B+.",
     },
     metrics: [
       { label: 'Total', value: '$1.8B', description: 'SME Funding', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3150,7 +3224,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Francophone Advantage",
       type: 'tip',
-      content: "Businesses operating <strong>primarily in French</strong> receive priority scoring and expedited processing for Quebec provincial programs."
+      content: "Businesses operating <strong>primarily in French</strong> receive priority scoring and expedited processing for Quebec provincial programs.",
     }, shortAnswer: "Complete guide to Quebec small business grants. Key highlights: Total: $1.8B, Tax Credit: 37.5%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3179,7 +3253,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Quebec", "Women", "Business", "Grants", "2026"]
+      keywords: ["Quebec", "Women", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Quebec women entrepreneurship support with R\u00e9seau des Femmes d. Total funding available: $720M.",
     },
     metrics: [
       { label: 'Fund', value: '$720M', description: 'Women Focus', color: 'text-pink-600', iconName: 'DollarSign' },
@@ -3190,7 +3265,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Réseau Connection",
       type: 'success',
-      content: "Joining <strong>Réseau des Femmes d'Affaires</strong> provides mentorship, networking, and significantly improves grant success rates for Quebec women entrepreneurs."
+      content: "Joining <strong>Réseau des Femmes d'Affaires</strong> provides mentorship, networking, and significantly improves grant success rates for Quebec women entrepreneurs.",
     }, shortAnswer: "Complete guide to Quebec women entrepreneurship support with R\u00e9seau des Femmes d. Key highlights: Fund: $720M, Network: RFDA.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3219,7 +3294,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["RBC", "Canadian", "Women", "Entrepreneur", "Awards"]
+      keywords: ["RBC", "Canadian", "Women", "Entrepreneur", "Awards"],
+      shortAnswer: "Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2026. Total funding available: $100K+.",
     },
     metrics: [
       { label: 'Total', value: '$100K+', description: 'Recognition', color: 'text-green-600', iconName: 'Award' },
@@ -3230,7 +3306,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Build Your Story",
       type: 'tip',
-      content: "RBC judges prioritize <strong>compelling narratives</strong> over pure financials. Focus your application on overcoming adversity and community impact."
+      content: "RBC judges prioritize <strong>compelling narratives</strong> over pure financials. Focus your application on overcoming adversity and community impact.",
     }, shortAnswer: "Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2026. Key highlights: Total: $100K+, Categories: 8.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3259,7 +3335,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Regional", "Development", "Agencies", "Canada", "2026"]
+      keywords: ["Regional", "Development", "Agencies", "Canada", "2026"],
+      shortAnswer: "Regional Development Agencies Canada. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     metrics: [
       { label: 'Agencies', value: '7', description: 'Regional RDAs', color: 'text-green-600', iconName: 'Building' },
@@ -3270,7 +3347,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Match Your RDA",
       type: 'success',
-      content: "Each province has a designated RDA (e.g., <strong>FedDev Ontario</strong>, <strong>PacifiCan</strong>). Apply through your local RDA for faster processing and higher approval rates."
+      content: "Each province has a designated RDA (e.g., <strong>FedDev Ontario</strong>, <strong>PacifiCan</strong>). Apply through your local RDA for faster processing and higher approval rates.",
     }, shortAnswer: "Regional Development Agencies Canada — key highlights include Agencies: 7 and Total: $2.3B. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3299,7 +3376,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Saskatchewan", "Small", "Business", "Grants", "2026"]
+      keywords: ["Saskatchewan", "Small", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Saskatchewan small business grants. Total funding available: $425M+.",
     },
     metrics: [
       { label: 'Total', value: '$425M', description: 'SME Programs', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3310,7 +3388,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Agriculture Angle",
       type: 'tip',
-      content: "Saskatchewan prioritizes <strong>agriculture-related innovations</strong>. Even tech businesses can qualify by demonstrating applications for farming/agribusiness."
+      content: "Saskatchewan prioritizes <strong>agriculture-related innovations</strong>. Even tech businesses can qualify by demonstrating applications for farming/agribusiness.",
     }, shortAnswer: "Complete guide to Saskatchewan small business grants. Key highlights: Total: $425M, Loans: $500K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3339,7 +3417,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SBA", "7(a)", "Loans", "Complete", "Guide"]
+      keywords: ["SBA", "7(a)", "Loans", "Complete", "Guide"],
+      shortAnswer: "Complete guide to SBA 7(a) loans. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Max', value: '$5M', description: 'Loan limit', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3350,7 +3429,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Use an SBA Lender",
       type: 'tip',
-      content: "Apply through an <strong>SBA Preferred Lender</strong> for faster processing. They can approve loans without SBA review, cutting weeks off approval time."
+      content: "Apply through an <strong>SBA Preferred Lender</strong> for faster processing. They can approve loans without SBA review, cutting weeks off approval time.",
     }, shortAnswer: "Complete guide to SBA 7(a) loans. Key highlights: Max: $5M, Rate: Prime+2.75%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3379,7 +3458,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SBA", "Disaster", "Relief", "Loans", "Guide"]
+      keywords: ["SBA", "Disaster", "Relief", "Loans", "Guide"],
+      shortAnswer: "Complete guide to SBA disaster relief loans. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Physical', value: '$2M', description: 'Damage loan', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3390,7 +3470,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Apply Immediately",
       type: 'warning',
-      content: "Disaster loan deadlines are <strong>strict and non-negotiable</strong>. Apply within 60 days of declaration for physical damage, 9 months for economic injury."
+      content: "Disaster loan deadlines are <strong>strict and non-negotiable</strong>. Apply within 60 days of declaration for physical damage, 9 months for economic injury.",
     }, shortAnswer: "Complete guide to SBA disaster relief loans. Key highlights: Physical: $2M, EIDL: $2M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3419,7 +3499,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SBA", "Loans", "&", "Grants", "Complete"]
+      keywords: ["SBA", "Loans", "&", "Grants", "Complete"],
+      shortAnswer: "Complete guide to SBA loans and grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: '7(a)', value: '$5M', description: 'General loans', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3430,7 +3511,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "SBA Doesn't Give Grants",
       type: 'warning',
-      content: "Despite common belief, <strong>SBA offers loans, not grants</strong>. The only SBA 'grants' are SBIR/STTR R&D funding, which have strict technical requirements."
+      content: "Despite common belief, <strong>SBA offers loans, not grants</strong>. The only SBA 'grants' are SBIR/STTR R&D funding, which have strict technical requirements.",
     }, shortAnswer: "The SBA offers loans (7(a) up to $5M, 504 up to $5.5M, Microloans up to $50K) — not grants. The only 'grants' are SBIR/STTR R&D awards up to $1.7M, which require a technology innovation component.",
     jumpLinks: [
       { title: '7(a) Loans', id: 'sba-7a' },
@@ -3459,7 +3540,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SBA", "Microloans", "Complete", "Guide", "2026"]
+      keywords: ["SBA", "Microloans", "Complete", "Guide", "2026"],
+      shortAnswer: "Complete guide to SBA microloans. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Max', value: '$50K', description: 'Loan limit', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3470,7 +3552,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Intermediary Lenders",
       type: 'tip',
-      content: "SBA microloans come through <strong>nonprofit intermediary lenders</strong>. Find your local microlender at SBA.gov for personalized support and faster processing."
+      content: "SBA microloans come through <strong>nonprofit intermediary lenders</strong>. Find your local microlender at SBA.gov for personalized support and faster processing.",
     }, shortAnswer: "Complete guide to SBA microloans. Key highlights: Max: $50K, Term: 6 Years.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3499,7 +3581,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SBIR", "Small", "Business", "Innovation", "Research"]
+      keywords: ["SBIR", "Small", "Business", "Innovation", "Research"],
+      shortAnswer: "Complete guide to SBIR grants for small businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Phase I', value: '$275K', description: 'Feasibility', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3510,7 +3593,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Agency Match",
       type: 'tip',
-      content: "Each agency has different priorities. <strong>Match your tech area to the right agency</strong>—NIH for health, DOE for energy, DOD for defense, etc."
+      content: "Each agency has different priorities. <strong>Match your tech area to the right agency</strong>—NIH for health, DOE for energy, DOD for defense, etc.",
     }, shortAnswer: "Complete guide to SBIR grants for small businesses. Key highlights: Phase I: $275K, Phase II: $1.7M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3539,7 +3622,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SBIR", "&", "STTR", "Grants", "Complete"]
+      keywords: ["SBIR", "&", "STTR", "Grants", "Complete"],
+      shortAnswer: "Complete guide to SBIR and STTR grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'SBIR', value: '$1.7M', description: 'Max award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3550,7 +3634,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "STTR Requires Partnership",
       type: 'warning',
-      content: "STTR (Small Business Technology Transfer) <strong>requires a formal university partnership</strong>. SBIR does not. Choose the right program for your situation."
+      content: "STTR (Small Business Technology Transfer) <strong>requires a formal university partnership</strong>. SBIR does not. Choose the right program for your situation.",
     }, shortAnswer: "Complete guide to SBIR and STTR grants. Key highlights: SBIR: $1.7M, STTR: $1.7M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3579,7 +3663,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Scotiabank", "Women", "Initiative", "2026", "|"]
+      keywords: ["Scotiabank", "Women", "Initiative", "2026", "|"],
+      shortAnswer: "Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and comprehensive support for Canadian women-led businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Bank', value: 'Scotia', description: 'Major Lender', color: 'text-red-600', iconName: 'Building' },
@@ -3590,7 +3675,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Banking Relationship Value",
       type: 'tip',
-      content: "Scotiabank Women Initiative provides not just capital access but also <strong>priority banking relationships</strong> and financial advisory services typically reserved for larger enterprises."
+      content: "Scotiabank Women Initiative provides not just capital access but also <strong>priority banking relationships</strong> and financial advisory services typically reserved for larger enterprises.",
     }, shortAnswer: "Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and comprehensive support for Canadian women-led businesses. Key highlights: Bank: Scotia, Support: 3-Pillar.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3619,7 +3704,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Small", "Business", "Grants", "Complete", "Guide"]
+      keywords: ["Small", "Business", "Grants", "Complete", "Guide"],
+      shortAnswer: "Complete guide to small business grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'SBA', value: '$5M', description: 'Max Loan', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3630,7 +3716,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Layered Funding Strategy",
       type: 'success',
-      content: "Most successful businesses apply for <strong>multiple complementary programs</strong> simultaneously—combining an SBA loan with state grants and local incentives for maximum capital."
+      content: "Most successful businesses apply for <strong>multiple complementary programs</strong> simultaneously—combining an SBA loan with state grants and local incentives for maximum capital.",
     }, shortAnswer: "Complete guide to small business grants. Key highlights: SBA: $5M, Types: 15+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3659,7 +3745,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Software", "&", "SaaS", "Startup", "Grants"]
+      keywords: ["Software", "&", "SaaS", "Startup", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to software and SaaS startup grants. Total funding available: $305K.",
     },
     metrics: [
       { label: 'NSF', value: '$305K', description: 'Phase I', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3670,7 +3757,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "SaaS-Specific Advantage",
       type: 'success',
-      content: "Software and SaaS companies qualify for <strong>accelerated SBIR timelines</strong> because digital products can demonstrate technical feasibility faster than hardware innovations."
+      content: "Software and SaaS companies qualify for <strong>accelerated SBIR timelines</strong> because digital products can demonstrate technical feasibility faster than hardware innovations.",
     }, shortAnswer: "Complete 2026-2027 guide to software and SaaS startup grants. Key highlights: NSF: $305K, Phase II: $1.25M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3699,7 +3786,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SR&ED", "Tax", "Credits", "Canada", "2026"]
+      keywords: ["SR&ED", "Tax", "Credits", "Canada", "2026"],
+      shortAnswer: "Complete guide to SR&ED tax credits in Canada. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Rate', value: '65%', description: 'Max Refund', color: 'text-green-600', iconName: 'Percent' },
@@ -3710,7 +3798,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: " Provincial Stacking",
       type: 'success',
-      content: "Combine <strong>federal 35% SR&ED</strong> with provincial credits (e.g., Quebec 30%) to achieve 65% total refundable R&D tax credits—the highest rate in North America."
+      content: "Combine <strong>federal 35% SR&ED</strong> with provincial credits (e.g., Quebec 30%) to achieve 65% total refundable R&D tax credits—the highest rate in North America.",
     }, shortAnswer: "SR&ED gives Canadian businesses a 35% refundable federal tax credit on eligible R&D expenditures (up to $4.5M). Combined with provincial credits, you can recover up to 65% of your R&D costs — the highest rate in North America.",
     jumpLinks: [
       { title: 'Tax Credits', id: 'tax-credits' },
@@ -3739,7 +3827,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["State", "&", "Local", "Business", "Grants"]
+      keywords: ["State", "&", "Local", "Business", "Grants"],
+      shortAnswer: "Complete guide to state and local business grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Pool', value: '$500K', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3750,7 +3839,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Regional Advantage",
       type: 'tip',
-      content: "State and local grants often have <strong>less competition</strong> than federal programs. Focus on regions with active economic development zones for higher approval rates."
+      content: "State and local grants often have <strong>less competition</strong> than federal programs. Focus on regions with active economic development zones for higher approval rates.",
     }, shortAnswer: "Complete guide to state and local business grants. Key highlights: Pool: $500K, States: 50.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3779,7 +3868,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["State", "Province", "Grants"]
+      keywords: ["State", "Province", "Grants"],
+      shortAnswer: "State Province Grants. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     metrics: [
       { label: 'States', value: '50', description: 'All Covered', color: 'text-green-600', iconName: 'MapPin' },
@@ -3790,7 +3880,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "State Priority Advantage",
       type: 'tip',
-      content: "State and provincial grants often have <strong>higher approval rates</strong> (60-75%) than federal programs because they prioritize local economic development and job creation."
+      content: "State and provincial grants often have <strong>higher approval rates</strong> (60-75%) than federal programs because they prioritize local economic development and job creation.",
     }, shortAnswer: "State Province Grants — key highlights include States: 50 and Pool: $15B+. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3819,7 +3909,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["State", "Women", "Business", "Programs", "Guide"]
+      keywords: ["State", "Women", "Business", "Programs", "Guide"],
+      shortAnswer: "Complete guide to state and local women business programs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'States', value: '50', description: 'All States', color: 'text-pink-600', iconName: 'MapPin' },
@@ -3830,7 +3921,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Combine State & Federal",
       type: 'success',
-      content: "Women entrepreneurs can <strong>stack state grants with federal programs</strong> like SBA loans and WOSB certifications for comprehensive funding packages."
+      content: "Women entrepreneurs can <strong>stack state grants with federal programs</strong> like SBA loans and WOSB certifications for comprehensive funding packages.",
     }, shortAnswer: "Complete guide to state and local women business programs. Key highlights: States: 50, Focus: Women.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3859,7 +3950,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Strategic", "Innovation", "Fund", "Canada", "2026"]
+      keywords: ["Strategic", "Innovation", "Fund", "Canada", "2026"],
+      shortAnswer: "Complete guide to Strategic Innovation Fund (SIF) funding in Canada. Total funding available: $100M+.",
     },
     metrics: [
       { label: 'Max', value: '$100M+', description: 'Per Project', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3870,7 +3962,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Scale Requirement",
       type: 'warning',
-      content: "SIF targets <strong>large-scale transformational projects</strong> with $10M+ budgets. Smaller companies should partner with larger firms or apply to SR&ED/IRAP instead."
+      content: "SIF targets <strong>large-scale transformational projects</strong> with $10M+ budgets. Smaller companies should partner with larger firms or apply to SR&ED/IRAP instead.",
     }, shortAnswer: "Complete guide to Strategic Innovation Fund (SIF) funding in Canada. Key highlights: Max: $100M+, Agency: ISED.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3899,7 +3991,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Territories", "Small", "Business", "Grants", "2026"]
+      keywords: ["Territories", "Small", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Territories business grants. Total funding available: $125M+.",
     },
     metrics: [
       { label: 'Total', value: '$125M+', description: 'Combined Fund', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3910,7 +4003,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Lower Competition Edge",
       type: 'success',
-      content: "Territorial programs have <strong>85%+ approval rates</strong> due to lower application volumes and government priority on Northern economic development."
+      content: "Territorial programs have <strong>85%+ approval rates</strong> due to lower application volumes and government priority on Northern economic development.",
     }, shortAnswer: "Complete guide to Territories business grants. Key highlights: Total: $125M+, Focus: North.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3939,7 +4032,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Usa", "Federal", "Grants"]
+      keywords: ["Usa", "Federal", "Grants"],
+      shortAnswer: "Usa Federal Grants. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     metrics: [
       { label: 'Pool', value: '$100B+', description: 'Annual Budget', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3950,7 +4044,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Grants.gov Portal",
       type: 'tip',
-      content: "All federal grants are listed on <strong>Grants.gov</strong>—create an account and set up custom alerts for your industry to catch new opportunities early."
+      content: "All federal grants are listed on <strong>Grants.gov</strong>—create an account and set up custom alerts for your industry to catch new opportunities early.",
     }, shortAnswer: "Usa Federal Grants — key highlights include Pool: $100B+ and Agencies: 26. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -3979,7 +4073,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["USDA", "SBIR", "Ag Tech", "Grants", "2026-2027"]
+      keywords: ["USDA", "SBIR", "Ag Tech", "Grants", "2026-2027"],
+      shortAnswer: "Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups. Total funding available: $125K.",
     },
     metrics: [
       { label: 'Phase I', value: '$125K', description: 'USDA Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3990,7 +4085,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "AgTech Funding Advantage",
       type: 'success',
-      content: "USDA SBIR has <strong>higher approval rates</strong> (28%) than NSF SBIR (17%) because agriculture technology receives federal priority for food security and sustainability goals."
+      content: "USDA SBIR has <strong>higher approval rates</strong> (28%) than NSF SBIR (17%) because agriculture technology receives federal priority for food security and sustainability goals.",
     }, shortAnswer: "Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups. Key highlights: Phase I: $125K, Phase II: $575K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4019,7 +4114,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Washington", "Tech", "Startup", "Grants", "2026-2027"]
+      keywords: ["Washington", "Tech", "Startup", "Grants", "2026-2027"],
+      shortAnswer: "Complete 2026-2027 guide to Washington state technology startup grants. Total funding available: $1M.",
     },
     metrics: [
       { label: 'WRF', value: '$1M', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -4030,7 +4126,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Pacific Northwest Advantage",
       type: 'success',
-      content: "Washington tech grants prioritize <strong>clean energy and software</strong> because of Boeing, Microsoft, and Amazon partnerships—leveraging state's tech ecosystem."
+      content: "Washington tech grants prioritize <strong>clean energy and software</strong> because of Boeing, Microsoft, and Amazon partnerships—leveraging state's tech ecosystem.",
     }, shortAnswer: "Complete 2026-2027 guide to Washington state technology startup grants. Key highlights: WRF: $1M, I&M: $540K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4059,7 +4155,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["WBDC", "Equity", "Match", "Grant", "2027"]
+      keywords: ["WBDC", "Equity", "Match", "Grant", "2027"],
+      shortAnswer: "Complete guide to WBDC Equity Match Grant with quarterly deadlines, $2,500-$10,000 funding for Connecticut women-owned businesses with matching investment requirement. Total funding available: $2,500.",
     },
     metrics: [
       { label: 'Range', value: '$2.5-10K', description: 'Grant Amount', color: 'text-green-600', iconName: 'DollarSign' },
@@ -4070,7 +4167,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Matching Strategy",
       type: 'tip',
-      content: "WBDC requires <strong>dollar-for-dollar matching</strong> from your own investment, but accepts equipment purchases, professional services, and sweat equity as qualifying matches."
+      content: "WBDC requires <strong>dollar-for-dollar matching</strong> from your own investment, but accepts equipment purchases, professional services, and sweat equity as qualifying matches.",
     }, shortAnswer: "Complete guide to WBDC Equity Match Grant with quarterly deadlines, $2,500-$10,000 funding for Connecticut women-owned businesses with matching investment requirement. Key highlights: Range: $2.5-10K, Match: Required.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4099,7 +4196,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women"]
+      keywords: ["Women"],
+      shortAnswer: "Women. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     metrics: [
       { label: 'Centers', value: '100+', description: 'US Locations', color: 'text-purple-600', iconName: 'Building' },
@@ -4110,7 +4208,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Free Expert Guidance",
       type: 'success',
-      content: "Women's Business Centers provide <strong>free one-on-one counseling</strong> and training valued at $5,000+ annually, plus priority access to SBA loans and grants."
+      content: "Women's Business Centers provide <strong>free one-on-one counseling</strong> and training valued at $5,000+ annually, plus priority access to SBA loans and grants.",
     }, shortAnswer: "Women — key highlights include Centers: 100+ and Support: Free. Our guide covers all eligible programs, application steps, and expert tips.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4139,7 +4237,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women", "Clean", "Technology", "Grants", "Canada"]
+      keywords: ["Women", "Clean", "Technology", "Grants", "Canada"],
+      shortAnswer: "Complete 2026-2027 guide to clean tech grants for women entrepreneurs. Total funding available: $10M.",
     },
     metrics: [
       { label: 'SDTC', value: '$10M', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -4150,7 +4249,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Dual Diversity Priority",
       type: 'success',
-      content: "Women-led clean technology businesses receive <strong>priority scoring</strong> in SDTC applications because they meet both diversity and environmental innovation mandates."
+      content: "Women-led clean technology businesses receive <strong>priority scoring</strong> in SDTC applications because they meet both diversity and environmental innovation mandates.",
     }, shortAnswer: "Complete 2026-2027 guide to clean tech grants for women entrepreneurs. Key highlights: SDTC: $10M, Focus: Clean Tech.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4179,7 +4278,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women", "Entrepreneurship", "Fund", "Canada", "2026"]
+      keywords: ["Women", "Entrepreneurship", "Fund", "Canada", "2026"],
+      shortAnswer: "Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Type', value: 'Non-Repay', description: 'Grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -4190,7 +4290,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "WEF Application Strategy",
       type: 'success',
-      content: "Women Entrepreneurship Fund applications succeed by demonstrating <strong>scalable growth potential</strong> and job creation, not just business survival."
+      content: "Women Entrepreneurship Fund applications succeed by demonstrating <strong>scalable growth potential</strong> and job creation, not just business survival.",
     }, shortAnswer: "Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Key highlights: Type: Non-Repay, Agency: ISED.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4219,7 +4319,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women", "Entrepreneurship", "Loan", "Fund", "(WELF)"]
+      keywords: ["Women", "Entrepreneurship", "Loan", "Fund", "(WELF)"],
+      shortAnswer: "Complete guide to WELF microloans from Innovation, Science & Economic Development Canada. Total funding available: $50K.",
     },
     metrics: [
       { label: 'Max', value: '$50K', description: 'Microloan', color: 'text-green-600', iconName: 'DollarSign' },
@@ -4230,7 +4331,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Microloan Benefits",
       type: 'tip',
-      content: "WELF microloans have <strong>no collateral requirements</strong> and flexible repayment terms, making them ideal for women entrepreneurs who can't qualify for traditional bank financing."
+      content: "WELF microloans have <strong>no collateral requirements</strong> and flexible repayment terms, making them ideal for women entrepreneurs who can't qualify for traditional bank financing.",
     }, shortAnswer: "Complete guide to WELF microloans from Innovation, Science & Economic Development Canada. Key highlights: Max: $50K, Type: Loan.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4259,7 +4360,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women", "Entrepreneurship", "Strategy", "Canada", "2026"]
+      keywords: ["Women", "Entrepreneurship", "Strategy", "Canada", "2026"],
+      shortAnswer: "Women Entrepreneurship Strategy Canada: $6B+ in total funding is available across multiple federal and provincial programs. Our guide breaks down eligibility requirements, application steps, and expert strategies.",
     },
     metrics: [
       { label: 'Total', value: '$6B', description: 'Federal Fund', color: 'text-green-600', iconName: 'DollarSign' },
@@ -4270,7 +4372,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "WES Ecosystem Approach",
       type: 'success',
-      content: "Women Entrepreneurship Strategy is <strong>not a single program</strong> but an ecosystem of coordinated federal initiatives—apply to multiple WES programs simultaneously for maximum funding."
+      content: "Women Entrepreneurship Strategy is <strong>not a single program</strong> but an ecosystem of coordinated federal initiatives—apply to multiple WES programs simultaneously for maximum funding.",
     }, shortAnswer: "Yes — Canada's Women Entrepreneurship Strategy (WES) offers $6B+ through 15+ coordinated programs, including grants up to $100K, BDC loans, and free mentorship. It's not a single program — stack multiple WES initiatives for maximum funding.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4298,7 +4400,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women", "Entrepreneurship", "Strategy", "Canada", "2026"]
+      keywords: ["Women", "Entrepreneurship", "Strategy", "Canada", "2026"],
+      shortAnswer: "Women Entrepreneurship Strategy Canada: $6B in total funding is available across multiple federal and provincial programs. Our guide breaks down eligibility requirements, application steps, and expert strategies.",
     },
     metrics: [
       { label: 'Total', value: '$6B', description: 'Investment', color: 'text-green-600', iconName: 'DollarSign' },
@@ -4309,7 +4412,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Layered WES Funding",
       type: 'success',
-      content: "Combine WES <strong>non-repayable grants</strong> with WES loan programs and WES ecosystem services for comprehensive support package worth $100K+ in total value."
+      content: "Combine WES <strong>non-repayable grants</strong> with WES loan programs and WES ecosystem services for comprehensive support package worth $100K+ in total value.",
     }, shortAnswer: "Women Entrepreneurship Strategy Canada: access $6B in available funding. Key programs offer Total: $6B and Programs: 15+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4338,7 +4441,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women", "Export", "Trade", "Grants", "Canada"]
+      keywords: ["Women", "Export", "Trade", "Grants", "Canada"],
+      shortAnswer: "Complete 2026-2027 guide to export grants for women entrepreneurs. Total funding available: $75K.",
     },
     metrics: [
       { label: 'CanExport', value: '$75K', description: 'Max Grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -4349,7 +4453,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Trade Mission Advantage",
       type: 'success',
-      content: "Women-led businesses get <strong>priority placement</strong> on Government of Canada trade missions and receive higher CanExport grant amounts (up to $75K vs. $50K standard)."
+      content: "Women-led businesses get <strong>priority placement</strong> on Government of Canada trade missions and receive higher CanExport grant amounts (up to $75K vs. $50K standard).",
     }, shortAnswer: "Complete 2026-2027 guide to export grants for women entrepreneurs. Key highlights: CanExport: $75K, Focus: Export.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4378,7 +4482,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women", "Manufacturing", "Grants", "Canada", "2026-2027"]
+      keywords: ["Women", "Manufacturing", "Grants", "Canada", "2026-2027"],
+      shortAnswer: "Complete 2026-2027 guide to manufacturing grants for women-owned businesses in Ontario, Quebec, BC, Alberta. Total funding available: $10M.",
     },
     metrics: [
       { label: 'Equipment', value: '$10M', description: 'Max Funding', color: 'text-green-600', iconName: 'DollarSign' },
@@ -4389,7 +4494,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Equipment Financing Edge",
       type: 'success',
-      content: "Women-owned manufacturing businesses qualify for <strong>combined NRC IRAP + provincial equipment grants</strong> totaling 60-75% of equipment costs, compared to 35-50% for general applicants."
+      content: "Women-owned manufacturing businesses qualify for <strong>combined NRC IRAP + provincial equipment grants</strong> totaling 60-75% of equipment costs, compared to 35-50% for general applicants.",
     }, shortAnswer: "Complete 2026-2027 guide to manufacturing grants for women-owned businesses in Ontario, Quebec, BC, Alberta. Key highlights: Equipment: $10M, Type: Mfg.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4418,7 +4523,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women", "Social", "Enterprise", "Grants", "Canada"]
+      keywords: ["Women", "Social", "Enterprise", "Grants", "Canada"],
+      shortAnswer: "Complete 2026-2027 guide to social enterprise grants for women-led impact businesses in Ontario, Quebec, BC, Alberta. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Max', value: '$1M', description: 'Impact Fund', color: 'text-green-600', iconName: 'DollarSign' },
@@ -4429,7 +4535,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Social Impact Multiplier",
       type: 'success',
-      content: "Women-led social enterprises access <strong>both traditional business grants AND impact-focused funding</strong>, doubling available capital compared to standard businesses."
+      content: "Women-led social enterprises access <strong>both traditional business grants AND impact-focused funding</strong>, doubling available capital compared to standard businesses.",
     }, shortAnswer: "Complete 2026-2027 guide to social enterprise grants for women-led impact businesses in Ontario, Quebec, BC, Alberta. Key highlights: Max: $1M, Type: Social.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4458,7 +4564,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women", "in", "Technology", "&", "STEM"]
+      keywords: ["Women", "in", "Technology", "&", "STEM"],
+      shortAnswer: "Complete guide to grants for women in technology and STEM fields. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'SBIR', value: '$1M', description: 'Tech Grants', color: 'text-green-600', iconName: 'DollarSign' },
@@ -4469,7 +4576,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "STEM Diversity Bonus",
       type: 'success',
-      content: "Women in STEM receive <strong>priority scoring</strong> in NSF and SBIR applications, increasing approval odds by 35-40% compared to general applicant pool."
+      content: "Women in STEM receive <strong>priority scoring</strong> in NSF and SBIR applications, increasing approval odds by 35-40% compared to general applicant pool.",
     }, shortAnswer: "Complete guide to grants for women in technology and STEM fields. Key highlights: SBIR: $1M, Focus: STEM.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4498,7 +4605,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women", "in", "Technology", "Grants", "Canada"]
+      keywords: ["Women", "in", "Technology", "Grants", "Canada"],
+      shortAnswer: "Complete guide to Canadian women technology grants with NRC IRAP, Innovate BC, Alberta Innovates, AI funding, software development support, and digital innovation programs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'NRC', value: 'IRAP', description: 'R&D Funding', color: 'text-green-600', iconName: 'DollarSign' },
@@ -4509,7 +4617,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Provincial Tech Stacking",
       type: 'success',
-      content: "Combine <strong>federal NRC IRAP with provincial tech grants</strong> (Innovate BC, Alberta Innovates, Ontario Centres of Excellence) for 70-80% total R&D cost coverage."
+      content: "Combine <strong>federal NRC IRAP with provincial tech grants</strong> (Innovate BC, Alberta Innovates, Ontario Centres of Excellence) for 70-80% total R&D cost coverage.",
     }, shortAnswer: "Complete guide to Canadian women technology grants with NRC IRAP, Innovate BC, Alberta Innovates, AI funding, software development support, and digital innovation programs. Key highlights: NRC: IRAP, Focus: AI/SW.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4538,7 +4646,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["WOSB", "Federal", "Contracting", "Guide", "2026"]
+      keywords: ["WOSB", "Federal", "Contracting", "Guide", "2026"],
+      shortAnswer: "Complete guide to WOSB and EDWOSB certification for federal contracting. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Setaside', value: '5%', description: 'Federal Goal', color: 'text-green-600', iconName: 'Percent' },
@@ -4549,7 +4658,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "EDWOSB Advantage",
       type: 'success',
-      content: "Economically Disadvantaged WOSB (EDWOSB) certification provides <strong>sole-source contracts up to $7M</strong> and priority in competitive bidding for federal opportunities."
+      content: "Economically Disadvantaged WOSB (EDWOSB) certification provides <strong>sole-source contracts up to $7M</strong> and priority in competitive bidding for federal opportunities.",
     }, shortAnswer: "Complete guide to WOSB and EDWOSB certification for federal contracting. Key highlights: Setaside: 5%, Type: WOSB.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4578,7 +4687,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Youth", "Entrepreneurship", "Canada", "2026", "|"]
+      keywords: ["Youth", "Entrepreneurship", "Canada", "2026", "|"],
+      shortAnswer: "Complete guide to Canadian youth entrepreneur funding programs. Total funding available: $60K+.",
     },
     metrics: [
       { label: 'CYBF', value: '$60K', description: 'Max Grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -4589,7 +4699,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Youth Funding Stack",
       type: 'success',
-      content: "Young entrepreneurs (18-35) can combine <strong>CYBF grants + provincial youth programs + federal YES funding</strong> for total startup capital of $100K+ with minimal equity dilution."
+      content: "Young entrepreneurs (18-35) can combine <strong>CYBF grants + provincial youth programs + federal YES funding</strong> for total startup capital of $100K+ with minimal equity dilution.",
     }, shortAnswer: "Complete guide to Canadian youth entrepreneur funding programs. Key highlights: CYBF: $60K, Age: 18-35.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4632,7 +4742,8 @@ export const blogPosts: BlogPost[] = [
       <p>With CDAP evolving, look for programs that support <em>advanced</em> technology like AI and automation, rather than just website building.</p>
     `,
     seo: {
-      keywords: ["2026 Grants", "Canada Business Funding", "Forecast"]
+      keywords: ["2026 Grants", "Canada Business Funding", "Forecast"],
+      shortAnswer: "Get ahead of the curve. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Trend', value: 'Green', description: 'Sustainability', color: 'text-green-600', iconName: 'TrendingUp' },
@@ -4643,7 +4754,7 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Prepare Early",
       type: 'tip',
-      content: "Grants are cyclical. Many programs reset their budgets in April (start of fiscal year). Prepare your business plans in Q1 to be ready for the April intake."
+      content: "Grants are cyclical. Many programs reset their budgets in April (start of fiscal year). Prepare your business plans in Q1 to be ready for the April intake.",
     }, shortAnswer: "Get ahead of the curve. Key highlights: Trend: Green, Tech: AI.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -4825,7 +4936,7 @@ export const blogPosts: BlogPost[] = [
       {
         question: "How long does approval take?",
         answer: "Timelines vary, but expect **4-8 weeks** for standard files. Ensure your business plan is solid to avoid delays."
-      }
+      },
     ], shortAnswer: "Yes — 🇨🇦 Complete guide to the Black Entrepreneurship Loan Fund. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -5005,7 +5116,7 @@ export const blogPosts: BlogPost[] = [
       {
         question: "Are there grants for newcomers?",
         answer: "Direct grants are rare. Most funding is in the form of **loans** or **free training/mentorship**."
-      }
+      },
     ], shortAnswer: "Yes — 🇨🇦 Complete guide for immigrants and newcomers starting a business in Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -5163,7 +5274,7 @@ export const blogPosts: BlogPost[] = [
       {
         question: "Is there funding for Indigenous businesses in BC?",
         answer: "Yes. The **Indigenous Business & Investment Council (IBIC)** and various Aboriginal Capital Corporations (ACCs) provide specialized loans and grants."
-      }
+      },
     ], shortAnswer: "Yes — 🇨🇦 British Columbia's top funding programs explained. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -5317,7 +5428,7 @@ export const blogPosts: BlogPost[] = [
       {
         question: "What about the high cost of energy?",
         answer: "Look into the **Arctic Energy Fund**. It helps businesses switch from diesel to solar, wind, or biomass."
-      }
+      },
     ], shortAnswer: "Yes — 🇨🇦 Business in the North is unique. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -5501,7 +5612,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Does the government take equity?",
         answer: "For grants (IRAP, CDAP) and contributions (SIF), generally **No**. They are non-dilutive."
-      }
+      },
     ], shortAnswer: "Yes — 🇨🇦 This is the big league. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -5604,7 +5715,8 @@ However, some large SIF contributions may have repayment terms based on revenue 
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "The application forms and communication with provincial agencies (IQ) are primarily in French. While federal agencies (CED) work in both languages, your business must comply with Bill 96 language laws to be eligible for provincial support."
-      }
+      },
+      shortAnswer: "🇨🇦 Québec offers some of the most generous R&D and manufacturing grants in North America. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     {
       "@type": "Question",
@@ -5688,7 +5800,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Are these grants taxable?",
         answer: "Yes. Like federal grants, provincial subsidies are taxable income. Loans are not income, but the interest benefit (if 0%) might have tax implications."
-      }
+      },
     ], shortAnswer: "Yes — 🇨🇦 Québec offers some of the most generous R&D and manufacturing grants in North America. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -5839,7 +5951,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Can I stack federal grants with SAVI?",
         answer: "Yes. You can often combine provincial SAVI funding with federal programs like SCAP, subject to stacking limits (usually 75-90%)."
-      }
+      },
     ], shortAnswer: "Yes — 🇨🇦 Saskatchewan is more than just wheat. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -6176,7 +6288,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Do I need patents to apply?",
         answer: "While strict patents aren't always mandatory, you must own the <strong>Intellectual Property (IP)</strong> or have a clear license to exploit it. Government funders want to ensure the economic benefits (jobs, profits) stay in Canada."
-      }
+      },
     ], shortAnswer: "Yes — 🇨🇦 The definitive guide to Canada's Clean Technology funding landscape for 2026. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -6406,7 +6518,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "How long does approval take?",
         answer: "Since decisions are made by the local financial institution, approval can be relatively fast—often within 2 to 4 weeks, provided your business plan and documentation are complete."
-      }
+      },
     ], shortAnswer: "Yes — 🇨🇦 The complete guide to Canada's expanded Small Business Financing Program (CSBFP). Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -7078,7 +7190,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "What is the Aboriginal Business Development Program?",
         answer: "It provides access to capital, business support services, and procurement opportunities. It is now largely administered through the network of <strong>Aboriginal Financial Institutions (AFIs)</strong>."
-      }
+      },
     ], shortAnswer: "Yes — \ud83e\udeb6 Canada's $120M Indigenous Business Revolution: Complete Funding Guide\n    \n      \n        \ud83c\udfc6 Top Indigenous Business Regions\n        \n          \u2022 Bri.... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -7643,7 +7755,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "When should I apply?",
         answer: "You must submit your application at least <strong>60 days before</strong> you incur your first eligible expense."
-      }
+      },
     ], shortAnswer: "Yes — \ud83c\udde8\ud83c\udde6 CanExport Grants 2026: International Market Expansion - $75M+ Export Engine\n    \n      \n        \ud83c\udfc6 CanExport Program Portfolio\n        \n          \u2022 .... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -8160,7 +8272,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "What costs are covered?",
         answer: "IRAP primarily covers <strong>internal technical labour costs</strong> (salaries of employees working on the project) and some subcontractor fees."
-      }
+      },
     ], shortAnswer: "Yes — \ud83c\udde8\ud83c\udde6 Canada IRAP Grants 2026: Industrial Research Assistance Program - $400M+ Innovation Powerhouse\n    \n      \n        \ud83c\udfc6 IRAP Program Scale\n        \n  .... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -8934,7 +9046,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Who is eligible for the $2,400 micro-grant?",
         answer: "Consumer-facing businesses (retail, service) with at least one employee and revenue over $30,000 are typically eligible for the 'Grow Your Business Online' grant."
-      }
+      },
     ], shortAnswer: "Yes — \ud83d\udcbb Canada's $90M Digital Transformation Revolution: Complete CDAP Guide\n    \n      \n        \ud83c\udfc6 Top Digital Innovation Provinces\n        \n          \u2022 Ont.... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -9796,7 +9908,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Do I need to be incorporated?",
         answer: "Yes, you must be a for-profit legal entity (corporation, co-operative, or partnership) to apply. Sole proprietorships are typically not eligible."
-      }
+      },
     ], shortAnswer: "Yes — 🌾 Canada's $180M Agricultural Innovation Revolution: Complete AgriInnovate Guide\n    \n      \n        🏆 Top Agricultural Innovation Provinces\n        \n.... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -9997,7 +10109,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Are these grants taxable?",
         answer: "Yes. Most government grants are considered taxable income."
-      }
+      },
     ], shortAnswer: "Yes — Manitoba's Innovation Growth Program gives up to $100K for commercialization. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -10267,7 +10379,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Is mental health funding available?",
         answer: "Yes, it is a top priority. The federal government has specific funds dedicated to <strong>mental health and addiction services</strong>, particularly solutions that increase access to care (e.g., virtual counseling platforms)."
-      }
+      },
     ], shortAnswer: "Yes — 90% of health startups apply to the wrong program and get rejected. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -10377,7 +10489,8 @@ However, some large SIF contributions may have repayment terms based on revenue 
                                                                                                                                                                                                                                                         < p > Heavy industry rules are different from tech.Here is what you need to know.</p>
                                                                                                                                                                                                                                                           `,
     seo: {
-      keywords: ["Manufacturing Grants Canada", "SIF Funding", "FedDev Ontario", "Equipment Loans Canada", "Canada Job Grant"]
+      keywords: ["Manufacturing Grants Canada", "SIF Funding", "FedDev Ontario", "Equipment Loans Canada", "Canada Job Grant"],
+      shortAnswer: "🇨🇦 Modernize your factory with Canadian government grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Total', value: '$5.5B', description: 'Industry Fund', color: 'text-orange-600', iconName: 'Factory' },
@@ -10414,7 +10527,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Is used equipment eligible?",
         answer: "Often no. Most programs want to stimulate the economy by purchasing <strong>new</strong>, state-of-the-art technology, not shuffling old machines around."
-      }
+      },
     ], shortAnswer: "Yes — 🇨🇦 Modernize your factory with Canadian government grants. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -10586,7 +10699,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Can I get funding for a mobile app?",
         answer: "Only if it involves 'technical uncertainty'. Building a standard e-commerce app or a Tinder-clone is considered 'standard engineering' and rarely qualifies for R&D grants. Building a novel algorithmic engine <em>within</em> the app might qualify."
-      }
+      },
     ], shortAnswer: "Yes — Keep 100% equity: IRAP covers 80% of R&D salaries, SR&ED gives 45% tax credits, and the Digital Adoption Program funds your tech stack. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -10618,7 +10731,8 @@ However, some large SIF contributions may have repayment terms based on revenue 
     faq: [
       {
         question: "When will official guidelines for 2026 grants be released?",
-        answer: "Most federal agencies release preliminary guidelines in Q4 of the preceding year (Oct-Dec 2025), with full NOFOs (Notice of Funding Opportunities) following in Q1 2026."
+        answer: "Most federal agencies release preliminary guidelines in Q4 of the preceding year (Oct-Dec 2025), with full NOFOs (Notice of Funding Opportunities) following in Q1 2026.",
+        shortAnswer: "\ud83d\ude80 2026 Grant Preview: Early Bird Opportunities - $4.8B Future Funding Pipeline\n    \n      \n        \ud83c\udfc6 Top 2026 Early Bird Programs\n        \n          \u2022... Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
       },
       {
         question: "Can private businesses apply for infrastructure grants directly?",
@@ -10647,7 +10761,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     expertTip: {
       title: "Pre-Application is Key",
       type: 'tip',
-      content: "Many 2026 programs have <strong>mandatory pre-application phases</strong> in late 2026. Missing the December 2026 pre-application deadline often disqualifies you from the main funding."
+      content: "Many 2026 programs have <strong>mandatory pre-application phases</strong> in late 2026. Missing the December 2026 pre-application deadline often disqualifies you from the main funding.",
     }, shortAnswer: "\ud83d\ude80 2026 Grant Preview: Early Bird Opportunities - $4.8B Future Funding Pipeline\n    \n      \n        \ud83c\udfc6 Top 2026 Early Bird Programs\n        \n          \u2022... Key highlights: Total: $4.8B, AI Fund: $456M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -11036,7 +11150,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Is there funding for tourism?",
         answer: "Yes. The <strong>Tourism Relief Fund</strong> has evolved into various regional asset enhancement grants. Check with your provincial tourism association (e.g., Tourism Nova Scotia) for specific 'start-up' or 'expansion' grants."
-      }
+      },
     ], shortAnswer: "Yes — 🇨🇦 The East Coast is booming. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -11073,7 +11187,8 @@ However, some large SIF contributions may have repayment terms based on revenue 
     expertTip: {
       title: "Stack Your Benefits",
       type: 'tip',
-      content: "Use the VAC Education Benefit to get a business degree or certification first. Then, join the Prince's Trust bootcamp to build your plan. Finally, use Futurpreneur for your initial capital. This 'stack' minimizes your personal financial risk."
+      content: "Use the VAC Education Benefit to get a business degree or certification first. Then, join the Prince's Trust bootcamp to build your plan. Finally, use Futurpreneur for your initial capital. This 'stack' minimizes your personal financial risk.",
+      shortAnswer: "Canadian veterans can access up to $89K through Prince's Trust, Futurpreneur, and the Education & Training Benefit. Total funding available: $89K+.",
     },
     content: veteranBusinessFunding2026,
     faq: [
@@ -11092,7 +11207,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Are there grants for veteran spouses?",
         answer: "Some support networks and community programs extend to spouses. Additionally, if you co-own a business with your spouse, their involvement can strengthen your application for general small business grants."
-      }
+      },
     ], shortAnswer: "Yes — Canadian veterans can access up to $89K through Prince's Trust, Futurpreneur, and the Education & Training Benefit. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -11492,7 +11607,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Does the government fund student housing?",
         answer: "Yes. The <strong>Apartment Construction Loan Program (ACLP)</strong> specifically includes student housing projects, provided they are on or near campus and affordable."
-      }
+      },
     ], shortAnswer: "Yes — 🇨🇦 Access CMHC and FCM funding for housing and community projects. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -11835,7 +11950,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "Do I need to be incorporated?",
         answer: "For major loans, yes. For micro-grants and mentorship, sole proprietorships are often eligible."
-      }
+      },
     ], shortAnswer: "Yes — 🇨🇦 The WES Ecosystem Fund, WEOC loans, and FACERF are changing the game. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -11864,7 +11979,8 @@ However, some large SIF contributions may have repayment terms based on revenue 
     content: albertaBusinessGrants2026.content,
     type: 'expert-insight',
     seo: {
-      keywords: ["Alberta business grants", "Alberta Innovates vouchers", "PrairiesCan funding", "small business grants Alberta 2026", "Edmonton startup funding", "Calgary business grants"]
+      keywords: ["Alberta business grants", "Alberta Innovates vouchers", "PrairiesCan funding", "small business grants Alberta 2026", "Edmonton startup funding", "Calgary business grants"],
+      shortAnswer: "Alberta Business Grants 2026: Innovation & Growth. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     metrics: [
       { label: 'Vouchers', value: '$100k', description: 'Tech De-Risking', color: 'text-blue-600', iconName: 'Cpu' },
@@ -12087,7 +12203,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       {
         question: "How do I get SDVOSB certified?",
         answer: "You must apply through the **SBA VetCert** portal. Verification typically takes 30-60 days."
-      }
+      },
     ], shortAnswer: "Yes — 🇺🇸 Complete guide to grants and resources for veteran-owned small businesses (VOSB) and service-disabled veteran-owned small businesses (SDVOSB).. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -12354,7 +12470,7 @@ Write: "This grant will fund a high-capacity oven, allowing me to increase produ
       {
         question: "Can I get a grant to start a business?",
         answer: "Yes, grants like Amber and Galaxy are open to startups. However, federal contracts and larger corporate grants usually require 1-2 years of operational history."
-      }
+      },
     ], shortAnswer: "Yes — 🇺🇸 A curated list of grants for women entrepreneurs in 2026. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -12577,7 +12693,7 @@ However, a single corporate contract can yield 100x that investment.
       {
         question: "Can I apply regarding pre-revenue status?",
         answer: "Yes, grants like the Galaxy Grant are open to startups. However, federal 8(a) certification typically requires 2 years of business history."
-      }
+      },
     ], shortAnswer: "Yes — 🇺🇸 Funding sources dedicated to Black, Latino, Asian, and Indigenous entrepreneurs. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -12608,7 +12724,8 @@ However, a single corporate contract can yield 100x that investment.
 ${bidenPost}
     `,
     seo: {
-      keywords: ["Biden small business grants", "federal grants 2026", "minority business funding", "SBA grants 2026", "government small business loans"]
+      keywords: ["Biden small business grants", "federal grants 2026", "minority business funding", "SBA grants 2026", "government small business loans"],
+      shortAnswer: "🇺🇸 Everything you need to know about the new $2.5 billion federal grant initiative for minority, women, and veteran entrepreneurs. Total funding available: $2.5B.",
     },
     metrics: [
       { label: 'Total', value: '$2.5B', description: 'Program Size', color: 'text-green-600', iconName: 'DollarSign' },
@@ -12632,7 +12749,7 @@ ${bidenPost}
       {
         question: "Do I need good credit?",
         answer: "Unlike loans, these grants focus more on business viability and demographic criteria than personal credit scores, though tax compliance is required."
-      }
+      },
     ], shortAnswer: "Yes — 🇺🇸 Everything you need to know about the new $2.5 billion federal grant initiative for minority, women, and veteran entrepreneurs.. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -12663,7 +12780,8 @@ ${bidenPost}
 ${doePost}
     `,
     seo: {
-      keywords: ["DOE grants", "clean tech funding", "solar business grants", "battery startup funding", "green energy grants usa"]
+      keywords: ["DOE grants", "clean tech funding", "solar business grants", "battery startup funding", "green energy grants usa"],
+      shortAnswer: "🇺🇸 The Department of Energy is investing heavily in solar, battery, and green technology. Total funding available: $800M.",
     },
     metrics: [
       { label: 'Fund', value: '$800M', description: 'Total Pool', color: 'text-green-600', iconName: 'Sun' },
@@ -12687,7 +12805,7 @@ ${doePost}
       {
         question: "Can I use funding for marketing?",
         answer: "Generally no. DOE funds are strictly for research, development, and technical demonstration, not for sales or marketing expenses."
-      }
+      },
     ], shortAnswer: "Yes — 🇺🇸 The Department of Energy is investing heavily in solar, battery, and green technology. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -12718,7 +12836,8 @@ ${doePost}
 ${epaPost}
     `,
     seo: {
-      keywords: ["EPA grants", "environmental justice funding", "community change grants", "non-profit environmental grants", "climate justice funding"]
+      keywords: ["EPA grants", "environmental justice funding", "community change grants", "non-profit environmental grants", "climate justice funding"],
+      shortAnswer: "🇺🇸 Funding for communities and non-profits fighting pollution and climate change in underserved areas. Total funding available: $100M.",
     },
     metrics: [
       { label: 'Pool', value: '$100M', description: 'Total Funding', color: 'text-teal-600', iconName: 'Globe' },
@@ -12742,7 +12861,7 @@ ${epaPost}
       {
         question: "Can for-profits apply?",
         answer: "Generally no, unless specifically partnering on a Pollution Prevention (P2) grant to reduce industrial waste."
-      }
+      },
     ], shortAnswer: "Yes — 🇺🇸 Funding for communities and non-profits fighting pollution and climate change in underserved areas. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -12773,7 +12892,8 @@ ${epaPost}
 ${nsfPost}
     `,
     seo: {
-      keywords: ["NSF grants", "SBIR funding", "STEM startup grants", "tech research grants", "seed funding for startups"]
+      keywords: ["NSF grants", "SBIR funding", "STEM startup grants", "tech research grants", "seed funding for startups"],
+      shortAnswer: "🇺🇸 The National Science Foundation offers non-dilutive funding for high-tech startups. Total funding available: $200M.",
     },
     metrics: [
       { label: 'Phase I', value: '$305k', description: 'Seed Funding', color: 'text-purple-600', iconName: 'Beaker' },
@@ -12797,7 +12917,7 @@ ${nsfPost}
       {
         question: "What is the success rate?",
         answer: "Overall it's around 15%, but if your Project Pitch is accepted, the full proposal success rate is significantly higher (around 45%)."
-      }
+      },
     ], shortAnswer: "Yes — 🇺🇸 The National Science Foundation offers non-dilutive funding for high-tech startups. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -12828,7 +12948,8 @@ ${nsfPost}
 ${oct2026Post}
     `,
     seo: {
-      keywords: ["grant deadlines October 2026", "expiring grants Canada", "last chance business funding", "urgent grant alerts", "CDAP deadline", "Ontario Scale-Up Vouchers"]
+      keywords: ["grant deadlines October 2026", "expiring grants Canada", "last chance business funding", "urgent grant alerts", "CDAP deadline", "Ontario Scale-Up Vouchers"],
+      shortAnswer: "⏰ Urgent funding alert! Key federal and provincial grant programs closing this month. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Closing', value: '12', description: 'Grants Ending', color: 'text-red-600', iconName: 'Clock' },
@@ -12861,7 +12982,7 @@ ${oct2026Post}
       {
         question: "Do I need matching funds for these grants?",
         answer: "It depends on the program. CDAP requires no matching funds. Ontario Scale-Up Vouchers require 1:1 matching. Alberta Innovates requires 50% cost-sharing. IRAP Youth Employment and Women Entrepreneurship Fund require no matching from the employer."
-      }
+      },
     ], shortAnswer: "Yes — ⏰ Urgent funding alert! Key federal and provincial grant programs closing this month. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -12892,7 +13013,8 @@ ${oct2026Post}
 ${q42026Post}
     `,
     seo: {
-      keywords: ["Q4 2026 grant deadlines", "year end business grants", "November 2026 grants", "December 2026 funding", "SR&ED deadline", "IRAP funding"]
+      keywords: ["Q4 2026 grant deadlines", "year end business grants", "November 2026 grants", "December 2026 funding", "SR&ED deadline", "IRAP funding"],
+      shortAnswer: "📅 Plan your year-end funding strategy. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Q4 Pool', value: '$580M+', description: 'Available Funds', color: 'text-blue-600', iconName: 'PieChart' },
@@ -12925,7 +13047,7 @@ ${q42026Post}
       {
         question: "Which Q4 program has the highest approval rate?",
         answer: "The <strong>Canada Job Grant</strong> has the highest at 72%, followed by <strong>Mitacs Accelerate</strong> at 67% and <strong>IRAP Accelerated Technology</strong> at 45% for returning clients. Provincial training grants generally have higher approval rates than federal innovation grants."
-      }
+      },
     ], shortAnswer: "Yes — 📅 Plan your year-end funding strategy. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -12956,7 +13078,8 @@ ${q42026Post}
 ${q12026Post}
     `,
     seo: {
-      keywords: ["2026 grant forecast", "Q1 2026 funding", "upcoming business grants Canada", "future grant opportunities"]
+      keywords: ["2026 grant forecast", "Q1 2026 funding", "upcoming business grants Canada", "future grant opportunities"],
+      shortAnswer: "🔮 Get a head start on 2026. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Forecast', value: '$120M', description: 'Projected Opening', color: 'text-indigo-600', iconName: 'TrendingUp' },
@@ -12965,7 +13088,7 @@ ${q12026Post}
     expertTip: {
       title: "Pre-Preparation",
       type: 'success',
-      content: "Use Q4 2026 to update your business plan and financial statements so you are ready to apply the moment Q1 2026 applications open."
+      content: "Use Q4 2026 to update your business plan and financial statements so you are ready to apply the moment Q1 2026 applications open.",
     }, shortAnswer: "🔮 Get a head start on 2026. Key highlights: Forecast: $120M, New: 15.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -12996,7 +13119,8 @@ ${q12026Post}
 ${sbaSbirPost}
     `,
     seo: {
-      keywords: ["SBIR grants 2026", "STTR funding", "America's Seed Fund", "R&D grants USA", "tech startup funding"]
+      keywords: ["SBIR grants 2026", "STTR funding", "America's Seed Fund", "R&D grants USA", "tech startup funding"],
+      shortAnswer: "🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Total', value: '$4B+', description: 'Annual Budget', color: 'text-green-600', iconName: 'Database' },
@@ -13006,7 +13130,7 @@ ${sbaSbirPost}
     expertTip: {
       title: "Topic Fit",
       type: 'tip',
-      content: "SBIR is topic-specific. Agencies release 'solicitations' with specific problems they need solved. Your proposal MUST address one of these specific topics."
+      content: "SBIR is topic-specific. Agencies release 'solicitations' with specific problems they need solved. Your proposal MUST address one of these specific topics.",
     }, shortAnswer: "🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. Key highlights: Total: $4B+, Phase I: $150k+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -13037,7 +13161,8 @@ ${sbaSbirPost}
 ${grantSecretsPost}
     `,
     seo: {
-      keywords: ["grant writing tips 2026", "how to write a grant proposal", "winning grant applications", "grant writing mistakes to avoid"]
+      keywords: ["grant writing tips 2026", "how to write a grant proposal", "winning grant applications", "grant writing mistakes to avoid"],
+      shortAnswer: "✍️ Increase your approval odds. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Success Rate', value: '30%', description: 'Avg. Approval', color: 'text-green-600', iconName: 'PieChart' },
@@ -13047,7 +13172,7 @@ ${grantSecretsPost}
     expertTip: {
       title: "Clarity over Jargon",
       type: 'tip',
-      content: "Reviewers are often generalists, not specialists in your niche. Write simply and clearly. Avoid excessive industry jargon."
+      content: "Reviewers are often generalists, not specialists in your niche. Write simply and clearly. Avoid excessive industry jargon.",
     }, shortAnswer: "✍️ Increase your approval odds. Key highlights: Success Rate: 30%, Preparation: 40hrs.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -13078,7 +13203,8 @@ ${grantSecretsPost}
 ${usdaRuralPost}
     `,
     seo: {
-      keywords: ["USDA grants", "rural business grants", "RBDG program", "agricultural business funding", "rural entrepreneurship"]
+      keywords: ["USDA grants", "rural business grants", "RBDG program", "agricultural business funding", "rural entrepreneurship"],
+      shortAnswer: "🇺🇸 Support for rural entrepreneurs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Max', value: '$500k', description: 'Grant Amount', color: 'text-green-600', iconName: 'DollarSign' },
@@ -13087,7 +13213,7 @@ ${usdaRuralPost}
     expertTip: {
       title: "Check Eligibility",
       type: 'warning',
-      content: "Use the USDA's online mapping tool to confirm your address is in an eligible rural zone BEFORE you start your application."
+      content: "Use the USDA's online mapping tool to confirm your address is in an eligible rural zone BEFORE you start your application.",
     }, shortAnswer: "🇺🇸 Support for rural entrepreneurs. Key highlights: Max: $500k, Eligible: <50k.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -13118,7 +13244,8 @@ ${usdaRuralPost}
 ${nyGrantsPost}
     `,
     seo: {
-      keywords: ["New York business grants", "NYC small business funding", "NYS grants 2026", "startup grants New York"]
+      keywords: ["New York business grants", "NYC small business funding", "NYS grants 2026", "startup grants New York"],
+      shortAnswer: "🗽 Comprehensive guide to business grants in New York State. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'State', value: '$800M', description: 'Econ Dev Fund', color: 'text-blue-600', iconName: 'Briefcase' },
@@ -13127,7 +13254,7 @@ ${nyGrantsPost}
     expertTip: {
       title: "REDC Priority",
       type: 'tip',
-      content: "Align your project with your Regional Economic Development Council (REDC) strategic plan to boost your scoring chances."
+      content: "Align your project with your Regional Economic Development Council (REDC) strategic plan to boost your scoring chances.",
     }, shortAnswer: "🗽 Comprehensive guide to business grants in New York State. Key highlights: State: $800M, NYC: $20k.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -13174,7 +13301,8 @@ ${regionalDevPost}
       </div>
 `,
     seo: {
-      keywords: ["RDAs Canada", "FedDev Ontario", "PacifiCan", "PrairiesCan", "ACOA grants", "regional development funding"]
+      keywords: ["RDAs Canada", "FedDev Ontario", "PacifiCan", "PrairiesCan", "ACOA grants", "regional development funding"],
+      shortAnswer: "🇨🇦 The 7 Regional Development Agencies (RDAs) are a primary source of business funding. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Budget', value: '$100M+', description: 'Total Funding', color: 'text-blue-600', iconName: 'DollarSign' },
@@ -13185,7 +13313,7 @@ ${regionalDevPost}
     expertTip: {
       title: "Scale-Up Focus",
       type: 'tip',
-      content: "RDAs primarily fund <strong>expansion and scaling</strong> activities, not early-stage startups. Demonstrate you have a proven market and need capital to grow."
+      content: "RDAs primarily fund <strong>expansion and scaling</strong> activities, not early-stage startups. Demonstrate you have a proven market and need capital to grow.",
     }, shortAnswer: "🇨🇦 The 7 Regional Development Agencies (RDAs) are a primary source of business funding. Key highlights: Budget: $100M+, Type: 0% Loan.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -13232,7 +13360,8 @@ ${superclustersPost}
       </div>
 `,
     seo: {
-      keywords: ["Global Innovation Clusters", "Canada Superclusters", "Digital Cluster", "Protein Industries Canada", "NGen manufacturing grants"]
+      keywords: ["Global Innovation Clusters", "Canada Superclusters", "Digital Cluster", "Protein Industries Canada", "NGen manufacturing grants"],
+      shortAnswer: "🇨🇦 Canada's Superclusters (now Global Innovation Clusters) are co-investing millions in collaborative tech projects. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Project', value: '$2M+', description: 'Min Size', color: 'text-cyan-600', iconName: 'DollarSign' },
@@ -13257,7 +13386,7 @@ ${superclustersPost}
     expertTip: {
       title: "Collaboration is Key",
       type: 'warning',
-      content: "You cannot apply alone. Supercluster projects require a consortium of members (e.g., SMEs, large corporations, academic institutions)."
+      content: "You cannot apply alone. Supercluster projects require a consortium of members (e.g., SMEs, large corporations, academic institutions).",
     }, shortAnswer: "🇨🇦 Canada's Superclusters (now Global Innovation Clusters) are co-investing millions in collaborative tech projects. Key highlights: Project: $2M+, Partners: Required.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -13304,7 +13433,8 @@ ${ruralBizPost}
       </div>
 `,
     seo: {
-      keywords: ["Rural business grants Canada", "Community Futures loans", "rural broadband funding", "Northern Ontario grants"]
+      keywords: ["Rural business grants Canada", "Community Futures loans", "rural broadband funding", "Northern Ontario grants"],
+      shortAnswer: "🇨🇦 Specific funding streams for rural Canadian businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Max Loan', value: '$150k', description: 'Flexible Term', color: 'text-green-600', iconName: 'DollarSign' },
@@ -13315,7 +13445,7 @@ ${ruralBizPost}
     expertTip: {
       title: "Visit Your CFDC",
       type: 'tip',
-      content: "Your local <strong>Community Futures Development Corporation (CFDC)</strong> office is your best resource. They offer flexible loans and localized advice."
+      content: "Your local <strong>Community Futures Development Corporation (CFDC)</strong> office is your best resource. They offer flexible loans and localized advice.",
     }, shortAnswer: "🇨🇦 Specific funding streams for rural Canadian businesses. Key highlights: Max Loan: $150k, Pop.: <50k.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -13362,7 +13492,8 @@ ${sredTaxPost}
       </div>
 `,
     seo: {
-      keywords: ["SR&ED 2026", "R&D tax credits Canada", "SRED claim guide", "innovation tax refunds"]
+      keywords: ["SR&ED 2026", "R&D tax credits Canada", "SRED claim guide", "innovation tax refunds"],
+      shortAnswer: "🇨🇦 The Scientific Research and Experimental Development (SR&ED) program is Canada's largest R&D incentive. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Refund', value: '35%', description: 'CPCC Rate', color: 'text-green-600', iconName: 'Percent' },
@@ -13767,7 +13898,7 @@ ${sredTaxPost}
       {
         question: "How do I claim the Investment Tax Credit (ITC)?",
         answer: "You claim it on your T2 corporate tax return. Work with an accountant to ensure your equipment meets Class 43.1/43.2 requirements."
-      }
+      },
     ], shortAnswer: "Yes — Detailed guide to Canada's green business grants for SMEs. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -13797,7 +13928,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: cleanTechPost,
     seo: {
-      keywords: ["Clean Technology", "Canada Grants", "Green Funding", "Net Zero"]
+      keywords: ["Clean Technology", "Canada Grants", "Green Funding", "Net Zero"],
+      shortAnswer: "Environment and Climate Change Canada has launched the most comprehensive clean technology funding program in history, investing $400 million to position Canada as a global clean technology superpower. Total funding available: $400M.",
     },
     metrics: [
       { label: 'Funding', value: '$400M', description: 'Total Investment', color: 'text-green-600', iconName: 'DollarSign' },
@@ -13808,7 +13940,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Stack Programs for Maximum Impact",
       type: 'success',
-      content: "Combine federal clean tech funding with provincial incentives like <strong>Alberta Innovates</strong> or <strong>CleanBC</strong> to cover up to 75% of your project costs."
+      content: "Combine federal clean tech funding with provincial incentives like <strong>Alberta Innovates</strong> or <strong>CleanBC</strong> to cover up to 75% of your project costs.",
     }, shortAnswer: "Environment and Climate Change Canada has launched the most comprehensive clean technology funding program in history, investing $400 million to position Canada as a global clean technology superpower. Key highlights: Funding: $400M, Jobs: 50,000.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -13837,7 +13969,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: applyUsaPost,
     seo: {
-      keywords: ["USA Grants", "Grant Application", "SAM.gov", "Small Business Funding"]
+      keywords: ["USA Grants", "Grant Application", "SAM.gov", "Small Business Funding"],
+      shortAnswer: "Navigating the US government grant system can feel overwhelming, but with the right strategy, you can join the 37,000+ businesses that secured federal funding. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Success', value: '43%', description: 'National Average', color: 'text-blue-600', iconName: 'TrendingUp' },
@@ -13848,7 +13981,7 @@ ${sredTaxPost}
     expertTip: {
       title: "SAM.gov is the Gatekeeper",
       type: 'warning',
-      content: "You cannot apply for ANY federal grant without an active <strong>SAM.gov registration</strong>. It takes 2-4 weeks to process, so start this step immediately."
+      content: "You cannot apply for ANY federal grant without an active <strong>SAM.gov registration</strong>. It takes 2-4 weeks to process, so start this step immediately.",
     }, shortAnswer: "Navigating the US government grant system can feel overwhelming, but with the right strategy, you can join the 37,000+ businesses that secured federal funding. Key highlights: Success: 43%, Funding: $50K+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -13877,7 +14010,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: canExportGrants2025,
     seo: {
-      keywords: ["CanExport", "Export Grants", "Global Markets", "International Trade", "TCS"]
+      keywords: ["CanExport", "Export Grants", "Global Markets", "International Trade", "TCS"],
+      shortAnswer: "Canada's CanExport programs provide comprehensive support for international expansion, with over $75 million available annually. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Funding', value: '$75M+', description: 'Annual Budget', color: 'text-green-600', iconName: 'Globe' },
@@ -13888,7 +14022,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Focus on New Markets",
       type: 'tip',
-      content: "CanExport strictly funds <strong>new market entry</strong>. You must have less than $100k (or 10%) sales in the target country to qualify."
+      content: "CanExport strictly funds <strong>new market entry</strong>. You must have less than $100k (or 10%) sales in the target country to qualify.",
     }, shortAnswer: "Canada's CanExport programs provide comprehensive support for international expansion, with over $75 million available annually. Key highlights: Funding: $75M+, Grant Max: $50K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -13917,7 +14051,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: ruralBusiness2025,
     seo: {
-      keywords: ["Rural Grants", "USDA Business", "Small Town Funding", "Agri-Business", "Main Street"]
+      keywords: ["Rural Grants", "USDA Business", "Small Town Funding", "Agri-Business", "Main Street"],
+      shortAnswer: "Rural America is experiencing a renaissance with $1.2 billion in targeted grants. Total funding available: $1.2B.",
     },
     metrics: [
       { label: 'Fund Pool', value: '$1.2B', description: 'Total Annual', color: 'text-green-600', iconName: 'DollarSign' },
@@ -13928,7 +14063,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Value-Added is Key",
       type: 'success',
-      content: "Commodity farming is low margin. <strong>Value-Added Producer Grants (VAPG)</strong> offer up to $250k to process your crops into consumer products."
+      content: "Commodity farming is low margin. <strong>Value-Added Producer Grants (VAPG)</strong> offer up to $250k to process your crops into consumer products.",
     }, shortAnswer: "Rural America is experiencing a renaissance with $1.2 billion in targeted grants. Key highlights: Fund Pool: $1.2B, USDA Max: $500K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -13957,7 +14092,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: veteransBusiness2025,
     seo: {
-      keywords: ["Veteran Grants", "VOSB", "SDVOSB", "Military Business", "SBA Veteran"]
+      keywords: ["Veteran Grants", "VOSB", "SDVOSB", "Military Business", "SBA Veteran"],
+      shortAnswer: "The federal government has committed $75 million to veteran entrepreneurship. Total funding available: $75M.",
     },
     metrics: [
       { label: 'Dedicated', value: '$75M', description: 'Grant Funding', color: 'text-red-600', iconName: 'Flag' },
@@ -13968,7 +14104,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Get Certified First",
       type: 'warning',
-      content: "You cannot access set-aside contracts without official verification. Apply for <strong>VetCert (formerly CVE)</strong> through the SBA immediately."
+      content: "You cannot access set-aside contracts without official verification. Apply for <strong>VetCert (formerly CVE)</strong> through the SBA immediately.",
     }, shortAnswer: "The federal government has committed $75 million to veteran entrepreneurship. Key highlights: Dedicated: $75M, Contracts: 3%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -13997,7 +14133,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: newYorkGrants2025,
     seo: {
-      keywords: ["New York Grants", "NYS CFA", "Excelsior Jobs", "REDC", "Empire State Dev"]
+      keywords: ["New York Grants", "NYS CFA", "Excelsior Jobs", "REDC", "Empire State Dev"],
+      shortAnswer: "New York State offers $1.8 billion in funding through its Regional Economic Development Councils. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'REDC Fund', value: '$1.8B', description: 'Regional Aid', color: 'text-blue-600', iconName: 'Map' },
@@ -14008,7 +14145,7 @@ ${sredTaxPost}
     expertTip: {
       title: "The Power of One",
       type: 'tip',
-      content: "NY's <strong>Consolidated Funding Application (CFA)</strong> allows you to apply for dozens of funding sources with a single application. Don't miss the July deadline."
+      content: "NY's <strong>Consolidated Funding Application (CFA)</strong> allows you to apply for dozens of funding sources with a single application. Don't miss the July deadline.",
     }, shortAnswer: "New York State offers $1.8 billion in funding through its Regional Economic Development Councils. Key highlights: REDC Fund: $1.8B, Tax Credit: $5k.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14037,7 +14174,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: manufacturingGrants2025,
     seo: {
-      keywords: ["Manufacturing Grants", "Smart Factory", "MEP", "Reshoring", "Industry 4.0"]
+      keywords: ["Manufacturing Grants", "Smart Factory", "MEP", "Reshoring", "Industry 4.0"],
+      shortAnswer: "American manufacturing is booming with $2.3 billion in grants for automation, reshoring, and workforce development. Total funding available: $2.3B.",
     },
     metrics: [
       { label: 'Total Fund', value: '$2.3B', description: 'Fed & State', color: 'text-blue-600', iconName: 'Settings' },
@@ -14048,7 +14186,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Automate to Compete",
       type: 'success',
-      content: "The biggest grant pools are for <strong>Industry 4.0</strong> adoption. Frame your equipment purchase as a 'Digital Transformation' project to qualify."
+      content: "The biggest grant pools are for <strong>Industry 4.0</strong> adoption. Frame your equipment purchase as a 'Digital Transformation' project to qualify.",
     }, shortAnswer: "American manufacturing is booming with $2.3 billion in grants for automation, reshoring, and workforce development. Key highlights: Total Fund: $2.3B, ROI: $19:$1.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14077,7 +14215,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: minorityBusiness2025,
     seo: {
-      keywords: ["Minority Grants", "MBE Certification", "SBA 8(a)", "NMSDC", "Supplier Diversity"]
+      keywords: ["Minority Grants", "MBE Certification", "SBA 8(a)", "NMSDC", "Supplier Diversity"],
+      shortAnswer: "Minority-owned businesses are driving economic growth with $1.9 trillion in revenue. Total funding available: $1.9B.",
     },
     metrics: [
       { label: 'Targeted', value: '$1.9B', description: 'Grant Funding', color: 'text-purple-600', iconName: 'Users' },
@@ -14088,7 +14227,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Certification is Key",
       type: 'tip',
-      content: "Getting certified as an <strong>MBE (Minority Business Enterprise)</strong> through NMSDC or SBA 8(a) unlocks access to 90% of restricted funding pools."
+      content: "Getting certified as an <strong>MBE (Minority Business Enterprise)</strong> through NMSDC or SBA 8(a) unlocks access to 90% of restricted funding pools.",
     }, shortAnswer: "Minority-owned businesses are driving economic growth with $1.9 trillion in revenue. Key highlights: Targeted: $1.9B, Contracts: $3.8B.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14117,7 +14256,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: digitalTransformation2025,
     seo: {
-      keywords: ["CDAP", "Digital Adoption", "Tech Grants", "E-commerce", "Digital Transformation"]
+      keywords: ["CDAP", "Digital Adoption", "Tech Grants", "E-commerce", "Digital Transformation"],
+      shortAnswer: "The Canada Digital Adoption Program (CDAP) offers $90 million to boost SME technology. Total funding available: $90M.",
     },
     metrics: [
       { label: 'Total Fund', value: '$90M', description: 'CDAP Budget', color: 'text-blue-600', iconName: 'Server' },
@@ -14128,7 +14268,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Pick the Right Stream",
       type: 'tip',
-      content: "Don't mix them up: <strong>Stream 2</strong> is for consumer retail/marketing. <strong>Stream 3</strong> is for enterprise technology and heavy equipment software."
+      content: "Don't mix them up: <strong>Stream 2</strong> is for consumer retail/marketing. <strong>Stream 3</strong> is for enterprise technology and heavy equipment software.",
     }, shortAnswer: "The Canada Digital Adoption Program (CDAP) offers $90 million to boost SME technology. Key highlights: Total Fund: $90M, Grant: $15K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14157,7 +14297,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: agriInnovation2025,
     seo: {
-      keywords: ["AgriInnovate", "AgTech", "Farming Grants", "Sustainable Ag", "Food Processing"]
+      keywords: ["AgriInnovate", "AgTech", "Farming Grants", "Sustainable Ag", "Food Processing"],
+      shortAnswer: "Agriculture and Agri-Food Canada has launched a $180 million innovation fund. Total funding available: $180M.",
     },
     metrics: [
       { label: 'Fund Pool', value: '$180M', description: 'Innovation', color: 'text-green-600', iconName: 'Sprout' },
@@ -14168,7 +14309,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Commercial Ready Only",
       type: 'warning',
-      content: "AgriInnovate does NOT fund basic research. You must have a <strong>working prototype</strong> and identified customers to be eligible."
+      content: "AgriInnovate does NOT fund basic research. You must have a <strong>working prototype</strong> and identified customers to be eligible.",
     }, shortAnswer: "Agriculture and Agri-Food Canada has launched a $180 million innovation fund. Key highlights: Fund Pool: $180M, Max Grant: $5M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14197,7 +14338,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: usdaRural2025,
     seo: {
-      keywords: ["USDA Grants", "Rural Development", "Ag Innovation", "Rural Business", "Value-Added"]
+      keywords: ["USDA Grants", "Rural Development", "Ag Innovation", "Rural Business", "Value-Added"],
+      shortAnswer: "The USDA is investing $300 million in rural agricultural innovation targeted at 46 million rural Americans. Total funding available: $300M.",
     },
     metrics: [
       { label: 'Innovation', value: '$300M', description: 'Total Fund', color: 'text-green-600', iconName: 'Globe' },
@@ -14208,7 +14350,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Location Matters",
       type: 'tip',
-      content: "Check your address on the USDA eligibility map. Innovations in counties with <strong>under 25,000 population</strong> get 25% bonus points."
+      content: "Check your address on the USDA eligibility map. Innovations in counties with <strong>under 25,000 population</strong> get 25% bonus points.",
     }, shortAnswer: "The USDA is investing $300 million in rural agricultural innovation targeted at 46 million rural Americans. Key highlights: Innovation: $300M, Bus. Grant: $500K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14237,7 +14379,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: womenBusiness2025,
     seo: {
-      keywords: ["Women Grants", "WOSB Certification", "Amber Grant", "Female Founders", "SBA Women"]
+      keywords: ["Women Grants", "WOSB Certification", "Amber Grant", "Female Founders", "SBA Women"],
+      shortAnswer: "Women entrepreneurs now own 42% of US businesses. Total funding available: $2.1B.",
     },
     metrics: [
       { label: 'Total Fund', value: '$2.1B', description: 'Women Grants', color: 'text-pink-600', iconName: 'Heart' },
@@ -14270,7 +14413,7 @@ ${sredTaxPost}
       {
         question: "Do I need to be a minority woman to qualify?",
         answer: "No. While there are specific grants for minority women (like the <strong>Galaxy Grant</strong>), most general women's business grants are open to all women entrepreneurs regardless of race or ethnicity."
-      }
+      },
     ], shortAnswer: "Yes — Women entrepreneurs now own 42% of US businesses. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14299,7 +14442,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: technologyStartup2025,
     seo: {
-      keywords: ["Tech Grants", "SBIR", "STTR", "Startup Funding", "Non-Dilutive"]
+      keywords: ["Tech Grants", "SBIR", "STTR", "Startup Funding", "Non-Dilutive"],
+      shortAnswer: "Silicon Valley isn't the only path to funding. Total funding available: $3.4B.",
     },
     metrics: [
       { label: 'SBIR Fund', value: '$3.4B', description: 'Annual Budget', color: 'text-purple-600', iconName: 'Cpu' },
@@ -14332,7 +14476,7 @@ ${sredTaxPost}
       {
         question: "How long does it take to get funding?",
         answer: "It typically takes 4-6 months from submission to award notification, and another 1-2 months to receive the first payment. It is not immediate capital, so plan your runway accordingly."
-      }
+      },
     ], shortAnswer: "Yes — Silicon Valley isn't the only path to funding. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14361,7 +14505,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: healthcareGrants2025,
     seo: {
-      keywords: ["Healthcare Grants", "Medical Funding", "Digital Health", "Rural Health", "HRSA"]
+      keywords: ["Healthcare Grants", "Medical Funding", "Digital Health", "Rural Health", "HRSA"],
+      shortAnswer: "The healthcare sector is seeing unprecedented grant funding for digital health, rural access, and medical innovation. Total funding available: $4.5B.",
     },
     metrics: [
       { label: 'Total Fund', value: '$4.5B', description: 'Healthcare Grants', color: 'text-blue-600', iconName: 'Activity' },
@@ -14372,7 +14517,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Rural Advantage",
       type: 'tip',
-      content: "<strong>Rural healthcare providers</strong> have significantly higher grant success rates. Highlight any service to underserved or rural populations in your application."
+      content: "<strong>Rural healthcare providers</strong> have significantly higher grant success rates. Highlight any service to underserved or rural populations in your application.",
     }, shortAnswer: "The healthcare sector is seeing unprecedented grant funding for digital health, rural access, and medical innovation. Key highlights: Total Fund: $4.5B, Max Award: $1.2M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14401,7 +14546,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: californiaGrants2025,
     seo: {
-      keywords: ["California Grants", "Dream Fund", "Small Business", "Startup Funding", "CalOSBA"]
+      keywords: ["California Grants", "Dream Fund", "Small Business", "Startup Funding", "CalOSBA"],
+      shortAnswer: "California leads the nation in state-level business support. Total funding available: $1.5B.",
     },
     metrics: [
       { label: 'State Fund', value: '$1.5B', description: 'Annual Budget', color: 'text-blue-600', iconName: 'Sun' },
@@ -14412,7 +14558,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Local Technical Assistance",
       type: 'success',
-      content: "California requires many applicants to work with a <strong>technical assistance center</strong>. Connect with your local SBDC or Women's Business Center immediately to be eligible."
+      content: "California requires many applicants to work with a <strong>technical assistance center</strong>. Connect with your local SBDC or Women's Business Center immediately to be eligible.",
     }, shortAnswer: "California leads the nation in state-level business support. Key highlights: State Fund: $1.5B, Dream Fund: $35K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14441,7 +14587,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: floridaGrants2025,
     seo: {
-      keywords: ["Florida Grants", "Enterprise Florida", "Export Grants", "Small Business", "Tourism Funding"]
+      keywords: ["Florida Grants", "Enterprise Florida", "Export Grants", "Small Business", "Tourism Funding"],
+      shortAnswer: "Florida's business-friendly environment includes $850 million in targeted grants for export growth, high-tech industry, and tourism development. Total funding available: $850M.",
     },
     metrics: [
       { label: 'Growth Fund', value: '$850M', description: 'State Incentives', color: 'text-orange-600', iconName: 'TrendingUp' },
@@ -14452,7 +14599,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Export Markets",
       type: 'tip',
-      content: "Florida aggressively funds companies looking to <strong>export products</strong>. The Enterprise Florida Trade Grants can cover 100% of the cost of trade shows and missions."
+      content: "Florida aggressively funds companies looking to <strong>export products</strong>. The Enterprise Florida Trade Grants can cover 100% of the cost of trade shows and missions.",
     }, shortAnswer: "Florida's business-friendly environment includes $850 million in targeted grants for export growth, high-tech industry, and tourism development. Key highlights: Growth Fund: $850M, Export: $50K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14481,7 +14628,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: illinoisGrants2025,
     seo: {
-      keywords: ["Illinois Grants", "DCEO", "Advantage Illinois", "Small Business", "Manufacturing"]
+      keywords: ["Illinois Grants", "DCEO", "Advantage Illinois", "Small Business", "Manufacturing"],
+      shortAnswer: "Illinois DCEO offers over $650 million in business development grants. Total funding available: $650M.",
     },
     metrics: [
       { label: 'DCEO Fund', value: '$650M', description: 'State Grants', color: 'text-blue-600', iconName: 'Landmark' },
@@ -14492,7 +14640,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Social Equity Priority",
       type: 'tip',
-      content: "Illinois has strong <strong>social equity requirements</strong> for many cannabis and tech cannabis grants. Being a Social Equity Applicant significantly increases your chances."
+      content: "Illinois has strong <strong>social equity requirements</strong> for many cannabis and tech cannabis grants. Being a Social Equity Applicant significantly increases your chances.",
     }, shortAnswer: "Illinois DCEO offers over $650 million in business development grants. Key highlights: DCEO Fund: $650M, Advantage: 2%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14521,7 +14669,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: michiganGrants2025,
     seo: {
-      keywords: ["Michigan Grants", "Manufacturing", "Industry 4.0", "EV Transition", "MEDC"]
+      keywords: ["Michigan Grants", "Manufacturing", "Industry 4.0", "EV Transition", "MEDC"],
+      shortAnswer: "Michigan is investing $500 million to reclaim its manufacturing crown. Total funding available: $500M.",
     },
     metrics: [
       { label: 'Mfg Fund', value: '$500M', description: 'Industry Support', color: 'text-blue-600', iconName: 'Tool' },
@@ -14532,7 +14681,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Industry 4.0 Grant",
       type: 'success',
-      content: "The <strong>Industry 4.0 Implementation Grant</strong> pays 50% of software/hardware costs up to $25k. It's one of the easiest grants to get if you are a small manufacturer."
+      content: "The <strong>Industry 4.0 Implementation Grant</strong> pays 50% of software/hardware costs up to $25k. It's one of the easiest grants to get if you are a small manufacturer.",
     }, shortAnswer: "Michigan is investing $500 million to reclaim its manufacturing crown. Key highlights: Mfg Fund: $500M, Tech Grant: $25K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14561,7 +14710,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: pennsylvaniaGrants2025,
     seo: {
-      keywords: ["Pennsylvania Grants", "Ben Franklin Tech", "PIDA", "Innovation", "Startups"]
+      keywords: ["Pennsylvania Grants", "Ben Franklin Tech", "PIDA", "Innovation", "Startups"],
+      shortAnswer: "Pennsylvania's Ben Franklin Technology Partners and PIDA offer $670 million in funding. Total funding available: $670M.",
     },
     metrics: [
       { label: 'Innovation', value: '$670M', description: 'State Fund', color: 'text-blue-600', iconName: 'Zap' },
@@ -14590,7 +14740,7 @@ ${sredTaxPost}
       {
         question: "Are there programs for manufacturing companies specifically?",
         answer: "Yes. Beyond PIDA, the Pennsylvania Industrial Resource Centers (IRCs) provide subsidized consulting for manufacturers. The Manufacturing PA initiative offers workforce training grants, and the PA SBDC network provides free business consulting. The state's Made in Pennsylvania program also helps with marketing and export assistance."
-      }
+      },
     ], shortAnswer: "Yes — Pennsylvania's Ben Franklin Technology Partners and PIDA offer $670 million in funding. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14619,7 +14769,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: texasGrants2025,
     seo: {
-      keywords: ["Texas Grants", "Enterprise Fund", "Deal Closing", "Business Incentives", "Governor's Office"]
+      keywords: ["Texas Grants", "Enterprise Fund", "Deal Closing", "Business Incentives", "Governor's Office"],
+      shortAnswer: "Everything is bigger in Texas, including the $1.2 billion Texas Enterprise Fund. Total funding available: $1.2B.",
     },
     metrics: [
       { label: 'TEF Fund', value: '$1.2B', description: 'Deal Closing', color: 'text-red-600', iconName: 'Star' },
@@ -14630,7 +14781,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Competitive Necessity",
       type: 'warning',
-      content: "For the Texas Enterprise Fund, you must demonstrate <strong>competitive necessity</strong>—meaning you have a viable offer from another state. It's a deal-closing fund, not a startup handout."
+      content: "For the Texas Enterprise Fund, you must demonstrate <strong>competitive necessity</strong>—meaning you have a viable offer from another state. It's a deal-closing fund, not a startup handout.",
     }, shortAnswer: "Everything is bigger in Texas, including the $1.2 billion Texas Enterprise Fund. Key highlights: TEF Fund: $1.2B, Tax: 0%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14659,7 +14810,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: doeCleanTech2025,
     seo: {
-      keywords: ["DOE Grants", "Clean Energy", "Climate Tech", "ARPA-E", "Solar Funding"]
+      keywords: ["DOE Grants", "Clean Energy", "Climate Tech", "ARPA-E", "Solar Funding"],
+      shortAnswer: "The Department of Energy is deploying $800 million for clean tech innovation. Total funding available: $800M.",
     },
     metrics: [
       { label: 'DOE Fund', value: '$800M', description: 'Innovation', color: 'text-green-600', iconName: 'Sun' },
@@ -14670,7 +14822,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Lab Partnership",
       type: 'success',
-      content: "Partnering with a <strong>National Laboratory</strong> (like NREL or Oak Ridge) significantly boosts your chances. They have the testing facilities your startup lacks."
+      content: "Partnering with a <strong>National Laboratory</strong> (like NREL or Oak Ridge) significantly boosts your chances. They have the testing facilities your startup lacks.",
     }, shortAnswer: "The Department of Energy is deploying $800 million for clean tech innovation. Key highlights: DOE Fund: $800M, ARPA-E: $3M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14699,7 +14851,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: epaJustice2025,
     seo: {
-      keywords: ["EPA Grants", "Environmental Justice", "Community Grants", "Pollution", "Public Health"]
+      keywords: ["EPA Grants", "Environmental Justice", "Community Grants", "Pollution", "Public Health"],
+      shortAnswer: "The EPA's Environmental Justice program offers $100 million to community organizations. Total funding available: $100M.",
     },
     metrics: [
       { label: 'EJ Fund', value: '$100M', description: 'Community Grants', color: 'text-green-600', iconName: 'Globe' },
@@ -14710,7 +14863,7 @@ ${sredTaxPost}
     expertTip: {
       title: "Community Leadership",
       type: 'tip',
-      content: "The EPA requires proof of <strong>community leadership</strong>. The project shouldn't just help the community; it should be driven by it. Document all community meetings and input."
+      content: "The EPA requires proof of <strong>community leadership</strong>. The project shouldn't just help the community; it should be driven by it. Document all community meetings and input.",
     }, shortAnswer: "The EPA's Environmental Justice program offers $100 million to community organizations. Key highlights: EJ Fund: $100M, Grant: $500K.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14739,7 +14892,8 @@ ${sredTaxPost}
     type: "grant-news",
     content: hudCommunity2025,
     seo: {
-      keywords: ["HUD Grants", "CDBG", "Community Development", "Housing", "Infrastructure"]
+      keywords: ["HUD Grants", "CDBG", "Community Development", "Housing", "Infrastructure"],
+      shortAnswer: "HUD's CDBG program provides $150 million for community development. Total funding available: $150M.",
     },
     metrics: [
       { label: 'CDBG', value: '$150M', description: 'Block Grants', color: 'text-orange-600', iconName: 'Home' },
@@ -14750,7 +14904,7 @@ ${sredTaxPost}
     expertTip: {
       title: "LMI Benefit",
       type: 'warning',
-      content: "At least 70% of CDBG funds must benefit <strong>Low-to-Moderate Income (LMI)</strong> persons. Ensure your project area qualifies using HUD's mapping tools."
+      content: "At least 70% of CDBG funds must benefit <strong>Low-to-Moderate Income (LMI)</strong> persons. Ensure your project area qualifies using HUD's mapping tools.",
     }, shortAnswer: "HUD's CDBG program provides $150 million for community development. Key highlights: CDBG: $150M, LMI: 70%.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
@@ -14778,6 +14932,7 @@ ${sredTaxPost}
     featured: false,
     type: "grant-news",
     content: nsfStem2025,
+    shortAnswer: "The NSF seeds the future with $200 million in STEM research grants. Total funding available: $200M.",
     seo: {
       keywords: ["NSF Grants", "STEM Research", "SBIR", "Deep Tech", "Scientific Funding"]
     },
