@@ -572,9 +572,7 @@ The state's commitment to climate leadership has also spawned a robust ecosystem
             { label: 'Processing', value: '60-120 days', description: 'Typical timeline', color: 'text-orange-600', iconName: 'Clock' }
         ],
 
-        shortAnswer: "California offers over $8.5B+ in small business funding and incentives across 150+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'california small business grants 2026',
             'california startup funding',
             'california business grants',
@@ -1061,9 +1059,7 @@ Texas also offers significant property and sales tax abatements through Chapter 
             { label: 'Processing', value: '45-90 days', description: 'Typical timeline', color: 'text-orange-600', iconName: 'Clock' }
         ],
 
-        shortAnswer: "Texas offers over $5.2B+ in small business funding and incentives across 95+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'texas small business grants 2026',
             'texas enterprise fund',
             'texas startup funding',
@@ -1547,9 +1543,7 @@ New York has also committed unprecedented resources to green economy initiatives
             { label: 'Processing', value: '60-120 days', description: 'Typical timeline', color: 'text-orange-600', iconName: 'Clock' }
         ],
 
-        shortAnswer: "New York offers over $7.1B+ in small business funding and incentives across 120+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'new york small business grants 2026',
             'excelsior jobs program',
             'new york startup funding',
@@ -2024,9 +2018,7 @@ The state's population has grown by millions in recent years, driven significant
             { label: 'Processing', value: '30-60 days', description: 'Typical timeline', color: 'text-orange-600', iconName: 'Clock' }
         ],
 
-        shortAnswer: "Florida offers over $3.8B+ in small business funding and incentives across 75+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'florida small business grants 2026',
             'florida business incentives',
             'enterprise florida grants',
@@ -2398,9 +2390,7 @@ Illinois is also a leader in clean energy transition, with the Climate and Equit
             { label: 'Success', value: '65%', description: 'Loan approval rate', color: 'text-purple-600', iconName: 'TrendingUp' }
         ],
 
-        shortAnswer: "Illinois offers over $3.5B+ in small business funding and incentives across 85+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'illinois small business grants',
             'business grants illinois 2026',
             'advantage illinois loan program',
@@ -2784,9 +2774,7 @@ The state's manufacturing sector is also undergoing a significant renaissance, d
             { label: 'Processing', value: '45-60 days', description: 'Avg approval time', color: 'text-orange-600', iconName: 'Clock' }
         ],
 
-        shortAnswer: "Pennsylvania offers over $2.9B+ in small business funding and incentives across 90+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'pennsylvania business grants',
             'pida loans pa',
             'ben franklin technology partners funding',
@@ -3153,9 +3141,7 @@ The state is investing heavily in "Innovation Districts" in its three major citi
             { label: 'Approval', value: '45 Days', description: 'Avg deal close', color: 'text-orange-600', iconName: 'Clock' }
         ],
 
-        shortAnswer: "Ohio offers over $2.1B+ in small business funding and incentives across 70+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'ohio business grants',
             'jobsohio grants',
             'ohio techcred program',
@@ -3509,9 +3495,7 @@ Beyond logistics, Georgia has become a premier destination for film and televisi
             { label: 'Training', value: 'Free', description: 'Quick Start', color: 'text-orange-600', iconName: 'BookOpen' }
         ],
 
-        shortAnswer: "Georgia offers over $2.4B+ in small business funding and incentives across 65+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'georgia business grants',
             'georgia job tax credit',
             'business grants atlanta',
@@ -3874,9 +3858,7 @@ Outside the metros, the state maintains a powerful manufacturing base, producing
             { label: 'Processing', value: '3-6 mos', description: 'Major deals', color: 'text-orange-600', iconName: 'Clock' }
         ],
 
-        shortAnswer: "North Carolina offers over $2.0B+ in small business funding and incentives across 60+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'north carolina business grants',
             'jdig grant requirements',
             'nc idea seed grant',
@@ -4243,9 +4225,7 @@ The state is pivoting aggressively to Industry 4.0, helping legacy manufacturers
             { label: 'Processing', value: '40-70 days', description: 'Avg time to close', color: 'text-orange-600', iconName: 'Clock' }
         ],
 
-        shortAnswer: "Michigan offers over $1.8B+ in small business funding and incentives across 55+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'michigan business grants',
             'medc startup funding',
             'going pro talent fund',
@@ -4612,9 +4592,7 @@ The state has aggressively pivoted toward the innovation economy, creating the "
             { label: 'Processing', value: '30-60 days', description: 'Avg approval', color: 'text-orange-600', iconName: 'Clock' }
         ],
 
-        shortAnswer: "New Jersey offers over $1.7B+ in small business funding and incentives across 50+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'nj business grants',
             'njeda grants',
             'new jersey small business loans',
@@ -4978,9 +4956,7 @@ The state is investing aggressively in site readiness to attract semiconductor a
             { label: 'Training', value: '$800/job', description: 'VJIP Grant', color: 'text-orange-600', iconName: 'Users' }
         ],
 
-        shortAnswer: "Virginia offers over $1.5B+ in small business funding and incentives across 45+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'virginia business grants',
             'vedp incentives',
             'commonwealth opportunity fund',
@@ -5341,9 +5317,7 @@ Beyond tech, Washington is an agricultural giant (apples, wheat, wine) and a lea
             { label: 'Training', value: '50%', description: 'JSP Match', color: 'text-orange-600', iconName: 'Users' }
         ],
 
-        shortAnswer: "Washington offers over $1.9B+ in small business funding and incentives across 40+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'washington state business grants',
             'strategic reserve fund wa',
             'clean energy fund washington',
@@ -5706,9 +5680,7 @@ West of Boston, the economy shifts toward precision manufacturing and defense. T
             { label: 'Training', value: '$250k', description: 'WTFP Grant', color: 'text-orange-600', iconName: 'BookOpen' }
         ],
 
-        shortAnswer: "Massachusetts offers over $2.5B+ in small business funding and incentives across 65+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'massachusetts business grants',
             'mass life sciences center tax incentive',
             'workforce training fund program ma',
@@ -6070,9 +6042,7 @@ The state's economy is successfully diversifying away from just construction and
             { label: 'Refund', value: '10%', description: 'Facility Cash', color: 'text-orange-600', iconName: 'RefreshCw' }
         ],
 
-        shortAnswer: "Arizona offers over $1.6B+ in small business funding and incentives across 40+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'arizona business grants',
             'qualified facility tax credit az',
             'regulatory sandbox arizona',
@@ -6433,9 +6403,7 @@ Rural Colorado allows for diverse opportunities in outdoor recreation manufactur
             { label: 'Grant', value: '$250k', description: 'AI Accelerator', color: 'text-orange-600', iconName: 'Zap' }
         ],
 
-        shortAnswer: "Colorado offers over $1.4B+ in small business funding and incentives across 45+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'colorado business grants',
             'advanced industries grant colorado',
             'jgitc tax credit',
@@ -6794,9 +6762,7 @@ Biobusiness is the crown jewel, but Minnesota is also a leader in financial serv
             { label: 'Forgivable', value: 'Yes', description: 'MIF Loans', color: 'text-orange-600', iconName: 'CheckCircle' }
         ],
 
-        shortAnswer: "Minnesota offers over $1B+ in small business funding and incentives across 35+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'minnesota business grants',
             'job creation fund mn',
             'minnesota investment fund',
@@ -7155,9 +7121,7 @@ Maryland leads the nation in cyber-related jobs due to the presence of US Cyber 
             { label: 'Seed', value: 'TEDCO', description: 'State VC', color: 'text-orange-600', iconName: 'Rocket' }
         ],
 
-        shortAnswer: "Maryland offers over $1.8B+ in small business funding and incentives across 55+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'maryland business grants',
             'biotech tax credit md',
             'cybersecurity investment incentive',
@@ -7515,9 +7479,7 @@ Northern Indiana is a global capital for medical devices (Warsaw) and RV manufac
             { label: 'Grant', value: '$200k', description: 'Smart Mfg', color: 'text-orange-600', iconName: 'Cpu' }
         ],
 
-        shortAnswer: "Indiana offers over $1.1B+ in small business funding and incentives across 30+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'indiana business grants',
             'edge tax credit indiana',
             'manufacturing readiness grants',
@@ -7881,9 +7843,7 @@ Chattanooga ("Gig City") offers the world's fastest internet, driving a tech ren
             { label: 'Speed', value: 'FastTrack', description: 'Grant Program', color: 'text-orange-600', iconName: 'Zap' }
         ],
 
-        shortAnswer: "Tennessee offers over $1.3B+ in small business funding and incentives across 25+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'tennessee business grants',
             'fasttrack job training grant',
             'tennessee job tax credit',
@@ -8240,9 +8200,7 @@ Wisconsin virtually eliminates income tax for manufacturers (the Manufacturing &
             { label: 'Angel', value: '25%', description: 'Inv. Credit', color: 'text-orange-600', iconName: 'PieChart' }
         ],
 
-        shortAnswer: "Wisconsin offers over $1B+ in small business funding and incentives across 30+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'wisconsin business grants',
             'wedc incentives',
             'business development tax credit wi',
@@ -8599,9 +8557,7 @@ The state is strategically located for logistics, reaching 50% of the US populat
             { label: 'Grant', value: '$75k', description: 'Arch Grants', color: 'text-orange-600', iconName: 'MapPin' }
         ],
 
-        shortAnswer: "Missouri offers over $900M+ in small business funding and incentives across 25+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'missouri business grants',
             'missouri works program',
             'mtc idea fund',
@@ -8955,9 +8911,7 @@ Exporting is easy here—the Port of Charleston is the most productive port in N
             { label: 'Train', value: 'Free', description: 'readySC', color: 'text-orange-600', iconName: 'BookOpen' }
         ],
 
-        shortAnswer: "South Carolina offers over $800M+ in small business funding and incentives across 25+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'south carolina business grants',
             'job development credits sc',
             'readysc training',
@@ -9311,9 +9265,7 @@ The state offers a predictable, statutory incentive package via the "Jobs Act" a
             { label: 'Refund', value: '3%', description: 'Payroll Cash', color: 'text-orange-600', iconName: 'RefreshCw' }
         ],
 
-        shortAnswer: "Alabama offers over $850M+ in small business funding and incentives across 20+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'alabama business grants',
             'jobs act incentives alabama',
             'aidt training',
@@ -9666,9 +9618,7 @@ Louisiana is a top exporter, with the Port of South Louisiana being the largest 
             { label: 'Rebate', value: '6%', description: 'Quality Jobs', color: 'text-orange-600', iconName: 'RefreshCw' }
         ],
 
-        shortAnswer: "Louisiana offers over $750M+ in small business funding and incentives across 25+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'louisiana business grants',
             'led faststart',
             'quality jobs program louisiana',
@@ -10020,9 +9970,7 @@ Manufacturing is king—Ford trucks, Toyota Camrys, and aluminum production driv
             { label: 'Angel', value: '40%', description: 'Tax Credit', color: 'text-orange-600', iconName: 'PieChart' }
         ],
 
-        shortAnswer: "Kentucky offers over $800M+ in small business funding and incentives across 20+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'kentucky business grants',
             'kbi program kentucky',
             'keia sales tax refund',
@@ -10377,9 +10325,7 @@ Oregon is B-Corp friendly and rewards sustainable business practices with prefer
             { label: 'Prop Tax', value: 'Abated', description: 'Ent. Zones', color: 'text-orange-600', iconName: 'Home' }
         ],
 
-        shortAnswer: "Oregon offers over $650M+ in small business funding and incentives across 25+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'oregon business grants',
             'business expansion program oregon',
             'enterprise zone tax abatement',
@@ -10715,9 +10661,7 @@ Oregon is B-Corp friendly and rewards sustainable business practices with prefer
             { label: 'Engineer', value: '$5k', description: 'Tax Credit', color: 'text-orange-600', iconName: 'UserPlus' }
         ],
 
-        shortAnswer: "Oklahoma offers over $700M+ in small business funding and incentives across 20+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'oklahoma business grants',
             'quality jobs program oklahoma',
             'aerospace engineer tax credit',
@@ -11069,9 +11013,7 @@ Electric Boat (submarines) and Pratt & Whitney (jet engines) drive a massive aer
             { label: 'Angel', value: '25%', description: 'Investor Credit', color: 'text-orange-600', iconName: 'Users' }
         ],
 
-        shortAnswer: "Connecticut offers over $500M+ in small business funding and incentives across 30+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'connecticut business grants',
             'jobsct tax rebate',
             'manufacturing innovation fund ct',
@@ -11424,9 +11366,7 @@ Advanced manufacturing (John Deere, Vermeer) anchors the rural economy. The Rene
             { label: 'Inv. Tax', value: '10%', description: 'Investment Credit', color: 'text-orange-600', iconName: 'TrendingUp' }
         ],
 
-        shortAnswer: "Iowa offers over $450M+ in small business funding and incentives across 15+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'iowa business grants',
             'high quality jobs program iowa',
             'renewable chemical production tax credit',
@@ -11808,9 +11748,7 @@ You file your taxes and apply the credit. For Advantage Jobs rebates, you file q
             { label: 'Seed', value: '$100k', description: 'Startup Fund', color: 'text-orange-600', iconName: 'Rocket' }
         ],
 
-        shortAnswer: "Mississippi offers over $400M+ in small business funding and incentives across 15+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'mississippi business grants',
             'mflex tax incentive',
             'mississippi seed fund',
@@ -12162,9 +12100,7 @@ Steel production is booming in Northeast Arkansas with Big River Steel (Nucor). 
             { label: 'Investor', value: '33%', description: 'Tax Credit', color: 'text-orange-600', iconName: 'PieChart' }
         ],
 
-        shortAnswer: "Arkansas offers over $350M+ in small business funding and incentives across 15+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'arkansas business grants',
             'create rebate program',
             'tax back program arkansas',
@@ -12496,9 +12432,7 @@ Steel production is booming in Northeast Arkansas with Big River Steel (Nucor). 
             { label: 'Income', value: '0%', description: 'Rural (ROZ)', color: 'text-orange-600', iconName: 'MapPin' }
         ],
 
-        shortAnswer: "Kansas offers over $300M+ in small business funding and incentives across 20+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'kansas business grants',
             'peak program kansas',
             'hpip tax credit',
@@ -12883,9 +12817,7 @@ The state cuts you a check (refundable tax credit) for 30% of the new taxes you 
             { label: 'Startup', value: '$300k', description: 'TAP Grant', color: 'text-orange-600', iconName: 'Rocket' }
         ],
 
-        shortAnswer: "Utah offers over $450M+ in small business funding and incentives across 20+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'utah business grants',
             'edtif tax credit utah',
             'silicon slopes funding',
@@ -13263,9 +13195,7 @@ You sign the contract and receive a "Tax Exemption Certificate" to show vendors 
             { label: 'Training', value: '$2000', description: 'Per Hire', color: 'text-orange-600', iconName: 'Users' }
         ],
 
-        shortAnswer: "Nevada offers over $250M+ in small business funding and incentives across 15+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'nevada business grants',
             'catalyst fund nevada',
             'tax abatement nevada',
@@ -13616,9 +13546,7 @@ New Mexico's cluster of National Labs spins off deep-tech startups at a rapid pa
             { label: 'Angel', value: '25%', description: 'Tax Credit', color: 'text-orange-600', iconName: 'PieChart' }
         ],
 
-        shortAnswer: "New Mexico offers over $300M+ in small business funding and incentives across 20+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'new mexico business grants',
             'leda grant new mexico',
             'jtip training program',
@@ -13993,9 +13921,7 @@ Most tax credits are claimed on the annual return, but you may need certificatio
             { label: 'Loan', value: 'Low %', description: 'Direct Loan', color: 'text-orange-600', iconName: 'Landmark' }
         ],
 
-        shortAnswer: "West Virginia offers over $200M+ in small business funding and incentives across 12+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'west virginia business grants',
             'ascend wv application',
             'wveda loans',
@@ -14382,9 +14308,7 @@ Using the tax credits requires annual reporting. Set up your accounting system t
             { label: 'Grant', value: '$15k', description: 'Prototype Grant', color: 'text-orange-600', iconName: 'Rocket' }
         ],
 
-        shortAnswer: "Nebraska offers over $250M+ in small business funding and incentives across 15+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'nebraska business grants',
             'imagine nebraska act tiers',
             'nebraska business innovation act',
@@ -14768,9 +14692,7 @@ You sign the contract. You assume the risk. You hire the people. THEN you get th
             { label: 'Power', value: 'Low', description: 'Energy Cost', color: 'text-orange-600', iconName: 'Zap' }
         ],
 
-        shortAnswer: "Idaho offers over $180M+ in small business funding and incentives across 12+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'idaho business grants',
             'tax reimbursement incentive idaho',
             'boise startup funding',
@@ -15155,9 +15077,7 @@ If you are Native Hawaiian owned, connect with OHA (Office of Hawaiian Affairs) 
             { label: 'Film', value: '27%', description: 'Refundable Credit', color: 'text-orange-600', iconName: 'Video' }
         ],
 
-        shortAnswer: "Hawaii offers over $100M+ in small business funding and incentives across 10+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'hawaii business grants',
             'htdc map grant',
             'sbir matching grant hawaii',
@@ -15541,9 +15461,7 @@ MTI requires regular status reports. PTDZ requires annual reporting to Maine Rev
             { label: 'Tech', value: '$500k', description: 'MTI Loans', color: 'text-orange-600', iconName: 'Cpu' }
         ],
 
-        shortAnswer: "Maine offers over $150M+ in small business funding and incentives across 15+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'maine business grants',
             'mti funding',
             'pine tree development zone',
@@ -15933,9 +15851,7 @@ If you are in biotech, the path is distinct. Engagement with ARMI (BioFabUSA) in
             { label: 'Commute', value: 'Easy', description: 'Access to Boston', color: 'text-orange-600', iconName: 'MapPin' }
         ],
 
-        shortAnswer: "New Hampshire offers over $100M+ in small business funding and incentives across 10+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'new hampshire business grants',
             'nh job training fund',
             'no sales tax business benefits',
@@ -16322,9 +16238,7 @@ Join the "Venture Café Providence" gatherings. It is the center of gravity for 
             { label: 'Supply', value: 'B2B', description: 'SupplyRI', color: 'text-orange-600', iconName: 'Truck' }
         ],
 
-        shortAnswer: "Rhode Island offers over $80M+ in small business funding and incentives across 15+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'rhode island business grants',
             'innovation vouchers ri',
             'qualified jobs incentive',
@@ -16710,9 +16624,7 @@ Remote work has brought an influx of talent and capital, creating a "Zoom Town" 
             { label: 'Training', value: '$5k', description: 'Per Trainee', color: 'text-orange-600', iconName: 'BookOpen' }
         ],
 
-        shortAnswer: "Montana offers over $120M+ in small business funding and incentives across 10+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'montana business grants',
             'big sky trust fund',
             'business grants montana',
@@ -17097,9 +17009,7 @@ Strategic Fund grants are usually paid out *after* milestones are met (e.g., Cer
             { label: 'R&D', value: 'Rebate', description: 'Refundable Credit', color: 'text-orange-600', iconName: 'RefreshCw' }
         ],
 
-        shortAnswer: "Delaware offers over $100M+ in small business funding and incentives across 10+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'delaware business grants',
             'edge grant delaware',
             'strategic fund grants',
@@ -17396,9 +17306,7 @@ REDI Fund offers low-interest loans for job creation.`,
             { label: 'Cyber', value: 'Elite', description: 'Talent Pool', color: 'text-orange-600', iconName: 'Lock' }
         ],
 
-        shortAnswer: "South Dakota offers over $80M+ in small business funding and incentives across 8+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'south dakota business grants',
             'no corporate income tax states',
             'redi fund loan',
@@ -17783,9 +17691,7 @@ LIFT funds are drawn down as needed. PACE interest buys downs happen automatical
             { label: 'Interest', value: '1%', description: 'PACE Rate', color: 'text-orange-600', iconName: 'TrendingDown' }
         ],
 
-        shortAnswer: "North Dakota offers over $90M+ in small business funding and incentives across 10+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'north dakota business grants',
             'lift fund nd',
             'bank of north dakota business loans',
@@ -18179,9 +18085,7 @@ Funding disbursement can be slow. If you are timing your funding for the summer 
             { label: 'Logistics', value: 'Hub', description: '9.5hr to 90% World', color: 'text-orange-600', iconName: 'Globe' }
         ],
 
-        shortAnswer: "Alaska offers over $50M+ in small business funding and incentives across 8+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'alaska business grants',
             'business license alaska',
             'no income tax states business',
@@ -18574,9 +18478,7 @@ Emphasize sustainability and community. If your business is a B-Corp or has an e
             { label: 'Growth', value: 'Tech', description: 'aviation/green', color: 'text-orange-600', iconName: 'TrendingUp' }
         ],
 
-        shortAnswer: "Vermont offers over $60M+ in small business funding and incentives across 8+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'vermont business grants',
             'working lands enterprise fund',
             'vegi incentive vermont',
@@ -18964,9 +18866,7 @@ Since there is no income tax, your primary interaction with the state revenue de
             { label: 'Crypto', value: 'DAO', description: 'Legal Structure', color: 'text-orange-600', iconName: 'Globe' }
         ],
 
-        shortAnswer: "Wyoming offers over $50M+ in small business funding and incentives across 6+ state/provincial programs. Start with the local economic development office — our comprehensive guide breaks down the top programs, eligibility requirements, and application steps.",
-
-    seoKeywords: [
+        seoKeywords: [
             'wyoming business grants',
             'no corporate tax states',
             'business ready community grant',
