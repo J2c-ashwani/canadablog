@@ -1782,7 +1782,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["CSBFP", "Canada", "Small", "Business", "Financing"]
+      keywords: ["CSBFP", "Canada", "Small", "Business", "Financing"],
+      shortAnswer: "Complete guide to CSBFP government-guaranteed loans for Canadian small businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Guarantee', value: '85%', description: 'Gov Backing', color: 'text-green-600', iconName: 'Shield' },
@@ -1819,7 +1820,8 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Dual-Use Strategy",
       type: 'success',
-      content: "The DOD prioritizes <strong>dual-use technology</strong>. Explicitly explain how your cybersecurity tool protects military networks AND has a viable commercial market (e.g., banking systems)."
+      content: "The DOD prioritizes <strong>dual-use technology</strong>. Explicitly explain how your cybersecurity tool protects military networks AND has a viable commercial market (e.g., banking systems).",
+      shortAnswer: "Complete 2026-2027 guide to cybersecurity grants. Total funding available: $1.8M.",
     },
     faq: [
       {
@@ -1855,7 +1857,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Stage", "3:", "Demonstration", "&", "Pilot"]
+      keywords: ["Stage", "3:", "Demonstration", "&", "Pilot"],
+      shortAnswer: "Complete guide to Canadian demonstration and pilot project funding. Total funding available: $15M.",
     },
     metrics: [
       { label: 'Fund', value: '$15M', description: 'SDTC Max', color: 'text-green-600', iconName: 'Zap' },
@@ -1884,7 +1887,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Stage", "2:", "Development", "&", "Proof-of-Concept"]
+      keywords: ["Stage", "2:", "Development", "&", "Proof-of-Concept"],
+      shortAnswer: "Complete guide to Canadian development and proof-of-concept funding. Total funding available: $5M.",
     },
     metrics: [
       { label: 'Funding', value: '$5M', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -1913,7 +1917,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["DOD", "SBIR", "Defense", "Tech", "Grants"]
+      keywords: ["DOD", "SBIR", "Defense", "Tech", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to Department of Defense SBIR/STTR grants for defense tech startups. Total funding available: $256K.",
     },
     metrics: [
       { label: 'Phase I', value: '$256K', description: 'Entry Grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -1942,7 +1947,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["DOE", "SBIR", "Clean", "Energy", "Grants"]
+      keywords: ["DOE", "SBIR", "Clean", "Energy", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Total funding available: $200K.",
     },
     metrics: [
       { label: 'Phase I', value: '$200K', description: 'Concept', color: 'text-green-600', iconName: 'DollarSign' },
@@ -1971,7 +1977,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["EDC", "Women", "in", "Trade", "Export"]
+      keywords: ["EDC", "Women", "in", "Trade", "Export"],
+      shortAnswer: "Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support from Export Development Canada for women-owned businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Capital', value: '$10M+', description: 'Equity Invest', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2000,7 +2007,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Federal", "Grants", "for", "Women,", "Minorities"]
+      keywords: ["Federal", "Grants", "for", "Women,", "Minorities"],
+      shortAnswer: "Complete guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'WOSB', value: '5%', description: 'Set-aside goal', color: 'text-pink-600', iconName: 'Users' },
@@ -2029,7 +2037,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Hardware", "&", "IoT", "Startup", "Grants"]
+      keywords: ["Hardware", "&", "IoT", "Startup", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to hardware and IoT startup grants. Total funding available: $305K.",
     },
     metrics: [
       { label: 'NSF', value: '$305K', description: 'Phase I', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2058,7 +2067,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Stage", "1:", "Ideation", "&", "Research"]
+      keywords: ["Stage", "1:", "Ideation", "&", "Research"],
+      shortAnswer: "Complete guide to Canadian ideation and research funding for early-stage innovation. Total funding available: $1M.",
     },
     metrics: [
       { label: 'Funding', value: '$1M', description: 'Max Grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2087,7 +2097,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Indigenous", "&", "Rural", "Business", "Funding"]
+      keywords: ["Indigenous", "&", "Rural", "Business", "Funding"],
+      shortAnswer: "Complete guide to Indigenous business grants and rural business funding in Canada. Total funding available: $500K+.",
     },
     metrics: [
       { label: 'Grant', value: '$500K', description: 'Max Amount', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2116,7 +2127,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Indigenous", "Women", "Business", "Grants", "Canada"]
+      keywords: ["Indigenous", "Women", "Business", "Grants", "Canada"],
+      shortAnswer: "Complete 2026-2027 guide to Indigenous women business grants in Canada. Total funding available: $50K.",
     },
     metrics: [
       { label: 'Micro', value: '$50K', description: 'Max Loan', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2145,7 +2157,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Industry-Specific", "Business", "Grants", "Guide", "2026"]
+      keywords: ["Industry-Specific", "Business", "Grants", "Guide", "2026"],
+      shortAnswer: "Complete guide to industry-specific business grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Sectors', value: '12+', description: 'Industry categories', color: 'text-blue-600', iconName: 'Layers' },
@@ -2174,7 +2187,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Industrial", "Research", "Assistance", "Program", "(IRAP)"]
+      keywords: ["Industrial", "Research", "Assistance", "Program", "(IRAP)"],
+      shortAnswer: "Complete guide to IRAP funding for Canadian tech SMEs. Total funding available: $1M.",
     },
     metrics: [
       { label: 'Funding', value: '$10M', description: 'Max Contribution', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2215,7 +2229,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["IRAP", "Industrial", "Research", "Assistance", "Program"]
+      keywords: ["IRAP", "Industrial", "Research", "Assistance", "Program"],
+      shortAnswer: "Complete guide to IRAP government funding for Canadian R&D projects. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Phase', value: 'R&D', description: 'Technology', color: 'text-green-600', iconName: 'Cpu' },
@@ -2244,7 +2259,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["IRAP", "Industrial", "Research", "Assistance", "Program"]
+      keywords: ["IRAP", "Industrial", "Research", "Assistance", "Program"],
+      shortAnswer: "Complete guide to IRAP innovation funding from National Research Council Canada. Total funding available: $500K.",
     },
     metrics: [
       { label: 'Fund', value: '$500K', description: 'Max Project', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2273,7 +2289,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Manitoba", "Small", "Business", "Grants", "2026"]
+      keywords: ["Manitoba", "Small", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Manitoba small business grants. Total funding available: $380M+.",
     },
     metrics: [
       { label: 'Pool', value: '$380M', description: 'Total Funds', color: 'text-green-600', iconName: 'Database' },
@@ -2302,7 +2319,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Massachusetts", "Tech", "Startup", "Grants", "2026-2027"]
+      keywords: ["Massachusetts", "Tech", "Startup", "Grants", "2026-2027"],
+      shortAnswer: "Complete 2026-2027 guide to Massachusetts technology startup grants and incentives. Total funding available: $500K.",
     },
     metrics: [
       { label: 'START', value: '$500K', description: 'MassVentures', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2331,7 +2349,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["NASA", "SBIR", "Space", "Tech", "Grants"]
+      keywords: ["NASA", "SBIR", "Space", "Tech", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups. Total funding available: $150K.",
     },
     metrics: [
       { label: 'Phase I', value: '$150K', description: 'Feasibility', color: 'text-green-600', iconName: 'Rocket' },
@@ -2360,7 +2379,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["New", "York", "Tech", "Startup", "Grants"]
+      keywords: ["New", "York", "Tech", "Startup", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to New York technology startup grants and incentives. Total funding available: $250K.",
     },
     metrics: [
       { label: 'Tax-Free', value: '10 Years', description: 'START-UP NY', color: 'text-green-600', iconName: 'DollarSign' },
