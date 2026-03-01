@@ -2409,7 +2409,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["NIH", "SBIR", "Biotech", "Grants", "2026-2027"]
+      keywords: ["NIH", "SBIR", "Biotech", "Grants", "2026-2027"],
+      shortAnswer: "Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Total funding available: $285K.",
     },
     metrics: [
       { label: 'Phase I', value: '$285K', description: 'Feasibility', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2438,7 +2439,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["NSERC", "Research", "Grants", "Canada", "2026"]
+      keywords: ["NSERC", "Research", "Grants", "Canada", "2026"],
+      shortAnswer: "Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'I2I', value: '$350K', description: 'Tech Transfer', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2467,7 +2469,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["NSF", "SBIR", "Grants", "2026-2027", "|"]
+      keywords: ["NSF", "SBIR", "Grants", "2026-2027", "|"],
+      shortAnswer: "Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Total funding available: $275K.",
     },
     metrics: [
       { label: 'Phase I', value: '$275K', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2496,7 +2499,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["National", "Women"]
+      keywords: ["National", "Women"],
+      shortAnswer: "National Women. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     metrics: [
       { label: 'Role', value: 'Advisory', description: 'Federal council', color: 'text-pink-600', iconName: 'Users' },
@@ -2525,7 +2529,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Ontario", "Government", "Business", "Grants", "2026"]
+      keywords: ["Ontario", "Government", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Ontario government business grants and provincial funding programs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Pool', value: '$2.5B', description: 'Provincial', color: 'text-green-600', iconName: 'Maple' },
@@ -2554,7 +2559,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Ontario", "Innovation", "Grants", "&", "Tax"]
+      keywords: ["Ontario", "Innovation", "Grants", "&", "Tax"],
+      shortAnswer: "Complete guide to Ontario innovation grants and tax credits. Total funding available: $3.2B+.",
     },
     metrics: [
       { label: 'Credit', value: '10%', description: 'OITC Rate', color: 'text-green-600', iconName: 'Percent' },
@@ -2583,7 +2589,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Ontario", "Small", "Business", "Grants", "2026"]
+      keywords: ["Ontario", "Small", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Ontario small business grants and funding. Total funding available: $2.1B+.",
     },
     metrics: [
       { label: 'Fund', value: '$2.1B', description: 'Available', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2612,7 +2619,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Ontario", "Women", "Business", "Grants", "2026"]
+      keywords: ["Ontario", "Women", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Ontario women entrepreneurship support with FedDev Ontario RE3 grants up to $5,000, PARO microfinancing, Women. Total funding available: $850M.",
     },
     metrics: [
       { label: 'Pool', value: '$850M', description: 'Women Focus', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2641,7 +2649,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Prairie", "Provinces", "Innovation", "Grants", "2026"]
+      keywords: ["Prairie", "Provinces", "Innovation", "Grants", "2026"],
+      shortAnswer: "Complete guide to Prairie innovation grants. Total funding available: $580M+.",
     },
     metrics: [
       { label: 'Fund', value: '$580M', description: 'Regional', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2670,7 +2679,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Private", "Women", "Grants", "Guide", "2026"]
+      keywords: ["Private", "Women", "Grants", "Guide", "2026"],
+      shortAnswer: "Complete guide to private foundation grants for women entrepreneurs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Amber', value: '$10K', description: 'Monthly grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2701,7 +2711,8 @@ export const blogPosts: BlogPost[] = [
     expertTip: {
       title: "Language Compliance (Bill 96)",
       type: 'warning',
-      content: "Quebec funding requires <strong>strict adherence to French language laws</strong>. Ensure your business plan, financial statements, and application forms are professionally translated into French. English-only applications are often rejected outright by provincial agencies."
+      content: "Quebec funding requires <strong>strict adherence to French language laws</strong>. Ensure your business plan, financial statements, and application forms are professionally translated into French. English-only applications are often rejected outright by provincial agencies.",
+      shortAnswer: "Complete guide to Quebec government business grants and aide aux entreprises provincial funding. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     faq: [
       {
@@ -2751,7 +2762,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Quebec", "Innovation", "Grants", "&", "Tax"]
+      keywords: ["Quebec", "Innovation", "Grants", "&", "Tax"],
+      shortAnswer: "Complete guide to Quebec innovation grants and tax credits. Total funding available: $2.5B+.",
     },
     metrics: [
       { label: 'Fund', value: '$2.5B', description: 'Provincial Pool', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2780,7 +2792,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Quebec", "Small", "Business", "Grants", "2026"]
+      keywords: ["Quebec", "Small", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Quebec small business grants. Total funding available: $1.8B+.",
     },
     metrics: [
       { label: 'Total', value: '$1.8B', description: 'SME Funding', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2809,7 +2822,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Quebec", "Women", "Business", "Grants", "2026"]
+      keywords: ["Quebec", "Women", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Quebec women entrepreneurship support with R\u00e9seau des Femmes d. Total funding available: $720M.",
     },
     metrics: [
       { label: 'Fund', value: '$720M', description: 'Women Focus', color: 'text-pink-600', iconName: 'DollarSign' },
@@ -2838,7 +2852,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["RBC", "Canadian", "Women", "Entrepreneur", "Awards"]
+      keywords: ["RBC", "Canadian", "Women", "Entrepreneur", "Awards"],
+      shortAnswer: "Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2026. Total funding available: $100K+.",
     },
     metrics: [
       { label: 'Total', value: '$100K+', description: 'Recognition', color: 'text-green-600', iconName: 'Award' },
@@ -2867,7 +2882,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Regional", "Development", "Agencies", "Canada", "2026"]
+      keywords: ["Regional", "Development", "Agencies", "Canada", "2026"],
+      shortAnswer: "Regional Development Agencies Canada. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     metrics: [
       { label: 'Agencies', value: '7', description: 'Regional RDAs', color: 'text-green-600', iconName: 'Building' },
@@ -2896,7 +2912,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Saskatchewan", "Small", "Business", "Grants", "2026"]
+      keywords: ["Saskatchewan", "Small", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Saskatchewan small business grants. Total funding available: $425M+.",
     },
     metrics: [
       { label: 'Total', value: '$425M', description: 'SME Programs', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2925,7 +2942,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SBA", "7(a)", "Loans", "Complete", "Guide"]
+      keywords: ["SBA", "7(a)", "Loans", "Complete", "Guide"],
+      shortAnswer: "Complete guide to SBA 7(a) loans. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Max', value: '$5M', description: 'Loan limit', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2954,7 +2972,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SBA", "Disaster", "Relief", "Loans", "Guide"]
+      keywords: ["SBA", "Disaster", "Relief", "Loans", "Guide"],
+      shortAnswer: "Complete guide to SBA disaster relief loans. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Physical', value: '$2M', description: 'Damage loan', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2983,7 +3002,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SBA", "Loans", "&", "Grants", "Complete"]
+      keywords: ["SBA", "Loans", "&", "Grants", "Complete"],
+      shortAnswer: "Complete guide to SBA loans and grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: '7(a)', value: '$5M', description: 'General loans', color: 'text-green-600', iconName: 'DollarSign' },
