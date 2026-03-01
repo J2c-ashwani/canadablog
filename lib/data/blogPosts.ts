@@ -3044,7 +3044,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SBA", "Microloans", "Complete", "Guide", "2026"]
+      keywords: ["SBA", "Microloans", "Complete", "Guide", "2026"],
+      shortAnswer: "Complete guide to SBA microloans. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Max', value: '$50K', description: 'Loan limit', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3073,7 +3074,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SBIR", "Small", "Business", "Innovation", "Research"]
+      keywords: ["SBIR", "Small", "Business", "Innovation", "Research"],
+      shortAnswer: "Complete guide to SBIR grants for small businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Phase I', value: '$275K', description: 'Feasibility', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3102,7 +3104,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SBIR", "&", "STTR", "Grants", "Complete"]
+      keywords: ["SBIR", "&", "STTR", "Grants", "Complete"],
+      shortAnswer: "Complete guide to SBIR and STTR grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'SBIR', value: '$1.7M', description: 'Max award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3131,7 +3134,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Scotiabank", "Women", "Initiative", "2026", "|"]
+      keywords: ["Scotiabank", "Women", "Initiative", "2026", "|"],
+      shortAnswer: "Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and comprehensive support for Canadian women-led businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Bank', value: 'Scotia', description: 'Major Lender', color: 'text-red-600', iconName: 'Building' },
@@ -3160,7 +3164,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Small", "Business", "Grants", "Complete", "Guide"]
+      keywords: ["Small", "Business", "Grants", "Complete", "Guide"],
+      shortAnswer: "Complete guide to small business grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'SBA', value: '$5M', description: 'Max Loan', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3189,7 +3194,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Software", "&", "SaaS", "Startup", "Grants"]
+      keywords: ["Software", "&", "SaaS", "Startup", "Grants"],
+      shortAnswer: "Complete 2026-2027 guide to software and SaaS startup grants. Total funding available: $305K.",
     },
     metrics: [
       { label: 'NSF', value: '$305K', description: 'Phase I', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3218,7 +3224,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["SR&ED", "Tax", "Credits", "Canada", "2026"]
+      keywords: ["SR&ED", "Tax", "Credits", "Canada", "2026"],
+      shortAnswer: "Complete guide to SR&ED tax credits in Canada. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Rate', value: '65%', description: 'Max Refund', color: 'text-green-600', iconName: 'Percent' },
@@ -3259,7 +3266,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["State", "&", "Local", "Business", "Grants"]
+      keywords: ["State", "&", "Local", "Business", "Grants"],
+      shortAnswer: "Complete guide to state and local business grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Pool', value: '$500K', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3288,7 +3296,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["State", "Province", "Grants"]
+      keywords: ["State", "Province", "Grants"],
+      shortAnswer: "State Province Grants. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     metrics: [
       { label: 'States', value: '50', description: 'All Covered', color: 'text-green-600', iconName: 'MapPin' },
@@ -3317,7 +3326,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["State", "Women", "Business", "Programs", "Guide"]
+      keywords: ["State", "Women", "Business", "Programs", "Guide"],
+      shortAnswer: "Complete guide to state and local women business programs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'States', value: '50', description: 'All States', color: 'text-pink-600', iconName: 'MapPin' },
@@ -3346,7 +3356,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Strategic", "Innovation", "Fund", "Canada", "2026"]
+      keywords: ["Strategic", "Innovation", "Fund", "Canada", "2026"],
+      shortAnswer: "Complete guide to Strategic Innovation Fund (SIF) funding in Canada. Total funding available: $100M+.",
     },
     metrics: [
       { label: 'Max', value: '$100M+', description: 'Per Project', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3375,7 +3386,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Territories", "Small", "Business", "Grants", "2026"]
+      keywords: ["Territories", "Small", "Business", "Grants", "2026"],
+      shortAnswer: "Complete guide to Territories business grants. Total funding available: $125M+.",
     },
     metrics: [
       { label: 'Total', value: '$125M+', description: 'Combined Fund', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3404,7 +3416,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Usa", "Federal", "Grants"]
+      keywords: ["Usa", "Federal", "Grants"],
+      shortAnswer: "Usa Federal Grants. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     metrics: [
       { label: 'Pool', value: '$100B+', description: 'Annual Budget', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3433,7 +3446,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["USDA", "SBIR", "Ag Tech", "Grants", "2026-2027"]
+      keywords: ["USDA", "SBIR", "Ag Tech", "Grants", "2026-2027"],
+      shortAnswer: "Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups. Total funding available: $125K.",
     },
     metrics: [
       { label: 'Phase I', value: '$125K', description: 'USDA Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3462,7 +3476,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Washington", "Tech", "Startup", "Grants", "2026-2027"]
+      keywords: ["Washington", "Tech", "Startup", "Grants", "2026-2027"],
+      shortAnswer: "Complete 2026-2027 guide to Washington state technology startup grants. Total funding available: $1M.",
     },
     metrics: [
       { label: 'WRF', value: '$1M', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3491,7 +3506,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["WBDC", "Equity", "Match", "Grant", "2027"]
+      keywords: ["WBDC", "Equity", "Match", "Grant", "2027"],
+      shortAnswer: "Complete guide to WBDC Equity Match Grant with quarterly deadlines, $2,500-$10,000 funding for Connecticut women-owned businesses with matching investment requirement. Total funding available: $2,500.",
     },
     metrics: [
       { label: 'Range', value: '$2.5-10K', description: 'Grant Amount', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3520,7 +3536,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women"]
+      keywords: ["Women"],
+      shortAnswer: "Women. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
     },
     metrics: [
       { label: 'Centers', value: '100+', description: 'US Locations', color: 'text-purple-600', iconName: 'Building' },
@@ -3549,7 +3566,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women", "Clean", "Technology", "Grants", "Canada"]
+      keywords: ["Women", "Clean", "Technology", "Grants", "Canada"],
+      shortAnswer: "Complete 2026-2027 guide to clean tech grants for women entrepreneurs. Total funding available: $10M.",
     },
     metrics: [
       { label: 'SDTC', value: '$10M', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3578,7 +3596,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women", "Entrepreneurship", "Fund", "Canada", "2026"]
+      keywords: ["Women", "Entrepreneurship", "Fund", "Canada", "2026"],
+      shortAnswer: "Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
     },
     metrics: [
       { label: 'Type', value: 'Non-Repay', description: 'Grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3607,7 +3626,8 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
     content: "",
     seo: {
-      keywords: ["Women", "Entrepreneurship", "Loan", "Fund", "(WELF)"]
+      keywords: ["Women", "Entrepreneurship", "Loan", "Fund", "(WELF)"],
+      shortAnswer: "Complete guide to WELF microloans from Innovation, Science & Economic Development Canada. Total funding available: $50K.",
     },
     metrics: [
       { label: 'Max', value: '$50K', description: 'Microloan', color: 'text-green-600', iconName: 'DollarSign' },
