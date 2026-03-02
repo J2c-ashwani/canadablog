@@ -1744,7 +1744,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Canada", "Small", "Business", "Financing", "Program"],
-    }, shortAnswer: "The CSBFP offers government-backed loans up to $1.15 million for small businesses. These funds can be used for purchasing property, equipment, or leasehold improvements with highly competitive rates.",
+    }, shortAnswer: "The Short Answer: Canada Small Business Financing Program (CSBFP) provides $1M in loans and financing specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
@@ -1783,7 +1783,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["CSBFP", "Canada", "Small", "Business", "Financing"],
-      shortAnswer: "Complete guide to CSBFP government-guaranteed loans for Canadian small businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: CSBFP Canada Small Business Financing Program provides $1M in loans and financing specifically tailored for US businesses. To qualify, your business must demonstrate clear objectives in equipment purchases and advanced manufacturing and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Guarantee', value: '85%', description: 'Gov Backing', color: 'text-green-600', iconName: 'Shield' },
@@ -1948,7 +1948,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["DOE", "SBIR", "Clean", "Energy", "Grants"],
-      shortAnswer: "Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Total funding available: $200K.",
+      shortAnswer: "The Short Answer: The SBIR/STTR program acts as \"America's Seed Fund,\" providing up to $200K in non-dilutive R&D grants for US tech startups. To win, companies must align their innovative technology with specific federal agency (e.g., NSF, DoD, NIH) research solicitations. Successfully securing Phase I funding dramatically improves the odds of larger Phase II commercialization awards.",
     },
     metrics: [
       { label: 'Phase I', value: '$200K', description: 'Concept', color: 'text-green-600', iconName: 'DollarSign' },
@@ -1978,7 +1978,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["EDC", "Women", "in", "Trade", "Export"],
-      shortAnswer: "Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support from Export Development Canada for women-owned businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: EDC Women in Trade Export Financing provides valuable funding in financial support specifically tailored for women-led Canadian businesses. To qualify, your business must demonstrate clear objectives in international market expansion and export growth and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Capital', value: '$10M+', description: 'Equity Invest', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2008,7 +2008,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Federal", "Grants", "for", "Women,", "Minorities"],
-      shortAnswer: "Complete guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: The WOSB certification unlocks exclusive access to billions in federal set-aside contracts specifically for women-owned small businesses. Obtaining this certification requires proving 51% unconditional ownership and direct management by a woman. Once certified, you can bid on limited-competition contracts, significantly reducing your competition and accelerating government revenue.",
     },
     metrics: [
       { label: 'WOSB', value: '5%', description: 'Set-aside goal', color: 'text-pink-600', iconName: 'Users' },
@@ -2128,7 +2128,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Indigenous", "Women", "Business", "Grants", "Canada"],
-      shortAnswer: "Complete 2026-2027 guide to Indigenous women business grants in Canada. Total funding available: $50K.",
+      shortAnswer: "The Short Answer: Indigenous Women Business Grants Canada provides $50K in non-repayable grants specifically tailored for Indigenous-owned Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Micro', value: '$50K', description: 'Max Loan', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2158,7 +2158,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Industry-Specific", "Business", "Grants", "Guide", "2026"],
-      shortAnswer: "Complete guide to industry-specific business grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: Industry-Specific Business Grants Guide provides valuable funding in non-repayable grants specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in agricultural innovation and agtech and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Sectors', value: '12+', description: 'Industry categories', color: 'text-blue-600', iconName: 'Layers' },
@@ -2188,7 +2188,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Industrial", "Research", "Assistance", "Program", "(IRAP)"],
-      shortAnswer: "Complete guide to IRAP funding for Canadian tech SMEs. Total funding available: $1M.",
+      shortAnswer: "The Short Answer: Industrial Research Assistance Program (IRAP) provides $1M in non-repayable grants specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in scientific research and experimental development (R&D) and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Funding', value: '$10M', description: 'Max Contribution', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2230,7 +2230,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["IRAP", "Industrial", "Research", "Assistance", "Program"],
-      shortAnswer: "Complete guide to IRAP government funding for Canadian R&D projects. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: IRAP Industrial Research Assistance Program Canada provides valuable funding in financial support specifically tailored for US businesses. To qualify, your business must demonstrate clear objectives in scientific research and experimental development (R&D) and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Phase', value: 'R&D', description: 'Technology', color: 'text-green-600', iconName: 'Cpu' },
@@ -2410,7 +2410,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["NIH", "SBIR", "Biotech", "Grants", "2026-2027"],
-      shortAnswer: "Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Total funding available: $285K.",
+      shortAnswer: "The Short Answer: The SBIR/STTR program acts as \"America's Seed Fund,\" providing up to $285K in non-dilutive R&D grants for US tech startups. To win, companies must align their innovative technology with specific federal agency (e.g., NSF, DoD, NIH) research solicitations. Successfully securing Phase I funding dramatically improves the odds of larger Phase II commercialization awards.",
     },
     metrics: [
       { label: 'Phase I', value: '$285K', description: 'Feasibility', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2440,7 +2440,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["NSERC", "Research", "Grants", "Canada", "2026"],
-      shortAnswer: "Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: NSERC Research Grants Canada provides $350K in non-repayable grants specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in scientific research and experimental development (R&D) and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'I2I', value: '$350K', description: 'Tech Transfer', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2470,7 +2470,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["NSF", "SBIR", "Grants", "2026-2027", "|"],
-      shortAnswer: "Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Total funding available: $275K.",
+      shortAnswer: "The Short Answer: The SBIR/STTR program acts as \"America's Seed Fund,\" providing up to $275K in non-dilutive R&D grants for US tech startups. To win, companies must align their innovative technology with specific federal agency (e.g., NSF, DoD, NIH) research solicitations. Successfully securing Phase I funding dramatically improves the odds of larger Phase II commercialization awards.",
     },
     metrics: [
       { label: 'Phase I', value: '$275K', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2500,7 +2500,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["National", "Women"],
-      shortAnswer: "National Women. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
+      shortAnswer: "The Short Answer: National Women provides valuable funding in financial support specifically tailored for women-led BC businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Role', value: 'Advisory', description: 'Federal council', color: 'text-pink-600', iconName: 'Users' },
@@ -2530,7 +2530,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Ontario", "Government", "Business", "Grants", "2026"],
-      shortAnswer: "Complete guide to Ontario government business grants and provincial funding programs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: Ontario Government Business Grants provides valuable funding in non-repayable grants specifically tailored for Ontario businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Pool', value: '$2.5B', description: 'Provincial', color: 'text-green-600', iconName: 'Maple' },
@@ -2650,7 +2650,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Prairie", "Provinces", "Innovation", "Grants", "2026"],
-      shortAnswer: "Complete guide to Prairie innovation grants. Total funding available: $580M+.",
+      shortAnswer: "The Short Answer: Prairie Provinces Innovation Grants provides $580M+ in non-repayable grants specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in scientific research and experimental development (R&D) and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Fund', value: '$580M', description: 'Regional', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2680,7 +2680,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Private", "Women", "Grants", "Guide", "2026"],
-      shortAnswer: "Complete guide to private foundation grants for women entrepreneurs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: Private Women Grants Guide provides $250K in non-repayable grants specifically tailored for women-led Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Amber', value: '$10K', description: 'Monthly grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2712,7 +2712,7 @@ export const blogPosts: BlogPost[] = [
       title: "Language Compliance (Bill 96)",
       type: 'warning',
       content: "Quebec funding requires <strong>strict adherence to French language laws</strong>. Ensure your business plan, financial statements, and application forms are professionally translated into French. English-only applications are often rejected outright by provincial agencies.",
-      shortAnswer: "Complete guide to Quebec government business grants and aide aux entreprises provincial funding. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: Quebec Government Business Grants provides valuable funding in non-repayable grants specifically tailored for Quebec businesses. To qualify, your business must demonstrate clear objectives in scientific research and experimental development (R&D) and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     faq: [
       {
@@ -2853,7 +2853,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["RBC", "Canadian", "Women", "Entrepreneur", "Awards"],
-      shortAnswer: "Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2026. Total funding available: $100K+.",
+      shortAnswer: "The Short Answer: RBC Canadian Women Entrepreneur Awards provides $100K+ in non-repayable grants specifically tailored for women-led BC businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Total', value: '$100K+', description: 'Recognition', color: 'text-green-600', iconName: 'Award' },
@@ -2883,7 +2883,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Regional", "Development", "Agencies", "Canada", "2026"],
-      shortAnswer: "Regional Development Agencies Canada. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
+      shortAnswer: "The Short Answer: Regional Development Agencies Canada provides valuable funding in financial support specifically tailored for US businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Agencies', value: '7', description: 'Regional RDAs', color: 'text-green-600', iconName: 'Building' },
@@ -2913,7 +2913,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Saskatchewan", "Small", "Business", "Grants", "2026"],
-      shortAnswer: "Complete guide to Saskatchewan small business grants. Total funding available: $425M+.",
+      shortAnswer: "The Short Answer: Saskatchewan Small Business Grants provides $425M+ in non-repayable grants specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in international market expansion and export growth and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Total', value: '$425M', description: 'SME Programs', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2943,7 +2943,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["SBA", "7(a)", "Loans", "Complete", "Guide"],
-      shortAnswer: "Complete guide to SBA 7(a) loans. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: SBA 7(a) Loans Complete Guide provides $5M in loans and financing specifically tailored for US businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Max', value: '$5M', description: 'Loan limit', color: 'text-green-600', iconName: 'DollarSign' },
@@ -2973,7 +2973,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["SBA", "Disaster", "Relief", "Loans", "Guide"],
-      shortAnswer: "Complete guide to SBA disaster relief loans. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: SBA Disaster Relief Loans Guide provides $2M in loans and financing specifically tailored for US businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Physical', value: '$2M', description: 'Damage loan', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3003,7 +3003,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["SBA", "Loans", "&", "Grants", "Complete"],
-      shortAnswer: "Complete guide to SBA loans and grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: SBA Loans & Grants Complete Guide provides $5M in non-repayable grants specifically tailored for US businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: '7(a)', value: '$5M', description: 'General loans', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3045,7 +3045,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["SBA", "Microloans", "Complete", "Guide", "2026"],
-      shortAnswer: "Complete guide to SBA microloans. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: SBA Microloans Complete Guide provides $50K in loans and financing specifically tailored for US businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Max', value: '$50K', description: 'Loan limit', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3075,7 +3075,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["SBIR", "Small", "Business", "Innovation", "Research"],
-      shortAnswer: "Complete guide to SBIR grants for small businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: The SBIR/STTR program acts as \"America's Seed Fund,\" providing up to $1.7M in non-dilutive R&D grants for US tech startups. To win, companies must align their innovative technology with specific federal agency (e.g., NSF, DoD, NIH) research solicitations. Successfully securing Phase I funding dramatically improves the odds of larger Phase II commercialization awards.",
     },
     metrics: [
       { label: 'Phase I', value: '$275K', description: 'Feasibility', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3105,7 +3105,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["SBIR", "&", "STTR", "Grants", "Complete"],
-      shortAnswer: "Complete guide to SBIR and STTR grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: The SBIR/STTR program acts as \"America's Seed Fund,\" providing up to $1.7M in non-dilutive R&D grants for US tech startups. To win, companies must align their innovative technology with specific federal agency (e.g., NSF, DoD, NIH) research solicitations. Successfully securing Phase I funding dramatically improves the odds of larger Phase II commercialization awards.",
     },
     metrics: [
       { label: 'SBIR', value: '$1.7M', description: 'Max award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3135,7 +3135,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Scotiabank", "Women", "Initiative", "2026", "|"],
-      shortAnswer: "Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and comprehensive support for Canadian women-led businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: Scotiabank Women Initiative provides valuable funding in financial support specifically tailored for women-led Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Bank', value: 'Scotia', description: 'Major Lender', color: 'text-red-600', iconName: 'Building' },
@@ -3165,7 +3165,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Small", "Business", "Grants", "Complete", "Guide"],
-      shortAnswer: "Complete guide to small business grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: Small Business Grants Complete Guide provides $5M in non-repayable grants specifically tailored for US businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'SBA', value: '$5M', description: 'Max Loan', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3195,7 +3195,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Software", "&", "SaaS", "Startup", "Grants"],
-      shortAnswer: "Complete 2026-2027 guide to software and SaaS startup grants. Total funding available: $305K.",
+      shortAnswer: "The Short Answer: The SBIR/STTR program acts as \"America's Seed Fund,\" providing up to $305K in non-dilutive R&D grants for US tech startups. To win, companies must align their innovative technology with specific federal agency (e.g., NSF, DoD, NIH) research solicitations. Successfully securing Phase I funding dramatically improves the odds of larger Phase II commercialization awards.",
     },
     metrics: [
       { label: 'NSF', value: '$305K', description: 'Phase I', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3225,7 +3225,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["SR&ED", "Tax", "Credits", "Canada", "2026"],
-      shortAnswer: "Complete guide to SR&ED tax credits in Canada. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: The SR&ED program is Canada's largest R&D incentive, allowing businesses to claim a 35% federal refundable tax credit on eligible scientific research and experimental development costs. When stacked with provincial credits, you can recover up to 65% of your total R&D expenditures. Filing requires detailed technical narratives demonstrating technological uncertainty and systematic investigation.",
     },
     metrics: [
       { label: 'Rate', value: '65%', description: 'Max Refund', color: 'text-green-600', iconName: 'Percent' },
@@ -3267,7 +3267,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["State", "&", "Local", "Business", "Grants"],
-      shortAnswer: "Complete guide to state and local business grants. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: State & Local Business Grants Guide provides $500K in non-repayable grants specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Pool', value: '$500K', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3297,7 +3297,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["State", "Province", "Grants"],
-      shortAnswer: "State Province Grants. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
+      shortAnswer: "The Short Answer: State Province Grants provides valuable funding in non-repayable grants specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'States', value: '50', description: 'All Covered', color: 'text-green-600', iconName: 'MapPin' },
@@ -3327,7 +3327,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["State", "Women", "Business", "Programs", "Guide"],
-      shortAnswer: "Complete guide to state and local women business programs. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: State Women Business Programs Guide provides valuable funding in non-repayable grants specifically tailored for women-led Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'States', value: '50', description: 'All States', color: 'text-pink-600', iconName: 'MapPin' },
@@ -3387,7 +3387,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Territories", "Small", "Business", "Grants", "2026"],
-      shortAnswer: "Complete guide to Territories business grants. Total funding available: $125M+.",
+      shortAnswer: "The Short Answer: Territories Small Business Grants provides $125M+ in non-repayable grants specifically tailored for Indigenous-owned Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Total', value: '$125M+', description: 'Combined Fund', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3417,7 +3417,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Usa", "Federal", "Grants"],
-      shortAnswer: "Usa Federal Grants. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
+      shortAnswer: "The Short Answer: Usa Federal Grants provides valuable funding in non-repayable grants specifically tailored for US businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Pool', value: '$100B+', description: 'Annual Budget', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3507,7 +3507,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["WBDC", "Equity", "Match", "Grant", "2027"],
-      shortAnswer: "Complete guide to WBDC Equity Match Grant with quarterly deadlines, $2,500-$10,000 funding for Connecticut women-owned businesses with matching investment requirement. Total funding available: $2,500.",
+      shortAnswer: "The Short Answer: WBDC Equity Match Grant provides $2,500 in non-repayable grants specifically tailored for women-led Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Range', value: '$2.5-10K', description: 'Grant Amount', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3537,7 +3537,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Women"],
-      shortAnswer: "Women. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
+      shortAnswer: "The Short Answer: Women provides valuable funding in financial support specifically tailored for women-led Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Centers', value: '100+', description: 'US Locations', color: 'text-purple-600', iconName: 'Building' },
@@ -3567,7 +3567,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Women", "Clean", "Technology", "Grants", "Canada"],
-      shortAnswer: "Complete 2026-2027 guide to clean tech grants for women entrepreneurs. Total funding available: $10M.",
+      shortAnswer: "The Short Answer: Women Clean Technology Grants Canada provides $10M in non-repayable grants specifically tailored for women-led Canadian businesses. To qualify, your business must demonstrate clear objectives in cleantech and sustainable energy projects and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'SDTC', value: '$10M', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -3597,7 +3597,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["Women", "Entrepreneurship", "Fund", "Canada", "2026"],
-      shortAnswer: "Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Our guide covers eligibility, application steps, and expert tips to maximize your approval odds.",
+      shortAnswer: "The Short Answer: Women Entrepreneurship Fund Canada provides valuable funding in non-repayable grants specifically tailored for women-led Canadian businesses. To qualify, your business must demonstrate clear objectives in scientific research and experimental development (R&D) and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     metrics: [
       { label: 'Type', value: 'Non-Repay', description: 'Grant', color: 'text-green-600', iconName: 'DollarSign' },
