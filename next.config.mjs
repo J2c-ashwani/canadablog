@@ -84,6 +84,13 @@ const nextConfig = {
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
+      {
+        // Prevent indexing of thank-you pages (post-form confirmation)
+        source: '/download/:guide/thank-you',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+        ],
+      },
     ];
   },
 }

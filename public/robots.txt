@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /download/*/thank-you
 
 Sitemap: https://www.fsidigital.ca/sitemap.xml
