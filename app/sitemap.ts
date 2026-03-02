@@ -79,7 +79,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...dynamicGuideRoutes,
     ...stateRoutes,
     ...cityRoutes
-  ]))
+  ])).filter(route => !route.includes('/thank-you'))
 
   // Convert to sitemap format
   const sitemapEntries = allRoutes.map(route => ({
