@@ -141,7 +141,7 @@ export const guidesDatabase: Guide[] = [
       title: "Pick the Right SBA Program",
       type: 'tip',
       content: "Most people apply for 7(a) when they should use 504. If you need <strong>real estate or long-term equipment</strong> (10+ years), the 504 program offers better rates and longer terms.",
-    }, shortAnswer: " — key highlights include 7(a) Max: $5M and 504 Max: $5.5M. Our guide covers all eligible programs, application steps, and expert tips.",
+    }, shortAnswer: "The Short Answer: This program provides valuable funding in financial support specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     jumpLinks: [
       { title: 'Loans', id: 'loans' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'Application', id: 'application' }, { title: 'FAQ', id: 'faq' }
     ],
@@ -171,7 +171,7 @@ export const guidesDatabase: Guide[] = [
       title: "Don't Miss the SAM.gov Deadline",
       type: 'warning',
       content: "Register on SAM.gov at least 4 weeks before you plan to submit. It's free, but processing times can be slow, and it is the #1 reason startups miss the submission window.",
-      shortAnswer: "Don't Miss the SAM.gov Deadline. Our comprehensive guide covers all eligible programs, step-by-step application instructions, and expert tips to maximize your funding.",
+      shortAnswer: "The Short Answer: This program provides valuable funding in financial support specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     },
     highlights: [
       'SBIR Phase I & II process',
