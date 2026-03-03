@@ -80,8 +80,8 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
         "description": state.metaDescription,
         "author": { "@type": "Organization", "name": "FSI Digital" },
         "publisher": { "@type": "Organization", "name": "FSI Digital" },
-        "datePublished": new Date().toISOString(),
-        "dateModified": new Date().toISOString(),
+        "datePublished": "2026-03-01T00:00:00.000Z",
+        "dateModified": "2026-03-01T00:00:00.000Z",
     };
 
     const faqSchema = {

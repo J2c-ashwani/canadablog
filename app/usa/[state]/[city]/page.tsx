@@ -86,8 +86,8 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
         "description": cityData.description,
         "author": { "@type": "Organization", "name": "FSI Digital" },
         "publisher": { "@type": "Organization", "name": "FSI Digital" },
-        "datePublished": new Date().toISOString(),
-        "dateModified": new Date().toISOString(),
+        "datePublished": "2026-03-01T00:00:00.000Z",
+        "dateModified": "2026-03-01T00:00:00.000Z",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": `https://www.fsidigital.ca/usa/${state.slug}/${cityParam}`
