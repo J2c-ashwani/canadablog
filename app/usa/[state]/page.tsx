@@ -611,28 +611,66 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                 </article>
             </main>
 
-            {/* Cross-Links — appears on all 50 state pages */}
+            {/* Dynamic Cross-Links — contextual per state */}
             <section className="py-12 bg-gray-50 border-t">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 className="text-2xl font-bold text-gray-900 mb-6">Explore More Funding</h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <Link href="/usa" className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
-                            <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-1 text-sm">🇺🇸 All USA Grants</h3>
-                            <p className="text-xs text-gray-600">50 states, 5,000+ programs</p>
-                        </Link>
-                        <Link href="/canada" className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
-                            <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-1 text-sm">🇨🇦 Canada Grants</h3>
-                            <p className="text-xs text-gray-600">300+ federal & provincial</p>
-                        </Link>
-                        <Link href="/usa/women-entrepreneurs-grants" className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-pink-500 hover:shadow-md transition-all">
-                            <h3 className="font-semibold text-gray-900 group-hover:text-pink-600 mb-1 text-sm">👩‍💼 Women Grants</h3>
-                            <p className="text-xs text-gray-600">SBA microloans & federal</p>
-                        </Link>
-                        <Link href="/blog/sba-loans-grants-guide" className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
-                            <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-1 text-sm">🏦 SBA Microloan Guide</h3>
-                            <p className="text-xs text-gray-600">Up to $50K, how to apply</p>
-                        </Link>
+
+                    {/* Row 1: Neighboring States (same region) */}
+                    {(() => {
+                        const allStates = getAllStateDetails();
+                        const neighbors = allStates
+                            .filter(s => s.region === state.region && s.slug !== state.slug)
+                            .slice(0, 4);
+                        return neighbors.length > 0 ? (
+                            <div className="mb-8">
+                                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">📍 Nearby {state.region} States</h3>
+                                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                    {neighbors.map(s => (
+                                        <Link key={s.slug} href={`/usa/${s.slug}`} className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-md transition-all">
+                                            <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 mb-1 text-sm">🏛️ {s.name} Grants</h4>
+                                            <p className="text-xs text-gray-600">{s.heroStats.totalFunding} • {s.heroStats.programCount} programs</p>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        ) : null;
+                    })()}
+
+                    {/* Row 2: Industry-matched blog posts */}
+                    <div className="mb-8">
+                        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">📚 Related Funding Guides</h3>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <Link href="/usa" className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
+                                <h4 className="font-semibold text-gray-900 group-hover:text-green-600 mb-1 text-sm">🇺🇸 All USA Grants</h4>
+                                <p className="text-xs text-gray-600">50 states, 5,000+ programs</p>
+                            </Link>
+                            <Link href="/canada" className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
+                                <h4 className="font-semibold text-gray-900 group-hover:text-green-600 mb-1 text-sm">🇨🇦 Canada Grants</h4>
+                                <p className="text-xs text-gray-600">300+ federal & provincial</p>
+                            </Link>
+                            {state.industryFocus.primary.slice(0, 2).map((ind, i) => (
+                                <Link key={i} href={`/blog/${ind.name.toLowerCase().includes('tech') ? 'ai-machine-learning-grants' : ind.name.toLowerCase().includes('clean') ? 'clean-tech-energy-grants' : ind.name.toLowerCase().includes('bio') || ind.name.toLowerCase().includes('health') ? 'biotech-life-sciences-grants' : ind.name.toLowerCase().includes('agri') ? 'agriculture-agri-food-canada-government-grants' : 'small-business-grants-complete-guide'}`} className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-purple-500 hover:shadow-md transition-all">
+                                    <h4 className="font-semibold text-gray-900 group-hover:text-purple-600 mb-1 text-sm">💡 {ind.name} Grants</h4>
+                                    <p className="text-xs text-gray-600">{ind.funding} available</p>
+                                </Link>
+                            ))}
+                        </div>
                     </div>
+
+                    {/* Row 3: City pages within this state */}
+                    {state.cityGuides && state.cityGuides.length > 0 && (
+                        <div>
+                            <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">🏙️ {state.name} City Guides</h3>
+                            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-3">
+                                {state.cityGuides.slice(0, 6).map(city => (
+                                    <Link key={city.city} href={`/usa/${state.slug}/${city.city.toLowerCase().replace(/\s+/g, '-')}`} className="group block p-3 bg-white rounded-lg border border-gray-200 hover:border-green-500 hover:shadow-sm transition-all text-center">
+                                        <span className="text-sm font-medium text-gray-900 group-hover:text-green-600">{city.city}</span>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </section>
 
