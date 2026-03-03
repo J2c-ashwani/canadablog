@@ -123,7 +123,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-federal-grants", description: "Complete guide to government grants...." },
       { title: "Indigenous Set-Asides Have Priority", href: "/guides/canada-digital-ai-funding-guide", description: "Funding opportunities for digital transformation and AI development projects...." },
@@ -179,7 +179,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Target ", href: "/guides/sba-growth-accelerator-fund-guide", description: "Guide to applying for SBA funding supporting business accelerators and incubators...." },
       { title: "Programs", href: "/blog/colorado-tech-programs", description: "Complete 2026-2027 guide to Colorado technology startup grants. Advanced Industries Accelerator Early-Stage Capital gran..." },
@@ -224,13 +224,13 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-agriculture-agrifood-grants-guide", description: "Complete guide to Canada..." },
       { title: "SaaS-Specific Advantage", href: "/blog/sred-scientific-research-experimental-development", description: "Complete guide to SR&ED tax credits in Canada. Enhanced 2026 rates with 35% federal refundable + provincial credits up t..." },
       { title: "SBIR START Program", href: "/blog/nasa-sbir-space-tech-grants", description: "Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups. Phase I up to $150K, Phase II up to $850K for..." }
     ],
-    content: "",
+    content: `<div class="mt-12 space-y-8"><div class="bg-blue-50 rounded-xl p-6 border border-blue-200"><h2 class="text-2xl font-bold text-blue-900 mb-4">🎯 Who Qualifies?</h2><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Alberta-registered businesses</strong> with operations in the province</li><li><strong>Alberta Innovates:</strong> Tech and innovation companies at any stage</li><li><strong>CRIN (Clean Resource Innovation Network):</strong> Clean energy companies</li><li><strong>Digital Economy Program:</strong> Companies adopting digital technologies</li><li><strong>PrairiesCan (federal):</strong> Businesses in Alberta, Saskatchewan, or Manitoba</li></ul></div><div class="bg-amber-50 rounded-xl p-6 border border-amber-200"><h2 class="text-2xl font-bold text-amber-900 mb-4">📅 Key Deadlines & Application Windows</h2><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Alberta Innovates:</strong> Multiple programs with rolling intake</li><li><strong>CRIN:</strong> Annual competitions, typically Q1</li><li><strong>PrairiesCan:</strong> Rolling applications year-round</li><li><strong>Canada Job Grant (Alberta):</strong> Rolling — apply through Alberta Labour</li></ul></div><div class="bg-purple-50 rounded-xl p-6 border border-purple-200"><h2 class="text-2xl font-bold text-purple-900 mb-4">📊 How Competitive Is This?</h2><p class="text-gray-700 mb-3">Alberta programs have <strong>moderate competition</strong>:</p><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Alberta Innovates:</strong> ~30% success rate</li><li><strong>CRIN:</strong> ~20% for large multi-year awards</li><li><strong>PrairiesCan:</strong> ~40% success rate</li></ul><p class="text-gray-700 mt-3"><strong>Advantage:</strong> Alberta is actively diversifying beyond oil & gas. Clean tech and AI applications receive <strong>priority scoring</strong>.</p></div><div class="bg-green-50 rounded-xl p-6 border border-green-200"><h2 class="text-2xl font-bold text-green-900 mb-4">🏆 Recent Award Examples</h2><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Alberta Innovates FY2025:</strong> $185M across all programs</li><li><strong>CRIN total deployed:</strong> $95M since inception</li><li><strong>PrairiesCan Alberta allocation:</strong> $78M</li><li><strong>Top sectors:</strong> Clean energy (35%), AI/digital (22%), health (18%)</li></ul></div></div>`,
     seo: {
       keywords: ["Alberta", "Government", "Business", "Grants", "2026"],
     }, shortAnswer: "Alberta offers a robust ecosystem of provincial funding. Programs through Alberta Innovates and the Alberta Enterprise Corporation provide strategic capital for tech, energy, and agriculture businesses.",
@@ -269,7 +269,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Go Rural", href: "/blog/veteran-business-funding-canada-2026", description: "Canadian veterans can access up to $89K through Prince..." },
       { title: "Programs", href: "/blog/canada-innovation-research-development-grants-guide", description: "Complete guide to Canada..." },
@@ -314,7 +314,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "LOI Requirement", href: "/blog/edc-women-trade-export-financing", description: "Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support..." },
       { title: "Stack Your Benefits", href: "/blog/canada-housing-community-grants-2026", description: "🇨🇦 Access CMHC and FCM funding for housing and community projects. Guide to the Housing Accelerator Fund, Green Munici..." },
@@ -358,7 +358,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-clean-technology-environment-grants-guide", description: "Complete guide to Canada..." },
       { title: "Don", href: "/guides/apply-sba-loans", description: "Learn how to successfully apply for SBA loans including 7(a), 504, and microloan programs...." },
@@ -403,7 +403,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Topic Fit", href: "/blog/grant-writing-secrets-2026", description: "✍️ Increase your approval odds. Professional grant writers share their top strategies for crafting winning proposals in ..." },
       { title: "Corporate vs. Government", href: "/blog/biden-2-5b-grants-2026", description: "🇺🇸 Everything you need to know about the new $2.5 billion federal grant initiative for minority, women, and veteran en..." },
@@ -448,7 +448,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "BDC Women Loan Advantages", href: "/guides/apply-small-business-grants", description: "General guide for applying to federal small business grant programs and competitions...." },
       { title: "WES Ecosystem Approach", href: "/blog/women-entrepreneurship-strategy-canada-government-grants", description: "Complete guide to Canada..." },
@@ -493,7 +493,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Focus on Economic Impact", href: "/guides/apply-csbfp-loans", description: "How to access government-backed small business loans through CSBFP...." },
       { title: "Programs", href: "/blog/biotech-life-sciences-grants", description: "Complete 2026-2027 guide to biotech and life sciences grants. NIH SBIR Phase I $306K, Phase II $2M, $1.2B Seed Fund, FDA..." },
@@ -538,7 +538,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Secure Market Validation", href: "/blog/manitoba-business-grants-2026", description: "Manitoba..." },
       { title: "Language Compliance (Bill 96)", href: "/blog/quebec-innovation-grants", description: "Complete guide to Quebec innovation grants and tax credits. Access $2.5B+ through 30% Quebec R&D Tax Credit (CRIC), Inve..." },
@@ -583,7 +583,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-agriculture-agrifood-grants-guide", description: "Complete guide to Canada..." },
       { title: "Location Matters", href: "/blog/women-business-grants-2025", description: "Women entrepreneurs now own 42% of US businesses. Access $2.1 billion in targeted grants, SBA Women..." },
@@ -628,7 +628,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "CA Guarantee vs SBA", href: "/guides/apply-ontario-business-grants", description: "Complete guide to accessing provincial business grants and incentives in Ontario...." },
       { title: "Industry Partnerships Boost Success", href: "/guides/sred-application-guide", description: "How to claim Scientific Research & Experimental Development tax credits in Canada...." },
@@ -673,7 +673,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Certification is Required", href: "/blog/hardware-iot-startup-grants", description: "Complete 2026-2027 guide to hardware and IoT startup grants. NSF SBIR Phase I $305K, Phase II $1.25M, DOD electronics pr..." },
       { title: "CA Guarantee vs SBA", href: "/guides/apply-ontario-business-grants", description: "Complete guide to accessing provincial business grants and incentives in Ontario...." },
@@ -718,7 +718,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "8(a) Program is a Game-Changer", href: "/guides/canada-manufacturing-funding-guide", description: "Funding programs for manufacturing modernization, automation, and expansion...." },
       { title: "Programs", href: "/blog/biotech-life-sciences-grants", description: "Complete 2026-2027 guide to biotech and life sciences grants. NIH SBIR Phase I $306K, Phase II $2M, $1.2B Seed Fund, FDA..." },
@@ -763,13 +763,13 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Stack Programs for Maximum Impact", href: "/blog/apply-usa-grants-2025", description: "Navigating the US government grant system can feel overwhelming, but with the right strategy, you can join the 37,000+ b..." },
       { title: "Pick the Right SBA Program", href: "/guides/apply-irap-government-grants", description: "Detailed walkthrough of applying for IRAP government funding for innovation projects...." },
       { title: "Programs", href: "/blog/canada-innovation-research-development-grants-guide", description: "Complete guide to Canada..." }
     ],
-    content: "",
+    content: `<div class="mt-12 space-y-8"><div class="bg-blue-50 rounded-xl p-6 border border-blue-200"><h2 class="text-2xl font-bold text-blue-900 mb-4">🎯 Who Qualifies?</h2><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>BC-registered businesses</strong> with operations in the province</li><li><strong>Innovate BC programs:</strong> Tech companies with fewer than 500 employees</li><li><strong>BC Manufacturing Jobs Fund:</strong> Manufacturers investing in capital equipment</li><li><strong>BC Employer Training Grant:</strong> Any BC employer for staff training</li><li><strong>Indigenous Business Fund:</strong> First Nations-owned businesses in BC</li></ul></div><div class="bg-amber-50 rounded-xl p-6 border border-amber-200"><h2 class="text-2xl font-bold text-amber-900 mb-4">📅 Key Deadlines & Application Windows</h2><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Innovate BC Ignite:</strong> Quarterly intake windows</li><li><strong>Employer Training Grant:</strong> Applications open annually in April</li><li><strong>BC Manufacturing Jobs Fund:</strong> Rolling intake</li><li><strong>PacifiCan (federal):</strong> Rolling applications</li></ul></div><div class="bg-purple-50 rounded-xl p-6 border border-purple-200"><h2 class="text-2xl font-bold text-purple-900 mb-4">📊 How Competitive Is This?</h2><p class="text-gray-700 mb-3">BC programs are <strong>moderately competitive</strong>:</p><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Innovate BC Ignite:</strong> ~30% success rate</li><li><strong>Employer Training Grant:</strong> ~55% approval (first-come, first-served)</li><li><strong>PacifiCan:</strong> ~35% success rate</li></ul><p class="text-gray-700 mt-3"><strong>Tip:</strong> BC's Employer Training Grant often <strong>runs out of funding mid-year</strong>. Apply in April when it opens.</p></div><div class="bg-green-50 rounded-xl p-6 border border-green-200"><h2 class="text-2xl font-bold text-green-900 mb-4">🏆 Recent Award Examples</h2><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Innovate BC FY2025:</strong> $42M to 380+ companies</li><li><strong>Employer Training Grant:</strong> $30M supporting 5,000+ employers</li><li><strong>PacifiCan:</strong> $115M to BC businesses</li><li><strong>Top sectors funded:</strong> Clean tech (32%), digital media (21%), life sciences (18%)</li></ul></div></div>`,
     seo: {
       keywords: ["British", "Columbia", "Government", "Business", "Grants"],
     }, shortAnswer: "BC businesses can leverage provincial grants via Innovate BC and CleanBC. These programs prioritize sustainable economic growth, zero-emission technologies, and regional job creation.",
@@ -808,7 +808,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "STTR Requires Partnership", href: "/blog/scotiabank-women-initiative", description: "Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and ..." },
       { title: "Get a Clinical Partner", href: "/blog/manufacturing-grants-2026", description: "🇨🇦 Modernize your factory with Canadian government grants. Learn about SIF, regional equipment loans, and the Canada J..." },
@@ -853,7 +853,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Dual-Use Strategy", href: "/blog/doe-sbir-clean-energy-grants", description: "Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Phase I up to $200K, Phase II up to $1.85M f..." },
       { title: "Dual-Use Strategy", href: "/blog/demonstration-pilot-funding-canada", description: "Complete guide to Canadian demonstration and pilot project funding. Access up to $15M through SDTC Demonstration, Clean ..." },
@@ -898,7 +898,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Answer the ", href: "/guides/apply-irap-grants", description: "Complete guide to applying for Industrial Research Assistance Program funding in Canada...." },
       { title: "Programs", href: "/blog/biotech-life-sciences-grants", description: "Complete 2026-2027 guide to biotech and life sciences grants. NIH SBIR Phase I $306K, Phase II $2M, $1.2B Seed Fund, FDA..." },
@@ -943,7 +943,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Industry 4.0 Grant", href: "/blog/pennsylvania-innovation-2025", description: "Pennsylvania..." },
       { title: "Don", href: "/guides/apply-minority-grants", description: "How to access grants and funding specifically for minority-owned businesses in the USA...." },
@@ -988,7 +988,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Local Office First", href: "/blog/ontario-innovation-grants", description: "Complete guide to Ontario innovation grants and tax credits. Access $3.2B+ through Ontario Innovation Tax Credit (10% OI..." },
       { title: "Programs", href: "/blog/canada-agriculture-agrifood-grants-guide", description: "Complete guide to Canada..." },
@@ -1033,7 +1033,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "State Priority Advantage", href: "/blog/state-women-business-programs-guide", description: "Complete guide to state and local women business programs. Discover grants, tax incentives, and support programs in all ..." },
       { title: "Pre-Preparation", href: "/blog/sba-sbir-grants-2026", description: "🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. How to access over $4 billion in non-dilut..." },
@@ -1078,7 +1078,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Agriculture Angle", href: "/blog/sba-7a-loans-complete-guide", description: "Complete guide to SBA 7(a) loans. Learn eligibility requirements, application process, terms, and how to secure up to $5..." },
       { title: "Programs", href: "/blog/california-tech-programs", description: "Complete 2026-2027 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SB..." },
@@ -1123,7 +1123,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "SIF is for ", href: "/guides/women-entrepreneurship-loan-fund-guide", description: "Access low-interest loans through the Women Entrepreneurship Loan Fund program...." },
       { title: "CA Guarantee vs SBA", href: "/guides/apply-ontario-business-grants", description: "Complete guide to accessing provincial business grants and incentives in Ontario...." },
@@ -1168,7 +1168,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Target ", href: "/guides/sba-growth-accelerator-fund-guide", description: "Guide to applying for SBA funding supporting business accelerators and incubators...." },
       { title: "Combine Federal & Provincial", href: "/blog/quebec-small-business-grants-guide", description: "Complete guide to Quebec small business grants. Access Investissement Qu\\u00e9bec SME Fund, Quebec Startup Fund, R&D Tax..." },
@@ -1213,7 +1213,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Tell Your Story", href: "/blog/quebec-government-business-grants", description: "Complete guide to Quebec government business grants and aide aux entreprises provincial funding. Access Investissement Q..." },
       { title: "Programs", href: "/blog/csbfp-canada-small-business-financing-program-government-grants", description: "Complete guide to CSBFP government-guaranteed loans for Canadian small businesses. Federal loan guarantee program offeri..." },
@@ -1258,7 +1258,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Agriculture Angle", href: "/blog/sba-7a-loans-complete-guide", description: "Complete guide to SBA 7(a) loans. Learn eligibility requirements, application process, terms, and how to secure up to $5..." },
       { title: "Dual Diversity Priority", href: "/blog/women-entrepreneurship-fund-canada", description: "Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Get funding for exp..." },
@@ -1303,7 +1303,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Audit First", href: "/blog/clean-technology-2025", description: "Environment and Climate Change Canada has launched the most comprehensive clean technology funding program in history, i..." },
       { title: "University Partnership", href: "/blog/nwbc-programs-guide", description: "Complete guide to NWBC programs and initiatives. Learn how the National Women..." },
@@ -1348,7 +1348,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Topic Fit", href: "/blog/grant-writing-secrets-2026", description: "✍️ Increase your approval odds. Professional grant writers share their top strategies for crafting winning proposals in ..." },
       { title: "Digital Marketing Eligibility", href: "/blog/canada-irap-grants-2026", description: "\\ud83c\\udde8\\ud83c\\udde6 Canada IRAP Grants 2026: Industrial Research Assistance Program - $400M+ Innovation Powerhouse\\..." },
@@ -1393,7 +1393,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Buy Then Apply = DENIED", href: "/blog/technology-startup-grants-2026", description: "Keep 100% equity: IRAP covers 80% of R&D salaries, SR&ED gives 45% tax credits, and the Digital Adoption Program funds y..." },
       { title: "Pre-Preparation", href: "/blog/sba-sbir-grants-2026", description: "🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. How to access over $4 billion in non-dilut..." },
@@ -1438,7 +1438,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-employment-workforce-training-grants-guide", description: "Complete guide to Canada..." },
       { title: "Focus on TRL", href: "/blog/dod-sbir-defense-tech-grants", description: "Complete 2026-2027 guide to Department of Defense SBIR/STTR grants for defense tech startups. Phase I up to $256K, Phase..." },
@@ -1483,7 +1483,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Micro-loans available", href: "/blog/newcomer-entrepreneur-grants-2026", description: "🇨🇦 Complete guide for immigrants and newcomers starting a business in Canada. Access up to $60,000 via Futurpreneur, B..." },
       { title: "Programs", href: "/blog/california-tech-programs", description: "Complete 2026-2027 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SB..." },
@@ -1528,7 +1528,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/california-tech-programs", description: "Complete 2026-2027 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SB..." },
       { title: "Microloan Benefits", href: "/blog/women-entrepreneurship-strategy-canada", description: "Complete guide to Canada..." },
@@ -1573,7 +1573,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Stack Programs for Maximum Impact", href: "/blog/apply-usa-grants-2025", description: "Navigating the US government grant system can feel overwhelming, but with the right strategy, you can join the 37,000+ b..." },
       { title: "STTR Needs a Research Partner", href: "/guides/apply-sbir-grants", description: "Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs...." },
@@ -1618,7 +1618,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-industry-specific-grants-guide", description: "Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agricultu..." },
       { title: "Apply via Partners", href: "/guides/nserc-research-grants-guide", description: "How to apply for Natural Sciences and Engineering Research Council grants...." },
@@ -1663,7 +1663,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Dual Diversity Priority", href: "/blog/women-entrepreneurship-fund-canada", description: "Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Get funding for exp..." },
       { title: "Free Expert Guidance", href: "/blog/women-clean-technology-grants-canada", description: "Complete 2026-2027 guide to clean tech grants for women entrepreneurs. SDTC funding up to $10M, NRCan clean energy progr..." },
@@ -1708,7 +1708,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-manufacturing-industry-grants-guide", description: "Complete guide to Canada..." },
       { title: "Match Your RDA", href: "/blog/saskatchewan-small-business-grants-guide", description: "Complete guide to Saskatchewan small business grants. Access Saskatchewan Small Business Loans, Innovation Saskatchewan ..." },
@@ -1753,7 +1753,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "The ITA Relationship is Key", href: "/guides/canada-digital-ai-funding-guide", description: "Funding opportunities for digital transformation and AI development projects...." },
       { title: "Visit Your CFDC", href: "/blog/sred-tax-credits-2026", description: "🇨🇦 The Scientific Research and Experimental Development (SR&ED) program is Canada..." },
@@ -1798,7 +1798,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Maximizing Your Approval Odds", href: "/blog/indigenous-business-development-2026", description: "\\ud83e\\udeb6 Canada..." },
       { title: "Enterprise Zones", href: "/blog/commercialization-scale-up-funding-canada", description: "Complete guide to Canadian commercialization and scale-up funding. Access up to $100M through Strategic Innovation Fund,..." },
@@ -1843,7 +1843,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-agri-food-technology-innovation-grants", description: "Complete guide to Canadian agri-food technology innovation grants. Access $2.3B+ funding through AgriInnovate, precision..." },
       { title: "EDWOSB Advantage", href: "/blog/youth-entrepreneurship-canada-funding", description: "Complete guide to Canadian youth entrepreneur funding programs. Access CYBF grants up to $60K, Youth Employment Strategy..." },
@@ -1941,7 +1941,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/amber-grant-women-canada", description: "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Simple application, roll..." },
       { title: "Dual-Use Strategy", href: "/blog/demonstration-pilot-funding-canada", description: "Complete guide to Canadian demonstration and pilot project funding. Access up to $15M through SDTC Demonstration, Clean ..." },
@@ -1986,7 +1986,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Commercial Ready Only", href: "/blog/usda-rural-grants-2025", description: "The USDA is investing $300 million in rural agricultural innovation targeted at 46 million rural Americans. Discover fun..." },
       { title: "Programs", href: "/blog/canada-agri-food-technology-innovation-grants", description: "Complete guide to Canadian agri-food technology innovation grants. Access $2.3B+ funding through AgriInnovate, precision..." },
@@ -2031,7 +2031,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Know Your RDA", href: "/guides/sbir-research-grants-guide", description: "Complete guide to applying for Small Business Innovation Research (SBIR) Phase I & II grants...." },
       { title: "Programs", href: "/blog/alberta-government-business-grants", description: "Complete guide to Alberta government business grants and provincial funding programs. Access Alberta Innovates, ERA prog..." },
@@ -2067,7 +2067,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/british-columbia-government-business-grants", description: "Complete guide to British Columbia government business grants and provincial funding programs. Access Innovate BC, Clean..." },
       { title: "Programs", href: "/blog/canada-agriculture-agrifood-grants-guide", description: "Complete guide to Canada..." },
@@ -2118,7 +2118,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/alberta-women-business-grants", description: "Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sect..." },
       { title: "Hire Students for Free", href: "/blog/2026-grant-preview-early-bird", description: "\\ud83d\\ude80 2026 Grant Preview: Early Bird Opportunities - $4.8B Future Funding Pipeline\\n    \\n      \\n        \\ud83c\\..." },
@@ -2154,7 +2154,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Location Matters", href: "/blog/women-business-grants-2025", description: "Women entrepreneurs now own 42% of US businesses. Access $2.1 billion in targeted grants, SBA Women..." },
       { title: "Stack Your Benefits", href: "/blog/canada-housing-community-grants-2026", description: "🇨🇦 Access CMHC and FCM funding for housing and community projects. Guide to the Housing Accelerator Fund, Green Munici..." },
@@ -2190,7 +2190,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Focus on Economic Impact", href: "/guides/apply-csbfp-loans", description: "How to access government-backed small business loans through CSBFP...." },
       { title: "Answer the ", href: "/guides/apply-irap-grants", description: "Complete guide to applying for Industrial Research Assistance Program funding in Canada...." },
@@ -2226,7 +2226,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/usa-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Convertible Debt", href: "/blog/texas-business-grants-2025", description: "Everything is bigger in Texas, including the $1.2 billion Texas Enterprise Fund. Discover deal-closing grants, product d..." },
       { title: "Target ", href: "/guides/sba-growth-accelerator-fund-guide", description: "Guide to applying for SBA funding supporting business accelerators and incubators...." },
@@ -2262,7 +2262,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Stack Your Benefits", href: "/blog/canada-housing-community-grants-2026", description: "🇨🇦 Access CMHC and FCM funding for housing and community projects. Guide to the Housing Accelerator Fund, Green Munici..." },
       { title: "SBA Grant Application Process: Complete Step-by-Step Guide", href: "/guides/sba-application-process", description: "Master the SBA application process with our comprehensive guide. Learn requirements, document preparation, common mistak..." },
@@ -2298,7 +2298,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Industry Partnerships Boost Success", href: "/guides/irap-innovation-application-guide", description: "Strategic guide for accessing IRAP innovation funding and technical advisory services...." },
       { title: "Combine Federal & Provincial", href: "/blog/quebec-small-business-grants-guide", description: "Complete guide to Quebec small business grants. Access Investissement Qu\\u00e9bec SME Fund, Quebec Startup Fund, R&D Tax..." },
@@ -2334,7 +2334,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Build Your Story", href: "/blog/regional-development-agencies-government-grants", description: "Complete guide to Canada..." },
       { title: "Local Office First", href: "/blog/ontario-innovation-grants", description: "Complete guide to Ontario innovation grants and tax credits. Access $3.2B+ through Ontario Innovation Tax Credit (10% OI..." },
@@ -2370,7 +2370,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Secure Market Validation", href: "/blog/manitoba-business-grants-2026", description: "Manitoba..." },
       { title: "Agriculture Angle", href: "/blog/sba-7a-loans-complete-guide", description: "Complete guide to SBA 7(a) loans. Learn eligibility requirements, application process, terms, and how to secure up to $5..." },
@@ -2406,7 +2406,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Focus on Story", href: "/blog/minority-business-grants-2026", description: "🇺🇸 Funding sources dedicated to Black, Latino, Asian, and Indigenous entrepreneurs. MBDA Centers, NMSDC certification,..." },
       { title: "BDC Women Loan Advantages", href: "/guides/apply-small-business-grants", description: "General guide for applying to federal small business grant programs and competitions...." },
@@ -2442,7 +2442,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-industry-specific-grants-guide", description: "Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agricultu..." },
       { title: "Partner Up", href: "/blog/epa-environmental-justice-2026", description: "🇺🇸 Funding for communities and non-profits fighting pollution and climate change in underserved areas. Application gui..." },
@@ -2478,7 +2478,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/strategy-planning-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Tell Your Story", href: "/blog/quebec-government-business-grants", description: "Complete guide to Quebec government business grants and aide aux entreprises provincial funding. Access Investissement Q..." },
       { title: "Submit Early", href: "/blog/q4-2026-deadlines", description: "📅 Plan your year-end funding strategy. Critical deadlines for November and December 2026 across all major grant categor..." },
@@ -2514,7 +2514,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/colorado-tech-programs", description: "Complete 2026-2027 guide to Colorado technology startup grants. Advanced Industries Accelerator Early-Stage Capital gran..." },
       { title: "Programs", href: "/blog/canada-aerospace-defence-innovation-grants", description: "Complete guide to Canadian aerospace and defence innovation grants. Access $450M+ funding through Canadian Space Agency ..." },
@@ -2562,7 +2562,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Tell Your Story", href: "/blog/quebec-government-business-grants", description: "Complete guide to Quebec government business grants and aide aux entreprises provincial funding. Access Investissement Q..." },
       { title: "Programs", href: "/blog/canada-digital-ai-innovation-grants", description: "Complete guide to Canadian digital and AI innovation grants. Access $850M+ funding through Scale AI, CDAP, AI research i..." },
@@ -2598,7 +2598,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Community Impact", href: "/blog/indigenous-women-business-grants-canada", description: "Complete 2026-2027 guide to Indigenous women business grants in Canada. NACCA Aboriginal Entrepreneurship Program, IWEF ..." },
       { title: "Stack CDAP with Wage Subsidies", href: "/guides/edc-women-trade-export-financing-guide", description: "Export Development Canada financing and support for women exporters...." },
@@ -2634,7 +2634,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-hiring-training-grants-guide", description: "Complete guide to Canadian hiring and training grants. Access all 28+ workforce development programs including job creat..." },
       { title: "Answer the ", href: "/guides/apply-irap-grants", description: "Complete guide to applying for Industrial Research Assistance Program funding in Canada...." },
@@ -2670,7 +2670,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "RE3 Fast Track", href: "/blog/prairie-provinces-innovation-grants", description: "Complete guide to Prairie innovation grants. Access $580M+ through Saskatchewan Innovation, Manitoba Research, PrairiesC..." },
       { title: "Know Your RDA", href: "/guides/sbir-research-grants-guide", description: "Complete guide to applying for Small Business Innovation Research (SBIR) Phase I & II grants...." },
@@ -2706,7 +2706,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Industry Partnerships Boost Success", href: "/guides/sred-application-guide", description: "How to claim Scientific Research & Experimental Development tax credits in Canada...." },
       { title: "Regional Advantage", href: "/blog/state-province-grants", description: "Complete guide to government grants...." },
@@ -2742,7 +2742,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Target ", href: "/guides/canada-cleantech-funding-guide", description: "Access clean technology funding programs across federal and provincial levels...." },
       { title: "University Partnership", href: "/blog/nwbc-programs-guide", description: "Complete guide to NWBC programs and initiatives. Learn how the National Women..." },
@@ -2778,7 +2778,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Banking Relationship Value", href: "/blog/small-business-grants-complete-guide", description: "Complete guide to small business grants. Learn about SBA loans, federal grants, microloans, state programs, and how to s..." },
       { title: "Programs", href: "/blog/canada-employment-workforce-training-grants-guide", description: "Complete guide to Canada..." },
@@ -2814,7 +2814,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Scale-Up Focus", href: "/blog/innovation-superclusters-2026", description: "🇨🇦 Canada..." },
       { title: "Pick the Right SBA Program", href: "/guides/apply-irap-government-grants", description: "Detailed walkthrough of applying for IRAP government funding for innovation projects...." },
@@ -2850,7 +2850,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Don", href: "/guides/apply-british-columbia-grants", description: "Access provincial funding programs and incentives in British Columbia...." },
       { title: "Industry Partnerships Boost Success", href: "/guides/apply-doe-clean-energy-grants", description: "How to apply for DOE funding for clean energy and sustainability projects...." },
@@ -2886,7 +2886,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Target ", href: "/guides/sba-growth-accelerator-fund-guide", description: "Guide to applying for SBA funding supporting business accelerators and incubators...." },
       { title: "Language Compliance (Bill 96)", href: "/blog/quebec-innovation-grants", description: "Complete guide to Quebec innovation grants and tax credits. Access $2.5B+ through 30% Quebec R&D Tax Credit (CRIC), Inve..." },
@@ -2922,7 +2922,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "CA Guarantee vs SBA", href: "/guides/apply-strategic-innovation-fund", description: "How to apply for large-scale innovation funding through Canada\\..." },
       { title: "Digital Marketing Eligibility", href: "/blog/canada-irap-grants-2026", description: "\\ud83c\\udde8\\ud83c\\udde6 Canada IRAP Grants 2026: Industrial Research Assistance Program - $400M+ Innovation Powerhouse\\..." },
@@ -2958,7 +2958,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Export Focus", href: "/blog/federal-grants-women-minorities", description: "Complete guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. Find WOSB, 8(a), HUBZone..." },
       { title: "Industry 4.0 Grant", href: "/blog/pennsylvania-innovation-2025", description: "Pennsylvania..." },
@@ -2994,7 +2994,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Stacking Funding", href: "/blog/irap-industrial-research-assistance-program-innovation", description: "Complete guide to IRAP innovation funding from National Research Council Canada. Get 60-80% R&D funding up to $500K with..." },
       { title: "Lab Partnership", href: "/blog/epa-environmental-justice-2025", description: "The EPA..." },
@@ -3030,7 +3030,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Francophone Advantage", href: "/blog/quebec-women-business-grants", description: "Complete guide to Quebec women entrepreneurship support with R\\u00e9seau des Femmes d..." },
       { title: "Programs", href: "/blog/canada-aerospace-defence-innovation-grants", description: "Complete guide to Canadian aerospace and defence innovation grants. Access $450M+ funding through Canadian Space Agency ..." },
@@ -3066,7 +3066,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "The Power of One", href: "/blog/manufacturing-grants-2025", description: "American manufacturing is booming with $2.3 billion in grants for automation, reshoring, and workforce development. Lear..." },
       { title: "Match Your Sector", href: "/blog/irap-industrial-research-assistance-program", description: "Complete guide to IRAP funding for Canadian tech SMEs. Learn eligibility, application process, and get up to $1M in non-..." },
@@ -3102,7 +3102,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Youth Funding Stack", href: "/blog/2026-grant-forecast", description: "Get ahead of the curve. Our experts predict the biggest funding trends for 2026, including new climate incentives, digit..." },
       { title: "STTR Requires Partnership", href: "/blog/scotiabank-women-initiative", description: "Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and ..." },
@@ -3138,7 +3138,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-clean-technology-environment-grants-guide", description: "Complete guide to Canada..." },
       { title: "Programs", href: "/blog/canada-innovation-research-development-grants-guide", description: "Complete guide to Canada..." },
@@ -3197,7 +3197,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Layered WES Funding", href: "/blog/women-export-trade-grants-canada", description: "Complete 2026-2027 guide to export grants for women entrepreneurs. CanExport SME funding up to $75K, EDC financing, Trad..." },
       { title: "LMI Benefit", href: "/blog/nsf-stem-research-2025", description: "The NSF seeds the future with $200 million in STEM research grants. The SBIR/STTR program funds high-risk, high-impact t..." },
@@ -3233,7 +3233,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "SBA Grant Application Process: Complete Step-by-Step Guide", href: "/guides/sba-application-process", description: "Master the SBA application process with our comprehensive guide. Learn requirements, document preparation, common mistak..." },
       { title: "Don", href: "/guides/apply-federal-grants", description: "Complete step-by-step guide for navigating the US federal grant application process including Grants.gov registration an..." },
@@ -3269,7 +3269,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "SDTC Environmental Impact", href: "/guides/federal-grants-application-tips", description: "Expert tips and strategies for writing winning federal grant applications...." },
       { title: "Resource Conversion", href: "/blog/private-women-grants-guide", description: "Complete guide to private foundation grants for women entrepreneurs. Discover 50+ foundations offering grants up to $250..." },
@@ -3305,7 +3305,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Matching Strategy", href: "/blog/women-business-centers-guide", description: "Complete guide to Women..." },
       { title: "It", href: "/guides/apply-quebec-business-grants", description: "Navigate Quebec\\..." },
@@ -3341,7 +3341,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-agri-food-technology-innovation-grants", description: "Complete guide to Canadian agri-food technology innovation grants. Access $2.3B+ funding through AgriInnovate, precision..." },
       { title: "BDC Women Loan Advantages", href: "/guides/apply-small-business-grants", description: "General guide for applying to federal small business grant programs and competitions...." },
@@ -3377,7 +3377,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Corporate vs. Government", href: "/blog/biden-2-5b-grants-2026", description: "🇺🇸 Everything you need to know about the new $2.5 billion federal grant initiative for minority, women, and veteran en..." },
       { title: "Programs", href: "/blog/canada-aerospace-defence-innovation-grants", description: "Complete guide to Canadian aerospace and defence innovation grants. Access $450M+ funding through Canadian Space Agency ..." },
@@ -3413,7 +3413,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/strategy-planning-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "University Partnership", href: "/blog/nwbc-programs-guide", description: "Complete guide to NWBC programs and initiatives. Learn how the National Women..." },
       { title: "Check Eligibility", href: "/blog/new-york-business-grants-2026", description: "🗽 Comprehensive guide to business grants in New York State. Covering NYC small business funds, upstate revitalization, ..." },
@@ -3449,7 +3449,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/strategy-planning-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Micro-Grants", href: "/blog/alberta-business-grants-2026", description: "🇺🇸 Complete guide to grants and resources for veteran-owned small businesses (VOSB) and service-disabled veteran-owned..." },
       { title: "Location Matters", href: "/blog/women-business-grants-2025", description: "Women entrepreneurs now own 42% of US businesses. Access $2.1 billion in targeted grants, SBA Women..." },
@@ -3485,7 +3485,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/strategy-planning-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-clean-technology-innovation-grants", description: "Complete guide to Canadian clean technology innovation grants. Access $1.2B+ funding through SDTC (up to $15M), Clean Te..." },
       { title: "Programs", href: "/blog/canada-clean-technology-environment-grants-guide", description: "Complete guide to Canada..." },
@@ -3533,7 +3533,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/strategy-planning-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "University Partnership", href: "/blog/nwbc-programs-guide", description: "Complete guide to NWBC programs and initiatives. Learn how the National Women..." },
       { title: "Technical Risk", href: "/blog/ideation-research-funding-canada", description: "Complete guide to Canadian ideation and research funding for early-stage innovation. Access up to $1M through NSERC Disc..." },
@@ -3569,7 +3569,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "CA Guarantee vs SBA", href: "/guides/apply-ontario-business-grants", description: "Complete guide to accessing provincial business grants and incentives in Ontario...." },
       { title: "Indigenous Set-Asides Have Priority", href: "/guides/canada-digital-ai-funding-guide", description: "Funding opportunities for digital transformation and AI development projects...." },
@@ -3605,7 +3605,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Know Your RDA", href: "/guides/sbir-research-grants-guide", description: "Complete guide to applying for Small Business Innovation Research (SBIR) Phase I & II grants...." },
       { title: "Secure Market Validation", href: "/blog/manitoba-business-grants-2026", description: "Manitoba..." },
@@ -3641,7 +3641,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Target ", href: "/guides/canada-cleantech-funding-guide", description: "Access clean technology funding programs across federal and provincial levels...." },
       { title: "SBA Grant Application Process: Complete Step-by-Step Guide", href: "/guides/sba-application-process", description: "Master the SBA application process with our comprehensive guide. Learn requirements, document preparation, common mistak..." },
@@ -3677,7 +3677,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/strategy-planning-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: " Provincial Stacking", href: "/blog/state-local-business-grants-guide", description: "Complete guide to state and local business grants. Find economic development incentives, job creation programs, and regi..." },
       { title: "Programs", href: "/blog/california-tech-programs", description: "Complete 2026-2027 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SB..." },
@@ -3713,7 +3713,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Stack Your Benefits", href: "/blog/canada-housing-community-grants-2026", description: "🇨🇦 Access CMHC and FCM funding for housing and community projects. Guide to the Housing Accelerator Fund, Green Munici..." },
       { title: "Programs", href: "/blog/canada-growth-expansion-grants-guide", description: "Complete guide to Canadian business expansion grants. Access all 42+ growth programs including Strategic Innovation Fund..." },
@@ -3749,7 +3749,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Target ", href: "/guides/canada-cleantech-funding-guide", description: "Access clean technology funding programs across federal and provincial levels...." },
       { title: "Focus on Story", href: "/blog/minority-business-grants-2026", description: "🇺🇸 Funding sources dedicated to Black, Latino, Asian, and Indigenous entrepreneurs. MBDA Centers, NMSDC certification,..." },
@@ -3797,7 +3797,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/strategy-planning-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "The ITA Relationship is Key", href: "/guides/apply-youth-entrepreneurship-funding", description: "How young entrepreneurs can access government funding programs in Canada...." },
       { title: "Microloan Benefits", href: "/blog/women-entrepreneurship-strategy-canada", description: "Complete guide to Canada..." },
@@ -3833,7 +3833,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/usa-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "NWBC is Advisory", href: "/blog/ontario-government-business-grants", description: "Complete guide to Ontario government business grants and provincial funding programs. Access Ontario Creates, OCED progr..." },
       { title: "Pick the Right SBA Program", href: "/guides/apply-csbfp-government-financing", description: "Step-by-step guide to applying for CSBFP government-backed financing...." },
@@ -3869,7 +3869,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "WES Ecosystem Approach", href: "/blog/women-entrepreneurship-strategy-canada-government-grants", description: "Complete guide to Canada..." },
       { title: "STTR Requires Partnership", href: "/blog/scotiabank-women-initiative", description: "Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and ..." },
@@ -3905,7 +3905,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/csbfp-canada-small-business-financing-program-government-grants", description: "Complete guide to CSBFP government-guaranteed loans for Canadian small businesses. Federal loan guarantee program offeri..." },
       { title: "LMI Benefit", href: "/blog/nsf-stem-research-2025", description: "The NSF seeds the future with $200 million in STEM research grants. The SBIR/STTR program funds high-risk, high-impact t..." },
@@ -3941,7 +3941,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/strategy-planning-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Enterprise Zones", href: "/blog/commercialization-scale-up-funding-canada", description: "Complete guide to Canadian commercialization and scale-up funding. Access up to $100M through Strategic Innovation Fund,..." },
       { title: "Dual-Use Strategy", href: "/blog/doe-sbir-clean-energy-grants", description: "Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Phase I up to $200K, Phase II up to $1.85M f..." },
@@ -3977,7 +3977,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/usa-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Pre-Application is Key", href: "/blog/atlantic-business-grants-2026", description: "🇨🇦 The East Coast is booming. From the Ocean Supercluster to ACOA..." },
       { title: "Focus on Story", href: "/blog/minority-business-grants-2026", description: "🇺🇸 Funding sources dedicated to Black, Latino, Asian, and Indigenous entrepreneurs. MBDA Centers, NMSDC certification,..." },
@@ -4013,7 +4013,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Export Focus", href: "/blog/federal-grants-women-minorities", description: "Complete guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. Find WOSB, 8(a), HUBZone..." },
       { title: "RE3 Fast Track", href: "/blog/prairie-provinces-innovation-grants", description: "Complete guide to Prairie innovation grants. Access $580M+ through Saskatchewan Innovation, Manitoba Research, PrairiesC..." },
@@ -4049,7 +4049,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Secure Market Validation", href: "/blog/manitoba-business-grants-2026", description: "Manitoba..." },
       { title: "Scale Requirement", href: "/blog/territories-small-business-grants-guide", description: "Complete guide to Territories business grants. Access NWT Business Development, Yukon Small Business Support, Nunavut Ec..." },
@@ -4085,7 +4085,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "WEF Application Strategy", href: "/blog/women-entrepreneurship-loan-fund-canada", description: "Complete guide to WELF microloans from Innovation, Science & Economic Development Canada. Get up to $50,000 in financing..." },
       { title: "Banking Relationship Value", href: "/blog/small-business-grants-complete-guide", description: "Complete guide to small business grants. Learn about SBA loans, federal grants, microloans, state programs, and how to s..." },
@@ -4121,7 +4121,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "University Partnership", href: "/blog/nwbc-programs-guide", description: "Complete guide to NWBC programs and initiatives. Learn how the National Women..." },
       { title: "Lower Competition Edge", href: "/blog/usa-federal-grants", description: "Complete guide to government grants...." },
@@ -4157,7 +4157,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-agri-food-technology-innovation-grants", description: "Complete guide to Canadian agri-food technology innovation grants. Access $2.3B+ funding through AgriInnovate, precision..." },
       { title: "Programs", href: "/blog/canada-clean-technology-innovation-grants", description: "Complete guide to Canadian clean technology innovation grants. Access $1.2B+ funding through SDTC (up to $15M), Clean Te..." },
@@ -4193,7 +4193,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Intermediary Lenders", href: "/blog/sbir-small-business-guide", description: "Complete guide to SBIR grants for small businesses. Learn Phase I & II funding, eligibility requirements, and how to win..." },
       { title: "Programs", href: "/blog/canada-technology-adoption-grants-guide", description: "Complete guide to Canadian technology adoption grants. Access all 22+ digital transformation programs including CDAP, pr..." },
@@ -4229,7 +4229,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Language Support", href: "/blog/bc-business-grants-2026", description: "🇨🇦 British Columbia..." },
       { title: "Indigenous Set-Asides Have Priority", href: "/guides/canada-digital-ai-funding-guide", description: "Funding opportunities for digital transformation and AI development projects...." },
@@ -4265,7 +4265,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "START-UP NY Campus", href: "/blog/nih-sbir-biotech-grants", description: "Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $285K, Phase II up to $2M for thera..." },
       { title: "Industry 4.0 Grant", href: "/blog/pennsylvania-innovation-2025", description: "Pennsylvania..." },
@@ -4311,7 +4311,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Know Your RDA", href: "/guides/sbir-research-grants-guide", description: "Complete guide to applying for Small Business Innovation Research (SBIR) Phase I & II grants...." },
       { title: "ITA Relationship", href: "/blog/irap-industrial-research-assistance-program-government-grants", description: "Complete guide to IRAP government funding for Canadian R&D projects. Federal compliance, reporting requirements, and str..." },
@@ -4346,7 +4346,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Build Your Story", href: "/blog/regional-development-agencies-government-grants", description: "Complete guide to Canada..." },
       { title: "Programs", href: "/blog/canada-growth-expansion-grants-guide", description: "Complete guide to Canadian business expansion grants. Access all 42+ growth programs including Strategic Innovation Fund..." },
@@ -4381,7 +4381,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "The Mentor is the Key", href: "/guides/apply-alberta-business-grants", description: "Complete guide to Alberta provincial business funding and economic development programs...." },
       { title: "Pick the Right SBA Program", href: "/guides/apply-irap-government-grants", description: "Detailed walkthrough of applying for IRAP government funding for innovation projects...." },
@@ -4416,7 +4416,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: " Provincial Stacking", href: "/blog/state-local-business-grants-guide", description: "Complete guide to state and local business grants. Find economic development incentives, job creation programs, and regi..." },
       { title: "Programs", href: "/blog/canada-innovation-research-development-grants-guide", description: "Complete guide to Canada..." },
@@ -4451,7 +4451,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Don", href: "/guides/apply-minority-grants", description: "How to access grants and funding specifically for minority-owned businesses in the USA...." },
       { title: "Industry Partnerships Boost Success", href: "/guides/sred-application-guide", description: "How to claim Scientific Research & Experimental Development tax credits in Canada...." },
@@ -4486,7 +4486,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-growth-expansion-grants-guide", description: "Complete guide to Canadian business expansion grants. Access all 42+ growth programs including Strategic Innovation Fund..." },
       { title: "Programs", href: "/blog/bc-women-business-grants", description: "Complete guide to BC women entrepreneurship support with Women..." },
@@ -4521,7 +4521,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/atlantic-canada-innovation-grants", description: "Complete guide to Atlantic Canada innovation grants. Access $650M+ through Atlantic Innovation Fund, ACOA programs, 15% ..." },
       { title: "LOI Requirement", href: "/blog/edc-women-trade-export-financing", description: "Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support..." },
@@ -4556,7 +4556,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "SBA Grant Application Process: Complete Step-by-Step Guide", href: "/guides/sba-application-process", description: "Master the SBA application process with our comprehensive guide. Learn requirements, document preparation, common mistak..." },
       { title: "Secure Market Validation", href: "/blog/manitoba-business-grants-2026", description: "Manitoba..." },
@@ -4591,7 +4591,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/funding-alerts-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "SDTC Environmental Impact", href: "/guides/federal-grants-application-tips", description: "Expert tips and strategies for writing winning federal grant applications...." },
       { title: "Fiscal Year End Strategy", href: "/blog/q1-2026-grant-deadlines", description: "🔮 Get a head start on 2026. Preview of major grant programs opening in January, February, and March 2026...." },
@@ -4641,7 +4641,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-manufacturing-industry-grants-guide", description: "Complete guide to Canada..." },
       { title: "Use a Correspondent Lender", href: "/blog/women-entrepreneurship-grants-2026", description: "🇨🇦 The WES Ecosystem Fund, WEOC loans, and FACERF are changing the game. Discover funding specifically for women-owned..." },
@@ -4818,7 +4818,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/community-diversity-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "Resource Conversion", href: "/blog/private-women-grants-guide", description: "Complete guide to private foundation grants for women entrepreneurs. Discover 50+ foundations offering grants up to $250..." },
       { title: "Stack CDAP with Wage Subsidies", href: "/guides/edc-women-trade-export-financing-guide", description: "Export Development Canada financing and support for women exporters...." },
@@ -4992,7 +4992,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/bc-business-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "Start with CDAP", href: "/guides/canada-life-sciences-funding-guide", description: "Comprehensive funding guide for biotech, medical devices, and life sciences companies...." },
       { title: "Federal Grants Are Project-Based", href: "/guides/women-entrepreneurship-fund-guide", description: "How to apply for direct funding through the Women Entrepreneurship Fund...." },
@@ -5145,7 +5145,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/northern-canada-business-grants-2026.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "State Priority Advantage", href: "/blog/state-women-business-programs-guide", description: "Complete guide to state and local women business programs. Discover grants, tax incentives, and support programs in all ..." },
       { title: "Focus on Story", href: "/blog/minority-business-grants-2026", description: "🇺🇸 Funding sources dedicated to Black, Latino, Asian, and Indigenous entrepreneurs. MBDA Centers, NMSDC certification,..." },
@@ -5294,7 +5294,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/innovation-canada-grants-2026.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "Pacific Northwest Advantage", href: "/blog/wbdc-equity-match-grant-women", description: "Complete guide to WBDC Equity Match Grant with quarterly deadlines, $2,500-$10,000 funding for Connecticut women-owned b..." },
       { title: "Provincial Tech Stacking", href: "/blog/wosb-federal-contracting-guide", description: "Complete guide to WOSB and EDWOSB certification for federal contracting. Learn how women-owned businesses can access $2M..." },
@@ -5474,7 +5474,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/quebec-business-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "Don", href: "/guides/apply-federal-grants", description: "Complete step-by-step guide for navigating the US federal grant application process including Grants.gov registration an..." },
       { title: "Dual-Use Strategy", href: "/blog/doe-sbir-clean-energy-grants", description: "Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Phase I up to $200K, Phase II up to $1.85M f..." },
@@ -5655,7 +5655,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/saskatchewan-business-grants-2026.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "Dual-Use Strategy", href: "/blog/demonstration-pilot-funding-canada", description: "Complete guide to Canadian demonstration and pilot project funding. Access up to $15M through SDTC Demonstration, Clean ..." },
       { title: "Logistics Costs", href: "/blog/innovation-canada-grants-2026", description: "🇨🇦 This is the big league. From SR&ED tax credits to IRAP grants, learn how to fund your R&D and scale your technology..." },
@@ -5802,7 +5802,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/clean-tech-grants-2026.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "REDC Priority", href: "/blog/canada-regional-development-2026", description: "🇨🇦 The 7 Regional Development Agencies (RDAs) are a primary source of business funding. Learn which agency covers your..." },
       { title: "CA Guarantee vs SBA", href: "/guides/apply-ontario-business-grants", description: "Complete guide to accessing provincial business grants and incentives in Ontario...." },
@@ -6133,7 +6133,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/usa-grants-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "Dual-Use Strategy", href: "/blog/doe-sbir-clean-energy-grants", description: "Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Phase I up to $200K, Phase II up to $1.85M f..." },
       { title: "Partner Up", href: "/blog/epa-environmental-justice-2026", description: "🇺🇸 Funding for communities and non-profits fighting pollution and climate change in underserved areas. Application gui..." },
@@ -6358,7 +6358,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/community-diversity-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "SaaS-Specific Advantage", href: "/blog/sred-scientific-research-experimental-development", description: "Complete guide to SR&ED tax credits in Canada. Enhanced 2026 rates with 35% federal refundable + provincial credits up t..." },
       { title: "Export Focus", href: "/blog/federal-grants-women-minorities", description: "Complete guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. Find WOSB, 8(a), HUBZone..." },
@@ -7025,7 +7025,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/usa-grants-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "Community First", href: "/blog/nsf-stem-research-2026", description: "🇺🇸 The National Science Foundation offers non-dilutive funding for high-tech startups. Guide to the new ..." },
       { title: "Scale-Up Focus", href: "/blog/innovation-superclusters-2026", description: "🇨🇦 Canada..." },
@@ -7585,7 +7585,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/canada-grants-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "Cultural Integration", href: "/blog/canexport-grants-2026", description: "\\ud83c\\udde8\\ud83c\\udde6 CanExport Grants 2026: International Market Expansion - $75M+ Export Engine\\n    \\n      \\n    ..." },
       { title: "Technical Risk", href: "/blog/ideation-research-funding-canada", description: "Complete guide to Canadian ideation and research funding for early-stage innovation. Access up to $1M through NSERC Disc..." },
@@ -8097,7 +8097,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/tech-innovation-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "Regional Advantage", href: "/blog/state-province-grants", description: "Complete guide to government grants...." },
       { title: "Apply Immediately", href: "/blog/sba-loans-grants-guide", description: "Complete guide to SBA loans and grants. Learn about 7(a) loans, microloans, CDC/504 loans, and SBA grant programs. Get u..." },
@@ -8866,7 +8866,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/tech-innovation-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-hiring-training-grants-guide", description: "Complete guide to Canadian hiring and training grants. Access all 28+ workforce development programs including job creat..." },
       { title: "The ", href: "/guides/apply-agriculture-agri-food-canada", description: "How to access federal funding for agriculture, agribusiness, and food processing...." },
@@ -9724,7 +9724,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/manitoba-business-grants-2026.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-hiring-training-grants-guide", description: "Complete guide to Canadian hiring and training grants. Access all 28+ workforce development programs including job creat..." },
       { title: "Local Office First", href: "/blog/ontario-innovation-grants", description: "Complete guide to Ontario innovation grants and tax credits. Access $3.2B+ through Ontario Innovation Tax Credit (10% OI..." },
@@ -9919,7 +9919,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/healthcare-science-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "The ", href: "/guides/canada-agri-food-funding-guide", description: "Complete funding guide for agriculture and food processing businesses...." },
       { title: "Local Technical Assistance", href: "/blog/florida-business-grants-2025", description: "Florida..." },
@@ -10184,7 +10184,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/manufacturing-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "WES Ecosystem Approach", href: "/blog/women-entrepreneurship-strategy-canada-government-grants", description: "Complete guide to Canada..." },
       { title: "Combine State & Federal", href: "/blog/strategic-innovation-fund-canada-guide", description: "Complete guide to Strategic Innovation Fund (SIF) funding in Canada. Access up to $100M for transformative innovation pr..." },
@@ -10326,7 +10326,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/tech-innovation-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "Pick the Right SBA Program", href: "/guides/apply-irap-government-grants", description: "Detailed walkthrough of applying for IRAP government funding for innovation projects...." },
       { title: "Programs", href: "/blog/amber-grant-women-canada", description: "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Simple application, roll..." },
@@ -10494,7 +10494,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     image: "/images/blog/usa-grants-theme.png",
     featured: true,
     type: "expert-insight",
-    
+
     relatedLinks: [
       { title: "STTR Requires Partnership", href: "/blog/scotiabank-women-initiative", description: "Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and ..." },
       { title: "Microloan Benefits", href: "/blog/women-entrepreneurship-strategy-canada", description: "Complete guide to Canada..." },
@@ -10552,7 +10552,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     type: "expert-insight",
 
 
-    
+
     relatedLinks: [
       { title: "Pre-Preparation", href: "/blog/sba-sbir-grants-2026", description: "🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. How to access over $4 billion in non-dilut..." },
       { title: "RE3 Fast Track", href: "/blog/prairie-provinces-innovation-grants", description: "Complete guide to Prairie innovation grants. Access $580M+ through Saskatchewan Innovation, Manitoba Research, PrairiesC..." },
@@ -10944,13 +10944,13 @@ However, some large SIF contributions may have repayment terms based on revenue 
     expertTip: {
       title: "Stack Your Benefits",
       type: 'tip',
-      
-    relatedLinks: [
-      { title: "Combine State & Federal", href: "/blog/strategic-innovation-fund-canada-guide", description: "Complete guide to Strategic Innovation Fund (SIF) funding in Canada. Access up to $100M for transformative innovation pr..." },
-      { title: "STTR Needs a Research Partner", href: "/guides/apply-sbir-grants", description: "Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs...." },
-      { title: "Programs", href: "/blog/canada-regional-economic-development-grants-guide", description: "Complete guide to Canada..." }
-    ],
-    content: "Use the VAC Education Benefit to get a business degree or certification first. Then, join the Prince's Trust bootcamp to build your plan. Finally, use Futurpreneur for your initial capital. This 'stack' minimizes your personal financial risk."
+
+      relatedLinks: [
+        { title: "Combine State & Federal", href: "/blog/strategic-innovation-fund-canada-guide", description: "Complete guide to Strategic Innovation Fund (SIF) funding in Canada. Access up to $100M for transformative innovation pr..." },
+        { title: "STTR Needs a Research Partner", href: "/guides/apply-sbir-grants", description: "Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs...." },
+        { title: "Programs", href: "/blog/canada-regional-economic-development-grants-guide", description: "Complete guide to Canada..." }
+      ],
+      content: "Use the VAC Education Benefit to get a business degree or certification first. Then, join the Prince's Trust bootcamp to build your plan. Finally, use Futurpreneur for your initial capital. This 'stack' minimizes your personal financial risk."
     },
     content: veteranBusinessFunding2026,
     faq: [
@@ -10989,7 +10989,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     type: "expert-insight",
 
 
-    
+
     relatedLinks: [
       { title: "Focus on New Markets", href: "/blog/rural-business-development-2025", description: "Rural America is experiencing a renaissance with $1.2 billion in targeted grants. Discover USDA programs, value-added pr..." },
       { title: "Federal Grants Are Project-Based", href: "/guides/women-entrepreneurship-fund-guide", description: "How to apply for direct funding through the Women Entrepreneurship Fund...." },
@@ -11390,7 +11390,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { label: "Equity Fund", value: "$160M Ecosystem" }
     ],
     expertTip: "Don't just apply for money; apply for the 'advisory' streams. A WES-funded mentor reviewing your financials is often worth more than a $5,000 micro-grant.",
-    
+
     relatedLinks: [
       { title: "Grants.gov Portal", href: "/blog/usda-sbir-agtech-grants", description: "Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups. Phase I up to $125K, Phase II up to $575K for pre..." },
       { title: "Combine Federal & Provincial", href: "/blog/quebec-small-business-grants-guide", description: "Complete guide to Quebec small business grants. Access Investissement Qu\\u00e9bec SME Fund, Quebec Startup Fund, R&D Tax..." },
@@ -11719,7 +11719,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     readTime: "14 min read",
     image: "/images/blog/alberta-business-theme.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Rural Advantage", href: "/blog/california-business-grants-2025", description: "California leads the nation in state-level business support. Access $1.5 billion through the Dream Fund, California Comp..." },
       { title: "Cultural Integration", href: "/blog/canexport-grants-2026", description: "\\ud83c\\udde8\\ud83c\\udde6 CanExport Grants 2026: International Market Expansion - $75M+ Export Engine\\n    \\n      \\n    ..." },
@@ -11756,7 +11756,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     readTime: "14 min read",
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "It", href: "/guides/apply-quebec-business-grants", description: "Navigate Quebec\\..." },
       { title: "STTR Needs a Research Partner", href: "/guides/california-loan-guarantee-guide", description: "Complete guide to accessing California state loan guarantees for small businesses...." },
@@ -11962,7 +11962,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     readTime: "15 min read",
     image: "/images/blog/women-entrepreneurship-grants-2026.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Export Markets", href: "/blog/illinois-business-development-2025", description: "Illinois DCEO offers over $650 million in business development grants. From Advantage Illinois low-interest loans to EDG..." },
       { title: "WEF Application Strategy", href: "/blog/women-entrepreneurship-loan-fund-canada", description: "Complete guide to WELF microloans from Innovation, Science & Economic Development Canada. Get up to $50,000 in financing..." },
@@ -12224,7 +12224,7 @@ Write: "This grant will fund a high-capacity oven, allowing me to increase produ
     readTime: "15 min read",
     image: "/images/blog/community-diversity-theme.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Scale Requirement", href: "/blog/territories-small-business-grants-guide", description: "Complete guide to Territories business grants. Access NWT Business Development, Yukon Small Business Support, Nunavut Ec..." },
       { title: "Regional Advantage", href: "/blog/state-province-grants", description: "Complete guide to government grants...." },
@@ -12442,7 +12442,7 @@ However, a single corporate contract can yield 100x that investment.
     readTime: "12 min read",
     image: "/images/blog/usa-grants-theme.png",
     featured: true,
-    
+
     relatedLinks: [
       { title: "Language Compliance (Bill 96)", href: "/blog/quebec-innovation-grants", description: "Complete guide to Quebec innovation grants and tax credits. Access $2.5B+ through 30% Quebec R&D Tax Credit (CRIC), Inve..." },
       { title: "Topic Fit", href: "/blog/grant-writing-secrets-2026", description: "✍️ Increase your approval odds. Professional grant writers share their top strategies for crafting winning proposals in ..." },
@@ -12492,7 +12492,7 @@ ${bidenPost}
     readTime: "15 min read",
     image: "/images/blog/clean-tech-grants-2026.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Certification is Key", href: "/blog/digital-transformation-2025", description: "The Canada Digital Adoption Program (CDAP) offers $90 million to boost SME technology. Get up to $15,000 for planning an..." },
       { title: "Réseau Connection", href: "/blog/rbc-women-entrepreneur-awards", description: "Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2026. Learn eligibility, application process, 8 award cate..." },
@@ -12542,7 +12542,7 @@ ${doePost}
     readTime: "10 min read",
     image: "/images/blog/clean-tech-grants-2026.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Scale Requirement", href: "/blog/territories-small-business-grants-guide", description: "Complete guide to Territories business grants. Access NWT Business Development, Yukon Small Business Support, Nunavut Ec..." },
       { title: "Programs", href: "/blog/canada-employment-workforce-training-grants-guide", description: "Complete guide to Canada..." },
@@ -12592,7 +12592,7 @@ ${epaPost}
     readTime: "14 min read",
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Pre-Application is Key", href: "/blog/atlantic-business-grants-2026", description: "🇨🇦 The East Coast is booming. From the Ocean Supercluster to ACOA..." },
       { title: "Focus on Economic Impact", href: "/guides/apply-csbfp-loans", description: "How to access government-backed small business loans through CSBFP...." },
@@ -12642,7 +12642,7 @@ ${nsfPost}
     readTime: "5 min read",
     image: "/images/blog/funding-alerts-theme.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Get Certified First", href: "/blog/new-york-business-grants-2025", description: "New York State offers $1.8 billion in funding through its Regional Economic Development Councils. Explore the Consolidat..." },
       { title: "Industry 4.0 Grant", href: "/blog/pennsylvania-innovation-2025", description: "Pennsylvania..." },
@@ -12701,7 +12701,7 @@ ${oct2026Post}
     readTime: "7 min read",
     image: "/images/blog/funding-alerts-theme.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/california-tech-programs", description: "Complete 2026-2027 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SB..." },
       { title: "Scale-Up Focus", href: "/blog/innovation-superclusters-2026", description: "🇨🇦 Canada..." },
@@ -12760,7 +12760,7 @@ ${q42026Post}
     readTime: "8 min read",
     image: "/images/blog/q1-2026-grant-deadlines.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "The Mentor is the Key", href: "/guides/apply-women-entrepreneurship-strategy", description: "Comprehensive guide to accessing WES funding and resources for women entrepreneurs in Canada...." },
       { title: "Industry Partnerships Boost Success", href: "/guides/irap-innovation-application-guide", description: "Strategic guide for accessing IRAP innovation funding and technical advisory services...." },
@@ -12795,7 +12795,7 @@ ${q12026Post}
     readTime: "12 min read",
     image: "/images/blog/usa-grants-theme.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Secure Market Validation", href: "/blog/manitoba-business-grants-2026", description: "Manitoba..." },
       { title: "Banking Relationship Value", href: "/blog/small-business-grants-complete-guide", description: "Complete guide to small business grants. Learn about SBA loans, federal grants, microloans, state programs, and how to s..." },
@@ -12831,7 +12831,7 @@ ${sbaSbirPost}
     readTime: "10 min read",
     image: "/images/blog/grant-writing-secrets-2026.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-federal-grants", description: "Complete guide to government grants...." },
       { title: "Programs", href: "/blog/canada-technology-adoption-grants-guide", description: "Complete guide to Canadian technology adoption grants. Access all 22+ digital transformation programs including CDAP, pr..." },
@@ -12867,7 +12867,7 @@ ${grantSecretsPost}
     readTime: "9 min read",
     image: "/images/blog/usa-grants-theme.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-industry-specific-grants-guide", description: "Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agricultu..." },
       { title: "Hire Students for Free", href: "/blog/2026-grant-preview-early-bird", description: "\\ud83d\\ude80 2026 Grant Preview: Early Bird Opportunities - $4.8B Future Funding Pipeline\\n    \\n      \\n        \\ud83c\\..." },
@@ -12902,7 +12902,7 @@ ${usdaRuralPost}
     readTime: "11 min read",
     image: "/images/blog/usa-grants-theme.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/atlantic-canada-innovation-grants", description: "Complete guide to Atlantic Canada innovation grants. Access $650M+ through Atlantic Innovation Fund, ACOA programs, 15% ..." },
       { title: "Programs", href: "/blog/amber-grant-women-canada", description: "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Simple application, roll..." },
@@ -12937,7 +12937,7 @@ ${nyGrantsPost}
     readTime: "10 min read",
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Buy Then Apply = DENIED", href: "/blog/technology-startup-grants-2026", description: "Keep 100% equity: IRAP covers 80% of R&D salaries, SR&ED gives 45% tax credits, and the Digital Adoption Program funds y..." },
       { title: "AgTech Funding Advantage", href: "/blog/washington-tech-programs", description: "Complete 2026-2027 guide to Washington state technology startup grants. WRF Technology Commercialization phased funding ..." },
@@ -12990,7 +12990,7 @@ ${regionalDevPost}
     readTime: "9 min read",
     image: "/images/blog/innovation-canada-grants-2026.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "STTR Needs a Research Partner", href: "/guides/california-loan-guarantee-guide", description: "Complete guide to accessing California state loan guarantees for small businesses...." },
       { title: "Rural Advantage", href: "/blog/california-business-grants-2025", description: "California leads the nation in state-level business support. Access $1.5 billion through the Dream Fund, California Comp..." },
@@ -13057,7 +13057,7 @@ ${superclustersPost}
     readTime: "8 min read",
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "Dual-Use Strategy", href: "/blog/doe-sbir-clean-energy-grants", description: "Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Phase I up to $200K, Phase II up to $1.85M f..." },
       { title: "Go Rural", href: "/blog/veteran-business-funding-canada-2026", description: "Canadian veterans can access up to $89K through Prince..." },
@@ -13110,7 +13110,7 @@ ${ruralBizPost}
     readTime: "13 min read",
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
-    
+
     relatedLinks: [
       { title: "The ", href: "/guides/apply-agriculture-agri-food-canada", description: "How to access federal funding for agriculture, agribusiness, and food processing...." },
       { title: "Choose Advisors Wisely", href: "/blog/agricultural-innovation-2026", description: "🌾 Canada..." },
@@ -13185,7 +13185,7 @@ ${sredTaxPost}
       { label: "Focus", value: "Net-Zero Transition" }
     ],
     expertTip: "Focus on 'Scope 1' emissions first (your direct fuel usage). These are the easiest to measure and the easiest to get funded under current NRCan programs.",
-    
+
     relatedLinks: [
       { title: " Provincial Stacking", href: "/blog/state-local-business-grants-guide", description: "Complete guide to state and local business grants. Find economic development incentives, job creation programs, and regi..." },
       { title: "CA Guarantee vs SBA", href: "/guides/apply-strategic-innovation-fund", description: "How to apply for large-scale innovation funding through Canada\\..." },
@@ -13553,7 +13553,7 @@ ${sredTaxPost}
     image: "/images/blog/canada-grants-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Northern Bonus", href: "/blog/massachusetts-tech-programs", description: "Complete 2026-2027 guide to Massachusetts technology startup grants and incentives. SBIR START tiered grants up to $500K..." },
       { title: "Programs", href: "/blog/alberta-innovation-grants", description: "Complete guide to Alberta innovation grants and funding programs. Access $950M+ through Alberta Innovates, Emissions Red..." },
@@ -13588,7 +13588,7 @@ ${sredTaxPost}
     image: "/images/blog/tech-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Focus on New Markets", href: "/blog/rural-business-development-2025", description: "Rural America is experiencing a renaissance with $1.2 billion in targeted grants. Discover USDA programs, value-added pr..." },
       { title: "It", href: "/guides/apply-quebec-business-grants", description: "Navigate Quebec\\..." },
@@ -13623,7 +13623,7 @@ ${sredTaxPost}
     image: "/images/blog/export-trade-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "ITA Nomination Required", href: "/blog/manitoba-small-business-grants-guide", description: "Complete guide to Manitoba small business grants. Access Manitoba Business Development, Innovation Growth Program, Small..." },
       { title: "Digital Marketing Eligibility", href: "/blog/canada-irap-grants-2026", description: "\\ud83c\\udde8\\ud83c\\udde6 Canada IRAP Grants 2026: Industrial Research Assistance Program - $400M+ Innovation Powerhouse\\..." },
@@ -13658,7 +13658,7 @@ ${sredTaxPost}
     image: "/images/blog/rural-development-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Pre-Application is Key", href: "/blog/atlantic-business-grants-2026", description: "🇨🇦 The East Coast is booming. From the Ocean Supercluster to ACOA..." },
       { title: "Dual Diversity Priority", href: "/blog/women-entrepreneurship-fund-canada", description: "Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Get funding for exp..." },
@@ -13693,7 +13693,7 @@ ${sredTaxPost}
     image: "/images/blog/veteran-business-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Intermediary Lenders", href: "/blog/sbir-small-business-guide", description: "Complete guide to SBIR grants for small businesses. Learn Phase I & II funding, eligibility requirements, and how to win..." },
       { title: "Check the Intake", href: "/blog/healthcare-grants-2026", description: "90% of health startups apply to the wrong program and get rejected. CIHR is for academics — if you..." },
@@ -13728,7 +13728,7 @@ ${sredTaxPost}
     image: "/images/blog/new-york-business-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Clean Technology Strategy", href: "/blog/small-business-financing-2026", description: "🇨🇦 The complete guide to Canada..." },
       { title: "Location Matters", href: "/blog/women-business-grants-2025", description: "Women entrepreneurs now own 42% of US businesses. Access $2.1 billion in targeted grants, SBA Women..." },
@@ -13763,7 +13763,7 @@ ${sredTaxPost}
     image: "/images/blog/manufacturing-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "The Mentor is the Key", href: "/guides/apply-alberta-business-grants", description: "Complete guide to Alberta provincial business funding and economic development programs...." },
       { title: "Logistics Costs", href: "/blog/innovation-canada-grants-2026", description: "🇨🇦 This is the big league. From SR&ED tax credits to IRAP grants, learn how to fund your R&D and scale your technology..." },
@@ -13798,7 +13798,7 @@ ${sredTaxPost}
     image: "/images/blog/minority-business-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Dual Diversity Priority", href: "/blog/women-entrepreneurship-fund-canada", description: "Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Get funding for exp..." },
       { title: "WES Ecosystem Approach", href: "/blog/women-entrepreneurship-strategy-canada-government-grants", description: "Complete guide to Canada..." },
@@ -13833,7 +13833,7 @@ ${sredTaxPost}
     image: "/images/blog/digital-adoption-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Free Expert Guidance", href: "/blog/women-clean-technology-grants-canada", description: "Complete 2026-2027 guide to clean tech grants for women entrepreneurs. SDTC funding up to $10M, NRCan clean energy progr..." },
       { title: "Regional Advantage", href: "/blog/state-province-grants", description: "Complete guide to government grants...." },
@@ -13868,7 +13868,7 @@ ${sredTaxPost}
     image: "/images/blog/agri-innovation-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-industry-specific-grants-guide", description: "Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agricultu..." },
       { title: "Rural Advantage", href: "/blog/california-business-grants-2025", description: "California leads the nation in state-level business support. Access $1.5 billion through the Dream Fund, California Comp..." },
@@ -13903,7 +13903,7 @@ ${sredTaxPost}
     image: "/images/blog/rural-usa-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Stack Programs for Maximum Impact", href: "/blog/apply-usa-grants-2025", description: "Navigating the US government grant system can feel overwhelming, but with the right strategy, you can join the 37,000+ b..." },
       { title: "Target ", href: "/guides/sba-growth-accelerator-fund-guide", description: "Guide to applying for SBA funding supporting business accelerators and incubators...." },
@@ -13938,7 +13938,7 @@ ${sredTaxPost}
     image: "/images/blog/women-business-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Collaboration is Key", href: "/blog/rural-business-development-2026", description: "🇨🇦 Specific funding streams for rural Canadian businesses. CFDC loans, rural broadband funds, and agricultural support..." },
       { title: "Programs", href: "/blog/canada-agri-food-technology-innovation-grants", description: "Complete guide to Canadian agri-food technology innovation grants. Access $2.3B+ funding through AgriInnovate, precision..." },
@@ -13995,7 +13995,7 @@ ${sredTaxPost}
     image: "/images/blog/tech-startup-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/california-tech-programs", description: "Complete 2026-2027 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SB..." },
       { title: "Focus on New Markets", href: "/blog/rural-business-development-2025", description: "Rural America is experiencing a renaissance with $1.2 billion in targeted grants. Discover USDA programs, value-added pr..." },
@@ -14052,7 +14052,7 @@ ${sredTaxPost}
     image: "/images/blog/healthcare-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Industry 4.0 Grant", href: "/blog/pennsylvania-innovation-2025", description: "Pennsylvania..." },
       { title: "It", href: "/guides/apply-quebec-business-grants", description: "Navigate Quebec\\..." },
@@ -14087,7 +14087,7 @@ ${sredTaxPost}
     image: "/images/blog/california-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Value-Added is Key", href: "/blog/veterans-business-grants-2025", description: "The federal government has committed $75 million to veteran entrepreneurship. From SBA 7(a) fee waivers to the VetBiz pr..." },
       { title: "Matching Strategy", href: "/blog/women-business-centers-guide", description: "Complete guide to Women..." },
@@ -14122,7 +14122,7 @@ ${sredTaxPost}
     image: "/images/blog/florida-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Regional Advantage", href: "/blog/state-province-grants", description: "Complete guide to government grants...." },
       { title: "University Affiliation Required", href: "/blog/nsf-sbir-grants-technology-startups", description: "Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Phase I funding up to $275K, Phase II up to $2..." },
@@ -14157,7 +14157,7 @@ ${sredTaxPost}
     image: "/images/blog/illinois-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-innovation-research-development-grants-guide", description: "Complete guide to Canada..." },
       { title: "Contact ITA Early", href: "/blog/digital-transformation-2026", description: "\\ud83d\\udcbb Canada..." },
@@ -14192,7 +14192,7 @@ ${sredTaxPost}
     image: "/images/blog/michigan-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Secure Market Validation", href: "/blog/manitoba-business-grants-2026", description: "Manitoba..." },
       { title: "NWBC is Advisory", href: "/blog/ontario-government-business-grants", description: "Complete guide to Ontario government business grants and provincial funding programs. Access Ontario Creates, OCED progr..." },
@@ -14227,7 +14227,7 @@ ${sredTaxPost}
     image: "/images/blog/pennsylvania-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Stack Your Status", href: "/blog/doe-clean-tech-2026", description: "🇺🇸 The Department of Energy is investing heavily in solar, battery, and green technology. Here..." },
       { title: "The ITA Relationship is Key", href: "/guides/apply-youth-entrepreneurship-funding", description: "How young entrepreneurs can access government funding programs in Canada...." },
@@ -14280,7 +14280,7 @@ ${sredTaxPost}
     image: "/images/blog/texas-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "BDC Women Loan Advantages", href: "/guides/apply-small-business-grants", description: "General guide for applying to federal small business grant programs and competitions...." },
       { title: "Combine Federal & Provincial", href: "/blog/quebec-small-business-grants-guide", description: "Complete guide to Quebec small business grants. Access Investissement Qu\\u00e9bec SME Fund, Quebec Startup Fund, R&D Tax..." },
@@ -14315,7 +14315,7 @@ ${sredTaxPost}
     image: "/images/blog/clean-energy-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/bmo-celebrating-women-grant", description: "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resourc..." },
       { title: "BDC Women Loan Advantages", href: "/guides/apply-small-business-grants", description: "General guide for applying to federal small business grant programs and competitions...." },
@@ -14350,7 +14350,7 @@ ${sredTaxPost}
     image: "/images/blog/environmental-justice-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Programs", href: "/blog/canada-advanced-manufacturing-innovation-grants", description: "Complete guide to Canadian advanced manufacturing innovation grants. Access $3.1B+ funding through NGen, automation prog..." },
       { title: "Stacking Funding", href: "/blog/irap-industrial-research-assistance-program-innovation", description: "Complete guide to IRAP innovation funding from National Research Council Canada. Get 60-80% R&D funding up to $500K with..." },
@@ -14385,7 +14385,7 @@ ${sredTaxPost}
     image: "/images/blog/community-development-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "Resource Conversion", href: "/blog/private-women-grants-guide", description: "Complete guide to private foundation grants for women entrepreneurs. Discover 50+ foundations offering grants up to $250..." },
       { title: "Corporate vs. Government", href: "/blog/biden-2-5b-grants-2026", description: "🇺🇸 Everything you need to know about the new $2.5 billion federal grant initiative for minority, women, and veteran en..." },
@@ -14420,7 +14420,7 @@ ${sredTaxPost}
     image: "/images/blog/stem-research-theme.png",
     featured: false,
     type: "grant-news",
-    
+
     relatedLinks: [
       { title: "SDTC Environmental Impact", href: "/guides/federal-grants-application-tips", description: "Expert tips and strategies for writing winning federal grant applications...." },
       { title: "Target ", href: "/guides/canada-cleantech-funding-guide", description: "Access clean technology funding programs across federal and provincial levels...." },
