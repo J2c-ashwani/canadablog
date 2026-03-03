@@ -17,7 +17,6 @@ try {
     process.exit(1);
 }
 
-// 1. Process Database Files
 const DATA_FILES = [
     'lib/data/blogPosts.ts',
     'lib/data/guides.ts',
@@ -43,72 +42,98 @@ for (const file of DATA_FILES) {
         continue;
     }
 
+    // Step 1: Extract shortAnswer for each slug from eeat-rollout
+    // Pattern in eeat-rollout: `}, shortAnswer: "...",` on the line after seo closing
+    const rolloutShortAnswers = {};
     const rolloutLines = rolloutContent.split('\n');
-    const mainLines = mainContent.split('\n');
-    let rolloutDataMap = {};
 
     for (let i = 0; i < rolloutLines.length; i++) {
         const slugMatch = rolloutLines[i].match(/^\s+slug:\s*['"]([^'"]+)['"]/);
         if (slugMatch) {
             const slug = slugMatch[1];
-            let enrichmentBlock = '';
-            for (let j = i; j < i + 60 && j < rolloutLines.length; j++) {
-                if (rolloutLines[j].includes('shortAnswer:')) {
-                    let startLine = j;
-                    let k = startLine;
-                    while (k < rolloutLines.length && !rolloutLines[k].match(/^\s{2}\},?\s*$/) && !rolloutLines[k].match(/^\s{4}\},?\s*$/)) {
-                        enrichmentBlock += rolloutLines[k] + '\n';
-                        k++;
-                    }
-                    rolloutDataMap[slug] = enrichmentBlock;
+            // Scan forward to find shortAnswer (search within entry, stop at next slug)
+            for (let j = i + 1; j < Math.min(i + 100, rolloutLines.length); j++) {
+                if (rolloutLines[j].match(/^\s+slug:\s*['"]/) && j > i + 1) break;
+
+                // Match: `}, shortAnswer: "...",`  or  `shortAnswer: "...",`
+                const saLineMatch = rolloutLines[j].match(/shortAnswer:\s*"(.+)"/);
+                if (saLineMatch) {
+                    // Store the clean shortAnswer text (already properly escaped in source)
+                    rolloutShortAnswers[slug] = saLineMatch[1];
                     break;
                 }
             }
         }
     }
 
-    let enrichedCountFile = 0;
-    let modifiedMainLines = [...mainLines];
+    console.log(`  Found ${Object.keys(rolloutShortAnswers).length} shortAnswers in eeat-rollout:${file}`);
 
-    for (let i = 0; i < modifiedMainLines.length; i++) {
+    // Step 2: Find slugs in main that DON'T have shortAnswer yet
+    const mainLines = mainContent.split('\n');
+    let modifiedLines = [...mainLines];
+    let enrichedCount = 0;
+    let offset = 0; // Track line insertions
+
+    for (let i = 0; i < mainLines.length; i++) {
         if (totalEnrichedThisRun >= BATCH_SIZE) break;
 
-        const mainSlugMatch = modifiedMainLines[i].match(/^\s+slug:\s*['"]([^'"]+)['"]/);
-        if (mainSlugMatch) {
-            const slug = mainSlugMatch[1];
-            let isEnriched = false;
-            let closeIdx = -1;
+        const slugMatch = mainLines[i].match(/^\s+slug:\s*['"]([^'"]+)['"]/);
+        if (!slugMatch) continue;
 
-            for (let j = i; j < i + 60 && j < modifiedMainLines.length; j++) {
-                if (modifiedMainLines[j].includes('shortAnswer:')) {
-                    isEnriched = true;
-                    break;
-                }
-                if (modifiedMainLines[j].match(/^\s{2}\},?\s*$/) || modifiedMainLines[j].match(/^\s{4}\},?\s*$/)) {
-                    closeIdx = j;
-                    break;
-                }
+        const slug = slugMatch[1];
+        if (!rolloutShortAnswers[slug]) continue;
+
+        // Check if main already has shortAnswer for this slug
+        let alreadyHas = false;
+        for (let j = i + 1; j < Math.min(i + 100, mainLines.length); j++) {
+            if (mainLines[j].match(/^\s+slug:\s*['"]/) && j > i + 1) break;
+            if (mainLines[j].includes('shortAnswer')) {
+                alreadyHas = true;
+                break;
             }
+        }
 
-            if (!isEnriched && closeIdx !== -1 && rolloutDataMap[slug]) {
-                let preCloseLine = modifiedMainLines[closeIdx - 1];
-                if (!preCloseLine.trim().endsWith(',') && preCloseLine.trim() !== '') {
-                    modifiedMainLines[closeIdx - 1] = preCloseLine + ',';
+        if (alreadyHas) continue;
+
+        // Find the seo: { keywords: [...] } block and inject shortAnswer after it
+        // Pattern: `    seo: {` ... `    },`  →  `    }, shortAnswer: "...",`
+        for (let j = i + 1; j < Math.min(i + 100, mainLines.length); j++) {
+            if (mainLines[j].match(/^\s+slug:\s*['"]/) && j > i + 1) break;
+
+            // Look for the closing of the seo block: `    },` or `},`
+            if (mainLines[j].match(/^\s+seo:\s*\{/)) {
+                // Found seo block start, now find its closing `},`
+                let braceDepth = 0;
+                for (let k = j; k < Math.min(j + 10, mainLines.length); k++) {
+                    for (const ch of mainLines[k]) {
+                        if (ch === '{') braceDepth++;
+                        if (ch === '}') braceDepth--;
+                    }
+                    if (braceDepth === 0) {
+                        // k is the line closing seo block: e.g `    },`
+                        // Replace `    },` with `    }, shortAnswer: "...",`
+                        const adjustedK = k + offset;
+                        const closingLine = modifiedLines[adjustedK].trimEnd();
+                        const saText = rolloutShortAnswers[slug];
+                        modifiedLines[adjustedK] = closingLine + ` shortAnswer: "${saText}",`;
+
+                        enrichedCount++;
+                        totalEnrichedThisRun++;
+                        console.log(`✅ Enriched: ${slug} (${file.split('/').pop()})`);
+                        break;
+                    }
                 }
-                modifiedMainLines.splice(closeIdx, 0, rolloutDataMap[slug].trimEnd());
-                enrichedCountFile++;
-                totalEnrichedThisRun++;
-                console.log(`✅ Database Enriched: ${slug} (${file.split('/').pop()})`);
+                break;
             }
         }
     }
 
-    if (enrichedCountFile > 0) {
-        fs.writeFileSync(filePath, modifiedMainLines.join('\n'));
+    if (enrichedCount > 0) {
+        fs.writeFileSync(filePath, modifiedLines.join('\n'));
     }
 }
 
-// 2. Process Hardcoded Files
+// 2. Process Hardcoded Files (Canada provinces)
 if (totalEnrichedThisRun < BATCH_SIZE) {
     try {
         const diffOutput = execSync('git diff --name-only main eeat-rollout -- app/canada/').toString();
@@ -117,9 +142,20 @@ if (totalEnrichedThisRun < BATCH_SIZE) {
         for (const file of diffFiles) {
             if (totalEnrichedThisRun >= BATCH_SIZE) break;
             if (file.endsWith('page.tsx')) {
-                execSync(`git checkout eeat-rollout -- ${file}`);
-                console.log(`✅ Hardcoded Page Enriched: ${file}`);
-                totalEnrichedThisRun++;
+                // Check if main already has this file modified vs rollout
+                try {
+                    const mainVersion = fs.readFileSync(file, 'utf-8');
+                    const rolloutVersion = execSync(`git show eeat-rollout:${file}`, { maxBuffer: 5 * 1024 * 1024 }).toString();
+                    if (mainVersion !== rolloutVersion) {
+                        execSync(`git checkout eeat-rollout -- ${file}`);
+                        console.log(`✅ Hardcoded Page Enriched: ${file}`);
+                        totalEnrichedThisRun++;
+                    }
+                } catch (e) {
+                    execSync(`git checkout eeat-rollout -- ${file}`);
+                    console.log(`✅ Hardcoded Page Enriched: ${file}`);
+                    totalEnrichedThisRun++;
+                }
             }
         }
     } catch (e) {
@@ -130,8 +166,8 @@ if (totalEnrichedThisRun < BATCH_SIZE) {
 if (totalEnrichedThisRun > 0) {
     console.log(`\n🎉 Successfully enriched ${totalEnrichedThisRun} pages for today's drip.`);
     try {
-        execSync(`git add lib/data/blogPosts.ts lib/data/guides.ts lib/data/stateDetails.ts app/canada/`);
-        execSync(`git commit -m "feat: Daily E-E-A-T Enrichment Batch (${totalEnrichedThisRun} pages)"`);
+        execSync(`git add -A`);
+        execSync(`git commit -m "feat: Daily E-E-A-T Enrichment Batch (${totalEnrichedThisRun} pages) - ${new Date().toISOString().split('T')[0]}"`);
         console.log("📦 Created git commit. You can now run: git push origin main");
     } catch (e) {
         console.error("Failed to create git commit automatically. Please commit manually.");
