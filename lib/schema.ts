@@ -1,11 +1,15 @@
 import { BlogPost } from './data/blogPosts';
 
 export function generateBlogPostSchema(post: BlogPost) {
-  return {
+  // Strip HTML for accurate word count
+  const plainText = post.content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  const wordCount = plainText.split(' ').filter(w => w.length > 0).length;
+
+  const schema: any = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.title,
-    "description": post.excerpt,
+    "description": post.shortAnswer || post.excerpt,
     "image": {
       "@type": "ImageObject",
       "url": `https://www.fsidigital.ca/images/blog/${post.image}`,
@@ -35,9 +39,19 @@ export function generateBlogPostSchema(post: BlogPost) {
     },
     "articleSection": post.category,
     "keywords": post.seo?.keywords?.join(", ") || "",
-    "wordCount": post.content.length,
+    "wordCount": wordCount || undefined,
     "timeRequired": post.readTime
   };
+
+  // Speakable schema: helps Google Assistant / AI Overviews quote our short answer
+  if (post.shortAnswer) {
+    schema.speakable = {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".short-answer-box", "h1"]
+    };
+  }
+
+  return schema;
 }
 
 export function generateBreadcrumbSchema(post: BlogPost) {

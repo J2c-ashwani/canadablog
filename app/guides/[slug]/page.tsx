@@ -1,5 +1,6 @@
 // app/guides/[slug]/page.tsx
 import { notFound } from "next/navigation";
+import { getCleanTitle, getCleanDescription } from '@/lib/seo';
 import { guidesDatabase as guides } from "@/lib/data/guides";
 import { grants } from "@/lib/data/grants";
 import Link from "next/link";
@@ -15,6 +16,7 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import { RelatedPageLinks } from '@/components/RelatedPageLinks';
 
 // Icon mapping for dynamic rendering from data
 const iconMap: Record<string, any> = {
@@ -31,14 +33,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const guide = guides.find((g) => g.slug === slug);
   if (!guide) return { title: 'Guide Not Found' };
 
-  // Site-Wide Enrichment Logic:
-  // If the guide has been "Enriched" (has metrics or tips), we INDEX it.
-  // Otherwise, we keep it noindex to prevent Low Value Content penalties.
-  const isEnriched = !!(guide.metrics || guide.expertTip);
+  // CTR-optimized: clean title ≤60 chars, shortAnswer-first description
+  const guideAsPost = {
+    title: guide.title,
+    excerpt: guide.description,
+    shortAnswer: guide.shortAnswer,
+    seo: { keywords: guide.tags },
+  } as any;
+  const title = getCleanTitle(guide.title);
+  const description = guide.shortAnswer || guide.description;
 
   return {
-    title: guide.title,
-    description: guide.description,
+    title,
+    description: description.length > 155 ? description.substring(0, 152) + '…' : description,
     robots: {
       index: true,
       follow: true,
@@ -68,7 +75,14 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     "@context": "https://schema.org",
     "@type": "HowTo",
     name: guide.title,
-    description: guide.description,
+    description: guide.shortAnswer || guide.description,
+    // Steps from highlights — required for Google to render HowTo rich snippets
+    step: guide.highlights.map((h, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: h,
+      text: h,
+    })),
   };
 
   return (
@@ -255,14 +269,20 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             <Link href="/guides" className="text-primary hover:underline">← Back to all Guides</Link>
 
             <div>
-              <h4 className="text-sm font-semibold">Related Guides</h4>
-              <ul className="text-sm text-gray-700">
-                {guides.filter((g) => g.slug !== guide.slug).slice(0, 3).map((g) => (
-                  <li key={g.slug}>
-                    <Link href={`/guides/${g.slug}`} className="hover:underline">{g.title}</Link>
-                  </li>
-                ))}
-              </ul>
+              {guide.relatedLinks && guide.relatedLinks.length > 0 ? (
+                <RelatedPageLinks links={guide.relatedLinks} />
+              ) : (
+                <>
+                  <h4 className="text-sm font-semibold">Related Guides</h4>
+                  <ul className="text-sm text-gray-700">
+                    {guides.filter((g) => g.slug !== guide.slug).slice(0, 3).map((g) => (
+                      <li key={g.slug}>
+                        <Link href={`/guides/${g.slug}`} className="hover:underline">{g.title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
             </div>
           </div>
         </footer>

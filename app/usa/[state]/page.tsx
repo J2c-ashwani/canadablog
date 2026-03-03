@@ -40,16 +40,29 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     const state = getStateDetailBySlug(stateSlug);
     if (!state) return { title: 'State Not Found' };
 
+    // CTR-optimized: value-first title ≤60 chars, description from shortAnswer
+    // At position 9, "$2.1B+ Available" beats "| FSI Digital"
+    const baseTitle = `${state.name} Business Grants 2026`;
+    const fundingHook = state.heroStats.totalFunding.replace(/\+$/, '');
+    let title = `${baseTitle} – ${fundingHook}+ Available`;
+    if (title.length > 60) {
+        title = `${baseTitle} (${fundingHook}+)`;
+    }
+    if (title.length > 60) {
+        title = baseTitle;
+    }
+    const description = state.shortAnswer || state.metaDescription;
+
     return {
-        title: `${state.name} Business Grants 2026: ${state.heroStats.totalFunding}+ Available [Apply]`,
-        description: state.metaDescription,
+        title,
+        description,
         alternates: {
             canonical: `https://www.fsidigital.ca/usa/${state.slug}`,
         },
         robots: { index: true, follow: true },
         openGraph: {
-            title: `${state.name} Small Business Grants & Funding 2026`,
-            description: state.metaDescription,
+            title: `${state.name} Business Grants 2026 — ${state.heroStats.totalFunding}+`,
+            description,
             type: 'article',
         },
     };

@@ -37,6 +37,11 @@ export interface Guide {
     buttonText?: string;
     buttonLink?: string;
   };
+  relatedLinks?: {
+    href: string;
+    title: string;
+    description: string;
+  }[];
 }
 
 export const guidesDatabase: Guide[] = [
@@ -57,7 +62,12 @@ export const guidesDatabase: Guide[] = [
       'Common mistakes to avoid',
       'Timeline and deadlines'
     ],
-    lastUpdated: '2025-10-14',
+    relatedLinks: [
+    { title: "Don", href: "/guides/apply-sbir-grants", description: "Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs...." },
+    { title: "8(a) Program is a Game-Changer", href: "/guides/sba-growth-accelerator-fund-guide", description: "Guide to applying for SBA funding supporting business accelerators and incubators...." },
+    { title: "Target ", href: "/guides/apply-alberta-business-grants", description: "Complete guide to Alberta provincial business funding and economic development programs...." }
+  ],
+  lastUpdated: '2025-10-14',
     metrics: [
       { label: 'Time', value: '30-90 Days', description: 'Approval timeline', color: 'text-blue-600', iconName: 'Clock' },
       { label: 'Credit', value: '640+', description: 'Min. Score (Preferred)', color: 'text-green-600', iconName: 'TrendingUp' },
@@ -96,7 +106,12 @@ export const guidesDatabase: Guide[] = [
       'Grants.gov navigation',
       'SAM.gov setup guide'
     ],
-    lastUpdated: '2025-10-01',
+    relatedLinks: [
+    { title: "Don", href: "/guides/apply-sbir-grants", description: "Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs...." },
+    { title: "Regulatory Pathway Critical", href: "/guides/canada-aerospace-defence-funding-guide", description: "Access specialized funding for aerospace and defence industry projects...." },
+    { title: "Technological Uncertainty is Key", href: "/guides/apply-women-entrepreneurship-strategy", description: "Comprehensive guide to accessing WES funding and resources for women entrepreneurs in Canada...." }
+  ],
+  lastUpdated: '2025-10-01',
     metrics: [
       { label: 'Platform', value: 'Grants.gov', description: 'Sole official source', color: 'text-blue-600', iconName: 'Globe' },
       { label: 'ID Required', value: 'UEI', description: 'Unique Entity ID (SAM)', color: 'text-green-600', iconName: 'Shield' },
@@ -132,7 +147,12 @@ export const guidesDatabase: Guide[] = [
       'Eligibility requirements',
       'Document preparation guide'
     ],
-    lastUpdated: '2025-09-28',
+    relatedLinks: [
+    { title: "Know Your RDA", href: "/guides/apply-indigenous-rural-business-funding", description: "Specialized funding programs for Indigenous and rural businesses in Canada...." },
+    { title: "Alberta Innovates is your First Stop", href: "/guides/apply-agriculture-agri-food-canada", description: "How to access federal funding for agriculture, agribusiness, and food processing...." },
+    { title: "Call First, Apply Later", href: "/guides/irap-innovation-application-guide", description: "Strategic guide for accessing IRAP innovation funding and technical advisory services...." }
+  ],
+  lastUpdated: '2025-09-28',
     metrics: [
       { label: '7(a) Max', value: '$5M', description: 'General purpose', color: 'text-blue-600', iconName: 'DollarSign' },
       { label: '504 Max', value: '$5.5M', description: 'Real estate/equipment', color: 'text-green-600', iconName: 'Building' },
@@ -159,7 +179,12 @@ export const guidesDatabase: Guide[] = [
     slug: 'sbir-research-grants-guide',
     description: 'Complete guide to applying for Small Business Innovation Research (SBIR) Phase I & II grants.',
     category: 'USA',
-    lastUpdated: '2025-01-20',
+    relatedLinks: [
+    { title: "STTR Needs a Research Partner", href: "/guides/apply-small-business-grants", description: "General guide for applying to federal small business grant programs and competitions...." },
+    { title: "The ITA Relationship is Key", href: "/guides/sred-application-guide", description: "How to claim Scientific Research & Experimental Development tax credits in Canada...." },
+    { title: "Defence Contracts = Long Sales Cycle", href: "/guides/canada-manufacturing-funding-guide", description: "Funding programs for manufacturing modernization, automation, and expansion...." }
+  ],
+  lastUpdated: '2025-01-20',
     readTime: '15 min read',
     tags: ['SBIR', 'Research', 'Innovation', 'Technology'],
     difficulty: 'Advanced',
@@ -204,7 +229,12 @@ export const guidesDatabase: Guide[] = [
       'Proposal requirements',
       'Budget preparation'
     ],
-    lastUpdated: '2025-09-20',
+    relatedLinks: [
+    { title: "BDC Women Loan Advantages", href: "/guides/canada-digital-ai-funding-guide", description: "Funding opportunities for digital transformation and AI development projects...." },
+    { title: "Provincial Manufacturing Grants", href: "/guides/canada-agri-food-funding-guide", description: "Complete funding guide for agriculture and food processing businesses...." },
+    { title: "Know Your RDA", href: "/guides/apply-indigenous-rural-business-funding", description: "Specialized funding programs for Indigenous and rural businesses in Canada...." }
+  ],
+  lastUpdated: '2025-09-20',
     metrics: [
       { label: 'Phase I', value: '$150-250K', description: 'Feasibility', color: 'text-blue-600', iconName: 'Zap' },
       { label: 'Phase II', value: '$1-1.5M', description: 'Development', color: 'text-green-600', iconName: 'Rocket' },
@@ -240,7 +270,12 @@ export const guidesDatabase: Guide[] = [
       'Basic eligibility criteria',
       'Application best practices'
     ],
-    lastUpdated: '2025-10-05',
+    relatedLinks: [
+    { title: "Don", href: "/guides/apply-sbir-grants", description: "Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs...." },
+    { title: "WES is an Ecosystem, Not a Program", href: "/guides/women-entrepreneurship-fund-guide", description: "How to apply for direct funding through the Women Entrepreneurship Fund...." },
+    { title: "Federal Grants Are Project-Based", href: "/guides/apply-minority-grants", description: "How to access grants and funding specifically for minority-owned businesses in the USA...." }
+  ],
+  lastUpdated: '2025-10-05',
     metrics: [
       { label: 'Grants.gov', value: '1000+', description: 'Active opportunities', color: 'text-blue-600', iconName: 'Search' },
       { label: 'Avg Award', value: '$50-500K', description: 'Typical range', color: 'text-green-600', iconName: 'DollarSign' },
@@ -279,7 +314,12 @@ export const guidesDatabase: Guide[] = [
       'MBDA programs',
       'Set-aside opportunities'
     ],
-    lastUpdated: '2025-09-18',
+    relatedLinks: [
+    { title: "Target ", href: "/guides/apply-alberta-business-grants", description: "Complete guide to Alberta provincial business funding and economic development programs...." },
+    { title: "Provincial Manufacturing Grants", href: "/guides/canada-agri-food-funding-guide", description: "Complete funding guide for agriculture and food processing businesses...." },
+    { title: "EDC + CanExport Stack", href: "/guides/nserc-research-grants-guide", description: "How to apply for Natural Sciences and Engineering Research Council grants...." }
+  ],
+  lastUpdated: '2025-09-18',
     metrics: [
       { label: 'MBDA', value: 'Free', description: 'Business centers', color: 'text-green-600', iconName: 'Building' },
       { label: '8(a)', value: '9 Years', description: 'Program duration', color: 'text-blue-600', iconName: 'Clock' },
@@ -315,7 +355,12 @@ export const guidesDatabase: Guide[] = [
       'Program requirements',
       'Impact measurement'
     ],
-    lastUpdated: '2025-09-15',
+    relatedLinks: [
+    { title: "SDTC Environmental Impact", href: "/guides/canada-digital-ai-funding-guide", description: "Funding opportunities for digital transformation and AI development projects...." },
+    { title: "Technological Uncertainty is Key", href: "/guides/apply-women-entrepreneurship-strategy", description: "Comprehensive guide to accessing WES funding and resources for women entrepreneurs in Canada...." },
+    { title: "Federal Grants Are Project-Based", href: "/guides/apply-minority-grants", description: "How to access grants and funding specifically for minority-owned businesses in the USA...." }
+  ],
+  lastUpdated: '2025-09-15',
     metrics: [
       { label: 'Prize', value: '$50K-200K', description: 'Cash prizes', color: 'text-green-600', iconName: 'Award' },
       { label: 'Focus', value: 'STEM/R&D', description: 'Underserved groups', color: 'text-blue-600', iconName: 'Users' },
@@ -351,7 +396,12 @@ export const guidesDatabase: Guide[] = [
       'Budget justification strategies',
       'Review criteria understanding'
     ],
-    lastUpdated: '2025-10-08',
+    relatedLinks: [
+    { title: "Industry Partnerships Boost Success", href: "/guides/apply-regional-development-agencies", description: "Access funding through Canada\\..." },
+    { title: "Call First, Apply Later", href: "/guides/irap-innovation-application-guide", description: "Strategic guide for accessing IRAP innovation funding and technical advisory services...." },
+    { title: "The ITA Relationship is Key", href: "/guides/sred-application-guide", description: "How to claim Scientific Research & Experimental Development tax credits in Canada...." }
+  ],
+  lastUpdated: '2025-10-08',
     metrics: [
       { label: 'Rejection', value: 'Generic', description: 'Most common reason', color: 'text-red-600', iconName: 'AlertTriangle' },
       { label: 'Format', value: 'Strict', description: 'Follow font/margin rules', color: 'text-blue-600', iconName: 'CheckCircle' },
@@ -387,7 +437,12 @@ export const guidesDatabase: Guide[] = [
       'Technical proposal requirements',
       'Energy impact metrics'
     ],
-    lastUpdated: '2025-09-12',
+    relatedLinks: [
+    { title: "STTR Needs a Research Partner", href: "/guides/apply-small-business-grants", description: "General guide for applying to federal small business grant programs and competitions...." },
+    { title: "WES is an Ecosystem, Not a Program", href: "/guides/women-entrepreneurship-fund-guide", description: "How to apply for direct funding through the Women Entrepreneurship Fund...." },
+    { title: "Focus on Economic Impact", href: "/guides/women-entrepreneurship-loan-fund-guide", description: "Access low-interest loans through the Women Entrepreneurship Loan Fund program...." }
+  ],
+  lastUpdated: '2025-09-12',
     metrics: [
       { label: 'Funding', value: '$100M+', description: 'Clean energy pool', color: 'text-green-600', iconName: 'Leaf' },
       { label: 'Focus', value: 'CleanTech', description: 'Renewable energy', color: 'text-blue-600', iconName: 'Zap' },
@@ -423,7 +478,12 @@ export const guidesDatabase: Guide[] = [
       'Application process',
       'Lender requirements'
     ],
-    lastUpdated: '2025-09-08',
+    relatedLinks: [
+    { title: "CA Guarantee vs SBA", href: "/guides/apply-strategic-innovation-fund", description: "How to apply for large-scale innovation funding through Canada\\..." },
+    { title: "The ", href: "/guides/apply-federal-grants", description: "Complete step-by-step guide for navigating the US federal grant application process including Grants.gov registration an..." },
+    { title: "Target ", href: "/guides/apply-alberta-business-grants", description: "Complete guide to Alberta provincial business funding and economic development programs...." }
+  ],
+  lastUpdated: '2025-09-08',
     metrics: [
       { label: 'State', value: 'California', description: 'CA only', color: 'text-blue-600', iconName: 'MapPin' },
       { label: 'Max', value: '$2.5M', description: 'Guarantee amount', color: 'text-green-600', iconName: 'DollarSign' },
@@ -461,7 +521,12 @@ export const guidesDatabase: Guide[] = [
       'Project eligibility criteria',
       'Partnership requirements'
     ],
-    lastUpdated: '2025-09-20',
+    relatedLinks: [
+    { title: "Answer the ", href: "/guides/apply-doe-clean-energy-grants", description: "How to apply for DOE funding for clean energy and sustainability projects...." },
+    { title: "Verify Eligibility First", href: "/guides/federal-grants-application-tips", description: "Expert tips and strategies for writing winning federal grant applications...." },
+    { title: "It", href: "/guides/canada-cleantech-funding-guide", description: "Access clean technology funding programs across federal and provincial levels...." }
+  ],
+  lastUpdated: '2025-09-20',
     metrics: [
       { label: 'Min Project', value: '$10 Million', description: 'Target project size', color: 'text-blue-600', iconName: 'Target' },
       { label: 'Funding Type', value: 'Contribution', description: 'Repayable & Non-repay', color: 'text-green-600', iconName: 'DollarSign' },
@@ -497,7 +562,12 @@ export const guidesDatabase: Guide[] = [
       'Application process timeline',
       'Advisory services access'
     ],
-    lastUpdated: '2025-10-05',
+    relatedLinks: [
+    { title: "Pick the Right SBA Program", href: "/guides/sbir-research-grants-guide", description: "Complete guide to applying for Small Business Innovation Research (SBIR) Phase I & II grants...." },
+    { title: "SBA Grant Application Process: Complete Step-by-Step Guide", href: "/guides/sba-application-process", description: "Master the SBA application process with our comprehensive guide. Learn requirements, document preparation, common mistak..." },
+    { title: "Alberta Innovates is your First Stop", href: "/guides/apply-agriculture-agri-food-canada", description: "How to access federal funding for agriculture, agribusiness, and food processing...." }
+  ],
+  lastUpdated: '2025-10-05',
     metrics: [
       { label: 'Salary Coverage', value: 'Up to 80%', description: 'For technical staff', color: 'text-green-600', iconName: 'Users' },
       { label: 'Project Cap', value: '$150k - $500k', description: 'Typical first project', color: 'text-blue-600', iconName: 'PieChart' },
@@ -537,7 +607,12 @@ export const guidesDatabase: Guide[] = [
       'Funding amounts',
       'Success criteria'
     ],
-    lastUpdated: '2025-09-30',
+    relatedLinks: [
+    { title: "Industry Partnerships Boost Success", href: "/guides/apply-regional-development-agencies", description: "Access funding through Canada\\..." },
+    { title: "SDTC Environmental Impact", href: "/guides/canada-digital-ai-funding-guide", description: "Funding opportunities for digital transformation and AI development projects...." },
+    { title: "Don", href: "/guides/apply-sbir-grants", description: "Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs...." }
+  ],
+  lastUpdated: '2025-09-30',
     metrics: [
       { label: 'NRC', value: 'IRAP', description: 'Federal program', color: 'text-blue-600', iconName: 'Flag' },
       { label: 'Coverage', value: 'Up to 80%', description: 'Salary support', color: 'text-green-600', iconName: 'Users' },
@@ -573,7 +648,12 @@ export const guidesDatabase: Guide[] = [
       'Technical advisory benefits',
       'Funding allocation process'
     ],
-    lastUpdated: '2025-09-25',
+    relatedLinks: [
+    { title: "Industry Partnerships Boost Success", href: "/guides/apply-regional-development-agencies", description: "Access funding through Canada\\..." },
+    { title: "The ", href: "/guides/apply-federal-grants", description: "Complete step-by-step guide for navigating the US federal grant application process including Grants.gov registration an..." },
+    { title: "Provincial Manufacturing Grants", href: "/guides/canada-agri-food-funding-guide", description: "Complete funding guide for agriculture and food processing businesses...." }
+  ],
+  lastUpdated: '2025-09-25',
     metrics: [
       { label: 'Contribution', value: '80%', description: 'Salaries covered', color: 'text-green-600', iconName: 'Users' },
       { label: 'Contractors', value: '50%', description: 'Costs covered', color: 'text-blue-600', iconName: 'FileText' },
@@ -609,7 +689,12 @@ export const guidesDatabase: Guide[] = [
       'Documentation requirements',
       'Claim calculation'
     ],
-    lastUpdated: '2025-10-01',
+    relatedLinks: [
+    { title: "The Mentor is the Key", href: "/guides/bdc-women-entrepreneurs-financing-guide", description: "Access Business Development Bank of Canada financing specifically for women-owned businesses...." },
+    { title: "SBA Grant Application Process: Complete Step-by-Step Guide", href: "/guides/sba-application-process", description: "Master the SBA application process with our comprehensive guide. Learn requirements, document preparation, common mistak..." },
+    { title: "STTR Needs a Research Partner", href: "/guides/apply-small-business-grants", description: "General guide for applying to federal small business grant programs and competitions...." }
+  ],
+  lastUpdated: '2025-10-01',
     metrics: [
       { label: 'Tax Credit', value: '35%', description: 'For CCPCs', color: 'text-green-600', iconName: 'PieChart' },
       { label: 'Refundable', value: 'Yes', description: 'Cash back for small biz', color: 'text-blue-600', iconName: 'DollarSign' },
@@ -651,7 +736,12 @@ export const guidesDatabase: Guide[] = [
       'Funding programs breakdown',
       'Mentorship opportunities'
     ],
-    lastUpdated: '2025-10-10',
+    relatedLinks: [
+    { title: "Federal Grants Are Project-Based", href: "/guides/apply-minority-grants", description: "How to access grants and funding specifically for minority-owned businesses in the USA...." },
+    { title: "CSBFP Doesn", href: "/guides/apply-csbfp-government-financing", description: "Step-by-step guide to applying for CSBFP government-backed financing...." },
+    { title: "SBA Grant Application Process: Complete Step-by-Step Guide", href: "/guides/sba-application-process", description: "Master the SBA application process with our comprehensive guide. Learn requirements, document preparation, common mistak..." }
+  ],
+  lastUpdated: '2025-10-10',
     metrics: [
       { label: 'Total', value: '$6B', description: 'WES Ecosystem', color: 'text-pink-600', iconName: 'DollarSign' },
       { label: 'Programs', value: '15+', description: 'Federal initiatives', color: 'text-blue-600', iconName: 'Award' },
@@ -690,7 +780,12 @@ export const guidesDatabase: Guide[] = [
       'Application requirements',
       'Funding amounts'
     ],
-    lastUpdated: '2025-09-22',
+    relatedLinks: [
+    { title: "SIF is for ", href: "/guides/apply-irap-grants", description: "Complete guide to applying for Industrial Research Assistance Program funding in Canada...." },
+    { title: "Alberta Innovates is your First Stop", href: "/guides/apply-agriculture-agri-food-canada", description: "How to access federal funding for agriculture, agribusiness, and food processing...." },
+    { title: "8(a) Program is a Game-Changer", href: "/guides/sba-growth-accelerator-fund-guide", description: "Guide to applying for SBA funding supporting business accelerators and incubators...." }
+  ],
+  lastUpdated: '2025-09-22',
     metrics: [
       { label: 'Funding', value: '$100K', description: 'Non-repayable Grant', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Success Rate', value: '20-30%', description: 'Highly Competitive', color: 'text-blue-600', iconName: 'TrendingUp' },
@@ -771,7 +866,12 @@ export const guidesDatabase: Guide[] = [
       'Application process',
       'BDC partnership'
     ],
-    lastUpdated: '2025-09-18',
+    relatedLinks: [
+    { title: "The ITA Relationship is Key", href: "/guides/sred-application-guide", description: "How to claim Scientific Research & Experimental Development tax credits in Canada...." },
+    { title: "Stack CDAP with Wage Subsidies", href: "/guides/edc-women-trade-export-financing-guide", description: "Export Development Canada financing and support for women exporters...." },
+    { title: "Indigenous Set-Asides Have Priority", href: "/guides/apply-ontario-business-grants", description: "Complete guide to accessing provincial business grants and incentives in Ontario...." }
+  ],
+  lastUpdated: '2025-09-18',
     metrics: [
       { label: 'Loan', value: '$50K', description: 'Max amount', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Admin', value: 'Partners', description: 'Distributed by WEOs', color: 'text-blue-600', iconName: 'Handshake' },
@@ -807,7 +907,12 @@ export const guidesDatabase: Guide[] = [
       'Futurpreneur programs',
       'Mentorship support'
     ],
-    lastUpdated: '2025-09-14',
+    relatedLinks: [
+    { title: "SDTC Environmental Impact", href: "/guides/canada-digital-ai-funding-guide", description: "Funding opportunities for digital transformation and AI development projects...." },
+    { title: "Target ", href: "/guides/apply-alberta-business-grants", description: "Complete guide to Alberta provincial business funding and economic development programs...." },
+    { title: "Call First, Apply Later", href: "/guides/irap-innovation-application-guide", description: "Strategic guide for accessing IRAP innovation funding and technical advisory services...." }
+  ],
+  lastUpdated: '2025-09-14',
     metrics: [
       { label: 'Loan', value: '$60k', description: 'Futurpreneur + BDC', color: 'text-blue-600', iconName: 'DollarSign' },
       { label: 'Age', value: '18 - 39', description: 'Eligibility Range', color: 'text-green-600', iconName: 'User' },
@@ -843,7 +948,12 @@ export const guidesDatabase: Guide[] = [
       'Women-specific programs',
       'Advisory services'
     ],
-    lastUpdated: '2025-09-10',
+    relatedLinks: [
+    { title: "Indigenous Set-Asides Have Priority", href: "/guides/apply-ontario-business-grants", description: "Complete guide to accessing provincial business grants and incentives in Ontario...." },
+    { title: "Technological Uncertainty is Key", href: "/guides/apply-women-entrepreneurship-strategy", description: "Comprehensive guide to accessing WES funding and resources for women entrepreneurs in Canada...." },
+    { title: "CSBFP Doesn", href: "/guides/apply-csbfp-government-financing", description: "Step-by-step guide to applying for CSBFP government-backed financing...." }
+  ],
+  lastUpdated: '2025-09-10',
     metrics: [
       { label: 'BDC', value: 'Loans', description: 'Federal bank', color: 'text-blue-600', iconName: 'Building' },
       { label: 'Women', value: 'Priority', description: 'Female entrepreneurs', color: 'text-pink-600', iconName: 'Users' },
@@ -879,7 +989,17 @@ export const guidesDatabase: Guide[] = [
       'Digital adoption programs',
       'Tech commercialization'
     ],
-    lastUpdated: '2025-09-10',
+    relatedLinks: [
+    { title: "Stack CDAP with Wage Subsidies", href: "/guides/edc-women-trade-export-financing-guide", description: "Export Development Canada financing and support for women exporters...." },
+    { title: "STTR Needs a Research Partner", href: "/guides/apply-small-business-grants", description: "General guide for applying to federal small business grant programs and competitions...." },
+    { title: "CSBFP Doesn", href: "/guides/apply-csbfp-government-financing", description: "Step-by-step guide to applying for CSBFP government-backed financing...." }
+  ],
+  relatedLinks: [
+    { title: "Start with CDAP", href: "/guides/canada-life-sciences-funding-guide", description: "Comprehensive funding guide for biotech, medical devices, and life sciences companies...." },
+    { title: "EDC + CanExport Stack", href: "/guides/nserc-research-grants-guide", description: "How to apply for Natural Sciences and Engineering Research Council grants...." },
+    { title: "The ", href: "/guides/apply-irap-government-grants", description: "Detailed walkthrough of applying for IRAP government funding for innovation projects...." }
+  ],
+  lastUpdated: '2025-09-10',
     metrics: [
       { label: 'Grant', value: '$15,000', description: 'CDAP Boost', color: 'text-blue-600', iconName: 'Zap' },
       { label: 'Wage', value: '$7,300', description: 'Digital Youth', color: 'text-green-600', iconName: 'Users' },
@@ -915,7 +1035,12 @@ export const guidesDatabase: Guide[] = [
       'Trade insurance',
       'Market expansion support'
     ],
-    lastUpdated: '2025-09-05',
+    relatedLinks: [
+    { title: "Apply via Partners", href: "/guides/apply-youth-entrepreneurship-funding", description: "How young entrepreneurs can access government funding programs in Canada...." },
+    { title: "Provincial Manufacturing Grants", href: "/guides/canada-agri-food-funding-guide", description: "Complete funding guide for agriculture and food processing businesses...." },
+    { title: "Indigenous Set-Asides Have Priority", href: "/guides/apply-ontario-business-grants", description: "Complete guide to accessing provincial business grants and incentives in Ontario...." }
+  ],
+  lastUpdated: '2025-09-05',
     metrics: [
       { label: 'EDC', value: 'Crown Corp', description: 'Federal export bank', color: 'text-blue-600', iconName: 'Flag' },
       { label: 'Focus', value: 'Trade', description: 'International sales', color: 'text-green-600', iconName: 'Globe' },
@@ -951,7 +1076,12 @@ export const guidesDatabase: Guide[] = [
       'Grant types',
       'Proposal requirements'
     ],
-    lastUpdated: '2025-08-30',
+    relatedLinks: [
+    { title: "Investissement Québec is King", href: "/guides/apply-british-columbia-grants", description: "Access provincial funding programs and incentives in British Columbia...." },
+    { title: "Indigenous Set-Asides Have Priority", href: "/guides/apply-ontario-business-grants", description: "Complete guide to accessing provincial business grants and incentives in Ontario...." },
+    { title: "CSBFP Doesn", href: "/guides/apply-csbfp-government-financing", description: "Step-by-step guide to applying for CSBFP government-backed financing...." }
+  ],
+  lastUpdated: '2025-08-30',
     metrics: [
       { label: 'Value', value: '$20K-1M+', description: 'Varies by grant', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Duration', value: '1-5 Years', description: 'Multi-year funding', color: 'text-blue-600', iconName: 'Clock' },
@@ -987,7 +1117,12 @@ export const guidesDatabase: Guide[] = [
       'Regional programs',
       'Application processes'
     ],
-    lastUpdated: '2025-09-01',
+    relatedLinks: [
+    { title: "Beware of ", href: "/guides/apply-sba-loans", description: "Learn how to successfully apply for SBA loans including 7(a), 504, and microloan programs...." },
+    { title: "Start with CDAP", href: "/guides/canada-life-sciences-funding-guide", description: "Comprehensive funding guide for biotech, medical devices, and life sciences companies...." },
+    { title: "Answer the ", href: "/guides/apply-doe-clean-energy-grants", description: "How to apply for DOE funding for clean energy and sustainability projects...." }
+  ],
+  lastUpdated: '2025-09-01',
     metrics: [
       { label: 'Agencies', value: '6 RDAs', description: 'Regional coverage', color: 'text-blue-600', iconName: 'MapPin' },
       { label: 'Funding', value: 'Varies', description: 'By region/program', color: 'text-green-600', iconName: 'DollarSign' },
@@ -1023,7 +1158,12 @@ export const guidesDatabase: Guide[] = [
       'Rural business support',
       'Community economic development'
     ],
-    lastUpdated: '2025-08-28',
+    relatedLinks: [
+    { title: "CA Guarantee vs SBA", href: "/guides/apply-strategic-innovation-fund", description: "How to apply for large-scale innovation funding through Canada\\..." },
+    { title: "Don", href: "/guides/apply-sbir-grants", description: "Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs...." },
+    { title: "Focus on ", href: "/guides/apply-quebec-business-grants", description: "Navigate Quebec\\..." }
+  ],
+  lastUpdated: '2025-08-28',
     metrics: [
       { label: 'IAND', value: 'Priority', description: 'Indigenous programs', color: 'text-red-600', iconName: 'Users' },
       { label: 'Rural', value: 'USDA/NRC', description: 'Federal support', color: 'text-green-600', iconName: 'Leaf' },
@@ -1061,7 +1201,12 @@ export const guidesDatabase: Guide[] = [
       'Regional incentives',
       'Application timelines'
     ],
-    lastUpdated: '2025-09-12',
+    relatedLinks: [
+    { title: "It", href: "/guides/canada-cleantech-funding-guide", description: "Access clean technology funding programs across federal and provincial levels...." },
+    { title: "Target ", href: "/guides/apply-alberta-business-grants", description: "Complete guide to Alberta provincial business funding and economic development programs...." },
+    { title: "SBA Grant Application Process: Complete Step-by-Step Guide", href: "/guides/sba-application-process", description: "Master the SBA application process with our comprehensive guide. Learn requirements, document preparation, common mistak..." }
+  ],
+  lastUpdated: '2025-09-12',
     metrics: [
       { label: 'Grant', value: '$2,500', description: 'Digital Main St.', color: 'text-blue-600', iconName: 'Globe' },
       { label: 'Training', value: '100% Free', description: 'Skills Development', color: 'text-green-600', iconName: 'BookOpen' },
@@ -1089,7 +1234,12 @@ export const guidesDatabase: Guide[] = [
       'Investissement Québec',
       'Language requirements'
     ],
-    lastUpdated: '2025-09-08',
+    relatedLinks: [
+    { title: "Don", href: "/guides/apply-sbir-grants", description: "Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs...." },
+    { title: "Call First, Apply Later", href: "/guides/irap-innovation-application-guide", description: "Strategic guide for accessing IRAP innovation funding and technical advisory services...." },
+    { title: "Verify Eligibility First", href: "/guides/federal-grants-application-tips", description: "Expert tips and strategies for writing winning federal grant applications...." }
+  ],
+  lastUpdated: '2025-09-08',
     metrics: [
       { label: 'Loan', value: '$50k+', description: 'Impulsion PME', color: 'text-blue-600', iconName: 'DollarSign' },
       { label: 'Credit', value: '30%', description: 'CDAE Tax Credit', color: 'text-green-600', iconName: 'PieChart' },
@@ -1117,7 +1267,12 @@ export const guidesDatabase: Guide[] = [
       'Tech sector support',
       'Clean energy incentives'
     ],
-    lastUpdated: '2025-09-05',
+    relatedLinks: [
+    { title: "The Mentor is the Key", href: "/guides/bdc-women-entrepreneurs-financing-guide", description: "Access Business Development Bank of Canada financing specifically for women-owned businesses...." },
+    { title: "Stack CDAP with Wage Subsidies", href: "/guides/edc-women-trade-export-financing-guide", description: "Export Development Canada financing and support for women exporters...." },
+    { title: "WES is an Ecosystem, Not a Program", href: "/guides/women-entrepreneurship-fund-guide", description: "How to apply for direct funding through the Women Entrepreneurship Fund...." }
+  ],
+  lastUpdated: '2025-09-05',
     metrics: [
       { label: 'Grant', value: '$10,000', description: 'Launch Online', color: 'text-blue-600', iconName: 'Globe' },
       { label: 'Tax Credit', value: '30%', description: 'Venture Capital', color: 'text-green-600', iconName: 'TrendingUp' },
@@ -1145,7 +1300,12 @@ export const guidesDatabase: Guide[] = [
       'Innovation grants',
       'Regional support'
     ],
-    lastUpdated: '2025-09-02',
+    relatedLinks: [
+    { title: "The ", href: "/guides/apply-federal-grants", description: "Complete step-by-step guide for navigating the US federal grant application process including Grants.gov registration an..." },
+    { title: "The ITA Relationship is Key", href: "/guides/sred-application-guide", description: "How to claim Scientific Research & Experimental Development tax credits in Canada...." },
+    { title: "DOE Favors National Labs Partnerships", href: "/guides/california-loan-guarantee-guide", description: "Complete guide to accessing California state loan guarantees for small businesses...." }
+  ],
+  lastUpdated: '2025-09-02',
     metrics: [
       { label: 'Voucher', value: '$15k - $100k', description: 'Alberta Innovates', color: 'text-blue-600', iconName: 'Zap' },
       { label: 'Clean Tech', value: '$5M+', description: 'ERA Funding', color: 'text-green-600', iconName: 'Leaf' },
@@ -1173,7 +1333,12 @@ export const guidesDatabase: Guide[] = [
       'Farm business support',
       'Processing incentives'
     ],
-    lastUpdated: '2025-08-25',
+    relatedLinks: [
+    { title: "Target ", href: "/guides/apply-alberta-business-grants", description: "Complete guide to Alberta provincial business funding and economic development programs...." },
+    { title: "The ITA Relationship is Key", href: "/guides/sred-application-guide", description: "How to claim Scientific Research & Experimental Development tax credits in Canada...." },
+    { title: "Focus on ", href: "/guides/apply-quebec-business-grants", description: "Navigate Quebec\\..." }
+  ],
+  lastUpdated: '2025-08-25',
     metrics: [
       { label: 'Funding', value: '$5 Million', description: 'Max per project', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Type', value: 'Repayable', description: '0% Interest Loan', color: 'text-blue-600', iconName: 'RefreshCw' },
@@ -1203,7 +1368,12 @@ export const guidesDatabase: Guide[] = [
       'Environmental innovation',
       'Sustainability funding'
     ],
-    lastUpdated: '2025-09-15',
+    relatedLinks: [
+    { title: "The ITA Relationship is Key", href: "/guides/sred-application-guide", description: "How to claim Scientific Research & Experimental Development tax credits in Canada...." },
+    { title: "STTR Needs a Research Partner", href: "/guides/apply-small-business-grants", description: "General guide for applying to federal small business grant programs and competitions...." },
+    { title: "Don", href: "/guides/apply-sbir-grants", description: "Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs...." }
+  ],
+  lastUpdated: '2025-09-15',
     metrics: [
       { label: 'SDTC', value: '$10M', description: 'Max per project', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Focus', value: 'CleanTech', description: 'Environmental tech', color: 'text-green-600', iconName: 'Leaf' },
@@ -1259,7 +1429,12 @@ export const guidesDatabase: Guide[] = [
       'Clinical trial support',
       'Commercialization funding'
     ],
-    lastUpdated: '2025-09-05',
+    relatedLinks: [
+    { title: "Indigenous Set-Asides Have Priority", href: "/guides/apply-ontario-business-grants", description: "Complete guide to accessing provincial business grants and incentives in Ontario...." },
+    { title: "Alberta Innovates is your First Stop", href: "/guides/apply-agriculture-agri-food-canada", description: "How to access federal funding for agriculture, agribusiness, and food processing...." },
+    { title: "The ", href: "/guides/apply-irap-government-grants", description: "Detailed walkthrough of applying for IRAP government funding for innovation projects...." }
+  ],
+  lastUpdated: '2025-09-05',
     metrics: [
       { label: 'Focus', value: 'BioTech', description: 'Life sciences', color: 'text-purple-600', iconName: 'Zap' },
       { label: 'Funding', value: '$1M+', description: 'R&D projects', color: 'text-green-600', iconName: 'DollarSign' },
@@ -1287,7 +1462,12 @@ export const guidesDatabase: Guide[] = [
       'Defence procurement',
       'Innovation support'
     ],
-    lastUpdated: '2025-08-30',
+    relatedLinks: [
+    { title: "8(a) Program is a Game-Changer", href: "/guides/sba-growth-accelerator-fund-guide", description: "Guide to applying for SBA funding supporting business accelerators and incubators...." },
+    { title: "DOE Favors National Labs Partnerships", href: "/guides/california-loan-guarantee-guide", description: "Complete guide to accessing California state loan guarantees for small businesses...." },
+    { title: "Alberta Innovates is your First Stop", href: "/guides/apply-agriculture-agri-food-canada", description: "How to access federal funding for agriculture, agribusiness, and food processing...." }
+  ],
+  lastUpdated: '2025-08-30',
     metrics: [
       { label: 'Sector', value: 'Aerospace', description: 'Defence focus', color: 'text-blue-600', iconName: 'Rocket' },
       { label: 'Max', value: '$10M+', description: 'Large projects', color: 'text-green-600', iconName: 'DollarSign' },
@@ -1315,7 +1495,12 @@ export const guidesDatabase: Guide[] = [
       'Automation funding',
       'Export support'
     ],
-    lastUpdated: '2025-08-28',
+    relatedLinks: [
+    { title: "The ", href: "/guides/apply-irap-government-grants", description: "Detailed walkthrough of applying for IRAP government funding for innovation projects...." },
+    { title: "The Mentor is the Key", href: "/guides/bdc-women-entrepreneurs-financing-guide", description: "Access Business Development Bank of Canada financing specifically for women-owned businesses...." },
+    { title: "Start with CDAP", href: "/guides/canada-life-sciences-funding-guide", description: "Comprehensive funding guide for biotech, medical devices, and life sciences companies...." }
+  ],
+  lastUpdated: '2025-08-28',
     metrics: [
       { label: 'Sector', value: 'Mfg', description: 'Manufacturing', color: 'text-blue-600', iconName: 'Factory' },
       { label: 'Focus', value: 'Auto/Tech', description: 'Industry 4.0', color: 'text-purple-600', iconName: 'Zap' },
@@ -1343,7 +1528,12 @@ export const guidesDatabase: Guide[] = [
       'Farm innovation',
       'Processing modernization'
     ],
-    lastUpdated: '2025-08-25',
+    relatedLinks: [
+    { title: "Focus on Economic Impact", href: "/guides/women-entrepreneurship-loan-fund-guide", description: "Access low-interest loans through the Women Entrepreneurship Loan Fund program...." },
+    { title: "Call First, Apply Later", href: "/guides/irap-innovation-application-guide", description: "Strategic guide for accessing IRAP innovation funding and technical advisory services...." },
+    { title: "Defence Contracts = Long Sales Cycle", href: "/guides/canada-manufacturing-funding-guide", description: "Funding programs for manufacturing modernization, automation, and expansion...." }
+  ],
+  lastUpdated: '2025-08-25',
     metrics: [
       { label: 'Focus', value: 'Agri-Food', description: 'Farm + processing', color: 'text-green-600', iconName: 'Leaf' },
       { label: 'Range', value: '$10K-5M', description: 'Project scale', color: 'text-blue-600', iconName: 'DollarSign' },
@@ -1373,7 +1563,12 @@ export const guidesDatabase: Guide[] = [
       'Program terms',
       'Application process'
     ],
-    lastUpdated: '2025-09-20',
+    relatedLinks: [
+    { title: "Pick the Right SBA Program", href: "/guides/sbir-research-grants-guide", description: "Complete guide to applying for Small Business Innovation Research (SBIR) Phase I & II grants...." },
+    { title: "SBA Grant Application Process: Complete Step-by-Step Guide", href: "/guides/sba-application-process", description: "Master the SBA application process with our comprehensive guide. Learn requirements, document preparation, common mistak..." },
+    { title: "Focus on Economic Impact", href: "/guides/women-entrepreneurship-loan-fund-guide", description: "Access low-interest loans through the Women Entrepreneurship Loan Fund program...." }
+  ],
+  lastUpdated: '2025-09-20',
     metrics: [
       { label: 'Max Loan', value: '$1M', description: 'Per borrower', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Equipment', value: '$350K', description: 'Max for assets', color: 'text-blue-600', iconName: 'Award' },
@@ -1401,7 +1596,12 @@ export const guidesDatabase: Guide[] = [
       'Lender selection',
       'Documentation required'
     ],
-    lastUpdated: '2025-09-18',
+    relatedLinks: [
+    { title: "SBA Grant Application Process: Complete Step-by-Step Guide", href: "/guides/sba-application-process", description: "Master the SBA application process with our comprehensive guide. Learn requirements, document preparation, common mistak..." },
+    { title: "The ", href: "/guides/apply-federal-grants", description: "Complete step-by-step guide for navigating the US federal grant application process including Grants.gov registration an..." },
+    { title: "CA Guarantee vs SBA", href: "/guides/apply-strategic-innovation-fund", description: "How to apply for large-scale innovation funding through Canada\\..." }
+  ],
+  lastUpdated: '2025-09-18',
     metrics: [
       { label: 'Max', value: '$1M', description: 'Total financing', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Fee', value: '2%', description: 'Registration fee', color: 'text-blue-600', iconName: 'DollarSign' },
