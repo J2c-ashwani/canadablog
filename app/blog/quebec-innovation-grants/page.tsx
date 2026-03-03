@@ -860,49 +860,6 @@ export default function QuebecInnovationGrantsPage() {
       <Footer />
 
       {/* FAQ Schema*/}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the Quebec R&D Tax Credit (CRIC)?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The CRIC offers a refundable tax credit of up to 30% for eligible R&D expenditures (primarily salaries) incurred in Quebec, which can be combined with the federal SR&ED credit."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How does Investissement Québec support innovation?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Investissement Québec provides loans, loan guarantees, and equity investment for innovation projects, business expansion, and export growth, often acting as a key partner in large-scale initiatives."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What is PRIMA Quebec?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "PRIMA Quebec is an advanced materials research consortium that funds collaborative R&D projects between companies and research institutions, focusing on new materials and applied technologies."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Are there grants for the video game industry in Quebec?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, Quebec offers a highly competitive tax credit for the production of multimedia titles, covering up to 37.5% of eligible labor costs, which has made Montreal a global gaming hub."
-                }
-              }
-            ]
-          }),
-        }}
-      />
     </>
   )
 }

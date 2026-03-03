@@ -914,51 +914,6 @@ export default function BritishColumbiaInnovationGrantsPage() {
         </section>
       </div >
       <Footer />
-
-      {/* FAQ Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the BC Innovation Tax Credit?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The BCITC provides a 10% refundable tax credit to eligible corporations for qualified Scientific Research and Experimental Development (SR&ED) expenditures in British Columbia."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How does Innovate BC support startups?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Innovate BC offers funding programs like the Ignite Program for R&D, as well as mentorship, hiring grants, and connection to expert advisors at regional accelerators."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What funding is available for BC CleanTech?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "BC offers significant cleantech support through the Centre for Innovation and Clean Energy (CICE), CleanBC Industry Fund, and specific calls for hydrogen and renewable energy projects."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Are there grants for film production in BC?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, Creative BC administers several tax credits including the Production Services Tax Credit and Film Incentive BC, plus grant programs for domestic motion picture and interactive digital media projects."
-                }
-              }
-            ]
-          }),
-        }}
-      />
     </>
   )
 }
