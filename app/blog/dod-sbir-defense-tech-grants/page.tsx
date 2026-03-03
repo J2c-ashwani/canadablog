@@ -986,7 +986,27 @@ export default function DODSBIRDefenseTechGrantsPage() {
             </div>
           </div>
         </section>
-      </div>
+      
+            {/* CONTENT EXPANSION: Deep Modifier Sections for Ranking Lift */}
+            <div className="mt-12 space-y-8 not-prose">
+              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
+                <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">🎯 Who Qualifies?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>US small businesses</strong> developing defense-applicable technology</li><li>Must be a <strong>US-owned, for-profit company</strong> under 500 employees</li><li><strong>Dual-use technologies</strong> encouraged (military + commercial applications)</li><li><strong>Security clearance</strong> may be required for classified topics</li><li><strong>Key areas:</strong> Cybersecurity, AI/autonomy, hypersonics, biodefense, directed energy</li></ul>` }} />
+              </div>
+              <div className="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-6 border border-amber-200 dark:border-amber-800">
+                <h2 className="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">📅 Key Deadlines & Application Windows</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>DOD SBIR:</strong> 3 solicitation windows per year (check DSIP portal)</li><li><strong>Open Topics:</strong> Rolling submissions — apply anytime</li><li><strong>DARPA:</strong> Broad Agency Announcements (BAAs) posted on SAM.gov</li><li><strong>Processing:</strong> Open Topic decisions in 45-90 days (fastest federal SBIR)</li></ul>` }} />
+              </div>
+              <div className="bg-purple-50 dark:bg-purple-950/30 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
+                <h2 className="text-2xl font-bold text-purple-900 dark:text-purple-100 mb-4">📊 How Competitive Is This?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<p class="text-gray-700 mb-3">DOD SBIR is the <strong>largest and most accessible</strong> federal SBIR program:</p><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Overall acceptance:</strong> ~30% (highest of all agencies)</li><li><strong>Open Topics:</strong> Even higher acceptance for novel dual-use tech</li><li><strong>Phase III:</strong> No competitive bidding required — sole-source contracts possible</li></ul><p class="text-gray-700 mt-3"><strong>Best path for first-timers:</strong> DOD Open Topics are the <strong>easiest entry point</strong> into the federal SBIR ecosystem.</p>` }} />
+              </div>
+              <div className="bg-green-50 dark:bg-green-950/30 rounded-xl p-6 border border-green-200 dark:border-green-800">
+                <h2 className="text-2xl font-bold text-green-900 dark:text-green-100 mb-4">🏆 Recent Award Examples</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>DOD SBIR FY2025:</strong> $1.8B across 3,200+ awards (largest agency)</li><li><strong>Average Phase I:</strong> $175,000</li><li><strong>Average Phase II:</strong> $1.1M</li><li><strong>Phase III contracts:</strong> $7.4B in follow-on production contracts to SBIR firms</li></ul>` }} />
+              </div>
+            </div>
+</div>
       <Footer />
     </>
   )

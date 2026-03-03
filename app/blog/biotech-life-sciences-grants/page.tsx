@@ -542,7 +542,27 @@ export default function BiotechLifeSciencesGrantsGuide() {
                 </Button>
               </div>
             </div>
-          </div>
+          
+            {/* CONTENT EXPANSION: Deep Modifier Sections for Ranking Lift */}
+            <div className="mt-12 space-y-8 not-prose">
+              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
+                <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">🎯 Who Qualifies?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Biotech startups</strong> developing therapeutics, diagnostics, or medical devices</li><li><strong>Life sciences companies</strong> at preclinical through Phase II clinical trials</li><li><strong>NIH SBIR:</strong> US-based firms with fewer than 500 employees</li><li><strong>CIHR (Canada):</strong> Canadian researchers with industry partnerships</li><li>Must have <strong>strong IP position</strong> (patents filed or granted)</li><li><strong>Priority areas:</strong> rare diseases, antimicrobial resistance, oncology, neurodegenerative</li></ul>` }} />
+              </div>
+              <div className="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-6 border border-amber-200 dark:border-amber-800">
+                <h2 className="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">📅 Key Deadlines & Application Windows</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>NIH SBIR/STTR:</strong> January 5, April 5, September 5 each year</li><li><strong>BARDA DRIVe:</strong> Rolling BAAs for pandemic preparedness</li><li><strong>CIHR Project Grants:</strong> Biannual — February and September</li><li><strong>Genome Canada:</strong> Major competitions every 2 years</li><li><strong>CPRIT (Texas):</strong> Annual solicitation, typically March</li></ul>` }} />
+              </div>
+              <div className="bg-purple-50 dark:bg-purple-950/30 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
+                <h2 className="text-2xl font-bold text-purple-900 dark:text-purple-100 mb-4">📊 How Competitive Is This?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<p class="text-gray-700 mb-3">Biotech grants are <strong>among the most competitive</strong>:</p><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>NIH SBIR Phase I:</strong> ~20% success rate</li><li><strong>BARDA:</strong> Highly selective (~5% for full awards)</li><li><strong>CIHR:</strong> ~15% success rate</li><li><strong>Genome Canada:</strong> ~20% but very large awards ($5M+)</li></ul><p class="text-gray-700 mt-3"><strong>Critical factor:</strong> NIH reviewers heavily weight <strong>preliminary data</strong>. Applications without any pilot data have near-zero chance.</p>` }} />
+              </div>
+              <div className="bg-green-50 dark:bg-green-950/30 rounded-xl p-6 border border-green-200 dark:border-green-800">
+                <h2 className="text-2xl font-bold text-green-900 dark:text-green-100 mb-4">🏆 Recent Award Examples</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Moderna</strong> — $1.5B BARDA for mRNA platform development</li><li><strong>AbCellera</strong> — $175M Canadian government for antibody discovery</li><li><strong>Recursion Pharma</strong> — $3.2M NIH SBIR for AI-driven drug discovery</li><li><strong>Average NIH SBIR Phase I in biotech:</strong> $275,000</li></ul>` }} />
+              </div>
+            </div>
+</div>
         </section>
 
         <Footer />

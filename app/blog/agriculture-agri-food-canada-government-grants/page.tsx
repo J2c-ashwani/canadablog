@@ -555,7 +555,27 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild><Link href="/contact?program=agriculture">Get Expert Help</Link></Button>
               </div>
             </div>
-          </div>
+          
+            {/* CONTENT EXPANSION: Deep Modifier Sections for Ranking Lift */}
+            <div className="mt-12 space-y-8 not-prose">
+              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
+                <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">🎯 Who Qualifies?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Canadian agricultural producers</strong> — farms, ranches, greenhouses</li><li><strong>Agri-food processors</strong> and value-added food companies</li><li><strong>Agri-tech startups</strong> developing precision agriculture solutions</li><li>Must operate in <strong>primary agriculture, food processing, or agri-tech</strong></li><li><strong>AgriInnovate:</strong> Requires $1M+ project with 50% matching funds</li><li><strong>AgriScience:</strong> Research institutions partnering with industry</li></ul>` }} />
+              </div>
+              <div className="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-6 border border-amber-200 dark:border-amber-800">
+                <h2 className="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">📅 Key Deadlines & Application Windows</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>AgriInnovate Program:</strong> Rolling applications through AAFC</li><li><strong>AgriScience Program:</strong> Annual calls, typically January</li><li><strong>AgriCompetitiveness:</strong> Rolling intake</li><li><strong>Canadian Agricultural Partnership:</strong> Province-specific deadlines</li><li><strong>USDA SBIR (US equivalent):</strong> Annual, typically November</li></ul>` }} />
+              </div>
+              <div className="bg-purple-50 dark:bg-purple-950/30 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
+                <h2 className="text-2xl font-bold text-purple-900 dark:text-purple-100 mb-4">📊 How Competitive Is This?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<p class="text-gray-700 mb-3">Agriculture grants are <strong>moderately competitive</strong> with strong regional variation:</p><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>AgriInnovate:</strong> ~30% success rate</li><li><strong>AgriScience:</strong> ~25% for multi-year research programs</li><li><strong>Provincial CAP programs:</strong> ~50% approval (less competitive)</li><li><strong>USDA SBIR:</strong> ~20% for ag-tech innovations</li></ul><p class="text-gray-700 mt-3"><strong>Strategy:</strong> Applications demonstrating <strong>export potential</strong> and <strong>environmental sustainability</strong> score significantly higher.</p>` }} />
+              </div>
+              <div className="bg-green-50 dark:bg-green-950/30 rounded-xl p-6 border border-green-200 dark:border-green-800">
+                <h2 className="text-2xl font-bold text-green-900 dark:text-green-100 mb-4">🏆 Recent Award Examples</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Semios Technologies</strong> — $5M AgriInnovate for precision pest management</li><li><strong>Enterra Feed</strong> — $3.2M for insect-based animal feed processing</li><li><strong>Total AgriInnovate FY2025:</strong> $128M across 45 projects</li><li><strong>Average award size:</strong> $2.1M over 3-5 years</li></ul>` }} />
+              </div>
+            </div>
+</div>
         </section>
       </div >
       <Footer />

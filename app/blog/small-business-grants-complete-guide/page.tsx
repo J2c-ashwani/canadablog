@@ -527,7 +527,27 @@ export default function SmallBusinessGrantsGuidePage() {
             </div>
           </div>
         </section>
-      </div>
+      
+            {/* CONTENT EXPANSION: Deep Modifier Sections for Ranking Lift */}
+            <div className="mt-12 space-y-8 not-prose">
+              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
+                <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">🎯 Who Qualifies?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Any registered small business</strong> in the US or Canada</li><li><strong>US:</strong> Must meet SBA size standards (varies by NAICS code)</li><li><strong>Canada:</strong> Most programs require Canadian incorporation</li><li><strong>Startups:</strong> Many grants require at least 1 year of operations</li><li><strong>Revenue:</strong> Some programs cap eligible businesses at $1M-$5M annual revenue</li><li><strong>Key requirement:</strong> Must not be delinquent on any government debt</li></ul>` }} />
+              </div>
+              <div className="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-6 border border-amber-200 dark:border-amber-800">
+                <h2 className="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">📅 Key Deadlines & Application Windows</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Federal grants (US):</strong> Check Grants.gov daily — new FOAs posted constantly</li><li><strong>Federal grants (Canada):</strong> Most are rolling — apply anytime</li><li><strong>State/Provincial programs:</strong> Often quarterly or annual cycles</li><li><strong>Private foundation grants:</strong> Various — Amber Grant is monthly</li><li><strong>Pro tip:</strong> Set up saved searches on Grants.gov and SAM.gov for instant alerts</li></ul>` }} />
+              </div>
+              <div className="bg-purple-50 dark:bg-purple-950/30 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
+                <h2 className="text-2xl font-bold text-purple-900 dark:text-purple-100 mb-4">📊 How Competitive Is This?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<p class="text-gray-700 mb-3">Varies enormously by type:</p><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Federal research grants (SBIR):</strong> 15-25% success</li><li><strong>SBA loans:</strong> 50-70% approval through preferred lenders</li><li><strong>State economic development grants:</strong> 30-50% success</li><li><strong>Private pitch competitions:</strong> 5-15% success</li><li><strong>Canadian regional programs:</strong> 35-45% success</li></ul><p class="text-gray-700 mt-3"><strong>Best odds:</strong> Local/regional grants have the highest approval rates and the least competition.</p>` }} />
+              </div>
+              <div className="bg-green-50 dark:bg-green-950/30 rounded-xl p-6 border border-green-200 dark:border-green-800">
+                <h2 className="text-2xl font-bold text-green-900 dark:text-green-100 mb-4">🏆 Recent Award Examples</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Total US federal grants to small businesses FY2025:</strong> $52B</li><li><strong>Total Canadian federal SME support:</strong> $8.2B</li><li><strong>Most popular program (US):</strong> SBA 7(a) — $27B disbursed</li><li><strong>Most popular program (Canada):</strong> SR&ED — $3.2B in tax credits</li></ul>` }} />
+              </div>
+            </div>
+</div>
       <Footer />
     </>
   )

@@ -781,7 +781,27 @@ export default function CanadaFederalGrantsPage() {
             </Button>
           </div>
         </section>
-      </div>
+      
+            {/* CONTENT EXPANSION: Deep Modifier Sections for Ranking Lift */}
+            <div className="mt-12 space-y-8 not-prose">
+              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
+                <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">🎯 Who Qualifies?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Any Canadian-incorporated business</strong> — no industry restrictions for most programs</li><li><strong>IRAP:</strong> SMEs under 500 employees with technology innovation</li><li><strong>BDC:</strong> All Canadian businesses (loans + advisory)</li><li><strong>CanExport:</strong> Companies pursuing international markets</li><li><strong>Regional agencies (WD, ACOA, FedDev, CED, PacifiCan, PrairiesCan):</strong> Location-based eligibility</li><li><strong>SR&ED:</strong> Any company performing qualifying R&D in Canada</li></ul>` }} />
+              </div>
+              <div className="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-6 border border-amber-200 dark:border-amber-800">
+                <h2 className="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">📅 Key Deadlines & Application Windows</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>IRAP:</strong> Rolling year-round (no deadline)</li><li><strong>CanExport:</strong> Rolling intake</li><li><strong>Regional Development Agencies:</strong> Rolling, but budget cycles matter (apply Q1)</li><li><strong>SR&ED:</strong> 18 months after fiscal year-end</li><li><strong>Strategic Innovation Fund:</strong> Rolling but limited funding windows</li></ul>` }} />
+              </div>
+              <div className="bg-purple-50 dark:bg-purple-950/30 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
+                <h2 className="text-2xl font-bold text-purple-900 dark:text-purple-100 mb-4">📊 How Competitive Is This?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<p class="text-gray-700 mb-3">Federal programs span a wide range:</p><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>IRAP:</strong> ~35% success rate</li><li><strong>SR&ED:</strong> Entitlement — if you qualify, you get it</li><li><strong>CanExport:</strong> ~45% approval rate</li><li><strong>Strategic Innovation Fund:</strong> ~10% (very selective, large awards)</li><li><strong>Regional agencies:</strong> ~40% on average</li></ul>` }} />
+              </div>
+              <div className="bg-green-50 dark:bg-green-950/30 rounded-xl p-6 border border-green-200 dark:border-green-800">
+                <h2 className="text-2xl font-bold text-green-900 dark:text-green-100 mb-4">🏆 Recent Award Examples</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Total federal SME support FY2025:</strong> $8.2B across all programs</li><li><strong>IRAP:</strong> $420M to ~4,500 companies</li><li><strong>SR&ED:</strong> $3.2B in tax credits to ~20,000 claimants</li><li><strong>CanExport:</strong> $84M to ~2,100 exporters</li><li><strong>Strategic Innovation Fund:</strong> $2.3B committed</li></ul>` }} />
+              </div>
+            </div>
+</div>
       <Footer />
     </>
   )

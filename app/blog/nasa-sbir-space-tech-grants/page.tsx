@@ -1107,7 +1107,27 @@ export default function NASASBIRSpaceTechGrantsPage() {
             </div>
           </div>
         </section>
-      </div>
+      
+            {/* CONTENT EXPANSION: Deep Modifier Sections for Ranking Lift */}
+            <div className="mt-12 space-y-8 not-prose">
+              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
+                <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">🎯 Who Qualifies?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>US small businesses</strong> developing space-related technology</li><li>PI must be <strong>primarily employed at the company</strong></li><li><strong>Technology areas:</strong> Propulsion, materials, robotics, sensors, life support, communications</li><li><strong>Earth observation</strong> and climate monitoring technologies also eligible</li><li>Companies must demonstrate path to <strong>NASA mission infusion or commercial space market</strong></li></ul>` }} />
+              </div>
+              <div className="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-6 border border-amber-200 dark:border-amber-800">
+                <h2 className="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">📅 Key Deadlines & Application Windows</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Annual solicitation:</strong> Opens November, closes February/March</li><li><strong>Phase I proposals:</strong> 3-month submission window</li><li><strong>Phase II:</strong> By invitation only after successful Phase I</li><li><strong>Results announced:</strong> Typically June for Phase I awards</li></ul>` }} />
+              </div>
+              <div className="bg-purple-50 dark:bg-purple-950/30 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
+                <h2 className="text-2xl font-bold text-purple-900 dark:text-purple-100 mb-4">📊 How Competitive Is This?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<p class="text-gray-700 mb-3">NASA SBIR is <strong>moderately competitive</strong> with niche focus:</p><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Phase I acceptance:</strong> ~25-30% (higher than NIH)</li><li><strong>Phase II advancement:</strong> ~50% of Phase I winners</li><li><strong>Total budget:</strong> $220M annually</li></ul><p class="text-gray-700 mt-3"><strong>Unique factor:</strong> NASA SBIR has the <strong>highest commercialization rate</strong> of any federal SBIR program — 35% of awardees generate commercial revenue within 5 years.</p>` }} />
+              </div>
+              <div className="bg-green-50 dark:bg-green-950/30 rounded-xl p-6 border border-green-200 dark:border-green-800">
+                <h2 className="text-2xl font-bold text-green-900 dark:text-green-100 mb-4">🏆 Recent Award Examples</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>SpaceX (early stage)</strong> — Originally funded through NASA SBIR</li><li><strong>Made In Space</strong> — $750K Phase II for zero-gravity manufacturing</li><li><strong>Average Phase I award:</strong> $150,000 for 6 months</li><li><strong>Average Phase II award:</strong> $750,000 for 24 months</li></ul>` }} />
+              </div>
+            </div>
+</div>
       <Footer />
     </>
   )

@@ -681,7 +681,27 @@ export default function SBIRSmallBusinessGuide() {
             </div>
           </div>
         </section>
-      </div>
+      
+            {/* CONTENT EXPANSION: Deep Modifier Sections for Ranking Lift */}
+            <div className="mt-12 space-y-8 not-prose">
+              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
+                <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">🎯 Who Qualifies?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>US small businesses</strong> with fewer than 500 employees</li><li>Must be <strong>51%+ American-owned</strong></li><li>Must be a <strong>for-profit corporation, LLC, or partnership</strong></li><li>Principal investigator must spend <strong>51%+ of time at the company</strong> (Phase I)</li><li><strong>11 federal agencies</strong> participate: NIH, NSF, DOD, DOE, NASA, USDA, EPA, ED, DHS, DOT, NOAA</li></ul>` }} />
+              </div>
+              <div className="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-6 border border-amber-200 dark:border-amber-800">
+                <h2 className="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">📅 Key Deadlines & Application Windows</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Each agency has its own schedule</strong> — no single deadline</li><li><strong>NIH:</strong> 3 cycles per year (Jan 5, Apr 5, Sep 5)</li><li><strong>NSF:</strong> 2 cycles per year (Jun, Nov)</li><li><strong>DOD:</strong> 3 open topic windows per year</li><li>Check <strong>SBIR.gov</strong> for the master solicitation calendar</li></ul>` }} />
+              </div>
+              <div className="bg-purple-50 dark:bg-purple-950/30 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
+                <h2 className="text-2xl font-bold text-purple-900 dark:text-purple-100 mb-4">📊 How Competitive Is This?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<p class="text-gray-700 mb-3">SBIR awards <strong>$4B+ annually</strong> across all agencies:</p><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Phase I ($50K-$275K):</strong> 15-25% success rate</li><li><strong>Phase II ($500K-$1.5M):</strong> 40-50% of Phase I winners</li><li><strong>Phase III (commercialization):</strong> No set-aside — compete on open market</li></ul><p class="text-gray-700 mt-3"><strong>Strategy:</strong> Start with <strong>DOD open topics</strong> — they have the broadest scope and highest acceptance rates for first-timers.</p>` }} />
+              </div>
+              <div className="bg-green-50 dark:bg-green-950/30 rounded-xl p-6 border border-green-200 dark:border-green-800">
+                <h2 className="text-2xl font-bold text-green-900 dark:text-green-100 mb-4">🏆 Recent Award Examples</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Total SBIR/STTR FY2025:</strong> $4.1B across 5,800+ awards</li><li><strong>Average Phase I award:</strong> $195,000</li><li><strong>Average Phase II award:</strong> $1.1M</li><li><strong>Top state by awards:</strong> California (18%), Massachusetts (14%), Maryland (8%)</li></ul>` }} />
+              </div>
+            </div>
+</div>
       <Footer />
     </>
   )
