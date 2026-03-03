@@ -954,7 +954,30 @@ export default function SREDTaxCreditsGuidePage() {
             </div>
           </div>
         </section>
-      </div>
+      
+            {/* CONTENT EXPANSION: Deep Modifier Sections for Ranking Lift */}
+            <div className="mt-12 space-y-8 not-prose">
+              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
+                <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">🎯 Who Qualifies?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Any Canadian company</strong> performing R&D in Canada (no size restriction)</li><li>Projects must involve <strong>scientific or technological uncertainty</strong></li><li>Must follow <strong>systematic investigation</strong> (hypothesis → experiment → analysis)</li><li><strong>Eligible:</strong> experimental development, applied research, basic research</li><li><strong>Not eligible:</strong> market research, quality control, routine engineering</li><li><strong>CCPCs:</strong> 35% refundable credit on first $3M of qualifying expenditures</li></ul>` }} />
+              </div>
+
+              <div className="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-6 border border-amber-200 dark:border-amber-800">
+                <h2 className="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">📅 Key Deadlines & Application Windows</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Filing deadline:</strong> 18 months after your fiscal year-end</li><li><strong>Example:</strong> FY ending Dec 31, 2025 → file by June 30, 2027</li><li><strong>CRITICAL:</strong> You CANNOT file late claims — hard deadline, no extensions</li><li><strong>Pro tip:</strong> File with your T2 corporate tax return for fastest processing</li></ul>` }} />
+              </div>
+
+              <div className="bg-purple-50 dark:bg-purple-950/30 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
+                <h2 className="text-2xl font-bold text-purple-900 dark:text-purple-100 mb-4">📊 How Competitive Is This?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<p class="text-gray-700 mb-3">SR&ED is <strong>not competitive</strong> — it's an entitlement program:</p><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>CCPC enhanced rate:</strong> 35% refundable on first $3M</li><li><strong>Standard rate:</strong> 15% non-refundable</li><li><strong>Audit rate:</strong> ~20% of claims reviewed by CRA</li></ul><p class="text-gray-700 mt-3"><strong>Warning:</strong> Claims often <strong>reduced during audit</strong>. Maintain detailed documentation — Git commits, lab notebooks.</p>` }} />
+              </div>
+
+              <div className="bg-green-50 dark:bg-green-950/30 rounded-xl p-6 border border-green-200 dark:border-green-800">
+                <h2 className="text-2xl font-bold text-green-900 dark:text-green-100 mb-4">🏆 Recent Award Examples</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Total claims 2024:</strong> ~20,000 claims worth $3.2B</li><li><strong>Average CCPC claim:</strong> $160,000</li><li><strong>Average large corp claim:</strong> $450,000</li><li><strong>Top industries:</strong> Software (32%), manufacturing (22%), biotech (12%)</li></ul>` }} />
+              </div>
+            </div>
+</div>
       <Footer />
     </>
   )

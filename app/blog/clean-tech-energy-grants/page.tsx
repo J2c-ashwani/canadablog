@@ -518,7 +518,30 @@ export default function CleanTechEnergyGrantsGuide() {
                 </Button>
               </div>
             </div>
-          </div>
+          
+            {/* CONTENT EXPANSION: Deep Modifier Sections for Ranking Lift */}
+            <div className="mt-12 space-y-8 not-prose">
+              <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
+                <h2 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">🎯 Who Qualifies?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li>Companies developing <strong>clean technology</strong> in energy, transport, water, waste, or agriculture</li><li><strong>US:</strong> DOE programs require US incorporation</li><li><strong>Canada:</strong> SDTC, IRAP, NRCan require Canadian incorporation</li><li>Must be at <strong>TRL 4-7</strong> (past basic research, into demonstration/pilot)</li><li><strong>Priority:</strong> carbon capture, hydrogen, battery storage, grid modernization, EV</li></ul>` }} />
+              </div>
+
+              <div className="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-6 border border-amber-200 dark:border-amber-800">
+                <h2 className="text-2xl font-bold text-amber-900 dark:text-amber-100 mb-4">📅 Key Deadlines & Application Windows</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>DOE ARPA-E:</strong> Rolling FOAs every 2-3 months</li><li><strong>SDTC (Canada):</strong> Biannual — typically March and September</li><li><strong>NRCan Clean Growth Hub:</strong> Rolling</li><li><strong>EPA SBIR:</strong> Annual, typically opens October</li><li><strong>California Energy Commission:</strong> Multiple GFOs throughout year</li></ul>` }} />
+              </div>
+
+              <div className="bg-purple-50 dark:bg-purple-950/30 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
+                <h2 className="text-2xl font-bold text-purple-900 dark:text-purple-100 mb-4">📊 How Competitive Is This?</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<p class="text-gray-700 mb-3">Clean tech is <strong>highly competitive</strong> but well-funded:</p><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>DOE ARPA-E:</strong> ~3% acceptance (extremely selective)</li><li><strong>SDTC:</strong> ~15% success</li><li><strong>NRCan:</strong> ~25% success</li><li><strong>State-level:</strong> ~20-30% success</li></ul><p class="text-gray-700 mt-3"><strong>Strategy:</strong> Strong IP + customer LOIs + emissions reduction metrics = highest scoring.</p>` }} />
+              </div>
+
+              <div className="bg-green-50 dark:bg-green-950/30 rounded-xl p-6 border border-green-200 dark:border-green-800">
+                <h2 className="text-2xl font-bold text-green-900 dark:text-green-100 mb-4">🏆 Recent Award Examples</h2>
+                <div className="text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: `<ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Svante Inc.</strong> — $25M SDTC for carbon capture</li><li><strong>Eavor Technologies</strong> — $10M NRCan for closed-loop geothermal</li><li><strong>QuantumScape</strong> — $15M DOE for solid-state batteries</li><li><strong>CarbonCure</strong> — $7.5M SDTC for concrete CO2 mineralization</li></ul>` }} />
+              </div>
+            </div>
+</div>
         </section>
 
         <Footer />
