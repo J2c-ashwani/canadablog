@@ -145,17 +145,18 @@ async function run() {
         // For now we will just take the latest/first.
         // Usually, blog pages are near the end of the sitemap or generated in order.
         // If you want to prioritize blog posts, filter here:
+        const grantUrls = urlsToSubmit.filter(u => u.includes('/grants/'));
         const blogUrls = urlsToSubmit.filter(u => u.includes('/blog/'));
         const guideUrls = urlsToSubmit.filter(u => u.includes('/guides/'));
         const stateUrls = urlsToSubmit.filter(u => u.includes('/usa/'));
 
-        // Create a prioritized list
-        const prioritized = [...blogUrls, ...guideUrls, ...stateUrls, ...urlsToSubmit];
+        // Create a prioritized list: pSEO Grants > Blogs > Guides > States > Everything Else
+        const prioritized = [...grantUrls, ...blogUrls, ...guideUrls, ...stateUrls, ...urlsToSubmit];
         // Remove duplicates
         const uniquePrioritized = [...new Set(prioritized)];
 
         urlsToSubmit = uniquePrioritized.slice(0, quotaLimit);
-        console.log(`Prepared ${urlsToSubmit.length} highest-priority URLs for submission.\n`);
+        console.log(`Prepared ${urlsToSubmit.length} highest-priority URLs for submission (Prioritizing ${grantUrls.length} pSEO Grant pages).\n`);
     }
 
     console.log('Starting submissions... (This takes a moment)');
