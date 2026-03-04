@@ -27,13 +27,8 @@ if (!fs.existsSync(CREDENTIALS_PATH)) {
 
 // Authenticate with Google
 const credentials = require(CREDENTIALS_PATH);
-const auth = new google.auth.JWT(
-    credentials.client_email,
-    null,
-    credentials.private_key,
-    ['https://www.googleapis.com/auth/indexing'],
-    null
-);
+const auth = google.auth.fromJSON(credentials);
+auth.scopes = ['https://www.googleapis.com/auth/indexing'];
 
 const indexing = google.indexing({
     version: 'v3',
@@ -102,7 +97,7 @@ async function submitUrl(url, type = 'URL_UPDATED') {
     } catch (error) {
         if (error.response && error.response.status === 403) {
             console.error(`❌ Permission Denied for ${url}`);
-            console.error(`   Make sure ${credentials.client_email} is added as an OWNER in Google Search Console for this domain.`);
+            console.error(`   Make sure the service account email is added as an OWNER in Google Search Console for this domain.`);
         } else if (error.response && error.response.status === 429) {
             console.error(`⚠️ Rate Limit Exceeded: Quota reached for the Google Indexing API.`);
             return false; // Stop further processing
