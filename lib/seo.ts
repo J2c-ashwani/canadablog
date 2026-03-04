@@ -321,3 +321,49 @@ export function generateHowToSchema(post: BlogPost, steps: string[]) {
     }))
   };
 }
+
+export function generatePseoSchema(
+  cityName: string,
+  provinceName: string,
+  industryName: string,
+  url: string,
+  publishedAt: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": `${industryName} Grants in ${cityName}, ${provinceName}`,
+    "description": `Discover active ${industryName} government grants, loans, and financial assistance programs available for businesses in ${cityName}, ${provinceName}.`,
+    "url": url,
+    "datePublished": publishedAt,
+    "dateModified": publishedAt,
+    "publisher": {
+      "@type": "Organization",
+      "name": "FSI Digital",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.fsidigital.ca/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "CollectionPage",
+      "@id": url
+    },
+    "about": {
+      "@type": "Thing",
+      "name": `${industryName} Grants`
+    },
+    "spatialCoverage": {
+      "@type": "City",
+      "name": cityName,
+      "containedInPlace": {
+        "@type": "State",
+        "name": provinceName,
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Canada"
+        }
+      }
+    }
+  };
+}

@@ -5,6 +5,7 @@ import { getAllStates } from '@/lib/data/states'
 import { getAllBlogPosts } from '@/lib/data/blogPosts'
 import { guidesDatabase } from '@/lib/data/guides'
 import { getAllStateDetails } from '@/lib/data/stateDetails'
+import { getAllPseoPages } from '@/lib/pseo-data'
 
 // Recursively find all page.tsx files and convert to routes
 function getAllRoutes(dir: string, baseDir: string = 'app'): string[] {
@@ -72,13 +73,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
+  // 6. Add Daily Drip Programmatic SEO Pages
+  const pseoRoutes = getAllPseoPages()
+    .filter(page => page.isPublished)
+    .map(page => `/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`);
+
   // Combine all routes
   const allRoutes = Array.from(new Set([
     ...staticRoutes,
     ...dynamicBlogRoutes,
     ...dynamicGuideRoutes,
     ...stateRoutes,
-    ...cityRoutes
+    ...cityRoutes,
+    ...pseoRoutes
   ])).filter(route => !route.includes('/thank-you'))
 
   // Convert to sitemap format
@@ -97,8 +104,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const canadaCount = allRoutes.filter(r => r.startsWith('/canada/')).length
   const usaStateCount = allRoutes.filter(r => r.startsWith('/usa/') && r.split('/').length === 3).length
   const usaCityCount = allRoutes.filter(r => r.startsWith('/usa/') && r.split('/').length === 4).length
+  const pseoCityIndustryCount = allRoutes.filter(r => r.startsWith('/grants/')).length
   const downloadCount = allRoutes.filter(r => r.startsWith('/download/')).length
-  const otherCount = allRoutes.length - blogCount - guideCount - canadaCount - usaStateCount - usaCityCount - downloadCount
+  const otherCount = allRoutes.length - blogCount - guideCount - canadaCount - usaStateCount - usaCityCount - pseoCityIndustryCount - downloadCount
 
   console.log(`\n✅ Sitemap generated with ${allRoutes.length} URLs`)
   console.log(`   📝 ${blogCount} Blog Posts`)
@@ -106,6 +114,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   console.log(`   🍁 ${canadaCount} Canada Pages`)
   console.log(`   🇺🇸 ${usaStateCount} USA State Pages`)
   console.log(`   🏙️ ${usaCityCount} USA City Pages`)
+  console.log(`   🤖 ${pseoCityIndustryCount} Programmatic City+Industry Pages (Active Drip)`)
   console.log(`   📥 ${downloadCount} Download Pages`)
   console.log(`   🏠 ${otherCount} Other Pages\n`)
 
