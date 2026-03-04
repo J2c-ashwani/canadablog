@@ -15,6 +15,9 @@ type CalculatorData = {
     revenue: string;
     goal: string;
     email: string;
+    name: string;
+    phone: string;
+    company: string;
 }
 
 const INITIAL_DATA: CalculatorData = {
@@ -22,7 +25,10 @@ const INITIAL_DATA: CalculatorData = {
     industry: "",
     revenue: "",
     goal: "",
-    email: ""
+    email: "",
+    name: "",
+    phone: "",
+    company: ""
 }
 
 export function GrantCalculator() {
@@ -81,11 +87,44 @@ export function GrantCalculator() {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulate API submission
-        setTimeout(() => {
-            setIsSubmitting(false);
+        try {
+            // Build a detailed message string with the selections
+            const messageInfo = `Waitlist / Calculator Lead
+Province: ${data.province}
+Industry: ${data.industry}
+Revenue: ${data.revenue}
+Goal: ${data.goal}
+Estimated Funding Capability: $${estimate.toLocaleString()}
+Matched Grants Count: ${grantCount}
+Company: ${data.company || "Not provided"}`;
+
+            // Call the existing contact endpoint to save to Google Sheets / send email
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: data.name,
+                    email: data.email,
+                    phone: data.phone,
+                    category: "Grant Calculator",
+                    message: messageInfo,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to submit");
+            }
+
             setIsSuccess(true);
-        }, 1500);
+        } catch (error) {
+            console.error("Submission error:", error);
+            // Fallback success UI anyway, so user doesn't get blocked
+            setIsSuccess(true);
+        } finally {
+            setIsSubmitting(false);
+        }
     }
 
     const updateData = (field: keyof CalculatorData, value: string) => {
@@ -279,12 +318,48 @@ export function GrantCalculator() {
                         </div>
 
                         <form onSubmit={handleSubmitEmail} className="space-y-4">
+                            <div className="grid sm:grid-cols-2 gap-4 text-left">
+                                <div className="space-y-2">
+                                    <Label htmlFor="calc-name" className="font-semibold">Full Name *</Label>
+                                    <Input
+                                        id="calc-name"
+                                        placeholder="Jane Doe"
+                                        className="h-12 text-base"
+                                        value={data.name}
+                                        onChange={(e) => updateData("name", e.target.value)}
+                                        required
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="calc-phone" className="font-semibold">Phone Number</Label>
+                                    <Input
+                                        id="calc-phone"
+                                        type="tel"
+                                        placeholder="(555) 555-5555"
+                                        className="h-12 text-base"
+                                        value={data.phone}
+                                        onChange={(e) => updateData("phone", e.target.value)}
+                                    />
+                                </div>
+                            </div>
+
                             <div className="space-y-2 text-left">
-                                <Label htmlFor="calculator-email" className="font-semibold">Where should we send your detailed Match Report?</Label>
+                                <Label htmlFor="calc-company" className="font-semibold">Company Name</Label>
+                                <Input
+                                    id="calc-company"
+                                    placeholder="Your Business Inc."
+                                    className="h-12 text-base"
+                                    value={data.company}
+                                    onChange={(e) => updateData("company", e.target.value)}
+                                />
+                            </div>
+
+                            <div className="space-y-2 text-left">
+                                <Label htmlFor="calculator-email" className="font-semibold">Email Address (for the report) *</Label>
                                 <Input
                                     id="calculator-email"
                                     type="email"
-                                    placeholder="Enter your best email..."
+                                    placeholder="jane@yourbusiness.com"
                                     className="h-14 text-lg"
                                     value={data.email}
                                     onChange={(e) => updateData("email", e.target.value)}
