@@ -34,3 +34,4 @@ audit_priority_posts.py
 check_functional_orphans.ts
 check_orphans.ts
 __pycache__/
+google-credentials.json

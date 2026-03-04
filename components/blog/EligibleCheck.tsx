@@ -55,8 +55,8 @@ export default function EligibleCheck({ questions = DEFAULT_QUESTIONS }: Eligibl
                                 <button
                                     onClick={() => handleAnswer(q.id, true)}
                                     className={`px-4 py-2 rounded-md font-medium text-sm transition-all duration-200 ${answers[q.id] === true
-                                            ? 'bg-indigo-600 text-white shadow-md transform scale-105'
-                                            : 'bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-neutral-700 hover:bg-gray-50 dark:hover:bg-neutral-700'
+                                        ? 'bg-indigo-600 text-white shadow-md transform scale-105'
+                                        : 'bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-neutral-700 hover:bg-gray-50 dark:hover:bg-neutral-700'
                                         }`}
                                 >
                                     Yes
@@ -64,8 +64,8 @@ export default function EligibleCheck({ questions = DEFAULT_QUESTIONS }: Eligibl
                                 <button
                                     onClick={() => handleAnswer(q.id, false)}
                                     className={`px-4 py-2 rounded-md font-medium text-sm transition-all duration-200 ${answers[q.id] === false
-                                            ? 'bg-gray-800 text-white shadow-md transform scale-105'
-                                            : 'bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-neutral-700 hover:bg-gray-50 dark:hover:bg-neutral-700'
+                                        ? 'bg-gray-800 text-white shadow-md transform scale-105'
+                                        : 'bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-neutral-700 hover:bg-gray-50 dark:hover:bg-neutral-700'
                                         }`}
                                 >
                                     No
@@ -77,8 +77,8 @@ export default function EligibleCheck({ questions = DEFAULT_QUESTIONS }: Eligibl
 
                 {isComplete && (
                     <div className={`mt-6 p-5 rounded-lg border transform transition-all duration-500 translate-y-0 opacity-100 ${isEligible
-                            ? 'bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800/30'
-                            : 'bg-amber-50 border-amber-200 dark:bg-amber-900/20 dark:border-amber-800/30'
+                        ? 'bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800/30'
+                        : 'bg-amber-50 border-amber-200 dark:bg-amber-900/20 dark:border-amber-800/30'
                         }`}>
                         {isEligible ? (
                             <div>
@@ -91,7 +91,7 @@ export default function EligibleCheck({ questions = DEFAULT_QUESTIONS }: Eligibl
                                 <p className="text-sm text-green-700 dark:text-green-400 mb-4">
                                     Based on your answers, you should strongly consider applying. Speak with a grant expert to confirm your eligibility and maximize your funding potential.
                                 </p>
-                                <Link href="/contact?service=grant-calculator" className="inline-flex px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg text-sm transition-colors shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                <Link href="/calculator" className="inline-flex px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg text-sm transition-colors shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
                                     Speak with an Expert
                                 </Link>
                             </div>
@@ -106,7 +106,7 @@ export default function EligibleCheck({ questions = DEFAULT_QUESTIONS }: Eligibl
                                 <p className="text-sm text-amber-700 dark:text-amber-400 mb-4">
                                     However, there are over 4,500 grant programs in Canada. A grant specialist can help identify other programs you qualify for.
                                 </p>
-                                <Link href="/contact?service=grant-calculator" className="inline-flex px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 dark:text-gray-900 text-white font-medium rounded-lg text-sm transition-colors shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+                                <Link href="/calculator" className="inline-flex px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 dark:text-gray-900 text-white font-medium rounded-lg text-sm transition-colors shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
                                     Explore Alternative Grants
                                 </Link>
                             </div>

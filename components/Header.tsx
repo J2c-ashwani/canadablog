@@ -165,6 +165,10 @@ export function Header() {
                 )}
               </div>
 
+              <Link href="/calculator" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
+                Grant Calculator
+              </Link>
+
               <Link href="/grant-finder" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
                 AI Grant Finder
               </Link>
@@ -334,6 +338,14 @@ export function Header() {
                     </div>
                   )}
                 </div>
+
+                <Link
+                  href="/calculator"
+                  className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Grant Calculator
+                </Link>
 
                 <Link
                   href="/grant-finder"
