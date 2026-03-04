@@ -249,3 +249,75 @@ export function generateBlogPageMetadata() {
     },
   };
 }
+
+/**
+ * Advanced Schema Markup Generators (JSON-LD)
+ * Ensures eligibility for Google Rich Results (Top Stories, Knowledge Panel, Rich Snippets)
+ */
+
+export function generateOrganizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "FSI Digital",
+    "url": "https://www.fsidigital.ca",
+    "logo": "https://www.fsidigital.ca/logo.png", // Assuming standard logo path
+    "description": "FSI Digital helps businesses and founders find, apply for, and win non-dilutive government grants and funding across Canada and the USA.",
+    "sameAs": [
+      // Add social links here if available
+    ]
+  };
+}
+
+export function generateArticleSchema(post: BlogPost, baseUrl = "https://www.fsidigital.ca/blog") {
+  const cleanTitle = getCleanTitle(post.seo?.metaTitle || post.title);
+  const cleanDesc = getCleanDescription(post);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": cleanTitle,
+    "description": cleanDesc,
+    "image": [
+      post.seo?.ogImage || `https://www.fsidigital.ca/images/blog/${post.image}`
+    ],
+    "datePublished": new Date(post.date).toISOString(),
+    "dateModified": new Date(post.date).toISOString(), // Can update this if you track edit dates
+    "author": [{
+      "@type": "Person",
+      "name": post.author,
+      "url": "https://www.fsidigital.ca/about" // Fallback author URL
+    }],
+    "publisher": {
+      "@type": "Organization",
+      "name": "FSI Digital",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.fsidigital.ca/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${baseUrl}/${post.slug}`
+    }
+  };
+}
+
+export function generateHowToSchema(post: BlogPost, steps: string[]) {
+  if (!steps || steps.length === 0) return null;
+
+  const cleanTitle = getCleanTitle(post.seo?.metaTitle || post.title);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": `How to Apply: ${cleanTitle}`,
+    "description": getCleanDescription(post),
+    "step": steps.map((step, index) => ({
+      "@type": "HowToStep",
+      "name": `Step ${index + 1}`,
+      "text": step,
+      "url": `https://www.fsidigital.ca/blog/${post.slug}#step-${index + 1}`
+    }))
+  };
+}

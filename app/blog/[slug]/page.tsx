@@ -18,7 +18,7 @@ import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
 import { getBlogPostBySlug, getAllBlogPosts, blogCategories } from '@/lib/data/blogPosts';
-import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
+import { generateMetadata as generateSEOMetadata, generateArticleSchema, generateOrganizationSchema, generateHowToSchema } from '@/lib/seo';
 import { generateBlogPostSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/schema';
 import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable";
 import { RelatedPageLinks } from '@/components/RelatedPageLinks';
@@ -87,6 +87,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const breadcrumbSchema = generateBreadcrumbSchema(fullPost);
   const faqSchema = fullPost.faq ? generateFAQSchema(fullPost.faq) : null;
 
+  // Advanced Schemas for Google Rich Results
+  const articleSchema = generateArticleSchema(fullPost);
+  const orgSchema = generateOrganizationSchema();
+  // We can extract <h2> or <h3> headers as "Steps" if it's a guide-style post
+  const stepMatches = [...content.matchAll(/<h[23][^>]*>(.*?)<\/h[23]>/gi)].map(m => m[1].replace(/<[^>]+>/g, '').trim());
+  const howToSchema = generateHowToSchema(fullPost, stepMatches.slice(0, 5)); // Just take first 5 headers as steps
+
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <script
@@ -101,6 +108,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+      />
+      {howToSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
         />
       )}
       <Header />

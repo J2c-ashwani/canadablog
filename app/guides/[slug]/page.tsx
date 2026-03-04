@@ -1,6 +1,6 @@
 // app/guides/[slug]/page.tsx
 import { notFound } from "next/navigation";
-import { getCleanTitle, getCleanDescription } from '@/lib/seo';
+import { getCleanTitle, getCleanDescription, generateArticleSchema, generateOrganizationSchema, generateHowToSchema } from '@/lib/seo';
 import { guidesDatabase as guides } from "@/lib/data/guides";
 import { grants } from "@/lib/data/grants";
 import Link from "next/link";
@@ -85,11 +85,27 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     })),
   };
 
+  // Advanced Schemas for Google Rich Results
+  const guideAsPost = {
+    title: guide.title,
+    excerpt: guide.description,
+    shortAnswer: guide.shortAnswer,
+    author: "FSI Digital Team",
+    date: guide.lastUpdated,
+    image: "grant-finder-blog-og.png",
+    slug: guide.slug,
+    seo: { keywords: guide.tags },
+  } as any;
+  const articleSchema = generateArticleSchema(guideAsPost, "https://www.fsidigital.ca/guides");
+  const orgSchema = generateOrganizationSchema();
+
   return (
     <>
       <Header />
       <main className="max-w-6xl mx-auto py-12 px-6">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
         {/* Q&A ANSWER ENGINE HERO */}
         <div className="bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-800 rounded-2xl p-8 md:p-12 mb-8 text-center">
           <div className="mb-4">
