@@ -1,3 +1,4 @@
+export const revalidate = 86400; // Revalidate every 24 hours
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllPseoPages, getPseoPage } from '@/lib/pseo-data';

@@ -1,3 +1,4 @@
+export const revalidate = 86400; // Revalidate every 24 hours
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
