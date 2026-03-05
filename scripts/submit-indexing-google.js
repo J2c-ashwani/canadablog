@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 dotenv.config({ path: path.join(__dirname, '../.env.local') });
 
 // Configuration
-const SITEMAP_URL = 'https://canadablog.vercel.app/sitemap.xml'; // Fallback to live sitemap
+const SITEMAP_URL = 'https://www.fsidigital.ca/sitemap.xml'; // Live sitemap
 const CREDENTIALS_PATH = path.join(__dirname, '../google-credentials.json');
 
 // Check if credentials exist
