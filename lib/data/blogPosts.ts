@@ -10591,7 +10591,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                                                                                                                                                                                                                                                           `,
     seo: {
       keywords: ["Manufacturing Grants Canada", "SIF Funding", "FedDev Ontario", "Equipment Loans Canada", "Canada Job Grant"]
-    }, shortAnswer: "🇨🇦 Scale your factory with Canadian government grants. Programs like the Strategic Innovation Fund (SIF) and Regional Development Agencies (e.g., FedDev) offer millions in 0% interest loans and non-repayable grants. Funding prioritizes clean tech adoption, EV supply chain integration, and major productivity improvements.",
+    }, shortAnswer: "🇨🇦 Scale your factory with Canadian government grants. Programs like the Strategic Innovation Fund (SIF) and Regional Development Agencies (e.g., FedDev) offer millions in 0% interest loans and non-repayable grants. Funding prioritizes clean tech adoption, EV supply chain integration, and major productivity improvements.", shortAnswer: "🇨🇦 Scale your factory with Canadian government grants. Programs like the Strategic Innovation Fund (SIF) and Regional Development Agencies (e.g., FedDev) offer millions in 0% interest loans and non-repayable grants. Funding prioritizes clean tech adoption, EV supply chain integration, and major productivity improvements.",
     metrics: [
       { label: 'Total', value: '$5.5B', description: 'Industry Fund', color: 'text-orange-600', iconName: 'Factory' },
       { label: 'Loan', value: '0%', description: 'RDA Interest', color: 'text-green-600', iconName: 'DollarSign' },
@@ -13114,7 +13114,7 @@ ${sbaSbirPost}
     `,
     seo: {
       keywords: ["SBIR grants 2026", "STTR funding", "America's Seed Fund", "R&D grants USA", "tech startup funding"]
-    },
+    }, shortAnswer: "The Short Answer: The SBIR/STTR program acts as \"America's Seed Fund,\" providing up to $4 in non-dilutive R&D grants for US tech startups. To win, companies must align their innovative technology with specific federal agency (e.g., NSF, DoD, NIH) research solicitations. Successfully securing Phase I funding dramatically improves the odds of larger Phase II commercialization awards.",
     metrics: [
       { label: 'Total', value: '$4B+', description: 'Annual Budget', color: 'text-green-600', iconName: 'Database' },
       { label: 'Phase I', value: '$150k+', description: 'Concept Funding', color: 'text-blue-600', iconName: 'Beaker' },
@@ -13150,7 +13150,7 @@ ${grantSecretsPost}
     `,
     seo: {
       keywords: ["grant writing tips 2026", "how to write a grant proposal", "winning grant applications", "grant writing mistakes to avoid"]
-    },
+    }, shortAnswer: "The Short Answer: Grant Writing Secrets provides valuable funding in non-repayable grants specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     metrics: [
       { label: 'Success Rate', value: '30%', description: 'Avg. Approval', color: 'text-green-600', iconName: 'PieChart' },
       { label: 'Preparation', value: '40hrs', description: 'Avg. Time Investment', color: 'text-blue-600', iconName: 'Clock' },
@@ -13186,7 +13186,7 @@ ${usdaRuralPost}
     `,
     seo: {
       keywords: ["USDA grants", "rural business grants", "RBDG program", "agricultural business funding", "rural entrepreneurship"]
-    },
+    }, shortAnswer: "The Short Answer: USDA Rural Business Development Grants provides valuable funding in non-repayable grants specifically tailored for rural Canadian businesses. To qualify, your business must demonstrate clear objectives in equipment purchases and advanced manufacturing and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     metrics: [
       { label: 'Max', value: '$500k', description: 'Grant Amount', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Eligible', value: '<50k', description: 'Pop. Limit', color: 'text-blue-600', iconName: 'Users' }
@@ -13221,7 +13221,7 @@ ${nyGrantsPost}
     `,
     seo: {
       keywords: ["New York business grants", "NYC small business funding", "NYS grants 2026", "startup grants New York"]
-    },
+    }, shortAnswer: "The Short Answer: New York Business Grants provides valuable funding in non-repayable grants specifically tailored for New York businesses. To qualify, your business must demonstrate clear objectives in technology development and commercialization and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     metrics: [
       { label: 'State', value: '$800M', description: 'Econ Dev Fund', color: 'text-blue-600', iconName: 'Briefcase' },
       { label: 'NYC', value: '$20k', description: 'Small Biz Grant', color: 'text-green-600', iconName: 'MapPin' }
@@ -13272,7 +13272,7 @@ ${regionalDevPost}
 `,
     seo: {
       keywords: ["RDAs Canada", "FedDev Ontario", "PacifiCan", "PrairiesCan", "ACOA grants", "regional development funding"]
-    },
+    }, shortAnswer: "The Short Answer: Canada's Regional Development Agencies: provides valuable funding in financial support specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     metrics: [
       { label: 'Budget', value: '$100M+', description: 'Total Funding', color: 'text-blue-600', iconName: 'DollarSign' },
       { label: 'Type', value: '0% Loan', description: 'Repayable', color: 'text-green-600', iconName: 'Percent' },
@@ -13325,7 +13325,7 @@ ${superclustersPost}
 `,
     seo: {
       keywords: ["Global Innovation Clusters", "Canada Superclusters", "Digital Cluster", "Protein Industries Canada", "NGen manufacturing grants"]
-    },
+    }, shortAnswer: "The Short Answer: Global Innovation Clusters: provides valuable funding in financial support specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in equipment purchases and advanced manufacturing and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     metrics: [
       { label: 'Project', value: '$2M+', description: 'Min Size', color: 'text-cyan-600', iconName: 'DollarSign' },
       { label: 'Partners', value: 'Required', description: 'Consortium', color: 'text-blue-600', iconName: 'Users' },
@@ -13445,7 +13445,7 @@ ${sredTaxPost}
 `,
     seo: {
       keywords: ["SR&ED 2026", "R&D tax credits Canada", "SRED claim guide", "innovation tax refunds"]
-    },
+    }, shortAnswer: "The Short Answer: The SR&ED program is Canada's largest R&D incentive, allowing businesses to claim a 35% federal refundable tax credit on eligible scientific research and experimental development costs. When stacked with provincial credits, you can recover up to 65% of your total R&D expenditures. Filing requires detailed technical narratives demonstrating technological uncertainty and systematic investigation.",
     metrics: [
       { label: 'Refund', value: '35%', description: 'CPCC Rate', color: 'text-green-600', iconName: 'Percent' },
       { label: 'Deadline', value: '18 mo', description: 'From Year End', color: 'text-red-600', iconName: 'Calendar' },
@@ -13862,7 +13862,7 @@ ${sredTaxPost}
     content: cleanTechPost,
     seo: {
       keywords: ["Clean Technology", "Canada Grants", "Green Funding", "Net Zero"]
-    },
+    }, shortAnswer: "The Short Answer: Canada's $400M Clean Technology Leadership provides $400M in non-repayable grants specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in cleantech and sustainable energy projects and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     metrics: [
       { label: 'Funding', value: '$400M', description: 'Total Investment', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Jobs', value: '50,000', description: 'New Positions', color: 'text-blue-600', iconName: 'Users' },
@@ -13897,7 +13897,7 @@ ${sredTaxPost}
     content: applyUsaPost,
     seo: {
       keywords: ["USA Grants", "Grant Application", "SAM.gov", "Small Business Funding"]
-    },
+    }, shortAnswer: "The Short Answer: This program provides valuable funding in non-repayable grants specifically tailored for US businesses. To qualify, your business must demonstrate clear objectives in scientific research and experimental development (R&D) and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     metrics: [
       { label: 'Success', value: '43%', description: 'National Average', color: 'text-blue-600', iconName: 'TrendingUp' },
       { label: 'Funding', value: '$50K+', description: 'Typical Award', color: 'text-green-600', iconName: 'DollarSign' },
@@ -13932,7 +13932,7 @@ ${sredTaxPost}
     content: canExportGrants2025,
     seo: {
       keywords: ["CanExport", "Export Grants", "Global Markets", "International Trade", "TCS"]
-    },
+    }, shortAnswer: "The Short Answer: CanExport Grants provides $75 in non-repayable grants specifically tailored for Canadian businesses. To qualify, your business must demonstrate clear objectives in scientific research and experimental development (R&D) and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     metrics: [
       { label: 'Funding', value: '$75M+', description: 'Annual Budget', color: 'text-green-600', iconName: 'Globe' },
       { label: 'Grant Max', value: '$50K', description: 'For SMEs', color: 'text-blue-600', iconName: 'DollarSign' },
@@ -13967,7 +13967,7 @@ ${sredTaxPost}
     content: ruralBusiness2025,
     seo: {
       keywords: ["Rural Grants", "USDA Business", "Small Town Funding", "Agri-Business", "Main Street"]
-    },
+    }, shortAnswer: "Rural America is experiencing a renaissance with $1.2 billion in targeted grants. Total funding available: $1.2B.",
     metrics: [
       { label: 'Fund Pool', value: '$1.2B', description: 'Total Annual', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'USDA Max', value: '$500K', description: 'Dev Grants', color: 'text-orange-600', iconName: 'TrendingUp' },
@@ -14002,7 +14002,7 @@ ${sredTaxPost}
     content: veteransBusiness2025,
     seo: {
       keywords: ["Veteran Grants", "VOSB", "SDVOSB", "Military Business", "SBA Veteran"]
-    },
+    }, shortAnswer: "The Short Answer: Veterans Business Grants provides $75M in non-repayable grants specifically tailored for veteran-owned US businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     metrics: [
       { label: 'Dedicated', value: '$75M', description: 'Grant Funding', color: 'text-red-600', iconName: 'Flag' },
       { label: 'Contracts', value: '3%', description: 'Fed Set-Aside', color: 'text-blue-600', iconName: 'Briefcase' },
@@ -14037,7 +14037,7 @@ ${sredTaxPost}
     content: newYorkGrants2025,
     seo: {
       keywords: ["New York Grants", "NYS CFA", "Excelsior Jobs", "REDC", "Empire State Dev"]
-    },
+    }, shortAnswer: "The Short Answer: New York Business Grants provides $1.8 in non-repayable grants specifically tailored for New York businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     metrics: [
       { label: 'REDC Fund', value: '$1.8B', description: 'Regional Aid', color: 'text-blue-600', iconName: 'Map' },
       { label: 'Tax Credit', value: '$5k', description: 'Per New Job', color: 'text-green-600', iconName: 'UserPlus' },
@@ -14072,7 +14072,7 @@ ${sredTaxPost}
     content: manufacturingGrants2025,
     seo: {
       keywords: ["Manufacturing Grants", "Smart Factory", "MEP", "Reshoring", "Industry 4.0"]
-    },
+    }, shortAnswer: "American manufacturing is booming with $2.3 billion in grants for automation, reshoring, and workforce development. Total funding available: $2.3B.",
     metrics: [
       { label: 'Total Fund', value: '$2.3B', description: 'Fed & State', color: 'text-blue-600', iconName: 'Settings' },
       { label: 'ROI', value: '$19:$1', description: 'MEP Avg', color: 'text-green-600', iconName: 'TrendingUp' },
@@ -14107,7 +14107,7 @@ ${sredTaxPost}
     content: minorityBusiness2025,
     seo: {
       keywords: ["Minority Grants", "MBE Certification", "SBA 8(a)", "NMSDC", "Supplier Diversity"]
-    },
+    }, shortAnswer: "Minority-owned businesses are driving economic growth with $1.9 trillion in revenue. Total funding available: $1.9B.",
     metrics: [
       { label: 'Targeted', value: '$1.9B', description: 'Grant Funding', color: 'text-purple-600', iconName: 'Users' },
       { label: 'Contracts', value: '$3.8B', description: 'SBA 8(a)', color: 'text-blue-600', iconName: 'Briefcase' },
@@ -14142,7 +14142,7 @@ ${sredTaxPost}
     content: digitalTransformation2025,
     seo: {
       keywords: ["CDAP", "Digital Adoption", "Tech Grants", "E-commerce", "Digital Transformation"]
-    },
+    }, shortAnswer: "The Canada Digital Adoption Program (CDAP) offers $90 million to boost SME technology. Total funding available: $90M.",
     metrics: [
       { label: 'Total Fund', value: '$90M', description: 'CDAP Budget', color: 'text-blue-600', iconName: 'Server' },
       { label: 'Grant', value: '$15K', description: 'Planning', color: 'text-green-600', iconName: 'FileText' },
@@ -14177,7 +14177,7 @@ ${sredTaxPost}
     content: agriInnovation2025,
     seo: {
       keywords: ["AgriInnovate", "AgTech", "Farming Grants", "Sustainable Ag", "Food Processing"]
-    },
+    }, shortAnswer: "Agriculture and Agri-Food Canada has launched a $180 million innovation fund. Total funding available: $180M.",
     metrics: [
       { label: 'Fund Pool', value: '$180M', description: 'Innovation', color: 'text-green-600', iconName: 'Sprout' },
       { label: 'Max Grant', value: '$5M', description: 'Per Project', color: 'text-blue-600', iconName: 'Award' },
@@ -14212,7 +14212,7 @@ ${sredTaxPost}
     content: usdaRural2025,
     seo: {
       keywords: ["USDA Grants", "Rural Development", "Ag Innovation", "Rural Business", "Value-Added"]
-    },
+    }, shortAnswer: "The USDA is investing $300 million in rural agricultural innovation targeted at 46 million rural Americans. Total funding available: $300M.",
     metrics: [
       { label: 'Innovation', value: '$300M', description: 'Total Fund', color: 'text-green-600', iconName: 'Globe' },
       { label: 'Bus. Grant', value: '$500K', description: 'Max Award', color: 'text-blue-600', iconName: 'DollarSign' },
@@ -14247,7 +14247,7 @@ ${sredTaxPost}
     content: womenBusiness2025,
     seo: {
       keywords: ["Women Grants", "WOSB Certification", "Amber Grant", "Female Founders", "SBA Women"]
-    },
+    }, shortAnswer: "Women entrepreneurs now own 42% of US businesses. Total funding available: $2.1B.",
     metrics: [
       { label: 'Total Fund', value: '$2.1B', description: 'Women Grants', color: 'text-pink-600', iconName: 'Heart' },
       { label: 'Contracts', value: '$25B', description: 'WOSB Goal', color: 'text-purple-600', iconName: 'Briefcase' },
