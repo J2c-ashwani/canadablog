@@ -1,5 +1,63 @@
+# =============================================
+# FSI Digital - robots.txt
+# GEO-Optimized for AI Crawlers
+# =============================================
+
+# ---- Standard Search Engines ----
 User-agent: *
 Allow: /
 Disallow: /download/*/thank-you
+Disallow: /api/
 
+# ---- OpenAI / ChatGPT ----
+User-agent: GPTBot
+Allow: /
+
+# ---- OpenAI Search (SearchGPT) ----
+User-agent: OAI-SearchBot
+Allow: /
+
+# ---- Perplexity AI ----
+User-agent: PerplexityBot
+Allow: /
+
+# ---- Anthropic (Claude) ----
+User-agent: ClaudeBot
+Allow: /
+
+# ---- Google Bard / Gemini ----
+User-agent: Google-Extended
+Allow: /
+
+# ---- Meta AI (Llama) ----
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# ---- Apple Intelligence ----
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ---- Amazon Alexa ----
+User-agent: Amazonbot
+Allow: /
+
+# ---- Cohere AI ----
+User-agent: cohere-ai
+Allow: /
+
+# ---- Common Crawl (used for AI training) ----
+User-agent: CCBot
+Allow: /
+
+# ---- Diffbot (AI data intelligence) ----
+User-agent: Diffbot
+Allow: /
+
+# =============================================
 Sitemap: https://www.fsidigital.ca/sitemap.xml
