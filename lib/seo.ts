@@ -282,11 +282,11 @@ export function generateArticleSchema(post: BlogPost, baseUrl = "https://www.fsi
       post.seo?.ogImage || `https://www.fsidigital.ca/images/blog/${post.image}`
     ],
     "datePublished": new Date(post.date).toISOString(),
-    "dateModified": new Date(post.date).toISOString(), // Can update this if you track edit dates
+    "dateModified": new Date(post.date).toISOString(),
     "author": [{
       "@type": "Person",
       "name": post.author,
-      "url": "https://www.fsidigital.ca/about" // Fallback author URL
+      "url": "https://www.fsidigital.ca/about"
     }],
     "publisher": {
       "@type": "Organization",
@@ -299,6 +299,36 @@ export function generateArticleSchema(post: BlogPost, baseUrl = "https://www.fsi
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": `${baseUrl}/${post.slug}`
+    },
+    // GEO/AEO: Speakable schema - tells AI assistants (Google, Siri, ChatGPT, Perplexity)
+    // which CSS selectors contain the most citable, authoritative content
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".short-answer", "h1", "h2 + p", ".faq-answer"]
+    }
+  };
+}
+
+/**
+ * GEO/AEO: Generates Speakable schema for a blog post.
+ * This signals to Google Assistant, Siri, Alexa, and AI crawlers
+ * (ChatGPT, Perplexity, Claude) which sections are the most authoritative,
+ * citable summaries of the page content.
+ *
+ * @param pageUrl - The canonical URL of the page
+ * @param cssSelectors - Array of CSS selectors to mark as speakable content
+ */
+export function generateSpeakableSchema(
+  pageUrl: string,
+  cssSelectors: string[] = [".short-answer", "h1", "h2 + p", ".faq-answer"]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url": pageUrl,
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": cssSelectors
     }
   };
 }
