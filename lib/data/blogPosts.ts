@@ -10591,7 +10591,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                                                                                                                                                                                                                                                           `,
     seo: {
       keywords: ["Manufacturing Grants Canada", "SIF Funding", "FedDev Ontario", "Equipment Loans Canada", "Canada Job Grant"]
-    }, shortAnswer: "🇨🇦 Scale your factory with Canadian government grants. Programs like the Strategic Innovation Fund (SIF) and Regional Development Agencies (e.g., FedDev) offer millions in 0% interest loans and non-repayable grants. Funding prioritizes clean tech adoption, EV supply chain integration, and major productivity improvements.", shortAnswer: "🇨🇦 Scale your factory with Canadian government grants. Programs like the Strategic Innovation Fund (SIF) and Regional Development Agencies (e.g., FedDev) offer millions in 0% interest loans and non-repayable grants. Funding prioritizes clean tech adoption, EV supply chain integration, and major productivity improvements.",
+    }, shortAnswer: "🇨🇦 Scale your factory with Canadian government grants. Programs like the Strategic Innovation Fund (SIF) and Regional Development Agencies (e.g., FedDev) offer millions in 0% interest loans and non-repayable grants. Funding prioritizes clean tech adoption, EV supply chain integration, and major productivity improvements.", shortAnswer: "🇨🇦 Scale your factory with Canadian government grants. Programs like the Strategic Innovation Fund (SIF) and Regional Development Agencies (e.g., FedDev) offer millions in 0% interest loans and non-repayable grants. Funding prioritizes clean tech adoption, EV supply chain integration, and major productivity improvements.", shortAnswer: "🇨🇦 Scale your factory with Canadian government grants. Programs like the Strategic Innovation Fund (SIF) and Regional Development Agencies (e.g., FedDev) offer millions in 0% interest loans and non-repayable grants. Funding prioritizes clean tech adoption, EV supply chain integration, and major productivity improvements.",
     metrics: [
       { label: 'Total', value: '$5.5B', description: 'Industry Fund', color: 'text-orange-600', iconName: 'Factory' },
       { label: 'Loan', value: '0%', description: 'RDA Interest', color: 'text-green-600', iconName: 'DollarSign' },
@@ -14304,7 +14304,7 @@ ${sredTaxPost}
     content: technologyStartup2025,
     seo: {
       keywords: ["Tech Grants", "SBIR", "STTR", "Startup Funding", "Non-Dilutive"]
-    },
+    }, shortAnswer: "Silicon Valley isn't the only path to funding. Total funding available: $3.4B.",
     metrics: [
       { label: 'SBIR Fund', value: '$3.4B', description: 'Annual Budget', color: 'text-purple-600', iconName: 'Cpu' },
       { label: 'Phase I', value: '$250K', description: 'Concept', color: 'text-blue-600', iconName: 'Lightbulb' },
@@ -14361,7 +14361,7 @@ ${sredTaxPost}
     content: healthcareGrants2025,
     seo: {
       keywords: ["Healthcare Grants", "Medical Funding", "Digital Health", "Rural Health", "HRSA"]
-    },
+    }, shortAnswer: "The healthcare sector is seeing unprecedented grant funding for digital health, rural access, and medical innovation. Total funding available: $4.5B.",
     metrics: [
       { label: 'Total Fund', value: '$4.5B', description: 'Healthcare Grants', color: 'text-blue-600', iconName: 'Activity' },
       { label: 'Max Award', value: '$1.2M', description: 'Innovation Grant', color: 'text-green-600', iconName: 'DollarSign' },
@@ -14396,7 +14396,7 @@ ${sredTaxPost}
     content: californiaGrants2025,
     seo: {
       keywords: ["California Grants", "Dream Fund", "Small Business", "Startup Funding", "CalOSBA"]
-    },
+    }, shortAnswer: "California leads the nation in state-level business support. Total funding available: $1.5B.",
     metrics: [
       { label: 'State Fund', value: '$1.5B', description: 'Annual Budget', color: 'text-blue-600', iconName: 'Sun' },
       { label: 'Dream Fund', value: '$35K', description: 'Seed Grant', color: 'text-green-600', iconName: 'Zap' },
@@ -14431,7 +14431,7 @@ ${sredTaxPost}
     content: floridaGrants2025,
     seo: {
       keywords: ["Florida Grants", "Enterprise Florida", "Export Grants", "Small Business", "Tourism Funding"]
-    },
+    }, shortAnswer: "Florida's business-friendly environment includes $850 million in targeted grants for export growth, high-tech industry, and tourism development. Total funding available: $850M.",
     metrics: [
       { label: 'Growth Fund', value: '$850M', description: 'State Incentives', color: 'text-orange-600', iconName: 'TrendingUp' },
       { label: 'Export', value: '$50K', description: 'Trade Grants', color: 'text-blue-600', iconName: 'Globe' },
@@ -14466,7 +14466,7 @@ ${sredTaxPost}
     content: illinoisGrants2025,
     seo: {
       keywords: ["Illinois Grants", "DCEO", "Advantage Illinois", "Small Business", "Manufacturing"]
-    },
+    }, shortAnswer: "Illinois DCEO offers over $650 million in business development grants. Total funding available: $650M.",
     metrics: [
       { label: 'DCEO Fund', value: '$650M', description: 'State Grants', color: 'text-blue-600', iconName: 'Landmark' },
       { label: 'Advantage', value: '2%', description: 'Low Interest Loans', color: 'text-green-600', iconName: 'Percent' },
@@ -14501,7 +14501,7 @@ ${sredTaxPost}
     content: michiganGrants2025,
     seo: {
       keywords: ["Michigan Grants", "Manufacturing", "Industry 4.0", "EV Transition", "MEDC"]
-    },
+    }, shortAnswer: "Michigan is investing $500 million to reclaim its manufacturing crown. Total funding available: $500M.",
     metrics: [
       { label: 'Mfg Fund', value: '$500M', description: 'Industry Support', color: 'text-blue-600', iconName: 'Tool' },
       { label: 'Tech Grant', value: '$25K', description: 'Industry 4.0', color: 'text-purple-600', iconName: 'Cpu' },
@@ -14536,7 +14536,7 @@ ${sredTaxPost}
     content: pennsylvaniaGrants2025,
     seo: {
       keywords: ["Pennsylvania Grants", "Ben Franklin Tech", "PIDA", "Innovation", "Startups"]
-    },
+    }, shortAnswer: "Pennsylvania's Ben Franklin Technology Partners and PIDA offer $670 million in funding. Total funding available: $670M.",
     metrics: [
       { label: 'Innovation', value: '$670M', description: 'State Fund', color: 'text-blue-600', iconName: 'Zap' },
       { label: 'BFTP', value: '$100K+', description: 'Tech Investment', color: 'text-purple-600', iconName: 'Award' },
@@ -14589,7 +14589,7 @@ ${sredTaxPost}
     content: texasGrants2025,
     seo: {
       keywords: ["Texas Grants", "Enterprise Fund", "Deal Closing", "Business Incentives", "Governor's Office"]
-    },
+    }, shortAnswer: "Everything is bigger in Texas, including the $1.2 billion Texas Enterprise Fund. Total funding available: $1.2B.",
     metrics: [
       { label: 'TEF Fund', value: '$1.2B', description: 'Deal Closing', color: 'text-red-600', iconName: 'Star' },
       { label: 'Tax', value: '0%', description: 'Income Tax', color: 'text-blue-600', iconName: 'Smile' },
@@ -14624,7 +14624,7 @@ ${sredTaxPost}
     content: doeCleanTech2025,
     seo: {
       keywords: ["DOE Grants", "Clean Energy", "Climate Tech", "ARPA-E", "Solar Funding"]
-    },
+    }, shortAnswer: "The Department of Energy is deploying $800 million for clean tech innovation. Total funding available: $800M.",
     metrics: [
       { label: 'DOE Fund', value: '$800M', description: 'Innovation', color: 'text-green-600', iconName: 'Sun' },
       { label: 'ARPA-E', value: '$3M', description: 'High Risk R&D', color: 'text-purple-600', iconName: 'Zap' },
@@ -14659,7 +14659,7 @@ ${sredTaxPost}
     content: epaJustice2025,
     seo: {
       keywords: ["EPA Grants", "Environmental Justice", "Community Grants", "Pollution", "Public Health"]
-    },
+    }, shortAnswer: "The EPA's Environmental Justice program offers $100 million to community organizations. Total funding available: $100M.",
     metrics: [
       { label: 'EJ Fund', value: '$100M', description: 'Community Grants', color: 'text-green-600', iconName: 'Globe' },
       { label: 'Grant', value: '$500K', description: 'Max Award', color: 'text-blue-600', iconName: 'DollarSign' },
@@ -14694,7 +14694,7 @@ ${sredTaxPost}
     content: hudCommunity2025,
     seo: {
       keywords: ["HUD Grants", "CDBG", "Community Development", "Housing", "Infrastructure"]
-    },
+    }, shortAnswer: "HUD's CDBG program provides $150 million for community development. Total funding available: $150M.",
     metrics: [
       { label: 'CDBG', value: '$150M', description: 'Block Grants', color: 'text-orange-600', iconName: 'Home' },
       { label: 'LMI', value: '70%', description: 'Benefit Required', color: 'text-blue-600', iconName: 'Users' },
@@ -14729,7 +14729,7 @@ ${sredTaxPost}
     content: nsfStem2025,
     seo: {
       keywords: ["NSF Grants", "STEM Research", "SBIR", "Deep Tech", "Scientific Funding"]
-    },
+    }, shortAnswer: "The NSF seeds the future with $200 million in STEM research grants. Total funding available: $200M.",
     metrics: [
       { label: 'Seed Fund', value: '$200M', description: 'America\'s Seed Fund', color: 'text-blue-600', iconName: 'Cpu' },
       { label: 'Phase I', value: '$305K', description: 'Feasibility', color: 'text-green-600', iconName: 'Beaker' },
