@@ -5094,7 +5094,7 @@ export const blogPosts: BlogPost[] = [
                                                                                                                                                                                                                                                                                                                         </div>`,
     seo: {
       keywords: ["Black Entrepreneurship Loan Fund", "FACE Coalition", "BELF Canada", "Black Business Grants"]
-    },
+    }, shortAnswer: "Yes — 🇨🇦 Complete guide to the Black Entrepreneurship Loan Fund. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Max Loan', value: '$250K', description: 'via BDC', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Partner', value: 'FACE', description: 'Coalition', color: 'text-purple-600', iconName: 'Users' },
@@ -5269,7 +5269,7 @@ export const blogPosts: BlogPost[] = [
     </div>`,
     seo: {
       keywords: ["Newcomer Business Grants", "Immigrant Entrepreneur Loans", "Futurpreneur Newcomer", "Start Business Canada"]
-    },
+    }, shortAnswer: "Yes — 🇨🇦 Complete guide for immigrants and newcomers starting a business in Canada. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Max Loan', value: '$60,000', description: 'Futurpreneur', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Support', value: 'Mentors', description: '2 Years', color: 'text-blue-600', iconName: 'Users' },
@@ -5422,7 +5422,7 @@ export const blogPosts: BlogPost[] = [
                                                                                                                                                                                                                                                             </div>`,
     seo: {
       keywords: ["BC Business Grants", "Small Business BC", "Innovate BC", "Export Navigator", "PacifiCan"]
-    },
+    }, shortAnswer: "Yes — 🇨🇦 British Columbia's top funding programs explained. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Total', value: '$2B+', description: 'Provincial Aid', color: 'text-teal-600', iconName: 'DollarSign' },
       { label: 'Hiring', value: '$10k', description: 'ISI Grant', color: 'text-blue-600', iconName: 'Users' },
@@ -5571,7 +5571,7 @@ export const blogPosts: BlogPost[] = [
                                                                                                                                                                                                                                                             </div>`,
     seo: {
       keywords: ["Northern Canada Grants", "CanNor Funding", "Yukon Business", "NWT SEED Grant", "Nunavut Business"]
-    },
+    }, shortAnswer: "Yes — 🇨🇦 Business in the North is unique. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Total', value: '$300M', description: 'Northern Aid', color: 'text-cyan-600', iconName: 'DollarSign' },
       { label: 'Grant', value: '$30k', description: 'SEED Payout', color: 'text-blue-600', iconName: 'Zap' },
@@ -5750,7 +5750,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     </div>`,
     seo: {
       keywords: ["Innovation Canada", "SR&ED", "NRC IRAP", "CDAP Grant", "R&D Funding Canada"]
-    },
+    }, shortAnswer: "Yes — 🇨🇦 This is the big league. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Credit', value: '35%', description: 'SR&ED Refund', color: 'text-blue-600', iconName: 'PieChart' },
       { label: 'Grant', value: '80%', description: 'IRAP Labour', color: 'text-green-600', iconName: 'Users' },
@@ -5920,7 +5920,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     `,
     seo: {
       keywords: ["Quebec Business Grants", "Investissement Québec", "PME MTL", "Subventions Québec", "CED Funding"]
-    },
+    }, shortAnswer: "🇨🇦 Québec offers some of the most generous R&D and manufacturing grants in North America. Programs like the 30% CRIC tax credit and ESSOR manufacturing subsidies provide substantial non-repayable and refundable funding. Applications must strictly adhere to Bill 96 French-language requirements to be considered.",
     metrics: [
       { label: 'Total', value: '$4B+', description: 'Provincial Aid', color: 'text-indigo-600', iconName: 'DollarSign' },
       { label: 'R&D', value: '75%', description: 'Tax Credits', color: 'text-purple-600', iconName: 'Zap' },
@@ -6078,7 +6078,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                                                                                                                                 </div>`,
     seo: {
       keywords: ["Saskatchewan Business Grants", "Innovation Saskatchewan", "SAIF Grant", "WESK", "Regina Business"]
-    },
+    }, shortAnswer: "Yes — 🇨🇦 Saskatchewan is more than just wheat. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Innovation', value: '$400k', description: 'SAIF Grant', color: 'text-green-600', iconName: 'Zap' },
       { label: 'Hiring', value: '$20k', description: 'Grad Retention', color: 'text-blue-600', iconName: 'Users' },
@@ -6398,7 +6398,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
   </script>`,
     seo: {
       keywords: ["Clean Technology Grants", "Canada Net Zero Accelerator", "SDTC Funding", "Green Business Grants", "Carbon Capture Funding"]
-    },
+    }, shortAnswer: "Yes — 🇨🇦 The definitive guide to Canada's Clean Technology funding landscape for 2026. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Total', value: '$9.1B', description: 'Available Funding', color: 'text-green-600', iconName: 'Globe' },
       { label: 'Jobs', value: '50k+', description: 'Green Jobs', color: 'text-blue-600', iconName: 'Users' },
@@ -6623,7 +6623,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     `,
     seo: {
       keywords: ["Small Business Financing 2026", "CSBFP Canada", "Government Business Loans", "Canada Small Business Grants", "Startup Funding Canada"]
-    },
+    }, shortAnswer: "Yes — 🇨🇦 The complete guide to Canada's expanded Small Business Financing Program (CSBFP). Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Pool', value: '$250M', description: '2026 Allocation', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Max Loan', value: '$1.15M', description: 'Combined Limit', color: 'text-blue-600', iconName: 'CreditCard' },
@@ -10184,7 +10184,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
             `,
     seo: {
       keywords: ["Manitoba Business Grants", "Innovation Growth Program", "North Forge", "FPEGF", "Winnipeg Business"]
-    },
+    }, shortAnswer: "Yes — Manitoba's Innovation Growth Program gives up to $100K for commercialization. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Total', value: '$800M', description: 'Provincial Aid', color: 'text-purple-600', iconName: 'DollarSign' },
       { label: 'Tech', value: '$100k', description: 'IGP Grant', color: 'text-green-600', iconName: 'Zap' },
@@ -10449,7 +10449,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                                                                                                                                                   `,
     seo: {
       keywords: ["Healthcare Grants Canada", "Medical Innovation Funding", "CIHR Grants", "Digital Health Grants", "MedTech Funding"]
-    },
+    }, shortAnswer: "Yes — 90% of health startups apply to the wrong program and get rejected. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Total', value: '$14B', description: 'Available Funds', color: 'text-blue-600', iconName: 'DollarSign' },
       { label: 'Max', value: '$10M', description: 'Project Cap', color: 'text-green-600', iconName: 'Award' },
@@ -10758,7 +10758,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                                                                                                                                                                                                                                                                                                                                                                                                     `,
     seo: {
       keywords: ["Tech Startup Grants Canada", "NRC IRAP Funding", "SRED Tax Credits", "Software Innovation Grants", "Canadian AI Funding"]
-    },
+    }, shortAnswer: "Yes — Keep 100% equity: IRAP covers 80% of R&D salaries, SR&ED gives 45% tax credits, and the Digital Adoption Program funds your tech stack. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'IRAP', value: '$500M', description: 'Annual Contribution', color: 'text-purple-600', iconName: 'Zap' },
       { label: 'SRED', value: '35%', description: 'Cash Refund', color: 'text-green-600', iconName: 'DollarSign' },
@@ -11202,7 +11202,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
 `,
     seo: {
       keywords: ["Atlantic Business Grants", "ACOA Funding", "Invest Nova Scotia", "Innovation PEI", "CBDC Loans"]
-    },
+    }, shortAnswer: "Yes — 🇨🇦 The East Coast is booming. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Total', value: '$400M', description: 'ACOA Fund', color: 'text-blue-600', iconName: 'DollarSign' },
       { label: 'Interest', value: '0%', description: 'REGI Loans', color: 'text-green-600', iconName: 'Percent' },
@@ -11646,7 +11646,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             `,
     seo: {
       keywords: ["Canada Housing Grants", "CMHC Seed Funding", "Green Municipal Fund", "Housing Accelerator Fund", "Community Grants Canada"]
-    },
+    }, shortAnswer: "Yes — 🇨🇦 Access CMHC and FCM funding for housing and community projects. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Amortization', value: '50 Years', description: 'CMHC MLI Select', color: 'text-blue-600', iconName: 'Clock' },
       { label: 'LTV Limit', value: '95%', description: 'Minimal Equity', color: 'text-green-600', iconName: 'Percent' },
@@ -11988,7 +11988,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   `,
     seo: {
       keywords: ["Women Business Grants", "WES Strategy", "WEOC Loan", "Female Entrepreneur Funding", "Canada Women Grant"]
-    },
+    }, shortAnswer: "Yes — 🇨🇦 The WES Ecosystem Fund, WEOC loans, and FACERF are changing the game. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Total', value: '$7B', description: 'WES Strategy', color: 'text-pink-600', iconName: 'DollarSign' },
       { label: 'Loan', value: '$50k', description: 'WEOC Loan', color: 'text-purple-600', iconName: 'CreditCard' },
@@ -12230,7 +12230,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     </div>`,
     seo: {
       keywords: ["Veteran Business Grants", "small business grants for veterans", "SDVOSB funding", "Boots to Business", "Warrior Rising grants"]
-    },
+    }, shortAnswer: "Yes — 🇺🇸 Complete guide to grants and resources for veteran-owned small businesses (VOSB) and service-disabled veteran-owned small businesses (SDVOSB).. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Warrior', value: '$15k', description: 'Rising Grant', color: 'text-green-600', iconName: 'Star' },
       { label: 'VR&E', value: 'Equip', description: 'Business Assets', color: 'text-blue-600', iconName: 'Tool' },
@@ -12492,7 +12492,7 @@ Write: "This grant will fund a high-capacity oven, allowing me to increase produ
                 </div>`,
     seo: {
       keywords: ["Grants for women", "Amber Grant application", "Cartier Women's Initiative", "WOSB certification", "small business grants for women 2026"]
-    },
+    }, shortAnswer: "Yes — 🇺🇸 A curated list of grants for women entrepreneurs in 2026. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Amber', value: '$10k', description: 'Monthly Grant', color: 'text-pink-600', iconName: 'Star' },
       { label: 'Cartier', value: '$100k', description: 'Top Award', color: 'text-purple-600', iconName: 'Trophy' },
@@ -12710,7 +12710,7 @@ However, a single corporate contract can yield 100x that investment.
                                 </div>`,
     seo: {
       keywords: ["Minority business grants", "MBE certification", "Black owned business grants", "Latino business funding", "MBDA grants"]
-    },
+    }, shortAnswer: "Yes — 🇺🇸 Funding sources dedicated to Black, Latino, Asian, and Indigenous entrepreneurs. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'FedEx', value: '$30k', description: 'Grant Contest', color: 'text-purple-600', iconName: 'Truck' },
       { label: 'MBDA', value: 'Help', description: 'Free Consulting', color: 'text-orange-600', iconName: 'Users' },
@@ -13812,7 +13812,7 @@ ${sredTaxPost}
 `,
     seo: {
       keywords: ["Green Business Grants", "Sustainability Funding", "EV Incentives", "Retrofit Grants"]
-    },
+    }, shortAnswer: "Yes — Detailed guide to Canada's green business grants for SMEs. Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     metrics: [
       { label: 'Retrofit', value: '$3M', description: 'GICB Max', color: 'text-green-600', iconName: 'Home' },
       { label: 'Fleet', value: '$200k', description: 'Truck Incentive', color: 'text-blue-600', iconName: 'Truck' },

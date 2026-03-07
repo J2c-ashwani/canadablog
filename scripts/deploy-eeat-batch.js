@@ -52,7 +52,7 @@ for (const file of DATA_FILES) {
         if (slugMatch) {
             const slug = slugMatch[1];
             // Scan forward to find shortAnswer (search within entry, stop at next slug)
-            for (let j = i + 1; j < Math.min(i + 100, rolloutLines.length); j++) {
+            for (let j = i + 1; j < Math.min(i + 500, rolloutLines.length); j++) {
                 if (rolloutLines[j].match(/^\s+slug:\s*['"]/) && j > i + 1) break;
 
                 // Match: `}, shortAnswer: "...",`  or  `shortAnswer: "...",`
@@ -85,7 +85,7 @@ for (const file of DATA_FILES) {
 
         // Check if main already has shortAnswer for this slug
         let alreadyHas = false;
-        for (let j = i + 1; j < Math.min(i + 100, mainLines.length); j++) {
+        for (let j = i + 1; j < Math.min(i + 500, mainLines.length); j++) {
             if (mainLines[j].match(/^\s+slug:\s*['"]/) && j > i + 1) break;
             if (mainLines[j].includes('shortAnswer')) {
                 alreadyHas = true;
@@ -97,7 +97,7 @@ for (const file of DATA_FILES) {
 
         // Find the seo: { keywords: [...] } block and inject shortAnswer after it
         // Pattern: `    seo: {` ... `    },`  →  `    }, shortAnswer: "...",`
-        for (let j = i + 1; j < Math.min(i + 100, mainLines.length); j++) {
+        for (let j = i + 1; j < Math.min(i + 500, mainLines.length); j++) {
             if (mainLines[j].match(/^\s+slug:\s*['"]/) && j > i + 1) break;
 
             // Look for the closing of the seo block: `    },` or `},`
