@@ -17,6 +17,7 @@ import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
 import { RelatedPageLinks } from '@/components/RelatedPageLinks';
+import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 
 // Icon mapping for dynamic rendering from data
 const iconMap: Record<string, any> = {
@@ -303,6 +304,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           </div>
         </footer>
       </main>
+      <MobileStickyCTA />
       <Footer />
     </>
   );

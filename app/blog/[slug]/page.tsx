@@ -24,6 +24,7 @@ import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable";
 import { RelatedPageLinks } from '@/components/RelatedPageLinks';
 import { ExpertTipBox } from "@/components/blog/ExpertTipBox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 
 // Icon mapping for dynamic rendering from data
 const iconMap: Record<string, any> = {
@@ -319,6 +320,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div >
       </main >
 
+      <MobileStickyCTA />
       <RelatedPosts currentPost={fullPost} />
       <Footer />
     </div >
