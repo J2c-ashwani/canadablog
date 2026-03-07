@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "Use our AI-powered grant finder to discover personalized government funding opportunities. Answer a few questions and get matched with relevant grants.",
   keywords:
     "AI grant finder, business grant finder, grant matching tool, personalized grants, government funding finder",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/grant-finder",
+  },
   openGraph: {
     title: "AI Business Grant Finder | Find Perfect Grants for Your Business",
     description: "Use our AI-powered grant finder to discover personalized government funding opportunities.",

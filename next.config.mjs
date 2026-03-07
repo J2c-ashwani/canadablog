@@ -65,6 +65,46 @@ const nextConfig = {
       { source: '/blog/healthcare-grants-2025', destination: '/blog/healthcare-grants-2026', permanent: true },
       { source: '/blog/clean-technology-2025', destination: '/blog/clean-technology-2026', permanent: true },
       { source: '/blog/illinois-business-development-2025', destination: '/usa/illinois', permanent: true },
+
+      // Google "Excluded by noindex" fixes — Mar 2026
+      // Old 2025 slugs → current 2026 equivalents
+      { source: '/blog/biden-2-5b-grants-2025', destination: '/blog/biden-2-5b-grants-2026', permanent: true },
+      { source: '/blog/manufacturing-grants', destination: '/blog/manufacturing-grants-2026', permanent: true },
+      { source: '/blog/health-tech-grants', destination: '/blog/healthcare-grants-2026', permanent: true },
+      { source: '/blog/rural-funding-guide', destination: '/blog/rural-business-development-2026', permanent: true },
+      { source: '/blog/canexport-guide', destination: '/blog/canexport-grants-2026', permanent: true },
+      { source: '/blog/sred-guide', destination: '/blog/sred-tax-credits-2026', permanent: true },
+      { source: '/blog/sred-tax-credits-guide', destination: '/blog/sred-scientific-research-experimental-development', permanent: true },
+      { source: '/blog/cdap-guide', destination: '/blog/canada-technology-adoption-grants-guide', permanent: true },
+      { source: '/blog/ocean-tech-grants', destination: '/blog/canada-clean-technology-innovation-grants', permanent: true },
+      { source: '/blog/futurpreneur-loans-mentorship', destination: '/blog/canada-startup-funding-grants-guide', permanent: true },
+      { source: '/blog/texas-business-incentives', destination: '/blog/texas-business-grants-2025', permanent: true },
+      { source: '/blog/texas-tech-programs', destination: '/usa/texas', permanent: true },
+      { source: '/blog/energy-efficiency-grants-canada', destination: '/blog/canada-clean-technology-environment-grants-guide', permanent: true },
+
+      // Old simplified slugs → full current slugs
+      { source: '/blog/agricultural-grants-canada', destination: '/blog/agriculture-agri-food-canada-government-grants', permanent: true },
+      { source: '/blog/small-business-grants-ontario', destination: '/blog/ontario-government-business-grants', permanent: true },
+      { source: '/blog/quebec-business-grants-loans-guide', destination: '/blog/quebec-business-grants-2026', permanent: true },
+      { source: '/blog/women-business-grants-canada', destination: '/blog/women-business-grants-2026', permanent: true },
+      { source: '/blog/canadian-small-business-funding-guide', destination: '/blog/small-business-grants-complete-guide', permanent: true },
+      { source: '/blog/women-minority-business-grants-guide', destination: '/blog/women-tech-stem-grants-guide', permanent: true },
+      { source: '/blog/startup-business-grants-canada-guide', destination: '/blog/canada-startup-funding-grants-guide', permanent: true },
+
+      // Double-dash URL fixes (broken URLs Google crawled)
+      { source: '/blog/canada-aerospace--defence-innovation-grants', destination: '/blog/canada-aerospace-defence-innovation-grants', permanent: true },
+      { source: '/blog/canada-digital--ai-innovation-grants', destination: '/blog/canada-digital-ai-innovation-grants', permanent: true },
+
+      // Guide old slugs → correct current guide slugs
+      { source: '/guides/apply-women-entrepreneurship-strateg', destination: '/guides/apply-women-entrepreneurship-strategy', permanent: true },
+      { source: '/guides/canada-innovation-rd-funding-guide', destination: '/guides/canada-digital-ai-funding-guide', permanent: true },
+      { source: '/guides/sbir-sttr-complete-guide', destination: '/guides/sbir-research-grants-guide', permanent: true },
+
+      // 404 page fixes — Mar 2026
+      { source: '/canada/life-sciences-funding-guide', destination: '/guides/canada-life-sciences-funding-guide', permanent: true },
+      { source: '/cdbg-community-consultation', destination: '/grant-finder', permanent: true },
+      { source: '/grants/technology-grants', destination: '/blog/canada-clean-technology-innovation-grants', permanent: true },
+      { source: '/rural-grant-consultation', destination: '/blog/rural-business-development-2026', permanent: true },
     ]
   },
   async headers() {
