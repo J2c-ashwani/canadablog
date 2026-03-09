@@ -12,6 +12,11 @@ import {
 } from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "SBIR Small Business Innovation Research 2026 | Complete Federal R&D Grant Guide",
@@ -83,7 +88,61 @@ export default function SBIRSmallBusinessGuide() {
           </div>
         </section>
 
-        <section className="py-8 bg-white border-b">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-emerald-50 dark:bg-emerald-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-emerald-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-emerald-700">The Short Answer: </span>
+                The Small Business Innovation Research (SBIR) program awards over $4.1 billion annually to U.S. startups developing high-risk, high-reward technologies. It is entirely non-dilutive, meaning U.S.-owned small businesses (under 500 employees) can secure up to $1.7M in Phase I and Phase II R&D grants without giving up any equity to investors.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="Quick SBIR Program Facts"
+                metrics={[
+                  { label: "Phase I (Feasibility)", value: "$50K - $300K", description: "6 to 12 months duration", icon: <Lightbulb className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "Phase II (R&D)", value: "$750K - $1.7M", description: "24 months duration", icon: <TrendingUp className="w-5 h-5" />, color: "text-green-600" },
+                  { label: "Success Rate", value: "15% - 25%", description: "Average Phase I win rate", icon: <Target className="w-5 h-5" />, color: "text-orange-600" },
+                  { label: "Annual Funding", value: "$4.1 Billion", description: "Across 11 Federal Agencies", icon: <Building className="w-5 h-5" />, color: "text-purple-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="The Registration Gauntlet Starts Early">
+                <p>Do not wait for a solicitation to open before getting your company registered. You absolutely must have a completed SAM.gov registration and a UEI (Unique Entity ID) to submit a proposal on Grants.gov or DSIP. This <strong>administrative process can take 4 to 6 weeks</strong>. Start now.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2025-12-05" />
+            </div>
+          </div>
+        </section>
+<section className="py-8 bg-white border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <nav className="p-6 bg-gray-50 rounded-xl">

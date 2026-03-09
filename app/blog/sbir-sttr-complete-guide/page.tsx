@@ -7,9 +7,15 @@ import {
   CheckCircle, DollarSign, Target, AlertTriangle, Users, FileText,
   Clock, ChevronRight, ExternalLink, BookOpen, HelpCircle, Briefcase,
   TrendingUp, Building, Beaker, Shield, Zap
-} from "lucide-react"
+, Award, Gift, MapPin, Percent, Flag, Rocket} from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
+import InlineCTA from '@/components/blog/InlineCTA'
 
 export const metadata: Metadata = {
   title: "SBIR & STTR Grants Complete Guide 2026 | Up to $1.7M Federal R&D Funding",
@@ -86,7 +92,61 @@ export default function SBIRSTTRGuidePage() {
         </section>
 
         {/* Table of Contents */}
-        <section className="py-8 bg-white border-b">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-emerald-50 dark:bg-emerald-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-emerald-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-emerald-700">The Short Answer: </span>
+                America's Seed Fund (SBIR/STTR) provides up to <strong>$1.7M in non-dilutive R&D grants</strong> for US-based small businesses (under 500 employees). You retain full IP ownership and equity while developing deep tech, biotech, or defense innovations for 11 participating federal agencies like DoD, NIH, and NSF.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="Quick Funding Facts"
+                metrics={[
+                  { label: "Phase I Award", value: "$50K - $300K", description: "Feasibility & Proof of Concept", icon: <Target className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "Phase II Award", value: "$750K - $1.7M", description: "Prototype Development", icon: <DollarSign className="w-5 h-5" />, color: "text-green-600" },
+                  { label: "Win Rate", value: "15% - 25%", description: "Average Phase I Success", icon: <TrendingUp className="w-5 h-5" />, color: "text-orange-600" },
+                  { label: "Total Budget", value: "$4.1B+", description: "Annual Federal Set-Aside", icon: <Building className="w-5 h-5" />, color: "text-purple-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="warning" title="STTR Requires a Formal Partnership">
+                <p>Unlike SBIR, the <strong>STTR program legally requires your small business to formally partner with a non-profit research institution</strong> (like a university or federal lab). The small business must perform at least 40% of the work, and the research partner at least 30%.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2025-12-01" />
+            </div>
+          </div>
+        </section>
+<section className="py-8 bg-white border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <nav className="p-6 bg-gray-50 rounded-xl">

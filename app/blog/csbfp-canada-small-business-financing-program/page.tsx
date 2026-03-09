@@ -12,6 +12,11 @@ import {
 } from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "Canada Small Business Financing Program (CSBFP) 2026 | Up to $1M Government-Guaranteed Loans",
@@ -82,7 +87,61 @@ export default function CSBFPBlogPage() {
           </div>
         </section>
 
-        <section className="py-8 bg-white border-b">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-blue-50 dark:bg-blue-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-blue-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-blue-800 dark:text-blue-400">The Short Answer: </span>
+                The Canada Small Business Financing Program (CSBFP) is not a direct grant. It is a federal <strong>loan-guarantee program</strong> that covers 85% of a lender’s risk. This enables small Canadian businesses (under $10M revenue) to borrow up to <strong>$1.15 Million</strong> for physical assets like equipment, leasehold improvements, and real estate, without pledging personal home equity.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="CSBFP Loan Categories & Limits"
+                metrics={[
+                  { label: "Real Property", value: "Up to $500k", description: "Buying a commercial building for your business", icon: <Building className="w-5 h-5" />, color: "text-purple-600" },
+                  { label: "Equipment", value: "Up to $350k", description: "Machinery, commercial vehicles, kitchen tools", icon: <DollarSign className="w-5 h-5" />, color: "text-green-600" },
+                  { label: "Leaseholds", value: "Up to $350k", description: "Renovating a rented commercial space", icon: <Target className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "Total Max", value: "$1.15 Million", description: "Combined limit across all categories", icon: <Target className="w-5 h-5" />, color: "text-red-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="warning" title="No Working Capital Allowed">
+                <p>The #1 reason CSBFP applications get rejected is founders asking for money to cover payroll, inventory, or marketing. <strong>CSBFP is strictly an asset-based loan program.</strong> Use this loan to buy your hard assets (like ovens or delivery trucks), and save your cash reserves for your working capital.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2025-12-25" />
+            </div>
+          </div>
+        </section>
+<section className="py-8 bg-white border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <nav className="p-6 bg-gray-50 rounded-xl">

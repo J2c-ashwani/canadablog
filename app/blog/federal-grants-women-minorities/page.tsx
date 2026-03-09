@@ -12,6 +12,11 @@ import {
 } from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "Federal Grants for Women, Minorities & Veterans 2026 | Complete Certification Guide",
@@ -82,7 +87,61 @@ export default function FederalGrantsWomenMinoritiesPage() {
           </div>
         </section>
 
-        <section className="py-8 bg-white border-b">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-purple-50 dark:bg-purple-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-purple-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-purple-800 dark:text-purple-300">The Short Answer: </span>
+                The federal government does not typically give "free money" to start a business. Instead, they provide <strong>lucrative contract set-asides</strong>. By obtaining a WOSB (Women-Owned), 8(a) (Minority-Owned), or SDVOSB (Veteran) certification, you gain exclusive access to over $163 Billion in federal contracts that legally cannot be awarded to large corporations.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="Federal Contracting Goals by Certification"
+                metrics={[
+                  { label: "WOSB (Women-Owned)", value: "5% Goal", description: "~$25+ Billion annually", icon: <Target className="w-5 h-5" />, color: "text-pink-600" },
+                  { label: "8(a) (Disadvantaged)", value: "5% Goal", description: "9-year business development", icon: <Users className="w-5 h-5" />, color: "text-purple-600" },
+                  { label: "SDVOSB (Veteran)", value: "3% Goal", description: "Priority for VA contracts", icon: <Shield className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "HUBZone", value: "3% Goal", description: "10% price evaluation preference", icon: <Heart className="w-5 h-5" />, color: "text-green-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="warning" title="Self-Certification is Dead">
+                <p>Do not rely on outdated advice. <strong>You can no longer self-certify</strong> for WOSB or SDVOSB federal contracts. You must complete the formal, rigorous application process through certify.sba.gov (or the VA for veterans) to be eligible for these life-changing set-aside awards.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2025-12-20" />
+            </div>
+          </div>
+        </section>
+<section className="py-8 bg-white border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <nav className="p-6 bg-gray-50 rounded-xl">

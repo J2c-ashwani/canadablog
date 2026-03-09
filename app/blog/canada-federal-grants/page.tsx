@@ -11,6 +11,10 @@ import { ExpertTipBox } from "@/components/blog/ExpertTipBox"
 import AdSlot from "@/components/blog/AdSlot"
 import NewsletterBox from "@/components/blog/NewsletterBox"
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "Canadian Government Grants (2026): The Complete Federal Funding Guide",
@@ -100,7 +104,61 @@ export default function CanadaFederalGrantsPage() {
           </div>
         </section>
 
-        <section className="py-16 bg-white dark:bg-neutral-950">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-red-50 dark:bg-red-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-red-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-red-800 dark:text-red-400">The Short Answer: </span>
+                The Canadian federal government deploys billions annually through three main instruments: Non-Repayable Grants (for high-risk R&D), Repayable Contributions (0% interest loans for scale-ups), and Tax Credits (like SR&ED). Success depends on targeting the right agency among the "Big Three"—ISED (for large scale-ups), NRC-IRAP (for technical innovation), or AAFC (for agri-food).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="Canada's Big Three Funding Pillars"
+                metrics={[
+                  { label: "1. ISED (Strategic Innovation)", value: "Scale-up", description: "Anchor firms & job creation", icon: <Building className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "2. NRC-IRAP", value: "Innovation", description: "Technical R&D de-risking", icon: <Lightbulb className="w-5 h-5" />, color: "text-green-600" },
+                  { label: "3. SR&ED Program", value: "Tax Credit", description: "Up to 64% refundable on R&D", icon: <PieChart className="w-5 h-5" />, color: "text-purple-600" },
+                  { label: "Stacking Limit", value: "Up to 75%", description: "Max combined government funding", icon: <TrendingUp className="w-5 h-5" />, color: "text-red-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="warning" title="Stop Writing the Budget First">
+                <p>The biggest mistake Canadian founders make is starting a grant application by asking for a specific dollar amount (e.g., "I need $100k"). Federal officers are trained to evaluate the <strong>Work Plan</strong> first. Outline exactly what activities you will do (e.g., "Hire 2 engineers to code Module X"). The budget is simply the cost of the approved Work Plan.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2025-12-25" />
+            </div>
+          </div>
+        </section>
+<section className="py-16 bg-white dark:bg-neutral-950">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-12 gap-16">
 

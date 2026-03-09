@@ -6,6 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, Lock, Scale, BarChart, Zap, FileCheck, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "DOD SBIR Defense Tech Grants 2026-2027 | $256K Phase I, $1.7M Phase II Cybersecurity & Aerospace Funding",
@@ -103,7 +108,61 @@ export default function DODSBIRDefenseTechGrantsPage() {
         </section>
 
         {/* Geographic SEO Section */}
-        <section className="py-12 bg-white border-b-2 border-gray-200">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-slate-100 dark:bg-slate-900/50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-slate-300">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-slate-800 dark:text-slate-100">The Short Answer: </span>
+                The Department of Defense (DoD) SBIR/STTR program is the government's largest innovation fund, providing up to <strong>$256,000 in Phase I and $1.7M in Phase II</strong> non-dilutive capital to U.S. startups without taking any equity. The DoD heavily targets dual-use commercial technologies in AI, cybersecurity, UAVs, and advanced manufacturing that can be rapidly adapted for warfighter capabilities.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="DoD Funding Metrics"
+                metrics={[
+                  { label: "Phase I (Feasibility)", value: "Up to $256K", description: "6 to 12 months duration", icon: <Target className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "Phase II (Prototype)", value: "Up to $1.7M", description: "24 months for transition readiness", icon: <Rocket className="w-5 h-5" />, color: "text-slate-700" },
+                  { label: "Total Annual Funding", value: "$1.5B+", description: "Largest SBIR program in the US", icon: <DollarSign className="w-5 h-5" />, color: "text-green-600" },
+                  { label: "Participating Branches", value: "Army, Navy, USAF", description: "Plus DARPA, Space Force, MDA", icon: <Shield className="w-5 h-5" />, color: "text-indigo-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="The Open Topic Strategy Requires an MOU">
+                <p>If you apply through the AFWERX (Air Force) or SpaceWERX "Open Topic" solicitations, your primary goal during Phase I is NOT just building a prototype. <strong>Your #1 goal is securing a signed Memorandum of Understanding (MOU)</strong> from a specific military end-user. Without a signed DoD customer stating they want your tech, you cannot proceed to the lucrative Phase II awards.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2025-12-15" />
+            </div>
+          </div>
+        </section>
+<section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">DOD SBIR Defense Tech Grants by Region and Military Hub (2026-2027 Funding Available)</h2>

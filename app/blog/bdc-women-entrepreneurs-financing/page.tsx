@@ -6,6 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Send, Lightbulb, Heart, Sparkles, Zap, Rocket, TrendingUp as Growth, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "BDC Women Entrepreneurs Financing 2026 | Flexible Loans & Advisory for Women-Led Business Growth",
@@ -92,7 +97,61 @@ export default function BDCWomenEntrepreneursGuidePage() {
         </section>
 
         {/* Enhanced 2026 Program Updates */}
-        <section className="py-8 bg-green-50 border-b-2 border-green-200">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-blue-50 dark:bg-blue-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-blue-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-blue-800 dark:text-blue-400">The Short Answer: </span>
+                The BDC Women Entrepreneurs financing program (including the new $50M Thrive ETA Fund) provides loans, lines of credit, and business acquisition capital specifically for women-led businesses. It stands out from standard bank loans by offering <strong>"patient capital"</strong>—customized repayment schedules that adapt to your cash flow, paired with dedicated strategic advisory services to help you scale.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="BDC Women's Financing Programs"
+                metrics={[
+                  { label: "Thrive ETA Fund", value: "$50 Million", description: "Direct fund to help women acquire/buy businesses", icon: <Rocket className="w-5 h-5" />, color: "text-purple-600" },
+                  { label: "Growth Loans", value: "Custom", description: "Working capital, expansion, & equipment financing", icon: <Growth className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "Advisory Network", value: "Dedicated", description: "Expert guidance from women-entrepreneur specialists", icon: <Users className="w-5 h-5" />, color: "text-green-600" },
+                  { label: "Repayment Term", value: "Flexible", description: "Matching schedules tailored to your business cash flow", icon: <Clock className="w-5 h-5" />, color: "text-orange-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="Patient Capital vs. Traditional Banks">
+                <p>Traditional banks often reject loans based purely on strict financial ratios or lack of hard collateral. BDC is a Crown corporation structured to take on higher risk to stimulate the economy. They focus heavily on your <strong>business plan, growth potential, and management experience</strong>. Always arrive at your initial BDC meeting with a well-researched, realistic sales pipeline rather than just historical financials.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2025-12-25" />
+            </div>
+          </div>
+        </section>
+<section className="py-8 bg-green-50 border-b-2 border-green-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <Card className="border-green-200 bg-green-50">

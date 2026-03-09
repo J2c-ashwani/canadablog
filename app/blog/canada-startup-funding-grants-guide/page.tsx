@@ -12,6 +12,11 @@ import {
 } from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "Canada Startup Funding 2026 Guide | Grants, Loans & Futurpreneur",
@@ -106,7 +111,61 @@ export default function CanadaStartupFundingGrantsGuide() {
         </section>
 
         {/* Reality Check Alert */}
-        <section className="py-12 bg-white -mt-8 relative z-10">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-indigo-50 dark:bg-indigo-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-indigo-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-indigo-800 dark:text-indigo-400">The Short Answer: </span>
+                The "free money" grant for general startup costs is a myth. Instead, Canadian founders should leverage up to <strong>$75,000 in low-interest loans</strong> from Futurpreneur and BDC, drastically reduce burn rate via <strong>hiring subsidies (SWPP/IRAP Youth)</strong>, and target government R&D challenges through <strong>Innovative Solutions Canada</strong> to win up to $150k in Phase 1 funding.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="Startup Funding Pathways Explained"
+                metrics={[
+                  { label: "Futurpreneur Core", value: "Up to $75k", description: "Loan + 2-year mentorship (Ages 18-39)", icon: <Rocket className="w-5 h-5" />, color: "text-indigo-600" },
+                  { label: "Futurpreneur Side Hustle", value: "Up to $25k", description: "For founders keeping their day job", icon: <Briefcase className="w-5 h-5" />, color: "text-green-600" },
+                  { label: "Innovative Solutions (ISC)", value: "Up to $150k", description: "Phase 1: Government buys your prototype", icon: <Target className="w-5 h-5" />, color: "text-red-600" },
+                  { label: "Hiring Grants (SWPP)", value: "Up to $7k", description: "Subsidy per student intern per semester", icon: <Users className="w-5 h-5" />, color: "text-blue-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="warning" title="Cash Flow > Great Idea">
+                <p>When applying to Futurpreneur, your great idea matters less than your <strong>Cash Flow Projection</strong>. If your 24-month financial model does not explicitly show you paying the monthly loan repayment out of your cash reserves or revenue, you will be rejected immediately for lacking basic business acumen. Be realistic with your numbers.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2025-12-25" />
+            </div>
+          </div>
+        </section>
+<section className="py-12 bg-white -mt-8 relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
               <div className="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg shadow-sm">

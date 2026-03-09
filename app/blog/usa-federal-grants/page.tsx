@@ -6,6 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, BookOpen, ExternalLink, HelpCircle, ChevronRight, Award, Briefcase, Shield, AlertTriangle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "US Federal Grants 2026: SBIR, SBA & Grants.gov Playbook",
@@ -76,7 +81,61 @@ export default function USAFederalGrantsPage() {
           </div>
         </section>
 
-        <section className="py-8 bg-white border-b">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-emerald-50 dark:bg-emerald-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-emerald-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-emerald-700">The Short Answer: </span>
+                The U.S. Federal Government provides over <strong>$50 billion annually</strong> in direct capital to American small businesses. This includes 100% non-dilutive R&D grants (SBIR/STTR up to $1.7M), SBA-backed loans up to $5M, and specialized federal set-aside contracts for women-owned, veteran-owned, and minority-owned businesses.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="Federal Programs at a Glance"
+                metrics={[
+                  { label: "Total Capital", value: "$50B+", description: "Annual federal fund allocation", icon: <Building className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "SBIR Grants", value: "Up to $1.7M", description: "100% non-dilutive R&D funding", icon: <DollarSign className="w-5 h-5" />, color: "text-green-600" },
+                  { label: "SBA Loans", value: "Up to $5M", description: "7(a) and 504 capital programs", icon: <Briefcase className="w-5 h-5" />, color: "text-orange-600" },
+                  { label: "Top Agencies", value: "11", description: "Including DoD, NIH, NSF, DOE", icon: <Shield className="w-5 h-5" />, color: "text-purple-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="warning" title="Stop Before You Start: Form a Master Document">
+                <p>Because federal applications are so long, <strong>do not start from scratch every time</strong>. Build a "Generic Proposal Shell" containing your exact company history, founder bios, verified SAM.gov structure, and logic models. This covers 80% of any federal application, leaving you free to focus entirely on the customized grant narrative.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2025-12-10" />
+            </div>
+          </div>
+        </section>
+<section className="py-8 bg-white border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <nav className="p-6 bg-gray-50 rounded-xl">
