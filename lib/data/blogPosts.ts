@@ -189,7 +189,7 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "NSF implies 'science', but the SBIR program is about <strong>commercialization</strong>. You must show a clear path to market revenue, not just cool tech."
     },
-    shortAnswer: "The Short Answer: The SBIR/STTR program acts as \",
+    shortAnswer: "The Short Answer: The SBIR/STTR program acts as America's Seed Fund, providing up to $2M in non-dilutive capital.",
   },
   {
     id: 3,
@@ -2610,7 +2610,7 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "Letters of Support are critical for Phase I, but <strong>Letters of Intent (LOI)</strong> from potential customers are essential for Phase II success."
     },
-    shortAnswer: "The Short Answer: The SBIR/STTR program acts as \",
+    shortAnswer: "The Short Answer: The SBIR/STTR program acts as America's Seed Fund, providing up to $2M in non-dilutive capital.",
     eligibleCheck: true,
     inlineCTA: {
           title: "Need expert help applying for grants?",
@@ -3329,7 +3329,7 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "NIH reviewers are PhD scientists. Your proposal must demonstrate <strong>rigorous scientific methodology</strong>—not just business potential."
     },
-    shortAnswer: "The Short Answer: The SBIR/STTR program acts as \",
+    shortAnswer: "The Short Answer: The SBIR/STTR program acts as America's Seed Fund, providing up to $2M in non-dilutive capital.",
     eligibleCheck: true,
     inlineCTA: {
           title: "Need expert help applying for grants?",
@@ -3425,7 +3425,7 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "NSF highly values <strong>university partnerships</strong>. Having a faculty collaborator or advisor significantly increases your chances of winning."
     },
-    shortAnswer: "The Short Answer: The SBIR/STTR program acts as \",
+    shortAnswer: "The Short Answer: The SBIR/STTR program acts as America's Seed Fund, providing up to $2M in non-dilutive capital.",
     eligibleCheck: true,
     inlineCTA: {
           title: "Need expert help applying for grants?",
@@ -4489,7 +4489,7 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "Each agency has different priorities. <strong>Match your tech area to the right agency</strong>—NIH for health, DOE for energy, DOD for defense, etc."
     },
-    shortAnswer: "The Short Answer: The SBIR/STTR program acts as \",
+    shortAnswer: "The Short Answer: The SBIR/STTR program acts as America's Seed Fund, providing up to $2M in non-dilutive capital.",
     eligibleCheck: true,
     inlineCTA: {
           title: "Need expert help applying for grants?",
@@ -4537,7 +4537,7 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "STTR (Small Business Technology Transfer) <strong>requires a formal university partnership</strong>. SBIR does not. Choose the right program for your situation."
     },
-    shortAnswer: "The Short Answer: The SBIR/STTR program acts as \",
+    shortAnswer: "The Short Answer: The SBIR/STTR program acts as America's Seed Fund, providing up to $2M in non-dilutive capital.",
     eligibleCheck: true,
     inlineCTA: {
           title: "Need expert help applying for grants?",
@@ -4681,7 +4681,7 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "Software and SaaS companies qualify for <strong>accelerated SBIR timelines</strong> because digital products can demonstrate technical feasibility faster than hardware innovations."
     },
-    shortAnswer: "The Short Answer: The SBIR/STTR program acts as \",
+    shortAnswer: "The Short Answer: The SBIR/STTR program acts as America's Seed Fund, providing up to $2M in non-dilutive capital.",
     eligibleCheck: true,
     inlineCTA: {
           title: "Need expert help applying for grants?",
@@ -5638,7 +5638,7 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "Women in STEM receive <strong>priority scoring</strong> in NSF and SBIR applications, increasing approval odds by 35-40% compared to general applicant pool."
     },
-    shortAnswer: "The Short Answer: The SBIR/STTR program acts as \",
+    shortAnswer: "The Short Answer: The SBIR/STTR program acts as America's Seed Fund, providing up to $2M in non-dilutive capital.",
     eligibleCheck: true,
     inlineCTA: {
           title: "Need expert help applying for grants?",
@@ -14481,7 +14481,7 @@ ${sbaSbirPost}
       type: 'tip',
       content: "SBIR is topic-specific. Agencies release 'solicitations' with specific problems they need solved. Your proposal MUST address one of these specific topics."
     },
-    shortAnswer: "The Short Answer: The SBIR/STTR program acts as \",
+    shortAnswer: "The Short Answer: The SBIR/STTR program acts as America's Seed Fund, providing up to $2M in non-dilutive capital.",
     eligibleCheck: true,
     inlineCTA: {
           title: "Need expert help applying for grants?",
