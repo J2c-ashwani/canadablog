@@ -11252,6 +11252,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     featured: true,
     type: "expert-insight",
 
+    shortAnswer: "Canadian veterans can access up to $89K through Prince's Trust, Futurpreneur, and the Education & Training Benefit. Total funding available: $89K+.",
     metrics: [
       { label: "Funding Amount", value: "$5,000 - $89,000", description: 'Veteran programs', color: 'text-green-600', iconName: 'DollarSign' },
       { label: "Success Rate", value: "High", description: 'Dedicated programs', color: 'text-blue-600', iconName: 'TrendingUp' },

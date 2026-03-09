@@ -97,6 +97,9 @@ for (const file of DATA_FILES) {
 
         // Find the seo: { keywords: [...] } block and inject shortAnswer after it
         // Pattern: `    seo: {` ... `    },`  →  `    }, shortAnswer: "...",`
+        let injected = false;
+        
+        // Attempt 1: Try to find and inject after seo block
         for (let j = i + 1; j < Math.min(i + 500, mainLines.length); j++) {
             if (mainLines[j].match(/^\s+slug:\s*['"]/) && j > i + 1) break;
 
@@ -119,11 +122,33 @@ for (const file of DATA_FILES) {
 
                         enrichedCount++;
                         totalEnrichedThisRun++;
-                        console.log(`✅ Enriched: ${slug} (${file.split('/').pop()})`);
+                        console.log(`✅ Enriched (seo block): ${slug} (${file.split('/').pop()})`);
+                        injected = true;
                         break;
                     }
                 }
                 break;
+            }
+        }
+        
+        // Attempt 2: If no seo block, inject right before `metrics: [`
+        if (!injected) {
+            for (let j = i + 1; j < Math.min(i + 500, mainLines.length); j++) {
+                if (mainLines[j].match(/^\s+slug:\s*['"]/) && j > i + 1) break;
+                
+                if (mainLines[j].match(/^\s+metrics:\s*\[/)) {
+                    const adjustedJ = j + offset;
+                    const saText = rolloutShortAnswers[slug];
+                    // Insert a new line with shortAnswer right before metrics
+                    modifiedLines.splice(adjustedJ, 0, `    shortAnswer: "${saText}",`);
+                    offset++; // we added a line, increment offset
+                    
+                    enrichedCount++;
+                    totalEnrichedThisRun++;
+                    console.log(`✅ Enriched (fallback metrics): ${slug} (${file.split('/').pop()})`);
+                    injected = true;
+                    break;
+                }
             }
         }
     }

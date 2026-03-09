@@ -786,6 +786,7 @@ export const guidesDatabase: Guide[] = [
     { title: "8(a) Program is a Game-Changer", href: "/guides/sba-growth-accelerator-fund-guide", description: "Guide to applying for SBA funding supporting business accelerators and incubators...." }
   ],
   lastUpdated: '2025-09-22',
+    shortAnswer: " — key highlights include Funding: $100K and Success Rate: 20-30%. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'Funding', value: '$100K', description: 'Non-repayable Grant', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Success Rate', value: '20-30%', description: 'Highly Competitive', color: 'text-blue-600', iconName: 'TrendingUp' },
@@ -1207,6 +1208,7 @@ export const guidesDatabase: Guide[] = [
     { title: "SBA Grant Application Process: Complete Step-by-Step Guide", href: "/guides/sba-application-process", description: "Master the SBA application process with our comprehensive guide. Learn requirements, document preparation, common mistak..." }
   ],
   lastUpdated: '2025-09-12',
+    shortAnswer: " — key highlights include Grant: $2,500 and Training: 100% Free. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'Grant', value: '$2,500', description: 'Digital Main St.', color: 'text-blue-600', iconName: 'Globe' },
       { label: 'Training', value: '100% Free', description: 'Skills Development', color: 'text-green-600', iconName: 'BookOpen' },
@@ -1240,6 +1242,7 @@ export const guidesDatabase: Guide[] = [
     { title: "Verify Eligibility First", href: "/guides/federal-grants-application-tips", description: "Expert tips and strategies for writing winning federal grant applications...." }
   ],
   lastUpdated: '2025-09-08',
+    shortAnswer: " — key highlights include Loan: $50k+ and Credit: 30%. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'Loan', value: '$50k+', description: 'Impulsion PME', color: 'text-blue-600', iconName: 'DollarSign' },
       { label: 'Credit', value: '30%', description: 'CDAE Tax Credit', color: 'text-green-600', iconName: 'PieChart' },
@@ -1273,6 +1276,7 @@ export const guidesDatabase: Guide[] = [
     { title: "WES is an Ecosystem, Not a Program", href: "/guides/women-entrepreneurship-fund-guide", description: "How to apply for direct funding through the Women Entrepreneurship Fund...." }
   ],
   lastUpdated: '2025-09-05',
+    shortAnswer: " — key highlights include Grant: $10,000 and Tax Credit: 30%. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'Grant', value: '$10,000', description: 'Launch Online', color: 'text-blue-600', iconName: 'Globe' },
       { label: 'Tax Credit', value: '30%', description: 'Venture Capital', color: 'text-green-600', iconName: 'TrendingUp' },
@@ -1306,6 +1310,7 @@ export const guidesDatabase: Guide[] = [
     { title: "DOE Favors National Labs Partnerships", href: "/guides/california-loan-guarantee-guide", description: "Complete guide to accessing California state loan guarantees for small businesses...." }
   ],
   lastUpdated: '2025-09-02',
+    shortAnswer: " — key highlights include Voucher: $15k - $100k and Clean Tech: $5M+. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'Voucher', value: '$15k - $100k', description: 'Alberta Innovates', color: 'text-blue-600', iconName: 'Zap' },
       { label: 'Clean Tech', value: '$5M+', description: 'ERA Funding', color: 'text-green-600', iconName: 'Leaf' },
@@ -1339,6 +1344,7 @@ export const guidesDatabase: Guide[] = [
     { title: "Focus on ", href: "/guides/apply-quebec-business-grants", description: "Navigate Quebec\\..." }
   ],
   lastUpdated: '2025-08-25',
+    shortAnswer: " — key highlights include Funding: $5 Million and Type: Repayable. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'Funding', value: '$5 Million', description: 'Max per project', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Type', value: 'Repayable', description: '0% Interest Loan', color: 'text-blue-600', iconName: 'RefreshCw' },
@@ -1374,6 +1380,7 @@ export const guidesDatabase: Guide[] = [
     { title: "Don", href: "/guides/apply-sbir-grants", description: "Step-by-step application guide for Small Business Innovation Research and Technology Transfer programs...." }
   ],
   lastUpdated: '2025-09-15',
+    shortAnswer: " — key highlights include SDTC: $10M and Focus: CleanTech. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'SDTC', value: '$10M', description: 'Max per project', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Focus', value: 'CleanTech', description: 'Environmental tech', color: 'text-green-600', iconName: 'Leaf' },
@@ -1402,6 +1409,7 @@ export const guidesDatabase: Guide[] = [
       'Tech commercialization'
     ],
     lastUpdated: '2025-09-10',
+    shortAnswer: " — key highlights include Funding: $2.4B and Adoption: $15K. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'Funding', value: '$2.4B', description: 'AI Strategy', color: 'text-blue-600', iconName: 'Cpu' },
       { label: 'Adoption', value: '$15K', description: 'CDAP Grant', color: 'text-green-600', iconName: 'Laptop' },
@@ -1435,6 +1443,7 @@ export const guidesDatabase: Guide[] = [
     { title: "The ", href: "/guides/apply-irap-government-grants", description: "Detailed walkthrough of applying for IRAP government funding for innovation projects...." }
   ],
   lastUpdated: '2025-09-05',
+    shortAnswer: " — key highlights include Focus: BioTech and Funding: $1M+. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'Focus', value: 'BioTech', description: 'Life sciences', color: 'text-purple-600', iconName: 'Zap' },
       { label: 'Funding', value: '$1M+', description: 'R&D projects', color: 'text-green-600', iconName: 'DollarSign' },
@@ -1468,6 +1477,7 @@ export const guidesDatabase: Guide[] = [
     { title: "Alberta Innovates is your First Stop", href: "/guides/apply-agriculture-agri-food-canada", description: "How to access federal funding for agriculture, agribusiness, and food processing...." }
   ],
   lastUpdated: '2025-08-30',
+    shortAnswer: " — key highlights include Sector: Aerospace and Max: $10M+. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'Sector', value: 'Aerospace', description: 'Defence focus', color: 'text-blue-600', iconName: 'Rocket' },
       { label: 'Max', value: '$10M+', description: 'Large projects', color: 'text-green-600', iconName: 'DollarSign' },
@@ -1501,6 +1511,7 @@ export const guidesDatabase: Guide[] = [
     { title: "Start with CDAP", href: "/guides/canada-life-sciences-funding-guide", description: "Comprehensive funding guide for biotech, medical devices, and life sciences companies...." }
   ],
   lastUpdated: '2025-08-28',
+    shortAnswer: " — key highlights include Sector: Mfg and Focus: Auto/Tech. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'Sector', value: 'Mfg', description: 'Manufacturing', color: 'text-blue-600', iconName: 'Factory' },
       { label: 'Focus', value: 'Auto/Tech', description: 'Industry 4.0', color: 'text-purple-600', iconName: 'Zap' },
@@ -1534,6 +1545,7 @@ export const guidesDatabase: Guide[] = [
     { title: "Defence Contracts = Long Sales Cycle", href: "/guides/canada-manufacturing-funding-guide", description: "Funding programs for manufacturing modernization, automation, and expansion...." }
   ],
   lastUpdated: '2025-08-25',
+    shortAnswer: " — key highlights include Focus: Agri-Food and Range: $10K-5M. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'Focus', value: 'Agri-Food', description: 'Farm + processing', color: 'text-green-600', iconName: 'Leaf' },
       { label: 'Range', value: '$10K-5M', description: 'Project scale', color: 'text-blue-600', iconName: 'DollarSign' },
@@ -1569,6 +1581,7 @@ export const guidesDatabase: Guide[] = [
     { title: "Focus on Economic Impact", href: "/guides/women-entrepreneurship-loan-fund-guide", description: "Access low-interest loans through the Women Entrepreneurship Loan Fund program...." }
   ],
   lastUpdated: '2025-09-20',
+    shortAnswer: " — key highlights include Max Loan: $1M and Equipment: $350K. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'Max Loan', value: '$1M', description: 'Per borrower', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Equipment', value: '$350K', description: 'Max for assets', color: 'text-blue-600', iconName: 'Award' },
@@ -1602,6 +1615,7 @@ export const guidesDatabase: Guide[] = [
     { title: "CA Guarantee vs SBA", href: "/guides/apply-strategic-innovation-fund", description: "How to apply for large-scale innovation funding through Canada\\..." }
   ],
   lastUpdated: '2025-09-18',
+    shortAnswer: " — key highlights include Max: $1M and Fee: 2%. Our guide covers all eligible programs, application steps, and expert tips.",
     metrics: [
       { label: 'Max', value: '$1M', description: 'Total financing', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Fee', value: '2%', description: 'Registration fee', color: 'text-blue-600', iconName: 'DollarSign' },
