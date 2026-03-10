@@ -2179,16 +2179,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 40,
@@ -2316,16 +2316,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 43,
@@ -2357,7 +2357,18 @@ export const blogPosts: BlogPost[] = [
       title: "Dual-Use Strategy",
       type: 'success',
       content: "The DOD prioritizes <strong>dual-use technology</strong>. Explicitly explain how your cybersecurity tool protects military networks AND has a viable commercial market (e.g., banking systems).",
-    }, shortAnswer: "Complete 2026-2027 guide to cybersecurity grants. Total funding available: $1.8M.",
+    },
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    inlineCTA: {
+      description: "Get matched with the right DOD SBIR or DHS cybersecurity grant for your security startup — our specialists navigate classified-adjacent programs and dual-use topic areas for you.",
+    },
+    eligibleCheck: true,
+    shortAnswer: "Complete 2026-2027 guide to cybersecurity grants. DOD SBIR Phase I awards $200K–$400K, Phase II up to $1.8M for dual-use security software, encryption, threat detection, and zero-trust architecture. 100% non-dilutive.",
     faq: [
       {
         question: "How do I get a facility clearance (FCL)?",
@@ -2378,16 +2389,16 @@ export const blogPosts: BlogPost[] = [
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 44,
@@ -2425,16 +2436,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 45,
@@ -2472,16 +2483,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 46,
@@ -2519,16 +2530,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 47,
@@ -2566,16 +2577,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 48,
@@ -2613,16 +2624,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 49,
@@ -2660,16 +2671,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 50,
@@ -2707,16 +2718,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 51,
@@ -2754,16 +2765,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 52,
@@ -2801,16 +2812,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 53,
@@ -2848,16 +2859,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 54,
@@ -2895,16 +2906,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 55,
@@ -2988,16 +2999,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 57,
@@ -3035,16 +3046,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 58,
@@ -3082,16 +3093,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 59,
@@ -3129,16 +3140,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 60,
@@ -3176,16 +3187,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 61,
@@ -3223,16 +3234,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 62,
@@ -3270,16 +3281,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 63,
@@ -3317,16 +3328,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 64,
@@ -3364,16 +3375,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 65,
@@ -3411,16 +3422,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 66,
@@ -3593,16 +3604,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 67,
@@ -3640,16 +3651,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 68,
@@ -3687,16 +3698,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 69,
@@ -3734,16 +3745,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 70,
@@ -3781,16 +3792,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 71,
@@ -3828,16 +3839,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 72,
@@ -3893,16 +3904,16 @@ export const blogPosts: BlogPost[] = [
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 73,
@@ -3940,16 +3951,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 74,
@@ -3987,16 +3998,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 75,
@@ -4034,16 +4045,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 76,
@@ -4081,16 +4092,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 77,
@@ -4128,16 +4139,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 78,
@@ -4175,16 +4186,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 79,
@@ -4222,16 +4233,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 80,
@@ -4269,16 +4280,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 81,
@@ -4362,16 +4373,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 83,
@@ -4409,16 +4420,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 84,
@@ -4456,16 +4467,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 85,
@@ -4503,16 +4514,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 86,
@@ -4550,16 +4561,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 87,
@@ -4597,16 +4608,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 88,
@@ -4690,16 +4701,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 90,
@@ -4737,16 +4748,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 91,
@@ -4784,16 +4795,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 92,
@@ -4831,16 +4842,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 93,
@@ -4878,16 +4889,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 94,
@@ -4925,16 +4936,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 95,
@@ -4972,16 +4983,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 96,
@@ -5019,16 +5030,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 97,
@@ -5066,16 +5077,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 98,
@@ -5113,16 +5124,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 99,
@@ -5160,16 +5171,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 100,
@@ -5207,16 +5218,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 101,
@@ -5254,16 +5265,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 102,
@@ -5347,16 +5358,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 104,
@@ -5394,16 +5405,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 105,
@@ -5441,16 +5452,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 106,
@@ -5488,16 +5499,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 107,
@@ -5535,16 +5546,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 108,
@@ -5582,16 +5593,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 109,
@@ -5629,16 +5640,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 110,
@@ -5676,16 +5687,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1000,
@@ -5737,16 +5748,16 @@ export const blogPosts: BlogPost[] = [
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
 
   {
@@ -5926,16 +5937,16 @@ export const blogPosts: BlogPost[] = [
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
 
   {
@@ -6113,16 +6124,16 @@ export const blogPosts: BlogPost[] = [
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1005,
@@ -6278,16 +6289,16 @@ export const blogPosts: BlogPost[] = [
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1006,
@@ -6439,16 +6450,16 @@ export const blogPosts: BlogPost[] = [
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1007,
@@ -6630,16 +6641,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
 
   {
@@ -6824,16 +6835,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1011,
@@ -6982,16 +6993,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
 
   {
@@ -7326,16 +7337,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1016,
@@ -7563,16 +7574,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1017,
@@ -8243,16 +8254,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     shortAnswer: "Yes — \ud83e\udeb6 Canada's $120M Indigenous Business Revolution: Complete Funding Guide\n    \n      \n        \ud83c\udfc6 Top Indigenous Business Regions\n        \n          \u2022 Bri.... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1018,
@@ -8816,16 +8827,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     shortAnswer: "Yes — \ud83c\udde8\ud83c\udde6 CanExport Grants 2026: International Market Expansion - $75M+ Export Engine\n    \n      \n        \ud83c\udfc6 CanExport Program Portfolio\n        \n          \u2022 .... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1019,
@@ -9341,16 +9352,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     shortAnswer: "Yes — \ud83c\udde8\ud83c\udde6 Canada IRAP Grants 2026: Industrial Research Assistance Program - $400M+ Innovation Powerhouse\n    \n      \n        \ud83c\udfc6 IRAP Program Scale\n        \n  .... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1020,
@@ -10123,16 +10134,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     shortAnswer: "Yes — \ud83d\udcbb Canada's $90M Digital Transformation Revolution: Complete CDAP Guide\n    \n      \n        \ud83c\udfc6 Top Digital Innovation Provinces\n        \n          \u2022 Ont.... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1021,
@@ -10993,16 +11004,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     shortAnswer: "Yes — 🌾 Canada's $180M Agricultural Innovation Revolution: Complete AgriInnovate Guide\n    \n      \n        🏆 Top Agricultural Innovation Provinces\n        \n.... Funding amounts average various funding amounts for eligible applicants. Our article covers the application process and specific eligibility requirements.",
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
 
   {
@@ -11201,16 +11212,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1024,
@@ -11478,16 +11489,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1025,
@@ -11632,16 +11643,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1026,
@@ -11811,16 +11822,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
 
   {
@@ -11879,16 +11890,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
 
   {
@@ -12276,16 +12287,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
 
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1032,
@@ -12341,16 +12352,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
 
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1033,
@@ -12748,16 +12759,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1034,
@@ -13090,16 +13101,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1036,
@@ -13138,16 +13149,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     faq: albertaBusinessGrants2026.faq,
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2036,
@@ -13356,16 +13367,16 @@ However, some large SIF contributions may have repayment terms based on revenue 
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2037,
@@ -13630,16 +13641,16 @@ Write: "This grant will fund a high-capacity oven, allowing me to increase produ
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2038,
@@ -13860,16 +13871,16 @@ However, a single corporate contract can yield 100x that investment.
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2039,
@@ -13922,16 +13933,16 @@ ${bidenPost}
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2040,
@@ -13984,16 +13995,16 @@ ${doePost}
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2041,
@@ -14046,16 +14057,16 @@ ${epaPost}
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2042,
@@ -14108,16 +14119,16 @@ ${nsfPost}
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2043,
@@ -14179,16 +14190,16 @@ ${oct2026Post}
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2044,
@@ -14250,16 +14261,16 @@ ${q42026Post}
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2045,
@@ -14297,16 +14308,16 @@ ${q12026Post}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2046,
@@ -14345,16 +14356,16 @@ ${sbaSbirPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2047,
@@ -14393,16 +14404,16 @@ ${grantSecretsPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2048,
@@ -14440,16 +14451,16 @@ ${usdaRuralPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2049,
@@ -14487,16 +14498,16 @@ ${nyGrantsPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2050,
@@ -14552,16 +14563,16 @@ ${regionalDevPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2051,
@@ -14631,16 +14642,16 @@ ${superclustersPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2052,
@@ -14696,16 +14707,16 @@ ${ruralBizPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 2053,
@@ -14775,16 +14786,16 @@ ${sredTaxPost}
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 1009,
@@ -15154,16 +15165,16 @@ ${sredTaxPost}
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   // Batch 18: Restored 2025 Content
   {
@@ -15202,16 +15213,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3002,
@@ -15249,16 +15260,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3003,
@@ -15296,16 +15307,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3004,
@@ -15343,16 +15354,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3005,
@@ -15390,16 +15401,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3006,
@@ -15437,16 +15448,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3007,
@@ -15484,16 +15495,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3008,
@@ -15531,16 +15542,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3009,
@@ -15578,16 +15589,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3010,
@@ -15625,16 +15636,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3011,
@@ -15672,16 +15683,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3012,
@@ -15741,16 +15752,16 @@ ${sredTaxPost}
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3013,
@@ -15810,16 +15821,16 @@ ${sredTaxPost}
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3014,
@@ -15857,16 +15868,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3015,
@@ -15904,16 +15915,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3016,
@@ -15951,16 +15962,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3017,
@@ -15998,16 +16009,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3018,
@@ -16045,16 +16056,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3019,
@@ -16110,16 +16121,16 @@ ${sredTaxPost}
     ],
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3020,
@@ -16157,16 +16168,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3021,
@@ -16204,16 +16215,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3022,
@@ -16251,16 +16262,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3023,
@@ -16298,16 +16309,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   },
   {
     id: 3024,
@@ -16345,16 +16356,16 @@ ${sredTaxPost}
     },
     eligibleCheck: true,
     inlineCTA: {
-          title: "Need expert help applying for grants?",
-          description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-          buttonText: "Get Funding Assistance",
-          buttonLink: "/contact"
-        },
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
     jumpLinks: [
-          { title: "Overview", id: "overview" },
-          { title: "Eligibility Requirements", id: "eligibility" },
-          { title: "How to Apply", id: "how-to-apply" }
-        ],
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
   }
 ];
 
