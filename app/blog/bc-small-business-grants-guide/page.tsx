@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, DollarSign, Target, Mountain, Users, Zap, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Trees, Leaf, Briefcase } from "lucide-react"
 import type { Metadata } from "next"
+import Link from "next/link"
 import EEATBadge from '@/components/blog/EEATBadge'
 import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
