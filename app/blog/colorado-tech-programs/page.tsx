@@ -12,6 +12,11 @@ import {
 } from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "Colorado Tech Startup Grants 2026-2027 | $500K Advanced Industries Accelerator, $250K Early-Stage Capital, SBIR Matching, Clean Energy Fund",
@@ -96,7 +101,61 @@ export default function ColoradoTechProgramsPage() {
         </section>
 
         {/* Geographic SEO Section - FULLY COMPREHENSIVE */}
-        <section className="py-12 bg-white border-b-2 border-gray-200">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-blue-50 dark:bg-blue-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-blue-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-blue-800 dark:text-blue-400">The Short Answer: </span>
+                Colorado is uniquely appealing to deep-tech startups thanks to its <strong>Advanced Industries Accelerator Program</strong>, which offers Early-Stage Capital grants up to $250,000 for companies focusing on areas like aerospace, bioscience, or advanced manufacturing. On top of that, investors can get a <strong>35% tax credit</strong> if the startup is in a rural enterprise zone. This means Colorado is prioritizing hard science commercialization and rural economic diversity over general software or e-commerce.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="Colorado Tech Innovation Grants"
+                metrics={[
+                  { label: "Early-Stage Capital", value: "$250,000", description: "Specifically for seven designated Advanced Industries", icon: <Award className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "Proof of Concept", value: "$150,000", description: "For research institutions commercializing ideas", icon: <Sparkles className="w-5 h-5" />, color: "text-purple-600" },
+                  { label: "Investment Credit", value: "35%", description: "Tax offset for investing in rural enterprise zones", icon: <Building className="w-5 h-5" />, color: "text-indigo-600" },
+                  { label: "SBIR State Match", value: "Variable", description: "Federal SBIR/STTR enhancement funding", icon: <Target className="w-5 h-5" />, color: "text-green-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="Align your application with the Seven Advanced Industries">
+                <p>Colorado's flagship tech grants are gated by sector. Before you start drafting an application, ensure your company's core technology unambiguously fits into one of the <strong>Seven Advanced Industries</strong> (Aerospace, Advanced Manufacturing, Bioscience, Electronics, Energy, Infrastructure Engineering, or Information Technology). If you are a general B2B SaaS platform, you must explicitly show how your software serves or integrates with one of these critical infrastructure sectors.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2026-01-05" />
+            </div>
+          </div>
+        </section>
+<section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Where are Colorado's Key Technology Innovation Hubs?</h2>

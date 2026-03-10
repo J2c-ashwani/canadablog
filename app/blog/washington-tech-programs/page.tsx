@@ -6,6 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "Washington Tech Startup Grants 2026-2027 | $1M WRF Technology Commercialization, $540K Innovation Modernization Program, Clean Energy Fund",
@@ -73,7 +78,61 @@ export default function WashingtonTechProgramsPage() {
         </section>
 
         {/* Geographic SEO Section - FULLY EXPANDED */}
-        <section className="py-12 bg-white border-b-2 border-gray-200">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-green-50 dark:bg-green-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-green-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-green-800 dark:text-green-400">The Short Answer: </span>
+                Washington State's best funding comes straight from its universities. The <strong>Washington Research Foundation (WRF)</strong> offers up to <strong>$1 Million</strong> in phased grants to teams commercializing IP from UW and WSU. If you are not a university spinout, your options are heavily tilted toward the <strong>Clean Energy Fund</strong> for cleantech, or the state's <strong>Innovation and Modernization</strong> grants if your product targets government operations. Washington places a high premium on matching private investment and creating local jobs.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="Top Washington State Tech Grants"
+                metrics={[
+                  { label: "WRF Phase 3", value: "$1,000,000", description: "IP commercialization for UW/WSU spinouts", icon: <Award className="w-5 h-5" />, color: "text-green-600" },
+                  { label: "Modernization", value: "$540,000", description: "B2G tech adoption / state agencies", icon: <Building className="w-5 h-5" />, color: "text-teal-600" },
+                  { label: "Clean Energy", value: "Variable", description: "Renewables, grid optimization tech", icon: <Sparkles className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "Target Sectors", value: "B2B/B2G", description: "IT, Aerospace, Clean Energy", icon: <Rocket className="w-5 h-5" />, color: "text-indigo-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="Not a UW Spinout? Look to Federal SBIR Matches">
+                <p>If you don't have ties to the University of Washington or Washington State University, WRF funding is out of reach. In this case, your best bet is applying for Federal SBIR/STTR grants. The state occasionally offers 'Phase 0' support to help you write an SBIR application, so engage with the local Small Business Development Center (SBDC) to access proposal consultants for free.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2026-01-05" />
+            </div>
+          </div>
+        </section>
+<section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Where are Washington's Top Technology Innovation Hubs?</h2>

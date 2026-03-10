@@ -12,6 +12,11 @@ import {
 } from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "New York Tech Grants 2026: 10-Year Tax-Free (START-UP NY) + $250K Seed Fund",
@@ -95,7 +100,61 @@ export default function NewYorkTechProgramsPage() {
         </section>
 
         {/* Geographic SEO Section - COMPREHENSIVE */}
-        <section className="py-12 bg-white border-b-2 border-gray-200">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-blue-50 dark:bg-blue-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-blue-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-blue-800 dark:text-blue-400">The Short Answer: </span>
+                New York's tech ecosystem is fueled by two incredibly powerful state-level incentives: the <strong>START-UP NY</strong> program (which grants 10-year 100% tax-free operations for companies partnering with universities) and the <strong>Pre-Seed/Seed Matching Fund</strong> (up to $250,000 combined). If you operate in cleantech or physical manufacturing, additional pots like <strong>NYSERDA</strong> and <strong>FuzeHub</strong> can cover prototypes and pilot deployments. Note that almost all seed capital from Empire State Development (ESD) requires private investor matching.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="New York Startup Incentives"
+                metrics={[
+                  { label: "START-UP NY", value: "Tax-Free", description: "10-year exemption on/near campuses", icon: <Building className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "Seed Match", value: "$250,000", description: "State matches your private investment", icon: <Award className="w-5 h-5" />, color: "text-indigo-600" },
+                  { label: "FuzeHub", value: "$65,000", description: "Hardware/manufacturing tech adoption", icon: <Rocket className="w-5 h-5" />, color: "text-purple-600" },
+                  { label: "NYSERDA", value: "Variable", description: "Heavy funding for cleantech pilots", icon: <Sparkles className="w-5 h-5" />, color: "text-cyan-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="Mastering the Private Match Requirement">
+                <p>New York relies heavily on private capital markets to validate startups. The Pre-Seed and Seed Matching Funds explicitly require you to secure a private co-investor first. If you are applying to these ESD programs, bring your term sheets or Letters of Intent from angels/VCs to the table. State agencies view their $250K as an accelerator to your private round, not as standalone angel money.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2026-01-05" />
+            </div>
+          </div>
+        </section>
+<section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Where are New York's Top Technology Innovation Hubs?</h2>

@@ -6,6 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Building, Users, FileText, Download, Shield, Award, Calculator, TrendingUp, Heart, Lightbulb, Sparkles, MapPin, Globe, Rocket, ExternalLink, ArrowRight, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "California Tech Startup Grants 2026-2027 | $50K CalSEED, $50K SBIR Match, Tax Credits & Silicon Valley Funding Programs",
@@ -94,7 +99,61 @@ export default function CaliforniaTechProgramsPage() {
         </section>
 
         {/* Geographic SEO Section with High-CPC Keywords */}
-        <section className="py-12 bg-white border-b-2 border-gray-200">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-blue-50 dark:bg-blue-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-blue-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-blue-800 dark:text-blue-400">The Short Answer: </span>
+                California offers unparalleled state-level tech funding, most notably the <strong>CalSEED program ($50,000 for clean energy)</strong> and the <strong>California SBIR State Match Program (an extra $50,000 for federal SBIR Phase I winners)</strong>. In addition, the <strong>California Competes Tax Credit</strong> can offset up to 25% of your state tax burden if you are expanding and hiring within the state. Because of the heavy competition, state grants heavily prioritize projects with commercial validation and high job-creation potential.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="Top California Tech Incentives"
+                metrics={[
+                  { label: "CalSEED Clean Energy", value: "$50,000", description: "Concept grants for early-stage cleantech", icon: <Sparkles className="w-5 h-5" />, color: "text-green-600" },
+                  { label: "SBIR State Match", value: "$50,000", description: "Extra funding for federal SBIR Phase I winners", icon: <Award className="w-5 h-5" />, color: "text-purple-600" },
+                  { label: "CA Competes", value: "25% Credit", description: "Tax offset for retaining/creating CA jobs", icon: <Building className="w-5 h-5" />, color: "text-indigo-600" },
+                  { label: "Required Equity", value: "0%", description: "All state grants mentioned are non-dilutive", icon: <Rocket className="w-5 h-5" />, color: "text-blue-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="Connecting with an Accelerate CA Hub">
+                <p>California distributes much of its startup support through its regional <strong>Accelerate CA Innovation Hubs</strong>. Before applying for a CalSEED grant or the Competes tax credit, reach out to your local hub (whether in Silicon Valley, LA, or Sacramento). Having an endorsement or prior relationship with these hubs significantly improves your credibility when state committees review your application.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2026-01-05" />
+            </div>
+          </div>
+        </section>
+<section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Where are California's Major Technology Innovation Hubs?</h2>

@@ -12,6 +12,11 @@ import {
 } from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "Massachusetts Tech Startup Grants 2026-2027 | $500K SBIR START, $350K MassCEC InnovateMass, Life Sciences Center Biotech Funding Programs",
@@ -96,7 +101,61 @@ export default function MassachusettsTechProgramsPage() {
         </section>
 
         {/* Geographic SEO Section - EXPANDED */}
-        <section className="py-12 bg-white border-b-2 border-gray-200">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-red-50 dark:bg-red-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-red-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-red-800 dark:text-red-400">The Short Answer: </span>
+                Massachusetts is the undisputed king of state-level biotech and clean energy funding. The standout program is the <strong>MassVentures SBIR START</strong>, which provides up to <strong>$500,000 in tiered matching funds</strong> to startups that have already won federal SBIR Phase II grants. If you are in life sciences, the <strong>MLSC (Life Sciences Center)</strong> offers infrastructure and research grants, while cleantech startups target <strong>MassCEC's InnovateMass ($350,000)</strong>. These programs are highly competitive but offer massive non-dilutive capital.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="Top Massachusetts Tech Grants"
+                metrics={[
+                  { label: "SBIR START Tier 3", value: "$500,000", description: "Spinout capital for Federal Phase II winners", icon: <Award className="w-5 h-5" />, color: "text-red-600" },
+                  { label: "InnovateMass", value: "$350,000", description: "Clean energy deployment via MassCEC", icon: <Sparkles className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "MLSC Capital", value: "Variable", description: "Infrastructure grants for life sciences", icon: <Building className="w-5 h-5" />, color: "text-purple-600" },
+                  { label: "State Focus", value: "Deep Tech", description: "Biotech, Cleantech, and Robotics prioritization", icon: <Target className="w-5 h-5" />, color: "text-indigo-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="Leverage the University Tech Transfer Offices">
+                <p>A significant percentage of Massachusetts state grant winners leverage relationships with MIT, Harvard, WPI, or Boston University. If you are a university spinout, or if you partner with academic researchers for validation (especially for MLSC or MassCEC grants), your application immediately gains credibility. State reviewers explicitly look for these ecosystem connections.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2026-01-05" />
+            </div>
+          </div>
+        </section>
+<section className="py-12 bg-white border-b-2 border-gray-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Where are Massachusetts' Leading Technology Innovation Hubs?</h2>

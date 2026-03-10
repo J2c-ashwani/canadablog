@@ -12,6 +12,11 @@ import {
 } from "@/components/ui/accordion"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "Ontario Small Business Grants 2026 | $5k Starter Company & Funding",
@@ -106,7 +111,61 @@ export default function OntarioSmallBusinessGrantsGuide() {
         </section>
 
         {/* The "SBEC" Alert */}
-        <section className="py-12 bg-white -mt-8 relative z-10">
+        
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-blue-50 dark:bg-blue-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-blue-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-blue-800 dark:text-blue-400">The Short Answer: </span>
+                Most grants in Ontario are heavily localized or targeted. If you are starting a new business, you must go through your city's <strong>Small Business Enterprise Centre (SBEC)</strong> to access <strong>Starter Company Plus ($5,000)</strong>. The massive six-figure expansion grants (like <strong>SWODF</strong> or <strong>EODF</strong>) act as 15% subsidies for multi-million dollar capital investments (e.g. manufacturing plant expansions outside of Toronto) and are not accessible to early-stage businesses.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="Top Ontario Grants Overview"
+                metrics={[
+                  { label: "Starter Co. Plus", value: "$5,000", description: "Mentorship & seed capital via SBEC", icon: <Lightbulb className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "Summer Co.", value: "$3,000", description: "For returning students aged 15-29", icon: <GraduationCap className="w-5 h-5" />, color: "text-orange-600" },
+                  { label: "Regional Funds", value: "15% Cost", description: "SWODF/EODF for large facility expansion", icon: <Factory className="w-5 h-5" />, color: "text-emerald-600" },
+                  { label: "DMS ShopHERE", value: "$2,500+", description: "Free Shopify store & e-commerce build", icon: <Target className="w-5 h-5" />, color: "text-purple-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="Leave Toronto for the Big Money">
+                <p>Ontario’s biggest grants are designed to incentivize job creation outside the Greater Toronto Area. If you want a massive expansion grant, you will have vastly better odds targeting a facility in Southwestern Ontario (SWODF), Eastern Ontario (EODF), or Northern Ontario (NOHFC) rather than competing with ten thousand startups in downtown Toronto.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2026-01-05" />
+            </div>
+          </div>
+        </section>
+<section className="py-12 bg-white -mt-8 relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
               <div className="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg shadow-sm">

@@ -4,113 +4,12 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, DollarSign, Target, Mountain, Users, Zap, Shield, Award, HelpCircle, ExternalLink, ArrowRight, AlertTriangle, Lightbulb, Trees, Leaf, Briefcase } from "lucide-react"
-{/* Section 2: Regional Trusts */ }
-<section id="regional-trusts" className="py-20 bg-gray-50 border-t border-gray-200">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="max-w-6xl mx-auto">
-      <div className="flex items-center mb-8">
-        <Trees className="w-10 h-10 text-emerald-600 mr-4" />
-        <div>
-          <h2 className="text-3xl font-bold text-gray-900">2. The "Regional Trusts"</h2>
-          <p className="text-gray-600">The Secret Weapon for Rural BC</p>
-        </div>
-      </div>
-
-      <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
-        <p className="text-gray-700 text-lg mb-8">
-          Decades ago, BC created massive trusts to help regions transition from forestry. These trusts are cash-rich and actively looking for projects.
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Northern Development Initiative Trust (NDIT)</h3>
-            <p className="text-sm text-gray-600 mb-4">Serving: Prince George, Terrace, Fort St. John, etc.</p>
-
-            <div className="bg-emerald-50 p-4 rounded border border-emerald-100">
-              <h4 className="font-bold text-emerald-900 text-sm mb-2">Top Program: Competitiveness Consulting Rebate</h4>
-              <p className="text-xs text-gray-700 mb-2">
-                NDIT pays <strong>50% of the cost</strong> (up to $30,000) for you to hire a consultant to improve your productivity (e.g., Marketing Plan, Lean Manufacturing audit).
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Island Coastal Economic Trust (ICET)</h3>
-            <p className="text-sm text-gray-600 mb-4">Serving: Vancouver Island (excluding Victoria core) and Sunshine Coast.</p>
-
-            <div className="bg-blue-50 p-4 rounded border border-blue-100">
-              <h4 className="font-bold text-blue-900 text-sm mb-2">Top Focus: Tourism & Tech</h4>
-              <p className="text-xs text-gray-700 mb-2">
-                Often funds projects that bring visitors or build tech infrastructure.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-8">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Southern Interior & Kootenays</h3>
-          <p className="text-sm text-gray-600">
-            Operated via <strong>ETSI-BC</strong> (Economic Trust of the Southern Interior). Look for their "Rural Business & Community Recovery" streams.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{/* Deep Dive Text Content - SEO & Authority */ }
-<section className="py-20 bg-white border-t border-gray-200">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="max-w-4xl mx-auto prose prose-lg prose-emerald text-gray-700">
-      <h2>The BC Advantage: How to Win</h2>
-      <p>
-        British Columbia's funding landscape is highly "Sector" and "Region" specific. A generic application that works in Toronto will fail in Prince George.
-      </p>
-
-      <h3>1. The "Alacrity" Factor (Digital Adoption)</h3>
-      <p>
-        While the rest of Canada waits for federal updates on CDAP, BC has <strong>Alacrity Canada</strong>. They are the delivery partner for the "Grow Your Business Online" grant.
-      </p>
-      <p>
-        <strong>Why this matters:</strong> Alacrity often runs cohorts that include extra value (e.g., free digital marketing bootcamps) on top of the $2,400 grant. When applying for digital funding in BC, always check Alacrity's "Bootcamp" schedule first.
-      </p>
-
-      <h3>2. New Ventures BC: The Unofficial "Grant"</h3>
-      <p>
-        If you have a tech startup, you must enter the <strong>New Ventures BC Competition</strong>. It is not just for the $250,000 top prize.
-      </p>
-      <ul>
-        <li><strong>The Top 25:</strong> Making the "Top 25" list allows you to put the NVBC badge on your site. This effectively "Pre-Qualifies" you for other funding. Investors see it as a stamp of due diligence.</li>
-        <li><strong>Mentorship:</strong> You get paired with heavy-hitter mentors who often sit on the boards of the grant committees you will apply to later.</li>
-      </ul>
-
-      <h3>3. Rural Dividend & The "Transition" Story</h3>
-      <p>
-        If you are outside the Lower Mainland, your grant application must tell a "Transition" story.
-      </p>
-      <p>
-        <strong>The Narrative:</strong> "My business is helping this community move away from pure resource extraction (Logging/Mining) toward a diversified economy (Tourism/Tech)."
-        <br />
-        <em>Example:</em> A craft brewery in Smithers isn't just selling beer; it is "Creating a Tourism Destination that diversifies the local economy." This framing unlocks Rural Dividend funds.
-      </p>
-
-      <h3>4. Buy BC: The Marketing Grant</h3>
-      <p>
-        Do you make a physical product in BC? (Food, Beverage, Apparel).
-      </p>
-      <p>
-        The <strong>Buy BC Partnership Program</strong> offers up to 50% cost-shared funding for marketing. This includes:
-      </p>
-      <ul>
-        <li><strong>Packaging Redesign:</strong> Adding the "Buy BC" logo to your label.</li>
-        <li><strong>Ads:</strong> Running Facebook/Instagram ads targeting local buyers.</li>
-        <li><strong>Trade Shows:</strong> Booth fees for local markets.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 
 export const metadata: Metadata = {
   title: "BC Small Business Grants 2026 | Rebates & Innovate BC Funding",
@@ -203,6 +102,61 @@ export default function BCSmallBusinessGrantsGuide() {
             </div>
           </div>
         </section>
+
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        <section className="py-6 bg-emerald-50 dark:bg-emerald-950/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-emerald-200">
+              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                <span className="font-bold text-emerald-800 dark:text-emerald-400">The Short Answer: </span>
+                British Columbia&apos;s funding is heavily divided by geography and industry. If you are a tech startup in Vancouver, your focus should be on <strong>Innovate BC</strong> hiring programs (like ISI for $10K) and the <strong>Alacrity Canada CDAP</strong> bootcamp. If you are operating a traditional business <em>outside</em> the Lower Mainland (e.g., Terrace or Prince George), you have access to massively underutilized regional trusts like <strong>NDIT</strong> (Northern Development Initiative Trust), which pays up to 50% for consulting and expansion.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <GrantSuccessTable
+                title="Top BC Funding Avenues"
+                metrics={[
+                  { label: "Innovate BC (ISI)", value: "$10,000", description: "Tech/student hiring grant", icon: <Users className="w-5 h-5" />, color: "text-emerald-600" },
+                  { label: "NDIT / ICET", value: "$30,000+", description: "Rural & Northern development funds", icon: <Mountain className="w-5 h-5" />, color: "text-blue-600" },
+                  { label: "CleanBC", value: "Variable", description: "Fleet & building energy retrofits", icon: <Leaf className="w-5 h-5" />, color: "text-green-600" },
+                  { label: "Buy BC", value: "$50,000", description: "Marketing match for local products", icon: <Target className="w-5 h-5" />, color: "text-purple-600" }
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="Use the New Ventures BC 'Halo Effect'">
+                <p>If you are a tech startup, applying for the New Ventures BC (NVBC) Competition is your unofficial rite of passage. Even if you don&apos;t win the grand prize, just making the &quot;Top 25&quot; list provides a halo effect. Many provincial reviewers, angel investors, and IRAP advisors sit on NVBC panels, so participating pre-qualifies you for future provincial and federal tech grants.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2026-01-05" />
+            </div>
+          </div>
+        </section>
+
 
         {/* Regional Alert */}
         <section className="py-12 bg-white -mt-8 relative z-10">
