@@ -9,9 +9,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Beaker, Cog, TestTube, Zap, ExternalLink } from "lucide-react"
+import { CheckCircle, Clock, DollarSign, Target, AlertCircle, Download, Beaker, Cog, TestTube, Zap, ExternalLink, TrendingUp, Users, Award, Shield, MapPin, Rocket, FileText } from 'lucide-react'
 import Link from "next/link"
 import type { Metadata } from "next"
+import { getBlogPostBySlug } from '@/lib/data/blogPosts'
+import EEATBadge from '@/components/blog/EEATBadge'
+import LastVerifiedBadge from '@/components/blog/LastVerifiedBadge'
+import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
+import InlineCTA from '@/components/blog/InlineCTA'
 
 export const metadata: Metadata = {
   title: "Stage 2: Development & Proof-of-Concept Funding Canada 2026 | IRAP & SR&ED | Up to $5M Technology Development",
@@ -58,6 +66,10 @@ const faqSchema = {
 }
 
 export default function DevelopmentProofConceptFundingCanadaPage() {
+  // EEAT Data from blogPosts.ts
+  const postData = getBlogPostBySlug("development-proof-concept-funding-canada");
+  const iconMap: Record<string, any> = { DollarSign, Target, TrendingUp, Users, Award, Shield, CheckCircle, Zap, MapPin, Rocket, FileText, Percent: Target, Flag: Target, Gift: Target };
+
   return (
     <>
       <script
@@ -96,6 +108,67 @@ export default function DevelopmentProofConceptFundingCanadaPage() {
             </div>
           </div>
         </section>
+
+        {/* EEAT ENRICHMENT COMPONENTS */}
+        {postData?.shortAnswer && (
+          <section className="py-6 bg-emerald-50 dark:bg-emerald-950/20">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-emerald-200">
+                <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+                  <span className="font-bold text-emerald-700">The Short Answer: </span>
+                  {postData.shortAnswer}
+                </p>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {postData?.eligibleCheck && (
+          <section className="py-4">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <EligibleCheck />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {postData?.metrics && (
+          <section className="py-6">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <GrantSuccessTable
+                  title="Quick Funding Facts"
+                  metrics={postData.metrics.map((m: any) => {
+                    const IconComponent = (m.iconName && iconMap[m.iconName]) ? iconMap[m.iconName] : Target;
+                    return { ...m, icon: <IconComponent className="w-6 h-6" /> };
+                  })}
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {postData?.expertTip && (
+          <section className="py-6">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <ExpertTipBox type={postData.expertTip.type} title={postData.expertTip.title}>
+                  <div dangerouslySetInnerHTML={{ __html: postData.expertTip.content }} />
+                </ExpertTipBox>
+              </div>
+            </div>
+          </section>
+        )}
+
+        <section className="py-2">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date={postData?.date || "2025-12-01"} />
+            </div>
+          </div>
+        </section>
+
 
         {/* Stage 2 Statistics */}
         <section className="py-16 bg-white">

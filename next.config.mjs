@@ -53,6 +53,11 @@ const nextConfig = {
       { source: '/blog/black-entrepreneurship-loan-fund-2025', destination: '/blog/black-entrepreneurship-loan-fund-2026', permanent: true },
       { source: '/blog/minority-business-grants-canada', destination: '/blog/minority-business-grants-2026', permanent: true },
       { source: '/blog/minority-business-grants-2025', destination: '/blog/minority-business-grants-2026', permanent: true },
+      // US 2025 slugs from enrichment queue → 2026 equivalents
+      { source: '/blog/women-business-grants-2025', destination: '/blog/women-business-grants-2026', permanent: true },
+      { source: '/blog/texas-business-grants-2025', destination: '/blog/texas-business-grants-2026', permanent: true },
+      { source: '/blog/technology-startup-grants-2025', destination: '/blog/technology-startup-grants-2026', permanent: true },
+      { source: '/blog/veterans-business-grants-2025', destination: '/blog/veterans-business-grants-2026', permanent: true },
       // Industry pages without dedicated posts → Canada hub
       { source: '/blog/construction-business-grants-canada', destination: '/canada', permanent: true },
       { source: '/blog/disability-business-grants-canada', destination: '/canada', permanent: true },
