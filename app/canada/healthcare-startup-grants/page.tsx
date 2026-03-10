@@ -7,6 +7,9 @@ import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
+import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
+import EEATBadge from "@/components/blog/EEATBadge"
+import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
     title: "Healthcare Startup Grants Canada 2026: Fund Your Health Tech",
@@ -92,6 +95,13 @@ export default function HealthcareGrantsPage() {
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover grants, R&D funding, and incubators for healthcare, medtech, and digital health startups in Canada.
                         </p>
+                    </div>
+
+                    {/* EEAT Components */}
+                    <div className="mb-8 space-y-3 max-w-3xl mx-auto">
+                      <ShortAnswerBox content="Canadian healthcare startups can access IRAP for medical device R&amp;D, NSERC discovery grants, CIHR health research funding ($1.2B annually), provincial health innovation programs, and SR&amp;ED tax credits covering 35–65% of eligible research expenses." />
+                      <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+                      <EligibleCheck />
                     </div>
 
                     {/* Stats Grid */}

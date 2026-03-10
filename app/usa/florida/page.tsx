@@ -7,6 +7,9 @@ import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
+import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
+import EEATBadge from "@/components/blog/EEATBadge"
+import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
     title: "Florida Business Grants 2026 | FL State Funding Programs",
@@ -114,6 +117,13 @@ export default function FloridaGrantsPage() {
                             Discover Florida's business incentives, research grants, and export funding programs
                             supporting the Sunshine State's diverse economy.
                         </p>
+                    </div>
+
+                    {/* EEAT Components */}
+                    <div className="mb-8 space-y-3 max-w-3xl mx-auto">
+                      <ShortAnswerBox content="Florida businesses can access state incentives including the Florida High Tech Corridor ($250K matching grants), Incumbent Worker Training, Export Diversification grants, and the Qualified Target Industry Tax Refund. Combined with federal SBIR/STTR awards, Florida companies can access $100M+ annually." />
+                      <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+                      <EligibleCheck />
                     </div>
 
                     {/* Stats Grid */}

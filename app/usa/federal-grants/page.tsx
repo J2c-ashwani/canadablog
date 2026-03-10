@@ -8,6 +8,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowRight, Building, Users, Zap, BookOpen } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
+import EEATBadge from "@/components/blog/EEATBadge"
+import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
   title: "Federal Grants for Small Business | USA Government Funding Programs",
@@ -58,6 +61,17 @@ export default function USAFederalGrantsPage() {
           </div>
         </div>
       </section>
+      {/* EEAT Components */}
+      <section className="py-6 bg-emerald-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto space-y-4">
+            <ShortAnswerBox content="Federal grants for U.S. small businesses are available through NSF, SBA, DOE, NIH, and DOD. Phase I SBIR awards range from $150K–$305K, with Phase II up to $2M. No equity required — 100% non-dilutive funding." />
+            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+            <EligibleCheck />
+          </div>
+        </div>
+      </section>
+
 
       {/* Key Programs with Learn More Buttons */}
       <section className="py-20">

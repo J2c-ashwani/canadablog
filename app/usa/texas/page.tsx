@@ -7,6 +7,9 @@ import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
+import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
+import EEATBadge from "@/components/blog/EEATBadge"
+import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
   title: "Texas Business Funding Programs 2026 | State Grants & Incentives",
@@ -116,7 +119,14 @@ export default function TexasGrantsPage() {
             </p>
           </div>
 
-          {/* Stats Grid */}
+          {/* EEAT Components */}
+                    <div className="mb-8 space-y-3 max-w-3xl mx-auto">
+                      <ShortAnswerBox content="Texas businesses benefit from the Texas Enterprise Fund, Texas Emerging Technology Fund, robust SBIR/STTR ecosystem, and no state income tax. Texas ranks #3 nationally for SBIR awards, making it one of the top states for non-dilutive startup funding." />
+                      <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+                      <EligibleCheck />
+                    </div>
+
+                    {/* Stats Grid */}
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

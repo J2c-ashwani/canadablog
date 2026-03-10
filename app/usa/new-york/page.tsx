@@ -8,6 +8,9 @@ import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
+import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
+import EEATBadge from "@/components/blog/EEATBadge"
+import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
     title: "New York Business Grants 2026 | NY State Funding Programs",
@@ -115,6 +118,13 @@ export default function NewYorkGrantsPage() {
                             Access comprehensive New York state funding programs, startup grants, and economic incentives
                             for businesses in NYC, Upstate, and across the Empire State.
                         </p>
+                    </div>
+
+                    {/* EEAT Components */}
+                    <div className="mb-8 space-y-3 max-w-3xl mx-auto">
+                      <ShortAnswerBox content="New York businesses can access START-UP NY tax-free zones (10 years), NYSERDA clean energy grants up to $350K, Empire State Development programs, and the Pre-Seed Matching Fund ($50K–$250K). Federal SBIR programs add $1B+ annually for NY companies." />
+                      <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+                      <EligibleCheck />
                     </div>
 
                     {/* Stats Grid */}

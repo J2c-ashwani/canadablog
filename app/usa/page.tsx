@@ -7,6 +7,9 @@ import { ArrowRight, DollarSign, Building2, Users, Lightbulb, TrendingUp, Landma
 import Link from "next/link"
 import type { Metadata } from "next"
 import { getAllStateDetails } from "@/lib/data/stateDetails"
+import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
+import EEATBadge from "@/components/blog/EEATBadge"
+import EligibleCheck from "@/components/blog/EligibleCheck"
 
 
 export const metadata: Metadata = {
@@ -54,6 +57,17 @@ export default function USAGrantsPage() {
           </div>
         </div>
       </section>
+      {/* EEAT Components */}
+      <section className="py-6 bg-emerald-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto space-y-4">
+            <ShortAnswerBox content="Yes — U.S. businesses can access $50B+ in federal and state grants annually. Key programs include NSF SBIR ($305K–$2M), DOE SBIR, SBA initiatives, and 50 state-level funding pools. Non-dilutive, no equity required." />
+            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+            <EligibleCheck />
+          </div>
+        </div>
+      </section>
+
 
       {/* Stats */}
       <section className="py-16 bg-gray-50">

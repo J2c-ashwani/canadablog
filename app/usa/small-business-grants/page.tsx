@@ -8,6 +8,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowRight, Building, Users, Zap, BookOpen, TrendingUp, DollarSign, Target, CheckCircle } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
+import EEATBadge from "@/components/blog/EEATBadge"
+import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
   title: "Small Business Grants USA 2026: $44.8B Available [Apply Now]",
@@ -63,6 +66,17 @@ export default function USASmallBusinessGrantsPage() {
           </div>
         </div>
       </section>
+      {/* EEAT Components */}
+      <section className="py-6 bg-emerald-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto space-y-4">
+            <ShortAnswerBox content="U.S. small businesses can access $50B+ annually through SBA programs, SBIR/STTR grants, and state-level funding. The SBA 7(a) loan guarantees up to $5M. SBIR Phase I provides up to $305K in non-dilutive funding." />
+            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+            <EligibleCheck />
+          </div>
+        </div>
+      </section>
+
 
       {/* Key Stats */}
       <section className="py-20">

@@ -6,6 +6,9 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowRight, MapPin, DollarSign, Users } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
+import EEATBadge from "@/components/blog/EEATBadge"
+import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
   title: "Government Grants Canada 2026: 300+ Programs, $10B+ Available",
@@ -53,6 +56,17 @@ export default function CanadaGrantsPage() {
           </div>
         </div>
       </section>
+      {/* EEAT Components */}
+      <section className="py-6 bg-emerald-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto space-y-4">
+            <ShortAnswerBox content="Canada offers 300+ government grant programs with $10B+ available annually. Key programs include IRAP (up to $500K), SR&ED tax credits (up to 65% refundable), Strategic Innovation Fund ($100M+), and provincial grants across all 10 provinces." />
+            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+            <EligibleCheck />
+          </div>
+        </div>
+      </section>
+
 
       {/* Stats */}
       <section className="py-16 bg-gray-50">

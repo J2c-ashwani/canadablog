@@ -7,6 +7,9 @@ import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
+import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
+import EEATBadge from "@/components/blog/EEATBadge"
+import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
     title: "Indigenous Business Grants 2026: $500K+ Programs [Apply Now]",
@@ -92,6 +95,13 @@ export default function IndigenousGrantsPage() {
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover grants, loans, and resources specifically designed to support Indigenous (First Nations, Inuit, and Métis) entrepreneurs and businesses across Canada.
                         </p>
+                    </div>
+
+                    {/* EEAT Components */}
+                    <div className="mb-8 space-y-3 max-w-3xl mx-auto">
+                      <ShortAnswerBox content="Indigenous entrepreneurs in Canada can access NACCA's Aboriginal Entrepreneurship Program, the Indigenous Women Entrepreneurship Fund (IWEF), WELF loans up to $50K, and the historic $830M federal agreement. Indigenous Financial Institutions support First Nations, Métis, and Inuit business owners coast to coast." />
+                      <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+                      <EligibleCheck />
                     </div>
 
                     {/* Stats Grid */}

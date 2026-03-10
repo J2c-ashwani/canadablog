@@ -6,6 +6,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, DollarSign, Target, ExternalLink, MapPin, Building, Users, Zap, Award, TrendingUp, Heart, Rocket, BookOpen } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
+import EEATBadge from "@/components/blog/EEATBadge"
+import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
   title: "USA Tech Startup Grants 2026: $2.5M+ SBIR/STTR Funding | Complete Guide",
@@ -57,6 +60,17 @@ export default function USATechnologyStartupGrantsPage() {
             </div>
           </div>
         </section>
+      {/* EEAT Components */}
+      <section className="py-6 bg-emerald-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto space-y-4">
+            <ShortAnswerBox content="U.S. tech startups can access NSF SBIR ($305K Phase I, $2M Phase II), DOE clean energy grants, DOD SBIR, and state accelerator programs. Non-dilutive funding supports AI, biotech, hardware, SaaS, and deep tech innovations." />
+            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+            <EligibleCheck />
+          </div>
+        </div>
+      </section>
+
 
         {/* Key Statistics */}
         <section className="py-16 bg-white">

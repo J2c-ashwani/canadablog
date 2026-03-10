@@ -7,6 +7,9 @@ import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
+import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
+import EEATBadge from "@/components/blog/EEATBadge"
+import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
     title: "Agriculture Grants Canada 2026: AAFC & Agritech Programs",
@@ -92,6 +95,13 @@ export default function AgricultureGrantsPage() {
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover grants, loans, and funding opportunities for agriculture startups, agritech innovation, and food processors in Canada.
                         </p>
+                    </div>
+
+                    {/* EEAT Components */}
+                    <div className="mb-8 space-y-3 max-w-3xl mx-auto">
+                      <ShortAnswerBox content="Canadian agriculture businesses can access AgriInnovate ($10M per project), the Agricultural Clean Technology Program ($2M), AAFC programs, and provincial agri-food grants. The Canadian Agricultural Partnership provides $3B+ over 5 years for farm innovation and sustainability." />
+                      <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+                      <EligibleCheck />
                     </div>
 
                     {/* Stats Grid */}

@@ -7,6 +7,9 @@ import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
+import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
+import EEATBadge from "@/components/blog/EEATBadge"
+import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
     title: "Green Energy Grants Canada 2026: $1.5B+ in Cleantech Funding",
@@ -92,6 +95,13 @@ export default function GreenEnergyGrantsPage() {
                         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                             Discover grants and incentives for renewable energy projects, energy efficiency upgrades, and cleantech innovation across Canada.
                         </p>
+                    </div>
+
+                    {/* EEAT Components */}
+                    <div className="mb-8 space-y-3 max-w-3xl mx-auto">
+                      <ShortAnswerBox content="Canadian clean energy businesses can access SDTC funding (up to $10M), NRCan Smart Renewables program ($50M+), Clean Investment Tax Credits (up to 30% refundable), and provincial green energy grants. Canada's $8B+ dedicated federal funding targets Net Zero by 2050." />
+                      <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+                      <EligibleCheck />
                     </div>
 
                     {/* Stats Grid */}
