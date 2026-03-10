@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   CheckCircle, DollarSign, Target, Zap, Building, Users, Leaf,
   Clock, AlertTriangle, FileText, HelpCircle, TrendingUp, MapPin,
-  Briefcase, ChevronRight, ExternalLink, BookOpen
+  Briefcase, ChevronRight, ExternalLink, BookOpen, Award
 } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
@@ -106,7 +106,7 @@ export default function AlbertaSmallBusinessGrantsGuide() {
         </section>
 
         {/* Table of Contents */}
-        
+
         {/* EEAT ENRICHMENT COMPONENTS */}
         <section className="py-6 bg-red-50 dark:bg-red-950/20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,7 +160,7 @@ export default function AlbertaSmallBusinessGrantsGuide() {
             </div>
           </div>
         </section>
-<section className="py-8 bg-white border-b">
+        <section className="py-8 bg-white border-b">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <nav className="p-6 bg-gray-50 rounded-xl">
