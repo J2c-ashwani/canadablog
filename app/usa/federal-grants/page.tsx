@@ -375,7 +375,120 @@ export default function USAFederalGrantsPage() {
         </div>
       </section>
 
+      {/* Deep Content Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto space-y-10">
+
+            <Card>
+              <CardHeader><CardTitle className="text-xl">SBIR/STTR by Federal Agency — 2026 Comparison</CardTitle></CardHeader>
+              <CardContent>
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  SBIR Phase I award amounts and focus areas differ significantly by agency. Target agencies whose mission most closely matches your technology — alignment quality is the top predictor of SBIR success.
+                </p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm border-collapse">
+                    <thead>
+                      <tr className="bg-blue-800 text-white">
+                        <th className="text-left p-3 font-medium rounded-tl-lg">Agency</th>
+                        <th className="text-left p-3 font-medium">Phase I</th>
+                        <th className="text-left p-3 font-medium">Phase II</th>
+                        <th className="text-left p-3 font-medium rounded-tr-lg">Best For</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        ["NSF", "$305K / 12 mo", "$1M / 24 mo", "Deep tech, AI/ML, advanced computing, materials"],
+                        ["DOD (Army/Navy/AF/DARPA)", "$250K–$300K / 6 mo", "$2M / 24 mo", "Defense, cybersecurity, robotics, aerospace, comms"],
+                        ["DOE", "$300K / 12 mo", "$2M / 24 mo", "Energy storage, grid tech, cleantech, nuclear"],
+                        ["NIH", "$305K / 12 mo", "$2M / 24 mo", "Biomedical devices, diagnostics, drug dev, health IT"],
+                        ["NASA", "$175K / 12 mo", "$750K / 24 mo", "Aerospace, propulsion, Earth observation, robotics"],
+                        ["USDA", "$175K / 12 mo", "$1.7M / 24 mo", "AgTech, food science, precision agriculture, biofuels"],
+                        ["EPA", "$100K / 12 mo", "$400K / 24 mo", "Environmental monitoring, remediation, waste tech"],
+                        ["DHS", "$150K / 12 mo", "$1M / 24 mo", "Border security, emergency response, surveillance tech"],
+                      ].map(([agency, pi, pii, focus], i) => (
+                        <tr key={agency} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                          <td className="p-3 font-semibold text-blue-900">{agency}</td>
+                          <td className="p-3 text-green-700 font-medium">{pi}</td>
+                          <td className="p-3 text-green-700 font-medium">{pii}</td>
+                          <td className="p-3 text-gray-600 text-xs">{focus}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader><CardTitle className="text-xl">Beyond SBIR — Other Federal Grant Programs for Businesses</CardTitle></CardHeader>
+              <CardContent className="text-gray-700 space-y-4">
+                <p className="leading-relaxed">
+                  SBIR/STTR are specifically designed for small businesses doing R&D. But several other federal programs serve different business needs:
+                </p>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    { prog: "EDA Economic Development Grants", desc: "The Economic Development Administration funds revolving loan funds, small business incubators, and regional development infrastructure — businesses access this through EDA-funded intermediary organizations in their region (eda.gov)." },
+                    { prog: "USDA Business & Industry (B&I) Loan Guarantees", desc: "USDA Rural Development guarantees business loans of up to $25M for businesses in rural areas (populations under 50,000) — including manufacturing, retail, and service businesses (rd.usda.gov)." },
+                    { prog: "DOE Loan Programs Office (LPO)", desc: "For large cleantech and energy projects ($100M+), the DOE LPO provides direct government loans and loan guarantees at below-market rates — relevant to energy manufacturers and large-scale cleantech projects (loan.energy.gov)." },
+                    { prog: "CDFI Fund — Small Business Lending", desc: "Community Development Financial Institutions (CDFIs) provide loans and technical assistance to underserved small businesses. Many CDFIs offer grants to qualifying businesses in low-income communities (cdfifund.gov)." },
+                    { prog: "NEA Grants for Arts-Based Businesses", desc: "The National Endowment for the Arts funds arts-based businesses, creative economy projects, and arts-integrated community development — relevant to creative businesses with a public benefit (arts.gov)." },
+                    { prog: "HUD Community Development Block Grants (CDBG)", desc: "HUD CDBG are distributed to local governments who fund small business development in low-income communities — access through your city or county government (hud.gov)." },
+                  ].map(({ prog, desc }) => (
+                    <div key={prog} className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                      <div className="font-semibold text-blue-900 mb-1 text-sm">{prog}</div>
+                      <div className="text-xs text-blue-700 leading-relaxed">{desc}</div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-red-50 border-red-100">
+              <CardHeader><CardTitle className="text-xl text-red-900">5 Common Mistakes in Federal Grant Applications</CardTitle></CardHeader>
+              <CardContent className="text-red-900 space-y-3">
+                {[
+                  { n: "1", m: "Writing a Technology Overview Instead of a Topic Response", d: "SBIR applications are evaluated on how well they respond to the specific solicitation topic — not on the general innovation quality. Generic technology overviews not specifically addressing the topic receive low scores regardless of technology quality." },
+                  { n: "2", m: "Weak Commercialization Sections", d: "Commercialization is weighed as heavily as technical merit. A winning commercialization section identifies specific federal procurement pathways (Phase III), private customers, IP strategy, market size quantification, and post-grant revenue timeline." },
+                  { n: "3", m: "Underestimating Application Timeline Requirements", d: "SAM.gov processing: 10–14 business days. First-time application preparation: 3–6 weeks for a competitive proposal. Total realistic timeline from first contact to submission: 6–8 weeks minimum." },
+                  { n: "4", m: "Missing Resubmission Opportunities After Initial Declines", d: "Most federal SBIR programs allow declined applications to be revised and resubmitted in subsequent cycles. Review panel feedback identifies specific weaknesses — a resubmission addressing all reviewer concerns has significantly higher success rates." },
+                  { n: "5", m: "Budget Preparation Errors That Disqualify Applications", d: "Federal grants require audit-ready, detailed budget justifications. Budget errors (incorrect indirect cost rates, unallowable costs) disqualify proposals at administrative review before technical review. Have your budget reviewed by an SBDC advisor before submission." },
+                ].map(({ n, m, d }) => (
+                  <div key={n} className="bg-white rounded-lg p-4 border border-red-200">
+                    <div className="font-semibold text-red-900 mb-1">{n}. {m}</div>
+                    <p className="text-xs text-red-800 leading-relaxed">{d}</p>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">FAQ: USA Federal Business Grants 2026</h2>
+              <div className="space-y-4">
+                {[
+                  { q: "Can I apply for SBIR if my company has previously received SBIR funding?", a: "Yes — SBIR is not a one-time program. Companies can receive multiple Phase I awards (one per topic per solicitation cycle) and multiple Phase II awards. Companies with successful Phase II commercialization are viewed favorably in subsequent applications as they demonstrate execution capability." },
+                  { q: "What is STTR and how does it differ from SBIR?", a: "STTR requires formal collaboration between a small business and a U.S. research institution — at least 30% of work by the institution and 40% by the business. STTR is available at NSF, DOD, DOE, NIH, and NASA. It&apos;s ideal for commercializing university-developed technology. Award amounts are similar to SBIR." },
+                  { q: "Is there a federal grant for purchasing equipment for my small manufacturing business?", a: "Federal grants for equipment purposes are limited for for-profit manufacturers. SBIR funds R&D equipment. USDA B&I guarantees loans for rural businesses. SBA 504 loans specifically finance major fixed assets including equipment at below-market rates — this is the most accessible federal mechanism for manufacturing equipment." },
+                  { q: "How do I find my local Small Business Development Center (SBDC)?", a: "The SBDC national directory is at americassbdc.org — enter your zip code to find the nearest center. All SBDC services are free to small businesses — including grant application review, business plan development, and financial projections. Call your SBDC before submitting any federal grant application." },
+                  { q: "Are federal grants available for food and beverage businesses?", a: "Yes — primarily through USDA programs. USDA SBIR funds agricultural technology and food system innovation. USDA VAPG (Value-Added Producer Grants) fund producers adding value to their products. USDA Rural Business Development Grants fund rural food businesses. For non-rural food businesses, SBA loans are the primary federal financing vehicle." },
+                  { q: "What is the NSF I-Corps program and is it a grant?", a: "NSF I-Corps is a $50,000 grant providing training in customer discovery and business model development for innovators commercializing technology. I-Corps alumni have significantly higher NSF SBIR Phase I success rates than non-alumni. Regional I-Corps hubs at universities across the country are open to non-NSF-funded innovators." },
+                  { q: "Can a nonprofit organization receive SBIR grants?", a: "No — SBIR and STTR are available exclusively to for-profit small businesses (under 500 employees, majority U.S.-owned). However, nonprofits can be STTR research institution partners. Nonprofits should explore NSF, NIH, DOE, and other agency grants in separate solicitation tracks." },
+                  { q: "What federal grants are available for veteran-owned small businesses?", a: "Veteran-Owned (VOSB) and Service-Disabled Veteran-Owned (SDVOSB) businesses have federal contract set-asides accessed through VA CVE certification. For true grants, veterans access SBIR/STTR equally with all small businesses. The SBA&apos;s Office of Veterans Business Development provides Boots to Business training and Veteran Business Outreach Centers (VBOCs)." },
+                ].map((item, i) => (
+                  <Card key={i}><CardContent className="pt-5">
+                    <div className="font-semibold text-gray-900 mb-2">{item.q}</div>
+                    <div className="text-gray-600 text-sm leading-relaxed">{item.a}</div>
+                  </CardContent></Card>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   )
 }
+

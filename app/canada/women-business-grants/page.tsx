@@ -1,1156 +1,379 @@
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
+import { NewsletterSignup } from "@/components/newsletter-signup"
+import { GrantComparisonTable } from "@/components/grant-comparison-table"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Clock, DollarSign, Target, ExternalLink, MapPin, Building, Users, Zap, Award, TrendingUp, Heart, Rocket, BookOpen } from "lucide-react"
+import { Users2, CheckCircle, ArrowRight, Building, Lightbulb, FileText, AlertCircle, Star } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import type { Grant } from "@/lib/grants-data"
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
-  title: "Women-Owned Business Grants Canada 2026: $6B+ [Full List]",
-  description: "150+ grants for women entrepreneurs in Canada. WELF microloans ($50K), WES Strategy, BDC women financing & provincial programs. See which ones you qualify for.",
-  keywords: "women-owned business grants canada, women entrepreneurs canada, grants for women in business canada, canadian grants for women entrepreneurs, funding for women entrepreneurs, women business loans Canada, ladies business loan",
-  openGraph: {
-    title: "Women-Owned Business Grants Canada 2026: $6B+ [Full List]",
-    description: "150+ grants for women entrepreneurs in Canada. WELF, BDC, and provincial programs with $6B+ available.",
-    url: "https://www.fsidigital.ca/canada/women-business-grants",
-    images: ["/og-image.png"],
-  },
+  title: "Canada Women Business Grants 2026 | WES, BDC Women, EDC & Provincial Programs",
+  description: "Complete guide to Canada women business grants 2026. Women Entrepreneurship Strategy (WES) grants, BDC Women in Technology, EDC Women Exporters, Cartier Women's Initiative, and provincial programs for women entrepreneurs in BC, Ontario, Alberta, and Quebec.",
+  keywords: "Canada women business grants 2026, Women Entrepreneurship Strategy Canada, WES grants, BDC women entrepreneurs, EDC women exporters, women owned business grants Canada, women entrepreneur funding Canada, women in tech grants Canada, provincial women business grants",
+  alternates: { canonical: "https://www.fsidigital.ca/canada/women-business-grants" },
+  openGraph: { title: "Canada Women Business Grants 2026 | WES, BDC, EDC & Provincial Guide", description: "Discover Canadian women business grants — WES funding, BDC Women programs, EDC trade support, and provincial women entrepreneur programs for 2026.", url: "https://www.fsidigital.ca/canada/women-business-grants" },
 }
 
-export default function WomenBusinessGrantsCanadaPage() {
+const womenGrants: Grant[] = [
+  { id: "ca-wes-fund", name: "Women Entrepreneurship Fund (WES Fund)", fundingMin: 10000, fundingMax: 100000, eligibility: ["Majority women-owned and led Canadian businesses (51%+)", "Companies with 1–250 employees", "Growth-stage businesses with revenue or MVPP"], deadline: "Through WES Ecosystem partners — rolling regional intakes", applicationLink: "https://ised-isde.canada.ca/site/women-entrepreneurship-strategy/en/women-entrepreneurship-fund", description: "Non-repayable grants of $10K–$100K for Canadian women entrepreneurs looking to scale their businesses, access new markets, hire staff, or invest in productivity. Delivered through regional WES Ecosystem partners.", country: "Canada", region: "Federal", category: "Women Business Grant", agency: "ISED Canada — Women Entrepreneurship Strategy", status: "Active", tags: ["Women Business", "Scale-up", "Non-repayable", "WES"], requirements: ["51%+ women ownership and leadership", "1–250 employees", "Business plan and growth strategy", "Through regional WES partner"], lastUpdated: "2026-01-01" },
+  { id: "ca-bdc-women", name: "BDC Women in Technology Venture Fund", fundingMin: 500000, fundingMax: 10000000, eligibility: ["Women-led Canadian technology companies", "Majority women-founded or women-led leadership teams", "Series A or growth-stage technology companies"], deadline: "Rolling — bdc.ca/women or BDC Capital", applicationLink: "https://www.bdc.ca/en/bdc-capital/venture-capital/funds/women-technology-fund", description: "Dedicated venture capital fund investing in women-led Canadian tech companies — $500K to $10M equity investment in promising high-growth technology businesses with women in leadership.", country: "Canada", region: "Federal", category: "Venture Capital", agency: "BDC Capital", status: "Active", tags: ["Women Tech", "Venture Capital", "Technology", "Equity"], requirements: ["Women-led Canadian tech company", "Growth-stage with revenue or strong traction", "Technology sector", "Equity investment (dilutive)"], lastUpdated: "2026-01-01" },
+  { id: "ca-edc-women", name: "EDC Women Exporter Program", fundingMin: 0, fundingMax: 0, eligibility: ["Canadian women-owned businesses (51%+) with export activity or ambitions", "All industries and export stages", "Connects with trade financing and market development support"], deadline: "Continuous — edc.ca/women", applicationLink: "https://www.edc.ca/en/solutions-for/women-owned-businesses.html", description: "Export Development Canada&apos;s dedicated program for women exporters — providing trade financing, export credit insurance, networking, and market access support specifically for women-owned businesses expanding globally.", country: "Canada", region: "Federal", category: "Export Support", agency: "Export Development Canada", status: "Active", tags: ["Export", "Women Business", "Trade Finance", "Insurance"], requirements: ["51%+ women ownership", "Canadian business", "Export or export market development activity"], lastUpdated: "2026-01-01" },
+  { id: "ca-wbc", name: "Women&apos;s Enterprise Centres (WBC) — Loan Programs", fundingMin: 5000, fundingMax: 150000, eligibility: ["Women entrepreneurs in BC, Alberta, Saskatchewan, Manitoba", "All industries, startup through growth stage", "Business plan required"], deadline: "Rolling — through provincial Women's Business Centres", applicationLink: "https://www.wbc.org/financing/", description: "Women's Business Centres across Western Canada provide below-market-rate business loans ($5K–$150K) specifically for women entrepreneurs, with business advisory and mentorship services.", country: "Canada", region: "Western Canada", category: "Women Business Loans", agency: "Women&apos;s Business Centres (WBC Network)", status: "Active", tags: ["Women Business", "Loan", "Advisory", "Western Canada"], requirements: ["Women entrepreneur", "Business plan", "Western Canada province", "Minimum viable business concept"], lastUpdated: "2026-01-01" },
+  { id: "ca-wes-ecosystem", name: "WES Ecosystem Partners — Training & Mentorship", fundingMin: 0, fundingMax: 25000, eligibility: ["Women entrepreneurs across Canada — any stage", "All industries", "Typically free or subsidized programming"], deadline: "Continuous — through local WES ecosystem partners (accelerators, incubators)", applicationLink: "https://ised-isde.canada.ca/site/women-entrepreneurship-strategy/en/women-entrepreneurship-ecosystem-fund", description: "WES Ecosystem fund finances organizations (accelerators, incubators, non-profits) providing programming, training, mentorship, and peer networks to women entrepreneurs. Access through your regional women's entrepreneurship hub.", country: "Canada", region: "Federal", category: "Training & Mentorship", agency: "ISED — WES Ecosystem Partners", status: "Active", tags: ["WES", "Mentorship", "Training", "Accelerator"], requirements: ["Women entrepreneur", "Participation in WES partner program", "Canada-wide"], lastUpdated: "2026-01-01" },
+]
+
+export default function CanadaWomenBusinessGrantsPage() {
   return (
-    <>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50">
       <Header />
-      <div className="min-h-screen bg-gray-50">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-pink-600 via-purple-700 to-pink-800 text-white py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-black/20" />
-          <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-6 bg-white/20 text-white border-white/30 text-lg px-4 py-2">
-                🇨🇦 Women Business Grants Canada
-              </Badge>
-              <h1 className="text-5xl md:text-7xl font-bold mb-8 text-balance leading-tight">
-                $6+ Billion Available for Women-Owned & Women-Led Businesses
-              </h1>
-              <p className="text-xl md:text-2xl mb-8 text-pink-100 leading-relaxed max-w-3xl mx-auto">
-                Access comprehensive funding through Women Entrepreneurship Strategy, loan funds, provincial programs,
-                and federal grants designed specifically for women entrepreneurs across Canada.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4">
-                  Find Women Business Grants Now
-                </Button>
-                <Button size="lg" variant="outline" className="bg-pink-700/30 border-white/30 text-white hover:bg-white/10 text-lg px-8 py-4">
-                  Browse Funding Programs
-                </Button>
-              </div>
+
+      <section className="bg-gradient-to-br from-purple-700 via-fuchsia-800 to-pink-900 text-white py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <Users2 className="h-6 w-6 text-purple-300" />
+              <Badge className="bg-purple-500/30 text-purple-100 border-purple-400">Canada Women Business Grants 2026</Badge>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Canada Women Business Grants 2026</h1>
+            <p className="text-xl text-purple-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Canada has made women&apos;s entrepreneurship a federal priority through the $2.3B Women Entrepreneurship
+              Strategy (WES) — the largest single federal investment in women&apos;s entrepreneurship in Canadian history.
+              The program delivers funding, training, and mentorship through three channels: the Women Entrepreneurship
+              Fund ($10K–$100K non-repayable grants for scaling women-led businesses), the WES Ecosystem Fund
+              (financing accelerators and incubators that serve women entrepreneurs), and WES Knowledge Hub
+              (research and resources). In addition to WES, women entrepreneurs access BDC&apos;s Women in Technology
+              venture fund ($500K–$10M), EDC&apos;s dedicated women exporter program, Women&apos;s Business Centres
+              in Western Canada (loans $5K–$150K), and all mainstream Canadian programs (SR&ED, IRAP, CSBFP,
+              CDAP) on an equal basis. This guide covers each program in depth with eligibility details, application
+              strategies, and provincial-level resources.
+            </p>
+            <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+              <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$2.3B</div><div className="text-purple-200 text-sm mt-1">WES federal investment in women entrepreneurship</div></div>
+              <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$100K</div><div className="text-purple-200 text-sm mt-1">Max Women Entrepreneurship Fund grant</div></div>
+              <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$10M</div><div className="text-purple-200 text-sm mt-1">Max BDC Women in Technology investment</div></div>
             </div>
           </div>
-        </section>
-      {/* EEAT Components */}
+        </div>
+      </section>
+
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
-            <ShortAnswerBox content="Canadian women entrepreneurs can access the Women Entrepreneurship Fund ($100K+), WELF loans ($50K), WES ecosystem grants, Amber Grant, and provincial programs worth $850M+ combined. The federal WES strategy committed $6B to double women-owned businesses." />
+            <ShortAnswerBox content="Yes — Canadian women entrepreneurs have access to: WES Women Entrepreneurship Fund ($10K–$100K non-repayable grants), BDC Women in Technology Venture Fund ($500K–$10M equity for women-led tech), EDC Women Exporter financing and insurance, Women's Business Centres (loans $5K–$150K in Western Canada), WES Ecosystem accelerator and incubator programming, and all mainstream programs (SR&ED, IRAP, CSBFP, CDAP) equally. Both WES-specific and mainstream programs should be pursued simultaneously." />
             <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
             <EligibleCheck />
           </div>
         </div>
       </section>
 
+      <main className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
 
-        {/* Key Statistics */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid md:grid-cols-4 gap-8 text-center">
-                <div className="p-6">
-                  <div className="text-4xl font-bold text-pink-600 mb-2">$6B+</div>
-                  <div className="text-gray-600 font-medium">Women Business Funding</div>
-                  <div className="text-sm text-gray-500 mt-1">Federal + Provincial Programs</div>
-                </div>
-                <div className="p-6">
-                  <div className="text-4xl font-bold text-green-600 mb-2">$50K</div>
-                  <div className="text-gray-600 font-medium">Women Entrepreneurship Loans</div>
-                  <div className="text-sm text-gray-500 mt-1">Up to $50,000 Microloans</div>
-                </div>
-                <div className="p-6">
-                  <div className="text-4xl font-bold text-purple-600 mb-2">150+</div>
-                  <div className="text-gray-600 font-medium">Active Women Grant Programs</div>
-                  <div className="text-sm text-gray-500 mt-1">All Provinces & Territories</div>
-                </div>
-                <div className="p-6">
-                  <div className="text-4xl font-bold text-orange-600 mb-2">89%</div>
-                  <div className="text-gray-600 font-medium">Expert Success Rate</div>
-                  <div className="text-sm text-gray-500 mt-1">Professional Applications</div>
-                </div>
-              </div>
-            </div>
+          <div className="flex flex-wrap gap-2 mb-10">
+            {["WES Fund", "BDC Women in Tech", "EDC Export", "Women's Business Centres", "Provincial Programs", "FAQ"].map((item) => (
+              <Badge key={item} variant="outline" className="cursor-pointer hover:bg-purple-50 px-3 py-1.5 text-sm">{item}</Badge>
+            ))}
           </div>
-        </section>
 
-        {/* Federal Women Entrepreneurship Programs */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <Badge className="mb-4 bg-pink-100 text-pink-800 border-pink-200">
-                  Federal Women Programs
-                </Badge>
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  Women Entrepreneurship Strategy (WES) Programs
-                </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Federal government programs specifically designed to support women entrepreneurs
-                  at every stage - from startup to scale-up and beyond.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-8 mb-12">
-                {/* Women Entrepreneurship Loan Fund */}
-                <Card className="border-2 border-pink-200 hover:border-pink-300 transition-colors">
-                  <CardHeader>
-                    <div className="flex items-center mb-3">
-                      <div className="bg-pink-500 text-white w-12 h-12 rounded-lg flex items-center justify-center font-bold mr-3">
-                        WELF
-                      </div>
-                      <div>
-                        <CardTitle className="text-pink-700 text-xl">Women Entrepreneurship Loan Fund</CardTitle>
-                        <p className="text-pink-600 text-sm">Innovation, Science & Economic Development Canada</p>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span className="text-sm"><strong>Up to $50K</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-blue-600 mr-2" />
-                        <span className="text-sm"><strong>Microloans</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-purple-600 mr-2" />
-                        <span className="text-sm"><strong>Open Now</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      National microloan program providing up to $50,000 for women entrepreneurs,
-                      particularly startups, underrepresented groups, and sole proprietorships.
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center text-sm text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        <span>$55M allocated through delivery organizations</span>
-                      </div>
-                      <div className="flex items-center text-sm text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        <span>WEOC, NACCA, Nventure, Coralus, Evol</span>
-                      </div>
-                      <div className="flex items-center text-sm text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        <span>Focus on underrepresented women entrepreneurs</span>
-                      </div>
-                    </div>
-                    <Button className="w-full bg-pink-600 hover:bg-pink-700" asChild>
-                      <Link href="/blog/women-entrepreneurship-loan-fund-canada">
-                        Learn About WELF
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* Women Entrepreneurship Fund */}
-                <Card className="border-2 border-purple-200 hover:border-purple-300 transition-colors">
-                  <CardHeader>
-                    <div className="flex items-center mb-3">
-                      <div className="bg-purple-500 text-white w-12 h-12 rounded-lg flex items-center justify-center font-bold mr-3">
-                        WEF
-                      </div>
-                      <div>
-                        <CardTitle className="text-purple-700 text-xl">Women Entrepreneurship Fund Canada</CardTitle>
-                        <p className="text-purple-600 text-sm">Innovation, Science & Economic Development Canada</p>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span className="text-sm"><strong>Non-Repayable</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-blue-600 mr-2" />
-                        <span className="text-sm"><strong>Growth Stage</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-purple-600 mr-2" />
-                        <span className="text-sm"><strong>Rolling Intake</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Non-repayable funding for women-owned businesses to expand operations,
-                      innovate product lines, hire staff, and access new markets.
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center text-sm text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        <span>Business expansion and innovation funding</span>
-                      </div>
-                      <div className="flex items-center text-sm text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        <span>Equipment, marketing, R&D support</span>
-                      </div>
-                      <div className="flex items-center text-sm text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        <span>Early-stage and growth-stage prioritized</span>
-                      </div>
-                    </div>
-                    <Button className="w-full bg-purple-600 hover:bg-purple-700" asChild>
-                      <Link href="/blog/women-entrepreneurship-fund-canada">
-                        Learn About WEF
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* BDC Women Entrepreneurs */}
-                <Card className="border-2 border-blue-200 hover:border-blue-300 transition-colors">
-                  <CardHeader>
-                    <div className="flex items-center mb-3">
-                      <div className="bg-blue-500 text-white w-12 h-12 rounded-lg flex items-center justify-center font-bold mr-3">
-                        BDC
-                      </div>
-                      <div>
-                        <CardTitle className="text-blue-700 text-xl">BDC Women Entrepreneurs</CardTitle>
-                        <p className="text-blue-600 text-sm">Business Development Bank of Canada</p>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span className="text-sm"><strong>Flexible Loans</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-blue-600 mr-2" />
-                        <span className="text-sm"><strong>All Stages</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-purple-600 mr-2" />
-                        <span className="text-sm"><strong>Advisory Included</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Comprehensive financing and advisory services designed for women-led businesses
-                      with flexible terms and strategic growth support.
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center text-sm text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        <span>Flexible loan terms for women entrepreneurs</span>
-                      </div>
-                      <div className="flex items-center text-sm text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        <span>Strategic advisory services included</span>
-                      </div>
-                      <div className="flex items-center text-sm text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        <span>Growth and expansion expertise</span>
-                      </div>
-                    </div>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700" asChild>
-                      <Link href="/blog/bdc-women-entrepreneurs-financing">
-                        Learn About BDC
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* EDC Women in Trade */}
-                <Card className="border-2 border-teal-200 hover:border-teal-300 transition-colors">
-                  <CardHeader>
-                    <div className="flex items-center mb-3">
-                      <div className="bg-teal-500 text-white w-12 h-12 rounded-lg flex items-center justify-center font-bold mr-3">
-                        EDC
-                      </div>
-                      <div>
-                        <CardTitle className="text-teal-700 text-xl">EDC Women in Trade</CardTitle>
-                        <p className="text-teal-600 text-sm">Export Development Canada</p>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div className="flex items-center">
-                        <DollarSign className="w-5 h-5 text-green-600 mr-2" />
-                        <span className="text-sm"><strong>Export Focus</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-blue-600 mr-2" />
-                        <span className="text-sm"><strong>International</strong></span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-5 h-5 text-purple-600 mr-2" />
-                        <span className="text-sm"><strong>Equity Capital</strong></span>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">
-                      Export financing and equity capital for women-owned businesses targeting
-                      international markets and global expansion opportunities.
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center text-sm text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        <span>Inclusive Trade Investments Program</span>
-                      </div>
-                      <div className="flex items-center text-sm text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        <span>Export market development support</span>
-                      </div>
-                      <div className="flex items-center text-sm text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-2" />
-                        <span>Equity capital for diverse women businesses</span>
-                      </div>
-                    </div>
-                    <Button className="w-full bg-teal-600 hover:bg-teal-700" asChild>
-                      <Link href="/blog/edc-women-trade-export-financing">
-                        Learn About EDC
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Canada Women Business Programs — Quick Comparison 2026</h2>
+            <p className="text-gray-600 mb-6">Compare the core women-specific funding programs. These are in addition to all mainstream Canadian programs that women entrepreneurs equally qualify for (SR&ED, IRAP, CSBFP, CDAP, etc.).</p>
+            <GrantComparisonTable grants={womenGrants} title="Canada Women Entrepreneur Programs" />
           </div>
-        </section>
 
-        {/* Provincial Women Business Support */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <Badge className="mb-4 bg-blue-100 text-blue-800 border-blue-200">
-                  Provincial Women Programs
-                </Badge>
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  Provincial Women Entrepreneurship Support
-                </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Province-specific funding programs and organizations supporting women
-                  entrepreneurs with grants, loans, mentorship, and business services.
-                </p>
-              </div>
+          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+            <div className="lg:col-span-2 space-y-10">
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                {/* Ontario Women Programs */}
-                <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-red-500">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-red-700">Ontario Women</CardTitle>
-                      <MapPin className="w-5 h-5 text-red-500" />
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold text-gray-900 mb-2">$850M</div>
-                    <div className="text-sm text-gray-600 mb-4">Women Business Support</div>
-                    <ul className="space-y-2 text-sm mb-4">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Women's Enterprise Organizations</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>FedDev Ontario RE3 Initiative</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Up to $5,000 non-repayable grants</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Women in Technology support</span>
-                      </li>
-                    </ul>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/ontario-women-business-grants">
-                        Learn More
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+              <Card>
+                <CardHeader><CardTitle className="text-xl flex items-center gap-2"><Building className="h-5 w-5 text-purple-600" />Canada&apos;s Women Entrepreneurship Ecosystem — The Full Picture</CardTitle></CardHeader>
+                <CardContent className="text-gray-700 space-y-4">
+                  <p className="leading-relaxed">
+                    Canada&apos;s Women Entrepreneurship Strategy (WES), launched in 2018 with $2.3B in federal commitment
+                    over 5 years, represents the most comprehensive national policy investment in women&apos;s entrepreneurship
+                    in Canadian history. WES operates through three funding streams, each addressing a different part of
+                    the women&apos;s entrepreneurship ecosystem: the <strong>Women Entrepreneurship Fund</strong> (direct grants
+                    to women-led businesses for scaling), the <strong>WES Ecosystem Fund</strong> (grants to organizations
+                    providing programming to women entrepreneurs — accelerators, incubators, NPOs), and the
+                    <strong>Women Entrepreneurship Knowledge Hub</strong> (research and data to improve policy and programming).
+                  </p>
+                  <p className="leading-relaxed">
+                    Federal women&apos;s entrepreneurship programs extend beyond WES. The <strong>Business Development Bank
+                      of Canada (BDC)</strong> has a dedicated Women in Technology venture fund investing equity in women-led
+                    Canadian tech companies, plus specific advisory and financing products for women entrepreneurs.
+                    <strong>Export Development Canada (EDC)</strong> operates a Women Exporter program with tailored trade
+                    financing, credit insurance, and networking for women-owned businesses expanding internationally.
+                    The <strong>Trade Commissioner Service (TCS)</strong> has designated women entrepreneur trade advisors
+                    in key markets. And the <strong>Women&apos;s Business Centres (WBCs)</strong>, a national network funded
+                    partially by WES, provide loans and advisory services to women entrepreneurs in every province.
+                  </p>
+                  <p className="leading-relaxed">
+                    The critical strategic insight: women entrepreneurs should pursue <strong>both</strong> WES-specific programs
+                    <strong> and</strong> mainstream Canadian programs simultaneously. SR&ED, IRAP, CSBFP, CDAP, BDC, and
+                    RDA grants are all equally accessible to women entrepreneurs. The strongest-funded women-led businesses
+                    layer WES grants on top of mainstream programs — using WES for market development and scaling activities
+                    while using SR&ED and IRAP for R&D costs, CSBFP for equipment, and BDC for growth capital. The two
+                    program tracks are complementary, not mutually exclusive.
+                  </p>
+                </CardContent>
+              </Card>
 
-                {/* Quebec Women Programs */}
-                <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-blue-500">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-blue-700">Quebec Women</CardTitle>
-                      <MapPin className="w-5 h-5 text-blue-500" />
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold text-gray-900 mb-2">$720M</div>
-                    <div className="text-sm text-gray-600 mb-4">Women Entrepreneur Support</div>
-                    <ul className="space-y-2 text-sm mb-4">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Réseau des Femmes d'Affaires</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Investissement Québec for Women</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Francophone women business support</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Women in leadership programs</span>
-                      </li>
-                    </ul>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/quebec-women-business-grants">
-                        Learn More
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+              {/* WES Fund Deep Dive */}
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Women Entrepreneur Programs — Detailed Breakdown</h2>
+                <div className="space-y-6">
 
-                {/* British Columbia Women Programs */}
-                <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-green-500">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-green-700">BC Women</CardTitle>
-                      <MapPin className="w-5 h-5 text-green-500" />
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold text-gray-900 mb-2">$650M</div>
-                    <div className="text-sm text-gray-600 mb-4">Women Innovation Funding</div>
-                    <ul className="space-y-2 text-sm mb-4">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Women's Enterprise Centre BC</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Innovate BC women programs</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Tech women leadership support</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Indigenous women entrepreneurs</span>
-                      </li>
-                    </ul>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/bc-women-business-grants">
-                        Learn More
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* Alberta Women Programs */}
-                <Card className="hover:shadow-lg transition-shadow border-t-4 border-t-orange-500">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-orange-700">Alberta Women</CardTitle>
-                      <MapPin className="w-5 h-5 text-orange-500" />
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold text-gray-900 mb-2">$580M</div>
-                    <div className="text-sm text-gray-600 mb-4">Women Business Growth</div>
-                    <ul className="space-y-2 text-sm mb-4">
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Women Building Futures</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Alberta Women Entrepreneurs</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Energy sector women support</span>
-                      </li>
-                      <li className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Tech and innovation women programs</span>
-                      </li>
-                    </ul>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/alberta-women-business-grants">
-                        Learn More
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div className="text-center">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
-                  <Link href="/contact?service=provincial-women-grants-expert-help">
-                    Get Expert Help with Provincial Women Programs
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* National Women Business Awards & Grants */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <Badge className="mb-4 bg-purple-100 text-purple-800 border-purple-200">
-                  National Awards & Grants
-                </Badge>
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  Competitive Women Business Awards & Grant Opportunities
-                </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  National and international grant competitions recognizing and funding
-                  exceptional women entrepreneurs across Canada and beyond.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  {
-                    icon: <Award className="w-8 h-8 text-yellow-600" />,
-                    title: "Amber Grant for Women",
-                    description: "Monthly $10,000 grants with annual $25,000 bonus for women-owned businesses",
-                    amount: "$10K-$25K",
-                    deadline: "Monthly",
-                    color: "yellow",
-                    slug: "amber-grant-women-canada"
-                  },
-                  {
-                    icon: <Heart className="w-8 h-8 text-pink-600" />,
-                    title: "RBC Women Entrepreneur Awards",
-                    description: "Recognition and funding for outstanding women entrepreneurs in Canada",
-                    amount: "$5K-$10K",
-                    deadline: "Annual",
-                    color: "pink",
-                    slug: "rbc-women-entrepreneur-awards"
-                  },
-                  {
-                    icon: <Rocket className="w-8 h-8 text-purple-600" />,
-                    title: "Cartier Women's Initiative",
-                    description: "International program supporting female founders of impact-driven businesses",
-                    amount: "Cash + Coaching",
-                    deadline: "Apr-Jun 2025",
-                    color: "purple",
-                    slug: "cartier-womens-initiative-canada"
-                  },
-                  {
-                    icon: <TrendingUp className="w-8 h-8 text-blue-600" />,
-                    title: "BMO Celebrating Women Grant",
-                    description: "Resources and funding for women-owned businesses to thrive and grow",
-                    amount: "Variable",
-                    deadline: "Ongoing",
-                    color: "blue",
-                    slug: "bmo-celebrating-women-grant"
-                  },
-                  {
-                    icon: <Building className="w-8 h-8 text-green-600" />,
-                    title: "Scotiabank Women Initiative",
-                    description: "Capital funding, mentorship, and education for women-led businesses",
-                    amount: "Funding + Support",
-                    deadline: "Rolling",
-                    color: "green",
-                    slug: "scotiabank-women-initiative"
-                  },
-                  {
-                    icon: <BookOpen className="w-8 h-8 text-teal-600" />,
-                    title: "WBDC Equity Match Grant",
-                    description: "Connecticut-based grants $2,500-$10,000 for women business growth projects",
-                    amount: "$2.5K-$10K",
-                    deadline: "Quarterly",
-                    color: "teal",
-                    slug: "wbdc-equity-match-grant-women"
-                  }
-                ].map((grant, index) => {
-                  const colorClasses = {
-                    yellow: "border-yellow-200 hover:border-yellow-300",
-                    pink: "border-pink-200 hover:border-pink-300",
-                    purple: "border-purple-200 hover:border-purple-300",
-                    blue: "border-blue-200 hover:border-blue-300",
-                    green: "border-green-200 hover:border-green-300",
-                    teal: "border-teal-200 hover:border-teal-300"
-                  }
-
-                  return (
-                    <Card key={index} className={`hover:shadow-lg transition-all ${colorClasses[grant.color as keyof typeof colorClasses]}`}>
-                      <CardHeader>
-                        <div className="flex items-center justify-between mb-2">
-                          {grant.icon}
-                          <Badge variant="outline" className="text-xs">
-                            {grant.deadline}
-                          </Badge>
-                        </div>
-                        <CardTitle className="text-lg">{grant.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-600 text-sm mb-4">{grant.description}</p>
-                        <div className="text-2xl font-bold text-gray-900 mb-2">{grant.amount}</div>
-                        <div className="text-sm text-gray-500 mb-4">Grant Amount</div>
-                        <Button variant="outline" className="w-full" size="sm" asChild>
-                          <Link href={`/blog/${grant.slug}`}>
-                            Learn More
-                          </Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Women Grant Categories */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <Badge className="mb-4 bg-pink-100 text-pink-800 border-pink-200">
-                  Industry & Focus Areas
-                </Badge>
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  Women Business Grants by Industry Sector
-                </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Specialized funding opportunities for women entrepreneurs in specific
-                  industries, sectors, and business focus areas.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <Card className="hover:shadow-lg transition-shadow border-2 border-purple-200">
-                  <CardHeader>
-                    <Zap className="w-12 h-12 text-purple-600 mb-4" />
-                    <CardTitle className="text-purple-700">Women in Technology</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 text-sm mb-4">
-                      Specialized grants for women entrepreneurs in tech, software, AI, and digital innovation
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Software development funding</span>
+                  <Card className="border-l-4 border-l-purple-500">
+                    <CardHeader>
+                      <div className="flex items-start justify-between">
+                        <CardTitle className="text-lg">1. Women Entrepreneurship Fund (WES Fund) — The Primary Grant</CardTitle>
+                        <Badge className="bg-purple-100 text-purple-800 shrink-0 ml-2">$10K – $100K</Badge>
                       </div>
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>AI and machine learning grants</span>
-                      </div>
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Digital innovation support</span>
-                      </div>
-                    </div>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/women-technology-grants-canada">
-                        Explore Tech Grants
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+                    </CardHeader>
+                    <CardContent className="text-gray-700 space-y-4">
+                      <p>
+                        The Women Entrepreneurship Fund provides non-repayable grants of $10,000 to $100,000 to majority
+                        women-owned and led Canadian businesses for scaling activities. The fund is delivered through
+                        regional WES Ecosystem partners — organizations designated by ISED to administer funding in their
+                        region. This means you don&apos;t apply to ISED directly; you apply through your regional WES partner
+                        organization (a women&apos;s business centre, regional accelerator, or industry organization with a WES
+                        delivery mandate).
+                      </p>
+                      <p>
+                        WES Fund grants cover: market development and export activities, hiring staff to support scaling,
+                        technology investments for business growth, professional development and training, and productivity
+                        investments. They do NOT cover basic operating expenses, debt repayment, or founder compensation.
+                        The grant is tied to a specific scaling plan — you must describe the growth activities the grant
+                        will fund and demonstrate how those activities advance your business&apos;s revenue and market position.
+                      </p>
+                      <p>
+                        Eligibility requires: (1) majority women ownership AND leadership — passive women ownership without
+                        women in active leadership roles does not qualify; (2) 1–250 employees; (3) a growth-stage business
+                        with an established concept (pure pre-revenue startups are typically better served by WES Ecosystem
+                        programming than WES Fund grants). Find your regional WES partner at ised-isde.canada.ca/wes.
+                      </p>
+                    </CardContent>
+                  </Card>
 
-                <Card className="hover:shadow-lg transition-shadow border-2 border-green-200">
-                  <CardHeader>
-                    <Building className="w-12 h-12 text-green-600 mb-4" />
-                    <CardTitle className="text-green-700">Women in Manufacturing</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 text-sm mb-4">
-                      Manufacturing sector grants for women-owned production, processing, and industrial businesses
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Advanced manufacturing support</span>
+                  <Card className="border-l-4 border-l-pink-500">
+                    <CardHeader>
+                      <div className="flex items-start justify-between">
+                        <CardTitle className="text-lg">2. Women&apos;s Business Centres (WBC) — Loans and Advisory Nationwide</CardTitle>
+                        <Badge className="bg-pink-100 text-pink-800 shrink-0 ml-2">$5K – $150K loans</Badge>
                       </div>
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Equipment and productivity grants</span>
-                      </div>
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Industrial innovation funding</span>
-                      </div>
-                    </div>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/women-manufacturing-grants-canada">
-                        Explore Manufacturing Grants
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+                    </CardHeader>
+                    <CardContent className="text-gray-700 space-y-4">
+                      <p>
+                        Women&apos;s Business Centres (WBCs) are regionally distributed organizations providing loans,
+                        advisory services, and business training specifically for women entrepreneurs. In Western Canada,
+                        the WBC Network (wbc.org) operates Women&apos;s Enterprise Centres in BC, Alberta, Saskatchewan, and
+                        Manitoba with a direct loan program ($5K–$150K). In Ontario, the Women&apos;s Enterprise Skills Training
+                        of Windsor and similar organizations serve their regions. In Quebec, the Réseau des Femmes
+                        d&apos;affaires du Québec connects women entrepreneurs to financing and mentorship.
+                      </p>
+                      <p>
+                        WBC loans in Western Canada are specifically designed for women entrepreneurs who may not qualify
+                        for conventional bank financing — due to limited credit history, unconventional collateral, or
+                        business models that traditional underwriters don&apos;t assess well. The WBC approach includes
+                        business advisory throughout the loan period — similar to Community Futures for rural businesses
+                        and AFIs for Indigenous entrepreneurs. The holistic support model (loan + advisory) produces better
+                        business outcomes than pure financing.
+                      </p>
+                    </CardContent>
+                  </Card>
 
-                <Card className="hover:shadow-lg transition-shadow border-2 border-blue-200">
-                  <CardHeader>
-                    <Users className="w-12 h-12 text-blue-600 mb-4" />
-                    <CardTitle className="text-blue-700">Women Social Enterprise</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 text-sm mb-4">
-                      Funding for women-led social enterprises, non-profits, and impact-driven businesses
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Social impact funding</span>
+                  <Card className="border-l-4 border-l-blue-500">
+                    <CardHeader>
+                      <div className="flex items-start justify-between">
+                        <CardTitle className="text-lg">3. Provincial Women Entrepreneur Programs — By Province</CardTitle>
+                        <Badge className="bg-blue-100 text-blue-800 shrink-0 ml-2">Province-specific</Badge>
                       </div>
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Community development grants</span>
+                    </CardHeader>
+                    <CardContent className="text-gray-700 space-y-4">
+                      <p>
+                        In addition to federal WES programs, every province has provincial-level women entrepreneur
+                        support — either through Women&apos;s Business Centres, provincial development agencies, or
+                        economic development programs with women entrepreneur priority streams:
+                      </p>
+                      <div className="space-y-3 mt-4">
+                        {[
+                          { prov: "British Columbia", programs: "WBC BC (Women&apos;s Enterprise Centre) — loans $5K–$150K, advisory, mentorship networks; Innovate BC has women-in-tech accelerator programs; BC Tech Fund gender-lens investing" },
+                          { prov: "Ontario", programs: "MaRS Women&apos;s Health Innovation program; FedDev Ontario has women entrepreneur priority in many programs; Ryerson DMZ Women&apos;s Entrepreneurship programs; WEtech Alliance (Windsor/Essex)" },
+                          { prov: "Alberta", programs: "WBC Alberta — loans and advisory; ATB Financial Women&apos;s Entrepreneur programs; Alberta Women Entrepreneurs (AWE) — business advisory, $10K–$500K loan programs" },
+                          { prov: "Quebec", programs: "Réseau des Femmes d&apos;affaires du Québec; Investissement Québec women entrepreneur financing; Fondation Montréal inc. women SME support" },
+                          { prov: "Atlantic Canada", programs: "ACOA women entrepreneur priority in BDP grants; Atlantic Women&apos;s Business Network; provincial Women&apos;s Innovation Challenge programs (Nova Scotia, New Brunswick)" },
+                        ].map(({ prov, programs }) => (
+                          <div key={prov} className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                            <div className="font-bold text-blue-900 text-sm mb-1">{prov}</div>
+                            <div className="text-xs text-blue-700">{programs}</div>
+                          </div>
+                        ))}
                       </div>
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Purpose-driven business support</span>
-                      </div>
-                    </div>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/women-social-enterprise-grants-canada">
-                        Explore Social Grants
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
 
-                <Card className="hover:shadow-lg transition-shadow border-2 border-pink-200">
-                  <CardHeader>
-                    <Heart className="w-12 h-12 text-pink-600 mb-4" />
-                    <CardTitle className="text-pink-700">Indigenous Women</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 text-sm mb-4">
-                      Dedicated funding for Indigenous women entrepreneurs and First Nations businesses
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>NACCA Indigenous support</span>
-                      </div>
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>First Nations business funding</span>
-                      </div>
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Cultural enterprise grants</span>
-                      </div>
-                    </div>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/indigenous-women-business-grants-canada">
-                        Explore Indigenous Grants
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="hover:shadow-lg transition-shadow border-2 border-orange-200">
-                  <CardHeader>
-                    <Rocket className="w-12 h-12 text-orange-600 mb-4" />
-                    <CardTitle className="text-orange-700">Women Export & Trade</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 text-sm mb-4">
-                      International trade and export funding for women entrepreneurs expanding globally
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Export market development</span>
-                      </div>
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>International expansion grants</span>
-                      </div>
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Trade mission support</span>
-                      </div>
-                    </div>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/women-export-trade-grants-canada">
-                        Explore Export Grants
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="hover:shadow-lg transition-shadow border-2 border-teal-200">
-                  <CardHeader>
-                    <Award className="w-12 h-12 text-teal-600 mb-4" />
-                    <CardTitle className="text-teal-700">Women Clean Technology</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 text-sm mb-4">
-                      Environmental and clean technology grants for women in sustainability and green innovation
-                    </p>
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Clean energy funding</span>
-                      </div>
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Sustainability innovation grants</span>
-                      </div>
-                      <div className="flex items-center text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Environmental technology support</span>
-                      </div>
-                    </div>
-                    <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/women-clean-technology-grants-canada">
-                        Explore Clean Tech Grants
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Application Success Tips */}
-        <section className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <Badge className="mb-4 bg-purple-100 text-purple-800 border-purple-200">
-                  Application Success
-                </Badge>
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  How to Win Women Business Grants in Canada
-                </h2>
-                <p className="text-xl text-gray-600">
-                  Expert strategies to maximize your success rate when applying for women entrepreneur funding
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-12">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center">
-                      <CheckCircle className="w-6 h-6 text-green-600 mr-2" />
-                      Eligibility Requirements
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-sm text-gray-700">
-                      <li className="flex items-start">
-                        <span className="text-green-600 mr-2">•</span>
-                        <span>51%+ women ownership or majority women-led business structure</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-green-600 mr-2">•</span>
-                        <span>Canadian business registration and operational requirements</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-green-600 mr-2">•</span>
-                        <span>Business plan demonstrating growth potential and sustainability</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-green-600 mr-2">•</span>
-                        <span>Financial statements and revenue documentation (varies by program)</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center">
-                      <Target className="w-6 h-6 text-blue-600 mr-2" />
-                      Application Best Practices
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-sm text-gray-700">
-                      <li className="flex items-start">
-                        <span className="text-blue-600 mr-2">•</span>
-                        <span>Clearly articulate business impact, job creation, and economic contribution</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-blue-600 mr-2">•</span>
-                        <span>Demonstrate innovation, market differentiation, and competitive advantage</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-blue-600 mr-2">•</span>
-                        <span>Provide detailed financial projections with realistic assumptions</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-blue-600 mr-2">•</span>
-                        <span>Highlight women entrepreneurship challenges and how funding helps overcome</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center">
-                      <Clock className="w-6 h-6 text-purple-600 mr-2" />
-                      Timeline & Deadlines
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-sm text-gray-700">
-                      <li className="flex items-start">
-                        <span className="text-purple-600 mr-2">•</span>
-                        <span>Rolling intake programs: apply anytime with 4-8 week review periods</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-purple-600 mr-2">•</span>
-                        <span>Annual competitions: typically spring/fall deadlines with specific dates</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-purple-600 mr-2">•</span>
-                        <span>Allow 2-3 months application preparation for comprehensive programs</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-purple-600 mr-2">•</span>
-                        <span>Funding disbursement typically 30-90 days post-approval</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center">
-                      <Award className="w-6 h-6 text-orange-600 mr-2" />
-                      Common Mistakes to Avoid
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-sm text-gray-700">
-                      <li className="flex items-start">
-                        <span className="text-orange-600 mr-2">•</span>
-                        <span>Incomplete applications missing required documentation or signatures</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-orange-600 mr-2">•</span>
-                        <span>Vague business plans without specific goals, metrics, and milestones</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-orange-600 mr-2">•</span>
-                        <span>Unrealistic financial projections not supported by market research</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-orange-600 mr-2">•</span>
-                        <span>Failing to demonstrate women entrepreneurship barriers and solutions</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Get Expert Help CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-pink-600 to-purple-800">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-4xl font-bold mb-6">
-                Maximize Your Success with Women Business Grant Experts
-              </h2>
-              <p className="text-xl text-pink-100 mb-8">
-                Women entrepreneurs face unique challenges accessing capital. Our specialized grant consultants understand
-                the Women Entrepreneurship Strategy ecosystem and have secured over $42M in funding for women-led businesses.
-              </p>
-              <div className="bg-white/10 rounded-lg p-6 mb-8">
-                <h4 className="font-semibold text-white mb-4">Why Choose Our Women Business Grant Specialists:</h4>
-                <div className="grid md:grid-cols-2 gap-4 text-sm text-pink-100">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>89% success rate with women entrepreneur programs</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>WES and provincial program expertise</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Multi-program application strategies</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Women entrepreneur success coaching</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Business plan development support</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span>Financial projection and compliance expertise</span>
-                  </div>
                 </div>
               </div>
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
-                <Link href="/contact?service=women-business-grants-expert-help">
-                  Get Expert Help with Women Business Grants
-                </Link>
-              </Button>
-              <p className="text-pink-200 text-sm mt-4">
-                Free initial consultation • Women entrepreneurship specialists • 89% success rate
-              </p>
-            </div>
-          </div>
-        </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <Badge className="mb-4 bg-gray-100 text-gray-800 border-gray-200">
-                  Frequently Asked Questions
-                </Badge>
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  Women Business Grants Canada - Common Questions
-                </h2>
+              {/* WES vs Mainstream Stack */}
+              <Card className="bg-purple-50 border-purple-200">
+                <CardHeader><CardTitle className="text-xl text-purple-900">WES-Specific vs. Mainstream Programs — What to Pursue in Parallel</CardTitle></CardHeader>
+                <CardContent className="text-purple-900">
+                  <p className="text-sm mb-4 leading-relaxed">Women entrepreneurs should pursue programs in both columns simultaneously — WES grants are additive to mainstream Canada programs, not alternatives. The strongest-funded women-led businesses use both tracks.</p>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                      <div className="font-bold text-purple-900 mb-3 text-sm">🎯 Women-Specific Programs</div>
+                      <ul className="text-xs text-purple-700 space-y-1.5">
+                        <li><CheckCircle className="h-3 w-3 inline mr-1 text-purple-500" />WES Women Entrepreneurship Fund — for scaling activities</li>
+                        <li><CheckCircle className="h-3 w-3 inline mr-1 text-purple-500" />WBC loans ($5K–$150K) — for working capital</li>
+                        <li><CheckCircle className="h-3 w-3 inline mr-1 text-purple-500" />BDC Women in Tech VC — for tech equity investment</li>
+                        <li><CheckCircle className="h-3 w-3 inline mr-1 text-purple-500" />EDC Women Exporter — for trade financing</li>
+                        <li><CheckCircle className="h-3 w-3 inline mr-1 text-purple-500" />WES Ecosystem accelerator programming — training</li>
+                        <li><CheckCircle className="h-3 w-3 inline mr-1 text-purple-500" />Provincial women programs (AWE, WEC, etc.)</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-lg p-4 border border-purple-200">
+                      <div className="font-bold text-purple-900 mb-3 text-sm">🌐 Mainstream Programs (Equal Access)</div>
+                      <ul className="text-xs text-purple-700 space-y-1.5">
+                        <li><CheckCircle className="h-3 w-3 inline mr-1 text-blue-500" />SR&ED — 35% refund on all qualifying R&D</li>
+                        <li><CheckCircle className="h-3 w-3 inline mr-1 text-blue-500" />IRAP — R&D wage funding for SMEs</li>
+                        <li><CheckCircle className="h-3 w-3 inline mr-1 text-blue-500" />CSBFP — government-backed equipment/fit-out loans</li>
+                        <li><CheckCircle className="h-3 w-3 inline mr-1 text-blue-500" />CDAP — digital adoption grants ($2.4K–$100K)</li>
+                        <li><CheckCircle className="h-3 w-3 inline mr-1 text-blue-500" />RDA grants (FedDev, ACOA, PacifiCan, WD)</li>
+                        <li><CheckCircle className="h-3 w-3 inline mr-1 text-blue-500" />BDC term loans, advisory, and growth equity</li>
+                      </ul>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* How to Apply */}
+              <Card>
+                <CardHeader><CardTitle className="text-xl flex items-center gap-2"><FileText className="h-5 w-5 text-purple-600" />How to Apply — Canada Women Business Grants Step by Step</CardTitle></CardHeader>
+                <CardContent className="text-gray-700">
+                  <div className="space-y-4">
+                    {[
+                      { step: "1", title: "Find Your Regional WES Ecosystem Partner First", desc: "WES Fund grants are not applied for directly through ISED — they are delivered through designated regional WES Ecosystem partner organizations. Go to ised-isde.canada.ca/wes and search for your province's WES partners. Contact 2–3 of your regional partners to understand which one best serves businesses in your industry and stage. Most WES partners also provide free programming, mentorship, and business advisory in addition to grant delivery — connect with them before you need a grant to build the relationship." },
+                      { step: "2", title: "Connect with Your Provincial Women's Business Centre or AWE", desc: "In Western Canada, the Women's Enterprise Centre (BC), Alberta Women Entrepreneurs (AWE), and WBC Saskatchewan/Manitoba all provide loans AND advisory AND business programming. In Ontario, Women's Enterprise Skills Training organizations and regional women's accelerators fill a similar role. In Quebec, Réseau des Femmes d'affaires du Québec and Investissement Québec women programs. These organizations are best contacted for both loan needs and programming — their advisory services improve the quality of your WES Fund grant applications." },
+                      { step: "3", title: "Register with EDC if You Have or Plan International Sales", desc: "Export Development Canada's Women Exporter program is free to access and provides trade financing (export credit insurance, accounts receivable guarantees, buyer financing) that conventional banks won't provide for international transactions. If your business has any international revenue or export aspirations, register at edc.ca/women and request a meeting with an EDC trade finance specialist. EDC financing also provides valuable credibility when applying for other export-focused grants (CanExport, RDA market development contributions)." },
+                      { step: "4", title: "Apply to Mainstream Programs Simultaneously (SR&ED, IRAP, CSBFP, CDAP)", desc: "While pursuing WES-specific programs, don't neglect mainstream programs. File SR&ED if you do any R&D. Apply for IRAP if you're an SME developing technology. Use CSBFP for equipment and leasehold. Apply for CDAP for digital adoption. Apply for your RDA's relevant program for any defined growth project. These programs don't care about gender — they care about Canadian business activity creating economic benefit. Apply to all programs you qualify for, women-specific and general, in parallel." },
+                      { step: "5", title: "For Tech Companies — Contact BDC Capital Women in Technology Fund", desc: "If you lead a women-founded or women-led Canadian technology company with strong growth trajectory (post-product, showing market traction), contact BDC Capital's Women in Technology Venture Fund at bdc.ca/capital. BDC Capital's women's fund invests $500K–$10M in equity, with a patient investment philosophy aligned with scaling rather than quick exits. BDC Capital investments are often the anchor that attracts co-investors from the private VC sector — a BDC Capital term sheet significantly de-risks the investment for other VCs in the round." },
+                      { step: "6", title: "Engage in the WES Ecosystem for Peer Networks and Mentorship", desc: "Beyond grants and loans, the WES Ecosystem includes accelerators, incubators, and networking organizations providing peer mentorship, market access connections, and expert programming for women entrepreneurs at every stage. Organizations like MaRS Health, Springboard Enterprises Canada, Women in Capital Markets, and regional women's business networks (funded through WES Ecosystem grants) provide curated peer communities and expert mentors that many women founders rate as more valuable than any single grant. Register for programming with 2–3 WES Ecosystem partners in your region, even before you have a specific funding need." },
+                    ].map((item) => (
+                      <div key={item.step} className="flex gap-4 p-4 bg-gray-50 rounded-lg">
+                        <div className="h-8 w-8 rounded-full bg-purple-700 text-white flex items-center justify-center text-sm font-bold shrink-0">{item.step}</div>
+                        <div><div className="font-semibold text-gray-900 mb-1">{item.title}</div><div className="text-sm text-gray-600 leading-relaxed">{item.desc}</div></div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Common Mistakes */}
+              <Card className="border-red-100 bg-red-50">
+                <CardHeader><CardTitle className="text-xl flex items-center gap-2 text-red-900"><AlertCircle className="h-5 w-5 text-red-600" />5 Mistakes Women Entrepreneurs Make When Seeking Canadian Funding</CardTitle></CardHeader>
+                <CardContent className="text-red-900 space-y-4">
+                  {[
+                    { n: "1", m: "Applying ONLY to Women-Specific Programs and Missing Mainstream Grants", d: "The most limiting mistake women entrepreneurs make in Canadian grant applications is treating women-specific programs (WES Fund, WBC loans) as alternatives to mainstream programs rather than additions. A women-led tech company that applies for the WES Fund but doesn't file SR&ED, doesn't apply for IRAP, and doesn't use CSBFP is leaving 70–80% of its total available non-dilutive funding unclaimed. Mainstream programs don't have gender criteria — women entrepreneurs qualify on equal footing. Maximize both tracks simultaneously." },
+                    { n: "2", m: "Not Preparing a Clear Women-Led Management Case", d: "WES Fund eligibility requires majority women ownership AND leadership — passive ownership is not enough. Applications that vaguely describe 'women-involved' governance without clearly articulating the specific decision-making roles that women hold (CEO, COO, CTO, Board Chair, etc.) regularly fail the leadership test during review. Be explicit in your WES application: name the women leaders, their titles, their specific responsibilities, and the percentage ownership distribution. If your business has male co-founders or partners, clearly demonstrate that women hold majority decision-making authority." },
+                    { n: "3", m: "Not Registering with EDC Early Enough to Use Trade Financing Before International Revenue Is Lost", d: "Many women entrepreneurs with international customers lose revenue because they can't extend credit terms to foreign buyers (a competitive disadvantage in international markets). EDC export credit insurance covers 90% of the receivable value for foreign buyer non-payment — enabling you to offer 30/60/90 day payment terms to international customers without taking uninsured credit risk. Most women exporters discover EDC after a bad debt experience, not before. Register at edc.ca/women before signing your first international contract — not after your first bad foreign debt." },
+                    { n: "4", m: "Approaching Women's Business Centres Only When in Financial Distress", d: "Women's Business Centres provide maximum value when you engage them during business planning and early growth — not when you're struggling financially. WBC advisors help you structure your business, identify the right mix of grants and financing, and prepare stronger applications for WES Fund, CSBFP, and provincial programs. A business owner who comes to the WBC at a financial stress point has far fewer options than one who builds the relationship proactively at startup. Treat your WBC as a strategic advisory resource, not a lender of last resort." },
+                    { n: "5", m: "Missing BDC Capital's Women in Technology Fund for Tech Companies", d: "BDC Capital's Women in Technology venture fund is one of the most important equity capital sources for women-led Canadian technology companies — but many founders don't know it exists or assume they're 'not ready for VC.' BDC Capital takes a patient approach, invests in companies at earlier stages than most private VCs, and explicitly targets women-led teams. Unlike private VCs whose fund return timelines pressure rapid scaling, BDC Capital can take a longer-term perspective on your growth. Any women-led Canadian tech company with product-market fit should contact BDC Capital for an exploratory conversation regardless of perceived stage." },
+                  ].map(({ n, m, d }) => (
+                    <div key={n} className="bg-white rounded-lg p-4 border border-red-200">
+                      <div className="font-semibold mb-2 text-red-900">{n}. {m}</div>
+                      <p className="text-sm text-red-800 leading-relaxed">{d}</p>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+
+              {/* Expert Tips */}
+              <Card className="border-amber-200 bg-amber-50">
+                <CardHeader><CardTitle className="text-xl flex items-center gap-2 text-amber-800"><Lightbulb className="h-5 w-5 text-amber-600" />Expert Strategy: Maximizing the Women Entrepreneur Funding Stack</CardTitle></CardHeader>
+                <CardContent className="text-amber-900 space-y-4">
+                  <div className="bg-white rounded-lg p-4 border border-amber-200">
+                    <div className="font-semibold mb-2">💡 The Optimal Stack for a Women-Led Tech SME</div>
+                    <p className="text-sm leading-relaxed">Year 1: IRAP ($200K R&D wages) + SR&ED ($70K refund) + CDAP Grow ($2.4K) + WBC loan ($50K working capital) + WES Ecosystem accelerator membership (free). Year 2: IRAP ($300K) + SR&ED ($105K) + WES Fund ($50K–$100K market development grant) + CDAP Boost ($15K advisory + $100K BDC interest-free loan). Year 3: IRAP ($400K) + SR&ED ($140K) + FedDev/RDA project grant ($150K) + BDC Capital conversations. Total non-dilutive capital over 3 years: $1.2M–$1.5M on a $600K R&D investment. This is achievable for any women-led tech SME with deliberate program navigation.</p>
+                  </div>
+                  <div className="bg-white rounded-lg p-4 border border-amber-200">
+                    <div className="font-semibold mb-2">💡 WES Is a Network, Not Just a Grant — Use the Entire Ecosystem</div>
+                    <p className="text-sm leading-relaxed">WES&apos;s most durable value is not the $10K–$100K grant — it&apos;s the peer network of women entrepreneurs at your stage, the experienced mentors with sector-specific expertise, and the warm introductions to customers, partners, and investors that WES Ecosystem partners facilitate. Women who engage deeply with WES programming — attending events, connecting with mentors, building peer relationships — consistently report business outcomes that exceed those generated by the grant funding alone. Treat WES as a community to invest in over years, not a grant portal to visit once.</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* FAQ */}
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">FAQ: Canada Women Business Grants 2026</h2>
+                <div className="space-y-4">
+                  {[
+                    { q: "Can a business with a male co-founder receive WES funding if a woman is the majority owner and CEO?", a: "Yes — WES Fund eligibility requires majority women OWNERSHIP (51%+) AND majority women LEADERSHIP (women in active management and decision-making roles). A business where a woman holds 51%+ equity and serves as CEO or Managing Director qualifies even if there are male co-founders holding the remaining equity. The key is that the WES application must clearly articulate the ownership structure (percentages, names) and the leadership structure (who holds what title, who makes what decisions). Vague descriptions of 'women-involved' governance don't satisfy the leadership requirement — clear organizational charts and role descriptions do." },
+                    { q: "Is the Women Entrepreneurship Fund available to non-profit or social enterprise organizations?", a: "The Women Entrepreneurship Fund (WES Fund) specifically targets for-profit women-led businesses in most delivery streams. Social enterprises with revenue models (hybrid for-profit/mission structures) may qualify depending on their structure and the WES partner delivering in their region. Non-profit organizations themselves can apply for WES Ecosystem Fund grants (to provide programming to women entrepreneurs) but not WES Fund business grants. Check with your regional WES partner to understand whether your specific organizational structure qualifies in your jurisdiction." },
+                    { q: "What is the difference between WES Ecosystem Fund and the Women Entrepreneurship Fund?", a: "These are two distinct WES program streams. The Women Entrepreneurship Fund (WES Fund) provides grants directly to women-owned and led businesses for scaling activities — this is the $10K–$100K grant that individual business owners apply for. The WES Ecosystem Fund provides grants to ORGANIZATIONS (accelerators, incubators, women's business associations, sector associations) that deliver programming, training, mentorship, and business support TO women entrepreneurs. The Ecosystem Fund is what finances the programming you participate in when you attend a women's entrepreneur accelerator or business centre — you benefit from it indirectly as a participant, not as a direct recipient." },
+                    { q: "Does self-employment count as a 'business' for WES Fund purposes?", a: "WES Fund targets women entrepreneurs with incorporated businesses and growth ambitions. Self-employed sole proprietors providing services as a single person (consultants, freelancers, sole-practitioner professionals) are generally not the primary target of the WES Fund, which is designed for businesses with employees and scaling potential. However, some WES partners deliver programming specifically for self-employed women through the WES Ecosystem streams — mentorship, peer networks, and advisory services available to any self-employed woman entrepreneur. Contact your regional WES partner to understand what they offer for self-employed professionals vs. business owners with employees." },
+                    { q: "Are there women-specific grants for businesses outside of Canada's major cities?", a: "Yes — rural and small-town women entrepreneurs have access to WES Fund and WES Ecosystem programming throughout Canada, and may have access to additional rural-specific supports. Community Futures Development Corporations (CFDCs) in rural Canada specifically serve women entrepreneurs alongside all rural businesses. WBC serves smaller cities and rural areas in Western Canada, not just major centres. WES Ecosystem partners in many provinces specifically focus on non-metropolitan women entrepreneurs. Additionally, ACOA's Business Development Program and CanNor (for territories) serve rural and remote women entrepreneurs in their regions with broader programs that aren't exclusively WES-branded." },
+                    { q: "Can a woman entrepreneur in Canada access both WES and Indigenous entrepreneur programs if she is Indigenous?", a: "Yes — Indigenous women entrepreneurs can and should access programs from both the WES ecosystem and the Indigenous entrepreneur funding ecosystem (AEP, NACCA AFI loans, Métis Capital programs). Many WES providers have specific Indigenous women entrepreneur programming streams as part of their WES Ecosystem mandate. Indigenous Services Canada and ISED coordinate to ensure Indigenous women entrepreneurs aren't excluded from either program track. Additionally, the federal Women Entrepreneurship Strategy includes Indigenous women as a priority population throughout its programs. Accessing BOTH the WES ecosystem and Indigenous-specific programs simultaneously is not only permitted but represents the optimal approach for Indigenous women entrepreneurs." },
+                    { q: "What organizations provide mentorship to women entrepreneurs in Canada as part of WES?", a: "The WES Ecosystem includes 40+ designated partner organizations across Canada providing mentorship and programming. Some prominent ones include: Futurpreneur Canada (national, youth entrepreneur mentorship with WES components), MaRS Discovery District (Ontario, health and tech), Innovate BC (British Columbia tech and innovation), Springboard Enterprises Canada (growth-stage women-led companies), Women in Capital Markets (finance-sector women), the Alberta Women Entrepreneurs network, and numerous regional women's business associations and accelerators co-funded through WES Ecosystem grants. The best way to find current WES mentorship programs is to search for WES partners at ised-isde.canada.ca/wes and contact 2–3 in your province for their current programming schedule." },
+                    { q: "Are there age-specific women entrepreneur programs in Canada (for young or older entrepreneurs)?", a: "Several programs address age-specific needs for women entrepreneurs. For younger women (18–39): Futurpreneur Canada provides loans ($20K–$60K) and 2-year mentorship explicitly designed for young entrepreneurs of any gender, with WES partnership for additional women-specific support. For older women entrepreneurs (50+): some provincial Women's Business Centres and WES ecosystem partners deliver specific programming for women entrepreneurs in career transition (returning to work, post-corporate entrepreneurship, encore entrepreneurship after 50). The federal First Work program, while not women-specific, also helps mature workers including those starting businesses. Most WES Fund grants have no age restriction — the focus is business stage and growth potential, not founder age." },
+                  ].map((item, i) => (
+                    <Card key={i}><CardContent className="pt-5">
+                      <div className="font-semibold text-gray-900 mb-2 text-base">{item.q}</div>
+                      <div className="text-gray-600 text-sm leading-relaxed">{item.a}</div>
+                    </CardContent></Card>
+                  ))}
+                </div>
               </div>
 
-              <div className="space-y-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg text-gray-900">
-                      What qualifies as a women-owned or women-led business in Canada?
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-700">
-                      Most programs require 51% or more ownership by women, or majority women leadership in decision-making roles.
-                      Some programs have flexible definitions including women-identifying entrepreneurs, women majority boards,
-                      or businesses advancing women's economic participation.
-                    </p>
-                  </CardContent>
-                </Card>
+            </div>
 
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg text-gray-900">
-                      How much funding can women entrepreneurs access in Canada?
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-700">
-                      Women entrepreneurs can access over $6 billion through combined federal, provincial, and organizational programs.
-                      Individual grants range from $2,500 microloans to multi-million dollar innovation funding. The Women Entrepreneurship
-                      Loan Fund provides up to $50,000, while growth programs can exceed $1M for established businesses.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg text-gray-900">
-                      Are women business grants repayable in Canada?
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-700">
-                      Programs vary: grants are non-repayable contributions, loans require repayment with flexible terms, and equity
-                      investments involve ownership stakes. Women Entrepreneurship Fund grants are non-repayable, while Women
-                      Entrepreneurship Loan Fund requires repayment. Review each program's specific terms carefully.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg text-gray-900">
-                      Can women entrepreneurs apply to multiple grant programs simultaneously?
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-700">
-                      Yes, women entrepreneurs can apply to multiple programs simultaneously. Strategic portfolio approaches often yield
-                      better results by diversifying funding sources. Ensure no program restrictions prohibit concurrent applications,
-                      and disclose other funding applications when required. Expert consultants maximize multi-program success rates.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg text-gray-900">
-                      What industries receive the most women business grant funding?
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-700">
-                      Technology, clean energy, manufacturing, healthcare, and social enterprises receive substantial women entrepreneur
-                      funding. However, programs exist for all industries including retail, services, agriculture, creative industries,
-                      and professional services. Industry-agnostic programs focus on innovation, growth potential, and economic impact.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg text-gray-900">
-                      How long does the women business grant application process take?
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-700">
-                      Application timelines vary by program complexity: simple applications take 2-4 weeks to prepare, comprehensive
-                      applications require 2-3 months. Review periods range from 4-12 weeks post-submission. Funding disbursement
-                      typically occurs 30-90 days after approval. Rolling intake programs offer flexibility, while annual competitions
-                      have fixed deadlines.
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
+            <div className="space-y-6">
+              <Card className="bg-purple-800 text-white">
+                <CardContent className="pt-6">
+                  <Star className="h-8 w-8 text-yellow-300 mb-3" />
+                  <h3 className="font-bold text-lg mb-2">Free Women Entrepreneur Grant Matching</h3>
+                  <p className="text-purple-100 text-sm mb-4">Our specialists identify the full WES, WBC, BDC, RDA, and mainstream program stack for your women-led business — free 30-minute session.</p>
+                  <Link href="/contact"><Button className="w-full bg-white text-purple-800 hover:bg-purple-50">Get Free Matching <ArrowRight className="h-4 w-4 ml-1" /></Button></Link>
+                </CardContent>
+              </Card>
+              <NewsletterSignup variant="sidebar" />
+              <Card>
+                <CardHeader><CardTitle className="text-lg">Key Program Contacts</CardTitle></CardHeader>
+                <CardContent className="text-sm space-y-3">
+                  <div><div className="font-semibold">WES Partners Finder</div><div className="text-gray-500">ised-isde.canada.ca/wes</div></div>
+                  <div><div className="font-semibold">WBC (Western Canada)</div><div className="text-gray-500">wbc.org</div></div>
+                  <div><div className="font-semibold">Alberta Women Entrepreneurs</div><div className="text-gray-500">awebusiness.com</div></div>
+                  <div><div className="font-semibold">BDC Women in Tech Fund</div><div className="text-gray-500">bdc.ca/capital/women</div></div>
+                  <div><div className="font-semibold">EDC Women Exporters</div><div className="text-gray-500">edc.ca/women</div></div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader><CardTitle className="text-lg">Related Resources</CardTitle></CardHeader>
+                <CardContent>
+                  <div className="space-y-2 text-sm">
+                    <Link href="/canada/small-business-grants" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> Canada Small Business Grants</Link>
+                    <Link href="/canada/indigenous-entrepreneur-grants" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> Indigenous Entrepreneur Grants</Link>
+                    <Link href="/blog/sred-tax-credit-guide" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> SR&ED Tax Credit Guide</Link>
+                    <Link href="/canada/government-grants" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> Federal Canadian Grants</Link>
+                    <Link href="/grant-finder" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> AI Grant Finder Tool</Link>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
-        </section>
-      </div>
-      {/* Cross-Links */}
-      <section className="py-12 bg-white border-t">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Funding Resources</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/usa/women-entrepreneurs-grants" className="group block p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-pink-500 hover:shadow-md transition-all">
-              <h3 className="font-semibold text-gray-900 group-hover:text-pink-600 mb-2">🇺🇸 Women Entrepreneurs Grants USA</h3>
-              <p className="text-sm text-gray-600">SBA microloans, federal funding up to $1M for women-owned businesses in the US.</p>
-            </Link>
-            <Link href="/canada" className="group block p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
-              <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-2">🇨🇦 All Canada Business Grants</h3>
-              <p className="text-sm text-gray-600">300+ federal and provincial programs with $10B+ available.</p>
-            </Link>
-            <Link href="/blog/sba-loans-grants-guide" className="group block p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
-              <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-2">🏦 SBA Microloan Guide</h3>
-              <p className="text-sm text-gray-600">Up to $50K through nonprofit intermediaries — popular with women entrepreneurs.</p>
-            </Link>
+
+          <div className="mb-8">
+            <NewsletterSignup title="Canada Women Entrepreneur Grant Updates" description="Track WES Fund intake cycles, WBC program changes, new women-focused accelerator programs, and BDC Capital announcements — delivered to your inbox." />
           </div>
         </div>
-      </section>
+      </main>
       <Footer />
-    </>
+    </div>
   )
 }
-
