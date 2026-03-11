@@ -54,10 +54,30 @@ const nextConfig = {
       { source: '/blog/minority-business-grants-canada', destination: '/blog/minority-business-grants-2026', permanent: true },
       { source: '/blog/minority-business-grants-2025', destination: '/blog/minority-business-grants-2026', permanent: true },
       // US 2025 slugs from enrichment queue → 2026 equivalents
-      { source: '/blog/women-business-grants-2025', destination: '/blog/women-business-grants-2026', permanent: true },
-      { source: '/blog/texas-business-grants-2025', destination: '/blog/texas-business-grants-2026', permanent: true },
-      { source: '/blog/technology-startup-grants-2025', destination: '/blog/technology-startup-grants-2026', permanent: true },
+      { source: '/blog/clean-technology-2025', destination: '/blog/clean-technology-2026', permanent: true },
+      { source: '/blog/apply-usa-grants-2025', destination: '/blog/apply-usa-grants-2026', permanent: true },
+      { source: '/blog/canexport-grants-2025', destination: '/blog/canexport-grants-2026', permanent: true },
+      { source: '/blog/rural-business-development-2025', destination: '/blog/rural-business-development-2026', permanent: true },
       { source: '/blog/veterans-business-grants-2025', destination: '/blog/veterans-business-grants-2026', permanent: true },
+      { source: '/blog/new-york-business-grants-2025', destination: '/blog/new-york-business-grants-2026', permanent: true },
+      { source: '/blog/manufacturing-grants-2025', destination: '/blog/manufacturing-grants-2026', permanent: true },
+      { source: '/blog/minority-business-grants-2025', destination: '/blog/minority-business-grants-2026', permanent: true },
+      { source: '/blog/digital-transformation-2025', destination: '/blog/digital-transformation-2026', permanent: true },
+      { source: '/blog/agricultural-innovation-2025', destination: '/blog/agricultural-innovation-2026', permanent: true },
+      { source: '/blog/usda-rural-grants-2025', destination: '/blog/usda-rural-grants-2026', permanent: true },
+      { source: '/blog/women-business-grants-2025', destination: '/blog/women-business-grants-2026', permanent: true },
+      { source: '/blog/technology-startup-grants-2025', destination: '/blog/technology-startup-grants-2026', permanent: true },
+      { source: '/blog/healthcare-grants-2025', destination: '/blog/healthcare-grants-2026', permanent: true },
+      { source: '/blog/california-business-grants-2025', destination: '/blog/california-business-grants-2026', permanent: true },
+      { source: '/blog/florida-business-grants-2025', destination: '/blog/florida-business-grants-2026', permanent: true },
+      { source: '/blog/illinois-business-development-2025', destination: '/blog/illinois-business-development-2026', permanent: true },
+      { source: '/blog/michigan-manufacturing-renaissance-2025', destination: '/blog/michigan-manufacturing-renaissance-2026', permanent: true },
+      { source: '/blog/pennsylvania-innovation-2025', destination: '/blog/pennsylvania-innovation-2026', permanent: true },
+      { source: '/blog/texas-business-grants-2025', destination: '/blog/texas-business-grants-2026', permanent: true },
+      { source: '/blog/doe-clean-tech-2025', destination: '/blog/doe-clean-tech-2026', permanent: true },
+      { source: '/blog/epa-environmental-justice-2025', destination: '/blog/epa-environmental-justice-2026', permanent: true },
+      { source: '/blog/hud-community-2025', destination: '/blog/hud-community-2026', permanent: true },
+      { source: '/blog/nsf-stem-research-2025', destination: '/blog/nsf-stem-research-2026', permanent: true },
       // Industry pages without dedicated posts → Canada hub
       { source: '/blog/construction-business-grants-canada', destination: '/canada', permanent: true },
       { source: '/blog/disability-business-grants-canada', destination: '/canada', permanent: true },
@@ -67,9 +87,7 @@ const nextConfig = {
       { source: '/blog/grant-writing-secrets-2025', destination: '/blog/grant-writing-secrets-2026', permanent: true },
       { source: '/blog/sba-sbir-grants-2025', destination: '/blog/sba-sbir-grants-2026', permanent: true },
       // Crawled-not-indexed fixes
-      { source: '/blog/healthcare-grants-2025', destination: '/blog/healthcare-grants-2026', permanent: true },
-      { source: '/blog/clean-technology-2025', destination: '/blog/clean-technology-2026', permanent: true },
-      { source: '/blog/illinois-business-development-2025', destination: '/usa/illinois', permanent: true },
+
 
       // Google "Excluded by noindex" fixes — Mar 2026
       // Old 2025 slugs → current 2026 equivalents
@@ -83,7 +101,7 @@ const nextConfig = {
       { source: '/blog/cdap-guide', destination: '/blog/canada-technology-adoption-grants-guide', permanent: true },
       { source: '/blog/ocean-tech-grants', destination: '/blog/canada-clean-technology-innovation-grants', permanent: true },
       { source: '/blog/futurpreneur-loans-mentorship', destination: '/blog/canada-startup-funding-grants-guide', permanent: true },
-      { source: '/blog/texas-business-incentives', destination: '/blog/texas-business-grants-2025', permanent: true },
+      { source: '/blog/texas-business-incentives', destination: '/blog/texas-business-grants-2026', permanent: true },
       { source: '/blog/texas-tech-programs', destination: '/usa/texas', permanent: true },
       { source: '/blog/energy-efficiency-grants-canada', destination: '/blog/canada-clean-technology-environment-grants-guide', permanent: true },
 
