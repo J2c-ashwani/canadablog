@@ -172,13 +172,13 @@ export default function OntarioGrantsPage() {
           </div>
 
           {/* Content Sections */}
-          
+
           <div className="mb-12">
-            <InlineCTA 
-                title="Need Strategy for Ontario Grants?"
-                description="Our specialists can help you navigate Ontario's provincial programs."
-                buttonText="Get Funding Assistance"
-                buttonLink="/contact"
+            <InlineCTA
+              title="Need Strategy for Ontario Grants?"
+              description="Our specialists can help you navigate Ontario's provincial programs."
+              buttonText="Get Funding Assistance"
+              buttonLink="/contact"
             />
           </div>
           <div className="grid lg:grid-cols-3 gap-8 mb-12">
@@ -257,6 +257,122 @@ export default function OntarioGrantsPage() {
                 </CardContent>
               </Card>
             </div>
+          </div>
+
+          {/* Deep Content Section */}
+          <div className="max-w-4xl mx-auto space-y-10 mb-12">
+
+            <Card>
+              <CardHeader><CardTitle className="text-xl">Ontario&apos;s Innovation Funding Ecosystem — OCE, MEDJCT, and Ontario Tech</CardTitle></CardHeader>
+              <CardContent className="text-gray-700 space-y-4">
+                <p className="leading-relaxed">Ontario is Canada&apos;s largest economy and offers the country&apos;s most diverse business grant ecosystem. The province funds innovation through Ontario Centres of Excellence (OCE), the Ontario Innovation Tax Credit (OITC), the Ontario Together Fund, and dozens of sector-specific programs administered through the Ministry of Economic Development, Job Creation and Trade (MEDJCT). Ontario&apos;s size means more programs, but also more competition — strong applications are critical.</p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm border-collapse">
+                    <thead><tr className="bg-blue-800 text-white"><th className="text-left p-3">Program</th><th className="text-left p-3">Amount</th><th className="text-left p-3">Best For</th><th className="text-left p-3">Type</th></tr></thead>
+                    <tbody>
+                      {[
+                        ["Ontario Together Fund", "$250K–$2.5M", "Ontario manufacturers and businesses strengthening supply chains and adapting to economic challenges", "Non-repayable grant; competitive"],
+                        ["Ontario Innovation Tax Credit (OITC)", "$10K–$500K", "Ontario CCPCs doing SR&ED — adds 10% provincial refundable tax credit on top of federal 15–35%", "Refundable tax credit; filed with SR&ED"],
+                        ["Ontario Scale-Up Vouchers", "$10K–$25K", "High-growth Ontario tech startups accessing specialized advisory services for scaling", "Non-repayable vouchers; quarterly intake"],
+                        ["Ontario Centres of Excellence (OCE)", "$50K–$500K", "Ontario tech companies doing collaborative R&D with universities; commercialization focus", "Non-repayable + industry match required"],
+                        ["Invest Ontario Fund", "$500K–$10M+", "Large-scale capital investments by companies creating significant Ontario jobs", "Negotiated contributions; major employers only"],
+                        ["Ontario Jobs Training Tax Credit", "Up to $2,000/person", "Ontario individuals + employers training workers in eligible skills — supports employer-sponsored training", "Refundable tax credit; annual filing"],
+                      ].map(([p, a, b, t], i) => (
+                        <tr key={p} className={i % 2 === 0 ? "bg-white" : "bg-blue-50"}>
+                          <td className="p-3 font-semibold text-blue-900 text-xs">{p}</td>
+                          <td className="p-3 text-green-700 font-medium text-xs">{a}</td>
+                          <td className="p-3 text-gray-600 text-xs">{b}</td>
+                          <td className="p-3 text-gray-500 text-xs">{t}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader><CardTitle className="text-xl">Ontario Innovation Tax Credit (OITC) — The Most Overlooked Ontario Program</CardTitle></CardHeader>
+              <CardContent className="text-gray-700 space-y-4">
+                <p className="leading-relaxed">The Ontario Innovation Tax Credit is a 10% refundable provincial tax credit applied to qualifying SR&ED (Scientific Research & Experimental Development) expenditures. It is claimed in addition to the federal SR&ED credit — and unlike the federal credit, the OITC&apos;s 10% applies to the full amount of qualifying Ontario R&D expenditure without the complex federal phase-out calculations. For a qualifying Ontario CCPC spending $500K on eligible R&D: federal SR&ED = ~$175K refund + OITC = $50K refund — total $225K non-dilutive return on $500K R&D investment.</p>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    { name: "Who Qualifies", desc: "Canadian Controlled Private Corporations (CCPCs) incorporated in Ontario with qualifying SR&ED expenditures in Ontario. The same activities that qualify for federal SR&ED qualify for OITC — no separate Ontario eligibility assessment." },
+                    { name: "What Expenses Qualify", desc: "Wages for employees doing SR&ED in Ontario, materials consumed in Ontario R&D activities, overhead allocated to R&D, and SR&ED performed by subcontractors in Ontario. Same eligible cost categories as federal SR&ED." },
+                    { name: "How to Claim", desc: "Filed with the provincial tax return (Schedule T2SCH566) in the same tax year as the federal SR&ED claim (T661). Your SR&ED consultant handles both federal and Ontario claims simultaneously — no separate Ontario application process." },
+                    { name: "Ontario Enhanced R&D Credit for Large Corporations", desc: "Non-CCPCs (larger companies) access the Ontario Research and Development Tax Credit (ORDTC) at 3.5% — lower than OITC but still meaningful for large R&D investments. Both credits can be claimed in the same tax year by qualifying entities." },
+                  ].map(({ name, desc }) => (
+                    <div key={name} className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                      <div className="font-semibold text-blue-900 text-sm mb-2">{name}</div>
+                      <div className="text-xs text-gray-700 leading-relaxed">{desc}</div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader><CardTitle className="text-xl">FedDev Ontario &amp; Federal Programs for Ontario Businesses</CardTitle></CardHeader>
+              <CardContent className="text-gray-700 space-y-3">
+                <p className="text-sm leading-relaxed">FedDev Ontario (Federal Economic Development Agency for Southern Ontario) is Ontario&apos;s regional development agency, focused on business growth, innovation, and economic diversification in southern Ontario. For northern Ontario businesses, FedNor provides similar support. These federal programs stack with provincial programs for maximum funding coverage.</p>
+                <div className="grid sm:grid-cols-3 gap-3">
+                  {[
+                    { prog: "FedDev Business Scale-Up", val: "$500K–$10M", note: "Repayable/non-repayable contributions for high-growth southern Ontario companies; offices in Toronto, Waterloo, Hamilton" },
+                    { prog: "FedNor (Northern ON)", val: "$25K–$2M", note: "Economic development grants for northern Ontario businesses, municipalities, and First Nations communities" },
+                    { prog: "NRC-IRAP", val: "Up to $50K+", note: "Industrial R&D support; IRAP advisors across Ontario including Toronto, Waterloo, Ottawa, Windsor" },
+                    { prog: "SR&ED + OITC", val: "25–45% of R&D", note: "Ontario&apos;s combined federal/provincial R&D tax credit is among the highest in North America" },
+                    { prog: "CanExport SMEs", val: "Up to $50K", note: "Federal export market development grants — Ontario exporters are the largest CanExport recipient group" },
+                    { prog: "CDAP", val: "$15K", note: "Canada Digital Adoption Program; Ontario small businesses widely utilize this for e-commerce and digital technology adoption" },
+                  ].map(({ prog, val, note }) => (
+                    <div key={prog} className="bg-gray-50 rounded p-3 border border-gray-200">
+                      <div className="font-semibold text-gray-900 text-xs mb-1">{prog}</div>
+                      <div className="text-xs text-green-700 font-medium mb-1">{val}</div>
+                      <div className="text-xs text-gray-600">{note}</div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-red-50 border-red-100">
+              <CardHeader><CardTitle className="text-xl text-red-900">5 Mistakes Ontario Businesses Make When Applying for Provincial Grants</CardTitle></CardHeader>
+              <CardContent className="text-red-900 space-y-3">
+                {[
+                  { n: "1", m: "Not Filing the Ontario Innovation Tax Credit Alongside Federal SR&ED", d: "Ontario CCPCs doing qualifying R&D are entitled to a 10% provincial refundable tax credit on top of the federal SR&ED. Most Ontario companies working with SR&ED consultants correctly file the federal claim but miss the Ontario OITC supplement. Confirm your SR&ED consultant files Schedule T2SCH566 (OITC) with every Ontario provincial return — it should be automatic but frequently isn&apos;t." },
+                  { n: "2", m: "Applying to Ontario Centres of Excellence Without an Academic Partner", d: "OCE requires industry-academic collaboration — a formal agreement with an Ontario university, college, or research hospital before the application. Companies that apply without an established academic partner are automatically disqualified. Build your university relationship first (most Ontario universities have industry liaison offices that facilitate connections), then apply to OCE." },
+                  { n: "3", m: "Treating the Ontario Together Fund as a General Business Grant", d: "The Ontario Together Fund was specifically designed for supply chain strengthening and business adaptation — not general business expansion. Applications that don&apos;t clearly articulate supply chain resilience, domestic production, or economic challenge response miss OCE&apos;s evaluation criteria. Frame your project in supply chain and economic resilience language even if your underlying motivation is growth." },
+                  { n: "4", m: "Overlooking FedDev Ontario for Scale-Up Capital", d: "FedDev Ontario is one of the most underutilized federal programs by Ontario businesses — partly because it&apos;s less visible than NRC-IRAP or SR&ED. FedDev Business Scale-Up contributions ($500K–$10M+) are among the largest single grants available to Ontario companies outside of Invest Ontario. Growing Ontario companies with documented revenue and expansion plans should engage FedDev before their Series A, not after." },
+                  { n: "5", m: "Not Engaging with Ontario&apos;s Sector-Specific Agencies Early", d: "Ontario has sector-specific agencies that manage dedicated funding pools: Ontario Media Development Corporation (OMDC) for digital media and film; Ontario Genomics for life sciences; MaRS Discovery District for health and cleantech startups; Communitech for Waterloo-region tech. These agencies often know about provincial and federal programs before they&apos;re publicly announced and can position your company for intake before deadlines." },
+                ].map(({ n, m, d }) => (
+                  <div key={n} className="bg-white rounded-lg p-4 border border-red-200">
+                    <div className="font-semibold text-red-900 mb-1 text-sm">{n}. {m}</div>
+                    <p className="text-xs text-red-800 leading-relaxed">{d}</p>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">FAQ: Ontario Business Grants 2026</h2>
+              <div className="space-y-4">
+                {[
+                  { q: "What is the largest Ontario business grant available to startups?", a: "The largest accessible Ontario startup grant is OCE Smart Prosperity (up to $500K) for tech-enabled companies doing collaborative R&D with Ontario universities. For growth-stage startups (with revenue), FedDev Ontario Business Scale-Up offers contributions from $500K to $10M+ but requires demonstrated traction. For true early-stage startups, Ontario Scale-Up Vouchers ($25K) are the most accessible — quarterly intake, minimal documentation." },
+                  { q: "Does Ontario have grants for manufacturing businesses?", a: "Yes — Ontario has strong manufacturing support. Ontario Together Fund ($250K–$2.5M) specifically supports manufacturers adapting supply chains. The Automotive Supplier Innovation Program (ASIP) supports automotive sector innovation. FedDev Ontario supports manufacturing scale-up. SR&ED + OITC credits apply to manufacturing R&D. The Advanced Manufacturing Consortium (AMC) connects manufacturers to provincial and federal programs. Ontario manufacturers doing automation or process innovation can often stack 3–4 programs simultaneously." },
+                  { q: "How does the Ontario Centres of Excellence differ from IRAP?", a: "NRC-IRAP (federal) funds a company&apos;s own internal R&D projects — no university partner required. An IRAP Advisor works directly with your technical team. OCE (provincial) specifically funds collaborative R&D projects between an Ontario company and an Ontario post-secondary institution — the academic partner is mandatory. IRAP is typically faster (weeks to award) and more flexible; OCE provides larger amounts ($50K–$500K) but requires more documentation and an established academic relationship." },
+                  { q: "Are there Ontario grants for the digital media and gaming industry?", a: "Yes — Ontario Media Development Corporation (OMDC) administers several programs for Ontario digital media and interactive digital media (video games, apps, educational tech): the Interactive Digital Media Fund ($15K–$150K), the Export Fund for international market development, and the Interact program for companies entering U.S. and international markets. The federal Canada Media Fund (CMF) also funds Ontario digital media companies. Ontario&apos;s gaming industry (Ubisoft Toronto, EA Sports, Rockstar Toronto) benefits from both private investment and these public programs." },
+                  { q: "What is Invest Ontario and who qualifies?", a: "Invest Ontario is the province&apos;s foreign direct investment and major business attraction agency — not a general small business grant program. Invest Ontario Fund contributions ($500K–$10M+) are negotiated with large employers making significant capital investments in Ontario with substantial job creation commitments (typically 100+ jobs). If your company is making a very large capital commitment to Ontario (new facility, major product line expansion), engage Invest Ontario early — the fund can provide substantial non-repayable contributions for qualified major projects." },
+                  { q: "Can Ontario non-profits and social enterprises access business grants?", a: "Ontario has specific programs for non-profits and social enterprises: Ontario Trillium Foundation (OTF) provides grants for non-profits delivering community impact ($5K–$1M+). Social Enterprise Fund at MaRS supports social ventures. Community Futures offices throughout Ontario provide financing for rural social enterprises. For-profit social enterprises (B-Corps, impact businesses) can access standard business grants if they meet the for-profit eligibility criteria — the social mission doesn&apos;t disqualify them from programs like Scale-Up Vouchers, IRAP, or SR&ED." },
+                  { q: "How competitive are Ontario grants compared to other provinces?", a: "Ontario grants are significantly more competitive than grants in smaller provinces (Manitoba, New Brunswick, Nova Scotia) due to the sheer volume of applications from Ontario&apos;s larger business population. OCE receives 3–5x more applications per intake than comparable Alberta Innovates programs. However, Ontario also has more total funding dollars available — the province&apos;s larger economy means larger budgets for provincial programs. Strong applications (clear innovation differentiation, solid financials, committed matching funds, defined commercialization plans) succeed in Ontario&apos;s competitive environment." },
+                  { q: "Are there Ontario grants for immigrant or newcomer entrepreneurs?", a: "Yes — several Ontario programs specifically support immigrant and newcomer entrepreneurs: the Ontario Immigrant Nominee Program (OINP) Entrepreneur Stream (immigration pathway + business establishment); Futurpreneur Canada provides loans and mentoring for entrepreneurs age 18–39 including newcomers; some Community Futures offices provide specific newcomer entrepreneur support; and various municipal programs in Toronto, Ottawa, and Hamilton target immigrant business owners. BDC also has newcomer-specific financing programs with more flexible eligibility than standard bank products." },
+                ].map((item, i) => (
+                  <Card key={i}><CardContent className="pt-5">
+                    <div className="font-semibold text-gray-900 mb-2 text-sm">{item.q}</div>
+                    <div className="text-gray-600 text-xs leading-relaxed">{item.a}</div>
+                  </CardContent></Card>
+                ))}
+              </div>
+            </div>
+
           </div>
 
           {/* Newsletter CTA */}
