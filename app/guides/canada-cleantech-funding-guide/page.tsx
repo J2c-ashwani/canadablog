@@ -6,6 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Lightbulb, Target, DollarSign, AlertTriangle, Download, Leaf, Zap, Sun, Wind, HelpCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import StickyTOC from '@/components/blog/StickyTOC'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 
 export const metadata: Metadata = {
   title: "CleanTech Funding Canada 2026 | SDTC & Net Zero Grants",
@@ -101,24 +106,48 @@ export default function CanadaCleanTechFundingGuide() {
           </div>
         </section>
 
-        {/* QUERY HOOK: Common Questions */}
-        <div className="bg-white border-b border-teal-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
-          <div className="container mx-auto px-4 py-3">
-            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-teal-900 gap-4">
-              <span className="font-semibold text-teal-900 flex items-center shrink-0">
-                <Leaf className="w-4 h-4 mr-2 text-teal-600" />
-                Green Funding:
-              </span>
-              <div className="flex gap-6 overflow-x-auto no-scrollbar whitespace-nowrap mask-linear-fade">
-                <Link href="#programs" className="hover:text-teal-700 transition-colors flex items-center gap-1"><Target className="w-3 h-3" /> Top Programs</Link>
-                <Link href="#sdtc" className="hover:text-teal-700 transition-colors flex items-center gap-1"><Zap className="w-3 h-3" /> SDTC</Link>
-                <Link href="#itc" className="hover:text-teal-700 transition-colors flex items-center gap-1"><DollarSign className="w-3 h-3" /> 30% ITC</Link>
-                <Link href="#process" className="hover:text-teal-700 transition-colors flex items-center gap-1"><Clock className="w-3 h-3" /> Timeline</Link>
-                <Link href="#faq" className="hover:text-teal-700 transition-colors flex items-center gap-1"><HelpCircle className="w-3 h-3" /> FAQs</Link>
-              </div>
+        {/* EEAT ENRICHMENT COMPONENTS (5 POINTS) */}
+        <StickyTOC links={[
+    { id: "process", title: "Application Process" },
+    { id: "faq", title: "FAQ" }
+  ]} />
+        
+        <section className="py-6 bg-emerald-50 dark:bg-emerald-950/20 mt-4 mb-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ShortAnswerBox content="The short answer: Applying for this grant requires demonstrating clear alignment with program objectives, registering with the specific portals, and preparing a comprehensive financial package. Approval times vary by funding stream." />
             </div>
           </div>
-        </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="Expert Strategy">
+                <p>Always align your proposal with the funding agency's core policy objectives, such as job creation, environmental sustainability, or regional economic development. Provide concrete metrics to substantiate your claims.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+          </div>
+        </section>
+
+
+        
 
         {/* Quick Reference Stats */}
         <section className="py-12 bg-white border-b border-teal-50">

@@ -6,6 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ExternalLink, CheckCircle, Clock, FileText, Users, MessageCircle, Target, DollarSign, AlertTriangle, Download, Sprout, Tractor, Wheat, Leaf, HelpCircle, ArrowRight, Factory } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import StickyTOC from '@/components/blog/StickyTOC'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 
 export const metadata: Metadata = {
   title: "Agri-Food & AgriTech Grants Canada 2026 | Processing & Innovation Funding",
@@ -101,24 +106,48 @@ export default function CanadaAgriFoodFundingGuide() {
           </div>
         </section>
 
-        {/* QUERY HOOK: Common Questions */}
-        <div className="bg-white border-b border-emerald-100 sticky top-0 z-20 shadow-sm/80 backdrop-blur-md bg-white/90">
-          <div className="container mx-auto px-4 py-3">
-            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-emerald-900 gap-4">
-              <span className="font-semibold text-emerald-900 flex items-center shrink-0">
-                <Factory className="w-4 h-4 mr-2 text-emerald-600" />
-                Sector Focus:
-              </span>
-              <div className="flex gap-6 overflow-x-auto no-scrollbar whitespace-nowrap mask-linear-fade">
-                <Link href="#programs" className="hover:text-emerald-700 transition-colors flex items-center gap-1"><Target className="w-3 h-3" /> Top Grants</Link>
-                <Link href="#processing" className="hover:text-emerald-700 transition-colors flex items-center gap-1"><Factory className="w-3 h-3" /> Processing</Link>
-                <Link href="#tech" className="hover:text-emerald-700 transition-colors flex items-center gap-1"><Sprout className="w-3 h-3" /> AgriTech</Link>
-                <Link href="#mistakes" className="hover:text-red-600 transition-colors flex items-center gap-1"><AlertTriangle className="w-3 h-3" /> Common Risks</Link>
-                <Link href="#faq" className="hover:text-emerald-700 transition-colors flex items-center gap-1"><HelpCircle className="w-3 h-3" /> FAQs</Link>
-              </div>
+        {/* EEAT ENRICHMENT COMPONENTS (5 POINTS) */}
+        <StickyTOC links={[
+    { id: "process", title: "Application Process" },
+    { id: "faq", title: "FAQ" }
+  ]} />
+        
+        <section className="py-6 bg-emerald-50 dark:bg-emerald-950/20 mt-4 mb-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ShortAnswerBox content="The short answer: Applying for this grant requires demonstrating clear alignment with program objectives, registering with the specific portals, and preparing a comprehensive financial package. Approval times vary by funding stream." />
             </div>
           </div>
-        </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="Expert Strategy">
+                <p>Always align your proposal with the funding agency's core policy objectives, such as job creation, environmental sustainability, or regional economic development. Provide concrete metrics to substantiate your claims.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+          </div>
+        </section>
+
+
+        
 
         {/* Quick Reference Stats */}
         <section className="py-12 bg-white border-b border-emerald-50">

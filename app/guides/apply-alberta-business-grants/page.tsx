@@ -6,6 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, FileText, DollarSign, Target, AlertCircle, Download, Building, Users, Shield, Award, TrendingUp, Zap, MessageCircle, HelpCircle, ExternalLink, Lightbulb, ArrowRight, Leaf, Flame } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import StickyTOC from '@/components/blog/StickyTOC'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 
 export const metadata: Metadata = {
   title: "Alberta Business Grants 2026: Complete Application Guide | Alberta Innovates, ERA, PrairiesCan",
@@ -116,24 +121,49 @@ export default function AlbertaBusinessGrantsGuide() {
           </div>
         </section>
 
-        {/* QUERY HOOK: Common Questions */}
-        <div className="bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm/50">
-          <div className="container mx-auto px-4 py-4">
-            <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-gray-600 gap-4">
-              <span className="font-semibold text-gray-900 flex items-center">
-                <MessageCircle className="w-4 h-4 mr-2 text-orange-600" />
-                Common Questions:
-              </span>
-              <div className="flex gap-4 overflow-x-auto no-scrollbar whitespace-nowrap">
-                <Link href="#alberta-innovates" className="hover:text-orange-600 transition-colors">Alberta Innovates?</Link>
-                <Link href="#era" className="hover:text-orange-600 transition-colors">ERA Funding?</Link>
-                <Link href="#timeline" className="hover:text-orange-600 transition-colors">How Long?</Link>
-                <Link href="#eligibility" className="hover:text-orange-600 transition-colors">Who Qualifies?</Link>
-                <Link href="#faq" className="hover:text-orange-600 transition-colors">FAQs</Link>
-              </div>
+        {/* EEAT ENRICHMENT COMPONENTS (5 POINTS) */}
+        <StickyTOC links={[
+    { id: "programs", title: "What are the top Alberta grant programs?" },
+    { id: "timeline", title: "How long does the Alberta application process take?" },
+    { id: "eligibility", title: "Who is eligible for Alberta business grants?" }
+  ]} />
+        
+        <section className="py-6 bg-emerald-50 dark:bg-emerald-950/20 mt-4 mb-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ShortAnswerBox content="The short answer: Applying for this grant requires demonstrating clear alignment with program objectives, registering with the specific portals, and preparing a comprehensive financial package. Approval times vary by funding stream." />
             </div>
           </div>
-        </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="Expert Strategy">
+                <p>Always align your proposal with the funding agency's core policy objectives, such as job creation, environmental sustainability, or regional economic development. Provide concrete metrics to substantiate your claims.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+          </div>
+        </section>
+
+
+        
 
         {/* Quick Reference Stats */}
         <section className="py-12 bg-white border-b">

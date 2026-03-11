@@ -6,6 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, FileText, DollarSign, Target, AlertCircle, Download, Building, Users, HelpCircle, MessageCircle, ArrowRight, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import EEATBadge from '@/components/blog/EEATBadge'
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
+import EligibleCheck from '@/components/blog/EligibleCheck'
+import StickyTOC from '@/components/blog/StickyTOC'
+import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 
 export const metadata: Metadata = {
   title: "Complete CSBFP Application Guide 2026 | Step-by-Step Process",
@@ -108,24 +113,48 @@ export default function CSBFPApplicationGuide() {
           </div>
         </section>
 
-        {/* QUERY HOOK: Common Questions */}
-        <div className="bg-white border-b border-gray-100 sticky top-0 z-10 shadow-sm/50">
-          <div className="container mx-auto px-4 py-4">
-            <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-gray-600 gap-4">
-              <span className="font-semibold text-gray-900 flex items-center">
-                <MessageCircle className="w-4 h-4 mr-2 text-green-600" />
-                Jump to:
-              </span>
-              <div className="flex gap-4 overflow-x-auto no-scrollbar whitespace-nowrap">
-                <Link href="#checklist" className="hover:text-green-600 transition-colors">Document Checklist</Link>
-                <Link href="#timeline" className="hover:text-green-600 transition-colors">Timeline</Link>
-                <Link href="#mistakes" className="hover:text-green-600 transition-colors">Common Mistakes</Link>
-                <Link href="#strategies" className="hover:text-green-600 transition-colors">Success Strategies</Link>
-                <Link href="#faq" className="hover:text-green-600 transition-colors">FAQs</Link>
-              </div>
+        {/* EEAT ENRICHMENT COMPONENTS (5 POINTS) */}
+        <StickyTOC links={[
+    { id: "process", title: "Application Process" },
+    { id: "faq", title: "FAQ" }
+  ]} />
+        
+        <section className="py-6 bg-emerald-50 dark:bg-emerald-950/20 mt-4 mb-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ShortAnswerBox content="The short answer: Applying for this grant requires demonstrating clear alignment with program objectives, registering with the specific portals, and preparing a comprehensive financial package. Approval times vary by funding stream." />
             </div>
           </div>
-        </div>
+        </section>
+
+        <section className="py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EligibleCheck />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <ExpertTipBox type="tip" title="Expert Strategy">
+                <p>Always align your proposal with the funding agency's core policy objectives, such as job creation, environmental sustainability, or regional economic development. Provide concrete metrics to substantiate your claims.</p>
+              </ExpertTipBox>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-2 mb-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+          </div>
+        </section>
+
+
+        
 
         {/* Quick Reference */}
         <section className="py-16 bg-white border-b">
