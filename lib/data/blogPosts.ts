@@ -2669,6 +2669,21 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "You MUST be certified to access set-aside contracts. <strong>WOSB certification is free through SBA</strong>. Don't pay third parties for what the government offers at no cost."
     },
+
+    faq: [
+      {
+        question: "Is certification required for all minority grants?",
+        answer: "No, but it is highly recommended. Federal contracts require official <strong>WOSB</strong> or <strong>8(a)</strong> certification, while private foundation grants generally only require self-identification."
+      },
+      {
+        question: "Are there grants specifically for startup minority businesses?",
+        answer: "Yes. Programs like the <strong>Galaxy Grant</strong> and <strong>SoGal Black Founder Startup Grant</strong> are specifically designed to help minority founders in the early seed and startup phases."
+      },
+      {
+        question: "How long does federal certification take?",
+        answer: "SBA certification (8(a) or WOSB) typically takes <strong>90 to 120 days</strong> from the date your application is deemed complete. Start this process early before a grant deadline approaches."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -2904,6 +2919,21 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "Don't apply for generic grants. <strong>Sector-specific programs have less competition</strong> and prefer applicants who deeply understand their industry."
     },
+
+    faq: [
+      {
+        question: "Are there grants for retail businesses?",
+        answer: "Direct government grants for retail are rare. However, retail businesses can use <strong>technology adoption grants</strong> (like the CDAP program) or local downtown revitalization matching grants to upgrade their operations."
+      },
+      {
+        question: "Which industry gets the most grant funding?",
+        answer: "The <strong>Technology, Manufacturing, and Agriculture</strong> sectors receive the highest volume of non-dilutive grant funding due to their focus on innovation, exports, and high-quality job creation."
+      },
+      {
+        question: "Can I apply for grants in multiple industries?",
+        answer: "Yes, if your business operates at an intersection (e.g., Agri-Tech or Med-Tech). However, you must apply for <strong>different project costs</strong> to avoid double-dipping, which is prohibited."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -3138,6 +3168,21 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "MassVentures SBIR START matches your federal SBIR with <strong>up to $500K in additional state funding</strong>. Apply immediately after federal award notification."
     },
+
+    faq: [
+      {
+        question: "What is the MassCEC InnovateMass program?",
+        answer: "The <strong>InnovateMass</strong> program provides up to $250,000 in grant funding and technical support for clean energy technology commercialization and demonstration projects in Massachusetts."
+      },
+      {
+        question: "Does Massachusetts match federal SBIR grants?",
+        answer: "Yes, through the <strong>START (Small Business Technology and Research)</strong> program. MassVentures provides Tier 1, 2, and 3 matching grants to help SBIR Phase II winners commercialize their technology."
+      },
+      {
+        question: "Are there incentives for hiring in Massachusetts?",
+        answer: "Yes, the <strong>Workforce Training Fund Program (WTFP)</strong> provides grants up to $250,000 to help Massachusetts companies train current and newly hired employees."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -3185,6 +3230,21 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "NASA SBIR has very specific subtopics. Your proposal <strong>MUST align precisely</strong> with an open subtopic—generic 'space tech' proposals will be rejected."
     },
+
+    faq: [
+      {
+        question: "Do I have to build a rocket to get a NASA grant?",
+        answer: "No. NASA funds a massive array of auxiliary technologies, including <strong>robotics, advanced materials, health tech, software algorithms, and life support systems</strong> that have both space and earth-bound (commercial) applications."
+      },
+      {
+        question: "What is a Phase I NASA SBIR award?",
+        answer: "Phase I awards are feasibility and concept studies. They typically provide <strong>up to $150,000</strong> for a 6-month period to prove the scientific and technical merit of an idea."
+      },
+      {
+        question: "Who owns the IP developed under a NASA SBIR?",
+        answer: "<strong>You do.</strong> Under the Bayh-Dole Act, small businesses retain the intellectual property rights to technologies developed using SBIR/STTR funding, though the government retains a royalty-free license for federal use."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -3232,6 +3292,21 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "START-UP NY requires locating on or near a <strong>SUNY or private college campus</strong>. The 10-year tax exemption makes this worth exploring for NYC-area startups."
     },
+
+    faq: [
+      {
+        question: "What is NYSTAR?",
+        answer: "<strong>NYSTAR</strong> (Empire State Development's Division of Science, Technology and Innovation) funds over 70 centers across the state, offering startups access to millions of dollars in university R&D infrastructure."
+      },
+      {
+        question: "How does the Excelsior Jobs Program work?",
+        answer: "The <strong>Excelsior Jobs Program</strong> provides refundable tax credits to tech businesses in targeted industries that create and maintain new jobs or make significant capital investments in New York State."
+      },
+      {
+        question: "Are there grants for New York biotech startups?",
+        answer: "Yes, programs like the <strong>Biodefense Commercialization Fund</strong> provide grants to accelerate the development of therapeutics, diagnostics, and other innovations tackling infectious disease threats."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -3279,6 +3354,21 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "NIH reviewers are PhD scientists. Your proposal must demonstrate <strong>rigorous scientific methodology</strong>—not just business potential."
     },
+
+    faq: [
+      {
+        question: "Does the NIH only fund medical devices?",
+        answer: "No. The NIH funds a broad spectrum of health-related innovations, including <strong>digital health apps, therapeutics, diagnostics, research tools, and behavioral interventions.</strong>"
+      },
+      {
+        question: "What is the difference between NIH Phase I and Phase II?",
+        answer: "Phase I (up to $295,000) is strictly for proving the scientific feasibility of your concept. Phase II (up to $1.97M) is for continued R&D, prototype development, and clinical evaluation."
+      },
+      {
+        question: "Can academic researchers apply?",
+        answer: "Academic researchers can participate, but the <strong>applicant organization must be a for-profit small business</strong> (under 500 employees). STTR grants require formal partnership with a non-profit research institution."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -3326,6 +3416,21 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "NSERC grants require a <strong>principal investigator at a Canadian university</strong>. If you're a startup, partner with a professor who can be your PI."
     },
+
+    faq: [
+      {
+        question: "Is NSERC only for university professors?",
+        answer: "While NSERC Discovery Grants target academics, programs like <strong>Alliance Grants</strong> are designed specifically to fund R&D partnerships between Canadian businesses and academic researchers."
+      },
+      {
+        question: "How much does a business have to contribute to an NSERC Alliance Grant?",
+        answer: "It depends on the company size. Small-to-medium enterprises (SMEs) typically contribute <strong>between 10% and 33%</strong> of the project cost in cash, while NSERC covers the remaining 67% to 90%."
+      },
+      {
+        question: "Does NSERC fund software development?",
+        answer: "Only if the software involves <strong>fundamental research or addressing significant technical uncertainty</strong>. NSERC does not fund routine software engineering, UI design, or simple app development."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -3420,6 +3525,21 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "NWBC doesn't give grants directly. They <strong>advise on policy and certifications</strong>. Use their resources to understand WOSB certification and federal contracting."
     },
+
+    faq: [
+      {
+        question: "What does the National Women's Business Council (NWBC) do?",
+        answer: "The <strong>NWBC</strong> is a non-partisan federal advisory committee that serves as an independent source of advice and policy recommendations to the President, Congress, and the SBA on economic issues of importance to women."
+      },
+      {
+        question: "Does the NWBC provide direct grants?",
+        answer: "No. The NWBC provides <strong>research, data, and policy advocacy</strong>. However, their advocacy directly influences the funding allocated to SBA Women's Business Centers (WBCs) and the WOSB contracting program."
+      },
+      {
+        question: "How can I access funding recommended by the NWBC?",
+        answer: "You should connect with your local <strong>SBA Women's Business Center (WBC)</strong>. These centers receive federal funding to provide free or low-cost counseling, training, and access to capital for women entrepreneurs."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -3837,6 +3957,21 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "Private foundation grants favor <strong>compelling personal narratives</strong> over financial projections. Focus on your journey, mission, and community impact."
     },
+
+    faq: [
+      {
+        question: "Are private grants taxable?",
+        answer: "Yes. Unless your business is a registered 501(c)(3) non-profit, grant money from private foundations is generally considered <strong>taxable income</strong> by the IRS."
+      },
+      {
+        question: "How competitive are private grants like Cartier or Tory Burch?",
+        answer: "Extremely competitive. Programs like the <strong>Cartier Women's Initiative</strong> receive thousands of global applications for a handful of spots. Your business must demonstrate significant social/environmental impact, not just financial viability."
+      },
+      {
+        question: "Do private grants require a business plan?",
+        answer: "Almost always. Private foundations want to see a clear path to sustainability and growth. They invest in the founder as much as the business model."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -3893,14 +4028,34 @@ export const blogPosts: BlogPost[] = [
         answer: "Yes! The CDAE (Crédit d'impôt pour le développement des affaires électroniques) covers up to 30% of eligible salaries for IT and multimedia jobs. It is one of the most generous tech incentives in North America."
       }
     ],
+
     seo: {
-      keywords: ["Quebec", "Government", "Business", "Grants", "2026"]
-    },
+      keywords: ["Quebec Business Grants", "Investissement Quebec", "CDAE R&D", "CED Quebec", "Francisation"]
+    }, shortAnswer: "Quebec combines massive provincial funding through Investissement Quebec with strict French-language requirements. Access up to 30% tax credits for R&D (CDAE), direct ESSOR grants, and the Quebec Startup Fund.",
     metrics: [
-      { label: 'IQ', value: '$500K+', description: 'Investissement QC', color: 'text-green-600', iconName: 'DollarSign' },
-      { label: 'ESSOR', value: '$50K+', description: 'SME program', color: 'text-blue-600', iconName: 'Briefcase' },
-      { label: 'R&D', value: '30%', description: 'Tax credit', color: 'text-purple-600', iconName: 'TrendingUp' },
-      { label: 'Language', value: 'FR', description: 'French forms', color: 'text-orange-600', iconName: 'FileText' }
+      { label: 'IQ Fund', value: '$2.5B', description: 'Available Capital', color: 'text-blue-600', iconName: 'Target' },
+      { label: 'R&D Credit', value: '30%', description: 'Provincial Refund', color: 'text-green-600', iconName: 'PieChart' },
+      { label: 'ESSOR', value: '$100K+', description: 'Direct Support', color: 'text-purple-600', iconName: 'Award' },
+      { label: 'Language', value: 'Bill 96', description: 'Strict Compliance', color: 'text-red-600', iconName: 'CheckCircle' }
+    ],
+    expertTip: {
+      title: "French is Mandatory",
+      type: 'warning',
+      content: "Under Bill 96, if your business has 25 or more employees, you must undergo the <strong>Francization process</strong>. Failure to comply makes you instantly ineligible for provincial grants."
+    },
+    faq: [
+      {
+        question: "What is Investissement Québec (IQ)?",
+        answer: "Investissement Québec is the central economic development agency for the province. They act as both a lender and a grant provider, administering major programs like the <strong>ESSOR program</strong> for capital investments."
+      },
+      {
+        question: "How do Quebec R&D tax credits work with federal SR&ED?",
+        answer: "Quebec offers some of the most generous R&D credits in North America. The provincial credit (up to 30% refundable) stacks with the federal SR&ED program, allowing early-stage startups to recover up to <strong>73% of eligible R&D salaries</strong>."
+      },
+      {
+        question: "Do I have to do business in French to get a grant?",
+        answer: "Yes. In Quebec, government correspondence, applications, and official business operations must respect the Charter of the French Language. Grants are often tied directly to compliance."
+      }
     ],
     eligibleCheck: true,
     inlineCTA: {
@@ -4231,6 +4386,21 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "Apply through an <strong>SBA Preferred Lender</strong> for faster processing. They can approve loans without SBA review, cutting weeks off approval time."
     },
+
+    faq: [
+      {
+        question: "Is the SBA 7(a) a direct grant?",
+        answer: "No. The <strong>SBA 7(a)</strong> is a loan guarantee program. The SBA doesn't lend you the money directly; instead, they guarantee up to 85% of a loan issued by an approved bank or credit union."
+      },
+      {
+        question: "What credit score do I need for an SBA 7(a) loan?",
+        answer: "Most lenders look for a personal credit score of <strong>680 or higher</strong>. However, the SBA itself does not set a strict minimum personal credit score; individual banks add their own overlays."
+      },
+      {
+        question: "Can I use an SBA 7(a) to buy another business?",
+        answer: "Yes. In fact, <strong>business acquisition</strong> is one of the most common applications of the 7(a) loan, allowing entrepreneurs to buy existing, cash-flowing businesses with only 10% down."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -4278,6 +4448,21 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "Disaster loan deadlines are <strong>strict and non-negotiable</strong>. Apply within 60 days of declaration for physical damage, 9 months for economic injury."
     },
+
+    faq: [
+      {
+        question: "What is an EIDL?",
+        answer: "An <strong>Economic Injury Disaster Loan (EIDL)</strong> provides up to $2 million to help small businesses overcome a temporary loss of revenue caused by a declared physical disaster."
+      },
+      {
+        question: "Do I have to pay back an SBA Disaster Loan?",
+        answer: "Yes. Unlike FEMA grants, SBA Physical Disaster Loans and EIDLs are <strong>low-interest debts</strong> that must be repaid over terms up to 30 years."
+      },
+      {
+        question: "Can I get a disaster loan if my business didn't sustain physical damage?",
+        answer: "Yes, you can apply for an <strong>Economic Injury Disaster Loan</strong> if your business suffered financial harm (loss of revenue, supply chain disruption) due to a declared disaster, even if your building is intact."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -4332,6 +4517,21 @@ export const blogPosts: BlogPost[] = [
       { title: 'SBIR/STTR', id: 'sbir-sttr' },
       { title: 'FAQ', id: 'faq' }
     ],
+
+    faq: [
+      {
+        question: "What is the difference between an SBA loan and an SBA grant?",
+        answer: "SBA loans (like the 7a or 504) must be repaid with interest. <strong>SBA grants</strong> (like the STEP program or SBIR/STTR) do not need to be repaid, but they are highly specific and competitive."
+      },
+      {
+        question: "How long does it take to get SBA funding?",
+        answer: "It depends on the program. SBA Express loans can be approved in 36 hours. A standard 7(a) or 504 loan typically takes <strong>45 to 90 days</strong> from application to funding."
+      },
+      {
+        question: "Does the SBA lend money directly to me?",
+        answer: "Usually, no. The SBA works through <strong>approved lending partners</strong> (banks and credit unions). The only exception is SBA Disaster Assistance loans, which are issued directly by the federal government."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       description: "Not sure which SBA program fits your business? Our funding specialists match you with the right loan or grant program in minutes.",
@@ -4371,6 +4571,21 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "SBA microloans come through <strong>nonprofit intermediary lenders</strong>. Find your local microlender at SBA.gov for personalized support and faster processing."
     },
+
+    faq: [
+      {
+        question: "What is the maximum SBA microloan amount?",
+        answer: "The maximum microloan amount is <strong>$50,000</strong>, though the average microloan is substantially smaller, typically around $13,000 to $15,000."
+      },
+      {
+        question: "Who actually gives me the microloan?",
+        answer: "Microloans are provided by specially designated <strong>SBA intermediary lenders</strong>—often non-profit community-based organizations—rather than traditional big banks."
+      },
+      {
+        question: "Do SBA microloans require collateral?",
+        answer: "Yes, usually. While they are more flexible than traditional loans, intermediary lenders generally require some type of collateral and the personal guarantee of the business owner."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -4418,6 +4633,21 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "Each agency has different priorities. <strong>Match your tech area to the right agency</strong>—NIH for health, DOE for energy, DOD for defense, etc."
     },
+
+    faq: [
+      {
+        question: "Is SBIR funding considered a loan?",
+        answer: "No. SBIR and STTR funds are <strong>non-dilutive grants or contracts</strong>. The government does not take an equity stake in your company, and you do not have to repay the funds."
+      },
+      {
+        question: "Which federal agencies participate in the SBIR program?",
+        answer: "Any federal agency with an extramural R&D budget over $100 million must participate. Currently, there are <strong>11 participating agencies</strong>, with the DoD, HHS (NIH), and DOE being the largest."
+      },
+      {
+        question: "Can I apply directly for a Phase II SBIR?",
+        answer: "Usually, you must complete Phase I first. However, a few agencies (like the NIH and DoD) offer a <strong>Direct-to-Phase-II</strong> or Fast-Track program if you can prove you have already accomplished Phase I feasibility milestones."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -4465,6 +4695,21 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "STTR (Small Business Technology Transfer) <strong>requires a formal university partnership</strong>. SBIR does not. Choose the right program for your situation."
     },
+
+    faq: [
+      {
+        question: "What is the primary difference between SBIR and STTR?",
+        answer: "Both fund innovative R&D. The key difference is that <strong>STTR requires formal collaboration</strong> with a non-profit research institution (like a university), whereas SBIR does not."
+      },
+      {
+        question: "How much of the work must the small business do in an STTR?",
+        answer: "In an STTR, the small business must perform at least <strong>40%</strong> of the R&D, and the partnered research institution must perform at least <strong>30%</strong>."
+      },
+      {
+        question: "Are SBIR/STTR win rates low?",
+        answer: "They are highly competitive. Phase I win rates generally hover between <strong>15% and 25%</strong>. However, if you win Phase I, the success rate for securing Phase II funding often jumps to 40% or 50%."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -4699,6 +4944,21 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "State and local grants often have <strong>less competition</strong> than federal programs. Focus on regions with active economic development zones for higher approval rates."
     },
+
+    faq: [
+      {
+        question: "Are state grants easier to get than federal grants?",
+        answer: "Generally, yes. <strong>State and local grants</strong> have smaller applicant pools and often prioritize local economic development (like main street revitalization or job creation), making the criteria more accessible for standard small businesses."
+      },
+      {
+        question: "How do I find my local Economic Development Corporation (EDC)?",
+        answer: "Your state government website usually features a map of <strong>Regional Economic Development Councils (REDCs)</strong> or EDCs. These local offices administer specific regional grant funds and tax incentive programs."
+      },
+      {
+        question: "Do state grants require matching funds?",
+        answer: "Almost all state-level economic development grants require a <strong>cash match</strong>, usually around 50%. The state wants to see that you have skin in the game before investing taxpayer dollars."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -4934,6 +5194,21 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "All federal grants are listed on <strong>Grants.gov</strong>—create an account and set up custom alerts for your industry to catch new opportunities early."
     },
+
+    faq: [
+      {
+        question: "Can I get a federal grant to start a generic small business?",
+        answer: "No. The federal government does not offer grants for starting typical service businesses (like restaurants or consulting firms). Federal grants focus on <strong>R&D, high-tech manufacturing, and specific policy goals</strong> like rural development."
+      },
+      {
+        question: "What is Grants.gov?",
+        answer: "<strong>Grants.gov</strong> is the central database and application portal for all federal grant programs. You must be registered in SAM.gov before you can apply for funding on Grants.gov."
+      },
+      {
+        question: "Are federal grants taxable?",
+        answer: "Yes. The IRS treats federal grant money as <strong>ordinary business income</strong> unless specifically legislated otherwise. Always consult a CPA when structuring your grant budget."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -15399,6 +15674,20 @@ ${sredTaxPost}
       type: 'warning',
       content: "You cannot access set-aside contracts without official verification. Apply for <strong>VetCert (formerly CVE)</strong> through the SBA immediately."
     },
+    faq: [
+      {
+        question: "What is a Service-Disabled Veteran-Owned Small Business (SDVOSB)?",
+        answer: "An <strong>SDVOSB</strong> is a business at least 51% owned by a veteran with a service-connected disability. The federal government aims to award at least 3% of all prime contracting dollars specifically to SDVOSBs."
+      },
+      {
+        question: "Does the SBA waive fees for veterans?",
+        answer: "Yes, under the <strong>SBA Veterans Advantage</strong> program, upfront guaranty fees are significantly reduced or waived entirely for SBA 7(a) and SBA Express loans issued to veteran-owned businesses."
+      },
+      {
+        question: "Can I use the GI Bill to start a business?",
+        answer: "No, the GI Bill cannot be used directly for startup capital. However, you can use it to cover tuition for <strong>entrepreneurship courses and training programs</strong>."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -15540,6 +15829,20 @@ ${sredTaxPost}
       type: 'tip',
       content: "Getting certified as an <strong>MBE (Minority Business Enterprise)</strong> through NMSDC or SBA 8(a) unlocks access to 90% of restricted funding pools."
     },
+    faq: [
+      {
+        question: "What qualifies as a Minority Business Enterprise (MBE)?",
+        answer: "A business must be at least <strong>51% owned, operated, and controlled</strong> by individuals who belong to one of several minority groups, including Black American, Hispanic American, Native American, or Asian Pacific American."
+      },
+      {
+        question: "What is the NMSDC?",
+        answer: "The <strong>National Minority Supplier Development Council (NMSDC)</strong> is a powerful private organization that certifies MBEs and connects them with major corporate Supplier Diversity procurement programs."
+      },
+      {
+        question: "Does the SBA offer specific grants for minority founders?",
+        answer: "While the SBA does not offer direct general grants, the <strong>SBA 8(a) Business Development Program</strong> provides massive set-aside contract opportunities and technical assistance exclusively for disadvantaged businesses."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -16166,6 +16469,21 @@ ${sredTaxPost}
       type: 'warning',
       content: "For the Texas Enterprise Fund, you must demonstrate <strong>competitive necessity</strong>—meaning you have a viable offer from another state. It's a deal-closing fund, not a startup handout."
     },
+
+    faq: [
+      {
+        question: "What is the Texas Enterprise Fund (TEF)?",
+        answer: "The <strong>TEF is a 'deal-closing' fund</strong>. It offers performance-based cash grants to companies considering Texas as a site for a new project, provided there is significant job creation and out-of-state competition."
+      },
+      {
+        question: "Are there grants for moving my business to Texas?",
+        answer: "Yes. Texas aggressively recruits out-of-state businesses. In addition to the TEF, programs like the <strong>Texas Enterprise Zone Program</strong> offer massive sales and use tax refunds to incentivise relocation."
+      },
+      {
+        question: "Does Texas have a state income tax?",
+        answer: "No. Texas does not levy a personal or corporate income tax. Instead, the state relies on the <strong>Texas Franchise Tax (Margin Tax)</strong>, which has high exclusion thresholds that exempt most small businesses entirely."
+      }
+    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
