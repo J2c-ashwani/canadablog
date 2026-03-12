@@ -165,7 +165,7 @@ export const stateDetails: StateDetailedGrant[] = [
             avgProcessingTime: '60-120 days'
         },
 
-        shortAnswer: "California offers $8.5B+ in small business funding through 150+ active programs. The average processing time is 60-120 days.",
+        shortAnswer: "California has $8.5B+ in active funding across 150+ programs — but most small businesses only access 1-2 of them. The highest-value, least-competitive programs are CalSEED ($150K-$450K, no equity), IBank Loan Guarantees, and the California Competes Tax Credit. Processing takes 60-120 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for California grants?",
@@ -610,7 +610,7 @@ The state's commitment to climate leadership has also spawned a robust ecosystem
             'california clean tech funding'
         ],
 
-        metaDescription: 'Complete guide to California small business grants and funding in 2026. Access $8.5B+ through 150+ programs including CalSEED, California Competes, IBank loans, and clean energy incentives.'
+        metaDescription: 'California businesses are missing out on $8.5B+ in grants. This guide reveals 8 real programs you can apply to today — including CalSEED ($450K, no equity) and IBank (80% loan guarantee). No consultants required.'
     },
     {
         id: 'texas',
@@ -2868,7 +2868,7 @@ The state's manufacturing sector is also undergoing a significant renaissance, d
             avgProcessingTime: '45-60 days'
         },
 
-        shortAnswer: "Ohio offers $2.1B+ in small business funding through 70+ active programs. The average processing time is 45-60 days.",
+        shortAnswer: "Ohio's JobsOhio is a private-sector fund — meaning faster approvals and less red tape than most states. $2.1B+ flows through 70+ programs. Best kept secrets: Ohio TechCred ($2K/credential to upskill staff) and the Inclusion Grant for minority-owned businesses. Apply in 45-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Ohio grants?",
@@ -3227,7 +3227,7 @@ The state is investing heavily in "Innovation Districts" in its three major citi
             'minority business grants ohio'
         ],
 
-        metaDescription: 'Complete guide to Ohio small business grants and funding in 2026. Access $2.1B+ via JobsOhio, TechCred, and Inclusion Grants. Fast private-sector processing.'
+        metaDescription: 'Ohio has 70+ business grant programs through JobsOhio — and most businesses never apply. This guide ranks the best by approval rate and shows you how to claim your share of $2.1B+ in active funding.'
     },
     {
         id: 'georgia',

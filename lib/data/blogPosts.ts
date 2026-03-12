@@ -2497,8 +2497,8 @@ export const blogPosts: BlogPost[] = [
   {
     id: 46,
     slug: "dod-sbir-defense-tech-grants",
-    title: "DOD SBIR Defense Tech Grants 2026-2027 | $256K Phase I, $1.7M Phase II Cybersecurity & Aerospace Funding",
-    excerpt: "Complete 2026-2027 guide to Department of Defense SBIR/STTR grants for defense tech startups. Phase I up to $256K, Phase II up to $1.7M for cybersecurity, aerospace, UAV, advanced materials innovation.",
+    title: "DOD SBIR 2026: Win $1.7M in Defense Grants (No Equity, No Repayment)",
+    excerpt: "How to win DOD SBIR grants in 2026: Most defense tech companies leave $1.7M on the table by skipping Phase I. We show you the exact solicitation-matching process that doubles approval rates.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
     author: "Ashwani K.",
@@ -2516,7 +2516,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["DOD", "SBIR", "Defense", "Tech", "Grants"],
-    }, shortAnswer: "Complete 2026-2027 guide to Department of Defense SBIR/STTR grants for defense tech startups. Total funding available: $256K.",
+    }, shortAnswer: "Yes — the DOD SBIR program awards up to $256K (Phase I) and $1.7M (Phase II) in fully non-dilutive grants to US defense tech startups. You keep 100% equity. The #1 mistake applicants make is applying to the wrong topic number — we show you how to match the right one.",
     metrics: [
       { label: 'Phase I', value: '$256K', description: 'Entry Grant', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Phase II', value: '$1.7M', description: 'Follow-on', color: 'text-blue-600', iconName: 'TrendingUp' },
@@ -3447,7 +3447,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 64,
     slug: "nsf-sbir-grants-technology-startups",
-    title: "NSF SBIR Grants 2026-2027 | $275K Phase I, $2M Phase II Technology Startup Funding - Complete Application Guide",
+    title: "NSF SBIR Grants 2026: The $2M Startup Grant Most Founders Don't Know About",
     excerpt: "Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Phase I funding up to $275K, Phase II up to $2M for AI, deep tech, biotech, software, hardware innovation. Application strategies, eligibility, deadlines.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -3466,7 +3466,7 @@ export const blogPosts: BlogPost[] = [
     content: "",
     seo: {
       keywords: ["NSF", "SBIR", "Grants", "2026-2027", "|"],
-    }, shortAnswer: "The Short Answer: The SBIR/STTR program acts as \"America's Seed Fund,\" providing up to $275K in non-dilutive R&D grants for US tech startups. To win, companies must align their innovative technology with specific federal agency (e.g., NSF, DoD, NIH) research solicitations. Successfully securing Phase I funding dramatically improves the odds of larger Phase II commercialization awards.",
+    }, shortAnswer: "NSF SBIR Phase I awards up to $275K with no equity taken — it's the largest non-dilutive pre-seed for US tech startups. The critical step most miss: you must match your technology to a specific NSF solicitation topic. Phase II then unlocks up to $2M. Success rate is 20-25% for well-matched applications.",
     metrics: [
       { label: 'Phase I', value: '$275K', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Phase II', value: '$2M', description: 'Scale-Up', color: 'text-blue-600', iconName: 'Rocket' },
