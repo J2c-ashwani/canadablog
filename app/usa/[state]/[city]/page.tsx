@@ -9,13 +9,16 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox';
 import { GlobalGrantGuide } from '@/components/blog/GlobalGrantGuide';
-import { getStateDetailBySlug, getAllStateDetails, getRelatedGuides } from '@/lib/data/stateDetails';
+import { getStateDetailBySlug, getAllStateDetails, getRelatedGuides, StateDetailedGrant } from '@/lib/data/stateDetails';
 import {
     ArrowLeft, DollarSign, Users, Briefcase, Target, Building, Zap, TrendingUp,
     Rocket, Mountain, Globe, Leaf, Cpu, Shield, Clock, Award, CheckCircle,
     AlertTriangle, FileText, ExternalLink, ChevronRight, List, HelpCircle,
     BookOpen, Lightbulb, MapPin, Locate
 } from 'lucide-react';
+import { GrantComparisonTable } from '@/components/blog/GrantComparisonTable';
+import EEATBadge from '@/components/blog/EEATBadge';
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 
 // Helper to create slugs from names
 function toSlug(text: string): string {
@@ -51,16 +54,33 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     const cityData = state.cityGuides.find(c => toSlug(c.city) === cityParam);
     if (!cityData) return { title: 'City Not Found' };
 
+    const estimatedPrograms = state.heroStats?.programCount || "50";
+    const funding = state.heroStats?.totalFunding || "$1M+";
+
+    const titleVariants = [
+        `${cityData.city} Business Grants 2026: ${estimatedPrograms} Programs That Pay`,
+        `${cityData.city} Grants 2026: ${funding} Waiting (Most Unclaimed)`,
+        `${cityData.city} Business Grants: Access ${estimatedPrograms} Programs`,
+    ];
+
+    let title = titleVariants[0];
+    for (const v of titleVariants) {
+        if (v.length <= 60) { title = v; break; }
+    }
+    if (title.length > 60) {
+        title = `${cityData.city} Business Grants 2026 (${funding}+)`;
+    }
+
     return {
-        title: `${cityData.city} Small Business Grants 2026 | ${state.name} Funding Guide`,
-        description: `Complete guide to small business grants and funding in ${cityData.city}, ${state.name}. Access local ${cityData.city} programs, ${state.name} incentives, and federal opportunities.`,
+        title,
+        description: `Local businesses in ${cityData.city} are missing out on funding. Find highly-targeted grants, ${state.name} state incentives, and federal equity-free programs available in your exact zip code.`,
         alternates: {
             canonical: `https://www.fsidigital.ca/usa/${state.slug}/${cityParam}`,
         },
         robots: { index: true, follow: true },
         openGraph: {
-            title: `${cityData.city} Small Business Grants 2026`,
-            description: `Find funding for your business in ${cityData.city}, ${state.name}. Local grants, state incentives, and expert support.`,
+            title,
+            description: `Find funding for your business in ${cityData.city}, ${state.name}. Local grants, state incentives, and zero-equity support.`,
             type: 'article',
         },
     };
@@ -84,7 +104,7 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
         "@type": "Article",
         "headline": `${cityData.city} Small Business Grants and Funding 2026`,
         "description": cityData.description,
-        "author": { "@type": "Organization", "name": "FSI Digital" },
+        "author": { "@type": "Person", "name": "Ashwani K." },
         "publisher": { "@type": "Organization", "name": "FSI Digital" },
         "datePublished": "2026-03-01T00:00:00.000Z",
         "dateModified": "2026-03-01T00:00:00.000Z",
@@ -94,11 +114,25 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
         }
     };
 
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": (state.faqs || []).map(faq => ({
+            "@type": "Question",
+            "name": faq.question.replace(new RegExp(state.name, 'g'), cityData.city),
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    };
+
     return (
         <div className="min-h-screen bg-white">
             <Header />
             <main className="py-8">
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
                 <article className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
                     {/* Breadcrumb */}
@@ -120,11 +154,19 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                             Small Business Grants in {cityData.city}, {state.name}
                         </h1>
+
+                        {state.shortAnswer && (
+                            <ShortAnswerBox content={state.shortAnswer.replace(new RegExp(state.name, 'g'), cityData.city)} />
+                        )}
+                        <div className="mt-4 mb-6">
+                            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-12" />
+                        </div>
+
                         <p className="text-xl text-gray-600 mb-6">
                             {cityData.description}
                         </p>
 
-                        <div className="flex flex-wrap gap-4 mt-6">
+                        <div className="flex flex-wrap gap-4 mt-6 mb-8">
                             <div className="flex items-center text-gray-600">
                                 <MapPin className="w-5 h-5 mr-2 text-green-600" />
                                 <span>Serving {cityData.city} Region</span>
@@ -134,6 +176,17 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
                                 <span>{state.name} State Programs Apply</span>
                             </div>
                         </div>
+
+                        {/* Top State Programs Comparison Table - Reusing State Details */}
+                        {state.comparisonTable && (
+                            <div className="mb-10">
+                                <GrantComparisonTable
+                                    title={`${cityData.city} Eligible: Top ${state.name} Grants`}
+                                    description={`These major state programs are fully accessible to businesses located in ${cityData.city}.`}
+                                    programs={state.comparisonTable.programs}
+                                />
+                            </div>
+                        )}
                     </header>
 
                     {/* Key Industries */}
@@ -237,6 +290,30 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
                             </Link>
                         </div>
                     </section>
+
+                    {/* FAQs Section */}
+                    {state.faqs && state.faqs.length > 0 && (
+                        <section className="mb-12">
+                            <h2 className="text-3xl font-bold mb-6 text-gray-900">
+                                Frequently Asked Questions
+                            </h2>
+                            <div className="space-y-4">
+                                {state.faqs.map((faq, idx) => (
+                                    <Card key={idx}>
+                                        <CardHeader>
+                                            <CardTitle className="text-lg flex items-start">
+                                                <HelpCircle className="w-5 h-5 mr-2 text-green-600 flex-shrink-0 mt-1" />
+                                                {faq.question.replace(new RegExp(state.name, 'g'), cityData.city)}
+                                            </CardTitle>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <p className="text-gray-700 ml-7">{faq.answer}</p>
+                                        </CardContent>
+                                    </Card>
+                                ))}
+                            </div>
+                        </section>
+                    )}
 
                     <GlobalGrantGuide />
                 </article>

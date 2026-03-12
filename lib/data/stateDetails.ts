@@ -2119,7 +2119,40 @@ The state's population has grown by millions in recent years, driven significant
             'florida job creation incentives'
         ],
 
-        metaDescription: 'Complete guide to Florida small business grants and funding in 2026. Access $3.8B+ through 75+ programs including QTI Tax Refund, HIPI, Space Florida financing. No state income tax.'
+        metaDescription: 'Complete guide to Florida small business grants and funding in 2026. Access $3.8B+ through 75+ programs including QTI Tax Refund, HIPI, Space Florida financing. No state income tax.',
+        comparisonTable: {
+                "title": "Top Florida Business Funding & Incentives",
+                "programs": [
+                    {
+                        "program": "Qualified Target Industry (QTI) Tax Refund",
+                        "amount": "$3,000-$6,000 per job (tax refund)",
+                        "equity": "None",
+                        "bestFor": "Job creation in high-value industries; new businesses relocating or expanding",
+                        "timeline": "Year-round applications; 30-60 days"
+                    },
+                    {
+                        "program": "High Impact Performance Incentive (HIPI)",
+                        "amount": "$5M-$100M+ (negotiated grant)",
+                        "equity": "None",
+                        "bestFor": "Major job creation & capital investment projects ($50M+ investment)",
+                        "timeline": "Varies (deal-dependent)"
+                    },
+                    {
+                        "program": "Florida Small Business Microloan",
+                        "amount": "Up to $50,000 (loan)",
+                        "equity": "None",
+                        "bestFor": "Small businesses needing accessible capital for growth or working capital",
+                        "timeline": "30-60 days"
+                    },
+                    {
+                        "program": "Quick Response Training (QRT) Grant",
+                        "amount": "Up to $2,500 per employee (reimbursement)",
+                        "equity": "None",
+                        "bestFor": "Companies needing customized training for new or expanding workforce",
+                        "timeline": "30-60 days"
+                    }
+                ]
+            }
     },
     {
         id: 'illinois',
@@ -2499,7 +2532,40 @@ Illinois is also a leader in clean energy transition, with the Climate and Equit
             'dceo grants'
         ],
 
-        metaDescription: 'Complete guide to Illinois business grants and funding in 2026. Access $3.5B+ via Advantage Illinois, EDGE tax credits, and REV Illinois incentives. Detailed application guide.'
+        metaDescription: 'Complete guide to Illinois business grants and funding in 2026. Access $3.5B+ via Advantage Illinois, EDGE tax credits, and REV Illinois incentives. Detailed application guide.',
+        comparisonTable: {
+                "title": "Top Illinois Business Funding & Incentive Programs",
+                "programs": [
+                    {
+                        "program": "Advantage Illinois (SSBCI)",
+                        "amount": "Loans/Credit support up to $2 million",
+                        "equity": "No direct equity required (loan guarantee)",
+                        "bestFor": "Startups & growing SMEs needing flexible loan financing",
+                        "timeline": "Rolling applications, through lenders"
+                    },
+                    {
+                        "program": "Reimagining Energy and Vehicles (REV) Illinois",
+                        "amount": "Tax credits up to 75-100% of income tax withholdings",
+                        "equity": "N/A (tax credit program)",
+                        "bestFor": "EV & renewable energy manufacturers making significant investments",
+                        "timeline": "Applications accepted year-round, competitive review"
+                    },
+                    {
+                        "program": "Illinois Economic Development Program",
+                        "amount": "Varies significantly by project",
+                        "equity": "No direct equity (project-based incentives)",
+                        "bestFor": "Businesses creating jobs, expanding operations, and making capital investments",
+                        "timeline": "Application rounds, project-specific"
+                    },
+                    {
+                        "program": "Illinois Workforce Development Grant",
+                        "amount": "Up to $500,000",
+                        "equity": "N/A (grant funding)",
+                        "bestFor": "Companies training new hires or upskilling existing workforce",
+                        "timeline": "Periodic application windows, 60-90 days review"
+                    }
+                ]
+            }
     },
     {
         id: 'pennsylvania',
@@ -2891,7 +2957,40 @@ The state's manufacturing sector is also undergoing a significant renaissance, d
             'wednetpa training grants'
         ],
 
-        metaDescription: 'Complete guide to Pennsylvania business grants and funding in 2026. Access $2.9B+ via PIDA loans, Ben Franklin Tech Partners, and KIZ tax credits. Sellable tax credits explained.'
+        metaDescription: 'Complete guide to Pennsylvania business grants and funding in 2026. Access $2.9B+ via PIDA loans, Ben Franklin Tech Partners, and KIZ tax credits. Sellable tax credits explained.',
+        comparisonTable: {
+                "title": "Top Pennsylvania Business Funding Programs",
+                "programs": [
+                    {
+                        "program": "PIDA Loans",
+                        "amount": "Loans up to $2.25M (real estate) / $400k (equipment)",
+                        "equity": "No (Loan)",
+                        "bestFor": "Manufacturing, Industrial, Agribusiness expansion & job creation",
+                        "timeline": "45-60 days avg. (rolling reviews)"
+                    },
+                    {
+                        "program": "Ben Franklin Tech Partners",
+                        "amount": "Investments $50,000 - $1,000,000",
+                        "equity": "Hybrid (equity/debt)",
+                        "bestFor": "Early-stage tech startups with high growth potential",
+                        "timeline": "Rolling, rigorous due diligence"
+                    },
+                    {
+                        "program": "Keystone Innovation Zone (KIZ) Tax Credit",
+                        "amount": "Tax Credits up to $100,000",
+                        "equity": "N/A (Tax Credit)",
+                        "bestFor": "Early-stage tech & life sciences companies in designated KIZ areas",
+                        "timeline": "Annual application cycle (approx. 60-90 days approval)"
+                    },
+                    {
+                        "program": "PA Small Business Assistance Grant",
+                        "amount": "Up to $25,000",
+                        "equity": "No",
+                        "bestFor": "General operational costs, marketing, equipment for small businesses",
+                        "timeline": "30-60 days (seasonal or rolling applications)"
+                    }
+                ]
+            }
     },
     {
         id: 'ohio',
@@ -3637,7 +3736,33 @@ Beyond logistics, Georgia has become a premier destination for film and televisi
             'tier 1 county georgia incentives'
         ],
 
-        metaDescription: 'Complete guide to Georgia business grants and funding in 2026. Access $2.4B+ via Job Tax Credits, Quick Start training, and Film Tax Credits. #1 state for business.'
+        metaDescription: 'Complete guide to Georgia business grants and funding in 2026. Access $2.4B+ via Job Tax Credits, Quick Start training, and Film Tax Credits. #1 state for business.',
+        comparisonTable: {
+                "title": "Top Georgia Business Grant & Incentive Programs",
+                "programs": [
+                    {
+                        "program": "Georgia Job Tax Credit",
+                        "amount": "$750 - $4,000 per job per year (for 5 years)",
+                        "equity": "No equity",
+                        "bestFor": "Businesses creating new full-time jobs, especially in rural or strategic sectors.",
+                        "timeline": "Annual tax filing"
+                    },
+                    {
+                        "program": "Apprenticeship Program Tax Credit",
+                        "amount": "Up to $25,000 per apprentice per year (max $100k per employer)",
+                        "equity": "No equity",
+                        "bestFor": "Employers investing in skilled workforce development through registered apprenticeships.",
+                        "timeline": "Annual tax filing"
+                    },
+                    {
+                        "program": "Georgia Quick Start",
+                        "amount": "Free customized training (Valued at $1,000s per employee)",
+                        "equity": "No equity",
+                        "bestFor": "New or expanding companies needing customized, free workforce training.",
+                        "timeline": "Project-based (Varies)"
+                    }
+                ]
+            }
     },
     {
         id: 'north-carolina',
@@ -4008,7 +4133,40 @@ Outside the metros, the state maintains a powerful manufacturing base, producing
             'building reuse program nc'
         ],
 
-        metaDescription: 'Complete guide to North Carolina business grants and funding in 2026. Access $2.0B+ via JDIG cash grants, OneNC fund, and NC IDEA startup funding. 0% corporate tax roadmap.'
+        metaDescription: 'Complete guide to North Carolina business grants and funding in 2026. Access $2.0B+ via JDIG cash grants, OneNC fund, and NC IDEA startup funding. 0% corporate tax roadmap.',
+        comparisonTable: {
+                "title": "Top North Carolina Business Grant Programs",
+                "programs": [
+                    {
+                        "program": "Job Development Investment Grant (JDIG)",
+                        "amount": "Up to 75% of withholding taxes from new jobs",
+                        "equity": "None",
+                        "bestFor": "Large-scale job creation, major competitive projects in Life Sciences, Tech, Manufacturing",
+                        "timeline": "Negotiated / Multi-year payout"
+                    },
+                    {
+                        "program": "One North Carolina Fund (OneNC)",
+                        "amount": "$50,000 - $500,000+",
+                        "equity": "None",
+                        "bestFor": "Competitive job creation projects requiring local government match, infrastructure improvements",
+                        "timeline": "Rolling / Negotiated"
+                    },
+                    {
+                        "program": "NC IDEA SEED",
+                        "amount": "$50,000 non-dilutive grant",
+                        "equity": "None",
+                        "bestFor": "Early-stage, high-growth companies with innovative solutions",
+                        "timeline": "Specific application windows"
+                    },
+                    {
+                        "program": "NC Rural Ready Grant Program",
+                        "amount": "Up to $150,000",
+                        "equity": "None",
+                        "bestFor": "Small businesses and non-profits in rural NC for capacity building and economic development",
+                        "timeline": "Annual application cycles"
+                    }
+                ]
+            }
     },
     {
         id: 'michigan',
@@ -4383,7 +4541,40 @@ The state is pivoting aggressively to Industry 4.0, helping legacy manufacturers
             'women owned business grants michigan'
         ],
 
-        metaDescription: 'Complete guide to Michigan business grants and funding in 2026. Access $1.8B+ via MEDC grants, Going PRO Talent Fund, and startup support. #1 state for engineers.'
+        metaDescription: 'Complete guide to Michigan business grants and funding in 2026. Access $1.8B+ via MEDC grants, Going PRO Talent Fund, and startup support. #1 state for engineers.',
+        comparisonTable: {
+                "title": "Top Michigan Business Grants at a Glance",
+                "programs": [
+                    {
+                        "program": "Michigan Business Development Program (MBDP)",
+                        "amount": "Grants up to $10,000 per job (Typical)",
+                        "equity": "None",
+                        "bestFor": "Attracting major investments & large-scale job creation",
+                        "timeline": "Rolling application, performance-based"
+                    },
+                    {
+                        "program": "Going PRO Talent Fund",
+                        "amount": "Up to $2,000 per person / $3,500 for apprentices",
+                        "equity": "None",
+                        "bestFor": "Upskilling existing workforce, addressing skill gaps",
+                        "timeline": "Annual application window (Fall)"
+                    },
+                    {
+                        "program": "Business Accelerator Fund (BAF)",
+                        "amount": "Services valued up to $50,000",
+                        "equity": "None",
+                        "bestFor": "Early-stage tech startups, innovation & IP development",
+                        "timeline": "Ongoing application, via SmartZone"
+                    },
+                    {
+                        "program": "Michigan New Jobs Training Program (MNJTP)",
+                        "amount": "Value of new employee state income tax withheld",
+                        "equity": "None",
+                        "bestFor": "Funding training for new employees, community college partnerships",
+                        "timeline": "Rolling application, tax capture based"
+                    }
+                ]
+            }
     },
     {
         id: 'new-jersey',
@@ -4758,7 +4949,40 @@ The state has aggressively pivoted toward the innovation economy, creating the "
             'nol program nj'
         ],
 
-        metaDescription: 'Complete guide to New Jersey business grants and funding in 2026. Access $1.7B+ via NJ Emerge, Angel Investor Tax Credit, and NOL sales. Life sciences capital.'
+        metaDescription: 'Complete guide to New Jersey business grants and funding in 2026. Access $1.7B+ via NJ Emerge, Angel Investor Tax Credit, and NOL sales. Life sciences capital.',
+        comparisonTable: {
+                "title": "Top New Jersey Small Business Grant & Incentive Programs",
+                "programs": [
+                    {
+                        "program": "NJ Emerge Program",
+                        "amount": "Tax credits from $500 to $8,000 per job per year",
+                        "equity": "No equity required (tax credit)",
+                        "bestFor": "Job creation, significant capital investment, targeted industries",
+                        "timeline": "Rolling; 45-90 days"
+                    },
+                    {
+                        "program": "NJ Angel Investor Tax Credit",
+                        "amount": "20-25% tax credit on qualifying investments",
+                        "equity": "No direct equity required (for company)",
+                        "bestFor": "Early-stage tech/life science startups (indirectly via investors)",
+                        "timeline": "6 months from investment (application); 45-90 days"
+                    },
+                    {
+                        "program": "NJ Ignite",
+                        "amount": "Rent support grants (up to 9 months)",
+                        "equity": "No equity required",
+                        "bestFor": "Early-stage tech/life science startups in collaborative workspaces",
+                        "timeline": "Varies; 45-90 days"
+                    },
+                    {
+                        "program": "NJ Workforce Development Grant",
+                        "amount": "Varies, up to $5,000 per employee for training",
+                        "equity": "No equity required",
+                        "bestFor": "Businesses enhancing employee skills, job training initiatives",
+                        "timeline": "Quarterly deadlines; 45-90 days"
+                    }
+                ]
+            }
     },
     {
         id: 'virginia',
@@ -5130,7 +5354,40 @@ The state is investing aggressively in site readiness to attract semiconductor a
             'ccf grant virginia'
         ],
 
-        metaDescription: 'Complete guide to Virginia business grants and funding in 2026. Access $1.5B+ via Commonwealth\'s Opportunity Fund, VJIP training grants, and VIPC startup funding.'
+        metaDescription: 'Complete guide to Virginia business grants and funding in 2026. Access $1.5B+ via Commonwealth\'s Opportunity Fund, VJIP training grants, and VIPC startup funding.',
+        comparisonTable: {
+                "title": "Top Virginia Business Grant Programs",
+                "programs": [
+                    {
+                        "program": "Commonwealth's Opportunity Fund (COF)",
+                        "amount": "Discretionary cash grant (up to $5M+)",
+                        "equity": "No equity",
+                        "bestFor": "Large Expansions & Job Creation (50+ jobs, $5M+ investment)",
+                        "timeline": "Negotiated / Post-performance"
+                    },
+                    {
+                        "program": "Virginia Jobs Investment Program (VJIP)",
+                        "amount": "$500 - $800 per new job",
+                        "equity": "No equity",
+                        "bestFor": "Workforce Training & HR Cost Reimbursement (25+ new jobs)",
+                        "timeline": "Rolling / 90-day reimbursement"
+                    },
+                    {
+                        "program": "Commonwealth Commercialization Fund (CCF)",
+                        "amount": "Up to $100,000",
+                        "equity": "No equity",
+                        "bestFor": "Tech Startups & University Research Commercialization",
+                        "timeline": "Competitive / Varies"
+                    },
+                    {
+                        "program": "Virginia Small Business Development Grant",
+                        "amount": "$5,000 - $25,000",
+                        "equity": "No equity",
+                        "bestFor": "General Operations, Marketing & Small Scale Growth",
+                        "timeline": "30-45 days"
+                    }
+                ]
+            }
     },
     {
         id: 'washington',
@@ -5499,7 +5756,40 @@ Beyond tech, Washington is an agricultural giant (apples, wheat, wine) and a lea
             'minority business grants wa'
         ],
 
-        metaDescription: 'Complete guide to Washington business grants and funding in 2026. Access $1.9B+ via Clean Energy Fund, Strategic Reserve Fund, and B&O tax credits. No income tax.'
+        metaDescription: 'Complete guide to Washington business grants and funding in 2026. Access $1.9B+ via Clean Energy Fund, Strategic Reserve Fund, and B&O tax credits. No income tax.',
+        comparisonTable: {
+                "title": "Key Washington State Business Grants",
+                "programs": [
+                    {
+                        "program": "Strategic Reserve Fund (SRF)",
+                        "amount": "Discretionary cash grant (Varies, often $100k - $5M)",
+                        "equity": "None required",
+                        "bestFor": "Projects preventing business closure/relocation, creating significant jobs, or state strategic importance.",
+                        "timeline": "Rolling / Negotiated (45-90 days avg. for processing)"
+                    },
+                    {
+                        "program": "Clean Energy Fund (CEF)",
+                        "amount": "Grants from $500k to $10M+",
+                        "equity": "None required (Matching funds usually required)",
+                        "bestFor": "Clean energy technology, grid modernization, R&D, and 'first-of-kind' deployments.",
+                        "timeline": "Competitive solicitation rounds (45-90 days avg. for processing)"
+                    },
+                    {
+                        "program": "Job Skills Program (JSP)",
+                        "amount": "Reimbursement for training costs (50% match)",
+                        "equity": "None required",
+                        "bestFor": "Customized employee training and workforce development via community college partnerships.",
+                        "timeline": "Application cycles (45-90 days avg. for processing)"
+                    },
+                    {
+                        "program": "Rural Community Economic Development (RCED)",
+                        "amount": "Up to $500k per project",
+                        "equity": "None required",
+                        "bestFor": "Economic development, infrastructure improvements, and job creation in rural communities.",
+                        "timeline": "Annual application cycle (45-90 days avg. for processing)"
+                    }
+                ]
+            }
     },
     {
         id: 'massachusetts',
@@ -5870,7 +6160,33 @@ West of Boston, the economy shifts toward precision manufacturing and defense. T
             'startup funding massachusetts'
         ],
 
-        metaDescription: 'Complete guide to Massachusetts business grants and funding in 2026. Access $2.5B+ via Life Sciences Tax Incentives, Workforce Training Fund, and MassVentures. #1 for innovation.'
+        metaDescription: 'Complete guide to Massachusetts business grants and funding in 2026. Access $2.5B+ via Life Sciences Tax Incentives, Workforce Training Fund, and MassVentures. #1 for innovation.',
+        comparisonTable: {
+                "title": "Top Massachusetts Grant Programs",
+                "programs": [
+                    {
+                        "program": "Life Sciences Tax Incentive Program",
+                        "amount": "Tax credits (Refundable up to 90%)",
+                        "equity": "None (Tax Credit)",
+                        "bestFor": "Life sciences firms creating MA jobs",
+                        "timeline": "Annual (Jan-Feb solicitation)"
+                    },
+                    {
+                        "program": "Workforce Training Fund Program (WTFP)",
+                        "amount": "Up to $250,000",
+                        "equity": "None (Grant)",
+                        "bestFor": "All MA businesses for employee training",
+                        "timeline": "Rolling (monthly review)"
+                    },
+                    {
+                        "program": "MassVentures START Program",
+                        "amount": "Up to $500,000 (multi-stage grants)",
+                        "equity": "None (Grant)",
+                        "bestFor": "Deep tech SBIR/STTR Phase II winners",
+                        "timeline": "Application rounds (competitive)"
+                    }
+                ]
+            }
     },
     {
         id: 'arizona',
@@ -6240,7 +6556,33 @@ The state's economy is successfully diversifying away from just construction and
             'startup funding phoenix'
         ],
 
-        metaDescription: 'Complete guide to Arizona business grants and funding in 2026. Access $1.6B+ via Qualified Facility Tax Credits, Angel Investment Credit, and workforce grants.'
+        metaDescription: 'Complete guide to Arizona business grants and funding in 2026. Access $1.6B+ via Qualified Facility Tax Credits, Angel Investment Credit, and workforce grants.',
+        comparisonTable: {
+                "title": "Top Arizona Grant & Tax Credit Programs",
+                "programs": [
+                    {
+                        "program": "Qualified Facility Tax Credit",
+                        "amount": "10% of CapEx or $20k/job",
+                        "equity": "None (Refundable Tax Credit)",
+                        "bestFor": "Manufacturing, R&D, HQ expansions requiring significant CapEx",
+                        "timeline": "Rolling; Pre-approval required (30-60 days average)"
+                    },
+                    {
+                        "program": "Arizona Competes Fund",
+                        "amount": "Discretionary grant ($250k - $1M+)",
+                        "equity": "None (Grant)",
+                        "bestFor": "Attracting major employers, high-value export industries",
+                        "timeline": "Rolling; Highly selective (30-60 days average)"
+                    },
+                    {
+                        "program": "Angel Investment Tax Credit",
+                        "amount": "30-35% tax credit for investors",
+                        "equity": "None for company (Incentivizes private equity)",
+                        "bestFor": "Early-stage Bioscience, Technology, Renewable Energy companies seeking investment",
+                        "timeline": "Rolling (until cap met); 30-60 days average"
+                    }
+                ]
+            }
     },
     {
         id: 'colorado',
@@ -6609,7 +6951,40 @@ Rural Colorado allows for diverse opportunities in outdoor recreation manufactur
             'oedit funding'
         ],
 
-        metaDescription: 'Complete guide to Colorado business grants and funding in 2026. Access $1.4B+ via Job Growth Tax Credits, Advanced Industries Grants, and Enterprise Zones.'
+        metaDescription: 'Complete guide to Colorado business grants and funding in 2026. Access $1.4B+ via Job Growth Tax Credits, Advanced Industries Grants, and Enterprise Zones.',
+        comparisonTable: {
+                "title": "Colorado's Top Small Business Grants & Incentives",
+                "programs": [
+                    {
+                        "program": "Advanced Industries (AI) Accelerator Grant",
+                        "amount": "Up to $250,000 (Early Stage)",
+                        "equity": "No (Non-dilutive)",
+                        "bestFor": "Colorado tech startups in advanced industries with commercial potential",
+                        "timeline": "Bi-annual cycles (Spring/Fall)"
+                    },
+                    {
+                        "program": "Job Growth Incentive Tax Credit (JGITC)",
+                        "amount": "Tax credit equal to 50% of FICA paid",
+                        "equity": "No",
+                        "bestFor": "Businesses creating 20+ new jobs, relocating/expanding in CO",
+                        "timeline": "Rolling application, credits over 8 years"
+                    },
+                    {
+                        "program": "Strategic Fund Job Growth Incentive",
+                        "amount": "Cash grant ($2,500 - $5,000 per job)",
+                        "equity": "No",
+                        "bestFor": "Businesses creating 20+ new jobs, alternative to JGITC, strategic importance",
+                        "timeline": "Project-based, performance over time"
+                    },
+                    {
+                        "program": "Colorado Workforce Training Grant",
+                        "amount": "Up to $50,000",
+                        "equity": "No",
+                        "bestFor": "Companies needing to upskill or train new employees",
+                        "timeline": "Rolling, competitive"
+                    }
+                ]
+            }
     },
     {
         id: 'minnesota',
@@ -6976,7 +7351,33 @@ Biobusiness is the crown jewel, but Minnesota is also a leader in financial serv
             'start up funding minnesota'
         ],
 
-        metaDescription: 'Complete guide to Minnesota business grants and funding in 2026. Access $1B+ via Job Creation Fund, Angel Tax Credits, and forgivable loans.'
+        metaDescription: 'Complete guide to Minnesota business grants and funding in 2026. Access $1B+ via Job Creation Fund, Angel Tax Credits, and forgivable loans.',
+        comparisonTable: {
+                "title": "Key Minnesota Business Grants & Incentives",
+                "programs": [
+                    {
+                        "program": "Job Creation Fund (JCF)",
+                        "amount": "Up to $1M - $2M cash awards",
+                        "equity": "None (Performance-based)",
+                        "bestFor": "Businesses creating 10+ FT jobs & $500k+ capital investment (manufacturing, tech, warehousing, HQs)",
+                        "timeline": "Rolling (Payout after goals met)"
+                    },
+                    {
+                        "program": "Minnesota Investment Fund (MIF)",
+                        "amount": "Loans up to $500k+ (often forgivable)",
+                        "equity": "None (Loan-based, forgivable)",
+                        "bestFor": "Manufacturing, Tech, Industrial businesses needing heavy assets & job creation (requires local gov sponsorship)",
+                        "timeline": "Rolling (Loan forgiveness after goals met)"
+                    },
+                    {
+                        "program": "Angel Tax Credit",
+                        "amount": "25% tax credit to investors",
+                        "equity": "Indirect (Incentivizes equity investment)",
+                        "bestFor": "High-tech, biotech, agtech startups (<25 employees) seeking angel investment",
+                        "timeline": "Annual allocation (Fast; credits issued annually)"
+                    }
+                ]
+            }
     },
     {
         id: 'maryland',
@@ -7343,7 +7744,40 @@ Maryland leads the nation in cyber-related jobs due to the presence of US Cyber 
             'mips grants'
         ],
 
-        metaDescription: 'Complete guide to Maryland business grants and funding in 2026. Access $1.8B+ via Biotech Tax Credits, TEDCO funding, and Cybersecurity incentives.'
+        metaDescription: 'Complete guide to Maryland business grants and funding in 2026. Access $1.8B+ via Biotech Tax Credits, TEDCO funding, and Cybersecurity incentives.',
+        comparisonTable: {
+                "title": "Top Maryland Small Business Funding Opportunities",
+                "programs": [
+                    {
+                        "program": "Biotech Innovation Tax Credit",
+                        "amount": "Refundable tax credit (50% of investment, up to $250k credit)",
+                        "equity": "N/A (Investor Credit)",
+                        "bestFor": "Early-stage Maryland biotech companies seeking investment",
+                        "timeline": "Annual (June, highly time-sensitive)"
+                    },
+                    {
+                        "program": "Cybersecurity Investment Tax Credit",
+                        "amount": "Refundable tax credit (33-50% of investment)",
+                        "equity": "N/A (Investor Credit)",
+                        "bestFor": "Early-stage Maryland cybersecurity companies seeking investment",
+                        "timeline": "Annual (June, highly time-sensitive)"
+                    },
+                    {
+                        "program": "TEDCO Builder Fund",
+                        "amount": "Up to $200k (Investment/Grant)",
+                        "equity": "Varies (Equity for investment portion)",
+                        "bestFor": "Pre-seed, scalable tech/life sciences startups with disadvantaged founders",
+                        "timeline": "Rolling (Rigorous due diligence)"
+                    },
+                    {
+                        "program": "Maryland Small Business Development Grants",
+                        "amount": "Varies, often up to $50,000",
+                        "equity": "No",
+                        "bestFor": "General small businesses across various sectors for growth and job creation",
+                        "timeline": "Varies (Competitive, 30-60 days)"
+                    }
+                ]
+            }
     },
     {
         id: 'indiana',
@@ -7709,7 +8143,40 @@ Northern Indiana is a global capital for medical devices (Warsaw) and RV manufac
             'elevate ventures'
         ],
 
-        metaDescription: 'Complete guide to Indiana business grants and funding in 2026. Access $1.1B+ via EDGE Tax Credits, Manufacturing Readiness Grants, and Elevate Ventures.'
+        metaDescription: 'Complete guide to Indiana business grants and funding in 2026. Access $1.1B+ via EDGE Tax Credits, Manufacturing Readiness Grants, and Elevate Ventures.',
+        comparisonTable: {
+                "title": "Top Indiana Business Grant & Tax Credit Programs",
+                "programs": [
+                    {
+                        "program": "Economic Development for a Growing Economy (EDGE)",
+                        "amount": "Refundable tax credit (on payroll)",
+                        "equity": "None",
+                        "bestFor": "Job creation & capital investment projects",
+                        "timeline": "Rolling (45-75 days est.)"
+                    },
+                    {
+                        "program": "Manufacturing Readiness Grants",
+                        "amount": "Up to $200,000 (matching)",
+                        "equity": "None",
+                        "bestFor": "Manufacturers adopting smart tech (Industry 4.0)",
+                        "timeline": "Rolling (45-75 days est.)"
+                    },
+                    {
+                        "program": "Hoosier Business Investment (HBI) Tax Credit",
+                        "amount": "Tax credit up to 10% of investment",
+                        "equity": "None",
+                        "bestFor": "Capital investments & job retention/creation",
+                        "timeline": "Rolling (45-75 days est.)"
+                    },
+                    {
+                        "program": "Innovation Vouchers",
+                        "amount": "Up to $25,000 (matching)",
+                        "equity": "None",
+                        "bestFor": "Small businesses collaborating on R&D/prototyping",
+                        "timeline": "Rolling (45-75 days est.)"
+                    }
+                ]
+            }
     },
     {
         id: 'tennessee',
@@ -8081,7 +8548,33 @@ Chattanooga ("Gig City") offers the world's fastest internet, driving a tech ren
             'tennessee startup funding'
         ],
 
-        metaDescription: 'Complete guide to Tennessee business grants and funding in 2026. Access $1.3B+ via FastTrack Grants, Job Tax Credits, and TVA incentives. No income tax.'
+        metaDescription: 'Complete guide to Tennessee business grants and funding in 2026. Access $1.3B+ via FastTrack Grants, Job Tax Credits, and TVA incentives. No income tax.',
+        comparisonTable: {
+                "title": "Top Tennessee Business Grant Programs",
+                "programs": [
+                    {
+                        "program": "FastTrack Job Training Assistance",
+                        "amount": "Direct grant to company",
+                        "equity": "None",
+                        "bestFor": "Workforce training for new employees; skills acquisition",
+                        "timeline": "Rolling (30-60 days average)"
+                    },
+                    {
+                        "program": "FastTrack Infrastructure Development Program",
+                        "amount": "Grant to local community for site improvements",
+                        "equity": "None",
+                        "bestFor": "Industrial site development; critical infrastructure needs",
+                        "timeline": "Rolling (30-60 days average)"
+                    },
+                    {
+                        "program": "FastTrack Economic Development Fund",
+                        "amount": "Discretionary Cash Grant",
+                        "equity": "None",
+                        "bestFor": "Major projects with high capital investment & job creation",
+                        "timeline": "Negotiated (30-60 days average)"
+                    }
+                ]
+            }
     },
     {
         id: 'wisconsin',
@@ -8446,7 +8939,40 @@ Wisconsin virtually eliminates income tax for manufacturers (the Manufacturing &
             'water technology grants'
         ],
 
-        metaDescription: 'Complete guide to Wisconsin business grants and funding in 2026. Access $1B+ via Refundable Tax Credits, Manufacturing Credits, and Workforce Grants.'
+        metaDescription: 'Complete guide to Wisconsin business grants and funding in 2026. Access $1B+ via Refundable Tax Credits, Manufacturing Credits, and Workforce Grants.',
+        comparisonTable: {
+                "title": "Top Wisconsin Business Programs & Grants",
+                "programs": [
+                    {
+                        "program": "Business Development Tax Credit (BTC)",
+                        "amount": "Refundable tax credit (up to 10% of wages)",
+                        "equity": "No equity requirement",
+                        "bestFor": "Job creation, capital investment, and training (Manufacturing, HQ, Technology firms).",
+                        "timeline": "Rolling applications; refundable annually."
+                    },
+                    {
+                        "program": "Wisconsin Fast Forward",
+                        "amount": "Grant ($5k - $400k)",
+                        "equity": "No equity requirement",
+                        "bestFor": "Customized skills training and workforce development across all sectors.",
+                        "timeline": "Competitive, quarterly application rounds."
+                    },
+                    {
+                        "program": "Enterprise Zone Tax Credit",
+                        "amount": "Refundable tax credit (up to 7% wages)",
+                        "equity": "No equity requirement",
+                        "bestFor": "Major expansions and significant job creation/retention in designated zones.",
+                        "timeline": "Highly selective; rolling application."
+                    },
+                    {
+                        "program": "Enterprise Zone Tax Credit (Supply Chain)",
+                        "amount": "Refundable tax credit (up to 7% wages)",
+                        "equity": "No equity requirement",
+                        "bestFor": "Companies strengthening Wisconsin supply chains by purchasing from in-state vendors.",
+                        "timeline": "Highly selective; rolling application."
+                    }
+                ]
+            }
     },
     {
         id: 'missouri',
@@ -8811,7 +9337,33 @@ The state is strategically located for logistics, reaching 50% of the US populat
             'show-me heroes grant'
         ],
 
-        metaDescription: 'Complete guide to Missouri business grants and funding in 2026. Access $900M+ via Missouri Works (cash retention), MTC Investment, and Arch Grants.'
+        metaDescription: 'Complete guide to Missouri business grants and funding in 2026. Access $900M+ via Missouri Works (cash retention), MTC Investment, and Arch Grants.',
+        comparisonTable: {
+                "title": "Missouri's Top Business Funding Programs",
+                "programs": [
+                    {
+                        "program": "Missouri Works",
+                        "amount": "Retention of Withholding Tax / Tax Credits (up to 100% for 5-6 years)",
+                        "equity": "None (Tax Credits)",
+                        "bestFor": "Job creation & retention in various industries (Manufacturing, Tech, HQ, Services)",
+                        "timeline": "Rolling Applications (Avg. 30-60 days processing)"
+                    },
+                    {
+                        "program": "BUILD",
+                        "amount": "Bond financing for infrastructure ($15M+ investment req.)",
+                        "equity": "None (Bond Financing/Tax Credits)",
+                        "bestFor": "Large capital expenditure projects requiring infrastructure investment",
+                        "timeline": "Rolling Applications (Avg. 30-60 days processing)"
+                    },
+                    {
+                        "program": "MTC IDEA Fund",
+                        "amount": "Co-Investment ($100k - $500k)",
+                        "equity": "Yes (Equity/Convertible Note)",
+                        "bestFor": "MO-headquartered tech/innovation startups raising private capital",
+                        "timeline": "Quarterly Deadlines (Competitive process)"
+                    }
+                ]
+            }
     },
     {
         id: 'south-carolina',
@@ -9173,7 +9725,40 @@ Exporting is easy here—the Port of Charleston is the most productive port in N
             'set-aside grant south carolina'
         ],
 
-        metaDescription: 'Complete guide to South Carolina business grants and funding in 2026. Access $800M+ via Job Development Credits (cash refunds), readySC training, and SC Launch.'
+        metaDescription: 'Complete guide to South Carolina business grants and funding in 2026. Access $800M+ via Job Development Credits (cash refunds), readySC training, and SC Launch.',
+        comparisonTable: {
+                "title": "Top South Carolina Business Grant Programs",
+                "programs": [
+                    {
+                        "program": "Job Development Credits (JDC)",
+                        "amount": "Quarterly Cash Refund (2-5% of payroll)",
+                        "equity": "None",
+                        "bestFor": "New job creation in manufacturing, tech, HQ, R&D",
+                        "timeline": "Rolling"
+                    },
+                    {
+                        "program": "Economic Development Set-Aside Fund",
+                        "amount": "Cash Grant for Infrastructure",
+                        "equity": "None",
+                        "bestFor": "Infrastructure for significant job creation",
+                        "timeline": "Rolling"
+                    },
+                    {
+                        "program": "readySC",
+                        "amount": "100% Custom Training",
+                        "equity": "None",
+                        "bestFor": "Workforce training for new manufacturing & distribution jobs",
+                        "timeline": "Rolling"
+                    },
+                    {
+                        "program": "Job Development Credits (JDC)",
+                        "amount": "Quarterly Cash Refund (2-5% of payroll)",
+                        "equity": "None",
+                        "bestFor": "New job creation in manufacturing, tech, HQ, R&D",
+                        "timeline": "Rolling"
+                    }
+                ]
+            }
     },
     {
         id: 'alabama',
@@ -9535,7 +10120,40 @@ The state offers a predictable, statutory incentive package via the "Jobs Act" a
             'made in alabama'
         ],
 
-        metaDescription: 'Complete guide to Alabama business grants and funding in 2026. Access $850M+ via Jobs Act Credits, AIDT Training, and Innovate Alabama.'
+        metaDescription: 'Complete guide to Alabama business grants and funding in 2026. Access $850M+ via Jobs Act Credits, AIDT Training, and Innovate Alabama.',
+        comparisonTable: {
+                "title": "Top Alabama Business Grant & Incentive Programs",
+                "programs": [
+                    {
+                        "program": "Jobs Act Investment Credit",
+                        "amount": "1.5% of Capital Investment/Year (10 yrs)",
+                        "equity": "No equity required",
+                        "bestFor": "Large capital projects, manufacturing, tech",
+                        "timeline": "Rolling, 10-year credit period"
+                    },
+                    {
+                        "program": "Jobs Act Job Credit",
+                        "amount": "3-4% of New Payroll (10 yrs)",
+                        "equity": "No equity required",
+                        "bestFor": "New job creation across eligible industries",
+                        "timeline": "Rolling, 10-year refund period"
+                    },
+                    {
+                        "program": "AIDT Workforce Training",
+                        "amount": "100% Training Costs Covered",
+                        "equity": "No equity required",
+                        "bestFor": "Workforce recruitment, screening & training",
+                        "timeline": "Rolling, Negotiated"
+                    },
+                    {
+                        "program": "Innovate Alabama Tax Credit",
+                        "amount": "Varies (e.g., % of R&D or investment)",
+                        "equity": "No equity required",
+                        "bestFor": "Innovation, R&D, tech development",
+                        "timeline": "Rolling (inferred)"
+                    }
+                ]
+            }
     },
     {
         id: 'louisiana',
@@ -9896,7 +10514,33 @@ Louisiana is a top exporter, with the Port of South Louisiana being the largest 
             'startup funding baton rouge'
         ],
 
-        metaDescription: 'Complete guide to Louisiana business grants and funding in 2026. Access $750M+ via Quality Jobs Rebates, #1 Ranked FastStart Training, and Digital Media Credits.'
+        metaDescription: 'Complete guide to Louisiana business grants and funding in 2026. Access $750M+ via Quality Jobs Rebates, #1 Ranked FastStart Training, and Digital Media Credits.',
+        comparisonTable: {
+                "title": "Top Louisiana Business Grants & Incentives",
+                "programs": [
+                    {
+                        "program": "Quality Jobs Program",
+                        "amount": "Cash Rebate (up to 6% of payroll)",
+                        "equity": "None",
+                        "bestFor": "New job creation in Manufacturing, Tech, Healthcare, HQ",
+                        "timeline": "Rolling (45-60 days processing)"
+                    },
+                    {
+                        "program": "Digital Interactive Media and Software Development Credit",
+                        "amount": "25% - 35% Refundable Tax Credit",
+                        "equity": "None",
+                        "bestFor": "Software, Gaming, and Interactive Media Development",
+                        "timeline": "Rolling (45-60 days processing)"
+                    },
+                    {
+                        "program": "LED FastStart",
+                        "amount": "100% Training Costs",
+                        "equity": "None",
+                        "bestFor": "Custom workforce training for new job creation",
+                        "timeline": "Rolling (45-60 days processing)"
+                    }
+                ]
+            }
     },
     {
         id: 'kentucky',
@@ -10256,7 +10900,40 @@ Manufacturing is king—Ford trucks, Toyota Camrys, and aluminum production driv
             'workforce training grants kentucky'
         ],
 
-        metaDescription: 'Complete guide to Kentucky business grants and funding in 2026. Access $800M+ via KBI Tax Credits, Sales Tax Refunds (KEIA), and SBIR Matching.'
+        metaDescription: 'Complete guide to Kentucky business grants and funding in 2026. Access $800M+ via KBI Tax Credits, Sales Tax Refunds (KEIA), and SBIR Matching.',
+        comparisonTable: {
+                "title": "Top 4 Kentucky Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Kentucky Business Investment (KBI)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Kentucky Enterprise Initiative Act (KEIA)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Bluegrass State Skills Corp (BSSC) Grant-in-Aid",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Kentucky Small Business Tax Credit (KSBTC)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'oregon',
@@ -10619,7 +11296,40 @@ Oregon is B-Corp friendly and rewards sustainable business practices with prefer
             'corporate activity tax exemptions'
         ],
 
-        metaDescription: 'Complete guide to Oregon business grants and funding in 2026. Access $650M+ via Business Expansion Loans, Enterprise Zone Abatements, and 0% Sales Tax.'
+        metaDescription: 'Complete guide to Oregon business grants and funding in 2026. Access $650M+ via Business Expansion Loans, Enterprise Zone Abatements, and 0% Sales Tax.',
+        comparisonTable: {
+                "title": "Top 4 Oregon Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Business Expansion Program (BEP)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Strategic Reserve Fund (SRF)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Enterprise Zones (Standard)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Oregon Investment Advantage",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'oklahoma',
@@ -10963,7 +11673,40 @@ Oregon is B-Corp friendly and rewards sustainable business practices with prefer
             'tribal business incentives'
         ],
 
-        metaDescription: 'Complete guide to Oklahoma business grants and funding in 2026. Access $700M+ via Quality Jobs Cash Rebates, Aerospace Tax Credits, and 5-Year Prop Tax Exemptions.'
+        metaDescription: 'Complete guide to Oklahoma business grants and funding in 2026. Access $700M+ via Quality Jobs Cash Rebates, Aerospace Tax Credits, and 5-Year Prop Tax Exemptions.',
+        comparisonTable: {
+                "title": "Top 4 Oklahoma Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Quality Jobs Program",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "21st Century Quality Jobs",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Investment / New Jobs Tax Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Aerospace Engineer Tax Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'connecticut',
@@ -11323,7 +12066,40 @@ Electric Boat (submarines) and Pratt & Whitney (jet engines) drive a massive aer
             'ct boost fund'
         ],
 
-        metaDescription: 'Complete guide to Connecticut business grants and funding in 2026. Access $500M+ via JobsCT Rebates, Manufacturing Vouchers, and CT Innovations VC.'
+        metaDescription: 'Complete guide to Connecticut business grants and funding in 2026. Access $500M+ via JobsCT Rebates, Manufacturing Vouchers, and CT Innovations VC.',
+        comparisonTable: {
+                "title": "Top 4 Connecticut Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "JobsCT Tax Rebate",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Manufacturing Innovation Fund (MIF) Voucher",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Connecticut Innovations (CI) Equity",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Angel Investor Tax Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'iowa',
@@ -11684,7 +12460,40 @@ Advanced manufacturing (John Deere, Vermeer) anchors the rural economy. The Rene
             'ieda incentives'
         ],
 
-        metaDescription: 'Complete guide to Iowa business grants and funding in 2026. Access $450M+ via High Quality Jobs Credits, Renewable Chemical Refunds, and Startup Loans.'
+        metaDescription: 'Complete guide to Iowa business grants and funding in 2026. Access $450M+ via High Quality Jobs Credits, Renewable Chemical Refunds, and Startup Loans.',
+        comparisonTable: {
+                "title": "Top 4 Iowa Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "High Quality Jobs (HQJ)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Renewable Chemical Production Tax Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Innovation Fund Tax Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Proof of Commercial Relevance (POCR)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'mississippi',
@@ -12074,7 +12883,40 @@ You file your taxes and apply the credit. For Advantage Jobs rebates, you file q
             'minority business grants mississippi'
         ],
 
-        metaDescription: 'Complete guide to Mississippi business grants and funding in 2026. Access $400M+ via MFLEX Universal Credits, Seed Funds, and Data Center Incentives.'
+        metaDescription: 'Complete guide to Mississippi business grants and funding in 2026. Access $400M+ via MFLEX Universal Credits, Seed Funds, and Data Center Incentives.',
+        comparisonTable: {
+                "title": "Top 4 Mississippi Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "MFLEX (Mississippi Flexible Tax Incentive)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "ACE Fund (Advantage Mississippi)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Growth and Prosperity (GAP) Program",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Mississippi Seed Fund",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'arkansas',
@@ -12434,7 +13276,40 @@ Steel production is booming in Northeast Arkansas with Big River Steel (Nucor). 
             'manufacturing incentives arkansas'
         ],
 
-        metaDescription: 'Complete guide to Arkansas business grants and funding in 2026. Access $350M+ via Create Rebate Cash, Tax Back Refunds, and 33% Investor Credits.'
+        metaDescription: 'Complete guide to Arkansas business grants and funding in 2026. Access $350M+ via Create Rebate Cash, Tax Back Refunds, and 33% Investor Credits.',
+        comparisonTable: {
+                "title": "Top 4 Arkansas Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Create Rebate",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Tax Back Program",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "ArkPlus",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Equity Investment Tax Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'kansas',
@@ -12774,7 +13649,40 @@ Steel production is booming in Northeast Arkansas with Big River Steel (Nucor). 
             'minority business grants kansas'
         ],
 
-        metaDescription: 'Complete guide to Kansas business grants and funding in 2026. Access $300M+ via PEAK 95% Payroll Retention, 50% Angel Tax Credits, and Rural Opportunity Zones.'
+        metaDescription: 'Complete guide to Kansas business grants and funding in 2026. Access $300M+ via PEAK 95% Payroll Retention, 50% Angel Tax Credits, and Rural Opportunity Zones.',
+        comparisonTable: {
+                "title": "Top 4 Kansas Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "PEAK (Promoting Employment Across Kansas)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "HPIP (High Performance Incentive Program)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "KIT / KIR (training)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Angel Investor Tax Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'utah',
@@ -13167,7 +14075,40 @@ The state cuts you a check (refundable tax credit) for 30% of the new taxes you 
             'go utah grants'
         ],
 
-        metaDescription: 'Complete guide to Utah business grants and funding in 2026. Access $450M+ via EDTIF Tax Credits, Manufacturing Automation Grants, and Silicon Slopes funding.'
+        metaDescription: 'Complete guide to Utah business grants and funding in 2026. Access $450M+ via EDTIF Tax Credits, Manufacturing Automation Grants, and Silicon Slopes funding.',
+        comparisonTable: {
+                "title": "Top 4 Utah Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "EDTIF (Tax Increment Financing)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "REDTIF (Rural EDTIF)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "TAP (Technology Advancement Program)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Manufacturing Modernization Grant",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'nevada',
@@ -13553,7 +14494,40 @@ You sign the contract and receive a "Tax Exemption Certificate" to show vendors 
             'nevada opportunity zones'
         ],
 
-        metaDescription: 'Complete guide to Nevada business grants and funding in 2026. Access Catalyst Fund grants, 0% Corporate Tax benefits, and Sales Tax Abatements.'
+        metaDescription: 'Complete guide to Nevada business grants and funding in 2026. Access Catalyst Fund grants, 0% Corporate Tax benefits, and Sales Tax Abatements.',
+        comparisonTable: {
+                "title": "Top 4 Nevada Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Sales & Use Tax Abatement",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Catalyst Fund",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Personal Property Tax Abatement",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Silver State Works",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'new-mexico',
@@ -13912,7 +14886,40 @@ New Mexico's cluster of National Labs spins off deep-tech startups at a rapid pa
             'minority business assistance nm'
         ],
 
-        metaDescription: 'Complete guide to New Mexico business grants and funding in 2026. Access LEDA Cash Grants, 75% JTIP Wage Rebates, and 35% Film Tax Credits.'
+        metaDescription: 'Complete guide to New Mexico business grants and funding in 2026. Access LEDA Cash Grants, 75% JTIP Wage Rebates, and 35% Film Tax Credits.',
+        comparisonTable: {
+                "title": "Top 4 New Mexico Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "LEDA (Local Economic Development Act)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "JTIP (Job Training Incentive Program)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Angel Investment Tax Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Technology Jobs & R&D Tax Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'west-virginia',
@@ -14295,7 +15302,40 @@ Most tax credits are claimed on the annual return, but you may need certificatio
             'opportunity zones west virginia'
         ],
 
-        metaDescription: 'Complete guide to West Virginia business grants and funding in 2026. Access Ascend WV $12k Cash, Governor\'s Guaranteed Training Grants, and Low-Interest Loans.'
+        metaDescription: 'Complete guide to West Virginia business grants and funding in 2026. Access Ascend WV $12k Cash, Governor\'s Guaranteed Training Grants, and Low-Interest Loans.',
+        comparisonTable: {
+                "title": "Top 4 West Virginia Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Ascend WV",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Governors Guaranteed Work Force Program",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Tourism Development Act",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Manufacturing Investment Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'nebraska',
@@ -14690,7 +15730,40 @@ Using the tax credits requires annual reporting. Set up your accounting system t
             'nebraska manufacturing incentives'
         ],
 
-        metaDescription: 'Complete guide to Nebraska business grants and ImagiNE Nebraska Act 2026. Access Prototype Grants, Refundable Wage Credits, and Rural Advantage incentives.'
+        metaDescription: 'Complete guide to Nebraska business grants and ImagiNE Nebraska Act 2026. Access Prototype Grants, Refundable Wage Credits, and Rural Advantage incentives.',
+        comparisonTable: {
+                "title": "Top 4 Nebraska Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "ImagiNE Nebraska",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Customized Job Training (CJT)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Business Innovation Act (BIA)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Rural Advantage",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'idaho',
@@ -15082,7 +16155,40 @@ You sign the contract. You assume the risk. You hire the people. THEN you get th
             'women owned business idaho'
         ],
 
-        metaDescription: 'Complete guide to Idaho business grants and funding in 2026. Access the Tax Reimbursement Incentive (TRI), Workforce Training Funds, and GEM Grants.'
+        metaDescription: 'Complete guide to Idaho business grants and funding in 2026. Access the Tax Reimbursement Incentive (TRI), Workforce Training Funds, and GEM Grants.',
+        comparisonTable: {
+                "title": "Top 4 Idaho Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Tax Reimbursement Incentive (TRI)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Idaho Workforce Development Training Fund",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Idaho GEM Grant",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "STEP Grant (Export)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'hawaii',
@@ -15475,7 +16581,40 @@ If you are Native Hawaiian owned, connect with OHA (Office of Hawaiian Affairs) 
             'start a business in hawaii'
         ],
 
-        metaDescription: 'Complete guide to Hawaii business grants and funding in 2026. Access HTDC Manufacturing Grants, SBIR Matching Funds, and 100% Tax Exemptions.'
+        metaDescription: 'Complete guide to Hawaii business grants and funding in 2026. Access HTDC Manufacturing Grants, SBIR Matching Funds, and 100% Tax Exemptions.',
+        comparisonTable: {
+                "title": "Top 4 Hawaii Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Hawaii SBIR Match",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Manufacturing Assistance Program (MAP)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Enterprise Zones (EZ)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Motion Picture Tax Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'maine',
@@ -15867,7 +17006,40 @@ MTI requires regular status reports. PTDZ requires annual reporting to Maine Rev
             'fame maine loans'
         ],
 
-        metaDescription: 'Complete guide to Maine business grants and funding in 2026. Access MTI Innovation Grants, 80% Tax Reimbursements, and 40% Angel Tax Credits.'
+        metaDescription: 'Complete guide to Maine business grants and funding in 2026. Access MTI Innovation Grants, 80% Tax Reimbursements, and 40% Angel Tax Credits.',
+        comparisonTable: {
+                "title": "Top 4 Maine Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Maine Technology Institute (MTI) Funding",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Pine Tree Development Zone (PTDZ)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "SEED Capital Tax Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "FAME Direct Loan",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'new-hampshire',
@@ -16265,7 +17437,40 @@ If you are in biotech, the path is distinct. Engagement with ARMI (BioFabUSA) in
             'coos county business grants'
         ],
 
-        metaDescription: 'Complete guide to New Hampshire business grants and funding in 2026. Access the 50% Job Training Match, R&D Tax Credits, and 0% Sales Tax benefits.'
+        metaDescription: 'Complete guide to New Hampshire business grants and funding in 2026. Access the 50% Job Training Match, R&D Tax Credits, and 0% Sales Tax benefits.',
+        comparisonTable: {
+                "title": "Top 4 New Hampshire Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "NH Job Training Fund",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Research and Development Tax Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "NH Business Finance Authority (BFA) Loan Guarantees",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Coos County Job Creation Tax Credit",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'rhode-island',
@@ -16660,7 +17865,40 @@ Join the "Venture Café Providence" gatherings. It is the center of gravity for 
             'startup funding rhode island'
         ],
 
-        metaDescription: 'Complete guide to Rhode Island business grants and funding in 2026. Access $50k Innovation Vouchers, Refundable Tax Credits, and Blue Economy funding.'
+        metaDescription: 'Complete guide to Rhode Island business grants and funding in 2026. Access $50k Innovation Vouchers, Refundable Tax Credits, and Blue Economy funding.',
+        comparisonTable: {
+                "title": "Top 4 Rhode Island Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Innovation Vouchers",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Qualified Jobs Incentive",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Rebuild Rhode Island",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Main Street RI Streetscape",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'montana',
@@ -17054,7 +18292,40 @@ Remote work has brought an influx of talent and capital, creating a "Zoom Town" 
             'small business loans missoula'
         ],
 
-        metaDescription: 'Complete guide to Montana business grants and funding in 2026. Access Big Sky Trust Fund Cash Grants, Workforce Training Funds, and 0% Sales Tax.'
+        metaDescription: 'Complete guide to Montana business grants and funding in 2026. Access Big Sky Trust Fund Cash Grants, Workforce Training Funds, and 0% Sales Tax.',
+        comparisonTable: {
+                "title": "Top 4 Montana Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Big Sky Economic Development Trust Fund (BSTF)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Primary Sector Workforce Training Grant",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Indian Equity Fund (IEF) Small Business Grant",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Growth Through Agriculture",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'delaware',
@@ -17447,7 +18718,40 @@ Strategic Fund grants are usually paid out *after* milestones are met (e.g., Cer
             'woman owned business grants de'
         ],
 
-        metaDescription: 'Complete guide to Delaware business grants and funding in 2026. Access EDGE Grants ($100k), Strategic Fund Cash, and 0% Sales Tax benefits.'
+        metaDescription: 'Complete guide to Delaware business grants and funding in 2026. Access EDGE Grants ($100k), Strategic Fund Cash, and 0% Sales Tax benefits.',
+        comparisonTable: {
+                "title": "Top 4 Delaware Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Delaware Strategic Fund",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "EDGE Grants",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Modernization Investment Support Initiative (MISI)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Graduation Lab Space Grants",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'south-dakota',
@@ -17752,7 +19056,40 @@ REDI Fund offers low-interest loans for job creation.`,
             'start a business in sd'
         ],
 
-        metaDescription: 'Complete guide to South Dakota business grants and funding in 2026. Access Low-Interest REDI Loans, 0% Corporate Tax, and Proof of Concept Funds.'
+        metaDescription: 'Complete guide to South Dakota business grants and funding in 2026. Access Low-Interest REDI Loans, 0% Corporate Tax, and Proof of Concept Funds.',
+        comparisonTable: {
+                "title": "Top 4 South Dakota Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Reinvestment Payment Program (RPP)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "REDI Fund",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "South Dakota Works",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Apprenticeship Grants",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'north-dakota',
@@ -18145,7 +19482,40 @@ LIFT funds are drawn down as needed. PACE interest buys downs happen automatical
             'start a business in north dakota'
         ],
 
-        metaDescription: 'Complete guide to North Dakota business grants and funding in 2026. Access 0% Interest LIFT Loans, Agriculture Grants, and Automation Tax Credits.'
+        metaDescription: 'Complete guide to North Dakota business grants and funding in 2026. Access 0% Interest LIFT Loans, Agriculture Grants, and Automation Tax Credits.',
+        comparisonTable: {
+                "title": "Top 4 North Dakota Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Agricultural Products Utilization Commission (APUC)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "LIFT Fund",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Bioscience Innovation Grant (BIG)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Flex PACE",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'alaska',
@@ -18547,7 +19917,40 @@ Funding disbursement can be slow. If you are timing your funding for the summer 
             'tourism grants alaska'
         ],
 
-        metaDescription: 'Complete guide to Alaska business grants and funding in 2026. Access Mariculture Grants, Low-Interest State Loans, and 0% Tax benefits.'
+        metaDescription: 'Complete guide to Alaska business grants and funding in 2026. Access Mariculture Grants, Low-Interest State Loans, and 0% Tax benefits.',
+        comparisonTable: {
+                "title": "Top 4 Alaska Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Mariculture Incentive Grant",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Small Business Economic Development (SBED) Loan",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Rural Development Initiative Fund (RDIF)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Alaska STEP Grant",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'vermont',
@@ -18948,7 +20351,40 @@ Emphasize sustainability and community. If your business is a B-Corp or has an e
             'start a business in vermont'
         ],
 
-        metaDescription: 'Complete guide to Vermont business grants and funding in 2026. Access Working Lands Grants, VEGI Cash Incentives, and VEDA low-interest loans.'
+        metaDescription: 'Complete guide to Vermont business grants and funding in 2026. Access Working Lands Grants, VEGI Cash Incentives, and VEDA low-interest loans.',
+        comparisonTable: {
+                "title": "Top 4 Vermont Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Vermont Employment Growth Incentive (VEGI)",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "VEDA Direct Loan Program",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Working Lands Enterprise Fund",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Windham County Economic Development Program",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     },
     {
         id: 'wyoming',
@@ -19344,7 +20780,40 @@ Since there is no income tax, your primary interaction with the state revenue de
             'start a business in wyoming'
         ],
 
-        metaDescription: 'Complete guide to Wyoming business grants and funding in 2026. Access Business Ready Community Grants, 0% Tax, and DAO legal structures.'
+        metaDescription: 'Complete guide to Wyoming business grants and funding in 2026. Access Business Ready Community Grants, 0% Tax, and DAO legal structures.',
+        comparisonTable: {
+                "title": "Top 4 Wyoming Startup Grants Comparison",
+                "programs": [
+                    {
+                        "program": "Business Ready Community (BRC) - Business Committed",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Kickstart Wyoming",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "SBIR Matching Grant",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    },
+                    {
+                        "program": "Wyoming Venture Capital (VC) Trust",
+                        "amount": "Variable",
+                        "equity": "0% (Non-dilutive)",
+                        "bestFor": "Growing Businesses",
+                        "timeline": "45-90 Days"
+                    }
+                ]
+            }
     }
 ];
 

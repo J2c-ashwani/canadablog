@@ -76,6 +76,7 @@
     "cheerio": "^1.2.0",
     "postcss": "^8.5",
     "tailwindcss": "^4.1.9",
+    "ts-morph": "^27.0.2",
     "tw-animate-css": "1.3.3",
     "typescript": "^5"
   }

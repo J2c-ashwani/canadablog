@@ -155,7 +155,47 @@ export const blogPosts: BlogPost[] = [
     inlineCTA: {
       description: "Get matched with the right AAFC program for your farm or agribusiness — our grant specialists navigate federal and provincial channels for you.",
     },
-  },
+      comparisonTable: {
+              "title": "Agriculture & Agri-Food Canada Grants  | Federal Funding Programs Guide | AAFC Support Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Agriculture & Agri-Food Canada Grants  | Federal Funding Programs Guide | AAFC Support Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Agriculture & Agri-Food Canada Grants  | Federal Funding Programs Guide | AAFC Support in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Agriculture & Agri-Food Canada Grants  | Federal Funding Programs Guide | AAFC Support?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2,
     slug: "ai-machine-learning-grants",
@@ -200,7 +240,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "NSF implies 'science', but the SBIR program is about <strong>commercialization</strong>. You must show a clear path to market revenue, not just cool tech."
     },
-  },
+      comparisonTable: {
+              "title": "AI & Machine Learning Grants -2027 |  NSF SBIR,  AI Research Institutes, DOD AI Applications Non-Dilutive Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core AI & Machine Learning Grants -2027 |  NSF SBIR,  AI Research Institutes, DOD AI Applications Non-Dilutive Funding Grant",
+                      "amount": "$305K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for AI & Machine Learning Grants -2027 |  NSF SBIR,  AI Research Institutes, DOD AI Applications Non-Dilutive Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through AI & Machine Learning Grants -2027 |  NSF SBIR,  AI Research Institutes, DOD AI Applications Non-Dilutive Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $305K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3,
     slug: "alberta-government-business-grants",
@@ -381,7 +461,47 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "For most Alberta tech startups, the <strong>Alberta Innovates Voucher Program</strong> is the entry point. It pays service providers directly to help you build or market your product."
     },
-  },
+      comparisonTable: {
+              "title": "Alberta Government Business Grants  | Provincial Energy & Innovation Funding Programs Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Alberta Government Business Grants  | Provincial Energy & Innovation Funding Programs Guide Grant",
+                      "amount": "$15K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Alberta Government Business Grants  | Provincial Energy & Innovation Funding Programs Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Alberta Government Business Grants  | Provincial Energy & Innovation Funding Programs Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $15K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 4,
     slug: "alberta-innovation-grants",
@@ -426,7 +546,47 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "Alberta allows <strong>stacking multiple programs</strong>. Combine Alberta Innovates vouchers with ERA funding and federal SR&ED credits to maximize your non-dilutive capital."
     },
-  },
+      comparisonTable: {
+              "title": "Alberta Innovation Grants & Funding  | + Energy Transition, AI & CleanTech Support Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Alberta Innovation Grants & Funding  | + Energy Transition, AI & CleanTech Support Grant",
+                      "amount": "$950M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Alberta Innovation Grants & Funding  | + Energy Transition, AI & CleanTech Support in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Alberta Innovation Grants & Funding  | + Energy Transition, AI & CleanTech Support?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $950M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 5,
     slug: "alberta-small-business-grants-guide",
@@ -470,7 +630,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "The Community and Regional Economic Support (CARES) program often funds local initiatives. Check with your local Chamber of Commerce for municipal-level grants."
     },
-  },
+      comparisonTable: {
+              "title": "Alberta Small Business Grants  | + Alberta SME Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Alberta Small Business Grants  | + Alberta SME Funding Grant",
+                      "amount": "$980M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Alberta Small Business Grants  | + Alberta SME Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Alberta Small Business Grants  | + Alberta SME Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $980M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 6,
     slug: "alberta-women-business-grants",
@@ -515,7 +715,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "Alberta Women Entrepreneurs offers <strong>free business advisory services</strong> even if you don't take a loan. Use their expertise for business planning, export readiness, and growth strategy."
     },
-  },
+      comparisonTable: {
+              "title": "Alberta Women Business Grants  |  Energy & Tech Support Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Alberta Women Business Grants  |  Energy & Tech Support Programs Grant",
+                      "amount": "$580M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Alberta Women Business Grants  |  Energy & Tech Support Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Alberta Women Business Grants  |  Energy & Tech Support Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $580M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 7,
     slug: "amber-grant-women-canada",
@@ -560,7 +800,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "The Amber Grant is not about ROI or spreadsheets. They want to hear your <strong>personal story</strong> and passion. Be authentic, vulnerable, and explain what the money would specifically do for you <em>right now</em>."
     },
-  },
+      comparisonTable: {
+              "title": "Amber Grant for Women Canada  | Monthly  Grants +  Annual Award Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Amber Grant for Women Canada  | Monthly  Grants +  Annual Award Grant",
+                      "amount": "$10K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Amber Grant for Women Canada  | Monthly  Grants +  Annual Award in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Amber Grant for Women Canada  | Monthly  Grants +  Annual Award?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $10K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 8,
     slug: "atlantic-canada-innovation-grants",
@@ -605,7 +885,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "The AIF strongly favors projects that involve <strong>collaboration with Atlantic research institutions</strong>. Adding Dalhousie or UNB as a partner significantly increases your success probability."
     },
-  },
+      comparisonTable: {
+              "title": "Atlantic Canada Innovation Grants & Funding  | 15% ACITC | + Ocean Tech Support Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Atlantic Canada Innovation Grants & Funding  | 15% ACITC | + Ocean Tech Support Grant",
+                      "amount": "$650M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Atlantic Canada Innovation Grants & Funding  | 15% ACITC | + Ocean Tech Support in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Atlantic Canada Innovation Grants & Funding  | 15% ACITC | + Ocean Tech Support?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $650M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 9,
     slug: "atlantic-small-business-grants-guide",
@@ -650,7 +970,47 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "ACOA (Atlantic Canada Opportunities Agency) is more than just funding; they offer invaluable <strong>business advisory services and connections</strong>. Engage with their business development officers early."
     },
-  },
+      comparisonTable: {
+              "title": "Atlantic Canada Small Business Grants  | + ACOA & Provincial SME Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Atlantic Canada Small Business Grants  | + ACOA & Provincial SME Funding Grant",
+                      "amount": "$850M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Atlantic Canada Small Business Grants  | + ACOA & Provincial SME Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Atlantic Canada Small Business Grants  | + ACOA & Provincial SME Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $850M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 10,
     slug: "bc-small-business-grants-guide",
@@ -695,7 +1055,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "The BC Small Business Venture Capital Tax Credit gives investors <strong>30% credit</strong>. Use this to attract angel investors who get immediate tax benefits for backing your company."
     },
-  },
+      comparisonTable: {
+              "title": "BC Small Business Grants  | .3B+ British Columbia SME Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core BC Small Business Grants  | .3B+ British Columbia SME Funding Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for BC Small Business Grants  | .3B+ British Columbia SME Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through BC Small Business Grants  | .3B+ British Columbia SME Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 11,
     slug: "bc-women-business-grants",
@@ -740,7 +1140,47 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "Women's Enterprise Centre BC offers <strong>free business advising</strong> and can connect you to multiple funding sources. They know the BC funding landscape inside out."
     },
-  },
+      comparisonTable: {
+              "title": "BC Women Business Grants  |  Innovation & Tech Support Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core BC Women Business Grants  |  Innovation & Tech Support Programs Grant",
+                      "amount": "$650M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for BC Women Business Grants  |  Innovation & Tech Support Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through BC Women Business Grants  |  Innovation & Tech Support Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $650M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 12,
     slug: "bdc-women-entrepreneurs-financing",
@@ -785,7 +1225,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "Beyond financing, BDC offers <strong>free strategic advisory services</strong> for women entrepreneurs. Their Growth Driver and Digital Adoption programs can transform your business operations."
     },
-  },
+      comparisonTable: {
+              "title": "BDC Women Entrepreneurs Financing  | Flexible Loans & Advisory for Women-Led Business Growth Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core BDC Women Entrepreneurs Financing  | Flexible Loans & Advisory for Women-Led Business Growth Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for BDC Women Entrepreneurs Financing  | Flexible Loans & Advisory for Women-Led Business Growth in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through BDC Women Entrepreneurs Financing  | Flexible Loans & Advisory for Women-Led Business Growth?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 13,
     slug: "biotech-life-sciences-grants",
@@ -830,7 +1310,47 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "NIH reviewers focus heavily on the <strong>PI's credentials and track record</strong>. If your team lacks biotech research credentials, consider adding a scientific advisory board member with NIH grant history."
     },
-  },
+      comparisonTable: {
+              "title": "Biotech & Life Sciences Grants -2027 |  NIH SBIR,  Phase II, .2B Seed Fund, FDA Orphan Drug Grants Non-Dilutive Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Biotech & Life Sciences Grants -2027 |  NIH SBIR,  Phase II, .2B Seed Fund, FDA Orphan Drug Grants Non-Dilutive Grant",
+                      "amount": "$306K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Biotech & Life Sciences Grants -2027 |  NIH SBIR,  Phase II, .2B Seed Fund, FDA Orphan Drug Grants Non-Dilutive in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Biotech & Life Sciences Grants -2027 |  NIH SBIR,  Phase II, .2B Seed Fund, FDA Orphan Drug Grants Non-Dilutive?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $306K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 14,
     slug: "bmo-celebrating-women-grant",
@@ -875,7 +1395,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "BMO looks for businesses that give back. In your application, explicitly highlight how your growth will <strong>positively impact your local community</strong> or industry."
     },
-  },
+      comparisonTable: {
+              "title": "BMO Celebrating Women Grant  |  Grants + Business Advisory for Women Entrepreneurs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core BMO Celebrating Women Grant  |  Grants + Business Advisory for Women Entrepreneurs Grant",
+                      "amount": "$10K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for BMO Celebrating Women Grant  |  Grants + Business Advisory for Women Entrepreneurs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through BMO Celebrating Women Grant  |  Grants + Business Advisory for Women Entrepreneurs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $10K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 15,
     slug: "british-columbia-government-business-grants",
@@ -1056,7 +1616,47 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "PacifiCan (Pacific Economic Development Canada) offers <strong>significant federal funding</strong> for BC businesses. They often co-fund with provincial programs for maximum support."
     },
-  },
+      comparisonTable: {
+              "title": "British Columbia Government Business Grants  | BC Provincial Funding Programs Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core British Columbia Government Business Grants  | BC Provincial Funding Programs Guide Grant",
+                      "amount": "$300K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for British Columbia Government Business Grants  | BC Provincial Funding Programs Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through British Columbia Government Business Grants  | BC Provincial Funding Programs Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $300K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 16,
     slug: "british-columbia-innovation-grants",
@@ -1101,7 +1701,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "The BC Innovation Tax Credit <strong>stacks on top of federal SR&ED</strong>. Together you can recover up to 55% of eligible R&D expenses. Always apply for both."
     },
-  },
+      comparisonTable: {
+              "title": "British Columbia Innovation Grants & Tax Credits  | 10% BCITC | .8B+ CleanTech Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core British Columbia Innovation Grants & Tax Credits  | 10% BCITC | .8B+ CleanTech Funding Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for British Columbia Innovation Grants & Tax Credits  | 10% BCITC | .8B+ CleanTech Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through British Columbia Innovation Grants & Tax Credits  | 10% BCITC | .8B+ CleanTech Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 17,
     slug: "california-tech-programs",
@@ -1146,7 +1786,47 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "California's SBIR/STTR State Match program has <strong>limited funds each cycle</strong>. Apply immediately after receiving federal SBIR approval—funds often run out within months."
     },
-  },
+      comparisonTable: {
+              "title": "California Tech Startup Grants -2027 |  CalSEED,  SBIR Match, Tax Credits & Silicon Valley Funding Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core California Tech Startup Grants -2027 |  CalSEED,  SBIR Match, Tax Credits & Silicon Valley Funding Programs Grant",
+                      "amount": "$50K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for California Tech Startup Grants -2027 |  CalSEED,  SBIR Match, Tax Credits & Silicon Valley Funding Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through California Tech Startup Grants -2027 |  CalSEED,  SBIR Match, Tax Credits & Silicon Valley Funding Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $50K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 18,
     slug: "canada-advanced-manufacturing-innovation-grants",
@@ -1191,7 +1871,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "NGen (Next Generation Manufacturing Canada) is the primary funding body. Join their cluster <strong>before applying</strong> to access exclusive member-only funding calls."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Advanced Manufacturing Innovation Grants  | .1B+ Industry 4.0 Funding | NGen Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Advanced Manufacturing Innovation Grants  | .1B+ Industry 4.0 Funding | NGen Grant",
+                      "amount": "$3",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Advanced Manufacturing Innovation Grants  | .1B+ Industry 4.0 Funding | NGen in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Advanced Manufacturing Innovation Grants  | .1B+ Industry 4.0 Funding | NGen?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $3."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 19,
     slug: "canada-aerospace-defence-innovation-grants",
@@ -1236,7 +1956,47 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "The IDEaS program operates on a challenge basis. <strong>Subscribe to DND alerts</strong> to apply as soon as a challenge matches your technology—windows are short."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Aerospace & Defence Grants  | + Space Technology & Aviation Funding | CSA Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Aerospace & Defence Grants  | + Space Technology & Aviation Funding | CSA Programs Grant",
+                      "amount": "$450M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Aerospace & Defence Grants  | + Space Technology & Aviation Funding | CSA Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Aerospace & Defence Grants  | + Space Technology & Aviation Funding | CSA Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $450M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 20,
     slug: "canada-agri-food-technology-innovation-grants",
@@ -1281,7 +2041,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "Most agricultural funding is administered provincially under the Sustainable Canadian Agricultural Partnership (SCAP). <strong>Check your provincial delivery agent</strong> first."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Agri-Food Technology Grants  | .3B+ AgriInnovate & Precision Agriculture Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Agri-Food Technology Grants  | .3B+ AgriInnovate & Precision Agriculture Funding Grant",
+                      "amount": "$2",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Agri-Food Technology Grants  | .3B+ AgriInnovate & Precision Agriculture Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Agri-Food Technology Grants  | .3B+ AgriInnovate & Precision Agriculture Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 21,
     slug: "canada-agriculture-agrifood-grants-guide",
@@ -1326,7 +2126,47 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "If you are under 40, you qualify for <strong>FCC Young Farmer loans</strong> with significantly reduced interest rates and flexible repayment terms. Combine this with SCAP grants."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Agriculture & Agri-Food Grants  | .3B+ Agricultural Innovation Funding Programs Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Agriculture & Agri-Food Grants  | .3B+ Agricultural Innovation Funding Programs Guide Grant",
+                      "amount": "$2",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Agriculture & Agri-Food Grants  | .3B+ Agricultural Innovation Funding Programs Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Agriculture & Agri-Food Grants  | .3B+ Agricultural Innovation Funding Programs Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 22,
     slug: "canada-clean-technology-environment-grants-guide",
@@ -1371,7 +2211,47 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "The new Clean Technology Investment Tax Credit (ITC) offers a <strong>refundable 30% credit</strong> on capital costs. This is distinct from grants and can be claimed on your tax return."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Clean Technology & Environment Grants  | .2B+ Sustainability Funding Programs Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Clean Technology & Environment Grants  | .2B+ Sustainability Funding Programs Guide Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Clean Technology & Environment Grants  | .2B+ Sustainability Funding Programs Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Clean Technology & Environment Grants  | .2B+ Sustainability Funding Programs Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 23,
     slug: "canada-clean-technology-innovation-grants",
@@ -1416,7 +2296,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "SDTC (Sustainable Development Technology Canada) offers <strong>Seed Funding</strong> for earlier stage companies nominated by accelerators. You don't always need to be Series A ready."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Clean Technology Innovation Grants  | .2B+ CleanTech Funding | SDTC & Net Zero Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Clean Technology Innovation Grants  | .2B+ CleanTech Funding | SDTC & Net Zero Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Clean Technology Innovation Grants  | .2B+ CleanTech Funding | SDTC & Net Zero in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Clean Technology Innovation Grants  | .2B+ CleanTech Funding | SDTC & Net Zero?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 24,
     slug: "canada-digital-ai-innovation-grants",
@@ -1461,7 +2381,47 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "The Canada Digital Adoption Program (CDAP) pays for a consultant to write your digital plan. <strong>Use this plan</strong> to unlock the $100k interest-free BDC loan."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP Grant",
+                      "amount": "$850M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $850M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 25,
     slug: "canada-employment-workforce-training-grants-guide",
@@ -1506,7 +2466,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "The COJG covers up to <strong>83% of third-party training costs</strong>. You can use this to upskill your existing team in new technologies or sales methods."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Employment & Workforce Training Grants  | .9B+ Skills Development Funding Programs Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Employment & Workforce Training Grants  | .9B+ Skills Development Funding Programs Guide Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Employment & Workforce Training Grants  | .9B+ Skills Development Funding Programs Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Employment & Workforce Training Grants  | .9B+ Skills Development Funding Programs Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 26,
     slug: "canada-export-development-grants-guide",
@@ -1551,11 +2551,51 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "CanExport now covers <strong>exclusively digital activities</strong> like SEO and online advertising for foreign markets. You don't even need to travel to qualify."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Export Development Grants  | + International Market Expansion Across 18+ Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Export Development Grants  | + International Market Expansion Across 18+ Programs Grant",
+                      "amount": "$680M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Export Development Grants  | + International Market Expansion Across 18+ Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Export Development Grants  | + International Market Expansion Across 18+ Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $680M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 27,
     slug: "canada-federal-grants",
-    title: "Canada Federal Grants",
+    title: "Canada Federal Grants... 2025-2026 | Funding Guide",
     excerpt: "Complete guide to government grants.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -1596,7 +2636,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "Federal grants can often be <strong>stacked with provincial funding</strong>. Always check if you can apply for both a federal wage subsidy and a provincial training grant for the same employee."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Federal Grants Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Federal Grants Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Federal Grants in 2025-2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Federal Grants?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 28,
     slug: "canada-growth-expansion-grants-guide",
@@ -1641,7 +2721,47 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "For large-scale expansion projects over $10 million, the <strong>Strategic Innovation Fund</strong> is your primary target. It offers repayable and non-repayable contributions for major investments."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Growth & Expansion Grants  | .8B+ Scale-Up Funding Across 42+ Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Growth & Expansion Grants  | .8B+ Scale-Up Funding Across 42+ Programs Grant",
+                      "amount": "$2",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Growth & Expansion Grants  | .8B+ Scale-Up Funding Across 42+ Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Growth & Expansion Grants  | .8B+ Scale-Up Funding Across 42+ Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 29,
     slug: "canada-hiring-training-grants-guide",
@@ -1686,7 +2806,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "SWPP covers up to <strong>75% of wages</strong> (max $7,500) for hiring post-secondary students. It's the most accessible hiring grant available across all industries."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Hiring & Training Grants  | .9B+ Workforce Development Across 28+ Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Hiring & Training Grants  | .9B+ Workforce Development Across 28+ Programs Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Hiring & Training Grants  | .9B+ Workforce Development Across 28+ Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Hiring & Training Grants  | .9B+ Workforce Development Across 28+ Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 30,
     slug: "canada-industry-specific-grants-guide",
@@ -1731,7 +2891,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "Don't just look for general business grants. <strong>Search by your NAICS code</strong> or industry association (e.g., CMF for media, FACTOR for music) to find less competitive, sector-specific pots."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Industry Specific Grants  | .5B+ Sector-Focused Programs Across 25+ Industries Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Industry Specific Grants  | .5B+ Sector-Focused Programs Across 25+ Industries Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Industry Specific Grants  | .5B+ Sector-Focused Programs Across 25+ Industries in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Industry Specific Grants  | .5B+ Sector-Focused Programs Across 25+ Industries?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 31,
     slug: "canada-innovation-research-development-grants-guide",
@@ -1776,7 +2976,47 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "SR&ED is a tax <strong>refund</strong> for work already done. IRAP is a <strong>grant</strong> for future work. You can typically claim the non-IRAP portion of your costs for SR&ED."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Innovation & R&D Grants  | .2B+ Research Development Funding Programs Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Innovation & R&D Grants  | .2B+ Research Development Funding Programs Guide Grant",
+                      "amount": "$4",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Innovation & R&D Grants  | .2B+ Research Development Funding Programs Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Innovation & R&D Grants  | .2B+ Research Development Funding Programs Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $4."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 32,
     slug: "canada-life-sciences-innovation-grants",
@@ -1821,7 +3061,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "The federal government is prioritizing domestic <strong>biomanufacturing capacity</strong>. Projects that build Canadian production capabilities for vaccines and therapeutics are top priority."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Life Sciences Grants  | + Biotech & Medical Device Funding | Clinical Trials Support Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Life Sciences Grants  | + Biotech & Medical Device Funding | Clinical Trials Support Grant",
+                      "amount": "$720M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Life Sciences Grants  | + Biotech & Medical Device Funding | Clinical Trials Support in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Life Sciences Grants  | + Biotech & Medical Device Funding | Clinical Trials Support?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $720M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 33,
     slug: "canada-manufacturing-industry-grants-guide",
@@ -1866,7 +3146,47 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "Join the <strong>NGen Supercluster</strong> to access unique manufacturing funding calls not available to the general public. Membership is free or low-cost for SMEs."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Manufacturing & Industry Grants  | .1B+ Advanced Manufacturing Funding Programs Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Manufacturing & Industry Grants  | .1B+ Advanced Manufacturing Funding Programs Guide Grant",
+                      "amount": "$3",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Manufacturing & Industry Grants  | .1B+ Advanced Manufacturing Funding Programs Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Manufacturing & Industry Grants  | .1B+ Advanced Manufacturing Funding Programs Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $3."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 34,
     slug: "canada-regional-economic-development-grants-guide",
@@ -1911,7 +3231,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "Your local RDA (like ACOA, FedDev, PrairiesCan) is your <strong>best first stop</strong>. They often have unadvertised funds for local job creation and economic diversification."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Regional Economic Development Grants  | .8B+ Community Growth Funding Programs Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Regional Economic Development Grants  | .8B+ Community Growth Funding Programs Guide Grant",
+                      "amount": "$2",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Regional Economic Development Grants  | .8B+ Community Growth Funding Programs Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Regional Economic Development Grants  | .8B+ Community Growth Funding Programs Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 35,
     slug: "canada-startup-funding-grants-guide",
@@ -1956,7 +3316,47 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "Most 'startup grants' are actually for <strong>hiring</strong> or <strong>training</strong>, not for general operating costs. You need to have some initial capital (bootstrap) to pay upfront costs before the grant reimburses you."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Startup Grants : 35+ Programs Worth .2B+ [Apply] Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Startup Grants : 35+ Programs Worth .2B+ [Apply] Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Startup Grants : 35+ Programs Worth .2B+ [Apply] in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Startup Grants : 35+ Programs Worth .2B+ [Apply]?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 36,
     slug: "canada-technology-adoption-grants-guide",
@@ -2001,11 +3401,51 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "The <strong>CDAP Digital Adoption Plan</strong> is the gateway key. Once you have this certified plan, you unlock the $100k BDC loan and wage subsidies. Prioritize getting this plan done first."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Technology Adoption Grants  | + Digital Transformation Across 22+ Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Technology Adoption Grants  | + Digital Transformation Across 22+ Programs Grant",
+                      "amount": "$950M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Technology Adoption Grants  | + Digital Transformation Across 22+ Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Technology Adoption Grants  | + Digital Transformation Across 22+ Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $950M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 37,
     slug: "cartier-womens-initiative-canada",
-    title: "Cartier Women",
+    title: "Cartier Women 2025-2026 | Complete Guide & Application Forms",
     excerpt: "Complete guide to Cartier Women",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -2046,7 +3486,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "Cartier looks for <strong>social or environmental impact</strong>. Your application must clearly articulate how your business is solving a major global challenge, not just generating revenue."
     },
-  },
+      comparisonTable: {
+              "title": "Cartier Women Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Cartier Women Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Cartier Women in 2025-2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Cartier Women?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 38,
     slug: "clean-tech-energy-grants",
@@ -2091,7 +3571,47 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "For US clean tech grants, ensure your technology aligns with <strong>current DOE 'Earthshots'</strong> (e.g., Hydrogen, Long Duration Storage). Mentioning these specific goals strengthens your proposal."
     },
-  },
+      comparisonTable: {
+              "title": "Clean Tech & Energy Grants -2027 |  DOE SBIR, .6M Phase II, EPA Environmental Tech Non-Dilutive Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Clean Tech & Energy Grants -2027 |  DOE SBIR, .6M Phase II, EPA Environmental Tech Non-Dilutive Funding Grant",
+                      "amount": "$200K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Clean Tech & Energy Grants -2027 |  DOE SBIR, .6M Phase II, EPA Environmental Tech Non-Dilutive Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Clean Tech & Energy Grants -2027 |  DOE SBIR, .6M Phase II, EPA Environmental Tech Non-Dilutive Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $200K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 39,
     slug: "colorado-tech-programs",
@@ -2207,7 +3727,47 @@ export const blogPosts: BlogPost[] = [
       { question: 'What is the success rate for DOD SBIR Phase I?', answer: 'Success rates vary by agency — typically 15-30%. Army and Navy components have higher success rates than DARPA. Applicants who attend pre-solicitation workshops and match their tech to a specific topic number see 2x higher success rates.' },
       { question: 'How long does DOD SBIR take to award?', answer: 'Phase I: approximately 6 months from submission to award notification. The solicitation process runs twice per year for most agencies. Fast-track options exist that can reduce timeline to 2-3 months.' },
     ],
-  },
+      comparisonTable: {
+              "title": "Colorado Tech Startup Grants -2027 |  Advanced Industries Accelerator,  Early-Stage Capital, SBIR Matching, Clean Energy Fund Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Colorado Tech Startup Grants -2027 |  Advanced Industries Accelerator,  Early-Stage Capital, SBIR Matching, Clean Energy Fund Grant",
+                      "amount": "$500K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Colorado Tech Startup Grants -2027 |  Advanced Industries Accelerator,  Early-Stage Capital, SBIR Matching, Clean Energy Fund in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Colorado Tech Startup Grants -2027 |  Advanced Industries Accelerator,  Early-Stage Capital, SBIR Matching, Clean Energy Fund?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $500K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 40,
     slug: "commercialization-scale-up-funding-canada",
@@ -2252,7 +3812,47 @@ export const blogPosts: BlogPost[] = [
       type: 'success',
       content: "At the commercialization stage, funders want to see <strong>purchase orders or letters of intent</strong>. Prove that the market is pulling your technology to de-risk their large investment."
     },
-  },
+      comparisonTable: {
+              "title": "Stage 4: Commercialization & Scale-Up Funding Canada  | Strategic Innovation Fund | Up to Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Stage 4: Commercialization & Scale-Up Funding Canada  | Strategic Innovation Fund | Up to Grant",
+                      "amount": "$100M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Stage 4: Commercialization & Scale-Up Funding Canada  | Strategic Innovation Fund | Up to in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Stage 4: Commercialization & Scale-Up Funding Canada  | Strategic Innovation Fund | Up to?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $100M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 41,
     slug: "csbfp-canada-small-business-financing-program",
@@ -2297,7 +3897,47 @@ export const blogPosts: BlogPost[] = [
       type: 'tip',
       content: "You don't apply to the government for CSBFP. You apply <strong>through your bank</strong>. The government just guarantees the loan behind the scenes to help the bank say 'yes'."
     },
-  },
+      comparisonTable: {
+              "title": "Canada Small Business Financing Program (CSBFP)  | Up to  Business Loans Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Small Business Financing Program (CSBFP)  | Up to  Business Loans Grant",
+                      "amount": "$1M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Small Business Financing Program (CSBFP)  | Up to  Business Loans in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Small Business Financing Program (CSBFP)  | Up to  Business Loans?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 42,
     slug: "csbfp-canada-small-business-financing-program-government-grants",
@@ -2344,7 +3984,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "CSBFP Canada Small Business Financing Program  | Government Guaranteed Loans Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core CSBFP Canada Small Business Financing Program  | Government Guaranteed Loans Guide Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for CSBFP Canada Small Business Financing Program  | Government Guaranteed Loans Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through CSBFP Canada Small Business Financing Program  | Government Guaranteed Loans Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 43,
     slug: "cybersecurity-grants",
@@ -2417,7 +4097,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Cybersecurity Grants -2027 | .8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Cybersecurity Grants -2027 | .8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Cybersecurity Grants -2027 | .8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Cybersecurity Grants -2027 | .8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 44,
     slug: "demonstration-pilot-funding-canada",
@@ -2464,7 +4184,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Stage 3: Demonstration & Pilot Funding Canada  | SDTC & Clean Growth | Up to  Project Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Stage 3: Demonstration & Pilot Funding Canada  | SDTC & Clean Growth | Up to  Project Funding Grant",
+                      "amount": "$15M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Stage 3: Demonstration & Pilot Funding Canada  | SDTC & Clean Growth | Up to  Project Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Stage 3: Demonstration & Pilot Funding Canada  | SDTC & Clean Growth | Up to  Project Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $15M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 45,
     slug: "development-proof-concept-funding-canada",
@@ -2511,7 +4271,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Stage 2: Development & Proof-of-Concept Funding Canada  | IRAP & SR&ED | Up to  Technology Development Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Stage 2: Development & Proof-of-Concept Funding Canada  | IRAP & SR&ED | Up to  Technology Development Grant",
+                      "amount": "$5M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Stage 2: Development & Proof-of-Concept Funding Canada  | IRAP & SR&ED | Up to  Technology Development in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Stage 2: Development & Proof-of-Concept Funding Canada  | IRAP & SR&ED | Up to  Technology Development?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $5M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 46,
     slug: "dod-sbir-defense-tech-grants",
@@ -2558,7 +4358,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "DOD SBIR : Win .7M in Defense Grants (No Equity, No Repayment) Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core DOD SBIR : Win .7M in Defense Grants (No Equity, No Repayment) Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for DOD SBIR : Win .7M in Defense Grants (No Equity, No Repayment) in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through DOD SBIR : Win .7M in Defense Grants (No Equity, No Repayment)?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 47,
     slug: "doe-sbir-clean-energy-grants",
@@ -2605,7 +4445,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "DOE SBIR Clean Energy Grants -2027 |  Phase I, .85M Phase II Renewable Energy Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core DOE SBIR Clean Energy Grants -2027 |  Phase I, .85M Phase II Renewable Energy Funding Grant",
+                      "amount": "$200K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for DOE SBIR Clean Energy Grants -2027 |  Phase I, .85M Phase II Renewable Energy Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through DOE SBIR Clean Energy Grants -2027 |  Phase I, .85M Phase II Renewable Energy Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $200K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 48,
     slug: "edc-women-trade-export-financing",
@@ -2652,7 +4532,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "EDC Women in Trade Export Financing  | Equity Capital & Export Support for Women Exporters Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core EDC Women in Trade Export Financing  | Equity Capital & Export Support for Women Exporters Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for EDC Women in Trade Export Financing  | Equity Capital & Export Support for Women Exporters in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through EDC Women in Trade Export Financing  | Equity Capital & Export Support for Women Exporters?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 49,
     slug: "federal-grants-women-minorities",
@@ -2714,7 +4634,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Federal Grants for Women, Minorities & Veterans  | Specialized Business Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Federal Grants for Women, Minorities & Veterans  | Specialized Business Funding Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Federal Grants for Women, Minorities & Veterans  | Specialized Business Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Federal Grants for Women, Minorities & Veterans  | Specialized Business Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 50,
     slug: "hardware-iot-startup-grants",
@@ -2761,7 +4721,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Hardware & IoT Startup Grants -2027 |  NSF SBIR, .25M Phase II, DOD Electronics Non-Dilutive Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Hardware & IoT Startup Grants -2027 |  NSF SBIR, .25M Phase II, DOD Electronics Non-Dilutive Funding Grant",
+                      "amount": "$305K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Hardware & IoT Startup Grants -2027 |  NSF SBIR, .25M Phase II, DOD Electronics Non-Dilutive Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Hardware & IoT Startup Grants -2027 |  NSF SBIR, .25M Phase II, DOD Electronics Non-Dilutive Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $305K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 51,
     slug: "ideation-research-funding-canada",
@@ -2808,7 +4808,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Stage 1: Ideation & Research Funding Canada  | NSERC Discovery Grants | Up to  Early-Stage R&D Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Stage 1: Ideation & Research Funding Canada  | NSERC Discovery Grants | Up to  Early-Stage R&D Grant",
+                      "amount": "$1M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Stage 1: Ideation & Research Funding Canada  | NSERC Discovery Grants | Up to  Early-Stage R&D in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Stage 1: Ideation & Research Funding Canada  | NSERC Discovery Grants | Up to  Early-Stage R&D?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 52,
     slug: "indigenous-rural-business-funding-canada",
@@ -2855,7 +4895,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Indigenous & Rural Business Funding Canada  | + Aboriginal Business Grants & Rural Development Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Indigenous & Rural Business Funding Canada  | + Aboriginal Business Grants & Rural Development Grant",
+                      "amount": "$500K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Indigenous & Rural Business Funding Canada  | + Aboriginal Business Grants & Rural Development in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Indigenous & Rural Business Funding Canada  | + Aboriginal Business Grants & Rural Development?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $500K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 53,
     slug: "indigenous-women-business-grants-canada",
@@ -2902,7 +4982,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Indigenous Women Business Grants Canada -2027 | NACCA Funding , First Nations Support, Cultural Enterprise Grants Toronto Vancouver Winnipeg Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Indigenous Women Business Grants Canada -2027 | NACCA Funding , First Nations Support, Cultural Enterprise Grants Toronto Vancouver Winnipeg Grant",
+                      "amount": "$50K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Indigenous Women Business Grants Canada -2027 | NACCA Funding , First Nations Support, Cultural Enterprise Grants Toronto Vancouver Winnipeg in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Indigenous Women Business Grants Canada -2027 | NACCA Funding , First Nations Support, Cultural Enterprise Grants Toronto Vancouver Winnipeg?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $50K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 54,
     slug: "industry-specific-business-grants-guide",
@@ -2964,7 +5084,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Industry-Specific Business Grants Guide  | Sector-Focused Funding Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Industry-Specific Business Grants Guide  | Sector-Focused Funding Programs Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Industry-Specific Business Grants Guide  | Sector-Focused Funding Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Industry-Specific Business Grants Guide  | Sector-Focused Funding Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 55,
     slug: "irap-industrial-research-assistance-program",
@@ -3010,7 +5170,47 @@ export const blogPosts: BlogPost[] = [
       title: "Need Help with Your IRAP Application?",
       description: "Our team has helped 100+ Canadian tech companies secure IRAP funding. Let us connect you with the right ITA and prepare your proposal.",
     },
-  },
+      comparisonTable: {
+              "title": "Industrial Research Assistance Program (IRAP)  | Up to  Tech Grants Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Industrial Research Assistance Program (IRAP)  | Up to  Tech Grants Grant",
+                      "amount": "$1M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Industrial Research Assistance Program (IRAP)  | Up to  Tech Grants in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Industrial Research Assistance Program (IRAP)  | Up to  Tech Grants?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 56,
     slug: "irap-industrial-research-assistance-program-government-grants",
@@ -3057,7 +5257,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "IRAP Industrial Research Assistance Program Canada  | Government R&D Funding Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core IRAP Industrial Research Assistance Program Canada  | Government R&D Funding Guide Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for IRAP Industrial Research Assistance Program Canada  | Government R&D Funding Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through IRAP Industrial Research Assistance Program Canada  | Government R&D Funding Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 57,
     slug: "irap-industrial-research-assistance-program-innovation",
@@ -3104,7 +5344,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "IRAP Industrial Research Assistance Program  | Up to  Innovation Funding for SMEs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core IRAP Industrial Research Assistance Program  | Up to  Innovation Funding for SMEs Grant",
+                      "amount": "$500K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for IRAP Industrial Research Assistance Program  | Up to  Innovation Funding for SMEs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through IRAP Industrial Research Assistance Program  | Up to  Innovation Funding for SMEs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $500K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 58,
     slug: "manitoba-small-business-grants-guide",
@@ -3151,7 +5431,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Manitoba Small Business Grants  | + Business Development Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Manitoba Small Business Grants  | + Business Development Programs Grant",
+                      "amount": "$380M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Manitoba Small Business Grants  | + Business Development Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Manitoba Small Business Grants  | + Business Development Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $380M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 59,
     slug: "massachusetts-tech-programs",
@@ -3213,7 +5533,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Massachusetts Tech Startup Grants -2027 |  SBIR START,  MassCEC InnovateMass, Life Sciences Center Biotech Funding Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Massachusetts Tech Startup Grants -2027 |  SBIR START,  MassCEC InnovateMass, Life Sciences Center Biotech Funding Programs Grant",
+                      "amount": "$500K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Massachusetts Tech Startup Grants -2027 |  SBIR START,  MassCEC InnovateMass, Life Sciences Center Biotech Funding Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Massachusetts Tech Startup Grants -2027 |  SBIR START,  MassCEC InnovateMass, Life Sciences Center Biotech Funding Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $500K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 60,
     slug: "nasa-sbir-space-tech-grants",
@@ -3275,7 +5635,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "NASA SBIR Space Tech Grants -2027 |  Phase I,  Phase II Satellite & Aeronautics Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core NASA SBIR Space Tech Grants -2027 |  Phase I,  Phase II Satellite & Aeronautics Funding Grant",
+                      "amount": "$150K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for NASA SBIR Space Tech Grants -2027 |  Phase I,  Phase II Satellite & Aeronautics Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through NASA SBIR Space Tech Grants -2027 |  Phase I,  Phase II Satellite & Aeronautics Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $150K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 61,
     slug: "new-york-tech-programs",
@@ -3337,7 +5737,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "New York Tech Startup Grants -2027 | START-UP NY Tax-Free 10 Years,  Seed Matching Fund, NYSERDA Clean Energy Innovation Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core New York Tech Startup Grants -2027 | START-UP NY Tax-Free 10 Years,  Seed Matching Fund, NYSERDA Clean Energy Innovation Programs Grant",
+                      "amount": "$250K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for New York Tech Startup Grants -2027 | START-UP NY Tax-Free 10 Years,  Seed Matching Fund, NYSERDA Clean Energy Innovation Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through New York Tech Startup Grants -2027 | START-UP NY Tax-Free 10 Years,  Seed Matching Fund, NYSERDA Clean Energy Innovation Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $250K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 62,
     slug: "nih-sbir-biotech-grants",
@@ -3399,7 +5839,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "NIH SBIR Biotech Grants -2027 |  Phase I,  Phase II Medical Device & Digital Health Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core NIH SBIR Biotech Grants -2027 |  Phase I,  Phase II Medical Device & Digital Health Funding Grant",
+                      "amount": "$285K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for NIH SBIR Biotech Grants -2027 |  Phase I,  Phase II Medical Device & Digital Health Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through NIH SBIR Biotech Grants -2027 |  Phase I,  Phase II Medical Device & Digital Health Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $285K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 63,
     slug: "nserc-research-grants-canada",
@@ -3461,7 +5941,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "NSERC Research Grants Canada  | Natural Sciences & Engineering Funding Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core NSERC Research Grants Canada  | Natural Sciences & Engineering Funding Guide Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for NSERC Research Grants Canada  | Natural Sciences & Engineering Funding Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through NSERC Research Grants Canada  | Natural Sciences & Engineering Funding Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 64,
     slug: "nsf-sbir-grants-technology-startups",
@@ -3514,11 +6034,51 @@ export const blogPosts: BlogPost[] = [
       { question: 'How do I match my startup to an NSF SBIR topic?', answer: 'NSF SBIR is topic-agnostic — unlike DOD SBIR, you do not need to match a specific topic. Your innovation just needs to be scientifically rigorous and commercially promising. However, aligning your abstract with an NSF directorate (e.g., TIP, ENG, BIO) greatly helps reviewers score your application.' },
       { question: 'What is the NSF SBIR success rate?', answer: 'NSF SBIR Phase I has a success rate of approximately 20-25% for formally submitted proposals. The invitation-only Phase II rate is much higher — around 50% — because only Phase I winners are eligible.' },
     ],
-  },
+      comparisonTable: {
+              "title": "NSF SBIR Grants : The  Startup Grant Most Founders Dont Know About Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core NSF SBIR Grants : The  Startup Grant Most Founders Dont Know About Grant",
+                      "amount": "$2M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for NSF SBIR Grants : The  Startup Grant Most Founders Dont Know About in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through NSF SBIR Grants : The  Startup Grant Most Founders Dont Know About?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 65,
     slug: "nwbc-programs-guide",
-    title: "National Women",
+    title: "National Women... 2025-2026 | Funding Guide",
     excerpt: "Complete guide to NWBC programs and initiatives. Learn how the National Women",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -3576,7 +6136,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "National Women Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core National Women Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for National Women in 2025-2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through National Women?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 66,
     slug: "ontario-government-business-grants",
@@ -3758,7 +6358,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Ontario Government Business Grants  | Provincial Funding Programs Guide | OCED Support Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Ontario Government Business Grants  | Provincial Funding Programs Guide | OCED Support Grant",
+                      "amount": "$5",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Ontario Government Business Grants  | Provincial Funding Programs Guide | OCED Support in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Ontario Government Business Grants  | Provincial Funding Programs Guide | OCED Support?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $5."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 67,
     slug: "ontario-innovation-grants",
@@ -3805,7 +6445,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Ontario Innovation Grants & Tax Credits  | OITC 10% Tax Credit | .2B+ R&D Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Ontario Innovation Grants & Tax Credits  | OITC 10% Tax Credit | .2B+ R&D Funding Grant",
+                      "amount": "$3",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Ontario Innovation Grants & Tax Credits  | OITC 10% Tax Credit | .2B+ R&D Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Ontario Innovation Grants & Tax Credits  | OITC 10% Tax Credit | .2B+ R&D Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $3."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 68,
     slug: "ontario-small-business-grants-guide",
@@ -3852,7 +6532,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Ontario Small Business Grants  | .1B+ Available for Ontario SMEs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Ontario Small Business Grants  | .1B+ Available for Ontario SMEs Grant",
+                      "amount": "$2",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Ontario Small Business Grants  | .1B+ Available for Ontario SMEs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Ontario Small Business Grants  | .1B+ Available for Ontario SMEs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 69,
     slug: "ontario-women-business-grants",
@@ -3899,7 +6619,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Ontario Women Business Grants  |  Support Programs & Non-Repayable Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Ontario Women Business Grants  |  Support Programs & Non-Repayable Funding Grant",
+                      "amount": "$850M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Ontario Women Business Grants  |  Support Programs & Non-Repayable Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Ontario Women Business Grants  |  Support Programs & Non-Repayable Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $850M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 70,
     slug: "prairie-provinces-innovation-grants",
@@ -3946,7 +6706,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Prairie Provinces Innovation Grants  | + AgriFood, Mining & Renewable Energy Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Prairie Provinces Innovation Grants  | + AgriFood, Mining & Renewable Energy Funding Grant",
+                      "amount": "$580M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Prairie Provinces Innovation Grants  | + AgriFood, Mining & Renewable Energy Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Prairie Provinces Innovation Grants  | + AgriFood, Mining & Renewable Energy Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $580M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 71,
     slug: "private-women-grants-guide",
@@ -4008,7 +6808,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Private Women Grants Guide  | Foundation Grants for Female Entrepreneurs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Private Women Grants Guide  | Foundation Grants for Female Entrepreneurs Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Private Women Grants Guide  | Foundation Grants for Female Entrepreneurs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Private Women Grants Guide  | Foundation Grants for Female Entrepreneurs?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 72,
     slug: "quebec-government-business-grants",
@@ -4093,7 +6933,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Quebec Government Business Grants  | Aide aux Entreprises & Provincial Funding Programs Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Quebec Government Business Grants  | Aide aux Entreprises & Provincial Funding Programs Guide Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Quebec Government Business Grants  | Aide aux Entreprises & Provincial Funding Programs Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Quebec Government Business Grants  | Aide aux Entreprises & Provincial Funding Programs Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 73,
     slug: "quebec-innovation-grants",
@@ -4140,7 +7020,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Quebec Innovation Grants & Tax Credits  | 30% CRIC R&D Tax Credit | .5B+ Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Quebec Innovation Grants & Tax Credits  | 30% CRIC R&D Tax Credit | .5B+ Funding Grant",
+                      "amount": "$2",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Quebec Innovation Grants & Tax Credits  | 30% CRIC R&D Tax Credit | .5B+ Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Quebec Innovation Grants & Tax Credits  | 30% CRIC R&D Tax Credit | .5B+ Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 74,
     slug: "quebec-small-business-grants-guide",
@@ -4187,7 +7107,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Quebec Small Business Grants  | .8B+ Quebec SME Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Quebec Small Business Grants  | .8B+ Quebec SME Funding Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Quebec Small Business Grants  | .8B+ Quebec SME Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Quebec Small Business Grants  | .8B+ Quebec SME Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 75,
     slug: "quebec-women-business-grants",
@@ -4234,7 +7194,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Quebec Women Business Grants  |  Francophone Entrepreneur Support Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Quebec Women Business Grants  |  Francophone Entrepreneur Support Programs Grant",
+                      "amount": "$720M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Quebec Women Business Grants  |  Francophone Entrepreneur Support Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Quebec Women Business Grants  |  Francophone Entrepreneur Support Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $720M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 76,
     slug: "rbc-women-entrepreneur-awards",
@@ -4281,7 +7281,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "RBC Canadian Women Entrepreneur Awards : Complete Guide to + in Grants & Recognition Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core RBC Canadian Women Entrepreneur Awards : Complete Guide to + in Grants & Recognition Grant",
+                      "amount": "$100K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for RBC Canadian Women Entrepreneur Awards : Complete Guide to + in Grants & Recognition in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through RBC Canadian Women Entrepreneur Awards : Complete Guide to + in Grants & Recognition?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $100K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 77,
     slug: "regional-development-agencies-government-grants",
@@ -4328,7 +7368,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Regional Development Agencies Canada  | RDA Federal Funding Guide | 7 Regional Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Regional Development Agencies Canada  | RDA Federal Funding Guide | 7 Regional Programs Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Regional Development Agencies Canada  | RDA Federal Funding Guide | 7 Regional Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Regional Development Agencies Canada  | RDA Federal Funding Guide | 7 Regional Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 78,
     slug: "saskatchewan-small-business-grants-guide",
@@ -4375,7 +7455,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Saskatchewan Small Business Grants  | + SME Growth Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Saskatchewan Small Business Grants  | + SME Growth Programs Grant",
+                      "amount": "$425M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Saskatchewan Small Business Grants  | + SME Growth Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Saskatchewan Small Business Grants  | + SME Growth Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $425M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 79,
     slug: "sba-7a-loans-complete-guide",
@@ -4437,7 +7557,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "SBA 7(a) Loans Complete Guide  | Small Business Administration Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core SBA 7(a) Loans Complete Guide  | Small Business Administration Funding Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for SBA 7(a) Loans Complete Guide  | Small Business Administration Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through SBA 7(a) Loans Complete Guide  | Small Business Administration Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 80,
     slug: "sba-disaster-relief-loans-guide",
@@ -4499,7 +7659,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "SBA Disaster Relief Loans Guide  | Emergency Business Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core SBA Disaster Relief Loans Guide  | Emergency Business Funding Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for SBA Disaster Relief Loans Guide  | Emergency Business Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through SBA Disaster Relief Loans Guide  | Emergency Business Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 81,
     slug: "sba-loans-grants-guide",
@@ -4560,7 +7760,47 @@ export const blogPosts: BlogPost[] = [
     inlineCTA: {
       description: "Not sure which SBA program fits your business? Our funding specialists match you with the right loan or grant program in minutes.",
     },
-  },
+      comparisonTable: {
+              "title": "SBA Loans & Grants Complete Guide  | Small Business Administration Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core SBA Loans & Grants Complete Guide  | Small Business Administration Funding Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for SBA Loans & Grants Complete Guide  | Small Business Administration Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through SBA Loans & Grants Complete Guide  | Small Business Administration Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 82,
     slug: "sba-microloans-complete-guide",
@@ -4622,7 +7862,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "SBA Microloans Complete Guide  | Small Business Microloan Program Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core SBA Microloans Complete Guide  | Small Business Microloan Program Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for SBA Microloans Complete Guide  | Small Business Microloan Program in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through SBA Microloans Complete Guide  | Small Business Microloan Program?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 83,
     slug: "sbir-small-business-guide",
@@ -4684,7 +7964,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "SBIR Small Business Innovation Research  | Federal R&D Grant Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core SBIR Small Business Innovation Research  | Federal R&D Grant Guide Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for SBIR Small Business Innovation Research  | Federal R&D Grant Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through SBIR Small Business Innovation Research  | Federal R&D Grant Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 84,
     slug: "sbir-sttr-complete-guide",
@@ -4746,7 +8066,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "SBIR & STTR Grants Complete Guide  | Small Business Innovation Research Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core SBIR & STTR Grants Complete Guide  | Small Business Innovation Research Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for SBIR & STTR Grants Complete Guide  | Small Business Innovation Research in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through SBIR & STTR Grants Complete Guide  | Small Business Innovation Research?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 85,
     slug: "scotiabank-women-initiative",
@@ -4793,7 +8153,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Scotiabank Women Initiative  | Capital Funding + Mentorship + Education for Women Entrepreneurs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Scotiabank Women Initiative  | Capital Funding + Mentorship + Education for Women Entrepreneurs Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Scotiabank Women Initiative  | Capital Funding + Mentorship + Education for Women Entrepreneurs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Scotiabank Women Initiative  | Capital Funding + Mentorship + Education for Women Entrepreneurs?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 86,
     slug: "small-business-grants-complete-guide",
@@ -4840,7 +8240,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Small Business Grants Complete Guide  | SBA & Federal Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Small Business Grants Complete Guide  | SBA & Federal Funding Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Small Business Grants Complete Guide  | SBA & Federal Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Small Business Grants Complete Guide  | SBA & Federal Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 87,
     slug: "software-saas-startup-grants",
@@ -4887,7 +8327,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Software & SaaS Startup Grants -2027 |  NSF SBIR, .25M Phase II, DOD Software Modernization Non-Dilutive Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Software & SaaS Startup Grants -2027 |  NSF SBIR, .25M Phase II, DOD Software Modernization Non-Dilutive Funding Grant",
+                      "amount": "$305K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Software & SaaS Startup Grants -2027 |  NSF SBIR, .25M Phase II, DOD Software Modernization Non-Dilutive Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Software & SaaS Startup Grants -2027 |  NSF SBIR, .25M Phase II, DOD Software Modernization Non-Dilutive Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $305K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 88,
     slug: "sred-scientific-research-experimental-development",
@@ -4933,7 +8413,47 @@ export const blogPosts: BlogPost[] = [
       title: "Maximize Your SR&ED Claim",
       description: "Our SR&ED specialists have recovered over $50M in tax credits for Canadian tech companies. Get a free assessment of your eligible R&D activities.",
     },
-  },
+      comparisonTable: {
+              "title": "SR&ED Tax Credits Canada  | Scientific Research & Experimental Development Guide - 65% Refundable Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core SR&ED Tax Credits Canada  | Scientific Research & Experimental Development Guide - 65% Refundable Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for SR&ED Tax Credits Canada  | Scientific Research & Experimental Development Guide - 65% Refundable in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through SR&ED Tax Credits Canada  | Scientific Research & Experimental Development Guide - 65% Refundable?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 89,
     slug: "state-local-business-grants-guide",
@@ -4995,11 +8515,51 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "State & Local Business Grants Guide  | Regional Economic Development Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core State & Local Business Grants Guide  | Regional Economic Development Funding Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for State & Local Business Grants Guide  | Regional Economic Development Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through State & Local Business Grants Guide  | Regional Economic Development Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 90,
     slug: "state-province-grants",
-    title: "State Province Grants",
+    title: "State Province Grants... 2025-2026 | Funding Guide",
     excerpt: "Complete guide to government grants.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -5042,7 +8602,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "State Province Grants Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core State Province Grants Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for State Province Grants in 2025-2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through State Province Grants?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 91,
     slug: "state-women-business-programs-guide",
@@ -5089,7 +8689,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "State Women Business Programs Guide  | Local Government Grants for Female Entrepreneurs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core State Women Business Programs Guide  | Local Government Grants for Female Entrepreneurs Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for State Women Business Programs Guide  | Local Government Grants for Female Entrepreneurs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through State Women Business Programs Guide  | Local Government Grants for Female Entrepreneurs?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 92,
     slug: "strategic-innovation-fund-canada-guide",
@@ -5136,7 +8776,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Strategic Innovation Fund Canada  | + SIF Funding Guide | Innovation Projects Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Strategic Innovation Fund Canada  | + SIF Funding Guide | Innovation Projects Grant",
+                      "amount": "$100M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Strategic Innovation Fund Canada  | + SIF Funding Guide | Innovation Projects in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Strategic Innovation Fund Canada  | + SIF Funding Guide | Innovation Projects?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $100M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 93,
     slug: "territories-small-business-grants-guide",
@@ -5183,11 +8863,51 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Territories Small Business Grants  | + NT, YT, Nunavut Combined Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Territories Small Business Grants  | + NT, YT, Nunavut Combined Funding Grant",
+                      "amount": "$125M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Territories Small Business Grants  | + NT, YT, Nunavut Combined Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Territories Small Business Grants  | + NT, YT, Nunavut Combined Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $125M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 94,
     slug: "usa-federal-grants",
-    title: "Usa Federal Grants",
+    title: "Usa Federal Grants... 2025-2026 | Funding Guide",
     excerpt: "Complete guide to government grants.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -5245,7 +8965,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Usa Federal Grants Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Usa Federal Grants Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Usa Federal Grants in 2025-2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Usa Federal Grants?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 95,
     slug: "usda-sbir-agtech-grants",
@@ -5292,7 +9052,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "USDA SBIR AgTech Grants -2027 |  Phase I,  Phase II Agriculture & Food Tech Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core USDA SBIR AgTech Grants -2027 |  Phase I,  Phase II Agriculture & Food Tech Funding Grant",
+                      "amount": "$125K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for USDA SBIR AgTech Grants -2027 |  Phase I,  Phase II Agriculture & Food Tech Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through USDA SBIR AgTech Grants -2027 |  Phase I,  Phase II Agriculture & Food Tech Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $125K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 96,
     slug: "washington-tech-programs",
@@ -5339,7 +9139,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Washington Tech Startup Grants -2027 |  WRF Technology Commercialization,  Innovation Modernization Program, Clean Energy Fund Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Washington Tech Startup Grants -2027 |  WRF Technology Commercialization,  Innovation Modernization Program, Clean Energy Fund Grant",
+                      "amount": "$1M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Washington Tech Startup Grants -2027 |  WRF Technology Commercialization,  Innovation Modernization Program, Clean Energy Fund in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Washington Tech Startup Grants -2027 |  WRF Technology Commercialization,  Innovation Modernization Program, Clean Energy Fund?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 97,
     slug: "wbdc-equity-match-grant-women",
@@ -5386,11 +9226,51 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "WBDC Equity Match Grant 2027 | ,500-,000 for Women Business Growth Projects Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core WBDC Equity Match Grant 2027 | ,500-,000 for Women Business Growth Projects Grant",
+                      "amount": "$2",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for WBDC Equity Match Grant 2027 | ,500-,000 for Women Business Growth Projects in 2025-2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through WBDC Equity Match Grant 2027 | ,500-,000 for Women Business Growth Projects?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 98,
     slug: "women-business-centers-guide",
-    title: "Women",
+    title: "Women 2025-2026 | Complete Guide & Application Forms",
     excerpt: "Complete guide to Women",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -5433,7 +9313,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Women Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Women Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Women in 2025-2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Women?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 99,
     slug: "women-clean-technology-grants-canada",
@@ -5480,7 +9400,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Women Clean Technology Grants Canada -2027 | Clean Energy Funding , Sustainability Innovation Support Toronto Vancouver Montreal Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Women Clean Technology Grants Canada -2027 | Clean Energy Funding , Sustainability Innovation Support Toronto Vancouver Montreal Grant",
+                      "amount": "$10M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Women Clean Technology Grants Canada -2027 | Clean Energy Funding , Sustainability Innovation Support Toronto Vancouver Montreal in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Women Clean Technology Grants Canada -2027 | Clean Energy Funding , Sustainability Innovation Support Toronto Vancouver Montreal?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $10M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 100,
     slug: "women-entrepreneurship-fund-canada",
@@ -5527,7 +9487,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Women Entrepreneurship Fund Canada  | Non-Repayable Grants for Women-Owned Business Growth Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Women Entrepreneurship Fund Canada  | Non-Repayable Grants for Women-Owned Business Growth Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Women Entrepreneurship Fund Canada  | Non-Repayable Grants for Women-Owned Business Growth in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Women Entrepreneurship Fund Canada  | Non-Repayable Grants for Women-Owned Business Growth?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 101,
     slug: "women-entrepreneurship-loan-fund-canada",
@@ -5574,7 +9574,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Women Entrepreneurship Loan Fund (WELF)  | Up to  Microloans for Women Entrepreneurs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Women Entrepreneurship Loan Fund (WELF)  | Up to  Microloans for Women Entrepreneurs Grant",
+                      "amount": "$50K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Women Entrepreneurship Loan Fund (WELF)  | Up to  Microloans for Women Entrepreneurs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Women Entrepreneurship Loan Fund (WELF)  | Up to  Microloans for Women Entrepreneurs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $50K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 102,
     slug: "women-entrepreneurship-strategy-canada",
@@ -5620,7 +9660,47 @@ export const blogPosts: BlogPost[] = [
     inlineCTA: {
       description: "Women-owned business? Our team specializes in WES program applications — we help you access grants, loans, and advisory services in one coordinated strategy.",
     },
-  },
+      comparisonTable: {
+              "title": "Women Entrepreneurship Strategy Canada  | + Female Business Grants & Loans Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Women Entrepreneurship Strategy Canada  | + Female Business Grants & Loans Grant",
+                      "amount": "$6B",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Women Entrepreneurship Strategy Canada  | + Female Business Grants & Loans in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Women Entrepreneurship Strategy Canada  | + Female Business Grants & Loans?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $6B."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 103,
     slug: "women-entrepreneurship-strategy-canada-government-grants",
@@ -5667,7 +9747,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Women Entrepreneurship Strategy Canada  | WES Federal Funding Guide |  Investment Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Women Entrepreneurship Strategy Canada  | WES Federal Funding Guide |  Investment Grant",
+                      "amount": "$6B",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Women Entrepreneurship Strategy Canada  | WES Federal Funding Guide |  Investment in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Women Entrepreneurship Strategy Canada  | WES Federal Funding Guide |  Investment?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $6B."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 104,
     slug: "women-export-trade-grants-canada",
@@ -5714,7 +9834,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Women Export Trade Grants Canada -2027 | CanExport Funding , International Expansion Support Toronto Vancouver Montreal Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Women Export Trade Grants Canada -2027 | CanExport Funding , International Expansion Support Toronto Vancouver Montreal Grant",
+                      "amount": "$75K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Women Export Trade Grants Canada -2027 | CanExport Funding , International Expansion Support Toronto Vancouver Montreal in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Women Export Trade Grants Canada -2027 | CanExport Funding , International Expansion Support Toronto Vancouver Montreal?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $75K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 105,
     slug: "women-manufacturing-grants-canada",
@@ -5761,7 +9921,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Women Manufacturing Grants Canada -2027 |  Equipment Funding Ontario Toronto Vancouver Calgary Montreal | Advanced Manufacturing Business Loans Women Entrepreneurs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Women Manufacturing Grants Canada -2027 |  Equipment Funding Ontario Toronto Vancouver Calgary Montreal | Advanced Manufacturing Business Loans Women Entrepreneurs Grant",
+                      "amount": "$10M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Women Manufacturing Grants Canada -2027 |  Equipment Funding Ontario Toronto Vancouver Calgary Montreal | Advanced Manufacturing Business Loans Women Entrepreneurs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Women Manufacturing Grants Canada -2027 |  Equipment Funding Ontario Toronto Vancouver Calgary Montreal | Advanced Manufacturing Business Loans Women Entrepreneurs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $10M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 106,
     slug: "women-social-enterprise-grants-canada",
@@ -5808,7 +10008,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Women Social Enterprise Grants Canada -2027 | Social Impact Funding Toronto Vancouver Montreal Calgary | Community Development Purpose-Driven Business Support Women Entrepreneurs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Women Social Enterprise Grants Canada -2027 | Social Impact Funding Toronto Vancouver Montreal Calgary | Community Development Purpose-Driven Business Support Women Entrepreneurs Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Women Social Enterprise Grants Canada -2027 | Social Impact Funding Toronto Vancouver Montreal Calgary | Community Development Purpose-Driven Business Support Women Entrepreneurs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Women Social Enterprise Grants Canada -2027 | Social Impact Funding Toronto Vancouver Montreal Calgary | Community Development Purpose-Driven Business Support Women Entrepreneurs?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 107,
     slug: "women-tech-stem-grants-guide",
@@ -5855,7 +10095,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Women in Technology & STEM Grants Guide  | Female Tech Entrepreneur Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Women in Technology & STEM Grants Guide  | Female Tech Entrepreneur Funding Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Women in Technology & STEM Grants Guide  | Female Tech Entrepreneur Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Women in Technology & STEM Grants Guide  | Female Tech Entrepreneur Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 108,
     slug: "women-technology-grants-canada",
@@ -5902,7 +10182,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Women in Technology Grants Canada  | AI, Software & Digital Innovation Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Women in Technology Grants Canada  | AI, Software & Digital Innovation Funding Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Women in Technology Grants Canada  | AI, Software & Digital Innovation Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Women in Technology Grants Canada  | AI, Software & Digital Innovation Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 109,
     slug: "wosb-federal-contracting-guide",
@@ -5949,7 +10269,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "WOSB Federal Contracting Guide  | Women-Owned Small Business Certification Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core WOSB Federal Contracting Guide  | Women-Owned Small Business Certification Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for WOSB Federal Contracting Guide  | Women-Owned Small Business Certification in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through WOSB Federal Contracting Guide  | Women-Owned Small Business Certification?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 110,
     slug: "youth-entrepreneurship-canada-funding",
@@ -5996,11 +10356,51 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Youth Entrepreneurship Canada  | + Young Entrepreneur Grants & Business Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Youth Entrepreneurship Canada  | + Young Entrepreneur Grants & Business Funding Grant",
+                      "amount": "$60K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Youth Entrepreneurship Canada  | + Young Entrepreneur Grants & Business Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Youth Entrepreneurship Canada  | + Young Entrepreneur Grants & Business Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $60K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1000,
     slug: "2026-grant-forecast",
-    title: "2026 Canadian Small Business Grant Forecast",
+    title: "Canadian Small Business Grant ... 2026 | Funding Guide",
     excerpt: "Get ahead of the curve. Our experts predict the biggest funding trends for 2026, including new climate incentives, digital adoption boosts, and increased support for export.",
     category: "Funding Alerts",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -6057,7 +10457,47 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Canadian Small Business Grant Forecast Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canadian Small Business Grant Forecast Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canadian Small Business Grant Forecast in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canadian Small Business Grant Forecast?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
 
   {
     id: 1002,
@@ -6246,12 +10686,52 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Black Entrepreneurship Loan Fund :  Funding Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Black Entrepreneurship Loan Fund :  Funding Guide Grant",
+                      "amount": "$250K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Black Entrepreneurship Loan Fund :  Funding Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Black Entrepreneurship Loan Fund :  Funding Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $250K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
 
   {
     id: 1004,
     slug: "newcomer-entrepreneur-grants-2026",
-    title: "Newcomer Entrepreneur Grants 2026: Innovation & Growth",
+    title: "Newcomer Entrepreneur Grants :... 2026 | $265M",
     excerpt: "🇨🇦 Complete guide for immigrants and newcomers starting a business in Canada. Access up to $60,000 via Futurpreneur, BDC financing, and settlement agency support.",
     category: "Demographic-Specific",
     categoryColor: "bg-teal-100 text-teal-800",
@@ -6433,11 +10913,51 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Newcomer Entrepreneur Grants : Innovation & Growth Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Newcomer Entrepreneur Grants : Innovation & Growth Grant",
+                      "amount": "$265M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Newcomer Entrepreneur Grants : Innovation & Growth in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Newcomer Entrepreneur Grants : Innovation & Growth?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $265M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1005,
     slug: "bc-business-grants-2026",
-    title: "BC Business Grants 2026: Innovation & Growth",
+    title: "BC Business Grants : Innovatio... 2026 | $240",
     excerpt: "🇨🇦 British Columbia's top funding programs explained. From Innovate BC's tech grants to Small Business BC's expert support, find the capital to grow your West Coast business.",
     category: "Province-Specific",
     categoryColor: "bg-teal-100 text-teal-800",
@@ -6598,11 +11118,51 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "BC Business Grants : Innovation & Growth Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core BC Business Grants : Innovation & Growth Grant",
+                      "amount": "$240",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for BC Business Grants : Innovation & Growth in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through BC Business Grants : Innovation & Growth?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $240."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1006,
     slug: "northern-canada-business-grants-2026",
-    title: "Northern Canada Business Grants 2026: Arctic Opportunity",
+    title: "Northern Canada Business Grant... 2026 | $30",
     excerpt: "🇨🇦 Business in the North is unique. Explore grants for Yukon, NWT, and Nunavut from CanNor, territorial governments, and Indigenous organizations.",
     category: "Province-Specific",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -6759,11 +11319,51 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Northern Canada Business Grants : Arctic Opportunity Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Northern Canada Business Grants : Arctic Opportunity Grant",
+                      "amount": "$30",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Northern Canada Business Grants : Arctic Opportunity in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Northern Canada Business Grants : Arctic Opportunity?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $30."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1007,
     slug: "innovation-canada-grants-2026",
-    title: "Innovation Canada Grants 2026: R&D & Tech Funding",
+    title: "Innovation Canada Grants : R&D... 2026 | $2",
     excerpt: "🇨🇦 This is the big league. From SR&ED tax credits to IRAP grants, learn how to fund your R&D and scale your technology in Canada.",
     category: "Federal",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -6950,12 +11550,52 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Innovation Canada Grants : R&D & Tech Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Innovation Canada Grants : R&D & Tech Funding Grant",
+                      "amount": "$2",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Innovation Canada Grants : R&D & Tech Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Innovation Canada Grants : R&D & Tech Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
 
   {
     id: 1010,
     slug: "quebec-business-grants-2026",
-    title: "Quebec Business Grants 2026: Innovation Capital",
+    title: "Quebec Business Grants : Innov... 2026 | $300",
     excerpt: "🇨🇦 Québec offers some of the most generous R&D and manufacturing grants in North America. Explore funds from Investissement Québec, PME MTL, and CED.",
     category: "Province-Specific",
     categoryColor: "bg-indigo-100 text-indigo-800",
@@ -7144,11 +11784,51 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Quebec Business Grants : Innovation Capital Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Quebec Business Grants : Innovation Capital Grant",
+                      "amount": "$300",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Quebec Business Grants : Innovation Capital in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Quebec Business Grants : Innovation Capital?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $300."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1011,
     slug: "saskatchewan-business-grants-2026",
-    title: "Saskatchewan Business Grants 2026: Prairie Innovation",
+    title: "Saskatchewan Business Grants :... 2026 | $400",
     excerpt: "🇨🇦 Saskatchewan is more than just wheat. Discover funding from Innovation Saskatchewan, the Graduate Retention Program, and the new SaskAdvantage grants.",
     category: "Province-Specific",
     categoryColor: "bg-green-100 text-green-800",
@@ -7302,7 +11982,47 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Saskatchewan Business Grants : Prairie Innovation Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Saskatchewan Business Grants : Prairie Innovation Grant",
+                      "amount": "$400",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Saskatchewan Business Grants : Prairie Innovation in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Saskatchewan Business Grants : Prairie Innovation?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $400."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
 
   {
     id: 1015,
@@ -7646,7 +12366,47 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Clean Technology : Canadas .1B Green Funding Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Clean Technology : Canadas .1B Green Funding Guide Grant",
+                      "amount": "$9",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Clean Technology : Canadas .1B Green Funding Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Clean Technology : Canadas .1B Green Funding Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $9."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1016,
     slug: "small-business-financing-2026",
@@ -7883,11 +12643,51 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Small Business Financing : Canadas  Expansion Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Small Business Financing : Canadas  Expansion Guide Grant",
+                      "amount": "$250M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Small Business Financing : Canadas  Expansion Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Small Business Financing : Canadas  Expansion Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $250M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1017,
     slug: "indigenous-business-development-2026",
-    title: "Indigenous Business Development 2026",
+    title: "Indigenous Business Development 2026 | $120M+ Funding Guide",
     excerpt: "\ud83e\udeb6 Canada's $120M Indigenous Business Revolution: Complete Funding Guide\n    \n      \n        \ud83c\udfc6 Top Indigenous Business Regions\n        \n          \u2022 Bri...",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -8563,11 +13363,51 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Indigenous Business Development Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Indigenous Business Development Grant",
+                      "amount": "$120M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Indigenous Business Development in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Indigenous Business Development?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $120M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1018,
     slug: "canexport-grants-2026",
-    title: "Canexport Grants 2026",
+    title: "Canexport Grants 2026 | $75M+ Funding Guide",
     excerpt: "\ud83c\udde8\ud83c\udde6 CanExport Grants 2026: International Market Expansion - $75M+ Export Engine\n    \n      \n        \ud83c\udfc6 CanExport Program Portfolio\n        \n          \u2022 ...",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -9136,11 +13976,51 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Canexport Grants Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canexport Grants Grant",
+                      "amount": "$75M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canexport Grants in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canexport Grants?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $75M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1019,
     slug: "canada-irap-grants-2026",
-    title: "Canada Irap Grants 2026",
+    title: "Canada Irap Grants 2026 | $400M+ Funding Guide",
     excerpt: "\ud83c\udde8\ud83c\udde6 Canada IRAP Grants 2026: Industrial Research Assistance Program - $400M+ Innovation Powerhouse\n    \n      \n        \ud83c\udfc6 IRAP Program Scale\n        \n  ...",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -9661,11 +14541,51 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Canada Irap Grants Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Irap Grants Grant",
+                      "amount": "$400M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Irap Grants in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Irap Grants?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $400M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1020,
     slug: "digital-transformation-2026",
-    title: "Digital Transformation 2026",
+    title: "Digital Transformation 2026 | $15+ Funding Guide",
     excerpt: "\ud83d\udcbb Canada's $90M Digital Transformation Revolution: Complete CDAP Guide\n    \n      \n        \ud83c\udfc6 Top Digital Innovation Provinces\n        \n          \u2022 Ont...",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -10443,7 +15363,47 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Digital Transformation Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Digital Transformation Grant",
+                      "amount": "$15",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Digital Transformation in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Digital Transformation?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $15."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1021,
     slug: "agricultural-innovation-2026",
@@ -11313,12 +16273,52 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Agricultural Innovation : Complete  AgriInnovate Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Agricultural Innovation : Complete  AgriInnovate Guide Grant",
+                      "amount": "$180M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Agricultural Innovation : Complete  AgriInnovate Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Agricultural Innovation : Complete  AgriInnovate Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $180M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
 
   {
     id: 1023,
     slug: "manitoba-business-grants-2026",
-    title: "Manitoba Business Grants 2026: IGP, North Forge & More [Guide]",
+    title: "Manitoba Business Grants : IGP... 2026 | $4",
     excerpt: "Manitoba's Innovation Growth Program gives up to $100K for commercialization. Plus FPEGF for Indigenous businesses and North Forge's startup incubator. Full program list inside.",
     category: "Province-Specific",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -11521,7 +16521,47 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Manitoba Business Grants : IGP, North Forge & More [Guide] Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Manitoba Business Grants : IGP, North Forge & More [Guide] Grant",
+                      "amount": "$4",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Manitoba Business Grants : IGP, North Forge & More [Guide] in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Manitoba Business Grants : IGP, North Forge & More [Guide]?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $4."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1024,
     slug: "healthcare-grants-2026",
@@ -11798,11 +16838,51 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Healthcare Grants Canada :  Available [Who Qualifies] Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Healthcare Grants Canada :  Available [Who Qualifies] Grant",
+                      "amount": "$14B",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Healthcare Grants Canada :  Available [Who Qualifies] in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Healthcare Grants Canada :  Available [Who Qualifies]?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $14B."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1025,
     slug: "manufacturing-grants-2026",
-    title: "Manufacturing Grants 2026: Canada's Industrial Funding",
+    title: "Manufacturing Grants : Canadas... 2026 | $10M",
     excerpt: "🇨🇦 Modernize your factory with Canadian government grants. Learn about SIF, regional equipment loans, and the Canada Job Grant for retraining your workforce.",
     category: "Industry-Specific",
     categoryColor: "bg-orange-100 text-orange-800",
@@ -11952,7 +17032,47 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Manufacturing Grants : Canadas Industrial Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Manufacturing Grants : Canadas Industrial Funding Grant",
+                      "amount": "$10M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Manufacturing Grants : Canadas Industrial Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Manufacturing Grants : Canadas Industrial Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $10M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1026,
     slug: "technology-startup-grants-2026",
@@ -12131,12 +17251,52 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Tech Startup Grants Canada : + Non-Dilutive [Full List] Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Tech Startup Grants Canada : + Non-Dilutive [Full List] Grant",
+                      "amount": "$4B",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Tech Startup Grants Canada : + Non-Dilutive [Full List] in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Tech Startup Grants Canada : + Non-Dilutive [Full List]?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $4B."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
 
   {
     id: 1028,
     slug: "2026-grant-preview-early-bird",
-    title: "2026 Grant Preview Early Bird",
+    title: "Grant Preview Early Bird... 2026 | Funding Guide",
     excerpt: "\ud83d\ude80 2026 Grant Preview: Early Bird Opportunities - $4.8B Future Funding Pipeline\n    \n      \n        \ud83c\udfc6 Top 2026 Early Bird Programs\n        \n          \u2022...",
     category: "Seasonal",
     categoryColor: "bg-indigo-100 text-indigo-800",
@@ -12199,12 +17359,52 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Grant Preview Early Bird Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Grant Preview Early Bird Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Grant Preview Early Bird in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Grant Preview Early Bird?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
 
   {
     id: 1030,
     slug: "atlantic-business-grants-2026",
-    title: "Atlantic Business Grants 2026: Ocean & Growth",
+    title: "Atlantic Business Grants : Oce... 2026 | $2",
     excerpt: "🇨🇦 The East Coast is booming. From the Ocean Supercluster to ACOA's diverse funding programs, discover grants for Nova Scotia, NB, PEI, and Newfoundland.",
     category: "Province-Specific",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -12596,7 +17796,47 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Atlantic Business Grants : Ocean & Growth Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Atlantic Business Grants : Ocean & Growth Grant",
+                      "amount": "$2",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Atlantic Business Grants : Ocean & Growth in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Atlantic Business Grants : Ocean & Growth?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1032,
     slug: "veteran-business-funding-canada-2026",
@@ -12661,11 +17901,51 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Veteran Business Grants Canada : + Available [Apply] Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Veteran Business Grants Canada : + Available [Apply] Grant",
+                      "amount": "$89K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Veteran Business Grants Canada : + Available [Apply] in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Veteran Business Grants Canada : + Available [Apply]?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $89K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1033,
     slug: "canada-housing-community-grants-2026",
-    title: "Canada Housing & Community Grants 2026: Municipal & Project Funding",
+    title: "Canada Housing & Community Gra... 2026 | $4",
     excerpt: "🇨🇦 Access CMHC and FCM funding for housing and community projects. Guide to the Housing Accelerator Fund, Green Municipal Fund, and Rapid Housing Initiative.",
     category: "Canada News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -13068,11 +18348,51 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Canada Housing & Community Grants : Municipal & Project Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Housing & Community Grants : Municipal & Project Funding Grant",
+                      "amount": "$4",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canada Housing & Community Grants : Municipal & Project Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Housing & Community Grants : Municipal & Project Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $4."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1034,
     slug: "women-entrepreneurship-grants-2026",
-    title: "Women Business Grants 2026: Inclusive Growth Strategy",
+    title: "Women Business Grants : Inclus... 2026 | $160",
     excerpt: "🇨🇦 The WES Ecosystem Fund, WEOC loans, and FACERF are changing the game. Discover funding specifically for women-owned businesses in Canada.",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -13410,11 +18730,51 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Women Business Grants : Inclusive Growth Strategy Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Women Business Grants : Inclusive Growth Strategy Grant",
+                      "amount": "$160",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Women Business Grants : Inclusive Growth Strategy in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Women Business Grants : Inclusive Growth Strategy?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $160."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1036,
     slug: "alberta-business-grants-2026",
-    title: "Alberta Business Grants 2026: Innovation & Growth",
+    title: "Alberta Business Grants : Inno... 2026 | Funding Guide",
     excerpt: albertaBusinessGrants2026.excerpt,
     category: "Province-Specific",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -13458,12 +18818,52 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Alberta Business Grants : Innovation & Growth Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Alberta Business Grants : Innovation & Growth Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Alberta Business Grants : Innovation & Growth in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Alberta Business Grants : Innovation & Growth?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2036,
     type: 'grant-news',
     slug: "veterans-business-grants-2026",
-    title: "Veterans Business Grants 2026: SBA & Private Funding",
+    title: "Veterans Business Grants : SBA... 2026 | $15",
     excerpt: "🇺🇸 Complete guide to grants and resources for veteran-owned small businesses (VOSB) and service-disabled veteran-owned small businesses (SDVOSB).",
     category: "Demographic-Specific",
     categoryColor: "bg-indigo-100 text-indigo-800",
@@ -13676,7 +19076,47 @@ However, some large SIF contributions may have repayment terms based on revenue 
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Veterans Business Grants : SBA & Private Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Veterans Business Grants : SBA & Private Funding Grant",
+                      "amount": "$15",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Veterans Business Grants : SBA & Private Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Veterans Business Grants : SBA & Private Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $15."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2037,
     type: 'grant-news',
@@ -13950,12 +19390,52 @@ Write: "This grant will fund a high-capacity oven, allowing me to increase produ
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Womens Business Grants : + Opportunities Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Womens Business Grants : + Opportunities Grant",
+                      "amount": "$10M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Womens Business Grants : + Opportunities in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Womens Business Grants : + Opportunities?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $10M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2038,
     type: 'grant-news',
     slug: "minority-business-grants-2026",
-    title: "Minority Business Grants 2026: Closing the Gap",
+    title: "Minority Business Grants : Clo... 2026 | $4B",
     excerpt: "🇺🇸 Funding sources dedicated to Black, Latino, Asian, and Indigenous entrepreneurs. MBDA Centers, NMSDC certification, and private diversity funds.",
     category: "Demographic-Specific",
     categoryColor: "bg-orange-100 text-orange-800",
@@ -14180,7 +19660,47 @@ However, a single corporate contract can yield 100x that investment.
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Minority Business Grants : Closing the Gap Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Minority Business Grants : Closing the Gap Grant",
+                      "amount": "$4B",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Minority Business Grants : Closing the Gap in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Minority Business Grants : Closing the Gap?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $4B."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2039,
     type: 'grant-news',
@@ -14242,7 +19762,47 @@ ${bidenPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Bidens .5B Small Business Grants:  Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Bidens .5B Small Business Grants:  Guide Grant",
+                      "amount": "$2",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Bidens .5B Small Business Grants:  Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Bidens .5B Small Business Grants:  Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2040,
     type: 'grant-news',
@@ -14304,7 +19864,47 @@ ${doePost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "DOE  Clean Tech Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core DOE  Clean Tech Funding Grant",
+                      "amount": "$800M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for DOE  Clean Tech Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through DOE  Clean Tech Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $800M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2041,
     type: 'grant-news',
@@ -14366,7 +19966,47 @@ ${epaPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "EPA  Environmental Justice Grants Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core EPA  Environmental Justice Grants Grant",
+                      "amount": "$100M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for EPA  Environmental Justice Grants in 2025-2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through EPA  Environmental Justice Grants?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $100M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2042,
     type: 'grant-news',
@@ -14428,12 +20068,52 @@ ${nsfPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "NSF SBIR/STTR:  for STEM Startups Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core NSF SBIR/STTR:  for STEM Startups Grant",
+                      "amount": "$200M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for NSF SBIR/STTR:  for STEM Startups in 2025-2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through NSF SBIR/STTR:  for STEM Startups?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $200M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2043,
     type: 'grant-news',
     slug: "october-2026-last-chance",
-    title: "October 2026: Last Chance Grant Deadlines",
+    title: "October : Last Chance Grant De... 2026 | Funding Guide",
     excerpt: "⏰ Urgent funding alert! Key federal and provincial grant programs closing this month. Don't miss out on over $15M in expiring opportunities.",
     category: "Funding Alerts",
     categoryColor: "bg-red-100 text-red-800",
@@ -14499,12 +20179,52 @@ ${oct2026Post}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "October : Last Chance Grant Deadlines Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core October : Last Chance Grant Deadlines Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for October : Last Chance Grant Deadlines in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through October : Last Chance Grant Deadlines?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2044,
     type: 'grant-news',
     slug: "q4-2026-deadlines",
-    title: "Q4 2026 Grant Deadlines: End of Year Funding",
+    title: "Q4  Grant Deadlines: End of Ye... 2026 | Funding Guide",
     excerpt: "📅 Plan your year-end funding strategy. Critical deadlines for November and December 2026 across all major grant categories.",
     category: "Funding Alerts",
     categoryColor: "bg-orange-100 text-orange-800",
@@ -14570,12 +20290,52 @@ ${q42026Post}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Q4  Grant Deadlines: End of Year Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Q4  Grant Deadlines: End of Year Funding Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Q4  Grant Deadlines: End of Year Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Q4  Grant Deadlines: End of Year Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2045,
     type: 'expert-insight',
     slug: "q1-2026-grant-deadlines",
-    title: "Q1 2026 Grant Forecast: Prepare Now",
+    title: "Q1  Grant Forecast: Prepare No... 2026 | Funding Guide",
     excerpt: "🔮 Get a head start on 2026. Preview of major grant programs opening in January, February, and March 2026.",
     category: "Seasonal",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -14617,12 +20377,52 @@ ${q12026Post}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Q1  Grant Forecast: Prepare Now Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Q1  Grant Forecast: Prepare Now Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Q1  Grant Forecast: Prepare Now in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Q1  Grant Forecast: Prepare Now?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2046,
     type: 'grant-news',
     slug: "sba-sbir-grants-2026",
-    title: "SBA SBIR/STTR 2026: America's Seed Fund",
+    title: "SBA SBIR/STTR : Americas Seed ... 2026 | Funding Guide",
     excerpt: "🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. How to access over $4 billion in non-dilutive R&D funding in 2026.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -14665,12 +20465,52 @@ ${sbaSbirPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "SBA SBIR/STTR : Americas Seed Fund Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core SBA SBIR/STTR : Americas Seed Fund Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for SBA SBIR/STTR : Americas Seed Fund in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through SBA SBIR/STTR : Americas Seed Fund?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2047,
     type: 'expert-insight',
     slug: "grant-writing-secrets-2026",
-    title: "Grant Writing Secrets 2026: 7 Tips from Pro Writers",
+    title: "Grant Writing Secrets : 7 Tips... 2026 | Funding Guide",
     excerpt: "✍️ Increase your approval odds. Professional grant writers share their top strategies for crafting winning proposals in 2026.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -14713,12 +20553,52 @@ ${grantSecretsPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Grant Writing Secrets : 7 Tips from Pro Writers Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Grant Writing Secrets : 7 Tips from Pro Writers Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Grant Writing Secrets : 7 Tips from Pro Writers in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Grant Writing Secrets : 7 Tips from Pro Writers?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2048,
     type: 'grant-news',
     slug: "usda-rural-grants-2026",
-    title: "USDA Rural Business Development Grants 2026",
+    title: "USDA Rural Business Developmen... 2026 | Funding Guide",
     excerpt: "🇺🇸 Support for rural entrepreneurs. The USDA provides grants for training, equipment, and real estate in eligible rural areas.",
     category: "USA News",
     categoryColor: "bg-green-100 text-green-800",
@@ -14760,12 +20640,52 @@ ${usdaRuralPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "USDA Rural Business Development Grants Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core USDA Rural Business Development Grants Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for USDA Rural Business Development Grants in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through USDA Rural Business Development Grants?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2049,
     type: 'grant-news',
     slug: "new-york-business-grants-2026",
-    title: "New York Business Grants 2026: State Guide",
+    title: "New York Business Grants : Sta... 2026 | Funding Guide",
     excerpt: "🗽 Comprehensive guide to business grants in New York State. Covering NYC small business funds, upstate revitalization, and tech incentives.",
     category: "State-Specific",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -14807,12 +20727,52 @@ ${nyGrantsPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "New York Business Grants : State Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core New York Business Grants : State Guide Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for New York Business Grants : State Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through New York Business Grants : State Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2050,
     type: 'grant-news',
     slug: "canada-regional-development-2026",
-    title: "Canada's Regional Development Agencies: 2026 Funding",
+    title: "Canadas Regional Development A... 2026 | Funding Guide",
     excerpt: "🇨🇦 The 7 Regional Development Agencies (RDAs) are a primary source of business funding. Learn which agency covers your region and what they fund.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -14872,12 +20832,52 @@ ${regionalDevPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Canadas Regional Development Agencies:  Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canadas Regional Development Agencies:  Funding Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canadas Regional Development Agencies:  Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canadas Regional Development Agencies:  Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2051,
     type: 'grant-news',
     slug: "innovation-superclusters-2026",
-    title: "Global Innovation Clusters: 2026 Call for Projects",
+    title: "Global Innovation Clusters:  C... 2026 | $100",
     excerpt: "🇨🇦 Canada's Superclusters (now Global Innovation Clusters) are co-investing millions in collaborative tech projects. Digital, Protein, Ocean, AI, and Manufacturing.",
     category: "Canada News",
     categoryColor: "bg-teal-100 text-teal-800",
@@ -14951,12 +20951,52 @@ ${superclustersPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Global Innovation Clusters:  Call for Projects Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Global Innovation Clusters:  Call for Projects Grant",
+                      "amount": "$100",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Global Innovation Clusters:  Call for Projects in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Global Innovation Clusters:  Call for Projects?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $100."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2052,
     type: 'grant-news',
     slug: "rural-business-development-2026",
-    title: "Rural Canada Business Development 2026",
+    title: "Rural Canada Business Developm... 2026 | Funding Guide",
     excerpt: "🇨🇦 Specific funding streams for rural Canadian businesses. CFDC loans, rural broadband funds, and agricultural support.",
     category: "Demographic-Specific",
     categoryColor: "bg-green-100 text-green-800",
@@ -15016,12 +21056,52 @@ ${ruralBizPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Rural Canada Business Development Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Rural Canada Business Development Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Rural Canada Business Development in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Rural Canada Business Development?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 2053,
     type: 'grant-news',
     slug: "sred-tax-credits-2026",
-    title: "SR&ED 2026: Maximizing Your Tax Credits",
+    title: "SR&ED : Maximizing Your Tax Cr... 2026 | Funding Guide",
     excerpt: "🇨🇦 The Scientific Research and Experimental Development (SR&ED) program is Canada's largest R&D incentive. Guide to claiming your 35% credit.",
     category: "Canada News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -15095,11 +21175,51 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "SR&ED : Maximizing Your Tax Credits Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core SR&ED : Maximizing Your Tax Credits Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for SR&ED : Maximizing Your Tax Credits in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through SR&ED : Maximizing Your Tax Credits?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 1009,
     slug: "green-business-funding",
-    title: "Green Business Funding 2026: Sustainability Grants",
+    title: "Green Business Funding : Susta... 2026 | $1",
     excerpt: "Detailed guide to Canada's green business grants for SMEs. Covers retrofits, EV fleets, and zero-waste manufacturing incentives available in 2026.",
     category: "Sustainability",
     categoryColor: "bg-green-100 text-green-800",
@@ -15474,7 +21594,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Green Business Funding : Sustainability Grants Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Green Business Funding : Sustainability Grants Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Green Business Funding : Sustainability Grants in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Green Business Funding : Sustainability Grants?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   // Batch 18: Restored 2025 Content
   {
     id: 3001,
@@ -15522,7 +21682,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Canadas  Clean Technology Leadership | Funding & Grants Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canadas  Clean Technology Leadership | Funding & Grants Grant",
+                      "amount": "$400M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canadas  Clean Technology Leadership | Funding & Grants in 2025?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canadas  Clean Technology Leadership | Funding & Grants?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $400M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3002,
     slug: "apply-usa-grants-2026",
@@ -15569,7 +21769,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Your  Grant Success Blueprint | Application Strategy Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Your  Grant Success Blueprint | Application Strategy Guide Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Your  Grant Success Blueprint | Application Strategy Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Your  Grant Success Blueprint | Application Strategy Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3003,
     slug: "canexport-grants-2026",
@@ -15616,7 +21856,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "CanExport Grants : International Market Expansion | Funding Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core CanExport Grants : International Market Expansion | Funding Guide Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for CanExport Grants : International Market Expansion | Funding Guide in 2025?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through CanExport Grants : International Market Expansion | Funding Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3004,
     slug: "rural-business-development-2026",
@@ -15663,7 +21943,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Rural Business Development Grants : .2B Funding Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Rural Business Development Grants : .2B Funding Guide Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Rural Business Development Grants : .2B Funding Guide in 2025?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Rural Business Development Grants : .2B Funding Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3005,
     slug: "veterans-business-grants-2026",
@@ -15724,11 +22044,51 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Veterans Business Grants :  Funding Revolution Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Veterans Business Grants :  Funding Revolution Grant",
+                      "amount": "$75M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Veterans Business Grants :  Funding Revolution in 2025?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Veterans Business Grants :  Funding Revolution?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $75M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3006,
     slug: "new-york-business-grants-2026",
-    title: "New York Business Grants 2025: Empire State Funding Guide",
+    title: "New York Business Grants : Emp... 2025 | Funding Guide",
     excerpt: "New York State offers $1.8 billion in funding through its Regional Economic Development Councils. Explore the Consolidated Funding Application (CFA), Excelsior Jobs tax credits, and SSBCI opportunities.",
     category: "State-Specific",
     categoryColor: "bg-indigo-100 text-indigo-800",
@@ -15771,7 +22131,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "New York Business Grants : Empire State Funding Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core New York Business Grants : Empire State Funding Guide Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for New York Business Grants : Empire State Funding Guide in 2025?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through New York Business Grants : Empire State Funding Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3007,
     slug: "manufacturing-grants-2026",
@@ -15818,7 +22218,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Manufacturing Grants : .3B Industrial Renaissance Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Manufacturing Grants : .3B Industrial Renaissance Grant",
+                      "amount": "$2",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Manufacturing Grants : .3B Industrial Renaissance in 2025?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Manufacturing Grants : .3B Industrial Renaissance?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3008,
     slug: "minority-business-grants-2026",
@@ -15879,7 +22319,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Minority Business Enterprise Grants : .9B Funding Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Minority Business Enterprise Grants : .9B Funding Guide Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Minority Business Enterprise Grants : .9B Funding Guide in 2025?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Minority Business Enterprise Grants : .9B Funding Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3009,
     slug: "digital-transformation-2026",
@@ -15926,7 +22406,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Canadas  Digital Transformation Revolution: CDAP Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canadas  Digital Transformation Revolution: CDAP Guide Grant",
+                      "amount": "$90M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canadas  Digital Transformation Revolution: CDAP Guide in 2025-2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canadas  Digital Transformation Revolution: CDAP Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $90M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3010,
     slug: "agricultural-innovation-2026",
@@ -15973,7 +22493,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Canadas  Agricultural Innovation Revolution: AgriInnovate Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canadas  Agricultural Innovation Revolution: AgriInnovate Guide Grant",
+                      "amount": "$180M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Canadas  Agricultural Innovation Revolution: AgriInnovate Guide in 2025-2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canadas  Agricultural Innovation Revolution: AgriInnovate Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $180M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3011,
     slug: "usda-rural-grants-2026",
@@ -16020,7 +22580,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "USDAs  Rural Revolution: Business & Innovation Grants Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core USDAs  Rural Revolution: Business & Innovation Grants Grant",
+                      "amount": "$300M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for USDAs  Rural Revolution: Business & Innovation Grants in 2025-2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through USDAs  Rural Revolution: Business & Innovation Grants?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $300M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3012,
     slug: "women-business-grants-2026",
@@ -16089,7 +22689,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Women-Owned Business Grants : .1B Funding Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Women-Owned Business Grants : .1B Funding Guide Grant",
+                      "amount": "$2",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Women-Owned Business Grants : .1B Funding Guide in 2025?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Women-Owned Business Grants : .1B Funding Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3013,
     slug: "technology-startup-grants-2026",
@@ -16158,7 +22798,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Technology Startup Grants : .4B Innovation Fund Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Technology Startup Grants : .4B Innovation Fund Grant",
+                      "amount": "$3",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Technology Startup Grants : .4B Innovation Fund in 2025?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Technology Startup Grants : .4B Innovation Fund?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $3."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3014,
     slug: "healthcare-grants-2026",
@@ -16205,7 +22885,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Healthcare Business Grants : .5B Funding Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Healthcare Business Grants : .5B Funding Guide Grant",
+                      "amount": "$4",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Healthcare Business Grants : .5B Funding Guide in 2025?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Healthcare Business Grants : .5B Funding Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $4."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3015,
     slug: "california-business-grants-2026",
@@ -16252,7 +22972,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "California Small Business Grants : .5B Funding Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core California Small Business Grants : .5B Funding Guide Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for California Small Business Grants : .5B Funding Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through California Small Business Grants : .5B Funding Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3016,
     slug: "florida-business-grants-2026",
@@ -16299,7 +23059,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Florida Business Grants :  Growth Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Florida Business Grants :  Growth Funding Grant",
+                      "amount": "$850M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Florida Business Grants :  Growth Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Florida Business Grants :  Growth Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $850M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3017,
     slug: "illinois-business-development-2026",
@@ -16346,7 +23146,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Illinois Business Development Grants :  Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Illinois Business Development Grants :  Guide Grant",
+                      "amount": "$650M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Illinois Business Development Grants :  Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Illinois Business Development Grants :  Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $650M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3018,
     slug: "michigan-manufacturing-renaissance-2026",
@@ -16393,7 +23233,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Michigan Manufacturing Grants :  Industry 4.0 Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Michigan Manufacturing Grants :  Industry 4.0 Grant",
+                      "amount": "$500M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Michigan Manufacturing Grants :  Industry 4.0 in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Michigan Manufacturing Grants :  Industry 4.0?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $500M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3019,
     slug: "pennsylvania-innovation-2026",
@@ -16458,7 +23338,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Pennsylvania Innovation Grants :  Industrial Fund Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Pennsylvania Innovation Grants :  Industrial Fund Grant",
+                      "amount": "$670M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Pennsylvania Innovation Grants :  Industrial Fund in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Pennsylvania Innovation Grants :  Industrial Fund?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $670M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3020,
     slug: "texas-business-grants-2026",
@@ -16520,7 +23440,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "Texas Business Grants : .2B Enterprise Fund Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Texas Business Grants : .2B Enterprise Fund Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for Texas Business Grants : .2B Enterprise Fund in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Texas Business Grants : .2B Enterprise Fund?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3021,
     slug: "doe-clean-tech-2026",
@@ -16567,7 +23527,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "DOE Clean Energy Grants :  Innovation Fund Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core DOE Clean Energy Grants :  Innovation Fund Grant",
+                      "amount": "$800M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for DOE Clean Energy Grants :  Innovation Fund in 2025?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through DOE Clean Energy Grants :  Innovation Fund?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $800M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3022,
     slug: "epa-environmental-justice-2026",
@@ -16614,7 +23614,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "EPA Environmental Justice Grants :  Community Fund Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core EPA Environmental Justice Grants :  Community Fund Grant",
+                      "amount": "$100M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for EPA Environmental Justice Grants :  Community Fund in 2025?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through EPA Environmental Justice Grants :  Community Fund?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $100M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3023,
     slug: "hud-community-2026",
@@ -16661,7 +23701,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  },
+      comparisonTable: {
+              "title": "HUD Community Development Grants :  CDBG Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core HUD Community Development Grants :  CDBG Guide Grant",
+                      "amount": "$150M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for HUD Community Development Grants :  CDBG Guide in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through HUD Community Development Grants :  CDBG Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $150M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+},
   {
     id: 3024,
     slug: "nsf-stem-research-2026",
@@ -16708,7 +23788,47 @@ ${sredTaxPost}
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
-  }
+      comparisonTable: {
+              "title": "NSF STEM Research Grants :  SBIR/STTR Guide Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core NSF STEM Research Grants :  SBIR/STTR Guide Grant",
+                      "amount": "$200M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faqSchema: [
+              {
+                  "question": "What is the application deadline for NSF STEM Research Grants :  SBIR/STTR Guide in 2025?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through NSF STEM Research Grants :  SBIR/STTR Guide?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $200M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+}
 ];
 
 export const blogCategories = [
