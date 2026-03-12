@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable';
+import { GrantComparisonTable } from '@/components/blog/GrantComparisonTable';
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox';
 import { GlobalGrantGuide } from '@/components/blog/GlobalGrantGuide';
 import { getStateDetailBySlug, getAllStateDetails, getQueryBasedSections, getQueryExpanders, getRelatedGuides } from '@/lib/data/stateDetails';
@@ -179,6 +180,17 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                                 <div className="text-sm text-gray-600">Processing Time</div>
                             </div>
                         </div>
+
+                        {/* DWELL TIME: Comparison Table */}
+                        {state.comparisonTable && (
+                            <div className="mb-10">
+                                <GrantComparisonTable
+                                    title={state.comparisonTable.title}
+                                    description={state.comparisonTable.description}
+                                    programs={state.comparisonTable.programs}
+                                />
+                            </div>
+                        )}
                     </header>
 
                     {/* Table of Contents */}

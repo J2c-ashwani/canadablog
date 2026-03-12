@@ -94,6 +94,17 @@ export interface BlogPost {
   }[]
   // E-E-A-T "Short Answer" Strategy Fields (Phase 9)
   shortAnswer?: string;
+  comparisonTable?: {
+      title: string;
+      description?: string;
+      programs: {
+          program: string;
+          amount: string;
+          equity: string;
+          bestFor: string;
+          timeline?: string;
+      }[];
+  };
   jumpLinks?: { title: string; id: string }[];
   eligibleCheck?: boolean;
   inlineCTA?: {

@@ -21,6 +21,7 @@ import { getBlogPostBySlug, getAllBlogPosts, blogCategories } from '@/lib/data/b
 import { generateMetadata as generateSEOMetadata, generateArticleSchema, generateOrganizationSchema, generateHowToSchema } from '@/lib/seo';
 import { generateBlogPostSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/schema';
 import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable";
+import { GrantComparisonTable } from "@/components/blog/GrantComparisonTable";
 import { RelatedPageLinks } from '@/components/RelatedPageLinks';
 import { ExpertTipBox } from "@/components/blog/ExpertTipBox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -219,6 +220,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         icon: <IconComponent className="w-6 h-6" />
                       };
                     })}
+                  />
+                </div>
+              )}
+
+              {/* DYNAMIC ENRICHMENT: Comparison Table */}
+              {post.comparisonTable && (
+                <div className="mb-10 not-prose">
+                  <GrantComparisonTable
+                    title={post.comparisonTable.title}
+                    description={post.comparisonTable.description}
+                    programs={post.comparisonTable.programs}
                   />
                 </div>
               )}

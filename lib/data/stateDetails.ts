@@ -141,6 +141,17 @@ export interface StateDetailedGrant {
     relatedGuides?: string[];  // Guide slugs to link to
     // E-E-A-T Components
     shortAnswer?: string;
+    comparisonTable?: {
+        title: string;
+        description?: string;
+        programs: {
+            program: string;
+            amount: string;
+            equity: string;
+            bestFor: string;
+            timeline?: string;
+        }[];
+    };
     eligibleCheck?: boolean;
     inlineCTA?: {
         title?: string;
@@ -165,6 +176,16 @@ export const stateDetails: StateDetailedGrant[] = [
             avgProcessingTime: '60-120 days'
         },
 
+        comparisonTable: {
+            title: "Top California Business Grants Compared",
+            description: "A quick comparison of the highest-value funding programs in California.",
+            programs: [
+                { program: "CalSEED", amount: "Up to K", equity: "0%", bestFor: "Clean energy prototypes", timeline: "4-6 months" },
+                { program: "California Competes", amount: "Variable Tax Credit", equity: "None", bestFor: "Companies expanding & hiring", timeline: "60-90 days" },
+                { program: "IBank Loan Guarantees", amount: "Up to 80% of loan", equity: "None", bestFor: "Accessing capital without high credit", timeline: "30-60 days" },
+                { program: "STEP Grant", amount: "Up to K", equity: "0%", bestFor: "Exporting & international expansion", timeline: "30-45 days" }
+            ]
+        },
         shortAnswer: "California has $8.5B+ in active funding across 150+ programs — but most small businesses only access 1-2 of them. The highest-value, least-competitive programs are CalSEED ($150K-$450K, no equity), IBank Loan Guarantees, and the California Competes Tax Credit. Processing takes 60-120 days.",
         eligibleCheck: true,
         inlineCTA: {
@@ -626,6 +647,15 @@ The state's commitment to climate leadership has also spawned a robust ecosystem
             avgProcessingTime: '45-90 days'
         },
 
+        comparisonTable: {
+            title: "Top Texas Business Grants Compared",
+            programs: [
+                { program: "Texas Enterprise Fund", amount: "Up to M", equity: "0%", bestFor: "Major job creation & relocation", timeline: "60-120 days" },
+                { program: "Skills Development Fund", amount: "Up to K", equity: "0%", bestFor: "Custom workforce training", timeline: "45-90 days" },
+                { program: "CPRIT Grants", amount: "Up to M", equity: "Revenue sharing", bestFor: "Life sciences & cancer research", timeline: "6-9 months" },
+                { program: "Texas STEP", amount: "Up to K", equity: "0%", bestFor: "Exporting to international markets", timeline: "30-45 days" }
+            ]
+        },
         shortAnswer: "Texas businesses access $5.2B+ through the Texas Enterprise Fund (up to $100M for job creators), Skills Development Fund ($500K workforce grants), and CPRIT ($20M for life sciences). Most programs have no equity requirement. Processing: 45-90 days.",
         eligibleCheck: true,
         inlineCTA: {
@@ -1121,6 +1151,15 @@ Texas also offers significant property and sales tax abatements through Chapter 
             avgProcessingTime: '60-120 days'
         },
 
+        comparisonTable: {
+            title: "Top New York Business Grants Compared",
+            programs: [
+                { program: "Excelsior Jobs Program", amount: "Up to 6.85% tax credit", equity: "0%", bestFor: "Targeted industry job creation", timeline: "60-90 days" },
+                { program: "ESD Grant Funds", amount: "Up to 20% of project cost", equity: "0%", bestFor: "Capital expansion & machinery", timeline: "90-120 days" },
+                { program: "NYS Innovation VC Fund", amount: "Up to M", equity: "Yes (Direct Equity)", bestFor: "High-growth tech startups", timeline: "3-6 months" },
+                { program: "Global NY Grant", amount: "Up to K", equity: "0%", bestFor: "Export trade missions & marketing", timeline: "45-60 days" }
+            ]
+        },
         shortAnswer: "New York offers $7.1B+ via the Excelsior Jobs Program (tax credits up to 6.85%), Regional Economic Development Councils, and ESD grants. NYC businesses also access dedicated city programs. Start with Empire State Development (ESD). Processing: 60-90 days.",
         eligibleCheck: true,
         inlineCTA: {
@@ -2868,6 +2907,15 @@ The state's manufacturing sector is also undergoing a significant renaissance, d
             avgProcessingTime: '45-60 days'
         },
 
+        comparisonTable: {
+            title: "Top Ohio Small Business Grants Compared",
+            programs: [
+                { program: "JobsOhio Growth Fund", amount: "Varies (Loan/Grant)", equity: "0%", bestFor: "Job-creating expansions", timeline: "30-60 days" },
+                { program: "Ohio TechCred", amount: "Up to ,000/credential", equity: "0%", bestFor: "Upskilling existing workforce", timeline: "30 days" },
+                { program: "JobsOhio Inclusion Grant", amount: "Up to ,000", equity: "0%", bestFor: "Minority-, women-, or veteran-owned", timeline: "45 days" },
+                { program: "Innovation Ohio Loan", amount: "Up to 75% of costs", equity: "None", bestFor: "Targeted industry commercialization", timeline: "60-90 days" }
+            ]
+        },
         shortAnswer: "Ohio's JobsOhio is a private-sector fund — meaning faster approvals and less red tape than most states. $2.1B+ flows through 70+ programs. Best kept secrets: Ohio TechCred ($2K/credential to upskill staff) and the Inclusion Grant for minority-owned businesses. Apply in 45-60 days.",
         eligibleCheck: true,
         inlineCTA: {
