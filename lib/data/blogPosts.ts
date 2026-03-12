@@ -2189,6 +2189,12 @@ export const blogPosts: BlogPost[] = [
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
     ],
+    faq: [
+      { question: 'How much can I get from the DOD SBIR program?', answer: 'Phase I awards up to $256K (typically 6 months). Phase II awards up to $1.7M (typically 2 years). Some agencies also offer Phase III commercialization contracts worth millions. Funding is non-dilutive — zero equity given up.' },
+      { question: 'Who qualifies for DOD SBIR grants?', answer: 'US small businesses with fewer than 500 employees, majority US-owned, with the primary employment of the Principal Investigator in the US. The technology must align with a specific DOD solicitation topic.' },
+      { question: 'What is the success rate for DOD SBIR Phase I?', answer: 'Success rates vary by agency — typically 15-30%. Army and Navy components have higher success rates than DARPA. Applicants who attend pre-solicitation workshops and match their tech to a specific topic number see 2x higher success rates.' },
+      { question: 'How long does DOD SBIR take to award?', answer: 'Phase I: approximately 6 months from submission to award notification. The solicitation process runs twice per year for most agencies. Fast-track options exist that can reduce timeline to 2-3 months.' },
+    ],
   },
   {
     id: 40,
@@ -3489,6 +3495,12 @@ export const blogPosts: BlogPost[] = [
       { title: "Overview", id: "overview" },
       { title: "Eligibility Requirements", id: "eligibility" },
       { title: "How to Apply", id: "how-to-apply" }
+    ],
+    faq: [
+      { question: 'What is the NSF SBIR grant and how much does it pay?', answer: 'NSF SBIR Phase I awards up to $275,000 with no equity given up. Phase II awards up to $2,000,000 for companies that commercially validate their Phase I innovation. All funded companies retain full IP ownership.' },
+      { question: 'Who qualifies for NSF SBIR?', answer: 'US small businesses with fewer than 500 employees where the Principal Investigator will spend more than 50% of their working time at the applicant company during the award period. The technology must be innovative, high-risk, and have clear commercial potential.' },
+      { question: 'How do I match my startup to an NSF SBIR topic?', answer: 'NSF SBIR is topic-agnostic — unlike DOD SBIR, you do not need to match a specific topic. Your innovation just needs to be scientifically rigorous and commercially promising. However, aligning your abstract with an NSF directorate (e.g., TIP, ENG, BIO) greatly helps reviewers score your application.' },
+      { question: 'What is the NSF SBIR success rate?', answer: 'NSF SBIR Phase I has a success rate of approximately 20-25% for formally submitted proposals. The invitation-only Phase II rate is much higher — around 50% — because only Phase I winners are eligible.' },
     ],
   },
   {

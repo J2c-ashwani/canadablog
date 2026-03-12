@@ -626,7 +626,7 @@ The state's commitment to climate leadership has also spawned a robust ecosystem
             avgProcessingTime: '45-90 days'
         },
 
-        shortAnswer: "Texas offers $5.2B+ in small business funding through 95+ active programs. The average processing time is 45-90 days.",
+        shortAnswer: "Texas businesses access $5.2B+ through the Texas Enterprise Fund (up to $100M for job creators), Skills Development Fund ($500K workforce grants), and CPRIT ($20M for life sciences). Most programs have no equity requirement. Processing: 45-90 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Texas grants?",
@@ -1121,7 +1121,7 @@ Texas also offers significant property and sales tax abatements through Chapter 
             avgProcessingTime: '60-120 days'
         },
 
-        shortAnswer: "New York offers $7.1B+ in small business funding through 120+ active programs. The average processing time is 60-120 days.",
+        shortAnswer: "New York offers $7.1B+ via the Excelsior Jobs Program (tax credits up to 6.85%), Regional Economic Development Councils, and ESD grants. NYC businesses also access dedicated city programs. Start with Empire State Development (ESD). Processing: 60-90 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for New York grants?",
@@ -1613,7 +1613,7 @@ New York has also committed unprecedented resources to green economy initiatives
             avgProcessingTime: '30-60 days'
         },
 
-        shortAnswer: "Florida offers $3.8B+ in small business funding through 75+ active programs. The average processing time is 30-60 days.",
+        shortAnswer: "Florida has $3.8B+ across the Qualified Target Industry (QTI) Tax Refund program, Capital Investment Tax Credit, and Florida SBDC free advisory network. No state income tax means every grant dollar goes further. Processing: 30-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Florida grants?",
@@ -2096,7 +2096,7 @@ The state's population has grown by millions in recent years, driven significant
             avgProcessingTime: '45-90 days'
         },
 
-        shortAnswer: "Illinois offers $3.5B+ in small business funding through 85+ active programs. The average processing time is 45-90 days.",
+        shortAnswer: "Illinois distributes $3.5B+ through the EDGE Tax Credit (corporate income tax offset), Advantage Illinois loan program, and DCEO grants. Chicago businesses access an additional $500M+ in city-level programs. Processing: 45-90 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Illinois grants?",
@@ -2477,7 +2477,7 @@ Illinois is also a leader in clean energy transition, with the Climate and Equit
         },
 
 
-        shortAnswer: "Pennsylvania offers $2.9B+ in small business funding through 90+ active programs. The average processing time is 45-60 days.",
+        shortAnswer: "Pennsylvania's top programs: Ben Franklin Tech Partners (up to $500K for tech startups), PIDA industrial loans, and Keystone Innovation Zone (KIZ) tax credits. Unique feature: KIZ credits are sellable for instant cash. Processing: 45-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Pennsylvania grants?",
@@ -3243,7 +3243,7 @@ The state is investing heavily in "Innovation Districts" in its three major citi
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "Georgia offers $2.4B+ in small business funding through 65+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "Georgia offers $2.4B+ including the Job Tax Credit ($4,000/job created), OneGeorgia Authority rural grants, and Georgia SBIC seed funding. The Quick Start workforce training program is free and one of the nation's best. Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Georgia grants?",
@@ -3605,7 +3605,7 @@ Beyond logistics, Georgia has become a premier destination for film and televisi
             avgProcessingTime: '30-90 days'
         },
 
-        shortAnswer: "North Carolina offers $2.0B+ in small business funding through 60+ active programs. The average processing time is 30-90 days.",
+        shortAnswer: "North Carolina has $2B+ via the Job Development Investment Grant (JDIG — cash incentive per job), One North Carolina Fund, and the NC SBIR Matching Grant (matches federal awards dollar-for-dollar). Processing: 30-90 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for North Carolina grants?",
@@ -3976,7 +3976,7 @@ Outside the metros, the state maintains a powerful manufacturing base, producing
             avgProcessingTime: '40-70 days'
         },
 
-        shortAnswer: "Michigan offers $1.8B+ in small business funding through 55+ active programs. The average processing time is 40-70 days.",
+        shortAnswer: "Michigan offers $1.8B+ through the Michigan Business Development Program (cash grants $100K-$3M), MEDC incentives, and the SBAM member funding network. EV and mobility sector companies receive priority. Processing: 40-70 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Michigan grants?",
@@ -4351,7 +4351,7 @@ The state is pivoting aggressively to Industry 4.0, helping legacy manufacturers
             avgProcessingTime: '45-90 days'
         },
 
-        shortAnswer: "New Jersey offers $1.7B+ in small business funding through 50+ active programs. The average processing time is 45-90 days.",
+        shortAnswer: "New Jersey distributes $1.7B+ via the Emerge and Aspire tax credit programs, the NJEDA Small Business Emergency Assistance Fund, and NJ SBDC free consulting. Film and tech projects receive enhanced credits. Processing: 45-90 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for New Jersey grants?",
@@ -4726,7 +4726,7 @@ The state has aggressively pivoted toward the innovation economy, creating the "
             avgProcessingTime: '30-60 days'
         },
 
-        shortAnswer: "Virginia offers $1.5B+ in small business funding through 45+ active programs. The average processing time is 30-60 days.",
+        shortAnswer: "Virginia offers $1.5B+ including the Virginia Jobs Investment Program (VJIP — cash reimbursements per job trained), Governor's Opportunity Fund, and CIT Gap Fund for tech startups. Program decisions in as few as 30 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Virginia grants?",
@@ -5098,7 +5098,7 @@ The state is investing aggressively in site readiness to attract semiconductor a
             avgProcessingTime: '45-90 days'
         },
 
-        shortAnswer: "Washington offers $1.9B+ in small business funding through 40+ active programs. The average processing time is 45-90 days.",
+        shortAnswer: "Washington distributes $1.9B+ via the B&O Tax credits, Innovation Partnership Zones, and the WA SBDC network. Clean energy and aerospace companies access additional dedicated programs via Commerce. Processing: 45-90 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Washington grants?",
@@ -5467,7 +5467,7 @@ Beyond tech, Washington is an agricultural giant (apples, wheat, wine) and a lea
             avgProcessingTime: '60-120 days'
         },
 
-        shortAnswer: "Massachusetts offers $2.5B+ in small business funding through 65+ active programs. The average processing time is 60-120 days.",
+        shortAnswer: "Massachusetts offers $2.5B+ through MassDevelopment loans and bonds, the Life Science Center grants ($50M+ annually), and the Small Business Technical Assistance program. Boston-area companies benefit from the densest SBDC network in the US. Processing: 60-90 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Massachusetts grants?",
@@ -5838,7 +5838,7 @@ West of Boston, the economy shifts toward precision manufacturing and defense. T
             avgProcessingTime: '30-60 days'
         },
 
-        shortAnswer: "Arizona offers $1.6B+ in small business funding through 40+ active programs. The average processing time is 30-60 days.",
+        shortAnswer: "Arizona has $1.6B+ via the Quality Jobs Tax Credit, Arizona Commerce Authority grants, and the AZSBDC network. Semiconductor and aerospace companies qualify for strategic incentives. Lowest average processing time in the Southwest: 30-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Arizona grants?",
@@ -6208,7 +6208,7 @@ The state's economy is successfully diversifying away from just construction and
             avgProcessingTime: '45-75 days'
         },
 
-        shortAnswer: "Colorado offers $1.4B+ in small business funding through 45+ active programs. The average processing time is 45-75 days.",
+        shortAnswer: "Colorado offers $1.4B+ through the Advanced Industries Accelerator grants ($250K for early-stage companies), OEDIT incentive programs, and SBDC consultation. Clean tech and space companies receive priority under the Governor's Energy Office. Processing: 45-75 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Colorado grants?",
@@ -6577,7 +6577,7 @@ Rural Colorado allows for diverse opportunities in outdoor recreation manufactur
             avgProcessingTime: '45-90 days'
         },
 
-        shortAnswer: "Minnesota offers $1B+ in small business funding through 35+ active programs. The average processing time is 45-90 days.",
+        shortAnswer: "Minnesota distributes $1B+ via the Minnesota Investment Fund (MIF — direct business grants), DEED programs, and the Angel Investment Tax Credit (25% credit). Businesses in agriculture and precision manufacturing receive targeted funding. Processing: 45-90 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Minnesota grants?",
@@ -6944,7 +6944,7 @@ Biobusiness is the crown jewel, but Minnesota is also a leader in financial serv
             avgProcessingTime: '45-90 days'
         },
 
-        shortAnswer: "Maryland offers $1.8B+ in small business funding through 55+ active programs. The average processing time is 45-90 days.",
+        shortAnswer: "Maryland offers $1.8B+ including TEDCO seed grants ($50K-$2M for startups), Maryland DBED incentives, and the MSBDFA loans for minority businesses. Proximity to federal agencies makes Maryland top for SBIR/STTR matching. Processing: 45-90 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Maryland grants?",
@@ -7311,7 +7311,7 @@ Maryland leads the nation in cyber-related jobs due to the presence of US Cyber 
             avgProcessingTime: '45-75 days'
         },
 
-        shortAnswer: "Indiana offers $1.1B+ in small business funding through 30+ active programs. The average processing time is 45-75 days.",
+        shortAnswer: "Indiana offers $1.1B+ via the IEDC Growth Fund, Skills Enhancement Fund (up to $5K/employee), and the 21st Century Research Grant. Life sciences and advanced manufacturing companies receive priority. Processing: 45-75 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Indiana grants?",
@@ -7677,7 +7677,7 @@ Northern Indiana is a global capital for medical devices (Warsaw) and RV manufac
             avgProcessingTime: '30-60 days'
         },
 
-        shortAnswer: "Tennessee offers $1.3B+ in small business funding through 25+ active programs. The average processing time is 30-60 days.",
+        shortAnswer: "Tennessee distributes $1.3B+ through FastTrack Business Development Grants, the Job Creation Tax Credit ($4.5K/job), and INCITE co-investment fund for startups. No state income tax amplifies every grant dollar. Processing: 30-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Tennessee grants?",
@@ -8049,7 +8049,7 @@ Chattanooga ("Gig City") offers the world's fastest internet, driving a tech ren
             avgProcessingTime: '45-75 days'
         },
 
-        shortAnswer: "Wisconsin offers $1B+ in small business funding through 30+ active programs. The average processing time is 45-75 days.",
+        shortAnswer: "Wisconsin offers $1B+ via WEDC grants, the Technology Development Loan Fund, and the Wisconsin Economic Development tax credits. Dairy, biotech, and advanced manufacturing receive targeted programs. Processing: 45-75 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Wisconsin grants?",
@@ -8414,7 +8414,7 @@ Wisconsin virtually eliminates income tax for manufacturers (the Manufacturing &
             avgProcessingTime: '30-60 days'
         },
 
-        shortAnswer: "Missouri offers $900M+ in small business funding through 25+ active programs. The average processing time is 30-60 days.",
+        shortAnswer: "Missouri distributes $900M+ through the Strengthen Missouri SEED Fund, Missouri Works Tax Credits ($6K/job), and MOSIRA grants for science companies. Most decisions in 30-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Missouri grants?",
@@ -8779,7 +8779,7 @@ The state is strategically located for logistics, reaching 50% of the US populat
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "South Carolina offers $800M+ in small business funding through 25+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "South Carolina offers $800M+ via the Closing Fund (Governor discretionary grants), Job Tax Credits, and ReadySC free workforce training. Tie the fastest state in the South for grant approval: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for South Carolina grants?",
@@ -9141,7 +9141,7 @@ Exporting is easy here—the Port of Charleston is the most productive port in N
             avgProcessingTime: '45-60 days'
         },
 
-        shortAnswer: "Alabama offers $850M+ in small business funding through 20+ active programs. The average processing time is 45-60 days.",
+        shortAnswer: "Alabama distributes $850M+ through the Alabama AIDT workforce training (100% free), the Jobs Credit Act incentives, and the Innovation Award for small manufacturers. Processing: 45-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Alabama grants?",
@@ -9503,7 +9503,7 @@ The state offers a predictable, statutory incentive package via the "Jobs Act" a
             avgProcessingTime: '45-60 days'
         },
 
-        shortAnswer: "Louisiana offers $750M+ in small business funding through 25+ active programs. The average processing time is 45-60 days.",
+        shortAnswer: "Louisiana offers $750M+ via the Industrial Tax Exemption (100% property tax break for manufacturers), the Digital Media Tax Credit, and LED FastStart free workforce training. Processing: 45-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Louisiana grants?",
@@ -9864,7 +9864,7 @@ Louisiana is a top exporter, with the Port of South Louisiana being the largest 
             avgProcessingTime: '45-60 days'
         },
 
-        shortAnswer: "Kentucky offers $800M+ in small business funding through 20+ active programs. The average processing time is 45-60 days.",
+        shortAnswer: "Kentucky distributes $800M+ through the Kentucky Business Investment Program (KBI — tax incentives + grants), the SBIR Matching Grant, and KTAP tech accelerator. Processing: 45-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Kentucky grants?",
@@ -10224,7 +10224,7 @@ Manufacturing is king—Ford trucks, Toyota Camrys, and aluminum production driv
             avgProcessingTime: '45-90 days'
         },
 
-        shortAnswer: "Oregon offers $650M+ in small business funding through 25+ active programs. The average processing time is 45-90 days.",
+        shortAnswer: "Oregon offers $650M+ via Business Oregon programs, the Oregon Production Investment Fund for media, and the Entrepreneurial Development Loan Fund. Clean energy startups get priority. Processing: 45-90 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Oregon grants?",
@@ -10587,7 +10587,7 @@ Oregon is B-Corp friendly and rewards sustainable business practices with prefer
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "Oklahoma offers $700M+ in small business funding through 20+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "Oklahoma distributes $700M+ through the Quality Jobs Program (quarterly cash rebates), Oklahoma SBIR Match, and i2E Innovation Awards. Energy and aerospace companies get dedicated tracks. Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Oklahoma grants?",
@@ -10931,7 +10931,7 @@ Oregon is B-Corp friendly and rewards sustainable business practices with prefer
             avgProcessingTime: '60-90 days'
         },
 
-        shortAnswer: "Connecticut offers $500M+ in small business funding through 30+ active programs. The average processing time is 60-90 days.",
+        shortAnswer: "Connecticut offers $500M+ via DECD grants, the Connecticut Angel Investor Tax Credit (25%), and the CTNext ecosystem fund for tech startups. Defense and biotech companies receive enhanced programs. Processing: 60-90 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Connecticut grants?",
@@ -11291,7 +11291,7 @@ Electric Boat (submarines) and Pratt & Whitney (jet engines) drive a massive aer
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "Iowa offers $450M+ in small business funding through 15+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "Iowa distributes $450M+ through the High-Quality Jobs Program (tax credits + direct grants), Iowa Economic Development CEBA grants, and ISUF university commercialization funding. Agriculture tech gets priority treatment. Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Iowa grants?",
@@ -11652,7 +11652,7 @@ Advanced manufacturing (John Deere, Vermeer) anchors the rural economy. The Rene
             avgProcessingTime: '45-60 days'
         },
 
-        shortAnswer: "Mississippi offers $400M+ in small business funding through 15+ active programs. The average processing time is 45-60 days.",
+        shortAnswer: "Mississippi offers $400M+ via the Mississippi Business Finance Corporation (below-market loans), the Rural Economic Development Grant, and Skills Training Act reimbursements. Processing: 45-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Mississippi grants?",
@@ -12042,7 +12042,7 @@ You file your taxes and apply the credit. For Advantage Jobs rebates, you file q
             avgProcessingTime: '45-60 days'
         },
 
-        shortAnswer: "Arkansas offers $350M+ in small business funding through 15+ active programs. The average processing time is 45-60 days.",
+        shortAnswer: "Arkansas distributes $350M+ through the Create Rebate incentive (cash rebate per job), AEDC Business Development Loans, and the Apprenticeship Tax Credit ($2K/apprentice). Processing: 45-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Arkansas grants?",
@@ -12401,7 +12401,7 @@ Steel production is booming in Northeast Arkansas with Big River Steel (Nucor). 
             successRate: '40-50%',
             avgProcessingTime: '30-45 days'
         },
-        shortAnswer: "Kansas offers $300M+ in small business funding through 20+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "Kansas offers $300M+ via the Promoting Employment Across Kansas (PEAK) incentive, the High Performance Incentive Program, and the KTEC Seed Accelerator Fund for tech startups. Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Kansas grants?",
@@ -12742,7 +12742,7 @@ Steel production is booming in Northeast Arkansas with Big River Steel (Nucor). 
             avgProcessingTime: '60-90 days'
         },
 
-        shortAnswer: "Utah offers $450M+ in small business funding through 20+ active programs. The average processing time is 60-90 days.",
+        shortAnswer: "Utah distributes $450M+ through the GOED Economic Development Tax Increment Finance, the Utah SBIR Matching Grant, and the Industrial Assistance Fund. Silicon Slopes tech startups access dedicated programs. Processing: 60-90 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Utah grants?",
@@ -13135,7 +13135,7 @@ The state cuts you a check (refundable tax credit) for 30% of the new taxes you 
             avgProcessingTime: '45-60 days'
         },
 
-        shortAnswer: "Nevada offers $250M+ in small business funding through 15+ active programs. The average processing time is 45-60 days.",
+        shortAnswer: "Nevada offers $250M+ via the Governor's Office of Economic Development (GOED) incentives, the Nevada SBIR Matching Grant, and the Rural Community Development Grant. No corporate income tax makes every dollar go further. Processing: 45-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Nevada grants?",
@@ -13521,7 +13521,7 @@ You sign the contract and receive a "Tax Exemption Certificate" to show vendors 
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "New Mexico offers $300M+ in small business funding through 20+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "New Mexico distributes $300M+ through the Job Training Incentive Program (JTIP — wage reimbursements), LEDA grants for rural areas, and the Small Business Recovery Loans (0% interest). Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for New Mexico grants?",
@@ -13880,7 +13880,7 @@ New Mexico's cluster of National Labs spins off deep-tech startups at a rapid pa
             avgProcessingTime: '45-60 days'
         },
 
-        shortAnswer: "West Virginia offers $200M+ in small business funding through 12+ active programs. The average processing time is 45-60 days.",
+        shortAnswer: "West Virginia offers $200M+ via the WORK WV workforce training grant, the WV SBDC free consulting, and the Research Challenge Fund for university spinouts. Processing: 45-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for West Virginia grants?",
@@ -14263,7 +14263,7 @@ Most tax credits are claimed on the annual return, but you may need certificatio
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "Nebraska offers $250M+ in small business funding through 15+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "Nebraska distributes $250M+ through the Nebraska Advantage Act (tax incentives + grants), ImagiNE Nebraska incentives, and the InternNE wage subsidy program. Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Nebraska grants?",
@@ -14658,7 +14658,7 @@ Using the tax credits requires annual reporting. Set up your accounting system t
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "Idaho offers $180M+ in small business funding through 12+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "Idaho offers $180M+ via Idaho Global Entrepreneurial Mission (IGEM) grants, Tax Reimbursement Incentives (TRI), and the Idaho SBDC free advising. Semiconductor and agritech companies get priority. Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Idaho grants?",
@@ -15050,7 +15050,7 @@ You sign the contract. You assume the risk. You hire the people. THEN you get th
             avgProcessingTime: '45-60 days'
         },
 
-        shortAnswer: "Hawaii offers $100M+ in small business funding through 10+ active programs. The average processing time is 45-60 days.",
+        shortAnswer: "Hawaii distributes $100M+ through the High Technology Development Corporation, the Hawaii Technology Development Venture program, and HTDC incubator grants. Tourism-adjacent and oceans tech businesses get unique programs. Processing: 45-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Hawaii grants?",
@@ -15443,7 +15443,7 @@ If you are Native Hawaiian owned, connect with OHA (Office of Hawaiian Affairs) 
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "Maine offers $150M+ in small business funding through 15+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "Maine offers $150M+ via the Maine Technology Institute (MTI — grants up to $500K), Finance Authority of Maine (FAME) loans, and rural business development grants. Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Maine grants?",
@@ -15835,7 +15835,7 @@ MTI requires regular status reports. PTDZ requires annual reporting to Maine Rev
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "New Hampshire offers $100M+ in small business funding through 10+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "New Hampshire distributes $100M+ through the CDFA New Market Tax Credits, NH SBDC free advising, and Innovation Merit Awards. No state income tax or sales tax gives NH businesses a built-in cost advantage. Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for New Hampshire grants?",
@@ -16233,7 +16233,7 @@ If you are in biotech, the path is distinct. Engagement with ARMI (BioFabUSA) in
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "Rhode Island offers $80M+ in small business funding through 15+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "Rhode Island offers $80M+ via RIEDC growth grants, the Innovation Initiative, and the Small Business Loan Fund. Defense, biotech, and marine tech companies receive enhanced support from the state's proximity to federal labs. Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Rhode Island grants?",
@@ -16628,7 +16628,7 @@ Join the "Venture Café Providence" gatherings. It is the center of gravity for 
             avgProcessingTime: '45-60 days'
         },
 
-        shortAnswer: "Montana offers $120M+ in small business funding through 10+ active programs. The average processing time is 45-60 days.",
+        shortAnswer: "Montana distributes $120M+ through the Montana Growth Through Agriculture grant, the Big Sky Economic Development program, and Montana State University commercialization grants. Agriculture and clean energy technologies receive priority. Processing: 45-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Montana grants?",
@@ -17022,7 +17022,7 @@ Remote work has brought an influx of talent and capital, creating a "Zoom Town" 
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "Delaware offers $100M+ in small business funding through 10+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "Delaware offers $100M+ via the Delaware Strategic Fund (quick decision grants), Blue Hen 250 funding, and the EDGE grant for early-stage companies. Incorporation in Delaware gives access to some federal grants faster. Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Delaware grants?",
@@ -17415,7 +17415,7 @@ Strategic Fund grants are usually paid out *after* milestones are met (e.g., Cer
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "South Dakota offers $80M+ in small business funding through 8+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "South Dakota distributes $80M+ through the Governor's Office of Economic Development, GOED workforce grants, and the Revolving Economic Development Initiative (REDI) fund. No state income tax. Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for South Dakota grants?",
@@ -17720,7 +17720,7 @@ REDI Fund offers low-interest loans for job creation.`,
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "North Dakota offers $90M+ in small business funding through 10+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "North Dakota offers $90M+ via the PACE program (equity gap financing), the Agriculture Products Utilization Commission, and the Innovate ND grant for tech startups ($15K no-strings grants). Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for North Dakota grants?",
@@ -18113,7 +18113,7 @@ LIFT funds are drawn down as needed. PACE interest buys downs happen automatical
             avgProcessingTime: '45-60 days'
         },
 
-        shortAnswer: "Alaska offers $50M+ in small business funding through 8+ active programs. The average processing time is 45-60 days.",
+        shortAnswer: "Alaska distributes $50M+ through the Alaska Small Business Development Center, the Denali Commission grant for rural businesses, and AIDEA loans for development projects. Resources and fisheries companies get dedicated programs. Processing: 45-60 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Alaska grants?",
@@ -18515,7 +18515,7 @@ Funding disbursement can be slow. If you are timing your funding for the summer 
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "Vermont offers $60M+ in small business funding through 8+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "Vermont offers $60M+ via the Vermont Economic Growth Initiative (VEGI — income tax credits), the Vermont Sustainable Jobs Fund, and SBDC free advising. Agriculture and small-scale manufacturing receive strong local support. Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Vermont grants?",
@@ -18916,7 +18916,7 @@ Emphasize sustainability and community. If your business is a B-Corp or has an e
             avgProcessingTime: '30-45 days'
         },
 
-        shortAnswer: "Wyoming offers $50M+ in small business funding through 6+ active programs. The average processing time is 30-45 days.",
+        shortAnswer: "Wyoming distributes $50M+ through the Wyoming Business Council grants, the Wyoming Enterprise Fund, and the Manufacturing, Agriculture, and Mining grant programs. No state income tax means grant money goes further here than almost anywhere. Processing: 30-45 days.",
         eligibleCheck: true,
         inlineCTA: {
             title: "Need expert help applying for Wyoming grants?",
