@@ -7698,7 +7698,7 @@ Maryland leads the nation in cyber-related jobs due to the presence of US Cyber 
                 programs: ['Baltimore Development Corp', 'Opportunity Zones']
             },
             {
-                city: 'Rockville / Bethesda',
+                city: 'Rockville-Bethesda',
                 description: 'BioHealth Capital. Home to NIH, FDA, and hundreds of biotech firms.',
                 keyIndustries: ['Biotech', 'Life Sciences', 'Hospitality HQ'],
                 programs: ['MOVE Grant', 'Biotech Credit']
