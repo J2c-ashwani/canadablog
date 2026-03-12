@@ -181,7 +181,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Agriculture & Agri-Food Canada Grants  | Federal Funding Programs Guide | AAFC Support in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -266,7 +266,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for AI & Machine Learning Grants -2027 |  NSF SBIR,  AI Research Institutes, DOD AI Applications Non-Dilutive Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -487,7 +487,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Alberta Government Business Grants  | Provincial Energy & Innovation Funding Programs Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -572,7 +572,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Alberta Innovation Grants & Funding  | + Energy Transition, AI & CleanTech Support in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -656,7 +656,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Alberta Small Business Grants  | + Alberta SME Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -741,7 +741,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Alberta Women Business Grants  |  Energy & Tech Support Programs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -826,7 +826,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Amber Grant for Women Canada  | Monthly  Grants +  Annual Award in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -911,7 +911,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Atlantic Canada Innovation Grants & Funding  | 15% ACITC | + Ocean Tech Support in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -996,7 +996,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Atlantic Canada Small Business Grants  | + ACOA & Provincial SME Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -1081,7 +1081,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for BC Small Business Grants  | .3B+ British Columbia SME Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -1166,7 +1166,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for BC Women Business Grants  |  Innovation & Tech Support Programs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -1251,7 +1251,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for BDC Women Entrepreneurs Financing  | Flexible Loans & Advisory for Women-Led Business Growth in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -1336,7 +1336,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Biotech & Life Sciences Grants -2027 |  NIH SBIR,  Phase II, .2B Seed Fund, FDA Orphan Drug Grants Non-Dilutive in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -1421,7 +1421,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for BMO Celebrating Women Grant  |  Grants + Business Advisory for Women Entrepreneurs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -1642,7 +1642,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for British Columbia Government Business Grants  | BC Provincial Funding Programs Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -1727,7 +1727,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for British Columbia Innovation Grants & Tax Credits  | 10% BCITC | .8B+ CleanTech Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -1812,7 +1812,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for California Tech Startup Grants -2027 |  CalSEED,  SBIR Match, Tax Credits & Silicon Valley Funding Programs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -1897,7 +1897,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Advanced Manufacturing Innovation Grants  | .1B+ Industry 4.0 Funding | NGen in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -1982,7 +1982,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Aerospace & Defence Grants  | + Space Technology & Aviation Funding | CSA Programs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -2067,7 +2067,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Agri-Food Technology Grants  | .3B+ AgriInnovate & Precision Agriculture Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -2152,7 +2152,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Agriculture & Agri-Food Grants  | .3B+ Agricultural Innovation Funding Programs Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -2237,7 +2237,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Clean Technology & Environment Grants  | .2B+ Sustainability Funding Programs Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -2322,7 +2322,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Clean Technology Innovation Grants  | .2B+ CleanTech Funding | SDTC & Net Zero in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -2407,7 +2407,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -2492,7 +2492,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Employment & Workforce Training Grants  | .9B+ Skills Development Funding Programs Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -2577,7 +2577,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Export Development Grants  | + International Market Expansion Across 18+ Programs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -2662,7 +2662,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Federal Grants in 2025-2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -2747,7 +2747,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Growth & Expansion Grants  | .8B+ Scale-Up Funding Across 42+ Programs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -2832,7 +2832,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Hiring & Training Grants  | .9B+ Workforce Development Across 28+ Programs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -2917,7 +2917,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Industry Specific Grants  | .5B+ Sector-Focused Programs Across 25+ Industries in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -3002,7 +3002,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Innovation & R&D Grants  | .2B+ Research Development Funding Programs Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -3087,7 +3087,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Life Sciences Grants  | + Biotech & Medical Device Funding | Clinical Trials Support in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -3172,7 +3172,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Manufacturing & Industry Grants  | .1B+ Advanced Manufacturing Funding Programs Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -3257,7 +3257,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Regional Economic Development Grants  | .8B+ Community Growth Funding Programs Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -3342,7 +3342,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Startup Grants : 35+ Programs Worth .2B+ [Apply] in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -3427,7 +3427,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Technology Adoption Grants  | + Digital Transformation Across 22+ Programs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -3512,7 +3512,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Cartier Women in 2025-2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -3597,7 +3597,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Clean Tech & Energy Grants -2027 |  DOE SBIR, .6M Phase II, EPA Environmental Tech Non-Dilutive Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -3752,21 +3752,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Colorado Tech Startup Grants -2027 |  Advanced Industries Accelerator,  Early-Stage Capital, SBIR Matching, Clean Energy Fund in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Colorado Tech Startup Grants -2027 |  Advanced Industries Accelerator,  Early-Stage Capital, SBIR Matching, Clean Energy Fund?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $500K."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 40,
@@ -3838,7 +3824,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Stage 4: Commercialization & Scale-Up Funding Canada  | Strategic Innovation Fund | Up to in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -3923,7 +3909,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canada Small Business Financing Program (CSBFP)  | Up to  Business Loans in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -4010,7 +3996,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for CSBFP Canada Small Business Financing Program  | Government Guaranteed Loans Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -4122,21 +4108,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Cybersecurity Grants -2027 | .8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Cybersecurity Grants -2027 | .8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 44,
@@ -4210,7 +4182,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Stage 3: Demonstration & Pilot Funding Canada  | SDTC & Clean Growth | Up to  Project Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -4297,7 +4269,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Stage 2: Development & Proof-of-Concept Funding Canada  | IRAP & SR&ED | Up to  Technology Development in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -4384,7 +4356,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for DOD SBIR : Win .7M in Defense Grants (No Equity, No Repayment) in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -4471,7 +4443,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for DOE SBIR Clean Energy Grants -2027 |  Phase I, .85M Phase II Renewable Energy Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -4558,7 +4530,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for EDC Women in Trade Export Financing  | Equity Capital & Export Support for Women Exporters in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -4659,21 +4631,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Federal Grants for Women, Minorities & Veterans  | Specialized Business Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Federal Grants for Women, Minorities & Veterans  | Specialized Business Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 50,
@@ -4747,7 +4705,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Hardware & IoT Startup Grants -2027 |  NSF SBIR, .25M Phase II, DOD Electronics Non-Dilutive Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -4834,7 +4792,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Stage 1: Ideation & Research Funding Canada  | NSERC Discovery Grants | Up to  Early-Stage R&D in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -4921,7 +4879,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Indigenous & Rural Business Funding Canada  | + Aboriginal Business Grants & Rural Development in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -5008,7 +4966,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Indigenous Women Business Grants Canada -2027 | NACCA Funding , First Nations Support, Cultural Enterprise Grants Toronto Vancouver Winnipeg in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -5109,21 +5067,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Industry-Specific Business Grants Guide  | Sector-Focused Funding Programs in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Industry-Specific Business Grants Guide  | Sector-Focused Funding Programs?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 55,
@@ -5196,7 +5140,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Industrial Research Assistance Program (IRAP)  | Up to  Tech Grants in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -5283,7 +5227,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for IRAP Industrial Research Assistance Program Canada  | Government R&D Funding Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -5370,7 +5314,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for IRAP Industrial Research Assistance Program  | Up to  Innovation Funding for SMEs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -5457,7 +5401,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Manitoba Small Business Grants  | + Business Development Programs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -5558,21 +5502,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Massachusetts Tech Startup Grants -2027 |  SBIR START,  MassCEC InnovateMass, Life Sciences Center Biotech Funding Programs in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Massachusetts Tech Startup Grants -2027 |  SBIR START,  MassCEC InnovateMass, Life Sciences Center Biotech Funding Programs?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $500K."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 60,
@@ -5660,21 +5590,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for NASA SBIR Space Tech Grants -2027 |  Phase I,  Phase II Satellite & Aeronautics Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through NASA SBIR Space Tech Grants -2027 |  Phase I,  Phase II Satellite & Aeronautics Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $150K."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 61,
@@ -5762,21 +5678,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for New York Tech Startup Grants -2027 | START-UP NY Tax-Free 10 Years,  Seed Matching Fund, NYSERDA Clean Energy Innovation Programs in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through New York Tech Startup Grants -2027 | START-UP NY Tax-Free 10 Years,  Seed Matching Fund, NYSERDA Clean Energy Innovation Programs?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $250K."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 62,
@@ -5864,21 +5766,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for NIH SBIR Biotech Grants -2027 |  Phase I,  Phase II Medical Device & Digital Health Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through NIH SBIR Biotech Grants -2027 |  Phase I,  Phase II Medical Device & Digital Health Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $285K."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 63,
@@ -5966,21 +5854,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for NSERC Research Grants Canada  | Natural Sciences & Engineering Funding Guide in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through NSERC Research Grants Canada  | Natural Sciences & Engineering Funding Guide?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 64,
@@ -6059,21 +5933,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for NSF SBIR Grants : The  Startup Grant Most Founders Dont Know About in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through NSF SBIR Grants : The  Startup Grant Most Founders Dont Know About?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 65,
@@ -6161,21 +6021,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for National Women in 2025-2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through National Women?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 66,
@@ -6384,7 +6230,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Ontario Government Business Grants  | Provincial Funding Programs Guide | OCED Support in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -6471,7 +6317,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Ontario Innovation Grants & Tax Credits  | OITC 10% Tax Credit | .2B+ R&D Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -6558,7 +6404,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Ontario Small Business Grants  | .1B+ Available for Ontario SMEs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -6645,7 +6491,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Ontario Women Business Grants  |  Support Programs & Non-Repayable Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -6732,7 +6578,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Prairie Provinces Innovation Grants  | + AgriFood, Mining & Renewable Energy Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -6833,21 +6679,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Private Women Grants Guide  | Foundation Grants for Female Entrepreneurs in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Private Women Grants Guide  | Foundation Grants for Female Entrepreneurs?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 72,
@@ -6907,20 +6739,6 @@ export const blogPosts: BlogPost[] = [
       type: 'warning',
       content: "Under Bill 96, if your business has 25 or more employees, you must undergo the <strong>Francization process</strong>. Failure to comply makes you instantly ineligible for provincial grants."
     },
-    faq: [
-      {
-        question: "What is Investissement Québec (IQ)?",
-        answer: "Investissement Québec is the central economic development agency for the province. They act as both a lender and a grant provider, administering major programs like the <strong>ESSOR program</strong> for capital investments."
-      },
-      {
-        question: "How do Quebec R&D tax credits work with federal SR&ED?",
-        answer: "Quebec offers some of the most generous R&D credits in North America. The provincial credit (up to 30% refundable) stacks with the federal SR&ED program, allowing early-stage startups to recover up to <strong>73% of eligible R&D salaries</strong>."
-      },
-      {
-        question: "Do I have to do business in French to get a grant?",
-        answer: "Yes. In Quebec, government correspondence, applications, and official business operations must respect the Charter of the French Language. Grants are often tied directly to compliance."
-      }
-    ],
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",
@@ -6958,21 +6776,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Quebec Government Business Grants  | Aide aux Entreprises & Provincial Funding Programs Guide in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Quebec Government Business Grants  | Aide aux Entreprises & Provincial Funding Programs Guide?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 73,
@@ -7046,7 +6850,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Quebec Innovation Grants & Tax Credits  | 30% CRIC R&D Tax Credit | .5B+ Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -7133,7 +6937,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Quebec Small Business Grants  | .8B+ Quebec SME Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -7220,7 +7024,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Quebec Women Business Grants  |  Francophone Entrepreneur Support Programs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -7307,7 +7111,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for RBC Canadian Women Entrepreneur Awards : Complete Guide to + in Grants & Recognition in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -7394,7 +7198,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Regional Development Agencies Canada  | RDA Federal Funding Guide | 7 Regional Programs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -7481,7 +7285,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Saskatchewan Small Business Grants  | + SME Growth Programs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -7582,21 +7386,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for SBA 7(a) Loans Complete Guide  | Small Business Administration Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through SBA 7(a) Loans Complete Guide  | Small Business Administration Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 80,
@@ -7684,21 +7474,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for SBA Disaster Relief Loans Guide  | Emergency Business Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through SBA Disaster Relief Loans Guide  | Emergency Business Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 81,
@@ -7785,21 +7561,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for SBA Loans & Grants Complete Guide  | Small Business Administration Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through SBA Loans & Grants Complete Guide  | Small Business Administration Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 82,
@@ -7887,21 +7649,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for SBA Microloans Complete Guide  | Small Business Microloan Program in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through SBA Microloans Complete Guide  | Small Business Microloan Program?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 83,
@@ -7989,21 +7737,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for SBIR Small Business Innovation Research  | Federal R&D Grant Guide in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through SBIR Small Business Innovation Research  | Federal R&D Grant Guide?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 84,
@@ -8091,21 +7825,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for SBIR & STTR Grants Complete Guide  | Small Business Innovation Research in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through SBIR & STTR Grants Complete Guide  | Small Business Innovation Research?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 85,
@@ -8179,7 +7899,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Scotiabank Women Initiative  | Capital Funding + Mentorship + Education for Women Entrepreneurs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -8266,7 +7986,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Small Business Grants Complete Guide  | SBA & Federal Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -8353,7 +8073,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Software & SaaS Startup Grants -2027 |  NSF SBIR, .25M Phase II, DOD Software Modernization Non-Dilutive Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -8439,7 +8159,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for SR&ED Tax Credits Canada  | Scientific Research & Experimental Development Guide - 65% Refundable in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -8540,21 +8260,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for State & Local Business Grants Guide  | Regional Economic Development Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through State & Local Business Grants Guide  | Regional Economic Development Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 90,
@@ -8628,7 +8334,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for State Province Grants in 2025-2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -8715,7 +8421,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for State Women Business Programs Guide  | Local Government Grants for Female Entrepreneurs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -8802,7 +8508,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Strategic Innovation Fund Canada  | + SIF Funding Guide | Innovation Projects in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -8889,7 +8595,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Territories Small Business Grants  | + NT, YT, Nunavut Combined Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -8990,21 +8696,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Usa Federal Grants in 2025-2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Usa Federal Grants?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 95,
@@ -9078,7 +8770,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for USDA SBIR AgTech Grants -2027 |  Phase I,  Phase II Agriculture & Food Tech Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -9165,7 +8857,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Washington Tech Startup Grants -2027 |  WRF Technology Commercialization,  Innovation Modernization Program, Clean Energy Fund in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -9252,7 +8944,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for WBDC Equity Match Grant 2027 | ,500-,000 for Women Business Growth Projects in 2025-2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -9339,7 +9031,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Women in 2025-2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -9426,7 +9118,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Women Clean Technology Grants Canada -2027 | Clean Energy Funding , Sustainability Innovation Support Toronto Vancouver Montreal in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -9513,7 +9205,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Women Entrepreneurship Fund Canada  | Non-Repayable Grants for Women-Owned Business Growth in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -9600,7 +9292,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Women Entrepreneurship Loan Fund (WELF)  | Up to  Microloans for Women Entrepreneurs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -9686,7 +9378,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Women Entrepreneurship Strategy Canada  | + Female Business Grants & Loans in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -9773,7 +9465,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Women Entrepreneurship Strategy Canada  | WES Federal Funding Guide |  Investment in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -9860,7 +9552,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Women Export Trade Grants Canada -2027 | CanExport Funding , International Expansion Support Toronto Vancouver Montreal in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -9947,7 +9639,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Women Manufacturing Grants Canada -2027 |  Equipment Funding Ontario Toronto Vancouver Calgary Montreal | Advanced Manufacturing Business Loans Women Entrepreneurs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -10034,7 +9726,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Women Social Enterprise Grants Canada -2027 | Social Impact Funding Toronto Vancouver Montreal Calgary | Community Development Purpose-Driven Business Support Women Entrepreneurs in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -10121,7 +9813,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Women in Technology & STEM Grants Guide  | Female Tech Entrepreneur Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -10208,7 +9900,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Women in Technology Grants Canada  | AI, Software & Digital Innovation Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -10295,7 +9987,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for WOSB Federal Contracting Guide  | Women-Owned Small Business Certification in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -10382,7 +10074,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Youth Entrepreneurship Canada  | + Young Entrepreneur Grants & Business Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -10483,7 +10175,7 @@ export const blogPosts: BlogPost[] = [
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canadian Small Business Grant Forecast in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -10711,21 +10403,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Black Entrepreneurship Loan Fund :  Funding Guide in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Black Entrepreneurship Loan Fund :  Funding Guide?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $250K."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
 
   {
@@ -10938,21 +10616,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Newcomer Entrepreneur Grants : Innovation & Growth in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Newcomer Entrepreneur Grants : Innovation & Growth?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $265M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1005,
@@ -11143,21 +10807,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for BC Business Grants : Innovation & Growth in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through BC Business Grants : Innovation & Growth?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $240."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1006,
@@ -11344,21 +10994,7 @@ export const blogPosts: BlogPost[] = [
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Northern Canada Business Grants : Arctic Opportunity in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Northern Canada Business Grants : Arctic Opportunity?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $30."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1007,
@@ -11575,21 +11211,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Innovation Canada Grants : R&D & Tech Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Innovation Canada Grants : R&D & Tech Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
 
   {
@@ -11809,21 +11431,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Quebec Business Grants : Innovation Capital in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Quebec Business Grants : Innovation Capital?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $300."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1011,
@@ -12007,21 +11615,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Saskatchewan Business Grants : Prairie Innovation in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Saskatchewan Business Grants : Prairie Innovation?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $400."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
 
   {
@@ -12391,21 +11985,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Clean Technology : Canadas .1B Green Funding Guide in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Clean Technology : Canadas .1B Green Funding Guide?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $9."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1016,
@@ -12668,21 +12248,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Small Business Financing : Canadas  Expansion Guide in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Small Business Financing : Canadas  Expansion Guide?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $250M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1017,
@@ -13388,21 +12954,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Indigenous Business Development in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Indigenous Business Development?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $120M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1018,
@@ -14001,21 +13553,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Canexport Grants in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Canexport Grants?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $75M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1019,
@@ -14566,21 +14104,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Canada Irap Grants in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Canada Irap Grants?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $400M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1020,
@@ -15388,21 +14912,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Digital Transformation in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Digital Transformation?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $15."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1021,
@@ -16298,21 +15808,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Agricultural Innovation : Complete  AgriInnovate Guide in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Agricultural Innovation : Complete  AgriInnovate Guide?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $180M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
 
   {
@@ -16546,21 +16042,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Manitoba Business Grants : IGP, North Forge & More [Guide] in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Manitoba Business Grants : IGP, North Forge & More [Guide]?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $4."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1024,
@@ -16863,21 +16345,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Healthcare Grants Canada :  Available [Who Qualifies] in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Healthcare Grants Canada :  Available [Who Qualifies]?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $14B."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1025,
@@ -17057,21 +16525,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Manufacturing Grants : Canadas Industrial Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Manufacturing Grants : Canadas Industrial Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $10M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1026,
@@ -17276,21 +16730,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Tech Startup Grants Canada : + Non-Dilutive [Full List] in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Tech Startup Grants Canada : + Non-Dilutive [Full List]?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $4B."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
 
   {
@@ -17384,21 +16824,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Grant Preview Early Bird in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Grant Preview Early Bird?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
 
   {
@@ -17821,21 +17247,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Atlantic Business Grants : Ocean & Growth in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Atlantic Business Grants : Ocean & Growth?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1032,
@@ -17926,21 +17338,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Veteran Business Grants Canada : + Available [Apply] in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Veteran Business Grants Canada : + Available [Apply]?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $89K."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1033,
@@ -18373,21 +17771,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Canada Housing & Community Grants : Municipal & Project Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Canada Housing & Community Grants : Municipal & Project Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $4."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1034,
@@ -18755,21 +18139,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Women Business Grants : Inclusive Growth Strategy in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Women Business Grants : Inclusive Growth Strategy?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $160."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1036,
@@ -18843,21 +18213,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Alberta Business Grants : Innovation & Growth in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Alberta Business Grants : Innovation & Growth?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 2036,
@@ -19101,21 +18457,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Veterans Business Grants : SBA & Private Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Veterans Business Grants : SBA & Private Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $15."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 2037,
@@ -19415,21 +18757,7 @@ Write: "This grant will fund a high-capacity oven, allowing me to increase produ
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Womens Business Grants : + Opportunities in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Womens Business Grants : + Opportunities?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $10M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 2038,
@@ -19685,21 +19013,7 @@ However, a single corporate contract can yield 100x that investment.
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Minority Business Grants : Closing the Gap in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Minority Business Grants : Closing the Gap?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $4B."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 2039,
@@ -19787,21 +19101,7 @@ ${bidenPost}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Bidens .5B Small Business Grants:  Guide in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Bidens .5B Small Business Grants:  Guide?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 2040,
@@ -19889,21 +19189,7 @@ ${doePost}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for DOE  Clean Tech Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through DOE  Clean Tech Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $800M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 2041,
@@ -19991,21 +19277,7 @@ ${epaPost}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for EPA  Environmental Justice Grants in 2025-2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through EPA  Environmental Justice Grants?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $100M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 2042,
@@ -20093,21 +19365,7 @@ ${nsfPost}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for NSF SBIR/STTR:  for STEM Startups in 2025-2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through NSF SBIR/STTR:  for STEM Startups?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $200M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 2043,
@@ -20204,21 +19462,7 @@ ${oct2026Post}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for October : Last Chance Grant Deadlines in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through October : Last Chance Grant Deadlines?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 2044,
@@ -20315,21 +19559,7 @@ ${q42026Post}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Q4  Grant Deadlines: End of Year Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Q4  Grant Deadlines: End of Year Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 2045,
@@ -20403,7 +19633,7 @@ ${q12026Post}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Q1  Grant Forecast: Prepare Now in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -20491,7 +19721,7 @@ ${sbaSbirPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for SBA SBIR/STTR : Americas Seed Fund in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -20579,7 +19809,7 @@ ${grantSecretsPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Grant Writing Secrets : 7 Tips from Pro Writers in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -20666,7 +19896,7 @@ ${usdaRuralPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for USDA Rural Business Development Grants in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -20753,7 +19983,7 @@ ${nyGrantsPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for New York Business Grants : State Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -20858,7 +20088,7 @@ ${regionalDevPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canadas Regional Development Agencies:  Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -20976,21 +20206,7 @@ ${superclustersPost}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Global Innovation Clusters:  Call for Projects in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Global Innovation Clusters:  Call for Projects?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $100."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 2052,
@@ -21082,7 +20298,7 @@ ${ruralBizPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Rural Canada Business Development in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -21200,21 +20416,7 @@ ${sredTaxPost}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for SR&ED : Maximizing Your Tax Credits in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through SR&ED : Maximizing Your Tax Credits?",
-                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 1009,
@@ -21619,21 +20821,7 @@ ${sredTaxPost}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Green Business Funding : Sustainability Grants in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Green Business Funding : Sustainability Grants?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   // Batch 18: Restored 2025 Content
   {
@@ -21708,7 +20896,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canadas  Clean Technology Leadership | Funding & Grants in 2025?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -21795,7 +20983,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Your  Grant Success Blueprint | Application Strategy Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -21882,7 +21070,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for CanExport Grants : International Market Expansion | Funding Guide in 2025?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -21969,7 +21157,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Rural Business Development Grants : .2B Funding Guide in 2025?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -22069,21 +21257,7 @@ ${sredTaxPost}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Veterans Business Grants :  Funding Revolution in 2025?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Veterans Business Grants :  Funding Revolution?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $75M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 3006,
@@ -22157,7 +21331,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for New York Business Grants : Empire State Funding Guide in 2025?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -22244,7 +21418,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Manufacturing Grants : .3B Industrial Renaissance in 2025?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -22344,21 +21518,7 @@ ${sredTaxPost}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Minority Business Enterprise Grants : .9B Funding Guide in 2025?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Minority Business Enterprise Grants : .9B Funding Guide?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 3009,
@@ -22432,7 +21592,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canadas  Digital Transformation Revolution: CDAP Guide in 2025-2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -22519,7 +21679,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Canadas  Agricultural Innovation Revolution: AgriInnovate Guide in 2025-2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -22606,7 +21766,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for USDAs  Rural Revolution: Business & Innovation Grants in 2025-2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -22714,21 +21874,7 @@ ${sredTaxPost}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Women-Owned Business Grants : .1B Funding Guide in 2025?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Women-Owned Business Grants : .1B Funding Guide?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 3013,
@@ -22823,21 +21969,7 @@ ${sredTaxPost}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Technology Startup Grants : .4B Innovation Fund in 2025?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Technology Startup Grants : .4B Innovation Fund?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $3."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 3014,
@@ -22911,7 +22043,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Healthcare Business Grants : .5B Funding Guide in 2025?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -22998,7 +22130,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for California Small Business Grants : .5B Funding Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -23085,7 +22217,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Florida Business Grants :  Growth Funding in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -23172,7 +22304,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Illinois Business Development Grants :  Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -23259,7 +22391,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for Michigan Manufacturing Grants :  Industry 4.0 in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -23363,21 +22495,7 @@ ${sredTaxPost}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Pennsylvania Innovation Grants :  Industrial Fund in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Pennsylvania Innovation Grants :  Industrial Fund?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $670M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 3020,
@@ -23465,21 +22583,7 @@ ${sredTaxPost}
                       "timeline": "90 Days"
                   }
               ]
-          },
-      faqSchema: [
-              {
-                  "question": "What is the application deadline for Texas Business Grants : .2B Enterprise Fund in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Texas Business Grants : .2B Enterprise Fund?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+          }
 },
   {
     id: 3021,
@@ -23553,7 +22657,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for DOE Clean Energy Grants :  Innovation Fund in 2025?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -23640,7 +22744,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for EPA Environmental Justice Grants :  Community Fund in 2025?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -23727,7 +22831,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for HUD Community Development Grants :  CDBG Guide in 2026?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
@@ -23814,7 +22918,7 @@ ${sredTaxPost}
                   }
               ]
           },
-      faqSchema: [
+      faq: [
               {
                   "question": "What is the application deadline for NSF STEM Research Grants :  SBIR/STTR Guide in 2025?",
                   "answer": "Deadlines typically vary by specific program tier. However, for 2025, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
