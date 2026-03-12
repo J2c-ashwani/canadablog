@@ -94,6 +94,7 @@ export interface BlogPost {
   }[]
   // E-E-A-T "Short Answer" Strategy Fields (Phase 9)
   shortAnswer?: string;
+  faqSchema?: { question: string; answer: string; }[];
   comparisonTable?: {
       title: string;
       description?: string;
