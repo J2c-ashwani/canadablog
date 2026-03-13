@@ -41,10 +41,14 @@ export default function CanadaGrantsPage() {
                 Business Growth
               </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-red-100 leading-relaxed text-pretty">
-              Access over 300 federal and provincial grant programs with $800M+ in available funding for Canadian
-              entrepreneurs and businesses.
-            </p>
+            {/* EEAT Badge — inside hero */}
+            <div className="mb-6 flex justify-center">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+            {/* Short Answer — question-first, data-rich, inside hero */}
+            <div className="mb-8 text-left">
+              <ShortAnswerBox content="**Can Canadian businesses get non-repayable government grants in 2026?**&#10;&#10;Yes — and the most powerful programs are stackable. The SR&ED tax credit alone returns 35–70% of your R&D spend as a CRA cheque (no competition, no application — you just do the work and file). NRC-IRAP grants fund up to $10M for direct innovation projects. The CDAP Digital Adoption Grant provides $15,000 cash within 4–8 weeks. Stacking all three on a single $200K R&D project can yield over $120K in government contributions — without surrendering any equity." />
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold">
                 Browse Federal Grants
@@ -56,16 +60,15 @@ export default function CanadaGrantsPage() {
           </div>
         </div>
       </section>
-      {/* EEAT Components */}
+      {/* EligibleCheck below hero */}
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto space-y-4">
-            <ShortAnswerBox content="Canada offers 300+ government grant programs with $10B+ available annually. Key programs include IRAP (up to $500K), SR&ED tax credits (up to 65% refundable), Strategic Innovation Fund ($100M+), and provincial grants across all 10 provinces." />
-            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+          <div className="max-w-4xl mx-auto">
             <EligibleCheck />
           </div>
         </div>
       </section>
+
 
 
       {/* Stats */}

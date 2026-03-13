@@ -159,7 +159,7 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
                             <ShortAnswerBox content={state.shortAnswer.replace(new RegExp(state.name, 'g'), cityData.city)} />
                         )}
                         <div className="mt-4 mb-6">
-                            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-12" />
+                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-12" />
                         </div>
 
                         <p className="text-xl text-gray-600 mb-6">

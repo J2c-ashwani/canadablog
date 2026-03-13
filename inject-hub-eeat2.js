@@ -69,7 +69,7 @@ for (const page of REMAINING_PAGES) {
                     {/* EEAT Components */}
                     <div className="mb-8 space-y-3 max-w-3xl mx-auto">
                       <ShortAnswerBox content="${safeAnswer}" />
-                      <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+                      <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
                       <EligibleCheck />
                     </div>
 `;

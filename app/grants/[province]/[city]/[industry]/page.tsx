@@ -260,7 +260,7 @@ export default function PseoLandingPage({ params }: { params: { province: string
 
                     {/* Author Badge */}
                     <div className="mb-4">
-                        <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date={new Date(page.publishedAt).toISOString().split('T')[0]} />
+                        <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date={new Date(page.publishedAt).toISOString().split('T')[0]} />
                     </div>
 
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-6">

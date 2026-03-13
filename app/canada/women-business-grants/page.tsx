@@ -67,7 +67,7 @@ export default function CanadaWomenBusinessGrantsPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
             <ShortAnswerBox content="Yes — Canadian women entrepreneurs have access to: WES Women Entrepreneurship Fund ($10K–$100K non-repayable grants), BDC Women in Technology Venture Fund ($500K–$10M equity for women-led tech), EDC Women Exporter financing and insurance, Women's Business Centres (loans $5K–$150K in Western Canada), WES Ecosystem accelerator and incubator programming, and all mainstream programs (SR&ED, IRAP, CSBFP, CDAP) equally. Both WES-specific and mainstream programs should be pursued simultaneously." />
-            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
             <EligibleCheck />
           </div>
         </div>

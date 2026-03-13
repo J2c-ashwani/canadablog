@@ -67,7 +67,7 @@ export default function CanadaInnovationGrantsPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
             <ShortAnswerBox content="Yes — Canadian technology and innovation companies access three complementary core programs: NRC IRAP ($50K–$2M for R&D wages, rolling intake), SR&ED tax credits (35% refundable for CCPCs on all qualifying R&D), and SDTC ($500K–$10M for cleantech demonstrations). These are supplemented by NSERC academic partnerships ($25K–$1M), the Strategic Innovation Fund ($1M–$50M for major projects), and Regional Development Agency innovation grants. IRAP + SR&ED together can cover 70–90% of a Canadian tech SME's R&D costs." />
-            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
             <EligibleCheck />
           </div>
         </div>

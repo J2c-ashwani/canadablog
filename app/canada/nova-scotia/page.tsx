@@ -105,7 +105,7 @@ export default function NovaScotiaGrantsPage() {
                             <ShortAnswerBox content="Nova Scotia provides hundreds of millions in provincial government grants and funding programs for startups, small businesses, and expanding enterprises in 2026." />
                         </div>
                         <div className="mt-4 mb-8 flex justify-center">
-                            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-02-09" />
+                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
                         </div>
                         <div className="mt-8 mb-8">
                             <EligibleCheck />

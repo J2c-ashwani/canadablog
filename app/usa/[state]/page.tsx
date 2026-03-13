@@ -155,7 +155,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                             <ShortAnswerBox content={state.shortAnswer} />
                         )}
                         <div className="mt-4 mb-6">
-                            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-02-09" />
+                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
                         </div>
                         <p className="text-xl text-gray-600 mb-6">
                             Complete guide to {state.heroStats.totalFunding} in {state.name} business funding across {state.heroStats.programCount} programs

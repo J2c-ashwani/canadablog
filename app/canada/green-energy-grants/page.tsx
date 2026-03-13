@@ -64,7 +64,7 @@ export default function GreenEnergyGrantsPage() {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto space-y-4">
                         <ShortAnswerBox content="Yes — Canadian clean energy and cleantech companies have access to the largest government funding ecosystem in Canadian history. Refundable Clean Investment Tax Credits (15–40% of qualifying capital investment), SDTC grants ($500K–$10M), the Net Zero Accelerator (up to $400M for industrial decarbonization), IRAP cleantech R&D funding ($50K–$2M), and province-specific clean energy programs from BC, Ontario, Alberta, and Quebec." />
-                        <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+                        <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
                         <EligibleCheck />
                     </div>
                 </div>

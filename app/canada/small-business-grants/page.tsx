@@ -66,7 +66,7 @@ export default function CanadaSmallBusinessGrantsPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
             <ShortAnswerBox content="Yes — Canadian small businesses have access to multiple funding programs: CSBFP government-backed loans (up to $1.5M through your bank), SR&ED tax credits (35% refundable for CCPCs on qualifying R&D), NRC IRAP for technology SMEs ($50K–$2M), CDAP digital adoption grants ($2,400–$100K), Regional Development Agency contributions by province, and Futurpreneur loans ($20K–$60K) for entrepreneurs aged 18–39. Most Canadian SMEs qualify for 2–3 programs simultaneously." />
-            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
             <EligibleCheck />
           </div>
         </div>

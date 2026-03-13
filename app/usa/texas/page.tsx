@@ -64,7 +64,7 @@ export default function TexasGrantsPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
             <ShortAnswerBox content="Yes — Texas businesses benefit from zero state income tax (a permanent annual advantage saving $50K–$2M+ per year for profitable companies), Texas Enterprise Fund grants (up to $10M for relocations/expansions), Emerging Technology Fund co-investment ($250K–$3M for tech startups), SBIR state matching funds (50% state co-match on federal awards), and the Skills Development Fund (up to $500K for workforce training). Texas ranks #3 nationally for federal SBIR/STTR awards." />
-            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
             <EligibleCheck />
           </div>
         </div>

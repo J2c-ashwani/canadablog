@@ -44,9 +44,14 @@ export default function USAGrantsPage() {
                 USA Businesses
               </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed text-pretty">
-              Access billions in non-dilutive funding through federal agencies, state programs, and specialized initiatives for American entrepreneurs.
-            </p>
+            {/* EEAT Badge — inside hero */}
+            <div className="mb-6 flex justify-center">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+            {/* Short Answer — question-first, data-rich, inside hero */}
+            <div className="mb-8 text-left">
+              <ShortAnswerBox content="**Can U.S. businesses get government grants in 2026?**\n\nYes — and the amounts are substantial. The SBIR program alone distributes $4B+ per year in non-repayable R&D grants exclusively to U.S. small businesses, with Phase I awards up to $305K (NSF) and Phase II up to $2M (DOD, NIH, DOE). Beyond SBIR, SBA microloans ($5K–$50K), state economic development grants, and 26+ federal agency programs add billions more. Unlike loans, these funds are non-repayable and require no equity surrender — the primary barrier is finding the right program and submitting a technically strong application." />
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold">
                 Browse Federal Grants
@@ -58,12 +63,10 @@ export default function USAGrantsPage() {
           </div>
         </div>
       </section>
-      {/* EEAT Components */}
+      {/* EligibleCheck below hero */}
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto space-y-4">
-            <ShortAnswerBox content="Yes — U.S. businesses can access $50B+ in federal and state grants annually. Key programs include NSF SBIR ($305K–$2M), DOE SBIR, SBA initiatives, and 50 state-level funding pools. Non-dilutive, no equity required." />
-            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+          <div className="max-w-4xl mx-auto">
             <EligibleCheck />
           </div>
         </div>

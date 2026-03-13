@@ -62,7 +62,7 @@ export default function FloridaGrantsPage() {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto space-y-4">
                         <ShortAnswerBox content="Yes — Florida businesses can access $2B+ annually through state incentives, research matching grants, and workforce training programs. Key programs include the Florida High Tech Corridor Matching Grants (up to $250K), QTI Tax Refund ($3K–$6K per job created), and Incumbent Worker Training reimbursements up to $200K. No equity required." />
-                        <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+                        <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
                         <EligibleCheck />
                     </div>
                 </div>

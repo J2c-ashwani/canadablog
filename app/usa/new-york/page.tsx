@@ -64,7 +64,7 @@ export default function NewYorkGrantsPage() {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto space-y-4">
                         <ShortAnswerBox content="Yes — New York businesses can access $4B+ annually across state programs. START-UP NY eliminates all NY taxes for 10 years for qualifying businesses. Excelsior Jobs Credits provide up to $10M in performance-based tax credits. The NYS Pre-Seed Matching Fund provides up to $150K non-dilutive for early-stage tech startups. NY is the #2 state nationally for total SBIR/STTR award dollars — Federal grants provide an additional $600M+ annually to NY companies." />
-                        <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+                        <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
                         <EligibleCheck />
                     </div>
                 </div>
