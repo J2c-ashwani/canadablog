@@ -64,7 +64,10 @@ export default function CanadaGovernmentGrantsPage() {
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
-            <ShortAnswerBox content="Yes — Canada's federal government offers substantial business grants and funding through multiple channels: Strategic Innovation Fund (up to $400M for major investments), five Regional Development Agencies covering all provinces (FedDev Ontario, PacifiCan/WD, ACOA, Canada Economic Development), NRC IRAP for R&D-intensive SMEs, SR&ED tax credits (15–35% refundable on qualifying R&D), export support through EDC, and BDC growth financing. Most Canadian businesses can access 2–4 programs simultaneously." />
+            <ShortAnswerBox
+                question="What government grants are available for Canadian businesses in 2026?"
+                content="Yes — Canada's federal government offers substantial business grants and funding through multiple channels: Strategic Innovation Fund (up to $400M for major investments), five Regional Development Agencies covering all provinces (FedDev Ontario, PacifiCan/WD, ACOA, Canada Economic Development), NRC IRAP for R&D-intensive SMEs, SR&ED tax credits (15–35% refundable on qualifying R&D), export support through EDC, and BDC growth financing. Most Canadian businesses can access 2–4 programs simultaneously."
+              />
             <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
             <EligibleCheck />
           </div>

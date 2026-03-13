@@ -116,7 +116,10 @@ export default function AlbertaGrantsPage() {
                             available to entrepreneurs and companies across Alberta.
                         </p>
                         <div className="mt-4">
-                            <ShortAnswerBox content="Alberta provides hundreds of millions in provincial government grants and funding programs for startups, small businesses, and expanding enterprises in 2026." />
+                            <ShortAnswerBox
+                question="What government grants are available for Alberta businesses in 2026?"
+                content="Alberta businesses can access Alberta Innovates grants ($50K–$5M for tech and energy innovation), the Alberta Enterprise Corporation (venture capital for tech startups), Ag-Info Centre funding for agriculture, the Technology Innovation and Emissions Reduction (TIER) fund for industrial decarbonization, and PrairiesCan federal economic development contributions. Combined with federal IRAP and SR&ED programs, Alberta remains one of the highest-funded provinces for energy-tech and agri-tech businesses."
+              />
                         </div>
                         <div className="mt-4 mb-8 flex justify-center">
                             <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />

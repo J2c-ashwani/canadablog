@@ -65,7 +65,10 @@ export default function AgricultureStartupFundingPage() {
             <section className="py-6 bg-emerald-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto space-y-4">
-                        <ShortAnswerBox content="Yes — Canada offers agriculture funding through two distinct tracks. Farm businesses can access the Agricultural Clean Technology Program (non-repayable $25K–$2M for emission-reducing farm technology), CAP provincial cost-share programs ($5K–$500K), and AgriInnovate repayable loans ($1M–$10M). AgTech startups (companies developing agricultural technology products) can access NRC IRAP ($50K–$2M), SR&ED (35% R&D credit), AAFC AgriScience research partnerships, and all mainstream Canadian innovation programs." />
+                        <ShortAnswerBox
+                question="What government funding is available for agriculture and farming businesses in Canada?"
+                content="Yes — Canada funds agriculture through two tracks. Farm businesses can access the Agricultural Clean Technology Program (non-repayable $25K–$2M for emission-reducing technology), CAP provincial cost-share programs ($5K–$500K), and AgriInnovate repayable loans ($1M–$10M). AgTech startups developing agricultural technology can access NRC IRAP ($50K–$2M), SR&ED (35% R&D credit), AAFC AgriScience research partnerships, and all mainstream Canadian innovation programs."
+              />
                         <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
                         <EligibleCheck />
                     </div>

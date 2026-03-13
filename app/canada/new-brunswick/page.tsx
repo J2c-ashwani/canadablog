@@ -98,7 +98,10 @@ export default function NewBrunswickGrantsPage() {
                             available to entrepreneurs and companies across New Brunswick.
                         </p>
                         <div className="mt-4">
-                            <ShortAnswerBox content="New Brunswick provides hundreds of millions in provincial government grants and funding programs for startups, small businesses, and expanding enterprises in 2026." />
+                            <ShortAnswerBox
+                question="What government grants are available for New Brunswick businesses in 2026?"
+                content="New Brunswick businesses can access Opportunities NB (ONB) direct investment grants ($50K–$5M for job-creating projects), ACOA Atlantic Canada contributions (up to $1M for scaling businesses), the NB Research and Innovation Fund for commercialization projects, the NB Small Business Investor Tax Credit (50% on investments up to $250K), and the NBFirst Digital Skills program for workforce training. Combined with federal IRAP and SR&ED, New Brunswick SMEs — particularly in IT, cybersecurity, and aquaculture — have a compelling funding pathway."
+              />
                         </div>
                         <div className="mt-4 mb-8 flex justify-center">
                             <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />

@@ -63,7 +63,10 @@ export default function HealthcareStartupGrantsPage() {
             <section className="py-6 bg-emerald-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto space-y-4">
-                        <ShortAnswerBox content="Yes — Canadian healthcare startups have access to NRC IRAP ($50K–$2M for medtech R&D wages), SR&ED tax credits (35% refundable for SMEs on all qualifying health R&D), CIHR academic-industry collaboration grants ($300K–$1M), provincial health innovation programs in Ontario, BC, Quebec, and Alberta, plus SDTC for health-environment cross-over technologies. Strategic stacking of these programs can provide $2M–$5M non-dilutive through preclinical and early regulatory stages." />
+                        <ShortAnswerBox
+                question="What government grants are available for healthcare startups in Canada?"
+                content="Yes — Canadian healthcare startups have access to NRC IRAP ($50K–$2M for medtech R&D wages), SR&ED tax credits (35% refundable for SMEs on all qualifying health R&D), CIHR academic-industry collaboration grants ($300K–$1M), provincial health innovation programs in Ontario, BC, Quebec, and Alberta, plus SDTC for health-environment cross-over technologies. Strategic stacking of these programs can provide $2M–$5M non-dilutive through preclinical and early regulatory stages."
+              />
                         <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
                         <EligibleCheck />
                     </div>

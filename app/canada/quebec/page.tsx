@@ -116,7 +116,10 @@ export default function QuebecGrantsPage() {
                             available to entrepreneurs and companies across Quebec.
                         </p>
                         <div className="mt-4">
-                            <ShortAnswerBox content="Quebec provides hundreds of millions in provincial government grants and funding programs for startups, small businesses, and expanding enterprises in 2026." />
+                            <ShortAnswerBox
+                question="What government grants are available for Quebec businesses in 2026?"
+                content="Quebec businesses can access Investissement Québec grants and loans (flexible amounts up to $25M), the CDPQ innovation fund, PRIMA Québec for AI and data science companies, Transition énergétique Québec for clean energy projects, and the R-D tax credit from Revenu Québec (30% on eligible R&D, stacked on top of federal SR&ED). Quebec offers some of the most generous provincial R&D incentives in North America for French-language tech companies."
+              />
                         </div>
                         <div className="mt-4 mb-8 flex justify-center">
                             <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />

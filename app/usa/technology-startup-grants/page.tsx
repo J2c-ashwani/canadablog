@@ -93,7 +93,8 @@ export default function USATechnologyStartupGrantsPage() {
         <section className="py-6 bg-emerald-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto space-y-4">
-              <ShortAnswerBox content="Yes — Tech startups in the USA can access up to $2.5M in zero-equity grants. The 3 best programs are: 1. NSF SBIR (Up to $2M for Deep Tech), 2. DOD SBIR (Up to $1.7M for Defense), and 3. DOE Tech Grants ($1.1M for Clean Energy)." />
+              <ShortAnswerBox question="How can a tech startup in the USA get government grant funding in 2026?"
+                content="Yes — Tech startups in the USA can access up to $2.5M in zero-equity grants. The 3 best programs are: 1. NSF SBIR (Up to $2M for Deep Tech), 2. DOD SBIR (Up to $1.7M for Defense), and 3. DOE Tech Grants ($1.1M for Clean Energy)." />
               <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
               <EligibleCheck />
             </div>

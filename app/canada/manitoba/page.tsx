@@ -98,7 +98,10 @@ export default function ManitobaGrantsPage() {
                             available to entrepreneurs and companies across Manitoba.
                         </p>
                         <div className="mt-4">
-                            <ShortAnswerBox content="Manitoba provides hundreds of millions in provincial government grants and funding programs for startups, small businesses, and expanding enterprises in 2026." />
+                            <ShortAnswerBox
+                question="What government grants are available for Manitoba businesses in 2026?"
+                content="Manitoba businesses can access MABI (Manitoba Agriculture Business Improvement Loan) up to $500K, the Manitoba Interactive Digital Media Tax Credit (40% of eligible labour), PrairiesCan federal economic development contributions, the Manitoba Hydro Power Smart program for energy efficiency upgrades, and Manitoba Jobs and Economy grants for workforce development. Combined with federal IRAP and SR&ED, Manitoba agri-business, manufacturing, and digital media companies have multiple stacking options."
+              />
                         </div>
                         <div className="mt-4 mb-8 flex justify-center">
                             <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />

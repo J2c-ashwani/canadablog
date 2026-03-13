@@ -47,7 +47,10 @@ export default function CanadaGrantsPage() {
             </div>
             {/* Short Answer — question-first, data-rich, inside hero */}
             <div className="mb-8 text-left">
-              <ShortAnswerBox content="**Can Canadian businesses get non-repayable government grants in 2026?**&#10;&#10;Yes — and the most powerful programs are stackable. The SR&ED tax credit alone returns 35–70% of your R&D spend as a CRA cheque (no competition, no application — you just do the work and file). NRC-IRAP grants fund up to $10M for direct innovation projects. The CDAP Digital Adoption Grant provides $15,000 cash within 4–8 weeks. Stacking all three on a single $200K R&D project can yield over $120K in government contributions — without surrendering any equity." />
+              <ShortAnswerBox
+                question="Can Canadian businesses get non-repayable government grants in 2026?"
+                content="Yes — and the most powerful programs are stackable. The SR&ED tax credit alone returns 35–70% of your R&D spend as a CRA cheque (no competition, no application — you just do the work and file). NRC-IRAP grants fund up to $10M for direct innovation projects. The CDAP Digital Adoption Grant provides $15,000 cash within 4–8 weeks. Stacking all three on a single $200K R&D project can yield over $120K in government contributions — without surrendering any equity."
+              />
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold">

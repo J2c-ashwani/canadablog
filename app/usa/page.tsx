@@ -50,7 +50,10 @@ export default function USAGrantsPage() {
             </div>
             {/* Short Answer — question-first, data-rich, inside hero */}
             <div className="mb-8 text-left">
-              <ShortAnswerBox content="**Can U.S. businesses get government grants in 2026?**\n\nYes — and the amounts are substantial. The SBIR program alone distributes $4B+ per year in non-repayable R&D grants exclusively to U.S. small businesses, with Phase I awards up to $305K (NSF) and Phase II up to $2M (DOD, NIH, DOE). Beyond SBIR, SBA microloans ($5K–$50K), state economic development grants, and 26+ federal agency programs add billions more. Unlike loans, these funds are non-repayable and require no equity surrender — the primary barrier is finding the right program and submitting a technically strong application." />
+              <ShortAnswerBox
+                question="Can U.S. businesses get government grants in 2026?"
+                content="Yes — and the amounts are substantial. The SBIR program alone distributes $4B+ per year in non-repayable R&D grants exclusively to U.S. small businesses, with Phase I awards up to $305K (NSF) and Phase II up to $2M (DOD, NIH, DOE). Beyond SBIR, SBA microloans ($5K–$50K), state economic development grants, and 26+ federal agency programs add billions more. Unlike loans, these funds are non-repayable and require no equity surrender — the primary barrier is finding the right program and submitting a technically strong application."
+              />
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold">

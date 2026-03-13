@@ -119,7 +119,10 @@ export default function OntarioGrantsPage() {
               available to entrepreneurs and companies across Ontario.
             </p>
             <div className="mt-4">
-              <ShortAnswerBox content="Ontario provides hundreds of millions in provincial government grants and funding programs for startups, small businesses, and expanding enterprises in 2026." />
+              <ShortAnswerBox
+                question="What government grants are available for Ontario businesses in 2026?"
+                content="Ontario businesses can access Starter Company Plus ($5,000–$10,000 non-repayable for early-stage companies), the Ontario Vehicle Innovation Network (OVIN, up to $250K for automotive and EV SMEs), NOHFC Northern Ontario grants (up to $1M), the Ontario Made Manufacturing Investment Tax Credit (10% of eligible capital), and federal programs stacked on top: IRAP, SR&ED, and CDAP. Ontario-based tech and manufacturing companies are among the best-funded businesses in Canada."
+              />
             </div>
             <div className="mt-4 mb-8 flex justify-center">
               <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />

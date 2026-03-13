@@ -98,7 +98,8 @@ export default function USAWomenEntrepreneursGrantsPage() {
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
-            <ShortAnswerBox content="Women entrepreneurs in the U.S. can access SBA WOSB federal contracting set-asides, Amber Grant ($10K monthly), NWBC programs, and state-level women business center grants. Combined value exceeds $500M annually nationwide." />
+            <ShortAnswerBox question="What government grants are available for women-owned businesses in the USA?"
+                content="Women entrepreneurs in the U.S. can access SBA WOSB federal contracting set-asides, Amber Grant ($10K monthly), NWBC programs, and state-level women business center grants. Combined value exceeds $500M annually nationwide." />
             <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
             <EligibleCheck />
           </div>

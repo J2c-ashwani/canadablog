@@ -64,7 +64,10 @@ export default function IndigenousEntrepreneurGrantsPage() {
             <section className="py-6 bg-emerald-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto space-y-4">
-                        <ShortAnswerBox content="Yes — Indigenous entrepreneurs in Canada have access to a comprehensive funding ecosystem including the Aboriginal Entrepreneurship Program (up to $99,999 non-repayable), 59 regional Aboriginal Financial Institutions (AFIs) providing flexible loans of $10K–$1M, Métis Capital Corporations in BC, Alberta, Saskatchewan, Manitoba, and Ontario, $1B+ in annual federal procurement set-asides through PSIB, and all mainstream business programs (BDC, EDC, IRAP, SR&ED) for which Indigenous businesses fully qualify." />
+                        <ShortAnswerBox
+                question="What government funding is available for Indigenous entrepreneurs in Canada?"
+                content="Yes — Indigenous entrepreneurs in Canada have access to the Aboriginal Entrepreneurship Program (up to $99,999 non-repayable), 59 regional Aboriginal Financial Institutions (AFIs) providing flexible loans of $10K–$1M, Métis Capital Corporations in BC, Alberta, Saskatchewan, Manitoba, and Ontario, $1B+ in annual federal procurement set-asides through PSIB, and all mainstream business programs (BDC, EDC, IRAP, SR&ED) for which Indigenous businesses fully qualify."
+              />
                         <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
                         <EligibleCheck />
                     </div>

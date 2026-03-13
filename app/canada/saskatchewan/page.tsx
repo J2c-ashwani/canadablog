@@ -98,7 +98,10 @@ export default function SaskatchewanGrantsPage() {
                             available to entrepreneurs and companies across Saskatchewan.
                         </p>
                         <div className="mt-4">
-                            <ShortAnswerBox content="Saskatchewan provides hundreds of millions in provincial government grants and funding programs for startups, small businesses, and expanding enterprises in 2026." />
+                            <ShortAnswerBox
+                question="What government grants are available for Saskatchewan businesses in 2026?"
+                content="Saskatchewan businesses can access the Saskatchewan Advantage Grant for Education and Training (SAGES, $20,000 tuition rebate for grads who work in SK), the Saskatchewan Technology Startup Incentive (STSI, 45% non-refundable tax credit for investors), PrairiesCan federal contributions for prairie SMEs, STEP export grants for international market development, and AgriStability for agricultural operations. Combined with federal SR&ED and IRAP, Saskatchewan tech and agri-business companies have a strong funding stack."
+              />
                         </div>
                         <div className="mt-4 mb-8 flex justify-center">
                             <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />

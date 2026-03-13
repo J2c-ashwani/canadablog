@@ -116,7 +116,10 @@ export default function BritishColumbiaGrantsPage() {
                             available to entrepreneurs and companies across British Columbia.
                         </p>
                         <div className="mt-4">
-                            <ShortAnswerBox content="British Columbia provides hundreds of millions in provincial government grants and funding programs for startups, small businesses, and expanding enterprises in 2026." />
+                            <ShortAnswerBox
+                question="What government grants are available for BC businesses in 2026?"
+                content="BC businesses can access Innovate BC grants ($50K–$250K for tech SMEs), CleanBC programs for energy efficiency and emissions reduction, the BC Employer Training Grant (up to 80% of training costs), PacifiCan federal contributions for economic development, and BC's Interactive Digital Media Tax Credit (17.5% of eligible labour). Combined with federal SR&ED and IRAP programs, BC tech and clean energy companies are among the strongest grant candidates in Canada."
+              />
                         </div>
                         <div className="mt-4 mb-8 flex justify-center">
                             <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
