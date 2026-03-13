@@ -125,9 +125,11 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: 1,
-    slug: "agriculture-agri-food-canada-government-grants",
+    slug: "agriculture-grants-2026",
+    shortAnswerQuestion: "What agriculture and agri-food grants are available in Canada for 2026?",
+
     title: "Agriculture & Agri-Food Canada Grants 2026 | Federal Funding Programs Guide | AAFC Support",
-    shortAnswerQuestion: "What agriculture and farming grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Agriculture and Agri-Food Canada federal funding programs. Access up to $5M through AgriInnovate, AgriScience, AgriCompetitiveness, and Sustainable CAP programs.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -201,8 +203,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 2,
     slug: "ai-machine-learning-grants",
+    shortAnswerQuestion: "How can my business apply for AI & Machine Learning Grants 2026-2027 in 2026?",
+
     title: "AI & Machine Learning Grants 2026-2027 | $305K NSF SBIR, $100M AI Research Institutes, DOD AI Applications Non-Dilutive Funding",
-    shortAnswerQuestion: "What are the best AI & Machine Learning Grants 2026-2027 opportunities in 2026?",
+
     excerpt: "Complete 2026-2027 guide to AI and machine learning grants. NSF SBIR Phase I $305K, Phase II $1.25M, National AI Research Institutes $100M investment, NAIRR $35M operations center, DOD AI applications supporting computer vision, NLP, ML platforms, generative AI, and predictive analytics with zero equity funding.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -287,8 +291,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 3,
     slug: "alberta-government-business-grants",
+    shortAnswerQuestion: "How can my business apply for Alberta Government Business Grants 2026 in 2026?",
+
     title: "Alberta Government Business Grants 2026 | Provincial Energy & Innovation Funding Programs Guide",
-    shortAnswerQuestion: "What business grants are available in Alberta in 2026?",
+
     excerpt: "Complete guide to Alberta government business grants and provincial funding programs. Access Alberta Innovates, ERA programs, diversification initiatives, and energy sector funding for Alberta businesses.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -509,8 +515,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 4,
     slug: "alberta-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Alberta Innovation Grants & Funding 2026 | $950M+ Energy Transition, AI & CleanTech Support",
-    shortAnswerQuestion: "What innovation and technology grants are available in Alberta in 2026?",
+
     excerpt: "Complete guide to Alberta innovation grants and funding programs. Access $950M+ through Alberta Innovates, Emissions Reduction Alberta, AI4Society, and energy transition, AI, health innovation programs.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -595,8 +603,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 5,
     slug: "alberta-small-business-grants-guide",
+    shortAnswerQuestion: "What small business grants are available in 2026?",
+
     title: "Alberta Small Business Grants 2026 | $980M+ Alberta SME Funding",
-    shortAnswerQuestion: "What small business grants are available in Alberta in 2026?",
+
     excerpt: "Complete guide to Alberta small business grants. Access Alberta Small Business Grant, Technology Innovation Fund, Rural Economic Development, and Energy Diversification programs.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -680,8 +690,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 6,
     slug: "alberta-women-business-grants",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Alberta Women Business Grants 2026 | $580M Energy & Tech Support Programs",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovation funding.",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -766,8 +778,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 7,
     slug: "amber-grant-women-canada",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Amber Grant for Women Canada 2026 | Monthly $10K Grants + $25K Annual Award",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in Canada?",
+
     excerpt: "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Simple application, rolling deadlines, and support for Canadian women entrepreneurs.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -852,8 +866,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 8,
     slug: "atlantic-canada-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Atlantic Canada Innovation Grants & Funding 2026 | 15% ACITC | $650M+ Ocean Tech Support",
-    shortAnswerQuestion: "What innovation and technology grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Atlantic Canada innovation grants. Access $650M+ through Atlantic Innovation Fund, ACOA programs, 15% ACITC tax credit, and ocean technology, renewable energy, aerospace funding.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -938,8 +954,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 9,
     slug: "atlantic-small-business-grants-guide",
+    shortAnswerQuestion: "What small business grants are available in 2026?",
+
     title: "Atlantic Canada Small Business Grants 2026 | $850M+ ACOA & Provincial SME Funding",
-    shortAnswerQuestion: "What small business grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Atlantic Canada business grants. Access ACOA funding, Nova Scotia Small Business Fund, New Brunswick Innovation, PEI Development Fund, and Newfoundland Business Growth programs.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -1024,8 +1042,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 10,
     slug: "bc-small-business-grants-guide",
+    shortAnswerQuestion: "What small business grants are available in 2026?",
+
     title: "BC Small Business Grants 2026 | $1.3B+ British Columbia SME Funding",
-    shortAnswerQuestion: "What small business grants are available in British Columbia in 2026?",
+
     excerpt: "Complete guide to BC small business grants. Access Small Business Recovery Grant, BC Small Business Venture Capital, CleanBC Industry Fund, and Indigenous business investment programs.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -1110,8 +1130,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 11,
     slug: "bc-women-business-grants",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "BC Women Business Grants 2026 | $650M Innovation & Tech Support Programs",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to BC women entrepreneurship support with Women",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -1196,8 +1218,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 12,
     slug: "bdc-women-entrepreneurs-financing",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "BDC Women Entrepreneurs Financing 2026 | Flexible Loans & Advisory for Women-Led Business Growth",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to BDC Women Entrepreneurs financing with flexible loan terms, strategic advisory services, and growth support from Business Development Bank of Canada.",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -1282,8 +1306,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 13,
     slug: "biotech-life-sciences-grants",
+    shortAnswerQuestion: "How can my business apply for Biotech & Life Sciences Grants 2026-2027 in 2026?",
+
     title: "Biotech & Life Sciences Grants 2026-2027 | $306K NIH SBIR, $2M Phase II, $1.2B Seed Fund, FDA Orphan Drug Grants Non-Dilutive",
-    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     excerpt: "Complete 2026-2027 guide to biotech and life sciences grants. NIH SBIR Phase I $306K, Phase II $2M, $1.2B Seed Fund, FDA Orphan Drug designation grants, state life sciences centers supporting therapeutics, medical devices, diagnostics, drug discovery with zero equity funding.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -1368,8 +1394,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 14,
     slug: "bmo-celebrating-women-grant",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "BMO Celebrating Women Grant 2026 | $10K Grants + Business Advisory for Women Entrepreneurs",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources. Applications open August 5-19, 2026 for Canadian and U.S. women business owners.",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -1454,8 +1482,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 15,
     slug: "british-columbia-government-business-grants",
+    shortAnswerQuestion: "How can my business apply for British Columbia Government Business Grants 2026 in 2026?",
+
     title: "British Columbia Government Business Grants 2026 | BC Provincial Funding Programs Guide",
-    shortAnswerQuestion: "What business grants are available in British Columbia in 2026?",
+
     excerpt: "Complete guide to British Columbia government business grants and provincial funding programs. Access Innovate BC, CleanBC, Creative BC, and PacifiCan regional funding for BC businesses.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -1676,8 +1706,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 16,
     slug: "british-columbia-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "British Columbia Innovation Grants & Tax Credits 2026 | 10% BCITC | $1.8B+ CleanTech Funding",
-    shortAnswerQuestion: "What innovation and technology grants are available in British Columbia in 2026?",
+
     excerpt: "Complete guide to BC innovation grants and tax credits. Access $1.8B+ through 10% BC Innovation Tax Credit (BCITC), Innovate BC, New Ventures BC, and cleantech, film, ocean technology programs.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -1762,8 +1794,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 17,
     slug: "california-tech-programs",
+    shortAnswerQuestion: "How can my business apply for California Tech Startup Grants 2026-2027 in 2026?",
+
     title: "California Tech Startup Grants 2026-2027 | $50K CalSEED, $50K SBIR Match, Tax Credits & Silicon Valley Funding Programs",
-    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     excerpt: "Complete 2026-2027 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SBIR State Match $50,000, California Competes Tax Credit up to 25%, GO-Biz innovation programs, Accelerate CA Hubs for Silicon Valley, Bay Area, Los Angeles, San Diego tech startups.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -1848,8 +1882,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 18,
     slug: "canada-advanced-manufacturing-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Canada Advanced Manufacturing Innovation Grants 2026 | $3.1B+ Industry 4.0 Funding | NGen",
-    shortAnswerQuestion: "What innovation and technology grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Canadian advanced manufacturing innovation grants. Access $3.1B+ funding through NGen, automation programs, Industry 4.0 initiatives, and 38+ smart manufacturing programs.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -1934,8 +1970,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 19,
     slug: "canada-aerospace-defence-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Canada Aerospace & Defence Grants 2026 | $450M+ Space Technology & Aviation Funding | CSA Programs",
-    shortAnswerQuestion: "What innovation and technology grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Canadian aerospace and defence innovation grants. Access $450M+ funding through Canadian Space Agency programs, defence innovation initiatives, and 12+ aviation technology grants.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -2020,8 +2058,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 20,
     slug: "canada-agri-food-technology-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Canada Agri-Food Technology Grants 2026 | $2.3B+ AgriInnovate & Precision Agriculture Funding",
-    shortAnswerQuestion: "What innovation and technology grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Canadian agri-food technology innovation grants. Access $2.3B+ funding through AgriInnovate, precision agriculture programs, food processing technology, and 32+ agritech grants.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -2106,8 +2146,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 21,
     slug: "canada-agriculture-agrifood-grants-guide",
+    shortAnswerQuestion: "What agriculture and agri-food grants are available in Canada for 2026?",
+
     title: "Canada Agriculture & Agri-Food Grants 2026 | $2.3B+ Agricultural Innovation Funding Programs Guide",
-    shortAnswerQuestion: "What agriculture and farming grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Canada",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -2192,8 +2234,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 22,
     slug: "canada-clean-technology-environment-grants-guide",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Canada Clean Technology & Environment Grants 2026 | $1.2B+ Sustainability Funding Programs Guide",
-    shortAnswerQuestion: "What innovation and technology grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Canada",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -2278,8 +2322,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 23,
     slug: "canada-clean-technology-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Canada Clean Technology Innovation Grants 2026 | $1.2B+ CleanTech Funding | SDTC & Net Zero",
-    shortAnswerQuestion: "What innovation and technology grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Canadian clean technology innovation grants. Access $1.2B+ funding through SDTC (up to $15M), Clean Technology ITCs, Net Zero Accelerator, and 22+ cleantech programs.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -2364,8 +2410,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 24,
     slug: "canada-digital-ai-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Canada Digital & AI Innovation Grants 2026 | $850M+ Funding | Scale AI & CDAP",
-    shortAnswerQuestion: "What innovation and technology grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Canadian digital and AI innovation grants. Access $850M+ funding through Scale AI, CDAP, AI research initiatives, and 25+ digital transformation programs.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -2450,8 +2498,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 25,
     slug: "canada-employment-workforce-training-grants-guide",
+    shortAnswerQuestion: "How can my business apply for Canada Employment & Workforce Training Grants 2026 in 2026?",
+
     title: "Canada Employment & Workforce Training Grants 2026 | $1.9B+ Skills Development Funding Programs Guide",
-    shortAnswerQuestion: "What are the best Canada Employment & Workforce Training Grants 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to Canada",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -2536,8 +2586,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 26,
     slug: "canada-export-development-grants-guide",
+    shortAnswerQuestion: "How can my business apply for Canada Export Development Grants 2026 in 2026?",
+
     title: "Canada Export Development Grants 2026 | $680M+ International Market Expansion Across 18+ Programs",
-    shortAnswerQuestion: "What export grants and trade funding are available in 2026?",
+
     excerpt: "Complete guide to Canadian export development grants. Access all 18+ international market expansion programs including CanExport SMEs, EDC Trade Impact, provincial export programs, and trade mission funding.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -2622,8 +2674,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 27,
     slug: "canada-federal-grants",
+    shortAnswerQuestion: "How can my business apply for Canada Federal Grants 2025-2026 in 2026?",
+
     title: "Canada Federal Grants... 2025-2026 | Funding Guide",
-    shortAnswerQuestion: "What are the best Canada Federal Grants opportunities in 2026?",
+
     excerpt: "Complete guide to government grants.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -2708,8 +2762,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 28,
     slug: "canada-growth-expansion-grants-guide",
+    shortAnswerQuestion: "How can my business apply for Canada Growth & Expansion Grants 2026 in 2026?",
+
     title: "Canada Growth & Expansion Grants 2026 | $2.8B+ Scale-Up Funding Across 42+ Programs",
-    shortAnswerQuestion: "What are the best Canada Growth & Expansion Grants 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to Canadian business expansion grants. Access all 42+ growth programs including Strategic Innovation Fund, provincial expansion funds, export development grants, and scale-up incentives.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -2794,8 +2850,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 29,
     slug: "canada-hiring-training-grants-guide",
+    shortAnswerQuestion: "How can my business apply for Canada Hiring & Training Grants 2026 in 2026?",
+
     title: "Canada Hiring & Training Grants 2026 | $1.9B+ Workforce Development Across 28+ Programs",
-    shortAnswerQuestion: "What are the best Canada Hiring & Training Grants 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to Canadian hiring and training grants. Access all 28+ workforce development programs including job creation incentives, skills training, wage subsidies, and employee development funding.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -2880,8 +2938,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 30,
     slug: "canada-industry-specific-grants-guide",
+    shortAnswerQuestion: "How can my business apply for Canada Industry Specific Grants 2026 in 2026?",
+
     title: "Canada Industry Specific Grants 2026 | $1.5B+ Sector-Focused Programs Across 25+ Industries",
-    shortAnswerQuestion: "What are the best Canada Industry Specific Grants 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agriculture, services, technology, healthcare, construction, and specialized industry funding.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -2966,8 +3026,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 31,
     slug: "canada-innovation-research-development-grants-guide",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Canada Innovation & R&D Grants 2026 | $4.2B+ Research Development Funding Programs Guide",
-    shortAnswerQuestion: "What innovation and technology grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Canada",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -3052,8 +3114,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 32,
     slug: "canada-life-sciences-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Canada Life Sciences Grants 2026 | $720M+ Biotech & Medical Device Funding | Clinical Trials Support",
-    shortAnswerQuestion: "What innovation and technology grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Canadian life sciences innovation grants. Access $720M+ funding through biomanufacturing programs, medical device pathways, clinical trials support, and 18+ biotechnology funding programs.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -3138,8 +3202,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 33,
     slug: "canada-manufacturing-industry-grants-guide",
+    shortAnswerQuestion: "How can my business apply for Canada Manufacturing & Industry Grants 2026 in 2026?",
+
     title: "Canada Manufacturing & Industry Grants 2026 | $3.1B+ Advanced Manufacturing Funding Programs Guide",
-    shortAnswerQuestion: "What manufacturing grants and funding are available in 2026?",
+
     excerpt: "Complete guide to Canada",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -3224,8 +3290,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 34,
     slug: "canada-regional-economic-development-grants-guide",
+    shortAnswerQuestion: "How can my business apply for Canada Regional Economic Development Grants 2026 in 2026?",
+
     title: "Canada Regional Economic Development Grants 2026 | $2.8B+ Community Growth Funding Programs Guide",
-    shortAnswerQuestion: "What are the best Canada Regional Economic Development Grants 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to Canada",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -3310,8 +3378,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 35,
     slug: "canada-startup-funding-grants-guide",
+    shortAnswerQuestion: "What are the best startup grants and funding options in 2026?",
+
     title: "Canada Startup Grants 2026: 35+ Programs Worth $1.2B+ [Apply]",
-    shortAnswerQuestion: "What startup grants and funding are available in Canada in 2026?",
+
     excerpt: "Most Canadian startups only know about Futurpreneur. But there are 35+ programs worth $1.2B — from SR&ED tax credits (45% back) to seed grants. See which ones you qualify for.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -3396,8 +3466,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 36,
     slug: "canada-technology-adoption-grants-guide",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Canada Technology Adoption Grants 2026 | $950M+ Digital Transformation Across 22+ Programs",
-    shortAnswerQuestion: "What innovation and technology grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Canadian technology adoption grants. Access all 22+ digital transformation programs including CDAP, provincial tech grants, AI adoption funding, and cybersecurity support.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -3482,8 +3554,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 37,
     slug: "cartier-womens-initiative-canada",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Cartier Women 2025-2026 | Complete Guide & Application Forms",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to Cartier Women",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -3568,8 +3642,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 38,
     slug: "clean-tech-energy-grants",
+    shortAnswerQuestion: "How can my business apply for Clean Tech & Energy Grants 2026-2027 in 2026?",
+
     title: "Clean Tech & Energy Grants 2026-2027 | $200K DOE SBIR, $1.6M Phase II, EPA Environmental Tech Non-Dilutive Funding",
-    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     excerpt: "Complete 2026-2027 guide to clean tech and energy grants. DOE SBIR Phase I $200K, Phase II $1.6M, EPA environmental technology, state energy programs supporting renewable energy, battery tech, climate solutions, solar, wind, hydrogen with zero equity.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -3654,8 +3730,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 39,
     slug: "colorado-tech-programs",
+    shortAnswerQuestion: "How can my business apply for Colorado Tech Startup Grants 2026-2027 in 2026?",
+
     title: "Colorado Tech Startup Grants 2026-2027 | $500K Advanced Industries Accelerator, $250K Early-Stage Capital, SBIR Matching, Clean Energy Fund",
-    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     excerpt: "Complete 2026-2027 guide to Colorado technology startup grants. Advanced Industries Accelerator Early-Stage Capital grants up to $250K, Proof of Concept $150K, 35% Investment Tax Credit, SBIR State Matching, Clean Energy Fund supporting Denver Boulder Colorado Springs tech corridor ecosystem.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -3797,8 +3875,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 40,
     slug: "commercialization-scale-up-funding-canada",
+    shortAnswerQuestion: "How can my business apply for Stage 4: Commercialization & Scale-Up Funding Canada 2026 in 2026?",
+
     title: "Stage 4: Commercialization & Scale-Up Funding Canada 2026 | Strategic Innovation Fund | Up to $100M",
-    shortAnswerQuestion: "What are the best Stage 4: Commercialization & Scale-Up Funding Canada 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to Canadian commercialization and scale-up funding. Access up to $100M through Strategic Innovation Fund, Export Development Canada, BDC Scale-up ventures, and TRL 9 market entry programs.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -3883,8 +3963,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 41,
     slug: "csbfp-canada-small-business-financing-program",
+    shortAnswerQuestion: "What small business grants are available in 2026?",
+
     title: "Canada Small Business Financing Program (CSBFP) 2026 | Up to $1M Business Loans",
-    shortAnswerQuestion: "What small business grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Canada Small Business Financing Program. Learn eligibility, application process, and get up to $1M in government-guaranteed loans for your SME.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -3969,8 +4051,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 42,
     slug: "csbfp-canada-small-business-financing-program-government-grants",
+    shortAnswerQuestion: "What small business grants are available in 2026?",
+
     title: "CSBFP Canada Small Business Financing Program 2026 | Government Guaranteed Loans Guide",
-    shortAnswerQuestion: "What small business grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to CSBFP government-guaranteed loans for Canadian small businesses. Federal loan guarantee program offering up to $1M with 85% government backing for equipment and real property.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -4057,8 +4141,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 43,
     slug: "cybersecurity-grants",
+    shortAnswerQuestion: "How can my business apply for Cybersecurity Grants 2026-2027 in 2026?",
+
     title: "Cybersecurity Grants 2026-2027 | $1.8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive",
-    shortAnswerQuestion: "What cybersecurity grants and funding are available in 2026?",
+
     excerpt: "Complete 2026-2027 guide to cybersecurity grants. DOD SBIR Phase I $200K-$400K, Phase II $1.8M, DHS cybersecurity funding, NSA research programs supporting security software, encryption, threat detection, zero-trust, cloud security with zero equity.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -4157,8 +4243,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 44,
     slug: "demonstration-pilot-funding-canada",
+    shortAnswerQuestion: "How can my business apply for Stage 3: Demonstration & Pilot Funding Canada 2026 in 2026?",
+
     title: "Stage 3: Demonstration & Pilot Funding Canada 2026 | SDTC & Clean Growth | Up to $15M Project Funding",
-    shortAnswerQuestion: "What are the best Stage 3: Demonstration & Pilot Funding Canada 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to Canadian demonstration and pilot project funding. Access up to $15M through SDTC Demonstration, Clean Growth Program, sector pilots, and TRL 7-8 validation projects for pre-commercial scale-up.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -4245,8 +4333,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 45,
     slug: "development-proof-concept-funding-canada",
+    shortAnswerQuestion: "How can my business apply for Stage 2: Development & Proof-of-Concept Funding Canada 2026 in 2026?",
+
     title: "Stage 2: Development & Proof-of-Concept Funding Canada 2026 | IRAP & SR&ED | Up to $5M Technology Development",
-    shortAnswerQuestion: "What are the best Stage 2: Development & Proof-of-Concept Funding Canada 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to Canadian development and proof-of-concept funding. Access up to $5M through IRAP Technology Development, SR&ED Tax Credits, NSERC CRD, and applied research programs for TRL 4-6 projects.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -4333,8 +4423,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 46,
     slug: "dod-sbir-defense-tech-grants",
+    shortAnswerQuestion: "How can my business apply for DOD SBIR 2026: Win $1.7M in Defense Grants (No Equity, No Repayment) in 2026?",
+
     title: "DOD SBIR 2026: Win $1.7M in Defense Grants (No Equity, No Repayment)",
-    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     excerpt: "How to win DOD SBIR grants in 2026: Most defense tech companies leave $1.7M on the table by skipping Phase I. We show you the exact solicitation-matching process that doubles approval rates.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -4421,8 +4513,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 47,
     slug: "doe-sbir-clean-energy-grants",
+    shortAnswerQuestion: "How can my business apply for DOE SBIR Clean Energy Grants 2026-2027 in 2026?",
+
     title: "DOE SBIR Clean Energy Grants 2026-2027 | $200K Phase I, $1.85M Phase II Renewable Energy Funding",
-    shortAnswerQuestion: "How do SBIR and STTR grants work for US startups in 2026?",
+
     excerpt: "Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Phase I up to $200K, Phase II up to $1.85M for renewable energy, energy storage, carbon capture, climate tech innovation.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -4509,8 +4603,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 48,
     slug: "edc-women-trade-export-financing",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "EDC Women in Trade Export Financing 2026 | Equity Capital & Export Support for Women Exporters",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support from Export Development Canada for women-owned businesses.",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -4597,8 +4693,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 49,
     slug: "federal-grants-women-minorities",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Federal Grants for Women, Minorities & Veterans 2026 | Specialized Business Funding",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. Find WOSB, 8(a), HUBZone, VOSB, and specialized funding programs.",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -4686,8 +4784,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 50,
     slug: "hardware-iot-startup-grants",
+    shortAnswerQuestion: "What are the best startup grants and funding options in 2026?",
+
     title: "Hardware & IoT Startup Grants 2026-2027 | $305K NSF SBIR, $1.25M Phase II, DOD Electronics Non-Dilutive Funding",
-    shortAnswerQuestion: "What startup grants and funding are available in 2026?",
+
     excerpt: "Complete 2026-2027 guide to hardware and IoT startup grants. NSF SBIR Phase I $305K, Phase II $1.25M, DOD electronics programs, advanced manufacturing funding supporting connected devices, sensors, robotics, semiconductors, edge computing with zero equity.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -4774,8 +4874,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 51,
     slug: "ideation-research-funding-canada",
+    shortAnswerQuestion: "How can my business apply for Stage 1: Ideation & Research Funding Canada 2026 in 2026?",
+
     title: "Stage 1: Ideation & Research Funding Canada 2026 | NSERC Discovery Grants | Up to $1M Early-Stage R&D",
-    shortAnswerQuestion: "What are the best Stage 1: Ideation & Research Funding Canada 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to Canadian ideation and research funding for early-stage innovation. Access up to $1M through NSERC Discovery Grants, university research programs, and basic R&D support for concept development.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -4862,8 +4964,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 52,
     slug: "indigenous-rural-business-funding-canada",
+    shortAnswerQuestion: "How can my business apply for Indigenous & Rural Business Funding Canada 2026 in 2026?",
+
     title: "Indigenous & Rural Business Funding Canada 2026 | $500K+ Aboriginal Business Grants & Rural Development",
-    shortAnswerQuestion: "What grants are available for Indigenous businesses in Canada?",
+
     excerpt: "Complete guide to Indigenous business grants and rural business funding in Canada. Access Aboriginal Entrepreneurship Program funding, NACCA loans, rural development grants, and regional business support across all Canadian provinces.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -4950,8 +5054,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 53,
     slug: "indigenous-women-business-grants-canada",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Indigenous Women Business Grants Canada 2026-2027 | NACCA Funding $50K, First Nations Support, Cultural Enterprise Grants Toronto Vancouver Winnipeg",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in Canada?",
+
     excerpt: "Complete 2026-2027 guide to Indigenous women business grants in Canada. NACCA Aboriginal Entrepreneurship Program, IWEF funding $50K loans, First Nations M\u00e9tis Inuit women entrepreneurs support. Indigenous Financial Institutions financing Toronto Vancouver Winnipeg Calgary Ottawa Saskatoon Regina Thunder Bay",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -5038,8 +5144,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 54,
     slug: "industry-specific-business-grants-guide",
+    shortAnswerQuestion: "How can my business apply for Industry-Specific Business Grants Guide 2026 in 2026?",
+
     title: "Industry-Specific Business Grants Guide 2026 | Sector-Focused Funding Programs",
-    shortAnswerQuestion: "What are the best Industry-Specific Business Grants Guide 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to industry-specific business grants. Find targeted funding for manufacturing, healthcare, technology, agriculture, and specialized business sectors.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -5127,8 +5235,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 55,
     slug: "irap-industrial-research-assistance-program",
+    shortAnswerQuestion: "How can my business apply for Industrial Research Assistance Program (IRAP) 2026 in 2026?",
+
     title: "Industrial Research Assistance Program (IRAP) 2026 | Up to $1M Tech Grants",
-    shortAnswerQuestion: "How does the NRC IRAP program work for Canadian businesses?",
+
     excerpt: "Complete guide to IRAP funding for Canadian tech SMEs. Learn eligibility, application process, and get up to $1M in non-repayable R&D grants.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -5214,8 +5324,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 56,
     slug: "irap-industrial-research-assistance-program-government-grants",
+    shortAnswerQuestion: "How can my business apply for IRAP Industrial Research Assistance Program Canada 2026 in 2026?",
+
     title: "IRAP Industrial Research Assistance Program Canada 2026 | Government R&D Funding Guide",
-    shortAnswerQuestion: "How does the NRC IRAP program work for Canadian businesses?",
+
     excerpt: "Complete guide to IRAP government funding for Canadian R&D projects. Federal compliance, reporting requirements, and strategic integration with other government innovation programs.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -5302,8 +5414,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 57,
     slug: "irap-industrial-research-assistance-program-innovation",
-    title: "IRAP Industrial Research Assistance Program 2026 | Up to $500K Innovation Funding for SMEs",
     shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
+    title: "IRAP Industrial Research Assistance Program 2026 | Up to $500K Innovation Funding for SMEs",
+
     excerpt: "Complete guide to IRAP innovation funding from National Research Council Canada. Get 60-80% R&D funding up to $500K with dedicated Industrial Technology Advisors for SMEs.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -5390,8 +5504,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 58,
     slug: "manitoba-small-business-grants-guide",
-    title: "Manitoba Small Business Grants 2026 | $380M+ Business Development Programs",
     shortAnswerQuestion: "What small business grants are available in 2026?",
+
+    title: "Manitoba Small Business Grants 2026 | $380M+ Business Development Programs",
+
     excerpt: "Complete guide to Manitoba small business grants. Access Manitoba Business Development, Innovation Growth Program, Small Business Venture Capital, and Rural Development Corporation funding.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -5478,8 +5594,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 59,
     slug: "massachusetts-tech-programs",
+    shortAnswerQuestion: "How can my business apply for Massachusetts Tech Startup Grants 2026-2027 in 2026?",
+
     title: "Massachusetts Tech Startup Grants 2026-2027 | $500K SBIR START, $350K MassCEC InnovateMass, Life Sciences Center Biotech Funding Programs",
-    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     excerpt: "Complete 2026-2027 guide to Massachusetts technology startup grants and incentives. SBIR START tiered grants up to $500K from MassVentures, MassCEC InnovateMass clean energy grants $350K, Massachusetts Life Sciences Center MLSC comprehensive biotech funding for Boston Cambridge Worcester innovation ecosystem.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -5567,8 +5685,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 60,
     slug: "nasa-sbir-space-tech-grants",
+    shortAnswerQuestion: "How can my business apply for NASA SBIR Space Tech Grants 2026-2027 in 2026?",
+
     title: "NASA SBIR Space Tech Grants 2026-2027 | $150K Phase I, $850K Phase II Satellite & Aeronautics Funding",
-    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     excerpt: "Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups. Phase I up to $150K, Phase II up to $850K for satellites, remote sensing, propulsion, aeronautics innovation.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -5656,8 +5776,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 61,
     slug: "new-york-tech-programs",
+    shortAnswerQuestion: "How can my business apply for New York Tech Startup Grants 2026-2027 in 2026?",
+
     title: "New York Tech Startup Grants 2026-2027 | START-UP NY Tax-Free 10 Years, $250K Seed Matching Fund, NYSERDA Clean Energy Innovation Programs",
-    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     excerpt: "Complete 2026-2027 guide to New York technology startup grants and incentives. START-UP NY program 10-year tax-free operation university campuses, Pre-Seed Seed Matching Fund $50K-$250K, NYSERDA innovation grants clean energy, Empire State Development ESD programs, NYC Economic Development Corporation grants supporting Manhattan Brooklyn Queens innovation ecosystem.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -5745,8 +5867,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 62,
     slug: "nih-sbir-biotech-grants",
+    shortAnswerQuestion: "How can my business apply for NIH SBIR Biotech Grants 2026-2027 in 2026?",
+
     title: "NIH SBIR Biotech Grants 2026-2027 | $285K Phase I, $2M Phase II Medical Device & Digital Health Funding",
-    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     excerpt: "Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $285K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -5834,8 +5958,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 63,
     slug: "nserc-research-grants-canada",
+    shortAnswerQuestion: "How can my business apply for NSERC Research Grants Canada 2026 in 2026?",
+
     title: "NSERC Research Grants Canada 2026 | Natural Sciences & Engineering Funding Guide",
-    shortAnswerQuestion: "What are the best NSERC Research Grants Canada 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. University-industry partnerships and technology transfer funding.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -5923,6 +6049,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 64,
     slug: "nsf-sbir-grants-technology-startups",
+    shortAnswerQuestion: "What are the best startup grants and funding options in 2026?",
     title: "NSF SBIR Grants 2026: The $2M Startup Grant Most Founders Don't Know About",
     excerpt: "Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Phase I funding up to $275K, Phase II up to $2M for AI, deep tech, biotech, software, hardware innovation. Application strategies, eligibility, deadlines.",
     category: "USA News",
@@ -6002,8 +6129,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 65,
     slug: "nwbc-programs-guide",
+    shortAnswerQuestion: "How can my business apply for National Women 2025-2026 in 2026?",
+
     title: "National Women... 2025-2026 | Funding Guide",
-    shortAnswerQuestion: "What business grants are available in British Columbia in 2026?",
+
     excerpt: "Complete guide to NWBC programs and initiatives. Learn how the National Women",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -6091,8 +6220,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 66,
     slug: "ontario-government-business-grants",
+    shortAnswerQuestion: "How can my business apply for Ontario Government Business Grants 2026 in 2026?",
+
     title: "Ontario Government Business Grants 2026 | Provincial Funding Programs Guide | OCED Support",
-    shortAnswerQuestion: "What business grants are available in Ontario in 2026?",
+
     excerpt: "Complete guide to Ontario government business grants and provincial funding programs. Access Ontario Creates, OCED programs, Starter Company Plus, and innovation funding for businesses in Ontario.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -6314,8 +6445,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 67,
     slug: "ontario-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Ontario Innovation Grants & Tax Credits 2026 | OITC 10% Tax Credit | $3.2B+ R&D Funding",
-    shortAnswerQuestion: "What innovation and technology grants are available in Ontario in 2026?",
+
     excerpt: "Complete guide to Ontario innovation grants and tax credits. Access $3.2B+ through Ontario Innovation Tax Credit (10% OITC), Jobs and Prosperity Fund, OCE programs, and advanced manufacturing support.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -6402,8 +6535,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 68,
     slug: "ontario-small-business-grants-guide",
+    shortAnswerQuestion: "What small business grants are available in 2026?",
+
     title: "Ontario Small Business Grants 2026 | $2.1B+ Available for Ontario SMEs",
-    shortAnswerQuestion: "What small business grants are available in Ontario in 2026?",
+
     excerpt: "Complete guide to Ontario small business grants and funding. Access Ontario Small Business Support Grant, Digital Main Street, Jobs & Prosperity Fund, and provincial tax credits.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -6490,8 +6625,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 69,
     slug: "ontario-women-business-grants",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Ontario Women Business Grants 2026 | $850M Support Programs & Non-Repayable Funding",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to Ontario women entrepreneurship support with FedDev Ontario RE3 grants up to $5,000, PARO microfinancing, Women",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -6578,8 +6715,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 70,
     slug: "prairie-provinces-innovation-grants",
-    title: "Prairie Provinces Innovation Grants 2026 | $580M+ AgriFood, Mining & Renewable Energy Funding",
     shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
+    title: "Prairie Provinces Innovation Grants 2026 | $580M+ AgriFood, Mining & Renewable Energy Funding",
+
     excerpt: "Complete guide to Prairie innovation grants. Access $580M+ through Saskatchewan Innovation, Manitoba Research, PrairiesCan funding, and agri-food, mining technology, renewable energy programs.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -6666,8 +6805,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 71,
     slug: "private-women-grants-guide",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Private Women Grants Guide 2026 | Foundation Grants for Female Entrepreneurs",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to private foundation grants for women entrepreneurs. Discover 50+ foundations offering grants up to $250K for women-owned businesses.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -6755,8 +6896,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 72,
     slug: "quebec-government-business-grants",
+    shortAnswerQuestion: "How can my business apply for Quebec Government Business Grants 2026 in 2026?",
+
     title: "Quebec Government Business Grants 2026 | Aide aux Entreprises & Provincial Funding Programs Guide",
-    shortAnswerQuestion: "What business grants are available in Quebec in 2026?",
+
     excerpt: "Complete guide to Quebec government business grants and aide aux entreprises provincial funding. Access Investissement Quebec, ESSOR, PSCE programs, and R&D tax credits for Quebec businesses.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -6853,8 +6996,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 73,
     slug: "quebec-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Quebec Innovation Grants & Tax Credits 2026 | 30% CRIC R&D Tax Credit | $2.5B+ Funding",
-    shortAnswerQuestion: "What innovation and technology grants are available in Quebec in 2026?",
+
     excerpt: "Complete guide to Quebec innovation grants and tax credits. Access $2.5B+ through 30% Quebec R&D Tax Credit (CRIC), Investissement Qu\u00e9bec, PRIMA Quebec, and aerospace, gaming, biotech programs.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -6941,8 +7086,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 74,
     slug: "quebec-small-business-grants-guide",
+    shortAnswerQuestion: "What small business grants are available in 2026?",
+
     title: "Quebec Small Business Grants 2026 | $1.8B+ Quebec SME Funding",
-    shortAnswerQuestion: "What small business grants are available in Quebec in 2026?",
+
     excerpt: "Complete guide to Quebec small business grants. Access Investissement Qu\u00e9bec SME Fund, Quebec Startup Fund, R&D Tax Credits up to 37.5%, and francophone business support.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -7029,8 +7176,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 75,
     slug: "quebec-women-business-grants",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Quebec Women Business Grants 2026 | $720M Francophone Entrepreneur Support Programs",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to Quebec women entrepreneurship support with R\u00e9seau des Femmes d",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -7117,8 +7266,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 76,
     slug: "rbc-women-entrepreneur-awards",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "RBC Canadian Women Entrepreneur Awards 2026: Complete Guide to $100K+ in Grants & Recognition",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2026. Learn eligibility, application process, 8 award categories, past winners, and similar grants for women in USA & Canada. Deadline: March 21, 2026.",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -7205,8 +7356,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 77,
     slug: "regional-development-agencies-government-grants",
+    shortAnswerQuestion: "How can my business apply for Regional Development Agencies Canada 2026 in 2026?",
+
     title: "Regional Development Agencies Canada 2026 | RDA Federal Funding Guide | 7 Regional Programs",
-    shortAnswerQuestion: "What are the best Regional Development Agencies Canada 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to Canada",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -7293,8 +7446,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 78,
     slug: "saskatchewan-small-business-grants-guide",
-    title: "Saskatchewan Small Business Grants 2026 | $425M+ SME Growth Programs",
     shortAnswerQuestion: "What small business grants are available in 2026?",
+
+    title: "Saskatchewan Small Business Grants 2026 | $425M+ SME Growth Programs",
+
     excerpt: "Complete guide to Saskatchewan small business grants. Access Saskatchewan Small Business Loans, Innovation Saskatchewan Programs, Agriculture Value-Added Fund, and Export Development programs.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -7381,8 +7536,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 79,
     slug: "sba-7a-loans-complete-guide",
+    shortAnswerQuestion: "How can my business apply for SBA 7(a) Loans Complete Guide 2026 in 2026?",
+
     title: "SBA 7(a) Loans Complete Guide 2026 | Small Business Administration Funding",
-    shortAnswerQuestion: "What are the best SBA 7(a) Loans Complete Guide 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to SBA 7(a) loans. Learn eligibility requirements, application process, terms, and how to secure up to $5M in SBA funding for your business.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -7470,8 +7627,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 80,
     slug: "sba-disaster-relief-loans-guide",
+    shortAnswerQuestion: "How can my business apply for SBA Disaster Relief Loans Guide 2026 in 2026?",
+
     title: "SBA Disaster Relief Loans Guide 2026 | Emergency Business Funding",
-    shortAnswerQuestion: "What are the best SBA Disaster Relief Loans Guide 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to SBA disaster relief loans. Learn about physical damage loans, economic injury loans, and how to get up to $2M in emergency business funding.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -7559,8 +7718,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 81,
     slug: "sba-loans-grants-guide",
+    shortAnswerQuestion: "How can my business apply for SBA Loans & Grants Complete Guide 2026 in 2026?",
+
     title: "SBA Loans & Grants Complete Guide 2026 | Small Business Administration Funding",
-    shortAnswerQuestion: "What are the best SBA Loans & Grants Complete Guide 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to SBA loans and grants. Learn about 7(a) loans, microloans, CDC/504 loans, and SBA grant programs. Get up to $5M in funding.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -7647,8 +7808,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 82,
     slug: "sba-microloans-complete-guide",
+    shortAnswerQuestion: "How can my business apply for SBA Microloans Complete Guide 2026 in 2026?",
+
     title: "SBA Microloans Complete Guide 2026 | Small Business Microloan Program",
-    shortAnswerQuestion: "What are the best SBA Microloans Complete Guide 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to SBA microloans. Learn eligibility, application process, and how to secure up to $50K in small business funding with business mentoring included.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -7736,8 +7899,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 83,
     slug: "sbir-small-business-guide",
-    title: "SBIR Small Business Innovation Research 2026 | Federal R&D Grant Guide",
     shortAnswerQuestion: "What small business grants are available in 2026?",
+
+    title: "SBIR Small Business Innovation Research 2026 | Federal R&D Grant Guide",
+
     excerpt: "Complete guide to SBIR grants for small businesses. Learn Phase I & II funding, eligibility requirements, and how to win up to $1.7M in federal R&D grants.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -7825,8 +7990,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 84,
     slug: "sbir-sttr-complete-guide",
+    shortAnswerQuestion: "How can my business apply for SBIR & STTR Grants Complete Guide 2026 in 2026?",
+
     title: "SBIR & STTR Grants Complete Guide 2026 | Small Business Innovation Research",
-    shortAnswerQuestion: "How do SBIR and STTR grants work for US startups in 2026?",
+
     excerpt: "Complete guide to SBIR and STTR grants. Learn eligibility requirements, application process, funding phases, and tips to win up to $1.7M in federal R&D funding.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -7914,8 +8081,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 85,
     slug: "scotiabank-women-initiative",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Scotiabank Women Initiative 2026 | Capital Funding + Mentorship + Education for Women Entrepreneurs",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and comprehensive support for Canadian women-led businesses.",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -8002,8 +8171,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 86,
     slug: "small-business-grants-complete-guide",
-    title: "Small Business Grants Complete Guide 2026 | SBA & Federal Funding",
     shortAnswerQuestion: "What small business grants are available in 2026?",
+
+    title: "Small Business Grants Complete Guide 2026 | SBA & Federal Funding",
+
     excerpt: "Complete guide to small business grants. Learn about SBA loans, federal grants, microloans, state programs, and how to secure funding up to $5M for your business.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -8090,8 +8261,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 87,
     slug: "software-saas-startup-grants",
+    shortAnswerQuestion: "What are the best startup grants and funding options in 2026?",
+
     title: "Software & SaaS Startup Grants 2026-2027 | $305K NSF SBIR, $1.25M Phase II, DOD Software Modernization Non-Dilutive Funding",
-    shortAnswerQuestion: "What startup grants and funding are available in 2026?",
+
     excerpt: "Complete 2026-2027 guide to software and SaaS startup grants. NSF SBIR Phase I $305,000, Phase II $1.25M, Fast-Track $1.555M non-dilutive funding for enterprise software, cloud platforms, developer tools, AI/ML, cybersecurity, software automation supporting zero equity retention commercialization.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -8178,8 +8351,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 88,
     slug: "sred-scientific-research-experimental-development",
+    shortAnswerQuestion: "How can my business apply for SR&ED Tax Credits Canada 2026 in 2026?",
+
     title: "SR&ED Tax Credits Canada 2026 | Scientific Research & Experimental Development Guide - 65% Refundable",
-    shortAnswerQuestion: "How do SR&ED tax credits work for Canadian businesses in 2026?",
+
     excerpt: "Complete guide to SR&ED tax credits in Canada. Enhanced 2026 rates with 35% federal refundable + provincial credits up to 65% total. $4.5M expenditure limit.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -8265,8 +8440,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 89,
     slug: "state-local-business-grants-guide",
+    shortAnswerQuestion: "How can my business apply for State & Local Business Grants Guide 2026 in 2026?",
+
     title: "State & Local Business Grants Guide 2026 | Regional Economic Development Funding",
-    shortAnswerQuestion: "What are the best State & Local Business Grants Guide 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to state and local business grants. Find economic development incentives, job creation programs, and regional funding up to $500K.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -8354,8 +8531,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 90,
     slug: "state-province-grants",
+    shortAnswerQuestion: "How can my business apply for State Province Grants 2025-2026 in 2026?",
+
     title: "State Province Grants... 2025-2026 | Funding Guide",
-    shortAnswerQuestion: "What are the best State Province Grants opportunities in 2026?",
+
     excerpt: "Complete guide to government grants.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -8442,8 +8621,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 91,
     slug: "state-women-business-programs-guide",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "State Women Business Programs Guide 2026 | Local Government Grants for Female Entrepreneurs",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to state and local women business programs. Discover grants, tax incentives, and support programs in all 50 states for women entrepreneurs.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -8530,8 +8711,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 92,
     slug: "strategic-innovation-fund-canada-guide",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Strategic Innovation Fund Canada 2026 | $100M+ SIF Funding Guide | Innovation Projects",
-    shortAnswerQuestion: "What innovation and technology grants are available in Canada in 2026?",
+
     excerpt: "Complete guide to Strategic Innovation Fund (SIF) funding in Canada. Access up to $100M for transformative innovation projects, R&D commercialization, and industrial expansion from ISED Canada.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -8618,8 +8801,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 93,
     slug: "territories-small-business-grants-guide",
-    title: "Territories Small Business Grants 2026 | $125M+ NT, YT, Nunavut Combined Funding",
     shortAnswerQuestion: "What small business grants are available in 2026?",
+
+    title: "Territories Small Business Grants 2026 | $125M+ NT, YT, Nunavut Combined Funding",
+
     excerpt: "Complete guide to Territories business grants. Access NWT Business Development, Yukon Small Business Support, Nunavut Economic Development, and Indigenous Business Programs.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -8706,8 +8891,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 94,
     slug: "usa-federal-grants",
+    shortAnswerQuestion: "How can my business apply for Usa Federal Grants 2025-2026 in 2026?",
+
     title: "Usa Federal Grants... 2025-2026 | Funding Guide",
-    shortAnswerQuestion: "What are the best Usa Federal Grants opportunities in 2026?",
+
     excerpt: "Complete guide to government grants.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -8795,8 +8982,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 95,
     slug: "usda-sbir-agtech-grants",
+    shortAnswerQuestion: "How can my business apply for USDA SBIR AgTech Grants 2026-2027 in 2026?",
+
     title: "USDA SBIR AgTech Grants 2026-2027 | $125K Phase I, $575K Phase II Agriculture & Food Tech Funding",
-    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     excerpt: "Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups. Phase I up to $125K, Phase II up to $575K for precision farming, food safety, sustainable agriculture innovation.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -8883,8 +9072,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 96,
     slug: "washington-tech-programs",
+    shortAnswerQuestion: "How can my business apply for Washington Tech Startup Grants 2026-2027 in 2026?",
+
     title: "Washington Tech Startup Grants 2026-2027 | $1M WRF Technology Commercialization, $540K Innovation Modernization Program, Clean Energy Fund",
-    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     excerpt: "Complete 2026-2027 guide to Washington state technology startup grants. WRF Technology Commercialization phased funding up to $1M direct costs, Innovation and Modernization Program grants $38.5K-$540K, Washington Clean Energy Fund renewable technology, Innovation Partnership Zones tax incentives, SBIR Phase 0 support for Seattle Bellevue Redmond tech corridor University of Washington WSU ecosystem.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -8971,8 +9162,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 97,
     slug: "wbdc-equity-match-grant-women",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "WBDC Equity Match Grant 2027 | $2,500-$10,000 for Women Business Growth Projects",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to WBDC Equity Match Grant with quarterly deadlines, $2,500-$10,000 funding for Connecticut women-owned businesses with matching investment requirement.",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -9059,8 +9252,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 98,
     slug: "women-business-centers-guide",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Women 2025-2026 | Complete Guide & Application Forms",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to Women",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -9147,8 +9342,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 99,
     slug: "women-clean-technology-grants-canada",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Women Clean Technology Grants Canada 2026-2027 | Clean Energy Funding $10M, Sustainability Innovation Support Toronto Vancouver Montreal",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in Canada?",
+
     excerpt: "Complete 2026-2027 guide to clean tech grants for women entrepreneurs. SDTC funding up to $10M, NRCan clean energy programs, provincial sustainability grants Toronto Vancouver Montreal Calgary. Renewable energy, circular economy, environmental technology women-owned businesses Canada.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -9235,8 +9432,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 100,
     slug: "women-entrepreneurship-fund-canada",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Women Entrepreneurship Fund Canada 2026 | Non-Repayable Grants for Women-Owned Business Growth",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in Canada?",
+
     excerpt: "Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Get funding for expansion, innovation, equipment, marketing, and R&D from ISED Canada.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -9323,8 +9522,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 101,
     slug: "women-entrepreneurship-loan-fund-canada",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Women Entrepreneurship Loan Fund (WELF) 2026 | Up to $50K Microloans for Women Entrepreneurs",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to WELF microloans from Innovation, Science & Economic Development Canada. Get up to $50,000 in financing specifically for women-owned businesses, startups, and underrepresented entrepreneurs.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -9411,8 +9612,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 102,
     slug: "women-entrepreneurship-strategy-canada",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Women Entrepreneurship Strategy Canada 2026 | $6B+ Female Business Grants & Loans",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in Canada?",
+
     excerpt: "Complete guide to Canada",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -9498,8 +9701,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 103,
     slug: "women-entrepreneurship-strategy-canada-government-grants",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Women Entrepreneurship Strategy Canada 2026 | WES Federal Funding Guide | $6B Investment",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in Canada?",
+
     excerpt: "Complete guide to Canada",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -9586,8 +9791,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 104,
     slug: "women-export-trade-grants-canada",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Women Export Trade Grants Canada 2026-2027 | CanExport Funding $75K, International Expansion Support Toronto Vancouver Montreal",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in Canada?",
+
     excerpt: "Complete 2026-2027 guide to export grants for women entrepreneurs. CanExport SME funding up to $75K, EDC financing, Trade Commissioner Service support, international market development Toronto Vancouver Montreal Calgary Ottawa. Export market research, trade missions, global expansion women-owned businesses Canada.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -9674,8 +9881,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 105,
     slug: "women-manufacturing-grants-canada",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Women Manufacturing Grants Canada 2026-2027 | $10M Equipment Funding Ontario Toronto Vancouver Calgary Montreal | Advanced Manufacturing Business Loans Women Entrepreneurs",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in Canada?",
+
     excerpt: "Complete 2026-2027 guide to manufacturing grants for women-owned businesses in Ontario, Quebec, BC, Alberta. Equipment funding $10K-$10M, productivity improvement grants, automation financing, advanced manufacturing support Toronto, Vancouver, Calgary, Montreal, Ottawa. NRC IRAP, CDEM, provincial equipment loans, Industry 4.0 smart factory funding for Canadian women manufacturers.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -9762,8 +9971,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 106,
     slug: "women-social-enterprise-grants-canada",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Women Social Enterprise Grants Canada 2026-2027 | Social Impact Funding Toronto Vancouver Montreal Calgary | Community Development Purpose-Driven Business Support Women Entrepreneurs",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in Canada?",
+
     excerpt: "Complete 2026-2027 guide to social enterprise grants for women-led impact businesses in Ontario, Quebec, BC, Alberta. Social impact funding $10K-$1M, community development programs, purpose-driven business support Toronto, Vancouver, Montreal, Calgary, Ottawa. Investment Readiness Program, social finance, non-profit grants, impact investment for Canadian women social entrepreneurs.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -9850,8 +10061,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 107,
     slug: "women-tech-stem-grants-guide",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Women in Technology & STEM Grants Guide 2026 | Female Tech Entrepreneur Funding",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Complete guide to grants for women in technology and STEM fields. Discover SBIR, NSF, and private grants offering up to $1M for female tech entrepreneurs.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -9938,8 +10151,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 108,
     slug: "women-technology-grants-canada",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Women in Technology Grants Canada 2026 | AI, Software & Digital Innovation Funding",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in Canada?",
+
     excerpt: "Complete guide to Canadian women technology grants with NRC IRAP, Innovate BC, Alberta Innovates, AI funding, software development support, and digital innovation programs.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -10026,8 +10241,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 109,
     slug: "wosb-federal-contracting-guide",
+    shortAnswerQuestion: "How can my business apply for WOSB Federal Contracting Guide 2026 in 2026?",
+
     title: "WOSB Federal Contracting Guide 2026 | Women-Owned Small Business Certification",
-    shortAnswerQuestion: "What are the best WOSB Federal Contracting Guide 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to WOSB and EDWOSB certification for federal contracting. Learn how women-owned businesses can access $2M+ government contracts.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -10114,8 +10331,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 110,
     slug: "youth-entrepreneurship-canada-funding",
+    shortAnswerQuestion: "How can my business apply for Youth Entrepreneurship Canada 2026 in 2026?",
+
     title: "Youth Entrepreneurship Canada 2026 | $60K+ Young Entrepreneur Grants & Business Funding",
-    shortAnswerQuestion: "What are the best Youth Entrepreneurship Canada 2026 opportunities in 2026?",
+
     excerpt: "Complete guide to Canadian youth entrepreneur funding programs. Access CYBF grants up to $60K, Youth Employment Strategy funding, and young business startup loans for entrepreneurs aged 18-35 across Canada.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -10202,8 +10421,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 1000,
     slug: "2026-grant-forecast",
+    shortAnswerQuestion: "How can my business apply for Canadian Small Business Grant  2026 in 2026?",
+
     title: "Canadian Small Business Grant ... 2026 | Funding Guide",
-    shortAnswerQuestion: "What are the best 2026 Grant Forecast opportunities in 2026?",
+
     excerpt: "Get ahead of the curve. Our experts predict the biggest funding trends for 2026, including new climate incentives, digital adoption boosts, and increased support for export.",
     category: "Funding Alerts",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -10305,8 +10526,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 1002,
     slug: "black-entrepreneurship-loan-fund-2026",
+    shortAnswerQuestion: "How can my business apply for Black Entrepreneurship Loan Fund 2026: $250K Funding Guide in 2026?",
+
     title: "Black Entrepreneurship Loan Fund 2026: $250K Funding Guide",
-    shortAnswerQuestion: "What are the best Black Entrepreneurship Loan Fund 2026: $250K Funding Guide opportunities in 2026?",
+
     excerpt: "🇨🇦 Complete guide to the Black Entrepreneurship Loan Fund. Access up to $250,000 in funding through FACE Coalition and BDC. Learn about eligibility, application steps, and support for Black-owned businesses in Canada.",
     category: "Demographic-Specific",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -10521,8 +10744,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 1004,
     slug: "newcomer-entrepreneur-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Newcomer Entrepreneur Grants : 2026 in 2026?",
+
     title: "Newcomer Entrepreneur Grants :... 2026 | $265M",
-    shortAnswerQuestion: "What are the best Newcomer Entrepreneur Grants 2026 opportunities in 2026?",
+
     excerpt: "🇨🇦 Complete guide for immigrants and newcomers starting a business in Canada. Access up to $60,000 via Futurpreneur, BDC financing, and settlement agency support.",
     category: "Demographic-Specific",
     categoryColor: "bg-teal-100 text-teal-800",
@@ -10734,8 +10959,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 1005,
     slug: "bc-business-grants-2026",
+    shortAnswerQuestion: "How can my business apply for BC Business Grants : Innovatio 2026 in 2026?",
+
     title: "BC Business Grants : Innovatio... 2026 | $240",
-    shortAnswerQuestion: "What business grants are available in British Columbia in 2026?",
+
     excerpt: "🇨🇦 British Columbia's top funding programs explained. From Innovate BC's tech grants to Small Business BC's expert support, find the capital to grow your West Coast business.",
     category: "Province-Specific",
     categoryColor: "bg-teal-100 text-teal-800",
@@ -10926,8 +11153,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 1006,
     slug: "northern-canada-business-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Northern Canada Business Grant 2026 in 2026?",
+
     title: "Northern Canada Business Grant... 2026 | $30",
-    shortAnswerQuestion: "What are the best Northern Canada Business Grants 2026 opportunities in 2026?",
+
     excerpt: "🇨🇦 Business in the North is unique. Explore grants for Yukon, NWT, and Nunavut from CanNor, territorial governments, and Indigenous organizations.",
     category: "Province-Specific",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -11114,8 +11343,10 @@ export const blogPosts: BlogPost[] = [
   {
     id: 1007,
     slug: "innovation-canada-grants-2026",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     title: "Innovation Canada Grants : R&D... 2026 | $2",
-    shortAnswerQuestion: "What innovation and technology grants are available in Canada in 2026?",
+
     excerpt: "🇨🇦 This is the big league. From SR&ED tax credits to IRAP grants, learn how to fund your R&D and scale your technology in Canada.",
     category: "Federal",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -11333,8 +11564,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1010,
     slug: "quebec-business-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Quebec Business Grants : Innov 2026 in 2026?",
+
     title: "Quebec Business Grants : Innov... 2026 | $300",
-    shortAnswerQuestion: "What business grants are available in Quebec in 2026?",
+
     excerpt: "🇨🇦 Québec offers some of the most generous R&D and manufacturing grants in North America. Explore funds from Investissement Québec, PME MTL, and CED.",
     category: "Province-Specific",
     categoryColor: "bg-indigo-100 text-indigo-800",
@@ -11553,8 +11786,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1011,
     slug: "saskatchewan-business-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Saskatchewan Business Grants : 2026 in 2026?",
+
     title: "Saskatchewan Business Grants :... 2026 | $400",
-    shortAnswerQuestion: "What business grants are available in Saskatchewan in 2026?",
+
     excerpt: "🇨🇦 Saskatchewan is more than just wheat. Discover funding from Innovation Saskatchewan, the Graduate Retention Program, and the new SaskAdvantage grants.",
     category: "Province-Specific",
     categoryColor: "bg-green-100 text-green-800",
@@ -11739,6 +11974,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1015,
     slug: "clean-technology-2026",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
     title: "Clean Technology 2026: Canada's $9.1B Green Funding Guide",
     excerpt: "🇨🇦 The definitive guide to Canada's Clean Technology funding landscape for 2026. Discover the Net Zero Accelerator, SDTC grants, and provincial green incentives worth over $9 billion.",
     category: "Canada News",
@@ -12108,6 +12344,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1016,
     slug: "small-business-financing-2026",
+    shortAnswerQuestion: "What small business grants are available in 2026?",
     title: "Small Business Financing 2026: Canada's $250M Expansion Guide",
     excerpt: "🇨🇦 The complete guide to Canada's expanded Small Business Financing Program (CSBFP). Learn about the $250M funding injection, new eligibility rules for 2026, and how to secure up to $1.15M for your business.",
     category: "Canada News",
@@ -12371,8 +12608,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1017,
     slug: "indigenous-business-development-2026",
+    shortAnswerQuestion: "How can my business apply for Indigenous Business Development 2026 in 2026?",
+
     title: "Indigenous Business Development 2026 | $120M+ Funding Guide",
-    shortAnswerQuestion: "What grants are available for Indigenous businesses in Canada?",
+
     excerpt: "\ud83e\udeb6 Canada's $120M Indigenous Business Revolution: Complete Funding Guide\n    \n      \n        \ud83c\udfc6 Top Indigenous Business Regions\n        \n          \u2022 Bri...",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -13078,8 +13317,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1018,
     slug: "canexport-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Canexport Grants 2026 in 2026?",
+
     title: "Canexport Grants 2026 | $75M+ Funding Guide",
-    shortAnswerQuestion: "What export grants and trade funding are available in 2026?",
+
     excerpt: "\ud83c\udde8\ud83c\udde6 CanExport Grants 2026: International Market Expansion - $75M+ Export Engine\n    \n      \n        \ud83c\udfc6 CanExport Program Portfolio\n        \n          \u2022 ...",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -13678,8 +13919,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1019,
     slug: "canada-irap-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Canada Irap Grants 2026 in 2026?",
+
     title: "Canada Irap Grants 2026 | $400M+ Funding Guide",
-    shortAnswerQuestion: "How does the NRC IRAP program work for Canadian businesses?",
+
     excerpt: "\ud83c\udde8\ud83c\udde6 Canada IRAP Grants 2026: Industrial Research Assistance Program - $400M+ Innovation Powerhouse\n    \n      \n        \ud83c\udfc6 IRAP Program Scale\n        \n  ...",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -14230,8 +14473,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1020,
     slug: "digital-transformation-2026",
+    shortAnswerQuestion: "How can my business apply for Digital Transformation 2026 in 2026?",
+
     title: "Digital Transformation 2026 | $15+ Funding Guide",
-    shortAnswerQuestion: "What are the best Digital Transformation 2026 opportunities in 2026?",
+
     excerpt: "\ud83d\udcbb Canada's $90M Digital Transformation Revolution: Complete CDAP Guide\n    \n      \n        \ud83c\udfc6 Top Digital Innovation Provinces\n        \n          \u2022 Ont...",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -15039,8 +15284,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1021,
     slug: "agricultural-innovation-2026",
-    title: "Agricultural Innovation 2026: Complete $180M AgriInnovate Guide",
     shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
+    title: "Agricultural Innovation 2026: Complete $180M AgriInnovate Guide",
+
     excerpt: "🌾 Canada's $180M Agricultural Innovation Revolution: Complete AgriInnovate Guide\n    \n      \n        🏆 Top Agricultural Innovation Provinces\n        \n...",
     category: "Canada News",
     categoryColor: "bg-green-100 text-green-800",
@@ -15937,8 +16184,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1023,
     slug: "manitoba-business-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Manitoba Business Grants : IGP 2026 in 2026?",
+
     title: "Manitoba Business Grants : IGP... 2026 | $4",
-    shortAnswerQuestion: "What business grants are available in Manitoba in 2026?",
+
     excerpt: "Manitoba's Innovation Growth Program gives up to $100K for commercialization. Plus FPEGF for Indigenous businesses and North Forge's startup incubator. Full program list inside.",
     category: "Province-Specific",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -16171,8 +16420,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1024,
     slug: "healthcare-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Healthcare Grants Canada 2026: $14B Available [Who Qualifies] in 2026?",
+
     title: "Healthcare Grants Canada 2026: $14B Available [Who Qualifies]",
-    shortAnswerQuestion: "What are the best Healthcare Grants Canada 2026: $14B Available [Who Qualifies] opportunities in 2026?",
+
     excerpt: "90% of health startups apply to the wrong program and get rejected. CIHR is for academics — if you're a business, you need IRAP, ISC, or your provincial health authority. Here's how.",
     category: "Industry-Specific",
     categoryColor: "bg-orange-100 text-orange-800",
@@ -16475,8 +16726,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1025,
     slug: "manufacturing-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Manufacturing Grants : Canadas 2026 in 2026?",
+
     title: "Manufacturing Grants : Canadas... 2026 | $10M",
-    shortAnswerQuestion: "What manufacturing grants and funding are available in 2026?",
+
     excerpt: "🇨🇦 Modernize your factory with Canadian government grants. Learn about SIF, regional equipment loans, and the Canada Job Grant for retraining your workforce.",
     category: "Industry-Specific",
     categoryColor: "bg-orange-100 text-orange-800",
@@ -16656,8 +16909,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1026,
     slug: "technology-startup-grants-2026",
+    shortAnswerQuestion: "What are the best startup grants and funding options in 2026?",
+
     title: "Tech Startup Grants Canada 2026: $4B+ Non-Dilutive [Full List]",
-    shortAnswerQuestion: "What startup grants and funding are available in Canada in 2026?",
+
     excerpt: "Keep 100% equity: IRAP covers 80% of R&D salaries, SR&ED gives 45% tax credits, and the Digital Adoption Program funds your tech stack. $4B+ available — here's how to stack them.",
     category: "Industry-Specific",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -16863,8 +17118,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1028,
     slug: "2026-grant-preview-early-bird",
+    shortAnswerQuestion: "How can my business apply for Grant Preview Early Bird 2026 in 2026?",
+
     title: "Grant Preview Early Bird... 2026 | Funding Guide",
-    shortAnswerQuestion: "What are the best 2026 Grant Preview Early Bird opportunities in 2026?",
+
     excerpt: "\ud83d\ude80 2026 Grant Preview: Early Bird Opportunities - $4.8B Future Funding Pipeline\n    \n      \n        \ud83c\udfc6 Top 2026 Early Bird Programs\n        \n          \u2022...",
     category: "Seasonal",
     categoryColor: "bg-indigo-100 text-indigo-800",
@@ -16958,8 +17215,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1030,
     slug: "atlantic-business-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Atlantic Business Grants : Oce 2026 in 2026?",
+
     title: "Atlantic Business Grants : Oce... 2026 | $2",
-    shortAnswerQuestion: "What are the best Atlantic Business Grants 2026 opportunities in 2026?",
+
     excerpt: "🇨🇦 The East Coast is booming. From the Ocean Supercluster to ACOA's diverse funding programs, discover grants for Nova Scotia, NB, PEI, and Newfoundland.",
     category: "Province-Specific",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -17381,8 +17640,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1032,
     slug: "veteran-business-funding-canada-2026",
-    title: "Veteran Business Grants Canada 2026: $89K+ Available [Apply]",
     shortAnswerQuestion: "What grants are available for veteran-owned businesses in 2026?",
+
+    title: "Veteran Business Grants Canada 2026: $89K+ Available [Apply]",
+
     excerpt: "Canadian veterans can access up to $89K through Prince's Trust, Futurpreneur, and the Education & Training Benefit. Plus SBA-style fee waivers on business loans. Full program list.",
     category: "Demographic-Specific",
     categoryColor: "bg-red-100 text-red-800",
@@ -17473,8 +17734,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1033,
     slug: "canada-housing-community-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Canada Housing & Community Gra 2026 in 2026?",
+
     title: "Canada Housing & Community Gra... 2026 | $4",
-    shortAnswerQuestion: "What are the best Canada Housing Community Grants 2026 opportunities in 2026?",
+
     excerpt: "🇨🇦 Access CMHC and FCM funding for housing and community projects. Guide to the Housing Accelerator Fund, Green Municipal Fund, and Rapid Housing Initiative.",
     category: "Canada News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -17907,8 +18170,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1034,
     slug: "women-entrepreneurship-grants-2026",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Women Business Grants : Inclus... 2026 | $160",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "🇨🇦 The WES Ecosystem Fund, WEOC loans, and FACERF are changing the game. Discover funding specifically for women-owned businesses in Canada.",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -18276,8 +18541,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
   {
     id: 1036,
     slug: "alberta-business-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Alberta Business Grants : Inno 2026 in 2026?",
+
     title: "Alberta Business Grants : Inno... 2026 | Funding Guide",
-    shortAnswerQuestion: "What business grants are available in Alberta in 2026?",
+
     excerpt: albertaBusinessGrants2026.excerpt,
     category: "Province-Specific",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -18352,8 +18619,10 @@ However, some large SIF contributions may have repayment terms based on revenue 
     id: 2036,
     type: 'grant-news',
     slug: "veterans-business-grants-2026",
-    title: "Veterans Business Grants : SBA... 2026 | $15",
     shortAnswerQuestion: "What grants are available for veteran-owned businesses in 2026?",
+
+    title: "Veterans Business Grants : SBA... 2026 | $15",
+
     excerpt: "🇺🇸 Complete guide to grants and resources for veteran-owned small businesses (VOSB) and service-disabled veteran-owned small businesses (SDVOSB).",
     category: "Demographic-Specific",
     categoryColor: "bg-indigo-100 text-indigo-800",
@@ -18597,6 +18866,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
     id: 2037,
     type: 'grant-news',
     slug: "women-business-grants-2026",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
     title: "Women's Business Grants 2026: $10M+ Opportunities",
     excerpt: "🇺🇸 A curated list of grants for women entrepreneurs in 2026. Featuring the Amber Grant, Cartier Women's Initiative, and SBA Women's Centers.",
     category: "Demographic-Specific",
@@ -18897,8 +19167,10 @@ Write: "This grant will fund a high-capacity oven, allowing me to increase produ
     id: 2038,
     type: 'grant-news',
     slug: "minority-business-grants-2026",
-    title: "Minority Business Grants : Clo... 2026 | $4B",
     shortAnswerQuestion: "What grants are available for minority-owned businesses in 2026?",
+
+    title: "Minority Business Grants : Clo... 2026 | $4B",
+
     excerpt: "🇺🇸 Funding sources dedicated to Black, Latino, Asian, and Indigenous entrepreneurs. MBDA Centers, NMSDC certification, and private diversity funds.",
     category: "Demographic-Specific",
     categoryColor: "bg-orange-100 text-orange-800",
@@ -19154,6 +19426,7 @@ However, a single corporate contract can yield 100x that investment.
     id: 2039,
     type: 'grant-news',
     slug: "biden-2-5b-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Biden 2 5b Grants 2026 in 2026?",
     title: "Biden's $2.5B Small Business Grants: 2026 Guide",
     excerpt: "🇺🇸 Everything you need to know about the new $2.5 billion federal grant initiative for minority, women, and veteran entrepreneurs.",
     category: "USA News",
@@ -19242,8 +19515,10 @@ ${bidenPost}
     id: 2040,
     type: 'grant-news',
     slug: "doe-clean-tech-2026",
+    shortAnswerQuestion: "How can my business apply for DOE $800M Clean Tech Funding 2026 in 2026?",
+
     title: "DOE $800M Clean Tech Funding 2026",
-    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     excerpt: "🇺🇸 The Department of Energy is investing heavily in solar, battery, and green technology. Here's how to access the $800M fund.",
     category: "Industry-Specific",
     categoryColor: "bg-green-100 text-green-800",
@@ -19331,8 +19606,10 @@ ${doePost}
     id: 2041,
     type: 'grant-news',
     slug: "epa-environmental-justice-2026",
+    shortAnswerQuestion: "How can my business apply for EPA $100M Environmental Justice Grants in 2026?",
+
     title: "EPA $100M Environmental Justice Grants",
-    shortAnswerQuestion: "What are the best EPA $100M Environmental Justice Grants opportunities in 2026?",
+
     excerpt: "🇺🇸 Funding for communities and non-profits fighting pollution and climate change in underserved areas. Application guide and success tips.",
     category: "USA News",
     categoryColor: "bg-teal-100 text-teal-800",
@@ -19420,8 +19697,10 @@ ${epaPost}
     id: 2042,
     type: 'grant-news',
     slug: "nsf-stem-research-2026",
+    shortAnswerQuestion: "How can my business apply for NSF SBIR/STTR: $200M for STEM Startups in 2026?",
+
     title: "NSF SBIR/STTR: $200M for STEM Startups",
-    shortAnswerQuestion: "What are the best NSF SBIR/STTR: $200M for STEM Startups opportunities in 2026?",
+
     excerpt: "🇺🇸 The National Science Foundation offers non-dilutive funding for high-tech startups. Guide to the new 'Project Pitch' system.",
     category: "Industry-Specific",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -19509,8 +19788,10 @@ ${nsfPost}
     id: 2043,
     type: 'grant-news',
     slug: "october-2026-last-chance",
+    shortAnswerQuestion: "What government grant deadlines are closing soon in October 2026?",
+
     title: "October : Last Chance Grant De... 2026 | Funding Guide",
-    shortAnswerQuestion: "What government grant deadlines are closing soon in 2026?",
+
     excerpt: "⏰ Urgent funding alert! Key federal and provincial grant programs closing this month. Don't miss out on over $15M in expiring opportunities.",
     category: "Funding Alerts",
     categoryColor: "bg-red-100 text-red-800",
@@ -19607,8 +19888,10 @@ ${oct2026Post}
     id: 2044,
     type: 'grant-news',
     slug: "q4-2026-deadlines",
-    title: "Q4  Grant Deadlines: End of Ye... 2026 | Funding Guide",
     shortAnswerQuestion: "What government grant deadlines are closing soon in 2026?",
+
+    title: "Q4  Grant Deadlines: End of Ye... 2026 | Funding Guide",
+
     excerpt: "📅 Plan your year-end funding strategy. Critical deadlines for November and December 2026 across all major grant categories.",
     category: "Funding Alerts",
     categoryColor: "bg-orange-100 text-orange-800",
@@ -19705,8 +19988,10 @@ ${q42026Post}
     id: 2045,
     type: 'expert-insight',
     slug: "q1-2026-grant-deadlines",
-    title: "Q1  Grant Forecast: Prepare No... 2026 | Funding Guide",
     shortAnswerQuestion: "What government grant deadlines are closing soon in 2026?",
+
+    title: "Q1  Grant Forecast: Prepare No... 2026 | Funding Guide",
+
     excerpt: "🔮 Get a head start on 2026. Preview of major grant programs opening in January, February, and March 2026.",
     category: "Seasonal",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -19793,8 +20078,10 @@ ${q12026Post}
     id: 2046,
     type: 'grant-news',
     slug: "sba-sbir-grants-2026",
+    shortAnswerQuestion: "How can my business apply for SBA SBIR/STTR : Americas Seed  2026 in 2026?",
+
     title: "SBA SBIR/STTR : Americas Seed ... 2026 | Funding Guide",
-    shortAnswerQuestion: "How do SBIR and STTR grants work for US startups in 2026?",
+
     excerpt: "🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. How to access over $4 billion in non-dilutive R&D funding in 2026.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -19882,8 +20169,10 @@ ${sbaSbirPost}
     id: 2047,
     type: 'expert-insight',
     slug: "grant-writing-secrets-2026",
+    shortAnswerQuestion: "How can my business apply for Grant Writing Secrets : 7 Tips 2026 in 2026?",
+
     title: "Grant Writing Secrets : 7 Tips... 2026 | Funding Guide",
-    shortAnswerQuestion: "What are the best grant writing tips to win funding in 2026?",
+
     excerpt: "✍️ Increase your approval odds. Professional grant writers share their top strategies for crafting winning proposals in 2026.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -19971,8 +20260,10 @@ ${grantSecretsPost}
     id: 2048,
     type: 'grant-news',
     slug: "usda-rural-grants-2026",
+    shortAnswerQuestion: "How can my business apply for USDA Rural Business Developmen 2026 in 2026?",
+
     title: "USDA Rural Business Developmen... 2026 | Funding Guide",
-    shortAnswerQuestion: "What grants are available for rural businesses in 2026?",
+
     excerpt: "🇺🇸 Support for rural entrepreneurs. The USDA provides grants for training, equipment, and real estate in eligible rural areas.",
     category: "USA News",
     categoryColor: "bg-green-100 text-green-800",
@@ -20059,8 +20350,10 @@ ${usdaRuralPost}
     id: 2049,
     type: 'grant-news',
     slug: "new-york-business-grants-2026",
+    shortAnswerQuestion: "How can my business apply for New York Business Grants : Sta 2026 in 2026?",
+
     title: "New York Business Grants : Sta... 2026 | Funding Guide",
-    shortAnswerQuestion: "What business grants are available in New York in 2026?",
+
     excerpt: "🗽 Comprehensive guide to business grants in New York State. Covering NYC small business funds, upstate revitalization, and tech incentives.",
     category: "State-Specific",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -20147,8 +20440,10 @@ ${nyGrantsPost}
     id: 2050,
     type: 'grant-news',
     slug: "canada-regional-development-2026",
+    shortAnswerQuestion: "How can my business apply for Canadas Regional Development A 2026 in 2026?",
+
     title: "Canadas Regional Development A... 2026 | Funding Guide",
-    shortAnswerQuestion: "What are the best Canada Regional Development 2026 opportunities in 2026?",
+
     excerpt: "🇨🇦 The 7 Regional Development Agencies (RDAs) are a primary source of business funding. Learn which agency covers your region and what they fund.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -20253,8 +20548,10 @@ ${regionalDevPost}
     id: 2051,
     type: 'grant-news',
     slug: "innovation-superclusters-2026",
-    title: "Global Innovation Clusters:  C... 2026 | $100",
     shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
+    title: "Global Innovation Clusters:  C... 2026 | $100",
+
     excerpt: "🇨🇦 Canada's Superclusters (now Global Innovation Clusters) are co-investing millions in collaborative tech projects. Digital, Protein, Ocean, AI, and Manufacturing.",
     category: "Canada News",
     categoryColor: "bg-teal-100 text-teal-800",
@@ -20359,8 +20656,10 @@ ${superclustersPost}
     id: 2052,
     type: 'grant-news',
     slug: "rural-business-development-2026",
+    shortAnswerQuestion: "How can my business apply for Rural Canada Business Developm 2026 in 2026?",
+
     title: "Rural Canada Business Developm... 2026 | Funding Guide",
-    shortAnswerQuestion: "What grants are available for rural businesses in 2026?",
+
     excerpt: "🇨🇦 Specific funding streams for rural Canadian businesses. CFDC loans, rural broadband funds, and agricultural support.",
     category: "Demographic-Specific",
     categoryColor: "bg-green-100 text-green-800",
@@ -20465,8 +20764,10 @@ ${ruralBizPost}
     id: 2053,
     type: 'grant-news',
     slug: "sred-tax-credits-2026",
+    shortAnswerQuestion: "How can my business apply for SR&ED : Maximizing Your Tax Cr 2026 in 2026?",
+
     title: "SR&ED : Maximizing Your Tax Cr... 2026 | Funding Guide",
-    shortAnswerQuestion: "How do SR&ED tax credits work for Canadian businesses in 2026?",
+
     excerpt: "🇨🇦 The Scientific Research and Experimental Development (SR&ED) program is Canada's largest R&D incentive. Guide to claiming your 35% credit.",
     category: "Canada News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -20570,8 +20871,10 @@ ${sredTaxPost}
   {
     id: 1009,
     slug: "green-business-funding",
+    shortAnswerQuestion: "How can my business apply for Green Business Funding : Susta 2026 in 2026?",
+
     title: "Green Business Funding : Susta... 2026 | $1",
-    shortAnswerQuestion: "What clean technology and sustainability grants are available in 2026?",
+
     excerpt: "Detailed guide to Canada's green business grants for SMEs. Covers retrofits, EV fleets, and zero-waste manufacturing incentives available in 2026.",
     category: "Sustainability",
     categoryColor: "bg-green-100 text-green-800",
@@ -20976,7 +21279,8 @@ ${sredTaxPost}
   // Batch 18: Restored 2025 Content
   {
     id: 3001,
-    slug: "clean-technology-2026",
+    slug: "clean-technology-2026-archive",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
     title: "Canada's $400M Clean Technology Leadership | Funding & Grants 2025",
     excerpt: "Environment and Climate Change Canada has launched the most comprehensive clean technology funding program in history, investing $400 million to position Canada as a global clean technology superpower.",
     category: "Canada News",
@@ -21064,8 +21368,10 @@ ${sredTaxPost}
   {
     id: 3002,
     slug: "apply-usa-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Your 2026 Grant Success Blueprint in 2026?",
+
     title: "Your 2026 Grant Success Blueprint | Application Strategy Guide",
-    shortAnswerQuestion: "What are the best Your 2026 Grant Success Blueprint opportunities in 2026?",
+
     excerpt: "Navigating the US government grant system can feel overwhelming, but with the right strategy, you can join the 37,000+ businesses that secured federal funding. This guide covers SAM.gov, research, and application tactics.",
     category: "Tips & Guides",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -21151,9 +21457,11 @@ ${sredTaxPost}
 },
   {
     id: 3003,
-    slug: "canexport-grants-2026",
+    slug: "canexport-grants-2026-archive",
+    shortAnswerQuestion: "How can my business apply for CanExport Grants 2025: International Market Expansion in 2026?",
+
     title: "CanExport Grants 2025: International Market Expansion | Funding Guide",
-    shortAnswerQuestion: "What export grants and trade funding are available in 2026?",
+
     excerpt: "Canada's CanExport programs provide comprehensive support for international expansion, with over $75 million available annually. Learn how to access up to $50K for marketing and $600K for R&D partnerships.",
     category: "Canada News",
     categoryColor: "bg-red-100 text-red-800",
@@ -21239,9 +21547,11 @@ ${sredTaxPost}
 },
   {
     id: 3004,
-    slug: "rural-business-development-2026",
+    slug: "rural-business-development-2026-archive",
+    shortAnswerQuestion: "How can my business apply for Rural Business Development Grants 2025: $1.2B Funding Guide in 2026?",
+
     title: "Rural Business Development Grants 2025: $1.2B Funding Guide",
-    shortAnswerQuestion: "What grants are available for rural businesses in 2026?",
+
     excerpt: "Rural America is experiencing a renaissance with $1.2 billion in targeted grants. Discover USDA programs, value-added producer grants, and technology funding designed to revitalize small town businesses.",
     category: "Demographic-Specific",
     categoryColor: "bg-green-100 text-green-800",
@@ -21327,9 +21637,11 @@ ${sredTaxPost}
 },
   {
     id: 3005,
-    slug: "veterans-business-grants-2026",
-    title: "Veterans Business Grants 2025: $75M Funding Revolution",
+    slug: "veterans-business-grants-2026-archive",
     shortAnswerQuestion: "What grants are available for veteran-owned businesses in 2026?",
+
+    title: "Veterans Business Grants 2025: $75M Funding Revolution",
+
     excerpt: "The federal government has committed $75 million to veteran entrepreneurship. From SBA 7(a) fee waivers to the VetBiz program, learn how to access capital and federal contracting advantages.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -21415,9 +21727,11 @@ ${sredTaxPost}
 },
   {
     id: 3006,
-    slug: "new-york-business-grants-2026",
+    slug: "new-york-business-grants-2026-archive",
+    shortAnswerQuestion: "How can my business apply for New York Business Grants : Emp 2025 in 2026?",
+
     title: "New York Business Grants : Emp... 2025 | Funding Guide",
-    shortAnswerQuestion: "What business grants are available in New York in 2026?",
+
     excerpt: "New York State offers $1.8 billion in funding through its Regional Economic Development Councils. Explore the Consolidated Funding Application (CFA), Excelsior Jobs tax credits, and SSBCI opportunities.",
     category: "State-Specific",
     categoryColor: "bg-indigo-100 text-indigo-800",
@@ -21503,9 +21817,11 @@ ${sredTaxPost}
 },
   {
     id: 3007,
-    slug: "manufacturing-grants-2026",
+    slug: "manufacturing-grants-2026-archive",
+    shortAnswerQuestion: "How can my business apply for Manufacturing Grants 2025: $2.3B Industrial Renaissance in 2026?",
+
     title: "Manufacturing Grants 2025: $2.3B Industrial Renaissance",
-    shortAnswerQuestion: "What manufacturing grants and funding are available in 2026?",
+
     excerpt: "American manufacturing is booming with $2.3 billion in grants for automation, reshoring, and workforce development. Learn about MEP centers, smart manufacturing incentives, and federal support.",
     category: "Industry-Specific",
     categoryColor: "bg-gray-100 text-gray-800",
@@ -21591,9 +21907,11 @@ ${sredTaxPost}
 },
   {
     id: 3008,
-    slug: "minority-business-grants-2026",
-    title: "Minority Business Enterprise Grants 2025: $1.9B Funding Guide",
+    slug: "minority-business-grants-2026-archive",
     shortAnswerQuestion: "What grants are available for minority-owned businesses in 2026?",
+
+    title: "Minority Business Enterprise Grants 2025: $1.9B Funding Guide",
+
     excerpt: "Minority-owned businesses are driving economic growth with $1.9 trillion in revenue. Access $1.9 billion in targeted grants, SBA 8(a) contracts, and NMSDC opportunities.",
     category: "Demographic-Specific",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -21679,7 +21997,8 @@ ${sredTaxPost}
 },
   {
     id: 3009,
-    slug: "digital-transformation-2026",
+    slug: "digital-transformation-2026-archive",
+    shortAnswerQuestion: "How can my business apply for Digital Transformation 2026 Archive in 2026?",
     title: "Canada's $90M Digital Transformation Revolution: CDAP Guide",
     excerpt: "The Canada Digital Adoption Program (CDAP) offers $90 million to boost SME technology. Get up to $15,000 for planning and $100,000 interest-free loans for implementation.",
     category: "Canada News",
@@ -21766,7 +22085,8 @@ ${sredTaxPost}
 },
   {
     id: 3010,
-    slug: "agricultural-innovation-2026",
+    slug: "agricultural-innovation-2026-archive",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
     title: "Canada's $180M Agricultural Innovation Revolution: AgriInnovate Guide",
     excerpt: "Agriculture and Agri-Food Canada has launched a $180 million innovation fund. Learn how to access up to $5M for commercialization, demonstration, and adoption of ag-tech.",
     category: "Canada News",
@@ -21853,7 +22173,8 @@ ${sredTaxPost}
 },
   {
     id: 3011,
-    slug: "usda-rural-grants-2026",
+    slug: "usda-rural-grants-2026-archive",
+    shortAnswerQuestion: "How can my business apply for Usda Rural Grants 2026 Archive in 2026?",
     title: "USDA's $300M Rural Revolution: Business & Innovation Grants",
     excerpt: "The USDA is investing $300 million in rural agricultural innovation targeted at 46 million rural Americans. Discover funding for value-added production, renewable energy, and broadband.",
     category: "USA News",
@@ -21940,9 +22261,11 @@ ${sredTaxPost}
 },
   {
     id: 3012,
-    slug: "women-business-grants-2026",
+    slug: "women-business-grants-2026-archive",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
     title: "Women-Owned Business Grants 2025: $2.1B Funding Guide",
-    shortAnswerQuestion: "What grants are available for women entrepreneurs in 2026?",
+
     excerpt: "Women entrepreneurs now own 42% of US businesses. Access $2.1 billion in targeted grants, SBA Women's Business Centers, and the Amber Grant.",
     category: "Demographic-Specific",
     categoryColor: "bg-pink-100 text-pink-800",
@@ -22036,9 +22359,11 @@ ${sredTaxPost}
 },
   {
     id: 3013,
-    slug: "technology-startup-grants-2026",
+    slug: "technology-startup-grants-2026-archive",
+    shortAnswerQuestion: "What are the best startup grants and funding options in 2026?",
+
     title: "Technology Startup Grants 2025: $3.4B Innovation Fund",
-    shortAnswerQuestion: "What startup grants and funding are available in 2026?",
+
     excerpt: "Silicon Valley isn't the only path to funding. The SBIR program offers $3.4 billion in non-dilutive grants for tech startups. Phase I awards up to $250k.",
     category: "Industry-Specific",
     categoryColor: "bg-purple-100 text-purple-800",
@@ -22132,9 +22457,11 @@ ${sredTaxPost}
 },
   {
     id: 3014,
-    slug: "healthcare-grants-2026",
+    slug: "healthcare-grants-2026-archive",
+    shortAnswerQuestion: "How can my business apply for Healthcare Business Grants 2025: $4.5B Funding Guide in 2026?",
+
     title: "Healthcare Business Grants 2025: $4.5B Funding Guide",
-    shortAnswerQuestion: "What are the best Healthcare Business Grants 2025: $4.5B Funding Guide opportunities in 2026?",
+
     excerpt: "The healthcare sector is seeing unprecedented grant funding for digital health, rural access, and medical innovation. Access $4.5 billion in HRSA, NIH, and private foundation grants.",
     category: "Industry-Specific",
     categoryColor: "bg-orange-100 text-orange-800",
@@ -22221,8 +22548,10 @@ ${sredTaxPost}
   {
     id: 3015,
     slug: "california-business-grants-2026",
+    shortAnswerQuestion: "How can my business apply for California Small Business Grants 2026: $1.5B Funding Guide in 2026?",
+
     title: "California Small Business Grants 2026: $1.5B Funding Guide",
-    shortAnswerQuestion: "What business grants are available in California in 2026?",
+
     excerpt: "California leads the nation in state-level business support. Access $1.5 billion through the Dream Fund, California Competes Tax Credit, and regional innovation hubs.",
     category: "State-Specific",
     categoryColor: "bg-green-100 text-green-800",
@@ -22309,8 +22638,10 @@ ${sredTaxPost}
   {
     id: 3016,
     slug: "florida-business-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Florida Business Grants 2026: $850M Growth Funding in 2026?",
+
     title: "Florida Business Grants 2026: $850M Growth Funding",
-    shortAnswerQuestion: "What business grants are available in Florida in 2026?",
+
     excerpt: "Florida's business-friendly environment includes $850 million in targeted grants for export growth, high-tech industry, and tourism development. Learn how to access Enterprise Florida funds.",
     category: "State-Specific",
     categoryColor: "bg-green-100 text-green-800",
@@ -22397,8 +22728,10 @@ ${sredTaxPost}
   {
     id: 3017,
     slug: "illinois-business-development-2026",
+    shortAnswerQuestion: "How can my business apply for Illinois Business Development Grants 2026: $650M Guide in 2026?",
+
     title: "Illinois Business Development Grants 2026: $650M Guide",
-    shortAnswerQuestion: "What business grants are available in Illinois in 2026?",
+
     excerpt: "Illinois DCEO offers over $650 million in business development grants. From Advantage Illinois low-interest loans to EDGE tax credits, discover opportunities for Prairie State businesses.",
     category: "State-Specific",
     categoryColor: "bg-green-100 text-green-800",
@@ -22485,8 +22818,10 @@ ${sredTaxPost}
   {
     id: 3018,
     slug: "michigan-manufacturing-renaissance-2026",
+    shortAnswerQuestion: "How can my business apply for Michigan Manufacturing Grants 2026: $500M Industry 4.0 in 2026?",
+
     title: "Michigan Manufacturing Grants 2026: $500M Industry 4.0",
-    shortAnswerQuestion: "What manufacturing grants and funding are available in 2026?",
+
     excerpt: "Michigan is investing $500 million to reclaim its manufacturing crown. New grants support Industry 4.0 adoption, EV supply chain transition, and advanced manufacturing technologies.",
     category: "State-Specific",
     categoryColor: "bg-green-100 text-green-800",
@@ -22573,8 +22908,10 @@ ${sredTaxPost}
   {
     id: 3019,
     slug: "pennsylvania-innovation-2026",
-    title: "Pennsylvania Innovation Grants 2026: $670M Industrial Fund",
     shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
+    title: "Pennsylvania Innovation Grants 2026: $670M Industrial Fund",
+
     excerpt: "Pennsylvania's Ben Franklin Technology Partners and PIDA offer $670 million in funding. Learn how to access capital for industrial innovation, life sciences, and tech startups.",
     category: "State-Specific",
     categoryColor: "bg-green-100 text-green-800",
@@ -22665,8 +23002,10 @@ ${sredTaxPost}
   {
     id: 3020,
     slug: "texas-business-grants-2026",
+    shortAnswerQuestion: "How can my business apply for Texas Business Grants 2026: $1.2B Enterprise Fund in 2026?",
+
     title: "Texas Business Grants 2026: $1.2B Enterprise Fund",
-    shortAnswerQuestion: "What business grants are available in Texas in 2026?",
+
     excerpt: "Everything is bigger in Texas, including the $1.2 billion Texas Enterprise Fund. Discover deal-closing grants, product development funds, and opportunities in the Lone Star State.",
     category: "State-Specific",
     categoryColor: "bg-green-100 text-green-800",
@@ -22753,9 +23092,11 @@ ${sredTaxPost}
 },
   {
     id: 3021,
-    slug: "doe-clean-tech-2026",
+    slug: "doe-clean-tech-2026-archive",
+    shortAnswerQuestion: "How can my business apply for DOE Clean Energy Grants 2025: $800M Innovation Fund in 2026?",
+
     title: "DOE Clean Energy Grants 2025: $800M Innovation Fund",
-    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
     excerpt: "The Department of Energy is deploying $800 million for clean tech innovation. From ARPA-E to solar and battery storage grants, find out how to fund your climate solution.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -22841,9 +23182,11 @@ ${sredTaxPost}
 },
   {
     id: 3022,
-    slug: "epa-environmental-justice-2026",
+    slug: "epa-environmental-justice-2026-archive",
+    shortAnswerQuestion: "How can my business apply for EPA Environmental Justice Grants 2025: $100M Community Fund in 2026?",
+
     title: "EPA Environmental Justice Grants 2025: $100M Community Fund",
-    shortAnswerQuestion: "What are the best EPA Environmental Justice Grants 2025: $100M Community Fund opportunities in 2026?",
+
     excerpt: "The EPA's Environmental Justice program offers $100 million to community organizations. Fund projects that address pollution and public health in underserved communities.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -22930,8 +23273,10 @@ ${sredTaxPost}
   {
     id: 3023,
     slug: "hud-community-2026",
+    shortAnswerQuestion: "How can my business apply for HUD Community Development Grants 2026: $150M CDBG Guide in 2026?",
+
     title: "HUD Community Development Grants 2026: $150M CDBG Guide",
-    shortAnswerQuestion: "What are the best HUD Community Development Grants 2026: $150M CDBG Guide opportunities in 2026?",
+
     excerpt: "HUD's CDBG program provides $150 million for community development. Learn how local governments and nonprofits can access funds for housing, infrastructure, and economic development.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -23017,9 +23362,11 @@ ${sredTaxPost}
 },
   {
     id: 3024,
-    slug: "nsf-stem-research-2026",
+    slug: "nsf-stem-research-2026-archive",
+    shortAnswerQuestion: "How can my business apply for NSF STEM Research Grants 2025: $200M SBIR/STTR Guide in 2026?",
+
     title: "NSF STEM Research Grants 2025: $200M SBIR/STTR Guide",
-    shortAnswerQuestion: "What are the best NSF STEM Research Grants 2025: $200M SBIR/STTR Guide opportunities in 2026?",
+
     excerpt: "The NSF seeds the future with $200 million in STEM research grants. The SBIR/STTR program funds high-risk, high-impact technologies with commercial potential.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
