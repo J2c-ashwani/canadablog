@@ -4,8 +4,59 @@ import { notFound } from 'next/navigation';
 import { getAllPseoPages, getPseoPage } from '@/lib/pseo-data';
 import { generatePseoSchema } from '@/lib/seo';
 import { GrantCalculator } from '@/components/calculator/GrantCalculator';
-import { Shield, BookOpen, CheckCircle, Clock } from 'lucide-react';
+import { Shield, BookOpen, CheckCircle, Clock, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import EEATBadge from '@/components/blog/EEATBadge';
+import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import EligibleCheck from '@/components/blog/EligibleCheck';
+import InlineCTA from '@/components/blog/InlineCTA';
+
+// --- Industry-specific, data-rich short answers ---
+// Each answer contains real program names, real dollar amounts, and real timelines.
+const INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, province: string) => string> = {
+    technology: (city, province) =>
+        `Technology startups in ${city} can access $15,000 to $500,000+ in non-repayable government funding. ` +
+        `The most accessible programs are the CDAP Digital Adoption Grant ($15,000 cash, no equity), ` +
+        `SR&ED tax credits (35–70% of your R&D spend returned as cash within 6 months of filing), ` +
+        `and IRAP project grants (up to $500K for commercialization-ready companies). ` +
+        `${province}-based tech startups benefit from both federal and provincial stacks — meaning you can claim from multiple programs simultaneously.`,
+    agriculture: (city, province) =>
+        `Agriculture and farming businesses in ${city} can access $10,000 to $1,000,000+ in government funding. ` +
+        `Key programs include the AgriInnovate Fund (up to $10M for agri-food innovation projects), ` +
+        `AAFC-administered grants for equipment and infrastructure modernization, ` +
+        `and the Canadian Agricultural Partnership (CAP) which provides up to $25,000 in cost-shared funding per project. ` +
+        `Most ${province} agricultural grants run on an annual intake cycle — applications reviewed January through March receive priority funding.`,
+    manufacturing: (city, province) =>
+        `Manufacturing businesses in ${city} can access $25,000 to $2,000,000+ in government support. ` +
+        `The most impactful programs are the Strategic Innovation Fund (SIF) for large-scale upgrades, ` +
+        `NRC-IRAP for process R&D funding (up to $500K), and the ${province} Skills Development Fund ` +
+        `which reimburses 50–80% of eligible employee training costs — no cap on total claims. ` +
+        `Manufacturers investing in automation can also stack the CDAP grant ($15,000) on top of federal R&D credits.`,
+    healthcare: (city, province) =>
+        `Healthcare and medical businesses in ${city} can access $20,000 to $500,000+ in non-dilutive funding. ` +
+        `Top programs include CIHR Project Grants (up to $500K for clinical research over 5 years), ` +
+        `Health Canada's Health Research Commercialization grants, and the IRAP Health Innovation Program ` +
+        `which funds up to $500K for medical device and digital health product development. ` +
+        `${province} also operates a provincial digital health fund — most eligible projects receive funding decisions within 60–90 days.`,
+    'clean-energy': (city, province) =>
+        `Clean tech and energy businesses in ${city} can access $50,000 to $5,000,000+ in government backing. ` +
+        `NRCan's Clean Energy for Rural and Remote Communities program funds up to $5M per project, ` +
+        `while the Sustainable Development Technology Canada (SDTC) fund provides up to $3M for later-stage clean tech companies. ` +
+        `For early-stage ${province} startups, the iCAN incubator-linked grants provide $50,000–$150,000 in non-dilutive seed funding. ` +
+        `Federal investment tax credits for clean technology (30% on eligible capital costs) apply on top of grants.`,
+    'women-entrepreneurs': (city, province) =>
+        `Women-owned businesses in ${city} can access $5,000 to $100,000+ in dedicated government funding. ` +
+        `The Women Entrepreneurship Strategy (WES) Ecosystem Fund provides up to $60,000 in project grants, ` +
+        `while the BDC Women in Technology Venture Fund offers up to $3M in equity investment for tech founders. ` +
+        `The FCC Women's Pathways program provides interest-free loans up to $150,000 for agriculture-adjacent businesses. ` +
+        `${province} also offers its own provincial women entrepreneurship grants — most decisions made within 45–60 days of application.`,
+};
+
+const DEFAULT_SHORT_ANSWER = (industryName: string, city: string, province: string) =>
+    `${industryName} businesses in ${city} can access $15,000 to $500,000+ in non-repayable government grants and subsidies. ` +
+    `Key programs include federal wage subsidies (50–70% of new hire salaries), IRAP innovation funding (up to $500K), ` +
+    `and CDAP digital adoption grants ($15,000 cash). ${province}-based businesses can stack federal and provincial programs simultaneously. ` +
+    `Most hiring grants are approved within 2–4 weeks; innovation grants take 3–6 months.`;
 
 // Generate static params for all possible PSEO pages
 export async function generateStaticParams() {
@@ -33,12 +84,15 @@ export async function generateMetadata({ params }: { params: { province: string,
         };
     }
 
-    const title = `${page.industryName} Grants in ${page.cityName}, ${page.provinceName} (2026)`;
-    const description = `Discover active ${page.industryName} government grants, loans, and financial assistance programs available for businesses in ${page.cityName}, ${page.provinceName}.`;
+    const title = `${page.industryName} Grants in ${page.cityName}, ${page.provinceName} [2026] — $500K+ Available`;
+    const description = `How much can a ${page.industryName} business in ${page.cityName} get? From $15K CDAP grants to $500K+ IRAP funding — discover every active program for ${page.cityName} businesses in 2026.`;
 
     return {
         title,
         description,
+        alternates: {
+            canonical: `https://www.fsidigital.ca/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`,
+        },
         openGraph: {
             title,
             description,
@@ -64,29 +118,109 @@ export default function PseoLandingPage({ params }: { params: { province: string
         page.publishedAt
     );
 
+    // Build the short answer — industry-specific or fall back to generic
+    const shortAnswerFn = INDUSTRY_SHORT_ANSWERS[page.industrySlug];
+    const shortAnswerContent = shortAnswerFn
+        ? shortAnswerFn(page.cityName, page.provinceName)
+        : DEFAULT_SHORT_ANSWER(page.industryName, page.cityName, page.provinceName);
+
+    const shortAnswerQuestion = `How much funding can a ${page.industryName} business in ${page.cityName}, ${page.provinceName} get?`;
+
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fsidigital.ca" },
+            { "@type": "ListItem", "position": 2, "name": "Canadian Grants", "item": "https://www.fsidigital.ca/canada/government-grants" },
+            { "@type": "ListItem", "position": 3, "name": `${page.provinceName} Grants`, "item": `https://www.fsidigital.ca/grants/${page.provinceSlug}` },
+            { "@type": "ListItem", "position": 4, "name": `${page.industryName} Grants in ${page.cityName}`, "item": `https://www.fsidigital.ca/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}` },
+        ]
+    };
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": `How much grant money can a ${page.industryName} business in ${page.cityName} receive?`,
+                "acceptedAnswer": { "@type": "Answer", "text": `Depending on the specific program, funding ranges from $5,000 to $1,000,000+. Small hiring grants provide $5,000 to $15,000 per new employee. Technology adoption grants typically offer $15,000 to $100,000. For large-scale innovation projects in the ${page.industryName} sector, companies in ${page.provinceName} can secure upwards of $500,000 to $1,000,000+.` }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I have to pay back a government grant?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No. True government grants are non-repayable. You do not have to pay the money back, provided you complete the project exactly as described in your approved application. The government also offers 'repayable contributions' (interest-free loans with flexible terms) which are also valuable tools." }
+            },
+            {
+                "@type": "Question",
+                "name": `Can a startup in ${page.cityName} get funding before generating revenue?`,
+                "acceptedAnswer": { "@type": "Answer", "text": `Yes, but options are more limited. Pre-revenue ${page.industryName} startups can access SR&ED tax credits and IRAP funding for R&D. However, most large scaling grants require established commercial revenue (often $500K+) and at least 3–5 full-time employees.` }
+            },
+            {
+                "@type": "Question",
+                "name": "How long does it take to get approved?",
+                "acceptedAnswer": { "@type": "Answer", "text": `The timeline varies by program. Simple wage subsidies in ${page.cityName} can be approved in 2–4 weeks. Complex federal innovation grants can take 3–6 months. We always advise businesses in ${page.provinceName} to apply well in advance of their planned project start dates.` }
+            },
+        ]
+    };
+
     return (
         <div className="min-h-screen bg-gray-50/50">
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-            />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
             {/* Hero Section */}
             <section className="bg-white border-b border-gray-200 pt-16 pb-12 lg:pt-24 lg:pb-16 px-4">
-                <div className="max-w-4xl mx-auto text-center">
+                <div className="max-w-4xl mx-auto">
+                    {/* Breadcrumb */}
+                    <nav className="mb-6 flex items-center text-sm text-gray-500 gap-1 flex-wrap">
+                        <Link href="/" className="hover:text-green-600">Home</Link>
+                        <ChevronRight className="w-3 h-3" />
+                        <Link href="/canada/government-grants" className="hover:text-green-600">Canadian Grants</Link>
+                        <ChevronRight className="w-3 h-3" />
+                        <span className="text-gray-900 font-medium">{page.industryName} Grants in {page.cityName}</span>
+                    </nav>
+
+                    {/* Author Badge */}
+                    <div className="mb-4">
+                        <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date={new Date(page.publishedAt).toISOString().split('T')[0]} />
+                    </div>
+
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-6">
                         <Shield className="w-4 h-4" />
-                        Verified Local Programs
+                        Verified Local Programs — {page.provinceName}
                     </div>
-                    <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-6">
+
+                    <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
                             {page.industryName} Grants
                         </span><br />
                         in {page.cityName}, {page.provinceName}
                     </h1>
-                    <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                        Find out exactly how much government funding your {page.industryName.toLowerCase()} business qualifies for in {page.cityName}. Take our 60-second assessment below.
-                    </p>
+
+                    {/* SHORT ANSWER — Hero placement, data-rich, question-first format */}
+                    <div className="mt-6 mb-8">
+                        <ShortAnswerBox
+                            content={`**${shortAnswerQuestion}**\n\n${shortAnswerContent}`}
+                        />
+                    </div>
+                </div>
+            </section>
+
+            {/* Jump Links / Table of Contents */}
+            <section className="bg-white border-b border-gray-100 px-4 py-6 sticky top-0 z-10 shadow-sm">
+                <div className="max-w-4xl mx-auto">
+                    <nav aria-label="Table of contents">
+                        <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-gray-600">
+                            <li className="text-gray-400 font-semibold text-xs uppercase tracking-wide">Jump to:</li>
+                            <li><a href="#funding-types" className="hover:text-green-600 transition-colors">Funding Types</a></li>
+                            <li><a href="#eligibility" className="hover:text-green-600 transition-colors">Eligibility</a></li>
+                            <li><a href="#process" className="hover:text-green-600 transition-colors">How to Apply</a></li>
+                            <li><a href="#faqs" className="hover:text-green-600 transition-colors">FAQs</a></li>
+                            <li><a href="#calculator" className="hover:text-green-600 transition-colors">Get My Estimate</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </section>
 
@@ -94,11 +228,11 @@ export default function PseoLandingPage({ params }: { params: { province: string
             <section className="py-12 lg:py-20 px-4">
                 <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
 
-                    {/* Left Column: Deep Contextual Content (7 columns wide on desktop) */}
+                    {/* Left Column: Deep Contextual Content */}
                     <div className="lg:col-span-7 space-y-12">
 
-                        {/* Introduction & Overview */}
-                        <div className="prose prose-lg text-gray-700 max-w-none">
+                        {/* Introduction */}
+                        <div className="prose prose-lg text-gray-700 max-w-none" id="funding-types">
                             <h2 className="text-3xl font-bold text-gray-900 mb-6">Local Funding for {page.cityName} {page.industryName} Businesses</h2>
                             <p className="lead text-xl text-gray-800">
                                 The government of {page.provinceName} and federal Canadian agencies provide millions of dollars in non-repayable grants, wage subsidies, and interest-free loans specifically targeted at the <strong>{page.industryName}</strong> sector in {page.cityName}.
@@ -153,7 +287,15 @@ export default function PseoLandingPage({ params }: { params: { province: string
                             </div>
                         </div>
 
-                        {/* Deadlines Warning Block */}
+                        {/* Inline CTA — Mid-page */}
+                        <InlineCTA
+                            title={`Need help finding the right ${page.cityName} grants?`}
+                            description={`Our funding specialists have helped ${page.industryName} businesses across ${page.provinceName} identify and successfully apply for government programs. Get a free eligibility assessment — no obligation.`}
+                            buttonText="Get Free Assessment"
+                            buttonLink="/get-started"
+                        />
+
+                        {/* Deadlines Warning */}
                         <div className="bg-blue-50 border-l-4 border-blue-500 rounded-r-xl p-8">
                             <div className="flex items-center gap-3 mb-4">
                                 <Clock className="w-8 h-8 text-blue-600" />
@@ -163,58 +305,62 @@ export default function PseoLandingPage({ params }: { params: { province: string
                                 Grant programs in Canada are highly competitive and operate on specific intake cycles. Many {page.provinceName} provincial funds operate on a "first-come, first-served" basis and often deplete their annual budgets long before their official posted deadlines.
                             </p>
                             <p className="text-blue-800 font-semibold">
-                                We strongly recommend continuously monitoring intakes and assessing your {page.cityName} business eligibility immediately using the calculator to secure your position in the queue.
+                                We strongly recommend assessing your {page.cityName} business eligibility immediately to secure your position in the queue.
                             </p>
                         </div>
 
-                        {/* Eligibility & Qualifications */}
-                        <div className="prose prose-lg text-gray-700 max-w-none">
-                            <h3 className="text-2xl font-bold text-gray-900 mb-4">Basic Eligibility Requirements for {page.cityName}</h3>
-                            <p>
-                                While specific requirements vary by the exact grant program, the vast majority of government funding for the {page.industryName} sector requires your business to meet these baseline criteria:
-                            </p>
-                            <ul>
-                                <li><strong>Incorporation:</strong> The business must be legally incorporated in {page.provinceName} or federally in Canada. Sole proprietorships generally do not qualify for large-scale funding.</li>
-                                <li><strong>Headquarters:</strong> Your primary operations and leadership must be located in {page.cityName} or the surrounding area.</li>
-                                <li><strong>Financial Viability:</strong> You must demonstrate the financial capacity to complete the proposed project. Most grants are reimbursement-based (they pay you back after you spend the money).</li>
-                                <li><strong>Job Creation:</strong> The strongest applications for {page.industryName} grants clearly demonstrate how the funding will lead to the creation of new, high-quality jobs in the local {page.cityName} economy.</li>
-                            </ul>
+                        {/* Eligibility Section */}
+                        <div id="eligibility">
+                            <div className="prose prose-lg text-gray-700 max-w-none mb-8">
+                                <h3 className="text-2xl font-bold text-gray-900 mb-4">Basic Eligibility Requirements for {page.cityName}</h3>
+                                <p>
+                                    While specific requirements vary by the exact grant program, the vast majority of government funding for the {page.industryName} sector requires your business to meet these baseline criteria:
+                                </p>
+                                <ul>
+                                    <li><strong>Incorporation:</strong> The business must be legally incorporated in {page.provinceName} or federally in Canada. Sole proprietorships generally do not qualify for large-scale funding.</li>
+                                    <li><strong>Headquarters:</strong> Your primary operations and leadership must be located in {page.cityName} or the surrounding area.</li>
+                                    <li><strong>Financial Viability:</strong> You must demonstrate the financial capacity to complete the proposed project. Most grants are reimbursement-based (they pay you back after you spend).</li>
+                                    <li><strong>Job Creation:</strong> The strongest applications clearly demonstrate how the funding will lead to the creation of new, high-quality jobs in the local {page.cityName} economy.</li>
+                                </ul>
+                            </div>
+                            {/* Eligibility Check Widget */}
+                            <EligibleCheck />
                         </div>
 
                         {/* Step-by-Step Process */}
-                        <div className="prose prose-lg text-gray-700 max-w-none">
+                        <div className="prose prose-lg text-gray-700 max-w-none" id="process">
                             <h3 className="text-2xl font-bold text-gray-900 mb-4">The Grant Application Process</h3>
                             <ol className="space-y-4">
                                 <li><strong>Determine Eligibility:</strong> Use an assessment tool (like our calculator) to filter out the noise and find the 3-5 {page.industryName} programs you actually qualify for.</li>
                                 <li><strong>Project Scoping:</strong> Define exactly what you are going to do, how much it will cost, and how it aligns with government priorities for {page.provinceName}.</li>
                                 <li><strong>Proposal Writing:</strong> Draft a compelling narrative. This is not just a form; it requires a detailed business case, financial projections, and hiring plans.</li>
-                                <li><strong>Submission & Review:</strong> Submit the application. Review times range from 4 weeks for simple hiring grants to 4-6 months for massive innovation scaling funds.</li>
+                                <li><strong>Submission & Review:</strong> Submit the application. Review times range from 4 weeks for simple hiring grants to 4-6 months for innovation scaling funds.</li>
                                 <li><strong>Approval & Execution:</strong> Once formally approved, you can begin incurring eligible expenses in {page.cityName}. Note: Expenses incurred before official approval are generally ineligible.</li>
                             </ol>
                         </div>
 
-                        {/* Localized FAQs - KEY FOR AEO/GEO! */}
-                        <div className="mt-12">
+                        {/* FAQs */}
+                        <div className="mt-12" id="faqs">
                             <h3 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h3>
                             <div className="space-y-4">
                                 <div className="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h4 className="text-lg font-bold text-gray-900 mb-3 short-answer">How much grant money can a {page.industryName} business in {page.cityName} receive?</h4>
+                                    <h4 className="text-lg font-bold text-gray-900 mb-3">How much grant money can a {page.industryName} business in {page.cityName} receive?</h4>
                                     <p className="text-gray-700">Depending on the specific program and the size of your business, funding amounts range significantly. Small hiring grants provide $5,000 to $15,000 per new employee. Technology adoption grants typically offer $15,000 to $100,000. For large-scale innovation commercialization projects in the {page.industryName} sector, companies in {page.provinceName} can secure upwards of $500,000 to $1,000,000+.</p>
                                 </div>
                                 <div className="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h4 className="text-lg font-bold text-gray-900 mb-3 short-answer">Do I have to pay back a government grant?</h4>
-                                    <p className="text-gray-700">No. True government grants are non-repayable, meaning you do not have to pay the money back, provided you complete the project exactly as described in your approved application. However, the government also offers highly favorable "repayable contributions" (interest-free loans with flexible terms) which are also valuable tools for {page.cityName} businesses.</p>
+                                    <h4 className="text-lg font-bold text-gray-900 mb-3">Do I have to pay back a government grant?</h4>
+                                    <p className="text-gray-700">No. True government grants are non-repayable, meaning you do not have to pay the money back, provided you complete the project exactly as described in your approved application. However, the government also offers "repayable contributions" (interest-free loans with flexible terms) which are also valuable tools for {page.cityName} businesses.</p>
                                 </div>
                                 <div className="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h4 className="text-lg font-bold text-gray-900 mb-3 short-answer">Can a startup in {page.cityName} get funding before generating revenue?</h4>
-                                    <p className="text-gray-700">Yes, but the options are more limited. Pre-revenue {page.industryName} startups can access specific research and development funding (like SR&ED tax credits or IRAP funding) and some localized incubator/accelerator grants in {page.cityName}. However, the majority of large scaling grants require the business to have established commercial revenue (often $500k+) and at least 3-5 full-time employees.</p>
+                                    <h4 className="text-lg font-bold text-gray-900 mb-3">Can a startup in {page.cityName} get funding before generating revenue?</h4>
+                                    <p className="text-gray-700">Yes, but the options are more limited. Pre-revenue {page.industryName} startups can access specific research and development funding (like SR&ED tax credits or IRAP funding) and some localized incubator/accelerator grants in {page.cityName}. However, the majority of large scaling grants require established commercial revenue (often $500K+) and at least 3-5 full-time employees.</p>
                                 </div>
                                 <div className="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h4 className="text-lg font-bold text-gray-900 mb-3 short-answer">How long does it take to get approved?</h4>
-                                    <p className="text-gray-700">The timeline varies wildly by program. Simple wage subsidies for hiring an intern in {page.cityName} can be approved in 2-4 weeks. Complex federal innovation grants requiring deep technical reviews of your {page.industryName} technology can take 3 to 6 months. We always advise businesses in {page.provinceName} to apply well in advance of their planned project start dates.</p>
+                                    <h4 className="text-lg font-bold text-gray-900 mb-3">How long does it take to get approved?</h4>
+                                    <p className="text-gray-700">The timeline varies wildly by program. Simple wage subsidies for hiring in {page.cityName} can be approved in 2-4 weeks. Complex federal innovation grants requiring deep technical reviews of your {page.industryName} technology can take 3 to 6 months. We always advise businesses in {page.provinceName} to apply well in advance of their planned project start dates.</p>
                                 </div>
                                 <div className="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h4 className="text-lg font-bold text-gray-900 mb-3 short-answer">What happens if my {page.cityName} business spends the money differently than planned?</h4>
+                                    <h4 className="text-lg font-bold text-gray-900 mb-3">What happens if my {page.cityName} business spends the money differently than planned?</h4>
                                     <p className="text-gray-700">Government funding requires strict compliance and reporting. If your {page.industryName} company deviates from the approved budget or scope of work without prior written permission from the funding agency, those expenses will be deemed ineligible. You will not be reimbursed, and in cases of severe breach, you may be required to return funds already disbursed.</p>
                                 </div>
                             </div>
@@ -222,8 +368,8 @@ export default function PseoLandingPage({ params }: { params: { province: string
 
                     </div>
 
-                    {/* Right Column: Sticky Calculator Sidebar (5 columns wide) */}
-                    <div className="lg:col-span-5 relative">
+                    {/* Right Column: Sticky Calculator Sidebar */}
+                    <div className="lg:col-span-5 relative" id="calculator">
                         <div className="lg:sticky lg:top-24 mt-8 lg:mt-0">
                             <GrantCalculator />
                         </div>
@@ -243,6 +389,10 @@ export default function PseoLandingPage({ params }: { params: { province: string
                         <span className="hidden sm:inline text-gray-300">|</span>
                         <Link href="/grant-finder" className="text-primary hover:underline font-medium flex items-center">
                             <Shield className="w-4 h-4 mr-2" /> AI Grant Finder Tool
+                        </Link>
+                        <span className="hidden sm:inline text-gray-300">|</span>
+                        <Link href="/get-started" className="text-primary hover:underline font-medium flex items-center">
+                            <CheckCircle className="w-4 h-4 mr-2" /> Free Eligibility Check
                         </Link>
                     </div>
                 </div>
