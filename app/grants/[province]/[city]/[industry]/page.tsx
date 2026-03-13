@@ -52,11 +52,87 @@ const INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, province: string) =>
         `${province} also offers its own provincial women entrepreneurship grants — most decisions made within 45–60 days of application.`,
 };
 
+// --- Industry-specific top active programs ---
+const INDUSTRY_PROGRAMS: Record<string, { name: string; agency: string; amount: string; timeline: string; bestFor: string }[]> = {
+    technology: [
+        { name: 'IRAP — Industrial Research Assistance Program', agency: 'National Research Council of Canada', amount: 'Up to $500,000', timeline: '3–6 months', bestFor: 'Product development, hiring R&D staff, commercialization' },
+        { name: 'CDAP — Canada Digital Adoption Program', agency: 'Innovation, Science and Economic Development Canada', amount: '$15,000 cash grant', timeline: '4–8 weeks', bestFor: 'Implementing digital tools, e-commerce, cybersecurity systems' },
+        { name: 'SR&ED — Scientific Research & Experimental Development', agency: 'Canada Revenue Agency', amount: '35–70% of R&D expenditures', timeline: 'Filed with annual tax return', bestFor: 'Any experimental work, software development, new product testing' },
+    ],
+    agriculture: [
+        { name: 'AgriInnovate Program', agency: 'Agriculture and Agri-Food Canada (AAFC)', amount: 'Up to $10,000,000 (50% cost-share)', timeline: '3–6 months', bestFor: 'Commercializing agri-food innovations, processing technology upgrades' },
+        { name: 'Canadian Agricultural Partnership (CAP)', agency: 'Provincial-Federal Joint Program', amount: 'Up to $25,000 per project', timeline: '6–12 weeks', bestFor: 'Farm diversification, market development, on-farm efficiency improvements' },
+        { name: 'AgriAssurance Program', agency: 'Agriculture and Agri-Food Canada', amount: 'Up to $600,000', timeline: '3–4 months', bestFor: 'Food safety systems, traceability, biosecurity measures' },
+    ],
+    manufacturing: [
+        { name: 'Strategic Innovation Fund (SIF)', agency: 'Innovation, Science and Economic Development Canada', amount: '$10M–$100M+ (large scale)', timeline: '6–12 months', bestFor: 'Large-scale manufacturing expansion, automation infrastructure' },
+        { name: 'NRC-IRAP', agency: 'National Research Council of Canada', amount: 'Up to $500,000', timeline: '3–6 months', bestFor: 'Process R&D, new material development, product improvement' },
+        { name: 'Skills Development Fund', agency: 'Employment and Social Development Canada', amount: '50–80% of training costs (no cap)', timeline: '6–10 weeks', bestFor: 'Upskilling workers, safety training, new technology adoption on the floor' },
+    ],
+    healthcare: [
+        { name: 'CIHR Project Grant', agency: 'Canadian Institutes of Health Research', amount: 'Up to $500,000 over 5 years', timeline: '4–6 months (competition-based)', bestFor: 'Clinical research, patient outcomes studies, health technology trials' },
+        { name: 'IRAP Health Innovation', agency: 'National Research Council of Canada', amount: 'Up to $500,000', timeline: '3–6 months', bestFor: 'Medical device development, health software, diagnostics innovation' },
+        { name: 'BDC Health Sciences Loans', agency: 'Business Development Bank of Canada', amount: 'Up to $15,000,000', timeline: '4–8 weeks', bestFor: 'Scaling a commercialized health product, facility expansion, clinical pivots' },
+    ],
+    'clean-energy': [
+        { name: 'SDTC — Sustainable Development Technology Canada', agency: 'SDTC Foundation', amount: 'Up to $3,000,000', timeline: '4–8 months', bestFor: 'Late-stage clean technology demonstration and commercialization' },
+        { name: 'NRCan Clean Energy Program', agency: 'Natural Resources Canada', amount: 'Up to $5,000,000', timeline: '3–6 months', bestFor: 'Renewable energy systems, grid modernization, energy storage' },
+        { name: 'Clean Technology Investment Tax Credit', agency: 'Canada Revenue Agency', amount: '30% of eligible capital costs', timeline: 'Annual tax filing', bestFor: 'Purchasing clean energy equipment, solar installations, EV charging infrastructure' },
+    ],
+    'women-entrepreneurs': [
+        { name: 'WES Ecosystem Fund', agency: 'Innovation, Science and Economic Development Canada', amount: 'Up to $60,000', timeline: '6–10 weeks', bestFor: 'Business development, market expansion, skills training for women founders' },
+        { name: 'BDC Women Entrepreneurs Loans', agency: 'Business Development Bank of Canada', amount: 'Up to $100,000 (flexible terms)', timeline: '2–4 weeks', bestFor: 'Capital investment, hiring, operational scaling for women-led businesses' },
+        { name: 'Futurpreneur Canada Loans', agency: 'Futurpreneur Canada (Federal-backed)', amount: 'Up to $60,000', timeline: '4–6 weeks', bestFor: 'Startups from women founders under 39 years old needing seed capital + mentorship' },
+    ],
+};
+
+const DEFAULT_PROGRAMS = [
+    { name: 'Canada Job Grant', agency: 'Employment and Social Development Canada', amount: 'Up to $10,000 per employee', timeline: '4–8 weeks', bestFor: 'Training and upskilling your current staff in any sector' },
+    { name: 'NRC-IRAP', agency: 'National Research Council', amount: 'Up to $500,000', timeline: '3–6 months', bestFor: 'Any innovation or R&D activity within your business' },
+    { name: 'CDAP Digital Adoption', agency: 'ISED Canada', amount: '$15,000 cash', timeline: '4–8 weeks', bestFor: 'Implementing digital tools, e-commerce, and cloud systems' },
+];
+
+// --- Province-specific local resources ---
+const PROVINCE_RESOURCES: Record<string, { name: string; description: string; url: string }[]> = {
+    on: [
+        { name: 'Ontario Centre of Innovation (OCI)', description: 'Funds R&D collaborations between Ontario businesses and post-secondary institutions.', url: 'https://www.oc-innovation.ca' },
+        { name: 'Ontario Business Registry', description: 'The official portal for filing grant eligibility documents and business registrations in Ontario.', url: 'https://www.ontario.ca/page/ontario-business-registry' },
+    ],
+    bc: [
+        { name: 'BC Innovation Council (BCIC)', description: 'Provides grants and advisory services to BC\'s technology and innovation companies.', url: 'https://www.bcic.ca' },
+        { name: 'Small Business BC', description: 'Free advisory services and grant navigation support for BC-based small businesses.', url: 'https://smallbusinessbc.ca' },
+    ],
+    ab: [
+        { name: 'Alberta Innovates', description: 'Provides over $200M annually in grants and supports to Alberta technology and research companies.', url: 'https://albertainnovates.ca' },
+        { name: 'Business Link Alberta', description: 'Province-funded navigation service connecting Alberta SMEs with relevant grant programs.', url: 'https://businesslink.ca' },
+    ],
+    qc: [
+        { name: 'Investissement Québec', description: 'Quebec\'s primary economic development arm, offering loans, loan guarantees, and direct grants.', url: 'https://www.investquebec.com' },
+        { name: 'CDPQ Ecosystem', description: 'Supports Quebec-based companies with growth-stage capital and export funding.', url: 'https://www.cdpq.com' },
+    ],
+    mb: [
+        { name: 'Manitoba Economic Development', description: 'Administers provincial business grants and tax credits for Manitoba-based companies.', url: 'https://www.gov.mb.ca/jec' },
+    ],
+    sk: [
+        { name: 'Saskatchewan Trade & Export Partnership (STEP)', description: 'Provides grants for Saskatchewan companies looking to enter international markets.', url: 'https://www.sasktrade.com' },
+    ],
+    ns: [
+        { name: 'Invest Nova Scotia', description: 'Administers provincial economic development grants for Nova Scotia businesses.', url: 'https://investnovascotia.ca' },
+    ],
+    nl: [
+        { name: 'Enterprise NL', description: 'Newfoundland and Labrador\'s primary business development and grant navigation agency.', url: 'https://www.enterprisenl.ca' },
+    ],
+    nb: [
+        { name: 'Opportunities NB (ONB)', description: 'Provides direct business grants and investment incentives for New Brunswick companies.', url: 'https://onbcanada.ca' },
+    ],
+};
+
 const DEFAULT_SHORT_ANSWER = (industryName: string, city: string, province: string) =>
     `${industryName} businesses in ${city} can access $15,000 to $500,000+ in non-repayable government grants and subsidies. ` +
     `Key programs include federal wage subsidies (50–70% of new hire salaries), IRAP innovation funding (up to $500K), ` +
     `and CDAP digital adoption grants ($15,000 cash). ${province}-based businesses can stack federal and provincial programs simultaneously. ` +
     `Most hiring grants are approved within 2–4 weeks; innovation grants take 3–6 months.`;
+
 
 // Generate static params for all possible PSEO pages
 export async function generateStaticParams() {
@@ -294,6 +370,64 @@ export default function PseoLandingPage({ params }: { params: { province: string
                             buttonText="Get Free Assessment"
                             buttonLink="/get-started"
                         />
+
+                        {/* ===== TOP ACTIVE PROGRAMS SECTION ===== */}
+                        <div>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-2">Top Active Government Programs for {page.cityName} {page.industryName} Businesses</h3>
+                            <p className="text-gray-600 mb-6">The following programs are currently active and accepting applications from eligible {page.industryName} businesses based in {page.cityName}, {page.provinceName}. Program details are verified as of 2026.</p>
+                            <div className="space-y-5">
+                                {(INDUSTRY_PROGRAMS[page.industrySlug] || DEFAULT_PROGRAMS).map((prog, idx) => (
+                                    <div key={idx} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                                        <div className="flex items-start justify-between gap-4 flex-wrap">
+                                            <div className="flex-1">
+                                                <h4 className="text-lg font-bold text-gray-900 mb-1">{prog.name}</h4>
+                                                <p className="text-sm text-gray-500 mb-3">Administered by: <span className="font-medium text-gray-700">{prog.agency}</span></p>
+                                                <p className="text-gray-700 text-sm"><strong>Best for:</strong> {prog.bestFor}</p>
+                                            </div>
+                                            <div className="flex-shrink-0 text-right">
+                                                <div className="text-green-700 font-bold text-lg">{prog.amount}</div>
+                                                <div className="text-gray-500 text-sm mt-1">⏱ {prog.timeline}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* ===== GRANT STACKING SECTION ===== */}
+                        <div className="bg-gradient-to-br from-green-50 to-blue-50 border border-green-200 rounded-xl p-8">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-4">💡 The Grant Stacking Strategy: How to Maximize Your Funding</h3>
+                            <p className="text-gray-700 mb-4">
+                                One of the most underutilized strategies for {page.cityName} businesses is <strong>grant stacking</strong> — the practice of applying to multiple non-repayable government programs simultaneously for the same project. Unlike private investors, government agencies do not have exclusivity requirements, meaning a single project can legitimately draw funding from several sources at once.
+                            </p>
+                            <p className="text-gray-700 mb-4">
+                                A typical {page.industryName} business in {page.cityName} could structure their funding as follows: use the <strong>CDAP grant ($15,000)</strong> to purchase digital infrastructure, simultaneously claim <strong>SR&ED tax credits</strong> on any experimental development in that infrastructure, and then apply for an <strong>IRAP project grant</strong> to fund the skilled staff operating the system. These three programs can stack on a single project without conflicting.
+                            </p>
+                            <p className="text-gray-700">
+                                The key rule of stacking is that the total government assistance for any single eligible expense cannot exceed 75% of that cost. Beyond that threshold, you are free to layer as many programs as your {page.cityName} business qualifies for. Our specialists can map out an optimized stacking plan for your specific situation.
+                            </p>
+                        </div>
+
+                        {/* ===== LOCAL RESOURCES SECTION ===== */}
+                        {(PROVINCE_RESOURCES[page.provinceSlug] && PROVINCE_RESOURCES[page.provinceSlug].length > 0) && (
+                            <div>
+                                <h3 className="text-2xl font-bold text-gray-900 mb-3">Local {page.provinceName} Resources & Support Organizations</h3>
+                                <p className="text-gray-600 mb-5">
+                                    Beyond federal programs, {page.cityName} businesses should leverage provincial agencies designed specifically to help {page.provinceName} companies navigate grant applications, access advisory services, and connect with regional funding pools.
+                                </p>
+                                <div className="grid sm:grid-cols-2 gap-4">
+                                    {PROVINCE_RESOURCES[page.provinceSlug].map((resource, idx) => (
+                                        <div key={idx} className="bg-white border border-gray-200 rounded-lg p-5 hover:border-green-300 transition-colors">
+                                            <h4 className="font-bold text-gray-900 mb-2">{resource.name}</h4>
+                                            <p className="text-sm text-gray-600 mb-3">{resource.description}</p>
+                                            <a href={resource.url} target="_blank" rel="noopener noreferrer" className="text-green-600 text-sm font-medium hover:underline">
+                                                Visit Website →
+                                            </a>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
 
                         {/* Deadlines Warning */}
                         <div className="bg-blue-50 border-l-4 border-blue-500 rounded-r-xl p-8">
