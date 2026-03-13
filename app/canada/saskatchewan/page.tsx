@@ -93,18 +93,21 @@ export default function SaskatchewanGrantsPage() {
                             </Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Saskatchewan Business Grants 2026</h1>
-                        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                            Discover comprehensive Saskatchewan provincial funding programs, business grants, and government incentives
-                            available to entrepreneurs and companies across Saskatchewan.
-                        </p>
-                        <div className="mt-4">
-                            <ShortAnswerBox
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox
                 question="What government grants are available for Saskatchewan businesses in 2026?"
                 content="Saskatchewan businesses can access the Saskatchewan Advantage Grant for Education and Training (SAGES, $20,000 tuition rebate for grads who work in SK), the Saskatchewan Technology Startup Incentive (STSI, 45% non-refundable tax credit for investors), PrairiesCan federal contributions for prairie SMEs, STEP export grants for international market development, and AgriStability for agricultural operations. Combined with federal SR&ED and IRAP, Saskatchewan tech and agri-business companies have a strong funding stack."
               />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+            </div>
+                        
+                        <div className="mt-4">
+                            
                         </div>
                         <div className="mt-4 mb-8 flex justify-center">
-                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+                            
                         </div>
                         <div className="mt-8 mb-8">
                             <EligibleCheck />

@@ -42,21 +42,17 @@ export default function CanadaGovernmentGrantsPage() {
               <Badge className="bg-red-500/30 text-red-100 border-red-400">Canada Federal Government Grants 2026</Badge>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Canada Government Grants 2026</h1>
-            <p className="text-xl text-red-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              The Canadian federal government distributes over $40 billion annually to businesses through grants,
-              contributions, tax credits, and development agency programs — making Canada one of the most generous
-              nations in the world for business development support. The Strategic Innovation Fund provides up to
-              $400M per major project. Five Regional Development Agencies (FedDev, PacifiCan, WD, ACOA, Canada
-              Economic Development) distribute $1.5B+ regionally each year. SR&ED delivers $3.5B+ in R&D tax
-              credits. IRAP funds technology development for SMEs. This guide maps the complete federal funding
-              landscape — what each agency funds, which businesses qualify, and how to navigate the system strategically
-              to access multiple programs simultaneously.
-            </p>
-            <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-              <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$40B+</div><div className="text-red-200 text-sm mt-1">Annual federal support for Canadian business</div></div>
-              <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$400M</div><div className="text-red-200 text-sm mt-1">Max SIF grant per project</div></div>
-              <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">5</div><div className="text-red-200 text-sm mt-1">Regional Development Agencies across Canada</div></div>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox
+                question="What government grants are available for Canadian businesses in 2026?"
+                content="Yes — Canada's federal government offers substantial business grants and funding through multiple channels: Strategic Innovation Fund (up to $400M for major investments), five Regional Development Agencies covering all provinces (FedDev Ontario, PacifiCan/WD, ACOA, Canada Economic Development), NRC IRAP for R&D-intensive SMEs, SR&ED tax credits (15–35% refundable on qualifying R&D), export support through EDC, and BDC growth financing. Most Canadian businesses can access 2–4 programs simultaneously."
+              />
             </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+            
+            
           </div>
         </div>
       </section>
@@ -64,11 +60,8 @@ export default function CanadaGovernmentGrantsPage() {
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
-            <ShortAnswerBox
-                question="What government grants are available for Canadian businesses in 2026?"
-                content="Yes — Canada's federal government offers substantial business grants and funding through multiple channels: Strategic Innovation Fund (up to $400M for major investments), five Regional Development Agencies covering all provinces (FedDev Ontario, PacifiCan/WD, ACOA, Canada Economic Development), NRC IRAP for R&D-intensive SMEs, SR&ED tax credits (15–35% refundable on qualifying R&D), export support through EDC, and BDC growth financing. Most Canadian businesses can access 2–4 programs simultaneously."
-              />
-            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            
+            
             <EligibleCheck />
           </div>
         </div>

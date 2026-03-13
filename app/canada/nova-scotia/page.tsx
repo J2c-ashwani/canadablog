@@ -97,18 +97,21 @@ export default function NovaScotiaGrantsPage() {
                             </Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Nova Scotia Business Grants 2026</h1>
-                        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                            Discover comprehensive Nova Scotia provincial funding programs, business grants, and government incentives
-                            available to entrepreneurs and companies across Nova Scotia.
-                        </p>
-                        <div className="mt-4">
-                            <ShortAnswerBox
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox
                 question="What government grants are available for Nova Scotia businesses in 2026?"
                 content="Nova Scotia businesses can access Invest Nova Scotia innovation grants ($25K–$250K), ACOA federal contributions for Atlantic Canada SMEs (up to $1M for scaling projects), the NS Workplace Innovations & Productivity Skills Incentive ($5K–$50K for training), and the NS Digital Investment Fund for tech sector development. Combined with federal SR&ED and IRAP programs, Nova Scotia SMEs — particularly in ocean tech, defense, and agri-food — have strong funding pathways."
               />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+            </div>
+                        
+                        <div className="mt-4">
+                            
                         </div>
                         <div className="mt-4 mb-8 flex justify-center">
-                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+                            
                         </div>
                         <div className="mt-8 mb-8">
                             <EligibleCheck />

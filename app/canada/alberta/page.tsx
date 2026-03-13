@@ -111,18 +111,21 @@ export default function AlbertaGrantsPage() {
                             </Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Alberta Business Grants 2026: Programs Open Now</h1>
-                        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                            Discover comprehensive Alberta provincial funding programs, business grants, and government incentives
-                            available to entrepreneurs and companies across Alberta.
-                        </p>
-                        <div className="mt-4">
-                            <ShortAnswerBox
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox
                 question="What government grants are available for Alberta businesses in 2026?"
                 content="Alberta businesses can access Alberta Innovates grants ($50K–$5M for tech and energy innovation), the Alberta Enterprise Corporation (venture capital for tech startups), Ag-Info Centre funding for agriculture, the Technology Innovation and Emissions Reduction (TIER) fund for industrial decarbonization, and PrairiesCan federal economic development contributions. Combined with federal IRAP and SR&ED programs, Alberta remains one of the highest-funded provinces for energy-tech and agri-tech businesses."
               />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+            </div>
+                        
+                        <div className="mt-4">
+                            
                         </div>
                         <div className="mt-4 mb-8 flex justify-center">
-                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+                            
                         </div>
                         <div className="mt-8 mb-8">
                             <EligibleCheck />

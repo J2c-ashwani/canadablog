@@ -76,10 +76,14 @@ export default function USAWomenEntrepreneursGrantsPage() {
                 USA 2025
               </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-pink-100 leading-relaxed text-pretty">
-              Comprehensive funding opportunities for women entrepreneurs and female business owners. Access specialized
-              grants, SBA programs, and federal funding designed to support women-led businesses across America.
-            </p>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox question="What government grants are available for women-owned businesses in the USA?"
+                content="Women entrepreneurs in the U.S. can access SBA WOSB federal contracting set-asides, Amber Grant ($10K monthly), NWBC programs, and state-level women business center grants. Combined value exceeds $500M annually nationwide." />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold">
                 Browse Women's Business Grants Below
@@ -98,9 +102,8 @@ export default function USAWomenEntrepreneursGrantsPage() {
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
-            <ShortAnswerBox question="What government grants are available for women-owned businesses in the USA?"
-                content="Women entrepreneurs in the U.S. can access SBA WOSB federal contracting set-asides, Amber Grant ($10K monthly), NWBC programs, and state-level women business center grants. Combined value exceeds $500M annually nationwide." />
-            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            
+            
             <EligibleCheck />
           </div>
         </div>

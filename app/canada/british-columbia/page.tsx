@@ -111,18 +111,21 @@ export default function BritishColumbiaGrantsPage() {
                             </Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">BC Business Grants 2026: $200M+ Available</h1>
-                        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                            Discover comprehensive BC provincial funding programs, business grants, and government incentives
-                            available to entrepreneurs and companies across British Columbia.
-                        </p>
-                        <div className="mt-4">
-                            <ShortAnswerBox
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox
                 question="What government grants are available for BC businesses in 2026?"
                 content="BC businesses can access Innovate BC grants ($50K–$250K for tech SMEs), CleanBC programs for energy efficiency and emissions reduction, the BC Employer Training Grant (up to 80% of training costs), PacifiCan federal contributions for economic development, and BC's Interactive Digital Media Tax Credit (17.5% of eligible labour). Combined with federal SR&ED and IRAP programs, BC tech and clean energy companies are among the strongest grant candidates in Canada."
               />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+            </div>
+                        
+                        <div className="mt-4">
+                            
                         </div>
                         <div className="mt-4 mb-8 flex justify-center">
-                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+                            
                         </div>
                         <div className="mt-8 mb-8">
                             <EligibleCheck />

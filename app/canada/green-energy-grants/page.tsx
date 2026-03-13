@@ -42,20 +42,17 @@ export default function GreenEnergyGrantsPage() {
                             <Badge className="bg-green-500/30 text-green-100 border-green-400">Canada Green Energy Funding Guide 2026</Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Canada Green Energy & Cleantech Grants 2026</h1>
-                        <p className="text-xl text-green-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-                            Canada has committed over $80 billion to clean energy and climate transition through Budget 2024 — creating the
-                            largest clean investment opportunity in Canadian history. New refundable Clean Investment Tax Credits (15–40% of
-                            qualifying capital), a revitalized SDTC program ($10M grants), the $8B Net Zero Accelerator for heavy industry,
-                            and an enhanced IRAP cleantech stream combine to create the most comprehensive government clean energy funding
-                            ecosystem any Canadian cleantech company has ever had access to. This guide explains every major program in
-                            depth — from eligibility and application process to expert strategies for stacking multiple funding sources
-                            and common mistakes that cost companies millions in unclaimed incentives.
-                        </p>
-                        <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$80B+</div><div className="text-green-200 text-sm mt-1">Federal clean energy commitment</div></div>
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">40%</div><div className="text-green-200 text-sm mt-1">Max Clean ITC on qualifying investment</div></div>
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$10M</div><div className="text-green-200 text-sm mt-1">Max SDTC non-dilutive grant</div></div>
-                        </div>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox
+                question="What grants are available for clean energy and cleantech companies in Canada?"
+                content="Yes — Canadian clean energy and cleantech companies have access to the largest government funding ecosystem in Canadian history: Refundable Clean Investment Tax Credits (15–40% of qualifying capital investment), SDTC grants ($500K–$10M), the Net Zero Accelerator (up to $400M for industrial decarbonization), IRAP cleantech R&D funding ($50K–$2M), and province-specific clean energy programs from BC, Ontario, Alberta, and Quebec."
+              />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+                        
+                        
                     </div>
                 </div>
             </section>
@@ -63,11 +60,8 @@ export default function GreenEnergyGrantsPage() {
             <section className="py-6 bg-emerald-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto space-y-4">
-                        <ShortAnswerBox
-                question="What grants are available for clean energy and cleantech companies in Canada?"
-                content="Yes — Canadian clean energy and cleantech companies have access to the largest government funding ecosystem in Canadian history: Refundable Clean Investment Tax Credits (15–40% of qualifying capital investment), SDTC grants ($500K–$10M), the Net Zero Accelerator (up to $400M for industrial decarbonization), IRAP cleantech R&D funding ($50K–$2M), and province-specific clean energy programs from BC, Ontario, Alberta, and Quebec."
-              />
-                        <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+                        
+                        
                         <EligibleCheck />
                     </div>
                 </div>

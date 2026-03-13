@@ -86,13 +86,19 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-white/20 text-white border-white/30"><Sprout className="w-3 h-3 mr-1" /> Federal Agri-Food Programs</Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">Agriculture and Agri-Food Canada Grants 2026</h1>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox content="Yes — Agriculture & Agri-Food Canada offers up to $5M through AgriInnovate, AgriScience, and Sustainable CAP programs. Most funding is delivered through provincial agriculture ministries on a 50% cost-sharing basis." />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+            </div>
               
               <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
-                 <ShortAnswerBox content="Yes — Agriculture & Agri-Food Canada offers up to $5M through AgriInnovate, AgriScience, and Sustainable CAP programs. Most funding is delivered through provincial agriculture ministries on a 50% cost-sharing basis." />
+                 
               </div>
               <div className="flex justify-center mb-8 relative z-20">
                  <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
-                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                    
                  </div>
               </div>
 

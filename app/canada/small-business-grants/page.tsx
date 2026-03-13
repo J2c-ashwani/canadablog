@@ -42,22 +42,17 @@ export default function CanadaSmallBusinessGrantsPage() {
               <Badge className="bg-indigo-500/30 text-indigo-100 border-indigo-400">Canada Small Business Grants 2026</Badge>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Canada Small Business Grants 2026</h1>
-            <p className="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Canada&apos;s small business funding ecosystem is one of the most comprehensive in the world — distributed
-              through federal, provincial, and regional channels that together serve hundreds of thousands of Canadian
-              SMEs annually. The Canada Small Business Financing Program provides government-backed loans of up to
-              $1.5M through your regular bank. SR&ED delivers 35% refundable tax credits on all qualifying R&D.
-              NRC IRAP provides non-repayable R&D funding of up to $2M for technology SMEs. CDAP offers up to
-              $100,000 in digital adoption grants. Five Regional Development Agencies distribute grants for regional
-              businesses. And provincial programs add sector-specific and community-based funding layers on top.
-              This guide explains every program, the eligibility criteria that trip people up, and the optimal funding
-              stack for different types of small businesses.
-            </p>
-            <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-              <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$1.5M</div><div className="text-indigo-200 text-sm mt-1">Max CSBFP government-backed loan</div></div>
-              <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">35%</div><div className="text-indigo-200 text-sm mt-1">SR&ED refundable credit for CCPCs</div></div>
-              <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$100K</div><div className="text-indigo-200 text-sm mt-1">CDAP digital adoption grant</div></div>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox
+                question="What grants are available for small businesses in Canada in 2026?"
+                content="Yes — Canadian small businesses can access CSBFP government-backed loans (up to $1.5M through your bank), SR&ED tax credits (35% refundable for CCPCs on qualifying R&D), NRC IRAP for technology SMEs ($50K–$2M), CDAP digital adoption grants ($2,400–$100K), Regional Development Agency contributions by province, and Futurpreneur loans ($20K–$60K) for entrepreneurs aged 18–39. Most Canadian SMEs qualify for 2–3 programs simultaneously."
+              />
             </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+            
+            
           </div>
         </div>
       </section>
@@ -65,11 +60,8 @@ export default function CanadaSmallBusinessGrantsPage() {
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
-            <ShortAnswerBox
-                question="What grants are available for small businesses in Canada in 2026?"
-                content="Yes — Canadian small businesses can access CSBFP government-backed loans (up to $1.5M through your bank), SR&ED tax credits (35% refundable for CCPCs on qualifying R&D), NRC IRAP for technology SMEs ($50K–$2M), CDAP digital adoption grants ($2,400–$100K), Regional Development Agency contributions by province, and Futurpreneur loans ($20K–$60K) for entrepreneurs aged 18–39. Most Canadian SMEs qualify for 2–3 programs simultaneously."
-              />
-            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            
+            
             <EligibleCheck />
           </div>
         </div>

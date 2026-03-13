@@ -111,18 +111,21 @@ export default function QuebecGrantsPage() {
                             </Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Quebec Business Grants 2026: Programs Open Now</h1>
-                        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                            Discover comprehensive Quebec provincial funding programs, business grants, and government incentives
-                            available to entrepreneurs and companies across Quebec.
-                        </p>
-                        <div className="mt-4">
-                            <ShortAnswerBox
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox
                 question="What government grants are available for Quebec businesses in 2026?"
                 content="Quebec businesses can access Investissement Québec grants and loans (flexible amounts up to $25M), the CDPQ innovation fund, PRIMA Québec for AI and data science companies, Transition énergétique Québec for clean energy projects, and the R-D tax credit from Revenu Québec (30% on eligible R&D, stacked on top of federal SR&ED). Quebec offers some of the most generous provincial R&D incentives in North America for French-language tech companies."
               />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+            </div>
+                        
+                        <div className="mt-4">
+                            
                         </div>
                         <div className="mt-4 mb-8 flex justify-center">
-                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+                            
                         </div>
                         <div className="mt-8 mb-8">
                             <EligibleCheck />

@@ -48,10 +48,14 @@ export default function USASmallBusinessGrantsPage() {
                 USA 2025
               </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-green-100 leading-relaxed text-pretty">
-              Access comprehensive small business funding including SBA grants, federal programs, microloans, and
-              specialized funding designed to help American small businesses start, grow, and scale.
-            </p>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox question="What grants are available for small businesses in the United States in 2026?"
+                content="U.S. small businesses can access $50B+ annually through SBA programs, SBIR/STTR grants, and state-level funding. The SBA 7(a) loan guarantees up to $5M. SBIR Phase I provides up to $305K in non-dilutive funding." />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold">
                 Browse Small Business Grants Below
@@ -70,9 +74,8 @@ export default function USASmallBusinessGrantsPage() {
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
-            <ShortAnswerBox question="What grants are available for small businesses in the United States in 2026?"
-                content="U.S. small businesses can access $50B+ annually through SBA programs, SBIR/STTR grants, and state-level funding. The SBA 7(a) loan guarantees up to $5M. SBIR Phase I provides up to $305K in non-dilutive funding." />
-            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            
+            
             <EligibleCheck />
           </div>
         </div>

@@ -93,18 +93,21 @@ export default function NewBrunswickGrantsPage() {
                             </Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">New Brunswick Business Grants 2026</h1>
-                        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                            Discover comprehensive New Brunswick provincial funding programs, business grants, and government incentives
-                            available to entrepreneurs and companies across New Brunswick.
-                        </p>
-                        <div className="mt-4">
-                            <ShortAnswerBox
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox
                 question="What government grants are available for New Brunswick businesses in 2026?"
                 content="New Brunswick businesses can access Opportunities NB (ONB) direct investment grants ($50K–$5M for job-creating projects), ACOA Atlantic Canada contributions (up to $1M for scaling businesses), the NB Research and Innovation Fund for commercialization projects, the NB Small Business Investor Tax Credit (50% on investments up to $250K), and the NBFirst Digital Skills program for workforce training. Combined with federal IRAP and SR&ED, New Brunswick SMEs — particularly in IT, cybersecurity, and aquaculture — have a compelling funding pathway."
               />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+            </div>
+                        
+                        <div className="mt-4">
+                            
                         </div>
                         <div className="mt-4 mb-8 flex justify-center">
-                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+                            
                         </div>
                         <div className="mt-8 mb-8">
                             <EligibleCheck />

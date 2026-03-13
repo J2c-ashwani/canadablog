@@ -114,18 +114,21 @@ export default function OntarioGrantsPage() {
               </Badge>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Ontario Business Grants 2026</h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Discover comprehensive Ontario provincial funding programs, business grants, and government incentives
-              available to entrepreneurs and companies across Ontario.
-            </p>
-            <div className="mt-4">
+            <div className="mt-8 mb-4 text-left">
               <ShortAnswerBox
                 question="What government grants are available for Ontario businesses in 2026?"
                 content="Ontario businesses can access Starter Company Plus ($5,000–$10,000 non-repayable for early-stage companies), the Ontario Vehicle Innovation Network (OVIN, up to $250K for automotive and EV SMEs), NOHFC Northern Ontario grants (up to $1M), the Ontario Made Manufacturing Investment Tax Credit (10% of eligible capital), and federal programs stacked on top: IRAP, SR&ED, and CDAP. Ontario-based tech and manufacturing companies are among the best-funded businesses in Canada."
               />
             </div>
-            <div className="mt-4 mb-8 flex justify-center">
+            <div className="flex justify-center mb-4">
               <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+            </div>
+            
+            <div className="mt-4">
+              
+            </div>
+            <div className="mt-4 mb-8 flex justify-center">
+              
             </div>
             <div className="mt-8 mb-8">
               <EligibleCheck />

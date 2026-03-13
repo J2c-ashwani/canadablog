@@ -42,23 +42,17 @@ export default function CanadaWomenBusinessGrantsPage() {
               <Badge className="bg-purple-500/30 text-purple-100 border-purple-400">Canada Women Business Grants 2026</Badge>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Canada Women Business Grants 2026</h1>
-            <p className="text-xl text-purple-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Canada has made women&apos;s entrepreneurship a federal priority through the $2.3B Women Entrepreneurship
-              Strategy (WES) — the largest single federal investment in women&apos;s entrepreneurship in Canadian history.
-              The program delivers funding, training, and mentorship through three channels: the Women Entrepreneurship
-              Fund ($10K–$100K non-repayable grants for scaling women-led businesses), the WES Ecosystem Fund
-              (financing accelerators and incubators that serve women entrepreneurs), and WES Knowledge Hub
-              (research and resources). In addition to WES, women entrepreneurs access BDC&apos;s Women in Technology
-              venture fund ($500K–$10M), EDC&apos;s dedicated women exporter program, Women&apos;s Business Centres
-              in Western Canada (loans $5K–$150K), and all mainstream Canadian programs (SR&ED, IRAP, CSBFP,
-              CDAP) on an equal basis. This guide covers each program in depth with eligibility details, application
-              strategies, and provincial-level resources.
-            </p>
-            <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-              <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$2.3B</div><div className="text-purple-200 text-sm mt-1">WES federal investment in women entrepreneurship</div></div>
-              <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$100K</div><div className="text-purple-200 text-sm mt-1">Max Women Entrepreneurship Fund grant</div></div>
-              <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$10M</div><div className="text-purple-200 text-sm mt-1">Max BDC Women in Technology investment</div></div>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox
+                question="What government grants exist specifically for women entrepreneurs in Canada?"
+                content="Yes — Canadian women entrepreneurs have access to: WES Women Entrepreneurship Fund ($10K–$100K non-repayable grants), BDC Women in Technology Venture Fund ($500K–$10M equity for women-led tech), EDC Women Exporter financing and insurance, Women's Business Centres (loans $5K–$150K in Western Canada), WES Ecosystem accelerator and incubator programming, and all mainstream programs (SR&ED, IRAP, CSBFP, CDAP) equally. Both WES-specific and mainstream programs should be pursued simultaneously."
+              />
             </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+            
+            
           </div>
         </div>
       </section>
@@ -66,11 +60,8 @@ export default function CanadaWomenBusinessGrantsPage() {
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
-            <ShortAnswerBox
-                question="What government grants exist specifically for women entrepreneurs in Canada?"
-                content="Yes — Canadian women entrepreneurs have access to: WES Women Entrepreneurship Fund ($10K–$100K non-repayable grants), BDC Women in Technology Venture Fund ($500K–$10M equity for women-led tech), EDC Women Exporter financing and insurance, Women's Business Centres (loans $5K–$150K in Western Canada), WES Ecosystem accelerator and incubator programming, and all mainstream programs (SR&ED, IRAP, CSBFP, CDAP) equally. Both WES-specific and mainstream programs should be pursued simultaneously."
-              />
-            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            
+            
             <EligibleCheck />
           </div>
         </div>

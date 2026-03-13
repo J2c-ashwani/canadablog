@@ -42,21 +42,17 @@ export default function IndigenousEntrepreneurGrantsPage() {
                             <Badge className="bg-orange-500/30 text-orange-100 border-orange-400">Indigenous Entrepreneur Funding Canada 2026</Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Indigenous Entrepreneur Grants Canada 2026</h1>
-                        <p className="text-xl text-orange-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-                            Canada has created one of the most comprehensive Indigenous business funding ecosystems in the world —
-                            spanning the Aboriginal Entrepreneurship Program (up to $99,999 in non-repayable business support),
-                            a national network of 59 Aboriginal Financial Institutions providing cultural competency and flexible
-                            financing of $10K–$1M, Métis Capital Corporations in five provinces, over $1B annually in federal
-                            procurement set-asides for Indigenous businesses, and a Women Entrepreneurship Strategy with dedicated
-                            Indigenous women streams. This guide covers every program in depth — who qualifies, how to apply,
-                            which programs serve First Nations vs. Métis vs. Inuit entrepreneurs specifically, and the expert
-                            strategies that help Indigenous business owners maximize non-dilutive funding at every stage.
-                        </p>
-                        <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">59</div><div className="text-orange-200 text-sm mt-1">NACCA Aboriginal Financial Institutions across Canada</div></div>
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$99K</div><div className="text-orange-200 text-sm mt-1">Max non-repayable AEP business grant</div></div>
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$1B+</div><div className="text-orange-200 text-sm mt-1">Annual federal Indigenous procurement set-asides</div></div>
-                        </div>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox
+                question="What government funding is available for Indigenous entrepreneurs in Canada?"
+                content="Yes — Indigenous entrepreneurs in Canada have access to the Aboriginal Entrepreneurship Program (up to $99,999 non-repayable), 59 regional Aboriginal Financial Institutions (AFIs) providing flexible loans of $10K–$1M, Métis Capital Corporations in BC, Alberta, Saskatchewan, Manitoba, and Ontario, $1B+ in annual federal procurement set-asides through PSIB, and all mainstream business programs (BDC, EDC, IRAP, SR&ED) for which Indigenous businesses fully qualify."
+              />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+                        
+                        
                     </div>
                 </div>
             </section>
@@ -64,11 +60,8 @@ export default function IndigenousEntrepreneurGrantsPage() {
             <section className="py-6 bg-emerald-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto space-y-4">
-                        <ShortAnswerBox
-                question="What government funding is available for Indigenous entrepreneurs in Canada?"
-                content="Yes — Indigenous entrepreneurs in Canada have access to the Aboriginal Entrepreneurship Program (up to $99,999 non-repayable), 59 regional Aboriginal Financial Institutions (AFIs) providing flexible loans of $10K–$1M, Métis Capital Corporations in BC, Alberta, Saskatchewan, Manitoba, and Ontario, $1B+ in annual federal procurement set-asides through PSIB, and all mainstream business programs (BDC, EDC, IRAP, SR&ED) for which Indigenous businesses fully qualify."
-              />
-                        <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+                        
+                        
                         <EligibleCheck />
                     </div>
                 </div>

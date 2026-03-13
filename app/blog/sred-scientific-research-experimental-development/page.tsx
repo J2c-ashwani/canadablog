@@ -79,13 +79,19 @@ export default function SREDTaxCreditsGuidePage() {
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Scientific Research & Experimental Development (SR&ED) Tax Credits
               </h1>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox content="SR&ED gives Canadian businesses a 35% refundable federal tax credit on eligible R&D expenditures (up to $4.5M). Combined with provincial credits, you can recover up to 65% of your R&D costs — the highest rate in North America." />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+            </div>
               
               <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
-                 <ShortAnswerBox content="SR&ED gives Canadian businesses a 35% refundable federal tax credit on eligible R&D expenditures (up to $4.5M). Combined with provincial credits, you can recover up to 65% of your R&D costs — the highest rate in North America." />
+                 
               </div>
               <div className="flex justify-center mb-8 relative z-20">
                  <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
-                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                    
                  </div>
               </div>
 

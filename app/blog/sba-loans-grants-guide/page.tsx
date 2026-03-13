@@ -91,13 +91,19 @@ export default function SBALoansGrantsGuidePage() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 SBA Loans &amp; Grants Complete Guide 2026
               </h1>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox content="The SBA offers loans (7(a) up to $5M, 504 up to $5.5M, Microloans up to $50K) — not grants. The only 'grants' are SBIR/STTR R&D awards up to $1.7M, which require a technology innovation component." />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+            </div>
               
               <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
-                 <ShortAnswerBox content="The SBA offers loans (7(a) up to $5M, 504 up to $5.5M, Microloans up to $50K) — not grants. The only 'grants' are SBIR/STTR R&D awards up to $1.7M, which require a technology innovation component." />
+                 
               </div>
               <div className="flex justify-center mb-8 relative z-20">
                  <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
-                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
+                    
                  </div>
               </div>
 

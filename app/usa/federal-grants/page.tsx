@@ -43,10 +43,14 @@ export default function USAFederalGrantsPage() {
                 Small Business
               </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed text-pretty">
-              Access federal funding programs including SBIR, SBA grants, and other government initiatives designed to
-              support American small businesses and startups.
-            </p>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox question="What are the best federal government grants for U.S. businesses in 2026?"
+                content="Federal grants for U.S. small businesses are available through NSF, SBA, DOE, NIH, and DOD. Phase I SBIR awards range from $150K–$305K, with Phase II up to $2M. No equity required — 100% non-dilutive funding." />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold">
                 Browse Federal Grants Below
@@ -65,9 +69,8 @@ export default function USAFederalGrantsPage() {
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
-            <ShortAnswerBox question="What are the best federal government grants for U.S. businesses in 2026?"
-                content="Federal grants for U.S. small businesses are available through NSF, SBA, DOE, NIH, and DOD. Phase I SBIR awards range from $150K–$305K, with Phase II up to $2M. No equity required — 100% non-dilutive funding." />
-            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            
+            
             <EligibleCheck />
           </div>
         </div>

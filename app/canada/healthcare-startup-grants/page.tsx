@@ -42,20 +42,17 @@ export default function HealthcareStartupGrantsPage() {
                             <Badge className="bg-rose-500/30 text-rose-100 border-rose-400">Canada Healthcare Startup Funding 2026</Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Canada Healthcare Startup Grants 2026</h1>
-                        <p className="text-xl text-rose-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-                            Canada's healthcare technology sector receives over $1.5B annually in federal and provincial research grants,
-                            tax credits, and innovation funding — making it one of the most generously supported startup sectors in the
-                            country. From NRC IRAP's $50K–$2M R&D wage funding for medtech SMEs, to SR&ED's 35% refundable tax credit
-                            on all qualifying health R&D, to CIHR's academic-industry collaboration grants, to Ontario's digital health
-                            voucher programs and BC's life sciences grants, Canadian healthcare startups have access to a multi-layered,
-                            complementary funding ecosystem that — when used strategically — can provide $2M–$5M in non-dilutive capital
-                            through the first three years of product development.
-                        </p>
-                        <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$1.5B+</div><div className="text-rose-200 text-sm mt-1">Annual federal health R&D funding</div></div>
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">35%</div><div className="text-rose-200 text-sm mt-1">SR&ED credit rate for SMEs</div></div>
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$2M</div><div className="text-rose-200 text-sm mt-1">Max IRAP medtech award</div></div>
-                        </div>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox
+                question="What government grants are available for healthcare startups in Canada?"
+                content="Yes — Canadian healthcare startups have access to NRC IRAP ($50K–$2M for medtech R&D wages), SR&ED tax credits (35% refundable for SMEs on all qualifying health R&D), CIHR academic-industry collaboration grants ($300K–$1M), provincial health innovation programs in Ontario, BC, Quebec, and Alberta, plus SDTC for health-environment cross-over technologies. Strategic stacking of these programs can provide $2M–$5M non-dilutive through preclinical and early regulatory stages."
+              />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+                        
+                        
                     </div>
                 </div>
             </section>
@@ -63,11 +60,8 @@ export default function HealthcareStartupGrantsPage() {
             <section className="py-6 bg-emerald-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto space-y-4">
-                        <ShortAnswerBox
-                question="What government grants are available for healthcare startups in Canada?"
-                content="Yes — Canadian healthcare startups have access to NRC IRAP ($50K–$2M for medtech R&D wages), SR&ED tax credits (35% refundable for SMEs on all qualifying health R&D), CIHR academic-industry collaboration grants ($300K–$1M), provincial health innovation programs in Ontario, BC, Quebec, and Alberta, plus SDTC for health-environment cross-over technologies. Strategic stacking of these programs can provide $2M–$5M non-dilutive through preclinical and early regulatory stages."
-              />
-                        <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+                        
+                        
                         <EligibleCheck />
                     </div>
                 </div>
