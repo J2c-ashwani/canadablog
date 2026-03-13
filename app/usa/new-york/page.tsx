@@ -42,20 +42,14 @@ export default function NewYorkGrantsPage() {
                             <Badge className="bg-indigo-500/30 text-indigo-100 border-indigo-400">New York State Funding Guide 2026</Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">New York Business Grants & Incentives 2026</h1>
-                        <p className="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-                            New York State operates one of the most sophisticated business incentive ecosystems in the United States,
-                            combining $4B+ in annual economic development programs with the START-UP NY tax-free zone program,
-                            Excelsior Jobs Tax Credits, the NY Green Bank (the largest state-backed green finance institution in the
-                            country), and a nationwide-leading SBIR award pipeline. This guide covers every major program in detail —
-                            including the critical differences between NYC-based businesses and upstate New York opportunities,
-                            common mistakes that cost companies thousands in unclaimed incentives, and an expert funding stack
-                            strategy used by New York's fastest-growing companies.
-                        </p>
-                        <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$4B+</div><div className="text-indigo-200 text-sm mt-1">Annual state business programs</div></div>
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">10 yrs</div><div className="text-indigo-200 text-sm mt-1">START-UP NY tax-free period</div></div>
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$10M</div><div className="text-indigo-200 text-sm mt-1">Max Excelsior Tax Credits</div></div>
-                        </div>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox content="Yes — New York businesses can access $4B+ annually across state programs. START-UP NY eliminates all NY taxes for 10 years for qualifying businesses. Excelsior Jobs Credits provide up to $10M in performance-based tax credits. The NYS Pre-Seed Matching Fund provides up to $150K non-dilutive for early-stage tech startups. NY is the #2 state nationally for total SBIR/STTR award dollars — Federal grants provide an additional $600M+ annually to NY companies." />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+                        
+                        
                     </div>
                 </div>
             </section>
@@ -63,8 +57,8 @@ export default function NewYorkGrantsPage() {
             <section className="py-6 bg-emerald-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto space-y-4">
-                        <ShortAnswerBox content="Yes — New York businesses can access $4B+ annually across state programs. START-UP NY eliminates all NY taxes for 10 years for qualifying businesses. Excelsior Jobs Credits provide up to $10M in performance-based tax credits. The NYS Pre-Seed Matching Fund provides up to $150K non-dilutive for early-stage tech startups. NY is the #2 state nationally for total SBIR/STTR award dollars — Federal grants provide an additional $600M+ annually to NY companies." />
-                        <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+                        
+                        
                         <EligibleCheck />
                     </div>
                 </div>

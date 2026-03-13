@@ -42,18 +42,14 @@ export default function FloridaGrantsPage() {
                             <Badge className="bg-blue-500/30 text-blue-100 border-blue-400">Florida State Funding Guide 2026</Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Florida Business Grants & Incentives 2026</h1>
-                        <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-                            Florida's economy — the 4th largest in the United States at $1.5 trillion GDP — is backed by $2B+ in annual business
-                            incentives, research grants, workforce training programs, and export funding. From Miami tech startups to Orlando
-                            biotech companies and Tampa Bay aerospace firms, Florida offers targeted, performance-based funding across 15+
-                            active programs. This comprehensive guide covers every major grant program, who qualifies, how to apply, common
-                            mistakes to avoid, and expert strategies for stacking multiple funding sources.
-                        </p>
-                        <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$2B+</div><div className="text-blue-200 text-sm mt-1">Annual business incentives</div></div>
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">15+</div><div className="text-blue-200 text-sm mt-1">Active grant programs</div></div>
-                            <div className="bg-white/10 rounded-xl p-4"><div className="text-3xl font-bold">$250K</div><div className="text-blue-200 text-sm mt-1">Max research matching grants</div></div>
-                        </div>
+            <div className="mt-8 mb-4 text-left">
+              <ShortAnswerBox content="Yes — Florida businesses can access $2B+ annually through state incentives, research matching grants, and workforce training programs. Key programs include the Florida High Tech Corridor Matching Grants (up to $250K), QTI Tax Refund ($3K–$6K per job created), and Incumbent Worker Training reimbursements up to $200K. No equity required." />
+            </div>
+            <div className="flex justify-center mb-4">
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+            </div>
+                        
+                        
                     </div>
                 </div>
             </section>
@@ -61,8 +57,8 @@ export default function FloridaGrantsPage() {
             <section className="py-6 bg-emerald-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto space-y-4">
-                        <ShortAnswerBox content="Yes — Florida businesses can access $2B+ annually through state incentives, research matching grants, and workforce training programs. Key programs include the Florida High Tech Corridor Matching Grants (up to $250K), QTI Tax Refund ($3K–$6K per job created), and Incumbent Worker Training reimbursements up to $200K. No equity required." />
-                        <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
+                        
+                        
                         <EligibleCheck />
                     </div>
                 </div>

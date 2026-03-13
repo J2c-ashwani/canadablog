@@ -106,6 +106,12 @@ export default function NovaScotiaGrantsPage() {
             <div className="flex justify-center mb-4">
               <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
             </div>
+            <div className="mt-8 mb-4 text-left">
+              
+            </div>
+            <div className="flex justify-center mb-4">
+              
+            </div>
                         
                         <div className="mt-4">
                             
