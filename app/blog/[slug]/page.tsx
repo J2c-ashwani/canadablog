@@ -152,16 +152,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   </span>
                 </div>
 
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
-                  {post.title}
-                </h1>
+                {/* Hide standard H1 for grant-news, as the ShortAnswerBox will provide the SEO H1 */}
+                {post.type !== 'grant-news' && (
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
+                    {post.title}
+                  </h1>
+                )}
 
                 {post.shortAnswer && (
-                  <div className="bg-white/15 backdrop-blur-sm border border-white/20 rounded-xl p-6 md:p-8 text-left max-w-3xl mx-auto">
-                    <p className="text-white text-base md:text-lg leading-relaxed">
-                      <span className="font-bold">The Short Answer: </span>
-                      {post.shortAnswer}
-                    </p>
+                  <div className="text-left w-full mx-auto max-w-4xl">
+                    <ShortAnswerBox
+                      question={post.shortAnswerQuestion}
+                      content={post.shortAnswer}
+                      isH1={post.type === 'grant-news'}
+                    />
                   </div>
                 )}
 
