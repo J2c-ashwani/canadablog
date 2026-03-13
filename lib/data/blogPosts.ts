@@ -6919,7 +6919,7 @@ export const blogPosts: BlogPost[] = [
       title: "Language Compliance (Bill 96)",
       type: 'warning',
       content: "Quebec funding requires <strong>strict adherence to French language laws</strong>. Ensure your business plan, financial statements, and application forms are professionally translated into French. English-only applications are often rejected outright by provincial agencies.",
-    }, shortAnswer: "Quebec Government Business Grants provides valuable funding in non-repayable grants specifically tailored for Quebec businesses. To qualify, your business must demonstrate clear objectives in scientific research and experimental development (R&D) and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
+    }, shortAnswer: "To apply for Quebec Government Business Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Quebec government business grants and aide aux entreprises provincial funding. Access Investissement Quebec, ESSOR, PSCE programs, and R&D tax credits for Quebec businesses.",
     faq: [
       {
         question: "Do I need to speak French to get a grant?",
@@ -16823,7 +16823,7 @@ However, some large SIF contributions may have repayment terms based on revenue 
                                                                                                                                                                                                                                                           `,
     seo: {
       keywords: ["Manufacturing Grants Canada", "SIF Funding", "FedDev Ontario", "Equipment Loans Canada", "Canada Job Grant"]
-    }, shortAnswer: "🇨🇦 Scale your factory with Canadian government grants. Programs like the Strategic Innovation Fund (SIF) and Regional Development Agencies (e.g., FedDev) offer millions in 0% interest loans and non-repayable grants. Funding prioritizes clean tech adoption, EV supply chain integration, and major productivity improvements.",
+    }, shortAnswer: "To apply for Manufacturing Grants : Canadas 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🇨🇦 Modernize your factory with Canadian government grants. Learn about SIF, regional equipment loans, and the Canada Job Grant for retraining your workforce. Funding available: up to $10M.",
     metrics: [
       { label: 'Total', value: '$5.5B', description: 'Industry Fund', color: 'text-orange-600', iconName: 'Factory' },
       { label: 'Loan', value: '0%', description: 'RDA Interest', color: 'text-green-600', iconName: 'DollarSign' },
