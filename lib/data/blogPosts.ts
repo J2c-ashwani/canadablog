@@ -141,11 +141,22 @@ export const blogPosts: BlogPost[] = [
     type: "grant-news",
 
     relatedLinks: [
-      { title: "Programs", href: "/blog/canada-federal-grants", description: "Complete guide to government grants...." },
-      { title: "Indigenous Set-Asides Have Priority", href: "/guides/canada-digital-ai-funding-guide", description: "Funding opportunities for digital transformation and AI development projects...." },
-      { title: "Programs", href: "/blog/biotech-life-sciences-grants", description: "Complete 2026-2027 guide to biotech and life sciences grants. NIH SBIR Phase I $306K, Phase II $2M, $1.2B Seed Fund, FDA..." }
+      { title: "AgriInnovate Program", href: "/blog/canada-agri-food-technology-innovation-grants", description: "Complete guide to Canadian agri-food technology innovation grants. Access $2.3B+ funding through AgriInnovate, precision agriculture programs, and food processing technology." },
+      { title: "Provincial Funding", href: "/blog/prairie-provinces-innovation-grants", description: "Complete guide to Prairie innovation grants. Access $580M+ through Saskatchewan Innovation, Manitoba Research, PrairiesCan funding." },
+      { title: "Canada Federal Grants", href: "/blog/canada-federal-grants-guide", description: "Complete guide to Canadian federal government grants and funding programs for businesses." }
     ],
-    content: "",
+    content: agriInnovation2025,
+    metrics: [
+      { label: 'Fund Pool', value: '$180M', description: 'Innovation', color: 'text-green-600', iconName: 'Sprout' },
+      { label: 'Max Grant', value: '$5M', description: 'Per Project', color: 'text-blue-600', iconName: 'Award' },
+      { label: 'Cost Share', value: '60%', description: 'Gov Portion', color: 'text-orange-600', iconName: 'PieChart' },
+      { label: 'Success', value: '81%', description: 'Demo Projects', color: 'text-emerald-600', iconName: 'TrendingUp' }
+    ],
+    expertTip: {
+      title: "Commercial Ready Only",
+      type: 'warning',
+      content: "AgriInnovate does NOT fund basic research. You must have a <strong>working prototype</strong> and identified customers to be eligible."
+    },
     seo: {
       keywords: ["Agriculture", "&", "Agri-Food", "Canada", "Grants"],
     }, shortAnswer: "Yes — Agriculture & Agri-Food Canada offers up to $5M through AgriInnovate, AgriScience, and Sustainable CAP programs. Most funding is delivered through provincial agriculture ministries on a 50% cost-sharing basis.",
