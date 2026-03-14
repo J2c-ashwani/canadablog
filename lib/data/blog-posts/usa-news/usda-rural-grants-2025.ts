@@ -111,7 +111,7 @@ export default `
         <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-bold">Up to $500,000</span>
       </div>
       
-      <h4 class="font-semibold text-green-700 mb-2">📍 Eligible Counties (Population < 50,000):</h4>
+      <h4 class="font-semibold text-green-700 mb-2">📍 Eligible Counties (Population <50,000):</h4>
       <div class="grid grid-cols-2 gap-2 text-sm text-green-600 mb-4">
         <div>
           <strong>Texas:</strong> 187 counties<br>

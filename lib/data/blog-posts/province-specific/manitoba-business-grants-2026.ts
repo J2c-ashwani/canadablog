@@ -24,84 +24,84 @@ const post: BlogPost = {
       { title: "RE3 Fast Track", href: "/blog/prairie-provinces-innovation-grants", description: "Complete guide to Prairie innovation grants. Access $580M+ through Saskatchewan Innovation, Manitoba Research, PrairiesC..." }
     ],
     content: `
-  < section id = "common-questions" class="bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-xl mb-10 border border-purple-200" >
-    <h2 class="text-2xl font-bold text-purple-900 mb-6" >❓ Common Questions About Manitoba Grants </h2>
-      < div class="grid md:grid-cols-2 gap-4" >
-        <a href="#young-entrepreneurs" class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100" >
-          <h3 class="font-semibold text-purple-700" > Young Entrepreneurs(18 - 29) </h3>
-            < p class="text-sm text-gray-600 mt-1" > Get up to $4,000 for startup costs.</p>
+  <section id = "common-questions" class="bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-xl mb-10 border border-purple-200">
+    <h2 class="text-2xl font-bold text-purple-900 mb-6">❓ Common Questions About Manitoba Grants </h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="#young-entrepreneurs" class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+          <h3 class="font-semibold text-purple-700"> Young Entrepreneurs(18 - 29) </h3>
+            <p class="text-sm text-gray-600 mt-1"> Get up to $4,000 for startup costs.</p>
               </a>
-              < a href = "#indigenous" class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100" >
-                <h3 class="font-semibold text-purple-700" > Indigenous Entrepreneurs </h3>
-                  < p class="text-sm text-gray-600 mt-1" > LRCC offers grants & low - interest loans.</p>
+              <a href = "#indigenous" class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                <h3 class="font-semibold text-purple-700"> Indigenous Entrepreneurs </h3>
+                  <p class="text-sm text-gray-600 mt-1"> LRCC offers grants & low - interest loans.</p>
                     </a>
-                    < a href = "#tech" class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100" >
-                      <h3 class="font-semibold text-purple-700" > Tech Startups </h3>
-                        < p class="text-sm text-gray-600 mt-1" > North Forge offers $10k + value in support.</p>
+                    <a href = "#tech" class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                      <h3 class="font-semibold text-purple-700"> Tech Startups </h3>
+                        <p class="text-sm text-gray-600 mt-1"> North Forge offers $10k + value in support.</p>
                           </a>
-                          < a href = "#agriculture" class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100" >
-                            <h3 class="font-semibold text-purple-700" > Young Farmers </h3>
-                              < p class="text-sm text-gray-600 mt-1" > MASC offers loan guarantees & rebates.</p>
+                          <a href = "#agriculture" class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                            <h3 class="font-semibold text-purple-700"> Young Farmers </h3>
+                              <p class="text-sm text-gray-600 mt-1"> MASC offers loan guarantees & rebates.</p>
                                 </a>
                                 </div>
                                 </section>
-                                < div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg mb-8 border border-purple-200" >
-                                  <h2 class="text-2xl font-bold text-purple-900 mb-4" >🌻 Manitoba: Heart of the Continent </h2>
-                                    < p class="mb-4 text-purple-800" > Manitoba offers a stable, diverse economy with strong support for <strong>manufacturing, agriculture, and Indigenous business < /strong>.</p >
-                                      <div class= "grid md:grid-cols-2 gap-6" >
+                                <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg mb-8 border border-purple-200">
+                                  <h2 class="text-2xl font-bold text-purple-900 mb-4">🌻 Manitoba: Heart of the Continent </h2>
+                                    <p class="mb-4 text-purple-800"> Manitoba offers a stable, diverse economy with strong support for <strong>manufacturing, agriculture, and Indigenous business </strong>.</p>
+                                      <div class= "grid md:grid-cols-2 gap-6">
                                         <div>
-                                        <h3 class="font-bold text-purple-800 mb-2" >🚀 Provincial Programs </h3>
-                                          < ul class="text-purple-700 space-y-1 text-sm" >
-                                            <li>• <strong>Innovation Growth Program(IGP): </strong> Grant for valid tech</li >
-                                              <li>• <strong>Manitoba Works Capital Incentive: </strong> Tax rebates</li >
-                                                <li>• <strong>Young Entrepreneurs: </strong> $4,000 grant</li >
-                                                  <li>• <strong>Sector Support: </strong> Strategic industry funding</li >
+                                        <h3 class="font-bold text-purple-800 mb-2">🚀 Provincial Programs </h3>
+                                          <ul class="text-purple-700 space-y-1 text-sm">
+                                            <li>• <strong>Innovation Growth Program(IGP): </strong> Grant for valid tech</li>
+                                              <li>• <strong>Manitoba Works Capital Incentive: </strong> Tax rebates</li>
+                                                <li>• <strong>Young Entrepreneurs: </strong> $4,000 grant</li>
+                                                  <li>• <strong>Sector Support: </strong> Strategic industry funding</li>
                                                     </ul>
                                                     </div>
-                                                    < div >
-                                                    <h3 class="font-bold text-purple-800 mb-2" >🏢 Key Partners </h3>
-                                                      < ul class="text-purple-700 space-y-1 text-sm" >
-                                                        <li>• <strong>PrairiesCan: </strong> Federal agency</li >
-                                                          <li>• <strong>North Forge: </strong> Startup incubator</li >
-                                                            <li>• <strong>World Trade Centre Winnipeg: </strong> Export help</li >
-                                                              <li>• <strong>FPEGF: </strong> First Peoples Fund</li >
+                                                    <div>
+                                                    <h3 class="font-bold text-purple-800 mb-2">🏢 Key Partners </h3>
+                                                      <ul class="text-purple-700 space-y-1 text-sm">
+                                                        <li>• <strong>PrairiesCan: </strong> Federal agency</li>
+                                                          <li>• <strong>North Forge: </strong> Startup incubator</li>
+                                                            <li>• <strong>World Trade Centre Winnipeg: </strong> Export help</li>
+                                                              <li>• <strong>FPEGF: </strong> First Peoples Fund</li>
                                                                 </ul>
                                                                 </div>
                                                                 </div>
                                                                 </div>
 
-                                                                < h2 > Tech & Innovation: IGP </h2>
-                                                                  < p > The < strong > Innovation Growth Program(IGP) < /strong> is Manitoba's flagship grant for SMEs commercializing new products.</p >
+                                                                <h2> Tech & Innovation: IGP </h2>
+                                                                  <p> The <strong> Innovation Growth Program(IGP) </strong> is Manitoba's flagship grant for SMEs commercializing new products.</p>
                                                                     <ul>
                                                                     <li><strong>Grant: </strong> Up to $100,000 (50/50 cost - share).</li>
-                                                                      < li > <strong>Goal: </strong> Take a working prototype and get it into the market.</li >
+                                                                      <li> <strong>Goal: </strong> Take a working prototype and get it into the market.</li>
                                                                         </ul>
 
-                                                                        < h2 > Startups: Futurepreneur & North Forge </h2>
-                                                                          < p > <strong>North Forge < /strong> is the largest fabrication lab and incubator in North America. They offer the "Founders Program" which provides mentorship and access to funding.</p >
-                                                                            <p>For youth(18 - 39), <strong>Futurepreneur Canada < /strong> (partnering with BDC) offers up to $60,000 in loans + mentorship.</p >
+                                                                        <h2> Startups: Futurepreneur & North Forge </h2>
+                                                                          <p> <strong>North Forge </strong> is the largest fabrication lab and incubator in North America. They offer the "Founders Program" which provides mentorship and access to funding.</p>
+                                                                            <p>For youth(18 - 39), <strong>Futurepreneur Canada </strong> (partnering with BDC) offers up to $60,000 in loans + mentorship.</p>
 
                                                                               <h2>Indigenous Business: FPEGF </h2>
-                                                                                < p > The < strong > First Peoples Economic Growth Fund(FPEGF) < /strong> offers some of the best grants in the country for Métis and First Nations entrepreneurs in Manitoba.</p >
+                                                                                <p> The <strong> First Peoples Economic Growth Fund(FPEGF) </strong> offers some of the best grants in the country for Métis and First Nations entrepreneurs in Manitoba.</p>
                                                                                   <ul>
-                                                                                  <li><strong>Business Plan Contribution: </strong> Grant to hire a consultant.</li >
-                                                                                    <li><strong>Business Contribution Fund: </strong> Non-repayable grant up to 40% of capital costs.</li >
+                                                                                  <li><strong>Business Plan Contribution: </strong> Grant to hire a consultant.</li>
+                                                                                    <li><strong>Business Contribution Fund: </strong> Non-repayable grant up to 40% of capital costs.</li>
                                                                                       </ul>
 
-                                                                                      < h2 > Export: World Trade Centre Winnipeg </h2>
-                                                                                        < p > The WTC Winnipeg manages the < strong > Trade Accelerator Program(TAP) < /strong>. While not a direct cash grant, graduates often get expedited access to CanExport funding (up to $50,000).</p >
+                                                                                      <h2> Export: World Trade Centre Winnipeg </h2>
+                                                                                        <p> The WTC Winnipeg manages the <strong> Trade Accelerator Program(TAP) </strong>. While not a direct cash grant, graduates often get expedited access to CanExport funding (up to $50,000).</p>
 
                                                                                           <h2>Manufacturing: Industry Expansion </h2>
-                                                                                            < p > The < strong > Manitoba Works Capital Incentive < /strong> is a tax rebate for companies that invest significantly ($10M+) in new property. For smaller manufacturers, <strong>PrairiesCan</strong > offers interest - free loans for new equipment.</p>
+                                                                                            <p> The <strong> Manitoba Works Capital Incentive </strong> is a tax rebate for companies that invest significantly ($10M+) in new property. For smaller manufacturers, <strong>PrairiesCan</strong> offers interest - free loans for new equipment.</p>
 
-                                                                                              < h2 > Success Stories </h2>
-  < div class= "bg-purple-50 border-l-4 border-purple-500 p-6 my-6" >
-  <h3 class= "font-bold text-purple-900 mt-0" > Bold Commerce(Winnipeg, MB) </h3>
-    < p class="text-purple-800" > Funding: IGP & PrairiesCan </p>
-      < p class="mt-2 text-sm text-purple-700" > "Winnipeg's tech darling Bold Commerce used early provincial support to scale their e-commerce tools. They are now one of the largest employers of developers in the province." </p>
+                                                                                              <h2> Success Stories </h2>
+  <div class= "bg-purple-50 border-l-4 border-purple-500 p-6 my-6">
+  <h3 class= "font-bold text-purple-900 mt-0"> Bold Commerce(Winnipeg, MB) </h3>
+    <p class="text-purple-800"> Funding: IGP & PrairiesCan </p>
+      <p class="mt-2 text-sm text-purple-700"> "Winnipeg's tech darling Bold Commerce used early provincial support to scale their e-commerce tools. They are now one of the largest employers of developers in the province." </p>
         </div>
 
-        < script type = "application/ld+json" >
+        <script type = "application/ld+json">
         {
           "@context": "https://schema.org",
           "@type": "FAQPage",
