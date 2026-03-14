@@ -2,7 +2,7 @@ import { format, addDays } from "date-fns";
 
 // Base start date for the pSEO drip campaign (March 5, 2026)
 const DRIP_START_DATE = new Date("2026-03-05T00:00:00Z");
-const PAGES_PER_DAY = 3;
+const PAGES_PER_DAY = 20;
 
 export type PseoPage = {
     provinceSlug: string;

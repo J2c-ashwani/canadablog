@@ -10,6 +10,7 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import InlineCTA from '@/components/blog/InlineCTA';
+import { INDUSTRY_DEEP_DIVES } from '@/lib/pseo-content';
 
 // --- Industry-specific, data-rich short answers ---
 // Each answer contains real program names, real dollar amounts, and real timelines.
@@ -268,17 +269,12 @@ export default function PseoLandingPage({ params }: { params: { province: string
                         Verified Local Programs — {page.provinceName}
                     </div>
 
-                    <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                            {page.industryName} Grants
-                        </span><br />
-                        in {page.cityName}, {page.provinceName}
-                    </h1>
-
-                    {/* SHORT ANSWER — Hero placement, data-rich, question-first format */}
-                    <div className="mt-6 mb-8">
+                    {/* SHORT ANSWER — Hero placement, Direct Question as H1 per EEAT Guidelines */}
+                    <div className="mt-8 mb-8">
                         <ShortAnswerBox
-                            content={`**${shortAnswerQuestion}**\n\n${shortAnswerContent}`}
+                            question={shortAnswerQuestion}
+                            content={shortAnswerContent}
+                            isH1={true}
                         />
                     </div>
                 </div>
@@ -290,11 +286,13 @@ export default function PseoLandingPage({ params }: { params: { province: string
                     <nav aria-label="Table of contents">
                         <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-gray-600">
                             <li className="text-gray-400 font-semibold text-xs uppercase tracking-wide">Jump to:</li>
-                            <li><a href="#funding-types" className="hover:text-green-600 transition-colors">Funding Types</a></li>
-                            <li><a href="#eligibility" className="hover:text-green-600 transition-colors">Eligibility</a></li>
-                            <li><a href="#process" className="hover:text-green-600 transition-colors">How to Apply</a></li>
-                            <li><a href="#faqs" className="hover:text-green-600 transition-colors">FAQs</a></li>
-                            <li><a href="#calculator" className="hover:text-green-600 transition-colors">Get My Estimate</a></li>
+                            <li><a href="#landscape" className="hover:text-green-600 transition-colors">Landscape</a></li>
+                            <li><a href="#top-programs" className="hover:text-green-600 transition-colors">Top Programs</a></li>
+                            <li><a href="#capital-stacking" className="hover:text-green-600 transition-colors">Capital Stacking</a></li>
+                            <li><a href="#tax-implications" className="hover:text-green-600 transition-colors">Tax Strategy</a></li>
+                            <li><a href="#expert-framework" className="hover:text-green-600 transition-colors">Application Framework</a></li>
+                            <li><a href="#disqualifiers" className="hover:text-green-600 transition-colors">Disqualifiers</a></li>
+                            <li><a href="#calculator" className="hover:text-green-600 transition-colors">Calculator</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -307,198 +305,129 @@ export default function PseoLandingPage({ params }: { params: { province: string
                     {/* Left Column: Deep Contextual Content */}
                     <div className="lg:col-span-7 space-y-12">
 
-                        {/* Introduction */}
-                        <div className="prose prose-lg text-gray-700 max-w-none" id="funding-types">
-                            <h2 className="text-3xl font-bold text-gray-900 mb-6">Local Funding for {page.cityName} {page.industryName} Businesses</h2>
-                            <p className="lead text-xl text-gray-800">
-                                The government of {page.provinceName} and federal Canadian agencies provide millions of dollars in non-repayable grants, wage subsidies, and interest-free loans specifically targeted at the <strong>{page.industryName}</strong> sector in {page.cityName}.
-                            </p>
-                            <p>
-                                Unlike traditional bank loans, government grants do not need to be repaid and do not require giving up equity in your company. Whether you are looking to hire new employees, invest in research and development, purchase new equipment, or expand your {page.industryName} operations globally, there are active funding programs designed to accelerate your growth.
-                            </p>
-                            <p>
-                                The key to accessing these funds is understanding exactly which programs your business in {page.cityName} qualifies for, what the specific intake periods are, and how to structure your application to match the government's current economic priorities for {page.provinceName}.
-                            </p>
-                        </div>
+                        {/* Deep Contextual Content */}
+                        {(() => {
+                            const deepDive = INDUSTRY_DEEP_DIVES[page.industrySlug];
+                            // Graceful fallback for undiscovered slugs
+                            if (!deepDive) return <div className="text-red-500 font-bold p-8">Error: Deep dive content not found for industry slug: {page.industrySlug}</div>;
 
-                        {/* Core Funding Categories */}
-                        <div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-6">Primary Types of {page.industryName} Funding Available</h3>
-                            <div className="space-y-6">
-                                <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                                    <div className="flex items-start">
-                                        <div className="bg-green-100 p-3 rounded-lg mr-4">
-                                            <CheckCircle className="w-6 h-6 text-green-600" />
-                                        </div>
-                                        <div>
-                                            <h4 className="text-lg font-bold text-gray-900 mb-2">Hiring & Wage Subsidies</h4>
-                                            <p className="text-gray-700">One of the most accessible forms of funding in {page.cityName}. Programs can cover between 50% to 70% of the wages for new hires, particularly for youth (under 30), recent graduates, or specialized technical roles within the {page.industryName} space.</p>
+                            return (
+                                <>
+                                    {/* Landscape */}
+                                    <div id="landscape" className="prose prose-lg text-gray-700 max-w-none">
+                                        <h2 className="text-3xl font-bold text-gray-900 mb-6">{deepDive.landscape.title}</h2>
+                                        {deepDive.landscape.content.map((p, i) => (
+                                            <p key={i} className={i === 0 ? "lead text-xl text-gray-800" : ""}>{p}</p>
+                                        ))}
+                                    </div>
+
+                                    {/* Anatomy of Top Programs */}
+                                    <div id="top-programs" className="mt-12">
+                                        <h2 className="text-3xl font-bold text-gray-900 mb-4">{deepDive.anatomy.title}</h2>
+                                        <p className="text-xl text-gray-700 mb-8">{deepDive.anatomy.introduction}</p>
+                                        <div className="space-y-6">
+                                            {deepDive.anatomy.programs.map((prog, idx) => (
+                                                <div key={idx} className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                                                    <div className="flex items-start">
+                                                        <div className="bg-blue-100 p-3 rounded-lg mr-4 mt-1">
+                                                            <BookOpen className="w-6 h-6 text-blue-600" />
+                                                        </div>
+                                                        <div>
+                                                            <h3 className="text-2xl font-bold text-gray-900 mb-3">{prog.name}</h3>
+                                                            <p className="text-gray-700 leading-relaxed text-lg mb-6">{prog.description}</p>
+                                                            
+                                                            <div className="bg-red-50 border-l-4 border-red-500 p-5 mb-5 rounded-r-md">
+                                                                <h4 className="font-bold text-red-900 mb-3 flex items-center gap-2">
+                                                                    <Shield className="w-5 h-5" /> Critical Disqualifiers
+                                                                </h4>
+                                                                <ul className="list-disc pl-5 text-red-800 space-y-2">
+                                                                    {prog.disqualifiers.map((dq, dIdx) => (
+                                                                        <li key={dIdx}>{dq}</li>
+                                                                    ))}
+                                                                </ul>
+                                                            </div>
+                                                            <div className="bg-yellow-50 border border-yellow-300 p-5 rounded-md shadow-sm">
+                                                                <p className="text-yellow-900"><strong>💡 Insider Tip:</strong> {prog.insiderTip}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
-                                </div>
 
-                                <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                                    <div className="flex items-start">
-                                        <div className="bg-blue-100 p-3 rounded-lg mr-4">
-                                            <CheckCircle className="w-6 h-6 text-blue-600" />
-                                        </div>
-                                        <div>
-                                            <h4 className="text-lg font-bold text-gray-900 mb-2">Technology & Software Adoption</h4>
-                                            <p className="text-gray-700">Grants designed to help {page.cityName} businesses modernize. If your {page.industryName} company needs to implement an ERP system, upgrade cybersecurity, adopt AI infrastructure, or digitize operations, you can secure up to $100,000 in support.</p>
+                                    {/* Inline CTA — Mid-page */}
+                                    <div className="my-12">
+                                        <InlineCTA
+                                            title={`Need help finding the right ${page.cityName} grants?`}
+                                            description={`Our funding specialists have helped ${page.industryName} businesses across ${page.provinceName} identify and successfully apply for government programs. Get a free eligibility assessment — no obligation.`}
+                                            buttonText="Get Free Assessment"
+                                            buttonLink="/get-started"
+                                        />
+                                    </div>
+
+                                    {/* Capital Stacking */}
+                                    <div id="capital-stacking" className="bg-gradient-to-br from-green-50 to-blue-50 border border-green-200 rounded-xl p-10 mt-12 shadow-sm">
+                                        <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                                            <span className="text-4xl">📚</span> {deepDive.stackingPlaybook.title}
+                                        </h2>
+                                        <div className="space-y-4 text-gray-800 text-lg leading-relaxed">
+                                            {deepDive.stackingPlaybook.content.map((p, i) => (
+                                                <p key={i}>{p}</p>
+                                            ))}
                                         </div>
                                     </div>
-                                </div>
 
-                                <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                                    <div className="flex items-start">
-                                        <div className="bg-purple-100 p-3 rounded-lg mr-4">
-                                            <CheckCircle className="w-6 h-6 text-purple-600" />
-                                        </div>
-                                        <div>
-                                            <h4 className="text-lg font-bold text-gray-900 mb-2">Market Expansion & Exporting</h4>
-                                            <p className="text-gray-700">Looking to sell your {page.industryName} products or services outside of {page.provinceName}? The CanExport program and regional equivalents provide up to $50,000 to cover travel to trade shows, marketing localization, and legal fees for new market entry.</p>
+                                    {/* Tax Implications */}
+                                    <div id="tax-implications" className="prose prose-lg text-gray-700 max-w-none mt-12 bg-white border border-gray-200 p-8 rounded-xl shadow-sm">
+                                        <h2 className="text-3xl font-bold text-gray-900 mb-6 border-b pb-4">{deepDive.taxImplications.title}</h2>
+                                        <div className="space-y-4">
+                                            {deepDive.taxImplications.content.map((p, i) => (
+                                                <p key={i} className="leading-relaxed">{p}</p>
+                                            ))}
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        {/* Inline CTA — Mid-page */}
-                        <InlineCTA
-                            title={`Need help finding the right ${page.cityName} grants?`}
-                            description={`Our funding specialists have helped ${page.industryName} businesses across ${page.provinceName} identify and successfully apply for government programs. Get a free eligibility assessment — no obligation.`}
-                            buttonText="Get Free Assessment"
-                            buttonLink="/get-started"
-                        />
-
-                        {/* ===== TOP ACTIVE PROGRAMS SECTION ===== */}
-                        <div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-2">Top Active Government Programs for {page.cityName} {page.industryName} Businesses</h3>
-                            <p className="text-gray-600 mb-6">The following programs are currently active and accepting applications from eligible {page.industryName} businesses based in {page.cityName}, {page.provinceName}. Program details are verified as of 2026.</p>
-                            <div className="space-y-5">
-                                {(INDUSTRY_PROGRAMS[page.industrySlug] || DEFAULT_PROGRAMS).map((prog, idx) => (
-                                    <div key={idx} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                                        <div className="flex items-start justify-between gap-4 flex-wrap">
-                                            <div className="flex-1">
-                                                <h4 className="text-lg font-bold text-gray-900 mb-1">{prog.name}</h4>
-                                                <p className="text-sm text-gray-500 mb-3">Administered by: <span className="font-medium text-gray-700">{prog.agency}</span></p>
-                                                <p className="text-gray-700 text-sm"><strong>Best for:</strong> {prog.bestFor}</p>
-                                            </div>
-                                            <div className="flex-shrink-0 text-right">
-                                                <div className="text-green-700 font-bold text-lg">{prog.amount}</div>
-                                                <div className="text-gray-500 text-sm mt-1">⏱ {prog.timeline}</div>
-                                            </div>
+                                    {/* Expert Application Framework */}
+                                    <div id="expert-framework" className="mt-16">
+                                        <h2 className="text-4xl font-extrabold text-gray-900 mb-10">{deepDive.expertFramework.title}</h2>
+                                        <div className="space-y-10">
+                                            {deepDive.expertFramework.steps.map((step, idx) => (
+                                                <div key={idx} className="relative pl-12 border-l-4 border-primary pb-4">
+                                                    <div className="absolute -left-5 top-0 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg shadow-md ring-4 ring-white">
+                                                        {idx + 1}
+                                                    </div>
+                                                    <h3 className="text-2xl font-bold text-gray-900 mb-3 mt-1">{step.phase}</h3>
+                                                    <p className="text-gray-700 text-lg leading-relaxed">{step.details}</p>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
-                                ))}
-                            </div>
-                        </div>
 
-                        {/* ===== GRANT STACKING SECTION ===== */}
-                        <div className="bg-gradient-to-br from-green-50 to-blue-50 border border-green-200 rounded-xl p-8">
-                            <h3 className="text-2xl font-bold text-gray-900 mb-4">💡 The Grant Stacking Strategy: How to Maximize Your Funding</h3>
-                            <p className="text-gray-700 mb-4">
-                                One of the most underutilized strategies for {page.cityName} businesses is <strong>grant stacking</strong> — the practice of applying to multiple non-repayable government programs simultaneously for the same project. Unlike private investors, government agencies do not have exclusivity requirements, meaning a single project can legitimately draw funding from several sources at once.
-                            </p>
-                            <p className="text-gray-700 mb-4">
-                                A typical {page.industryName} business in {page.cityName} could structure their funding as follows: use the <strong>CDAP grant ($15,000)</strong> to purchase digital infrastructure, simultaneously claim <strong>SR&ED tax credits</strong> on any experimental development in that infrastructure, and then apply for an <strong>IRAP project grant</strong> to fund the skilled staff operating the system. These three programs can stack on a single project without conflicting.
-                            </p>
-                            <p className="text-gray-700">
-                                The key rule of stacking is that the total government assistance for any single eligible expense cannot exceed 75% of that cost. Beyond that threshold, you are free to layer as many programs as your {page.cityName} business qualifies for. Our specialists can map out an optimized stacking plan for your specific situation.
-                            </p>
-                        </div>
-
-                        {/* ===== LOCAL RESOURCES SECTION ===== */}
-                        {(PROVINCE_RESOURCES[page.provinceSlug] && PROVINCE_RESOURCES[page.provinceSlug].length > 0) && (
-                            <div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-3">Local {page.provinceName} Resources & Support Organizations</h3>
-                                <p className="text-gray-600 mb-5">
-                                    Beyond federal programs, {page.cityName} businesses should leverage provincial agencies designed specifically to help {page.provinceName} companies navigate grant applications, access advisory services, and connect with regional funding pools.
-                                </p>
-                                <div className="grid sm:grid-cols-2 gap-4">
-                                    {PROVINCE_RESOURCES[page.provinceSlug].map((resource, idx) => (
-                                        <div key={idx} className="bg-white border border-gray-200 rounded-lg p-5 hover:border-green-300 transition-colors">
-                                            <h4 className="font-bold text-gray-900 mb-2">{resource.name}</h4>
-                                            <p className="text-sm text-gray-600 mb-3">{resource.description}</p>
-                                            <a href={resource.url} target="_blank" rel="noopener noreferrer" className="text-green-600 text-sm font-medium hover:underline">
-                                                Visit Website →
-                                            </a>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Deadlines Warning */}
-                        <div className="bg-blue-50 border-l-4 border-blue-500 rounded-r-xl p-8">
-                            <div className="flex items-center gap-3 mb-4">
-                                <Clock className="w-8 h-8 text-blue-600" />
-                                <h4 className="text-xl font-bold text-blue-900">Critical Note on {page.provinceName} Funding Deadlines</h4>
-                            </div>
-                            <p className="text-blue-800 text-lg leading-relaxed mb-4">
-                                Grant programs in Canada are highly competitive and operate on specific intake cycles. Many {page.provinceName} provincial funds operate on a "first-come, first-served" basis and often deplete their annual budgets long before their official posted deadlines.
-                            </p>
-                            <p className="text-blue-800 font-semibold">
-                                We strongly recommend assessing your {page.cityName} business eligibility immediately to secure your position in the queue.
-                            </p>
-                        </div>
-
-                        {/* Eligibility Section */}
-                        <div id="eligibility">
-                            <div className="prose prose-lg text-gray-700 max-w-none mb-8">
-                                <h3 className="text-2xl font-bold text-gray-900 mb-4">Basic Eligibility Requirements for {page.cityName}</h3>
-                                <p>
-                                    While specific requirements vary by the exact grant program, the vast majority of government funding for the {page.industryName} sector requires your business to meet these baseline criteria:
-                                </p>
-                                <ul>
-                                    <li><strong>Incorporation:</strong> The business must be legally incorporated in {page.provinceName} or federally in Canada. Sole proprietorships generally do not qualify for large-scale funding.</li>
-                                    <li><strong>Headquarters:</strong> Your primary operations and leadership must be located in {page.cityName} or the surrounding area.</li>
-                                    <li><strong>Financial Viability:</strong> You must demonstrate the financial capacity to complete the proposed project. Most grants are reimbursement-based (they pay you back after you spend).</li>
-                                    <li><strong>Job Creation:</strong> The strongest applications clearly demonstrate how the funding will lead to the creation of new, high-quality jobs in the local {page.cityName} economy.</li>
-                                </ul>
-                            </div>
-                            {/* Eligibility Check Widget */}
-                            <EligibleCheck />
-                        </div>
-
-                        {/* Step-by-Step Process */}
-                        <div className="prose prose-lg text-gray-700 max-w-none" id="process">
-                            <h3 className="text-2xl font-bold text-gray-900 mb-4">The Grant Application Process</h3>
-                            <ol className="space-y-4">
-                                <li><strong>Determine Eligibility:</strong> Use an assessment tool (like our calculator) to filter out the noise and find the 3-5 {page.industryName} programs you actually qualify for.</li>
-                                <li><strong>Project Scoping:</strong> Define exactly what you are going to do, how much it will cost, and how it aligns with government priorities for {page.provinceName}.</li>
-                                <li><strong>Proposal Writing:</strong> Draft a compelling narrative. This is not just a form; it requires a detailed business case, financial projections, and hiring plans.</li>
-                                <li><strong>Submission & Review:</strong> Submit the application. Review times range from 4 weeks for simple hiring grants to 4-6 months for innovation scaling funds.</li>
-                                <li><strong>Approval & Execution:</strong> Once formally approved, you can begin incurring eligible expenses in {page.cityName}. Note: Expenses incurred before official approval are generally ineligible.</li>
-                            </ol>
-                        </div>
-
-                        {/* FAQs */}
-                        <div className="mt-12" id="faqs">
-                            <h3 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h3>
-                            <div className="space-y-4">
-                                <div className="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h4 className="text-lg font-bold text-gray-900 mb-3">How much grant money can a {page.industryName} business in {page.cityName} receive?</h4>
-                                    <p className="text-gray-700">Depending on the specific program and the size of your business, funding amounts range significantly. Small hiring grants provide $5,000 to $15,000 per new employee. Technology adoption grants typically offer $15,000 to $100,000. For large-scale innovation commercialization projects in the {page.industryName} sector, companies in {page.provinceName} can secure upwards of $500,000 to $1,000,000+.</p>
-                                </div>
-                                <div className="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h4 className="text-lg font-bold text-gray-900 mb-3">Do I have to pay back a government grant?</h4>
-                                    <p className="text-gray-700">No. True government grants are non-repayable, meaning you do not have to pay the money back, provided you complete the project exactly as described in your approved application. However, the government also offers "repayable contributions" (interest-free loans with flexible terms) which are also valuable tools for {page.cityName} businesses.</p>
-                                </div>
-                                <div className="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h4 className="text-lg font-bold text-gray-900 mb-3">Can a startup in {page.cityName} get funding before generating revenue?</h4>
-                                    <p className="text-gray-700">Yes, but the options are more limited. Pre-revenue {page.industryName} startups can access specific research and development funding (like SR&ED tax credits or IRAP funding) and some localized incubator/accelerator grants in {page.cityName}. However, the majority of large scaling grants require established commercial revenue (often $500K+) and at least 3-5 full-time employees.</p>
-                                </div>
-                                <div className="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h4 className="text-lg font-bold text-gray-900 mb-3">How long does it take to get approved?</h4>
-                                    <p className="text-gray-700">The timeline varies wildly by program. Simple wage subsidies for hiring in {page.cityName} can be approved in 2-4 weeks. Complex federal innovation grants requiring deep technical reviews of your {page.industryName} technology can take 3 to 6 months. We always advise businesses in {page.provinceName} to apply well in advance of their planned project start dates.</p>
-                                </div>
-                                <div className="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h4 className="text-lg font-bold text-gray-900 mb-3">What happens if my {page.cityName} business spends the money differently than planned?</h4>
-                                    <p className="text-gray-700">Government funding requires strict compliance and reporting. If your {page.industryName} company deviates from the approved budget or scope of work without prior written permission from the funding agency, those expenses will be deemed ineligible. You will not be reimbursed, and in cases of severe breach, you may be required to return funds already disbursed.</p>
-                                </div>
-                            </div>
-                        </div>
+                                    {/* Disqualifiers */}
+                                    <div id="disqualifiers" className="bg-gray-50 border border-gray-200 rounded-xl p-10 mt-16 shadow-inner">
+                                        <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+                                            <Shield className="w-8 h-8 text-red-600" /> {deepDive.commonDisqualifiers.title}
+                                        </h2>
+                                        <ul className="space-y-4">
+                                            {deepDive.commonDisqualifiers.list.map((dq, idx) => (
+                                                <li key={idx} className="flex items-start gap-4">
+                                                    <div className="bg-red-100 p-1.5 rounded-full mt-1 shrink-0">
+                                                        <ChevronRight className="w-5 h-5 text-red-600" />
+                                                    </div>
+                                                    <span className="text-gray-800 text-lg font-medium">{dq}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    
+                                    {/* Eligibility Check Widget */}
+                                    <div className="mt-16">
+                                        <EligibleCheck />
+                                    </div>
+                                </>
+                            );
+                        })()}
 
                     </div>
 
