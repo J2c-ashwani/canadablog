@@ -73,19 +73,13 @@ export default function IRAPGuidePage() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 Industrial Research Assistance Program (IRAP)
               </h1>
-            <div className="mt-8 mb-4 text-left">
-              <ShortAnswerBox content="IRAP provides up to $10M in non-repayable R&D grants for Canadian tech SMEs. It covers up to 80% of labour costs. You cannot apply online — you must first contact an Industrial Technology Advisor (ITA) at 1-877-994-4727." />
-            </div>
-            <div className="flex justify-center mb-4">
-              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
-            </div>
               
               <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
-                 
+                 <ShortAnswerBox content="IRAP provides up to $10M in non-repayable R&D grants for Canadian tech SMEs. It covers up to 80% of labour costs. You cannot apply online — you must first contact an Industrial Technology Advisor (ITA) at 1-877-994-4727." />
               </div>
               <div className="flex justify-center mb-8 relative z-20">
                  <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
-                    
+                    <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-25" />
                  </div>
               </div>
 

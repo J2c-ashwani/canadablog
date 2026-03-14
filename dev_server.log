@@ -1,0 +1,23 @@
+
+> fsi-digital@0.1.0 dev /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog
+> next dev -p 3000
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/ashwanikumar/package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/pnpm-lock.yaml
+
+   ▲ Next.js 15.5.4
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.31.144:3000
+
+ ✓ Starting...
+ ✓ Ready in 2s
+ ○ Compiling / ...
+ ✓ Compiled / in 3.6s (877 modules)
+ GET / 200 in 4374ms
+ ✓ Compiled in 1149ms (353 modules)
+ ✓ Compiled in 277ms (353 modules)
+ ✓ Compiled in 193ms (353 modules)

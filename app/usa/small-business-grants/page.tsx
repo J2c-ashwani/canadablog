@@ -26,8 +26,8 @@ export const metadata: Metadata = {
 
 export default function USASmallBusinessGrantsPage() {
   const usaGrants = getGrantsByCountry("USA")
-  const smallBusinessGrants = usaGrants.filter((grant) =>
-    grant.category.includes("Small Business") ||
+  const smallBusinessGrants = usaGrants.filter((grant) => 
+    grant.category.includes("Small Business") || 
     grant.name.includes("Small Business") ||
     grant.name.includes("SBA") ||
     grant.eligibility.some(e => e.includes("small business"))
@@ -48,14 +48,10 @@ export default function USASmallBusinessGrantsPage() {
                 USA 2025
               </span>
             </h1>
-            <div className="mt-8 mb-4 text-left">
-              <ShortAnswerBox question="What grants are available for small businesses in the United States in 2026?"
-                content="U.S. small businesses can access $50B+ annually through SBA programs, SBIR/STTR grants, and state-level funding. The SBA 7(a) loan guarantees up to $5M. SBIR Phase I provides up to $305K in non-dilutive funding." />
-            </div>
-            <div className="flex justify-center mb-4">
-              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
-            </div>
-            
+            <p className="text-xl md:text-2xl mb-8 text-green-100 leading-relaxed text-pretty">
+              Access comprehensive small business funding including SBA grants, federal programs, microloans, and 
+              specialized funding designed to help American small businesses start, grow, and scale.
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold">
                 Browse Small Business Grants Below
@@ -74,8 +70,8 @@ export default function USASmallBusinessGrantsPage() {
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
-            
-            
+            <ShortAnswerBox content="U.S. small businesses can access $50B+ annually through SBA programs, SBIR/STTR grants, and state-level funding. The SBA 7(a) loan guarantees up to $5M. SBIR Phase I provides up to $305K in non-dilutive funding." />
+            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
             <EligibleCheck />
           </div>
         </div>
@@ -158,7 +154,7 @@ export default function USASmallBusinessGrantsPage() {
                     <li>• Business acquisition</li>
                     <li>• Debt refinancing</li>
                   </ul>
-
+                  
                   <div className="pt-4">
                     <Button variant="outline" className="w-full" asChild>
                       <Link href="/blog/sba-7a-loans-complete-guide">
@@ -482,117 +478,7 @@ export default function USASmallBusinessGrantsPage() {
         </div>
       </section>
 
-      {/* Deep Content Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto space-y-10">
-
-            <Card>
-              <CardHeader><CardTitle className="text-xl">SBA Loan Programs Compared — Which One Is Right for Your Business?</CardTitle></CardHeader>
-              <CardContent>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                  The SBA administers several distinct loan programs, each designed for different business needs. Understanding which program fits your situation is the critical first step — applying to the wrong program wastes months. Here&apos;s a direct comparison of the three primary programs:
-                </p>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm border-collapse">
-                    <thead>
-                      <tr className="bg-green-800 text-white">
-                        <th className="text-left p-3 font-medium">Program</th>
-                        <th className="text-left p-3 font-medium">Max Amount</th>
-                        <th className="text-left p-3 font-medium">Best For</th>
-                        <th className="text-left p-3 font-medium">Key Requirement</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {[
-                        ["SBA 7(a)", "$5M", "Working capital, equipment, business acquisition, renovation, refinancing", "Good credit; 2+ years operating history; collateral for larger amounts"],
-                        ["SBA 504", "$5M–$5.5M", "Fixed assets: commercial real estate, large equipment, infrastructure", "For-profit business; net income under $5M; tangible net worth under $15M"],
-                        ["SBA Microloan", "$50K max (avg $13K)", "Startups, micro-businesses, inventory, working capital, small equipment", "Administered through nonprofit lenders; business training often required"],
-                        ["SBA Express", "$500K", "Faster 7(a) with 36-hour response; small working capital needs", "Smaller maximum; higher interest rate; 50% SBA guarantee (vs 85%)"],
-                        ["SBA Disaster", "$2M", "Physical damage or economic injury from declared disasters", "Must be in declared disaster area; demonstrates disaster-related need"],
-                      ].map(([prog, max, best, req], i) => (
-                        <tr key={prog} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                          <td className="p-3 font-semibold text-green-900">{prog}</td>
-                          <td className="p-3 text-green-700 font-medium">{max}</td>
-                          <td className="p-3 text-gray-700 text-xs">{best}</td>
-                          <td className="p-3 text-gray-600 text-xs">{req}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader><CardTitle className="text-xl">SBA Business Certifications — Access to Set-Aside Contracts and Grant Priority</CardTitle></CardHeader>
-              <CardContent className="text-gray-700 space-y-4">
-                <p className="leading-relaxed">
-                  SBA certifications provide access to federal set-aside contracts (some government contracts reserved only for certified businesses) AND scoring advantages in certain grant programs. If you qualify, these certifications are among the highest-ROI business development investments your small business can make.
-                </p>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {[
-                    { cert: "8(a) Business Development Program", who: "Socially AND economically disadvantaged individuals. Net worth under $750K, adjusted gross income under $350K.", benefit: "9-year certification; sole-source contracts up to $4.5M (goods/services) and $7M (manufacturing); business development mentorship; access to SBA 8(a) contract set-asides.", apply: "sba.gov/8a" },
-                    { cert: "Women-Owned Small Business (WOSB)", who: "51%+ women-owned and controlled small business in WOSB-eligible industry.", benefit: "Federal contract set-asides for WOSB; EDWOSB (Economically Disadvantaged WOSB) can receive sole-source awards. No size limitation beyond SBA small business definition.", apply: "certify.sba.gov/wosb" },
-                    { cert: "HUBZone Certification", who: "Business located in HUBZone area; 35% of employees living in HUBZone; meets SBA small business standards.", benefit: "Set-aside contract eligibility; 10% price evaluation preference in competing bids; competitive advantage in HUBZone-eligible solicitations.", apply: "sba.gov/hubzone" },
-                    { cert: "Service-Disabled Veteran-Owned (SDVOSB)", who: "51%+ owned/controlled by service-disabled veteran(s); meets SBA size standards.", benefit: "Federal contract set-asides; sole-source contracts up to $4.5M (goods/services) and $7M (manufacturing); VA Veterans First Contracting priority.", apply: "vetcert.va.gov (VA CVE)" },
-                  ].map(({ cert, who, benefit, apply }) => (
-                    <div key={cert} className="bg-green-50 rounded-lg p-4 border border-green-200">
-                      <div className="font-semibold text-green-900 mb-1 text-sm">{cert}</div>
-                      <div className="text-xs text-green-700 mb-1"><span className="font-medium">Who:</span> {who}</div>
-                      <div className="text-xs text-green-700 mb-1"><span className="font-medium">Benefit:</span> {benefit}</div>
-                      <div className="text-xs text-green-600"><span className="font-medium">Apply:</span> {apply}</div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-red-50 border-red-100">
-              <CardHeader><CardTitle className="text-xl text-red-900">5 Mistakes Small Businesses Make When Seeking U.S. Government Funding</CardTitle></CardHeader>
-              <CardContent className="text-red-900 space-y-3">
-                {[
-                  { n: "1", m: "Applying for SBA Grants When SBA Primarily Provides Loans", d: "The SBA is primarily a loan-guarantee agency, not a grant-giving agency. Direct SBA grants to for-profit businesses are limited to specific programs (WOSB accelerator programs, specific disaster relief contexts). Most small businesses seeking 'SBA grants' should actually be applying for SBA-guaranteed loans — which have substantially better terms than conventional bank loans but must be repaid." },
-                  { n: "2", m: "Not Engaging a Local SBA Resource Partner Before Applying", d: "SBA SCORE mentors and SBDC advisors are free, experienced advisors who significantly improve loan application quality, lender selection strategy, and overall funding approach. Businesses that apply without engaging these free resources consistently have lower approval rates and accept worse terms than businesses that engage SBDC advisors first." },
-                  { n: "3", m: "Seeking Only Federal Funding While Missing State and Local Programs", d: "Every state has economic development programs including direct business grants, tax credit programs, job creation incentives, and business loan programs — often simpler to access than federal programs. Businesses that apply only to federal programs miss substantial state-level capital that is faster to access and less competitive." },
-                  { n: "4", m: "Not Obtaining SBA Certifications Before Pursuing Contracts and Grants", d: "SBA certifications (8(a), WOSB, HUBZone, SDVOSB) take 3–6 months to obtain. Businesses that pursue federal contracts and grants without certifications compete in fully competitive procurement against experienced incumbents. Obtaining certifications before pursuing federal opportunities dramatically changes the competitive landscape." },
-                  { n: "5", m: "Focusing Exclusively on Grants When Loans Would Be More Accessible and Faster", d: "True non-repayable grants for small for-profit businesses are limited and competitive. SBA-guaranteed loans are significantly more accessible, faster (weeks vs. months for grants), and can be refinanced or repaid early if grant funding subsequently arrives. A business waiting 12 months for a grant while declining an SBA loan loses operational momentum that no grant can recover." },
-                ].map(({ n, m, d }) => (
-                  <div key={n} className="bg-white rounded-lg p-4 border border-red-200">
-                    <div className="font-semibold text-red-900 mb-1">{n}. {m}</div>
-                    <p className="text-xs text-red-800 leading-relaxed">{d}</p>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">FAQ: USA Small Business Grants 2026</h2>
-              <div className="space-y-4">
-                {[
-                  { q: "Does the federal government give grants to small businesses to start a business?", a: "True startup grants from the federal government for for-profit businesses are rare. SBIR Phase I ($305K) requires a working prototype concept and technical innovation — not just a business idea. The SBA Community Advantage loan program (through mission-focused lenders) and SBA Microloan program ($500–$50K) are the most accessible federal programs for startup businesses. Many state programs provide small business startup grants ($5K–$25K) through economic development agencies — these are more accessible and specifically designed for new businesses." },
-                  { q: "What is an SBA-guaranteed loan and how is it different from a regular bank loan?", a: "An SBA-guaranteed loan is made by a private bank but partially guaranteed by the SBA — meaning if the business defaults, the SBA pays the bank 75–85% of the outstanding loan balance. This guarantee reduces the bank&apos;s risk, enabling them to lend to businesses that might not qualify for conventional financing. The result: better terms (longer repayment periods, lower down payments, potentially lower interest rates) for qualified small businesses. The SBA does not make the loan itself — it guarantees it, encouraging banks to lend to businesses they&apos;d otherwise decline." },
-                  { q: "Can I get an SBA loan if I have bad credit?", a: "SBA loans have minimum credit requirements — most SBA 7(a) programs require a personal credit score of 650+ and the business must demonstrate ability to repay. Scores below 620 disqualify for most SBA 7(a) products. The SBA Microloan program (through nonprofit lenders) has more flexible credit standards, focusing more on character, business plan quality, and business model viability than credit scores. If your credit score is below 620, start with credit improvement while working with an SBDC advisor on a 6–12 month plan to SBA eligibility." },
-                  { q: "What are CDFIs and can they help small businesses that SBA declines?", a: "Community Development Financial Institutions (CDFIs) are Treasury-certified financial institutions that provide credit, capital, and technical assistance to underserved communities and small businesses. CDFIs often have more flexible underwriting standards than conventional banks and SBA-approved lenders — serving businesses with limited credit history, minority-owned businesses, rural businesses, and businesses in low-income communities. Many CDFIs provide both loans (often subsidized rates) and sometimes small grants. Find CDFIs in your area at cdfifund.gov." },
-                  { q: "Are there small business grants specifically for rural businesses?", a: "Yes — USDA Rural Development provides several grant and loan programs specifically for rural small businesses. The USDA B&I (Business & Industry) Loan Guarantee program (up to $25M) supports businesses in rural areas. USDA Rural Business Development Grants (RBDG) fund training, technical assistance, and rural business development. USDA REAP (Rural Energy for America Program) provides grants and loan guarantees for agricultural producers and rural small businesses installing renewable energy systems. Community Facilities grants support essential rural services. All are administered through USDA Rural Development regional offices." },
-                  { q: "What is a SCORE mentor and are they really free?", a: "SCORE is a nonprofit organization partnered with the SBA that provides free mentorship to small business owners through a network of 10,000+ volunteer mentors who are experienced business executives, entrepreneurs, and professionals. Mentoring sessions are completely free — you can schedule multiple sessions with experienced mentors in your specific industry. SCORE is particularly valuable for first-time business owners seeking guidance on business plans, financial projections, SBA loan preparation, and overall business strategy. Find your local SCORE chapter at score.org." },
-                  { q: "Can a sole proprietor or self-employed individual access SBA loans?", a: "Yes — SBA 7(a) loans are available to sole proprietors including self-employed individuals operating under Schedule C. SBA Microloans (up to $50K) are specifically designed for micro-businesses and sole proprietors. Requirements: EIN or SSN (sole proprietors can use SSN), ability to repay documentation (Schedule C tax returns), credit history, and business plan. The SBA Express loan ($500K max) is often the fastest option for established sole proprietors with good credit. First-time sole proprietors without revenue history may find the Microloan program (through nonprofit lenders) most accessible." },
-                  { q: "Are there U.S. government grants for small businesses affected by international trade?", a: "Yes — several programs help small businesses affected by or seeking to benefit from international trade. The SBA State Trade Expansion Program (STEP) provides grants to states who then provide grants and technical assistance to small businesses for international market entry and trade show participation ($3K–$10K for market research, translation, certification, trade missions). The Export-Import Bank provides export credit insurance and working capital guarantees. For businesses negatively affected by trade policies, Trade Adjustment Assistance for Firms (TAAF) helps domestic manufacturers compete with imports." },
-                ].map((item, i) => (
-                  <Card key={i}><CardContent className="pt-5">
-                    <div className="font-semibold text-gray-900 mb-2">{item.q}</div>
-                    <div className="text-gray-600 text-sm leading-relaxed">{item.a}</div>
-                  </CardContent></Card>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </div>
   )
 }
-

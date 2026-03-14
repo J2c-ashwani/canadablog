@@ -1,0 +1,393 @@
+
+> fsi-digital@0.1.0 build /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog
+> next build
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/ashwanikumar/package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/pnpm-lock.yaml
+
+   ▲ Next.js 15.5.4
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 31.9s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/2852) ...
+   Generating static pages (713/2852) 
+   Generating static pages (1426/2852) 
+   Generating static pages (2139/2852) 
+
+✅ Sitemap generated with 719 URLs
+   📝 176 Blog Posts
+   📚 38 Guides
+   🍁 16 Canada Pages
+   🇺🇸 54 USA State Pages
+   🏙️ 148 USA City Pages
+   🤖 200 Programmatic City+Industry Pages (Active Drip)
+   📥 62 Download Pages
+   🏠 25 Other Pages
+
+ ✓ Generating static pages (2852/2852)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                                                   Size  First Load JS  Revalidate  Expire
+┌ ○ /                                                                      1.16 kB         136 kB
+├ ○ /_not-found                                                               1 kB         103 kB
+├ ○ /about                                                                 2.83 kB         138 kB
+├ ○ /about/author                                                            355 B         135 kB
+├ ƒ /api/contact                                                             156 B         102 kB
+├ ƒ /api/download                                                            156 B         102 kB
+├ ƒ /api/download-guide                                                      156 B         102 kB
+├ ƒ /api/grant-finder                                                        156 B         102 kB
+├ ƒ /api/newsletter                                                          156 B         102 kB
+├ ƒ /api/og                                                                  156 B         102 kB
+├ ƒ /api/subscribe                                                           156 B         102 kB
+├ ƒ /blog                                                                  1.98 kB         137 kB
+├ ● /blog/[slug]                                                           6.21 kB         144 kB
+├   ├ /blog/usda-reap-grant-vs-utility-rebates
+├   ├ /blog/sred-tax-credits-vs-cdap-canadian-founders
+├   ├ /blog/sba-7a-loans-vs-state-grants-comparison
+├   └ [+67 more paths]
+├ ○ /blog/agriculture-agri-food-canada-government-grants                   2.86 kB         140 kB
+├ ○ /blog/ai-machine-learning-grants                                       2.07 kB         137 kB
+├ ○ /blog/alberta-innovation-grants                                        2.07 kB         137 kB
+├ ○ /blog/alberta-small-business-grants-guide                              2.07 kB         137 kB
+├ ○ /blog/alberta-women-business-grants                                    2.47 kB         140 kB
+├ ○ /blog/amber-grant-women-canada                                         2.47 kB         140 kB
+├ ○ /blog/atlantic-canada-innovation-grants                                2.07 kB         137 kB
+├ ○ /blog/atlantic-small-business-grants-guide                             2.07 kB         137 kB
+├ ○ /blog/bc-small-business-grants-guide                                   2.07 kB         137 kB
+├ ○ /blog/bc-women-business-grants                                         2.07 kB         137 kB
+├ ○ /blog/bdc-women-entrepreneurs-financing                                2.07 kB         137 kB
+├ ○ /blog/biotech-life-sciences-grants                                     2.07 kB         137 kB
+├ ○ /blog/bmo-celebrating-women-grant                                      2.47 kB         140 kB
+├ ○ /blog/british-columbia-innovation-grants                               2.07 kB         137 kB
+├ ○ /blog/california-tech-programs                                         2.07 kB         137 kB
+├ ○ /blog/canada-advanced-manufacturing-innovation-grants                  2.07 kB         137 kB
+├ ○ /blog/canada-aerospace-defence-innovation-grants                       2.07 kB         137 kB
+├ ○ /blog/canada-agri-food-technology-innovation-grants                    2.07 kB         137 kB
+├ ○ /blog/canada-agriculture-agrifood-grants-guide                         2.07 kB         137 kB
+├ ○ /blog/canada-clean-technology-environment-grants-guide                 2.07 kB         137 kB
+├ ○ /blog/canada-clean-technology-innovation-grants                        2.07 kB         137 kB
+├ ○ /blog/canada-digital-ai-innovation-grants                              2.47 kB         140 kB
+├ ○ /blog/canada-employment-workforce-training-grants-guide                2.47 kB         140 kB
+├ ○ /blog/canada-export-development-grants-guide                           2.47 kB         140 kB
+├ ○ /blog/canada-federal-grants                                            3.57 kB         138 kB
+├ ○ /blog/canada-growth-expansion-grants-guide                             2.47 kB         140 kB
+├ ○ /blog/canada-hiring-training-grants-guide                              2.07 kB         137 kB
+├ ○ /blog/canada-industry-specific-grants-guide                            2.07 kB         137 kB
+├ ○ /blog/canada-innovation-research-development-grants-guide              2.07 kB         137 kB
+├ ○ /blog/canada-life-sciences-innovation-grants                           2.07 kB         137 kB
+├ ○ /blog/canada-manufacturing-industry-grants-guide                       2.07 kB         137 kB
+├ ○ /blog/canada-regional-economic-development-grants-guide                2.07 kB         137 kB
+├ ○ /blog/canada-startup-funding-grants-guide                              2.47 kB         140 kB
+├ ○ /blog/canada-technology-adoption-grants-guide                          2.47 kB         140 kB
+├ ○ /blog/cartier-womens-initiative-canada                                 2.47 kB         140 kB
+├ ○ /blog/clean-tech-energy-grants                                         2.47 kB         140 kB
+├ ○ /blog/colorado-tech-programs                                           2.47 kB         140 kB
+├ ○ /blog/commercialization-scale-up-funding-canada                        2.47 kB         140 kB
+├ ○ /blog/csbfp-canada-small-business-financing-program                    2.47 kB         140 kB
+├ ○ /blog/csbfp-canada-small-business-financing-program-government-grants  2.47 kB         140 kB
+├ ○ /blog/cybersecurity-grants                                             2.07 kB         137 kB
+├ ○ /blog/demonstration-pilot-funding-canada                               2.47 kB         140 kB
+├ ○ /blog/development-proof-concept-funding-canada                         2.47 kB         140 kB
+├ ○ /blog/dod-sbir-defense-tech-grants                                     2.07 kB         137 kB
+├ ○ /blog/doe-sbir-clean-energy-grants                                     2.07 kB         137 kB
+├ ○ /blog/edc-women-trade-export-financing                                 2.07 kB         137 kB
+├ ○ /blog/federal-grants-women-minorities                                  2.47 kB         140 kB
+├ ○ /blog/hardware-iot-startup-grants                                      2.07 kB         137 kB
+├ ○ /blog/ideation-research-funding-canada                                 2.47 kB         140 kB
+├ ○ /blog/indigenous-rural-business-funding-canada                         2.47 kB         140 kB
+├ ○ /blog/indigenous-women-business-grants-canada                          2.07 kB         137 kB
+├ ○ /blog/industry-specific-business-grants-guide                          2.47 kB         140 kB
+├ ○ /blog/irap-industrial-research-assistance-program                      2.51 kB         137 kB
+├ ○ /blog/irap-industrial-research-assistance-program-government-grants    2.47 kB         140 kB
+├ ○ /blog/irap-industrial-research-assistance-program-innovation           2.07 kB         137 kB
+├ ○ /blog/manitoba-small-business-grants-guide                             2.07 kB         137 kB
+├ ○ /blog/massachusetts-tech-programs                                      2.47 kB         140 kB
+├ ○ /blog/nasa-sbir-space-tech-grants                                      2.07 kB         137 kB
+├ ○ /blog/new-york-tech-programs                                           2.47 kB         140 kB
+├ ○ /blog/nih-sbir-biotech-grants                                          2.07 kB         137 kB
+├ ○ /blog/nserc-research-grants-canada                                     2.47 kB         140 kB
+├ ○ /blog/nsf-sbir-grants-technology-startups                              2.07 kB         137 kB
+├ ○ /blog/nwbc-programs-guide                                              2.07 kB         137 kB
+├ ○ /blog/ontario-innovation-grants                                        2.47 kB         140 kB
+├ ○ /blog/ontario-small-business-grants-guide                              2.47 kB         140 kB
+├ ○ /blog/ontario-women-business-grants                                    2.47 kB         140 kB
+├ ○ /blog/prairie-provinces-innovation-grants                              2.47 kB         140 kB
+├ ○ /blog/private-women-grants-guide                                       2.47 kB         140 kB
+├ ○ /blog/quebec-innovation-grants                                         2.47 kB         140 kB
+├ ○ /blog/quebec-small-business-grants-guide                               2.07 kB         137 kB
+├ ○ /blog/quebec-women-business-grants                                     2.47 kB         140 kB
+├ ○ /blog/rbc-women-entrepreneur-awards                                    3.12 kB         138 kB
+├ ○ /blog/regional-development-agencies-government-grants                  2.07 kB         137 kB
+├ ○ /blog/saskatchewan-small-business-grants-guide                         2.07 kB         137 kB
+├ ○ /blog/sba-7a-loans-complete-guide                                      2.07 kB         137 kB
+├ ○ /blog/sba-disaster-relief-loans-guide                                  2.47 kB         140 kB
+├ ○ /blog/sba-loans-grants-guide                                           2.86 kB         140 kB
+├ ○ /blog/sba-microloans-complete-guide                                    2.47 kB         140 kB
+├ ○ /blog/sbir-small-business-guide                                        2.47 kB         140 kB
+├ ○ /blog/sbir-sttr-complete-guide                                         2.07 kB         137 kB
+├ ○ /blog/scotiabank-women-initiative                                      2.47 kB         140 kB
+├ ○ /blog/small-business-grants-complete-guide                             2.47 kB         140 kB
+├ ○ /blog/software-saas-startup-grants                                     2.47 kB         140 kB
+├ ○ /blog/sred-scientific-research-experimental-development                2.51 kB         137 kB
+├ ○ /blog/state-local-business-grants-guide                                2.47 kB         140 kB
+├ ○ /blog/state-province-grants                                            3.39 kB         138 kB
+├ ○ /blog/state-women-business-programs-guide                              2.47 kB         140 kB
+├ ○ /blog/strategic-innovation-fund-canada-guide                           2.47 kB         140 kB
+├ ○ /blog/territories-small-business-grants-guide                          2.07 kB         137 kB
+├ ○ /blog/usa-federal-grants                                               2.07 kB         137 kB
+├ ○ /blog/usda-sbir-agtech-grants                                          2.07 kB         137 kB
+├ ○ /blog/washington-tech-programs                                         2.07 kB         137 kB
+├ ○ /blog/wbdc-equity-match-grant-women                                    2.07 kB         137 kB
+├ ○ /blog/women-business-centers-guide                                     2.07 kB         137 kB
+├ ○ /blog/women-clean-technology-grants-canada                             2.07 kB         137 kB
+├ ○ /blog/women-entrepreneurship-fund-canada                               2.07 kB         137 kB
+├ ○ /blog/women-entrepreneurship-loan-fund-canada                          2.07 kB         137 kB
+├ ○ /blog/women-entrepreneurship-strategy-canada                           2.86 kB         140 kB
+├ ○ /blog/women-entrepreneurship-strategy-canada-government-grants         2.07 kB         137 kB
+├ ○ /blog/women-export-trade-grants-canada                                 2.07 kB         137 kB
+├ ○ /blog/women-manufacturing-grants-canada                                2.47 kB         140 kB
+├ ○ /blog/women-social-enterprise-grants-canada                            2.47 kB         140 kB
+├ ○ /blog/women-tech-stem-grants-guide                                     2.07 kB         137 kB
+├ ○ /blog/women-technology-grants-canada                                   2.07 kB         137 kB
+├ ○ /blog/wosb-federal-contracting-guide                                   2.07 kB         137 kB
+├ ○ /blog/youth-entrepreneurship-canada-funding                            2.47 kB         140 kB
+├ ○ /calculator                                                              215 B         160 kB
+├ ○ /canada                                                                2.07 kB         137 kB
+├ ○ /canada/agriculture-startup-funding                                      146 B         160 kB
+├ ○ /canada/alberta                                                          146 B         160 kB
+├ ○ /canada/british-columbia                                                 146 B         160 kB
+├ ○ /canada/government-grants                                              2.07 kB         137 kB
+├ ○ /canada/green-energy-grants                                              146 B         160 kB
+├ ○ /canada/healthcare-startup-grants                                        146 B         160 kB
+├ ○ /canada/indigenous-entrepreneur-grants                                   147 B         160 kB
+├ ○ /canada/innovation-grants                                              2.07 kB         137 kB
+├ ○ /canada/manitoba                                                         146 B         160 kB
+├ ○ /canada/new-brunswick                                                    146 B         160 kB
+├ ○ /canada/nova-scotia                                                      146 B         160 kB
+├ ○ /canada/ontario                                                          146 B         160 kB
+├ ○ /canada/quebec                                                           146 B         160 kB
+├ ○ /canada/saskatchewan                                                     146 B         160 kB
+├ ○ /canada/small-business-grants                                          2.07 kB         137 kB
+├ ○ /canada/women-business-grants                                          2.07 kB         137 kB
+├ ○ /contact                                                               2.94 kB         138 kB
+├ ○ /deadline-calendar                                                     5.13 kB         140 kB
+├ ○ /disclaimer                                                              197 B         135 kB
+├ ○ /download                                                                355 B         135 kB
+├ ○ /download/agriculture-agri-food-application-kit                        7.64 kB         159 kB
+├ ○ /download/agriculture-agri-food-application-kit/thank-you                355 B         135 kB
+├ ○ /download/ai-ml-grants-guide                                           6.19 kB         141 kB
+├ ○ /download/ai-ml-grants-guide/thank-you                                   355 B         135 kB
+├ ○ /download/alberta-business-grants-kit                                  7.56 kB         159 kB
+├ ○ /download/alberta-business-grants-kit/thank-you                          355 B         135 kB
+├ ○ /download/alberta-women-business-grants-guide                          5.18 kB         140 kB
+├ ○ /download/alberta-women-business-grants-guide/thank-you                  355 B         135 kB
+├ ○ /download/amber-grant-women-application-guide                          5.17 kB         140 kB
+├ ○ /download/amber-grant-women-application-guide/thank-you                  355 B         135 kB
+├ ○ /download/bc-women-business-grants-guide                               5.21 kB         140 kB
+├ ○ /download/bc-women-business-grants-guide/thank-you                       355 B         135 kB
+├ ○ /download/bdc-women-entrepreneurs-financing-guide                       5.2 kB         140 kB
+├ ○ /download/bdc-women-entrepreneurs-financing-guide/thank-you              355 B         135 kB
+├ ○ /download/biotech-grants-guide                                         6.34 kB         141 kB
+├ ○ /download/biotech-grants-guide/thank-you                                 355 B         135 kB
+├ ○ /download/bmo-celebrating-women-grant-guide                            5.34 kB         140 kB
+├ ○ /download/bmo-celebrating-women-grant-guide/thank-you                    355 B         135 kB
+├ ○ /download/british-columbia-grants-kit                                  7.58 kB         159 kB
+├ ○ /download/british-columbia-grants-kit/thank-you                          355 B         135 kB
+├ ○ /download/california-tech-guide                                         6.3 kB         141 kB
+├ ○ /download/california-tech-guide/thank-you                                355 B         135 kB
+├ ○ /download/canada-aerospace-defence-funding-guide                       7.15 kB         159 kB
+├ ○ /download/canada-aerospace-defence-funding-guide/thank-you               355 B         135 kB
+├ ○ /download/canada-agri-food-funding-guide                               6.88 kB         158 kB
+├ ○ /download/canada-agri-food-funding-guide/thank-you                       355 B         135 kB
+├ ○ /download/canada-cleantech-funding-guide                               6.97 kB         158 kB
+├ ○ /download/canada-cleantech-funding-guide/thank-you                       355 B         135 kB
+├ ○ /download/canada-digital-ai-funding-guide                              7.22 kB         159 kB
+├ ○ /download/canada-digital-ai-funding-guide/thank-you                      355 B         135 kB
+├ ○ /download/canada-life-sciences-funding-guide                           7.11 kB         159 kB
+├ ○ /download/canada-life-sciences-funding-guide/thank-you                   355 B         135 kB
+├ ○ /download/canada-manufacturing-funding-guide                           7.02 kB         158 kB
+├ ○ /download/canada-manufacturing-funding-guide/thank-you                   355 B         135 kB
+├ ○ /download/cartier-womens-initiative-application-guide                  5.54 kB         140 kB
+├ ○ /download/cartier-womens-initiative-application-guide/thank-you          355 B         135 kB
+├ ○ /download/clean-tech-energy-grants-guide                               6.28 kB         141 kB
+├ ○ /download/clean-tech-energy-grants-guide/thank-you                       355 B         135 kB
+├ ○ /download/colorado-tech-guide                                           6.3 kB         141 kB
+├ ○ /download/colorado-tech-guide/thank-you                                  355 B         135 kB
+├ ○ /download/csbfp-application-kit                                        3.99 kB         155 kB
+├ ○ /download/csbfp-government-financing-kit                               6.87 kB         158 kB
+├ ○ /download/csbfp-government-financing-kit/thank-you                       355 B         135 kB
+├ ○ /download/cybersecurity-grants-guide                                   6.21 kB         141 kB
+├ ○ /download/cybersecurity-grants-guide/thank-you                           355 B         135 kB
+├ ○ /download/dod-sbir-defense-tech-guide                                  6.01 kB         141 kB
+├ ○ /download/dod-sbir-defense-tech-guide/thank-you                          355 B         135 kB
+├ ○ /download/doe-sbir-clean-energy-guide                                  5.97 kB         141 kB
+├ ○ /download/doe-sbir-clean-energy-guide/thank-you                          355 B         135 kB
+├ ○ /download/edc-women-trade-export-financing-guide                       5.14 kB         140 kB
+├ ○ /download/edc-women-trade-export-financing-guide/thank-you               355 B         135 kB
+├ ○ /download/hardware-iot-grants-guide                                    6.37 kB         141 kB
+├ ○ /download/hardware-iot-grants-guide/thank-you                            355 B         135 kB
+├ ○ /download/indigenous-rural-funding-kit                                 3.19 kB         138 kB
+├ ○ /download/indigenous-women-business-grants-guide                       6.07 kB         141 kB
+├ ○ /download/indigenous-women-business-grants-guide/thank-you               355 B         135 kB
+├ ○ /download/irap-application-kit                                         2.75 kB         138 kB
+├ ○ /download/irap-government-application-kit                              6.69 kB         158 kB
+├ ○ /download/irap-government-application-kit/thank-you                      355 B         135 kB
+├ ○ /download/irap-innovation-application-guide                            6.78 kB         158 kB
+├ ○ /download/irap-innovation-application-guide/thank-you                    355 B         135 kB
+├ ○ /download/massachusetts-tech-guide                                     6.34 kB         141 kB
+├ ○ /download/massachusetts-tech-guide/thank-you                             355 B         135 kB
+├ ○ /download/nasa-sbir-space-tech-guide                                   6.16 kB         141 kB
+├ ○ /download/nasa-sbir-space-tech-guide/thank-you                           355 B         135 kB
+├ ○ /download/new-york-tech-guide                                          6.14 kB         141 kB
+├ ○ /download/new-york-tech-guide/thank-you                                  355 B         135 kB
+├ ○ /download/nih-sbir-biotech-guide                                       6.13 kB         141 kB
+├ ○ /download/nih-sbir-biotech-guide/thank-you                               355 B         135 kB
+├ ○ /download/nserc-research-grants-guide                                  6.96 kB         158 kB
+├ ○ /download/nserc-research-grants-guide/thank-you                          355 B         135 kB
+├ ○ /download/nsf-sbir-grants-guide                                        6.21 kB         141 kB
+├ ○ /download/nsf-sbir-grants-guide/thank-you                                355 B         135 kB
+├ ○ /download/ontario-business-grants-kit                                  7.46 kB         159 kB
+├ ○ /download/ontario-business-grants-kit/thank-you                          355 B         135 kB
+├ ○ /download/ontario-women-business-grants-guide                          5.28 kB         140 kB
+├ ○ /download/ontario-women-business-grants-guide/thank-you                  355 B         135 kB
+├ ○ /download/quebec-business-grants-kit                                   7.64 kB         159 kB
+├ ○ /download/quebec-business-grants-kit/thank-you                           355 B         135 kB
+├ ○ /download/quebec-women-business-grants-guide                           5.26 kB         140 kB
+├ ○ /download/quebec-women-business-grants-guide/thank-you                   355 B         135 kB
+├ ○ /download/rbc-women-entrepreneur-awards-guide                          5.25 kB         140 kB
+├ ○ /download/rbc-women-entrepreneur-awards-guide/thank-you                  355 B         135 kB
+├ ○ /download/rda-regional-application-kit                                 7.09 kB         159 kB
+├ ○ /download/rda-regional-application-kit/thank-you                         355 B         135 kB
+├ ○ /download/sba-application-checklist                                    6.75 kB         158 kB
+├ ○ /download/sba-application-checklist/thank-you                            355 B         135 kB
+├ ○ /download/scotiabank-women-initiative-guide                            5.12 kB         140 kB
+├ ○ /download/scotiabank-women-initiative-guide/thank-you                    355 B         135 kB
+├ ○ /download/sif-application-kit                                          6.38 kB         158 kB
+├ ○ /download/sif-application-kit/thank-you                                  355 B         135 kB
+├ ○ /download/software-saas-grants-guide                                   6.01 kB         141 kB
+├ ○ /download/software-saas-grants-guide/thank-you                           355 B         135 kB
+├ ○ /download/sred-application-kit                                         6.62 kB         158 kB
+├ ○ /download/sred-application-kit/thank-you                                 355 B         135 kB
+├ ○ /download/usda-sbir-agtech-guide                                       6.13 kB         141 kB
+├ ○ /download/usda-sbir-agtech-guide/thank-you                               355 B         135 kB
+├ ○ /download/washington-tech-guide                                        6.12 kB         141 kB
+├ ○ /download/washington-tech-guide/thank-you                                355 B         135 kB
+├ ○ /download/wbdc-equity-match-grant-guide                                5.33 kB         140 kB
+├ ○ /download/wbdc-equity-match-grant-guide/thank-you                        355 B         135 kB
+├ ○ /download/wes-application-kit                                          2.88 kB         138 kB
+├ ○ /download/women-clean-technology-grants-guide                          6.09 kB         141 kB
+├ ○ /download/women-clean-technology-grants-guide/thank-you                  355 B         135 kB
+├ ○ /download/women-entrepreneurship-application-kit                       7.58 kB         159 kB
+├ ○ /download/women-entrepreneurship-application-kit/thank-you               355 B         135 kB
+├ ○ /download/women-entrepreneurship-fund-guide                            5.36 kB         140 kB
+├ ○ /download/women-entrepreneurship-fund-guide/thank-you                    355 B         135 kB
+├ ○ /download/women-entrepreneurship-loan-fund-guide                       5.21 kB         140 kB
+├ ○ /download/women-entrepreneurship-loan-fund-guide/thank-you               355 B         135 kB
+├ ○ /download/women-export-trade-grants-guide                              6.09 kB         141 kB
+├ ○ /download/women-export-trade-grants-guide/thank-you                      355 B         135 kB
+├ ○ /download/women-manufacturing-grants-guide                             5.85 kB         141 kB
+├ ○ /download/women-manufacturing-grants-guide/thank-you                     355 B         135 kB
+├ ○ /download/women-social-enterprise-grants-guide                         5.91 kB         141 kB
+├ ○ /download/women-social-enterprise-grants-guide/thank-you                 355 B         135 kB
+├ ○ /download/women-technology-grants-guide                                5.35 kB         140 kB
+├ ○ /download/women-technology-grants-guide/thank-you                        355 B         135 kB
+├ ○ /download/youth-entrepreneurship-kit                                   3.17 kB         138 kB
+├ ○ /editorial-policy                                                        197 B         135 kB
+├ ƒ /expert-insights                                                       1.98 kB         137 kB
+├ ○ /faq-usa                                                                3.2 kB         141 kB
+├ ○ /get-started                                                           2.71 kB         116 kB
+├ ○ /grant-finder                                                          8.15 kB         160 kB
+├ ○ /grants                                                                  198 B         156 kB
+├ ● /grants/[province]/[city]/[industry]                                   1.91 kB         162 kB          1d      1y
+├   ├ /grants/on/toronto/technology                                                                        1d      1y
+├   ├ /grants/on/toronto/agriculture                                                                       1d      1y
+├   ├ /grants/on/toronto/manufacturing                                                                     1d      1y
+├   └ [+2262 more paths]
+├ ○ /guides                                                                  355 B         135 kB
+├ ● /guides/[slug]                                                         3.29 kB         138 kB
+├   ├ /guides/sba-application-process
+├   ├ /guides/apply-federal-grants
+├   ├ /guides/apply-sba-loans
+├   └ [+35 more paths]
+├ ○ /guides/apply-agriculture-agri-food-canada                             2.46 kB         137 kB
+├ ○ /guides/apply-alberta-business-grants                                  2.46 kB         137 kB
+├ ○ /guides/apply-british-columbia-grants                                  2.46 kB         137 kB
+├ ○ /guides/apply-csbfp-government-financing                               2.46 kB         137 kB
+├ ○ /guides/apply-csbfp-loans                                              2.46 kB         137 kB
+├ ○ /guides/apply-doe-clean-energy-grants                                  2.51 kB         137 kB
+├ ○ /guides/apply-federal-grants                                           2.51 kB         137 kB
+├ ○ /guides/apply-indigenous-rural-business-funding                        2.51 kB         137 kB
+├ ○ /guides/apply-irap-government-grants                                   2.51 kB         137 kB
+├ ○ /guides/apply-irap-grants                                              2.51 kB         137 kB
+├ ○ /guides/apply-minority-grants                                          2.51 kB         137 kB
+├ ○ /guides/apply-ontario-business-grants                                  2.46 kB         137 kB
+├ ○ /guides/apply-quebec-business-grants                                   2.46 kB         137 kB
+├ ○ /guides/apply-regional-development-agencies                            2.51 kB         137 kB
+├ ○ /guides/apply-sba-loans                                                2.51 kB         137 kB
+├ ○ /guides/apply-sbir-grants                                              2.51 kB         137 kB
+├ ○ /guides/apply-small-business-grants                                    2.51 kB         137 kB
+├ ○ /guides/apply-strategic-innovation-fund                                2.51 kB         137 kB
+├ ○ /guides/apply-women-entrepreneurship-strategy                          2.51 kB         137 kB
+├ ○ /guides/apply-youth-entrepreneurship-funding                           2.51 kB         137 kB
+├ ○ /guides/bdc-women-entrepreneurs-financing-guide                        2.51 kB         137 kB
+├ ○ /guides/california-loan-guarantee-guide                                2.51 kB         137 kB
+├ ○ /guides/canada-aerospace-defence-funding-guide                         2.46 kB         137 kB
+├ ○ /guides/canada-agri-food-funding-guide                                 2.46 kB         137 kB
+├ ○ /guides/canada-cleantech-funding-guide                                 2.46 kB         137 kB
+├ ○ /guides/canada-digital-ai-funding-guide                                2.51 kB         137 kB
+├ ○ /guides/canada-life-sciences-funding-guide                             2.46 kB         137 kB
+├ ○ /guides/canada-manufacturing-funding-guide                             2.46 kB         137 kB
+├ ○ /guides/edc-women-trade-export-financing-guide                         2.51 kB         137 kB
+├ ○ /guides/federal-grants-application-tips                                2.51 kB         137 kB
+├ ○ /guides/irap-innovation-application-guide                              2.51 kB         137 kB
+├ ○ /guides/nserc-research-grants-guide                                    2.51 kB         137 kB
+├ ○ /guides/sba-application-process                                        2.51 kB         137 kB
+├ ○ /guides/sba-growth-accelerator-fund-guide                              2.51 kB         137 kB
+├ ○ /guides/sbir-research-grants-guide                                     2.51 kB         137 kB
+├ ○ /guides/sred-application-guide                                         2.51 kB         137 kB
+├ ○ /guides/women-entrepreneurship-fund-guide                              2.46 kB         137 kB
+├ ○ /guides/women-entrepreneurship-loan-fund-guide                         2.51 kB         137 kB
+├ ○ /how-to-apply-usa                                                        140 B         138 kB
+├ ○ /newsletter                                                              141 B         138 kB
+├ ○ /privacy                                                                 197 B         135 kB
+├ ○ /resources                                                               141 B         138 kB
+├ ○ /search                                                                5.91 kB         141 kB
+├ ○ /services                                                              2.42 kB         137 kB
+├ ○ /sitemap.xml                                                             156 B         102 kB          1d      1y
+├ ○ /terms                                                                   197 B         135 kB
+├ ○ /usa                                                                   4.28 kB         139 kB
+├ ● /usa/[state]                                                           1.89 kB         137 kB
+├   ├ /usa/california
+├   ├ /usa/texas
+├   ├ /usa/new-york
+├   └ [+47 more paths]
+├ ● /usa/[state]/[city]                                                      355 B         135 kB
+├   ├ /usa/california/san-francisco
+├   ├ /usa/california/los-angeles
+├   ├ /usa/california/san-diego
+├   └ [+145 more paths]
+├ ○ /usa/federal-grants                                                    1.91 kB         158 kB
+├ ○ /usa/florida                                                             146 B         160 kB
+├ ○ /usa/new-york                                                            146 B         160 kB
+├ ○ /usa/small-business-grants                                             1.91 kB         158 kB
+├ ○ /usa/technology-startup-grants                                         2.07 kB         137 kB
+├ ○ /usa/texas                                                               146 B         160 kB
+└ ○ /usa/women-entrepreneurs-grants                                        1.91 kB         158 kB
++ First Load JS shared by all                                               102 kB
+  ├ chunks/1255-ad92d48e3e7ce61a.js                                        45.6 kB
+  ├ chunks/4bd1b696-100b9d70ed4e49c1.js                                    54.2 kB
+  └ other shared chunks (total)                                            2.26 kB
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

@@ -6,15 +6,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock, DollarSign, Target, ExternalLink, MapPin, Building, Users, Zap, Award, TrendingUp, Heart, Rocket, BookOpen } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
-import { GrantComparisonTable } from "@/components/blog/GrantComparisonTable";
-import Script from "next/script";
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
-  title: "USA Tech Startup Grants 2026: Get Up To $2.5M (Zero Equity)",
-  description: "Tech startups are missing out on $4B+ in federal grants. This guide reveals how to get up to $2.5M in non-dilutive SBIR/STTR funding from NSF, DOD, and DOE.",
+  title: "USA Tech Startup Grants 2026: $2.5M+ SBIR/STTR Funding | Complete Guide",
+  description: "How to get federal tech grants in 2026. SBIR/STTR up to $2.5M, NSF, DOE, state programs. 45% approval rate with proper application. Step-by-step guide.",
   keywords: "USA technology startup grants, SBIR STTR funding, tech startup grants America, Silicon Valley startup funding, federal innovation grants, NSF SBIR grants, tech entrepreneur funding USA",
   openGraph: {
     title: "USA Tech Startup Grants 2026: $2.5M+ SBIR/STTR Funding",
@@ -30,33 +28,6 @@ export const metadata: Metadata = {
 export default function USATechnologyStartupGrantsPage() {
   return (
     <>
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: `{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much grant money can a tech startup get?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tech startups can secure up to $2.5 million in non-dilutive funding through the SBIR/STTR program. Phase I grants typically range from $150,000 to $275,000, while Phase II awards can reach $2 million or more depending on the agency."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do tech startup grants require you to give up equity?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Federal SBIR and STTR grants are non-dilutive, meaning you retain 100% of your company equity and intellectual property rights. You are not required to give up any ownership to receive these funds."
-      }
-    }
-  ]
-}` }}
-      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section - FIXED CTAs */}
@@ -70,14 +41,10 @@ export default function USATechnologyStartupGrantsPage() {
               <h1 className="text-5xl md:text-7xl font-bold mb-8 text-balance leading-tight">
                 $2.5+ Million Available for Technology Startups Across America
               </h1>
-            <div className="mt-8 mb-4 text-left">
-              <ShortAnswerBox question="How can a tech startup in the USA get government grant funding in 2026?"
-                content="Yes — Tech startups in the USA can access up to $2.5M in zero-equity grants. The 3 best programs are: 1. NSF SBIR (Up to $2M for Deep Tech), 2. DOD SBIR (Up to $1.7M for Defense), and 3. DOE Tech Grants ($1.1M for Clean Energy)." />
-            </div>
-            <div className="flex justify-center mb-4">
-              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
-            </div>
-              
+              <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed max-w-3xl mx-auto">
+                Access comprehensive federal SBIR/STTR funding, NSF innovation grants, DOE tech programs, and state-level
+                startup support designed specifically for technology entrepreneurs across all 50 states.
+              </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
                   <Link href="#tech-programs">
@@ -93,37 +60,19 @@ export default function USATechnologyStartupGrantsPage() {
             </div>
           </div>
         </section>
-        {/* EEAT Components */}
-        <section className="py-6 bg-emerald-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto space-y-4">
-              
-              
-              <EligibleCheck />
-            </div>
+      {/* EEAT Components */}
+      <section className="py-6 bg-emerald-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto space-y-4">
+            <ShortAnswerBox content="U.S. tech startups can access NSF SBIR ($305K Phase I, $2M Phase II), DOE clean energy grants, DOD SBIR, and state accelerator programs. Non-dilutive funding supports AI, biotech, hardware, SaaS, and deep tech innovations." />
+            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+            <EligibleCheck />
           </div>
-        </section>
+        </div>
+      </section>
 
 
-
-        {/* DWELL TIME: Comparison Table */}
-        <section className="py-8 bg-white border-b border-gray-100">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto block">
-              <GrantComparisonTable
-                title="Top Federal Tech Grants Compared"
-                description="These are the highest-paying, zero-equity programs available to U.S. startups right now."
-                programs={[
-                  { program: "NSF SBIR", amount: "Up to $2M", equity: "0%", bestFor: "High-risk, deep tech validation", timeline: "6-12 months" },
-                  { program: "DOD SBIR", amount: "Up to $1.7M", equity: "0%", bestFor: "Defense, aerospace & cyber tech", timeline: "6-18 months" },
-                  { program: "NIH SBIR", amount: "Up to $2.3M", equity: "0%", bestFor: "Biotech & medical devices", timeline: "9-12 months" },
-                  { program: "DOE SBIR", amount: "Up to $1.3M", equity: "0%", bestFor: "Clean energy & climate tech", timeline: "6-12 months" }
-                ]}
-              />
-            </div>
-          </div>
-        </section>
-        \n        {/* Key Statistics */}
+        {/* Key Statistics */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
