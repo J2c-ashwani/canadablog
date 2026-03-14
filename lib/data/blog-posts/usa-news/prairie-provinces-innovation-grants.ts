@@ -1,0 +1,95 @@
+// lib/data/blog-posts/usa-news/prairie-provinces-innovation-grants.ts
+import type { BlogPost } from '../../blogPosts';
+
+const post: BlogPost = {
+    id: 70,
+    slug: "prairie-provinces-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
+    title: "Prairie Provinces Innovation Grants 2026 | $580M+ AgriFood, Mining & Renewable Energy Funding",
+
+    excerpt: "Complete guide to Prairie innovation grants. Access $580M+ through Saskatchewan Innovation, Manitoba Research, PrairiesCan funding, and agri-food, mining technology, renewable energy programs.",
+    category: "USA News",
+    categoryColor: "bg-blue-100 text-blue-800",
+    author: "Ashwani K.",
+    date: "2025-12-01",
+    readTime: "10 min read",
+    image: "/images/blog/tech-innovation-theme.png",
+    featured: false,
+    type: "grant-news",
+
+    relatedLinks: [
+      { title: "The Power of One", href: "/blog/manufacturing-grants-2026", description: "American manufacturing is booming with $2.3 billion in grants for automation, reshoring, and workforce development. Lear..." },
+      { title: "Match Your Sector", href: "/blog/irap-industrial-research-assistance-program", description: "Complete guide to IRAP funding for Canadian tech SMEs. Learn eligibility, application process, and get up to $1M in non-..." },
+      { title: "Beware of ", href: "/guides/apply-indigenous-rural-business-funding", description: "Specialized funding programs for Indigenous and rural businesses in Canada...." }
+    ],
+    content: "",
+    seo: {
+      keywords: ["Prairie", "Provinces", "Innovation", "Grants", "2026"],
+    }, shortAnswer: "Yes — Complete guide to Prairie innovation grants. Access $580M+ through Saskatchewan Innovation, Manitoba Research, PrairiesCan funding, and agri-food, mining technology, renewable energy programs. Funding available: up to $580M+.",
+    metrics: [
+      { label: 'Fund', value: '$580M', description: 'Regional', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Regions', value: '3', description: 'SK/MB/AB', color: 'text-blue-600', iconName: 'Map' },
+      { label: 'Focus', value: 'Agri', description: 'AgriFood', color: 'text-purple-600', iconName: 'Tractor' },
+      { label: 'Type', value: 'Grant', description: 'Non-Repay', color: 'text-orange-600', iconName: 'Gift' }
+    ],
+    expertTip: {
+      title: "Resource Conversion",
+      type: 'tip',
+      content: "Prairie provinces prioritize <strong>resource conversion</strong> projects. Agricultural and mining tech that adds value to raw materials gets highest priority."
+    },
+    eligibleCheck: true,
+    inlineCTA: {
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
+    jumpLinks: [
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
+      comparisonTable: {
+              "title": "Prairie Provinces Innovation Grants  | + AgriFood, Mining & Renewable Energy Funding Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Prairie Provinces Innovation Grants  | + AgriFood, Mining & Renewable Energy Funding Grant",
+                      "amount": "$580M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faq: [
+              {
+                  "question": "What is the application deadline for Prairie Provinces Innovation Grants  | + AgriFood, Mining & Renewable Energy Funding in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Prairie Provinces Innovation Grants  | + AgriFood, Mining & Renewable Energy Funding?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $580M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+};
+
+export default post;

@@ -1,0 +1,93 @@
+// lib/data/blog-posts/canada-news/canada-industry-specific-grants-guide.ts
+import type { BlogPost } from '../../blogPosts';
+
+const post: BlogPost = {
+    id: 30,
+    slug: "canada-industry-specific-grants-guide",
+    shortAnswerQuestion: "How can my business apply for Canada Industry Specific Grants 2026 in 2026?",
+
+    title: "Canada Industry Specific Grants 2026 | $1.5B+ Sector-Focused Programs Across 25+ Industries",
+
+    excerpt: "Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agriculture, services, technology, healthcare, construction, and specialized industry funding.",
+    category: "Canada News",
+    categoryColor: "bg-red-100 text-red-800",
+    author: "Ashwani K.",
+    date: "2025-12-01",
+    readTime: "10 min read",
+    image: "/images/blog/canada-grants-theme.png",
+    featured: false,
+    type: "grant-news",
+
+    relatedLinks: [
+      { title: "Programs", href: "/blog/canada-employment-workforce-training-grants-guide", description: "Complete guide to Canada..." },
+      { title: "Focus on TRL", href: "/blog/dod-sbir-defense-tech-grants", description: "Complete 2026-2027 guide to Department of Defense SBIR/STTR grants for defense tech startups. Phase I up to $256K, Phase..." },
+      { title: "Francophone Advantage", href: "/blog/quebec-women-business-grants", description: "Complete guide to Quebec women entrepreneurship support with R\\u00e9seau des Femmes d..." }
+    ],
+    content: "",
+    seo: {
+      keywords: ["Canada", "Industry", "Specific", "Grants", "2026"],
+    }, shortAnswer: "To apply for Canada Industry Specific Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agriculture, services, technology, healthcare, construction, and specialized industry. Funding available: up to $1.5B+.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Industry Specific Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
+    },
+    metrics: [
+      { label: 'Ag', value: '$3.5B', description: 'AgriScience', color: 'text-green-600', iconName: 'Sprout' },
+      { label: 'Auto', value: '$2B', description: 'EV Transition', color: 'text-blue-600', iconName: 'Truck' },
+      { label: 'Arts', value: '$500M', description: 'Culture Fund', color: 'text-purple-600', iconName: 'Music' },
+      { label: 'Tourism', value: '$100M', description: 'Growth Fund', color: 'text-orange-600', iconName: 'Camera' }
+    ],
+    expertTip: {
+      title: "Check Your Niche",
+      type: 'tip',
+      content: "Don't just look for general business grants. <strong>Search by your NAICS code</strong> or industry association (e.g., CMF for media, FACTOR for music) to find less competitive, sector-specific pots."
+    },
+      comparisonTable: {
+              "title": "Canada Industry Specific Grants  | .5B+ Sector-Focused Programs Across 25+ Industries Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Industry Specific Grants  | .5B+ Sector-Focused Programs Across 25+ Industries Grant",
+                      "amount": "$1",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faq: [
+              {
+                  "question": "What is the application deadline for Canada Industry Specific Grants  | .5B+ Sector-Focused Programs Across 25+ Industries in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Industry Specific Grants  | .5B+ Sector-Focused Programs Across 25+ Industries?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $1."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+};
+
+export default post;

@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import { getAllPseoPages, getPseoPage } from '@/lib/pseo-data';
 import { generatePseoSchema } from '@/lib/seo';
 import { GrantCalculator } from '@/components/calculator/GrantCalculator';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 import { Shield, BookOpen, CheckCircle, Clock, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import EEATBadge from '@/components/blog/EEATBadge';
@@ -242,7 +244,9 @@ export default function PseoLandingPage({ params }: { params: { province: string
     };
 
     return (
-        <div className="min-h-screen bg-gray-50/50">
+        <div className="min-h-screen bg-white">
+            <Header />
+            <div className="bg-gray-50/50">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
@@ -460,6 +464,8 @@ export default function PseoLandingPage({ params }: { params: { province: string
                     </div>
                 </div>
             </section>
+            </div>
+            <Footer />
         </div>
     );
 }

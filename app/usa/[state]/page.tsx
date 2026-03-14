@@ -133,8 +133,10 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-                <article className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-                    {/* Breadcrumb */}
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+                    <div className="lg:grid lg:grid-cols-3 gap-8">
+                        <article className="lg:col-span-2 bg-white rounded-2xl shadow-sm p-6 sm:p-8 border border-gray-200 mb-8 lg:mb-0">
+                            {/* Breadcrumb */}
                     <nav className="mb-6">
                         <ol className="flex items-center space-x-2 text-sm text-gray-500">
                             <li><Link href="/" className="hover:text-green-600">Home</Link></li>
@@ -648,7 +650,101 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                     <div className="mt-8 text-center text-gray-500 text-sm">
                         Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                     </div>
-                </article>
+                        </article>
+
+                        {/* Sidebar Column (Recommended Reading) */}
+                        <aside className="lg:col-span-1 space-y-8">
+                            {/* Sticky Container */}
+                            <div className="sticky top-24">
+                                
+                                {/* Comparison Guides Widget */}
+                                <div className="bg-white rounded-xl shadow border border-gray-200 overflow-hidden mb-8">
+                                    <div className="bg-indigo-600 text-white p-4 font-bold flex items-center">
+                                        <TrendingUp className="w-5 h-5 mr-2" /> Top Comparisons
+                                    </div>
+                                    <div className="p-4 space-y-4">
+                                        <Link href="/blog/sba-7a-loans-vs-state-grants-comparison" className="block group">
+                                            <p className="text-xs font-semibold text-indigo-600 uppercase mb-1">Strategy Guide</p>
+                                            <h4 className="text-gray-900 font-bold group-hover:text-indigo-600 transition-colors line-clamp-2 text-sm leading-tight">
+                                                SBA 7(a) Loans vs. State Grants: Which Should You Apply For First?
+                                            </h4>
+                                        </Link>
+                                        <hr className="border-gray-100" />
+                                        <Link href="/blog/sred-tax-credits-vs-cdap-canadian-founders" className="block group">
+                                            <p className="text-xs font-semibold text-red-500 uppercase mb-1">Tech Startups</p>
+                                            <h4 className="text-gray-900 font-bold group-hover:text-red-500 transition-colors line-clamp-2 text-sm leading-tight">
+                                                SR&ED Tax Credits vs. CDAP: Complete Comparison for Canadian Founders
+                                            </h4>
+                                        </Link>
+                                        <hr className="border-gray-100" />
+                                        <Link href="/blog/usda-reap-grant-vs-utility-rebates" className="block group">
+                                            <p className="text-xs font-semibold text-green-600 uppercase mb-1">Clean Energy</p>
+                                            <h4 className="text-gray-900 font-bold group-hover:text-green-600 transition-colors line-clamp-2 text-sm leading-tight">
+                                                USDA REAP Grant vs. Local Utility Rebates: Maximizing Clean Energy Funding
+                                            </h4>
+                                        </Link>
+                                    </div>
+                                </div>
+
+                                {/* Top 10 Listicles Widget */}
+                                <div className="bg-white rounded-xl shadow border border-gray-200 overflow-hidden">
+                                    <div className="bg-gray-900 text-white p-4 font-bold flex items-center">
+                                        <BookOpen className="w-5 h-5 mr-2 text-blue-400" /> Recommended Reading
+                                    </div>
+                                    <ul className="divide-y divide-gray-100">
+                                        <li>
+                                            <Link href="/blog/top-10-no-equity-grants-black-female-entrepreneurs-2026" className="block p-4 hover:bg-gray-50 transition-colors group">
+                                                <h4 className="text-gray-900 font-semibold group-hover:text-blue-600 text-sm leading-tight mb-2">
+                                                    Top 10 No-Equity Grants for Black Female Entrepreneurs in 2026
+                                                </h4>
+                                                <p className="text-xs text-gray-500 line-clamp-2">Discover 10 massive localized demographic funds targeting underrepresented founders without taking cap table points.</p>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/blog/7-startup-accelerators-california-free-money" className="block p-4 hover:bg-gray-50 transition-colors group">
+                                                <h4 className="text-gray-900 font-semibold group-hover:text-blue-600 text-sm leading-tight mb-2">
+                                                    7 Startup Accelerators in California That Give Free Money in 2026
+                                                </h4>
+                                                <p className="text-xs text-gray-500 line-clamp-2">Avoid the 7% standard VC massive cut. These specialized state and corporate hubs give free runway.</p>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/blog/5-best-government-loans-agriculture-tech-startups" className="block p-4 hover:bg-gray-50 transition-colors group">
+                                                <h4 className="text-gray-900 font-semibold group-hover:text-blue-600 text-sm leading-tight mb-2">
+                                                    The 5 Best Government Loans for Agriculture Tech Startups in 2026
+                                                </h4>
+                                                <p className="text-xs text-gray-500 line-clamp-2">Compare massive USDA and FSA specialized debt facilities designed for scaling complex AgTech operations.</p>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/blog/10-easy-to-win-local-grants-canadian-retail-stores" className="block p-4 hover:bg-gray-50 transition-colors group">
+                                                <h4 className="text-gray-900 font-semibold group-hover:text-blue-600 text-sm leading-tight mb-2">
+                                                    10 Easy-to-Win Local Grants for Canadian Retail Stores
+                                                </h4>
+                                                <p className="text-xs text-gray-500 line-clamp-2">Highly accessible localized municipal beautification and CDAP e-commerce funds for brick-and-mortar.</p>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                    <div className="p-4 bg-gray-50 text-center border-t border-gray-100">
+                                        <Link href="/blog" className="text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center justify-center">
+                                            View All Articles <TrendingUp className="w-4 h-4 ml-1" />
+                                        </Link>
+                                    </div>
+                                </div>
+                                
+                                {/* Contact Box Widget */}
+                                <div className="mt-8 bg-blue-50 rounded-xl p-6 border border-blue-100 text-center">
+                                    <h4 className="font-bold text-blue-900 mb-2">Need Expert Help?</h4>
+                                    <p className="text-sm text-blue-700 mb-4">Our specialized strategic consultants can navigate this massive application process for you.</p>
+                                    <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white" asChild>
+                                        <Link href="/contact">Book Strategy Call</Link>
+                                    </Button>
+                                </div>
+
+                            </div>
+                        </aside>
+                    </div>
+                </div>
             </main>
 
             {/* Dynamic Cross-Links — contextual per state */}

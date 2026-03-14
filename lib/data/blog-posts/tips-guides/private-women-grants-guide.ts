@@ -1,0 +1,96 @@
+// lib/data/blog-posts/tips-guides/private-women-grants-guide.ts
+import type { BlogPost } from '../../blogPosts';
+
+const post: BlogPost = {
+    id: 71,
+    slug: "private-women-grants-guide",
+    shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
+
+    title: "Private Women Grants Guide 2026 | Foundation Grants for Female Entrepreneurs",
+
+    excerpt: "Complete guide to private foundation grants for women entrepreneurs. Discover 50+ foundations offering grants up to $250K for women-owned businesses.",
+    category: "Tips & Guides",
+    categoryColor: "bg-purple-100 text-purple-800",
+    author: "Ashwani K.",
+    date: "2025-12-01",
+    readTime: "10 min read",
+    image: "/images/blog/community-diversity-theme.png",
+    featured: false,
+    type: "grant-news",
+
+    relatedLinks: [
+      { title: "Youth Funding Stack", href: "/blog/2026-grant-forecast", description: "Get ahead of the curve. Our experts predict the biggest funding trends for 2026, including new climate incentives, digit..." },
+      { title: "STTR Requires Partnership", href: "/blog/scotiabank-women-initiative", description: "Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and ..." },
+      { title: "SBA Doesn", href: "/blog/sba-microloans-complete-guide", description: "Complete guide to SBA microloans. Learn eligibility, application process, and how to secure up to $50K in small business..." }
+    ],
+    content: "",
+    seo: {
+      keywords: ["Private", "Women", "Grants", "Guide", "2026"],
+    }, shortAnswer: "Yes — Complete guide to private foundation grants for women entrepreneurs. Discover 50+ foundations offering grants up to $250K for women-owned businesses. Funding available: up to $250K.",
+    metrics: [
+      { label: 'Amber', value: '$10K', description: 'Monthly grant', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'IFundWomen', value: '$25K', description: 'Growth capital', color: 'text-blue-600', iconName: 'TrendingUp' },
+      { label: 'Cartier', value: '$100K', description: 'Top prize', color: 'text-purple-600', iconName: 'Award' },
+      { label: 'Total', value: '50+', description: 'Foundations', color: 'text-pink-600', iconName: 'Heart' }
+    ],
+    expertTip: {
+      title: "Tell Your Story",
+      type: 'tip',
+      content: "Private foundation grants favor <strong>compelling personal narratives</strong> over financial projections. Focus on your journey, mission, and community impact."
+    },
+
+    faq: [
+      {
+        question: "Are private grants taxable?",
+        answer: "Yes. Unless your business is a registered 501(c)(3) non-profit, grant money from private foundations is generally considered <strong>taxable income</strong> by the IRS."
+      },
+      {
+        question: "How competitive are private grants like Cartier or Tory Burch?",
+        answer: "Extremely competitive. Programs like the <strong>Cartier Women's Initiative</strong> receive thousands of global applications for a handful of spots. Your business must demonstrate significant social/environmental impact, not just financial viability."
+      },
+      {
+        question: "Do private grants require a business plan?",
+        answer: "Almost always. Private foundations want to see a clear path to sustainability and growth. They invest in the founder as much as the business model."
+      }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
+    jumpLinks: [
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
+      comparisonTable: {
+              "title": "Private Women Grants Guide  | Foundation Grants for Female Entrepreneurs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Private Women Grants Guide  | Foundation Grants for Female Entrepreneurs Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          }
+};
+
+export default post;

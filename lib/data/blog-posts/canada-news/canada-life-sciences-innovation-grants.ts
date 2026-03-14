@@ -1,0 +1,93 @@
+// lib/data/blog-posts/canada-news/canada-life-sciences-innovation-grants.ts
+import type { BlogPost } from '../../blogPosts';
+
+const post: BlogPost = {
+    id: 32,
+    slug: "canada-life-sciences-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
+    title: "Canada Life Sciences Grants 2026 | $720M+ Biotech & Medical Device Funding | Clinical Trials Support",
+
+    excerpt: "Complete guide to Canadian life sciences innovation grants. Access $720M+ funding through biomanufacturing programs, medical device pathways, clinical trials support, and 18+ biotechnology funding programs.",
+    category: "Canada News",
+    categoryColor: "bg-red-100 text-red-800",
+    author: "Ashwani K.",
+    date: "2025-12-01",
+    readTime: "10 min read",
+    image: "/images/blog/canada-grants-theme.png",
+    featured: false,
+    type: "grant-news",
+
+    relatedLinks: [
+      { title: "Programs", href: "/blog/california-tech-programs", description: "Complete 2026-2027 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SB..." },
+      { title: "Microloan Benefits", href: "/blog/women-entrepreneurship-strategy-canada", description: "Complete guide to Canada..." },
+      { title: "Start with CDAP", href: "/guides/canada-life-sciences-funding-guide", description: "Comprehensive funding guide for biotech, medical devices, and life sciences companies...." }
+    ],
+    content: "",
+    seo: {
+      keywords: ["Canada", "Life", "Sciences", "Grants", "2026"],
+    }, shortAnswer: "Yes — Complete guide to Canadian life sciences innovation grants. Access $720M+ funding through biomanufacturing programs, medical device pathways, clinical trials support, and 18+ biotechnology funding. Funding available: up to $720M+.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Life Sciences Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
+    },
+    metrics: [
+      { label: 'Fund', value: '$2.2B', description: 'Biomanufacturing', color: 'text-green-600', iconName: 'Activity' },
+      { label: 'Trials', value: '$250M', description: 'Clinical Fund', color: 'text-blue-600', iconName: 'Thermometer' },
+      { label: 'Scale', value: 'Global', description: 'Supply Chain', color: 'text-purple-600', iconName: 'Globe' },
+      { label: 'R&D', value: 'High', description: 'Priority', color: 'text-orange-600', iconName: 'Microscope' }
+    ],
+    expertTip: {
+      title: "Biomanufacturing Focus",
+      type: 'tip',
+      content: "The federal government is prioritizing domestic <strong>biomanufacturing capacity</strong>. Projects that build Canadian production capabilities for vaccines and therapeutics are top priority."
+    },
+      comparisonTable: {
+              "title": "Canada Life Sciences Grants  | + Biotech & Medical Device Funding | Clinical Trials Support Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Life Sciences Grants  | + Biotech & Medical Device Funding | Clinical Trials Support Grant",
+                      "amount": "$720M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faq: [
+              {
+                  "question": "What is the application deadline for Canada Life Sciences Grants  | + Biotech & Medical Device Funding | Clinical Trials Support in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Life Sciences Grants  | + Biotech & Medical Device Funding | Clinical Trials Support?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $720M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+};
+
+export default post;

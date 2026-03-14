@@ -1,0 +1,95 @@
+// lib/data/blog-posts/usa-news/irap-industrial-research-assistance-program-innovation.ts
+import type { BlogPost } from '../../blogPosts';
+
+const post: BlogPost = {
+    id: 57,
+    slug: "irap-industrial-research-assistance-program-innovation",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
+    title: "IRAP Industrial Research Assistance Program 2026 | Up to $500K Innovation Funding for SMEs",
+
+    excerpt: "Complete guide to IRAP innovation funding from National Research Council Canada. Get 60-80% R&D funding up to $500K with dedicated Industrial Technology Advisors for SMEs.",
+    category: "USA News",
+    categoryColor: "bg-blue-100 text-blue-800",
+    author: "Ashwani K.",
+    date: "2025-12-01",
+    readTime: "10 min read",
+    image: "/images/blog/tech-innovation-theme.png",
+    featured: false,
+    type: "grant-news",
+
+    relatedLinks: [
+      { title: "Community Impact", href: "/blog/indigenous-women-business-grants-canada", description: "Complete 2026-2027 guide to Indigenous women business grants in Canada. NACCA Aboriginal Entrepreneurship Program, IWEF ..." },
+      { title: "Stack CDAP with Wage Subsidies", href: "/guides/edc-women-trade-export-financing-guide", description: "Export Development Canada financing and support for women exporters...." },
+      { title: "Pick the Right SBA Program", href: "/guides/apply-csbfp-government-financing", description: "Step-by-step guide to applying for CSBFP government-backed financing...." }
+    ],
+    content: "",
+    seo: {
+      keywords: ["IRAP", "Industrial", "Research", "Assistance", "Program"],
+    }, shortAnswer: "Yes — Complete guide to IRAP innovation funding from National Research Council Canada. Get 60-80% R&D funding up to $500K with dedicated Industrial Technology Advisors for SMEs. Funding available: up to $500K.",
+    metrics: [
+      { label: 'Fund', value: '$500K', description: 'Max Project', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Cover', value: '80%', description: 'Salary Support', color: 'text-blue-600', iconName: 'Users' },
+      { label: 'Speed', value: 'Fast', description: 'Monthly Claims', color: 'text-purple-600', iconName: 'Zap' },
+      { label: 'Advice', value: 'ITA', description: 'Expert Guide', color: 'text-orange-600', iconName: 'MessageCircle' }
+    ],
+    expertTip: {
+      title: "ITA Nomination Required",
+      type: 'warning',
+      content: "You cannot apply for IRAP without an <strong>Industrial Technology Advisor (ITA)</strong> nomination. Build a relationship with an ITA <em>months</em> before you need the funding."
+    },
+    eligibleCheck: true,
+    inlineCTA: {
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
+    jumpLinks: [
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
+      comparisonTable: {
+              "title": "IRAP Industrial Research Assistance Program  | Up to  Innovation Funding for SMEs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core IRAP Industrial Research Assistance Program  | Up to  Innovation Funding for SMEs Grant",
+                      "amount": "$500K",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faq: [
+              {
+                  "question": "What is the application deadline for IRAP Industrial Research Assistance Program  | Up to  Innovation Funding for SMEs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through IRAP Industrial Research Assistance Program  | Up to  Innovation Funding for SMEs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $500K."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+};
+
+export default post;

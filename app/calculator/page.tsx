@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 import { GrantCalculator } from '@/components/calculator/GrantCalculator';
 import { Shield, Users, Clock, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -18,7 +20,9 @@ export const metadata: Metadata = {
 
 export default function CalculatorPage() {
     return (
-        <div className="min-h-screen bg-gray-50/50 py-12 lg:py-24">
+        <div className="min-h-screen bg-white">
+            <Header />
+            <div className="bg-gray-50/50 py-12 lg:py-24">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Header Section */}
@@ -76,6 +80,8 @@ export default function CalculatorPage() {
                 </div>
 
             </div>
+            </div>
+            <Footer />
         </div>
     );
 }

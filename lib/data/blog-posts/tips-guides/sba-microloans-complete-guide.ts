@@ -1,0 +1,96 @@
+// lib/data/blog-posts/tips-guides/sba-microloans-complete-guide.ts
+import type { BlogPost } from '../../blogPosts';
+
+const post: BlogPost = {
+    id: 82,
+    slug: "sba-microloans-complete-guide",
+    shortAnswerQuestion: "How can my business apply for SBA Microloans Complete Guide 2026 in 2026?",
+
+    title: "SBA Microloans Complete Guide 2026 | Small Business Microloan Program",
+
+    excerpt: "Complete guide to SBA microloans. Learn eligibility, application process, and how to secure up to $50K in small business funding with business mentoring included.",
+    category: "Tips & Guides",
+    categoryColor: "bg-purple-100 text-purple-800",
+    author: "Ashwani K.",
+    date: "2025-12-01",
+    readTime: "10 min read",
+    image: "/images/blog/strategy-planning-theme.png",
+    featured: false,
+    type: "grant-news",
+
+    relatedLinks: [
+      { title: "University Partnership", href: "/blog/nwbc-programs-guide", description: "Complete guide to NWBC programs and initiatives. Learn how the National Women..." },
+      { title: "Technical Risk", href: "/blog/ideation-research-funding-canada", description: "Complete guide to Canadian ideation and research funding for early-stage innovation. Access up to $1M through NSERC Disc..." },
+      { title: "SBIR START Program", href: "/blog/nasa-sbir-space-tech-grants", description: "Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups. Phase I up to $150K, Phase II up to $850K for..." }
+    ],
+    content: "",
+    seo: {
+      keywords: ["SBA", "Microloans", "Complete", "Guide", "2026"],
+    }, shortAnswer: "To apply for SBA Microloans Complete Guide 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to SBA microloans. Learn eligibility, application process, and how to secure up to $50K in small business funding with business mentoring included. Funding available: up to $50K.",
+    metrics: [
+      { label: 'Max', value: '$50K', description: 'Loan limit', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Term', value: '6 Years', description: 'Repayment', color: 'text-blue-600', iconName: 'Clock' },
+      { label: 'Rate', value: '8-13%', description: 'Interest range', color: 'text-purple-600', iconName: 'Percent' },
+      { label: 'Bonus', value: 'Mentoring', description: 'TA included', color: 'text-orange-600', iconName: 'Users' }
+    ],
+    expertTip: {
+      title: "Intermediary Lenders",
+      type: 'tip',
+      content: "SBA microloans come through <strong>nonprofit intermediary lenders</strong>. Find your local microlender at SBA.gov for personalized support and faster processing."
+    },
+
+    faq: [
+      {
+        question: "What is the maximum SBA microloan amount?",
+        answer: "The maximum microloan amount is <strong>$50,000</strong>, though the average microloan is substantially smaller, typically around $13,000 to $15,000."
+      },
+      {
+        question: "Who actually gives me the microloan?",
+        answer: "Microloans are provided by specially designated <strong>SBA intermediary lenders</strong>—often non-profit community-based organizations—rather than traditional big banks."
+      },
+      {
+        question: "Do SBA microloans require collateral?",
+        answer: "Yes, usually. While they are more flexible than traditional loans, intermediary lenders generally require some type of collateral and the personal guarantee of the business owner."
+      }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
+    jumpLinks: [
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
+      comparisonTable: {
+              "title": "SBA Microloans Complete Guide  | Small Business Microloan Program Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core SBA Microloans Complete Guide  | Small Business Microloan Program Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          }
+};
+
+export default post;

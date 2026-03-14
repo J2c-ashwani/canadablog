@@ -1,0 +1,93 @@
+// lib/data/blog-posts/canada-news/canada-export-development-grants-guide.ts
+import type { BlogPost } from '../../blogPosts';
+
+const post: BlogPost = {
+    id: 26,
+    slug: "canada-export-development-grants-guide",
+    shortAnswerQuestion: "How can my business apply for Canada Export Development Grants 2026 in 2026?",
+
+    title: "Canada Export Development Grants 2026 | $680M+ International Market Expansion Across 18+ Programs",
+
+    excerpt: "Complete guide to Canadian export development grants. Access all 18+ international market expansion programs including CanExport SMEs, EDC Trade Impact, provincial export programs, and trade mission funding.",
+    category: "Canada News",
+    categoryColor: "bg-red-100 text-red-800",
+    author: "Ashwani K.",
+    date: "2025-12-01",
+    readTime: "10 min read",
+    image: "/images/blog/canada-grants-theme.png",
+    featured: false,
+    type: "grant-news",
+
+    relatedLinks: [
+      { title: "Agriculture Angle", href: "/blog/sba-7a-loans-complete-guide", description: "Complete guide to SBA 7(a) loans. Learn eligibility requirements, application process, terms, and how to secure up to $5..." },
+      { title: "Dual Diversity Priority", href: "/blog/women-entrepreneurship-fund-canada", description: "Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Get funding for exp..." },
+      { title: "Social Equity Priority", href: "/blog/michigan-manufacturing-renaissance-2026", description: "Michigan is investing $500 million to reclaim its manufacturing crown. New grants support Industry 4.0 adoption, EV supp..." }
+    ],
+    content: "",
+    seo: {
+      keywords: ["Canada", "Export", "Development", "Grants", "2026"],
+    }, shortAnswer: "To apply for Canada Export Development Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian export development grants. Access all 18+ international market expansion programs including CanExport SMEs, EDC Trade Impact, provincial export programs, and trade mission. Funding available: up to $680M+.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Export Development Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
+    },
+    metrics: [
+      { label: 'Fund', value: '$50k', description: 'CanExport', color: 'text-blue-600', iconName: 'Globe' },
+      { label: 'Cost', value: '50%', description: 'Reimbursed', color: 'text-green-600', iconName: 'DollarSign' },
+      { label: 'Event', value: 'Trade', description: 'Shows/Travel', color: 'text-purple-600', iconName: 'Plane' },
+      { label: 'SEO', value: 'Paid', description: 'Marketing', color: 'text-orange-600', iconName: 'Search' }
+    ],
+    expertTip: {
+      title: "Digital Marketing Eligibility",
+      type: 'success',
+      content: "CanExport now covers <strong>exclusively digital activities</strong> like SEO and online advertising for foreign markets. You don't even need to travel to qualify."
+    },
+      comparisonTable: {
+              "title": "Canada Export Development Grants  | + International Market Expansion Across 18+ Programs Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Export Development Grants  | + International Market Expansion Across 18+ Programs Grant",
+                      "amount": "$680M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faq: [
+              {
+                  "question": "What is the application deadline for Canada Export Development Grants  | + International Market Expansion Across 18+ Programs in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Export Development Grants  | + International Market Expansion Across 18+ Programs?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $680M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+};
+
+export default post;

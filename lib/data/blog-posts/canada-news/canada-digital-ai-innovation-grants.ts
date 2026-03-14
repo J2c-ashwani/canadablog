@@ -1,0 +1,93 @@
+// lib/data/blog-posts/canada-news/canada-digital-ai-innovation-grants.ts
+import type { BlogPost } from '../../blogPosts';
+
+const post: BlogPost = {
+    id: 24,
+    slug: "canada-digital-ai-innovation-grants",
+    shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
+
+    title: "Canada Digital & AI Innovation Grants 2026 | $850M+ Funding | Scale AI & CDAP",
+
+    excerpt: "Complete guide to Canadian digital and AI innovation grants. Access $850M+ funding through Scale AI, CDAP, AI research initiatives, and 25+ digital transformation programs.",
+    category: "Canada News",
+    categoryColor: "bg-red-100 text-red-800",
+    author: "Ashwani K.",
+    date: "2025-12-01",
+    readTime: "10 min read",
+    image: "/images/blog/canada-grants-theme.png",
+    featured: false,
+    type: "grant-news",
+
+    relatedLinks: [
+      { title: "Target ", href: "/guides/sba-growth-accelerator-fund-guide", description: "Guide to applying for SBA funding supporting business accelerators and incubators...." },
+      { title: "Combine Federal & Provincial", href: "/blog/quebec-small-business-grants-guide", description: "Complete guide to Quebec small business grants. Access Investissement Qu\\u00e9bec SME Fund, Quebec Startup Fund, R&D Tax..." },
+      { title: "Clean Technology Strategy", href: "/blog/small-business-financing-2026", description: "🇨🇦 The complete guide to Canada..." }
+    ],
+    content: "",
+    seo: {
+      keywords: ["Canada", "Digital", "&", "AI", "Innovation"],
+    }, shortAnswer: "Yes — Complete guide to Canadian digital and AI innovation grants. Access $850M+ funding through Scale AI, CDAP, AI research initiatives, and 25+ digital transformation programs. Funding available: up to $850M+.",
+    jumpLinks: [
+      { title: 'Programs', id: 'programs' },
+      { title: 'Eligibility', id: 'eligibility' },
+      { title: 'How to Apply', id: 'how-to-apply' },
+      { title: 'FAQ', id: 'faq' }
+    ],
+    eligibleCheck: true,
+    inlineCTA: {
+      description: "Get matched with the right alternative or direct funding for Canada Digital & AI Innovation Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
+    },
+    metrics: [
+      { label: 'AI', value: '$350M', description: 'Scale AI', color: 'text-blue-600', iconName: 'Cpu' },
+      { label: 'CDAP', value: '$15k', description: 'Digital Boost', color: 'text-green-600', iconName: 'Laptop' },
+      { label: 'Loan', value: '$100k', description: '0% Interest', color: 'text-purple-600', iconName: 'CreditCard' },
+      { label: 'Cyber', value: 'Secure', description: 'Funding', color: 'text-orange-600', iconName: 'Shield' }
+    ],
+    expertTip: {
+      title: "Use CDAP for Strategy",
+      type: 'success',
+      content: "The Canada Digital Adoption Program (CDAP) pays for a consultant to write your digital plan. <strong>Use this plan</strong> to unlock the $100k interest-free BDC loan."
+    },
+      comparisonTable: {
+              "title": "Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP Grant",
+                      "amount": "$850M",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faq: [
+              {
+                  "question": "What is the application deadline for Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP?",
+                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $850M."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+};
+
+export default post;
