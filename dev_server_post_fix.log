@@ -1,0 +1,116 @@
+
+> fsi-digital@0.1.0 dev /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog
+> next dev -p 3000
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/ashwanikumar/package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/pnpm-lock.yaml
+
+   ▲ Next.js 15.5.4
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.31.144:3000
+
+ ✓ Starting...
+ ✓ Ready in 2.1s
+ ○ Compiling /blog/[slug] ...
+ ✓ Compiled /blog/[slug] in 4.2s (1182 modules)
+ GET /blog/manufacturing-grants-2026 200 in 6722ms
+ GET /blog/manufacturing-grants-2026 200 in 502ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 915ms (1169 modules)
+ GET /images/blog/healthcare-theme.png 404 in 1329ms
+ GET /images/blog/agritech-funding.png 404 in 1332ms
+ GET /images/blog/reap-vs-rebates.png 404 in 1345ms
+ GET /blog/manufacturing-grants-2026 200 in 1300ms
+ GET /blog/manufacturing-grants-2026 200 in 1275ms
+ GET /images/blog/reap-vs-rebates.png 404 in 178ms
+ GET /blog/usda-reap-grant-vs-utility-rebates 200 in 882ms
+ GET /images/blog/agritech-funding.png 404 in 466ms
+ GET /images/blog/healthcare-theme.png 404 in 427ms
+ GET /blog/black-entrepreneurship-loan-fund-2026 200 in 555ms
+ GET /images/blog/diverse-founders-theme.png 404 in 97ms
+ GET /blog/women-entrepreneurship-grants-2026 200 in 1041ms
+ GET /images/blog/diverse-founders-theme.png 404 in 104ms
+ ○ Compiling /blog ...
+ ✓ Compiled /blog in 795ms (1176 modules)
+ GET /blog 200 in 1337ms
+ GET /images/blog/canadian-retail-grants.png 404 in 222ms
+ GET /images/blog/community-development-theme.png 404 in 225ms
+ ⨯ The requested resource isn't a valid image for /images/blog/canadian-retail-grants.png received null
+ ⨯ The requested resource isn't a valid image for /images/blog/community-development-theme.png received null
+ GET /images/blog/canadian-retail-grants.png 404 in 243ms
+ GET /images/blog/pennsylvania-theme.png 404 in 85ms
+ ⨯ The requested resource isn't a valid image for /images/blog/pennsylvania-theme.png received null
+ GET /images/blog/texas-theme.png 404 in 133ms
+ GET /images/blog/healthcare-theme.png 404 in 134ms
+ GET /images/blog/california-theme.png 404 in 138ms
+ ⨯ The requested resource isn't a valid image for /images/blog/texas-theme.png received null
+ ⨯ The requested resource isn't a valid image for /images/blog/healthcare-theme.png received null
+ ⨯ The requested resource isn't a valid image for /images/blog/california-theme.png received null
+ ✓ Compiled /expert-insights in 445ms (1178 modules)
+ GET /expert-insights 200 in 914ms
+ GET /images/blog/reap-vs-rebates.png 404 in 242ms
+ GET /images/blog/sred-vs-cdap.png 404 in 232ms
+ ⨯ The requested resource isn't a valid image for /images/blog/reap-vs-rebates.png received null
+ ⨯ The requested resource isn't a valid image for /images/blog/sred-vs-cdap.png received null
+ GET /images/blog/reap-vs-rebates.png 404 in 355ms
+ GET /images/blog/sba-vs-grants.png 404 in 337ms
+ GET /images/blog/agritech-funding.png 404 in 336ms
+ GET /images/blog/diverse-founders-theme.png 404 in 338ms
+ ⨯ The requested resource isn't a valid image for /images/blog/sba-vs-grants.png received null
+ ⨯ The requested resource isn't a valid image for /images/blog/agritech-funding.png received null
+ ⨯ The requested resource isn't a valid image for /images/blog/diverse-founders-theme.png received null
+ GET /images/blog/california-grants-theme.png 404 in 67ms
+ ⨯ The requested resource isn't a valid image for /images/blog/california-grants-theme.png received null
+ GET /blog/sba-7a-loans-vs-state-grants-comparison 200 in 353ms
+ GET /images/blog/sba-vs-grants.png 404 in 72ms
+ GET /blog 200 in 241ms
+ GET /images/blog/canadian-retail-grants.png 404 in 142ms
+ GET /images/blog/community-development-theme.png 404 in 145ms
+ ⨯ The requested resource isn't a valid image for /images/blog/canadian-retail-grants.png received null
+ ⨯ The requested resource isn't a valid image for /images/blog/community-development-theme.png received null
+ GET /images/blog/canadian-retail-grants.png 404 in 161ms
+ GET /images/blog/pennsylvania-theme.png 404 in 40ms
+ ⨯ The requested resource isn't a valid image for /images/blog/pennsylvania-theme.png received null
+ GET /images/blog/texas-theme.png 404 in 262ms
+ GET /images/blog/healthcare-theme.png 404 in 246ms
+ GET /images/blog/california-theme.png 404 in 252ms
+ ⨯ The requested resource isn't a valid image for /images/blog/texas-theme.png received null
+ ⨯ The requested resource isn't a valid image for /images/blog/healthcare-theme.png received null
+ ⨯ The requested resource isn't a valid image for /images/blog/california-theme.png received null
+ GET /blog/innovation-superclusters-2026 200 in 146ms
+ ✓ Compiled in 1559ms (372 modules)
+ GET /blog/usda-reap-grant-vs-utility-rebates 200 in 699ms
+ GET /blog/innovation-superclusters-2026 200 in 829ms
+ GET /blog/women-entrepreneurship-grants-2026 200 in 870ms
+ GET /blog/manufacturing-grants-2026 200 in 769ms
+ GET /blog/black-entrepreneurship-loan-fund-2026 200 in 772ms
+ ✓ Compiled in 1017ms (372 modules)
+ GET /blog/usda-reap-grant-vs-utility-rebates 200 in 615ms
+ GET /blog/innovation-superclusters-2026 200 in 680ms
+ GET /blog/black-entrepreneurship-loan-fund-2026 200 in 660ms
+ GET /blog/women-entrepreneurship-grants-2026 200 in 719ms
+ GET /blog/manufacturing-grants-2026 200 in 710ms
+ ✓ Compiled in 1505ms (372 modules)
+ GET /blog/usda-reap-grant-vs-utility-rebates 200 in 1632ms
+ GET /blog/innovation-superclusters-2026 200 in 1716ms
+ GET /blog/women-entrepreneurship-grants-2026 200 in 1695ms
+ GET /blog/manufacturing-grants-2026 200 in 1679ms
+ GET /blog/black-entrepreneurship-loan-fund-2026 200 in 1666ms
+ ✓ Compiled in 551ms (372 modules)
+ GET /blog/usda-reap-grant-vs-utility-rebates 200 in 888ms
+ GET /blog/innovation-superclusters-2026 200 in 1300ms
+ GET /blog/black-entrepreneurship-loan-fund-2026 200 in 1301ms
+ GET /blog/manufacturing-grants-2026 200 in 1357ms
+ GET /blog/women-entrepreneurship-grants-2026 200 in 1364ms
+ ⨯ ./app/globals.css
+Error: You forgot to add 'mini-css-extract-plugin' plugin (i.e. `{ plugins: [new MiniCssExtractPlugin()] }`), please read https://github.com/webpack-contrib/mini-css-extract-plugin#getting-started
+Import trace for requested module:
+./app/globals.css
+ ⨯ ./app/globals.css
+Error: You forgot to add 'mini-css-extract-plugin' plugin (i.e. `{ plugins: [new MiniCssExtractPlugin()] }`), please read https://github.com/webpack-contrib/mini-css-extract-plugin#getting-started
+Import trace for requested module:
+./app/globals.css
