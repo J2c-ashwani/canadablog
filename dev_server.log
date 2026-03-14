@@ -14,12 +14,25 @@
    - Network:      http://192.168.31.144:3000
 
  ✓ Starting...
- ✓ Ready in 2s
+ ✓ Ready in 2.2s
  ○ Compiling / ...
- ✓ Compiled / in 3.6s (877 modules)
- GET / 200 in 4374ms
- ✓ Compiled in 1149ms (353 modules)
- ✓ Compiled in 277ms (353 modules)
- ✓ Compiled in 193ms (353 modules)
- ✓ Compiled in 1213ms (353 modules)
- ✓ Compiled in 561ms (353 modules)
+ ✓ Compiled / in 4s (877 modules)
+ HEAD / 200 in 4833ms
+ ○ Compiling /canada/government-grants ...
+ ✓ Compiled /canada/government-grants in 669ms (880 modules)
+ ✓ Compiled /_not-found in 380ms (871 modules)
+ GET /ash-author-1.jpg 404 in 835ms
+ GET /canada/government-grants 200 in 2683ms
+ ○ Compiling /canada/small-business-grants ...
+ ✓ Compiled /canada/small-business-grants in 721ms (855 modules)
+ GET /canada/small-business-grants 200 in 1245ms
+ ✓ Compiled /_not-found in 297ms (860 modules)
+ GET /ash-author-1.jpg 404 in 531ms
+ ○ Compiling /canada/innovation-grants ...
+ ✓ Compiled /canada/innovation-grants in 545ms (867 modules)
+ GET /canada/innovation-grants 200 in 1029ms
+ GET /ash-author-1.jpg 404 in 260ms
+ ○ Compiling /canada/women-business-grants ...
+ ✓ Compiled /canada/women-business-grants in 660ms (873 modules)
+ GET /canada/women-business-grants 200 in 1073ms
+ GET /ash-author-1.jpg 404 in 190ms

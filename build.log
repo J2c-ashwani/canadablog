@@ -12,14 +12,13 @@
    ▲ Next.js 15.5.4
 
    Creating an optimized production build ...
- ✓ Compiled successfully in 31.9s
+ ✓ Compiled successfully in 44s
    Skipping validation of types
    Skipping linting
    Collecting page data ...
    Generating static pages (0/2852) ...
    Generating static pages (713/2852) 
    Generating static pages (1426/2852) 
-   Generating static pages (2139/2852) 
 
 ✅ Sitemap generated with 719 URLs
    📝 176 Blog Posts
@@ -31,6 +30,7 @@
    📥 62 Download Pages
    🏠 25 Other Pages
 
+   Generating static pages (2139/2852) 
  ✓ Generating static pages (2852/2852)
    Finalizing page optimization ...
    Collecting build traces ...
