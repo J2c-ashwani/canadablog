@@ -34,6 +34,12 @@ import agriInnovation2025 from './blog-posts/canada-news/agricultural-innovation
 import usdaRural2025 from './blog-posts/usa-news/usda-rural-grants-2025';
 import womenBusiness2025 from './blog-posts/demographic-specific/women-business-grants-2025';
 import technologyStartup2025 from './blog-posts/industry-specific/technology-startup-grants-2025';
+
+// Restored Missing 2025 Posts
+import canadaIrapGrants2025 from './blog-posts/canada-news/canada-irap-grants-2025';
+import indigenousBusinessDevelopment2025 from './blog-posts/canada-news/indigenous-business-development-2025';
+import smallBusinessFinancing2025 from './blog-posts/canada-news/small-business-financing-2025';
+
 import quebecBusinessGrants2026 from './blog-posts/canada-news/quebec-business-grants-2026';
 
 // Batch 19: Bonus Zombie Posts (Healthcare, State, Federal)
@@ -470,7 +476,19 @@ export const blogPosts: BlogPost[] = [
   epaEnvironmentalJustice2026ArchivePost,
   hudCommunity2026Post,
   nsfStemResearch2026ArchivePost,
-,
+  canadaIrapGrants2025,
+  indigenousBusinessDevelopment2025,
+  smallBusinessFinancing2025,
+  _2026GrantPreviewEarlyBirdPost,
+  veteranBusinessFundingCanada2026Post,
+  albertaBusinessGrants2026Post,
+  october2026LastChancePost,
+  q42026DeadlinesPost,
+  q12026GrantDeadlinesPost,
+  sbaSbirGrants2026Post,
+  grantWritingSecrets2026Post,
+  usdaRuralGrants2026Post,
+  sredTaxCredits2026Post,
 ];
 
 export const blogCategories = [
@@ -1188,7 +1206,7 @@ export function getCategoryWithCounts(type?: BlogPostType) {
 }
 
 export function getBlogPostsByCategory(category: string) {
-  return blogPosts.filter((post) => post.category === category);
+  return blogPosts.filter((post) => post && post.category === category);
 }
 
 export default blogPosts;

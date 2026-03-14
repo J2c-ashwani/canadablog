@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 const categoryStyles: Record<string, { bg: string; accent: string; emoji: string }> = {
     canada: { bg: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)', accent: '#e63946', emoji: '🇨🇦' },

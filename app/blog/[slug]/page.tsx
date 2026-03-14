@@ -33,9 +33,25 @@ const iconMap: Record<string, any> = {
   Calendar, Clock, Grid, Home, Percent, Flag, AlertCircle
 };
 
+import fs from 'fs';
+import path from 'path';
+
 export async function generateStaticParams() {
   const posts = getAllBlogPosts();
-  return posts.map((post) => ({ slug: post.slug }));
+  
+  // Exclude slugs that already have a static folder (e.g., app/blog/ai-machine-learning-grants).
+  // Next.js 15 fails data collection with 'slug in undefined' if a dynamic route yields a param
+  // for a path that already physically exists.
+  return posts
+    .filter((post) => {
+      try {
+        const folderPath = path.join(process.cwd(), 'app', 'blog', post.slug);
+        return !fs.existsSync(folderPath);
+      } catch (e) {
+        return true;
+      }
+    })
+    .map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

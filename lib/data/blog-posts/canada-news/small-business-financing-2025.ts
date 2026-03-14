@@ -1,5 +1,11 @@
-// lib/data/blog-posts/canada-news/small-business-financing-2025.ts
-export default `
+import { BlogPost } from '../../blogPosts';
+
+const post: BlogPost = {
+  id: "small-business-financing-2025",
+  title: "Canada's $250M Small Business Financing Expansion",
+  slug: "small-business-financing-2025",
+  date: "2025-01-15",
+  content: `
   <div class="bg-red-50 p-6 rounded-lg mb-8 border border-red-200">
     <h2 class="text-2xl font-bold text-red-900 mb-4">🇨🇦 Canada's $250M Small Business Financing Expansion</h2>
     <div class="grid md:grid-cols-2 gap-6">
@@ -40,4 +46,13 @@ export default `
       <p class="text-sm opacity-90">⏰ Limited: 35 assessments for Canadian companies</p>
     </div>
   </div>
-`;
+`,
+  excerpt: "Discover the latest updates and application strategies for this Canadian government funding program.",
+  image: "canada-grants-2025.jpg",
+  author: "FSI Digital Team",
+  category: "Canada Grants News",
+  tags: ["Canada", "Grants 2025", "Funding"],
+  type: "grant-news"
+};
+
+export default post;

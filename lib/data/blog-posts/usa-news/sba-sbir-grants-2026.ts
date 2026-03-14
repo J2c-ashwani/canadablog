@@ -1,4 +1,6 @@
-export default `
+import type { BlogPost } from '../../blogPosts';
+
+const sbaSbirPost = `
   <div id="common-questions" class="bg-blue-50 p-6 rounded-lg mb-8 border border-blue-200">
     <h2 class="text-2xl font-bold text-blue-900 mb-4">💡 Common Questions About SBIR/STTR</h2>
     <ul class="space-y-3">
@@ -177,3 +179,98 @@ export default `
     </div>
   </div>
 `;
+
+
+const sbaSbirGrants2026Post: BlogPost = {
+    id: 2046,
+    type: 'grant-news',
+    slug: "sba-sbir-grants-2026",
+    shortAnswerQuestion: "How can my business apply for SBA SBIR/STTR : Americas Seed  2026 in 2026?",
+
+    title: "SBA SBIR/STTR : Americas Seed ... 2026 | Funding Guide",
+
+    excerpt: "🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. How to access over $4 billion in non-dilutive R&D funding in 2026.",
+    category: "USA News",
+    categoryColor: "bg-blue-100 text-blue-800",
+    author: "Ashwani K.",
+    date: "2026-03-10",
+    readTime: "12 min read",
+    image: "/images/blog/usa-grants-theme.png",
+    featured: false,
+
+    relatedLinks: [
+      { title: "Secure Market Validation", href: "/blog/manitoba-business-grants-2026", description: "Manitoba..." },
+      { title: "Banking Relationship Value", href: "/blog/small-business-grants-complete-guide", description: "Complete guide to small business grants. Learn about SBA loans, federal grants, microloans, state programs, and how to s..." },
+      { title: "Agency Match", href: "/blog/sbir-sttr-complete-guide", description: "Complete guide to SBIR and STTR grants. Learn eligibility requirements, application process, funding phases, and tips to..." }
+    ],
+    content: `
+${sbaSbirPost}
+    `,
+    seo: {
+      keywords: ["SBIR grants 2026", "STTR funding", "America's Seed Fund", "R&D grants USA", "tech startup funding"]
+    }, shortAnswer: "To apply for SBA SBIR/STTR : Americas Seed 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. How to access over $4 billion in non-dilutive R&D funding in 2026. Funding available: up to $4.",
+    metrics: [
+      { label: 'Total', value: '$4B+', description: 'Annual Budget', color: 'text-green-600', iconName: 'Database' },
+      { label: 'Phase I', value: '$150k+', description: 'Concept Funding', color: 'text-blue-600', iconName: 'Beaker' },
+      { label: 'Phase II', value: '$1M+', description: 'Prototype Funding', color: 'text-purple-600', iconName: 'Rocket' }
+    ],
+    expertTip: {
+      title: "Topic Fit",
+      type: 'tip',
+      content: "SBIR is topic-specific. Agencies release 'solicitations' with specific problems they need solved. Your proposal MUST address one of these specific topics."
+    },
+    eligibleCheck: true,
+    inlineCTA: {
+      title: "Need expert help applying for grants?",
+      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+      buttonText: "Get Funding Assistance",
+      buttonLink: "/contact"
+    },
+    jumpLinks: [
+      { title: "Overview", id: "overview" },
+      { title: "Eligibility Requirements", id: "eligibility" },
+      { title: "How to Apply", id: "how-to-apply" }
+    ],
+      comparisonTable: {
+              "title": "SBA SBIR/STTR : Americas Seed Fund Funding Options Overview",
+              "programs": [
+                  {
+                      "program": "Core SBA SBIR/STTR : Americas Seed Fund Grant",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Eligible Applicants",
+                      "timeline": "Standard Review"
+                  },
+                  {
+                      "program": "Related Provincial Match",
+                      "amount": "Up to 50%",
+                      "equity": "0%",
+                      "bestFor": "Expansion Projects",
+                      "timeline": "45 Days"
+                  },
+                  {
+                      "program": "Federal Support Program",
+                      "amount": "Varies",
+                      "equity": "Non-dilutive",
+                      "bestFor": "Scaling Businesses",
+                      "timeline": "90 Days"
+                  }
+              ]
+          },
+      faq: [
+              {
+                  "question": "What is the application deadline for SBA SBIR/STTR : Americas Seed Fund in 2026?",
+                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+              },
+              {
+                  "question": "How much funding can I get through SBA SBIR/STTR : Americas Seed Fund?",
+                  "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+              },
+              {
+                  "question": "Do I have to give up equity for this program?",
+                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+              }
+          ]
+};
+
+export default sbaSbirGrants2026Post;

@@ -1,5 +1,11 @@
-// lib/data/blog-posts/canada-news/indigenous-business-development-2025.ts
-export default `
+import { BlogPost } from '../../blogPosts';
+
+const post: BlogPost = {
+  id: "indigenous-business-development-2025",
+  title: "🪶 Canada's $120M Indigenous Business Revolution: Complete Funding Guide",
+  slug: "indigenous-business-development-2025",
+  date: "2025-01-15",
+  content: `
   <div class="bg-gradient-to-r from-red-50 via-orange-50 to-yellow-50 p-6 rounded-lg mb-8 border border-red-200">
     <h2 class="text-2xl font-bold text-red-900 mb-4">🪶 Canada's $120M Indigenous Business Revolution: Complete Funding Guide</h2>
     <div class="grid md:grid-cols-2 gap-6">
@@ -550,4 +556,13 @@ export default `
     </button>
     <p class="text-xs text-gray-500">🪶 Indigenous-specific opportunities 📅 Application deadlines 🤝 Cultural business support 💰 Grant amounts ✅ Free forever</p>
   </div>
-`;
+`,
+  excerpt: "Discover the latest updates and application strategies for this Canadian government funding program.",
+  image: "canada-grants-2025.jpg",
+  author: "FSI Digital Team",
+  category: "Canada Grants News",
+  tags: ["Canada", "Grants 2025", "Funding"],
+  type: "grant-news"
+};
+
+export default post;

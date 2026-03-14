@@ -1,5 +1,11 @@
-// lib/data/blog-posts/canada-news/canada-irap-grants-2025.ts
-export default `
+import { BlogPost } from '../../blogPosts';
+
+const post: BlogPost = {
+  id: "canada-irap-grants-2025",
+  title: "Canada IRAP Grants 2025: Industrial Research Assistance Program - $400M+ Innovation Powerhouse",
+  slug: "canada-irap-grants-2025",
+  date: "2025-01-15",
+  content: `
   <div class="bg-gradient-to-r from-red-50 to-white p-6 rounded-lg mb-8 border border-red-200">
     <h2 class="text-2xl font-bold text-red-900 mb-4">🇨🇦 Canada IRAP Grants 2025: Industrial Research Assistance Program - $400M+ Innovation Powerhouse</h2>
     <div class="grid md:grid-cols-2 gap-6">
@@ -395,4 +401,13 @@ export default `
     </button>
     <p class="text-xs text-gray-500">🇨🇦 IRAP program updates 💡 Innovation Corporation news 🤝 ITA networking opportunities 📅 Application guidance ✅ Free forever</p>
   </div>
-`;
+`,
+  excerpt: "Discover the latest updates and application strategies for this Canadian government funding program.",
+  image: "canada-grants-2025.jpg",
+  author: "FSI Digital Team",
+  category: "Canada Grants News",
+  tags: ["Canada", "Grants 2025", "Funding"],
+  type: "grant-news"
+};
+
+export default post;
