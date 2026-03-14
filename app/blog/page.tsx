@@ -145,7 +145,7 @@ export default async function BlogPage({
             {paginatedPosts.length > 0 ? (
               <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
                 {paginatedPosts.map((post, index) => (
-                  <div key={post.id}>
+                  <div key={`${post.id || post.slug}-${index}`}>
                     <BlogCard post={post} />
 
                     {/* In-content Ad after every 3rd post */}

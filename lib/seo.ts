@@ -76,9 +76,12 @@ function extractHooks(text: string): string | null {
  *   "Amber Grant for Women 2026 – $10K Monthly"
  */
 export function getCleanTitle(rawTitle: string): string {
-  // Step 1: Get the base topic (first segment before |)
-  const segments = rawTitle.split('|');
-  let baseTopic = segments[0].trim();
+  // Step 1: Get the base topic (everything before the final | FSI Digital)
+  let baseTopic = rawTitle;
+  const lastPipeIndex = rawTitle.lastIndexOf('|');
+  if (lastPipeIndex !== -1) {
+    baseTopic = rawTitle.substring(0, lastPipeIndex).trim();
+  }
   const fullTitle = rawTitle;
 
   // Step 2: Extract value signals from the FULL title (including after pipes)
