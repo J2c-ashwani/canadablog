@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  outputFileTracingRoot: '/Users/ashwanikumar/Downloads/canadablog',
   eslint: {
     ignoreDuringBuilds: true,
   },
