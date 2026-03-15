@@ -11,7 +11,7 @@ export const post: BlogPost = {
   "author": "Ashwani K.",
   "date": "2026-03-16",
   "readTime": "9 min read",
-  "image": "/images/blog/canadian-retail-grants.png",
+  "image": "/images/blog/canada-grants-theme.png",
   "type": "grant-news",
   "excerpt": "Stop competing with tech startups for federal funding. Discover 10 accessible, locally targeted grants specifically designed to help Canadian brick-and-mortar retail stores upgrade their storefronts and launch e-commerce.",
   "featured": true,
