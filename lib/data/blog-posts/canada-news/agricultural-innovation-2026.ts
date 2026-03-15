@@ -755,16 +755,16 @@ const post: BlogPost = {
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
       <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🎯 Commercial Readiness Assessment</h3>
-        <p>Evaluate your technology's readiness for AgriInnovate and identify gaps before application</p>
+        <h3 class="font-bold mb-2 text-green-800">🎯 Commercial Readiness Assessment</h3>
+        <p class="text-green-700">Evaluate your technology's readiness for AgriInnovate and identify gaps before application</p>
       </div>
       <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🤝 Industry Partnership Facilitation</h3>
-        <p>Connect with agricultural producers, commodity groups, and research institutions across Canada</p>
+        <h3 class="font-bold mb-2 text-green-800">🤝 Industry Partnership Facilitation</h3>
+        <p class="text-green-700">Connect with agricultural producers, commodity groups, and research institutions across Canada</p>
       </div>
       <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">📊 Agricultural Impact Quantification</h3>
-        <p>Develop the metrics and business case that AgriInnovate reviewers fund</p>
+        <h3 class="font-bold mb-2 text-green-800">📊 Agricultural Impact Quantification</h3>
+        <p class="text-green-700">Develop the metrics and business case that AgriInnovate reviewers fund</p>
       </div>
     </div>
 
