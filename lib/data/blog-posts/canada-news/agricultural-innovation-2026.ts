@@ -42,7 +42,7 @@ const post: BlogPost = {
       </a>
       <a href="#stacking" class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
         <h3 class="font-semibold text-green-700">Can I stack with other funds?</h3>
-        <p class="text-sm text-gray-600 mt-1">Yes, up to 100% (but AgriInnovate max 50%).</p>
+        <p class="text-sm text-gray-600 mt-1">Yes, up to 100%, but AgriInnovate max 50%.</p>
       </a>
     </div>
   </section>
