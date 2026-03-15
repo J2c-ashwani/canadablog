@@ -159,6 +159,19 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
           </div>
         </section>
 
+        {/* Main Content */}
+        {postData?.content && (
+          <section className="py-8">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <div
+                  className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700"
+                  dangerouslySetInnerHTML={{ __html: postData.content }}
+                />
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Common Questions Section */}
         <section className="py-12 bg-teal-50 border-b border-teal-100">

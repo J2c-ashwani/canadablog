@@ -69,17 +69,17 @@ import albertaBusinessGrants2026 from './blog-posts/province-specific/alberta-bu
 export type BlogPostType = 'grant-news' | 'expert-insight';
 
 export interface BlogPost {
-  id: number;
+  id: string | number;
   slug: string;
   title: string;
   excerpt: string;
   category: string;
-  categoryColor: string;
+  categoryColor?: string;
   author: string;
   date: string;
-  readTime: string;
+  readTime?: string;
   image: string;
-  featured: boolean;
+  featured?: boolean;
   content: string;
   type: BlogPostType;
   seo?: {
@@ -110,15 +110,15 @@ export interface BlogPost {
   shortAnswerQuestion?: string;
   faqSchema?: { question: string; answer: string; }[];
   comparisonTable?: {
-      title: string;
-      description?: string;
-      programs: {
-          program: string;
-          amount: string;
-          equity: string;
-          bestFor: string;
-          timeline?: string;
-      }[];
+    title: string;
+    description?: string;
+    programs: {
+      program: string;
+      amount: string;
+      equity: string;
+      bestFor: string;
+      timeline?: string;
+    }[];
   };
   jumpLinks?: { title: string; id: string }[];
   eligibleCheck?: boolean;
@@ -133,6 +133,7 @@ export interface BlogPost {
     title: string;
     description: string;
   }[];
+  tags?: string[];
 }
 
 import agricultureGrants2026Post from './blog-posts/canada-news/agriculture-grants-2026';
@@ -516,19 +517,30 @@ const phase2BlogPosts: any[] = [
   sba7aLoansVsStateGrants,
   sredTaxCreditsVsCdap,
   usdaReapGrantVsUtilityRebates
-];
-blogPosts.push(...phase2BlogPosts);
+]
 
+// Safely push phase 2 posts
+blogPosts.push(...phase2BlogPosts.filter((p) => p && p.slug))
+
+// Clean invalid blog posts to prevent runtime crashes
+for (let i = blogPosts.length - 1; i >= 0; i--) {
+  const post = blogPosts[i]
+
+  if (!post || !post.slug || !post.date) {
+    console.warn("Removing invalid blog post:", post)
+    blogPosts.splice(i, 1)
+  }
+}
 
 export function getAllBlogPosts() {
   const valid = blogPosts.filter((p, i) => {
     if (!p || !p.slug || !p.date) {
-      console.error('[getAllBlogPosts] Missing/invalid post at index', i, 'Value:', p);
-      return false;
+      console.error("[getAllBlogPosts] Missing/invalid post at index", i, "Value:", p)
+      return false
     }
-    return true;
-  });
-  return valid.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return true
+  })
+  return valid.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
 export function getGrantNewsPosts() {
@@ -540,7 +552,9 @@ export function getExpertInsightPosts() {
 }
 
 export function getBlogPostBySlug(slug: string) {
-  return blogPosts.find((post) => post.slug === slug);
+  if (!slug) return null;
+
+  return blogPosts.find((post) => post?.slug === slug) ?? null;
 }
 
 export function getFeaturedPosts() {

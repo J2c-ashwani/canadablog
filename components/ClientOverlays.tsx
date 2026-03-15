@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from "react"
 import dynamic from "next/dynamic"
 
 // Lazy-load these components so they don't block the main thread at page load
@@ -13,6 +14,16 @@ const LeadMagnetPopup = dynamic(
 )
 
 export function ClientOverlays() {
+    const [isClient, setIsClient] = useState(false)
+
+    useEffect(() => {
+        setIsClient(true)
+    }, [])
+
+    if (!isClient) {
+        return null
+    }
+
     return (
         <>
             <CookieConsent />

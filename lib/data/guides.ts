@@ -993,9 +993,7 @@ export const guidesDatabase: Guide[] = [
     relatedLinks: [
     { title: "Stack CDAP with Wage Subsidies", href: "/guides/edc-women-trade-export-financing-guide", description: "Export Development Canada financing and support for women exporters...." },
     { title: "STTR Needs a Research Partner", href: "/guides/apply-small-business-grants", description: "General guide for applying to federal small business grant programs and competitions...." },
-    { title: "CSBFP Doesn", href: "/guides/apply-csbfp-government-financing", description: "Step-by-step guide to applying for CSBFP government-backed financing...." }
-  ],
-  relatedLinks: [
+    { title: "CSBFP Doesn", href: "/guides/apply-csbfp-government-financing", description: "Step-by-step guide to applying for CSBFP government-backed financing...." },
     { title: "Start with CDAP", href: "/guides/canada-life-sciences-funding-guide", description: "Comprehensive funding guide for biotech, medical devices, and life sciences companies...." },
     { title: "EDC + CanExport Stack", href: "/guides/nserc-research-grants-guide", description: "How to apply for Natural Sciences and Engineering Research Council grants...." },
     { title: "The ", href: "/guides/apply-irap-government-grants", description: "Detailed walkthrough of applying for IRAP government funding for innovation projects...." }

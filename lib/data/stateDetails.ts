@@ -35,18 +35,18 @@ export interface StateDetailedGrant {
     };
 
     // Overview Section (~300 words)
-    shortAnswer: " offers $0 in small business funding through 0 active programs. The average processing time is N/A.",
+    shortAnswer: string,
     eligibleCheck: true,
     inlineCTA: {
-        title: "Need expert help applying for  grants?",
-        description: "Our funding specialists can help you navigate 's government programs and maximize your funding potential.",
+        title: string;
+        description: string;
         buttonText: "Get Funding Assistance",
         buttonLink: "/contact"
     },
     overview: {
-        introduction: string;
-        economicLandscape: string;
-        keyOpportunities: string;
+        introduction?: string;
+        economicLandscape?: string;
+        keyOpportunities?: string;
         futureTrends?: string | { trend: string; description: string }[]; // Allow both formats
     };
 
@@ -140,7 +140,6 @@ export interface StateDetailedGrant {
     // NEW: Related Guides for internal linking
     relatedGuides?: string[];  // Guide slugs to link to
     // E-E-A-T Components
-    shortAnswer?: string;
     comparisonTable?: {
         title: string;
         description?: string;
@@ -151,13 +150,6 @@ export interface StateDetailedGrant {
             bestFor: string;
             timeline?: string;
         }[];
-    };
-    eligibleCheck?: boolean;
-    inlineCTA?: {
-        title?: string;
-        description: string;
-        buttonText?: string;
-        buttonLink?: string;
     };
 }
 
