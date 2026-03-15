@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "women-entrepreneurship-grants-2026",
     shortAnswerQuestion: "What grants are available for women-owned businesses in 2026?",
 
-    title: "Women Business Grants : Inclus... 2026 | $160",
+    title: "Women Business Grants 2026: $160M+ Inclusive Funding",
 
     excerpt: "🇨🇦 The WES Ecosystem Fund, WEOC loans, and FACERF are changing the game. Discover funding specifically for women-owned businesses in Canada.",
     category: "Demographic-Specific",

@@ -221,7 +221,7 @@ const sredTaxCredits2026Post: BlogPost = {
     slug: "sred-tax-credits-2026",
     shortAnswerQuestion: "How can my business apply for SR&ED : Maximizing Your Tax Cr 2026 in 2026?",
 
-    title: "SR&ED : Maximizing Your Tax Cr... 2026 | Funding Guide",
+    title: "SR&ED Tax Credits 2026: Maximize Your R&D Refund in Canada",
 
     excerpt: "🇨🇦 The Scientific Research and Experimental Development (SR&ED) program is Canada's largest R&D incentive. Guide to claiming your 35% credit.",
     category: "Canada News",

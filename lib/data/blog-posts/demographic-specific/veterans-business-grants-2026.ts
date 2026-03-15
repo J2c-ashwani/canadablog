@@ -7,7 +7,7 @@ const post: BlogPost = {
     slug: "veterans-business-grants-2026",
     shortAnswerQuestion: "What grants are available for veteran-owned businesses in 2026?",
 
-    title: "Veterans Business Grants : SBA... 2026 | $15",
+    title: "Veterans Business Grants 2026: SBA & VA Programs | $15B+",
 
     excerpt: "🇺🇸 Complete guide to grants and resources for veteran-owned small businesses (VOSB) and service-disabled veteran-owned small businesses (SDVOSB).",
     category: "Demographic-Specific",

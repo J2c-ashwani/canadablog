@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "green-business-funding",
     shortAnswerQuestion: "How can my business apply for Green Business Funding : Susta 2026 in 2026?",
 
-    title: "Green Business Funding : Susta... 2026 | $1",
+    title: "Green Business Funding 2026: Sustainability Grants | $1B+",
 
     excerpt: "Detailed guide to Canada's green business grants for SMEs. Covers retrofits, EV fleets, and zero-waste manufacturing incentives available in 2026.",
     category: "Sustainability",

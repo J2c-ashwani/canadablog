@@ -325,7 +325,7 @@ const q42026DeadlinesPost: BlogPost = {
     slug: "q4-2026-deadlines",
     shortAnswerQuestion: "What government grant deadlines are closing soon in 2026?",
 
-    title: "Q4  Grant Deadlines: End of Ye... 2026 | Funding Guide",
+    title: "Q4 2026 Grant Deadlines: End-of-Year Funding Rush",
 
     excerpt: "📅 Plan your year-end funding strategy. Critical deadlines for November and December 2026 across all major grant categories.",
     category: "Funding Alerts",

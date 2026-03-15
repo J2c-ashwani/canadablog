@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "saskatchewan-business-grants-2026",
     shortAnswerQuestion: "How can my business apply for Saskatchewan Business Grants : 2026 in 2026?",
 
-    title: "Saskatchewan Business Grants :... 2026 | $400",
+    title: "Saskatchewan Business Grants 2026: Innovation Funding | $400M+",
 
     excerpt: "🇨🇦 Saskatchewan is more than just wheat. Discover funding from Innovation Saskatchewan, the Graduate Retention Program, and the new SaskAdvantage grants.",
     category: "Province-Specific",

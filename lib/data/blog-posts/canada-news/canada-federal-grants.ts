@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "canada-federal-grants",
     shortAnswerQuestion: "How can my business apply for Canada Federal Grants 2025-2026 in 2026?",
 
-    title: "Canada Federal Grants... 2025-2026 | Funding Guide",
+    title: "Canada Federal Grants 2025-2026: Complete Funding Guide",
 
     excerpt: "Complete guide to government grants.",
     category: "Canada News",

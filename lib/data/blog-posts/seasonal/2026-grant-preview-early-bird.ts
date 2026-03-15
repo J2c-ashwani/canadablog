@@ -285,7 +285,7 @@ const _2026GrantPreviewEarlyBirdPost: BlogPost = {
     slug: "2026-grant-preview-early-bird",
     shortAnswerQuestion: "How can my business apply for Grant Preview Early Bird 2026 in 2026?",
 
-    title: "Grant Preview Early Bird... 2026 | Funding Guide",
+    title: "2026 Grant Preview: Early Bird Opportunities | Funding Pipeline",
 
     excerpt: "\ud83d\ude80 2026 Grant Preview: Early Bird Opportunities - $4.8B Future Funding Pipeline\n    \n      \n        \ud83c\udfc6 Top 2026 Early Bird Programs\n        \n          \u2022...",
     category: "Seasonal",

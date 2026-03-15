@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "innovation-canada-grants-2026",
     shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
 
-    title: "Innovation Canada Grants : R&D... 2026 | $2",
+    title: "Innovation Canada Grants 2026: R&D Tax Credits & Funding | $2B+",
 
     excerpt: "🇨🇦 This is the big league. From SR&ED tax credits to IRAP grants, learn how to fund your R&D and scale your technology in Canada.",
     category: "Federal",

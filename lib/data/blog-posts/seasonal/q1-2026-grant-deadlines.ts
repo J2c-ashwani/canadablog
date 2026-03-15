@@ -200,7 +200,7 @@ const q12026GrantDeadlinesPost: BlogPost = {
     slug: "q1-2026-grant-deadlines",
     shortAnswerQuestion: "What government grant deadlines are closing soon in 2026?",
 
-    title: "Q1  Grant Forecast: Prepare No... 2026 | Funding Guide",
+    title: "Q1 2026 Grant Deadlines: Prepare Now for Jan-Mar Funding",
 
     excerpt: "🔮 Get a head start on 2026. Preview of major grant programs opening in January, February, and March 2026.",
     category: "Seasonal",

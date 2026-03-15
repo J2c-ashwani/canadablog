@@ -187,7 +187,7 @@ const sbaSbirGrants2026Post: BlogPost = {
     slug: "sba-sbir-grants-2026",
     shortAnswerQuestion: "How can my business apply for SBA SBIR/STTR : Americas Seed  2026 in 2026?",
 
-    title: "SBA SBIR/STTR : Americas Seed ... 2026 | Funding Guide",
+    title: "SBA SBIR/STTR 2026: America's Seed Fund for Startups",
 
     excerpt: "🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. How to access over $4 billion in non-dilutive R&D funding in 2026.",
     category: "USA News",

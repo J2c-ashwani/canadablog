@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "manitoba-business-grants-2026",
     shortAnswerQuestion: "How can my business apply for Manitoba Business Grants : IGP 2026 in 2026?",
 
-    title: "Manitoba Business Grants : IGP... 2026 | $4",
+    title: "Manitoba Business Grants 2026: IGP & Growth Programs | $4M+",
 
     excerpt: "Manitoba's Innovation Growth Program gives up to $100K for commercialization. Plus FPEGF for Indigenous businesses and North Forge's startup incubator. Full program list inside.",
     category: "Province-Specific",

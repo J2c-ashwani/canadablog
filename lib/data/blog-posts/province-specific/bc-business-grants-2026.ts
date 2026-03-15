@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "bc-business-grants-2026",
     shortAnswerQuestion: "How can my business apply for BC Business Grants : Innovatio 2026 in 2026?",
 
-    title: "BC Business Grants : Innovatio... 2026 | $240",
+    title: "BC Business Grants 2026: Innovate BC & Clean Tech | $240M+",
 
     excerpt: "🇨🇦 British Columbia's top funding programs explained. From Innovate BC's tech grants to Small Business BC's expert support, find the capital to grow your West Coast business.",
     category: "Province-Specific",

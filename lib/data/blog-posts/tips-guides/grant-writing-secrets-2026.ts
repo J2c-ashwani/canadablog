@@ -200,7 +200,7 @@ const grantWritingSecrets2026Post: BlogPost = {
     slug: "grant-writing-secrets-2026",
     shortAnswerQuestion: "How can my business apply for Grant Writing Secrets : 7 Tips 2026 in 2026?",
 
-    title: "Grant Writing Secrets : 7 Tips... 2026 | Funding Guide",
+    title: "Grant Writing Secrets: 7 Expert Tips to Win Funding 2026",
 
     excerpt: "✍️ Increase your approval odds. Professional grant writers share their top strategies for crafting winning proposals in 2026.",
     category: "Tips & Guides",

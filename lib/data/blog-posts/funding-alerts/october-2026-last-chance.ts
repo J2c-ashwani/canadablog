@@ -374,7 +374,7 @@ const october2026LastChancePost: BlogPost = {
     slug: "october-2026-last-chance",
     shortAnswerQuestion: "What government grant deadlines are closing soon in October 2026?",
 
-    title: "October : Last Chance Grant De... 2026 | Funding Guide",
+    title: "October 2026: Last Chance Grant Deadlines Before Year-End",
 
     excerpt: "⏰ Urgent funding alert! Key federal and provincial grant programs closing this month. Don't miss out on over $15M in expiring opportunities.",
     category: "Funding Alerts",

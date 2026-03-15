@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "2026-grant-forecast",
     shortAnswerQuestion: "How can my business apply for Canadian Small Business Grant  2026 in 2026?",
 
-    title: "Canadian Small Business Grant ... 2026 | Funding Guide",
+    title: "Canadian Small Business Grant Forecast 2026 | Complete Guide",
 
     excerpt: "Get ahead of the curve. Our experts predict the biggest funding trends for 2026, including new climate incentives, digital adoption boosts, and increased support for export.",
     category: "Funding Alerts",

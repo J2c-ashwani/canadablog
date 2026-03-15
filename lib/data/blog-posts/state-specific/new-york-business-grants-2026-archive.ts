@@ -7,7 +7,7 @@ const post: BlogPost = {
     slug: "new-york-business-grants-2026-archive",
     shortAnswerQuestion: "How can my business apply for New York Business Grants : Emp 2025 in 2026?",
 
-    title: "New York Business Grants : Emp... 2025 | Funding Guide",
+    title: "New York Business Grants 2025: Empire State Development",
 
     excerpt: "New York State offers $1.8 billion in funding through its Regional Economic Development Councils. Explore the Consolidated Funding Application (CFA), Excelsior Jobs tax credits, and SSBCI opportunities.",
     category: "State-Specific",
