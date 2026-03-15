@@ -9,10 +9,43 @@
  Detected additional lockfiles: 
    * /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/pnpm-lock.yaml
 
- ⚠ Port 3000 is in use by process 711, using available port 3003 instead.
    ▲ Next.js 15.5.4
-   - Local:        http://localhost:3003
-   - Network:      http://192.168.31.144:3003
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.31.144:3000
 
  ✓ Starting...
- ✓ Ready in 2.4s
+ ✓ Ready in 2000ms
+ ○ Compiling /blog/[slug] ...
+ ✓ Compiled /blog/[slug] in 3.8s (1182 modules)
+ ⨯ TypeError: Cannot read properties of undefined (reading 'slug')
+    at eval (lib/data/blogPosts.js:709:65)
+    at Array.find (<anonymous>)
+    at getBlogPostBySlug (lib/data/blogPosts.js:709:30)
+    at BlogPostPage (app/blog/[slug]/page.tsx:81:33)
+  707 | }
+  708 | function getBlogPostBySlug(slug) {
+> 709 |     return exports.blogPosts.find(function (post) { return post.slug === slug; });
+      |                                                                 ^
+  710 | }
+  711 | function getFeaturedPosts() {
+  712 |     return exports.blogPosts.filter(function (post) { return post.featured; }).slice(0, 6); {
+  digest: '1903224441'
+}
+ ⨯ Error [TypeError]: Cannot read properties of undefined (reading 'slug')
+    at eval (lib/data/blogPosts.js:709:65)
+    at Array.find (<anonymous>:1:19)
+    at getBlogPostBySlug (lib/data/blogPosts.js:709:30)
+    at Module.generateMetadata (app/blog/[slug]/page.tsx:59:33)
+  707 | }
+  708 | function getBlogPostBySlug(slug) {
+> 709 |     return exports.blogPosts.find(function (post) { return post.slug === slug; });
+      |                                                                 ^
+  710 | }
+  711 | function getFeaturedPosts() {
+  712 |     return exports.blogPosts.filter(function (post) { return post.featured; }).slice(0, 6); {
+  environmentName: 'Server',
+  digest: '757529038'
+}
+ HEAD /blog/usda-reap-grant-vs-utility-rebates 200 in 6222ms
+ ✓ Compiled in 2.3s (371 modules)
+ ✓ Compiled in 2.8s (371 modules)
