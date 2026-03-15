@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -159,20 +160,20 @@ export default async function ExpertInsightsPage({
                         {paginatedPosts.length > 0 ? (
                             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
                                 {paginatedPosts.map((post, index) => (
-                                    <div key={post.id}>
+                                    <Fragment key={post.id}>
                                         <BlogCard post={post} />
 
                                         {/* In-content Ad after every 3rd post */}
                                         {(index + 1) % 3 === 0 && (
-                                            <div className="mt-6">
+                                            <div className="col-span-full my-6 w-full flex justify-center">
                                                 <AdSlot
                                                     adSlot="2345678901"
-                                                    adFormat="rectangle"
-                                                    style={{ minHeight: '250px' }}
+                                                    adFormat="horizontal"
+                                                    style={{ minHeight: '120px', width: '100%' }}
                                                 />
                                             </div>
                                         )}
-                                    </div>
+                                    </Fragment>
                                 ))}
                             </div>
                         ) : (

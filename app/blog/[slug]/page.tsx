@@ -112,6 +112,48 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const stepMatches = [...content.matchAll(/<h[23][^>]*>(.*?)<\/h[23]>/gi)].map(m => m[1].replace(/<[^>]+>/g, '').trim());
   const howToSchema = generateHowToSchema(fullPost, stepMatches.slice(0, 5)); // Just take first 5 headers as steps
 
+  const renderContentWithAds = (htmlString: string, pCountOffset: number) => {
+    if (!htmlString) return { nodes: null, totalParagraphs: pCountOffset };
+    
+    // Split by </p> to count paragraphs
+    const blocks = htmlString.split('</p>');
+    const result = [];
+    
+    let currentChunk = "";
+    let pCount = pCountOffset;
+    
+    blocks.forEach((block, idx) => {
+      const isLast = idx === blocks.length - 1;
+      const htmlPart = isLast ? block : block + '</p>';
+      currentChunk += htmlPart;
+      
+      if (!isLast) pCount++;
+      
+      // Inject Ad after paragraph 2
+      if (pCount === 2 && !isLast) {
+        result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key={`chunk-${idx}`} />);
+        result.push(<div className="my-10 not-prose flex justify-center w-full" key="ad-p2"><AdSlot adSlot="4444444444" adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} /></div>);
+        currentChunk = "";
+      }
+      
+      // Inject Ad after paragraph 7 for longer content
+      if (pCount === 7 && !isLast) {
+        result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key={`chunk-${idx}`} />);
+        result.push(<div className="my-10 not-prose flex justify-center w-full" key="ad-p7"><AdSlot adSlot="5555555555" adFormat="rectangle" style={{ minHeight: '250px', width: '100%' }} /></div>);
+        currentChunk = "";
+      }
+    });
+    
+    if (currentChunk) {
+      result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key="chunk-final" />);
+    }
+    
+    return { nodes: result, totalParagraphs: pCount };
+  };
+
+  const beforeContentData = renderContentWithAds(beforeCTA, 0);
+  const afterContentData = renderContentWithAds(afterCTA, beforeContentData.totalParagraphs);
+
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <script
@@ -267,10 +309,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </div>
               )}
 
-              <div
-                className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700"
-                dangerouslySetInnerHTML={{ __html: beforeCTA }}
-              />
+              <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700">
+                {beforeContentData.nodes}
+              </div>
 
               {post.inlineCTA && (
                 <div className="not-prose my-8">
@@ -279,10 +320,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               )}
 
               {afterCTA && (
-                <div
-                  className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700"
-                  dangerouslySetInnerHTML={{ __html: afterCTA }}
-                />
+                <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700">
+                  {afterContentData.nodes}
+                </div>
               )}
 
               {/* DYNAMIC ENRICHMENT: FAQ Schema UI */}
@@ -345,7 +385,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <aside className="sticky top-8 lg:col-span-1 space-y-6">
               <GrantGuideCTA />
               <CategorySidebar type={post.type} />
-              <AdSlot adSlot="3456789012" adFormat="vertical" style={{ minHeight: 600 }} />
+              <div className="hidden lg:block">
+                <AdSlot adSlot="3456789012" adFormat="vertical" style={{ minHeight: 600 }} />
+              </div>
               <NewsletterBox />
             </aside>
           </div>

@@ -527,15 +527,28 @@ for (let i = blogPosts.length - 1; i >= 0; i--) {
   const post = blogPosts[i]
 
   if (!post || !post.slug || !post.date) {
-    console.warn("Removing invalid blog post:", post)
+    // Only log identifying info — NOT the full content (which can be 1000s of lines)
+    const identifier = post?.slug || post?.title || `[type: ${typeof post}, index: ${i}]`;
+    const missing = !post ? 'null/undefined' : !post.slug ? 'slug' : 'date';
+    console.warn(`⚠️  Removing invalid blog post (missing ${missing}): ${identifier}`);
     blogPosts.splice(i, 1)
+  }
+}
+
+// Deduplicate by slug — prevent the same file imported under two variable names from creating duplicates
+const seenSlugs = new Set<string>();
+for (let i = blogPosts.length - 1; i >= 0; i--) {
+  if (seenSlugs.has(blogPosts[i].slug)) {
+    blogPosts.splice(i, 1);
+  } else {
+    seenSlugs.add(blogPosts[i].slug);
   }
 }
 
 export function getAllBlogPosts() {
   const valid = blogPosts.filter((p, i) => {
     if (!p || !p.slug || !p.date) {
-      console.error("[getAllBlogPosts] Missing/invalid post at index", i, "Value:", p)
+      console.error("[getAllBlogPosts] Missing/invalid post at index", i, "slug:", p?.slug)
       return false
     }
     return true
