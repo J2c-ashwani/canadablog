@@ -17,6 +17,22 @@ export default function AdSlot({
 }: AdSlotProps) {
   const adPushed = useRef(false);
   const publisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || "ca-pub-1200907614877581";
+  
+  // Use provided adSlot or fall back to environment variables based on format
+  const finalAdSlot = adSlot || (
+    adFormat === 'horizontal' ? process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL :
+    adFormat === 'vertical' ? process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR :
+    adFormat === 'rectangle' ? process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE :
+    process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD
+  );
+
+  // Check if this is a placeholder ad slot (contains placeholder patterns)
+  const isPlaceholder = finalAdSlot?.includes('XXXXXXXXXX') || 
+                       finalAdSlot?.includes('YYYYYYYYYY') || 
+                       finalAdSlot?.includes('ZZZZZZZZZZ') ||
+                       finalAdSlot?.includes('AAAAAAAAAA') ||
+                       finalAdSlot?.includes('BBBBBBBBBB') ||
+                       finalAdSlot?.includes('CCCCCCCCCC');
 
   // Enforce a minimum height to prevent layout shift during loading
   const minHeightVal = style.minHeight || (adFormat === 'horizontal' ? '90px' : adFormat === 'vertical' ? '600px' : '250px');
@@ -31,7 +47,7 @@ export default function AdSlot({
   };
 
   useEffect(() => {
-    if (adPushed.current || !publisherId) return;
+    if (adPushed.current || !publisherId || !finalAdSlot || isPlaceholder) return;
     try {
       // @ts-ignore
       (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -39,23 +55,23 @@ export default function AdSlot({
     } catch (err) {
       console.log('AdSense error:', err);
     }
-  }, [publisherId]);
+  }, [publisherId, finalAdSlot, isPlaceholder]);
 
   return (
     <div 
       className={`bg-gray-50 dark:bg-neutral-900 border border-dashed border-gray-200 dark:border-neutral-800 rounded overflow-hidden ${className}`}
       style={containerStyle}
     >
-      {publisherId ? (
+      {isPlaceholder ? (
+        <span className="text-gray-400 text-sm">Ad Space Reserved - Update Ad Unit ID</span>
+      ) : (
         <ins
           className="adsbygoogle w-full h-full block"
           data-ad-client={publisherId}
-          data-ad-slot={adSlot}
+          data-ad-slot={finalAdSlot}
           data-ad-format={adFormat}
           data-full-width-responsive="true"
         />
-      ) : (
-        <span className="text-gray-400 text-sm">Ad Space Reserved</span>
       )}
     </div>
   );

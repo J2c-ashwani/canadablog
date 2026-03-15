@@ -118,7 +118,6 @@ export default async function ExpertInsightsPage({
             {/* Header Ad */}
             <div className="container mx-auto px-4 py-4">
                 <AdSlot
-                    adSlot="1234567890"
                     adFormat="horizontal"
                     className="mb-6"
                     style={{ minHeight: '90px' }}
@@ -167,7 +166,6 @@ export default async function ExpertInsightsPage({
                                         {(index + 1) % 3 === 0 && (
                                             <div className="col-span-full my-6 w-full flex justify-center">
                                                 <AdSlot
-                                                    adSlot="2345678901"
                                                     adFormat="horizontal"
                                                     style={{ minHeight: '120px', width: '100%' }}
                                                 />
@@ -212,7 +210,6 @@ export default async function ExpertInsightsPage({
 
                             {/* Sidebar Ad */}
                             <AdSlot
-                                adSlot="3456789012"
                                 adFormat="vertical"
                                 style={{ minHeight: '600px' }}
                             />

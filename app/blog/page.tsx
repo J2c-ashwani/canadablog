@@ -103,7 +103,6 @@ export default async function BlogPage({
       {/* Header Ad */}
       <div className="container mx-auto px-4 py-4">
         <AdSlot
-          adSlot="1234567890"
           adFormat="horizontal"
           className="mb-6"
           style={{ minHeight: '90px' }}
@@ -152,7 +151,6 @@ export default async function BlogPage({
                     {(index + 1) % 3 === 0 && (
                       <div className="mt-6">
                         <AdSlot
-                          adSlot="2345678901"
                           adFormat="rectangle"
                           style={{ minHeight: '250px' }}
                         />
@@ -197,7 +195,6 @@ export default async function BlogPage({
 
               {/* Sidebar Ad */}
               <AdSlot
-                adSlot="3456789012"
                 adFormat="vertical"
                 style={{ minHeight: '600px' }}
               />

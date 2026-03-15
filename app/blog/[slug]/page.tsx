@@ -132,14 +132,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       // Inject Ad after paragraph 2
       if (pCount === 2 && !isLast) {
         result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key={`chunk-${idx}`} />);
-        result.push(<div className="my-10 not-prose flex justify-center w-full" key="ad-p2"><AdSlot adSlot="4444444444" adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} /></div>);
+        result.push(<div className="my-10 not-prose flex justify-center w-full" key="ad-p2"><AdSlot adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} /></div>);
         currentChunk = "";
       }
       
       // Inject Ad after paragraph 7 for longer content
       if (pCount === 7 && !isLast) {
         result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key={`chunk-${idx}`} />);
-        result.push(<div className="my-10 not-prose flex justify-center w-full" key="ad-p7"><AdSlot adSlot="5555555555" adFormat="rectangle" style={{ minHeight: '250px', width: '100%' }} /></div>);
+        result.push(<div className="my-10 not-prose flex justify-center w-full" key="ad-p7"><AdSlot adFormat="rectangle" style={{ minHeight: '250px', width: '100%' }} /></div>);
         currentChunk = "";
       }
     });
@@ -186,7 +186,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       )}
       <Header />
       <div className="container mx-auto px-4 py-4">
-        <AdSlot adSlot="1234567890" adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+        <AdSlot adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
       </div>
 
       <main className="py-12">
