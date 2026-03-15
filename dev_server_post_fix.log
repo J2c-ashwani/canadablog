@@ -114,3 +114,98 @@ Import trace for requested module:
 Error: You forgot to add 'mini-css-extract-plugin' plugin (i.e. `{ plugins: [new MiniCssExtractPlugin()] }`), please read https://github.com/webpack-contrib/mini-css-extract-plugin#getting-started
 Import trace for requested module:
 ./app/globals.css
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 4.5s (1526 modules)
+ ⨯ [Error: Cannot find module '/Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/.pnpm/styled-jsx@5.1.6_react@18.3.1/node_modules/styled-jsx/index.js'
+Require stack:
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/compiled/next-server/pages.runtime.dev.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/route-modules/pages/module.compiled.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/route-modules/pages/vendored/contexts/html-context.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/pages/_document.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/load-default-error-components.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/dev/next-dev-server.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/next.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/lib/start-server.js] {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module '/Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/.pnpm/styled-jsx@5.1.6_react@18.3.1/node_modules/styled-jsx/index.js'
+Require stack:
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/compiled/next-server/pages.runtime.dev.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/.next/server/pages/_document.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/require.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/load-components.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/build/utils.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/build/swc/options.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/build/swc/index.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/lib/router-server.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/lib/start-server.js
+    at next/dist/compiled/next-server/pages.runtime.dev.js (.next/server/pages/_document.js:22:18)
+    at (pages-dir-node)/./node_modules/next/dist/server/route-modules/pages/module.compiled.js (.next/server/vendor-chunks/next.js:381:1)
+    at (pages-dir-node)/./node_modules/next/dist/server/route-modules/pages/vendored/contexts/html-context.js (.next/server/vendor-chunks/next.js:425:1)
+    at (pages-dir-node)/./node_modules/next/dist/pages/_document.js (.next/server/vendor-chunks/next.js:161:1)
+    at __webpack_exec__ (.next/server/pages/_document.js:62:39)
+    at <unknown> (.next/server/pages/_document.js:63:104)
+    at <unknown> (.next/server/pages/_document.js:63:47)
+    at Object.<anonymous> (.next/server/pages/_document.js:66:3) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: Cannot find module '/Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/.pnpm/styled-jsx@5.1.6_react@18.3.1/node_modules/styled-jsx/index.js'
+Require stack:
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/compiled/next-server/pages.runtime.dev.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/route-modules/pages/module.compiled.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/route-modules/pages/vendored/contexts/html-context.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/pages/_document.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/load-default-error-components.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/dev/next-dev-server.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/next.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/lib/start-server.js] {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module '/Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/.pnpm/styled-jsx@5.1.6_react@18.3.1/node_modules/styled-jsx/index.js'
+Require stack:
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/compiled/next-server/pages.runtime.dev.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/.next/server/pages/_document.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/require.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/load-components.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/build/utils.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/build/swc/options.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/build/swc/index.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/lib/router-server.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/lib/start-server.js
+    at next/dist/compiled/next-server/pages.runtime.dev.js (.next/server/pages/_document.js:22:18)
+    at (pages-dir-node)/./node_modules/next/dist/server/route-modules/pages/module.compiled.js (.next/server/vendor-chunks/next.js:381:1)
+    at (pages-dir-node)/./node_modules/next/dist/server/route-modules/pages/vendored/contexts/html-context.js (.next/server/vendor-chunks/next.js:425:1)
+    at (pages-dir-node)/./node_modules/next/dist/pages/_document.js (.next/server/vendor-chunks/next.js:161:1)
+    at __webpack_exec__ (.next/server/pages/_document.js:62:39)
+    at <unknown> (.next/server/pages/_document.js:63:104)
+    at <unknown> (.next/server/pages/_document.js:63:47)
+    at Object.<anonymous> (.next/server/pages/_document.js:66:3) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: Cannot find module '/Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/.pnpm/styled-jsx@5.1.6_react@18.3.1/node_modules/styled-jsx/index.js'
+Require stack:
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/compiled/next-server/pages.runtime.dev.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/route-modules/pages/module.compiled.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/route-modules/pages/vendored/contexts/html-context.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/pages/_document.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/load-default-error-components.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/dev/next-dev-server.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/next.js
+- /Users/ashwanikumar/.gemini/antigravity/scratch/canadablog/node_modules/next/dist/server/lib/start-server.js] {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ HEAD /blog/usda-reap-grant-vs-utility-rebates 500 in 9106ms
+ HEAD /blog/usda-reap-grant-vs-utility-rebates 500 in 113ms
+ ✓ Compiled in 1007ms (522 modules)
+ ✓ Compiled in 1712ms (522 modules)
