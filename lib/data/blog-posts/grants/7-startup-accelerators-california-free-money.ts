@@ -19,10 +19,10 @@ export const post: BlogPost = {
     "metaTitle": "Top 7 California Accelerators with Zero-Equity Grants (2026)",
     "metaDescription": "Looking to scale your tech startup without giving up 7% equity? Discover the top 7 non-dilutive California startup accelerators granting free funding.",
     "keywords": [
-      "california startup accelerators",
-      "zero equity startup funding",
-      "silicon valley grants",
-      "non-dilutive tech funding"
+      "best zero dilution accelerators for software startups in california",
+      "how to get free accelerator money without giving up equity in Silicon Valley",
+      "top non-dilutive startup programs in California 2026",
+      "California grants for early stage tech founders"
     ]
   },
   "metrics": [

@@ -19,11 +19,10 @@ export const post: BlogPost = {
     "metaTitle": "5 Best Government Loans for AgTech Startups (2026 Guide)",
     "metaDescription": "Discover the top 5 federal and state-backed low-interest loans specifically designed for agriculture technology startups and smart farming operations.",
     "keywords": [
-      "agtech loans",
-      "agriculture startup funding",
-      "usda loans",
-      "farm service agency loans",
-      "agricultural technology financing"
+      "step by step guide to applying for usda agtech startup loans",
+      "how to finance a smart farming operation in 2026",
+      "best low interest government loans for agricultural technology",
+      "federal funding for precision agriculture startups"
     ]
   },
   "metrics": [

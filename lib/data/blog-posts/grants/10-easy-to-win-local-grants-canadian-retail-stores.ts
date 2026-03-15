@@ -19,11 +19,10 @@ export const post: BlogPost = {
     "metaTitle": "10 Best Grants for Canadian Retail Businesses (2026)",
     "metaDescription": "A comprehensive guide to the easiest, most accessible local and provincial grants for Canadian brick-and-mortar retail stores, boutiques, and shops.",
     "keywords": [
-      "canadian retail grants",
-      "small business grants canada",
-      "storefront improvement grants",
-      "CDAP grant",
-      "retail funding"
+      "easiest municipal storefront beautification grants for independent canadian retailers",
+      "how to get government funding to fix a retail shop facade",
+      "cdap micro grant for small business digital adoption in Canada",
+      "accessible local grants for canadian brick and mortar stores"
     ]
   },
   "metrics": [

@@ -56,7 +56,7 @@ export async function generateMetadata({
     return {
         title,
         description,
-        keywords: "grant analysis, expert grant tips, business funding strategies, grant writing advice, government funding insights",
+        keywords: "how to apply for government grants in 2026, expert advice for non-dilutive business funding, actionable grant writing strategies for startups, step-by-step government funding guides, expert insights on securing state and federal loans",
         openGraph: {
             title,
             description,

@@ -19,10 +19,10 @@ export const post: BlogPost = {
     "metaTitle": "10 Best No-Equity Grants for Black Female Founders 2026",
     "metaDescription": "Discover the top 10 completely free, non-dilutive grants exclusively available for Black women entrepreneurs and startup founders in 2026.",
     "keywords": [
-      "black female founders",
-      "minority business grants",
-      "women entrepreneurs",
-      "no equity funding"
+      "how to get no equity grants for black female business owners 2026",
+      "best free grant money for minority women founders",
+      "zero dilution funding for black female entrepreneurs",
+      "best non-repayable grants for women of color startups"
     ]
   },
   "metrics": [

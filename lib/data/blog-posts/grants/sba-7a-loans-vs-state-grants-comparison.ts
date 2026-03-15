@@ -19,10 +19,10 @@ export const post: BlogPost = {
     "metaTitle": "SBA 7(a) Loans vs. State Grants: 2026 Funding Comparison",
     "metaDescription": "A complete analysis comparing the SBA 7(a) loan program against local state grants. Learn the exact application timeline and strategic sequencing to fund your business.",
     "keywords": [
-      "sba 7a vs grants",
-      "state business grants vs loans",
-      "sba loan comparison",
-      "business funding strategy 2026"
+      "should I apply for an sba 7a loan or a state grant first",
+      "can I use state grant money as an sba loan down payment",
+      "strategic differences between government loans and non dilutive grants",
+      "us business funding strategy for rapid scaling 2026"
     ]
   },
   "metrics": [

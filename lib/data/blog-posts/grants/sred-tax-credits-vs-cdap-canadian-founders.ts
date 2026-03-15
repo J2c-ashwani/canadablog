@@ -19,11 +19,10 @@ export const post: BlogPost = {
     "metaTitle": "SR&ED vs. CDAP: 2026 Canadian Startup Funding Guide",
     "metaDescription": "A comparison of Canada's biggest tech funding programs. Learn exactly when to use the CDAP grant versus claiming SR&ED engineering tax credits.",
     "keywords": [
-      "sred vs cdap",
-      "canadian tech grants",
-      "sred tax credits 2026",
-      "CDAP grant comparison",
-      "startup funding canada"
+      "when to use the cdap grant versus claiming sred engineering tax credits",
+      "how to maximize canadian startup funding in 2026",
+      "difference between sred tax incentives and federal canada tech grants",
+      "best non-dilutive capital strategies for canadian tech founders"
     ]
   },
   "metrics": [
