@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 interface AdSlotProps {
-  adSlot: string;
+  adSlot?: string;
   adFormat?: 'auto' | 'rectangle' | 'horizontal' | 'vertical';
   style?: React.CSSProperties;
   className?: string;

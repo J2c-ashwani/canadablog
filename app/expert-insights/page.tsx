@@ -118,9 +118,7 @@ export default async function ExpertInsightsPage({
             {/* Header Ad */}
             <div className="container mx-auto px-4 py-4">
                 <AdSlot
-                    adFormat="horizontal"
-                    className="mb-6"
-                    style={{ minHeight: '90px' }}
+          adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!}
                 />
             </div>
 
@@ -166,6 +164,7 @@ export default async function ExpertInsightsPage({
                                         {(index + 1) % 3 === 0 && (
                                             <div className="col-span-full my-6 w-full flex justify-center">
                                                 <AdSlot
+                                                    adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_AD!}
                                                     adFormat="horizontal"
                                                     style={{ minHeight: '120px', width: '100%' }}
                                                 />
@@ -210,6 +209,7 @@ export default async function ExpertInsightsPage({
 
                             {/* Sidebar Ad */}
                             <AdSlot
+                                adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD!}
                                 adFormat="vertical"
                                 style={{ minHeight: '600px' }}
                             />
