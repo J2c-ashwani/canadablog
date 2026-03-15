@@ -209,3 +209,4 @@ Require stack:
  HEAD /blog/usda-reap-grant-vs-utility-rebates 500 in 113ms
  ✓ Compiled in 1007ms (522 modules)
  ✓ Compiled in 1712ms (522 modules)
+ ✓ Compiled in 6.7s (522 modules)
