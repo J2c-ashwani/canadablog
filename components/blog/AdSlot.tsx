@@ -33,14 +33,16 @@ export default function AdSlot({
   }
 
   // Check if this is a placeholder ad slot (contains placeholder patterns)
-  const isPlaceholder = finalAdSlot?.includes('XXXXXXXXXX') || 
+  const isPlaceholder = !finalAdSlot ||
+                       finalAdSlot?.includes('XXXXXXXXXX') || 
                        finalAdSlot?.includes('YYYYYYYYYY') || 
                        finalAdSlot?.includes('ZZZZZZZZZZ') ||
                        finalAdSlot?.includes('AAAAAAAAAA') ||
                        finalAdSlot?.includes('BBBBBBBBBB') ||
-                       finalAdSlot?.includes('CCCCCCCCCC') ||
-                       finalAdSlot === '2345678901' ||
-                       finalAdSlot === '3456789012';
+                       finalAdSlot?.includes('CCCCCCCCCC');
+
+  // If no valid ad slot, render nothing — don't show empty boxes
+  if (isPlaceholder) return null;
 
   // Enforce a minimum height to prevent layout shift during loading
   const minHeightVal = style.minHeight || (adFormat === 'horizontal' ? '90px' : adFormat === 'vertical' ? '600px' : '250px');
@@ -70,17 +72,13 @@ export default function AdSlot({
       className={`bg-gray-50 dark:bg-neutral-900 border border-dashed border-gray-200 dark:border-neutral-800 rounded overflow-hidden ${className}`}
       style={containerStyle}
     >
-      {isPlaceholder ? (
-        <span className="text-gray-400 text-sm">Ad Space Reserved - Update Ad Unit ID</span>
-      ) : (
-        <ins
-          className="adsbygoogle w-full h-full block"
-          data-ad-client={publisherId}
-          data-ad-slot={finalAdSlot}
-          data-ad-format={adFormat}
-          data-full-width-responsive="true"
-        />
-      )}
+      <ins
+        className="adsbygoogle w-full h-full block"
+        data-ad-client={publisherId}
+        data-ad-slot={finalAdSlot}
+        data-ad-format={adFormat}
+        data-full-width-responsive="true"
+      />
     </div>
   );
 }

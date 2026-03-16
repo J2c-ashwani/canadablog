@@ -352,7 +352,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               )}
 
               <div className="my-12">
-                <AdSlot adSlot="2345678901" adFormat="rectangle" style={{ minHeight: 250 }} />
+                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
               </div>
 
               <div className="mt-12 pt-8 border-t border-gray-200 dark:border-neutral-800">
@@ -386,7 +386,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <GrantGuideCTA />
               <CategorySidebar type={post.type} />
               <div className="hidden lg:block">
-                <AdSlot adSlot="3456789012" adFormat="vertical" style={{ minHeight: 600 }} />
+                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD!} adFormat="vertical" style={{ minHeight: 600 }} />
               </div>
               <NewsletterBox />
             </aside>
