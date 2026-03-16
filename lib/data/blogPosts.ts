@@ -557,11 +557,15 @@ export function getAllBlogPosts() {
 }
 
 export function getGrantNewsPosts() {
-  return getAllBlogPosts().filter(post => post.type === 'grant-news');
+  return getAllBlogPosts()
+    .filter(post => post.type === 'grant-news')
+    .map(({ content, ...rest }) => rest as BlogPost);
 }
 
 export function getExpertInsightPosts() {
-  return getAllBlogPosts().filter(post => post.type === 'expert-insight');
+  return getAllBlogPosts()
+    .filter(post => post.type === 'expert-insight')
+    .map(({ content, ...rest }) => rest as BlogPost);
 }
 
 export function getBlogPostBySlug(slug: string) {
@@ -572,7 +576,10 @@ export function getBlogPostBySlug(slug: string) {
 }
 
 export function getFeaturedPosts() {
-  return blogPosts.filter((post) => post.featured).slice(0, 6);
+  return blogPosts
+    .filter((post) => post.featured)
+    .slice(0, 6)
+    .map(({ content, ...rest }) => rest as BlogPost);
 }
 
 export function getCategoryWithCounts(type?: BlogPostType) {
