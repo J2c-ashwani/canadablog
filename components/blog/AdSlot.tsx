@@ -19,12 +19,18 @@ export default function AdSlot({
   const publisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || "ca-pub-1200907614877581";
   
   // Use provided adSlot or fall back to environment variables based on format
-  const finalAdSlot = adSlot || (
+  let finalAdSlot = adSlot || (
     adFormat === 'horizontal' ? process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL :
     adFormat === 'vertical' ? process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR :
     adFormat === 'rectangle' ? process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE :
     process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD
   );
+
+  // SANITIZATION: Users frequently save "ca-pub-1234567890-098765432" in their .env
+  // AdSense explicitly requires data-ad-slot to be ONLY the numeric suffix "098765432"
+  if (finalAdSlot && finalAdSlot.includes('-')) {
+    finalAdSlot = finalAdSlot.split('-').pop() || finalAdSlot;
+  }
 
   // Check if this is a placeholder ad slot (contains placeholder patterns)
   const isPlaceholder = finalAdSlot?.includes('XXXXXXXXXX') || 
@@ -32,7 +38,9 @@ export default function AdSlot({
                        finalAdSlot?.includes('ZZZZZZZZZZ') ||
                        finalAdSlot?.includes('AAAAAAAAAA') ||
                        finalAdSlot?.includes('BBBBBBBBBB') ||
-                       finalAdSlot?.includes('CCCCCCCCCC');
+                       finalAdSlot?.includes('CCCCCCCCCC') ||
+                       finalAdSlot === '2345678901' ||
+                       finalAdSlot === '3456789012';
 
   // Enforce a minimum height to prevent layout shift during loading
   const minHeightVal = style.minHeight || (adFormat === 'horizontal' ? '90px' : adFormat === 'vertical' ? '600px' : '250px');
