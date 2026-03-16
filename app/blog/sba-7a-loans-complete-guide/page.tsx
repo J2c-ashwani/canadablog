@@ -935,7 +935,7 @@ export default function SBA7aLoansGuidePage() {
                     Fixed-rate financing for major fixed assets like real estate and
                     heavy equipment. Lower down payments (10%).
                   </p>
-                  <Link href="/blog/sba-504-loans-guide" className="text-blue-700 hover:underline text-sm">
+                  <Link href="/blog/sba-loans-grants-guide" className="text-blue-700 hover:underline text-sm">
                     SBA 504 Guide →
                   </Link>
                 </div>

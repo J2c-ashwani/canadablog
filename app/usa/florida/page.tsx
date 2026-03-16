@@ -509,7 +509,7 @@ export default function FloridaGrantsPage() {
                                         <Link href="/usa/small-business-grants" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> SBA Small Business Grants</Link>
                                         <Link href="/usa/texas" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> Texas Business Grants</Link>
                                         <Link href="/usa/new-york" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> New York Business Grants</Link>
-                                        <Link href="/blog/nsf-sbir-complete-guide" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> NSF SBIR Complete Guide</Link>
+                                        <Link href="/blog/sbir-sttr-complete-guide" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> NSF SBIR Complete Guide</Link>
                                         <Link href="/grant-finder" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> AI Grant Finder Tool</Link>
                                     </div>
                                 </CardContent>

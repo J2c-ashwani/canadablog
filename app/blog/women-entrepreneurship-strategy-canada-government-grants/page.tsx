@@ -732,7 +732,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                         Find regional support for women entrepreneurs in your specific province.
                       </p>
                       <Button variant="outline" className="w-full text-pink-700 border-pink-200 hover:bg-pink-50" asChild>
-                        <Link href="/blog/ontario-business-grants-guide">
+                        <Link href="/blog/ontario-small-business-grants-guide">
                           View Ontario Grants
                         </Link>
                       </Button>
@@ -749,7 +749,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                         Looking to launch? Check our complete guide to Canadian startup grants.
                       </p>
                       <Button variant="outline" className="w-full text-pink-700 border-pink-200 hover:bg-pink-50" asChild>
-                        <Link href="/blog/startup-business-grants-canada-guide">
+                        <Link href="/blog/canada-startup-funding-grants-guide">
                           View Startup Guide
                         </Link>
                       </Button>

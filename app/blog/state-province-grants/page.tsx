@@ -539,7 +539,7 @@ export default function StateProvinceGrantsPage() {
                       <h4 className="font-bold text-xl text-slate-800 mb-2 flex items-center"><Anchor className="mr-2" /> The Blue Economy (Ocean)</h4>
                       <p className="text-sm font-bold text-purple-600 mb-2">Location: Halifax (NS), St. John's (NL), Boston (MA)</p>
                       <p className="text-sm text-gray-600">For underwater robotics, sensors, and sustainable fisheries. The "Ocean Supercluster" (Canada) is a massive funder here.</p>
-                      <Link href="/blog/ocean-tech-grants" className="text-blue-600 text-xs mt-2 block hover:underline">View Ocean Grants</Link>
+                      <Link href="/blog/atlantic-canada-innovation-grants" className="text-blue-600 text-xs mt-2 block hover:underline">View Ocean Grants</Link>
                     </div>
                     <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
                       <h4 className="font-bold text-xl text-slate-800 mb-2 flex items-center"><Zap className="mr-2" /> Clean Energy Transition</h4>
@@ -551,7 +551,7 @@ export default function StateProvinceGrantsPage() {
                       <h4 className="font-bold text-xl text-slate-800 mb-2 flex items-center"><Microscope className="mr-2" /> Life Sciences Corridor</h4>
                       <p className="text-sm font-bold text-purple-600 mb-2">Location: Boston, Toronto, Montreal, San Diego</p>
                       <p className="text-sm text-gray-600">Highest concentration of venture capital and lab space. Grants focus on clinical trials and FDA/Health Canada approvals.</p>
-                      <Link href="/blog/health-tech-grants" className="text-blue-600 text-xs mt-2 block hover:underline">View Health Grants</Link>
+                      <Link href="/blog/healthcare-grants-2026" className="text-blue-600 text-xs mt-2 block hover:underline">View Health Grants</Link>
                     </div>
                   </div>
                 </div>
@@ -675,19 +675,19 @@ export default function StateProvinceGrantsPage() {
                   <h3 className="font-bold text-gray-900 mb-4 text-lg">Regional Guides</h3>
                   <ul className="space-y-4">
                     <li>
-                      <Link href="/blog/ontario-business-grants" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
+                      <Link href="/blog/ontario-government-business-grants" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
                         <MapPin className="w-5 h-5 mr-3 shrink-0 mt-0.5 group-hover:scale-110 transition" />
                         <span><strong>Ontario Grants</strong><br /><span className="text-xs text-gray-500 font-normal">FedDev & Provincial funds</span></span>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/blog/texas-business-incentives" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
+                      <Link href="/blog/texas-business-grants-2026" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
                         <Sun className="w-5 h-5 mr-3 shrink-0 mt-0.5 group-hover:scale-110 transition" />
                         <span><strong>Texas Incentives</strong><br /><span className="text-xs text-gray-500 font-normal">Enterprise Fund details</span></span>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/blog/rural-funding-guide" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
+                      <Link href="/blog/rural-business-development-2026" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
                         <Wheat className="w-5 h-5 mr-3 shrink-0 mt-0.5 group-hover:scale-110 transition" />
                         <span><strong>Rural Business Guide</strong><br /><span className="text-xs text-gray-500 font-normal">USDA & Community Futures</span></span>
                       </Link>
@@ -737,7 +737,7 @@ export default function StateProvinceGrantsPage() {
                   <h3 className="font-bold text-lg text-gray-900 group-hover:text-emerald-700 mb-2">Regional Development Agencies</h3>
                   <p className="text-gray-600 text-sm">Canada's 7 RDAs offering up to $10M in federal regional funding</p>
                 </Link>
-                <Link href="/blog/ontario-business-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 hover:shadow-lg transition-all group">
+                <Link href="/blog/ontario-government-business-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 hover:shadow-lg transition-all group">
                   <h3 className="font-bold text-lg text-gray-900 group-hover:text-emerald-700 mb-2">Ontario Business Grants</h3>
                   <p className="text-gray-600 text-sm">FedDev Ontario and provincial funding programs</p>
                 </Link>

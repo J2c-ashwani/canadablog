@@ -489,7 +489,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </li>
                     </ul>
                     <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/ontario-business-grants-2025">
+                      <Link href="/blog/ontario-government-business-grants">
                         Learn More
                       </Link>
                     </Button>

@@ -104,7 +104,7 @@ export default function AgricultureAgriFoodGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-green-700/30 border-white/30 text-white hover:bg-white/20" asChild>
-                  <Link href="/blog/agriculture-agri-food-canada-government-grants">
+                  <Link href="/blog/canada-agri-food-technology-innovation-grants">
                     Back to Overview
                   </Link>
                 </Button>

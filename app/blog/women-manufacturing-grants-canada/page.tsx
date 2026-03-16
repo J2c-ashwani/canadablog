@@ -2027,7 +2027,7 @@ export default function WomenManufacturingGrantsCanadaPage() {
                   <h3 className="font-bold text-lg text-gray-900 group-hover:text-indigo-700 mb-2">Women in STEM Grants</h3>
                   <p className="text-gray-600 text-sm">Support for women in science and tech</p>
                 </Link>
-                <Link href="/blog/women-business-grants-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-indigo-500 hover:shadow-lg transition-all group">
+                <Link href="/blog/women-entrepreneurship-grants-2026" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-indigo-500 hover:shadow-lg transition-all group">
                   <h3 className="font-bold text-lg text-gray-900 group-hover:text-indigo-700 mb-2">Women Business Grants</h3>
                   <p className="text-gray-600 text-sm">Comprehensive directory of all funding</p>
                 </Link>

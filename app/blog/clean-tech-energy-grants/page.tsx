@@ -563,7 +563,7 @@ export default function CleanTechEnergyGrantsGuide() {
               <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <Link href="/blog/canada-innovation-research-development-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Lightbulb className="w-5 h-5 text-blue-600 mr-3" /><span>R&D Innovation Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/agriculture-agri-food-canada-government-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Factory className="w-5 h-5 text-orange-600 mr-3" /><span>Agricultural Clean Tech</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/canada-agri-food-technology-innovation-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Factory className="w-5 h-5 text-orange-600 mr-3" /><span>Agricultural Clean Tech</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

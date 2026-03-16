@@ -1045,7 +1045,7 @@ export default function WomenExportTradeGrantsCanadaPage() {
                   <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">Manufacturing Grants</h3>
                   <p className="text-gray-600 text-sm">Funding for equipment and productivity</p>
                 </Link>
-                <Link href="/blog/women-business-grants-canada" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
+                <Link href="/blog/women-entrepreneurship-grants-2026" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group">
                   <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">Women Business Grants</h3>
                   <p className="text-gray-600 text-sm">Complete directory of funding for women</p>
                 </Link>

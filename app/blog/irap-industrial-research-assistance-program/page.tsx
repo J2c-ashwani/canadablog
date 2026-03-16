@@ -898,7 +898,7 @@ export default function IRAPGuidePage() {
                     Large-scale R&amp;D projects ($10M+) with significant economic
                     impact potential.
                   </p>
-                  <Link href="/blog/strategic-innovation-fund" className="text-green-700 hover:underline text-sm">
+                  <Link href="/blog/strategic-innovation-fund-canada-guide" className="text-green-700 hover:underline text-sm">
                     SIF Guide →
                   </Link>
                 </div>
@@ -921,7 +921,7 @@ export default function IRAPGuidePage() {
                     federal programs like IRAP.
                   </p>
                   <div className="flex flex-wrap gap-2 mt-2">
-                    <Link href="/blog/ontario-business-grants-2025" className="text-green-700 hover:underline text-sm">Ontario →</Link>
+                    <Link href="/blog/ontario-government-business-grants" className="text-green-700 hover:underline text-sm">Ontario →</Link>
                     <Link href="/blog/bc-business-grants-2026" className="text-green-700 hover:underline text-sm">BC →</Link>
                     <Link href="/blog/alberta-business-grants-2026" className="text-green-700 hover:underline text-sm">Alberta →</Link>
                   </div>

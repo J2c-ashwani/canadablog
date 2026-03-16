@@ -567,7 +567,7 @@ export default function AgrifoodTechGrantsGuidePage() {
                   </h3>
                   <ul className="space-y-3">
                     <li>
-                      <Link href="/blog/agriculture-agri-food-canada-government-grants" className="flex items-center text-green-600 hover:underline">
+                      <Link href="/blog/canada-agri-food-technology-innovation-grants" className="flex items-center text-green-600 hover:underline">
                         AAFC Government Grants <ArrowRight className="w-4 h-4 ml-1" />
                       </Link>
                     </li>
@@ -588,7 +588,7 @@ export default function AgrifoodTechGrantsGuidePage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Related Guides</h2>
               <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/blog/agriculture-agri-food-canada-government-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>AAFC Government Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/canada-agri-food-technology-innovation-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>AAFC Government Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
                 <Link href="/blog/canada-agriculture-agrifood-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Complete Agriculture Guide</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
                 <Link href="/blog/canada-clean-technology-innovation-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>Clean Technology Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
                 <Link href="/canada/business-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><BookOpen className="w-5 h-5 text-blue-600 mr-3" /><span>All Canadian Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>

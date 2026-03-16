@@ -705,7 +705,7 @@ export default function CartierWomensInitiativeCanadaGuidePage() {
                     </div>
                   </div>
                 </Link>
-                <Link href="/blog/startup-grants-canada-guide" className="block group">
+                <Link href="/blog/canada-startup-funding-grants-guide" className="block group">
                   <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
                     <Rocket className="w-8 h-8 text-green-600 mr-4" />
                     <div>

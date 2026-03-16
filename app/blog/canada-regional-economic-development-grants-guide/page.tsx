@@ -694,7 +694,7 @@ export default function CanadaRegionalEconomicDevelopmentGrantsGuidePage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-8 text-gray-900">Related Government Grant Guides</h2>
               <div className="grid md:grid-cols-2 gap-6">
-                <Link href="/blog/ontario-business-grants-guide" className="block group">
+                <Link href="/blog/ontario-small-business-grants-guide" className="block group">
                   <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
                     <MapPin className="w-8 h-8 text-red-600 mr-4" />
                     <div>
@@ -721,7 +721,7 @@ export default function CanadaRegionalEconomicDevelopmentGrantsGuidePage() {
                     </div>
                   </div>
                 </Link>
-                <Link href="/blog/startup-grants-canada-guide" className="block group">
+                <Link href="/blog/canada-startup-funding-grants-guide" className="block group">
                   <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
                     <Briefcase className="w-8 h-8 text-purple-600 mr-4" />
                     <div>

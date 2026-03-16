@@ -81,7 +81,7 @@ export default function AgricultureAgriFoodDownloadThankYouPage() {
                 <p className="text-gray-600 mb-4">Continue exploring Canadian federal agricultural programs:</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button variant="outline" asChild>
-                    <Link href="/blog/agriculture-agri-food-canada-government-grants">
+                    <Link href="/blog/canada-agri-food-technology-innovation-grants">
                       Read Complete AAFC Government Guide
                     </Link>
                   </Button>

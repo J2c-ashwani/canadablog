@@ -683,7 +683,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
                       Discover specialized funding programs for Canadian technology startups.
                     </p>
                     <Button variant="outline" className="w-full text-green-700 border-green-200 hover:bg-green-50" asChild>
-                      <Link href="/blog/canadian-government-grants-tech-startups">
+                      <Link href="/blog/technology-startup-grants-2026">
                         View Tech Funding
                       </Link>
                     </Button>

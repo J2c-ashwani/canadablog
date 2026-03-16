@@ -902,12 +902,12 @@ export default function AtlanticCanadaInnovationGrantsPage() {
                   </h3>
                   <ul className="space-y-3">
                     <li>
-                      <Link href="/blog/nova-scotia-government-business-grants" className="flex items-center text-blue-600 hover:underline">
+                      <Link href="/blog/atlantic-small-business-grants-guide" className="flex items-center text-blue-600 hover:underline">
                         Nova Scotia Business Grants Guide <ArrowRight className="w-4 h-4 ml-1" />
                       </Link>
                     </li>
                     <li>
-                      <Link href="/blog/new-brunswick-government-business-grants" className="flex items-center text-blue-600 hover:underline">
+                      <Link href="/blog/atlantic-small-business-grants-guide" className="flex items-center text-blue-600 hover:underline">
                         New Brunswick Business Grants <ArrowRight className="w-4 h-4 ml-1" />
                       </Link>
                     </li>

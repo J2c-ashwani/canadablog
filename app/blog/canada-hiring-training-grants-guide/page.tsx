@@ -536,7 +536,7 @@ export default function CanadaHiringTrainingGrantsGuide() {
               <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <Link href="/blog/software-saas-startup-grants" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Award className="w-5 h-5 text-blue-600 mr-3" /><span>SaaS & Software Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/small-business-grants-ontario" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><MapPin className="w-5 h-5 text-red-600 mr-3" /><span>Ontario Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/ontario-small-business-grants-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><MapPin className="w-5 h-5 text-red-600 mr-3" /><span>Ontario Small Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

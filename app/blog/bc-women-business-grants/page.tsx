@@ -518,7 +518,7 @@ export default function BCWomenBusinessGrants() {
               <h3 className="text-xl font-bold text-gray-900 mb-4">Related Funding Guides</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <Link href="/blog/women-entrepreneurship-fund-canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Lightbulb className="w-5 h-5 text-blue-600 mr-3" /><span>Federal Women's Funding</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
-                <Link href="/blog/indigenous-business-grants-canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Flower2 className="w-5 h-5 text-rose-600 mr-3" /><span>Indigenous Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
+                <Link href="/blog/indigenous-rural-business-funding-canada" className="flex items-center p-4 bg-white rounded-lg border hover:border-blue-500 transition-all"><Flower2 className="w-5 h-5 text-rose-600 mr-3" /><span>Indigenous Business Grants</span><ExternalLink className="w-4 h-4 text-gray-400 ml-auto" /></Link>
               </div>
             </div>
           </div>

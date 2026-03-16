@@ -694,7 +694,7 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
                         Complete guide to provincial business grants and loans available in Quebec.
                       </p>
                       <Button variant="outline" className="w-full text-blue-700 border-blue-200 hover:bg-blue-50" asChild>
-                        <Link href="/blog/quebec-business-grants-loans-guide">
+                        <Link href="/blog/quebec-small-business-grants-guide">
                           View Quebec Grants
                         </Link>
                       </Button>
@@ -711,7 +711,7 @@ export default function QuebecWomenBusinessGrantsGuidePage() {
                         Find startup funding, loans, and investment for new businesses across Canada.
                       </p>
                       <Button variant="outline" className="w-full text-blue-700 border-blue-200 hover:bg-blue-50" asChild>
-                        <Link href="/blog/startup-business-grants-canada-guide">
+                        <Link href="/blog/canada-startup-funding-grants-guide">
                           View Startup Funding
                         </Link>
                       </Button>

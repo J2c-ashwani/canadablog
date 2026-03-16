@@ -745,7 +745,7 @@ export default function AmberGrantWomenCanadaGuidePage() {
                         Discover startup funding options, loans, and investment opportunities for new Canadian businesses.
                       </p>
                       <Button variant="outline" className="w-full text-amber-700 border-amber-200 hover:bg-amber-50" asChild>
-                        <Link href="/blog/startup-business-grants-canada-guide">
+                        <Link href="/blog/canada-startup-funding-grants-guide">
                           View Startup Funding
                         </Link>
                       </Button>

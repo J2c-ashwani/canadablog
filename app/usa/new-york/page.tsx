@@ -416,7 +416,7 @@ export default function NewYorkGrantsPage() {
                                         <Link href="/usa/federal-grants" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> Federal Grants for NY Businesses</Link>
                                         <Link href="/usa/florida" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> Florida Business Grants</Link>
                                         <Link href="/usa/texas" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> Texas Business Grants</Link>
-                                        <Link href="/blog/nsf-sbir-complete-guide" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> NSF SBIR Complete Guide</Link>
+                                        <Link href="/blog/sbir-sttr-complete-guide" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> NSF SBIR Complete Guide</Link>
                                         <Link href="/grant-finder" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> AI Grant Finder Tool</Link>
                                     </div>
                                 </CardContent>
