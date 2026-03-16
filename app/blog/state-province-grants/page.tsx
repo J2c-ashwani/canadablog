@@ -231,7 +231,7 @@ export default function StateProvinceGrantsPage() {
                   </div>
                 </div>
 
-                <AdSlot adSlot="1122334455" adFormat="horizontal" className="my-10" />
+                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" className="my-10" />
 
                 {/* New Section V4: Top 10 Investment States Deep Dive */}
                 <div id="top-10-states" className="scroll-mt-32 mt-20">
@@ -694,7 +694,7 @@ export default function StateProvinceGrantsPage() {
                     </li>
                   </ul>
                 </div>
-                <AdSlot adSlot="5566778899" adFormat="vertical" style={{ minHeight: '600px' }} />
+                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD!} adFormat="vertical" style={{ minHeight: '600px' }} />
               </aside>
 
             </div>

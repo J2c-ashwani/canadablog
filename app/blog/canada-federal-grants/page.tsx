@@ -203,7 +203,7 @@ export default function CanadaFederalGrantsPage() {
                   </div>
                 </div>
 
-                <AdSlot adSlot="9876543210" adFormat="horizontal" className="my-10" />
+                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" className="my-10" />
 
                 {/* Section 1: The Big Three Agencies */}
                 <div id="big-three" className="scroll-mt-32">
@@ -469,7 +469,7 @@ export default function CanadaFederalGrantsPage() {
                 </div>
 
                 <div className="my-12">
-                  <AdSlot adSlot="1122334455" adFormat="rectangle" style={{ minHeight: '300px' }} />
+                  <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '300px' }} />
                 </div>
 
                 {/* Section 3: The Application Playbook */}
@@ -761,7 +761,7 @@ export default function CanadaFederalGrantsPage() {
                     </li>
                   </ul>
                 </div>
-                <AdSlot adSlot="5544332211" adFormat="vertical" style={{ minHeight: '600px' }} />
+                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD!} adFormat="vertical" style={{ minHeight: '600px' }} />
               </aside>
 
             </div>
