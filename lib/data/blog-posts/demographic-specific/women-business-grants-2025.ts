@@ -207,7 +207,7 @@ export default `
       <div class="bg-gradient-to-r from-purple-50 to-purple-100 border-l-4 border-purple-500 p-6 rounded-r-lg">
       <h3 class="text-xl font-bold text-purple-800 mb-3">💼 Corporate Women Business Grants</h3>
       <div class="mb-4 text-sm text-purple-700">
-        Looking for more specialized funding? Check out our guides on <a href="/blog/minority-business-grants-2025" class="text-purple-600 font-bold hover:underline">Minority Business Grants</a> and <a href="/blog/technology-startup-grants-2025" class="text-purple-600 font-bold hover:underline">Technology Startup Grants</a>.
+        Looking for more specialized funding? Check out our guides on <a href="/blog/minority-business-grants-2026" class="text-purple-600 font-bold hover:underline">Minority Business Grants</a> and <a href="/blog/technology-startup-grants-2026" class="text-purple-600 font-bold hover:underline">Technology Startup Grants</a>.
       </div>
       <div class="grid md:grid-cols-3 gap-4 mb-4">
         <div>

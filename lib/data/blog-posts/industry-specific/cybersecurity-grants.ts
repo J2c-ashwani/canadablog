@@ -5,7 +5,7 @@ export default `
   <h2 class="text-2xl font-bold text-gray-900 mb-4">Who is Eligible for Cybersecurity Grants?</h2>
   <p class="mb-4">Federal cybersecurity grants are primarily awarded through the SBIR/STTR programs. To qualify, you typically need to meet these criteria:</p>
   <ul class="list-disc pl-6 space-y-2 mb-8 text-gray-700">
-    <li><strong>US Ownership:</strong> The company must be majority-owned (51%+) by US citizens or permanent residents. (See also <a href="/blog/minority-business-grants-2025" class="text-blue-600 hover:underline">Minority Business Grants</a> and <a href="/blog/women-business-grants-2025" class="text-blue-600 hover:underline">Women Business Grants</a> for specific opportunities).</li>
+    <li><strong>US Ownership:</strong> The company must be majority-owned (51%+) by US citizens or permanent residents. (See also <a href="/blog/minority-business-grants-2026" class="text-blue-600 hover:underline">Minority Business Grants</a> and <a href="/blog/women-business-grants-2026" class="text-blue-600 hover:underline">Women Business Grants</a> for specific opportunities).</li>
     <li><strong>Small Business Status:</strong> Fewer than 500 employees.</li>
     <li><strong>For-Profit:</strong> Must be a for-profit entity. Non-profits are generally not eligible for SBIR, though they can partner on STTR grants.</li>
     <li><strong>Technical Merit:</strong> You must have a novel technical approach, not just a resell of existing software.</li>
@@ -96,7 +96,7 @@ export default `
       <li>🔒 <strong>Zero Trust Architecture:</strong> Systems that assume no user or device is trusted by default.</li>
       <li>☁️ <strong>Cloud Security:</strong> Protecting multi-cloud environments and containerized applications.</li>
       <li>🤖 <strong>AI for Cyber Defense:</strong> Using machine learning to detect anomalies faster than humans.</li>
-      <li>⚛️ <strong>Post-Quantum Cryptography:</strong> Encryption standards that can withstand attacks from future quantum computers. (See also <a href="/blog/technology-startup-grants-2025" class="underline hover:text-indigo-600">Technology Startup Grants</a> for general tech funding).</li>
+      <li>⚛️ <strong>Post-Quantum Cryptography:</strong> Encryption standards that can withstand attacks from future quantum computers. (See also <a href="/blog/technology-startup-grants-2026" class="underline hover:text-indigo-600">Technology Startup Grants</a> for general tech funding).</li>
       <li>🏭 <strong>OT/ICS Security:</strong> Protecting operational technology (power grids, factories) from digital attacks.</li>
     </ul>
   </div>

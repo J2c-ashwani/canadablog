@@ -121,13 +121,13 @@ const sredTaxPost = `
       <div class="bg-gradient-to-r from-blue-50 to-white p-6 rounded-lg border-l-4 border-blue-400">
         <h3 class="font-bold text-lg text-blue-900 mb-1">Quebec</h3>
         <p class="text-sm text-blue-800 mb-2"><strong>R&D Wage Tax Credit:</strong> ~14% Refundable</p>
-        <p class="text-sm text-gray-600">One of the most generous R&D jurisdictions in North America. <a href="/blog/quebec-business-grants-2025" class="text-blue-600 underline">Read Quebec Guide -></a></p>
+        <p class="text-sm text-gray-600">One of the most generous R&D jurisdictions in North America. <a href="/blog/quebec-business-grants-2026" class="text-blue-600 underline">Read Quebec Guide -></a></p>
       </div>
 
       <div class="bg-gradient-to-r from-red-50 to-white p-6 rounded-lg border-l-4 border-red-600">
         <h3 class="font-bold text-lg text-red-900 mb-1">Alberta</h3>
         <p class="text-sm text-red-800 mb-2"><strong>Innovation Employment Grant (IEG):</strong> Up to 20%</p>
-        <p class="text-sm text-gray-600">Focused on incremental R&D spend growth. <a href="/blog/alberta-business-grants-2025" class="text-red-600 underline">Read Alberta Guide -></a></p>
+        <p class="text-sm text-gray-600">Focused on incremental R&D spend growth. <a href="/blog/alberta-business-grants-2026" class="text-red-600 underline">Read Alberta Guide -></a></p>
       </div>
     </div>
 
