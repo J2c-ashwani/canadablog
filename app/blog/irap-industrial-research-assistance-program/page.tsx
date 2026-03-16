@@ -887,7 +887,7 @@ export default function IRAPGuidePage() {
                     Tax credits for R&amp;D expenditures—35% refundable for CCPCs,
                     15% non-refundable for others.
                   </p>
-                  <Link href="/blog/sred-tax-credits-guide" className="text-green-700 hover:underline text-sm">
+                  <Link href="/blog/sred-tax-credits-2026" className="text-green-700 hover:underline text-sm">
                     SR&amp;ED Guide →
                   </Link>
                 </div>
@@ -922,8 +922,8 @@ export default function IRAPGuidePage() {
                   </p>
                   <div className="flex flex-wrap gap-2 mt-2">
                     <Link href="/blog/ontario-business-grants-2025" className="text-green-700 hover:underline text-sm">Ontario →</Link>
-                    <Link href="/blog/bc-business-grants-2025" className="text-green-700 hover:underline text-sm">BC →</Link>
-                    <Link href="/blog/alberta-business-grants-2025" className="text-green-700 hover:underline text-sm">Alberta →</Link>
+                    <Link href="/blog/bc-business-grants-2026" className="text-green-700 hover:underline text-sm">BC →</Link>
+                    <Link href="/blog/alberta-business-grants-2026" className="text-green-700 hover:underline text-sm">Alberta →</Link>
                   </div>
                 </div>
               </div>
@@ -960,7 +960,7 @@ export default function IRAPGuidePage() {
               <h2 className="text-3xl font-bold mb-6">Related Resources</h2>
 
               <div className="grid md:grid-cols-2 gap-4">
-                <Link href="/blog/sred-tax-credits-guide" className="flex items-center p-4 bg-white rounded-lg border hover:border-green-500 hover:shadow-md transition-all group">
+                <Link href="/blog/sred-tax-credits-2026" className="flex items-center p-4 bg-white rounded-lg border hover:border-green-500 hover:shadow-md transition-all group">
                   <BookOpen className="w-5 h-5 text-green-600 mr-3" />
                   <span className="text-gray-700 group-hover:text-green-600">SR&amp;ED Tax Credits Guide</span>
                   <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />

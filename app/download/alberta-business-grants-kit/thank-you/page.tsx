@@ -81,7 +81,7 @@ export default function AlbertaBusinessGrantsDownloadThankYouPage() {
                 <p className="text-gray-600 mb-4">Continue exploring Alberta provincial business support:</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button variant="outline" asChild>
-                    <Link href="/blog/alberta-business-grants-2025">
+                    <Link href="/blog/alberta-business-grants-2026">
                       Read Complete Alberta Government Guide
                     </Link>
                   </Button>

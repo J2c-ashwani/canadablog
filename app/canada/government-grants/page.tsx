@@ -322,7 +322,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </div>
                     </div>
                     <Button className="w-full bg-purple-600 hover:bg-purple-700" asChild>
-                      <Link href="/blog/regional-development-agencies-funding">
+                      <Link href="/blog/canada-regional-economic-development-grants-guide">
                         Learn About RDA Programs
                       </Link>
                     </Button>
@@ -376,7 +376,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </div>
                     </div>
                     <Button className="w-full bg-emerald-600 hover:bg-emerald-700" asChild>
-                      <Link href="/blog/agriculture-agri-food-canada-grants">
+                      <Link href="/blog/agriculture-grants-2026">
                         Learn About AgriFood Programs
                       </Link>
                     </Button>
@@ -563,7 +563,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </li>
                     </ul>
                     <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/bc-business-grants-2025">
+                      <Link href="/blog/bc-business-grants-2026">
                         Learn More
                       </Link>
                     </Button>
@@ -600,7 +600,7 @@ export default function CanadaGovernmentGrantsPage() {
                       </li>
                     </ul>
                     <Button variant="outline" className="w-full" asChild>
-                      <Link href="/blog/alberta-business-grants-2025">
+                      <Link href="/blog/alberta-business-grants-2026">
                         Learn More
                       </Link>
                     </Button>

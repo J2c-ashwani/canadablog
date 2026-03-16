@@ -495,11 +495,11 @@ export default function CanadaGrantsPage() {
               <h3 className="font-bold text-lg mb-2 group-hover:text-primary">Ontario Government Business Grants</h3>
               <p className="text-gray-600 text-sm">Complete guide to Starter Company Plus, OCASE, and manufacturing grants in Ontario.</p>
             </Link>
-            <Link href="/blog/alberta-business-grants-2025" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
+            <Link href="/blog/alberta-business-grants-2026" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
               <h3 className="font-bold text-lg mb-2 group-hover:text-primary">Alberta Government Business Grants</h3>
               <p className="text-gray-600 text-sm">Alberta Innovates, cleantech grants, and energy sector funding programs.</p>
             </Link>
-            <Link href="/blog/bc-business-grants-2025" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
+            <Link href="/blog/bc-business-grants-2026" className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group">
               <h3 className="font-bold text-lg mb-2 group-hover:text-primary">BC Government Business Grants</h3>
               <p className="text-gray-600 text-sm">Innovate BC, CleanBC, Creative BC, and PacifiCan funding opportunities.</p>
             </Link>

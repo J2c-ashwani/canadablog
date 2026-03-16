@@ -635,7 +635,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                     </div>
                   </div>
                 </Link>
-                <Link href="/blog/bc-business-grants-guide" className="block group">
+                <Link href="/blog/bc-business-grants-2026" className="block group">
                   <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
                     <MapPin className="w-8 h-8 text-blue-600 mr-4" />
                     <div>
@@ -644,7 +644,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                     </div>
                   </div>
                 </Link>
-                <Link href="/blog/alberta-business-grants-guide" className="block group">
+                <Link href="/blog/alberta-business-grants-2026" className="block group">
                   <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
                     <MapPin className="w-8 h-8 text-green-600 mr-4" />
                     <div>

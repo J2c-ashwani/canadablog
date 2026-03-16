@@ -533,7 +533,7 @@ export default function StateProvinceGrantsPage() {
                       <h4 className="font-bold text-xl text-slate-800 mb-2 flex items-center"><Truck className="mr-2" /> Automotive & EV Battery Belt</h4>
                       <p className="text-sm font-bold text-purple-600 mb-2">Location: Michigan, Ohio, Ontario, Kentucky</p>
                       <p className="text-sm text-gray-600">If you make anything related to EVs (batteries, sensors, metals), this is the only place to be. Grants available for "re-tooling" traditional auto plants.</p>
-                      <Link href="/blog/manufacturing-grants" className="text-blue-600 text-xs mt-2 block hover:underline">View MFG Grants</Link>
+                      <Link href="/blog/manufacturing-grants-2026" className="text-blue-600 text-xs mt-2 block hover:underline">View MFG Grants</Link>
                     </div>
                     <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
                       <h4 className="font-bold text-xl text-slate-800 mb-2 flex items-center"><Anchor className="mr-2" /> The Blue Economy (Ocean)</h4>

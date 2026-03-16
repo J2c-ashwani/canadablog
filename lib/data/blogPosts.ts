@@ -567,7 +567,8 @@ export function getExpertInsightPosts() {
 export function getBlogPostBySlug(slug: string) {
   if (!slug) return null;
 
-  return blogPosts.find((post) => post?.slug === slug) ?? null;
+  // Defensive guard: ensure we never throw if a post entry is unexpectedly undefined.
+  return blogPosts.find((post) => post && post.slug === slug) ?? null;
 }
 
 export function getFeaturedPosts() {

@@ -2323,3 +2323,40 @@ Removing invalid blog post:
  ✓ Compiled in 8.2s (502 modules)
  ✓ Compiled in 2.6s (502 modules)
  ✓ Compiled in 4.7s (502 modules)
+ ○ Compiling /blog/[slug] ...
+ ✓ Compiled /blog/[slug] in 6.4s (1431 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/ashwanikumar/Downloads/canadablog/.next/server/middleware-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/ashwanikumar/Downloads/canadablog/.next/server/middleware-manifest.json'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 783ms (1510 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/ashwanikumar/Downloads/canadablog/.next/server/pages/_document.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/ashwanikumar/Downloads/canadablog/.next/server/pages/_document.js'
+}
+[Error: ENOENT: no such file or directory, open '/Users/ashwanikumar/Downloads/canadablog/.next/server/middleware-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/ashwanikumar/Downloads/canadablog/.next/server/middleware-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/ashwanikumar/Downloads/canadablog/.next/server/pages/_document.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/ashwanikumar/Downloads/canadablog/.next/server/pages/_document.js'
+}
+[Error: ENOENT: no such file or directory, open '/Users/ashwanikumar/Downloads/canadablog/.next/routes-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/ashwanikumar/Downloads/canadablog/.next/routes-manifest.json'
+}
+ GET /blog/agriculture-agri-food-canada-grants 500 in 7789ms
+ GET /blog/agriculture-agri-food-canada-grants 500 in 51ms
+[?25h

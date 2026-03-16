@@ -693,7 +693,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                                     </div>
                                     <ul className="divide-y divide-gray-100">
                                         <li>
-                                            <Link href="/blog/top-10-no-equity-grants-black-female-entrepreneurs-2026" className="block p-4 hover:bg-gray-50 transition-colors group">
+                                            <Link href="/blog/top-10-no-equity-grants-black-female-entrepreneurs" className="block p-4 hover:bg-gray-50 transition-colors group">
                                                 <h4 className="text-gray-900 font-semibold group-hover:text-blue-600 text-sm leading-tight mb-2">
                                                     Top 10 No-Equity Grants for Black Female Entrepreneurs in 2026
                                                 </h4>

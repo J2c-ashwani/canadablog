@@ -430,7 +430,7 @@ export default function CanadianSmallBusinessGrants() {
                       </div>
                     </div>
                     <Button className="w-full bg-purple-600 hover:bg-purple-700" asChild>
-                      <Link href="/blog/regional-development-agencies-funding">
+                      <Link href="/blog/canada-regional-economic-development-grants-guide">
                         Learn About RDA Programs
                       </Link>
                     </Button>

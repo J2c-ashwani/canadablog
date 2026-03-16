@@ -1092,7 +1092,7 @@ export default function WomenSocialEnterpriseGrantsCanadaPage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Social Impact Guides</h2>
               <div className="grid md:grid-cols-2 gap-6">
-                <Link href="/blog/black-women-business-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-purple-500 hover:shadow-lg transition-all group">
+                <Link href="/blog/bc-women-business-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-purple-500 hover:shadow-lg transition-all group">
                   <h3 className="font-bold text-lg text-gray-900 group-hover:text-purple-700 mb-2">Black Women Grants</h3>
                   <p className="text-gray-600 text-sm">Funding for Black women social entrepreneurs</p>
                 </Link>
