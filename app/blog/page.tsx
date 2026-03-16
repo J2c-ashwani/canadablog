@@ -149,13 +149,13 @@ export default async function BlogPage({
                   <div key={`${post.id || post.slug}-${index}`}>
                     <BlogCard post={post} />
 
-                    {/* In-content Ad after every 3rd post */}
+                    {/* In-content horizontal banner ad after every 3rd post */}
                     {(index + 1) % 3 === 0 && (
-                      <div className="mt-6">
+                      <div className="col-span-full mt-6 w-full flex justify-center">
                         <AdSlot
-                          adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD || ""}
-                          adFormat="rectangle"
-                          style={{ minHeight: '250px' }}
+                          adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL || ""}
+                          adFormat="horizontal"
+                          style={{ minHeight: '120px', width: '100%' }}
                         />
                       </div>
                     )}

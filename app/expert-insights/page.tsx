@@ -167,7 +167,7 @@ export default async function ExpertInsightsPage({
                                         {(index + 1) % 3 === 0 && (
                                             <div className="col-span-full my-6 w-full flex justify-center">
                                                 <AdSlot
-                                                    adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_AD || ""}
+                                                    adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL || ""}
                                                     adFormat="horizontal"
                                                     style={{ minHeight: '120px', width: '100%' }}
                                                 />
