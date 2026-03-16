@@ -1,4 +1,6 @@
 // lib/data/blogPosts.ts
+import fs from 'fs';
+import path from 'path';
 import metadataObj from './blogMetadata.json';
 
 export type BlogPostType = 'grant-news' | 'expert-insight';
@@ -110,15 +112,15 @@ export function getBlogPostBySlug(slug: string) {
 }
 
 export async function getBlogPostContent(slug: string): Promise<string | null> {
-  const relPath = slugToPath[slug];
-  if (!relPath) return null;
-
   try {
-    // Dynamic Webpack import for code-splitting the massive markdown
-    const dynamicModule = await import(`${relPath}`);
-    return dynamicModule.default.content || null;
+    const filePath = path.join(process.cwd(), 'lib/data/blog-content', `${slug}.json`);
+    if (!fs.existsSync(filePath)) return null;
+    
+    const fileData = fs.readFileSync(filePath, 'utf8');
+    const parsed = JSON.parse(fileData);
+    return parsed.content || null;
   } catch (err) {
-    console.error(`Error loading dynamic module for slug ${slug}:`, err);
+    console.error(`Error reading content JSON for slug ${slug}:`, err);
     return null;
   }
 }

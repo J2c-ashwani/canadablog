@@ -16,6 +16,11 @@ async function generateMetadata() {
   const metadata = [];
   const slugToPath = {};
 
+  const contentDir = path.join(__dirname, '../lib/data/blog-content');
+  if (!fs.existsSync(contentDir)) {
+    fs.mkdirSync(contentDir, { recursive: true });
+  }
+
   function walk(dir) {
     const files = fs.readdirSync(dir);
     for (const file of files) {
@@ -44,6 +49,10 @@ async function generateMetadata() {
               featured: post.featured,
               type: post.type
             });
+            
+            // Decouple full content to raw JSON
+            const contentFile = path.join(contentDir, `${post.slug}.json`);
+            fs.writeFileSync(contentFile, JSON.stringify({ content: post.content || "" }));
             
             slugToPath[post.slug] = './' + relativePath.replace(/\\/g, '/');
           }
