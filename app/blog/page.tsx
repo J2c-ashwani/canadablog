@@ -73,11 +73,12 @@ export default async function BlogPage({
 }: {
   searchParams: Promise<{ category?: string; page?: string }>
 }) {
-  const resolvedParams = await searchParams;
-  const allPosts = getGrantNewsPosts();
-  const selectedCategory = resolvedParams.category;
-  const currentPage = parseInt(resolvedParams.page || '1');
-  const postsPerPage = 9;
+  try {
+    const resolvedParams = await searchParams;
+    const allPosts = getGrantNewsPosts();
+    const selectedCategory = resolvedParams?.category;
+    const currentPage = parseInt(resolvedParams?.page || '1');
+    const postsPerPage = 9;
 
   // Filter posts by category if selected
   const filteredPosts = selectedCategory
@@ -211,4 +212,13 @@ export default async function BlogPage({
       <Footer />
     </div>
   );
+  } catch (err: any) {
+    return (
+      <div style={{ padding: '2rem', background: '#fee', color: '#900', fontFamily: 'monospace' }}>
+        <h1>Vercel Live 500 Error Caught!</h1>
+        <p><b>Message:</b> {err?.message}</p>
+        <pre>{err?.stack}</pre>
+      </div>
+    );
+  }
 }
