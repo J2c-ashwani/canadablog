@@ -148,7 +148,7 @@ export async function generateStaticParams() {
     }));
 }
 
-// Generate highly targeted metadata
+// Generate highly targeted metadata with long-tail SEO/AEO/GEO keywords
 export async function generateMetadata({ params }: { params: { province: string, city: string, industry: string } }): Promise<Metadata> {
     const page = getPseoPage(params.province, params.city, params.industry);
 
@@ -164,12 +164,49 @@ export async function generateMetadata({ params }: { params: { province: string,
         };
     }
 
-    const title = `${page.industryName} Grants in ${page.cityName}, ${page.provinceName} [2026] — $500K+ Available`;
-    const description = `How much can a ${page.industryName} business in ${page.cityName} get? From $15K CDAP grants to $500K+ IRAP funding — discover every active program for ${page.cityName} businesses in 2026.`;
+    // Long-tail, intent-rich title — rotates pattern per industry for diversity
+    const titlePatterns: Record<string, string> = {
+        technology: `Best ${page.industryName} Grants in ${page.cityName}, ${page.provinceName} (2026) | How to Apply for IRAP, CDAP & SR&ED`,
+        agriculture: `How to Get Agriculture Grants in ${page.cityName}, ${page.provinceName} [2026] | AgriInnovate, CAP & AAFC Funding`,
+        manufacturing: `${page.cityName} Manufacturing Grants 2026 — IRAP vs SIF | Best ${page.provinceName} Funding Programs`,
+        healthcare: `Healthcare & MedTech Grants in ${page.cityName}, ${page.provinceName} (2026) | CIHR, IRAP & BDC Funding Guide`,
+        'clean-energy': `Clean Tech Grants Near ${page.cityName}, ${page.provinceName} [2026] | SDTC, NRCan & Green Energy Funding`,
+        'women-entrepreneurs': `Best Grants for Women Entrepreneurs in ${page.cityName}, ${page.provinceName} (2026) | WES, BDC & FCC Programs`,
+    };
+    const title = titlePatterns[page.industrySlug] || `${page.industryName} Grants in ${page.cityName}, ${page.provinceName} [2026] — $500K+ Available`;
+
+    // Unique, intent-rich meta description per industry — not a generic template
+    const descPatterns: Record<string, string> = {
+        technology: `How to apply for technology grants in ${page.cityName}? Compare IRAP ($500K), CDAP ($15K), and SR&ED tax credits for ${page.provinceName} startups. Step-by-step 2026 guide with eligibility checker, real dollar amounts, and application deadlines.`,
+        agriculture: `${page.cityName} agriculture grants for 2026: AgriInnovate ($10M), CAP ($25K), and AAFC programs. Find out which ${page.provinceName} farming grants you qualify for — free eligibility check, real timelines, and stacking strategies.`,
+        manufacturing: `Compare the best manufacturing grants in ${page.cityName}: SIF vs IRAP vs Skills Fund. ${page.provinceName} businesses can stack federal + provincial funding. 2026 guide with amounts, deadlines, and application tips.`,
+        healthcare: `Healthcare grants in ${page.cityName}: CIHR ($500K), IRAP Health Innovation ($500K), and BDC loans ($15M). ${page.provinceName} medtech startups — check eligibility, compare programs, and apply for 2026 funding.`,
+        'clean-energy': `Clean energy funding near ${page.cityName}: SDTC ($3M), NRCan ($5M), and 30% clean tech tax credits. ${page.provinceName} green businesses — 2026 guide to federal vs provincial grants, stacking strategies, and fast-track applications.`,
+        'women-entrepreneurs': `Government grants for women entrepreneurs in ${page.cityName}: WES ($60K), BDC loans ($100K), Futurpreneur ($60K). Best ${page.provinceName} programs for women-led startups in 2026 — eligibility, deadlines, and how to apply.`,
+    };
+    const description = descPatterns[page.industrySlug] || `How much can a ${page.industryName} business in ${page.cityName} get? From $15K CDAP grants to $500K+ IRAP funding — discover every active program for ${page.cityName} businesses in 2026.`;
+
+    // Long-tail + geo-targeted + AEO keywords
+    const baseKeywords = [
+        `${page.industryName.toLowerCase()} grants ${page.cityName}`,
+        `government grants ${page.cityName} ${page.provinceName}`,
+        `how to apply for grants in ${page.cityName}`,
+        `best grants for ${page.industryName.toLowerCase()} ${page.provinceName}`,
+        `${page.cityName} business funding 2026`,
+        `IRAP grants ${page.provinceName}`,
+        `CDAP grant ${page.cityName}`,
+        `SR&ED tax credits ${page.provinceName}`,
+        `federal vs provincial grants ${page.provinceName}`,
+        `small business grants near ${page.cityName}`,
+        `non-repayable grants ${page.cityName} ${page.provinceName}`,
+        `${page.industryName.toLowerCase()} startup funding Canada`,
+        `government funding ${page.industryName.toLowerCase()} ${page.provinceName} 2026`,
+    ];
 
     return {
         title,
         description,
+        keywords: baseKeywords.join(', '),
         alternates: {
             canonical: `https://www.fsidigital.ca/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`,
         },
