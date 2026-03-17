@@ -12,6 +12,7 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AdSlot from '@/components/blog/AdSlot';
 import { INDUSTRY_DEEP_DIVES } from '@/lib/pseo-content';
 
 // --- Industry-specific, data-rich short answers ---
@@ -246,6 +247,10 @@ export default function PseoLandingPage({ params }: { params: { province: string
     return (
         <div className="min-h-screen bg-white">
             <Header />
+            {/* Header Ad */}
+            <div className="container mx-auto px-4 py-4">
+              <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+            </div>
             <div className="bg-gray-50/50">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -370,6 +375,11 @@ export default function PseoLandingPage({ params }: { params: { province: string
                                         />
                                     </div>
 
+                                    {/* In-Content Horizontal Ad */}
+                                    <div className="my-8">
+                                        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+                                    </div>
+
                                     {/* Capital Stacking */}
                                     <div id="capital-stacking" className="bg-gradient-to-br from-green-50 to-blue-50 border border-green-200 rounded-xl p-10 mt-12 shadow-sm">
                                         <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
@@ -439,6 +449,10 @@ export default function PseoLandingPage({ params }: { params: { province: string
                     <div className="lg:col-span-5 relative" id="calculator">
                         <div className="lg:sticky lg:top-24 mt-8 lg:mt-0">
                             <GrantCalculator />
+                            {/* Sidebar Ad below Calculator */}
+                            <div className="mt-8">
+                                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD!} adFormat="vertical" style={{ minHeight: '600px' }} />
+                            </div>
                         </div>
                     </div>
 
@@ -464,6 +478,10 @@ export default function PseoLandingPage({ params }: { params: { province: string
                     </div>
                 </div>
             </section>
+            </div>
+            {/* Bottom Ad */}
+            <div className="container mx-auto px-4 py-4">
+              <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
             </div>
             <Footer />
         </div>
