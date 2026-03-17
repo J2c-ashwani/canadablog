@@ -11,6 +11,7 @@ import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "BC Small Business Grants 2026 | Rebates & Innovate BC Funding",
@@ -70,6 +71,10 @@ export default function BCSmallBusinessGrantsGuide() {
   return (
     <>
       <Header />
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -115,6 +120,12 @@ export default function BCSmallBusinessGrantsGuide() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
         <section className="py-4">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -499,7 +510,11 @@ export default function BCSmallBusinessGrantsGuide() {
           </div>
         </section>
 
-        <Footer />
+        {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
+      </div>
+      <Footer />
       </div >
     </>
   )

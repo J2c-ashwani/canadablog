@@ -17,6 +17,7 @@ import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "Massachusetts Tech Startup Grants 2026-2027 | $500K SBIR START, $350K MassCEC InnovateMass, Life Sciences Center Biotech Funding Programs",
@@ -70,6 +71,10 @@ export default function MassachusettsTechProgramsPage() {
   return (
     <>
       <Header />
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-red-700 to-blue-900 text-white py-16">
@@ -113,6 +118,12 @@ export default function MassachusettsTechProgramsPage() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
         <section className="py-4">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -834,6 +845,10 @@ export default function MassachusettsTechProgramsPage() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
 
