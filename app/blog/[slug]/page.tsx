@@ -61,7 +61,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   // Site-Wide Enrichment Logic:
   // Dynamically INDEX posts only if they have been enriched with High Value content stats/tips.
-  const isEnriched = !!(fullPost.metrics || fullPost.expertTip);
+  const richData = await getBlogPostRichData(slug);
+  const isEnriched = !!(richData.metrics || richData.expertTip);
 
   return {
     ...generateSEOMetadata({ ...post, content: '' }),

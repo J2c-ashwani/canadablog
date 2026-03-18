@@ -860,7 +860,7 @@ const post: BlogPost = {
         answer: "Yes, you must be a for-profit legal entity (corporation, co-operative, or partnership) to apply. Sole proprietorships are typically not eligible."
       }
     ],
-    shortAnswer: "Yes — 🌾 Canada's $180M Agricultural Innovation Revolution: Complete AgriInnovate Guide 🏆 Top Agricultural Innovation Provinces ... Funding available: up to $180M.",
+    shortAnswer: "In 2026, the primary opportunity is the $180M AgriInnovate Program. It offers up to $5M per project (50% cost-sharing for corporations) or up to $10M (60% cost-sharing for non-profits) to fund commercialization and adoption of innovative agricultural technologies.",
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",

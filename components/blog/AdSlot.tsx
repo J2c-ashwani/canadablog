@@ -41,8 +41,21 @@ export default function AdSlot({
                        finalAdSlot?.includes('BBBBBBBBBB') ||
                        finalAdSlot?.includes('CCCCCCCCCC');
 
-  // If no valid ad slot, render nothing — don't show empty boxes
-  if (isPlaceholder) return null;
+  // If no valid ad slot in production, render nothing
+  if (isPlaceholder && process.env.NODE_ENV === 'production') return null;
+
+  // Render a visible placeholder box for development, or if missing in dev
+  if (isPlaceholder || process.env.NODE_ENV === 'development') {
+    const minHeightVal = style.minHeight || (adFormat === 'horizontal' ? '90px' : adFormat === 'vertical' ? '600px' : '250px');
+    return (
+      <div 
+        className={`bg-stone-100 flex items-center justify-center text-stone-400 text-sm border border-stone-200 border-dashed rounded-md ${className}`}
+        style={{ width: '100%', minHeight: minHeightVal, ...style }}
+      >
+        <span>Ad Space ({adFormat})</span>
+      </div>
+    );
+  }
 
   // Enforce a minimum height to prevent layout shift during loading
   const minHeightVal = style.minHeight || (adFormat === 'horizontal' ? '90px' : adFormat === 'vertical' ? '600px' : '250px');
