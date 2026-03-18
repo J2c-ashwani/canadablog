@@ -51,8 +51,9 @@ export default function AdSlot({
       <div 
         className={`bg-stone-100 flex items-center justify-center text-stone-400 text-sm border border-stone-200 border-dashed rounded-md ${className}`}
         style={{ width: '100%', minHeight: minHeightVal, ...style }}
+        suppressHydrationWarning
       >
-        <span>Ad Space ({adFormat})</span>
+        <span suppressHydrationWarning>Ad Space ({adFormat})</span>
       </div>
     );
   }

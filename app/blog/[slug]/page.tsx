@@ -133,21 +133,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       
   // Inject Ad after paragraph 2
       if (pCount === 2 && !isLast) {
-        result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key={`chunk-${idx}`} />);
+        result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key={`chunk-${idx}`} suppressHydrationWarning />);
         result.push(<div className="my-10 not-prose flex justify-center w-full" key="ad-p2"><AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_BLOG_PARAGRAPH_2!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} /></div>);
         currentChunk = "";
       }
       
       // Inject Ad after paragraph 7 for longer content
       if (pCount === 7 && !isLast) {
-        result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key={`chunk-${idx}`} />);
+        result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key={`chunk-${idx}`} suppressHydrationWarning />);
         result.push(<div className="my-10 not-prose flex justify-center w-full" key="ad-p7"><AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_BLOG_PARAGRAPH_7!} adFormat="rectangle" style={{ minHeight: '250px', width: '100%' }} /></div>);
         currentChunk = "";
       }
     });
     
     if (currentChunk) {
-      result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key="chunk-final" />);
+      result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key="chunk-final" suppressHydrationWarning />);
     }
     
     return { nodes: result, totalParagraphs: pCount };
