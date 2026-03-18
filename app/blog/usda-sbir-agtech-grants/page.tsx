@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "USDA SBIR AgTech Grants 2026-2027 | $125K Phase I, $575K Phase II Agriculture & Food Tech Funding",
   description: "Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups. Phase I up to $125K, Phase II up to $575K for precision farming, food safety, sustainable agriculture innovation.",
-  keywords: "USDA SBIR grants 2026, AgTech grants, precision farming funding, food tech SBIR, sustainable agriculture grants, USDA innovation grants",
+  keywords: "USDA SBIR grants 2026, AgTech grants, precision farming funding, food tech SBIR, sustainable agriculture grants, USDA innovation grants, how to apply for SBIR grants 2026, SBIR eligibility requirements, SBIR vs USDA comparison, how to apply for usda sbir agtech grants, usda sbir agtech grants eligibility 2026, step by step usda sbir agtech grants application guide, best usda sbir agtech grants for small business USA, am I eligible for usda sbir agtech grants, usda sbir agtech grants deadline 2026",
   openGraph: {
     title: "USDA SBIR Grants 2026 | $125K-$575K AgTech Funding",
     description: "Complete guide to USDA SBIR/STTR grants for agriculture and food tech startups.",

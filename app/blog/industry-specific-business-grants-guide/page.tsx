@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Industry-Specific Business Grants Guide 2026 | Sector-Focused Funding Programs",
   description: "Complete guide to industry-specific business grants. Find targeted funding for manufacturing, healthcare, technology, agriculture, clean energy, and specialized sectors.",
-  keywords: "industry specific grants, sector grants, manufacturing grants, healthcare grants, technology grants, agriculture grants, clean energy grants",
+  keywords: "industry specific grants, sector grants, manufacturing grants, healthcare grants, technology grants, agriculture grants, clean energy grants, how to apply for industry specific business grants guide, industry specific business grants guide eligibility 2026, step by step industry specific business grants guide application guide, best industry specific business grants guide for small business Canada, am I eligible for industry specific business grants guide, industry specific business grants guide deadline 2026",
 }
 
 export default function IndustrySpecificBusinessGrantsGuide() {

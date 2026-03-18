@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "EDC Women in Trade Export Financing 2026 | Equity Capital & Export Support for Women Exporters",
   description: "Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support from Export Development Canada for women-owned businesses.",
-  keywords: "EDC Women in Trade, export financing women, equity capital women exporters, international trade financing, EDC Inclusive Trade Investments",
+  keywords: "EDC Women in Trade, export financing women, equity capital women exporters, international trade financing, EDC Inclusive Trade Investments, how to apply for EDC grants 2026, EDC eligibility requirements, how to apply for edc women trade export financing, edc women trade export financing eligibility 2026, step by step edc women trade export financing application guide, best edc women trade export financing for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for edc women trade export financing, edc women trade export financing deadline 2026",
   openGraph: {
     title: "EDC Women in Trade Export Financing 2026 | Equity Capital for Women Exporters",
     description: "Comprehensive export financing and equity capital for women-owned businesses targeting international markets through Export Development Canada.",

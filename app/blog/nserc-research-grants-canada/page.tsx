@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "NSERC Research Grants Canada 2026 | Natural Sciences & Engineering Funding Guide",
   description: "Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. University-industry partnerships and technology transfer funding.",
-  keywords: "NSERC grants, Idea to Innovation grants, NSERC I2I, university research funding Canada, technology transfer grants, NSERC 2026",
+  keywords: "NSERC grants, Idea to Innovation grants, NSERC I2I, university research funding Canada, technology transfer grants, NSERC 2026, how to apply for NSERC grants 2026, NSERC eligibility requirements, how to apply for nserc research grants canada, nserc research grants canada eligibility 2026, step by step nserc research grants canada application guide, best nserc research grants canada for small business Canada, am I eligible for nserc research grants canada, nserc research grants canada deadline 2026",
   openGraph: {
     title: "NSERC Research Grants Canada 2026 | Natural Sciences & Engineering Funding",
     description: "Complete guide to NSERC research funding with Idea to Innovation grants, university-industry partnerships, and technology commercialization support.",

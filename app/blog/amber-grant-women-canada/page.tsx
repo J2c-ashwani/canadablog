@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Amber Grant for Women Canada 2026 | Monthly $10K Grants + $25K Annual Award",
   description: "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Simple application, rolling deadlines, and support for Canadian women entrepreneurs.",
-  keywords: "Amber Grant Canada, women business grants monthly, WomensNet grants, $10000 women grants, Canadian women entrepreneurs",
+  keywords: "Amber Grant Canada, women business grants monthly, WomensNet grants, $10000 women grants, Canadian women entrepreneurs, how to apply for amber grant women canada, amber grant women canada eligibility 2026, step by step amber grant women canada application guide, best amber grant women canada for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for amber grant women canada, amber grant women canada deadline 2026",
   openGraph: {
     title: "Amber Grant for Women Canada 2026 | Monthly $10K + $25K Annual",
     description: "Monthly $10,000 grants and $25,000 annual award for Canadian women entrepreneurs. Simple application with rolling monthly deadlines.",

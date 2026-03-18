@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Scotiabank Women Initiative 2026 | $3B Capital, Free Advisory & Business Education",
   description: "Complete guide to Scotiabank Women Initiative for women entrepreneurs. Access $3 billion in capital commitment, free specialized advisory services, business education from partner institutions like Rotman and Ivey, plus networking with 10,000+ women business owners.",
-  keywords: "Scotiabank Women Initiative 2026, $3 billion women entrepreneur funding, Scotiabank women business loans, women entrepreneur advisory services Canada, women business support programs, Scotiabank small business women, free business education women entrepreneurs",
+  keywords: "Scotiabank Women Initiative 2026, $3 billion women entrepreneur funding, Scotiabank women business loans, women entrepreneur advisory services Canada, women business support programs, Scotiabank small business women, free business education women entrepreneurs, how to apply for scotiabank women initiative, scotiabank women initiative eligibility 2026, step by step scotiabank women initiative application guide, best scotiabank women initiative for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for scotiabank women initiative, scotiabank women initiative deadline 2026",
   openGraph: {
     title: "Scotiabank Women Initiative 2026 | $3B Capital + Free Advisory",
     description: "Access $3B in capital, free advisory services, business education from Rotman and Ivey, and networking with 10,000+ women entrepreneurs.",

@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Quebec Innovation Grants & Tax Credits 2026 | 30% CRIC R&D Tax Credit | $2.5B+ Funding",
   description: "Complete guide to Quebec innovation grants and tax credits. Access $2.5B+ through 30% Quebec R&D Tax Credit (CRIC), Investissement Québec, PRIMA Quebec, and aerospace, gaming, biotech programs.",
-  keywords: "Quebec innovation grants, CRIC tax credit Quebec, Quebec R&D tax credit 30%, Investissement Quebec funding, PRIMA Quebec, aerospace grants Quebec, gaming VFX Quebec, biotech Quebec grants",
+  keywords: "Quebec innovation grants, CRIC tax credit Quebec, Quebec R&D tax credit 30%, Investissement Quebec funding, PRIMA Quebec, aerospace grants Quebec, gaming VFX Quebec, biotech Quebec grants, how to apply for quebec innovation grants, quebec innovation grants eligibility 2026, step by step quebec innovation grants application guide, best quebec innovation grants for small business Canada, am I eligible for quebec innovation grants, quebec innovation grants deadline 2026",
   openGraph: {
     title: "Quebec Innovation Grants & Tax Credits 2026 | $2.5B+ CRIC & R&D Support",
     description: "Access $2.5B+ in Quebec innovation funding. Complete guide to 30% CRIC, Investissement Québec, and francophone innovation programs.",

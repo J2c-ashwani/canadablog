@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Canada Digital & AI Innovation Grants 2026 | $850M+ Funding | Scale AI & CDAP",
   description: "Complete guide to Canadian digital and AI innovation grants. Access $850M+ funding through Scale AI, CDAP, AI research initiatives, and 25+ digital transformation programs.",
-  keywords: "Canada AI grants, digital transformation funding Canada, Scale AI supercluster, CDAP digital adoption, AI research funding, software innovation grants Canada",
+  keywords: "Canada AI grants, digital transformation funding Canada, Scale AI supercluster, CDAP digital adoption, AI research funding, software innovation grants Canada, how to apply for CDAP grants 2026, CDAP eligibility requirements, how to apply for canada digital ai innovation grants, canada digital ai innovation grants eligibility 2026, step by step canada digital ai innovation grants application guide, best canada digital ai innovation grants for small business Canada, am I eligible for canada digital ai innovation grants, canada digital ai innovation grants deadline 2026",
   openGraph: {
     title: "Canada Digital & AI Innovation Grants 2026 | $850M+ AI Funding",
     description: "Access $850M+ in digital and AI funding. Complete guide to Scale AI, CDAP, and 25+ AI innovation grants.",

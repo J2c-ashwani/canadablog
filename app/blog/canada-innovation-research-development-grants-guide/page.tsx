@@ -16,7 +16,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Canada R&D Grants 2026 | SR&ED & IRAP Funding Guide",
   description: "Complete 2026 guide to Canadian R&D funding. Major SR&ED update (limit doubled to $6M), NRC IRAP grants, and how to stack funding to cover 80% of dev & research costs.",
-  keywords: "SR&ED tax credit 2026, NRC IRAP grants, Canada innovation funding, R&D grants canada, SRED refund rates, research and development tax credits",
+  keywords: "SR&ED tax credit 2026, NRC IRAP grants, Canada innovation funding, R&D grants canada, SRED refund rates, research and development tax credits, how to apply for IRAP grants 2026, IRAP eligibility requirements, IRAP vs SR&ED comparison, how to apply for canada innovation research development grants guide, canada innovation research development grants guide eligibility 2026, step by step canada innovation research development grants guide application guide, best canada innovation research development grants guide for small business Canada, am I eligible for canada innovation research development grants guide, canada innovation research development grants guide deadline 2026",
 }
 
 export default function CanadaInnovationGrantsGuide() {

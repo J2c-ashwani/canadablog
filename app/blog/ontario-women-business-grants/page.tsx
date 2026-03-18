@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Ontario Women Business Grants 2026 | $50k Loans & Funding",
   description: "Complete 2026 guide to funding for women entrepreneurs in Ontario. Learn about PARO Peer Circles, the Women Entrepreneurship Loan Fund (WELF), and private grants from Visa and Amex.",
-  keywords: "Ontario women business grants, women entrepreneur funding Canada, PARO Centre for Women's Enterprise, Women Entrepreneurship Loan Fund, WELF loan, Microlending for women",
+  keywords: "Ontario women business grants, women entrepreneur funding Canada, PARO Centre for Women's Enterprise, Women Entrepreneurship Loan Fund, WELF loan, Microlending for women, how to apply for ontario women business grants, ontario women business grants eligibility 2026, step by step ontario women business grants application guide, best ontario women business grants for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for ontario women business grants, ontario women business grants deadline 2026",
 }
 
 export default function OntarioWomenBusinessGrants() {

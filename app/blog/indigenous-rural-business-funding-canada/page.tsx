@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Indigenous & Rural Business Funding Canada 2026 | $500K+ Aboriginal Business Grants & Rural Development",
   description: "Complete guide to Indigenous business grants and rural business funding in Canada. Access Aboriginal Entrepreneurship Program funding, NACCA loans, rural development grants, and regional business support across all Canadian provinces.",
-  keywords: "Indigenous business grants Canada, Aboriginal business funding, NACCA business loans, rural business grants Canada, First Nations business funding, Métis entrepreneur grants, Inuit business support, rural development funding Canada, regional business grants, Indigenous entrepreneur program Canada",
+  keywords: "Indigenous business grants Canada, Aboriginal business funding, NACCA business loans, rural business grants Canada, First Nations business funding, Métis entrepreneur grants, Inuit business support, rural development funding Canada, regional business grants, Indigenous entrepreneur program Canada, how to apply for indigenous rural business funding canada, indigenous rural business funding canada eligibility 2026, step by step indigenous rural business funding canada application guide, best indigenous rural business funding canada for small business Canada, am I eligible for indigenous rural business funding canada, indigenous rural business funding canada deadline 2026",
   openGraph: {
     title: "Indigenous & Rural Business Funding Canada 2026 | $500K+ Aboriginal & Rural Business Grants",
     description: "Access $500K+ in Canadian funding for Indigenous and rural businesses. Complete guide to Aboriginal business grants, NACCA loans, and rural development programs.",

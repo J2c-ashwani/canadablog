@@ -20,7 +20,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Alberta Small Business Grants 2026 | $980M+ Complete Funding Guide",
   description: "Complete guide to Alberta small business grants and funding programs. Access Alberta Innovates, Technology Innovation Fund, Rural Economic Development, and Energy Diversification grants. Expert tips for successful applications.",
-  keywords: "Alberta small business grants, Alberta business funding, Alberta Innovates grants, Technology Innovation Fund Alberta, Rural Economic Development Alberta, Energy Diversification Program, Calgary business grants, Edmonton business grants",
+  keywords: "Alberta small business grants, Alberta business funding, Alberta Innovates grants, Technology Innovation Fund Alberta, Rural Economic Development Alberta, Energy Diversification Program, Calgary business grants, Edmonton business grants, how to apply for alberta small business grants guide, alberta small business grants guide eligibility 2026, step by step alberta small business grants guide application guide, best alberta small business grants guide for small business Canada, am I eligible for alberta small business grants guide, alberta small business grants guide deadline 2026",
 }
 
 export default function AlbertaSmallBusinessGrantsGuide() {

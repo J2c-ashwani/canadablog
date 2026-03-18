@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Youth Entrepreneurship Canada 2026 | $60K+ Young Entrepreneur Grants & Business Funding",
   description: "Complete guide to Canadian youth entrepreneur funding programs. Access CYBF grants up to $60K, Youth Employment Strategy funding, and young business startup loans for entrepreneurs aged 18-35 across Canada.",
-  keywords: "youth entrepreneurship Canada, young entrepreneur grants Canada, Canadian youth business foundation, CYBF funding, youth business loans Canada, young entrepreneur startup funding, youth employment strategy, Canadian youth business grants, young business owner funding",
+  keywords: "youth entrepreneurship Canada, young entrepreneur grants Canada, Canadian youth business foundation, CYBF funding, youth business loans Canada, young entrepreneur startup funding, youth employment strategy, Canadian youth business grants, young business owner funding, how to apply for youth entrepreneurship canada funding, youth entrepreneurship canada funding eligibility 2026, step by step youth entrepreneurship canada funding application guide, best youth entrepreneurship canada funding for small business Canada, am I eligible for youth entrepreneurship canada funding, youth entrepreneurship canada funding deadline 2026",
   openGraph: {
     title: "Youth Entrepreneurship Canada 2026 | $60K+ Young Entrepreneur Grants & Funding",
     description: "Access $60K+ in Canadian government funding for young entrepreneurs. Complete guide to CYBF grants, Youth Employment Strategy, and startup funding for youth aged 18-35.",

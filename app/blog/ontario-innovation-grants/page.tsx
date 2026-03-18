@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Ontario Innovation Grants & Tax Credits 2026 | OITC 10% Tax Credit | $3.2B+ R&D Funding",
   description: "Complete guide to Ontario innovation grants and tax credits. Access $3.2B+ through Ontario Innovation Tax Credit (10% OITC), Jobs and Prosperity Fund, OCE programs, and advanced manufacturing support.",
-  keywords: "Ontario innovation grants, OITC tax credit, Ontario Innovation Tax Credit, Jobs and Prosperity Fund Ontario, Ontario Centres of Excellence, Ontario R&D tax credits, advanced manufacturing Ontario, life sciences Ontario grants",
+  keywords: "Ontario innovation grants, OITC tax credit, Ontario Innovation Tax Credit, Jobs and Prosperity Fund Ontario, Ontario Centres of Excellence, Ontario R&D tax credits, advanced manufacturing Ontario, life sciences Ontario grants, how to apply for ontario innovation grants, ontario innovation grants eligibility 2026, step by step ontario innovation grants application guide, best ontario innovation grants for small business Canada, am I eligible for ontario innovation grants, ontario innovation grants deadline 2026",
   openGraph: {
     title: "Ontario Innovation Grants & Tax Credits 2026 | $3.2B+ OITC & R&D Support",
     description: "Access $3.2B+ in Ontario innovation funding. Complete guide to OITC, Jobs and Prosperity Fund, and provincial R&D programs.",

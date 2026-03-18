@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Women Entrepreneurship Strategy Canada 2026 | WES Federal Funding Guide | $6B Investment",
   description: "Complete guide to Canada's Women Entrepreneurship Strategy (WES) federal funding programs. Access up to $6B through WES Ecosystem Fund, Women Entrepreneurship Loan Fund, and comprehensive business support programs.",
-  keywords: "Women Entrepreneurship Strategy Canada, WES federal funding, women business grants Canada, WES Ecosystem Fund, Women Entrepreneurship Loan Fund, ISED women entrepreneurs funding",
+  keywords: "Women Entrepreneurship Strategy Canada, WES federal funding, women business grants Canada, WES Ecosystem Fund, Women Entrepreneurship Loan Fund, ISED women entrepreneurs funding, how to apply for WES grants 2026, WES eligibility requirements, how to apply for women entrepreneurship strategy canada government grants, women entrepreneurship strategy canada government grants eligibility 2026, step by step women entrepreneurship strategy canada government grants application guide, best women entrepreneurship strategy canada government grants for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for women entrepreneurship strategy canada government grants, women entrepreneurship strategy canada government grants deadline 2026",
   openGraph: {
     title: "Women Entrepreneurship Strategy Canada 2026 | WES Federal Funding Guide",
     description: "Comprehensive guide to WES federal funding programs offering up to $6B for women entrepreneurs through ecosystem support, loans, and business development.",

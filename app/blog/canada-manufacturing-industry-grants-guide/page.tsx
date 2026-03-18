@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Canada Manufacturing & Industry Grants 2026 | $3.1B+ Advanced Manufacturing Funding Programs Guide",
   description: "Complete guide to Canada's manufacturing and industry grants. Access NGen funding, Advanced Manufacturing Investment Strategy, productivity programs, and 38+ programs offering $3.1B+ for manufacturing excellence.",
-  keywords: "Canada manufacturing grants, advanced manufacturing funding, NGen grants, manufacturing productivity programs, industry 4.0 funding Canada 2026",
+  keywords: "Canada manufacturing grants, advanced manufacturing funding, NGen grants, manufacturing productivity programs, industry 4.0 funding Canada 2026, how to apply for NGen grants 2026, NGen eligibility requirements, how to apply for canada manufacturing industry grants guide, canada manufacturing industry grants guide eligibility 2026, step by step canada manufacturing industry grants guide application guide, best canada manufacturing industry grants guide for small business Canada, am I eligible for canada manufacturing industry grants guide, canada manufacturing industry grants guide deadline 2026",
   openGraph: {
     title: "Canada Manufacturing & Industry Grants 2026 | $3.1B+ Advanced Manufacturing Funding Guide",
     description: "Comprehensive guide to Canada's manufacturing and industry funding ecosystem with 38+ programs offering $3.1B+ for productivity, automation, and competitiveness.",

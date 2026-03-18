@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Canada Regional Economic Development Grants 2026 | $2.8B+ Community Growth Funding Programs Guide",
   description: "Complete guide to Canada's regional economic development grants. Access RDA funding, community development programs, and 35+ programs offering $2.8B+ for regional growth.",
-  keywords: "Canada regional development grants, RDA funding, community economic development, regional growth programs, ACOA PrairiesCan grants Canada 2026",
+  keywords: "Canada regional development grants, RDA funding, community economic development, regional growth programs, ACOA PrairiesCan grants Canada 2026, how to apply for ACOA grants 2026, ACOA eligibility requirements, how to apply for canada regional economic development grants guide, canada regional economic development grants guide eligibility 2026, step by step canada regional economic development grants guide application guide, best canada regional economic development grants guide for small business Canada, am I eligible for canada regional economic development grants guide, canada regional economic development grants guide deadline 2026",
   openGraph: {
     title: "Canada Regional Economic Development Grants 2026 | $2.8B+ Community Growth Funding Guide",
     description: "Comprehensive guide to Canada's regional economic development funding ecosystem with 35+ programs offering $2.8B+ for community and regional growth.",

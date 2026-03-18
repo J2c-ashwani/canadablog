@@ -21,7 +21,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Territories Small Business Grants 2026 | $125M+ NT, YT, Nunavut Complete Guide",
   description: "Complete guide to Territories business grants. Access NWT Business Development, Yukon Small Business Support, Nunavut Economic Development, and Indigenous Business Programs. Northern specialists.",
-  keywords: "Territories small business grants, NWT business development, Yukon small business support, Nunavut economic development, Northwest Territories business funding, Yukon business grants, Indigenous business grants",
+  keywords: "Territories small business grants, NWT business development, Yukon small business support, Nunavut economic development, Northwest Territories business funding, Yukon business grants, Indigenous business grants, how to apply for territories small business grants guide, territories small business grants guide eligibility 2026, step by step territories small business grants guide application guide, best territories small business grants guide for small business Canada, am I eligible for territories small business grants guide, territories small business grants guide deadline 2026",
 }
 
 export default function TerritoriesSmallBusinessGrantsGuide() {

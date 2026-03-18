@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Stage 1: Ideation & Research Funding Canada 2026 | NSERC Discovery Grants | Up to $1M Early-Stage R&D",
   description: "Complete guide to Canadian ideation and research funding for early-stage innovation. Access up to $1M through NSERC Discovery Grants, university research programs, and basic R&D support for concept development.",
-  keywords: "ideation funding Canada, research grants Canada, NSERC Discovery Grants, early stage research funding, concept development grants, university research funding, basic R&D grants Canada, proof of concept funding",
+  keywords: "ideation funding Canada, research grants Canada, NSERC Discovery Grants, early stage research funding, concept development grants, university research funding, basic R&D grants Canada, proof of concept funding, how to apply for NSERC grants 2026, NSERC eligibility requirements, how to apply for ideation research funding canada, ideation research funding canada eligibility 2026, step by step ideation research funding canada application guide, best ideation research funding canada for small business Canada, am I eligible for ideation research funding canada, ideation research funding canada deadline 2026",
   openGraph: {
     title: "Stage 1: Ideation & Research Funding Canada 2026 | NSERC Discovery Grants",
     description: "Access up to $1M in early-stage research funding. Complete guide to NSERC Discovery Grants and concept development programs.",

@@ -22,7 +22,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Federal Grants for Women, Minorities & Veterans 2026 | Complete Certification Guide",
   description: "Comprehensive guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. WOSB, 8(a), HUBZone, VOSB programs explained.",
-  keywords: "women business grants, minority business grants, veteran business grants, WOSB, 8a program, HUBZone, VOSB, SDVOSB",
+  keywords: "women business grants, minority business grants, veteran business grants, WOSB, 8a program, HUBZone, VOSB, SDVOSB, how to apply for federal grants women minorities, federal grants women minorities eligibility 2026, step by step federal grants women minorities application guide, best federal grants women minorities for small business USA, best grants for women entrepreneurs USA 2026, women owned business funding eligibility, am I eligible for federal grants women minorities, federal grants women minorities deadline 2026",
 }
 
 export default function FederalGrantsWomenMinoritiesPage() {

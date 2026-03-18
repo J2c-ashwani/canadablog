@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "AI & Machine Learning Grants 2026-2027 | $305K NSF SBIR, $100M AI Research Institutes, DOD AI Applications Non-Dilutive Funding",
   description: "Complete 2026-2027 guide to AI and machine learning grants. NSF SBIR Phase I $305K, Phase II $1.25M, National AI Research Institutes $100M investment, NAIRR $35M operations center, DOD AI applications supporting computer vision, NLP, ML platforms, generative AI, and predictive analytics with zero equity funding.",
-  keywords: "AI grants 2026, machine learning startup grants, NSF AI research institutes, computer vision grants, NLP funding, generative AI grants, AI research funding $100M, NAIRR operations center, DOD AI applications, NSF SBIR AI grants $305K, neural networks grants, deep learning funding",
+  keywords: "AI grants 2026, machine learning startup grants, NSF AI research institutes, computer vision grants, NLP funding, generative AI grants, AI research funding $100M, NAIRR operations center, DOD AI applications, NSF SBIR AI grants $305K, neural networks grants, deep learning funding, how to apply for NSF grants 2026, NSF eligibility requirements, NSF vs SBIR comparison, how to apply for ai machine learning grants, ai machine learning grants eligibility 2026, step by step ai machine learning grants application guide, best ai machine learning grants for small business Canada, am I eligible for ai machine learning grants, ai machine learning grants deadline 2026",
   openGraph: {
     title: "AI & ML Grants 2026 | $305K NSF SBIR + $100M Research Institutes",
     description: "Complete guide to AI and machine learning grants from NSF, NAIRR, DOD, and state programs.",

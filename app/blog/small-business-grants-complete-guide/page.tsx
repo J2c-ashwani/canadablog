@@ -27,7 +27,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Small Business Grants Complete Guide 2026 | Federal, State & SBA Funding",
   description: "Comprehensive guide to small business grants in 2026. Learn about SBA loans, SBIR/STTR, federal grants, state programs, and proven strategies. Access up to $5M+.",
-  keywords: "small business grants, SBA loans, federal grants small business, business funding guide, SBIR STTR grants, state grants",
+  keywords: "small business grants, SBA loans, federal grants small business, business funding guide, SBIR STTR grants, state grants, how to apply for SBIR grants 2026, SBIR eligibility requirements, SBIR vs STTR comparison, how to apply for small business grants complete guide, small business grants complete guide eligibility 2026, step by step small business grants complete guide application guide, best small business grants complete guide for small business Canada, am I eligible for small business grants complete guide, small business grants complete guide deadline 2026",
 }
 
 export default function SmallBusinessGrantsGuidePage() {

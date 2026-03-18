@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Canada Aerospace & Defence Innovation Grants 2026 | Complete Funding Guide",
   description: "Complete guide to Canadian aerospace and defence innovation funding. Access ISED, DND, and regional programs for aerospace R&D, defence technology, and space innovation.",
-  keywords: "Canada aerospace grants, defence innovation funding, ISED aerospace, DND innovation, Canadian space funding, aerospace R&D grants",
+  keywords: "Canada aerospace grants, defence innovation funding, ISED aerospace, DND innovation, Canadian space funding, aerospace R&D grants, how to apply for canada aerospace defence innovation grants, canada aerospace defence innovation grants eligibility 2026, step by step canada aerospace defence innovation grants application guide, best canada aerospace defence innovation grants for small business Canada, am I eligible for canada aerospace defence innovation grants, canada aerospace defence innovation grants deadline 2026",
 }
 
 export default function CanadaAerospaceDefenceInnovationGrantsPage() {

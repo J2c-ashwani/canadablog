@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "BC Women Business Grants 2026 | WeBC Loans & Funding Guide",
   description: "Complete 2026 guide to funding for women entrepreneurs in British Columbia. Get loans up to $150k from WeBC, access Indigenous women's grants, and find BC tech funding.",
-  keywords: "BC women business grants, WeBC loans, women enterprise centre BC, indigenous women grants BC, women in tech BC funding",
+  keywords: "BC women business grants, WeBC loans, women enterprise centre BC, indigenous women grants BC, women in tech BC funding, how to apply for bc women business grants, bc women business grants eligibility 2026, step by step bc women business grants application guide, best bc women business grants for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for bc women business grants, bc women business grants deadline 2026",
 }
 
 export default function BCWomenBusinessGrants() {

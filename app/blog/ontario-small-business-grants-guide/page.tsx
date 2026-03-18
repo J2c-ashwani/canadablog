@@ -22,7 +22,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Ontario Small Business Grants 2026 | $5k Starter Company & Funding",
   description: "Complete 2026 guide to Ontario government grants. Apply for Starter Company Plus ($5,000), Summer Company ($3,000), and regional funds (SWODF/EODF) for business growth.",
-  keywords: "Ontario small business grants, Starter Company Plus, Summer Company program, digital main street grant, SWODF EODF funding, Ontario business loans",
+  keywords: "Ontario small business grants, Starter Company Plus, Summer Company program, digital main street grant, SWODF EODF funding, Ontario business loans, how to apply for ontario small business grants guide, ontario small business grants guide eligibility 2026, step by step ontario small business grants guide application guide, best ontario small business grants guide for small business Canada, am I eligible for ontario small business grants guide, ontario small business grants guide deadline 2026",
 }
 
 export default function OntarioSmallBusinessGrantsGuide() {

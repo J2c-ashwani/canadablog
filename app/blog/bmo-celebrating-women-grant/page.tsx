@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "BMO Celebrating Women Grant 2026 | $10K Grants + Business Advisory for Women Entrepreneurs",
   description: "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources. Applications open August 5-19, 2026 for Canadian and U.S. women business owners.",
-  keywords: "BMO Celebrating Women Grant, women business grants Canada, BMO women entrepreneurs, $10000 business grants, women-owned business funding",
+  keywords: "BMO Celebrating Women Grant, women business grants Canada, BMO women entrepreneurs, $10000 business grants, women-owned business funding, how to apply for bmo celebrating women grant, bmo celebrating women grant eligibility 2026, step by step bmo celebrating women grant application guide, best bmo celebrating women grant for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for bmo celebrating women grant, bmo celebrating women grant deadline 2026",
   openGraph: {
     title: "BMO Celebrating Women Grant 2026 | $10K Grants + Advisory",
     description: "Annual grant program from BMO supporting women-owned businesses with $10,000 grants, business advisory, and comprehensive resources.",

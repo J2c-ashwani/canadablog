@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Cartier Women's Initiative Canada 2026-2027 | $100K Awards + Coaching for Impact Entrepreneurs",
   description: "Complete guide to Cartier Women's Initiative with $100,000 grants, INSEAD coaching, mentorship, and global networking for Canadian women impact entrepreneurs. Apply by June 24, 2026.",
-  keywords: "Cartier Women's Initiative Canada, women impact entrepreneurs, social enterprise grants, UN SDG funding, women environmental business",
+  keywords: "Cartier Women's Initiative Canada, women impact entrepreneurs, social enterprise grants, UN SDG funding, women environmental business, how to apply for cartier womens initiative canada, cartier womens initiative canada eligibility 2026, step by step cartier womens initiative canada application guide, best cartier womens initiative canada for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for cartier womens initiative canada, cartier womens initiative canada deadline 2026",
   openGraph: {
     title: "Cartier Women's Initiative 2026-2027 | $100K for Impact Entrepreneurs",
     description: "International program supporting Canadian women founders with $100K grants, executive coaching, and year-long fellowship for impact-driven businesses.",

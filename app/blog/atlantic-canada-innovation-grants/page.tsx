@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Atlantic Canada Innovation Grants & Funding 2026 | 15% ACITC | $650M+ Ocean Tech Support",
   description: "Complete guide to Atlantic Canada innovation grants. Access $650M+ through Atlantic Innovation Fund, ACOA programs, 15% ACITC tax credit, and ocean technology, renewable energy, aerospace funding.",
-  keywords: "Atlantic Canada innovation grants, ACOA funding, Atlantic Innovation Fund, ACITC tax credit, ocean technology grants, maritime innovation Atlantic, renewable energy Atlantic, aerospace Atlantic Canada",
+  keywords: "Atlantic Canada innovation grants, ACOA funding, Atlantic Innovation Fund, ACITC tax credit, ocean technology grants, maritime innovation Atlantic, renewable energy Atlantic, aerospace Atlantic Canada, how to apply for ACOA grants 2026, ACOA eligibility requirements, how to apply for atlantic canada innovation grants, atlantic canada innovation grants eligibility 2026, step by step atlantic canada innovation grants application guide, best atlantic canada innovation grants for small business Canada, am I eligible for atlantic canada innovation grants, atlantic canada innovation grants deadline 2026",
   openGraph: {
     title: "Atlantic Canada Innovation Grants 2026 | $650M+ Ocean Tech & Maritime",
     description: "Access $650M+ in Atlantic Canada innovation funding. Complete guide to ACOA, Atlantic Innovation Fund, and ocean technology programs.",

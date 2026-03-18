@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Prairie Provinces Innovation Grants 2026 | $580M+ AgriFood, Mining & Renewable Energy Funding",
   description: "Complete guide to Prairie innovation grants. Access $580M+ through Saskatchewan Innovation, Manitoba Research, PrairiesCan funding, and agri-food, mining technology, renewable energy programs.",
-  keywords: "Prairie provinces innovation grants, Saskatchewan innovation funding, Manitoba research grants, PrairiesCan funding, agri-food innovation Prairie, mining technology Saskatchewan, renewable energy Manitoba",
+  keywords: "Prairie provinces innovation grants, Saskatchewan innovation funding, Manitoba research grants, PrairiesCan funding, agri-food innovation Prairie, mining technology Saskatchewan, renewable energy Manitoba, how to apply for prairie provinces innovation grants, prairie provinces innovation grants eligibility 2026, step by step prairie provinces innovation grants application guide, best prairie provinces innovation grants for small business Canada, am I eligible for prairie provinces innovation grants, prairie provinces innovation grants deadline 2026",
   openGraph: {
     title: "Prairie Provinces Innovation Grants 2026 | $580M+ AgriFood & Mining Tech",
     description: "Access $580M+ in Prairie innovation funding. Complete guide to Saskatchewan, Manitoba, PrairiesCan programs.",

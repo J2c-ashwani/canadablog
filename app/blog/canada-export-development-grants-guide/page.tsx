@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Canada Export Development Grants 2026 | CanExport SMEs $50K & EDC Funding Guide",
   description: "Complete 2026 guide to Canada export grants. New CanExport SMEs rules (Deadline May 29), EDC Trade Impact $5B capacity, and Creative Export Canada $2.5M funding.",
-  keywords: "CanExport SMEs 2026, Canada export grants, EDC Trade Impact Program, Creative Export Canada, international business development funding, export market access, trade mission grants Canada",
+  keywords: "CanExport SMEs 2026, Canada export grants, EDC Trade Impact Program, Creative Export Canada, international business development funding, export market access, trade mission grants Canada, how to apply for EDC grants 2026, EDC eligibility requirements, EDC vs CanExport comparison, how to apply for canada export development grants guide, canada export development grants guide eligibility 2026, step by step canada export development grants guide application guide, best canada export development grants guide for small business Canada, am I eligible for canada export development grants guide, canada export development grants guide deadline 2026",
 }
 
 export default function CanadaExportDevelopmentGrantsGuide() {

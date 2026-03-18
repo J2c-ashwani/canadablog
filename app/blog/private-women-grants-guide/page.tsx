@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Private Women Grants Guide 2026 | Foundation Grants for Female Entrepreneurs",
   description: "Complete guide to private foundation grants for women entrepreneurs. Discover 50+ foundations offering grants up to $250K for women-owned businesses.",
-  keywords: "private women grants, foundation grants women entrepreneurs, female entrepreneur funding, women business grants private, amber grant foundation",
+  keywords: "private women grants, foundation grants women entrepreneurs, female entrepreneur funding, women business grants private, amber grant foundation, how to apply for private women grants guide, private women grants guide eligibility 2026, step by step private women grants guide application guide, best private women grants guide for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for private women grants guide, private women grants guide deadline 2026",
   openGraph: {
     title: "Private Women Grants Guide 2026 | Foundation Grants for Female Entrepreneurs",
     description: "Complete guide to private foundation grants specifically for women entrepreneurs and female business owners.",

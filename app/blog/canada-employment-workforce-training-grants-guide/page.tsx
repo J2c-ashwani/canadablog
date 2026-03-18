@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Canada Employment & Workforce Training Grants 2026 | $1.9B+ Skills Development Funding Programs Guide",
   description: "Complete guide to Canada's employment and workforce training grants. Access Canada Job Grant, Skills Development programs, and 28+ programs offering $1.9B+ for workforce excellence.",
-  keywords: "Canada employment grants, workforce training funding, Canada Job Grant, skills development programs, employee training grants Canada 2026",
+  keywords: "Canada employment grants, workforce training funding, Canada Job Grant, skills development programs, employee training grants Canada 2026, how to apply for canada employment workforce training grants guide, canada employment workforce training grants guide eligibility 2026, step by step canada employment workforce training grants guide application guide, best canada employment workforce training grants guide for small business Canada, am I eligible for canada employment workforce training grants guide, canada employment workforce training grants guide deadline 2026",
   openGraph: {
     title: "Canada Employment & Workforce Training Grants 2026 | $1.9B+ Skills Development Funding Guide",
     description: "Comprehensive guide to Canada's employment and workforce training funding ecosystem with 28+ programs offering $1.9B+ for skills development and job creation.",

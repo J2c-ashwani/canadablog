@@ -16,7 +16,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "BC Small Business Grants 2026 | Rebates & Innovate BC Funding",
   description: "Complete 2026 guide to British Columbia business grants. Get funding from Innovate BC, Northern Development Initiative Trust, and CleanBC energy rebates.",
-  keywords: "BC small business grants, Innovate BC funding, Northern Development Initiative Trust, CleanBC business rebates, BC employer training grant, startup grants Vancouver",
+  keywords: "BC small business grants, Innovate BC funding, Northern Development Initiative Trust, CleanBC business rebates, BC employer training grant, startup grants Vancouver, how to apply for bc small business grants guide, bc small business grants guide eligibility 2026, step by step bc small business grants guide application guide, best bc small business grants guide for small business Canada, am I eligible for bc small business grants guide, bc small business grants guide deadline 2026",
 }
 
 export default function BCSmallBusinessGrantsGuide() {

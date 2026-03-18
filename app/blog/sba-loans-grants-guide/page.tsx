@@ -27,7 +27,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "SBA Microloan Program 2026: Requirements, Max Amount & How to Apply",
   description: "SBA Microloan: up to $50K through nonprofit intermediaries. Plus 7(a) loans ($5M), 504 loans, and disaster loans. Credit score requirements, terms, and the 4 mistakes that get you denied.",
-  keywords: "sba microloan program, sba microloan requirements, sba microloan maximum amount, sba microloans provided through nonprofit intermediaries, sba microloan program details, SBA loans, 7(a) loans, 504 loans, small business funding",
+  keywords: "sba microloan program, sba microloan requirements, sba microloan maximum amount, sba microloans provided through nonprofit intermediaries, sba microloan program details, SBA loans, 7(a) loans, 504 loans, small business funding, how to apply for SBA grants 2026, SBA eligibility requirements, how to apply for sba loans grants guide, sba loans grants guide eligibility 2026, step by step sba loans grants guide application guide, best sba loans grants guide for small business USA, am I eligible for sba loans grants guide, sba loans grants guide deadline 2026",
 }
 
 export default function SBALoansGrantsGuidePage() {

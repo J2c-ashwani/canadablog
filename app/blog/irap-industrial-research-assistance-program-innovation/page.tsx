@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "IRAP Industrial Research Assistance Program 2026 | Up to $500K Innovation Funding for SMEs",
   description: "Complete guide to IRAP innovation funding from National Research Council Canada. Get 60-80% R&D funding up to $500K with dedicated Industrial Technology Advisors for SMEs.",
-  keywords: "IRAP funding, Industrial Research Assistance Program, NRC IRAP innovation, R&D grants Canada, SME innovation funding, Industrial Technology Advisors",
+  keywords: "IRAP funding, Industrial Research Assistance Program, NRC IRAP innovation, R&D grants Canada, SME innovation funding, Industrial Technology Advisors, how to apply for IRAP grants 2026, IRAP eligibility requirements, IRAP vs NRC comparison, how to apply for irap industrial research assistance program innovation, irap industrial research assistance program innovation eligibility 2026, step by step irap industrial research assistance program innovation application guide, best irap industrial research assistance program innovation for small business Canada, am I eligible for irap industrial research assistance program innovation, irap industrial research assistance program innovation deadline 2026",
   openGraph: {
     title: "IRAP Industrial Research Assistance Program 2026 | Up to $500K Innovation Funding",
     description: "Complete guide to IRAP innovation funding with 60-80% R&D support, dedicated advisors, and up to $500K for Canadian SMEs under 500 employees.",

@@ -21,7 +21,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Saskatchewan Small Business Grants 2026 | $425M+ Complete Funding Guide",
   description: "Complete guide to Saskatchewan small business grants. Access Innovation Saskatchewan, Agriculture Value-Added Fund, Export Development, Mining Innovation programs, and 30+ funding opportunities. Expert tips for successful applications.",
-  keywords: "Saskatchewan small business grants, Saskatchewan business funding, Innovation Saskatchewan, Agriculture Value-Added Fund, Export Development Saskatchewan, Saskatoon business grants, Regina business grants, potash industry funding",
+  keywords: "Saskatchewan small business grants, Saskatchewan business funding, Innovation Saskatchewan, Agriculture Value-Added Fund, Export Development Saskatchewan, Saskatoon business grants, Regina business grants, potash industry funding, how to apply for saskatchewan small business grants guide, saskatchewan small business grants guide eligibility 2026, step by step saskatchewan small business grants guide application guide, best saskatchewan small business grants guide for small business Canada, am I eligible for saskatchewan small business grants guide, saskatchewan small business grants guide deadline 2026",
 }
 
 export default function SaskatchewanSmallBusinessGrantsGuide() {

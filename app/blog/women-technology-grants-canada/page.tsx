@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Women in Technology Grants Canada 2026 | AI, Software & Digital Innovation Funding",
   description: "Complete guide to Canadian women technology grants with NRC IRAP, Innovate BC, Alberta Innovates, AI funding, software development support, and digital innovation programs.",
-  keywords: "women technology grants Canada, women in tech funding, AI grants women, software development funding, digital innovation support",
+  keywords: "women technology grants Canada, women in tech funding, AI grants women, software development funding, digital innovation support, how to apply for women technology grants canada, women technology grants canada eligibility 2026, step by step women technology grants canada application guide, best women technology grants canada for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for women technology grants canada, women technology grants canada deadline 2026",
   openGraph: {
     title: "Women in Technology Grants Canada 2026 | Tech Innovation Funding",
     description: "Comprehensive guide to technology grants for Canadian women entrepreneurs in software, AI, digital innovation, and tech startups.",

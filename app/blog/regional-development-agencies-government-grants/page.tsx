@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Regional Development Agencies Canada 2026 | RDA Federal Funding Guide | 7 Regional Programs",
   description: "Complete guide to Canada's Regional Development Agencies (RDA) federal funding programs. Access $125K-$10M through ACOA, FedDev Ontario, PacifiCan, PrairiesCan, CED, FedNor, and CanNor regional programs.",
-  keywords: "Regional Development Agencies Canada, RDA federal funding, ACOA grants, FedDev Ontario funding, PacifiCan programs, PrairiesCan funding, CED Quebec funding, regional development funding Canada",
+  keywords: "Regional Development Agencies Canada, RDA federal funding, ACOA grants, FedDev Ontario funding, PacifiCan programs, PrairiesCan funding, CED Quebec funding, regional development funding Canada, how to apply for ACOA grants 2026, ACOA eligibility requirements, how to apply for regional development agencies government grants, regional development agencies government grants eligibility 2026, step by step regional development agencies government grants application guide, best regional development agencies government grants for small business Canada, am I eligible for regional development agencies government grants, regional development agencies government grants deadline 2026",
   openGraph: {
     title: "Regional Development Agencies Canada 2026 | RDA Federal Funding Guide",
     description: "Comprehensive guide to Canada's 7 Regional Development Agencies offering targeted federal funding from $125K to $10M for regional economic development.",

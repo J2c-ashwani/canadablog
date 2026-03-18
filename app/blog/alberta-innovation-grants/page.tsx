@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Alberta Innovation Grants & Funding 2026 | $950M+ Energy Transition, AI & CleanTech Support",
   description: "Complete guide to Alberta innovation grants and funding programs. Access $950M+ through Alberta Innovates, Emissions Reduction Alberta, AI4Society, and energy transition, AI, health innovation programs.",
-  keywords: "Alberta innovation grants, Alberta Innovates funding, Emissions Reduction Alberta, AI4Society grants, energy transition Alberta, cleantech Alberta grants, health innovation Alberta, AI funding Alberta",
+  keywords: "Alberta innovation grants, Alberta Innovates funding, Emissions Reduction Alberta, AI4Society grants, energy transition Alberta, cleantech Alberta grants, health innovation Alberta, AI funding Alberta, how to apply for alberta innovation grants, alberta innovation grants eligibility 2026, step by step alberta innovation grants application guide, best alberta innovation grants for small business Canada, am I eligible for alberta innovation grants, alberta innovation grants deadline 2026",
   openGraph: {
     title: "Alberta Innovation Grants & Funding 2026 | $950M+ Energy & AI Support",
     description: "Access $950M+ in Alberta innovation funding. Complete guide to Alberta Innovates, ERA, and diversification programs.",

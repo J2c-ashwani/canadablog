@@ -22,7 +22,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "SBIR Small Business Innovation Research 2026 | Complete Federal R&D Grant Guide",
   description: "SBIR awards $4B/year to small businesses — but you need the right strategy. Phase I ($275K) and Phase II ($1.7M) breakdown with agency-specific tips.",
-  keywords: "SBIR grants, small business innovation research, federal R&D grants, SBIR Phase I Phase II, innovation funding, government grants for startups",
+  keywords: "SBIR grants, small business innovation research, federal R&D grants, SBIR Phase I Phase II, innovation funding, government grants for startups, how to apply for SBIR grants 2026, SBIR eligibility requirements, how to apply for sbir small business guide, sbir small business guide eligibility 2026, step by step sbir small business guide application guide, best sbir small business guide for small business USA, am I eligible for sbir small business guide, sbir small business guide deadline 2026",
 }
 
 export default function SBIRSmallBusinessGuide() {

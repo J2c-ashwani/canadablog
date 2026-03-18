@@ -20,7 +20,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "NSF SBIR Grants 2026-2027 | $275K Phase I, $2M Phase II Technology Startup Funding - Complete Application Guide",
   description: "Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Phase I funding up to $275K, Phase II up to $2M for AI, deep tech, biotech, software, hardware innovation. Application strategies, eligibility, deadlines.",
-  keywords: "NSF SBIR grants 2026, NSF STTR funding, America's Seed Fund, Phase I Phase II grants, deep tech startup funding, AI innovation grants, NSF technology grants, non-dilutive startup funding",
+  keywords: "NSF SBIR grants 2026, NSF STTR funding, America's Seed Fund, Phase I Phase II grants, deep tech startup funding, AI innovation grants, NSF technology grants, non-dilutive startup funding, how to apply for NSF grants 2026, NSF eligibility requirements, NSF vs SBIR comparison, how to apply for nsf sbir grants technology startups, nsf sbir grants technology startups eligibility 2026, step by step nsf sbir grants technology startups application guide, best nsf sbir grants technology startups for small business USA, am I eligible for nsf sbir grants technology startups, nsf sbir grants technology startups deadline 2026",
   openGraph: {
     title: "NSF SBIR Grants 2026 | $275K-$2M Technology Startup Funding",
     description: "Complete guide to NSF SBIR/STTR grants with Phase I $275K and Phase II $2M funding for tech startups.",

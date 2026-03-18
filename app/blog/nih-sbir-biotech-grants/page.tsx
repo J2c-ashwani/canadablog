@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "NIH SBIR Biotech Grants 2026-2027 | $285K Phase I, $2M Phase II Medical Device & Digital Health Funding",
   description: "NIH awards $1.2B/year in SBIR/STTR grants. Phase I: $285K, Phase II: $2M. Get the exact submission windows and review criteria for biotech startups.",
-  keywords: "NIH SBIR grants 2026, biotech grants, medical device funding, digital health SBIR, therapeutics grants, diagnostics funding, NIH innovation grants",
+  keywords: "NIH SBIR grants 2026, biotech grants, medical device funding, digital health SBIR, therapeutics grants, diagnostics funding, NIH innovation grants, how to apply for SBIR grants 2026, SBIR eligibility requirements, SBIR vs NIH comparison, how to apply for nih sbir biotech grants, nih sbir biotech grants eligibility 2026, step by step nih sbir biotech grants application guide, best nih sbir biotech grants for small business USA, am I eligible for nih sbir biotech grants, nih sbir biotech grants deadline 2026",
   openGraph: {
     title: "NIH SBIR Grants 2026 | $285K-$2M Biotech Funding",
     description: "Complete guide to NIH SBIR/STTR grants for biotech and health tech startups.",

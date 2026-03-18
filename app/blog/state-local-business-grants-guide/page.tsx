@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "State & Local Business Grants Guide 2026 | Regional Economic Development Funding",
   description: "Complete guide to state and local business grants. Find economic development incentives, job creation programs, and regional funding up to $500K.",
-  keywords: "state business grants, local business grants, economic development grants, state funding programs, regional business incentives",
+  keywords: "state business grants, local business grants, economic development grants, state funding programs, regional business incentives, how to apply for state local business grants guide, state local business grants guide eligibility 2026, step by step state local business grants guide application guide, best state local business grants guide for small business USA, am I eligible for state local business grants guide, state local business grants guide deadline 2026",
 }
 
 export default function StateLocalBusinessGrantsGuide() {

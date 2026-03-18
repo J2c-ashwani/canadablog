@@ -16,7 +16,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "DOD SBIR Defense Tech Grants 2026-2027 | $256K Phase I, $1.7M Phase II Cybersecurity & Aerospace Funding",
   description: "Complete 2026-2027 guide to Department of Defense SBIR/STTR grants for defense tech startups. Phase I up to $256K, Phase II up to $1.7M for cybersecurity, aerospace, UAV, advanced materials innovation.",
-  keywords: "DOD SBIR grants 2026, defense tech grants, cybersecurity SBIR, aerospace funding, UAV grants, military technology funding, DOD innovation grants",
+  keywords: "DOD SBIR grants 2026, defense tech grants, cybersecurity SBIR, aerospace funding, UAV grants, military technology funding, DOD innovation grants, how to apply for SBIR grants 2026, SBIR eligibility requirements, SBIR vs DOD comparison, how to apply for dod sbir defense tech grants, dod sbir defense tech grants eligibility 2026, step by step dod sbir defense tech grants application guide, best dod sbir defense tech grants for small business USA, am I eligible for dod sbir defense tech grants, dod sbir defense tech grants deadline 2026",
   openGraph: {
     title: "DOD SBIR Grants 2026 | $256K-$1.7M Defense Tech Funding",
     description: "Complete guide to DOD SBIR/STTR grants for defense and aerospace tech startups.",

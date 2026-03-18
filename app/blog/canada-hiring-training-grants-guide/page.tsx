@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Canada Hiring & Training Grants 2026 | SWPP & Canada Job Grant Guide",
   description: "Complete 2026 guide to Canadian hiring grants. Get up to $7,000 per student hire (SWPP), $10,000 for employee training (CJG), and youth employment subsidies.",
-  keywords: "Canada hiring grants 2026, Student Work Placement Program SWPP, Canada Job Grant, employee training grants, hiring subsidies Canada, Canada Summer Jobs",
+  keywords: "Canada hiring grants 2026, Student Work Placement Program SWPP, Canada Job Grant, employee training grants, hiring subsidies Canada, Canada Summer Jobs, how to apply for canada hiring training grants guide, canada hiring training grants guide eligibility 2026, step by step canada hiring training grants guide application guide, best canada hiring training grants guide for small business Canada, am I eligible for canada hiring training grants guide, canada hiring training grants guide deadline 2026",
 }
 
 export default function CanadaHiringTrainingGrantsGuide() {

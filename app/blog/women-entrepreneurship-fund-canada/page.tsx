@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Women Entrepreneurship Fund (WEF) 2026 | Status & Alternatives",
   description: "The Women Entrepreneurship Fund is closed — but $6B+ in alternatives exist. The $50K WELF loan and Ecosystem Fund are taking applications now.",
-  keywords: "Women Entrepreneurship Fund application, WEF grant status, Canada women business grants, WELF vs WEF, women entrepreneur funding Canada 2026",
+  keywords: "Women Entrepreneurship Fund application, WEF grant status, Canada women business grants, WELF vs WEF, women entrepreneur funding Canada 2026, how to apply for women entrepreneurship fund canada, women entrepreneurship fund canada eligibility 2026, step by step women entrepreneurship fund canada application guide, best women entrepreneurship fund canada for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for women entrepreneurship fund canada, women entrepreneurship fund canada deadline 2026",
 }
 
 export default function WomenEntrepreneurshipFundGuide() {

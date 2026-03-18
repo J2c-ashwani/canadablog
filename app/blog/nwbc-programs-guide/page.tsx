@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "National Women's Business Council (NWBC) Programs Guide 2026 | Federal Women's Business Advisory",
   description: "Complete guide to NWBC programs and initiatives. Learn how the National Women's Business Council supports women entrepreneurs through policy and advocacy.",
-  keywords: "NWBC, national womens business council, women business policy, federal women entrepreneur support, women business advocacy",
+  keywords: "NWBC, national womens business council, women business policy, federal women entrepreneur support, women business advocacy, how to apply for nwbc programs guide, nwbc programs guide eligibility 2026, step by step nwbc programs guide application guide, best nwbc programs guide for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for nwbc programs guide, nwbc programs guide deadline 2026",
   openGraph: {
     title: "National Women's Business Council (NWBC) Programs Guide 2026",
     description: "Complete guide to NWBC programs, research initiatives, and policy advocacy for women entrepreneurs.",

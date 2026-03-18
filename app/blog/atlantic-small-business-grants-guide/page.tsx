@@ -20,7 +20,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Atlantic Canada Small Business Grants 2026 | $850M+ Complete Funding Guide",
   description: "Complete guide to Atlantic Canada business grants. Access ACOA funding, Nova Scotia Small Business Fund, New Brunswick Innovation, PEI Development Fund, Newfoundland Business Growth programs, and 50+ funding opportunities. Expert tips for successful applications.",
-  keywords: "Atlantic Canada small business grants, ACOA business funding, Nova Scotia Small Business Fund, New Brunswick Innovation Fund, PEI Development Fund, Newfoundland business grants, Halifax business grants, ocean technology funding",
+  keywords: "Atlantic Canada small business grants, ACOA business funding, Nova Scotia Small Business Fund, New Brunswick Innovation Fund, PEI Development Fund, Newfoundland business grants, Halifax business grants, ocean technology funding, how to apply for ACOA grants 2026, ACOA eligibility requirements, how to apply for atlantic small business grants guide, atlantic small business grants guide eligibility 2026, step by step atlantic small business grants guide application guide, best atlantic small business grants guide for small business Canada, am I eligible for atlantic small business grants guide, atlantic small business grants guide deadline 2026",
 }
 
 export default function AtlanticSmallBusinessGrantsGuide() {

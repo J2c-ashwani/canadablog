@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "SBA Disaster Relief Loans Guide 2026 | Emergency Business Funding Up to $2M",
   description: "Complete guide to SBA disaster relief loans. Learn about physical damage loans, economic injury loans (EIDL), and how to get up to $2M in emergency business funding.",
-  keywords: "SBA disaster loans, disaster relief loans, economic injury disaster loans, EIDL, emergency business funding, SBA disaster assistance",
+  keywords: "SBA disaster loans, disaster relief loans, economic injury disaster loans, EIDL, emergency business funding, SBA disaster assistance, how to apply for SBA grants 2026, SBA eligibility requirements, how to apply for sba disaster relief loans guide, sba disaster relief loans guide eligibility 2026, step by step sba disaster relief loans guide application guide, best sba disaster relief loans guide for small business USA, am I eligible for sba disaster relief loans guide, sba disaster relief loans guide deadline 2026",
 }
 
 export default function SBADisasterReliefLoansGuidePage() {

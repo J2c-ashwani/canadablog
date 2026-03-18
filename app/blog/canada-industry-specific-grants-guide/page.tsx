@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Canada Industry Specific Grants 2026 | $1.5B+ Sector-Focused Programs Across 25+ Industries",
   description: "Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agriculture, services, technology, healthcare, construction, and specialized industry funding.",
-  keywords: "Canada industry specific grants, manufacturing grants Canada, agriculture grants, service industry funding, sector specific programs, industry targeted grants, specialized business funding",
+  keywords: "Canada industry specific grants, manufacturing grants Canada, agriculture grants, service industry funding, sector specific programs, industry targeted grants, specialized business funding, how to apply for canada industry specific grants guide, canada industry specific grants guide eligibility 2026, step by step canada industry specific grants guide application guide, best canada industry specific grants guide for small business Canada, am I eligible for canada industry specific grants guide, canada industry specific grants guide deadline 2026",
   openGraph: {
     title: "Canada Industry Specific Grants 2026 | $1.5B+ Sector-Focused Guide",
     description: "Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agriculture, services, technology, healthcare, construction, and specialized industry funding.",

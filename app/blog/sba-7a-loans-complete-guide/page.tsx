@@ -21,7 +21,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "SBA 7(a) Loans Complete Guide 2026 | Up to $5M Small Business Financing",
   description: "Complete guide to SBA 7(a) loans. Learn eligibility requirements, application process, terms, and how to secure up to $5M in government-backed financing for your small business.",
-  keywords: "SBA 7a loans, SBA loan application, small business loans, SBA 7a requirements, SBA funding guide, small business administration loans",
+  keywords: "SBA 7a loans, SBA loan application, small business loans, SBA 7a requirements, SBA funding guide, small business administration loans, how to apply for SBA grants 2026, SBA eligibility requirements, how to apply for sba 7a loans complete guide, sba 7a loans complete guide eligibility 2026, step by step sba 7a loans complete guide application guide, best sba 7a loans complete guide for small business USA, am I eligible for sba 7a loans complete guide, sba 7a loans complete guide deadline 2026",
 }
 
 export default function SBA7aLoansGuidePage() {

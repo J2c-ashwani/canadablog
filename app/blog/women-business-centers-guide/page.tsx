@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Women's Business Centers WBC 2026 | SBA Program Complete Guide",
   description: "Complete guide to SBA Women's Business Centers providing free training, counseling, and resources for women entrepreneurs across America.",
-  keywords: "Women Business Centers, WBC program, SBA women entrepreneurs, women business training",
+  keywords: "Women Business Centers, WBC program, SBA women entrepreneurs, women business training, how to apply for SBA grants 2026, SBA eligibility requirements, how to apply for women business centers guide, women business centers guide eligibility 2026, step by step women business centers guide application guide, best women business centers guide for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for women business centers guide, women business centers guide deadline 2026",
 }
 
 export default function WomensBusinessCentersGuidePage() {

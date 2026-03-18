@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "CSBFP Canada Small Business Financing Program 2026 | Government Guaranteed Loans Guide",
   description: "Complete guide to CSBFP government-guaranteed loans for Canadian small businesses. Federal loan guarantee program offering up to $1M with 85% government backing for equipment and real property.",
-  keywords: "CSBFP government guaranteed loans, Canada Small Business Financing Program, government backed business loans Canada, federal SME loan guarantee, ISED small business financing",
+  keywords: "CSBFP government guaranteed loans, Canada Small Business Financing Program, government backed business loans Canada, federal SME loan guarantee, ISED small business financing, how to apply for CSBFP grants 2026, CSBFP eligibility requirements, how to apply for csbfp canada small business financing program government grants, csbfp canada small business financing program government grants eligibility 2026, step by step csbfp canada small business financing program government grants application guide, best csbfp canada small business financing program government grants for small business Canada, am I eligible for csbfp canada small business financing program government grants, csbfp canada small business financing program government grants deadline 2026",
   openGraph: {
     title: "CSBFP Canada Small Business Financing Program 2026 | Government Guaranteed Loans",
     description: "Comprehensive guide to CSBFP federal loan guarantee program with up to $1M in government-backed financing for Canadian small businesses.",

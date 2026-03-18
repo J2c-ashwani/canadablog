@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "IRAP Industrial Research Assistance Program Canada 2026 | Government R&D Funding Guide",
   description: "Complete guide to IRAP government funding for Canadian R&D projects. Federal compliance, reporting requirements, and strategic integration with other government innovation programs.",
-  keywords: "IRAP government grants, Industrial Research Assistance Program Canada, federal R&D funding, government innovation grants, NRC IRAP compliance, Canadian government R&D support",
+  keywords: "IRAP government grants, Industrial Research Assistance Program Canada, federal R&D funding, government innovation grants, NRC IRAP compliance, Canadian government R&D support, how to apply for IRAP grants 2026, IRAP eligibility requirements, IRAP vs NRC comparison, how to apply for irap industrial research assistance program government grants, irap industrial research assistance program government grants eligibility 2026, step by step irap industrial research assistance program government grants application guide, best irap industrial research assistance program government grants for small business Canada, am I eligible for irap industrial research assistance program government grants, irap industrial research assistance program government grants deadline 2026",
   openGraph: {
     title: "IRAP Industrial Research Assistance Program Canada 2026 | Government R&D Funding",
     description: "Comprehensive guide to IRAP federal R&D funding with compliance requirements and government program integration strategies.",

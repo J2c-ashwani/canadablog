@@ -16,7 +16,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "BDC Women Entrepreneurs Financing 2026 | Flexible Loans & Advisory for Women-Led Business Growth",
   description: "Complete guide to BDC Women Entrepreneurs financing with flexible loan terms, strategic advisory services, and growth support from Business Development Bank of Canada.",
-  keywords: "BDC Women Entrepreneurs, BDC women business loans, women entrepreneur financing BDC, flexible business loans women, BDC advisory services",
+  keywords: "BDC Women Entrepreneurs, BDC women business loans, women entrepreneur financing BDC, flexible business loans women, BDC advisory services, how to apply for BDC grants 2026, BDC eligibility requirements, how to apply for bdc women entrepreneurs financing, bdc women entrepreneurs financing eligibility 2026, step by step bdc women entrepreneurs financing application guide, best bdc women entrepreneurs financing for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for bdc women entrepreneurs financing, bdc women entrepreneurs financing deadline 2026",
   openGraph: {
     title: "BDC Women Entrepreneurs Financing 2026 | Flexible Loans & Advisory Services",
     description: "Comprehensive financing and advisory services for women-led businesses with flexible terms and strategic growth support from BDC.",

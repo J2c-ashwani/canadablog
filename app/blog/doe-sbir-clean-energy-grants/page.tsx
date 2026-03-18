@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "DOE SBIR Clean Energy Grants 2026-2027 | $200K Phase I, $1.85M Phase II Renewable Energy Funding",
   description: "Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Phase I up to $200K, Phase II up to $1.85M for renewable energy, energy storage, carbon capture, climate tech innovation.",
-  keywords: "DOE SBIR grants 2026, clean energy grants, renewable energy funding, energy storage SBIR, carbon capture grants, climate tech funding, DOE innovation grants",
+  keywords: "DOE SBIR grants 2026, clean energy grants, renewable energy funding, energy storage SBIR, carbon capture grants, climate tech funding, DOE innovation grants, how to apply for SBIR grants 2026, SBIR eligibility requirements, SBIR vs DOE comparison, how to apply for doe sbir clean energy grants, doe sbir clean energy grants eligibility 2026, step by step doe sbir clean energy grants application guide, best doe sbir clean energy grants for small business USA, am I eligible for doe sbir clean energy grants, doe sbir clean energy grants deadline 2026",
   openGraph: {
     title: "DOE SBIR Grants 2026 | $200K-$1.85M Clean Energy Funding",
     description: "Complete guide to DOE SBIR/STTR grants for clean energy and climate tech startups.",

@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "NASA SBIR Space Tech Grants 2026-2027 | $150K Phase I, $850K Phase II Satellite & Aeronautics Funding",
   description: "Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups. Phase I up to $150K, Phase II up to $850K for satellites, remote sensing, propulsion, aeronautics innovation.",
-  keywords: "NASA SBIR grants 2026, space technology grants, satellite funding, aeronautics SBIR, propulsion grants, remote sensing funding, NASA innovation grants",
+  keywords: "NASA SBIR grants 2026, space technology grants, satellite funding, aeronautics SBIR, propulsion grants, remote sensing funding, NASA innovation grants, how to apply for SBIR grants 2026, SBIR eligibility requirements, SBIR vs NASA comparison, how to apply for nasa sbir space tech grants, nasa sbir space tech grants eligibility 2026, step by step nasa sbir space tech grants application guide, best nasa sbir space tech grants for small business USA, am I eligible for nasa sbir space tech grants, nasa sbir space tech grants deadline 2026",
   openGraph: {
     title: "NASA SBIR Grants 2026 | $150K-$850K Space Tech Funding",
     description: "Complete guide to NASA SBIR/STTR grants for space and aeronautics tech startups.",

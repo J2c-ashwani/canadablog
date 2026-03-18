@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Women in Technology & STEM Grants Guide 2026 | Female Tech Entrepreneur Funding",
   description: "Complete guide to grants for women in technology and STEM fields. Discover SBIR, NSF, and private grants offering up to $1M for female tech entrepreneurs.",
-  keywords: "women in technology grants, STEM grants women, female tech entrepreneur funding, SBIR women, NSF women grants, women innovation grants",
+  keywords: "women in technology grants, STEM grants women, female tech entrepreneur funding, SBIR women, NSF women grants, women innovation grants, how to apply for NSF grants 2026, NSF eligibility requirements, NSF vs SBIR comparison, how to apply for women tech stem grants guide, women tech stem grants guide eligibility 2026, step by step women tech stem grants guide application guide, best women tech stem grants guide for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for women tech stem grants guide, women tech stem grants guide deadline 2026",
   openGraph: {
     title: "Women in Technology & STEM Grants Guide 2026 | Female Tech Entrepreneur Funding",
     description: "Complete guide to technology and STEM grants specifically for women entrepreneurs and female innovators.",

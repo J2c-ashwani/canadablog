@@ -22,7 +22,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "New York Tech Grants 2026: 10-Year Tax-Free (START-UP NY) + $250K Seed Fund",
   description: "Complete 2026 NY tech grant guide. START-UP NY = 10 years tax-free on university campuses. Pre-Seed Fund up to $250K. NYSERDA clean energy. FuzeHub $65K.",
-  keywords: "New York tech startup grants 2026, START-UP NY program tax free, NYSERDA innovation grants, Empire State Development ESD funding, NYC tech grants Manhattan Brooklyn",
+  keywords: "New York tech startup grants 2026, START-UP NY program tax free, NYSERDA innovation grants, Empire State Development ESD funding, NYC tech grants Manhattan Brooklyn, how to apply for new york tech programs, new york tech programs eligibility 2026, step by step new york tech programs application guide, best new york tech programs for small business USA, am I eligible for new york tech programs, new york tech programs deadline 2026",
   openGraph: {
     title: "NY Tech Grants 2026: 10-Year Tax-Free + $250K Seed Fund",
     description: "START-UP NY, Pre-Seed Matching Fund, NYSERDA innovation programs for NYC and statewide.",

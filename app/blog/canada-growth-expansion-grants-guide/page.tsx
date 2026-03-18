@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Canada Business Expansion Grants 2026 | 0% Interest Loans & Funding",
   description: "Complete 2026 guide to business scaling funding. Learn about the Business Scale-up and Productivity (BSP) program (0% interest loans), Regional Development Agencies, and the Canada Growth Fund.",
-  keywords: "Canada business expansion grants, Business Scale-up and Productivity, REGI program, FedDev Ontario funding, PrairiesCan grants, 0% interest business loans",
+  keywords: "Canada business expansion grants, Business Scale-up and Productivity, REGI program, FedDev Ontario funding, PrairiesCan grants, 0% interest business loans, how to apply for canada growth expansion grants guide, canada growth expansion grants guide eligibility 2026, step by step canada growth expansion grants guide application guide, best canada growth expansion grants guide for small business Canada, am I eligible for canada growth expansion grants guide, canada growth expansion grants guide deadline 2026",
 }
 
 export default function CanadaGrowthExpansionGrantsGuide() {

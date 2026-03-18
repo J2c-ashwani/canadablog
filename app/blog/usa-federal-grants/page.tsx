@@ -16,7 +16,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "US Federal Grants 2026: SBIR, SBA & Grants.gov Playbook",
   description: "Comprehensive guide to USA federal business grants including SBIR, STTR, SBA programs, minority grants, women-owned business grants, and state-specific funding opportunities.",
-  keywords: "federal business grants USA, federal funding programs, SBIR grants, STTR grants, SBA grants, government grants for small business",
+  keywords: "federal business grants USA, federal funding programs, SBIR grants, STTR grants, SBA grants, government grants for small business, how to apply for SBIR grants 2026, SBIR eligibility requirements, SBIR vs STTR comparison, how to apply for usa federal grants, usa federal grants eligibility 2026, step by step usa federal grants application guide, best usa federal grants for small business USA, am I eligible for usa federal grants, usa federal grants deadline 2026",
 }
 
 export default function USAFederalGrantsPage() {

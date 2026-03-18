@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Women Entrepreneurship Loan Fund (WELF) 2026 | $50k Funding Guide",
   description: "Complete 2026 guide to the Women Entrepreneurship Loan Fund. Get up to $50,000 in loans via delivery partners like Coralus, PARO, and NACCA.",
-  keywords: "women entrepreneurship loan fund WELF, WELF delivery partners, loans for women Canada, Coralus funding, PARO loans, NACCA indigenous loans",
+  keywords: "women entrepreneurship loan fund WELF, WELF delivery partners, loans for women Canada, Coralus funding, PARO loans, NACCA indigenous loans, how to apply for women entrepreneurship loan fund canada, women entrepreneurship loan fund canada eligibility 2026, step by step women entrepreneurship loan fund canada application guide, best women entrepreneurship loan fund canada for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for women entrepreneurship loan fund canada, women entrepreneurship loan fund canada deadline 2026",
 }
 
 export default function WomenUserLoanFundGuide() {

@@ -20,7 +20,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Quebec Small Business Grants 2026 | $1.8B+ Complete Funding Guide",
   description: "Quebec offers R&D tax credits up to 37.5% — the highest in North America. Plus Investissement Québec SME Fund and 15+ more programs you should know.",
-  keywords: "Quebec small business grants, Investissement Quebec SME fund, Quebec startup funding, Quebec R&D tax credits, francophone business grants Quebec, Montreal business grants, subventions PME Quebec",
+  keywords: "Quebec small business grants, Investissement Quebec SME fund, Quebec startup funding, Quebec R&D tax credits, francophone business grants Quebec, Montreal business grants, subventions PME Quebec, how to apply for quebec small business grants guide, quebec small business grants guide eligibility 2026, step by step quebec small business grants guide application guide, best quebec small business grants guide for small business Canada, am I eligible for quebec small business grants guide, quebec small business grants guide deadline 2026",
 }
 
 export default function QuebecSmallBusinessGrantsGuide() {

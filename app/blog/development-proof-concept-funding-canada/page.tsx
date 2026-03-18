@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Stage 2: Development & Proof-of-Concept Funding Canada 2026 | IRAP & SR&ED | Up to $5M Technology Development",
   description: "Complete guide to Canadian development and proof-of-concept funding. Access up to $5M through IRAP Technology Development, SR&ED Tax Credits, NSERC CRD, and applied research programs for TRL 4-6 projects.",
-  keywords: "proof of concept funding Canada, technology development grants, IRAP funding Canada, SR&ED tax credits, applied research funding, prototype development grants, NSERC CRD funding, TRL 4-6 funding Canada",
+  keywords: "proof of concept funding Canada, technology development grants, IRAP funding Canada, SR&ED tax credits, applied research funding, prototype development grants, NSERC CRD funding, TRL 4-6 funding Canada, how to apply for IRAP grants 2026, IRAP eligibility requirements, IRAP vs SR&ED comparison, how to apply for development proof concept funding canada, development proof concept funding canada eligibility 2026, step by step development proof concept funding canada application guide, best development proof concept funding canada for small business Canada, am I eligible for development proof concept funding canada, development proof concept funding canada deadline 2026",
   openGraph: {
     title: "Stage 2: Development & Proof-of-Concept Funding Canada 2026 | IRAP & SR&ED",
     description: "Access up to $5M in technology development funding. Complete guide to IRAP, SR&ED, and proof-of-concept programs.",

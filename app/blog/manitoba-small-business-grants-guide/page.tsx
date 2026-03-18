@@ -21,7 +21,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Manitoba Small Business Grants 2026 | $380M+ Complete Funding Guide",
   description: "Complete guide to Manitoba small business grants. Access Manitoba Business Development, Innovation Growth Program, Small Business Venture Capital, Rural Development Corporation, and 25+ funding programs. Expert tips for successful applications.",
-  keywords: "Manitoba small business grants, Manitoba business funding, Manitoba Business Development, Innovation Growth Program Manitoba, Manitoba Small Business Venture Capital, Winnipeg business grants, rural Manitoba funding",
+  keywords: "Manitoba small business grants, Manitoba business funding, Manitoba Business Development, Innovation Growth Program Manitoba, Manitoba Small Business Venture Capital, Winnipeg business grants, rural Manitoba funding, how to apply for manitoba small business grants guide, manitoba small business grants guide eligibility 2026, step by step manitoba small business grants guide application guide, best manitoba small business grants guide for small business Canada, am I eligible for manitoba small business grants guide, manitoba small business grants guide deadline 2026",
 }
 
 export default function ManitobaSmallBusinessGrantsGuide() {

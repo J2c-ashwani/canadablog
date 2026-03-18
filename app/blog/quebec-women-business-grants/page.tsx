@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Quebec Women Business Grants 2026 | $720M Francophone Entrepreneur Support Programs",
   description: "Complete guide to Quebec women entrepreneurship support with Réseau des Femmes d'Affaires, Investissement Québec, J. Armand Bombardier grants, and francophone women business funding.",
-  keywords: "Quebec women business grants, RFAQ grants, Investissement Quebec women, francophone women entrepreneurs, Quebec women leadership, women business loans Montreal, female entrepreneur grants Quebec City, subventions femmes entrepreneures Québec, financement entreprises féminines",
+  keywords: "Quebec women business grants, RFAQ grants, Investissement Quebec women, francophone women entrepreneurs, Quebec women leadership, women business loans Montreal, female entrepreneur grants Quebec City, subventions femmes entrepreneures Québec, financement entreprises féminines, how to apply for quebec women business grants, quebec women business grants eligibility 2026, step by step quebec women business grants application guide, best quebec women business grants for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for quebec women business grants, quebec women business grants deadline 2026",
   openGraph: {
     title: "Quebec Women Business Grants 2026 | $720M Francophone Support",
     description: "Comprehensive guide to Quebec women business support with provincial grants, microfinancing, and francophone entrepreneur programs.",

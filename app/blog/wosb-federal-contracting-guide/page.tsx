@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "WOSB Federal Contracting Guide 2026 | Women-Owned Small Business Certification",
   description: "Complete guide to WOSB and EDWOSB certification for federal contracting. Learn how women-owned businesses can access $2M+ government contracts.",
-  keywords: "WOSB certification, women owned small business, federal contracting, EDWOSB, government contracts women, SBA certification",
+  keywords: "WOSB certification, women owned small business, federal contracting, EDWOSB, government contracts women, SBA certification, how to apply for SBA grants 2026, SBA eligibility requirements, how to apply for wosb federal contracting guide, wosb federal contracting guide eligibility 2026, step by step wosb federal contracting guide application guide, best wosb federal contracting guide for small business USA, best grants for women entrepreneurs USA 2026, women owned business funding eligibility, am I eligible for wosb federal contracting guide, wosb federal contracting guide deadline 2026",
   openGraph: {
     title: "WOSB Federal Contracting Guide 2026 | Women-Owned Small Business Certification",
     description: "Complete guide to WOSB certification and federal contracting opportunities for women-owned businesses.",

@@ -17,7 +17,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "SR&ED Tax Credits Canada 2026 | Scientific Research & Experimental Development Guide - 65% Refundable",
   description: "Complete guide to SR&ED tax credits in Canada. Enhanced 2026 rates with 35% federal refundable + provincial credits up to 65% total. $4.5M expenditure limit.",
-  keywords: "SR&ED tax credits Canada, scientific research experimental development, R&D tax credits 2026, 35% refundable tax credit, CCPC tax incentives",
+  keywords: "SR&ED tax credits Canada, scientific research experimental development, R&D tax credits 2026, 35% refundable tax credit, CCPC tax incentives, how to apply for SR&ED grants 2026, SR&ED eligibility requirements, how to apply for sred scientific research experimental development, sred scientific research experimental development eligibility 2026, step by step sred scientific research experimental development application guide, best sred scientific research experimental development for small business Canada, am I eligible for sred scientific research experimental development, sred scientific research experimental development deadline 2026",
   openGraph: {
     title: "SR&ED Tax Credits Canada 2026 | 65% Refundable R&D Tax Incentives Guide",
     description: "Complete guide to Canada's SR&ED program with enhanced 2026 rates. 35% federal + provincial credits up to 65% total on $4.5M expenditure limit.",

@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "SaaS & Software Startup Grants Canada 2026 | Non-Dilutive Funding",
   description: "Complete 2026 guide to Canadian software grants. Learn how to qualify for IRAP (vs standard CRUD apps), get BDC recurring revenue loans, and use hiring subsidies.",
-  keywords: "Canada software grants, SaaS startup funding, IRAP for software, BDC tech loan, startup grants Canada, SR&ED for SaaS",
+  keywords: "Canada software grants, SaaS startup funding, IRAP for software, BDC tech loan, startup grants Canada, SR&ED for SaaS, how to apply for IRAP grants 2026, IRAP eligibility requirements, IRAP vs SR&ED comparison, how to apply for software saas startup grants, software saas startup grants eligibility 2026, step by step software saas startup grants application guide, best software saas startup grants for small business Canada, am I eligible for software saas startup grants, software saas startup grants deadline 2026",
 }
 
 export default function SoftwareSaaSGrantsGuide() {

@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Canada Digital Adoption Program (CDAP) 2026 Guide | $2400 Grants & Alternatives",
   description: "Complete 2026 guide to Canadian technology grants. Status of CDAP 'Grow Your Business Online' ($2400), closure of 'Boost Your Business', and active alternatives like ESSOR and BDC financing.",
-  keywords: "Canada Digital Adoption Program 2026, CDAP status, Grow Your Business Online grant, technology adoption grants Canada, ESSOR program Quebec, small business digital grants",
+  keywords: "Canada Digital Adoption Program 2026, CDAP status, Grow Your Business Online grant, technology adoption grants Canada, ESSOR program Quebec, small business digital grants, how to apply for CDAP grants 2026, CDAP eligibility requirements, how to apply for canada technology adoption grants guide, canada technology adoption grants guide eligibility 2026, step by step canada technology adoption grants guide application guide, best canada technology adoption grants guide for small business Canada, am I eligible for canada technology adoption grants guide, canada technology adoption grants guide deadline 2026",
 }
 
 export default function CanadaTechnologyAdoptionGrantsGuide() {

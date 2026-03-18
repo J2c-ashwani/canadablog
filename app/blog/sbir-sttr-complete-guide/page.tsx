@@ -21,7 +21,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "SBIR & STTR Grants Complete Guide 2026 | Up to $1.7M Federal R&D Funding",
   description: "Complete guide to SBIR and STTR grants. Learn eligibility, application process, Phase I/II funding, and strategies to win up to $1.7M in non-dilutive federal R&D grants.",
-  keywords: "SBIR grants, STTR grants, small business innovation research, federal R&D funding, Phase I Phase II grants, non-dilutive funding",
+  keywords: "SBIR grants, STTR grants, small business innovation research, federal R&D funding, Phase I Phase II grants, non-dilutive funding, how to apply for SBIR grants 2026, SBIR eligibility requirements, SBIR vs STTR comparison, how to apply for sbir sttr complete guide, sbir sttr complete guide eligibility 2026, step by step sbir sttr complete guide application guide, best sbir sttr complete guide for small business USA, am I eligible for sbir sttr complete guide, sbir sttr complete guide deadline 2026",
 }
 
 export default function SBIRSTTRGuidePage() {

@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Cybersecurity Grants 2026-2027 | $1.8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive",
   description: "Complete 2026-2027 guide to cybersecurity grants. DOD SBIR Phase I $200K-$400K, Phase II $1.8M, DHS cybersecurity funding, NSA research programs supporting security software, encryption, threat detection, zero-trust, cloud security with zero equity.",
-  keywords: "cybersecurity grants 2026, security software funding DOD SBIR, encryption grants DHS, threat detection funding Phase II, zero-trust architecture grants, cloud security funding NSA, penetration testing grants, incident response funding",
+  keywords: "cybersecurity grants 2026, security software funding DOD SBIR, encryption grants DHS, threat detection funding Phase II, zero-trust architecture grants, cloud security funding NSA, penetration testing grants, incident response funding, how to apply for SBIR grants 2026, SBIR eligibility requirements, SBIR vs DOD comparison, how to apply for cybersecurity grants, cybersecurity grants eligibility 2026, step by step cybersecurity grants application guide, best cybersecurity grants for small business Canada, am I eligible for cybersecurity grants, cybersecurity grants deadline 2026",
   openGraph: {
     title: "Cybersecurity Grants 2026 | $1.8M DOD SBIR + DHS Cyber Funding",
     description: "Complete guide to cybersecurity grants from DOD, DHS, NSA, and defense programs.",

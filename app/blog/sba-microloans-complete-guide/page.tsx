@@ -27,7 +27,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "SBA Microloans 2026: Get Up to $50K + Free Mentoring | Complete Guide",
   description: "Complete guide to SBA microloans. Get up to $50K with faster approval (2-4 weeks), 8-13% rates, and FREE business mentoring. Step-by-step application process.",
-  keywords: "SBA microloans, small business microloans, SBA microloan program, startup funding, small business loans, CDFI loans",
+  keywords: "SBA microloans, small business microloans, SBA microloan program, startup funding, small business loans, CDFI loans, how to apply for SBA grants 2026, SBA eligibility requirements, how to apply for sba microloans complete guide, sba microloans complete guide eligibility 2026, step by step sba microloans complete guide application guide, best sba microloans complete guide for small business USA, am I eligible for sba microloans complete guide, sba microloans complete guide deadline 2026",
 }
 
 export default function SBAMicroloansGuidePage() {

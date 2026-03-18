@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Stage 3: Demonstration & Pilot Funding Canada 2026 | SDTC & Clean Growth | Up to $15M Project Funding",
   description: "Complete guide to Canadian demonstration and pilot project funding. Access up to $15M through SDTC Demonstration, Clean Growth Program, sector pilots, and TRL 7-8 validation projects for pre-commercial scale-up.",
-  keywords: "demonstration project funding Canada, pilot program grants, SDTC demonstration funding, Clean Growth Program Canada, TRL 7-8 funding, pre-commercial funding, scale-up grants Canada, pilot plant funding",
+  keywords: "demonstration project funding Canada, pilot program grants, SDTC demonstration funding, Clean Growth Program Canada, TRL 7-8 funding, pre-commercial funding, scale-up grants Canada, pilot plant funding, how to apply for SDTC grants 2026, SDTC eligibility requirements, how to apply for demonstration pilot funding canada, demonstration pilot funding canada eligibility 2026, step by step demonstration pilot funding canada application guide, best demonstration pilot funding canada for small business Canada, am I eligible for demonstration pilot funding canada, demonstration pilot funding canada deadline 2026",
   openGraph: {
     title: "Stage 3: Demonstration & Pilot Funding Canada 2026 | SDTC & Clean Growth",
     description: "Access up to $15M in demonstration and pilot funding. Complete guide to SDTC, Clean Growth, and sector pilot programs.",

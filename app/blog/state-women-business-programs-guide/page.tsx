@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "State Women Business Programs Guide 2026 | Local Government Grants for Female Entrepreneurs",
   description: "Complete guide to state and local women business programs. Discover grants, tax incentives, and support programs in all 50 states for women entrepreneurs.",
-  keywords: "state women business programs, local women entrepreneur grants, state business grants women, women business development programs, female entrepreneur support",
+  keywords: "state women business programs, local women entrepreneur grants, state business grants women, women business development programs, female entrepreneur support, how to apply for state women business programs guide, state women business programs guide eligibility 2026, step by step state women business programs guide application guide, best state women business programs guide for small business USA, best grants for women entrepreneurs USA 2026, women owned business funding eligibility, am I eligible for state women business programs guide, state women business programs guide deadline 2026",
   openGraph: {
     title: "State Women Business Programs Guide 2026 | Local Government Grants",
     description: "Complete guide to state and local government programs supporting women entrepreneurs across all 50 states.",

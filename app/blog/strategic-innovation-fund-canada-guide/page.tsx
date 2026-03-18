@@ -26,7 +26,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Strategic Innovation Fund Canada 2026 | $100M+ SIF Funding Guide | Innovation Projects",
   description: "Complete guide to Strategic Innovation Fund (SIF) funding in Canada. Access up to $100M for transformative innovation projects, R&D commercialization, and industrial expansion from ISED Canada.",
-  keywords: "Strategic Innovation Fund Canada, SIF funding, ISED grants, innovation funding Canada, R&D commercialization grants, industrial expansion funding, technology innovation grants Canada, large scale business funding, transformative project funding",
+  keywords: "Strategic Innovation Fund Canada, SIF funding, ISED grants, innovation funding Canada, R&D commercialization grants, industrial expansion funding, technology innovation grants Canada, large scale business funding, transformative project funding, how to apply for strategic innovation fund canada guide, strategic innovation fund canada guide eligibility 2026, step by step strategic innovation fund canada guide application guide, best strategic innovation fund canada guide for small business Canada, am I eligible for strategic innovation fund canada guide, strategic innovation fund canada guide deadline 2026",
   openGraph: {
     title: "Strategic Innovation Fund Canada 2026 | $100M+ SIF Funding Guide",
     description: "Access up to $100M through Canada's Strategic Innovation Fund. Complete guide to SIF eligibility, application process, and transformative innovation funding.",

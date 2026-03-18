@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Commercialization Grants Canada 2026 | ISC & Scale-Up Funding",
   description: "Complete 2026 guide to commercialization funding. Get the government to buy your prototype (ISC Testing Stream), fund your patent strategy (IP Assist), and scale globally.",
-  keywords: "Canada commercialization grants, Innovative Solutions Canada ISC, testing stream grant, CanExport innovation, IP assist funding, scale-up grants Canada",
+  keywords: "Canada commercialization grants, Innovative Solutions Canada ISC, testing stream grant, CanExport innovation, IP assist funding, scale-up grants Canada, how to apply for CanExport grants 2026, CanExport eligibility requirements, how to apply for commercialization scale up funding canada, commercialization scale up funding canada eligibility 2026, step by step commercialization scale up funding canada application guide, best commercialization scale up funding canada for small business Canada, am I eligible for commercialization scale up funding canada, commercialization scale up funding canada deadline 2026",
 }
 
 export default function CommercializationFundingGuide() {

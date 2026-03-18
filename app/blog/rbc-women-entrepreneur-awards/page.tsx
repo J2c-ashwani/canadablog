@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata = {
   title: "RBC Canadian Women Entrepreneur Awards 2026: Complete Guide to $100K+ in Grants & Recognition",
   description: "Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2026. Learn eligibility, application process, 8 award categories, past winners, and similar grants for women in USA & Canada. Deadline: March 21, 2026.",
-  keywords: "RBC Women Entrepreneur Awards, women business grants Canada, women entrepreneur funding, Canadian women business awards, women startup grants, female entrepreneur support, women entrepreneurship Canada USA, business grants for women 2026",
+  keywords: "RBC Women Entrepreneur Awards, women business grants Canada, women entrepreneur funding, Canadian women business awards, women startup grants, female entrepreneur support, women entrepreneurship Canada USA, business grants for women 2026, how to apply for rbc women entrepreneur awards, rbc women entrepreneur awards eligibility 2026, step by step rbc women entrepreneur awards application guide, best rbc women entrepreneur awards for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for rbc women entrepreneur awards, rbc women entrepreneur awards deadline 2026",
   openGraph: {
     title: "RBC Canadian Women Entrepreneur Awards 2026 - Win Up to $100,000",
     description: "33rd Annual RBC Canadian Women Entrepreneur Awards. 8 categories, national recognition, mentorship, and up to $100K in funding for women-led businesses.",

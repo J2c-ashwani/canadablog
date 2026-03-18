@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "WBDC Equity Match Grant 2027 | $2,500-$10,000 for Women Business Growth Projects",
   description: "Complete guide to WBDC Equity Match Grant with quarterly deadlines, $2,500-$10,000 funding for Connecticut women-owned businesses with matching investment requirement.",
-  keywords: "WBDC Equity Match Grant, Connecticut women business grants, equity match funding, women business growth",
+  keywords: "WBDC Equity Match Grant, Connecticut women business grants, equity match funding, women business growth, how to apply for BDC grants 2026, BDC eligibility requirements, how to apply for wbdc equity match grant women, wbdc equity match grant women eligibility 2026, step by step wbdc equity match grant women application guide, best wbdc equity match grant women for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for wbdc equity match grant women, wbdc equity match grant women deadline 2026",
   openGraph: {
     title: "WBDC Equity Match Grant 2027 | Quarterly $2.5K-$10K Awards",
     description: "Quarterly grant program requiring 1:1 match for Connecticut women-owned business growth projects.",

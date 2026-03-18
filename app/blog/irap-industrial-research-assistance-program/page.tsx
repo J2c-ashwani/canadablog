@@ -21,7 +21,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "IRAP Industrial Research Assistance Program 2026 | Up to $1M Non-Repayable R&D Grants",
   description: "IRAP funds up to $1M for R&D — but 70% of first-time applicants get rejected. Here's exactly how to build the ITA relationship that gets your project approved.",
-  keywords: "IRAP, Industrial Research Assistance Program, NRC IRAP, Canada R&D grants, technology grants Canada, innovation funding, non-repayable grants",
+  keywords: "IRAP, Industrial Research Assistance Program, NRC IRAP, Canada R&D grants, technology grants Canada, innovation funding, non-repayable grants, how to apply for IRAP grants 2026, IRAP eligibility requirements, IRAP vs NRC comparison, how to apply for irap industrial research assistance program, irap industrial research assistance program eligibility 2026, step by step irap industrial research assistance program application guide, best irap industrial research assistance program for small business Canada, am I eligible for irap industrial research assistance program, irap industrial research assistance program deadline 2026",
 }
 
 export default function IRAPGuidePage() {

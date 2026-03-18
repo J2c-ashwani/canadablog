@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Canada Clean Technology Innovation Grants 2026 | $1.2B+ CleanTech Funding | SDTC & Net Zero",
   description: "Complete guide to Canadian clean technology innovation grants. Access $1.2B+ funding through SDTC (up to $15M), Clean Technology ITCs, Net Zero Accelerator, and 22+ cleantech programs.",
-  keywords: "Canada clean technology grants, cleantech funding Canada, SDTC grants, sustainable technology funding, renewable energy grants Canada, environmental innovation funding, Net Zero Accelerator, clean tech tax credits Canada",
+  keywords: "Canada clean technology grants, cleantech funding Canada, SDTC grants, sustainable technology funding, renewable energy grants Canada, environmental innovation funding, Net Zero Accelerator, clean tech tax credits Canada, how to apply for SDTC grants 2026, SDTC eligibility requirements, how to apply for canada clean technology innovation grants, canada clean technology innovation grants eligibility 2026, step by step canada clean technology innovation grants application guide, best canada clean technology innovation grants for small business Canada, am I eligible for canada clean technology innovation grants, canada clean technology innovation grants deadline 2026",
   openGraph: {
     title: "Canada Clean Technology Innovation Grants 2026 | $1.2B+ CleanTech Funding",
     description: "Access $1.2B+ in clean technology innovation funding. Complete guide to SDTC grants, Clean Technology ITCs, and 22+ programs supporting environmental innovation.",

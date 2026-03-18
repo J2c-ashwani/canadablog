@@ -25,7 +25,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Clean Tech & Energy Grants Canada 2026 | 30% Tax Credits & Funding",
   description: "Complete 2026 guide to Canadian Clean Tech funding. Learn about the 30% Clean Tech Investment Tax Credit (ITC), SDTC grants, and NRCan energy efficiency programs.",
-  keywords: "Canada clean tech grants, clean technology investment tax credit ITC, SDTC funding, NRCan grants, ZEVIP program, green business grants Canada",
+  keywords: "Canada clean tech grants, clean technology investment tax credit ITC, SDTC funding, NRCan grants, ZEVIP program, green business grants Canada, how to apply for NRC grants 2026, NRC eligibility requirements, NRC vs SDTC comparison, how to apply for clean tech energy grants, clean tech energy grants eligibility 2026, step by step clean tech energy grants application guide, best clean tech energy grants for small business Canada, am I eligible for clean tech energy grants, clean tech energy grants deadline 2026",
 }
 
 export default function CleanTechEnergyGrantsGuide() {

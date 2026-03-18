@@ -19,7 +19,7 @@ import AdSlot from '@/components/blog/AdSlot';
 export const metadata: Metadata = {
   title: "Hardware & IoT Startup Grants 2026-2027 | $305K NSF SBIR, $1.25M Phase II, DOD Electronics Non-Dilutive Funding",
   description: "Complete 2026-2027 guide to hardware and IoT startup grants. NSF SBIR Phase I $305K, Phase II $1.25M, DOD electronics programs, advanced manufacturing funding supporting connected devices, sensors, robotics, semiconductors, edge computing with zero equity.",
-  keywords: "hardware startup grants 2026, IoT grants NSF SBIR, electronics funding $305K, connected devices grants, sensor technology funding, robotics grants Phase II, semiconductor startup funding, edge computing grants, advanced manufacturing, DOD electronics programs",
+  keywords: "hardware startup grants 2026, IoT grants NSF SBIR, electronics funding $305K, connected devices grants, sensor technology funding, robotics grants Phase II, semiconductor startup funding, edge computing grants, advanced manufacturing, DOD electronics programs, how to apply for NSF grants 2026, NSF eligibility requirements, NSF vs SBIR comparison, how to apply for hardware iot startup grants, hardware iot startup grants eligibility 2026, step by step hardware iot startup grants application guide, best hardware iot startup grants for small business Canada, am I eligible for hardware iot startup grants, hardware iot startup grants deadline 2026",
   openGraph: {
     title: "Hardware & IoT Grants 2026 | $305K NSF SBIR + DOD Electronics",
     description: "Complete guide to hardware and IoT startup grants from NSF, DOD, and advanced manufacturing programs.",
