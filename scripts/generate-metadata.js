@@ -47,20 +47,7 @@ async function generateMetadata() {
               readTime: post.readTime,
               image: post.image,
               featured: post.featured,
-              type: post.type,
-              seo: post.seo,
-              metrics: post.metrics,
-              expertTip: post.expertTip,
-              faq: post.faq,
-              shortAnswer: post.shortAnswer,
-              shortAnswerQuestion: post.shortAnswerQuestion,
-              faqSchema: post.faqSchema,
-              comparisonTable: post.comparisonTable,
-              jumpLinks: post.jumpLinks,
-              eligibleCheck: post.eligibleCheck,
-              inlineCTA: post.inlineCTA,
-              relatedLinks: post.relatedLinks,
-              tags: post.tags
+              type: post.type
             });
             
             // Decouple full content to raw JSON
