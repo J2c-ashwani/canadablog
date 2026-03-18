@@ -10,6 +10,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
     title: "About the Editor | Ashwani K. | FSI Digital",
     description: "Ashwani K. is a research-focused writer covering Canadian and U.S. government funding programs for startups and small businesses.",
+  keywords: "Ashwani K grant expert, FSI Digital editor, government grants author, Canadian business funding expert",
     alternates: {
         canonical: "https://www.fsidigital.ca/about/author",
     },

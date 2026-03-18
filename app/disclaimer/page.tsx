@@ -1,6 +1,13 @@
 import React from 'react'
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Disclaimer | FSI Digital',
+  description: 'Important legal disclaimer and information accuracy policies for FSI Digital grant funding content and services.',
+  keywords: 'FSI Digital disclaimer, grant information accuracy, funding advice disclaimer',
+}
 
 export default function Disclaimer() {
   return (

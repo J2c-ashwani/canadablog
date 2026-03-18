@@ -7,6 +7,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
     title: "Editorial Policy & Standards | FSI Digital",
     description: "Our commitment to accuracy, independence, and transparency in reporting on government grants and business funding for USA and Canada.",
+  keywords: "FSI Digital editorial policy, content standards, grant information accuracy, editorial guidelines",
     alternates: {
         canonical: "https://www.fsidigital.ca/editorial-policy",
     },

@@ -61,6 +61,7 @@ export async function generateMetadata({ params }: { params: { consultationSlug:
   return {
     title: `Book Your ${cleanTitle} | Expert Setup & Review`,
     description: `Schedule a dedicated strategy session for ${cleanTitle.toLowerCase()}. Get expert guidance on applications, eligibility, and funding strategy.`,
+    keywords: `${cleanTitle.toLowerCase()} strategy session, book grant consultation, expert grant review, funding application help, business grant eligibility check, ${cleanTitle.toLowerCase()} experts`,
   };
 }
 

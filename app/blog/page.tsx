@@ -45,7 +45,7 @@ export async function generateMetadata({
   return {
     title,
     description,
-    keywords: "grant funding blog, government grants news, funding opportunities, grant alerts, business funding tips, entrepreneur grants",
+    keywords: "grant funding blog, government grants news, funding opportunities 2026, how to apply for government grants, best small business grants Canada USA, IRAP CDAP SBIR grant guides, startup funding alerts, non-repayable grants for entrepreneurs, grant application tips step by step, am I eligible for government grants",
     openGraph: {
       title,
       description,
