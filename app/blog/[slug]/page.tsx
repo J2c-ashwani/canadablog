@@ -17,7 +17,7 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
-import { getBlogPostBySlug, getAllBlogPosts, blogCategories, getBlogPostContent } from '@/lib/data/blogPosts';
+import { getBlogPostBySlug, getAllBlogPosts, blogCategories, getBlogPostContent, getBlogPostRichData } from '@/lib/data/blogPosts';
 import { generateMetadata as generateSEOMetadata, generateArticleSchema, generateOrganizationSchema, generateHowToSchema } from '@/lib/seo';
 import { generateBlogPostSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/schema';
 import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable";
@@ -84,7 +84,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   const content = await getBlogPostContent(slug) || '';
-  const fullPost = { ...post, content };
+  const richData = await getBlogPostRichData(slug);
+  const fullPost = { ...post, ...richData, content };
 
   // Split content for InlineCTA injection
   let beforeCTA = content;

@@ -125,6 +125,21 @@ export async function getBlogPostContent(slug: string): Promise<string | null> {
   }
 }
 
+/** Load rich Answer Engine fields (shortAnswer, faq, metrics, etc.) from per-slug JSON */
+export async function getBlogPostRichData(slug: string): Promise<Partial<BlogPost>> {
+  try {
+    const filePath = path.join(process.cwd(), 'lib/data/blog-content', `${slug}.json`);
+    if (!fs.existsSync(filePath)) return {};
+    
+    const fileData = fs.readFileSync(filePath, 'utf8');
+    const parsed = JSON.parse(fileData);
+    const { content, ...richFields } = parsed;
+    return richFields as Partial<BlogPost>;
+  } catch (err) {
+    return {};
+  }
+}
+
 export function getFeaturedPosts() {
   return blogPosts
     .filter((post) => post.featured)

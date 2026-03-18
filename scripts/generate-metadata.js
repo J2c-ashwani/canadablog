@@ -50,9 +50,33 @@ async function generateMetadata() {
               type: post.type
             });
             
-            // Decouple full content to raw JSON
+            // Decouple full content + rich fields to per-slug JSON
+            // (keeps blogMetadata.json lightweight for Webpack, rich data loaded at runtime via fs.readFileSync)
             const contentFile = path.join(contentDir, `${post.slug}.json`);
-            fs.writeFileSync(contentFile, JSON.stringify({ content: post.content || "" }));
+            const richData = {
+              content: post.content || "",
+              // Answer Engine fields
+              shortAnswer: post.shortAnswer || undefined,
+              shortAnswerQuestion: post.shortAnswerQuestion || undefined,
+              // FAQ & Schema
+              faq: post.faq || undefined,
+              faqSchema: post.faqSchema || undefined,
+              // Metrics & Expert
+              metrics: post.metrics || undefined,
+              expertTip: post.expertTip || undefined,
+              // SEO
+              seo: post.seo || undefined,
+              // Rich components
+              comparisonTable: post.comparisonTable || undefined,
+              jumpLinks: post.jumpLinks || undefined,
+              eligibleCheck: post.eligibleCheck || undefined,
+              inlineCTA: post.inlineCTA || undefined,
+              relatedLinks: post.relatedLinks || undefined,
+              tags: post.tags || undefined,
+            };
+            // Remove undefined keys to keep JSON clean
+            Object.keys(richData).forEach(k => richData[k] === undefined && delete richData[k]);
+            fs.writeFileSync(contentFile, JSON.stringify(richData));
             
             slugToPath[post.slug] = './' + relativePath.replace(/\\/g, '/');
           }
