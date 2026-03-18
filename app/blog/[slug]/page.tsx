@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   // Site-Wide Enrichment Logic:
   // Dynamically INDEX posts only if they have been enriched with High Value content stats/tips.
-  const isEnriched = !!(post.metrics || post.expertTip);
+  const isEnriched = !!(fullPost.metrics || fullPost.expertTip);
 
   return {
     ...generateSEOMetadata({ ...post, content: '' }),
@@ -90,7 +90,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   // Split content for InlineCTA injection
   let beforeCTA = content;
   let afterCTA = "";
-  if (post.inlineCTA) {
+  if (fullPost.inlineCTA) {
     const h2Matches = [...content.matchAll(/<h2/gi)];
     if (h2Matches.length >= 2) {
       const splitIndex = h2Matches[Math.min(2, h2Matches.length - 1)].index;
@@ -218,11 +218,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   </h1>
                 )}
 
-                {post.shortAnswer && (
+                {fullPost.shortAnswer && (
                   <div className="text-left w-full mx-auto max-w-4xl">
                     <ShortAnswerBox
-                      question={post.shortAnswerQuestion}
-                      content={post.shortAnswer}
+                      question={fullPost.shortAnswerQuestion}
+                      content={fullPost.shortAnswer}
                       isH1={post.type === 'grant-news'}
                     />
                   </div>
@@ -254,12 +254,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <LastVerifiedBadge date={post.date} />
               </div>
 
-              {post.eligibleCheck && (
+              {fullPost.eligibleCheck && (
                 <EligibleCheck />
               )}
 
-              {post.jumpLinks && (
-                <StickyTOC links={post.jumpLinks} />
+              {fullPost.jumpLinks && (
+                <StickyTOC links={fullPost.jumpLinks} />
               )}
 
               <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-12">
@@ -272,11 +272,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
 
               {/* DYNAMIC ENRICHMENT: Success Metrics Table */}
-              {post.metrics && (
+              {fullPost.metrics && (
                 <div className="mb-10 not-prose">
                   <GrantSuccessTable
                     title="Quick Funding Facts"
-                    metrics={post.metrics.map(m => {
+                    metrics={fullPost.metrics.map(m => {
                       const IconComponent = (m.iconName && iconMap[m.iconName]) ? iconMap[m.iconName] : Target;
                       return {
                         ...m,
@@ -288,24 +288,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               )}
 
               {/* DYNAMIC ENRICHMENT: Comparison Table */}
-              {post.comparisonTable && (
+              {fullPost.comparisonTable && (
                 <div className="mb-10 not-prose">
                   <GrantComparisonTable
-                    title={post.comparisonTable.title}
-                    description={post.comparisonTable.description}
-                    programs={post.comparisonTable.programs}
+                    title={fullPost.comparisonTable.title}
+                    description={fullPost.comparisonTable.description}
+                    programs={fullPost.comparisonTable.programs}
                   />
                 </div>
               )}
 
               {/* DYNAMIC ENRICHMENT: Expert Tip */}
-              {post.expertTip && (
+              {fullPost.expertTip && (
                 <div className="mb-10 not-prose">
                   <ExpertTipBox
-                    type={post.expertTip.type}
-                    title={post.expertTip.title}
+                    type={fullPost.expertTip.type}
+                    title={fullPost.expertTip.title}
                   >
-                    <div dangerouslySetInnerHTML={{ __html: post.expertTip.content }} />
+                    <div dangerouslySetInnerHTML={{ __html: fullPost.expertTip.content }} />
                   </ExpertTipBox>
                 </div>
               )}
@@ -314,9 +314,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 {beforeContentData.nodes}
               </div>
 
-              {post.inlineCTA && (
+              {fullPost.inlineCTA && (
                 <div className="not-prose my-8">
-                  <InlineCTA {...post.inlineCTA} />
+                  <InlineCTA {...fullPost.inlineCTA} />
                 </div>
               )}
 
@@ -327,11 +327,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               )}
 
               {/* DYNAMIC ENRICHMENT: FAQ Schema UI */}
-              {post.faq && (
+              {fullPost.faq && (
                 <div className="mt-12 mb-8 not-prose">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h3>
                   <Accordion type="single" collapsible className="w-full">
-                    {post.faq.map((item, index) => (
+                    {fullPost.faq.map((item, index) => (
                       <AccordionItem key={index} value={`item-${index}`}>
                         <AccordionTrigger className="text-left font-semibold text-gray-900 dark:text-white">
                           {item.question}
@@ -346,9 +346,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               )}
 
               {/* ENGAGEMENT DEPTH: Related Funding Resources */}
-              {post.relatedLinks && post.relatedLinks.length > 0 && (
+              {fullPost.relatedLinks && fullPost.relatedLinks.length > 0 && (
                 <div className="mt-12 not-prose">
-                  <RelatedPageLinks links={post.relatedLinks} />
+                  <RelatedPageLinks links={fullPost.relatedLinks} />
                 </div>
               )}
 
