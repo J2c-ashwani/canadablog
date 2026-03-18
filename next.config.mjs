@@ -131,6 +131,15 @@ const nextConfig = {
       { source: '/cdbg-community-consultation', destination: '/grant-finder', permanent: true },
       { source: '/grants/technology-grants', destination: '/blog/canada-clean-technology-innovation-grants', permanent: true },
       { source: '/rural-grant-consultation', destination: '/blog/rural-business-development-2026', permanent: true },
+
+      // GSC 404 fixes — Mar 19, 2026
+      { source: '/illinois-business-grants-consultation', destination: '/blog/illinois-business-development-2026', permanent: true },
+      { source: '/grants/on', destination: '/blog/ontario-government-business-grants', permanent: true },
+      { source: '/environmental-justice-consultation', destination: '/blog/epa-environmental-justice-2026', permanent: true },
+      { source: '/michigan-manufacturing-consultation', destination: '/blog/michigan-manufacturing-renaissance-2026', permanent: true },
+      { source: '/new-york-business-grants-consultation', destination: '/blog/new-york-business-grants-2026', permanent: true },
+      { source: '/grant-application-review', destination: '/contact', permanent: true },
+      { source: '/faq', destination: '/faq-usa', permanent: true },
     ]
   },
   async headers() {
