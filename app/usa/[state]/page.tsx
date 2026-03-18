@@ -68,6 +68,22 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     return {
         title,
         description,
+        keywords: [
+            `${state.name} business grants 2026`,
+            `how to apply for grants in ${state.name}`,
+            `best small business grants ${state.name}`,
+            `${state.name} government funding eligibility`,
+            `${state.name} startup grants`,
+            `federal vs state grants ${state.name}`,
+            `SBA grants ${state.name}`,
+            `SBIR funding ${state.name}`,
+            `${state.name} small business funding programs`,
+            `am I eligible for ${state.name} grants`,
+            `${state.name} grant application deadline 2026`,
+            `non-repayable grants ${state.name}`,
+            `${state.name} women business grants`,
+            `minority business grants ${state.name}`,
+        ].join(', '),
         alternates: {
             canonical: `https://www.fsidigital.ca/usa/${state.slug}`,
         },

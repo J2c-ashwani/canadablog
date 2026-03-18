@@ -74,6 +74,20 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     return {
         title,
         description: `Local businesses in ${cityData.city} are missing out on funding. Find highly-targeted grants, ${state.name} state incentives, and federal equity-free programs available in your exact zip code.`,
+        keywords: [
+            `${cityData.city} business grants 2026`,
+            `small business grants ${cityData.city} ${state.name}`,
+            `how to apply for grants in ${cityData.city}`,
+            `best grants near ${cityData.city}`,
+            `${cityData.city} government funding`,
+            `local business funding ${cityData.city}`,
+            `${state.name} state grants for ${cityData.city} businesses`,
+            `startup grants ${cityData.city}`,
+            `SBA grants ${cityData.city} ${state.name}`,
+            `women business grants ${cityData.city}`,
+            `${cityData.city} small business funding programs 2026`,
+            `federal grants ${cityData.city} ${state.name}`,
+        ].join(', '),
         alternates: {
             canonical: `https://www.fsidigital.ca/usa/${state.slug}/${cityParam}`,
         },
