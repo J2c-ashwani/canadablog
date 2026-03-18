@@ -15,7 +15,7 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 export const metadata: Metadata = {
   title: "Manufacturing Grants Canada 2026 | NGen & Industry 4.0 Funding",
   description: "Complete guide to advanced manufacturing funding. Apply for NGen supercluster projects, IRAP manufacturing grants, and CDAP digital adoption loans.",
-  keywords: "manufacturing grants Canada, NGen funding, advanced manufacturing, Industry 4.0 grants, robotics funding, automation grants Canada",
+  keywords: "manufacturing grants Canada, NGen funding, advanced manufacturing, Industry 4.0 grants, robotics funding, automation grants Canada, canada manufacturing funding guide application checklist 2026, canada manufacturing funding guide requirements and documents needed, canada manufacturing funding guide approval timeline, canada manufacturing funding guide application tips, NGen application step by step guide, NGen eligibility checker, best grants for small business Canada 2026, am I eligible for canada manufacturing funding guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-manufacturing-funding-guide",
   },

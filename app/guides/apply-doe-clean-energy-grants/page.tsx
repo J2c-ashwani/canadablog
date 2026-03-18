@@ -16,7 +16,7 @@ import InlineCTA from '@/components/blog/InlineCTA';
 export const metadata: Metadata = {
   title: "DOE Clean Energy Grants 2026 | $62B Funding Guide",
   description: "Official guide to Department of Energy (DOE) grants. Funding for solar, wind, and clean tech startups. Learn how to apply for ARPA-E and EERE grants.",
-  keywords: "DOE clean energy grants, solar energy funding, wind energy grants, ARPA-E application, EERE funding opportunities, clean tech startup grants",
+  keywords: "DOE clean energy grants, solar energy funding, wind energy grants, ARPA-E application, EERE funding opportunities, clean tech startup grants, doe clean energy grants application checklist 2026, doe clean energy grants requirements and documents needed, doe clean energy grants approval timeline, doe clean energy grants application tips, DOE application step by step guide, DOE eligibility checker, best grants for small business USA 2026, am I eligible for doe clean energy grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-doe-clean-energy-grants",
   },

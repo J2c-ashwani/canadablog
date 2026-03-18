@@ -15,7 +15,7 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 export const metadata: Metadata = {
   title: "Quebec Business Grants 2026: Complete Application Guide | Investissement Québec, ESSOR, R&D Credits",
   description: "Complete 2025 guide to Quebec provincial funding. Step-by-step process for Investissement Québec loans, ESSOR grants up to $15M, and 30% R&D tax credits. Bilingual support available.",
-  keywords: "Quebec business grants, Investissement Québec, ESSOR program, aide aux entreprises, R&D tax credits quebec, subvention quebec, CDAE tax credit, Impulsion PME",
+  keywords: "Quebec business grants, Investissement Québec, ESSOR program, aide aux entreprises, R&D tax credits quebec, subvention quebec, CDAE tax credit, Impulsion PME, quebec business grants application checklist 2026, quebec business grants requirements and documents needed, quebec business grants approval timeline, quebec business grants application tips, best grants for small business Canada 2026, am I eligible for quebec business grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-quebec-business-grants",
   },

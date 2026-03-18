@@ -16,7 +16,7 @@ import InlineCTA from '@/components/blog/InlineCTA';
 export const metadata: Metadata = {
   title: "EDC Women in Trade 2026 | $50M Export Funding",
   description: "Complete guide to EDC's Women in Trade financing. Apply for the $50M Inclusive Trade Investment Fund, export credit insurance, and global market access.",
-  keywords: "EDC Women in Trade, export financing Canada, Inclusive Trade Investments, women exporter grants, EDC equity fund",
+  keywords: "EDC Women in Trade, export financing Canada, Inclusive Trade Investments, women exporter grants, EDC equity fund, edc women trade export financing guide application checklist 2026, edc women trade export financing guide requirements and documents needed, edc women trade export financing guide approval timeline, edc women trade export financing guide application tips, EDC application step by step guide, EDC eligibility checker, best grants for small business Canada 2026, am I eligible for edc women trade export financing guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/edc-women-trade-export-financing-guide",
   },

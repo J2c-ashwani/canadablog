@@ -19,7 +19,7 @@ import InlineCTA from '@/components/blog/InlineCTA';
 export const metadata: Metadata = {
   title: "SBIR Research Grants 2026: Application Guide & Requirements",
   description: "Complete guide to applying for SBIR Phase I & II grants. Learn eligibility, deadlines, and how to secure up to $1.7M in federal R&D funding without equity loss.",
-  keywords: "SBIR grants, Phase I application, Phase II funding, R&D tax credits, small business innovation research, federal startup grants",
+  keywords: "SBIR grants, Phase I application, Phase II funding, R&D tax credits, small business innovation research, federal startup grants, sbir research grants guide application checklist 2026, sbir research grants guide requirements and documents needed, sbir research grants guide approval timeline, sbir research grants guide application tips, SBIR application step by step guide, SBIR eligibility checker, best grants for small business USA 2026, am I eligible for sbir research grants guide",
   openGraph: {
     title: "SBIR Grants 2026: The Complete Application Guide",
     description: "Secure $1.7M+ in non-dilutive R&D funding. Step-by-step guide for Phase I & II applications.",

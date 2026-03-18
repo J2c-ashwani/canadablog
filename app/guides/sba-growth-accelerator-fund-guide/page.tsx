@@ -16,7 +16,7 @@ import InlineCTA from '@/components/blog/InlineCTA';
 export const metadata: Metadata = {
   title: "SBA Growth Accelerator Fund 2026 | $200K Prizes",
   description: "Guide to the SBA Growth Accelerator Fund Competition (GAFC). Funding for incubators, accelerators, and ecosystem builders supporting STEM/R&D startups.",
-  keywords: "SBA growth accelerator fund, GAFC 2025, incubator grants, accelerator funding, ecosystem builder grants, STEM startup support",
+  keywords: "SBA growth accelerator fund, GAFC 2025, incubator grants, accelerator funding, ecosystem builder grants, STEM startup support, sba growth accelerator fund guide application checklist 2026, sba growth accelerator fund guide requirements and documents needed, sba growth accelerator fund guide approval timeline, sba growth accelerator fund guide application tips, SBA application step by step guide, SBA eligibility checker, best grants for small business USA 2026, am I eligible for sba growth accelerator fund guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/sba-growth-accelerator-fund-guide",
   },

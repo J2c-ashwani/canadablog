@@ -15,7 +15,7 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 export const metadata: Metadata = {
   title: "CleanTech Funding Canada 2026 | SDTC & Net Zero Grants",
   description: "Complete guide to clean technology funding. Apply for SDTC, Clean Tech ITCs (30%), and Net Zero Accelerator grants.",
-  keywords: "cleantech funding Canada, SDTC application guide, Clean Tech ITC, Net Zero Accelerator, environmental grants, green technology funding",
+  keywords: "cleantech funding Canada, SDTC application guide, Clean Tech ITC, Net Zero Accelerator, environmental grants, green technology funding, canada cleantech funding guide application checklist 2026, canada cleantech funding guide requirements and documents needed, canada cleantech funding guide approval timeline, canada cleantech funding guide application tips, SDTC application step by step guide, SDTC eligibility checker, best grants for small business Canada 2026, am I eligible for canada cleantech funding guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-cleantech-funding-guide",
   },

@@ -16,7 +16,7 @@ import InlineCTA from '@/components/blog/InlineCTA';
 export const metadata: Metadata = {
   title: "NSERC Research Grants 2026 | I2I & Alliance Application Guide",
   description: "Complete guide to NSERC Idea to Innovation (I2I) and Alliance grants. Learn how to secure up to $1M+ in research funding for university-industry partnerships.",
-  keywords: "NSERC I2I application, Alliance grants Canada, university research funding, NSERC proposal guide, HQP training plan",
+  keywords: "NSERC I2I application, Alliance grants Canada, university research funding, NSERC proposal guide, HQP training plan, nserc research grants guide application checklist 2026, nserc research grants guide requirements and documents needed, nserc research grants guide approval timeline, nserc research grants guide application tips, NSERC application step by step guide, NSERC eligibility checker, best grants for small business Canada 2026, am I eligible for nserc research grants guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/nserc-research-grants-guide",
   },

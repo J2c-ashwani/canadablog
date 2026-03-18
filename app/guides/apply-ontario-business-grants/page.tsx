@@ -15,7 +15,7 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 export const metadata: Metadata = {
   title: "Ontario Business Grants 2026: Complete Application Guide | Starter Company Plus, OCI, Ontario Creates",
   description: "Complete step-by-step guide to applying for Ontario business grants and provincial funding. Get Ontario application templates, provincial strategies, and proven frameworks for Starter Company Plus, Ontario Creates, and OCI programs.",
-  keywords: "Ontario business grants application guide, Ontario provincial funding application process, Starter Company Plus application, Ontario Creates funding application, how to apply Ontario grants, OCI funding",
+  keywords: "Ontario business grants application guide, Ontario provincial funding application process, Starter Company Plus application, Ontario Creates funding application, how to apply Ontario grants, OCI funding, ontario business grants application checklist 2026, ontario business grants requirements and documents needed, ontario business grants approval timeline, ontario business grants application tips, best grants for small business Canada 2026, am I eligible for ontario business grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-ontario-business-grants",
   },

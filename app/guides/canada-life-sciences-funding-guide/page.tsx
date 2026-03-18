@@ -15,7 +15,7 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 export const metadata: Metadata = {
   title: "Biotech & Life Sciences Grants Canada 2026 | Clinical Trials Funding",
   description: "Complete guide to life sciences funding. Apply for IRAP biotech grants, Clinical Trials Fund, and medical device commercialization support.",
-  keywords: "life sciences grants Canada, biotech funding, clinical trials grants, medical device funding, health tech grants, biomanufacturing funding",
+  keywords: "life sciences grants Canada, biotech funding, clinical trials grants, medical device funding, health tech grants, biomanufacturing funding, canada life sciences funding guide application checklist 2026, canada life sciences funding guide requirements and documents needed, canada life sciences funding guide approval timeline, canada life sciences funding guide application tips, best grants for small business Canada 2026, am I eligible for canada life sciences funding guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-life-sciences-funding-guide",
   },

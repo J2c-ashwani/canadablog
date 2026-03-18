@@ -15,7 +15,7 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 export const metadata: Metadata = {
   title: "CSBFP Government Financing Application Guide 2026 | Step-by-Step Federal Loan Guarantee Process",
   description: "Complete step-by-step guide to applying for CSBFP government-guaranteed loans. Get federal financing templates, lender selection strategies, and proven application frameworks for up to $1.15M in financing.",
-  keywords: "CSBFP government financing application guide, how to apply CSBFP loans, federal loan guarantee application Canada, CSBFP compliance application process, government guaranteed business loan application guide, Canada Small Business Financing Program",
+  keywords: "CSBFP government financing application guide, how to apply CSBFP loans, federal loan guarantee application Canada, CSBFP compliance application process, government guaranteed business loan application guide, Canada Small Business Financing Program, csbfp government financing application checklist 2026, csbfp government financing requirements and documents needed, csbfp government financing approval timeline, csbfp government financing application tips, CSBFP application step by step guide, CSBFP eligibility checker, best grants for small business Canada 2026, am I eligible for csbfp government financing",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-csbfp-government-financing",
   },

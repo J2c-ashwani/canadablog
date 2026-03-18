@@ -16,7 +16,7 @@ import InlineCTA from '@/components/blog/InlineCTA';
 export const metadata: Metadata = {
   title: "Regional Development Agencies Application Guide 2026 | Step-by-Step RDA Funding",
   description: "Complete step-by-step guide to applying for Regional Development Agency (RDA) funding. Get templates, regional strategies, and proven application frameworks for ACOA, FedDev, Ced, and more.",
-  keywords: "Regional Development Agencies application guide, RDA funding application process, ACOA application guide, FedDev Ontario application, PacifiCan funding application, Canada regional grants",
+  keywords: "Regional Development Agencies application guide, RDA funding application process, ACOA application guide, FedDev Ontario application, PacifiCan funding application, Canada regional grants, regional development agencies application checklist 2026, regional development agencies requirements and documents needed, regional development agencies approval timeline, regional development agencies application tips, ACOA application step by step guide, ACOA eligibility checker, best grants for small business Canada 2026, am I eligible for regional development agencies",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-regional-development-agencies",
   },

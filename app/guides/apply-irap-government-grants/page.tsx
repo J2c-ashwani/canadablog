@@ -16,7 +16,7 @@ import InlineCTA from '@/components/blog/InlineCTA';
 export const metadata: Metadata = {
   title: "IRAP Government Grants Application Guide 2026 | Federal R&D Funding",
   description: "Complete guide to applying for IRAP government grants. Learn federal compliance requirements, Treasury Board reporting standards, and how to secure federal R&D funding.",
-  keywords: "IRAP government grants, federal R&D funding Canada, government grant application guide, NRC IRAP compliance, federal innovation grants",
+  keywords: "IRAP government grants, federal R&D funding Canada, government grant application guide, NRC IRAP compliance, federal innovation grants, irap government grants application checklist 2026, irap government grants requirements and documents needed, irap government grants approval timeline, irap government grants application tips, IRAP application step by step guide, IRAP eligibility checker, IRAP vs NRC which to apply first, best grants for small business Canada 2026, am I eligible for irap government grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-irap-government-grants",
   },

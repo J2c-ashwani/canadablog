@@ -16,7 +16,7 @@ import InlineCTA from '@/components/blog/InlineCTA';
 export const metadata: Metadata = {
   title: "Women Entrepreneurship Loan Fund (WELF) 2026 | $50K Loans",
   description: "Official guide to the Women Entrepreneurship Loan Fund (WELF). Apply for up to $50,000 in microloans through WEOC, NACCA, and other partners.",
-  keywords: "Women Entrepreneurship Loan Fund, WELF loan, women business loans Canada, WEOC loans, NACCA women funding",
+  keywords: "Women Entrepreneurship Loan Fund, WELF loan, women business loans Canada, WEOC loans, NACCA women funding, women entrepreneurship loan fund guide application checklist 2026, women entrepreneurship loan fund guide requirements and documents needed, women entrepreneurship loan fund guide approval timeline, women entrepreneurship loan fund guide application tips, WELF application step by step guide, WELF eligibility checker, best grants for small business Canada 2026, am I eligible for women entrepreneurship loan fund guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/women-entrepreneurship-loan-fund-guide",
   },

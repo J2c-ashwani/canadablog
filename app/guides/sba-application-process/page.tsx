@@ -16,7 +16,7 @@ import InlineCTA from '@/components/blog/InlineCTA';
 export const metadata: Metadata = {
   title: "SBA Application Process 2026 | Step-by-Step Approval Guide",
   description: "Master the SBA application process. From EIN registration to 'Lender Match' and final approval. Download the 2025 document checklist.",
-  keywords: "SBA application process, SBA 7a application steps, lenders match, SBA grant application, small business funding guide",
+  keywords: "SBA application process, SBA 7a application steps, lenders match, SBA grant application, small business funding guide, sba application process application checklist 2026, sba application process requirements and documents needed, sba application process approval timeline, sba application process application tips, SBA application step by step guide, SBA eligibility checker, best grants for small business USA 2026, am I eligible for sba application process",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/sba-application-process",
   },

@@ -16,7 +16,7 @@ import InlineCTA from '@/components/blog/InlineCTA';
 export const metadata: Metadata = {
   title: "SBA Loan Requirements 2026 | 7(a), 504 & Microloans",
   description: "Official guide to applying for SBA loans. Compare 7(a), CDC/504, and Microloan requirements. Learn how to get approved for up to $5M.",
-  keywords: "SBA loan requirements, SBA 7a loan application, SBA 504 loan guide, federal small business loans, SBA lender match",
+  keywords: "SBA loan requirements, SBA 7a loan application, SBA 504 loan guide, federal small business loans, SBA lender match, sba loans application checklist 2026, sba loans requirements and documents needed, sba loans approval timeline, sba loans application tips, SBA application step by step guide, SBA eligibility checker, best grants for small business USA 2026, am I eligible for sba loans",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-sba-loans",
   },

@@ -16,7 +16,7 @@ import InlineCTA from '@/components/blog/InlineCTA';
 export const metadata: Metadata = {
   title: "Indigenous & Rural Business Funding Guide 2026 | Grants & Loans",
   description: "Complete guide to Aboriginal Entrepreneurship Program (AEP), NACCA loans, and rural business grants. Get templates and strategies for approval.",
-  keywords: "Indigenous business grants, Aboriginal Entrepreneurship Program, NACCA loans, rural business funding Canada, First Nations business loans, Metis entrepreneur funding",
+  keywords: "Indigenous business grants, Aboriginal Entrepreneurship Program, NACCA loans, rural business funding Canada, First Nations business loans, Metis entrepreneur funding, indigenous rural business funding application checklist 2026, indigenous rural business funding requirements and documents needed, indigenous rural business funding approval timeline, indigenous rural business funding application tips, best grants for small business Canada 2026, am I eligible for indigenous rural business funding",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-indigenous-rural-business-funding",
   },

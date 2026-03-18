@@ -16,7 +16,7 @@ import InlineCTA from '@/components/blog/InlineCTA';
 export const metadata: Metadata = {
   title: "California Small Business Loan Guarantee 2026 | IBank Guide",
   description: "Official guide to the California Small Business Loan Guarantee Program (SSBCI). How to get state-backed loans up to $2.5 million if you lack collateral.",
-  keywords: "California small business loan guarantee, IBank loan guarantee, California SSBCI, state backed business loans, FDC loan guarantee",
+  keywords: "California small business loan guarantee, IBank loan guarantee, California SSBCI, state backed business loans, FDC loan guarantee, california loan guarantee guide application checklist 2026, california loan guarantee guide requirements and documents needed, california loan guarantee guide approval timeline, california loan guarantee guide application tips, best grants for small business USA 2026, am I eligible for california loan guarantee guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/california-loan-guarantee-guide",
   },
