@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
+import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
   title: "Ontario Business Grants 2026 | Provincial Funding Programs",
@@ -200,11 +201,7 @@ export default function OntarioGrantsPage() {
                   <CardTitle>Ontario Business Grant Opportunities</CardTitle>
                 </CardHeader>
                 <CardContent className="prose max-w-none">
-                  <p>
-                    Ontario provides extensive business grant programs to support innovation, growth, and economic
-                    development across the province. With over $400 million in annual funding, Ontario maintains its
-                    position as Canada's economic engine.
-                  </p>
+                  <AutoLink text="Ontario provides extensive business grant programs to support innovation, growth, and economic development across the province. With over $400 million in annual funding, Ontario maintains its position as Canada's economic engine." className="leading-relaxed" />
 
                   <h3>Key Ontario Grant Programs</h3>
                   <ul>
@@ -222,11 +219,7 @@ export default function OntarioGrantsPage() {
                     </li>
                   </ul>
 
-                  <h3>Eligibility Requirements</h3>
-                  <p>
-                    Ontario business grants typically require companies to be incorporated in Ontario, demonstrate
-                    growth potential, and contribute to the province's economic objectives:
-                  </p>
+                  <AutoLink text="Ontario business grants typically require companies to be incorporated in Ontario, demonstrate growth potential, and contribute to the province's economic objectives:" className="leading-relaxed" />
                   <ul>
                     <li>Ontario business registration and operations</li>
                     <li>Demonstration of innovation or growth potential</li>

@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
+import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
     title: "Nova Scotia Business Grants 2026: Top 10 Programs [Free Guide]",

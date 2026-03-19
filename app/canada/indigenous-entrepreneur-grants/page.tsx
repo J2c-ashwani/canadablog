@@ -9,6 +9,7 @@ import { Users, CheckCircle, ArrowRight, Building, Lightbulb, FileText, AlertCir
 import Link from "next/link"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
+import AutoLink from "@/components/seo/AutoLink"
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
