@@ -17,6 +17,7 @@ import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "State & Province Business Grants (2026): Local Funding Guide",

@@ -18,6 +18,7 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Massachusetts Tech Startup Grants 2026-2027 | $500K SBIR START, $350K MassCEC InnovateMass, Life Sciences Center Biotech Funding Programs",

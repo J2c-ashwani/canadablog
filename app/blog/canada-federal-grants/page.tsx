@@ -15,6 +15,7 @@ import EEATBadge from '@/components/blog/EEATBadge'
 import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Canadian Government Grants (2026): The Complete Federal Funding Guide",

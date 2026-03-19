@@ -11,6 +11,7 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import StickyTOC from '@/components/blog/StickyTOC'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "CSBFP Government Financing Application Guide 2026 | Step-by-Step Federal Loan Guarantee Process",

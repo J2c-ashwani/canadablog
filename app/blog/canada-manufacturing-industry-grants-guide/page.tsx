@@ -15,6 +15,7 @@ import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
 import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Canada Manufacturing & Industry Grants 2026 | $3.1B+ Advanced Manufacturing Funding Programs Guide",

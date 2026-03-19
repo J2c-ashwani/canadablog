@@ -15,6 +15,7 @@ import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
 import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Hardware & IoT Startup Grants 2026-2027 | $305K NSF SBIR, $1.25M Phase II, DOD Electronics Non-Dilutive Funding",

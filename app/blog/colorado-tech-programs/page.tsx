@@ -18,6 +18,7 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Colorado Tech Startup Grants 2026-2027 | $500K Advanced Industries Accelerator, $250K Early-Stage Capital, SBIR Matching, Clean Energy Fund",

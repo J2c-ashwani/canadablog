@@ -21,6 +21,7 @@ import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
 import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Women Social Enterprise Grants Canada 2026-2027 | Social Impact Funding Toronto Vancouver Montreal Calgary | Community Development Purpose-Driven Business Support Women Entrepreneurs",

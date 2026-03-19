@@ -12,6 +12,7 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "DOD SBIR Defense Tech Grants 2026-2027 | $256K Phase I, $1.7M Phase II Cybersecurity & Aerospace Funding",

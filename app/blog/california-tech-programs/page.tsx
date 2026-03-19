@@ -12,6 +12,7 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "California Tech Startup Grants 2026-2027 | $50K CalSEED, $50K SBIR Match, Tax Credits & Silicon Valley Funding Programs",
