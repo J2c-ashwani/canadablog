@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox';
 import { GlobalGrantGuide } from '@/components/blog/GlobalGrantGuide';
 import { getStateDetailBySlug, getAllStateDetails, getRelatedGuides, StateDetailedGrant } from '@/lib/data/stateDetails';
+import { injectWikipediaLinks } from '@/lib/seo/keywordMap';
 import {
     ArrowLeft, DollarSign, Users, Briefcase, Target, Building, Zap, TrendingUp,
     Rocket, Mountain, Globe, Leaf, Cpu, Shield, Clock, Award, CheckCircle,
@@ -176,9 +177,7 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
                             <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-12" />
                         </div>
 
-                        <p className="text-xl text-gray-600 mb-6">
-                            {cityData.description}
-                        </p>
+                        <p className="text-xl text-gray-600 mb-6" dangerouslySetInnerHTML={{ __html: injectWikipediaLinks(cityData.description) }} />
 
                         <div className="flex flex-wrap gap-4 mt-6 mb-8">
                             <div className="flex items-center text-gray-600">

@@ -12,6 +12,7 @@ import { GrantComparisonTable } from '@/components/blog/GrantComparisonTable';
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox';
 import { GlobalGrantGuide } from '@/components/blog/GlobalGrantGuide';
 import { getStateDetailBySlug, getAllStateDetails, getQueryBasedSections, getQueryExpanders, getRelatedGuides } from '@/lib/data/stateDetails';
+import { injectWikipediaLinks } from '@/lib/seo/keywordMap';
 import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
@@ -243,11 +244,11 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                             {state.name} Business Funding Overview
                         </h2>
                         <div className="prose prose-lg max-w-none">
-                            <p className="text-gray-700 leading-relaxed mb-4">{state.overview.introduction}</p>
+                            <p className="text-gray-700 leading-relaxed mb-4" dangerouslySetInnerHTML={{ __html: injectWikipediaLinks(state.overview.introduction) }} />
                             <h3 className="text-xl font-semibold mt-6 mb-3">Economic Landscape</h3>
-                            <p className="text-gray-700 leading-relaxed mb-4">{state.overview.economicLandscape}</p>
+                            <p className="text-gray-700 leading-relaxed mb-4" dangerouslySetInnerHTML={{ __html: injectWikipediaLinks(state.overview.economicLandscape) }} />
                             <h3 className="text-xl font-semibold mt-6 mb-3">Key Opportunities in 2026</h3>
-                            <p className="text-gray-700 leading-relaxed">{state.overview.keyOpportunities}</p>
+                            <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: injectWikipediaLinks(state.overview.keyOpportunities) }} />
                         </div>
                     </section>
 
