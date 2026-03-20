@@ -57,7 +57,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = getBlogPostBySlug(slug);
-  if (!post) return { title: 'Post Not Found' };
+  if (!post) notFound();
 
   // Site-Wide Enrichment Logic:
   // Dynamically INDEX posts only if they have been enriched with High Value content stats/tips.

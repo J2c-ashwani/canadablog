@@ -40,7 +40,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ state: string }> }): Promise<Metadata> {
     const { state: stateSlug } = await params;
     const state = getStateDetailBySlug(stateSlug);
-    if (!state) return { title: 'State Not Found' };
+    if (!state) notFound();
 
     const funding = state.heroStats.totalFunding;
     const programs = state.heroStats.programCount;

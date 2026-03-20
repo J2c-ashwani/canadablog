@@ -50,10 +50,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ state: string; city: string }> }): Promise<Metadata> {
     const { state: stateParam, city: cityParam } = await params;
     const state = getStateDetailBySlug(stateParam);
-    if (!state || !state.cityGuides) return { title: 'City Not Found' };
+    if (!state || !state.cityGuides) notFound();
 
     const cityData = state.cityGuides.find(c => toSlug(c.city) === cityParam);
-    if (!cityData) return { title: 'City Not Found' };
+    if (!cityData) notFound();
 
     const estimatedPrograms = state.heroStats?.programCount || "50";
     const funding = state.heroStats?.totalFunding || "$1M+";
