@@ -4,6 +4,7 @@ import { Inter, JetBrains_Mono } from "next/font/google"
 import Script from "next/script"
 import "./globals.css"
 import { ClientOverlays } from "@/components/ClientOverlays"
+import GlobalWikipediaLinker from "@/components/seo/GlobalWikipediaLinker"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -109,6 +110,7 @@ export default function RootLayout({
       <body className="font-sans" suppressHydrationWarning>
         {children}
         <ClientOverlays />
+        <GlobalWikipediaLinker />
 
         <script
           type="application/ld+json"
