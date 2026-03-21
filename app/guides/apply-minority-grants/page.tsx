@@ -16,8 +16,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Minority & Women Business Grants 2026 | Certification Guide",
-  description: "Get certified for set-aside federal contracts. Comprehensive guide to 8(a), WOSB, and SDVOSB certifications and minority business grants.",
+  title: "How to Get Minority Business Grants (2026) – Step-by-Step Guide",
+  description: "Explore top minority business grants offering up to $50K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "minority business grants, women owned business grants, 8a certification requirements, WOSB certification, SDVOSB grants, minority contracting, minority grants application checklist 2026, minority grants requirements and documents needed, minority grants approval timeline, minority grants application tips, best grants for small business USA 2026, am I eligible for minority grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-minority-grants",

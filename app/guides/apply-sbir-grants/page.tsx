@@ -16,8 +16,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "SBIR Phase I & II Requirements 2026 | $1.7M R&D Funding",
-  description: "Complete guide to Small Business Innovation Research (SBIR) grants. Learn how to write a winning proposal for Phase I ($250k) and Phase II ($1.7M) funding.",
+  title: "How to Get SBIR Grants Phase 1 & 2 (2026) – Step-by-Step Guide",
+  description: "Explore top sbir grants phase 1 & 2 offering up to $1.7M in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "SBIR grant requirements, SBIR Phase I vs Phase II, federal R&D grants, NSF SBIR, NIH SBIR, DoD small business grants, sbir grants application checklist 2026, sbir grants requirements and documents needed, sbir grants approval timeline, sbir grants application tips, NSF application step by step guide, NSF eligibility checker, NSF vs SBIR which to apply first, best grants for small business USA 2026, am I eligible for sbir grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-sbir-grants",

@@ -90,6 +90,9 @@ export default function StateProvinceGrantsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50 dark:bg-neutral-900">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-emerald-900 to-teal-900 text-white py-24 relative overflow-hidden">

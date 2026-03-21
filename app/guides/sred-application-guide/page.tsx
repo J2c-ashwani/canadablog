@@ -16,8 +16,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "SR&ED Tax Credits 2026: Application, Rates & Eligibility",
-  description: "Complete guide to claiming SR&ED tax credits. Learn how to get up to 65% of your R&D costs refunded by the CRA.",
+  title: "SR&ED Tax Credits 2026 – Funding Options & Eligibility",
+  description: "Explore top sr&ed tax credits offering up to 35% ROI in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "SR&ED tax credits, SRED application, R&D tax incentives canada, T661 form, scientific research experimental development, sred application guide application checklist 2026, sred application guide requirements and documents needed, sred application guide approval timeline, sred application guide application tips, SR&ED application step by step guide, SR&ED eligibility checker, SR&ED vs SRED which to apply first, best grants for small business Canada 2026, am I eligible for sred application guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/sred-application-guide",

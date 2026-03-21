@@ -16,7 +16,7 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "BDC Woman Entrepreneur Financing 2026 | $100K Online Loan",
+  title: "BDC Women Entrepreneurs Loans 2026 (2026 Guide)",
   description: "Complete guide to BDC's Women Entrepreneur financing. Apply for the $100K online loan, Thrive Venture Fund, and advisory services.",
   keywords: "BDC women entrepreneur loan, BDC Thrive Lab, women business loans Canada, BDC advisory services, female founder funding, bdc women entrepreneurs financing guide application checklist 2026, bdc women entrepreneurs financing guide requirements and documents needed, bdc women entrepreneurs financing guide approval timeline, bdc women entrepreneurs financing guide application tips, BDC application step by step guide, BDC eligibility checker, best grants for small business Canada 2026, am I eligible for bdc women entrepreneurs financing guide",
   alternates: {

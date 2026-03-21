@@ -15,8 +15,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Aerospace & Defence Grants Canada 2026 | CSA & IDEaS Projects",
-  description: "Complete guide to aerospace and defence funding in Canada. Apply for CSA space technology grants, IDEaS defence innovation, and SIF aerospace streams.",
+  title: "Aerospace Grants Canada 2026 – Funding up to $450M Available",
+  description: "Explore top aerospace grants canada offering up to $450M in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "aerospace grants Canada, CSA funding application, IDEaS program guide, defence innovation grants, space technology funding, SIF aerospace, canada aerospace defence funding guide application checklist 2026, canada aerospace defence funding guide requirements and documents needed, canada aerospace defence funding guide approval timeline, canada aerospace defence funding guide application tips, best grants for small business Canada 2026, am I eligible for canada aerospace defence funding guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-aerospace-defence-funding-guide",

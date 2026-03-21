@@ -16,8 +16,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "How to Apply for Federal Grants 2026 | Complete Application Guide | Grants.gov, SAM.gov, SBIR",
-  description: "Step-by-step guide to applying for federal grants. Learn eligibility requirements, application process, winning strategies, and access billions in government funding through Grants.gov, SBIR, and more.",
+  title: "How to Get Federal Grants (2026) – Step-by-Step Guide",
+  description: "Explore top federal grants offering up to $500K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "federal grants application, how to apply federal grants, government grants, grants.gov application, federal funding guide, SBIR grants, SAM registration, federal grants application checklist 2026, federal grants requirements and documents needed, federal grants approval timeline, federal grants application tips, SBIR application step by step guide, SBIR eligibility checker, best grants for small business USA 2026, am I eligible for federal grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-federal-grants",

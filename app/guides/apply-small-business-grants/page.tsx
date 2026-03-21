@@ -16,7 +16,7 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Small Business Grants 2026 | SBA & Federal Funding Guide",
+  title: "Small Business Grants 2026 – Funding up to $250K Available",
   description: "Stop searching for 'free money' scams. Learn the real way to get small business funding through SBA 7(a) loans, microloans, and federal grants.",
   keywords: "small business grants, SBA 7a loan requirements, apply for business grants, federal small business funding, startup grants, small business grants application checklist 2026, small business grants requirements and documents needed, small business grants approval timeline, small business grants application tips, SBA application step by step guide, SBA eligibility checker, best grants for small business Canada 2026, am I eligible for small business grants",
   alternates: {

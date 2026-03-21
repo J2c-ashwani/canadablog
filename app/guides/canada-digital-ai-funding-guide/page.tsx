@@ -16,8 +16,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "AI Funding Canada 2026 | Scale AI & CDAP Grants",
-  description: "Complete guide to AI and digital adoption funding. Apply for Scale AI supercluster projects, CDAP digital transformation grants, and IRAP machine learning funding.",
+  title: "AI Startup Grants Canada 2026 – Funding up to $850M Available",
+  description: "Explore top ai startup grants canada offering up to $850M in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "AI funding Canada, Scale AI grants, CDAP application, machine learning grants, artificial intelligence funding, digital adoption grants, canada digital ai funding guide application checklist 2026, canada digital ai funding guide requirements and documents needed, canada digital ai funding guide approval timeline, canada digital ai funding guide application tips, CDAP application step by step guide, CDAP eligibility checker, best grants for small business Canada 2026, am I eligible for canada digital ai funding guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-digital-ai-funding-guide",

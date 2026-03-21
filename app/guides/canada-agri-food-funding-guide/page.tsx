@@ -15,8 +15,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Agri-Food & AgriTech Grants Canada 2026 | Processing & Innovation Funding",
-  description: "Guide to federal funding for food processing and agritech. Apply for AgriInnovate, AgriProcessing, and food automation grants.",
+  title: "Agri-Food Grants Canada 2026 – Funding up to $2.3B Available",
+  description: "Explore top agri-food grants canada offering up to $2.3B in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "agri-food grants Canada, food processing funding, agritech grants, AgriInnovate application, food automation grants, sustainable food production funding, canada agri food funding guide application checklist 2026, canada agri food funding guide requirements and documents needed, canada agri food funding guide approval timeline, canada agri food funding guide application tips, AgriInnovate application step by step guide, AgriInnovate eligibility checker, best grants for small business Canada 2026, am I eligible for canada agri food funding guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-agri-food-funding-guide",

@@ -15,8 +15,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Women Entrepreneurship Fund 2026 | $100K Business Grants",
-  description: "Complete guide to the Women Entrepreneurship Fund (WEF). Learn how to secure $100K in non-repayable grant funding for your business expansion.",
+  title: "Women Entrepreneurship Grants 2026 – Funding up to $100K",
+  description: "Explore top women entrepreneurship grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "Women Entrepreneurship Fund, WEF grant, women business grants canada, women entrepreneurship strategy, non-repayable funding, women entrepreneurship fund guide application checklist 2026, women entrepreneurship fund guide requirements and documents needed, women entrepreneurship fund guide approval timeline, women entrepreneurship fund guide application tips, WEF application step by step guide, WEF eligibility checker, best grants for small business Canada 2026, am I eligible for women entrepreneurship fund guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/women-entrepreneurship-fund-guide",

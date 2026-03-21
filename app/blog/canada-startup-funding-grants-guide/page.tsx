@@ -21,8 +21,8 @@ import AdSlot from '@/components/blog/AdSlot';
 import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
-  title: "Canada Startup Funding 2026 Guide | Grants, Loans & Futurpreneur",
-  description: "Complete 2026 guide to Canadian startup funding. Futurpreneur loans (up to $75k), Innovative Solutions Canada grants ($150k+), and hiring subsidies for new businesses.",
+  title: "Top Canada Startup Grants (2026) – Get Up to $1.2B",
+  description: "Explore top canada startup grants offering up to $1.2B in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "startup grants Canada 2026, Futurpreneur eligibility, Innovative Solutions Canada, startup business loans, seed funding Canada, small business startup grants",
 }
 
