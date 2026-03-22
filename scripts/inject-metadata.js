@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const REWRITES_PATH = path.join(__dirname, 'phase1-rewrites.json');
+const REWRITES_PATH = path.join(__dirname, 'phase2-rewrites.json');
 const CURRENT_META_PATH = path.join(__dirname, 'current-metadata.json');
 
 const rewrites = JSON.parse(fs.readFileSync(REWRITES_PATH, 'utf8'));

@@ -16,7 +16,7 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Women Entrepreneurship Strategy 2026 | $100K Grants & Loans",
+  title: "Top Women Entrepreneurship Strategy (2026) – Get Up to $100K",
   description:
     "Complete guide to Canada's Women Entrepreneurship Strategy (WES). Apply for the $100K Entrepreneurship Fund, $50K microloans, and BDC Women in Tech capital.",
   keywords:

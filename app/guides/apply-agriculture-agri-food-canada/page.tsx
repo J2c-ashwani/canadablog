@@ -15,14 +15,14 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Agriculture & Agri-Food Canada Application Guide 2026 | Federal Funding",
-  description: "Step-by-step guide to applying for AAFC federal funding. Get application templates, AgriInnovate strategies, and compliance checklists.",
+  title: "Top Agriculture & Agri-Food Canada (2026) – Get Up to $100K",
+  description: "Explore top agriculture & agri-food canada offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "Agriculture Agri-Food Canada application, AAFC funding guide, AgriInnovate application, AgriScience program, farm grants Canada, agricultural funding process, agriculture agri food canada application checklist 2026, agriculture agri food canada requirements and documents needed, agriculture agri food canada approval timeline, agriculture agri food canada application tips, AgriInnovate application step by step guide, AgriInnovate eligibility checker, best grants for small business Canada 2026, am I eligible for agriculture agri food canada",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-agriculture-agri-food-canada",
   },
   openGraph: {
-    title: "Agriculture & Agri-Food Canada Application Guide 2026 | Federal Funding",
+    title: "Top Agriculture & Agri-Food Canada (2026) – Get Up to $100K",
     description: "Step-by-step guide with templates and strategies for successful AAFC federal funding applications.",
     url: "https://www.fsidigital.ca/guides/apply-agriculture-agri-food-canada",
     images: ["/og-image.png"],

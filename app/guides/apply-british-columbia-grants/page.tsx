@@ -15,8 +15,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "BC Business Grants 2026: Complete Application Guide | Innovate BC, CleanBC, Creative BC",
-  description: "Complete step-by-step guide to applying for British Columbia business grants and provincial funding. Get BC application templates, provincial strategies, and frameworks for Innovate BC, CleanBC, and Creative BC programs.",
+  title: "BC Business Grants 2026 – Funding Options & Eligibility",
+  description: "Explore top bc business grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "British Columbia business grants, BC provincial funding, Innovate BC application, CleanBC funding, Creative BC grants, how to apply BC government grants, british columbia grants application checklist 2026, british columbia grants requirements and documents needed, british columbia grants approval timeline, british columbia grants application tips, best grants for small business Canada 2026, am I eligible for british columbia grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-british-columbia-grants",

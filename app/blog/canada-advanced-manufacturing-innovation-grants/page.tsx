@@ -18,8 +18,8 @@ import AdSlot from '@/components/blog/AdSlot';
 import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
-  title: "Canada Advanced Manufacturing Innovation Grants 2026 | $3.1B+ Industry 4.0 Funding | NGen",
-  description: "Complete guide to Canadian advanced manufacturing innovation grants. Access $3.1B+ funding through NGen, automation programs, Industry 4.0 initiatives, and 38+ smart manufacturing programs.",
+  title: "Canada Advanced Manufacturing Innovation Grants 2026 (2026 Guide)",
+  description: "Explore top canada advanced manufacturing innovation grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "Canada advanced manufacturing grants, Industry 4.0 funding Canada, NGen grants, smart manufacturing funding, automation grants Canada, manufacturing innovation funding, productivity enhancement grants, how to apply for NGen grants 2026, NGen eligibility requirements, how to apply for canada advanced manufacturing innovation grants, canada advanced manufacturing innovation grants eligibility 2026, step by step canada advanced manufacturing innovation grants application guide, best canada advanced manufacturing innovation grants for small business Canada, am I eligible for canada advanced manufacturing innovation grants, canada advanced manufacturing innovation grants deadline 2026",
   openGraph: {
     title: "Canada Advanced Manufacturing Innovation Grants 2026 | $3.1B+ Industry 4.0 Funding",

@@ -16,8 +16,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "IRAP Funding Guide 2026: Application, Eligibility & ITA Contact",
-  description: "Complete guide to the Industrial Research Assistance Program (IRAP). How to get up to $500K in non-repayable R&D funding and connect with an ITA.",
+  title: "Top IRAP (2026) – Get Up to $100K",
+  description: "Explore top irap offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "IRAP grants, Industrial Research Assistance Program, NRC IRAP, R&D funding canada, technology grants, ITA contact, irap innovation application guide application checklist 2026, irap innovation application guide requirements and documents needed, irap innovation application guide approval timeline, irap innovation application guide application tips, IRAP application step by step guide, IRAP eligibility checker, IRAP vs NRC which to apply first, best grants for small business Canada 2026, am I eligible for irap innovation application guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/irap-innovation-application-guide",

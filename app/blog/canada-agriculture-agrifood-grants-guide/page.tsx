@@ -18,7 +18,7 @@ import AdSlot from '@/components/blog/AdSlot';
 import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
-  title: "Canada Agriculture & Agri-Food Grants 2026 | $2.3B+ Agricultural Innovation Funding Programs Guide",
+  title: "Canada Agriculture & Agri-Food Grants 2026 – Funding up to $100K",
   description: "Complete guide to Canada's agriculture and agri-food grants. Access AgriInnovate, SCAP, Clean Technology programs, and 32+ programs offering $2.3B+ for agricultural excellence.",
   keywords: "Canada agriculture grants, agri-food funding, AgriInnovate program, agricultural clean technology, farm grants Canada 2026, how to apply for AgriInnovate grants 2026, AgriInnovate eligibility requirements, how to apply for canada agriculture agrifood grants guide, canada agriculture agrifood grants guide eligibility 2026, step by step canada agriculture agrifood grants guide application guide, best canada agriculture agrifood grants guide for small business Canada, am I eligible for canada agriculture agrifood grants guide, canada agriculture agrifood grants guide deadline 2026",
   openGraph: {

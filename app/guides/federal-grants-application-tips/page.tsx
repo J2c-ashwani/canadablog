@@ -16,8 +16,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Federal Grants Application Tips 2026 | Expert Acceptance Strategies",
-  description: "Master the federal grant application process. Expert tips on writing narratives, budget justification, SAM.gov registration, and avoiding rejection.",
+  title: "Top Federal Grants Application Tips (2026) – Get Up to $100K",
+  description: "Explore top federal grants application tips offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "federal grant application tips, grants.gov strategies, write winning grant proposal, federal funding guide, SAM.gov registration tips, federal grants application tips application checklist 2026, federal grants application tips requirements and documents needed, federal grants application tips approval timeline, federal grants application tips application tips, best grants for small business USA 2026, am I eligible for federal grants application tips",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/federal-grants-application-tips",

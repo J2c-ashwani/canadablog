@@ -18,11 +18,11 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
-  title: "Canadian Government Grants (2026): The Complete Federal Funding Guide",
-  description: "Most businesses apply to the wrong agency and get rejected. This playbook shows you exactly which of the 3 federal agencies to target and the stacking limits that trip up 80% of applicants.",
+  title: "Top Canadian Government Grants (2026) (2026) – Get Up to $100K",
+  description: "Explore top canadian government grants (2026) offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "Canada federal grants 2026, Strategic Innovation Fund streams, SR&ED guide 2026, IRAP funding guide, Canadian government business grants, startup funding Canada",
   openGraph: {
-    title: "Canadian Government Grants (2026): The Complete Federal Funding Guide",
+    title: "Top Canadian Government Grants (2026) (2026) – Get Up to $100K",
     description: "Don't just apply—strategize. This comprehensive guide covers every major federal funding agency in Canada and how to win their grants.",
     url: "https://www.fsidigital.ca/blog/canada-federal-grants",
     images: ["/og-image.png"],

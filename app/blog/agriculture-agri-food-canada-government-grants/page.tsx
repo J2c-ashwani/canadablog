@@ -22,8 +22,8 @@ import AdSlot from '@/components/blog/AdSlot';
 import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
-  title: "Agriculture Canada Grants 2026 | AAFC Federal Funding Guide",
-  description: "Complete guide to the $3.5B Sustainable Canadian Agricultural Partnership. Access AgriInnovate, AgriScience, AgriCompetitiveness, and Clean Technology funding for farms, processors, and agri-tech companies.",
+  title: "Agriculture Canada Grants 2026 – Funding Options & Eligibility",
+  description: "Explore top agriculture canada grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "Agriculture Agri-Food Canada grants, AAFC federal funding, AgriInnovate, Sustainable CAP funding, farm grants Canada, agri-food grants, how to apply for AgriInnovate grants 2026, AgriInnovate eligibility requirements, how to apply for agriculture agri food canada government grants, agriculture agri food canada government grants eligibility 2026, step by step agriculture agri food canada government grants application guide, best agriculture agri food canada government grants for small business Canada, am I eligible for agriculture agri food canada government grants, agriculture agri food canada government grants deadline 2026",
 }
 

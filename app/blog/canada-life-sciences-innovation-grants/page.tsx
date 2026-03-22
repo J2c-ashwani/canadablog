@@ -18,8 +18,8 @@ import AdSlot from '@/components/blog/AdSlot';
 import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
-  title: "Canada Life Sciences Grants 2026 | $720M+ Biotech & Medical Device Funding | Clinical Trials Support",
-  description: "Complete guide to Canadian life sciences innovation grants. Access $720M+ funding through biomanufacturing programs, medical device pathways, clinical trials support, and 18+ biotechnology funding programs.",
+  title: "Canada Life Sciences Grants 2026 – Funding up to $100K Available",
+  description: "Explore top canada life sciences grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "Canada life sciences grants, biotechnology funding Canada, medical device grants, clinical trials funding Canada, biomanufacturing support, drug development grants, health technology funding, pharmaceutical grants Canada, how to apply for canada life sciences innovation grants, canada life sciences innovation grants eligibility 2026, step by step canada life sciences innovation grants application guide, best canada life sciences innovation grants for small business Canada, am I eligible for canada life sciences innovation grants, canada life sciences innovation grants deadline 2026",
   openGraph: {
     title: "Canada Life Sciences Grants 2026 | $720M+ Biotech & Medical Device Funding",

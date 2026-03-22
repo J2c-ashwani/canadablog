@@ -15,8 +15,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Alberta Business Grants 2026: Complete Application Guide | Alberta Innovates, ERA, PrairiesCan",
-  description: "Complete step-by-step guide to applying for Alberta business grants and provincial funding. Get Alberta application templates, energy innovation strategies, and frameworks for Alberta Innovates, ERA, and economic diversification programs.",
+  title: "Alberta Business Grants 2026 – Funding Options & Eligibility",
+  description: "Explore top alberta business grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "Alberta business grants, Alberta Innovates application, ERA funding, Alberta energy innovation grants, PrairiesCan Alberta, how to apply Alberta government grants, alberta business grants application checklist 2026, alberta business grants requirements and documents needed, alberta business grants approval timeline, alberta business grants application tips, best grants for small business Canada 2026, am I eligible for alberta business grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-alberta-business-grants",

@@ -15,8 +15,8 @@ import AdSlot from '@/components/blog/AdSlot';
 import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
-  title: "California Tech Startup Grants 2026-2027 | $50K CalSEED, $50K SBIR Match, Tax Credits & Silicon Valley Funding Programs",
-  description: "Complete 2026-2027 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SBIR State Match $50,000, California Competes Tax Credit up to 25%, GO-Biz innovation programs, Accelerate CA Hubs for Silicon Valley, Bay Area, Los Angeles, San Diego tech startups.",
+  title: "Top California Tech Startup Grants (2026) – Get Up to $100K",
+  description: "Explore top california tech startup grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "California tech startup grants 2026, CalSEED grants $50000, SBIR state match California, California Competes Tax Credit, GO-Biz incentives, Silicon Valley startup funding, Bay Area tech grants, Los Angeles innovation programs, San Diego biotech funding, California cleantech grants, agtech funding California, biotech grants Bay Area, software startup incentives, hardware startup California, non-dilutive California grants, California small business grants technology, how to apply for SBIR grants 2026, SBIR eligibility requirements, how to apply for california tech programs, california tech programs eligibility 2026, step by step california tech programs application guide, best california tech programs for small business USA, am I eligible for california tech programs, california tech programs deadline 2026",
   openGraph: {
     title: "California Tech Grants 2026 | $50K CalSEED, SBIR Match, Tax Credits",

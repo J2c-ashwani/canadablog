@@ -18,7 +18,7 @@ import AdSlot from '@/components/blog/AdSlot';
 import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
-  title: "Canada Clean Technology & Environment Grants 2026 | $1.2B+ Sustainability Funding Programs Guide",
+  title: "Canada Clean Technology & Environment Grants 2026 – Funding up...",
   description: "Complete guide to Canada's clean technology and environmental grants. Access SDTC funding, Clean Growth Program, and 22+ programs offering $1.2B+ for cleantech innovation.",
   keywords: "Canada clean technology grants, environmental funding, SDTC grants, renewable energy funding, carbon capture grants, sustainability programs Canada 2026, how to apply for SDTC grants 2026, SDTC eligibility requirements, how to apply for canada clean technology environment grants guide, canada clean technology environment grants guide eligibility 2026, step by step canada clean technology environment grants guide application guide, best canada clean technology environment grants guide for small business Canada, am I eligible for canada clean technology environment grants guide, canada clean technology environment grants guide deadline 2026",
   openGraph: {

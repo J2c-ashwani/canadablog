@@ -16,8 +16,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Youth Entrepreneurship Funding Guide 2026 | Futurpreneur & Grants",
-  description: "Complete guide to Futurpreneur Canada loans, youth business grants, and startup funding for ages 18-39. Get application templates and mentor matching tips.",
+  title: "Youth Entrepreneurship 2026 – Funding up to $100K Available",
+  description: "Explore top youth entrepreneurship offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "Futurpreneur Canada, youth business grants, young entrepreneur loans, CYBF application, under 40 business funding, student business grants Ontario, youth entrepreneurship funding application checklist 2026, youth entrepreneurship funding requirements and documents needed, youth entrepreneurship funding approval timeline, youth entrepreneurship funding application tips, Futurpreneur application step by step guide, Futurpreneur eligibility checker, best grants for small business Canada 2026, am I eligible for youth entrepreneurship funding",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-youth-entrepreneurship-funding",

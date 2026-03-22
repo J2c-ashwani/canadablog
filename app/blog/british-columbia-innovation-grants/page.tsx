@@ -18,8 +18,8 @@ import AdSlot from '@/components/blog/AdSlot';
 import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
-  title: "British Columbia Innovation Grants & Tax Credits 2026 | 10% BCITC | $1.8B+ CleanTech Funding",
-  description: "Complete guide to BC innovation grants and tax credits. Access $1.8B+ through 10% BC Innovation Tax Credit (BCITC), Innovate BC, New Ventures BC, and cleantech, film, ocean technology programs.",
+  title: "British Columbia Innovation Grants & Tax Credits 2026 – Fundin...",
+  description: "Explore top british columbia innovation grants & tax credits offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "British Columbia innovation grants, BCITC tax credit, BC Innovation Tax Credit, Innovate BC funding, New Ventures BC, cleantech BC grants, film tax credit BC, ocean technology BC, how to apply for british columbia innovation grants, british columbia innovation grants eligibility 2026, step by step british columbia innovation grants application guide, best british columbia innovation grants for small business Canada, am I eligible for british columbia innovation grants, british columbia innovation grants deadline 2026",
   openGraph: {
     title: "British Columbia Innovation Grants & Tax Credits 2026 | $1.8B+ BCITC & CleanTech",

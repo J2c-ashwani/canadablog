@@ -16,8 +16,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Strategic Innovation Fund Application Guide 2026 | Step-by-Step SIF Funding Process",
-  description: "Complete step-by-step guide to applying for Strategic Innovation Fund (SIF) funding. Get SIF application templates, innovation project strategies, and proven application frameworks for $10M+ projects.",
+  title: "Strategic Innovation Fund 2026 – Funding Options & Eligibility",
+  description: "Explore top strategic innovation fund offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "strategic innovation fund application guide, how to apply SIF funding, innovation project grant application Canada, SIF grant application process, transformative project funding, ISED funding, innovation supercluster, strategic innovation fund application checklist 2026, strategic innovation fund requirements and documents needed, strategic innovation fund approval timeline, strategic innovation fund application tips, best grants for small business Canada 2026, am I eligible for strategic innovation fund",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-strategic-innovation-fund",

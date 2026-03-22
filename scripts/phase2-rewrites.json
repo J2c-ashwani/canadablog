@@ -1,0 +1,352 @@
+[
+  {
+    "slug": "apply-agriculture-agri-food-canada",
+    "type": "guide",
+    "path": "app/guides/apply-agriculture-agri-food-canada/page.tsx",
+    "newTitle": "Top Agriculture & Agri-Food Canada (2026) – Get Up to $100K",
+    "newDesc": "Explore top agriculture & agri-food canada offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-alberta-business-grants",
+    "type": "guide",
+    "path": "app/guides/apply-alberta-business-grants/page.tsx",
+    "newTitle": "Alberta Business Grants 2026 – Funding Options & Eligibility",
+    "newDesc": "Explore top alberta business grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-british-columbia-grants",
+    "type": "guide",
+    "path": "app/guides/apply-british-columbia-grants/page.tsx",
+    "newTitle": "BC Business Grants 2026 – Funding Options & Eligibility",
+    "newDesc": "Explore top bc business grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-csbfp-government-financing",
+    "type": "guide",
+    "path": "app/guides/apply-csbfp-government-financing/page.tsx",
+    "newTitle": "CSBFP Government Financing 2026 – Funding Options & Eligibility",
+    "newDesc": "Explore top csbfp government financing offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-indigenous-rural-business-funding",
+    "type": "guide",
+    "path": "app/guides/apply-indigenous-rural-business-funding/page.tsx",
+    "newTitle": "Indigenous & Rural Business 2026 – Funding Options & Eligibility",
+    "newDesc": "Explore top indigenous & rural business offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-irap-government-grants",
+    "type": "guide",
+    "path": "app/guides/apply-irap-government-grants/page.tsx",
+    "newTitle": "IRAP Government Grants 2026 – Funding up to $100K Available",
+    "newDesc": "Explore top irap government grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-regional-development-agencies",
+    "type": "guide",
+    "path": "app/guides/apply-regional-development-agencies/page.tsx",
+    "newTitle": "Regional Development Agencies 2026 – Funding up to $100K",
+    "newDesc": "Explore top regional development agencies offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-strategic-innovation-fund",
+    "type": "guide",
+    "path": "app/guides/apply-strategic-innovation-fund/page.tsx",
+    "newTitle": "Strategic Innovation Fund 2026 – Funding Options & Eligibility",
+    "newDesc": "Explore top strategic innovation fund offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-women-entrepreneurship-strategy",
+    "type": "guide",
+    "path": "app/guides/apply-women-entrepreneurship-strategy/page.tsx",
+    "newTitle": "Top Women Entrepreneurship Strategy (2026) – Get Up to $100K",
+    "newDesc": "Explore top women entrepreneurship strategy offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-youth-entrepreneurship-funding",
+    "type": "guide",
+    "path": "app/guides/apply-youth-entrepreneurship-funding/page.tsx",
+    "newTitle": "Youth Entrepreneurship 2026 – Funding up to $100K Available",
+    "newDesc": "Explore top youth entrepreneurship offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "california-loan-guarantee-guide",
+    "type": "guide",
+    "path": "app/guides/california-loan-guarantee-guide/page.tsx",
+    "newTitle": "California Small Business Loan Guarantee 2026 (2026 Guide)",
+    "newDesc": "Explore top california small business loan guarantee offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-life-sciences-funding-guide",
+    "type": "guide",
+    "path": "app/guides/canada-life-sciences-funding-guide/page.tsx",
+    "newTitle": "Biotech & Life Sciences Grants Canada 2026 (2026 Guide)",
+    "newDesc": "Explore top biotech & life sciences grants canada offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "edc-women-trade-export-financing-guide",
+    "type": "guide",
+    "path": "app/guides/edc-women-trade-export-financing-guide/page.tsx",
+    "newTitle": "EDC Women in Trade 2026 – Funding up to $100K Available",
+    "newDesc": "Explore top edc women in trade offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "federal-grants-application-tips",
+    "type": "guide",
+    "path": "app/guides/federal-grants-application-tips/page.tsx",
+    "newTitle": "Top Federal Grants Application Tips (2026) – Get Up to $100K",
+    "newDesc": "Explore top federal grants application tips offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "irap-innovation-application-guide",
+    "type": "guide",
+    "path": "app/guides/irap-innovation-application-guide/page.tsx",
+    "newTitle": "Top IRAP (2026) – Get Up to $100K",
+    "newDesc": "Explore top irap offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "sba-application-process",
+    "type": "guide",
+    "path": "app/guides/sba-application-process/page.tsx",
+    "newTitle": "SBA Application Process 2026 – Funding Options & Eligibility",
+    "newDesc": "Explore top sba application process offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "sba-growth-accelerator-fund-guide",
+    "type": "guide",
+    "path": "app/guides/sba-growth-accelerator-fund-guide/page.tsx",
+    "newTitle": "Top SBA Growth Accelerator Fund (2026) – Get Up to $100K",
+    "newDesc": "Explore top sba growth accelerator fund offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "sbir-research-grants-guide",
+    "type": "guide",
+    "path": "app/guides/sbir-research-grants-guide/page.tsx",
+    "newTitle": "SBIR Research Grants 2026 – Funding up to $100K Available",
+    "newDesc": "Explore top sbir research grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "women-entrepreneurship-loan-fund-guide",
+    "type": "guide",
+    "path": "app/guides/women-entrepreneurship-loan-fund-guide/page.tsx",
+    "newTitle": "Top Women Entrepreneurship Loan Fund (WELF) (2026) – Get Up to...",
+    "newDesc": "Explore top women entrepreneurship loan fund (welf) offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "agriculture-agri-food-canada-government-grants",
+    "type": "blog",
+    "path": "app/blog/agriculture-agri-food-canada-government-grants/page.tsx",
+    "newTitle": "Agriculture Canada Grants 2026 – Funding Options & Eligibility",
+    "newDesc": "Explore top agriculture canada grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "ai-machine-learning-grants",
+    "type": "blog",
+    "path": "app/blog/ai-machine-learning-grants/page.tsx",
+    "newTitle": "AI & Machine Learning Grants 2026 – Funding up to $100K Available",
+    "newDesc": "Explore top ai & machine learning grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "alberta-innovation-grants",
+    "type": "blog",
+    "path": "app/blog/alberta-innovation-grants/page.tsx",
+    "newTitle": "Alberta Innovation Grants & Funding 2026 – Funding up to $100K",
+    "newDesc": "Explore top alberta innovation grants & funding offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "alberta-small-business-grants-guide",
+    "type": "blog",
+    "path": "app/blog/alberta-small-business-grants-guide/page.tsx",
+    "newTitle": "Top Alberta Small Business Grants (2026) – Get Up to $100K",
+    "newDesc": "Explore top alberta small business grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "alberta-women-business-grants",
+    "type": "blog",
+    "path": "app/blog/alberta-women-business-grants/page.tsx",
+    "newTitle": "Top Alberta Women Business Grants (2026) – Get Up to $100K",
+    "newDesc": "Explore top alberta women business grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "amber-grant-women-canada",
+    "type": "blog",
+    "path": "app/blog/amber-grant-women-canada/page.tsx",
+    "newTitle": "Amber Grant for Women Canada 2026 – Funding up to $100K Available",
+    "newDesc": "Explore top amber grant for women canada offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "atlantic-canada-innovation-grants",
+    "type": "blog",
+    "path": "app/blog/atlantic-canada-innovation-grants/page.tsx",
+    "newTitle": "Atlantic Canada Innovation Grants & Funding 2026 (2026 Guide)",
+    "newDesc": "Explore top atlantic canada innovation grants & funding offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "atlantic-small-business-grants-guide",
+    "type": "blog",
+    "path": "app/blog/atlantic-small-business-grants-guide/page.tsx",
+    "newTitle": "Atlantic Canada Small Business Grants 2026 – Funding up to $100K",
+    "newDesc": "Explore top atlantic canada small business grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "bc-small-business-grants-guide",
+    "type": "blog",
+    "path": "app/blog/bc-small-business-grants-guide/page.tsx",
+    "newTitle": "Top BC Small Business Grants (2026) – Get Up to $100K",
+    "newDesc": "Explore top bc small business grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "bc-women-business-grants",
+    "type": "blog",
+    "path": "app/blog/bc-women-business-grants/page.tsx",
+    "newTitle": "BC Women Business Grants 2026 – Funding up to $100K Available",
+    "newDesc": "Explore top bc women business grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "bdc-women-entrepreneurs-financing",
+    "type": "blog",
+    "path": "app/blog/bdc-women-entrepreneurs-financing/page.tsx",
+    "newTitle": "Top BDC Women Entrepreneurs Financing (2026) – Get Up to $100K",
+    "newDesc": "Explore top bdc women entrepreneurs financing offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "biotech-life-sciences-grants",
+    "type": "blog",
+    "path": "app/blog/biotech-life-sciences-grants/page.tsx",
+    "newTitle": "Biotech & Life Sciences Grants Canada 2026 (2026 Guide)",
+    "newDesc": "Explore top biotech & life sciences grants canada offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "bmo-celebrating-women-grant",
+    "type": "blog",
+    "path": "app/blog/bmo-celebrating-women-grant/page.tsx",
+    "newTitle": "BMO Celebrating Women Grant 2026 – Funding up to $100K Available",
+    "newDesc": "Explore top bmo celebrating women grant offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "british-columbia-innovation-grants",
+    "type": "blog",
+    "path": "app/blog/british-columbia-innovation-grants/page.tsx",
+    "newTitle": "British Columbia Innovation Grants & Tax Credits 2026 – Fundin...",
+    "newDesc": "Explore top british columbia innovation grants & tax credits offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "california-tech-programs",
+    "type": "blog",
+    "path": "app/blog/california-tech-programs/page.tsx",
+    "newTitle": "Top California Tech Startup Grants (2026) – Get Up to $100K",
+    "newDesc": "Explore top california tech startup grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-advanced-manufacturing-innovation-grants",
+    "type": "blog",
+    "path": "app/blog/canada-advanced-manufacturing-innovation-grants/page.tsx",
+    "newTitle": "Canada Advanced Manufacturing Innovation Grants 2026 (2026 Guide)",
+    "newDesc": "Explore top canada advanced manufacturing innovation grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-aerospace-defence-innovation-grants",
+    "type": "blog",
+    "path": "app/blog/canada-aerospace-defence-innovation-grants/page.tsx",
+    "newTitle": "Top Canada Aerospace & Defence Innovation Grants (2026) – Get ...",
+    "newDesc": "Explore top canada aerospace & defence innovation grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-agri-food-technology-innovation-grants",
+    "type": "blog",
+    "path": "app/blog/canada-agri-food-technology-innovation-grants/page.tsx",
+    "newTitle": "Top Canada Agri-Food Technology Innovation Grants (2026) – Get...",
+    "newDesc": "Explore top canada agri-food technology innovation grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-agriculture-agrifood-grants-guide",
+    "type": "blog",
+    "path": "app/blog/canada-agriculture-agrifood-grants-guide/page.tsx",
+    "newTitle": "Canada Agriculture & Agri-Food Grants 2026 – Funding up to $100K",
+    "newDesc": "Explore top canada agriculture & agri-food grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-clean-technology-environment-grants-guide",
+    "type": "blog",
+    "path": "app/blog/canada-clean-technology-environment-grants-guide/page.tsx",
+    "newTitle": "Canada Clean Technology & Environment Grants 2026 – Funding up...",
+    "newDesc": "Explore top canada clean technology & environment grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-clean-technology-innovation-grants",
+    "type": "blog",
+    "path": "app/blog/canada-clean-technology-innovation-grants/page.tsx",
+    "newTitle": "Top Canada Clean Technology Innovation Grants (2026) – Get Up ...",
+    "newDesc": "Explore top canada clean technology innovation grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-digital-ai-innovation-grants",
+    "type": "blog",
+    "path": "app/blog/canada-digital-ai-innovation-grants/page.tsx",
+    "newTitle": "Top Canada Digital & AI Innovation Grants (2026) – Get Up to $...",
+    "newDesc": "Explore top canada digital & ai innovation grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-employment-workforce-training-grants-guide",
+    "type": "blog",
+    "path": "app/blog/canada-employment-workforce-training-grants-guide/page.tsx",
+    "newTitle": "Canada Employment & Workforce Training Grants 2026 – Funding u...",
+    "newDesc": "Explore top canada employment & workforce training grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-export-development-grants-guide",
+    "type": "blog",
+    "path": "app/blog/canada-export-development-grants-guide/page.tsx",
+    "newTitle": "Canada Export Development Grants 2026 (2026 Guide)",
+    "newDesc": "Explore top canada export development grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-federal-grants",
+    "type": "blog",
+    "path": "app/blog/canada-federal-grants/page.tsx",
+    "newTitle": "Top Canadian Government Grants (2026) (2026) – Get Up to $100K",
+    "newDesc": "Explore top canadian government grants (2026) offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-growth-expansion-grants-guide",
+    "type": "blog",
+    "path": "app/blog/canada-growth-expansion-grants-guide/page.tsx",
+    "newTitle": "Canada Business Expansion Grants 2026 – Funding up to $100K",
+    "newDesc": "Explore top canada business expansion grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-hiring-training-grants-guide",
+    "type": "blog",
+    "path": "app/blog/canada-hiring-training-grants-guide/page.tsx",
+    "newTitle": "Canada Hiring & Training Grants 2026 (2026 Guide)",
+    "newDesc": "Explore top canada hiring & training grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-industry-specific-grants-guide",
+    "type": "blog",
+    "path": "app/blog/canada-industry-specific-grants-guide/page.tsx",
+    "newTitle": "Canada Industry Specific Grants 2026 – Funding up to $100K",
+    "newDesc": "Explore top canada industry specific grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-innovation-research-development-grants-guide",
+    "type": "blog",
+    "path": "app/blog/canada-innovation-research-development-grants-guide/page.tsx",
+    "newTitle": "Canada R&D Grants 2026 – Funding up to $100K Available",
+    "newDesc": "Explore top canada r&d grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-life-sciences-innovation-grants",
+    "type": "blog",
+    "path": "app/blog/canada-life-sciences-innovation-grants/page.tsx",
+    "newTitle": "Canada Life Sciences Grants 2026 – Funding up to $100K Available",
+    "newDesc": "Explore top canada life sciences grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-manufacturing-industry-grants-guide",
+    "type": "blog",
+    "path": "app/blog/canada-manufacturing-industry-grants-guide/page.tsx",
+    "newTitle": "Canada Manufacturing & Industry Grants 2026 – Funding up to $100K",
+    "newDesc": "Explore top canada manufacturing & industry grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  }
+]

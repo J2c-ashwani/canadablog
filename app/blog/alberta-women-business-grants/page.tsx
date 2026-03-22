@@ -24,8 +24,8 @@ import AdSlot from '@/components/blog/AdSlot';
 import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
-  title: "Alberta Women Business Grants 2026 | $580M Energy & Tech Support Programs",
-  description: "Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovation funding.",
+  title: "Top Alberta Women Business Grants (2026) – Get Up to $100K",
+  description: "Explore top alberta women business grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "Alberta women business grants, AWE loans, Women Building Futures, Alberta women entrepreneurs, energy sector women, women business loans Calgary, female founder grants Edmonton, rural Alberta women business support, Alberta tech grants women, how to apply for alberta women business grants, alberta women business grants eligibility 2026, step by step alberta women business grants application guide, best alberta women business grants for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for alberta women business grants, alberta women business grants deadline 2026",
   openGraph: {
     title: "Alberta Women Business Grants 2026 | $580M Provincial Support",

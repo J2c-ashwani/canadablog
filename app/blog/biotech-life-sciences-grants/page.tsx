@@ -18,7 +18,7 @@ import AdSlot from '@/components/blog/AdSlot';
 import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
-  title: "Biotech & Life Sciences Grants Canada 2026 | Funding Guide",
+  title: "Biotech & Life Sciences Grants Canada 2026 (2026 Guide)",
   description: "Canada's biotech funding landscape: $720M+ available. Access the Biomanufacturing Fund, Genome Canada grants, and clinical trial support.",
   keywords: "Canada biotech grants, life sciences funding, biomanufacturing strategy, Genome Canada, CIHR grants, health tech startups Canada, how to apply for CIHR grants 2026, CIHR eligibility requirements, how to apply for biotech life sciences grants, biotech life sciences grants eligibility 2026, step by step biotech life sciences grants application guide, best biotech life sciences grants for small business Canada, am I eligible for biotech life sciences grants, biotech life sciences grants deadline 2026",
 }

@@ -16,8 +16,8 @@ import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "SBA Growth Accelerator Fund 2026 | $200K Prizes",
-  description: "Guide to the SBA Growth Accelerator Fund Competition (GAFC). Funding for incubators, accelerators, and ecosystem builders supporting STEM/R&D startups.",
+  title: "Top SBA Growth Accelerator Fund (2026) – Get Up to $100K",
+  description: "Explore top sba growth accelerator fund offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "SBA growth accelerator fund, GAFC 2025, incubator grants, accelerator funding, ecosystem builder grants, STEM startup support, sba growth accelerator fund guide application checklist 2026, sba growth accelerator fund guide requirements and documents needed, sba growth accelerator fund guide approval timeline, sba growth accelerator fund guide application tips, SBA application step by step guide, SBA eligibility checker, best grants for small business USA 2026, am I eligible for sba growth accelerator fund guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/sba-growth-accelerator-fund-guide",

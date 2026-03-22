@@ -18,8 +18,8 @@ import AdSlot from '@/components/blog/AdSlot';
 import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
-  title: "Canada Agri-Food Technology Innovation Grants 2026 | $500M+ AgriScience, AgriInnovate, SCAP Funding Guide",
-  description: "Complete 2026 guide to Canadian agri-food technology grants. Access $500M+ annual funding through AgriScience ($340M), AgriInnovate (up to $10M per project), and provincial CAP programs for precision agriculture, sustainable farming, and food processing innovation.",
+  title: "Top Canada Agri-Food Technology Innovation Grants (2026) – Get...",
+  description: "Explore top canada agri-food technology innovation grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
   keywords: "agri-food technology grants Canada 2026, AgriScience funding $340M, AgriInnovate program, SCAP agricultural grants, precision agriculture funding, sustainable farming grants Canada, food processing innovation grants, agricultural clean technology program, CAP provincial grants, how to apply for AgriInnovate grants 2026, AgriInnovate eligibility requirements, how to apply for canada agri food technology innovation grants, canada agri food technology innovation grants eligibility 2026, step by step canada agri food technology innovation grants application guide, best canada agri food technology innovation grants for small business Canada, am I eligible for canada agri food technology innovation grants, canada agri food technology innovation grants deadline 2026",
   openGraph: {
     title: "Canada Agri-Food Tech Grants 2026 | $500M+ Federal & Provincial Funding",
