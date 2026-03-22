@@ -14,6 +14,7 @@ import EligibleCheck from '@/components/blog/EligibleCheck';
 import InlineCTA from '@/components/blog/InlineCTA';
 import AdSlot from '@/components/blog/AdSlot';
 import { INDUSTRY_DEEP_DIVES } from '@/lib/pseo-content';
+import { spinParagraph, shuffleArray } from '@/lib/pseo-rewriter';
 
 // --- Industry-specific, data-rich short answers ---
 // Each answer contains real program names, real dollar amounts, and real timelines.
@@ -362,17 +363,18 @@ export default function PseoLandingPage({ params }: { params: { province: string
                                     {/* Landscape */}
                                     <div id="landscape" className="prose prose-lg text-gray-700 max-w-none">
                                         <h2 className="text-3xl font-bold text-gray-900 mb-6">{deepDive.landscape.title}</h2>
-                                        {deepDive.landscape.content.map((p, i) => (
-                                            <p key={i} className={i === 0 ? "lead text-xl text-gray-800" : ""}>{p}</p>
-                                        ))}
+                                        {deepDive.landscape.content.map((p, i) => {
+                                            const spunP = spinParagraph(p, page.cityName, page.provinceName, page.industryName, `landscape-${i}`);
+                                            return <p key={i} className={i === 0 ? "lead text-xl text-gray-800" : ""}>{spunP}</p>;
+                                        })}
                                     </div>
 
                                     {/* Anatomy of Top Programs */}
                                     <div id="top-programs" className="mt-12">
                                         <h2 className="text-3xl font-bold text-gray-900 mb-4">{deepDive.anatomy.title}</h2>
-                                        <p className="text-xl text-gray-700 mb-8">{deepDive.anatomy.introduction}</p>
+                                        <p className="text-xl text-gray-700 mb-8">{spinParagraph(deepDive.anatomy.introduction, page.cityName, page.provinceName, page.industryName, 'anatomy-intro')}</p>
                                         <div className="space-y-6">
-                                            {deepDive.anatomy.programs.map((prog, idx) => (
+                                            {shuffleArray(deepDive.anatomy.programs, `programs-${page.cityName}`).map((prog, idx) => (
                                                 <div key={idx} className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                                                     <div className="flex items-start">
                                                         <div className="bg-blue-100 p-3 rounded-lg mr-4 mt-1">
@@ -380,20 +382,20 @@ export default function PseoLandingPage({ params }: { params: { province: string
                                                         </div>
                                                         <div>
                                                             <h3 className="text-2xl font-bold text-gray-900 mb-3">{prog.name}</h3>
-                                                            <p className="text-gray-700 leading-relaxed text-lg mb-6">{prog.description}</p>
+                                                            <p className="text-gray-700 leading-relaxed text-lg mb-6">{spinParagraph(prog.description, page.cityName, page.provinceName, page.industryName, `prog-desc-${idx}`)}</p>
                                                             
                                                             <div className="bg-red-50 border-l-4 border-red-500 p-5 mb-5 rounded-r-md">
                                                                 <h4 className="font-bold text-red-900 mb-3 flex items-center gap-2">
                                                                     <Shield className="w-5 h-5" /> Critical Disqualifiers
                                                                 </h4>
                                                                 <ul className="list-disc pl-5 text-red-800 space-y-2">
-                                                                    {prog.disqualifiers.map((dq, dIdx) => (
+                                                                    {shuffleArray(prog.disqualifiers, `dq-${page.cityName}-${idx}`).map((dq, dIdx) => (
                                                                         <li key={dIdx}>{dq}</li>
                                                                     ))}
                                                                 </ul>
                                                             </div>
                                                             <div className="bg-yellow-50 border border-yellow-300 p-5 rounded-md shadow-sm">
-                                                                <p className="text-yellow-900"><strong>💡 Insider Tip:</strong> {prog.insiderTip}</p>
+                                                                <p className="text-yellow-900"><strong>💡 Insider Tip:</strong> {spinParagraph(prog.insiderTip, page.cityName, page.provinceName, page.industryName, `tip-${idx}`)}</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -424,7 +426,7 @@ export default function PseoLandingPage({ params }: { params: { province: string
                                         </h2>
                                         <div className="space-y-4 text-gray-800 text-lg leading-relaxed">
                                             {deepDive.stackingPlaybook.content.map((p, i) => (
-                                                <p key={i}>{p}</p>
+                                                <p key={i}>{spinParagraph(p, page.cityName, page.provinceName, page.industryName, `stack-${i}`)}</p>
                                             ))}
                                         </div>
                                     </div>
@@ -434,7 +436,7 @@ export default function PseoLandingPage({ params }: { params: { province: string
                                         <h2 className="text-3xl font-bold text-gray-900 mb-6 border-b pb-4">{deepDive.taxImplications.title}</h2>
                                         <div className="space-y-4">
                                             {deepDive.taxImplications.content.map((p, i) => (
-                                                <p key={i} className="leading-relaxed">{p}</p>
+                                                <p key={i} className="leading-relaxed">{spinParagraph(p, page.cityName, page.provinceName, page.industryName, `tax-${i}`)}</p>
                                             ))}
                                         </div>
                                     </div>
@@ -449,7 +451,7 @@ export default function PseoLandingPage({ params }: { params: { province: string
                                                         {idx + 1}
                                                     </div>
                                                     <h3 className="text-2xl font-bold text-gray-900 mb-3 mt-1">{step.phase}</h3>
-                                                    <p className="text-gray-700 text-lg leading-relaxed">{step.details}</p>
+                                                    <p className="text-gray-700 text-lg leading-relaxed">{spinParagraph(step.details, page.cityName, page.provinceName, page.industryName, `framework-${idx}`)}</p>
                                                 </div>
                                             ))}
                                         </div>
@@ -461,7 +463,7 @@ export default function PseoLandingPage({ params }: { params: { province: string
                                             <Shield className="w-8 h-8 text-red-600" /> {deepDive.commonDisqualifiers.title}
                                         </h2>
                                         <ul className="space-y-4">
-                                            {deepDive.commonDisqualifiers.list.map((dq, idx) => (
+                                            {shuffleArray(deepDive.commonDisqualifiers.list, `disq-${page.cityName}`).map((dq, idx) => (
                                                 <li key={idx} className="flex items-start gap-4">
                                                     <div className="bg-red-100 p-1.5 rounded-full mt-1 shrink-0">
                                                         <ChevronRight className="w-5 h-5 text-red-600" />
@@ -471,6 +473,23 @@ export default function PseoLandingPage({ params }: { params: { province: string
                                             ))}
                                         </ul>
                                     </div>
+
+                                    {/* Geographic Resources Hub */}
+                                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 mt-16 shadow-sm">
+                                        <h2 className="text-2xl font-bold text-blue-900 mb-4">{page.provinceName} Local Ecosystem Resources</h2>
+                                        <p className="text-blue-800 mb-6 font-medium">Local support centers and navigation agencies based near {page.cityName}:</p>
+                                        <div className="grid sm:grid-cols-2 gap-4">
+                                            {PROVINCE_RESOURCES[page.provinceSlug]?.map((res, i) => (
+                                                <a key={i} href={res.url} target="_blank" rel="noopener noreferrer" className="block bg-white p-4 rounded border border-blue-100 hover:border-blue-400 hover:shadow-md transition-all group">
+                                                    <h4 className="font-bold text-gray-900 group-hover:text-blue-700 mb-2">{res.name}</h4>
+                                                    <p className="text-sm text-gray-600">{res.description}</p>
+                                                </a>
+                                            )) || (
+                                                <p className="text-gray-600 italic">Central federal hubs coordinate funding navigation for the {page.provinceName} region.</p>
+                                            )}
+                                        </div>
+                                    </div>
+
                                     
                                     {/* Eligibility Check Widget */}
                                     <div className="mt-16">
