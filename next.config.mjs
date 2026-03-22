@@ -140,6 +140,15 @@ const nextConfig = {
       { source: '/new-york-business-grants-consultation', destination: '/blog/new-york-business-grants-2026', permanent: true },
       { source: '/grant-application-review', destination: '/contact', permanent: true },
       { source: '/faq', destination: '/faq-usa', permanent: true },
+      { source: '/grants/bc', destination: '/blog/bc-small-business-grants-guide', permanent: true },
+      { source: '/usa/north-carolina/raleigh-/-durham', destination: '/usa/north-carolina/raleigh-durham', permanent: true },
+      // GSC "Excluded by noindex" fixes — Mar 23, 2026
+      { source: '/usa/agriculture-farming-grants', destination: '/blog/usda-sbir-agtech-grants', permanent: true },
+      { source: '/usa/california/sacramento', destination: '/usa/california', permanent: true },
+      { source: '/usa/alberta', destination: '/canada/alberta', permanent: true },
+      { source: '/usa/ontario', destination: '/canada/ontario', permanent: true },
+      { source: '/usa/minority-owned-business-grants', destination: '/blog/federal-grants-women-minorities', permanent: true },
+      { source: '/refund-cancellation', destination: '/terms', permanent: true },
     ]
   },
   async headers() {

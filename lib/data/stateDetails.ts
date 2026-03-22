@@ -4079,7 +4079,7 @@ Outside the metros, the state maintains a powerful manufacturing base, producing
                 programs: ['Charlotte Small Biz Fund', 'Hi-Tech Training']
             },
             {
-                city: 'Raleigh / Durham',
+                city: 'Raleigh-Durham',
                 description: 'The Triangle. Top-tier universities and a global center for biotech and software.',
                 keyIndustries: ['Life Sciences', 'AgTech', 'SaaS'],
                 programs: ['Raleigh Innovation Fund', 'American Underground']
